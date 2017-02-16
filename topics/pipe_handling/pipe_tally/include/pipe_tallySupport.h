@@ -1,0 +1,62 @@
+
+/*
+WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
+
+This file was generated from pipe_tally.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
+For more information, type 'rtiddsgen -help' at a command shell
+or consult the RTI Connext manual.
+*/
+
+#ifndef pipe_tallySupport_58331204_h
+#define pipe_tallySupport_58331204_h
+
+/* Uses */
+#include "pipe_tally.h"
+
+#ifndef ndds_cpp_h
+#include "ndds/ndds_cpp.h"
+#endif
+
+#if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+
+class __declspec(dllimport) DDSTypeSupport;
+class __declspec(dllimport) DDSDataWriter;
+class __declspec(dllimport) DDSDataReader;
+
+#endif
+
+namespace PipeHandling {
+    /* ========================================================================= */
+    /**
+    Uses:     T
+
+    Defines:  TTypeSupport, TDataWriter, TDataReader
+
+    Organized using the well-documented "Generics Pattern" for
+    implementing generics in C and C++.
+    */
+
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    /* If the code is building on Windows, start exporting symbols.
+    */
+    #undef NDDSUSERDllExport
+    #define NDDSUSERDllExport __declspec(dllexport)
+
+    #endif
+
+    DDS_TYPESUPPORT_CPP(PipeTallyTypeSupport, PipeTally);
+
+    DDS_DATAWRITER_CPP(PipeTallyDataWriter, PipeTally);
+    DDS_DATAREADER_CPP(PipeTallyDataReader, PipeTallySeq, PipeTally);
+
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    /* If the code is building on Windows, stop exporting symbols.
+    */
+    #undef NDDSUSERDllExport
+    #define NDDSUSERDllExport
+    #endif
+} /* namespace PipeHandling  */
+
+#endif  /* pipe_tallySupport_58331204_h */
+
