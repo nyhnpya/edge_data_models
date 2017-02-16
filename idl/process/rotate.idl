@@ -1,0 +1,43 @@
+#include "base_data_types.idl"
+
+module ProcessRotation
+{
+    //@copy-c-declaration static const char ROTATE_REQUEST[] = "RotateRequest";
+
+    struct RotateRequest
+    {
+        DataTypes::Uuid     id;          //@key
+        DataTypes::Priority priority;
+        DataTypes::Time     timeNeeded;
+        DataTypes::Time     estimatedDuration;
+        double              targetRate;
+    };
+
+    //@copy-c-declaration static const char ROTATE_OBJECTIVE[] = "RotateObjective";
+
+    struct RotateObjective
+    {
+        DataTypes::Uuid     id;                //@key
+        DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
+        double              targetRate;        // current traget in rad/s
+    };
+
+    //@copy-c-declaration static const char ROTATE_STATE[] = "RotateState";
+
+    struct RotateState
+    {
+        DataTypes::Uuid     id;           //@key
+        DataTypes::Status   status;
+        DataTypes::Time     timestamp;        
+
+        // actuals
+        double              actualRate;
+
+        // constraints
+        double              minRate;
+        double              maxRate;
+
+        // targets
+        double              targetRate;
+    };
+};

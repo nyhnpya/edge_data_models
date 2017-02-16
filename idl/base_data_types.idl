@@ -1,0 +1,45 @@
+module DataTypes
+{
+    typedef char Uuid[16];
+
+    struct Time
+    {
+        long sec;               ///< The seconds.
+        unsigned long nanosec;  ///< The nanoseconds.
+    };
+
+    enum Priority
+    {
+        Normal,
+        High,
+        Critical
+    };
+
+    enum SurveyQuality
+    {
+        Definitive,
+        Inconclusive
+    };
+
+    enum Status
+    {
+        Fault,
+        Good
+    };
+
+    enum PipeType
+    {
+        DrillCollar,
+        HeavyWeight,
+        DrillPipe
+    };
+
+    enum Objective
+    {
+        None,
+        Casing,
+        CleaningHole,
+        Drilling,
+        Tripping
+    };
+};

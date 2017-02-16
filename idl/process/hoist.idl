@@ -1,0 +1,76 @@
+#include "base_data_types.idl"
+
+module ProcessHoist
+{
+    //@copy-c-declaration static const char HOIST_REQUEST[] = "HoistRequest";
+
+    /**
+    * \brief HoistRequest ifluence state of hoisting system.
+    *
+    * \ingroup ProcessCirculation
+    *
+    * | Variable          | Description                                         | Data Type  | Unit  |
+    * | ----------------- | --------------------------------------------------- | -----------| ------|
+    * | id                | Unique id of publisher                              | UUID       | N/A   |
+    * | priority          | priority of the request                             | Priority   | ms    |
+    * | timeNeeded        | time requester needs the resource                   | Time       | ms    |
+    * | estimatedDuration | estimated time current requestor owns the resource  | Time       | N/A   |
+    * | targetVelocity    | requested traget in rad/s                           | double     | Pa    |
+    * | targetDestination | requested traget in m/s                             | double     | Pa    |
+    */
+    struct HoistRequest
+    {
+        DataTypes::Uuid     id;           //@key
+        DataTypes::Priority priority;
+        DataTypes::Time     timeNeeded;
+        DataTypes::Time     estimatedDuration;
+        double              targetVelocity;
+        double              targetDestination;
+    };
+
+    //@copy-c-declaration static const char HOIST_OBJECTIVE[] = "HoistObjective";
+
+    /**
+    * \brief HoistObjective current system hoisting objective.
+    *
+    * \ingroup ProcessHoisting
+    *
+    * | Variable          | Description                                        | Data Type  | Unit |
+    * | ----------------- | -------------------------------------------------- | -----------| -----|
+    * | id                | Unique id of publisher.                            | UUID       | N/A  |
+    * | estimatedDuration | estimated time current requestor owns the resource | Time       | N/A  |
+    * | targetFlowRate    | Unique id of publisher.                            | double     | m^3  |
+    * | targetVelocity    | requested traget in rad/s                          | double     | Pa    |
+    * | targetDestination | requested traget in m/s                            | double     | Pa    |
+    */
+    struct HoistObjective
+    {
+        DataTypes::Uuid     id;                //@key
+        DataTypes::Time     estimatedDuration;
+        double              targetVelocity;
+        double              targetDestination;
+    };
+
+    //@copy-c-declaration static const char HOIST_STATE[] = "HoistState";
+
+    struct HoistState
+    {
+        DataTypes::Uuid     id;   //@key
+        DataTypes::Status   status;
+        DataTypes::Time     timestamp;
+
+        // actuals
+        double              actualVelocity;
+        double              actualPosition;
+
+        // constraints
+        double              maxHoistVelocity;
+        double              maxLowerVelocity;
+        double              maxHoistPosition;
+        double              maxLowerPosition;
+
+        // targets
+        double              targetVelocity;
+        double              targetPosition;
+    };
+};

@@ -1,0 +1,31 @@
+#include "base_data_types.idl"
+
+module Downhole
+{
+    //@copy-c-declaration static const char WELLBORE_STATE[] = "WellboreState";
+
+    /**
+    * \brief Wellbore state information.
+    *
+    * \ingroup Downhole
+    *
+    * | Variable         | Description                                            | Data Type  | Unit    |
+    * | ---------------- | ------------------------------------------------------ | -----------| --------|
+    * | id               | Unique id of publisher.                                | UUID       | N/A     |
+    * | timestamp        | Timestamp when the data was published.                 | Time_t     | ms      |
+    * | holeDepth        | Reported hole depth.                                   | double     | m       |
+    * | measuredDepth    | Measured depth of hole.                                | double     | m       |
+    * | trueVerticalDepth| Measured true vertical depth of hole.                  | double     | m       |
+    * | bitDepth         | Measured depth of bit.                                 | double     | m       |
+    */
+    struct Wellbore
+    {
+        DataTypes::Uuid  id; //@key
+        DataTypes::Time  timestamp;
+        double           holeDepth;
+        double           measuredDepth;
+        double           trueVerticalDepth;
+        double           bitDepth;
+    };
+};
+

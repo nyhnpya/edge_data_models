@@ -1,0 +1,49 @@
+#include "base_data_types.idl"
+
+module CalibrationHoisting
+{
+    //@copy-c-declaration static const char DRILLING_CALIBRATION_REQUEST[] = "DrillingCalibrationRequest";
+    struct DrillingCalibrationRequest
+    {
+        DataTypes::Uuid id; //@key
+        DataTypes::Time timestamp;
+        double          wobProportional;
+        double          wobIntegral;
+        double          differentialPressureProportional;
+        double          differentialPressureIntegral;
+        double          torqueProportional;
+        double          torqueIntegral;
+    };
+
+    //@copy-c-declaration static const char DRILLING_CALIBRATION_STATE[] = "DrillingCalibrationState";
+    struct DrillingCalibrationState
+    {
+        DataTypes::Uuid id; //@key
+        DataTypes::Time timestamp;
+        // current values
+        double          wobProportional;
+        double          wobIntegral;
+        double          differentialPressureProportional;
+        double          differentialPressureIntegral;
+        double          torqueProportional;
+        double          torqueIntegral;
+
+        // contraints
+        double          minWobProportional;
+        double          maxWobProportional;
+        double          minWobIntegral;
+        double          maxWobIntegral;
+        double          minDifferentialPressureProportional;
+        double          maxDifferentialPressureProportional;
+        double          minDifferentialPressureIntegral;
+        double          maxDifferentialPressureIntegral;
+        double          minTorqueProportional;
+        double          maxTorqueProportional;
+        double          minTorqueIntegral;
+        double          maxTorqueIntegral;
+        boolean         ropMode;
+        boolean         wobMode;
+        boolean         differentialPressureMode; 
+        boolean         torqueMode;
+    };
+};

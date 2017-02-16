@@ -1,0 +1,14 @@
+#include "base_data_types.idl"
+
+module Plan
+{
+    //@copy-c-declaration static const char OBJECTIVE_STATE[] = "ObjectiveState";
+
+    struct ObjectiveState
+    {
+        DataTypes::Uuid      id; //@key
+        DataTypes::Time      timestamp;
+        DataTypes::Objective objective;
+    };
+};
+

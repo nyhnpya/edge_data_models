@@ -1,0 +1,47 @@
+#include "base_data_types.idl"
+
+module EngineeringRotation
+{
+    //@copy-c-declaration static const char ROTATE_ENGINEERING_REQUEST[] = "RotateEngineeringRequest";
+
+    struct RotateEngineeringRequest
+    {
+        DataTypes::Uuid     id;          //@key
+        DataTypes::Priority priority;    // priority of the request
+        DataTypes::Time     timeNeeded;  // time requester needs the resource
+        DataTypes::Time     duration;    // duration requester needs the resource
+        double              targetRate;  // requested traget in rad/s
+    };
+
+    //@copy-c-declaration static const char ROTATE_ENGINEERING_OBJECTIVE[] = "RotateEngineeringObjective";
+
+    struct RotateEngineeringObjective
+    {
+        DataTypes::Uuid     id;                //@key
+        DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
+        double              targetRate;  // requested traget in rad/s
+        double              targetTorque;  // requested traget in rad/s
+    };
+
+    //@copy-c-declaration static const char ROTATE_ENGINEERING_STATE[] = "RotateEngineeringState";
+
+    struct RotateEngineeringState
+    {
+        DataTypes::Uuid     id;           //@key
+        DataTypes::Status   status;
+        DataTypes::Time     timestamp;        
+
+        // acutals
+        double  actualRate;
+        double  actualTorque;
+
+        // constraints
+        double  minRate;
+        double  maxRate;
+        double  minTorque;
+        double  maxTorque;
+
+        // targets
+        double  targetRate;
+    };
+};

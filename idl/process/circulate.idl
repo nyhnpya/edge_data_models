@@ -1,0 +1,88 @@
+#include "base_data_types.idl"
+
+module ProcessCirculation
+{
+    //@copy-c-declaration static const char CIRCULATE_REQUEST[] = "CirculateRequest";
+
+    /**
+    * \brief CirculateRequest ifluence state of circulation system.
+    *
+    * \ingroup ProcessCirculation
+    *
+    * | Variable          | Description                                        | Data Type  | Unit  |
+    * | ----------------- | -------------------------------------------------- | -----------| ------|
+    * | id                | Unique id of publisher                             | UUID       | N/A   |
+    * | priority          | priority of the request                            | Priority   | ms    |
+    * | timeNeeded        | time requester needs the resource                  | Time       | ms    |
+    * | estimatedDuration | estimated time current requestor owns the resource | Time       | N/A   |
+    * | targetFlowRate    | Unique id of publisher                             | double     | Pa    |
+    */
+    struct CirculateRequest
+    {
+        DataTypes::Uuid     id;             //@key
+        DataTypes::Priority priority;
+        DataTypes::Time     timeNeeded;
+        DataTypes::Time     estimatedDuration;
+        double              targetFlowRate;
+    };
+
+    //@copy-c-declaration static const char CIRCULATE_OBJECTIVE[] = "CirculateObjective";
+
+    /**
+    * \brief CirculateObjective current system circulation objective.
+    *
+    * \ingroup ProcessCirculation
+    *
+    * | Variable          | Description                                        | Data Type  | Unit |
+    * | ----------------- | -------------------------------------------------- | -----------| -----|
+    * | id                | Unique id of publisher.                            | UUID       | N/A  |
+    * | estimatedDuration | estimated time current requestor owns the resource | Time       | N/A  |
+    * | targetFlowRate    | Unique id of publisher.                            | double     | m^3  |
+    */
+    struct CirculateObjective
+    {
+        DataTypes::Uuid     id;                //@key
+        DataTypes::Time     estimatedDuration;
+        double              targetFlowRate;
+    };
+
+    //@copy-c-declaration static const char CIRCULATE_STATE[] = "CirculateState";
+
+    /**
+    * \brief CirculateState current state of circulation system.
+    *
+    * \ingroup ProcessCirculation
+    *
+    * | Variable                | Description                            | Data Type  | Unit |
+    * | ----------------------- | ---------------------------------------| -----------| -----|
+    * | id                      | Unique id of publisher.                | UUID       | N/A  |
+    * | timestamp               | Timestamp when the data was published. | Time_t     | ms   |
+    * | status                  | Unique id of publisher.                | Time       | N/A  |
+    * | actualFlowRate          | Unique id of publisher.                | double     | m^3  |
+    * | actualStandpipePressure | Unique id of publisher.                | double     | Pa   |
+    * | minFlowRate             | Unique id of publisher.                | double     | m^3  |
+    * | maxFlowRate             | Unique id of publisher.                | double     | m^3  |
+    * | minStandpipePressure    | Unique id of publisher.                | double     | Pa   |
+    * | maxStandpipePressure    | Unique id of publisher.                | double     | Pa   |
+    * | targetFlowRate          | Unique id of publisher.                | double     | Pa   |
+    */
+    struct CirculateState
+    {
+        DataTypes::Uuid   id;           //@key
+        DataTypes::Time   timestamp;
+        DataTypes::Status status;
+
+        // actuals
+        double            actualFlowRate;
+        double            actualStandpipePressure;
+
+        // constraints
+        double            minFlowRate;
+        double            maxFlowRate;
+        double            minStandpipePressure;
+        double            maxStandpipePressure;
+
+        // targets
+        double            targetFlowRate;
+    };
+};

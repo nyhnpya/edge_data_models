@@ -1,0 +1,9 @@
+module Configuration
+{
+    //@copy-c-declaration static const char CONFIGURATION_ITEM[] = "ConfigurationItem";
+    struct Item
+    {
+        string key; //@key
+        string value;
+    };
+};

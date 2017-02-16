@@ -1,0 +1,60 @@
+#include "base_data_types.idl"
+
+module Hoisting
+{
+    //@copy-c-declaration static const char DRILLING_REQUEST[] = "DrillingRequest";
+    struct DrillingRequest
+    {
+        DataTypes::Uuid     id; //@key
+        DataTypes::Priority priority;     // priority of the request
+        DataTypes::Time     timeNeeded;   // time requester needs the resource
+        DataTypes::Time     duration;     // duration requester needs the resource
+        double              ropLimit;
+        double              wobLimit;
+        double              differentialPressureLimit;
+        double              torqueLimit;
+        boolean             ropMode;
+        boolean             wobMode;
+        boolean             differentialPressureMode;
+        boolean             torqueMode;
+    };
+
+    //@copy-c-declaration static const char DRILLING_OBJECTIVE[] = "DrillingObjective";
+    struct DrillingObjective
+    {
+        DataTypes::Uuid     id; //@key
+        DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
+        double              ropLimit;
+        double              wobLimit;
+        double              differentialPressureLimit;
+        double              torqueLimit;
+        boolean             ropMode;
+        boolean             wobMode;
+        boolean             differentialPressureMode;
+        boolean             torqueMode;
+    };
+
+    //@copy-c-declaration static const char DRILLING_STATE[] = "DrillingState";
+    struct DrillingState
+    {
+        DataTypes::Uuid id; //@key
+        DataTypes::Time timestamp;
+        double          ropActual;
+        double          wobActual;
+        double          differentialPressureActual;
+        double          torqueActual;
+        double          ropLimit;
+        double          wobLimit;
+        double          differentialPressureLimit;
+        double          torqueLimit;
+        boolean         ropMode;
+        boolean         wobMode;
+        boolean         differentialPressureMode;
+        boolean         torqueMode;
+        double          ropTarget;
+        double          wobTarget;
+        double          differentialPressureTarget;
+        double          torqueTarget;
+        boolean         bitOnBottom;
+    };
+};
