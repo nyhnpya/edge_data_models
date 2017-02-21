@@ -1,5 +1,8 @@
 #include <iostream>
+#include <stdint.h>
+#ifdef _LINUX
 #include <unistd.h>
+#endif
 #include <signal.h>
 #include <string.h>
 #include "cmdparser.h"
@@ -11,6 +14,7 @@ int32_t gBitDepth = -1;
 
 CWellboreStatePublisher *gpStatePublisher = nullptr;
 
+#ifdef _LINUX
 void SignalHandler(int32_t signal)
 {
     /// Signal handler for SIGINT, SIGABRT, SIGFPE, SIGILL, SIGSEGV, SIGHUP 
@@ -63,6 +67,7 @@ void register_signal_handler()
     sigaction(SIGHUP,  &sigact, (struct sigaction *)NULL);
     sigaction(SIGTERM, &sigact, (struct sigaction *)NULL);
 }
+#endif
 
 void set_bit_depth()
 {
@@ -123,7 +128,9 @@ int32_t main(int32_t argc, char **argv)
     cli::Parser              parser(argc, argv);
     int32_t                  domain;
 
-    register_signal_handler();
+#ifdef _LINUX
+	register_signal_handler();
+#endif
     parser.set_optional<std::string>("c", "configFile", "pipe_handler.conf", "External configuration file.");
     parser.set_optional<int32_t>("d", "domain", 100, "DDS Domain.");
     parser.run_and_exit_if_error();
