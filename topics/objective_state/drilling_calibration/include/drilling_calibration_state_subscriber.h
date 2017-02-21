@@ -17,6 +17,7 @@ class CDrillingCalibrationStateSubscriber : public TSubscriber< CalibrationHoist
 
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
+    bool ValidData();
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);

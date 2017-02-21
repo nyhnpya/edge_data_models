@@ -9,6 +9,11 @@ CDrillingCalibrationStateSubscriber::~CDrillingCalibrationStateSubscriber()
 {
 }
 
+bool CDrillingCalibrationStateSubscriber::ValidData()
+{
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CDrillingCalibrationStateSubscriber::GetId(DataTypes::Uuid &id)
 {
     memcpy(id, m_data.id, 16);
