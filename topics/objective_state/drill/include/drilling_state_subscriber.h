@@ -16,6 +16,7 @@ class CDrillingStateSubscriber : public TSubscriber< Hoisting::DrillingState >
 
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
+    bool ValidData();
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);

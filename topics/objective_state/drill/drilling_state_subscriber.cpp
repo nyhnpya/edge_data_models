@@ -9,6 +9,11 @@ CDrillingStateSubscriber::~CDrillingStateSubscriber()
 {
 }
 
+bool CDrillingStateSubscriber::ValidData()
+{
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CDrillingStateSubscriber::GetId(DataTypes::Uuid &id)
 {
     memcpy(id, m_data.id, 16);
