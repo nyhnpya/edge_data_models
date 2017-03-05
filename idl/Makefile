@@ -186,3 +186,11 @@ drilling_calibration.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/drilling_calibration
 	-@rm -rf $(TMPOUTDIR)
 
+autodriller_configuration.cpy: 
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/engineering/autodriller_configuration
+	mkdir -p $(TOPIC_HOME)/engineering/autodriller_configuration/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/autodriller_configuration/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/autodriller_configuration
+	-@rm -rf $(TMPOUTDIR)
+

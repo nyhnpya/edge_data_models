@@ -2,6 +2,7 @@
 
 module AutoDrillerConfiguration
 {
+    //@copy-c-declaration static const char HMI_REQUEST[] = "HmiRequest";
     struct HmiRequest
     {
         DataTypes::Uuid   id;           //@key
@@ -47,6 +48,7 @@ module AutoDrillerConfiguration
         double tuningEnable;
     };
 
+    //@copy-c-declaration static const char HMI_STATE[] = "HmiState";
     struct HmiState
     {
         DataTypes::Uuid   id;           //@key
