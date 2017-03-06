@@ -45,9 +45,9 @@ TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/base_data_types/include
 TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/engineering/autodriller_configuration/include
 
 # Sources
-TARG_SOURCES = autodriller_configuration_state_subscriber.cpp
+TARG_SOURCES = autodriller_configuration_request_subscriber.cpp
+TARG_SOURCES += autodriller_configuration_state_subscriber.cpp
 TARG_SOURCES += autodriller_configuration_request_publisher.cpp
-TARG_SOURCES += autodriller_configuration_request_subscriber.cpp
 TARG_SOURCES += autodriller_configuration_state_publisher.cpp
 
 ###############################################################################

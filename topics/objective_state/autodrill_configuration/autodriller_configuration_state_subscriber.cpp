@@ -29,164 +29,529 @@ bool CAutoDrillerConfigurationStateSubscriber::GetTimestamp(DataTypes::Time &tim
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetWobProportional(double &wobProportional)
+bool CAutoDrillerConfigurationStateSubscriber::GetMode(double &mode)
 {
-    wobProportional = m_data.wobProportional;
+    mode = m_data.mode;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMinWobProportional(double &minWobProportional)
+bool CAutoDrillerConfigurationStateSubscriber::GetmodeController(double &modeController)
 {
-    minWobProportional = m_data.minWobProportional;
+    modeController = m_data.modeController;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMaxWobProportional(double &maxWobProportional)
+bool CAutoDrillerConfigurationStateSubscriber::GetModelReset(double &modelReset)
 {
-    maxWobProportional = m_data.maxWobProportional;
+    modelReset = m_data.modelReset;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetWobIntegral(double &wobIntegral)
+bool CAutoDrillerConfigurationStateSubscriber::GetPipeInnerDiameter(double &pipeInnerDiameter)
 {
-    wobIntegral = m_data.wobIntegral;
+    pipeInnerDiameter = m_data.pipeInnerDiameter;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMinWobIntegral(double &minWobIntegral)
+bool CAutoDrillerConfigurationStateSubscriber::GetPipeOuterDiameter(double &pipeOuterDiameter)
 {
-    minWobIntegral = m_data.minWobIntegral;
+    pipeOuterDiameter = m_data.pipeOuterDiameter;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMaxWobIntegral(double &maxWobIntegral)
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureInitializeK(double &differentialPressureInitializeK)
 {
-    maxWobIntegral = m_data.maxWobIntegral;
+    differentialPressureInitializeK = m_data.differentialPressureInitializeK;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureProportional(double &differentialPressureProportional)
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureInitializeTau(double &differentialPressureInitializeTau)
 {
-    differentialPressureProportional = m_data.differentialPressureProportional;
+    differentialPressureInitializeTau = m_data.differentialPressureInitializeTau;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMinDifferentialPressureProportional(double &minDifferentialPressureProportional)
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressurePreFilter(double &differentialPressurePreFilter)
 {
-    minDifferentialPressureProportional = m_data.minDifferentialPressureProportional;
+    differentialPressurePreFilter = m_data.differentialPressurePreFilter;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMaxDifferentialPressureProportional(double &maxDifferentialPressureProportional)
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureR1(double &differentialPressureR1)
 {
-    maxDifferentialPressureProportional = m_data.maxDifferentialPressureProportional;
+    differentialPressureR1 = m_data.differentialPressureR1;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureIntegral(double &differentialPressureIntegral)
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureR2(double &differentialPressureR2)
 {
-    differentialPressureIntegral = m_data.differentialPressureIntegral;
+    differentialPressureR2 = m_data.differentialPressureR2;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMinDifferentialPressureIntegral(double &minDifferentialPressureIntegral)
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationInitializeK(double &rateOfPenetrationInitializeK)
 {
-    minDifferentialPressureIntegral = m_data.minDifferentialPressureIntegral;
+    rateOfPenetrationInitializeK = m_data.rateOfPenetrationInitializeK;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMaxDifferentialPressureIntegral(double &maxDifferentialPressureIntegral)
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationInitializeTau(double &rateOfPenetrationInitializeTau)
 {
-    maxDifferentialPressureIntegral = m_data.maxDifferentialPressureIntegral;
+    rateOfPenetrationInitializeTau = m_data.rateOfPenetrationInitializeTau;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetTorqueProportional(double &torqueProportional)
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationInitializePreFilter(double &rateOfPenetrationInitializePreFilter)
 {
-    torqueProportional = m_data.torqueProportional;
+    rateOfPenetrationInitializePreFilter = m_data.rateOfPenetrationInitializePreFilter;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMinTorqueProportional(double &minTorqueProportional)
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationInitializeR1(double &rateOfPenetrationInitializeR1)
 {
-    minTorqueProportional = m_data.minTorqueProportional;
+    rateOfPenetrationInitializeR1 = m_data.rateOfPenetrationInitializeR1;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMaxTorqueProportional(double &maxTorqueProportional)
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationInitializeR2(double &rateOfPenetrationInitializeR2)
 {
-    maxTorqueProportional = m_data.maxTorqueProportional;
+    rateOfPenetrationInitializeR2 = m_data.rateOfPenetrationInitializeR2;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetTorqueIntegral(double &torqueIntegral)
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueInitializeK(double &torqueInitializeK)
 {
-    torqueIntegral = m_data.torqueIntegral;
+    torqueInitializeK = m_data.torqueInitializeK;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMinTorqueIntegral(double &minTorqueIntegral)
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueInitializeTau(double &torqueInitializeTau)
 {
-    minTorqueIntegral = m_data.minTorqueIntegral;
+    torqueInitializeTau = m_data.torqueInitializeTau;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMaxTorqueIntegral(double &maxTorqueIntegral)
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueInitializePreFilter(double &torqueInitializePreFilter)
 {
-    maxTorqueIntegral = m_data.maxTorqueIntegral;
+    torqueInitializePreFilter = m_data.torqueInitializePreFilter;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetRopMode(bool &ropMode)
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueInitializeR1(double &torqueInitializeR1)
 {
-    ropMode = m_data.ropMode;
+    torqueInitializeR1 = m_data.torqueInitializeR1;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetWobMode(bool &wobMode)
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueInitializeR2(double &torqueInitializeR2)
 {
-    wobMode = m_data.wobMode;
+    torqueInitializeR2 = m_data.torqueInitializeR2;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureMode(bool &differentialPressureMode)
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitInitializeK(double &weightOnBitInitializeK)
 {
-    differentialPressureMode = m_data.differentialPressureMode;
+    weightOnBitInitializeK = m_data.weightOnBitInitializeK;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetTorqueMode(bool &torqueMode)
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitInitializeTau(double &weightOnBitInitializeTau)
 {
-    torqueMode = m_data.torqueMode;
+    weightOnBitInitializeTau = m_data.weightOnBitInitializeTau;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitInitializePreFilter(double &weightOnBitInitializePreFilter)
+{
+    weightOnBitInitializePreFilter = m_data.weightOnBitInitializePreFilter;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitInitializeR1(double &weightOnBitInitializeR1)
+{
+    weightOnBitInitializeR1 = m_data.weightOnBitInitializeR1;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitInitializeR2(double &weightOnBitInitializeR2)
+{
+    weightOnBitInitializeR2 = m_data.weightOnBitInitializeR2;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetDevMin(double &devMin)
+{
+    devMin = m_data.devMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetIntervalMin(double &intervalMin)
+{
+    intervalMin = m_data.intervalMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureFilter(double &differentialPressureFilter)
+{
+    differentialPressureFilter = m_data.differentialPressureFilter;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureKcMax(double &differentialPressureKcMax)
+{
+    differentialPressureKcMax = m_data.differentialPressureKcMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureKcMin(double &differentialPressureKcMin)
+{
+    differentialPressureKcMin = m_data.differentialPressureKcMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureTdMax(double &differentialPressureTdMax)
+{
+    differentialPressureTdMax = m_data.differentialPressureTdMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureTdMin(double &differentialPressureTdMin)
+{
+    differentialPressureTdMin = m_data.differentialPressureTdMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureTiMax(double &differentialPressureTiMax)
+{
+    differentialPressureTiMax = m_data.differentialPressureTiMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureTiMin(double &differentialPressureTiMin)
+{
+    differentialPressureTiMin = m_data.differentialPressureTiMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureD(double &differentialPressureD)
+{
+    differentialPressureD = m_data.differentialPressureD;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureEps(double &differentialPressureEps)
+{
+    differentialPressureEps = m_data.differentialPressureEps;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureEpsManual(double &differentialPressureEpsManual)
+{
+    differentialPressureEpsManual = m_data.differentialPressureEpsManual;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureF(double &differentialPressureF)
+{
+    differentialPressureF = m_data.differentialPressureF;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationFilter(double &rateOfPenetrationFilter)
+{
+    rateOfPenetrationFilter = m_data.rateOfPenetrationFilter;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationKcMax(double &rateOfPenetrationKcMax)
+{
+    rateOfPenetrationKcMax = m_data.rateOfPenetrationKcMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationKcMin(double &rateOfPenetrationKcMin)
+{
+    rateOfPenetrationKcMin = m_data.rateOfPenetrationKcMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationTdMax(double &rateOfPenetrationTdMax)
+{
+    rateOfPenetrationTdMax = m_data.rateOfPenetrationTdMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationTdMin(double &rateOfPenetrationTdMin)
+{
+    rateOfPenetrationTdMin = m_data.rateOfPenetrationTdMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationTiMax(double &rateOfPenetrationTiMax)
+{
+    rateOfPenetrationTiMax = m_data.rateOfPenetrationTiMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationTiMin(double &rateOfPenetrationTiMin)
+{
+    rateOfPenetrationTiMin = m_data.rateOfPenetrationTiMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationD(double &rateOfPenetrationD)
+{
+    rateOfPenetrationD = m_data.rateOfPenetrationD;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationEps(double &rateOfPenetrationEps)
+{
+    rateOfPenetrationEps = m_data.rateOfPenetrationEps;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationEpsManual(double &rateOfPenetrationEpsManual)
+{
+    rateOfPenetrationEpsManual = m_data.rateOfPenetrationEpsManual;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationF(double &rateOfPenetrationF)
+{
+    rateOfPenetrationF = m_data.rateOfPenetrationF;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitFilter(double &weightOnBitFilter)
+{
+    weightOnBitFilter = m_data.weightOnBitFilter;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitKcMax(double &weightOnBitKcMax)
+{
+    weightOnBitKcMax = m_data.weightOnBitKcMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitKcMin(double &weightOnBitKcMin)
+{
+    weightOnBitKcMin = m_data.weightOnBitKcMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitTdMax(double &weightOnBitTdMax)
+{
+    weightOnBitTdMax = m_data.weightOnBitTdMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitTdMin(double &weightOnBitTdMin)
+{
+    weightOnBitTdMin = m_data.weightOnBitTdMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitTiMax(double &weightOnBitTiMax)
+{
+    weightOnBitTiMax = m_data.weightOnBitTiMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitTiMin(double &weightOnBitTiMin)
+{
+    weightOnBitTiMin = m_data.weightOnBitTiMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitD(double &weightOnBitD)
+{
+    weightOnBitD = m_data.weightOnBitD;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitEps(double &weightOnBitEps)
+{
+    weightOnBitEps = m_data.weightOnBitEps;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitEpsManual(double &weightOnBitEpsManual)
+{
+    weightOnBitEpsManual = m_data.weightOnBitEpsManual;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitF(double &weightOnBitF)
+{
+    weightOnBitF = m_data.weightOnBitF;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueFilter(double &torqueFilter)
+{
+    torqueFilter = m_data.torqueFilter;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueKcMax(double &torqueKcMax)
+{
+    torqueKcMax = m_data.torqueKcMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueKcMin(double &torqueKcMin)
+{
+    torqueKcMin = m_data.torqueKcMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueTdMax(double &torqueTdMax)
+{
+    torqueTdMax = m_data.torqueTdMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueTdMin(double &torqueTdMin)
+{
+    torqueTdMin = m_data.torqueTdMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueTiMax(double &torqueTiMax)
+{
+    torqueTiMax = m_data.torqueTiMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueTiMin(double &torqueTiMin)
+{
+    torqueTiMin = m_data.torqueTiMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueD(double &torqueD)
+{
+    torqueD = m_data.torqueD;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueEps(double &torqueEps)
+{
+    torqueEps = m_data.torqueEps;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueEpsManual(double &torqueEpsManual)
+{
+    torqueEpsManual = m_data.torqueEpsManual;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueF(double &torqueF)
+{
+    torqueF = m_data.torqueF;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetStatus(double &status)
+{
+    status = m_data.status;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTuningDisable(double &tuningDisable)
+{
+    tuningDisable = m_data.tuningDisable;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTuningEnable(double &tuningEnable)
+{
+    tuningEnable = m_data.tuningEnable;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 
 bool CAutoDrillerConfigurationStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               CalibrationHoisting::AUTODRILLER_CONFIGURATION_STATE,
+                               AutoDrillerConfiguration::HMI_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -203,31 +568,7 @@ void CAutoDrillerConfigurationStateSubscriber::DataAvailable(const AutoDrillerCo
 
     if (sampleInfo.valid_data == true)
     {
-        memcpy(m_data.id, data.id, 16);
-        m_data.timestamp.sec = data.timestamp.sec;
-        m_data.timestamp.nanosec = data.timestamp.nanosec;
-        m_data.wobProportional = data.wobProportional;
-        m_data.wobIntegral = data.wobIntegral;
-        m_data.differentialPressureProportional = data.differentialPressureProportional;
-        m_data.differentialPressureIntegral = data.differentialPressureIntegral;
-        m_data.torqueProportional = data.torqueProportional;
-        m_data.torqueIntegral = data.torqueIntegral;
-        m_data.minWobProportional = data.minWobProportional;
-        m_data.maxWobProportional = data.maxWobProportional;
-        m_data.minWobIntegral = data.minWobIntegral;
-        m_data.maxWobIntegral = data.maxWobIntegral;
-        m_data.minDifferentialPressureProportional = data.minDifferentialPressureProportional;
-        m_data.maxDifferentialPressureProportional = data.maxDifferentialPressureProportional;
-        m_data.minDifferentialPressureIntegral = data.minDifferentialPressureIntegral;
-        m_data.maxDifferentialPressureIntegral = data.maxDifferentialPressureIntegral;
-        m_data.minTorqueProportional = data.minTorqueProportional;
-        m_data.maxTorqueProportional = data.maxTorqueProportional;
-        m_data.minTorqueIntegral = data.minTorqueIntegral;
-        m_data.maxTorqueIntegral = data.maxTorqueIntegral;
-        m_data.ropMode = data.ropMode;
-        m_data.wobMode = data.wobMode;
-        m_data.differentialPressureMode = data.differentialPressureMode;
-        m_data.torqueMode = data.torqueMode;
+        m_data = data;
 
         if (m_pOnDataAvailable != nullptr)
         {
