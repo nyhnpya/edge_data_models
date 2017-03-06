@@ -93,6 +93,54 @@ void CAutoDrillerConfigurationStatePublisher::SetPipeOuterDiameter(double pipeOu
     }
 }
 
+void CAutoDrillerConfigurationStatePublisher::SetSlopeFilter(double slopeFilter)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->slopeFilter = slopeFilter;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set slopeFilter because of uninitialized sample");
+    }
+}
+
+void CAutoDrillerConfigurationStatePublisher::SetTauMax(double tauMax)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->tauMax = tauMax;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set tauMax because of uninitialized sample");
+    }
+}
+
+void CAutoDrillerConfigurationStatePublisher::SetTauMin(double tauMin)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->tauMin = tauMin;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set tauMin because of uninitialized sample");
+    }
+}
+
+void CAutoDrillerConfigurationStatePublisher::SetTauMultiplier(double tauMultiplier)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->tauMultiplier = tauMultiplier;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set tauMultiplier because of uninitialized sample");
+    }
+}
+
 void CAutoDrillerConfigurationStatePublisher::SetDifferentialPressureInitializeK(double differentialPressureInitializeK)
 {
     if (m_pDataInstance != nullptr)
@@ -117,15 +165,15 @@ void CAutoDrillerConfigurationStatePublisher::SetDifferentialPressureInitializeT
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetDifferentialPressurePreFilter(double differentialPressurePreFilter)
+void CAutoDrillerConfigurationStatePublisher::SetDifferentialPressureInitializePreFilter(double differentialPressureInitializePreFilter)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressurePreFilter = differentialPressurePreFilter;
+        m_pDataInstance->differentialPressureInitializePreFilter = differentialPressureInitializePreFilter;
     }
     else
     {
-        LOG_ERROR("Failed to set differentialPressurePreFilter because of uninitialized sample");
+        LOG_ERROR("Failed to set differentialPressureInitializePreFilter because of uninitialized sample");
     }
 }
 

@@ -23,9 +23,13 @@ class CAutoDrillerConfigurationStatePublisher : public TPublisher< AutoDrillerCo
     void SetModelReset(bool modelReset);
     void SetPipeInnerDiameter(double pipeInnerDiameter);
     void SetPipeOuterDiameter(double pipeOuterDiameter);
+    void SetSlopeFilter(double slopeFilter);
+    void SetTauMax(double tauMax);
+    void SetTauMin(double tauMin);
+    void SetTauMultiplier(double tauMultiplier);
     void SetDifferentialPressureInitializeK(double differentialPressureInitializeK);
     void SetDifferentialPressureInitializeTau(double differentialPressureInitializeTau);
-    void SetDifferentialPressurePreFilter(double differentialPressurePreFilter);
+    void SetDifferentialPressureInitializePreFilter(double differentialPressureInitializePreFilter);
     void SetDifferentialPressureR1(double differentialPressureR1);
     void SetDifferentialPressureR2(double differentialPressureR2);
     void SetRateOfPenetrationInitializeK(double rateOfPenetrationInitializeK);

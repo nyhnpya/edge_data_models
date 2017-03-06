@@ -27,9 +27,13 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDriller
     bool GetModelReset(bool &modelReset);
     bool GetPipeInnerDiameter(double &pipeInnerDiameter);
     bool GetPipeOuterDiameter(double &pipeOuterDiameter);
+    bool GetSlopeFilter(double &slopeFilter);
+    bool GetTauMax(double &tauMax);
+    bool GetTauMin(double &tauMin);
+    bool GetTauMultiplier(double &tauMultiplier);
     bool GetDifferentialPressureInitializeK(double &differentialPressureInitializeK);
     bool GetDifferentialPressureInitializeTau(double &differentialPressureInitializeTau);
-    bool GetDifferentialPressurePreFilter(double &differentialPressurePreFilter);
+    bool GetDifferentialPressureInitializePreFilter(double &differentialPressureInitializePreFilter);
     bool GetDifferentialPressureR1(double &differentialPressureR1);
     bool GetDifferentialPressureR2(double &differentialPressureR2);
     bool GetRateOfPenetrationInitializeK(double &rateOfPenetrationInitializeK);

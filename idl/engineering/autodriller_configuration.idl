@@ -58,9 +58,13 @@ module AutoDrillerConfiguration
         boolean modelReset;
         double  pipeInnerDiameter;
         double  pipeOuterDiameter;
+        double  slopeFilter;
+        double  tauMax;
+        double  tauMin;
+        double  tauMultiplier;
         double  differentialPressureInitializeK;
         double  differentialPressureInitializeTau;
-        double  differentialPressurePreFilter;
+        double  differentialPressureInitializePreFilter;
         double  differentialPressureR1;
         double  differentialPressureR2;
         double  rateOfPenetrationInitializeK;

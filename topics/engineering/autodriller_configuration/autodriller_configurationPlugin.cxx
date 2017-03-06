@@ -2405,13 +2405,25 @@ namespace AutoDrillerConfiguration {
             &sample->pipeOuterDiameter, "pipeOuterDiameter", indent_level + 1);    
 
         RTICdrType_printDouble(
+            &sample->slopeFilter, "slopeFilter", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->tauMax, "tauMax", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->tauMin, "tauMin", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->tauMultiplier, "tauMultiplier", indent_level + 1);    
+
+        RTICdrType_printDouble(
             &sample->differentialPressureInitializeK, "differentialPressureInitializeK", indent_level + 1);    
 
         RTICdrType_printDouble(
             &sample->differentialPressureInitializeTau, "differentialPressureInitializeTau", indent_level + 1);    
 
         RTICdrType_printDouble(
-            &sample->differentialPressurePreFilter, "differentialPressurePreFilter", indent_level + 1);    
+            &sample->differentialPressureInitializePreFilter, "differentialPressureInitializePreFilter", indent_level + 1);    
 
         RTICdrType_printDouble(
             &sample->differentialPressureR1, "differentialPressureR1", indent_level + 1);    
@@ -2852,6 +2864,26 @@ namespace AutoDrillerConfiguration {
             }
 
             if (!RTICdrStream_serializeDouble(
+                stream, &sample->slopeFilter)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->tauMax)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->tauMin)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->tauMultiplier)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
                 stream, &sample->differentialPressureInitializeK)) {
                 return RTI_FALSE;
             }
@@ -2862,7 +2894,7 @@ namespace AutoDrillerConfiguration {
             }
 
             if (!RTICdrStream_serializeDouble(
-                stream, &sample->differentialPressurePreFilter)) {
+                stream, &sample->differentialPressureInitializePreFilter)) {
                 return RTI_FALSE;
             }
 
@@ -3270,6 +3302,22 @@ namespace AutoDrillerConfiguration {
                 goto fin; 
             }
             if (!RTICdrStream_deserializeDouble(
+                stream, &sample->slopeFilter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->tauMax)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->tauMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->tauMultiplier)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
                 stream, &sample->differentialPressureInitializeK)) {
                 goto fin; 
             }
@@ -3278,7 +3326,7 @@ namespace AutoDrillerConfiguration {
                 goto fin; 
             }
             if (!RTICdrStream_deserializeDouble(
-                stream, &sample->differentialPressurePreFilter)) {
+                stream, &sample->differentialPressureInitializePreFilter)) {
                 goto fin; 
             }
             if (!RTICdrStream_deserializeDouble(
@@ -3799,6 +3847,18 @@ namespace AutoDrillerConfiguration {
             if (!RTICdrStream_skipDouble (stream)) {
                 goto fin; 
             }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
             if (!RTICdrStream_skipBoolean (stream)) {
                 goto fin; 
             }
@@ -3966,6 +4026,18 @@ namespace AutoDrillerConfiguration {
             current_alignment);
 
         current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
 
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -4308,6 +4380,14 @@ namespace AutoDrillerConfiguration {
             current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
         current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
             current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -4437,6 +4517,14 @@ namespace AutoDrillerConfiguration {
         current_alignment += RTICdrType_getLongMaxSizeSerialized(
             current_alignment);
         current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
+            current_alignment);
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
@@ -4811,6 +4899,22 @@ namespace AutoDrillerConfiguration {
             }
 
             if (!RTICdrStream_skipBoolean (stream)) {
+                goto fin; 
+            }
+
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+
+            if (!RTICdrStream_skipDouble (stream)) {
                 goto fin; 
             }
 

@@ -1306,7 +1306,7 @@ namespace AutoDrillerConfiguration {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member HmiState_g_tc_members[76]=
+        static DDS_TypeCode_Member HmiState_g_tc_members[80]=
         {
 
             {
@@ -1429,7 +1429,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureInitializeK",/* Member name */
+                (char *)"slopeFilter",/* Member name */
                 {
                     7,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1446,7 +1446,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureInitializeTau",/* Member name */
+                (char *)"tauMax",/* Member name */
                 {
                     8,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1463,7 +1463,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressurePreFilter",/* Member name */
+                (char *)"tauMin",/* Member name */
                 {
                     9,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1480,7 +1480,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureR1",/* Member name */
+                (char *)"tauMultiplier",/* Member name */
                 {
                     10,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1497,7 +1497,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureR2",/* Member name */
+                (char *)"differentialPressureInitializeK",/* Member name */
                 {
                     11,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1514,7 +1514,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationInitializeK",/* Member name */
+                (char *)"differentialPressureInitializeTau",/* Member name */
                 {
                     12,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1531,7 +1531,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationInitializeTau",/* Member name */
+                (char *)"differentialPressureInitializePreFilter",/* Member name */
                 {
                     13,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1548,7 +1548,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationInitializePreFilter",/* Member name */
+                (char *)"differentialPressureR1",/* Member name */
                 {
                     14,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1565,7 +1565,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationInitializeR1",/* Member name */
+                (char *)"differentialPressureR2",/* Member name */
                 {
                     15,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1582,7 +1582,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationInitializeR2",/* Member name */
+                (char *)"rateOfPenetrationInitializeK",/* Member name */
                 {
                     16,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1599,7 +1599,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueInitializeK",/* Member name */
+                (char *)"rateOfPenetrationInitializeTau",/* Member name */
                 {
                     17,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1616,7 +1616,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueInitializeTau",/* Member name */
+                (char *)"rateOfPenetrationInitializePreFilter",/* Member name */
                 {
                     18,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1633,7 +1633,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueInitializePreFilter",/* Member name */
+                (char *)"rateOfPenetrationInitializeR1",/* Member name */
                 {
                     19,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1650,7 +1650,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueInitializeR1",/* Member name */
+                (char *)"rateOfPenetrationInitializeR2",/* Member name */
                 {
                     20,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1667,7 +1667,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueInitializeR2",/* Member name */
+                (char *)"torqueInitializeK",/* Member name */
                 {
                     21,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1684,7 +1684,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitInitializeK",/* Member name */
+                (char *)"torqueInitializeTau",/* Member name */
                 {
                     22,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1701,7 +1701,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitInitializeTau",/* Member name */
+                (char *)"torqueInitializePreFilter",/* Member name */
                 {
                     23,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1718,7 +1718,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitInitializePreFilter",/* Member name */
+                (char *)"torqueInitializeR1",/* Member name */
                 {
                     24,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1735,7 +1735,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitInitializeR1",/* Member name */
+                (char *)"torqueInitializeR2",/* Member name */
                 {
                     25,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1752,7 +1752,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitInitializeR2",/* Member name */
+                (char *)"weightOnBitInitializeK",/* Member name */
                 {
                     26,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1769,7 +1769,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"devMin",/* Member name */
+                (char *)"weightOnBitInitializeTau",/* Member name */
                 {
                     27,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1786,7 +1786,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"intervalMin",/* Member name */
+                (char *)"weightOnBitInitializePreFilter",/* Member name */
                 {
                     28,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1803,7 +1803,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureFilter",/* Member name */
+                (char *)"weightOnBitInitializeR1",/* Member name */
                 {
                     29,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1820,7 +1820,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureKcMax",/* Member name */
+                (char *)"weightOnBitInitializeR2",/* Member name */
                 {
                     30,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1837,7 +1837,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureKcMin",/* Member name */
+                (char *)"devMin",/* Member name */
                 {
                     31,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1854,7 +1854,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureTdMax",/* Member name */
+                (char *)"intervalMin",/* Member name */
                 {
                     32,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1871,7 +1871,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureTdMin",/* Member name */
+                (char *)"differentialPressureFilter",/* Member name */
                 {
                     33,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1888,7 +1888,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureTiMax",/* Member name */
+                (char *)"differentialPressureKcMax",/* Member name */
                 {
                     34,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1905,7 +1905,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureTiMin",/* Member name */
+                (char *)"differentialPressureKcMin",/* Member name */
                 {
                     35,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1922,7 +1922,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureD",/* Member name */
+                (char *)"differentialPressureTdMax",/* Member name */
                 {
                     36,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1939,7 +1939,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureEps",/* Member name */
+                (char *)"differentialPressureTdMin",/* Member name */
                 {
                     37,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1956,7 +1956,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureEpsManual",/* Member name */
+                (char *)"differentialPressureTiMax",/* Member name */
                 {
                     38,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1973,7 +1973,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureF",/* Member name */
+                (char *)"differentialPressureTiMin",/* Member name */
                 {
                     39,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1990,7 +1990,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationFilter",/* Member name */
+                (char *)"differentialPressureD",/* Member name */
                 {
                     40,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2007,7 +2007,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationKcMax",/* Member name */
+                (char *)"differentialPressureEps",/* Member name */
                 {
                     41,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2024,7 +2024,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationKcMin",/* Member name */
+                (char *)"differentialPressureEpsManual",/* Member name */
                 {
                     42,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2041,7 +2041,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationTdMax",/* Member name */
+                (char *)"differentialPressureF",/* Member name */
                 {
                     43,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2058,7 +2058,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationTdMin",/* Member name */
+                (char *)"rateOfPenetrationFilter",/* Member name */
                 {
                     44,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2075,7 +2075,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationTiMax",/* Member name */
+                (char *)"rateOfPenetrationKcMax",/* Member name */
                 {
                     45,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2092,7 +2092,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationTiMin",/* Member name */
+                (char *)"rateOfPenetrationKcMin",/* Member name */
                 {
                     46,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2109,7 +2109,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationD",/* Member name */
+                (char *)"rateOfPenetrationTdMax",/* Member name */
                 {
                     47,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2126,7 +2126,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationEps",/* Member name */
+                (char *)"rateOfPenetrationTdMin",/* Member name */
                 {
                     48,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2143,7 +2143,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationEpsManual",/* Member name */
+                (char *)"rateOfPenetrationTiMax",/* Member name */
                 {
                     49,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2160,7 +2160,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationF",/* Member name */
+                (char *)"rateOfPenetrationTiMin",/* Member name */
                 {
                     50,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2177,7 +2177,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitFilter",/* Member name */
+                (char *)"rateOfPenetrationD",/* Member name */
                 {
                     51,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2194,7 +2194,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitKcMax",/* Member name */
+                (char *)"rateOfPenetrationEps",/* Member name */
                 {
                     52,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2211,7 +2211,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitKcMin",/* Member name */
+                (char *)"rateOfPenetrationEpsManual",/* Member name */
                 {
                     53,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2228,7 +2228,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitTdMax",/* Member name */
+                (char *)"rateOfPenetrationF",/* Member name */
                 {
                     54,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2245,7 +2245,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitTdMin",/* Member name */
+                (char *)"weightOnBitFilter",/* Member name */
                 {
                     55,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2262,7 +2262,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitTiMax",/* Member name */
+                (char *)"weightOnBitKcMax",/* Member name */
                 {
                     56,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2279,7 +2279,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitTiMin",/* Member name */
+                (char *)"weightOnBitKcMin",/* Member name */
                 {
                     57,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2296,7 +2296,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitD",/* Member name */
+                (char *)"weightOnBitTdMax",/* Member name */
                 {
                     58,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2313,7 +2313,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitEps",/* Member name */
+                (char *)"weightOnBitTdMin",/* Member name */
                 {
                     59,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2330,7 +2330,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitEpsManual",/* Member name */
+                (char *)"weightOnBitTiMax",/* Member name */
                 {
                     60,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2347,7 +2347,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitF",/* Member name */
+                (char *)"weightOnBitTiMin",/* Member name */
                 {
                     61,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2364,7 +2364,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueFilter",/* Member name */
+                (char *)"weightOnBitD",/* Member name */
                 {
                     62,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2381,7 +2381,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueKcMax",/* Member name */
+                (char *)"weightOnBitEps",/* Member name */
                 {
                     63,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2398,7 +2398,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueKcMin",/* Member name */
+                (char *)"weightOnBitEpsManual",/* Member name */
                 {
                     64,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2415,7 +2415,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueTdMax",/* Member name */
+                (char *)"weightOnBitF",/* Member name */
                 {
                     65,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2432,7 +2432,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueTdMin",/* Member name */
+                (char *)"torqueFilter",/* Member name */
                 {
                     66,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2449,7 +2449,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueTiMax",/* Member name */
+                (char *)"torqueKcMax",/* Member name */
                 {
                     67,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2466,7 +2466,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueTiMin",/* Member name */
+                (char *)"torqueKcMin",/* Member name */
                 {
                     68,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2483,7 +2483,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueD",/* Member name */
+                (char *)"torqueTdMax",/* Member name */
                 {
                     69,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2500,7 +2500,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueEps",/* Member name */
+                (char *)"torqueTdMin",/* Member name */
                 {
                     70,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2517,7 +2517,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueEpsManual",/* Member name */
+                (char *)"torqueTiMax",/* Member name */
                 {
                     71,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2534,7 +2534,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueF",/* Member name */
+                (char *)"torqueTiMin",/* Member name */
                 {
                     72,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2551,7 +2551,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"status",/* Member name */
+                (char *)"torqueD",/* Member name */
                 {
                     73,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2568,7 +2568,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"tuningDisable",/* Member name */
+                (char *)"torqueEps",/* Member name */
                 {
                     74,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2585,9 +2585,77 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"tuningEnable",/* Member name */
+                (char *)"torqueEpsManual",/* Member name */
                 {
                     75,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"torqueF",/* Member name */
+                {
+                    76,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"status",/* Member name */
+                {
+                    77,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"tuningDisable",/* Member name */
+                {
+                    78,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"tuningEnable",/* Member name */
+                {
+                    79,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -2613,7 +2681,7 @@ namespace AutoDrillerConfiguration {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                76, /* Number of members */
+                80, /* Number of members */
                 HmiState_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for HmiState*/
@@ -2698,7 +2766,7 @@ namespace AutoDrillerConfiguration {
 
         HmiState_g_tc_members[37]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[38]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+        HmiState_g_tc_members[38]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         HmiState_g_tc_members[39]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2706,7 +2774,7 @@ namespace AutoDrillerConfiguration {
 
         HmiState_g_tc_members[41]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[42]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[42]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         HmiState_g_tc_members[43]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2720,7 +2788,7 @@ namespace AutoDrillerConfiguration {
 
         HmiState_g_tc_members[48]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[49]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+        HmiState_g_tc_members[49]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         HmiState_g_tc_members[50]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2728,7 +2796,7 @@ namespace AutoDrillerConfiguration {
 
         HmiState_g_tc_members[52]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[53]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[53]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         HmiState_g_tc_members[54]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2742,7 +2810,7 @@ namespace AutoDrillerConfiguration {
 
         HmiState_g_tc_members[59]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[60]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+        HmiState_g_tc_members[60]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         HmiState_g_tc_members[61]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2750,7 +2818,7 @@ namespace AutoDrillerConfiguration {
 
         HmiState_g_tc_members[63]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[64]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[64]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         HmiState_g_tc_members[65]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2764,15 +2832,23 @@ namespace AutoDrillerConfiguration {
 
         HmiState_g_tc_members[70]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[71]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+        HmiState_g_tc_members[71]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         HmiState_g_tc_members[72]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[73]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+        HmiState_g_tc_members[73]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[74]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+        HmiState_g_tc_members[74]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         HmiState_g_tc_members[75]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+
+        HmiState_g_tc_members[76]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        HmiState_g_tc_members[77]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+        HmiState_g_tc_members[78]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+
+        HmiState_g_tc_members[79]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         is_initialized = RTI_TRUE;
 
@@ -2834,6 +2910,22 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }     
 
+        if (!RTICdrType_initDouble(&sample->slopeFilter)) {
+            return RTI_FALSE;
+        }     
+
+        if (!RTICdrType_initDouble(&sample->tauMax)) {
+            return RTI_FALSE;
+        }     
+
+        if (!RTICdrType_initDouble(&sample->tauMin)) {
+            return RTI_FALSE;
+        }     
+
+        if (!RTICdrType_initDouble(&sample->tauMultiplier)) {
+            return RTI_FALSE;
+        }     
+
         if (!RTICdrType_initDouble(&sample->differentialPressureInitializeK)) {
             return RTI_FALSE;
         }     
@@ -2842,7 +2934,7 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->differentialPressurePreFilter)) {
+        if (!RTICdrType_initDouble(&sample->differentialPressureInitializePreFilter)) {
             return RTI_FALSE;
         }     
 
@@ -3205,6 +3297,22 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
+            &dst->slopeFilter, &src->slopeFilter)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->tauMax, &src->tauMax)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->tauMin, &src->tauMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->tauMultiplier, &src->tauMultiplier)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
             &dst->differentialPressureInitializeK, &src->differentialPressureInitializeK)) { 
             return RTI_FALSE;
         }
@@ -3213,7 +3321,7 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->differentialPressurePreFilter, &src->differentialPressurePreFilter)) { 
+            &dst->differentialPressureInitializePreFilter, &src->differentialPressureInitializePreFilter)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (

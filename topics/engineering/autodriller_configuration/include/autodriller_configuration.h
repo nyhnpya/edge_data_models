@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autodriller_configuration_730534460_h
-#define autodriller_configuration_730534460_h
+#ifndef autodriller_configuration_730534578_h
+#define autodriller_configuration_730534578_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -166,9 +166,13 @@ namespace AutoDrillerConfiguration {
         DDS_Boolean   modelReset ;
         DDS_Double   pipeInnerDiameter ;
         DDS_Double   pipeOuterDiameter ;
+        DDS_Double   slopeFilter ;
+        DDS_Double   tauMax ;
+        DDS_Double   tauMin ;
+        DDS_Double   tauMultiplier ;
         DDS_Double   differentialPressureInitializeK ;
         DDS_Double   differentialPressureInitializeTau ;
-        DDS_Double   differentialPressurePreFilter ;
+        DDS_Double   differentialPressureInitializePreFilter ;
         DDS_Double   differentialPressureR1 ;
         DDS_Double   differentialPressureR2 ;
         DDS_Double   rateOfPenetrationInitializeK ;

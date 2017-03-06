@@ -50,6 +50,34 @@ bool CAutoDrillerConfigurationStateSubscriber::GetModelReset(bool &modelReset)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
+bool CAutoDrillerConfigurationStateSubscriber::GetSlopeFilter(double &slopeFilter)
+{
+    slopeFilter = m_data.slopeFilter;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTauMax(double &tauMax)
+{
+    tauMax = m_data.tauMax;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTauMin(double &tauMin)
+{
+    tauMin = m_data.tauMin;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CAutoDrillerConfigurationStateSubscriber::GetTauMultiplier(double &tauMultiplier)
+{
+    tauMultiplier = m_data.tauMultiplier;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CAutoDrillerConfigurationStateSubscriber::GetPipeInnerDiameter(double &pipeInnerDiameter)
 {
     pipeInnerDiameter = m_data.pipeInnerDiameter;
@@ -78,9 +106,9 @@ bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureInitialize
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressurePreFilter(double &differentialPressurePreFilter)
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureInitializePreFilter(double &differentialPressureInitializePreFilter)
 {
-    differentialPressurePreFilter = m_data.differentialPressurePreFilter;
+    differentialPressureInitializePreFilter = m_data.differentialPressureInitializePreFilter;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
