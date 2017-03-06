@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autodriller_configuration_730533854_h
-#define autodriller_configuration_730533854_h
+#ifndef autodriller_configuration_730534460_h
+#define autodriller_configuration_730534460_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -22,6 +22,7 @@ or consult the RTI Connext manual.
 
 #include "base_data_types.h"
 namespace AutoDrillerConfiguration {
+    static const char HMI_REQUEST[] = "HmiRequest"; 
 
     extern const char *HmiRequestTYPENAME;
 
@@ -44,45 +45,45 @@ namespace AutoDrillerConfiguration {
 
         DataTypes::Uuid   id ;
         DataTypes::Time   timestamp ;
-        DDS_Double   kpKpCalculated ;
-        DDS_Double   deltaPressureKpCurrent ;
-        DDS_Double   dpTiCalculated ;
-        DDS_Double   dpTiCurrent ;
-        DDS_Double   ropKpCalculated ;
-        DDS_Double   ropKpCurrent ;
-        DDS_Double   ropTiCalcualted ;
-        DDS_Double   ropTiCurrent ;
+        DDS_Double   differentialPressureKpCalculated ;
+        DDS_Double   differentialPressureKpCurrent ;
+        DDS_Double   differentialPressureTiCalculated ;
+        DDS_Double   differentialPressureTiCurrent ;
+        DDS_Double   rateOfPenetrationKpCalculated ;
+        DDS_Double   rateOfPenetrationKpCurrent ;
+        DDS_Double   rateOfPenetrationTiCalcualted ;
+        DDS_Double   rateOfPenetrationTiCurrent ;
         DDS_Double   torqueKpCalculated ;
         DDS_Double   torqueKpCurrent ;
         DDS_Double   torqueTiCalculated ;
         DDS_Double   toqueTiCurrent ;
-        DDS_Double   wobKpCalculated ;
-        DDS_Double   wobKpCurrent ;
-        DDS_Double   wobTiCalculated ;
-        DDS_Double   wobTiCurrent ;
-        DDS_Double   mode ;
+        DDS_Double   weightOnBitKpCalculated ;
+        DDS_Double   weightOnBitKpCurrent ;
+        DDS_Double   weightOnBitTiCalculated ;
+        DDS_Double   weightOnBitTiCurrent ;
+        DDS_Long   mode ;
         DDS_Double   modeController ;
         DDS_Double   onDataAvailable ;
         DDS_Double   onLivelinessLost ;
-        DDS_Double   modelOneDpRequestK ;
-        DDS_Double   modelOneDpRequestTau ;
-        DDS_Double   modelOneRopRequestK ;
-        DDS_Double   modelOneRopRequestTau ;
+        DDS_Double   modelOneDifferentialPressureRequestK ;
+        DDS_Double   modelOneDifferentialPressureRequestTau ;
+        DDS_Double   modelOneRateOfPenetrationRequestK ;
+        DDS_Double   modelOneRateOfPenetrationRequestTau ;
         DDS_Double   modelOneTorqueRequestK ;
         DDS_Double   modelOneTorqueRequestTau ;
-        DDS_Double   modelOneWobRequestK ;
-        DDS_Double   modelOneWobRequestTau ;
-        DDS_Double   modelTwoDpRequestK ;
-        DDS_Double   modelTwoDpRequestTau ;
-        DDS_Double   modelTwoRopRequestK ;
-        DDS_Double   modelTwoRopRequestTau ;
+        DDS_Double   modelOneWeightOnBitRequestK ;
+        DDS_Double   modelOneWeightOnBitRequestTau ;
+        DDS_Double   modelTwoDifferentialPressureRequestK ;
+        DDS_Double   modelTwoDifferentialPressureRequestTau ;
+        DDS_Double   modelTwoRateOfPenetrationRequestK ;
+        DDS_Double   modelTwoRateOfPenetrationRequestTau ;
         DDS_Double   modelTwoTorqueRequestK ;
         DDS_Double   modelTwoTorqueRequestTau ;
-        DDS_Double   modelTwoWobRequestK ;
-        DDS_Double   modelTwoWobRequestTau ;
-        DDS_Double   status ;
-        DDS_Double   tuningDisable ;
-        DDS_Double   tuningEnable ;
+        DDS_Double   modelTwoWeightOnBitRequestK ;
+        DDS_Double   modelTwoWeightOnBitRequestTau ;
+        DDS_Long   status ;
+        DDS_Boolean   tuningDisable ;
+        DDS_Boolean   tuningEnable ;
 
     };
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
@@ -137,6 +138,7 @@ namespace AutoDrillerConfiguration {
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport
     #endif
+    static const char HMI_STATE[] = "HmiState"; 
 
     extern const char *HmiStateTYPENAME;
 
@@ -159,9 +161,9 @@ namespace AutoDrillerConfiguration {
 
         DataTypes::Uuid   id ;
         DataTypes::Time   timestamp ;
-        DDS_Double   mode ;
-        DDS_Double   modeController ;
-        DDS_Double   modelReset ;
+        DDS_Long   mode ;
+        DDS_Long   modeController ;
+        DDS_Boolean   modelReset ;
         DDS_Double   pipeInnerDiameter ;
         DDS_Double   pipeOuterDiameter ;
         DDS_Double   differentialPressureInitializeK ;
@@ -179,11 +181,11 @@ namespace AutoDrillerConfiguration {
         DDS_Double   torqueInitializePreFilter ;
         DDS_Double   torqueInitializeR1 ;
         DDS_Double   torqueInitializeR2 ;
-        DDS_Double   wobInitializeK ;
-        DDS_Double   wobInitializeTau ;
-        DDS_Double   wobInitializePreFilter ;
-        DDS_Double   wobInitializeR1 ;
-        DDS_Double   wobInitializeR2 ;
+        DDS_Double   weightOnBitInitializeK ;
+        DDS_Double   weightOnBitInitializeTau ;
+        DDS_Double   weightOnBitInitializePreFilter ;
+        DDS_Double   weightOnBitInitializeR1 ;
+        DDS_Double   weightOnBitInitializeR2 ;
         DDS_Double   devMin ;
         DDS_Double   intervalMin ;
         DDS_Double   differentialPressureFilter ;
@@ -195,7 +197,7 @@ namespace AutoDrillerConfiguration {
         DDS_Double   differentialPressureTiMin ;
         DDS_Double   differentialPressureD ;
         DDS_Double   differentialPressureEps ;
-        DDS_Double   differentialPressureEpsManual ;
+        DDS_Boolean   differentialPressureEpsManual ;
         DDS_Double   differentialPressureF ;
         DDS_Double   rateOfPenetrationFilter ;
         DDS_Double   rateOfPenetrationKcMax ;
@@ -206,7 +208,7 @@ namespace AutoDrillerConfiguration {
         DDS_Double   rateOfPenetrationTiMin ;
         DDS_Double   rateOfPenetrationD ;
         DDS_Double   rateOfPenetrationEps ;
-        DDS_Double   rateOfPenetrationEpsManual ;
+        DDS_Boolean   rateOfPenetrationEpsManual ;
         DDS_Double   rateOfPenetrationF ;
         DDS_Double   weightOnBitFilter ;
         DDS_Double   weightOnBitKcMax ;
@@ -217,7 +219,7 @@ namespace AutoDrillerConfiguration {
         DDS_Double   weightOnBitTiMin ;
         DDS_Double   weightOnBitD ;
         DDS_Double   weightOnBitEps ;
-        DDS_Double   weightOnBitEpsManual ;
+        DDS_Boolean   weightOnBitEpsManual ;
         DDS_Double   weightOnBitF ;
         DDS_Double   torqueFilter ;
         DDS_Double   torqueKcMax ;
@@ -228,11 +230,11 @@ namespace AutoDrillerConfiguration {
         DDS_Double   torqueTiMin ;
         DDS_Double   torqueD ;
         DDS_Double   torqueEps ;
-        DDS_Double   torqueEpsManual ;
+        DDS_Boolean   torqueEpsManual ;
         DDS_Double   torqueF ;
-        DDS_Double   status ;
-        DDS_Double   tuningDisable ;
-        DDS_Double   tuningEnable ;
+        DDS_Long   status ;
+        DDS_Boolean   tuningDisable ;
+        DDS_Boolean   tuningEnable ;
 
     };
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)

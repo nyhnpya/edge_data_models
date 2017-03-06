@@ -33,7 +33,7 @@ void CAutoDrillerConfigurationStatePublisher::SetTimestamp(const DataTypes::Time
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetMode(double mode)
+void CAutoDrillerConfigurationStatePublisher::SetMode(int32_t mode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -45,7 +45,7 @@ void CAutoDrillerConfigurationStatePublisher::SetMode(double mode)
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetmodeController(double modeController)
+void CAutoDrillerConfigurationStatePublisher::SetModeController(int32_t modeController)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -57,7 +57,7 @@ void CAutoDrillerConfigurationStatePublisher::SetmodeController(double modeContr
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetModelReset(double modelReset)
+void CAutoDrillerConfigurationStatePublisher::SetModelReset(bool modelReset)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -465,7 +465,7 @@ void CAutoDrillerConfigurationStatePublisher::SetDifferentialPressureEps(double 
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetDifferentialPressureEpsManual(double differentialPressureEpsManual)
+void CAutoDrillerConfigurationStatePublisher::SetDifferentialPressureEpsManual(bool differentialPressureEpsManual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -597,7 +597,7 @@ void CAutoDrillerConfigurationStatePublisher::SetRateOfPenetrationEps(double rat
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetRateOfPenetrationEpsManual(double rateOfPenetrationEpsManual)
+void CAutoDrillerConfigurationStatePublisher::SetRateOfPenetrationEpsManual(bool rateOfPenetrationEpsManual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -729,7 +729,7 @@ void CAutoDrillerConfigurationStatePublisher::SetWeightOnBitEps(double weightOnB
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetWeightOnBitEpsManual(double weightOnBitEpsManual)
+void CAutoDrillerConfigurationStatePublisher::SetWeightOnBitEpsManual(bool weightOnBitEpsManual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -861,7 +861,7 @@ void CAutoDrillerConfigurationStatePublisher::SetTorqueEps(double torqueEps)
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetTorqueEpsManual(double torqueEpsManual)
+void CAutoDrillerConfigurationStatePublisher::SetTorqueEpsManual(bool torqueEpsManual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -885,7 +885,7 @@ void CAutoDrillerConfigurationStatePublisher::SetTorqueF(double torqueF)
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetStatus(double status)
+void CAutoDrillerConfigurationStatePublisher::SetStatus(int32_t status)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -897,7 +897,7 @@ void CAutoDrillerConfigurationStatePublisher::SetStatus(double status)
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetTuningDisable(double tuningDisable)
+void CAutoDrillerConfigurationStatePublisher::SetTuningDisable(bool tuningDisable)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -909,7 +909,7 @@ void CAutoDrillerConfigurationStatePublisher::SetTuningDisable(double tuningDisa
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetTuningEnable(double tuningEnable)
+void CAutoDrillerConfigurationStatePublisher::SetTuningEnable(bool tuningEnable)
 {
     if (m_pDataInstance != nullptr)
     {

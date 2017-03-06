@@ -22,9 +22,9 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDriller
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
     bool GetTimestamp(DataTypes::Time &timestamp);
-    bool GetMode(double &mode);
-    bool GetmodeController(double &modeController);
-    bool GetModelReset(double &modelReset);
+    bool GetMode(int32_t &mode);
+    bool GetModeController(int32_t &modeController);
+    bool GetModelReset(bool &modelReset);
     bool GetPipeInnerDiameter(double &pipeInnerDiameter);
     bool GetPipeOuterDiameter(double &pipeOuterDiameter);
     bool GetDifferentialPressureInitializeK(double &differentialPressureInitializeK);
@@ -58,7 +58,7 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDriller
     bool GetDifferentialPressureTiMin(double &differentialPressureTiMin);
     bool GetDifferentialPressureD(double &differentialPressureD);
     bool GetDifferentialPressureEps(double &differentialPressureEps);
-    bool GetDifferentialPressureEpsManual(double &differentialPressureEpsManual);
+    bool GetDifferentialPressureEpsManual(bool &differentialPressureEpsManual);
     bool GetDifferentialPressureF(double &differentialPressureF);
     bool GetRateOfPenetrationFilter(double &rateOfPenetrationFilter);
     bool GetRateOfPenetrationKcMax(double &rateOfPenetrationKcMax);
@@ -69,7 +69,7 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDriller
     bool GetRateOfPenetrationTiMin(double &rateOfPenetrationTiMin);
     bool GetRateOfPenetrationD(double &rateOfPenetrationD);
     bool GetRateOfPenetrationEps(double &rateOfPenetrationEps);
-    bool GetRateOfPenetrationEpsManual(double &rateOfPenetrationEpsManual);
+    bool GetRateOfPenetrationEpsManual(bool &rateOfPenetrationEpsManual);
     bool GetRateOfPenetrationF(double &rateOfPenetrationF);
     bool GetWeightOnBitFilter(double &weightOnBitFilter);
     bool GetWeightOnBitKcMax(double &weightOnBitKcMax);
@@ -80,7 +80,7 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDriller
     bool GetWeightOnBitTiMin(double &weightOnBitTiMin);
     bool GetWeightOnBitD(double &weightOnBitD);
     bool GetWeightOnBitEps(double &weightOnBitEps);
-    bool GetWeightOnBitEpsManual(double &weightOnBitEpsManual);
+    bool GetWeightOnBitEpsManual(bool &weightOnBitEpsManual);
     bool GetWeightOnBitF(double &weightOnBitF);
     bool GetTorqueFilter(double &torqueFilter);
     bool GetTorqueKcMax(double &torqueKcMax);
@@ -91,11 +91,11 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDriller
     bool GetTorqueTiMin(double &torqueTiMin);
     bool GetTorqueD(double &torqueD);
     bool GetTorqueEps(double &torqueEps);
-    bool GetTorqueEpsManual(double &torqueEpsManual);
+    bool GetTorqueEpsManual(bool &torqueEpsManual);
     bool GetTorqueF(double &torqueF);
-    bool GetStatus(double &status);
-    bool GetTuningDisable(double &tuningDisable);
-    bool GetTuningEnable(double &tuningEnable);
+    bool GetStatus(int32_t &status);
+    bool GetTuningDisable(bool &tuningDisable);
+    bool GetTuningEnable(bool &tuningEnable);
 
  protected:
     void DataAvailable(const AutoDrillerConfiguration::HmiState &data,

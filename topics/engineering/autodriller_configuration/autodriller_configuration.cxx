@@ -77,7 +77,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"kpKpCalculated",/* Member name */
+                (char *)"differentialPressureKpCalculated",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -94,7 +94,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"deltaPressureKpCurrent",/* Member name */
+                (char *)"differentialPressureKpCurrent",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -111,7 +111,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"dpTiCalculated",/* Member name */
+                (char *)"differentialPressureTiCalculated",/* Member name */
                 {
                     4,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -128,7 +128,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"dpTiCurrent",/* Member name */
+                (char *)"differentialPressureTiCurrent",/* Member name */
                 {
                     5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -145,7 +145,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ropKpCalculated",/* Member name */
+                (char *)"rateOfPenetrationKpCalculated",/* Member name */
                 {
                     6,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -162,7 +162,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ropKpCurrent",/* Member name */
+                (char *)"rateOfPenetrationKpCurrent",/* Member name */
                 {
                     7,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -179,7 +179,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ropTiCalcualted",/* Member name */
+                (char *)"rateOfPenetrationTiCalcualted",/* Member name */
                 {
                     8,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -196,7 +196,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ropTiCurrent",/* Member name */
+                (char *)"rateOfPenetrationTiCurrent",/* Member name */
                 {
                     9,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -281,7 +281,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobKpCalculated",/* Member name */
+                (char *)"weightOnBitKpCalculated",/* Member name */
                 {
                     14,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -298,7 +298,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobKpCurrent",/* Member name */
+                (char *)"weightOnBitKpCurrent",/* Member name */
                 {
                     15,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -315,7 +315,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobTiCalculated",/* Member name */
+                (char *)"weightOnBitTiCalculated",/* Member name */
                 {
                     16,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -332,7 +332,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobTiCurrent",/* Member name */
+                (char *)"weightOnBitTiCurrent",/* Member name */
                 {
                     17,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -417,7 +417,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelOneDpRequestK",/* Member name */
+                (char *)"modelOneDifferentialPressureRequestK",/* Member name */
                 {
                     22,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -434,7 +434,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelOneDpRequestTau",/* Member name */
+                (char *)"modelOneDifferentialPressureRequestTau",/* Member name */
                 {
                     23,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -451,7 +451,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelOneRopRequestK",/* Member name */
+                (char *)"modelOneRateOfPenetrationRequestK",/* Member name */
                 {
                     24,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -468,7 +468,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelOneRopRequestTau",/* Member name */
+                (char *)"modelOneRateOfPenetrationRequestTau",/* Member name */
                 {
                     25,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -519,7 +519,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelOneWobRequestK",/* Member name */
+                (char *)"modelOneWeightOnBitRequestK",/* Member name */
                 {
                     28,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -536,7 +536,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelOneWobRequestTau",/* Member name */
+                (char *)"modelOneWeightOnBitRequestTau",/* Member name */
                 {
                     29,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -553,7 +553,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelTwoDpRequestK",/* Member name */
+                (char *)"modelTwoDifferentialPressureRequestK",/* Member name */
                 {
                     30,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -570,7 +570,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelTwoDpRequestTau",/* Member name */
+                (char *)"modelTwoDifferentialPressureRequestTau",/* Member name */
                 {
                     31,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -587,7 +587,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelTwoRopRequestK",/* Member name */
+                (char *)"modelTwoRateOfPenetrationRequestK",/* Member name */
                 {
                     32,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -604,7 +604,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelTwoRopRequestTau",/* Member name */
+                (char *)"modelTwoRateOfPenetrationRequestTau",/* Member name */
                 {
                     33,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -655,7 +655,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelTwoWobRequestK",/* Member name */
+                (char *)"modelTwoWeightOnBitRequestK",/* Member name */
                 {
                     36,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -672,7 +672,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelTwoWobRequestTau",/* Member name */
+                (char *)"modelTwoWeightOnBitRequestTau",/* Member name */
                 {
                     37,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -796,7 +796,7 @@ namespace AutoDrillerConfiguration {
 
         HmiRequest_g_tc_members[17]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiRequest_g_tc_members[18]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiRequest_g_tc_members[18]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
         HmiRequest_g_tc_members[19]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -836,11 +836,11 @@ namespace AutoDrillerConfiguration {
 
         HmiRequest_g_tc_members[37]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiRequest_g_tc_members[38]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiRequest_g_tc_members[38]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-        HmiRequest_g_tc_members[39]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiRequest_g_tc_members[39]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-        HmiRequest_g_tc_members[40]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiRequest_g_tc_members[40]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         is_initialized = RTI_TRUE;
 
@@ -882,35 +882,35 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }
 
-        if (!RTICdrType_initDouble(&sample->kpKpCalculated)) {
+        if (!RTICdrType_initDouble(&sample->differentialPressureKpCalculated)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->deltaPressureKpCurrent)) {
+        if (!RTICdrType_initDouble(&sample->differentialPressureKpCurrent)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->dpTiCalculated)) {
+        if (!RTICdrType_initDouble(&sample->differentialPressureTiCalculated)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->dpTiCurrent)) {
+        if (!RTICdrType_initDouble(&sample->differentialPressureTiCurrent)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->ropKpCalculated)) {
+        if (!RTICdrType_initDouble(&sample->rateOfPenetrationKpCalculated)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->ropKpCurrent)) {
+        if (!RTICdrType_initDouble(&sample->rateOfPenetrationKpCurrent)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->ropTiCalcualted)) {
+        if (!RTICdrType_initDouble(&sample->rateOfPenetrationTiCalcualted)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->ropTiCurrent)) {
+        if (!RTICdrType_initDouble(&sample->rateOfPenetrationTiCurrent)) {
             return RTI_FALSE;
         }     
 
@@ -930,23 +930,23 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->wobKpCalculated)) {
+        if (!RTICdrType_initDouble(&sample->weightOnBitKpCalculated)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->wobKpCurrent)) {
+        if (!RTICdrType_initDouble(&sample->weightOnBitKpCurrent)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->wobTiCalculated)) {
+        if (!RTICdrType_initDouble(&sample->weightOnBitTiCalculated)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->wobTiCurrent)) {
+        if (!RTICdrType_initDouble(&sample->weightOnBitTiCurrent)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->mode)) {
+        if (!RTICdrType_initLong(&sample->mode)) {
             return RTI_FALSE;
         }     
 
@@ -962,19 +962,19 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelOneDpRequestK)) {
+        if (!RTICdrType_initDouble(&sample->modelOneDifferentialPressureRequestK)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelOneDpRequestTau)) {
+        if (!RTICdrType_initDouble(&sample->modelOneDifferentialPressureRequestTau)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelOneRopRequestK)) {
+        if (!RTICdrType_initDouble(&sample->modelOneRateOfPenetrationRequestK)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelOneRopRequestTau)) {
+        if (!RTICdrType_initDouble(&sample->modelOneRateOfPenetrationRequestTau)) {
             return RTI_FALSE;
         }     
 
@@ -986,27 +986,27 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelOneWobRequestK)) {
+        if (!RTICdrType_initDouble(&sample->modelOneWeightOnBitRequestK)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelOneWobRequestTau)) {
+        if (!RTICdrType_initDouble(&sample->modelOneWeightOnBitRequestTau)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelTwoDpRequestK)) {
+        if (!RTICdrType_initDouble(&sample->modelTwoDifferentialPressureRequestK)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelTwoDpRequestTau)) {
+        if (!RTICdrType_initDouble(&sample->modelTwoDifferentialPressureRequestTau)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelTwoRopRequestK)) {
+        if (!RTICdrType_initDouble(&sample->modelTwoRateOfPenetrationRequestK)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelTwoRopRequestTau)) {
+        if (!RTICdrType_initDouble(&sample->modelTwoRateOfPenetrationRequestTau)) {
             return RTI_FALSE;
         }     
 
@@ -1018,23 +1018,23 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelTwoWobRequestK)) {
+        if (!RTICdrType_initDouble(&sample->modelTwoWeightOnBitRequestK)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelTwoWobRequestTau)) {
+        if (!RTICdrType_initDouble(&sample->modelTwoWeightOnBitRequestTau)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->status)) {
+        if (!RTICdrType_initLong(&sample->status)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->tuningDisable)) {
+        if (!RTICdrType_initBoolean(&sample->tuningDisable)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->tuningEnable)) {
+        if (!RTICdrType_initBoolean(&sample->tuningEnable)) {
             return RTI_FALSE;
         }     
 
@@ -1113,35 +1113,35 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         } 
         if (!RTICdrType_copyDouble (
-            &dst->kpKpCalculated, &src->kpKpCalculated)) { 
+            &dst->differentialPressureKpCalculated, &src->differentialPressureKpCalculated)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->deltaPressureKpCurrent, &src->deltaPressureKpCurrent)) { 
+            &dst->differentialPressureKpCurrent, &src->differentialPressureKpCurrent)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->dpTiCalculated, &src->dpTiCalculated)) { 
+            &dst->differentialPressureTiCalculated, &src->differentialPressureTiCalculated)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->dpTiCurrent, &src->dpTiCurrent)) { 
+            &dst->differentialPressureTiCurrent, &src->differentialPressureTiCurrent)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->ropKpCalculated, &src->ropKpCalculated)) { 
+            &dst->rateOfPenetrationKpCalculated, &src->rateOfPenetrationKpCalculated)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->ropKpCurrent, &src->ropKpCurrent)) { 
+            &dst->rateOfPenetrationKpCurrent, &src->rateOfPenetrationKpCurrent)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->ropTiCalcualted, &src->ropTiCalcualted)) { 
+            &dst->rateOfPenetrationTiCalcualted, &src->rateOfPenetrationTiCalcualted)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->ropTiCurrent, &src->ropTiCurrent)) { 
+            &dst->rateOfPenetrationTiCurrent, &src->rateOfPenetrationTiCurrent)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
@@ -1161,22 +1161,22 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->wobKpCalculated, &src->wobKpCalculated)) { 
+            &dst->weightOnBitKpCalculated, &src->weightOnBitKpCalculated)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->wobKpCurrent, &src->wobKpCurrent)) { 
+            &dst->weightOnBitKpCurrent, &src->weightOnBitKpCurrent)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->wobTiCalculated, &src->wobTiCalculated)) { 
+            &dst->weightOnBitTiCalculated, &src->weightOnBitTiCalculated)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->wobTiCurrent, &src->wobTiCurrent)) { 
+            &dst->weightOnBitTiCurrent, &src->weightOnBitTiCurrent)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyLong (
             &dst->mode, &src->mode)) { 
             return RTI_FALSE;
         }
@@ -1193,19 +1193,19 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->modelOneDpRequestK, &src->modelOneDpRequestK)) { 
+            &dst->modelOneDifferentialPressureRequestK, &src->modelOneDifferentialPressureRequestK)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->modelOneDpRequestTau, &src->modelOneDpRequestTau)) { 
+            &dst->modelOneDifferentialPressureRequestTau, &src->modelOneDifferentialPressureRequestTau)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->modelOneRopRequestK, &src->modelOneRopRequestK)) { 
+            &dst->modelOneRateOfPenetrationRequestK, &src->modelOneRateOfPenetrationRequestK)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->modelOneRopRequestTau, &src->modelOneRopRequestTau)) { 
+            &dst->modelOneRateOfPenetrationRequestTau, &src->modelOneRateOfPenetrationRequestTau)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
@@ -1217,27 +1217,27 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->modelOneWobRequestK, &src->modelOneWobRequestK)) { 
+            &dst->modelOneWeightOnBitRequestK, &src->modelOneWeightOnBitRequestK)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->modelOneWobRequestTau, &src->modelOneWobRequestTau)) { 
+            &dst->modelOneWeightOnBitRequestTau, &src->modelOneWeightOnBitRequestTau)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->modelTwoDpRequestK, &src->modelTwoDpRequestK)) { 
+            &dst->modelTwoDifferentialPressureRequestK, &src->modelTwoDifferentialPressureRequestK)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->modelTwoDpRequestTau, &src->modelTwoDpRequestTau)) { 
+            &dst->modelTwoDifferentialPressureRequestTau, &src->modelTwoDifferentialPressureRequestTau)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->modelTwoRopRequestK, &src->modelTwoRopRequestK)) { 
+            &dst->modelTwoRateOfPenetrationRequestK, &src->modelTwoRateOfPenetrationRequestK)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->modelTwoRopRequestTau, &src->modelTwoRopRequestTau)) { 
+            &dst->modelTwoRateOfPenetrationRequestTau, &src->modelTwoRateOfPenetrationRequestTau)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
@@ -1249,22 +1249,22 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->modelTwoWobRequestK, &src->modelTwoWobRequestK)) { 
+            &dst->modelTwoWeightOnBitRequestK, &src->modelTwoWeightOnBitRequestK)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->modelTwoWobRequestTau, &src->modelTwoWobRequestTau)) { 
+            &dst->modelTwoWeightOnBitRequestTau, &src->modelTwoWeightOnBitRequestTau)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyLong (
             &dst->status, &src->status)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyBoolean (
             &dst->tuningDisable, &src->tuningDisable)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyBoolean (
             &dst->tuningEnable, &src->tuningEnable)) { 
             return RTI_FALSE;
         }
@@ -1684,7 +1684,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobInitializeK",/* Member name */
+                (char *)"weightOnBitInitializeK",/* Member name */
                 {
                     22,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1701,7 +1701,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobInitializeTau",/* Member name */
+                (char *)"weightOnBitInitializeTau",/* Member name */
                 {
                     23,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1718,7 +1718,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobInitializePreFilter",/* Member name */
+                (char *)"weightOnBitInitializePreFilter",/* Member name */
                 {
                     24,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1735,7 +1735,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobInitializeR1",/* Member name */
+                (char *)"weightOnBitInitializeR1",/* Member name */
                 {
                     25,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1752,7 +1752,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobInitializeR2",/* Member name */
+                (char *)"weightOnBitInitializeR2",/* Member name */
                 {
                     26,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2626,11 +2626,11 @@ namespace AutoDrillerConfiguration {
 
         HmiState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-        HmiState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-        HmiState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-        HmiState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         HmiState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2698,7 +2698,7 @@ namespace AutoDrillerConfiguration {
 
         HmiState_g_tc_members[37]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[38]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[38]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         HmiState_g_tc_members[39]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2720,7 +2720,7 @@ namespace AutoDrillerConfiguration {
 
         HmiState_g_tc_members[48]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[49]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[49]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         HmiState_g_tc_members[50]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2742,7 +2742,7 @@ namespace AutoDrillerConfiguration {
 
         HmiState_g_tc_members[59]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[60]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[60]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         HmiState_g_tc_members[61]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2764,15 +2764,15 @@ namespace AutoDrillerConfiguration {
 
         HmiState_g_tc_members[70]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[71]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[71]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         HmiState_g_tc_members[72]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiState_g_tc_members[73]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[73]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-        HmiState_g_tc_members[74]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[74]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-        HmiState_g_tc_members[75]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiState_g_tc_members[75]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         is_initialized = RTI_TRUE;
 
@@ -2814,15 +2814,15 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }
 
-        if (!RTICdrType_initDouble(&sample->mode)) {
+        if (!RTICdrType_initLong(&sample->mode)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modeController)) {
+        if (!RTICdrType_initLong(&sample->modeController)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->modelReset)) {
+        if (!RTICdrType_initBoolean(&sample->modelReset)) {
             return RTI_FALSE;
         }     
 
@@ -2894,23 +2894,23 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->wobInitializeK)) {
+        if (!RTICdrType_initDouble(&sample->weightOnBitInitializeK)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->wobInitializeTau)) {
+        if (!RTICdrType_initDouble(&sample->weightOnBitInitializeTau)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->wobInitializePreFilter)) {
+        if (!RTICdrType_initDouble(&sample->weightOnBitInitializePreFilter)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->wobInitializeR1)) {
+        if (!RTICdrType_initDouble(&sample->weightOnBitInitializeR1)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->wobInitializeR2)) {
+        if (!RTICdrType_initDouble(&sample->weightOnBitInitializeR2)) {
             return RTI_FALSE;
         }     
 
@@ -2958,7 +2958,7 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->differentialPressureEpsManual)) {
+        if (!RTICdrType_initBoolean(&sample->differentialPressureEpsManual)) {
             return RTI_FALSE;
         }     
 
@@ -3002,7 +3002,7 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->rateOfPenetrationEpsManual)) {
+        if (!RTICdrType_initBoolean(&sample->rateOfPenetrationEpsManual)) {
             return RTI_FALSE;
         }     
 
@@ -3046,7 +3046,7 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->weightOnBitEpsManual)) {
+        if (!RTICdrType_initBoolean(&sample->weightOnBitEpsManual)) {
             return RTI_FALSE;
         }     
 
@@ -3090,7 +3090,7 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->torqueEpsManual)) {
+        if (!RTICdrType_initBoolean(&sample->torqueEpsManual)) {
             return RTI_FALSE;
         }     
 
@@ -3098,15 +3098,15 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->status)) {
+        if (!RTICdrType_initLong(&sample->status)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->tuningDisable)) {
+        if (!RTICdrType_initBoolean(&sample->tuningDisable)) {
             return RTI_FALSE;
         }     
 
-        if (!RTICdrType_initDouble(&sample->tuningEnable)) {
+        if (!RTICdrType_initBoolean(&sample->tuningEnable)) {
             return RTI_FALSE;
         }     
 
@@ -3184,15 +3184,15 @@ namespace AutoDrillerConfiguration {
             &dst->timestamp, &src->timestamp)) {
             return RTI_FALSE;
         } 
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyLong (
             &dst->mode, &src->mode)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyLong (
             &dst->modeController, &src->modeController)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyBoolean (
             &dst->modelReset, &src->modelReset)) { 
             return RTI_FALSE;
         }
@@ -3265,23 +3265,23 @@ namespace AutoDrillerConfiguration {
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->wobInitializeK, &src->wobInitializeK)) { 
+            &dst->weightOnBitInitializeK, &src->weightOnBitInitializeK)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->wobInitializeTau, &src->wobInitializeTau)) { 
+            &dst->weightOnBitInitializeTau, &src->weightOnBitInitializeTau)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->wobInitializePreFilter, &src->wobInitializePreFilter)) { 
+            &dst->weightOnBitInitializePreFilter, &src->weightOnBitInitializePreFilter)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->wobInitializeR1, &src->wobInitializeR1)) { 
+            &dst->weightOnBitInitializeR1, &src->weightOnBitInitializeR1)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
-            &dst->wobInitializeR2, &src->wobInitializeR2)) { 
+            &dst->weightOnBitInitializeR2, &src->weightOnBitInitializeR2)) { 
             return RTI_FALSE;
         }
         if (!RTICdrType_copyDouble (
@@ -3328,7 +3328,7 @@ namespace AutoDrillerConfiguration {
             &dst->differentialPressureEps, &src->differentialPressureEps)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyBoolean (
             &dst->differentialPressureEpsManual, &src->differentialPressureEpsManual)) { 
             return RTI_FALSE;
         }
@@ -3372,7 +3372,7 @@ namespace AutoDrillerConfiguration {
             &dst->rateOfPenetrationEps, &src->rateOfPenetrationEps)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyBoolean (
             &dst->rateOfPenetrationEpsManual, &src->rateOfPenetrationEpsManual)) { 
             return RTI_FALSE;
         }
@@ -3416,7 +3416,7 @@ namespace AutoDrillerConfiguration {
             &dst->weightOnBitEps, &src->weightOnBitEps)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyBoolean (
             &dst->weightOnBitEpsManual, &src->weightOnBitEpsManual)) { 
             return RTI_FALSE;
         }
@@ -3460,7 +3460,7 @@ namespace AutoDrillerConfiguration {
             &dst->torqueEps, &src->torqueEps)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyBoolean (
             &dst->torqueEpsManual, &src->torqueEpsManual)) { 
             return RTI_FALSE;
         }
@@ -3468,15 +3468,15 @@ namespace AutoDrillerConfiguration {
             &dst->torqueF, &src->torqueF)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyLong (
             &dst->status, &src->status)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyBoolean (
             &dst->tuningDisable, &src->tuningDisable)) { 
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyDouble (
+        if (!RTICdrType_copyBoolean (
             &dst->tuningEnable, &src->tuningEnable)) { 
             return RTI_FALSE;
         }

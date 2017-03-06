@@ -29,21 +29,21 @@ bool CAutoDrillerConfigurationStateSubscriber::GetTimestamp(DataTypes::Time &tim
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetMode(double &mode)
+bool CAutoDrillerConfigurationStateSubscriber::GetMode(int32_t &mode)
 {
     mode = m_data.mode;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetmodeController(double &modeController)
+bool CAutoDrillerConfigurationStateSubscriber::GetModeController(int32_t &modeController)
 {
     modeController = m_data.modeController;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetModelReset(double &modelReset)
+bool CAutoDrillerConfigurationStateSubscriber::GetModelReset(bool &modelReset)
 {
     modelReset = m_data.modelReset;
 
@@ -281,7 +281,7 @@ bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureEps(double
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureEpsManual(double &differentialPressureEpsManual)
+bool CAutoDrillerConfigurationStateSubscriber::GetDifferentialPressureEpsManual(bool &differentialPressureEpsManual)
 {
     differentialPressureEpsManual = m_data.differentialPressureEpsManual;
 
@@ -358,7 +358,7 @@ bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationEps(double &r
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationEpsManual(double &rateOfPenetrationEpsManual)
+bool CAutoDrillerConfigurationStateSubscriber::GetRateOfPenetrationEpsManual(bool &rateOfPenetrationEpsManual)
 {
     rateOfPenetrationEpsManual = m_data.rateOfPenetrationEpsManual;
 
@@ -435,7 +435,7 @@ bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitEps(double &weightO
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitEpsManual(double &weightOnBitEpsManual)
+bool CAutoDrillerConfigurationStateSubscriber::GetWeightOnBitEpsManual(bool &weightOnBitEpsManual)
 {
     weightOnBitEpsManual = m_data.weightOnBitEpsManual;
 
@@ -512,7 +512,7 @@ bool CAutoDrillerConfigurationStateSubscriber::GetTorqueEps(double &torqueEps)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetTorqueEpsManual(double &torqueEpsManual)
+bool CAutoDrillerConfigurationStateSubscriber::GetTorqueEpsManual(bool &torqueEpsManual)
 {
     torqueEpsManual = m_data.torqueEpsManual;
 
@@ -526,21 +526,21 @@ bool CAutoDrillerConfigurationStateSubscriber::GetTorqueF(double &torqueF)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetStatus(double &status)
+bool CAutoDrillerConfigurationStateSubscriber::GetStatus(int32_t &status)
 {
     status = m_data.status;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetTuningDisable(double &tuningDisable)
+bool CAutoDrillerConfigurationStateSubscriber::GetTuningDisable(bool &tuningDisable)
 {
     tuningDisable = m_data.tuningDisable;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetTuningEnable(double &tuningEnable)
+bool CAutoDrillerConfigurationStateSubscriber::GetTuningEnable(bool &tuningEnable)
 {
     tuningEnable = m_data.tuningEnable;
 

@@ -18,9 +18,9 @@ class CAutoDrillerConfigurationStatePublisher : public TPublisher< AutoDrillerCo
     // Topic getters
     void SetId(const DataTypes::Uuid id);
     void SetTimestamp(const DataTypes::Time timestamp);
-    void SetMode(double mode);
-    void SetmodeController(double modeController);
-    void SetModelReset(double modelReset);
+    void SetMode(int32_t mode);
+    void SetModeController(int32_t modeController);
+    void SetModelReset(bool modelReset);
     void SetPipeInnerDiameter(double pipeInnerDiameter);
     void SetPipeOuterDiameter(double pipeOuterDiameter);
     void SetDifferentialPressureInitializeK(double differentialPressureInitializeK);
@@ -54,7 +54,7 @@ class CAutoDrillerConfigurationStatePublisher : public TPublisher< AutoDrillerCo
     void SetDifferentialPressureTiMin(double differentialPressureTiMin);
     void SetDifferentialPressureD(double differentialPressureD);
     void SetDifferentialPressureEps(double differentialPressureEps);
-    void SetDifferentialPressureEpsManual(double differentialPressureEpsManual);
+    void SetDifferentialPressureEpsManual(bool differentialPressureEpsManual);
     void SetDifferentialPressureF(double differentialPressureF);
     void SetRateOfPenetrationFilter(double rateOfPenetrationFilter);
     void SetRateOfPenetrationKcMax(double rateOfPenetrationKcMax);
@@ -65,7 +65,7 @@ class CAutoDrillerConfigurationStatePublisher : public TPublisher< AutoDrillerCo
     void SetRateOfPenetrationTiMin(double rateOfPenetrationTiMin);
     void SetRateOfPenetrationD(double rateOfPenetrationD);
     void SetRateOfPenetrationEps(double rateOfPenetrationEps);
-    void SetRateOfPenetrationEpsManual(double rateOfPenetrationEpsManual);
+    void SetRateOfPenetrationEpsManual(bool rateOfPenetrationEpsManual);
     void SetRateOfPenetrationF(double rateOfPenetrationF);
     void SetWeightOnBitFilter(double weightOnBitFilter);
     void SetWeightOnBitKcMax(double weightOnBitKcMax);
@@ -76,7 +76,7 @@ class CAutoDrillerConfigurationStatePublisher : public TPublisher< AutoDrillerCo
     void SetWeightOnBitTiMin(double weightOnBitTiMin);
     void SetWeightOnBitD(double weightOnBitD);
     void SetWeightOnBitEps(double weightOnBitEps);
-    void SetWeightOnBitEpsManual(double weightOnBitEpsManual);
+    void SetWeightOnBitEpsManual(bool weightOnBitEpsManual);
     void SetWeightOnBitF(double weightOnBitF);
     void SetTorqueFilter(double torqueFilter);
     void SetTorqueKcMax(double torqueKcMax);
@@ -87,11 +87,11 @@ class CAutoDrillerConfigurationStatePublisher : public TPublisher< AutoDrillerCo
     void SetTorqueTiMin(double torqueTiMin);
     void SetTorqueD(double torqueD);
     void SetTorqueEps(double torqueEps);
-    void SetTorqueEpsManual(double torqueEpsManual);
+    void SetTorqueEpsManual(bool torqueEpsManual);
     void SetTorqueF(double torqueF);
-    void SetStatus(double status);
-    void SetTuningDisable(double tuningDisable);
-    void SetTuningEnable(double tuningEnable);
+    void SetStatus(int32_t status);
+    void SetTuningDisable(bool tuningDisable);
+    void SetTuningEnable(bool tuningEnable);
 };
 
 #endif // __AUTODRILLER_CONFIGURATION_STATE_PUBLISHER_H__
