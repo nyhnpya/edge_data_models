@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{62E96F52-6040-44BB-957A-5A9A4E16818C}</ProjectGuid>
+    <ProjectGuid>{92E9C33D-6172-4FD2-A4B0-7CF9F2AC067F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>autodriller_configuration</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
