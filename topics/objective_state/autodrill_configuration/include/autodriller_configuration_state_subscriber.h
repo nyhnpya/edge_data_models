@@ -17,6 +17,7 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDriller
 
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
     bool ValidData();
 
     // Topic getters
@@ -110,6 +111,7 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDriller
     AutoDrillerConfiguration::HmiState m_data;
     DDS::SampleInfo                    m_sampleInfo;
     OnDataAvailableEvent               m_pOnDataAvailable;
+    OnDataDisposedEvent                m_pOnDataDisposed;
 };
 
 #endif // __AUTODRILLER_CONFIGURATION_STATE_SUBSCRIBER_H__

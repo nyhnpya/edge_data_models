@@ -8,13 +8,14 @@
 class CCirculateObjectiveSubscriber : public TSubscriber< ProcessCirculation::CirculateObjective >
 {
  public:
-    typedef std::function<void(const ProcessCirculation::CirculateObjective &data)> onDataAvailableEvent;
+    typedef std::function<void(const ProcessCirculation::CirculateObjective &data)> OnDataAvailableEvent;
 
     CCirculateObjectiveSubscriber();
     ~CCirculateObjectiveSubscriber();
 
     bool Create(int32_t domain);
-    void OnDataAvailable(onDataAvailableEvent event);
+    void OnDataAvailable(OnDataAvailableEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
@@ -30,7 +31,8 @@ class CCirculateObjectiveSubscriber : public TSubscriber< ProcessCirculation::Ci
 private:
     ProcessCirculation::CirculateObjective m_data;
     DDS::SampleInfo                        m_sampleInfo;
-    onDataAvailableEvent                   m_pOnDataAvailable;
+    OnDataAvailableEvent                   m_pOnDataAvailable;
+    OnDataDisposedEvent                    m_pOnDataDisposed;
 };
 
 #endif // __CIRCULATE_OBJECTIVE_SUBSCRIBER_H__ 

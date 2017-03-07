@@ -59,9 +59,14 @@ bool CRotateStateSubscriber::Create(int32_t domain)
                                "EdgeBaseProfile");
 }
 
-void CRotateStateSubscriber::OnDataAvailable(onDataAvailableEvent event)
+void CRotateStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
+}
+
+void CRotateStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
 }
 
 void CRotateStateSubscriber::DataAvailable(const ProcessRotation::RotateState &data,
@@ -82,5 +87,11 @@ void CRotateStateSubscriber::DataAvailable(const ProcessRotation::RotateState &d
 
 void CRotateStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
+    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
+
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
+    }
 }

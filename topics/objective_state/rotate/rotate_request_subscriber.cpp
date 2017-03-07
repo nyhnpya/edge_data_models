@@ -52,7 +52,7 @@ bool CRotateRequestSubscriber::Create(int32_t domain)
                                "EdgeBaseProfile");
 }
 
-void CRotateRequestSubscriber::OnDataAvailable(onDataAvailableEvent event)
+void CRotateRequestSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
 }

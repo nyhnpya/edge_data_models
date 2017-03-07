@@ -17,6 +17,7 @@ class CDrillingCalibrationRequestSubscriber : public TSubscriber< CalibrationHoi
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
@@ -39,6 +40,7 @@ class CDrillingCalibrationRequestSubscriber : public TSubscriber< CalibrationHoi
     DDS::SampleInfo                                 m_sampleInfo;
     OnDataAvailableEvent                            m_pOnDataAvailable;
     OnSubscriptionMatchedEvent                      m_pOnSubscriptionMatched;
+    OnDataDisposedEvent                             m_pOnDataDisposed;
 };
 
 #endif // __DRILLING_CALIBRATION_REQUEST_SUBSCRIBER_H__

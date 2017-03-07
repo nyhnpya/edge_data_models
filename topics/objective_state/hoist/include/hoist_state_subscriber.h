@@ -8,13 +8,14 @@
 class CHoistStateSubscriber : public TSubscriber< ProcessHoist::HoistState >
 {
  public:
-    typedef std::function<void(const ProcessHoist::HoistState &data)> onDataAvailableEvent;
+    typedef std::function<void(const ProcessHoist::HoistState &data)> OnDataAvailableEvent;
 
     CHoistStateSubscriber();
     ~CHoistStateSubscriber();
 
     bool Create(int32_t domain);
-    void OnDataAvailable(onDataAvailableEvent event);
+    void OnDataAvailable(OnDataAvailableEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
@@ -38,7 +39,8 @@ class CHoistStateSubscriber : public TSubscriber< ProcessHoist::HoistState >
  private:
     ProcessHoist::HoistState m_data;
     DDS::SampleInfo          m_sampleInfo;
-    onDataAvailableEvent     m_pOnDataAvailable;
+    OnDataAvailableEvent     m_pOnDataAvailable;
+    OnDataDisposedEvent      m_pOnDataDisposed;
 };
 
 #endif // __HOIST_STATE_SUBSCRIBER_H__ 

@@ -196,6 +196,11 @@ void CDrillingCalibrationStateSubscriber::OnDataAvailable(OnDataAvailableEvent e
     m_pOnDataAvailable = event;
 }
 
+void CDrillingCalibrationStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
+}
+
 void CDrillingCalibrationStateSubscriber::DataAvailable(const CalibrationHoisting::DrillingCalibrationState &data,
                                                         const DDS::SampleInfo &sampleInfo)
 {
@@ -240,4 +245,9 @@ void CDrillingCalibrationStateSubscriber::DataDisposed(const DDS::SampleInfo &sa
 {
     LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
+
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
+    }
 }

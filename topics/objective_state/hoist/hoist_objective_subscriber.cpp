@@ -45,9 +45,14 @@ bool CHoistObjectiveSubscriber::Create(int32_t domain)
                                "EdgeBaseProfile");
 }
 
-void CHoistObjectiveSubscriber::OnDataAvailable(onDataAvailableEvent event)
+void CHoistObjectiveSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
+}
+
+void CHoistObjectiveSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
 }
 
 void CHoistObjectiveSubscriber::DataAvailable(const ProcessHoist::HoistObjective &data,
@@ -68,5 +73,11 @@ void CHoistObjectiveSubscriber::DataAvailable(const ProcessHoist::HoistObjective
 
 void CHoistObjectiveSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
+    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
+
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
+    }
 }

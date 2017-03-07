@@ -9,13 +9,14 @@
 class CCirculateStateSubscriber : public TSubscriber< ProcessCirculation::CirculateState>
 {
 public:
-    typedef std::function<void(const ProcessCirculation::CirculateState &data)> onDataAvailableEvent;
+    typedef std::function<void(const ProcessCirculation::CirculateState &data)> OnDataAvailableEvent;
 
     CCirculateStateSubscriber();
     virtual ~CCirculateStateSubscriber();
 
     bool Create(int32_t domain);
-    void OnDataAvailable(onDataAvailableEvent event);
+    void OnDataAvailable(OnDataAvailableEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
@@ -38,7 +39,8 @@ protected:
 private:
     ProcessCirculation::CirculateState m_data;
     DDS::SampleInfo                    m_sampleInfo;
-    onDataAvailableEvent               m_pOnDataAvailable;
+    OnDataAvailableEvent               m_pOnDataAvailable;
+    OnDataDisposedEvent                m_pOnDataDisposed;
 };
 
 #endif // __CIRCULATE_STATE_SUBSCRIBER_H__ 

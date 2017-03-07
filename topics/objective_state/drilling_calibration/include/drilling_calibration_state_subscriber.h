@@ -17,6 +17,7 @@ class CDrillingCalibrationStateSubscriber : public TSubscriber< CalibrationHoist
 
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
     bool ValidData();
 
     // Topic getters
@@ -54,6 +55,7 @@ class CDrillingCalibrationStateSubscriber : public TSubscriber< CalibrationHoist
     CalibrationHoisting::DrillingCalibrationState m_data;
     DDS::SampleInfo                               m_sampleInfo;
     OnDataAvailableEvent                          m_pOnDataAvailable;
+    OnDataDisposedEvent                           m_pOnDataDisposed;
 };
 
 #endif // __DRILLING_CALIBRATION_STATE_SUBSCRIBER_H__

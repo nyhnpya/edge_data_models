@@ -59,9 +59,14 @@ bool CHoistRequestSubscriber::Create(int32_t domain)
                                "EdgeBaseProfile");
 }
 
-void CHoistRequestSubscriber::OnDataAvailable(onDataAvailableEvent event)
+void CHoistRequestSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
+}
+
+void CHoistRequestSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
 }
 
 void CHoistRequestSubscriber::DataAvailable(const ProcessHoist::HoistRequest &data,
@@ -82,5 +87,11 @@ void CHoistRequestSubscriber::DataAvailable(const ProcessHoist::HoistRequest &da
 
 void CHoistRequestSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
+    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
+
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
+    }
 }

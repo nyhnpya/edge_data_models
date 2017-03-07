@@ -154,6 +154,11 @@ void CDrillingStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)
     m_pOnDataAvailable = event;
 }
 
+void CDrillingStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
+}
+
 void CDrillingStateSubscriber::DataAvailable(const Hoisting::DrillingState &data,
                                              const DDS::SampleInfo &sampleInfo)
 {
@@ -191,4 +196,9 @@ void CDrillingStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
+
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
+    }
 }

@@ -36,7 +36,7 @@ class CAutoDrillerConfigurationRequestPublisher : public TPublisher< AutoDriller
     void SetWeightOnBitTiCurrent(double weightOnBitTiCurrent);
     void SetMode(long mode);
     void SetModeController(double modeController);
-    void SetOnDataAvailable(double onDataAvailable);
+    void SetOnDataAvailable(double OnDataAvailable);
     void SetOnLivelinessLost(double onLivelinessLost);
     void SetModelOneDifferentialPressureRequestK(double modelOneDifferentialPressureRequestK);
     void SetModelOneDifferentialPressureRequestTau(double modelOneDifferentialPressureRequestTau);

@@ -16,6 +16,7 @@ class CDrillingObjectiveSubscriber : public TSubscriber< Hoisting::DrillingObjec
 
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
 
     // getters
     bool GetId(DataTypes::Uuid &id);
@@ -33,10 +34,13 @@ class CDrillingObjectiveSubscriber : public TSubscriber< Hoisting::DrillingObjec
     void DataAvailable(const Hoisting::DrillingObjective &data,
                const DDS::SampleInfo &sampleInfo);
 
+    void DataDisposed(const DDS::SampleInfo &sampleInfo);
+
  private:
     Hoisting::DrillingObjective m_data;
-    DDS::SampleInfo                                 m_sampleInfo;
-    OnDataAvailableEvent                            m_pOnDataAvailable;
+    DDS::SampleInfo             m_sampleInfo;
+    OnDataAvailableEvent        m_pOnDataAvailable;
+    OnDataDisposedEvent         m_pOnDataDisposed;
 };
 
 #endif // __DRILLING_OBJECTIVE_SUBSCRIBER_H__

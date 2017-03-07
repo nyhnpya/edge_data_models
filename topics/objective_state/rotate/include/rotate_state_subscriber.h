@@ -9,13 +9,14 @@
 class CRotateStateSubscriber : public TSubscriber< ProcessRotation::RotateState>
 {
 public:
-    typedef std::function<void(const ProcessRotation::RotateState &data)> onDataAvailableEvent;
+    typedef std::function<void(const ProcessRotation::RotateState &data)> OnDataAvailableEvent;
 
     CRotateStateSubscriber();
     virtual ~CRotateStateSubscriber();
 
     bool Create(int32_t domain);
-    void OnDataAvailable(onDataAvailableEvent event);
+    void OnDataAvailable(OnDataAvailableEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
@@ -35,7 +36,8 @@ protected:
 private:
     ProcessRotation::RotateState m_data;
     DDS::SampleInfo              m_sampleInfo;
-    onDataAvailableEvent         m_pOnDataAvailable;
+    OnDataAvailableEvent         m_pOnDataAvailable;
+    OnDataDisposedEvent          m_pOnDataDisposed;
 }; 
 
 #endif // __ROTATE_STATE_SUBSCRIBER_H__

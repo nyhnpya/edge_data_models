@@ -52,7 +52,7 @@ bool CCirculateRequestSubscriber::Create(int32_t domain)
                                "EdgeBaseProfile");
 }
 
-void CCirculateRequestSubscriber::OnDataAvailable(onDataAvailableEvent event)
+void CCirculateRequestSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
 }

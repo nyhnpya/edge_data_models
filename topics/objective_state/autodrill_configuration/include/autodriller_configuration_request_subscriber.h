@@ -17,6 +17,7 @@ class CAutoDrillerConfigurationRequestSubscriber : public TSubscriber< AutoDrill
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
@@ -39,7 +40,7 @@ class CAutoDrillerConfigurationRequestSubscriber : public TSubscriber< AutoDrill
     bool GetWeightOnBitTiCurrent(double &weightOnBitTiCurrent);
     bool GetMode(long &mode);
     bool GetModeController(double &modeController);
-    bool GetOnDataAvailable(double &onDataAvailable);
+    bool GetOnDataAvailable(double &OnDataAvailable);
     bool GetOnLivelinessLost(double &onLivelinessLost);
     bool GetModelOneDifferentialPressureRequestK(double &modelOneDifferentialPressureRequestK);
     bool GetModelOneDifferentialPressureRequestTau(double &modelOneDifferentialPressureRequestTau);
@@ -72,6 +73,7 @@ class CAutoDrillerConfigurationRequestSubscriber : public TSubscriber< AutoDrill
     DDS::SampleInfo                      m_sampleInfo;
     OnDataAvailableEvent                 m_pOnDataAvailable;
     OnSubscriptionMatchedEvent           m_pOnSubscriptionMatched;
+    OnDataDisposedEvent                  m_pOnDataDisposed;
 };
 
 #endif // __AUTODRILLER_CONFIGURATION_REQUEST_SUBSCRIBER_H__

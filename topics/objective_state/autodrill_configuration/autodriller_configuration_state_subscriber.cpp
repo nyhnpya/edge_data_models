@@ -589,6 +589,11 @@ void CAutoDrillerConfigurationStateSubscriber::OnDataAvailable(OnDataAvailableEv
     m_pOnDataAvailable = event;
 }
 
+void CAutoDrillerConfigurationStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
+}
+
 void CAutoDrillerConfigurationStateSubscriber::DataAvailable(const AutoDrillerConfiguration::HmiState &data,
                                                              const DDS::SampleInfo &sampleInfo)
 {
@@ -609,4 +614,9 @@ void CAutoDrillerConfigurationStateSubscriber::DataDisposed(const DDS::SampleInf
 {
     LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
+
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
+    }
 }

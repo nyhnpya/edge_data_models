@@ -38,7 +38,7 @@ bool CRotateObjectiveSubscriber::Create(int32_t domain)
                                "EdgeBaseProfile");
 }
 
-void CRotateObjectiveSubscriber::OnDataAvailable(onDataAvailableEvent event)
+void CRotateObjectiveSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
 }

@@ -8,13 +8,14 @@
 class CRotateObjectiveSubscriber : public TSubscriber< ProcessRotation::RotateObjective >
 {
  public:
-    typedef std::function<void(const ProcessRotation::RotateObjective &data)> onDataAvailableEvent;
+    typedef std::function<void(const ProcessRotation::RotateObjective &data)> OnDataAvailableEvent;
 
     CRotateObjectiveSubscriber();
     ~CRotateObjectiveSubscriber();
 
     bool Create(int32_t domain);
-    void OnDataAvailable(onDataAvailableEvent event);
+    void OnDataAvailable(OnDataAvailableEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
@@ -30,7 +31,8 @@ class CRotateObjectiveSubscriber : public TSubscriber< ProcessRotation::RotateOb
  private:
     ProcessRotation::RotateObjective m_data;
     DDS::SampleInfo                  m_sampleInfo;
-    onDataAvailableEvent             m_pOnDataAvailable;
+    OnDataAvailableEvent             m_pOnDataAvailable;
+    OnDataDisposedEvent              m_pOnDataDisposed;
 };
 
 #endif // __ROTATE_OBJECTIVE_SUBSCRIBER_H__ 

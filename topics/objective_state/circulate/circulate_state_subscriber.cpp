@@ -80,9 +80,14 @@ bool CCirculateStateSubscriber::Create(int32_t domain)
                                "EdgeBaseProfile");
 }
 
-void CCirculateStateSubscriber::OnDataAvailable(onDataAvailableEvent event)
+void CCirculateStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
+}
+
+void CCirculateStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
 }
 
 void CCirculateStateSubscriber::DataAvailable(const ProcessCirculation::CirculateState &data,
@@ -103,5 +108,11 @@ void CCirculateStateSubscriber::DataAvailable(const ProcessCirculation::Circulat
 
 void CCirculateStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
+    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
+
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
+    }
 }

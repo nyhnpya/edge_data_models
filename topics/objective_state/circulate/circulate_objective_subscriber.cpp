@@ -38,7 +38,7 @@ bool CCirculateObjectiveSubscriber::Create(int32_t domain)
                                "EdgeBaseProfile");
 }
 
-void CCirculateObjectiveSubscriber::OnDataAvailable(onDataAvailableEvent event)
+void CCirculateObjectiveSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
 }

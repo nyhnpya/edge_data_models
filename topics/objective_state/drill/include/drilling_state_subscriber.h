@@ -16,6 +16,7 @@ class CDrillingStateSubscriber : public TSubscriber< Hoisting::DrillingState >
 
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
     bool ValidData();
 
     // Topic getters
@@ -46,8 +47,9 @@ class CDrillingStateSubscriber : public TSubscriber< Hoisting::DrillingState >
 
  private:
     Hoisting::DrillingState m_data;
-    DDS::SampleInfo                               m_sampleInfo;
-    OnDataAvailableEvent                          m_pOnDataAvailable;
+    DDS::SampleInfo         m_sampleInfo;
+    OnDataAvailableEvent    m_pOnDataAvailable;
+    OnDataDisposedEvent     m_pOnDataDisposed;
 };
 
 #endif // __DRILLING_STATE_SUBSCRIBER_H__

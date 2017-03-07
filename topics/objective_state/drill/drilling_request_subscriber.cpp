@@ -98,6 +98,11 @@ void CDrillingRequestSubscriber::OnDataAvailable(OnDataAvailableEvent event)
     m_pOnDataAvailable = event;
 }
 
+void CDrillingRequestSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
+}
+
 bool CDrillingRequestSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
@@ -127,5 +132,16 @@ void CDrillingRequestSubscriber::DataAvailable(const Hoisting::DrillingRequest &
         {
             m_pOnDataAvailable(data);
         }
+    }
+}
+
+void CDrillingRequestSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
+{
+    LOG_INFO("Sample disposed");
+    m_sampleInfo = sampleInfo;
+
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
     }
 }

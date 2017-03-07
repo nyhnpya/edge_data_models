@@ -151,13 +151,6 @@ bool CAutoDrillerConfigurationRequestSubscriber::GetModeController(double &modeC
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationRequestSubscriber::GetOnDataAvailable(double &onDataAvailable)
-{
-    onDataAvailable = m_data.onDataAvailable;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
 bool CAutoDrillerConfigurationRequestSubscriber::GetOnLivelinessLost(double &onLivelinessLost)
 {
     onLivelinessLost = m_data.onLivelinessLost;
@@ -304,6 +297,11 @@ void CAutoDrillerConfigurationRequestSubscriber::OnDataAvailable(OnDataAvailable
     m_pOnDataAvailable = event;
 }
 
+void CAutoDrillerConfigurationRequestSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
+}
+
 void CAutoDrillerConfigurationRequestSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
 {
     m_pOnSubscriptionMatched = event;
@@ -337,6 +335,11 @@ void CAutoDrillerConfigurationRequestSubscriber::DataDisposed(const DDS::SampleI
 {
     LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
+
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
+    }
 }
 
 void CAutoDrillerConfigurationRequestSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)

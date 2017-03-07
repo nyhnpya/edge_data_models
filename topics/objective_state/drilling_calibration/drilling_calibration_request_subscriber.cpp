@@ -72,6 +72,11 @@ void CDrillingCalibrationRequestSubscriber::OnDataAvailable(OnDataAvailableEvent
     m_pOnDataAvailable = event;
 }
 
+void CDrillingCalibrationRequestSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
+}
+
 void CDrillingCalibrationRequestSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
 {
     m_pOnSubscriptionMatched = event;
@@ -113,6 +118,11 @@ void CDrillingCalibrationRequestSubscriber::DataDisposed(const DDS::SampleInfo &
 {
     LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
+
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
+    }
 }
 
 void CDrillingCalibrationRequestSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)

@@ -249,18 +249,6 @@ void CAutoDrillerConfigurationRequestPublisher::SetModeController(double modeCon
     }
 }
 
-void CAutoDrillerConfigurationRequestPublisher::SetOnDataAvailable(double onDataAvailable)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->onDataAvailable = onDataAvailable;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set onDataAvailable because of uninitialized sample");
-    }
-}
-
 void CAutoDrillerConfigurationRequestPublisher::SetOnLivelinessLost(double onLivelinessLost)
 {
     if (m_pDataInstance != nullptr)
