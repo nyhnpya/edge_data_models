@@ -69,7 +69,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>
@@ -142,14 +144,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\autodriller_configuration_request_publisher.cpp" />
-    <ClCompile Include="..\autodriller_configuration_request_subscriber.cpp" />
     <ClCompile Include="..\autodriller_configuration_state_publisher.cpp" />
     <ClCompile Include="..\autodriller_configuration_state_subscriber.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\autodriller_configuration_request_publisher.h" />
-    <ClInclude Include="..\include\autodriller_configuration_request_subscriber.h" />
     <ClInclude Include="..\include\autodriller_configuration_state_publisher.h" />
     <ClInclude Include="..\include\autodriller_configuration_state_subscriber.h" />
   </ItemGroup>
