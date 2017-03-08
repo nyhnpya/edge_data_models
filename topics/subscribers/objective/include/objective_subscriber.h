@@ -18,6 +18,7 @@ public:
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnDataDisposed(OnDataDisposedEvent event);
+    bool ValidData();
 
     // Topic getters
     bool GetObjective(DataTypes::Objective &objective);

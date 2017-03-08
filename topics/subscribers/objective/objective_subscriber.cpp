@@ -9,6 +9,11 @@ CObjectiveStateSubscriber::~CObjectiveStateSubscriber()
 {
 }
 
+bool CObjectiveStateSubscriber::ValidData()
+{
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CObjectiveStateSubscriber::GetObjective(DataTypes::Objective &objective)
 {
     objective = m_data.objective;
