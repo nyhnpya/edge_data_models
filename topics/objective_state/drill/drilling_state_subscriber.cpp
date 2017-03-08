@@ -87,28 +87,28 @@ bool CDrillingStateSubscriber::GetTorqueLimit(double &torqueLimit)
 
 bool CDrillingStateSubscriber::GetRopMode(bool &ropMode)
 {
-    ropMode = m_data.ropMode;
+	ropMode = (m_data.ropMode == DDS_BOOLEAN_TRUE);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
 bool CDrillingStateSubscriber::GetWobMode(bool &wobMode)
 {
-    wobMode = m_data.wobMode;
+    wobMode = (m_data.wobMode == DDS_BOOLEAN_TRUE);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
 bool CDrillingStateSubscriber::GetDifferentialPressureMode(bool &differentialPressureMode)
 {
-    differentialPressureMode = m_data.differentialPressureMode;
+    differentialPressureMode = (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
 bool CDrillingStateSubscriber::GetTorqueMode(bool &torqueMode)
 {
-    torqueMode = m_data.torqueMode;
+    torqueMode = (m_data.torqueMode == DDS_BOOLEAN_TRUE);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
@@ -164,7 +164,7 @@ void CDrillingStateSubscriber::DataAvailable(const Hoisting::DrillingState &data
 {
     m_sampleInfo = sampleInfo;
 
-    if (sampleInfo.valid_data == true)
+    if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
         memcpy(m_data.id, data.id, 16);
         m_data.timestamp.sec = data.timestamp.sec;

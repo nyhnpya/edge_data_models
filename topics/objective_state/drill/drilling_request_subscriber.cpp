@@ -67,28 +67,28 @@ bool CDrillingRequestSubscriber::GetTorqueLimit(double &torqueLimit)
 
 bool CDrillingRequestSubscriber::GetRopMode(bool &ropMode)
 {
-    ropMode = m_data.ropMode;
+    ropMode = (m_data.ropMode == DDS_BOOLEAN_TRUE);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
 bool CDrillingRequestSubscriber::GetWobMode(bool &wobMode)
 {
-    wobMode = m_data.wobMode;
+    wobMode = (m_data.wobMode == DDS_BOOLEAN_TRUE);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
 bool CDrillingRequestSubscriber::GetDifferentialPressureMode(bool &differentialPressureMode)
 {
-    differentialPressureMode = m_data.differentialPressureMode;
+    differentialPressureMode = (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
 bool CDrillingRequestSubscriber::GetTorqueMode(bool &torqueMode)
 {
-    torqueMode = m_data.torqueMode;
+    torqueMode = (m_data.torqueMode == DDS_BOOLEAN_TRUE);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
@@ -116,7 +116,7 @@ void CDrillingRequestSubscriber::DataAvailable(const Hoisting::DrillingRequest &
 {
     m_sampleInfo = sampleInfo;
 
-    if (sampleInfo.valid_data == true)
+    if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
         memcpy(m_data.id, data.id, 16);
         m_data.ropLimit = data.ropLimit;

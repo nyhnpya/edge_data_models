@@ -48,7 +48,7 @@ void CCirculateObjectiveSubscriber::DataAvailable(const ProcessCirculation::Circ
 {
     m_sampleInfo = sampleInfo;
 
-    if (sampleInfo.valid_data == true)
+    if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
         m_data = data;
 

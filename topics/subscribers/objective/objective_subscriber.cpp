@@ -40,7 +40,7 @@ void CObjectiveStateSubscriber::DataAvailable(const Plan::ObjectiveState &data,
 {
     m_sampleInfo = sampleInfo;
 
-    if (sampleInfo.valid_data == true)
+    if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
         memcpy(m_data.id, data.id, 16);
         m_data.timestamp.sec = data.timestamp.sec;
