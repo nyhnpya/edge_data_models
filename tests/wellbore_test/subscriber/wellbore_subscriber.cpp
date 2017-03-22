@@ -1,20 +1,13 @@
+#include <ncurses.h>
 #include <iostream>
-#include <stdint.h>
-#ifdef _LINUX
 #include <unistd.h>
-#endif
 #include <signal.h>
 #include <string.h>
 #include "cmdparser.h"
-#include "wellbore_publisher.h"
+#include "wellbore_subscriber.h"
 
 bool gTerminate = false;
-int32_t gHoleDepth = -1;
-int32_t gBitDepth = -1;
 
-CWellboreStatePublisher *gpStatePublisher = nullptr;
-
-#ifdef _LINUX
 void SignalHandler(int32_t signal)
 {
     /// Signal handler for SIGINT, SIGABRT, SIGFPE, SIGILL, SIGSEGV, SIGHUP 
@@ -67,86 +60,67 @@ void register_signal_handler()
     sigaction(SIGHUP,  &sigact, (struct sigaction *)NULL);
     sigaction(SIGTERM, &sigact, (struct sigaction *)NULL);
 }
-#endif
 
-void set_bit_depth()
+void get_depths(const Downhole::Wellbore &data)
 {
-    std::cout << "Bit Depth: ";
-    std::cin >> gBitDepth;    
-    gpStatePublisher->SetBitDepth(gBitDepth);
+    double value; 
+
+    init_pair(1, COLOR_RED, COLOR_BLACK);
+    attron(COLOR_PAIR(1));
+    mvprintw(2, 1, "Bit depth: [%6.2f]", data.bitDepth);
+    mvprintw(3, 1, "Hole depth: [%6.2f]", data.holeDepth);
+    attroff(COLOR_PAIR(1));
+
+    refresh();
 }
 
-void set_hole_depth()
+void invalid_data()
 {
-    std::cout << "Hole Depth: ";
-    std::cin >> gHoleDepth;
-    gpStatePublisher->SetHoleDepth(gHoleDepth);
-}
+    double value; 
 
-void top_level_menu()
-{
-    char choice;
+    init_pair(1, COLOR_RED, COLOR_BLACK);
+    attron(COLOR_PAIR(1));
+    mvprintw(2, 1, "Bit depth: [------]");
+    mvprintw(3, 1, "Hole depth: [------]");
+    attroff(COLOR_PAIR(1));
 
-    do
-    {
-        std::cout << std::endl;
-        std::cout << "Wellbore State Publisher" << std::endl;
-        std::cout << "------------------------" << std::endl;
-        std::cout << "1. Publish bit depth and hole depth" << std::endl;
-        std::cout << "2. Publish bit depth" << std::endl;
-        std::cout << "3. Publish hole depth" << std::endl;
-        std::cout << "q. exit" << std::endl;
-        std::cout << "option: ";
-        std::cin >> choice;
-        std::cout << std::endl;
-
-        switch (choice)
-        {
-            case 'q':
-                gTerminate = true;
-                break;
-            case '1':
-                set_bit_depth();
-                set_hole_depth();
-                gpStatePublisher->PublishSample();
-                break;
-            case '2':
-                set_bit_depth();
-                gpStatePublisher->PublishSample();
-                break;
-            case '3':
-                set_hole_depth();
-                gpStatePublisher->PublishSample();
-                break;
-        }
-    } while (gTerminate == false);
-
+    refresh();
 }
 
 int32_t main(int32_t argc, char **argv)
 {
-    cli::Parser              parser(argc, argv);
-    int32_t                  domain;
+    cli::Parser parser(argc, argv);
+    int32_t     domain;
 
-#ifdef _LINUX
-	register_signal_handler();
-#endif
+    //    register_signal_handler();
     parser.set_optional<std::string>("c", "configFile", "pipe_handler.conf", "External configuration file.");
     parser.set_optional<int32_t>("d", "domain", 100, "DDS Domain.");
     parser.run_and_exit_if_error();
 
     domain = parser.get<int32_t>("d");
 
+    initscr();
+
     CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
     CDomainParticipant::Instance()->Create(domain);
 
-    gpStatePublisher = new CWellboreStatePublisher();
+    CWellboreStateSubscriber *pSubscriber = CWellboreStateSubscriber::Instance();
 
-    if (gpStatePublisher->Create(domain) == true)
+    if (pSubscriber->Create(domain) == true)
     {
-        gpStatePublisher->CreateInstance();
-        top_level_menu();
+        pSubscriber->OnDataAvailable([&](const Downhole::Wellbore &data)
+                                     {
+                                         get_depths(data);
+                                     });
+
+        invalid_data();
+        while (gTerminate == false)
+        {
+            usleep(100 * 1000);
+        }
     }
 
-    gpStatePublisher->Destroy();
+    endwin();
+
+    pSubscriber->Destroy();
 }

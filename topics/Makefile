@@ -1,7 +1,3 @@
-##############################################################################
-# Mission Control Makefile
-###############################################################################
-
 include ../../Makefiles/Makefile.platform
 
 # Lists of all the sub-directories that have a Makefile. Libraries and
@@ -32,34 +28,6 @@ MAKEFILE_LIBRARY_DIRS += objective_state/drilling_calibration
 MAKEFILE_LIBRARY_DIRS += objective_state/hoist
 MAKEFILE_LIBRARY_DIRS += objective_state/rotate
 MAKEFILE_LIBRARY_DIRS += objective/objective
-MAKEFILE_LIBRARY_DIRS += tests/wellbore_test/subscriber
-MAKEFILE_LIBRARY_DIRS += tests/wellbore_test/publisher
-
-#MAKEFILE_EXECUTABLE_DIRS := db_connection_manager/dbcm_test
-
-ifdef UNITTEST
-#MAKEFILE_LIBRARY_DIRS += mock_objects/clsocket
-#MAKEFILE_LIBRARY_DIRS += mock_objects/comm/ComManagement
-#MAKEFILE_LIBRARY_DIRS += mock_objects/mission_control/mccomm/commbuffer
-#MAKEFILE_LIBRARY_DIRS += mock_objects/mission_control/mccomm/mccomm
-#MAKEFILE_LIBRARY_DIRS += mock_objects/mission_control/npc
-#MAKEFILE_LIBRARY_DIRS += unit_tests/guidance_layer
-
-#MAKEFILE_EXECUTABLE_DIRS += mock_objects/mission_control/novosconfig
-#MAKEFILE_EXECUTABLE_DIRS += unit_tests/configuration
-#MAKEFILE_EXECUTABLE_DIRS += unit_tests/datetime
-MAKEFILE_EXECUTABLE_DIRS += unit_tests/include
-#MAKEFILE_EXECUTABLE_DIRS += unit_tests/interfaces
-#MAKEFILE_EXECUTABLE_DIRS += unit_tests/mccomm/mccomm
-#MAKEFILE_EXECUTABLE_DIRS += unit_tests/mccomm/other
-#MAKEFILE_EXECUTABLE_DIRS += unit_tests/novosconfig
-#MAKEFILE_EXECUTABLE_DIRS += unit_tests/npc/cmds
-#MAKEFILE_EXECUTABLE_DIRS += unit_tests/npc/core
-#MAKEFILE_EXECUTABLE_DIRS += unit_tests/npc/daemon
-MAKEFILE_EXECUTABLE_DIRS += unit_tests/runtime
-#MAKEFILE_EXECUTABLE_DIRS += unit_tests/test_main
-MAKEFILE_EXECUTABLE_DIRS += unit_tests/unit_test_writer
-endif
 
 .PHONY: all clean dep install install_clean install_dev install_dev_clean \
 filelist cfilelist info $(MAKEFILE_LIBRARY_DIRS) $(MAKEFILE_EXECUTABLE_DIRS)
@@ -105,11 +73,11 @@ install_dev: $(MAKEFILE_LIBRARY_DIRS)
 install_dev_clean: RULE=install_dev_clean
 install_dev_clean: $(MAKEFILE_LIBRARY_DIRS)
 
-filelist: RULE=filelist
-filelist: $(MAKEFILE_EXECUTABLE_DIRS)
+deb: RULE=deb
+deb: $(MAKEFILE_LIBRARY_DIRS)
 
-cfilelist: RULE=cfilelist
-cfilelist: $(MAKEFILE_EXECUTABLE_DIRS)
+deb_dev: RULE=deb_dev
+deb_dev: $(MAKEFILE_LIBRARY_DIRS)
 
 info: RULE=info
 info: $(MAKEFILE_LIBRARY_DIRS)

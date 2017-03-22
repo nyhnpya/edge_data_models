@@ -59,6 +59,9 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configuration_request_sub
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configuration_state_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configuration_state_subscriber.h
 
+# package installation directory
+PACKAGE_INSTALL_DIR += $(TOP_DIR)/edge_data_models/package
+
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform
 ###############################################################################

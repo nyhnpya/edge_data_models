@@ -50,6 +50,9 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/pipe_tally_subscriber.h
 
 # package configuration files
 
+# package installation directory
+PACKAGE_INSTALL_DIR += $(TOP_DIR)/edge_data_models/package
+
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform
 ###############################################################################
