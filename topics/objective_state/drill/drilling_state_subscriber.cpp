@@ -173,6 +173,7 @@ void CDrillingStateSubscriber::DataAvailable(const Hoisting::DrillingState &data
         m_data.wobActual = data.wobActual;
         m_data.differentialPressureActual = data.differentialPressureActual;
         m_data.torqueActual = data.torqueActual;
+        m_data.ropLimit = data.ropLimit;
         m_data.wobLimit = data.wobLimit;
         m_data.differentialPressureLimit = data.differentialPressureLimit;
         m_data.torqueLimit = data.torqueLimit;

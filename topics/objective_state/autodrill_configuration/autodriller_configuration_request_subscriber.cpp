@@ -322,7 +322,48 @@ void CAutoDrillerConfigurationRequestSubscriber::DataAvailable(const AutoDriller
 
     if (sampleInfo.valid_data == true)
     {
-        m_data = data;
+        memcpy(m_data.id, data.id, 16);
+        m_data.timestamp.sec = data.timestamp.sec;
+        m_data.timestamp.nanosec = data.timestamp.nanosec;
+        m_data.differentialPressureKpCalculated = data.differentialPressureKpCalculated;
+        m_data.differentialPressureKpCurrent = data.differentialPressureKpCurrent;
+        m_data.differentialPressureTiCalculated = data.differentialPressureTiCalculated;
+        m_data.differentialPressureTiCurrent = data.differentialPressureTiCurrent;
+        m_data.rateOfPenetrationKpCalculated = data.rateOfPenetrationKpCalculated;
+        m_data.rateOfPenetrationKpCurrent = data.rateOfPenetrationKpCurrent;
+        m_data.rateOfPenetrationTiCalcualted = data.rateOfPenetrationTiCalcualted;
+        m_data.rateOfPenetrationTiCurrent = data.rateOfPenetrationTiCurrent;
+        m_data.torqueKpCalculated = data.torqueKpCalculated;
+        m_data.torqueKpCurrent = data.torqueKpCurrent;
+        m_data.torqueTiCalculated = data.torqueTiCalculated;
+        m_data.toqueTiCurrent = data.toqueTiCurrent;
+        m_data.weightOnBitKpCalculated = data.weightOnBitKpCalculated;
+        m_data.weightOnBitKpCurrent = data.weightOnBitKpCurrent;
+        m_data.weightOnBitTiCalculated = data.weightOnBitTiCalculated;
+        m_data.weightOnBitTiCurrent = data.weightOnBitTiCurrent;
+        m_data.mode = data.mode;
+        m_data.modeController = data.modeController;
+        m_data.onDataAvailable = data.onDataAvailable;
+        m_data.onLivelinessLost = data.onLivelinessLost;
+        m_data.modelOneDifferentialPressureRequestK = data.modelOneDifferentialPressureRequestK;
+        m_data.modelOneDifferentialPressureRequestTau = data.modelOneDifferentialPressureRequestTau;
+        m_data.modelOneRateOfPenetrationRequestK = data.modelOneRateOfPenetrationRequestK;
+        m_data.modelOneRateOfPenetrationRequestTau = data.modelOneRateOfPenetrationRequestTau;
+        m_data.modelOneTorqueRequestK = data.modelOneTorqueRequestK;
+        m_data.modelOneTorqueRequestTau = data.modelOneTorqueRequestTau;
+        m_data.modelOneWeightOnBitRequestK = data.modelOneWeightOnBitRequestK;
+        m_data.modelOneWeightOnBitRequestTau = data.modelOneWeightOnBitRequestTau;
+        m_data.modelTwoDifferentialPressureRequestK = data.modelTwoDifferentialPressureRequestK;
+        m_data.modelTwoDifferentialPressureRequestTau = data.modelTwoDifferentialPressureRequestTau;
+        m_data.modelTwoRateOfPenetrationRequestK = data.modelTwoRateOfPenetrationRequestK;
+        m_data.modelTwoRateOfPenetrationRequestTau = data.modelTwoRateOfPenetrationRequestTau;
+        m_data.modelTwoTorqueRequestK = data.modelTwoTorqueRequestK;
+        m_data.modelTwoTorqueRequestTau = data.modelTwoTorqueRequestTau;
+        m_data.modelTwoWeightOnBitRequestK = data.modelTwoWeightOnBitRequestK;
+        m_data.modelTwoWeightOnBitRequestTau = data.modelTwoWeightOnBitRequestTau;
+        m_data.status = data.status;
+        m_data.tuningDisable = data.tuningDisable;
+        m_data.tuningEnable = data.tuningEnable;
 
         if (m_pOnDataAvailable != nullptr)
         {

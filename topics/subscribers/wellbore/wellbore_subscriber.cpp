@@ -44,11 +44,7 @@ void CWellboreStateSubscriber::DataAvailable(const Downhole::Wellbore &data,
 
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
-        memcpy(m_data.id, data.id, 16);
-        m_data.timestamp.sec = data.timestamp.sec;
-        m_data.timestamp.nanosec = data.timestamp.nanosec;
-        m_data.bitDepth = data.bitDepth;
-        m_data.holeDepth = data.holeDepth;
+        m_data = data;
 
         if (m_pOnDataAvailable != nullptr)
         {

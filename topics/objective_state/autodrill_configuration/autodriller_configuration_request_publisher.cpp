@@ -229,7 +229,7 @@ void CAutoDrillerConfigurationRequestPublisher::SetMode(long mode)
 {
     if (m_pDataInstance != nullptr)
     {
-        //        m_pDataInstance->mode = mode;
+        m_pDataInstance->mode = (int32_t)mode;
     }
     else
     {
