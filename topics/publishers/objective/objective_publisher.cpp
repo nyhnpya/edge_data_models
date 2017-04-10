@@ -16,7 +16,7 @@ void CObjectiveStatePublisher::SetObjective(DataTypes::Objective objective)
     }
     else
     {
-        LOG_ERROR("Failed to set bit depth on uninitialized sample");
+        LOG_ERROR("Failed to set objective on uninitialized sample");
     }
 }
 

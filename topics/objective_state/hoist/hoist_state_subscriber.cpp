@@ -9,6 +9,11 @@ CHoistStateSubscriber::~CHoistStateSubscriber()
 {
 }
 
+bool CHoistStateSubscriber::ValidData()
+{
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CHoistStateSubscriber::GetId(DataTypes::Uuid &id)
 {
     memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
@@ -97,6 +102,11 @@ void CHoistStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
     m_pOnDataDisposed = event;
 }
 
+void CHoistStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
+}
+
 void CHoistStateSubscriber::DataAvailable(const ProcessHoist::HoistState &data,
                                           const DDS::SampleInfo &sampleInfo)
 {
@@ -121,5 +131,13 @@ void CHoistStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
     if (m_pOnDataDisposed != nullptr)
     {
         m_pOnDataDisposed(sampleInfo);
+    }
+}
+
+void CHoistStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
     }
 }

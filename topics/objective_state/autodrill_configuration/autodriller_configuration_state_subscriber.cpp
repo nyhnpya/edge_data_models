@@ -594,6 +594,11 @@ void CAutoDrillerConfigurationStateSubscriber::OnDataDisposed(OnDataDisposedEven
     m_pOnDataDisposed = event;
 }
 
+void CAutoDrillerConfigurationStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
+}
+
 void CAutoDrillerConfigurationStateSubscriber::DataAvailable(const AutoDrillerConfiguration::HmiState &data,
                                                              const DDS::SampleInfo &sampleInfo)
 {
@@ -698,5 +703,13 @@ void CAutoDrillerConfigurationStateSubscriber::DataDisposed(const DDS::SampleInf
     if (m_pOnDataDisposed != nullptr)
     {
         m_pOnDataDisposed(sampleInfo);
+    }
+}
+
+void CAutoDrillerConfigurationStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
     }
 }

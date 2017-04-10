@@ -10,6 +10,11 @@ CDrillingCalibrationRequestSubscriber::~CDrillingCalibrationRequestSubscriber()
 {
 }
 
+bool CDrillingCalibrationRequestSubscriber::ValidData()
+{
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CDrillingCalibrationRequestSubscriber::GetId(DataTypes::Uuid &id)
 {
     memcpy(id, m_data.id, 16);
@@ -82,6 +87,11 @@ void CDrillingCalibrationRequestSubscriber::OnSubscriptionMatched(OnSubscription
     m_pOnSubscriptionMatched = event;
 }
 
+void CDrillingCalibrationRequestSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
+}
+
 bool CDrillingCalibrationRequestSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
@@ -130,5 +140,13 @@ void CDrillingCalibrationRequestSubscriber::SubscriptionMatched(const DDS::Subsc
     if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);
+    }
+}
+
+void CDrillingCalibrationRequestSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
     }
 }

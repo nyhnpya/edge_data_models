@@ -9,6 +9,11 @@ CCirculateRequestSubscriber::~CCirculateRequestSubscriber()
 {
 }
 
+bool CCirculateRequestSubscriber::ValidData()
+{
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CCirculateRequestSubscriber::GetId(DataTypes::Uuid &id)
 {
     memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
@@ -57,6 +62,16 @@ void CCirculateRequestSubscriber::OnDataAvailable(OnDataAvailableEvent event)
     m_pOnDataAvailable = event;
 }
 
+void CCirculateRequestSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
+}
+
+void CCirculateRequestSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
+}
+
 void CCirculateRequestSubscriber::DataAvailable(const ProcessCirculation::CirculateRequest &data,
                                                 const DDS::SampleInfo &sampleInfo)
 {
@@ -76,4 +91,12 @@ void CCirculateRequestSubscriber::DataAvailable(const ProcessCirculation::Circul
 void CCirculateRequestSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
+}
+
+void CCirculateRequestSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
+    }
 }

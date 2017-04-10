@@ -159,6 +159,11 @@ void CDrillingStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
     m_pOnDataDisposed = event;
 }
 
+void CDrillingStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
+}
+
 void CDrillingStateSubscriber::DataAvailable(const Hoisting::DrillingState &data,
                                              const DDS::SampleInfo &sampleInfo)
 {
@@ -166,25 +171,7 @@ void CDrillingStateSubscriber::DataAvailable(const Hoisting::DrillingState &data
 
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
-        memcpy(m_data.id, data.id, 16);
-        m_data.timestamp.sec = data.timestamp.sec;
-        m_data.timestamp.nanosec = data.timestamp.nanosec;
-        m_data.ropActual = data.ropActual;
-        m_data.wobActual = data.wobActual;
-        m_data.differentialPressureActual = data.differentialPressureActual;
-        m_data.torqueActual = data.torqueActual;
-        m_data.ropLimit = data.ropLimit;
-        m_data.wobLimit = data.wobLimit;
-        m_data.differentialPressureLimit = data.differentialPressureLimit;
-        m_data.torqueLimit = data.torqueLimit;
-        m_data.ropMode = data.ropMode;
-        m_data.wobMode = data.wobMode;
-        m_data.differentialPressureMode = data.differentialPressureMode;
-        m_data.torqueMode = data.torqueMode;
-        m_data.ropTarget = data.ropTarget;
-        m_data.wobTarget = data.wobTarget;
-        m_data.differentialPressureTarget = data.differentialPressureTarget;
-        m_data.torqueTarget = data.torqueTarget;
+        m_data = data;
 
         if (m_pOnDataAvailable != nullptr)
         {
@@ -201,5 +188,13 @@ void CDrillingStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
     if (m_pOnDataDisposed != nullptr)
     {
         m_pOnDataDisposed(sampleInfo);
+    }
+}
+
+void CDrillingStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
     }
 }

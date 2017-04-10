@@ -201,6 +201,11 @@ void CDrillingCalibrationStateSubscriber::OnDataDisposed(OnDataDisposedEvent eve
     m_pOnDataDisposed = event;
 }
 
+void CDrillingCalibrationStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
+}
+
 void CDrillingCalibrationStateSubscriber::DataAvailable(const CalibrationHoisting::DrillingCalibrationState &data,
                                                         const DDS::SampleInfo &sampleInfo)
 {
@@ -208,31 +213,7 @@ void CDrillingCalibrationStateSubscriber::DataAvailable(const CalibrationHoistin
 
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
-        memcpy(m_data.id, data.id, 16);
-        m_data.timestamp.sec = data.timestamp.sec;
-        m_data.timestamp.nanosec = data.timestamp.nanosec;
-        m_data.wobProportional = data.wobProportional;
-        m_data.wobIntegral = data.wobIntegral;
-        m_data.differentialPressureProportional = data.differentialPressureProportional;
-        m_data.differentialPressureIntegral = data.differentialPressureIntegral;
-        m_data.torqueProportional = data.torqueProportional;
-        m_data.torqueIntegral = data.torqueIntegral;
-        m_data.minWobProportional = data.minWobProportional;
-        m_data.maxWobProportional = data.maxWobProportional;
-        m_data.minWobIntegral = data.minWobIntegral;
-        m_data.maxWobIntegral = data.maxWobIntegral;
-        m_data.minDifferentialPressureProportional = data.minDifferentialPressureProportional;
-        m_data.maxDifferentialPressureProportional = data.maxDifferentialPressureProportional;
-        m_data.minDifferentialPressureIntegral = data.minDifferentialPressureIntegral;
-        m_data.maxDifferentialPressureIntegral = data.maxDifferentialPressureIntegral;
-        m_data.minTorqueProportional = data.minTorqueProportional;
-        m_data.maxTorqueProportional = data.maxTorqueProportional;
-        m_data.minTorqueIntegral = data.minTorqueIntegral;
-        m_data.maxTorqueIntegral = data.maxTorqueIntegral;
-        m_data.ropMode = data.ropMode;
-        m_data.wobMode = data.wobMode;
-        m_data.differentialPressureMode = data.differentialPressureMode;
-        m_data.torqueMode = data.torqueMode;
+        m_data = data;
 
         if (m_pOnDataAvailable != nullptr)
         {
@@ -249,5 +230,13 @@ void CDrillingCalibrationStateSubscriber::DataDisposed(const DDS::SampleInfo &sa
     if (m_pOnDataDisposed != nullptr)
     {
         m_pOnDataDisposed(sampleInfo);
+    }
+}
+
+void CDrillingCalibrationStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
     }
 }

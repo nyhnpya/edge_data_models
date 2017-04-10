@@ -158,54 +158,6 @@ namespace AutoDrillerConfiguration {
         DataTypes::TimePluginSupport_print_data(
             &sample->timestamp, "timestamp", indent_level + 1);
 
-        RTICdrType_printDouble(
-            &sample->differentialPressureKpCalculated, "differentialPressureKpCalculated", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->differentialPressureKpCurrent, "differentialPressureKpCurrent", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->differentialPressureTiCalculated, "differentialPressureTiCalculated", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->differentialPressureTiCurrent, "differentialPressureTiCurrent", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->rateOfPenetrationKpCalculated, "rateOfPenetrationKpCalculated", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->rateOfPenetrationKpCurrent, "rateOfPenetrationKpCurrent", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->rateOfPenetrationTiCalcualted, "rateOfPenetrationTiCalcualted", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->rateOfPenetrationTiCurrent, "rateOfPenetrationTiCurrent", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->torqueKpCalculated, "torqueKpCalculated", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->torqueKpCurrent, "torqueKpCurrent", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->torqueTiCalculated, "torqueTiCalculated", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->toqueTiCurrent, "toqueTiCurrent", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->weightOnBitKpCalculated, "weightOnBitKpCalculated", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->weightOnBitKpCurrent, "weightOnBitKpCurrent", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->weightOnBitTiCalculated, "weightOnBitTiCalculated", indent_level + 1);    
-
-        RTICdrType_printDouble(
-            &sample->weightOnBitTiCurrent, "weightOnBitTiCurrent", indent_level + 1);    
-
         RTICdrType_printLong(
             &sample->mode, "mode", indent_level + 1);    
 
@@ -490,86 +442,6 @@ namespace AutoDrillerConfiguration {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->differentialPressureKpCalculated)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->differentialPressureKpCurrent)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->differentialPressureTiCalculated)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->differentialPressureTiCurrent)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->rateOfPenetrationKpCalculated)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->rateOfPenetrationKpCurrent)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->rateOfPenetrationTiCalcualted)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->rateOfPenetrationTiCurrent)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->torqueKpCalculated)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->torqueKpCurrent)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->torqueTiCalculated)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->toqueTiCurrent)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->weightOnBitKpCalculated)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->weightOnBitKpCurrent)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->weightOnBitTiCalculated)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeDouble(
-                stream, &sample->weightOnBitTiCurrent)) {
-                return RTI_FALSE;
-            }
-
             if (!RTICdrStream_serializeLong(
                 stream, &sample->mode)) {
                 return RTI_FALSE;
@@ -736,70 +608,6 @@ namespace AutoDrillerConfiguration {
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->differentialPressureKpCalculated)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->differentialPressureKpCurrent)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->differentialPressureTiCalculated)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->differentialPressureTiCurrent)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->rateOfPenetrationKpCalculated)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->rateOfPenetrationKpCurrent)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->rateOfPenetrationTiCalcualted)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->rateOfPenetrationTiCurrent)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->torqueKpCalculated)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->torqueKpCurrent)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->torqueTiCalculated)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->toqueTiCurrent)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->weightOnBitKpCalculated)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->weightOnBitKpCurrent)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->weightOnBitTiCalculated)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeDouble(
-                stream, &sample->weightOnBitTiCurrent)) {
                 goto fin; 
             }
             if (!RTICdrStream_deserializeLong(
@@ -1040,54 +848,6 @@ namespace AutoDrillerConfiguration {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
             if (!RTICdrStream_skipLong (stream)) {
                 goto fin; 
             }
@@ -1202,54 +962,6 @@ namespace AutoDrillerConfiguration {
 
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
 
         current_alignment +=RTICdrType_getLongMaxSizeSerialized(
             current_alignment);
@@ -1375,38 +1087,6 @@ namespace AutoDrillerConfiguration {
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
         current_alignment +=RTICdrType_getLongMaxSizeSerialized(
             current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -1501,38 +1181,6 @@ namespace AutoDrillerConfiguration {
         current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->timestamp);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
-        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            current_alignment);
         current_alignment += RTICdrType_getLongMaxSizeSerialized(
             current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
@@ -1798,70 +1446,6 @@ namespace AutoDrillerConfiguration {
                 stream, 
                 RTI_FALSE, RTI_TRUE, 
                 endpoint_plugin_qos)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-
-            if (!RTICdrStream_skipDouble (stream)) {
                 goto fin; 
             }
 

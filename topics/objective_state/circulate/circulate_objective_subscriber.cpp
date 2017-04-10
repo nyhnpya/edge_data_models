@@ -9,6 +9,11 @@ CCirculateObjectiveSubscriber::~CCirculateObjectiveSubscriber()
 {
 }
 
+bool CCirculateObjectiveSubscriber::ValidData()
+{
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CCirculateObjectiveSubscriber::GetId(DataTypes::Uuid &id)
 {
     memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
@@ -43,6 +48,16 @@ void CCirculateObjectiveSubscriber::OnDataAvailable(OnDataAvailableEvent event)
     m_pOnDataAvailable = event;
 }
 
+void CCirculateObjectiveSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
+}
+
+void CCirculateObjectiveSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
+}
+
 void CCirculateObjectiveSubscriber::DataAvailable(const ProcessCirculation::CirculateObjective &data,
                                                const DDS::SampleInfo &sampleInfo)
 {
@@ -62,4 +77,12 @@ void CCirculateObjectiveSubscriber::DataAvailable(const ProcessCirculation::Circ
 void CCirculateObjectiveSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
+}
+
+void CCirculateObjectiveSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
+    }
 }

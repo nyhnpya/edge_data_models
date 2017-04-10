@@ -9,6 +9,11 @@ CRotateObjectiveSubscriber::~CRotateObjectiveSubscriber()
 {
 }
 
+bool CRotateObjectiveSubscriber::ValidData()
+{
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CRotateObjectiveSubscriber::GetId(DataTypes::Uuid &id)
 {
     memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
@@ -43,6 +48,16 @@ void CRotateObjectiveSubscriber::OnDataAvailable(OnDataAvailableEvent event)
     m_pOnDataAvailable = event;
 }
 
+void CRotateObjectiveSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
+}
+
+void CRotateObjectiveSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
+}
+
 void CRotateObjectiveSubscriber::DataAvailable(const ProcessRotation::RotateObjective &data,
                                                const DDS::SampleInfo &sampleInfo)
 {
@@ -62,4 +77,12 @@ void CRotateObjectiveSubscriber::DataAvailable(const ProcessRotation::RotateObje
 void CRotateObjectiveSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
+}
+
+void CRotateObjectiveSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
+    }
 }

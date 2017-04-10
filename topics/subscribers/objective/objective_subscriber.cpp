@@ -40,6 +40,11 @@ void CObjectiveStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
     m_pOnDataDisposed = event;
 }
 
+void CObjectiveStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
+}
+
 void CObjectiveStateSubscriber::DataAvailable(const Plan::ObjectiveState &data,
                                               const DDS::SampleInfo &sampleInfo)
 {
@@ -68,5 +73,13 @@ void CObjectiveStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
     if (m_pOnDataDisposed != nullptr)
     {
         m_pOnDataDisposed(sampleInfo);
+    }
+}
+
+void CObjectiveStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
     }
 }

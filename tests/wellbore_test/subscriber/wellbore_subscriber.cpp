@@ -87,6 +87,14 @@ void invalid_data()
     refresh();
 }
 
+void liveliness_changed(const DDS::LivelinessChangedStatus &status)
+{
+    if (status.alive_count == 0)
+    {
+        invalid_data();
+    }
+}
+
 int32_t main(int32_t argc, char **argv)
 {
     cli::Parser parser(argc, argv);
@@ -112,6 +120,11 @@ int32_t main(int32_t argc, char **argv)
                                      {
                                          get_depths(data);
                                      });
+
+        pSubscriber->OnLivelinessChanged([&](const DDS::LivelinessChangedStatus &status)
+                                         {
+                                             liveliness_changed(status);
+                                         });
 
         invalid_data();
         while (gTerminate == false)

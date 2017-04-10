@@ -9,6 +9,11 @@ CDrillingObjectiveSubscriber::~CDrillingObjectiveSubscriber()
 {
 }
 
+bool CDrillingObjectiveSubscriber::ValidData()
+{
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CDrillingObjectiveSubscriber::GetId(DataTypes::Uuid &id)
 {
     memcpy(id, m_data.id, 16);
@@ -89,6 +94,11 @@ void CDrillingObjectiveSubscriber::OnDataDisposed(OnDataDisposedEvent event)
     m_pOnDataDisposed = event;
 }
 
+void CDrillingObjectiveSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
+}
+
 bool CDrillingObjectiveSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
@@ -104,16 +114,7 @@ void CDrillingObjectiveSubscriber::DataAvailable(const Hoisting::DrillingObjecti
 
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
-        memcpy(m_data.id, data.id, 16);
-        m_data.estimatedDuration = data.estimatedDuration;
-        m_data.ropLimit = data.ropLimit;
-        m_data.wobLimit = data.wobLimit;
-        m_data.differentialPressureLimit = data.differentialPressureLimit;
-        m_data.torqueLimit = data.torqueLimit;
-        m_data.ropMode = data.ropMode;
-        m_data.wobMode = data.wobMode;
-        m_data.differentialPressureMode = data.differentialPressureMode;
-        m_data.torqueMode = data.torqueMode;
+        m_data = data;
 
         if (m_pOnDataAvailable != nullptr)
         {
@@ -130,5 +131,13 @@ void CDrillingObjectiveSubscriber::DataDisposed(const DDS::SampleInfo &sampleInf
     if (m_pOnDataDisposed != nullptr)
     {
         m_pOnDataDisposed(sampleInfo);
+    }
+}
+
+void CDrillingObjectiveSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
     }
 }

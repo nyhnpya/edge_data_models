@@ -7,22 +7,6 @@ module AutoDrillerConfiguration
     {
         DataTypes::Uuid   id;           //@key
         DataTypes::Time   timestamp;
-        double  differentialPressureKpCalculated;
-        double  differentialPressureKpCurrent;
-        double  differentialPressureTiCalculated;
-        double  differentialPressureTiCurrent;
-        double  rateOfPenetrationKpCalculated;
-        double  rateOfPenetrationKpCurrent;
-        double  rateOfPenetrationTiCalcualted;
-        double  rateOfPenetrationTiCurrent;
-        double  torqueKpCalculated;
-        double  torqueKpCurrent;
-        double  torqueTiCalculated;
-        double  toqueTiCurrent;
-        double  weightOnBitKpCalculated;
-        double  weightOnBitKpCurrent;
-        double  weightOnBitTiCalculated;
-        double  weightOnBitTiCurrent;
         long    mode;
         double  modeController;
         double  onDataAvailable;

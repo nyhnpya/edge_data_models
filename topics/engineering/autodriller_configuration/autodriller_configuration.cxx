@@ -39,7 +39,7 @@ namespace AutoDrillerConfiguration {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member HmiRequest_g_tc_members[41]=
+        static DDS_TypeCode_Member HmiRequest_g_tc_members[25]=
         {
 
             {
@@ -77,7 +77,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureKpCalculated",/* Member name */
+                (char *)"mode",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -94,7 +94,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureKpCurrent",/* Member name */
+                (char *)"modeController",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -111,7 +111,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureTiCalculated",/* Member name */
+                (char *)"onDataAvailable",/* Member name */
                 {
                     4,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -128,7 +128,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureTiCurrent",/* Member name */
+                (char *)"onLivelinessLost",/* Member name */
                 {
                     5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -145,7 +145,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationKpCalculated",/* Member name */
+                (char *)"modelOneDifferentialPressureRequestK",/* Member name */
                 {
                     6,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -162,7 +162,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationKpCurrent",/* Member name */
+                (char *)"modelOneDifferentialPressureRequestTau",/* Member name */
                 {
                     7,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -179,7 +179,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationTiCalcualted",/* Member name */
+                (char *)"modelOneRateOfPenetrationRequestK",/* Member name */
                 {
                     8,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -196,7 +196,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"rateOfPenetrationTiCurrent",/* Member name */
+                (char *)"modelOneRateOfPenetrationRequestTau",/* Member name */
                 {
                     9,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -213,7 +213,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueKpCalculated",/* Member name */
+                (char *)"modelOneTorqueRequestK",/* Member name */
                 {
                     10,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -230,7 +230,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueKpCurrent",/* Member name */
+                (char *)"modelOneTorqueRequestTau",/* Member name */
                 {
                     11,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -247,7 +247,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueTiCalculated",/* Member name */
+                (char *)"modelOneWeightOnBitRequestK",/* Member name */
                 {
                     12,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -264,7 +264,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"toqueTiCurrent",/* Member name */
+                (char *)"modelOneWeightOnBitRequestTau",/* Member name */
                 {
                     13,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -281,7 +281,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitKpCalculated",/* Member name */
+                (char *)"modelTwoDifferentialPressureRequestK",/* Member name */
                 {
                     14,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -298,7 +298,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitKpCurrent",/* Member name */
+                (char *)"modelTwoDifferentialPressureRequestTau",/* Member name */
                 {
                     15,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -315,7 +315,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitTiCalculated",/* Member name */
+                (char *)"modelTwoRateOfPenetrationRequestK",/* Member name */
                 {
                     16,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -332,7 +332,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weightOnBitTiCurrent",/* Member name */
+                (char *)"modelTwoRateOfPenetrationRequestTau",/* Member name */
                 {
                     17,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -349,7 +349,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"mode",/* Member name */
+                (char *)"modelTwoTorqueRequestK",/* Member name */
                 {
                     18,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -366,7 +366,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modeController",/* Member name */
+                (char *)"modelTwoTorqueRequestTau",/* Member name */
                 {
                     19,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -383,7 +383,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"onDataAvailable",/* Member name */
+                (char *)"modelTwoWeightOnBitRequestK",/* Member name */
                 {
                     20,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -400,7 +400,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"onLivelinessLost",/* Member name */
+                (char *)"modelTwoWeightOnBitRequestTau",/* Member name */
                 {
                     21,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -417,7 +417,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelOneDifferentialPressureRequestK",/* Member name */
+                (char *)"status",/* Member name */
                 {
                     22,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -434,7 +434,7 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelOneDifferentialPressureRequestTau",/* Member name */
+                (char *)"tuningDisable",/* Member name */
                 {
                     23,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -451,281 +451,9 @@ namespace AutoDrillerConfiguration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"modelOneRateOfPenetrationRequestK",/* Member name */
-                {
-                    24,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelOneRateOfPenetrationRequestTau",/* Member name */
-                {
-                    25,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelOneTorqueRequestK",/* Member name */
-                {
-                    26,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelOneTorqueRequestTau",/* Member name */
-                {
-                    27,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelOneWeightOnBitRequestK",/* Member name */
-                {
-                    28,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelOneWeightOnBitRequestTau",/* Member name */
-                {
-                    29,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelTwoDifferentialPressureRequestK",/* Member name */
-                {
-                    30,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelTwoDifferentialPressureRequestTau",/* Member name */
-                {
-                    31,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelTwoRateOfPenetrationRequestK",/* Member name */
-                {
-                    32,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelTwoRateOfPenetrationRequestTau",/* Member name */
-                {
-                    33,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelTwoTorqueRequestK",/* Member name */
-                {
-                    34,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelTwoTorqueRequestTau",/* Member name */
-                {
-                    35,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelTwoWeightOnBitRequestK",/* Member name */
-                {
-                    36,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"modelTwoWeightOnBitRequestTau",/* Member name */
-                {
-                    37,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"status",/* Member name */
-                {
-                    38,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"tuningDisable",/* Member name */
-                {
-                    39,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
                 (char *)"tuningEnable",/* Member name */
                 {
-                    40,/* Representation ID */          
+                    24,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -751,7 +479,7 @@ namespace AutoDrillerConfiguration {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                41, /* Number of members */
+                25, /* Number of members */
                 HmiRequest_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for HmiRequest*/
@@ -764,7 +492,7 @@ namespace AutoDrillerConfiguration {
 
         HmiRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-        HmiRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
         HmiRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -796,7 +524,7 @@ namespace AutoDrillerConfiguration {
 
         HmiRequest_g_tc_members[17]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiRequest_g_tc_members[18]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+        HmiRequest_g_tc_members[18]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         HmiRequest_g_tc_members[19]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -804,43 +532,11 @@ namespace AutoDrillerConfiguration {
 
         HmiRequest_g_tc_members[21]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        HmiRequest_g_tc_members[22]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiRequest_g_tc_members[22]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-        HmiRequest_g_tc_members[23]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        HmiRequest_g_tc_members[23]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-        HmiRequest_g_tc_members[24]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[25]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[26]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[27]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[28]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[29]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[30]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[31]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[32]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[33]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[34]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[35]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[36]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[37]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-        HmiRequest_g_tc_members[38]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
-
-        HmiRequest_g_tc_members[39]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-        HmiRequest_g_tc_members[40]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+        HmiRequest_g_tc_members[24]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         is_initialized = RTI_TRUE;
 
@@ -881,70 +577,6 @@ namespace AutoDrillerConfiguration {
         allocParams)) {
             return RTI_FALSE;
         }
-
-        if (!RTICdrType_initDouble(&sample->differentialPressureKpCalculated)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->differentialPressureKpCurrent)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->differentialPressureTiCalculated)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->differentialPressureTiCurrent)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->rateOfPenetrationKpCalculated)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->rateOfPenetrationKpCurrent)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->rateOfPenetrationTiCalcualted)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->rateOfPenetrationTiCurrent)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->torqueKpCalculated)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->torqueKpCurrent)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->torqueTiCalculated)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->toqueTiCurrent)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->weightOnBitKpCalculated)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->weightOnBitKpCurrent)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->weightOnBitTiCalculated)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initDouble(&sample->weightOnBitTiCurrent)) {
-            return RTI_FALSE;
-        }     
 
         if (!RTICdrType_initLong(&sample->mode)) {
             return RTI_FALSE;
@@ -1112,70 +744,6 @@ namespace AutoDrillerConfiguration {
             &dst->timestamp, &src->timestamp)) {
             return RTI_FALSE;
         } 
-        if (!RTICdrType_copyDouble (
-            &dst->differentialPressureKpCalculated, &src->differentialPressureKpCalculated)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->differentialPressureKpCurrent, &src->differentialPressureKpCurrent)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->differentialPressureTiCalculated, &src->differentialPressureTiCalculated)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->differentialPressureTiCurrent, &src->differentialPressureTiCurrent)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->rateOfPenetrationKpCalculated, &src->rateOfPenetrationKpCalculated)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->rateOfPenetrationKpCurrent, &src->rateOfPenetrationKpCurrent)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->rateOfPenetrationTiCalcualted, &src->rateOfPenetrationTiCalcualted)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->rateOfPenetrationTiCurrent, &src->rateOfPenetrationTiCurrent)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->torqueKpCalculated, &src->torqueKpCalculated)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->torqueKpCurrent, &src->torqueKpCurrent)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->torqueTiCalculated, &src->torqueTiCalculated)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->toqueTiCurrent, &src->toqueTiCurrent)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->weightOnBitKpCalculated, &src->weightOnBitKpCalculated)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->weightOnBitKpCurrent, &src->weightOnBitKpCurrent)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->weightOnBitTiCalculated, &src->weightOnBitTiCalculated)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyDouble (
-            &dst->weightOnBitTiCurrent, &src->weightOnBitTiCurrent)) { 
-            return RTI_FALSE;
-        }
         if (!RTICdrType_copyLong (
             &dst->mode, &src->mode)) { 
             return RTI_FALSE;

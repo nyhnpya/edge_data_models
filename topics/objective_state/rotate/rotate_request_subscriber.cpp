@@ -9,6 +9,11 @@ CRotateRequestSubscriber::~CRotateRequestSubscriber()
 {
 }
 
+bool CRotateRequestSubscriber::ValidData()
+{
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CRotateRequestSubscriber::GetId(DataTypes::Uuid &id)
 {
     memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
@@ -57,6 +62,16 @@ void CRotateRequestSubscriber::OnDataAvailable(OnDataAvailableEvent event)
     m_pOnDataAvailable = event;
 }
 
+void CRotateRequestSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
+}
+
+void CRotateRequestSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
+}
+
 void CRotateRequestSubscriber::DataAvailable(const ProcessRotation::RotateRequest &data,
                                            const DDS::SampleInfo &sampleInfo)
 {
@@ -76,4 +91,12 @@ void CRotateRequestSubscriber::DataAvailable(const ProcessRotation::RotateReques
 void CRotateRequestSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
+}
+
+void CRotateRequestSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
+    }
 }

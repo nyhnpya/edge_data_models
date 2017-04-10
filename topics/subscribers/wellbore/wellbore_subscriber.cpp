@@ -9,6 +9,11 @@ CWellboreStateSubscriber::~CWellboreStateSubscriber()
 {
 }
 
+bool CWellboreStateSubscriber::ValidData()
+{
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CWellboreStateSubscriber::GetBitDepth(double &bitDepth)
 {
     bitDepth = m_data.bitDepth;
@@ -32,9 +37,19 @@ bool CWellboreStateSubscriber::Create(int32_t domain)
                                "EdgeBaseProfile");
 }
 
-void CWellboreStateSubscriber::OnDataAvailable(OnDtaAvailableEvent event)
+void CWellboreStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
+}
+
+void CWellboreStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+{
+    m_pOnDataDisposed = event;
+}
+
+void CWellboreStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
 }
 
 void CWellboreStateSubscriber::DataAvailable(const Downhole::Wellbore &data,
@@ -57,4 +72,17 @@ void CWellboreStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
+
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
+    }
+}
+
+void CWellboreStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
+    }
 }

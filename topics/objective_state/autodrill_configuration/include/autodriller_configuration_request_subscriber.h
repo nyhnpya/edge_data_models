@@ -18,6 +18,8 @@ class CAutoDrillerConfigurationRequestSubscriber : public TSubscriber< AutoDrill
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
     void OnDataDisposed(OnDataDisposedEvent event);
+    void OnLivelinessChanged(OnLivelinessChangedEvent event);
+    bool ValidData();
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
@@ -67,13 +69,16 @@ class CAutoDrillerConfigurationRequestSubscriber : public TSubscriber< AutoDrill
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
+    void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
  private:
     AutoDrillerConfiguration::HmiRequest m_data;
     DDS::SampleInfo                      m_sampleInfo;
+    DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent                 m_pOnDataAvailable;
     OnSubscriptionMatchedEvent           m_pOnSubscriptionMatched;
     OnDataDisposedEvent                  m_pOnDataDisposed;
+    OnLivelinessChangedEvent     m_pOnLivelinessChanged;
 };
 
 #endif // __AUTODRILLER_CONFIGURATION_REQUEST_SUBSCRIBER_H__

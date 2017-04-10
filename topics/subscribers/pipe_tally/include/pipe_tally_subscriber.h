@@ -10,14 +10,17 @@
 class CPipeTallyStateSubscriber : public TSubscriber< PipeHandling::PipeTally>
 {
 public:
-    typedef std::function<void(const PipeHandling::PipeTally &data)> onDataAvailableEvent;
+    typedef std::function<void(const PipeHandling::PipeTally &data)> OnDataAvailableEvent;
 
     /// @return singleton instance
     static CPipeTallyStateSubscriber *Instance(void);
     static void Destroy(void);
 
     bool Create(int32_t domain);
-    void OnDataAvailable(onDataAvailableEvent event);
+    void OnDataAvailable(OnDataAvailableEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
+    void OnLivelinessChanged(OnLivelinessChangedEvent event);
+    bool ValidData();
 
     // Topic getters
     bool GetSerialNumber(const char *serialNumber);
@@ -35,18 +38,22 @@ public:
 
 protected:
     ///Derived Methods
-    void DataAvailable(const PipeHandling::PipeTally &data,
-                       const DDS::SampleInfo &sampleInfo);
-
-    void DataDisposed(const DDS::SampleInfo &sampleInfo);
+    void OnDataAvailable(const PipeHandling::PipeTally &data,
+                         const DDS::SampleInfo &sampleInfo);
+    void OnDataDisposed(const DDS::SampleInfo &sampleInfo);
+    void OnLivelinessChanged(OnLivelinessChangedEvent event);
+    bool ValidData();
 
 private:
     CPipeTallyStateSubscriber();
     virtual ~CPipeTallyStateSubscriber();
 
-    PipeHandling::PipeTally m_data;
-    DDS::SampleInfo         m_sampleInfo;
-    onDataAvailableEvent    m_pOnDataAvailable;
+    PipeHandling::PipeTally      m_data;
+    DDS::SampleInfo              m_sampleInfo;
+    DDS::LivelinessChangedStatus m_livelinessStatus;
+    OnDataAvailableEvent         m_pOnDataAvailable;
+    OnDataDisposedEvent          m_pOnDataDisposed;
+    OnLivelinessChangedEvent     m_pOnLivelinessChanged;
 
     static CPipeTallyStateSubscriber *m_pInstance;
     static std::mutex                 m_mutex;

@@ -10,6 +10,11 @@ CAutoDrillerConfigurationRequestSubscriber::~CAutoDrillerConfigurationRequestSub
 {
 }
 
+bool CAutoDrillerConfigurationRequestSubscriber::ValidData()
+{
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CAutoDrillerConfigurationRequestSubscriber::GetId(DataTypes::Uuid &id)
 {
     memcpy(id, m_data.id, 16);
@@ -22,118 +27,6 @@ bool CAutoDrillerConfigurationRequestSubscriber::GetTimestamp(DataTypes::Time &t
     timestamp.sec = m_data.timestamp.sec;
     timestamp.nanosec = m_data.timestamp.nanosec;
 
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetDifferentialPressureKpCalculated(double &differentialPressureKpCalculated)
-{
-    differentialPressureKpCalculated = m_data.differentialPressureKpCalculated;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetDifferentialPressureKpCurrent(double &differentialPressureKpCurrent)
-{
-    differentialPressureKpCurrent = m_data.differentialPressureKpCurrent;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetDifferentialPressureTiCalculated(double &differentialPressureTiCalculated)
-{
-    differentialPressureTiCalculated = m_data.differentialPressureTiCalculated;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetDifferentialPressureTiCurrent(double &differentialPressureTiCurrent)
-{
-    differentialPressureTiCurrent = m_data.differentialPressureTiCurrent;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetRateOfPenetrationKpCalculated(double &rateOfPenetrationKpCalculated)
-{
-    rateOfPenetrationKpCalculated = m_data.rateOfPenetrationKpCalculated;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetRateOfPenetrationKpCurrent(double &rateOfPenetrationKpCurrent)
-{
-    rateOfPenetrationKpCurrent = m_data.rateOfPenetrationKpCurrent;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetRateOfPenetrationTiCalcualted(double &rateOfPenetrationTiCalcualted)
-{
-    rateOfPenetrationTiCalcualted = m_data.rateOfPenetrationTiCalcualted;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetRateOfPenetrationTiCurrent(double &rateOfPenetrationTiCurrent)
-{
-    rateOfPenetrationTiCurrent = m_data.rateOfPenetrationTiCurrent;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetTorqueKpCalculated(double &torqueKpCalculated)
-{
-    torqueKpCalculated = m_data.torqueKpCalculated;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetTorqueKpCurrent(double &torqueKpCurrent)
-{
-    torqueKpCurrent = m_data.torqueKpCurrent;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetTorqueTiCalculated(double &torqueTiCalculated)
-{
-    torqueTiCalculated = m_data.torqueTiCalculated;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetToqueTiCurrent(double &toqueTiCurrent)
-{
-    toqueTiCurrent = m_data.toqueTiCurrent;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetWeightOnBitKpCalculated(double &weightOnBitKpCalculated)
-{
-    weightOnBitKpCalculated = m_data.weightOnBitKpCalculated;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetWeightOnBitKpCurrent(double &weightOnBitKpCurrent)
-{
-    weightOnBitKpCurrent = m_data.weightOnBitKpCurrent;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetWeightOnBitTiCalculated(double &weightOnBitTiCalculated)
-{
-    weightOnBitTiCalculated = m_data.weightOnBitTiCalculated;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetWeightOnBitTiCurrent(double &weightOnBitTiCurrent)
-{
-    weightOnBitTiCurrent = m_data.weightOnBitTiCurrent;
-    
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
@@ -307,6 +200,11 @@ void CAutoDrillerConfigurationRequestSubscriber::OnSubscriptionMatched(OnSubscri
     m_pOnSubscriptionMatched = event;
 }
 
+void CAutoDrillerConfigurationRequestSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+{
+    m_pOnLivelinessChanged = event;
+}
+
 bool CAutoDrillerConfigurationRequestSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
@@ -322,48 +220,7 @@ void CAutoDrillerConfigurationRequestSubscriber::DataAvailable(const AutoDriller
 
     if (sampleInfo.valid_data == true)
     {
-        memcpy(m_data.id, data.id, 16);
-        m_data.timestamp.sec = data.timestamp.sec;
-        m_data.timestamp.nanosec = data.timestamp.nanosec;
-        m_data.differentialPressureKpCalculated = data.differentialPressureKpCalculated;
-        m_data.differentialPressureKpCurrent = data.differentialPressureKpCurrent;
-        m_data.differentialPressureTiCalculated = data.differentialPressureTiCalculated;
-        m_data.differentialPressureTiCurrent = data.differentialPressureTiCurrent;
-        m_data.rateOfPenetrationKpCalculated = data.rateOfPenetrationKpCalculated;
-        m_data.rateOfPenetrationKpCurrent = data.rateOfPenetrationKpCurrent;
-        m_data.rateOfPenetrationTiCalcualted = data.rateOfPenetrationTiCalcualted;
-        m_data.rateOfPenetrationTiCurrent = data.rateOfPenetrationTiCurrent;
-        m_data.torqueKpCalculated = data.torqueKpCalculated;
-        m_data.torqueKpCurrent = data.torqueKpCurrent;
-        m_data.torqueTiCalculated = data.torqueTiCalculated;
-        m_data.toqueTiCurrent = data.toqueTiCurrent;
-        m_data.weightOnBitKpCalculated = data.weightOnBitKpCalculated;
-        m_data.weightOnBitKpCurrent = data.weightOnBitKpCurrent;
-        m_data.weightOnBitTiCalculated = data.weightOnBitTiCalculated;
-        m_data.weightOnBitTiCurrent = data.weightOnBitTiCurrent;
-        m_data.mode = data.mode;
-        m_data.modeController = data.modeController;
-        m_data.onDataAvailable = data.onDataAvailable;
-        m_data.onLivelinessLost = data.onLivelinessLost;
-        m_data.modelOneDifferentialPressureRequestK = data.modelOneDifferentialPressureRequestK;
-        m_data.modelOneDifferentialPressureRequestTau = data.modelOneDifferentialPressureRequestTau;
-        m_data.modelOneRateOfPenetrationRequestK = data.modelOneRateOfPenetrationRequestK;
-        m_data.modelOneRateOfPenetrationRequestTau = data.modelOneRateOfPenetrationRequestTau;
-        m_data.modelOneTorqueRequestK = data.modelOneTorqueRequestK;
-        m_data.modelOneTorqueRequestTau = data.modelOneTorqueRequestTau;
-        m_data.modelOneWeightOnBitRequestK = data.modelOneWeightOnBitRequestK;
-        m_data.modelOneWeightOnBitRequestTau = data.modelOneWeightOnBitRequestTau;
-        m_data.modelTwoDifferentialPressureRequestK = data.modelTwoDifferentialPressureRequestK;
-        m_data.modelTwoDifferentialPressureRequestTau = data.modelTwoDifferentialPressureRequestTau;
-        m_data.modelTwoRateOfPenetrationRequestK = data.modelTwoRateOfPenetrationRequestK;
-        m_data.modelTwoRateOfPenetrationRequestTau = data.modelTwoRateOfPenetrationRequestTau;
-        m_data.modelTwoTorqueRequestK = data.modelTwoTorqueRequestK;
-        m_data.modelTwoTorqueRequestTau = data.modelTwoTorqueRequestTau;
-        m_data.modelTwoWeightOnBitRequestK = data.modelTwoWeightOnBitRequestK;
-        m_data.modelTwoWeightOnBitRequestTau = data.modelTwoWeightOnBitRequestTau;
-        m_data.status = data.status;
-        m_data.tuningDisable = data.tuningDisable;
-        m_data.tuningEnable = data.tuningEnable;
+        m_data = data;
 
         if (m_pOnDataAvailable != nullptr)
         {
@@ -388,5 +245,13 @@ void CAutoDrillerConfigurationRequestSubscriber::SubscriptionMatched(const DDS::
     if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);
+    }
+}
+
+void CAutoDrillerConfigurationRequestSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+{
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
     }
 }

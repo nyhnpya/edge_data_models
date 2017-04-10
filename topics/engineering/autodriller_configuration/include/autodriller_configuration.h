@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autodriller_configuration_730534578_h
-#define autodriller_configuration_730534578_h
+#ifndef autodriller_configuration_730533907_h
+#define autodriller_configuration_730533907_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -45,22 +45,6 @@ namespace AutoDrillerConfiguration {
 
         DataTypes::Uuid   id ;
         DataTypes::Time   timestamp ;
-        DDS_Double   differentialPressureKpCalculated ;
-        DDS_Double   differentialPressureKpCurrent ;
-        DDS_Double   differentialPressureTiCalculated ;
-        DDS_Double   differentialPressureTiCurrent ;
-        DDS_Double   rateOfPenetrationKpCalculated ;
-        DDS_Double   rateOfPenetrationKpCurrent ;
-        DDS_Double   rateOfPenetrationTiCalcualted ;
-        DDS_Double   rateOfPenetrationTiCurrent ;
-        DDS_Double   torqueKpCalculated ;
-        DDS_Double   torqueKpCurrent ;
-        DDS_Double   torqueTiCalculated ;
-        DDS_Double   toqueTiCurrent ;
-        DDS_Double   weightOnBitKpCalculated ;
-        DDS_Double   weightOnBitKpCurrent ;
-        DDS_Double   weightOnBitTiCalculated ;
-        DDS_Double   weightOnBitTiCurrent ;
         DDS_Long   mode ;
         DDS_Double   modeController ;
         DDS_Double   onDataAvailable ;
