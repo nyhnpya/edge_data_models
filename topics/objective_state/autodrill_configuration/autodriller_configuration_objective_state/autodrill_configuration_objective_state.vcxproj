@@ -145,10 +145,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\autodriller_configuration_request_publisher.cpp" />
+    <ClCompile Include="..\autodriller_configuration_request_subscriber.cpp" />
     <ClCompile Include="..\autodriller_configuration_state_publisher.cpp" />
     <ClCompile Include="..\autodriller_configuration_state_subscriber.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\autodriller_configuration_request_publisher.h" />
+    <ClInclude Include="..\include\autodriller_configuration_request_subscriber.h" />
     <ClInclude Include="..\include\autodriller_configuration_state_publisher.h" />
     <ClInclude Include="..\include\autodriller_configuration_state_subscriber.h" />
   </ItemGroup>

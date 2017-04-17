@@ -172,14 +172,14 @@ bool CAutoDrillerConfigurationRequestSubscriber::GetStatus(long &status)
 
 bool CAutoDrillerConfigurationRequestSubscriber::GetTuningDisable(bool &tuningDisable)
 {
-    tuningDisable = m_data.tuningDisable;
+    tuningDisable = (m_data.tuningDisable == DDS_BOOLEAN_TRUE);
     
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
 bool CAutoDrillerConfigurationRequestSubscriber::GetTuningEnable(bool &tuningEnable)
 {
-    tuningEnable = m_data.tuningEnable;
+    tuningEnable = (m_data.tuningEnable == DDS_BOOLEAN_TRUE);
     
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
@@ -218,7 +218,7 @@ void CAutoDrillerConfigurationRequestSubscriber::DataAvailable(const AutoDriller
 {
     m_sampleInfo = sampleInfo;
 
-    if (sampleInfo.valid_data == true)
+    if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
         m_data = data;
 

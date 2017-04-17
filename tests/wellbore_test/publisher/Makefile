@@ -12,7 +12,7 @@
 # TARG_DESCRIPTION   - Brief description of the package for debian control file
 #
 ###############################################################################
-include ../../../../../Makefiles/Makefile.platform
+include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1

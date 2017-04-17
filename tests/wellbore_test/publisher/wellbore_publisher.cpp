@@ -140,7 +140,7 @@ int32_t main(int32_t argc, char **argv)
     CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
     CDomainParticipant::Instance()->Create(domain);
 
-    gpStatePublisher = CWellboreStatePublisher::Instance();
+    gpStatePublisher = new CWellboreStatePublisher();
 
     if (gpStatePublisher->Create(domain) == true)
     {
