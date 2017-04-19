@@ -112,7 +112,7 @@ int32_t main(int32_t argc, char **argv)
     CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
     CDomainParticipant::Instance()->Create(domain);
 
-    CWellboreStateSubscriber *pSubscriber = CWellboreStateSubscriber::Instance();
+    CWellboreStateSubscriber *pSubscriber = new CWellboreStateSubscriber();
 
     if (pSubscriber->Create(domain) == true)
     {

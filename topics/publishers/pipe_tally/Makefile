@@ -21,12 +21,6 @@ TARG_BUILD_VERSION = 0
 TARGET_TYPE = library
 TARGET_NAME = pipe_tally_publisher
 
-PACKAGE_DESCRIPTION = "Ensign EDGE Pipe_Tally Library"
-PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Pipe_Tally Library"
-PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
-PACKAGE_DEPENDENCIES = 
-PACKAGE_DEV_DEPENDENCIES = 
-PACKAGE_LICENSE = "MIT License"
 
 ###############################################################################
 # compilation flags
@@ -44,6 +38,13 @@ TARG_SOURCES = pipe_tally_publisher.cpp
 # Installation section
 ###############################################################################
 
+# package control file
+PACKAGE_DESCRIPTION = "Ensign EDGE Pipe_Tally Library"
+PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Pipe_Tally Library"
+PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
+PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
+PACKAGE_LICENSE = "MIT License"
 
 # package include files
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/pipe_tally_publisher.h

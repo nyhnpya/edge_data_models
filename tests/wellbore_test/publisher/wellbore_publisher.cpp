@@ -5,6 +5,7 @@
 #endif
 #include <signal.h>
 #include <string.h>
+#include <thread>
 #include "cmdparser.h"
 #include "wellbore_publisher.h"
 
@@ -13,6 +14,7 @@ int32_t gHoleDepth = -1;
 int32_t gBitDepth = -1;
 
 CWellboreStatePublisher *gpStatePublisher = nullptr;
+std::thread threadId;
 
 #ifdef _LINUX
 void SignalHandler(int32_t signal)
@@ -69,6 +71,19 @@ void register_signal_handler()
 }
 #endif
 
+void publish_thread()
+{
+    while (gTerminate == false)
+    {
+        gpStatePublisher->PublishSample();
+        gBitDepth += 1;
+        gHoleDepth += 1;
+        gpStatePublisher->SetBitDepth(gBitDepth);
+        gpStatePublisher->SetHoleDepth(gHoleDepth);
+        usleep(100 * 1000);
+    }
+}
+
 void set_bit_depth()
 {
     std::cout << "Bit Depth: ";
@@ -95,6 +110,7 @@ void top_level_menu()
         std::cout << "1. Publish bit depth and hole depth" << std::endl;
         std::cout << "2. Publish bit depth" << std::endl;
         std::cout << "3. Publish hole depth" << std::endl;
+        std::cout << "4. Publish bit depth and hole depth continuously" << std::endl;
         std::cout << "q. exit" << std::endl;
         std::cout << "option: ";
         std::cin >> choice;
@@ -117,6 +133,11 @@ void top_level_menu()
             case '3':
                 set_hole_depth();
                 gpStatePublisher->PublishSample();
+                break;
+            case '4':
+                set_bit_depth();
+                set_hole_depth();
+                threadId = std::thread(publish_thread);
                 break;
         }
     } while (gTerminate == false);

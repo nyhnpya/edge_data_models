@@ -21,13 +21,6 @@ TARG_BUILD_VERSION = 0
 TARGET_TYPE = library
 TARGET_NAME = circulate_objective_state
 
-PACKAGE_DESCRIPTION = "Library package for the Ensign circulate_request API."
-PACKAGE_EXTENDED_DESCRIPTION = "core files for Ensign circulate_request API development."
-PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
-PACKAGE_DEPENDENCIES = 
-PACKAGE_DEV_DEPENDENCIES = 
-PACKAGE_LICENSE = "MIT License"
-
 ###############################################################################
 # compilation flags
 ###############################################################################
@@ -56,11 +49,16 @@ TARG_SOURCES += circulate_state_subscriber.cpp
 ###############################################################################
 # Installation section
 ###############################################################################
-# Package Dependencies
-PACKAGE_DEPENDENCIES =
-PACKAGE_DEV_DEPENDENCIES =
 
-# Install include files
+# package control file
+PACKAGE_DESCRIPTION = "Library package for the Ensign circulate_request API."
+PACKAGE_EXTENDED_DESCRIPTION = "core files for Ensign circulate_request API development."
+PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
+PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
+PACKAGE_LICENSE = "Closed License"
+
+# package Install include files
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/circulate_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/circulate_request_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/circulate_objective_publisher.h

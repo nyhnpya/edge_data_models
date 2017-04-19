@@ -41,6 +41,9 @@ TARG_SOURCES += configurationSupport.cxx
 PACKAGE_DESCRIPTION = "Ensign EDGE Configuration Library"
 PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Configuration Library"
 PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
+PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
+PACKAGE_LICENSE = "Closed License"
 
 # package include files
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/configuration.h

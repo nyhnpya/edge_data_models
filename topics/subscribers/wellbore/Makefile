@@ -21,13 +21,6 @@ TARG_BUILD_VERSION = 0
 TARGET_TYPE = library
 TARGET_NAME = wellbore_subscriber
 
-PACKAGE_DESCRIPTION = "Ensign EDGE Wellbore Library"
-PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Wellbore Library"
-PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
-PACKAGE_DEPENDENCIES = 
-PACKAGE_DEV_DEPENDENCIES = 
-PACKAGE_LICENSE = "MIT License"
-
 ###############################################################################
 # compilation flags
 ###############################################################################
@@ -45,11 +38,16 @@ TARG_SOURCES = wellbore_subscriber.cpp
 # Installation section
 ###############################################################################
 
+# package control file
+PACKAGE_DESCRIPTION = "Ensign EDGE Wellbore Library"
+PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Wellbore Library"
+PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
+PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
+PACKAGE_LICENSE = "Closed License"
 
 # package include files
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wellbore_subscriber.h
-
-# package configuration files
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(TOP_DIR)/edge_data_models/package

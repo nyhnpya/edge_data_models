@@ -42,6 +42,9 @@ TARG_SOURCES += pipe_tallySupport.cxx
 PACKAGE_DESCRIPTION = "Ensign EDGE Pipe_Tally Library"
 PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Pipe_Tally Library"
 PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
+PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types
+PACKAGE_LICENSE = "Closed License"
 
 # package include files
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/pipe_tally.h

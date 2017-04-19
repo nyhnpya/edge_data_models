@@ -21,10 +21,6 @@ TARG_BUILD_VERSION = 0
 TARGET_TYPE = library
 TARGET_NAME = autodriller_configuration
 
-PACKAGE_DESCRIPTION = "Ensign EDGE Autodriller_Configuration Library"
-PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Autodriller_Configuration Library"
-PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
-
 ###############################################################################
 # compilation flags
 ###############################################################################
@@ -41,12 +37,18 @@ TARG_SOURCES += autodriller_configurationSupport.cxx
 # Installation section
 ###############################################################################
 
+# package control file
+PACKAGE_DESCRIPTION = "Ensign EDGE Autodriller_Configuration Library"
+PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Autodriller_Configuration Library"
+PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
+PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
+PACKAGE_LICENSE = "Closed License"
+
 # package include files
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configuration.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configurationPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configurationSupport.h
-
-# package configuration files
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(TOP_DIR)/edge_data_models/package

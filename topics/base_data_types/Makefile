@@ -40,6 +40,9 @@ TARG_SOURCES += base_data_typesSupport.cxx
 PACKAGE_DESCRIPTION = "Ensign EDGE Base_Data_Types Library"
 PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Base_Data_Types Library"
 PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
+PACKAGE_DEPENDENCIES = liblogger, libdds_base
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev
+PACKAGE_LICENSE = "Closed License"
 
 # package include files
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/base_data_types.h
