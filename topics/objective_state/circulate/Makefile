@@ -1,6 +1,4 @@
 ###############################################################################
-# liblogger Library Makefile
-###############################################################################
 #
 # The following variables must be set for the makefile to work correctly
 #
@@ -9,7 +7,6 @@
 # TARG_BUILD_VERSION - Version number patch
 # TARGET_TYPE        - library, staticlib, executable, unittest or thirdparty
 # TARGET_NAME        - Name of final executable/library
-# TARG_DESCRIPTION   - Brief description of the package for debian control file
 #
 ###############################################################################
 include ../../../../Makefiles/Makefile.platform
@@ -24,18 +21,12 @@ TARGET_NAME = circulate_objective_state
 ###############################################################################
 # compilation flags
 ###############################################################################
-# Options
-TARG_OPTIONS += -ggdb
-
-# Libraries
-TARG_LIBS +=
 
 # Includes
 TARG_INCLUDES += -I /usr/local/include/dds_base
 TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/base_data_types/include
 TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/process/circulate/include
-TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/subscribers/circulate/include
 TARG_INCLUDES += -I $(CURDIR)/include
 
 # Sources
@@ -54,8 +45,8 @@ TARG_SOURCES += circulate_state_subscriber.cpp
 PACKAGE_DESCRIPTION = "Library package for the Ensign circulate_request API."
 PACKAGE_EXTENDED_DESCRIPTION = "core files for Ensign circulate_request API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
-PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
-PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
+PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libcirculate
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libcirculate-dev
 PACKAGE_LICENSE = "Closed License"
 
 # package Install include files

@@ -1,15 +1,12 @@
 ###############################################################################
-# liblogger Library Makefile
-###############################################################################
 #
 # The following variables must be set for the makefile to work correctly
 #
 # TARG_BUILD_MAJOR   - Version number major
 # TARG_BUILD_MINOR   - Version number minor
 # TARG_BUILD_VERSION - Version number patch
-# TARGET_TYPE          - library, staticlib, executable, unittest or thirdparty
-# TARGET_NAME          - Name of final executable/library
-# TARG_DESCRIPTION   - Brief description of the package for debian control file
+# TARGET_TYPE        - library, staticlib, executable, unittest or thirdparty
+# TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
 include ../../../../Makefiles/Makefile.platform
@@ -49,8 +46,6 @@ PACKAGE_LICENSE = "Closed License"
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drillingPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drillingSupport.h
-
-# package configuration files
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(TOP_DIR)/edge_data_models/package

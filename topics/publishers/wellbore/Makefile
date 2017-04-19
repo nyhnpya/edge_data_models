@@ -1,6 +1,4 @@
 ###############################################################################
-# liblogger Library Makefile
-###############################################################################
 #
 # The following variables must be set for the makefile to work correctly
 #
@@ -42,8 +40,8 @@ TARG_SOURCES = wellbore_publisher.cpp
 PACKAGE_DESCRIPTION = "Ensign EDGE Wellbore Library"
 PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Wellbore Library"
 PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
-PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
-PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
+PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libwellbore
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libwellbore-dev
 PACKAGE_LICENSE = "Closed License"
 
 # package include files

@@ -51,8 +51,6 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/pipe_tally.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/pipe_tallyPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/pipe_tallySupport.h
 
-# package configuration files
-
 # package installation directory
 PACKAGE_INSTALL_DIR += $(TOP_DIR)/edge_data_models/package
 

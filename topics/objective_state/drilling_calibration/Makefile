@@ -1,6 +1,4 @@
 ###############################################################################
-# liblogger Library Makefile
-###############################################################################
 #
 # The following variables must be set for the makefile to work correctly
 #
@@ -9,7 +7,6 @@
 # TARG_BUILD_VERSION - Version number patch
 # TARGET_TYPE        - library, staticlib, executable, unittest or thirdparty
 # TARGET_NAME        - Name of final executable/library
-# TARG_DESCRIPTION   - Brief description of the package for debian control file
 #
 ###############################################################################
 include ../../../../Makefiles/Makefile.platform
@@ -24,12 +21,6 @@ TARGET_NAME = drilling_calibration_objective_state
 ###############################################################################
 # compilation flags
 ###############################################################################
-# Options
-TARG_OPTIONS += -ggdb
-
-# Libraries
-TARG_LIBS +=
-
 # Includes
 TARG_INCLUDES += -I /usr/local/include/dds_base
 TARG_INCLUDES += -I /usr/local/include/logger

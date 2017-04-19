@@ -1,15 +1,12 @@
 ###############################################################################
-# liblogger Library Makefile
-###############################################################################
 #
 # The following variables must be set for the makefile to work correctly
 #
 # TARG_BUILD_MAJOR   - Version number major
 # TARG_BUILD_MINOR   - Version number minor
 # TARG_BUILD_VERSION - Version number patch
-# TARGET_TYPE          - library, staticlib, executable, unittest or thirdparty
-# TARGET_NAME          - Name of final executable/library
-# TARG_DESCRIPTION   - Brief description of the package for debian control file
+# TARGET_TYPE        - library, staticlib, executable, unittest or thirdparty
+# TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
 include ../../../../Makefiles/Makefile.platform
@@ -41,8 +38,8 @@ TARG_SOURCES = pipe_tally_subscriber.cpp
 PACKAGE_DESCRIPTION = "Ensign EDGE Pipe_Tally Library"
 PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Pipe_Tally Library"
 PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
-PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
-PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
+PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libpipe_tally
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libpipe_tally-dev
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
