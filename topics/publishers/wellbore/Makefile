@@ -5,9 +5,8 @@
 # TARG_BUILD_MAJOR   - Version number major
 # TARG_BUILD_MINOR   - Version number minor
 # TARG_BUILD_VERSION - Version number patch
-# TARGET_TYPE          - library, staticlib, executable, unittest or thirdparty
-# TARGET_NAME          - Name of final executable/library
-# TARG_DESCRIPTION   - Brief description of the package for debian control file
+# TARGET_TYPE        - library, staticlib, executable, unittest or thirdparty
+# TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
 include ../../../../Makefiles/Makefile.platform
