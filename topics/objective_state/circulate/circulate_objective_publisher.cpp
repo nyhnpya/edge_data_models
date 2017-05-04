@@ -1,3 +1,4 @@
+#include "dds_uuid.h"
 #include "circulate_objective_publisher.h"
 
 CCirculateObjectivePublisher::CCirculateObjectivePublisher()
@@ -6,6 +7,16 @@ CCirculateObjectivePublisher::CCirculateObjectivePublisher()
 
 CCirculateObjectivePublisher::~CCirculateObjectivePublisher()
 {
+}
+
+bool CCirculateObjectivePublisher::Initialize()
+{
+    CDdsUuid uuid;
+
+    uuid.GenerateUuid();
+    uuid.ExportUuid(m_pDataInstance->id);
+
+    return true;
 }
 
 void CCirculateObjectivePublisher::SetId(const DataTypes::Uuid id)

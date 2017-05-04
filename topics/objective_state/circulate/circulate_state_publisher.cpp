@@ -1,3 +1,4 @@
+#include "dds_uuid.h"
 #include "circulate_state_publisher.h"
 
 CCirculateStatePublisher::CCirculateStatePublisher()
@@ -6,6 +7,16 @@ CCirculateStatePublisher::CCirculateStatePublisher()
 
 CCirculateStatePublisher::~CCirculateStatePublisher()
 {
+}
+
+bool CCirculateStatePublisher::Initialize()
+{
+    CDdsUuid uuid;
+
+    uuid.GenerateUuid();
+    uuid.ExportUuid(m_pDataInstance->id);
+
+    return true;
 }
 
 void CCirculateStatePublisher::SetId(const DataTypes::Uuid id)

@@ -12,6 +12,7 @@ class CHoistObjectivePublisher : public TPublisher< ProcessHoist::HoistObjective
     ~CHoistObjectivePublisher();
 
     bool Create(int32_t domain);
+    bool Initialize();
     bool PublishSample();
 
     void SetId(const DataTypes::Uuid &id);

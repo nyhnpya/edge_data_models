@@ -1,3 +1,4 @@
+#include "dds_uuid.h"
 #include "pipe_tally_publisher.h"
 
 //----------------------------------------------

@@ -1,3 +1,4 @@
+#include "dds_uuid.h"
 #include "objective_publisher.h"
 
 CObjectiveStatePublisher::CObjectiveStatePublisher()
@@ -6,6 +7,16 @@ CObjectiveStatePublisher::CObjectiveStatePublisher()
 
 CObjectiveStatePublisher::~CObjectiveStatePublisher()
 {
+}
+
+bool CObjectiveStatePublisher::Initialize()
+{
+    CDdsUuid uuid;
+
+    uuid.GenerateUuid();
+    uuid.ExportUuid(m_pDataInstance->id);
+
+    return true;
 }
 
 void CObjectiveStatePublisher::SetObjective(DataTypes::Objective objective)
@@ -22,16 +33,15 @@ void CObjectiveStatePublisher::SetObjective(DataTypes::Objective objective)
 
 bool CObjectiveStatePublisher::PublishSample()
 {
-    bool bRetVal = false;
-
+    bool       retVal = false;
     DDS_Time_t currentTime;
 
     GetParticipant()->get_current_time(currentTime);
     m_pDataInstance->timestamp.sec = currentTime.sec;
     m_pDataInstance->timestamp.nanosec = currentTime.nanosec;
-    bRetVal = Publish();
+    retVal = Publish();
 
-    return bRetVal;
+    return retVal;
 }
 
 bool CObjectiveStatePublisher::Create(int32_t domain)

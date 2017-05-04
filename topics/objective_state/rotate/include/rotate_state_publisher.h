@@ -12,6 +12,7 @@ class CRotateStatePublisher : public TPublisher< ProcessRotation::RotateState >
     ~CRotateStatePublisher();
 
     bool Create(int32_t domain);
+    bool Initialize();
     bool PublishSample();
 
     void SetId(const DataTypes::Uuid id);

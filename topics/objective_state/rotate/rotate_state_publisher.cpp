@@ -1,3 +1,4 @@
+#include "dds_uuid.h"
 #include "rotate_state_publisher.h"
 
 CRotateStatePublisher::CRotateStatePublisher()
@@ -6,6 +7,16 @@ CRotateStatePublisher::CRotateStatePublisher()
 
 CRotateStatePublisher::~CRotateStatePublisher()
 {
+}
+
+bool CRotateStatePublisher::Initialize()
+{
+    CDdsUuid uuid;
+
+    uuid.GenerateUuid();
+    uuid.ExportUuid(m_pDataInstance->id);
+
+    return true;
 }
 
 void CRotateStatePublisher::SetId(const DataTypes::Uuid id)

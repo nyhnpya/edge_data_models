@@ -13,6 +13,7 @@ class CDrillingRequestPublisher : public TPublisher< Hoisting::DrillingRequest >
     ~CDrillingRequestPublisher();
 
     bool Create(int32_t domain);
+    bool Initialize();
     bool PublishSample();
 
     // Topic getters

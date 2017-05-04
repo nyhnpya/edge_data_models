@@ -13,6 +13,7 @@ class CDrillingCalibrationRequestPublisher : public TPublisher< CalibrationHoist
     ~CDrillingCalibrationRequestPublisher();
 
     bool Create(int32_t domain);
+    bool Initialize();
     bool PublishSample();
 
     // Topic getters

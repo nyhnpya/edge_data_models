@@ -7,13 +7,14 @@
 #include "wellbore.h"
 #include "wellboreSupport.h"
 
-class CWellboreStatePublisher : public TPublisher< Downhole::Wellbore>
+class CWellboreStatePublisher : public TPublisher<Downhole::Wellbore>
 {
 public:
     CWellboreStatePublisher();
     virtual ~CWellboreStatePublisher();
 
     bool Create(int32_t domain);
+    bool Initialize();
     bool PublishSample();
 
     // Topic getters

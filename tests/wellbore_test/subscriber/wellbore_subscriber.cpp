@@ -69,6 +69,7 @@ void get_depths(const Downhole::Wellbore &data)
     attron(COLOR_PAIR(1));
     mvprintw(2, 1, "Bit depth: [%6.2f]", data.bitDepth);
     mvprintw(3, 1, "Hole depth: [%6.2f]", data.holeDepth);
+    mvprintw(4, 1, "Timestamp: [%d]:[%d]", data.timestamp.sec, data.timestamp.nanosec);
     attroff(COLOR_PAIR(1));
 
     refresh();

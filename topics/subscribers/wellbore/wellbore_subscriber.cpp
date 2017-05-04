@@ -60,6 +60,8 @@ void CWellboreStateSubscriber::DataAvailable(const Downhole::Wellbore &data,
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
         m_data = data;
+        m_data.timestamp.sec = sampleInfo.source_timestamp.sec;
+        m_data.timestamp.nanosec = sampleInfo.source_timestamp.nanosec;
 
         if (m_pOnDataAvailable != nullptr)
         {

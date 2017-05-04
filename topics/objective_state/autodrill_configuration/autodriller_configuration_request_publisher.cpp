@@ -1,3 +1,4 @@
+#include "dds_uuid.h"
 #include "autodriller_configuration_request_publisher.h"
 
 CAutoDrillerConfigurationRequestPublisher::CAutoDrillerConfigurationRequestPublisher()
@@ -6,6 +7,16 @@ CAutoDrillerConfigurationRequestPublisher::CAutoDrillerConfigurationRequestPubli
 
 CAutoDrillerConfigurationRequestPublisher::~CAutoDrillerConfigurationRequestPublisher()
 {
+}
+
+bool CAutoDrillerConfigurationRequestPublisher::Initialize()
+{
+    CDdsUuid uuid;
+
+    uuid.GenerateUuid();
+    uuid.ExportUuid(m_pDataInstance->id);
+
+    return true;
 }
 
 void CAutoDrillerConfigurationRequestPublisher::SetId(const DataTypes::Uuid id)

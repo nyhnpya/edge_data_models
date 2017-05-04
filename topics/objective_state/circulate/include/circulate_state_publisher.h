@@ -12,6 +12,7 @@ class CCirculateStatePublisher : public TPublisher< ProcessCirculation::Circulat
     ~CCirculateStatePublisher();
 
     bool Create(int32_t domain);
+    bool Initialize();
     bool PublishSample();
 
     void SetId(const DataTypes::Uuid id);

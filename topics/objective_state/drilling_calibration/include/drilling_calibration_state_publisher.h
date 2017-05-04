@@ -13,6 +13,7 @@ class CDrillingCalibrationStatePublisher : public TPublisher< CalibrationHoistin
     ~CDrillingCalibrationStatePublisher();
 
     bool Create(int32_t domain);
+    bool Initialize();
     bool PublishSample();
 
     // Topic getters

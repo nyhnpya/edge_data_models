@@ -12,6 +12,7 @@ class CRotateObjectivePublisher : public TPublisher< ProcessRotation::RotateObje
     ~CRotateObjectivePublisher();
 
     bool Create(int32_t domain);
+    bool Initialize();
     bool PublishSample();
 
     void SetId(const DataTypes::Uuid id);

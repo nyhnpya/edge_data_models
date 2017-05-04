@@ -1,3 +1,4 @@
+#include "dds_uuid.h"
 #include "drilling_calibration_state_publisher.h"
 
 CDrillingCalibrationStatePublisher::CDrillingCalibrationStatePublisher()
@@ -6,6 +7,16 @@ CDrillingCalibrationStatePublisher::CDrillingCalibrationStatePublisher()
 
 CDrillingCalibrationStatePublisher::~CDrillingCalibrationStatePublisher()
 {
+}
+
+bool CDrillingCalibrationStatePublisher::Initialize()
+{
+    CDdsUuid uuid;
+
+    uuid.GenerateUuid();
+    uuid.ExportUuid(m_pDataInstance->id);
+
+    return true;
 }
 
 void CDrillingCalibrationStatePublisher::SetId(const DataTypes::Uuid id)

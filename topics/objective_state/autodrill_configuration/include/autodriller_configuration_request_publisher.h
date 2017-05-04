@@ -13,6 +13,7 @@ class CAutoDrillerConfigurationRequestPublisher : public TPublisher< AutoDriller
     ~CAutoDrillerConfigurationRequestPublisher();
 
     bool Create(int32_t domain);
+    bool Initialize();
     bool PublishSample();
 
     // Topic getters

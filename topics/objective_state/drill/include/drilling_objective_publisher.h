@@ -13,6 +13,7 @@ class CDrillingObjectivePublisher : public TPublisher< Hoisting::DrillingObjecti
     ~CDrillingObjectivePublisher();
 
     bool Create(int32_t domain);
+    bool Initialize();
     bool PublishSample();
 
     // setters

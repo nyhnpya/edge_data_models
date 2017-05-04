@@ -13,6 +13,7 @@ class CAutoDrillerConfigurationStatePublisher : public TPublisher< AutoDrillerCo
     ~CAutoDrillerConfigurationStatePublisher();
 
     bool Create(int32_t domain);
+    bool Initialize();
     bool PublishSample();
 
     // Topic getters

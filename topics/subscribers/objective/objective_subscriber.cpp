@@ -53,8 +53,8 @@ void CObjectiveStateSubscriber::DataAvailable(const Plan::ObjectiveState &data,
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
         memcpy(m_data.id, data.id, 16);
-        m_data.timestamp.sec = data.timestamp.sec;
-        m_data.timestamp.nanosec = data.timestamp.nanosec;
+        m_data.timestamp.sec = sampleInfo.source_timestamp.sec;
+        m_data.timestamp.nanosec = sampleInfo.source_timestamp.nanosec;
         m_data.objective = data.objective;
 
         if (m_pOnDataAvailable != nullptr)

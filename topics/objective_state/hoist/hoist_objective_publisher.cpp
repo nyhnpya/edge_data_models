@@ -1,3 +1,4 @@
+#include "dds_uuid.h"
 #include "hoist_objective_publisher.h"
 
 CHoistObjectivePublisher::CHoistObjectivePublisher()
@@ -6,6 +7,16 @@ CHoistObjectivePublisher::CHoistObjectivePublisher()
 
 CHoistObjectivePublisher::~CHoistObjectivePublisher()
 {
+}
+
+bool CHoistObjectivePublisher::Initialize()
+{
+    CDdsUuid uuid;
+
+    uuid.GenerateUuid();
+    uuid.ExportUuid(m_pDataInstance->id);
+
+    return true;
 }
 
 void CHoistObjectivePublisher::SetId(const DataTypes::Uuid &id)

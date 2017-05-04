@@ -36,6 +36,7 @@ TARG_INCLUDES += -I /usr/local/include/wellbore_subscriber
 TARG_SOURCES = wellbore_subscriber.cpp
 
 # Libraries
+TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
 TARG_LIBS += -L /usr/local/lib 
 TARG_LIBS += -lwellbore_subscriber -lwellbore -lbase_data_types -ldds_base -luuid
 TARG_LIBS += -llogger -lrtidlcpp -lrtidlc -llog4cplus -lasan -lncurses

@@ -13,9 +13,10 @@ class CDrillingStatePublisher : public TPublisher< Hoisting::DrillingState >
     ~CDrillingStatePublisher();
 
     bool Create(int32_t domain);
+    bool Initialize();
     bool PublishSample();
 
-    // Topic getters
+    // Topic setters
     void SetId(const DataTypes::Uuid id);
     void SetTimestamp(const DataTypes::Time timestamp);
     void SetRopActual(const double ropActual);

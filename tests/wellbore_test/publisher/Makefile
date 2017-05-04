@@ -36,9 +36,11 @@ TARG_INCLUDES += -I /usr/local/include/wellbore_publisher
 TARG_SOURCES = wellbore_publisher.cpp
 
 # Libraries
+TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
 TARG_LIBS += -L /usr/local/lib 
 TARG_LIBS += -lwellbore_publisher -lwellbore -lbase_data_types -ldds_base -luuid
 TARG_LIBS += -llogger -lrtidlcpp -lrtidlc -llog4cplus -lasan
+TARG_LIBS += -lrticonnextmsgcpp -lnddscpp -lnddsc -lnddscore -ldl
 
 ###############################################################################
 # Installation section

@@ -1,3 +1,4 @@
+#include "dds_uuid.h"
 #include "rotate_request_publisher.h"
 
 CRotateRequestPublisher::CRotateRequestPublisher()
@@ -6,6 +7,16 @@ CRotateRequestPublisher::CRotateRequestPublisher()
 
 CRotateRequestPublisher::~CRotateRequestPublisher()
 {
+}
+
+bool CRotateRequestPublisher::Initialize()
+{
+    CDdsUuid uuid;
+
+    uuid.GenerateUuid();
+    uuid.ExportUuid(m_pDataInstance->id);
+
+    return true;
 }
 
 void CRotateRequestPublisher::SetId(const DataTypes::Uuid id)
