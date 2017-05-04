@@ -68,7 +68,6 @@ void CObjectiveStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
-    m_data.objective = DataTypes::None;
 
     if (m_pOnDataDisposed != nullptr)
     {
@@ -78,6 +77,7 @@ void CObjectiveStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CObjectiveStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
+    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
