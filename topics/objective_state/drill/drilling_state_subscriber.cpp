@@ -164,6 +164,11 @@ void CDrillingStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent even
     m_pOnLivelinessChanged = event;
 }
 
+void CDrillingStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
+{
+    m_pOnSubscriptionMatched = event;
+}
+
 void CDrillingStateSubscriber::DataAvailable(const Hoisting::DrillingState &data,
                                              const DDS::SampleInfo &sampleInfo)
 {
@@ -193,8 +198,18 @@ void CDrillingStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CDrillingStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
+    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
+    }
+}
+
+void CDrillingStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
+{
+    LOG_INFO("Subscription matched");
+    if (m_pOnSubscriptionMatched != nullptr)
+    {
+        m_pOnSubscriptionMatched(status);
     }
 }

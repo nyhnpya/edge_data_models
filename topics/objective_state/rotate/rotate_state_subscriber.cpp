@@ -79,6 +79,11 @@ void CRotateStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
     m_pOnLivelinessChanged = event;
 }
 
+void CRotateStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
+{
+    m_pOnSubscriptionMatched = event;
+}
+
 void CRotateStateSubscriber::DataAvailable(const ProcessRotation::RotateState &data,
                                            const DDS::SampleInfo &sampleInfo)
 {
@@ -108,8 +113,18 @@ void CRotateStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CRotateStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
+    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
+    }
+}
+
+void CRotateStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
+{
+    LOG_INFO("Subscription matched");
+    if (m_pOnSubscriptionMatched != nullptr)
+    {
+        m_pOnSubscriptionMatched(status);
     }
 }

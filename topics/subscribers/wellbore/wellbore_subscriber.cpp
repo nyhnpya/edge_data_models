@@ -52,6 +52,11 @@ void CWellboreStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent even
     m_pOnLivelinessChanged = event;
 }
 
+void CWellboreStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
+{
+    m_pOnSubscriptionMatched = event;
+}
+
 void CWellboreStateSubscriber::DataAvailable(const Downhole::Wellbore &data,
                                              const DDS::SampleInfo &sampleInfo)
 {
@@ -83,8 +88,18 @@ void CWellboreStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CWellboreStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
+    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
+    }
+}
+
+void CWellboreStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
+{
+    LOG_INFO("Subscription matched");
+    if (m_pOnSubscriptionMatched != nullptr)
+    {
+        m_pOnSubscriptionMatched(status);
     }
 }

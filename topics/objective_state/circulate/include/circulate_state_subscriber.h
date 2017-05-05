@@ -18,6 +18,7 @@ public:
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnDataDisposed(OnDataDisposedEvent event);
     void OnLivelinessChanged(OnLivelinessChangedEvent event);
+    void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
     bool ValidData();
 
     // Topic getters
@@ -37,6 +38,7 @@ protected:
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
+    void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
 private:
     ProcessCirculation::CirculateState m_data;
@@ -45,6 +47,7 @@ private:
     OnDataAvailableEvent               m_pOnDataAvailable;
     OnDataDisposedEvent                m_pOnDataDisposed;
     OnLivelinessChangedEvent     m_pOnLivelinessChanged;
+    OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
 };
 
 #endif // __CIRCULATE_STATE_SUBSCRIBER_H__ 

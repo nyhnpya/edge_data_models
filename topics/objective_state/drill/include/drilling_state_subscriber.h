@@ -18,6 +18,7 @@ class CDrillingStateSubscriber : public TSubscriber< Hoisting::DrillingState >
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnDataDisposed(OnDataDisposedEvent event);
     void OnLivelinessChanged(OnLivelinessChangedEvent event);
+    void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
     bool ValidData();
 
     // Topic getters
@@ -46,6 +47,7 @@ class CDrillingStateSubscriber : public TSubscriber< Hoisting::DrillingState >
 
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
+    void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
  private:
     Hoisting::DrillingState m_data;
@@ -54,6 +56,7 @@ class CDrillingStateSubscriber : public TSubscriber< Hoisting::DrillingState >
     OnDataAvailableEvent         m_pOnDataAvailable;
     OnDataDisposedEvent          m_pOnDataDisposed;
     OnLivelinessChangedEvent     m_pOnLivelinessChanged;
+    OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
 };
 
 #endif // __DRILLING_STATE_SUBSCRIBER_H__

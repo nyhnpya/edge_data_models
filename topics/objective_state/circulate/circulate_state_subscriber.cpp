@@ -100,6 +100,11 @@ void CCirculateStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent eve
     m_pOnLivelinessChanged = event;
 }
 
+void CCirculateStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
+{
+    m_pOnSubscriptionMatched = event;
+}
+
 void CCirculateStateSubscriber::DataAvailable(const ProcessCirculation::CirculateState &data,
                                               const DDS::SampleInfo &sampleInfo)
 {
@@ -129,8 +134,18 @@ void CCirculateStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CCirculateStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
+    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
+    }
+}
+
+void CCirculateStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
+{
+    LOG_INFO("Subscription matched");
+    if (m_pOnSubscriptionMatched != nullptr)
+    {
+        m_pOnSubscriptionMatched(status);
     }
 }

@@ -599,6 +599,11 @@ void CAutoDrillerConfigurationStateSubscriber::OnLivelinessChanged(OnLivelinessC
     m_pOnLivelinessChanged = event;
 }
 
+void CAutoDrillerConfigurationStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
+{
+    m_pOnSubscriptionMatched = event;
+}
+
 void CAutoDrillerConfigurationStateSubscriber::DataAvailable(const AutoDrillerConfiguration::HmiState &data,
                                                              const DDS::SampleInfo &sampleInfo)
 {
@@ -708,8 +713,18 @@ void CAutoDrillerConfigurationStateSubscriber::DataDisposed(const DDS::SampleInf
 
 void CAutoDrillerConfigurationStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
+    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
+    }
+}
+
+void CAutoDrillerConfigurationStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
+{
+    LOG_INFO("Subscription matched");
+    if (m_pOnSubscriptionMatched != nullptr)
+    {
+        m_pOnSubscriptionMatched(status);
     }
 }

@@ -1,7 +1,11 @@
 #include <string.h>
 #include "objective_subscriber.h"
 
-CObjectiveStateSubscriber::CObjectiveStateSubscriber()
+CObjectiveStateSubscriber::CObjectiveStateSubscriber() :
+    m_pOnDataAvailable(nullptr),
+    m_pOnDataDisposed(nullptr),
+    m_pOnLivelinessChanged(nullptr),
+    m_pOnSubscriptionMatched(nullptr)
 {
 }
 
@@ -45,6 +49,11 @@ void CObjectiveStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent eve
     m_pOnLivelinessChanged = event;
 }
 
+void CObjectiveStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
+{
+    m_pOnSubscriptionMatched = event;
+}
+
 void CObjectiveStateSubscriber::DataAvailable(const Plan::ObjectiveState &data,
                                               const DDS::SampleInfo &sampleInfo)
 {
@@ -81,5 +90,14 @@ void CObjectiveStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedSt
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
+    }
+}
+
+void CObjectiveStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
+{
+    LOG_INFO("Subscription matched");
+    if (m_pOnSubscriptionMatched != nullptr)
+    {
+        m_pOnSubscriptionMatched(status);
     }
 }

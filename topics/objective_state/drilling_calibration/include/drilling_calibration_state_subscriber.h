@@ -19,6 +19,7 @@ class CDrillingCalibrationStateSubscriber : public TSubscriber< CalibrationHoist
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnDataDisposed(OnDataDisposedEvent event);
     void OnLivelinessChanged(OnLivelinessChangedEvent event);
+    void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
     bool ValidData();
 
     // Topic getters
@@ -52,6 +53,7 @@ class CDrillingCalibrationStateSubscriber : public TSubscriber< CalibrationHoist
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
+    void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
  private:
     CalibrationHoisting::DrillingCalibrationState m_data;
@@ -60,6 +62,7 @@ class CDrillingCalibrationStateSubscriber : public TSubscriber< CalibrationHoist
     OnDataAvailableEvent                          m_pOnDataAvailable;
     OnDataDisposedEvent                           m_pOnDataDisposed;
     OnLivelinessChangedEvent     m_pOnLivelinessChanged;
+    OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
 };
 
 #endif // __DRILLING_CALIBRATION_STATE_SUBSCRIBER_H__

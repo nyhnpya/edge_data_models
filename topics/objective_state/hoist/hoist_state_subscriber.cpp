@@ -107,6 +107,11 @@ void CHoistStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
     m_pOnLivelinessChanged = event;
 }
 
+void CHoistStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
+{
+    m_pOnSubscriptionMatched = event;
+}
+
 void CHoistStateSubscriber::DataAvailable(const ProcessHoist::HoistState &data,
                                           const DDS::SampleInfo &sampleInfo)
 {
@@ -136,8 +141,18 @@ void CHoistStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CHoistStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
+    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
+    }
+}
+
+void CHoistStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
+{
+    LOG_INFO("Subscription matched");
+    if (m_pOnSubscriptionMatched != nullptr)
+    {
+        m_pOnSubscriptionMatched(status);
     }
 }
