@@ -78,7 +78,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;C:\Users\mark\git\edge_data_models\topics\base_data_types\include;..\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include;C:\Users\mark\git\dds_base\include;C:\Users\mark\git\edge_data_models\topics\engineering\autodriller_configuration\include</AdditionalIncludeDirectories>
       <BasicRuntimeChecks />
