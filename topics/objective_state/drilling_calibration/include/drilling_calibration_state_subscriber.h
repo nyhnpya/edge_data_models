@@ -15,12 +15,12 @@ class CDrillingCalibrationStateSubscriber : public TSubscriber< CalibrationHoist
     CDrillingCalibrationStateSubscriber();
     ~CDrillingCalibrationStateSubscriber();
 
+	// Topic initialization
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnDataDisposed(OnDataDisposedEvent event);
     void OnLivelinessChanged(OnLivelinessChangedEvent event);
     void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
-    bool ValidData();
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
@@ -47,6 +47,10 @@ class CDrillingCalibrationStateSubscriber : public TSubscriber< CalibrationHoist
     bool GetWobMode(bool &wobMode);
     bool GetDifferentialPressureMode(bool &differentialPressureMode);
     bool GetTorqueMode(bool &torqueMode);
+	
+	// Topic status
+	bool ValidData();
+	bool ValidSubscription();
 
  protected:
     void DataAvailable(const CalibrationHoisting::DrillingCalibrationState &data,
@@ -56,13 +60,13 @@ class CDrillingCalibrationStateSubscriber : public TSubscriber< CalibrationHoist
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
  private:
-    CalibrationHoisting::DrillingCalibrationState m_data;
+	 bool                                          m_subscriptionMatched;
+	 CalibrationHoisting::DrillingCalibrationState m_data;
     DDS::SampleInfo                               m_sampleInfo;
-    DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent                          m_pOnDataAvailable;
-    OnDataDisposedEvent                           m_pOnDataDisposed;
-    OnLivelinessChangedEvent     m_pOnLivelinessChanged;
-    OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
+	OnDataDisposedEvent                           m_pOnDataDisposed;
+	OnLivelinessChangedEvent                      m_pOnLivelinessChanged;
+	OnSubscriptionMatchedEvent                    m_pOnSubscriptionMatched;
 };
 
 #endif // __DRILLING_CALIBRATION_STATE_SUBSCRIBER_H__

@@ -15,12 +15,12 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDriller
     CAutoDrillerConfigurationStateSubscriber();
     ~CAutoDrillerConfigurationStateSubscriber();
 
-    bool Create(int32_t domain);
+	// Topic initialization
+	bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnDataDisposed(OnDataDisposedEvent event);
     void OnLivelinessChanged(OnLivelinessChangedEvent event);
     void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
-    bool ValidData();
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
@@ -104,6 +104,10 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDriller
     bool GetTuningDisable(bool &tuningDisable);
     bool GetTuningEnable(bool &tuningEnable);
 
+	// Topic Status
+	bool ValidData();
+	bool ValidSubscription();
+
  protected:
     void DataAvailable(const AutoDrillerConfiguration::HmiState &data,
                        const DDS::SampleInfo &sampleInfo);
@@ -112,13 +116,13 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDriller
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
  private:
+    bool                               m_subscriptionMatched;
     AutoDrillerConfiguration::HmiState m_data;
     DDS::SampleInfo                    m_sampleInfo;
-    DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent               m_pOnDataAvailable;
-    OnDataDisposedEvent                m_pOnDataDisposed;
-    OnLivelinessChangedEvent     m_pOnLivelinessChanged;
-    OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
+	OnDataDisposedEvent                m_pOnDataDisposed;
+	OnLivelinessChangedEvent           m_pOnLivelinessChanged;
+	OnSubscriptionMatchedEvent         m_pOnSubscriptionMatched;
 };
 
 #endif // __AUTODRILLER_CONFIGURATION_STATE_SUBSCRIBER_H__

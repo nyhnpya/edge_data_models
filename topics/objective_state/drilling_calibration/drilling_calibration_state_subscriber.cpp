@@ -1,8 +1,13 @@
 #include "drilling_calibration_state_subscriber.h"
 
 CDrillingCalibrationStateSubscriber::CDrillingCalibrationStateSubscriber() :
-    m_pOnDataAvailable(nullptr)
+    m_subscriptionMatched(false),
+    m_pOnDataAvailable(nullptr),
+	m_pOnDataDisposed(nullptr),
+	m_pOnLivelinessChanged(nullptr),
+	m_pOnSubscriptionMatched(nullptr)
 {
+	memset((void *)&m_sampleInfo, 0, sizeof(DDS::SampleInfo));
 }
 
 CDrillingCalibrationStateSubscriber::~CDrillingCalibrationStateSubscriber()
@@ -11,7 +16,12 @@ CDrillingCalibrationStateSubscriber::~CDrillingCalibrationStateSubscriber()
 
 bool CDrillingCalibrationStateSubscriber::ValidData()
 {
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+	return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CDrillingCalibrationStateSubscriber::ValidSubscription()
+{
+	return m_subscriptionMatched;
 }
 
 bool CDrillingCalibrationStateSubscriber::GetId(DataTypes::Uuid &id)
@@ -250,6 +260,8 @@ void CDrillingCalibrationStateSubscriber::LivelinessChanged(const DDS::Livelines
 void CDrillingCalibrationStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
     LOG_INFO("Subscription matched");
+	m_subscriptionMatched = (status.current_count > 0) ? true : false;
+
     if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);

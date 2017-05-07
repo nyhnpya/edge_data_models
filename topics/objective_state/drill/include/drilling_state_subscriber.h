@@ -14,12 +14,12 @@ class CDrillingStateSubscriber : public TSubscriber< Hoisting::DrillingState >
     CDrillingStateSubscriber();
     ~CDrillingStateSubscriber();
 
+	// Topic initialization
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnDataDisposed(OnDataDisposedEvent event);
     void OnLivelinessChanged(OnLivelinessChangedEvent event);
     void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
-    bool ValidData();
 
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
@@ -41,6 +41,10 @@ class CDrillingStateSubscriber : public TSubscriber< Hoisting::DrillingState >
     bool GetDifferentialPressureTarget(double &differentialPressureTarget);
     bool GetTorqueTarget(double &torqueTarget);
 
+	// Topic status
+	bool ValidData();
+	bool ValidSubscription();
+
  protected:
     void DataAvailable(const Hoisting::DrillingState &data,
                const DDS::SampleInfo &sampleInfo);
@@ -50,13 +54,13 @@ class CDrillingStateSubscriber : public TSubscriber< Hoisting::DrillingState >
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
  private:
-    Hoisting::DrillingState m_data;
-    DDS::SampleInfo         m_sampleInfo;
-    DDS::LivelinessChangedStatus m_livelinessStatus;
-    OnDataAvailableEvent         m_pOnDataAvailable;
-    OnDataDisposedEvent          m_pOnDataDisposed;
-    OnLivelinessChangedEvent     m_pOnLivelinessChanged;
-    OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
+	 bool                         m_subscriptionMatched;
+	 Hoisting::DrillingState      m_data;
+    DDS::SampleInfo              m_sampleInfo;
+	OnDataAvailableEvent         m_pOnDataAvailable;
+	OnDataDisposedEvent          m_pOnDataDisposed;
+	OnLivelinessChangedEvent     m_pOnLivelinessChanged;
+	OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
 };
 
 #endif // __DRILLING_STATE_SUBSCRIBER_H__

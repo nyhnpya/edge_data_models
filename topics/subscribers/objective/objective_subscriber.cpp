@@ -2,6 +2,7 @@
 #include "objective_subscriber.h"
 
 CObjectiveStateSubscriber::CObjectiveStateSubscriber() :
+    m_subscriptionMatched(false),
     m_pOnDataAvailable(nullptr),
     m_pOnDataDisposed(nullptr),
     m_pOnLivelinessChanged(nullptr),
@@ -17,6 +18,12 @@ bool CObjectiveStateSubscriber::ValidData()
 {
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
+
+bool CObjectiveStateSubscriber::ValidSubscription()
+{
+	return m_subscriptionMatched;
+}
+
 
 bool CObjectiveStateSubscriber::GetObjective(DataTypes::Objective &objective)
 {
@@ -96,7 +103,9 @@ void CObjectiveStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedSt
 void CObjectiveStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
     LOG_INFO("Subscription matched");
-    if (m_pOnSubscriptionMatched != nullptr)
+	m_subscriptionMatched = (status.current_count > 0) ? true : false;
+	
+	if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);
     }

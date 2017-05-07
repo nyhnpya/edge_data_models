@@ -1,7 +1,11 @@
 #include "autodriller_configuration_state_subscriber.h"
 
 CAutoDrillerConfigurationStateSubscriber::CAutoDrillerConfigurationStateSubscriber() :
-    m_pOnDataAvailable(nullptr)
+    m_subscriptionMatched(false),	
+    m_pOnDataAvailable(nullptr),
+	m_pOnDataDisposed(nullptr),
+    m_pOnLivelinessChanged(nullptr),	
+	m_pOnSubscriptionMatched(nullptr)
 {
 }
 
@@ -13,6 +17,12 @@ bool CAutoDrillerConfigurationStateSubscriber::ValidData()
 {
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
+
+bool CAutoDrillerConfigurationStateSubscriber::ValidSubscription()
+{
+	return m_subscriptionMatched;
+}
+
 
 bool CAutoDrillerConfigurationStateSubscriber::GetId(DataTypes::Uuid &id)
 {
@@ -723,7 +733,9 @@ void CAutoDrillerConfigurationStateSubscriber::LivelinessChanged(const DDS::Live
 void CAutoDrillerConfigurationStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
     LOG_INFO("Subscription matched");
-    if (m_pOnSubscriptionMatched != nullptr)
+	m_subscriptionMatched = (status.current_count > 0) ? true : false;
+	
+	if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);
     }

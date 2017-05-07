@@ -15,15 +15,19 @@ public:
     CObjectiveStateSubscriber();
     virtual ~CObjectiveStateSubscriber();
 
+	// Topic initialization
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnDataDisposed(OnDataDisposedEvent event);
     void OnLivelinessChanged(OnLivelinessChangedEvent event);
     void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
-    bool ValidData();
 
     // Topic getters
     bool GetObjective(DataTypes::Objective &objective);
+	
+	// Topic status
+	bool ValidData();
+	bool ValidSubscription();
 
 protected:
     ///Derived Methods
@@ -34,13 +38,13 @@ protected:
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
 private:
+	bool                         m_subscriptionMatched;
     Plan::ObjectiveState         m_data;
     DDS::SampleInfo              m_sampleInfo;
-    DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent         m_pOnDataAvailable;
-    OnDataDisposedEvent          m_pOnDataDisposed;
-    OnLivelinessChangedEvent     m_pOnLivelinessChanged;
-    OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
+	OnDataDisposedEvent          m_pOnDataDisposed;
+	OnLivelinessChangedEvent     m_pOnLivelinessChanged;
+	OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
 };
 
 #endif // __OBJECTIVE_STATE_SUBSCRIBER_H__
