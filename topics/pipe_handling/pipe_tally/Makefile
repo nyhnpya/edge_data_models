@@ -13,9 +13,9 @@ include ../../../../Makefiles/Makefile.platform
 include $(TOP_DIR)/Makefiles/Makefile.rti
 
 TARG_SOURCE_DIR = $(CURDIR)
-TARG_BUILD_MAJOR = 1
-TARG_BUILD_MINOR = 0
-TARG_BUILD_VERSION = 0
+TARG_BUILD_MAJOR = 0
+TARG_BUILD_MINOR = 5
+TARG_BUILD_VERSION = 1
 TARGET_TYPE = library
 TARGET_NAME = pipe_tally
 
