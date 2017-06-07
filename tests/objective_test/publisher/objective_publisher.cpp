@@ -69,6 +69,20 @@ void register_signal_handler()
 }
 #endif
 
+void publish_thread()
+{
+    DataTypes::Objective objective = DataTypes::None;
+
+    while (gTerminate == false)
+    {
+        gpStatePublisher->SetObjective(objective);
+        gpStatePublisher->PublishSample();
+        usleep(100);
+    }
+
+    std::cout << "thread terminated"  << std::endl;
+}
+
 void top_level_menu()
 {
     char choice;
@@ -83,6 +97,7 @@ void top_level_menu()
         std::cout << "3. Publish clean hole objective" << std::endl;
         std::cout << "4. Publish casing objective" << std::endl;
         std::cout << "5. Publish none objective" << std::endl;
+        std::cout << "6. Publish objective continuously" << std::endl;
         std::cout << "q. exit" << std::endl;
         std::cout << "option: ";
         std::cin >> choice;
@@ -92,6 +107,11 @@ void top_level_menu()
         {
             case 'q':
                 gTerminate = true;
+
+                if (threadId.joinable())
+                {
+                    threadId.join();
+                }
                 break;
             case '1':
                 gpStatePublisher->SetObjective(DataTypes::Drilling);
@@ -112,6 +132,9 @@ void top_level_menu()
                 gpStatePublisher->SetObjective(DataTypes::None);
                 gpStatePublisher->PublishSample();
                 break;
+            case '6':
+                threadId = std::thread(publish_thread);
+                break;
         }
     } while (gTerminate == false);
 
@@ -122,9 +145,8 @@ int32_t main(int32_t argc, char **argv)
     cli::Parser              parser(argc, argv);
     int32_t                  domain;
 
-#ifdef _LINUX
 	register_signal_handler();
-#endif
+
     parser.set_optional<std::string>("c", "configFile", "pipe_handler.conf", "External configuration file.");
     parser.set_optional<int32_t>("d", "domain", 100, "DDS Domain.");
     parser.run_and_exit_if_error();
@@ -140,6 +162,13 @@ int32_t main(int32_t argc, char **argv)
     {
         gpStatePublisher->CreateInstance();
         top_level_menu();
+    }
+
+    std::cout << "Waiting for thread: "  << std::endl;
+
+    if (threadId.joinable())
+    {
+        threadId.join();
     }
 
     gpStatePublisher->Destroy();

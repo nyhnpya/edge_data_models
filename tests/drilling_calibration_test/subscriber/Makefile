@@ -53,12 +53,12 @@ TARG_LIBS += -llogger
 TARG_LIBS += -lconfiguration_item -lconfiguration
 TARG_LIBS += -ldds_base
 TARG_LIBS += -luuid
-TARG_LIBS += -lrtidlcpp -llog4cplus -lasan
+TARG_LIBS += -lrtidlcpp -llog4cplus
 TARG_LIBS += -lplant_client
 TARG_LIBS += -ldrilling_objective_state -ldrilling
 TARG_LIBS += -ldrilling_calibration_objective_state -ldrilling_calibration 
 TARG_LIBS += -lbase_data_types
-TARG_LIBS += -llogger -lrtidlcpp -lrtidlc -llog4cplus -lasan -lncurses
+TARG_LIBS += -llogger -lrtidlcpp -lrtidlc -llog4cplus -lncurses
 TARG_LIBS += -lopcuaclient -lopcuaprotocol -lopcuacore
 
 ###############################################################################

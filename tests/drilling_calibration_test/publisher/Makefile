@@ -37,7 +37,7 @@ TARG_SOURCES = drilling_calibration_publisher_test.cpp
 TARG_LIBS += -L /usr/local/lib 
 TARG_LIBS += -ldrilling_calibration_objective_state -ldrilling_calibration 
 TARG_LIBS += -lbase_data_types -ldds_base -luuid
-TARG_LIBS += -llogger -lrtidlcpp -lrtidlc -llog4cplus -lasan
+TARG_LIBS += -llogger -lrtidlcpp -lrtidlc -llog4cplus
 
 ###############################################################################
 # Installation section

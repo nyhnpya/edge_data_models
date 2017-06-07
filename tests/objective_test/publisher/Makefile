@@ -39,8 +39,14 @@ TARG_SOURCES = objective_publisher.cpp
 TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
 TARG_LIBS += -L /usr/local/lib 
 TARG_LIBS += -lobjective_publisher -lobjective -lbase_data_types -ldds_base -luuid
-TARG_LIBS += -llogger -lrtidlcpp -lrtidlc -llog4cplus -lasan
-TARG_LIBS += -lrticonnextmsgcpp -lnddscpp -lnddsc -lnddscore -ldl
+
+TARG_LIBS += -llogger -llog4cplus -luuid 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/librtidlcppzd.a $(NDDSHOME)/lib/$(NDDSARCH)/librtidlczd.a 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/librticonnextmsgcppzd.a 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/libnddscppzd.a 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/libnddsczd.a 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/libnddscorezd.a
+TARG_LIBS += -ldl -lpthread
 
 ###############################################################################
 # Installation section

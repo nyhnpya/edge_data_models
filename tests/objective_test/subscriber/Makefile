@@ -38,8 +38,15 @@ TARG_SOURCES = objective_subscriber.cpp
 # Libraries
 TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
 TARG_LIBS += -L /usr/local/lib 
-TARG_LIBS += -lobjective_subscriber -lobjective -lbase_data_types -ldds_base -luuid
-TARG_LIBS += -llogger -lrtidlcpp -lrtidlc -llog4cplus -lasan -lncurses
+TARG_LIBS += -lobjective_subscriber -lobjective -lbase_data_types -ldds_base
+TARG_LIBS += -lncurses
+TARG_LIBS += -llogger -llog4cplus -luuid 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/librtidlcppzd.a $(NDDSHOME)/lib/$(NDDSARCH)/librtidlczd.a 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/librticonnextmsgcppzd.a 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/libnddscppzd.a 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/libnddsczd.a 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/libnddscorezd.a
+TARG_LIBS += -ldl -lpthread
 
 ###############################################################################
 # Installation section

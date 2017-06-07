@@ -7,6 +7,7 @@
 #include "objective_subscriber.h"
 
 bool gTerminate = false;
+bool gCreated = true;
 
 void SignalHandler(int32_t signal)
 {
@@ -65,11 +66,16 @@ void get_objective(const Plan::ObjectiveState &data)
 {
     double value; 
 
-    init_pair(1, COLOR_RED, COLOR_BLACK);
-    attron(COLOR_PAIR(1));
     mvprintw(2, 1, "Objective: [%d]", data.objective);
     mvprintw(4, 1, "Timestamp: [%d]:[%d]", data.timestamp.sec, data.timestamp.nanosec);
-    attroff(COLOR_PAIR(1));
+    mvprintw(8, 1, "Status [%s]", gCreated ? "Created  ": "Destroyed");
+
+    refresh();
+}
+
+void update_state()
+{
+    mvprintw(8, 1, "Status [%s]", gCreated ? "Created  ": "Destroyed");
 
     refresh();
 }
@@ -78,10 +84,8 @@ void invalid_data()
 {
     double value; 
 
-    init_pair(1, COLOR_RED, COLOR_BLACK);
-    attron(COLOR_PAIR(1));
     mvprintw(2, 1, "Objective: [-]");
-    attroff(COLOR_PAIR(1));
+    mvprintw(8, 1, "Status [%s]", gCreated ? "Created  ": "Destroyed");
 
     refresh();
 }
@@ -141,7 +145,32 @@ int32_t main(int32_t argc, char **argv)
         invalid_data();
         while (gTerminate == false)
         {
-            usleep(100 * 1000);
+            char choice;
+
+            std::cin >> choice;
+
+            switch (choice)
+            {
+                case 'q':
+                    gTerminate = true;
+                    break;
+                case 'c':
+                    //                    if (gCreated == false)
+                    {
+                        pSubscriber->Create(domain);
+                        gCreated = true;
+                        update_state();
+                    }
+                    break;
+                case 'd':
+                    //                    if (gCreated == true)
+                    {
+                        pSubscriber->Destroy();
+                        gCreated = false;
+                        update_state();
+                    }
+                    break;
+            }            
         }
     }
 
