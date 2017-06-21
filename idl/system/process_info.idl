@@ -1,0 +1,14 @@
+module ProcessMonitor
+{
+    //@copy-c-declaration static const char PROCESS_INFO[] = "ProcessInfo";
+
+    struct ProcessInfo
+    {
+        char      processName[128]; //@key
+        long      pid;
+        long long totalVirtualMemory;
+        long long usedVirtualMemory;
+        long long totalPhysicalMemory;
+        long long usedPhysicalMemory;
+    };
+};

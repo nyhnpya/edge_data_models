@@ -2,17 +2,17 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from objective.idl using "rtiddsgen".
+This file was generated from process_info.idl using "rtiddsgen".
 The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef objectiveSupport_1315698079_h
-#define objectiveSupport_1315698079_h
+#ifndef process_infoSupport_1743012901_h
+#define process_infoSupport_1743012901_h
 
 /* Uses */
-#include "objective.h"
+#include "process_info.h"
 
 #ifndef ndds_cpp_h
 #include "ndds/ndds_cpp.h"
@@ -26,7 +26,7 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace Plan {
+namespace ProcessMonitor {
     /* ========================================================================= */
     /**
     Uses:     T
@@ -45,10 +45,10 @@ namespace Plan {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(ObjectiveStateTypeSupport, ObjectiveState);
+    DDS_TYPESUPPORT_CPP(ProcessInfoTypeSupport, ProcessInfo);
 
-    DDS_DATAWRITER_CPP(ObjectiveStateDataWriter, ObjectiveState);
-    DDS_DATAREADER_CPP(ObjectiveStateDataReader, ObjectiveStateSeq, ObjectiveState);
+    DDS_DATAWRITER_CPP(ProcessInfoDataWriter, ProcessInfo);
+    DDS_DATAREADER_CPP(ProcessInfoDataReader, ProcessInfoSeq, ProcessInfo);
 
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
@@ -56,7 +56,7 @@ namespace Plan {
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport
     #endif
-} /* namespace Plan  */
+} /* namespace ProcessMonitor  */
 
-#endif  /* objectiveSupport_1315698079_h */
+#endif  /* process_infoSupport_1743012901_h */
 

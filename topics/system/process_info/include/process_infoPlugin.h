@@ -3,24 +3,22 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from objective.idl using "rtiddsgen".
+This file was generated from process_info.idl using "rtiddsgen".
 The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef objectivePlugin_1315698079_h
-#define objectivePlugin_1315698079_h
+#ifndef process_infoPlugin_1743012901_h
+#define process_infoPlugin_1743012901_h
 
-#include "objective.h"
+#include "process_info.h"
 
 struct RTICdrStream;
 
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
-
-#include "base_data_typesPlugin.h"
 
 #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, start exporting symbols.
@@ -29,92 +27,92 @@ struct RTICdrStream;
 #define NDDSUSERDllExport __declspec(dllexport)
 #endif
 
-namespace Plan {
+namespace ProcessMonitor {
 
     /* The type used to store keys for instances of type struct
     * AnotherSimple.
     *
-    * By default, this type is struct ObjectiveState
+    * By default, this type is struct ProcessInfo
     * itself. However, if for some reason this choice is not practical for your
-    * system (e.g. if sizeof(struct ObjectiveState)
+    * system (e.g. if sizeof(struct ProcessInfo)
     * is very large), you may redefine this typedef in terms of another type of
     * your choosing. HOWEVER, if you define the KeyHolder type to be something
     * other than struct AnotherSimple, the
     * following restriction applies: the key of struct
-    * ObjectiveState must consist of a
+    * ProcessInfo must consist of a
     * single field of your redefined KeyHolder type and that field must be the
-    * first field in struct ObjectiveState.
+    * first field in struct ProcessInfo.
     */
-    typedef  class ObjectiveState ObjectiveStateKeyHolder;
+    typedef  class ProcessInfo ProcessInfoKeyHolder;
 
-    #define ObjectiveStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-    #define ObjectiveStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-    #define ObjectiveStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+    #define ProcessInfoPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+    #define ProcessInfoPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+    #define ProcessInfoPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
 
-    #define ObjectiveStatePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
-    #define ObjectiveStatePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
+    #define ProcessInfoPlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
+    #define ProcessInfoPlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
 
-    #define ObjectiveStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-    #define ObjectiveStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+    #define ProcessInfoPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+    #define ProcessInfoPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
     /* --------------------------------------------------------------------------------------
     Support functions:
     * -------------------------------------------------------------------------------------- */
 
-    NDDSUSERDllExport extern ObjectiveState*
-    ObjectiveStatePluginSupport_create_data_w_params(
+    NDDSUSERDllExport extern ProcessInfo*
+    ProcessInfoPluginSupport_create_data_w_params(
         const struct DDS_TypeAllocationParams_t * alloc_params);
 
-    NDDSUSERDllExport extern ObjectiveState*
-    ObjectiveStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
+    NDDSUSERDllExport extern ProcessInfo*
+    ProcessInfoPluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-    NDDSUSERDllExport extern ObjectiveState*
-    ObjectiveStatePluginSupport_create_data(void);
+    NDDSUSERDllExport extern ProcessInfo*
+    ProcessInfoPluginSupport_create_data(void);
 
     NDDSUSERDllExport extern RTIBool 
-    ObjectiveStatePluginSupport_copy_data(
-        ObjectiveState *out,
-        const ObjectiveState *in);
+    ProcessInfoPluginSupport_copy_data(
+        ProcessInfo *out,
+        const ProcessInfo *in);
 
     NDDSUSERDllExport extern void 
-    ObjectiveStatePluginSupport_destroy_data_w_params(
-        ObjectiveState *sample,
+    ProcessInfoPluginSupport_destroy_data_w_params(
+        ProcessInfo *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
     NDDSUSERDllExport extern void 
-    ObjectiveStatePluginSupport_destroy_data_ex(
-        ObjectiveState *sample,RTIBool deallocate_pointers);
+    ProcessInfoPluginSupport_destroy_data_ex(
+        ProcessInfo *sample,RTIBool deallocate_pointers);
 
     NDDSUSERDllExport extern void 
-    ObjectiveStatePluginSupport_destroy_data(
-        ObjectiveState *sample);
+    ProcessInfoPluginSupport_destroy_data(
+        ProcessInfo *sample);
 
     NDDSUSERDllExport extern void 
-    ObjectiveStatePluginSupport_print_data(
-        const ObjectiveState *sample,
+    ProcessInfoPluginSupport_print_data(
+        const ProcessInfo *sample,
         const char *desc,
         unsigned int indent);
 
-    NDDSUSERDllExport extern ObjectiveState*
-    ObjectiveStatePluginSupport_create_key_ex(RTIBool allocate_pointers);
+    NDDSUSERDllExport extern ProcessInfo*
+    ProcessInfoPluginSupport_create_key_ex(RTIBool allocate_pointers);
 
-    NDDSUSERDllExport extern ObjectiveState*
-    ObjectiveStatePluginSupport_create_key(void);
-
-    NDDSUSERDllExport extern void 
-    ObjectiveStatePluginSupport_destroy_key_ex(
-        ObjectiveStateKeyHolder *key,RTIBool deallocate_pointers);
+    NDDSUSERDllExport extern ProcessInfo*
+    ProcessInfoPluginSupport_create_key(void);
 
     NDDSUSERDllExport extern void 
-    ObjectiveStatePluginSupport_destroy_key(
-        ObjectiveStateKeyHolder *key);
+    ProcessInfoPluginSupport_destroy_key_ex(
+        ProcessInfoKeyHolder *key,RTIBool deallocate_pointers);
+
+    NDDSUSERDllExport extern void 
+    ProcessInfoPluginSupport_destroy_key(
+        ProcessInfoKeyHolder *key);
 
     /* ----------------------------------------------------------------------------
     Callback functions:
     * ---------------------------------------------------------------------------- */
 
     NDDSUSERDllExport extern PRESTypePluginParticipantData 
-    ObjectiveStatePlugin_on_participant_attached(
+    ProcessInfoPlugin_on_participant_attached(
         void *registration_data, 
         const struct PRESTypePluginParticipantInfo *participant_info,
         RTIBool top_level_registration, 
@@ -122,40 +120,40 @@ namespace Plan {
         RTICdrTypeCode *typeCode);
 
     NDDSUSERDllExport extern void 
-    ObjectiveStatePlugin_on_participant_detached(
+    ProcessInfoPlugin_on_participant_detached(
         PRESTypePluginParticipantData participant_data);
 
     NDDSUSERDllExport extern PRESTypePluginEndpointData 
-    ObjectiveStatePlugin_on_endpoint_attached(
+    ProcessInfoPlugin_on_endpoint_attached(
         PRESTypePluginParticipantData participant_data,
         const struct PRESTypePluginEndpointInfo *endpoint_info,
         RTIBool top_level_registration, 
         void *container_plugin_context);
 
     NDDSUSERDllExport extern void 
-    ObjectiveStatePlugin_on_endpoint_detached(
+    ProcessInfoPlugin_on_endpoint_detached(
         PRESTypePluginEndpointData endpoint_data);
 
     NDDSUSERDllExport extern void    
-    ObjectiveStatePlugin_return_sample(
+    ProcessInfoPlugin_return_sample(
         PRESTypePluginEndpointData endpoint_data,
-        ObjectiveState *sample,
+        ProcessInfo *sample,
         void *handle);    
 
     NDDSUSERDllExport extern RTIBool 
-    ObjectiveStatePlugin_copy_sample(
+    ProcessInfoPlugin_copy_sample(
         PRESTypePluginEndpointData endpoint_data,
-        ObjectiveState *out,
-        const ObjectiveState *in);
+        ProcessInfo *out,
+        const ProcessInfo *in);
 
     /* ----------------------------------------------------------------------------
     (De)Serialize functions:
     * ------------------------------------------------------------------------- */
 
     NDDSUSERDllExport extern RTIBool 
-    ObjectiveStatePlugin_serialize(
+    ProcessInfoPlugin_serialize(
         PRESTypePluginEndpointData endpoint_data,
-        const ObjectiveState *sample,
+        const ProcessInfo *sample,
         struct RTICdrStream *stream, 
         RTIBool serialize_encapsulation,
         RTIEncapsulationId encapsulation_id,
@@ -163,24 +161,24 @@ namespace Plan {
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern RTIBool 
-    ObjectiveStatePlugin_deserialize_sample(
+    ProcessInfoPlugin_deserialize_sample(
         PRESTypePluginEndpointData endpoint_data,
-        ObjectiveState *sample, 
+        ProcessInfo *sample, 
         struct RTICdrStream *stream,
         RTIBool deserialize_encapsulation,
         RTIBool deserialize_sample, 
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern RTIBool
-    ObjectiveStatePlugin_serialize_to_cdr_buffer(
+    ProcessInfoPlugin_serialize_to_cdr_buffer(
         char * buffer,
         unsigned int * length,
-        const ObjectiveState *sample); 
+        const ProcessInfo *sample); 
 
     NDDSUSERDllExport extern RTIBool 
-    ObjectiveStatePlugin_deserialize(
+    ProcessInfoPlugin_deserialize(
         PRESTypePluginEndpointData endpoint_data,
-        ObjectiveState **sample, 
+        ProcessInfo **sample, 
         RTIBool * drop_sample,
         struct RTICdrStream *stream,
         RTIBool deserialize_encapsulation,
@@ -188,13 +186,13 @@ namespace Plan {
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern RTIBool
-    ObjectiveStatePlugin_deserialize_from_cdr_buffer(
-        ObjectiveState *sample,
+    ProcessInfoPlugin_deserialize_from_cdr_buffer(
+        ProcessInfo *sample,
         const char * buffer,
         unsigned int length);    
 
     NDDSUSERDllExport extern RTIBool
-    ObjectiveStatePlugin_skip(
+    ProcessInfoPlugin_skip(
         PRESTypePluginEndpointData endpoint_data,
         struct RTICdrStream *stream, 
         RTIBool skip_encapsulation,  
@@ -202,7 +200,7 @@ namespace Plan {
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern unsigned int 
-    ObjectiveStatePlugin_get_serialized_sample_max_size_ex(
+    ProcessInfoPlugin_get_serialized_sample_max_size_ex(
         PRESTypePluginEndpointData endpoint_data,
         RTIBool * overflow,
         RTIBool include_encapsulation,
@@ -210,35 +208,35 @@ namespace Plan {
         unsigned int current_alignment);    
 
     NDDSUSERDllExport extern unsigned int 
-    ObjectiveStatePlugin_get_serialized_sample_max_size(
+    ProcessInfoPlugin_get_serialized_sample_max_size(
         PRESTypePluginEndpointData endpoint_data,
         RTIBool include_encapsulation,
         RTIEncapsulationId encapsulation_id,
         unsigned int current_alignment);
 
     NDDSUSERDllExport extern unsigned int 
-    ObjectiveStatePlugin_get_serialized_sample_min_size(
+    ProcessInfoPlugin_get_serialized_sample_min_size(
         PRESTypePluginEndpointData endpoint_data,
         RTIBool include_encapsulation,
         RTIEncapsulationId encapsulation_id,
         unsigned int current_alignment);
 
     NDDSUSERDllExport extern unsigned int
-    ObjectiveStatePlugin_get_serialized_sample_size(
+    ProcessInfoPlugin_get_serialized_sample_size(
         PRESTypePluginEndpointData endpoint_data,
         RTIBool include_encapsulation,
         RTIEncapsulationId encapsulation_id,
         unsigned int current_alignment,
-        const ObjectiveState * sample);
+        const ProcessInfo * sample);
 
     /* --------------------------------------------------------------------------------------
     Key Management functions:
     * -------------------------------------------------------------------------------------- */
     NDDSUSERDllExport extern PRESTypePluginKeyKind 
-    ObjectiveStatePlugin_get_key_kind(void);
+    ProcessInfoPlugin_get_key_kind(void);
 
     NDDSUSERDllExport extern unsigned int 
-    ObjectiveStatePlugin_get_serialized_key_max_size_ex(
+    ProcessInfoPlugin_get_serialized_key_max_size_ex(
         PRESTypePluginEndpointData endpoint_data,
         RTIBool * overflow,
         RTIBool include_encapsulation,
@@ -246,16 +244,16 @@ namespace Plan {
         unsigned int current_alignment);
 
     NDDSUSERDllExport extern unsigned int 
-    ObjectiveStatePlugin_get_serialized_key_max_size(
+    ProcessInfoPlugin_get_serialized_key_max_size(
         PRESTypePluginEndpointData endpoint_data,
         RTIBool include_encapsulation,
         RTIEncapsulationId encapsulation_id,
         unsigned int current_alignment);
 
     NDDSUSERDllExport extern RTIBool 
-    ObjectiveStatePlugin_serialize_key(
+    ProcessInfoPlugin_serialize_key(
         PRESTypePluginEndpointData endpoint_data,
-        const ObjectiveState *sample,
+        const ProcessInfo *sample,
         struct RTICdrStream *stream,
         RTIBool serialize_encapsulation,
         RTIEncapsulationId encapsulation_id,
@@ -263,18 +261,18 @@ namespace Plan {
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern RTIBool 
-    ObjectiveStatePlugin_deserialize_key_sample(
+    ProcessInfoPlugin_deserialize_key_sample(
         PRESTypePluginEndpointData endpoint_data,
-        ObjectiveState * sample,
+        ProcessInfo * sample,
         struct RTICdrStream *stream,
         RTIBool deserialize_encapsulation,
         RTIBool deserialize_key,
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern RTIBool 
-    ObjectiveStatePlugin_deserialize_key(
+    ProcessInfoPlugin_deserialize_key(
         PRESTypePluginEndpointData endpoint_data,
-        ObjectiveState ** sample,
+        ProcessInfo ** sample,
         RTIBool * drop_sample,
         struct RTICdrStream *stream,
         RTIBool deserialize_encapsulation,
@@ -282,34 +280,34 @@ namespace Plan {
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern RTIBool
-    ObjectiveStatePlugin_serialized_sample_to_key(
+    ProcessInfoPlugin_serialized_sample_to_key(
         PRESTypePluginEndpointData endpoint_data,
-        ObjectiveState *sample,
+        ProcessInfo *sample,
         struct RTICdrStream *stream, 
         RTIBool deserialize_encapsulation,  
         RTIBool deserialize_key, 
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern RTIBool 
-    ObjectiveStatePlugin_instance_to_key(
+    ProcessInfoPlugin_instance_to_key(
         PRESTypePluginEndpointData endpoint_data,
-        ObjectiveStateKeyHolder *key, 
-        const ObjectiveState *instance);
+        ProcessInfoKeyHolder *key, 
+        const ProcessInfo *instance);
 
     NDDSUSERDllExport extern RTIBool 
-    ObjectiveStatePlugin_key_to_instance(
+    ProcessInfoPlugin_key_to_instance(
         PRESTypePluginEndpointData endpoint_data,
-        ObjectiveState *instance, 
-        const ObjectiveStateKeyHolder *key);
+        ProcessInfo *instance, 
+        const ProcessInfoKeyHolder *key);
 
     NDDSUSERDllExport extern RTIBool 
-    ObjectiveStatePlugin_instance_to_keyhash(
+    ProcessInfoPlugin_instance_to_keyhash(
         PRESTypePluginEndpointData endpoint_data,
         DDS_KeyHash_t *keyhash,
-        const ObjectiveState *instance);
+        const ProcessInfo *instance);
 
     NDDSUSERDllExport extern RTIBool 
-    ObjectiveStatePlugin_serialized_sample_to_keyhash(
+    ProcessInfoPlugin_serialized_sample_to_keyhash(
         PRESTypePluginEndpointData endpoint_data,
         struct RTICdrStream *stream, 
         DDS_KeyHash_t *keyhash,
@@ -318,12 +316,12 @@ namespace Plan {
 
     /* Plugin Functions */
     NDDSUSERDllExport extern struct PRESTypePlugin*
-    ObjectiveStatePlugin_new(void);
+    ProcessInfoPlugin_new(void);
 
     NDDSUSERDllExport extern void
-    ObjectiveStatePlugin_delete(struct PRESTypePlugin *);
+    ProcessInfoPlugin_delete(struct PRESTypePlugin *);
 
-} /* namespace Plan  */
+} /* namespace ProcessMonitor  */
 
 #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, stop exporting symbols.
@@ -332,5 +330,5 @@ namespace Plan {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* objectivePlugin_1315698079_h */
+#endif /* process_infoPlugin_1743012901_h */
 

@@ -11,4 +11,3 @@ module Plan
         DataTypes::Objective objective;
     };
 };
-

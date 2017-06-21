@@ -28,6 +28,7 @@ MAKEFILE_LIBRARY_DIRS += objective_state/drilling_calibration
 MAKEFILE_LIBRARY_DIRS += objective_state/hoist
 MAKEFILE_LIBRARY_DIRS += objective_state/rotate
 MAKEFILE_LIBRARY_DIRS += objective/objective
+MAKEFILE_LIBRARY_DIRS += system/process_info
 
 .PHONY: all clean dep install install_clean install_dev install_dev_clean \
 filelist cfilelist info $(MAKEFILE_LIBRARY_DIRS) $(MAKEFILE_EXECUTABLE_DIRS)

@@ -194,3 +194,11 @@ autodriller_configuration.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/autodriller_configuration
 	-@rm -rf $(TMPOUTDIR)
 
+process_info.cpy:
+	@echo "Copying generated files ..."
+	mkdir -p $(TOPIC_HOME)/system/process_info
+	mkdir -p $(TOPIC_HOME)/system_process_info/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/system/process_info/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/system/process_info
+	-@rm -rf $(TMPOUTDIR)
+
