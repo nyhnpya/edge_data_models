@@ -5,29 +5,31 @@ include ../../Makefiles/Makefile.platform
 # before building the executables.
 MAKEFILE_LIBRARY_DIRS = base_data_types
 MAKEFILE_LIBRARY_DIRS += configuration
-MAKEFILE_LIBRARY_DIRS += process/drilling
-MAKEFILE_LIBRARY_DIRS += process/circulate
-MAKEFILE_LIBRARY_DIRS += process/hoist
-MAKEFILE_LIBRARY_DIRS += process/rotate
+MAKEFILE_LIBRARY_DIRS += downhole/wellbore
 MAKEFILE_LIBRARY_DIRS += engineering/autodriller_configuration
 MAKEFILE_LIBRARY_DIRS += engineering/drilling_calibration
+MAKEFILE_LIBRARY_DIRS += process/circulate
+MAKEFILE_LIBRARY_DIRS += process/drilling
+MAKEFILE_LIBRARY_DIRS += process/hoist
+MAKEFILE_LIBRARY_DIRS += process/rotate
 #MAKEFILE_LIBRARY_DIRS += engineering/rotate_engineering
 #MAKEFILE_LIBRARY_DIRS += engineering/torque
 #MAKEFILE_LIBRARY_DIRS += downhole/survey
-MAKEFILE_LIBRARY_DIRS += downhole/wellbore
 #MAKEFILE_LIBRARY_DIRS += pipe_handling/pipe_tally
 #MAKEFILE_LIBRARY_DIRS += subscribers/survey
-MAKEFILE_LIBRARY_DIRS += subscribers/objective
-MAKEFILE_LIBRARY_DIRS += subscribers/wellbore
-MAKEFILE_LIBRARY_DIRS += publishers/wellbore
-MAKEFILE_LIBRARY_DIRS += publishers/objective
+MAKEFILE_LIBRARY_DIRS += objective/objective
+MAKEFILE_LIBRARY_DIRS += objective_state/autodrill_configuration
 MAKEFILE_LIBRARY_DIRS += objective_state/circulate
 MAKEFILE_LIBRARY_DIRS += objective_state/drill
-MAKEFILE_LIBRARY_DIRS += objective_state/autodrill_configuration
 MAKEFILE_LIBRARY_DIRS += objective_state/drilling_calibration
 MAKEFILE_LIBRARY_DIRS += objective_state/hoist
 MAKEFILE_LIBRARY_DIRS += objective_state/rotate
-MAKEFILE_LIBRARY_DIRS += objective/objective
+MAKEFILE_LIBRARY_DIRS += publishers/objective
+MAKEFILE_LIBRARY_DIRS += publishers/process_info
+MAKEFILE_LIBRARY_DIRS += publishers/wellbore
+MAKEFILE_LIBRARY_DIRS += subscribers/objective
+MAKEFILE_LIBRARY_DIRS += subscribers/process_info
+MAKEFILE_LIBRARY_DIRS += subscribers/wellbore
 MAKEFILE_LIBRARY_DIRS += system/process_info
 
 .PHONY: all clean dep install install_clean install_dev install_dev_clean \
