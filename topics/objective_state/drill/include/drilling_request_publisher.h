@@ -17,7 +17,6 @@ class CDrillingRequestPublisher : public TPublisher< Hoisting::DrillingRequest >
     bool PublishSample();
 
     // Topic getters
-    void SetId(const DataTypes::Uuid id);
     void SetPriority(DataTypes::Priority priority);
     void SetTimeNeeded(DataTypes::Time timeNeeded);
     void SetDuration(DataTypes::Time duration);

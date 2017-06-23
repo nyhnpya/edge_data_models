@@ -7,6 +7,7 @@ CRotateObjectivePublisher::CRotateObjectivePublisher()
 
 CRotateObjectivePublisher::~CRotateObjectivePublisher()
 {
+    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CRotateObjectivePublisher::Initialize()
@@ -14,17 +15,9 @@ bool CRotateObjectivePublisher::Initialize()
     CDdsUuid uuid;
 
     uuid.GenerateUuid();
-    uuid.ExportUuid(m_pDataInstance->id);
+    m_pDataInstance->id = DDS_String_dup(uuid.c_str());
 
     return true;
-}
-
-void CRotateObjectivePublisher::SetId(const DataTypes::Uuid id)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        memcpy(m_pDataInstance, id, sizeof(DataTypes::Uuid));
-    }
 }
 
 void CRotateObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)

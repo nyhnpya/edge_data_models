@@ -7,6 +7,7 @@ CProcessInfoPublisher::CProcessInfoPublisher()
 
 CProcessInfoPublisher::~CProcessInfoPublisher()
 {
+    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CProcessInfoPublisher::Initialize()

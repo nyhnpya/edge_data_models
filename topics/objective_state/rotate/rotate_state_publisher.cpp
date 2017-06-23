@@ -7,6 +7,7 @@ CRotateStatePublisher::CRotateStatePublisher()
 
 CRotateStatePublisher::~CRotateStatePublisher()
 {
+    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CRotateStatePublisher::Initialize()
@@ -14,17 +15,9 @@ bool CRotateStatePublisher::Initialize()
     CDdsUuid uuid;
 
     uuid.GenerateUuid();
-    uuid.ExportUuid(m_pDataInstance->id);
+    m_pDataInstance->id = DDS_String_dup(uuid.c_str());
 
     return true;
-}
-
-void CRotateStatePublisher::SetId(const DataTypes::Uuid id)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        memcpy(m_pDataInstance, id, sizeof(DataTypes::Uuid));
-    }
 }
 
 void CRotateStatePublisher::SetStatus(const DataTypes::Status status)

@@ -17,7 +17,6 @@ class CAutoDrillerConfigurationStatePublisher : public TPublisher< AutoDrillerCo
     bool PublishSample();
 
     // Topic getters
-    void SetId(const DataTypes::Uuid id);
     void SetTimestamp(const DataTypes::Time timestamp);
     void SetMode(int32_t mode);
     void SetModeController(int32_t modeController);

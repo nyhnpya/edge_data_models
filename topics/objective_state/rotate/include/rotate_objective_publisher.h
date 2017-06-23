@@ -15,7 +15,6 @@ class CRotateObjectivePublisher : public TPublisher< ProcessRotation::RotateObje
     bool Initialize();
     bool PublishSample();
 
-    void SetId(const DataTypes::Uuid id);
     void SetEstimatedDuration(DataTypes::Time estimatedDuration);
     void SetTargetRate(double targetRate);
 };

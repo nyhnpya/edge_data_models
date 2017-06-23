@@ -7,6 +7,7 @@ CDrillingRequestPublisher::CDrillingRequestPublisher()
 
 CDrillingRequestPublisher::~CDrillingRequestPublisher()
 {
+    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CDrillingRequestPublisher::Initialize()
@@ -14,21 +15,9 @@ bool CDrillingRequestPublisher::Initialize()
     CDdsUuid uuid;
 
     uuid.GenerateUuid();
-    uuid.ExportUuid(m_pDataInstance->id);
+    m_pDataInstance->id = DDS_String_dup(uuid.c_str());
 
     return true;
-}
-
-void CDrillingRequestPublisher::SetId(const DataTypes::Uuid id)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        memcpy(m_pDataInstance->id, id, 16);
-    }
-    else
-    {
-        LOG_ERROR("Failed to set id on uninitialized sample");
-    }
 }
 
 void CDrillingRequestPublisher::SetPriority(DataTypes::Priority priority)

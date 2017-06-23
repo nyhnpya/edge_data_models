@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef base_data_types_308715255_h
-#define base_data_types_308715255_h
+#ifndef base_data_types_308715257_h
+#define base_data_types_308715257_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -21,7 +21,7 @@ or consult the RTI Connext manual.
 #endif
 
 namespace DataTypes {
-    typedef    DDS_Char   Uuid [16];
+    typedef    DDS_Char *   Uuid ;
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
@@ -31,7 +31,7 @@ namespace DataTypes {
 
     NDDSUSERDllExport DDS_TypeCode* Uuid_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE_NO_GET(UuidSeq, Uuid);                                        
+    DDS_SEQUENCE(UuidSeq, Uuid);                                        
 
     NDDSUSERDllExport
     RTIBool Uuid_initialize(

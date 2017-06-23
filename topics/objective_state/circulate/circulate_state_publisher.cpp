@@ -7,6 +7,7 @@ CCirculateStatePublisher::CCirculateStatePublisher()
 
 CCirculateStatePublisher::~CCirculateStatePublisher()
 {
+    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CCirculateStatePublisher::Initialize()
@@ -14,17 +15,9 @@ bool CCirculateStatePublisher::Initialize()
     CDdsUuid uuid;
 
     uuid.GenerateUuid();
-    uuid.ExportUuid(m_pDataInstance->id);
+    m_pDataInstance->id = DDS_String_dup(uuid.c_str());
 
     return true;
-}
-
-void CCirculateStatePublisher::SetId(const DataTypes::Uuid id)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        memcpy(m_pDataInstance, id, sizeof(DataTypes::Uuid));
-    }
 }
 
 void CCirculateStatePublisher::SetStatus(const DataTypes::Status status)

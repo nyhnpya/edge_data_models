@@ -7,6 +7,7 @@ CCirculateRequestPublisher::CCirculateRequestPublisher()
 
 CCirculateRequestPublisher::~CCirculateRequestPublisher()
 {
+    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CCirculateRequestPublisher::Initialize()
@@ -14,17 +15,9 @@ bool CCirculateRequestPublisher::Initialize()
     CDdsUuid uuid;
 
     uuid.GenerateUuid();
-    uuid.ExportUuid(m_pDataInstance->id);
+    m_pDataInstance->id = DDS_String_dup(uuid.c_str());
 
     return true;
-}
-
-void CCirculateRequestPublisher::SetId(const DataTypes::Uuid id)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        memcpy(m_pDataInstance, id, sizeof(DataTypes::Uuid));
-    }
 }
 
 void CCirculateRequestPublisher::SetPriority(DataTypes::Priority priority)

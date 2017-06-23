@@ -152,10 +152,13 @@ namespace DataTypes {
             return;
         }
 
-        RTICdrType_printArray(
-            (*sample), (16), RTI_CDR_CHAR_SIZE,
-            (RTICdrTypePrintFunction)RTICdrType_printChar, 
-            "", indent_level + 1);        
+        if ((*sample)==NULL) {
+            RTICdrType_printString(
+                NULL,"", indent_level + 1);
+        } else {
+            RTICdrType_printString(
+                (*sample),"", indent_level + 1);    
+        }
 
     }
 
@@ -209,8 +212,8 @@ namespace DataTypes {
 
         if(serialize_sample) {
 
-            if (!RTICdrStream_serializePrimitiveArray(
-                stream, (void*) (*sample), (16), RTI_CDR_CHAR_TYPE)) {
+            if (!RTICdrStream_serializeString(
+                stream, (*sample), (36) + 1)) {
                 return RTI_FALSE;
             }
 
@@ -249,8 +252,8 @@ namespace DataTypes {
 
             DataTypes::Uuid_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
-            if (!RTICdrStream_deserializePrimitiveArray(
-                stream, (void*) (*sample), (16), RTI_CDR_CHAR_TYPE)) {
+            if (!RTICdrStream_deserializeStringEx(
+                stream,&(*sample), (36) + 1, RTI_FALSE)) {
                 return RTI_FALSE;
             }
         }
@@ -284,10 +287,9 @@ namespace DataTypes {
 
         if (skip_sample) {
 
-            if (!RTICdrStream_skipPrimitiveArray(
-                stream, (16), RTI_CDR_CHAR_TYPE)) {
+            if (!RTICdrStream_skipString (stream, (36)+1)) {
                 return RTI_FALSE;
-            }      
+            }
         }
 
         if(skip_encapsulation) {
@@ -324,8 +326,8 @@ namespace DataTypes {
             initial_alignment = 0;
         }
 
-        current_alignment +=RTICdrType_getPrimitiveArrayMaxSizeSerialized(
-            current_alignment, (16),  RTI_CDR_CHAR_TYPE);
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, (36)+1);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -378,8 +380,8 @@ namespace DataTypes {
             initial_alignment = 0;
         }
 
-        current_alignment +=RTICdrType_getPrimitiveArrayMaxSizeSerialized(
-            current_alignment, (16), RTI_CDR_CHAR_TYPE);
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, 1);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -422,8 +424,8 @@ namespace DataTypes {
             initial_alignment = 0;
         }
 
-        current_alignment += RTICdrType_getPrimitiveArrayMaxSizeSerialized(
-            current_alignment, (16),  RTI_CDR_CHAR_TYPE);
+        current_alignment += RTICdrType_getStringSerializedSize(
+            current_alignment, (*sample));
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -466,8 +468,8 @@ namespace DataTypes {
 
         if(serialize_key) {
 
-            if (!RTICdrStream_serializePrimitiveArray(
-                stream, (void*) (*sample), (16), RTI_CDR_CHAR_TYPE)) {
+            if (!RTICdrStream_serializeString(
+                stream, (*sample), (36) + 1)) {
                 return RTI_FALSE;
             }
 
@@ -503,8 +505,8 @@ namespace DataTypes {
         }
         if (deserialize_key) {
 
-            if (!RTICdrStream_deserializePrimitiveArray(
-                stream, (void*) (*sample), (16), RTI_CDR_CHAR_TYPE)) {
+            if (!RTICdrStream_deserializeStringEx(
+                stream,&(*sample), (36) + 1, RTI_FALSE)) {
                 return RTI_FALSE;
             }
         }
@@ -543,8 +545,8 @@ namespace DataTypes {
             initial_alignment = 0;
         }
 
-        current_alignment +=RTICdrType_getPrimitiveArrayMaxSizeSerialized(
-            current_alignment, (16),  RTI_CDR_CHAR_TYPE);
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, (36)+1);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -595,8 +597,8 @@ namespace DataTypes {
 
         if (deserialize_key) {
 
-            if (!RTICdrStream_deserializePrimitiveArray(
-                stream, (void*) (*sample), (16), RTI_CDR_CHAR_TYPE)) {
+            if (!RTICdrStream_deserializeStringEx(
+                stream,&(*sample), (36) + 1, RTI_FALSE)) {
                 return RTI_FALSE;
             }
 

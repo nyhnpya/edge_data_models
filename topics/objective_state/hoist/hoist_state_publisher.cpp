@@ -7,6 +7,7 @@ CHoistStatePublisher::CHoistStatePublisher()
 
 CHoistStatePublisher::~CHoistStatePublisher()
 {
+    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CHoistStatePublisher::Initialize()
@@ -14,17 +15,9 @@ bool CHoistStatePublisher::Initialize()
     CDdsUuid uuid;
 
     uuid.GenerateUuid();
-    uuid.ExportUuid(m_pDataInstance->id);
+    m_pDataInstance->id = DDS_String_dup(uuid.c_str());
 
     return true;
-}
-
-void CHoistStatePublisher::SetId(const DataTypes::Uuid id)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        memcpy(m_pDataInstance, id, sizeof(DataTypes::Uuid));
-    }
 }
 
 void CHoistStatePublisher::SetStatus(const DataTypes::Status status)

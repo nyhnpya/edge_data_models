@@ -15,7 +15,6 @@ class CHoistStatePublisher : public TPublisher< ProcessHoist::HoistState >
     bool Initialize();
     bool PublishSample();
 
-    void SetId(const DataTypes::Uuid id);
     void SetStatus(const DataTypes::Status status);
     void SetActualVelocity(double actualVelocity);
     void SetActualPosition(double actualPosition);

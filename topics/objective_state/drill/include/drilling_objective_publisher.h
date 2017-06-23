@@ -17,7 +17,6 @@ class CDrillingObjectivePublisher : public TPublisher< Hoisting::DrillingObjecti
     bool PublishSample();
 
     // setters
-    void SetId(const DataTypes::Uuid id);
     void SetEstimatedDuration(DataTypes::Time estimatedDuration);
     void SetRopLimit(const double ropLimit);
     void SetWobLimit(const double wobLimit);

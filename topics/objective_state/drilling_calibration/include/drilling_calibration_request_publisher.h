@@ -17,7 +17,6 @@ class CDrillingCalibrationRequestPublisher : public TPublisher< CalibrationHoist
     bool PublishSample();
 
     // Topic getters
-    void SetId(const DataTypes::Uuid id);
     void SetTimestamp(const DataTypes::Time timestamp);
     void SetWobProportional(const double wobProportional);
     void SetWobIntegral(const double wobIntegral);

@@ -17,7 +17,6 @@ class CAutoDrillerConfigurationRequestPublisher : public TPublisher< AutoDriller
     bool PublishSample();
 
     // Topic getters
-    void SetId(const DataTypes::Uuid id);
     void SetTimestamp(const DataTypes::Time timestamp);
     void SetDifferentialPressureKpCalculated(double differentialPressureKpCalculated);
     void SetDifferentialPressureKpCurrent(double differentialPressureKpCurrent);

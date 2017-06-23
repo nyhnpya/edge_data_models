@@ -7,6 +7,7 @@ CAutoDrillerConfigurationStatePublisher::CAutoDrillerConfigurationStatePublisher
 
 CAutoDrillerConfigurationStatePublisher::~CAutoDrillerConfigurationStatePublisher()
 {
+    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CAutoDrillerConfigurationStatePublisher::Initialize()
@@ -14,21 +15,9 @@ bool CAutoDrillerConfigurationStatePublisher::Initialize()
     CDdsUuid uuid;
 
     uuid.GenerateUuid();
-    uuid.ExportUuid(m_pDataInstance->id);
+    m_pDataInstance->id = DDS_String_dup(uuid.c_str());
 
     return true;
-}
-
-void CAutoDrillerConfigurationStatePublisher::SetId(const DataTypes::Uuid id)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        memcpy(m_pDataInstance->id, id, 16);
-    }
-    else
-    {
-        LOG_ERROR("Failed to set id because of uninitialized sample");
-    }
 }
 
 void CAutoDrillerConfigurationStatePublisher::SetTimestamp(const DataTypes::Time timestamp)

@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef base_data_typesPlugin_308715255_h
-#define base_data_typesPlugin_308715255_h
+#ifndef base_data_typesPlugin_308715257_h
+#define base_data_typesPlugin_308715257_h
 
 #include "base_data_types.h"
 
@@ -1016,5 +1016,5 @@ namespace DataTypes {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* base_data_typesPlugin_308715255_h */
+#endif /* base_data_typesPlugin_308715257_h */
 

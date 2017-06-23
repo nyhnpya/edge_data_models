@@ -15,7 +15,6 @@ class CCirculateObjectivePublisher : public TPublisher< ProcessCirculation::Circ
     bool Initialize();
     bool PublishSample();
 
-    void SetId(const DataTypes::Uuid id);
     void SetEstimatedDuration(DataTypes::Time estimatedDuration);
     void SetTargetFlowRate(DDS_Double targetFlowRate);
 };

@@ -7,6 +7,7 @@ CDrillingCalibrationStatePublisher::CDrillingCalibrationStatePublisher()
 
 CDrillingCalibrationStatePublisher::~CDrillingCalibrationStatePublisher()
 {
+    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CDrillingCalibrationStatePublisher::Initialize()
@@ -14,21 +15,9 @@ bool CDrillingCalibrationStatePublisher::Initialize()
     CDdsUuid uuid;
 
     uuid.GenerateUuid();
-    uuid.ExportUuid(m_pDataInstance->id);
+    m_pDataInstance->id = DDS_String_dup(uuid.c_str());
 
     return true;
-}
-
-void CDrillingCalibrationStatePublisher::SetId(const DataTypes::Uuid id)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        memcpy(m_pDataInstance->id, id, 16);
-    }
-    else
-    {
-        LOG_ERROR("Failed to set id because of uninitialized sample");
-    }
 }
 
 void CDrillingCalibrationStatePublisher::SetTimestamp(const DataTypes::Time timestamp)

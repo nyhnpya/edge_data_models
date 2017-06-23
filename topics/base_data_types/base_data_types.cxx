@@ -38,7 +38,7 @@ namespace DataTypes {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode Uuid_g_tc_array =DDS_INITIALIZE_ARRAY_TYPECODE(1,16, NULL,NULL);
+        static DDS_TypeCode Uuid_g_tc_string = DDS_INITIALIZE_STRING_TYPECODE((36));
 
         static DDS_TypeCode Uuid_g_tc =
         {{
@@ -59,9 +59,7 @@ namespace DataTypes {
             return &Uuid_g_tc;
         }
 
-        Uuid_g_tc_array._data._typeCode =(RTICdrTypeCode *)&DDS_g_tc_char;
-
-        Uuid_g_tc._data._typeCode =  (RTICdrTypeCode *)& Uuid_g_tc_array;
+        Uuid_g_tc._data._typeCode =  (RTICdrTypeCode *)&Uuid_g_tc_string;
 
         is_initialized = RTI_TRUE;
 
@@ -94,10 +92,18 @@ namespace DataTypes {
 
         if (allocParams) {} /* To avoid warnings */
 
-        if (!RTICdrType_initArray(
-            (*sample), (16), RTI_CDR_CHAR_SIZE)) {
-            return RTI_FALSE;
+        if (allocParams->allocate_memory){
+            (*sample)= DDS_String_alloc ((36));
+            if ((*sample) == NULL) {
+                return RTI_FALSE;
+            }
+
+        } else {
+            if ((*sample)!= NULL) { 
+                (*sample)[0] = '\0';
+            }
         }
+
         return RTI_TRUE;
     }
 
@@ -133,6 +139,11 @@ namespace DataTypes {
         }
         if (deallocParams) {} /* To avoid warnings */
 
+        if ((*sample) != NULL) {
+            DDS_String_free((*sample));
+            (*sample)=NULL;
+
+        }
     }
 
     void Uuid_finalize_optional_members(
@@ -158,8 +169,9 @@ namespace DataTypes {
         const Uuid* src)
     {
 
-        if (!RTICdrType_copyArray(
-            (*dst) ,(*src),(16), RTI_CDR_CHAR_SIZE)) {
+        if (!RTICdrType_copyStringEx (
+            &(*dst), (*src), 
+            (36) + 1, RTI_FALSE)){
             return RTI_FALSE;
         }
 
@@ -179,7 +191,6 @@ namespace DataTypes {
     #define T_finalize_w_params   DataTypes::Uuid_finalize_w_params
     #define T_copy       DataTypes::Uuid_copy
 
-    #define T_no_get  
     #ifndef NDDS_STANDALONE_TYPE
     #include "dds_c/generic/dds_c_sequence_TSeq.gen"
     #include "dds_cpp/generic/dds_cpp_sequence_TSeq.gen"
@@ -188,7 +199,6 @@ namespace DataTypes {
     #include "dds_cpp_sequence_TSeq.gen"
     #endif
 
-    #undef T_no_get  
     #undef T_copy
     #undef T_finalize_w_params
     #undef T_initialize_w_params

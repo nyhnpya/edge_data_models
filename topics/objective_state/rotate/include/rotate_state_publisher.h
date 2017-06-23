@@ -15,7 +15,6 @@ class CRotateStatePublisher : public TPublisher< ProcessRotation::RotateState >
     bool Initialize();
     bool PublishSample();
 
-    void SetId(const DataTypes::Uuid id);
     void SetStatus(const DataTypes::Status status);
     void SetActualRate(double actualRate);
     void SetMinRate(double minRate);

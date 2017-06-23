@@ -15,7 +15,6 @@ class CRotateRequestPublisher : public TPublisher< ProcessRotation::RotateReques
     bool Initialize();
     bool PublishSample();
 
-    void SetId(const DataTypes::Uuid id);
     void SetPriority(DataTypes::Priority priority);
     void SetTimeNeeded(DataTypes::Time timeNeeded);
     void SetDuration(DataTypes::Time duration);

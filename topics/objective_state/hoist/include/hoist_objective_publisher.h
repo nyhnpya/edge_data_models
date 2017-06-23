@@ -15,7 +15,6 @@ class CHoistObjectivePublisher : public TPublisher< ProcessHoist::HoistObjective
     bool Initialize();
     bool PublishSample();
 
-    void SetId(const DataTypes::Uuid &id);
     void SetEstimatedDuration(DataTypes::Time &estimatedDuration);
     void SetTargetVelocity(double &targetVelocity);
     void SetTargetDestination(double &targetDestination);

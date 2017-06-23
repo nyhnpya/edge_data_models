@@ -15,7 +15,6 @@ class CCirculateStatePublisher : public TPublisher< ProcessCirculation::Circulat
     bool Initialize();
     bool PublishSample();
 
-    void SetId(const DataTypes::Uuid id);
     void SetStatus(const DataTypes::Status status);
     void SetActualFlowRate(double actualFlowRate);
     void SetActualStandpipePressure(double actualStandpipePressure);

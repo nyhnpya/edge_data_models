@@ -7,6 +7,7 @@ CObjectiveStatePublisher::CObjectiveStatePublisher()
 
 CObjectiveStatePublisher::~CObjectiveStatePublisher()
 {
+    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CObjectiveStatePublisher::Initialize()
@@ -14,7 +15,7 @@ bool CObjectiveStatePublisher::Initialize()
     CDdsUuid uuid;
 
     uuid.GenerateUuid();
-    uuid.ExportUuid(m_pDataInstance->id);
+    m_pDataInstance->id = DDS_String_dup(uuid.c_str());
 
     return true;
 }
