@@ -1,12 +1,27 @@
 #include "base_data_types.idl"
 
-module ProcessRotation
+module SafeRotationFunctions
 {
     //@copy-c-declaration static const char ROTATE_REQUEST[] = "RotateRequest";
 
+    /**
+    * \brief requested state change in the rotation system.
+    *
+    * \ingroup SafeRotationFunctions
+    *
+    * | Variable          | Description                                         | Data Type           | Unit    |
+    * | ----------------- | --------------------------------------------------- | ------------------- | ------- |
+    * | id                | id of requestor                                     | DataTypes::Uuid     | N/A     |
+    * | objectiveId       | id of current objective                             | DataTypes::Uuid     | N/A     |
+    * | priority          | priority of the request                             | DataTypes::Priority | sec     |
+    * | timeNeeded        | time requester needs the resource                   | DataTypes::Time     | sec     |
+    * | estimatedDuration | estimated duration requestor needs the resource     | DataTypes::Time     | N/A     |
+    * | targetRate        | requested traget in rad/s                           | double              | rad/s   |
+    */
     struct RotateRequest
     {
         DataTypes::Uuid     id;          //@key
+        DataTypes::Uuid     objectiveId; 
         DataTypes::Priority priority;
         DataTypes::Time     timeNeeded;
         DataTypes::Time     estimatedDuration;
@@ -15,29 +30,57 @@ module ProcessRotation
 
     //@copy-c-declaration static const char ROTATE_OBJECTIVE[] = "RotateObjective";
 
+    /**
+    * \brief current requested state change in the rotation system.
+    *
+    * \ingroup SafeRotationFunctions
+    *
+    * | Variable          | Description                                        | Data Type        | Unit  |
+    * | ----------------- | -------------------------------------------------- | ---------------- | ----- |
+    * | id                | id of requestor                                    | DataTypes::Uuid  | N/A   |
+    * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time  | N/A   |
+    * | targetRate        | requested traget in rad/s                          | double           | rad/s |
+    */
     struct RotateObjective
     {
-        DataTypes::Uuid     id;                //@key
-        DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
-        double              targetRate;        // current traget in rad/s
+        DataTypes::Uuid  id;                //@key
+        DataTypes::Time  estimatedDuration; // estimated time current requestor owns the resource
+        double           targetRate;        // current traget in rad/s
     };
 
     //@copy-c-declaration static const char ROTATE_STATE[] = "RotateState";
 
+    /**
+    * \brief current state of rotation system.
+    *
+    * \ingroup SafeRotationFunctions
+    *
+    * | Variable      | Description                            | Data Type         | Unit  |
+    * | ------------- | ---------------------------------------| ------------------| ------|
+    * | id            | id of requestor                        | DataTypes::Uuid   | N/A   |
+    * | objectiveId   | id of current objective                | DataTypes::Uuid   | N/A   |
+    * | timestamp     | timestamp when the data was published  | DataTypes::Time   | sec   |
+    * | status        | Unique id of publisher                 | Datatypes::Status | N/A   |
+    * | actualRate    | actual rate in rad/s                   | double            | rad/s |
+    * | minRate       | minimum machine rate in rad/s          | double            | rad/s |
+    * | maxRate       | maximum machine rate in rad/s          | double            | rad/s |
+    * | targetRate    | requested traget in rad/s              | double            | rad/s |
+    */
     struct RotateState
     {
-        DataTypes::Uuid     id;           //@key
-        DataTypes::Status   status;
-        DataTypes::Time     timestamp;        
+        DataTypes::Uuid   id;           //@key
+        DataTypes::Uuid   objectiveId; 
+        DataTypes::Status status;
+        DataTypes::Time   timestamp;        
 
         // actuals
-        double              actualRate;
+        double            actualRate;
 
         // constraints
-        double              minRate;
-        double              maxRate;
+        double            minRate;
+        double            maxRate;
 
         // targets
-        double              targetRate;
+        double            targetRate;
     };
 };

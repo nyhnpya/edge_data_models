@@ -1,63 +1,85 @@
 #include "base_data_types.idl"
 
-module ProcessHoist
+module SafeHoistFunctions
 {
     //@copy-c-declaration static const char HOIST_REQUEST[] = "HoistRequest";
 
     /**
-    * \brief HoistRequest ifluence state of hoisting system.
+    * \brief requested state change in the hoisting system.
     *
-    * \ingroup ProcessCirculation
+    * \ingroup SafeHoistFunctions
     *
-    * | Variable          | Description                                         | Data Type  | Unit  |
-    * | ----------------- | --------------------------------------------------- | -----------| ------|
-    * | id                | Unique id of publisher                              | UUID       | N/A   |
-    * | priority          | priority of the request                             | Priority   | ms    |
-    * | timeNeeded        | time requester needs the resource                   | Time       | ms    |
-    * | estimatedDuration | estimated time current requestor owns the resource  | Time       | N/A   |
-    * | targetVelocity    | requested traget in rad/s                           | double     | Pa    |
-    * | targetDestination | requested traget in m/s                             | double     | Pa    |
+    * | Variable          | Description                                      | Data Type           | Unit  |
+    * | ----------------- | -------------------------------------------------| --------------------| ------|
+    * | id                | id of requestor                                  | DataTypes::Uuid     | N/A   |
+    * | objectiveId       | id of current objective                          | DataTypes::Uuid     | N/A   |
+    * | priority          | priority of the request                          | DataTypes::Priority | ms    |
+    * | timeNeeded        | time requester needs the resource                | DataTypes::Time     | ms    |
+    * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time     | N/A   |
+    * | targetVelocity    | requested target in m/s                          | double              | m/sec |
+    * | targetPosition    | requested target position in m                   | double              | m/sec |
     */
     struct HoistRequest
     {
         DataTypes::Uuid     id;           //@key
+        DataTypes::Uuid     objectiveId; 
         DataTypes::Priority priority;
         DataTypes::Time     timeNeeded;
         DataTypes::Time     estimatedDuration;
         double              targetVelocity;
-        double              targetDestination;
+        double              targetPosition;
     };
 
     //@copy-c-declaration static const char HOIST_OBJECTIVE[] = "HoistObjective";
 
     /**
-    * \brief HoistObjective current system hoisting objective.
+    * \brief current requested state change in the hoisting system.
     *
-    * \ingroup ProcessHoisting
+    * \ingroup SafeHoistFunctions
     *
-    * | Variable          | Description                                        | Data Type  | Unit |
-    * | ----------------- | -------------------------------------------------- | -----------| -----|
-    * | id                | Unique id of publisher.                            | UUID       | N/A  |
-    * | estimatedDuration | estimated time current requestor owns the resource | Time       | N/A  |
-    * | targetFlowRate    | Unique id of publisher.                            | double     | m^3  |
-    * | targetVelocity    | requested traget in rad/s                          | double     | Pa    |
-    * | targetDestination | requested traget in m/s                            | double     | Pa    |
+    * | Variable          | Description                                      | Data Type       | Unit  |
+    * | ----------------- | ------------------------------------------------ | ----------------| ------|
+    * | id                | id of requestor                                  | DataTypes::Uuid | N/A   |
+    * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time | N/A   |
+    * | targetVelocity    | requested target in m/s                          | double          | m/sec |
+    * | targetPosition    | requested target position in m                   | double          | m/sec |
     */
     struct HoistObjective
     {
-        DataTypes::Uuid     id;                //@key
-        DataTypes::Time     estimatedDuration;
-        double              targetVelocity;
-        double              targetDestination;
+        DataTypes::Uuid  id; //@key
+        DataTypes::Time  estimatedDuration;
+        double           targetVelocity;
+        double           targetPosition;
     };
 
     //@copy-c-declaration static const char HOIST_STATE[] = "HoistState";
 
+    /**
+     * \brief current state of the hoisting system.
+     *
+     * \ingroup SafeHoistFunctions
+     *
+     * | Variable          | Description                            | Data Type         | Unit  |
+     * | ----------------- | -------------------------------------- | ----------------- | ------|
+     * | id                | id of requestor                        | DataTypes::Uuid   | N/A   |
+     * | objectiveId       | id of current objective                | DataTypes::Uuid   | N/A   |
+     * | timestamp         | timestamp when the data was published. | DataTypes::Time   | sec   |
+     * | status            | status of ciruclation system           | Datatypes::Status | N/A   |
+     * | actualVelocity    | actual velicoty in m/s                 | double            | m/sec |
+     * | actualPosition    | requested target in m                  | double            | m/sec |
+     * | maxHoistVelocity  | requested target in m/s                | double            | m/sec |
+     * | maxLowerVelocity  | requested target in m/s                | double            | m/sec |
+     * | maxHoistPosition  | requested target in m/s                | double            | m/sec |
+     * | maxLowerPosition  | requested target in m/s                | double            | m/sec |
+     * | targetVelocity    | requested target in m/s                | double            | m/sec |
+     * | targetPosition    | requested target position in m         | double          | m/sec |
+     */
     struct HoistState
     {
         DataTypes::Uuid     id;   //@key
-        DataTypes::Status   status;
+        DataTypes::Uuid     objectiveId; 
         DataTypes::Time     timestamp;
+        DataTypes::Status   status;
 
         // actuals
         double              actualVelocity;

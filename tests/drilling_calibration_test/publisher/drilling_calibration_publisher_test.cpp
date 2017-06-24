@@ -2,9 +2,9 @@
 #include <unistd.h>
 #include <signal.h>
 #include <string.h>
+#include <thread>
 #include "cmdparser.h"
 #include "drilling_calibration_request_publisher.h"
-#include "drilling_calibration_state_subscriber.h"
 
 bool gTerminate = false;
 double gWobProportional;
@@ -19,7 +19,8 @@ bool   gDifferentialPressureMode;
 bool   gTorqueMode;
 
 CDrillingCalibrationRequestPublisher gDrillingCalibrationRequestPublisher;
-CDrillingCalibrationStateSubscriber gDrillingCalibrationStateSubscriber;
+
+std::thread threadId;
 
 void SignalHandler(int32_t signal)
 {
@@ -74,59 +75,25 @@ void register_signal_handler()
     sigaction(SIGTERM, &sigact, (struct sigaction *)NULL);
 }
 
-void display_data(const CalibrationHoisting::DrillingCalibrationState &data)
+void publish_thread()
 {
-    double dValue;
-    bool   bValue;
-
-    if (gDrillingCalibrationStateSubscriber.GetWobProportional(dValue) == true)
+    while (gTerminate == false)
     {
-        std::cout << "WOB Proportional: " << dValue << std::endl;
-    }
+        gDrillingCalibrationRequestPublisher.PublishSample();
 
-    if (gDrillingCalibrationStateSubscriber.GetWobIntegral(dValue) == true)
-    {
-        std::cout << "WOB Integral: " << dValue << std::endl;
-    }
-
-    if (gDrillingCalibrationStateSubscriber.GetDifferentialPressureProportional(dValue) == true)
-    {
-        std::cout << "Differential Pressure Proportional: " << dValue << std::endl;
-    }
-
-    if (gDrillingCalibrationStateSubscriber.GetDifferentialPressureIntegral(dValue) == true)
-    {
-        std::cout << "Differential Pressure Integral: " << dValue << std::endl;
-    }
-
-    if (gDrillingCalibrationStateSubscriber.GetTorqueProportional(dValue) == true)
-    {
-        std::cout << "TORQUE Proportional: " << dValue << std::endl;
-    }
-
-    if (gDrillingCalibrationStateSubscriber.GetTorqueIntegral(dValue) == true)
-    {
-        std::cout << "TORQUE Integral: " << dValue << std::endl;
-    }
-
-    if (gDrillingCalibrationStateSubscriber.GetRopMode(bValue) == true)
-    {
-        std::cout << "Rop Mode: " << ((bValue == true)  ? "true": "false") << std::endl;
-    }
-
-    if (gDrillingCalibrationStateSubscriber.GetWobMode(bValue) == true)
-    {
-        std::cout << "Wob Mode: " << ((bValue == true)  ? "true": "false") << std::endl;
-    }
-
-    if (gDrillingCalibrationStateSubscriber.GetTorqueMode(bValue) == true)
-    {
-        std::cout << "Torque Mode: " << ((bValue == true)  ? "true": "false") << std::endl;
-    }
-
-    if (gDrillingCalibrationStateSubscriber.GetDifferentialPressureMode(bValue) == true)
-    {
-        std::cout << "Differential Presure Mode: " << ((bValue == true)  ? "true": "false") << std::endl;
+        gWobProportional++;
+        gWobIntegral++;
+        gDifferentialPressureProportional++;
+        gDifferentialPressureIntegral++;
+        gTorqueProportional++;
+        gTorqueIntegral++;
+        gDrillingCalibrationRequestPublisher.SetWobProportional(gWobProportional);
+        gDrillingCalibrationRequestPublisher.SetWobIntegral(gWobIntegral);
+        gDrillingCalibrationRequestPublisher.SetDifferentialPressureProportional(gDifferentialPressureProportional);
+        gDrillingCalibrationRequestPublisher.SetDifferentialPressureIntegral(gDifferentialPressureIntegral);
+        gDrillingCalibrationRequestPublisher.SetTorqueProportional(gTorqueProportional);
+        gDrillingCalibrationRequestPublisher.SetTorqueIntegral(gTorqueIntegral);
+        usleep(100 * 1000);
     }
 }
 
@@ -182,6 +149,7 @@ void top_level_menu()
         std::cout << "Wellbore State Publisher" << std::endl;
         std::cout << "------------------------" << std::endl;
         std::cout << "1. Tune autodrill calibration parameters" << std::endl;
+        std::cout << "2. Tune autodrill calibration parameters continuously" << std::endl;
         std::cout << "q. exit" << std::endl;
         std::cout << "option: ";
         std::cin >> choice;
@@ -200,6 +168,15 @@ void top_level_menu()
                 set_torque_proportional();
                 set_torque_integral();
                 gDrillingCalibrationRequestPublisher.PublishSample();
+                break;
+            case '2':
+                set_wob_proportional();
+                set_wob_integral();
+                set_differential_pressure_proportional();
+                set_differential_pressure_integral();
+                set_torque_proportional();
+                set_torque_integral();
+                threadId = std::thread(publish_thread);
                 break;
         }
     } while (gTerminate == false);
@@ -225,14 +202,9 @@ int32_t main(int32_t argc, char **argv)
     {
         gDrillingCalibrationRequestPublisher.CreateInstance();
 
-        if (gDrillingCalibrationStateSubscriber.Create(domain) == true)
-        {
-            gDrillingCalibrationStateSubscriber.OnDataAvailable([&](const CalibrationHoisting::DrillingCalibrationState &data)
-                                                                  {
-                                                                      display_data(data);
-                                                                  });
-
-            top_level_menu();
-        }
+        top_level_menu();
     }
+
+    gDrillingCalibrationRequestPublisher.Destroy();
+    CDomainParticipant::Instance()->Destroy();
 }

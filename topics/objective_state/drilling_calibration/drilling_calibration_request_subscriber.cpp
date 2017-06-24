@@ -107,15 +107,7 @@ void CDrillingCalibrationRequestSubscriber::DataAvailable(const CalibrationHoist
 
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
-        memcpy(m_data.id, data.id, 16);
-        m_data.timestamp.sec = data.timestamp.sec;
-        m_data.timestamp.nanosec = data.timestamp.nanosec;
-        m_data.wobProportional = data.wobProportional;
-        m_data.wobIntegral = data.wobIntegral;
-        m_data.differentialPressureProportional = data.differentialPressureProportional;
-        m_data.differentialPressureIntegral = data.differentialPressureIntegral;
-        m_data.torqueProportional = data.torqueProportional;
-        m_data.torqueIntegral = data.torqueIntegral;
+        m_data = data;
 
         if (m_pOnDataAvailable != nullptr)
         {

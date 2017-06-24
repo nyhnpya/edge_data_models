@@ -12,7 +12,7 @@
 # TARG_DESCRIPTION   - Brief description of the package for debian control file
 #
 ###############################################################################
-include ../../../../../Makefiles/Makefile.platform
+include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
@@ -25,19 +25,27 @@ TARGET_NAME = drilling_calibration_publisher_test
 # compilation flags
 ###############################################################################
 # Includes
-TARG_INCLUDES += -isystem /usr/local/include/edge_third_party
-TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/base_data_types/include
-TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/engineering/drilling_calibration/include
-TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/objective_state/drilling_calibration/include
+TARG_INCLUDES += -I /usr/local/include/dds_base
+TARG_INCLUDES += -I /usr/local/include/logger
+TARG_INCLUDES += -isystem/usr/local/include/edge_third_party
+TARG_INCLUDES += -I /usr/local/include/base_data_types
+TARG_INCLUDES += -I /usr/local/include/drilling_calibration
+TARG_INCLUDES += -I /usr/local/include/drilling_calibration_objective_state
 
 # Sources
 TARG_SOURCES = drilling_calibration_publisher_test.cpp
 
 # Libraries
+TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
 TARG_LIBS += -L /usr/local/lib 
-TARG_LIBS += -ldrilling_calibration_objective_state -ldrilling_calibration 
-TARG_LIBS += -lbase_data_types -ldds_base -luuid
-TARG_LIBS += -llogger -lrtidlcpp -lrtidlc -llog4cplus
+TARG_LIBS += -ldrilling_calibration_objective_state -ldrilling_calibration -lbase_data_types -ldds_base 
+TARG_LIBS += -llogger -llog4cplus -luuid 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/librtidlcppzd.a $(NDDSHOME)/lib/$(NDDSARCH)/librtidlczd.a 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/librticonnextmsgcppzd.a 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/libnddscppzd.a 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/libnddsczd.a 
+TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/libnddscorezd.a
+TARG_LIBS += -ldl -lpthread
 
 ###############################################################################
 # Installation section

@@ -6,6 +6,7 @@ module Hoisting
     struct DrillingRequest
     {
         DataTypes::Uuid     id; //@key
+        DataTypes::Uuid     objectiveId; 
         DataTypes::Priority priority;     // priority of the request
         DataTypes::Time     timeNeeded;   // time requester needs the resource
         DataTypes::Time     duration;     // duration requester needs the resource
@@ -38,6 +39,7 @@ module Hoisting
     struct DrillingState
     {
         DataTypes::Uuid id; //@key
+        DataTypes::Uuid objectiveId; 
         DataTypes::Time timestamp;
         double          ropActual;
         double          wobActual;

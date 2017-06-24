@@ -16,7 +16,7 @@ bool CRotateRequestSubscriber::ValidData()
 
 bool CRotateRequestSubscriber::GetId(DataTypes::Uuid &id)
 {
-    memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
+    //    memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }

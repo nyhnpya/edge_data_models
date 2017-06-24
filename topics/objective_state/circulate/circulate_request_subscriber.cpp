@@ -16,7 +16,6 @@ bool CCirculateRequestSubscriber::ValidData()
 
 bool CCirculateRequestSubscriber::GetId(DataTypes::Uuid &id)
 {
-    id = DDS_String_dup(m_data.id);
     //    memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
