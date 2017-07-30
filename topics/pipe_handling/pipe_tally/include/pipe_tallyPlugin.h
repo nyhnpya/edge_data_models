@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef pipe_tallyPlugin_58331204_h
-#define pipe_tallyPlugin_58331204_h
+#ifndef pipe_tallyPlugin_58331246_h
+#define pipe_tallyPlugin_58331246_h
 
 #include "pipe_tally.h"
 
@@ -332,5 +332,5 @@ namespace PipeHandling {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* pipe_tallyPlugin_58331204_h */
+#endif /* pipe_tallyPlugin_58331246_h */
 

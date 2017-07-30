@@ -52,11 +52,11 @@ void CHoistRequestPublisher::SetTargetVelocity(DDS_Double targetVelocity)
     }
 }
 
-void CHoistRequestPublisher::SetTargetDestination(DDS_Double targetDestination)
+void CHoistRequestPublisher::SetTargetPosition(DDS_Double targetPosition)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetDestination = targetDestination;
+        m_pDataInstance->targetPosition = targetPosition;
     }
 }
 
@@ -68,7 +68,7 @@ bool CHoistRequestPublisher::PublishSample()
 bool CHoistRequestPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              ProcessHoist::HOIST_STATE,
+                              SafeHoistFunctions::HOIST_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

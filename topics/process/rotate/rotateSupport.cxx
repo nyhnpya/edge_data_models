@@ -15,7 +15,7 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace ProcessRotation {
+namespace SafeRotationFunctions {
 
     /* ========================================================================= */
     /**
@@ -46,7 +46,7 @@ namespace ProcessRotation {
 
     /* Defines */
     #define TDataWriter RotateRequestDataWriter
-    #define TData       ProcessRotation::RotateRequest
+    #define TData       SafeRotationFunctions::RotateRequest
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -71,7 +71,7 @@ namespace ProcessRotation {
     /* Defines */
     #define TDataReader RotateRequestDataReader
     #define TDataSeq    RotateRequestSeq
-    #define TData       ProcessRotation::RotateRequest
+    #define TData       SafeRotationFunctions::RotateRequest
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -94,12 +94,12 @@ namespace ProcessRotation {
 
     /* Requires */
     #define TTYPENAME    RotateRequestTYPENAME
-    #define TPlugin_new  ProcessRotation::RotateRequestPlugin_new
-    #define TPlugin_delete  ProcessRotation::RotateRequestPlugin_delete
+    #define TPlugin_new  SafeRotationFunctions::RotateRequestPlugin_new
+    #define TPlugin_delete  SafeRotationFunctions::RotateRequestPlugin_delete
 
     /* Defines */
     #define TTypeSupport RotateRequestTypeSupport
-    #define TData        ProcessRotation::RotateRequest
+    #define TData        SafeRotationFunctions::RotateRequest
     #define TDataReader  RotateRequestDataReader
     #define TDataWriter  RotateRequestDataWriter
     #define TGENERATE_SER_CODE
@@ -146,7 +146,7 @@ namespace ProcessRotation {
 
     /* Defines */
     #define TDataWriter RotateObjectiveDataWriter
-    #define TData       ProcessRotation::RotateObjective
+    #define TData       SafeRotationFunctions::RotateObjective
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -171,7 +171,7 @@ namespace ProcessRotation {
     /* Defines */
     #define TDataReader RotateObjectiveDataReader
     #define TDataSeq    RotateObjectiveSeq
-    #define TData       ProcessRotation::RotateObjective
+    #define TData       SafeRotationFunctions::RotateObjective
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -194,12 +194,12 @@ namespace ProcessRotation {
 
     /* Requires */
     #define TTYPENAME    RotateObjectiveTYPENAME
-    #define TPlugin_new  ProcessRotation::RotateObjectivePlugin_new
-    #define TPlugin_delete  ProcessRotation::RotateObjectivePlugin_delete
+    #define TPlugin_new  SafeRotationFunctions::RotateObjectivePlugin_new
+    #define TPlugin_delete  SafeRotationFunctions::RotateObjectivePlugin_delete
 
     /* Defines */
     #define TTypeSupport RotateObjectiveTypeSupport
-    #define TData        ProcessRotation::RotateObjective
+    #define TData        SafeRotationFunctions::RotateObjective
     #define TDataReader  RotateObjectiveDataReader
     #define TDataWriter  RotateObjectiveDataWriter
     #define TGENERATE_SER_CODE
@@ -246,7 +246,7 @@ namespace ProcessRotation {
 
     /* Defines */
     #define TDataWriter RotateStateDataWriter
-    #define TData       ProcessRotation::RotateState
+    #define TData       SafeRotationFunctions::RotateState
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -271,7 +271,7 @@ namespace ProcessRotation {
     /* Defines */
     #define TDataReader RotateStateDataReader
     #define TDataSeq    RotateStateSeq
-    #define TData       ProcessRotation::RotateState
+    #define TData       SafeRotationFunctions::RotateState
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -294,12 +294,12 @@ namespace ProcessRotation {
 
     /* Requires */
     #define TTYPENAME    RotateStateTYPENAME
-    #define TPlugin_new  ProcessRotation::RotateStatePlugin_new
-    #define TPlugin_delete  ProcessRotation::RotateStatePlugin_delete
+    #define TPlugin_new  SafeRotationFunctions::RotateStatePlugin_new
+    #define TPlugin_delete  SafeRotationFunctions::RotateStatePlugin_delete
 
     /* Defines */
     #define TTypeSupport RotateStateTypeSupport
-    #define TData        ProcessRotation::RotateState
+    #define TData        SafeRotationFunctions::RotateState
     #define TDataReader  RotateStateDataReader
     #define TDataWriter  RotateStateDataWriter
     #define TGENERATE_SER_CODE
@@ -317,5 +317,5 @@ namespace ProcessRotation {
     #undef TPlugin_new
     #undef TPlugin_delete
 
-} /* namespace ProcessRotation  */
+} /* namespace SafeRotationFunctions  */
 

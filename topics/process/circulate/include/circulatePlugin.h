@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef circulatePlugin_1746883627_h
-#define circulatePlugin_1746883627_h
+#ifndef circulatePlugin_1746884186_h
+#define circulatePlugin_1746884186_h
 
 #include "circulate.h"
 
@@ -29,7 +29,7 @@ struct RTICdrStream;
 #define NDDSUSERDllExport __declspec(dllexport)
 #endif
 
-namespace ProcessCirculation {
+namespace SafeCirculateFunctions {
 
     /* The type used to store keys for instances of type struct
     * AnotherSimple.
@@ -907,7 +907,7 @@ namespace ProcessCirculation {
     NDDSUSERDllExport extern void
     CirculateStatePlugin_delete(struct PRESTypePlugin *);
 
-} /* namespace ProcessCirculation  */
+} /* namespace SafeCirculateFunctions  */
 
 #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, stop exporting symbols.
@@ -916,5 +916,5 @@ namespace ProcessCirculation {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* circulatePlugin_1746883627_h */
+#endif /* circulatePlugin_1746884186_h */
 

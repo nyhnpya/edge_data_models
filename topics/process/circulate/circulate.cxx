@@ -30,16 +30,16 @@ or consult the RTI Connext manual.
 
 #include "circulate.h"
 
-namespace ProcessCirculation {
+namespace SafeCirculateFunctions {
 
     /* ========================================================================= */
-    const char *CirculateRequestTYPENAME = "ProcessCirculation::CirculateRequest";
+    const char *CirculateRequestTYPENAME = "SafeCirculateFunctions::CirculateRequest";
 
     DDS_TypeCode* CirculateRequest_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member CirculateRequest_g_tc_members[5]=
+        static DDS_TypeCode_Member CirculateRequest_g_tc_members[6]=
         {
 
             {
@@ -60,7 +60,7 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"priority",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -77,7 +77,7 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"timeNeeded",/* Member name */
+                (char *)"priority",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -94,7 +94,7 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"estimatedDuration",/* Member name */
+                (char *)"timeNeeded",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -111,9 +111,26 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"targetFlowRate",/* Member name */
+                (char *)"estimatedDuration",/* Member name */
                 {
                     4,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"targetFlowRate",/* Member name */
+                {
+                    5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -134,12 +151,12 @@ namespace ProcessCirculation {
                 DDS_TK_STRUCT,/* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
-                (char *)"ProcessCirculation::CirculateRequest", /* Name */
+                (char *)"SafeCirculateFunctions::CirculateRequest", /* Name */
                 NULL, /* Ignored */      
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                5, /* Number of members */
+                6, /* Number of members */
                 CirculateRequest_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for CirculateRequest*/
@@ -150,13 +167,15 @@ namespace ProcessCirculation {
 
         CirculateRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        CirculateRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Priority_get_typecode();
+        CirculateRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        CirculateRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+        CirculateRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Priority_get_typecode();
 
         CirculateRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-        CirculateRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        CirculateRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+
+        CirculateRequest_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         is_initialized = RTI_TRUE;
 
@@ -165,7 +184,7 @@ namespace ProcessCirculation {
 
     RTIBool CirculateRequest_initialize(
         CirculateRequest* sample) {
-        return ProcessCirculation::CirculateRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        return SafeCirculateFunctions::CirculateRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
     }
 
     RTIBool CirculateRequest_initialize_ex(
@@ -178,7 +197,7 @@ namespace ProcessCirculation {
         allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
         allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-        return ProcessCirculation::CirculateRequest_initialize_w_params(
+        return SafeCirculateFunctions::CirculateRequest_initialize_w_params(
             sample,&allocParams);
 
     }
@@ -190,6 +209,10 @@ namespace ProcessCirculation {
         if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -217,7 +240,7 @@ namespace ProcessCirculation {
         CirculateRequest* sample)
     {
 
-        ProcessCirculation::CirculateRequest_finalize_ex(sample,RTI_TRUE);
+        SafeCirculateFunctions::CirculateRequest_finalize_ex(sample,RTI_TRUE);
     }
 
     void CirculateRequest_finalize_ex(
@@ -232,7 +255,7 @@ namespace ProcessCirculation {
 
         deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-        ProcessCirculation::CirculateRequest_finalize_w_params(
+        SafeCirculateFunctions::CirculateRequest_finalize_w_params(
             sample,&deallocParams);
     }
 
@@ -246,6 +269,8 @@ namespace ProcessCirculation {
         if (deallocParams) {} /* To avoid warnings */
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
+
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
 
         DataTypes::Priority_finalize_w_params(&sample->priority,deallocParams);
 
@@ -272,6 +297,7 @@ namespace ProcessCirculation {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
         DataTypes::Priority_finalize_optional_members(&sample->priority, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->timeNeeded, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
@@ -284,6 +310,10 @@ namespace ProcessCirculation {
 
         if (!DataTypes::Uuid_copy(
             &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::Priority_copy(
@@ -315,9 +345,9 @@ namespace ProcessCirculation {
     */
     #define T CirculateRequest
     #define TSeq CirculateRequestSeq
-    #define T_initialize_w_params ProcessCirculation::CirculateRequest_initialize_w_params
-    #define T_finalize_w_params   ProcessCirculation::CirculateRequest_finalize_w_params
-    #define T_copy       ProcessCirculation::CirculateRequest_copy
+    #define T_initialize_w_params SafeCirculateFunctions::CirculateRequest_initialize_w_params
+    #define T_finalize_w_params   SafeCirculateFunctions::CirculateRequest_finalize_w_params
+    #define T_copy       SafeCirculateFunctions::CirculateRequest_copy
 
     #ifndef NDDS_STANDALONE_TYPE
     #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -334,13 +364,13 @@ namespace ProcessCirculation {
     #undef T
 
     /* ========================================================================= */
-    const char *CirculateObjectiveTYPENAME = "ProcessCirculation::CirculateObjective";
+    const char *CirculateObjectiveTYPENAME = "SafeCirculateFunctions::CirculateObjective";
 
     DDS_TypeCode* CirculateObjective_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member CirculateObjective_g_tc_members[3]=
+        static DDS_TypeCode_Member CirculateObjective_g_tc_members[4]=
         {
 
             {
@@ -361,7 +391,7 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"estimatedDuration",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -378,9 +408,26 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"targetFlowRate",/* Member name */
+                (char *)"estimatedDuration",/* Member name */
                 {
                     2,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"targetFlowRate",/* Member name */
+                {
+                    3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -401,12 +448,12 @@ namespace ProcessCirculation {
                 DDS_TK_STRUCT,/* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
-                (char *)"ProcessCirculation::CirculateObjective", /* Name */
+                (char *)"SafeCirculateFunctions::CirculateObjective", /* Name */
                 NULL, /* Ignored */      
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                3, /* Number of members */
+                4, /* Number of members */
                 CirculateObjective_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for CirculateObjective*/
@@ -417,9 +464,11 @@ namespace ProcessCirculation {
 
         CirculateObjective_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        CirculateObjective_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+        CirculateObjective_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        CirculateObjective_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        CirculateObjective_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+
+        CirculateObjective_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         is_initialized = RTI_TRUE;
 
@@ -428,7 +477,7 @@ namespace ProcessCirculation {
 
     RTIBool CirculateObjective_initialize(
         CirculateObjective* sample) {
-        return ProcessCirculation::CirculateObjective_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        return SafeCirculateFunctions::CirculateObjective_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
     }
 
     RTIBool CirculateObjective_initialize_ex(
@@ -441,7 +490,7 @@ namespace ProcessCirculation {
         allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
         allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-        return ProcessCirculation::CirculateObjective_initialize_w_params(
+        return SafeCirculateFunctions::CirculateObjective_initialize_w_params(
             sample,&allocParams);
 
     }
@@ -453,6 +502,10 @@ namespace ProcessCirculation {
         if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -472,7 +525,7 @@ namespace ProcessCirculation {
         CirculateObjective* sample)
     {
 
-        ProcessCirculation::CirculateObjective_finalize_ex(sample,RTI_TRUE);
+        SafeCirculateFunctions::CirculateObjective_finalize_ex(sample,RTI_TRUE);
     }
 
     void CirculateObjective_finalize_ex(
@@ -487,7 +540,7 @@ namespace ProcessCirculation {
 
         deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-        ProcessCirculation::CirculateObjective_finalize_w_params(
+        SafeCirculateFunctions::CirculateObjective_finalize_w_params(
             sample,&deallocParams);
     }
 
@@ -501,6 +554,8 @@ namespace ProcessCirculation {
         if (deallocParams) {} /* To avoid warnings */
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
+
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
 
         DataTypes::Time_finalize_w_params(&sample->estimatedDuration,deallocParams);
 
@@ -523,6 +578,7 @@ namespace ProcessCirculation {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
     }
 
@@ -533,6 +589,10 @@ namespace ProcessCirculation {
 
         if (!DataTypes::Uuid_copy(
             &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::Time_copy(
@@ -556,9 +616,9 @@ namespace ProcessCirculation {
     */
     #define T CirculateObjective
     #define TSeq CirculateObjectiveSeq
-    #define T_initialize_w_params ProcessCirculation::CirculateObjective_initialize_w_params
-    #define T_finalize_w_params   ProcessCirculation::CirculateObjective_finalize_w_params
-    #define T_copy       ProcessCirculation::CirculateObjective_copy
+    #define T_initialize_w_params SafeCirculateFunctions::CirculateObjective_initialize_w_params
+    #define T_finalize_w_params   SafeCirculateFunctions::CirculateObjective_finalize_w_params
+    #define T_copy       SafeCirculateFunctions::CirculateObjective_copy
 
     #ifndef NDDS_STANDALONE_TYPE
     #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -575,13 +635,13 @@ namespace ProcessCirculation {
     #undef T
 
     /* ========================================================================= */
-    const char *CirculateStateTYPENAME = "ProcessCirculation::CirculateState";
+    const char *CirculateStateTYPENAME = "SafeCirculateFunctions::CirculateState";
 
     DDS_TypeCode* CirculateState_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member CirculateState_g_tc_members[10]=
+        static DDS_TypeCode_Member CirculateState_g_tc_members[11]=
         {
 
             {
@@ -602,7 +662,7 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"timestamp",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -619,7 +679,7 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"status",/* Member name */
+                (char *)"timestamp",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -636,7 +696,7 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"actualFlowRate",/* Member name */
+                (char *)"status",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -653,7 +713,7 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"actualStandpipePressure",/* Member name */
+                (char *)"actualFlowRate",/* Member name */
                 {
                     4,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -670,7 +730,7 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"minFlowRate",/* Member name */
+                (char *)"actualStandpipePressure",/* Member name */
                 {
                     5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -687,7 +747,7 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"maxFlowRate",/* Member name */
+                (char *)"minFlowRate",/* Member name */
                 {
                     6,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -704,7 +764,7 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"minStandpipePressure",/* Member name */
+                (char *)"maxFlowRate",/* Member name */
                 {
                     7,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -721,7 +781,7 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"maxStandpipePressure",/* Member name */
+                (char *)"minStandpipePressure",/* Member name */
                 {
                     8,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -738,9 +798,26 @@ namespace ProcessCirculation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"targetFlowRate",/* Member name */
+                (char *)"maxStandpipePressure",/* Member name */
                 {
                     9,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"targetFlowRate",/* Member name */
+                {
+                    10,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -761,12 +838,12 @@ namespace ProcessCirculation {
                 DDS_TK_STRUCT,/* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
-                (char *)"ProcessCirculation::CirculateState", /* Name */
+                (char *)"SafeCirculateFunctions::CirculateState", /* Name */
                 NULL, /* Ignored */      
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                10, /* Number of members */
+                11, /* Number of members */
                 CirculateState_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for CirculateState*/
@@ -777,11 +854,11 @@ namespace ProcessCirculation {
 
         CirculateState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        CirculateState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+        CirculateState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        CirculateState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Status_get_typecode();
+        CirculateState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-        CirculateState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        CirculateState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Status_get_typecode();
 
         CirculateState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -795,6 +872,8 @@ namespace ProcessCirculation {
 
         CirculateState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
+        CirculateState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
         is_initialized = RTI_TRUE;
 
         return &CirculateState_g_tc;
@@ -802,7 +881,7 @@ namespace ProcessCirculation {
 
     RTIBool CirculateState_initialize(
         CirculateState* sample) {
-        return ProcessCirculation::CirculateState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        return SafeCirculateFunctions::CirculateState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
     }
 
     RTIBool CirculateState_initialize_ex(
@@ -815,7 +894,7 @@ namespace ProcessCirculation {
         allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
         allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-        return ProcessCirculation::CirculateState_initialize_w_params(
+        return SafeCirculateFunctions::CirculateState_initialize_w_params(
             sample,&allocParams);
 
     }
@@ -827,6 +906,10 @@ namespace ProcessCirculation {
         if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -874,7 +957,7 @@ namespace ProcessCirculation {
         CirculateState* sample)
     {
 
-        ProcessCirculation::CirculateState_finalize_ex(sample,RTI_TRUE);
+        SafeCirculateFunctions::CirculateState_finalize_ex(sample,RTI_TRUE);
     }
 
     void CirculateState_finalize_ex(
@@ -889,7 +972,7 @@ namespace ProcessCirculation {
 
         deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-        ProcessCirculation::CirculateState_finalize_w_params(
+        SafeCirculateFunctions::CirculateState_finalize_w_params(
             sample,&deallocParams);
     }
 
@@ -903,6 +986,8 @@ namespace ProcessCirculation {
         if (deallocParams) {} /* To avoid warnings */
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
+
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
 
         DataTypes::Time_finalize_w_params(&sample->timestamp,deallocParams);
 
@@ -927,6 +1012,7 @@ namespace ProcessCirculation {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
         DataTypes::Status_finalize_optional_members(&sample->status, deallocParams->delete_pointers);
     }
@@ -938,6 +1024,10 @@ namespace ProcessCirculation {
 
         if (!DataTypes::Uuid_copy(
             &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::Time_copy(
@@ -989,9 +1079,9 @@ namespace ProcessCirculation {
     */
     #define T CirculateState
     #define TSeq CirculateStateSeq
-    #define T_initialize_w_params ProcessCirculation::CirculateState_initialize_w_params
-    #define T_finalize_w_params   ProcessCirculation::CirculateState_finalize_w_params
-    #define T_copy       ProcessCirculation::CirculateState_copy
+    #define T_initialize_w_params SafeCirculateFunctions::CirculateState_initialize_w_params
+    #define T_finalize_w_params   SafeCirculateFunctions::CirculateState_finalize_w_params
+    #define T_copy       SafeCirculateFunctions::CirculateState_copy
 
     #ifndef NDDS_STANDALONE_TYPE
     #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -1006,5 +1096,5 @@ namespace ProcessCirculation {
     #undef T_initialize_w_params
     #undef TSeq
     #undef T
-} /* namespace ProcessCirculation  */
+} /* namespace SafeCirculateFunctions  */
 

@@ -2,13 +2,19 @@ module DataTypes
 {
     typedef string<36> Uuid;
 
-    struct Time //@brief time of day based on Unix Epoch
+    /**
+    * \brief time of day based on Unix Epoch
+    */
+    struct Time
     {
         long sec;               ///< The seconds.
         unsigned long nanosec;  ///< The nanoseconds.
     };
 
-    enum Priority  //@brief sets the priority of the request
+    /**
+    * \brief sets the priority of the request
+    */
+    enum Priority  
     {
         Normal,   ///< Normal priority.
         High,     ///< High priority.

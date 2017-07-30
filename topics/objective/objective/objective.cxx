@@ -39,7 +39,7 @@ namespace Plan {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member ObjectiveState_g_tc_members[3]=
+        static DDS_TypeCode_Member ObjectiveState_g_tc_members[4]=
         {
 
             {
@@ -60,7 +60,7 @@ namespace Plan {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"timestamp",/* Member name */
+                (char *)"parentId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -77,9 +77,26 @@ namespace Plan {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"objective",/* Member name */
+                (char *)"timestamp",/* Member name */
                 {
                     2,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"objective",/* Member name */
+                {
+                    3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -105,7 +122,7 @@ namespace Plan {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                3, /* Number of members */
+                4, /* Number of members */
                 ObjectiveState_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for ObjectiveState*/
@@ -116,9 +133,11 @@ namespace Plan {
 
         ObjectiveState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        ObjectiveState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+        ObjectiveState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        ObjectiveState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Objective_get_typecode();
+        ObjectiveState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+
+        ObjectiveState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Objective_get_typecode();
 
         is_initialized = RTI_TRUE;
 
@@ -152,6 +171,10 @@ namespace Plan {
         if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Uuid_initialize_w_params(&sample->parentId,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -200,6 +223,8 @@ namespace Plan {
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
+        DataTypes::Uuid_finalize_w_params(&sample->parentId,deallocParams);
+
         DataTypes::Time_finalize_w_params(&sample->timestamp,deallocParams);
 
         DataTypes::Objective_finalize_w_params(&sample->objective,deallocParams);
@@ -223,6 +248,7 @@ namespace Plan {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->parentId, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
         DataTypes::Objective_finalize_optional_members(&sample->objective, deallocParams->delete_pointers);
     }
@@ -234,6 +260,10 @@ namespace Plan {
 
         if (!DataTypes::Uuid_copy(
             &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Uuid_copy(
+            &dst->parentId, &src->parentId)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::Time_copy(

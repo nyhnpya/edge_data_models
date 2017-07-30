@@ -15,7 +15,7 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace ProcessHoist {
+namespace SafeHoistFunctions {
 
     /* ========================================================================= */
     /**
@@ -46,7 +46,7 @@ namespace ProcessHoist {
 
     /* Defines */
     #define TDataWriter HoistRequestDataWriter
-    #define TData       ProcessHoist::HoistRequest
+    #define TData       SafeHoistFunctions::HoistRequest
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -71,7 +71,7 @@ namespace ProcessHoist {
     /* Defines */
     #define TDataReader HoistRequestDataReader
     #define TDataSeq    HoistRequestSeq
-    #define TData       ProcessHoist::HoistRequest
+    #define TData       SafeHoistFunctions::HoistRequest
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -94,12 +94,12 @@ namespace ProcessHoist {
 
     /* Requires */
     #define TTYPENAME    HoistRequestTYPENAME
-    #define TPlugin_new  ProcessHoist::HoistRequestPlugin_new
-    #define TPlugin_delete  ProcessHoist::HoistRequestPlugin_delete
+    #define TPlugin_new  SafeHoistFunctions::HoistRequestPlugin_new
+    #define TPlugin_delete  SafeHoistFunctions::HoistRequestPlugin_delete
 
     /* Defines */
     #define TTypeSupport HoistRequestTypeSupport
-    #define TData        ProcessHoist::HoistRequest
+    #define TData        SafeHoistFunctions::HoistRequest
     #define TDataReader  HoistRequestDataReader
     #define TDataWriter  HoistRequestDataWriter
     #define TGENERATE_SER_CODE
@@ -146,7 +146,7 @@ namespace ProcessHoist {
 
     /* Defines */
     #define TDataWriter HoistObjectiveDataWriter
-    #define TData       ProcessHoist::HoistObjective
+    #define TData       SafeHoistFunctions::HoistObjective
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -171,7 +171,7 @@ namespace ProcessHoist {
     /* Defines */
     #define TDataReader HoistObjectiveDataReader
     #define TDataSeq    HoistObjectiveSeq
-    #define TData       ProcessHoist::HoistObjective
+    #define TData       SafeHoistFunctions::HoistObjective
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -194,12 +194,12 @@ namespace ProcessHoist {
 
     /* Requires */
     #define TTYPENAME    HoistObjectiveTYPENAME
-    #define TPlugin_new  ProcessHoist::HoistObjectivePlugin_new
-    #define TPlugin_delete  ProcessHoist::HoistObjectivePlugin_delete
+    #define TPlugin_new  SafeHoistFunctions::HoistObjectivePlugin_new
+    #define TPlugin_delete  SafeHoistFunctions::HoistObjectivePlugin_delete
 
     /* Defines */
     #define TTypeSupport HoistObjectiveTypeSupport
-    #define TData        ProcessHoist::HoistObjective
+    #define TData        SafeHoistFunctions::HoistObjective
     #define TDataReader  HoistObjectiveDataReader
     #define TDataWriter  HoistObjectiveDataWriter
     #define TGENERATE_SER_CODE
@@ -246,7 +246,7 @@ namespace ProcessHoist {
 
     /* Defines */
     #define TDataWriter HoistStateDataWriter
-    #define TData       ProcessHoist::HoistState
+    #define TData       SafeHoistFunctions::HoistState
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -271,7 +271,7 @@ namespace ProcessHoist {
     /* Defines */
     #define TDataReader HoistStateDataReader
     #define TDataSeq    HoistStateSeq
-    #define TData       ProcessHoist::HoistState
+    #define TData       SafeHoistFunctions::HoistState
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -294,12 +294,12 @@ namespace ProcessHoist {
 
     /* Requires */
     #define TTYPENAME    HoistStateTYPENAME
-    #define TPlugin_new  ProcessHoist::HoistStatePlugin_new
-    #define TPlugin_delete  ProcessHoist::HoistStatePlugin_delete
+    #define TPlugin_new  SafeHoistFunctions::HoistStatePlugin_new
+    #define TPlugin_delete  SafeHoistFunctions::HoistStatePlugin_delete
 
     /* Defines */
     #define TTypeSupport HoistStateTypeSupport
-    #define TData        ProcessHoist::HoistState
+    #define TData        SafeHoistFunctions::HoistState
     #define TDataReader  HoistStateDataReader
     #define TDataWriter  HoistStateDataWriter
     #define TGENERATE_SER_CODE
@@ -317,5 +317,5 @@ namespace ProcessHoist {
     #undef TPlugin_new
     #undef TPlugin_delete
 
-} /* namespace ProcessHoist  */
+} /* namespace SafeHoistFunctions  */
 

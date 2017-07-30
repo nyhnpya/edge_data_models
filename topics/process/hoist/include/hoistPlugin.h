@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef hoistPlugin_1013693446_h
-#define hoistPlugin_1013693446_h
+#ifndef hoistPlugin_1013695219_h
+#define hoistPlugin_1013695219_h
 
 #include "hoist.h"
 
@@ -29,7 +29,7 @@ struct RTICdrStream;
 #define NDDSUSERDllExport __declspec(dllexport)
 #endif
 
-namespace ProcessHoist {
+namespace SafeHoistFunctions {
 
     /* The type used to store keys for instances of type struct
     * AnotherSimple.
@@ -907,7 +907,7 @@ namespace ProcessHoist {
     NDDSUSERDllExport extern void
     HoistStatePlugin_delete(struct PRESTypePlugin *);
 
-} /* namespace ProcessHoist  */
+} /* namespace SafeHoistFunctions  */
 
 #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, stop exporting symbols.
@@ -916,5 +916,5 @@ namespace ProcessHoist {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* hoistPlugin_1013693446_h */
+#endif /* hoistPlugin_1013695219_h */
 

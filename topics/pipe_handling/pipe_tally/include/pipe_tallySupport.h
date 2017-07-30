@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef pipe_tallySupport_58331204_h
-#define pipe_tallySupport_58331204_h
+#ifndef pipe_tallySupport_58331246_h
+#define pipe_tallySupport_58331246_h
 
 /* Uses */
 #include "pipe_tally.h"
@@ -58,5 +58,5 @@ namespace PipeHandling {
     #endif
 } /* namespace PipeHandling  */
 
-#endif  /* pipe_tallySupport_58331204_h */
+#endif  /* pipe_tallySupport_58331246_h */
 

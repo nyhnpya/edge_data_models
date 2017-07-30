@@ -6,10 +6,10 @@
 #include "rotate.h"
 #include "rotateSupport.h"
 
-class CRotateStateSubscriber : public TSubscriber< ProcessRotation::RotateState>
+class CRotateStateSubscriber : public TSubscriber< SafeRotationFunctions::RotateState>
 {
 public:
-    typedef std::function<void(const ProcessRotation::RotateState &data)> OnDataAvailableEvent;
+    typedef std::function<void(const SafeRotationFunctions::RotateState &data)> OnDataAvailableEvent;
 
     CRotateStateSubscriber();
     virtual ~CRotateStateSubscriber();
@@ -31,14 +31,14 @@ public:
 
 protected:
     ///Derived Methods
-    void DataAvailable(const ProcessRotation::RotateState &data,
+    void DataAvailable(const SafeRotationFunctions::RotateState &data,
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
 private:
-    ProcessRotation::RotateState m_data;
+    SafeRotationFunctions::RotateState m_data;
     DDS::SampleInfo              m_sampleInfo;
     DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent         m_pOnDataAvailable;

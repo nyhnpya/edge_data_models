@@ -5,7 +5,7 @@
 #include "hoist.h"
 #include "hoistSupport.h"
 
-class CHoistRequestPublisher : public TPublisher< ProcessHoist::HoistRequest >
+class CHoistRequestPublisher : public TPublisher< SafeHoistFunctions::HoistRequest >
 {
  public:
     CHoistRequestPublisher();
@@ -19,7 +19,7 @@ class CHoistRequestPublisher : public TPublisher< ProcessHoist::HoistRequest >
     void SetTimeNeeded(DataTypes::Time timeNeeded);
     void SetDuration(DataTypes::Time duration);
     void SetTargetVelocity(double targetVelocity);
-    void SetTargetDestination(double targetDestination);
+    void SetTargetPosition(double targetPosition);
 };
 
 #endif // __HOIST_REQUEST_PUBLISHER_H__ 

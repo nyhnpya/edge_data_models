@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef pipe_tally_58331204_h
-#define pipe_tally_58331204_h
+#ifndef pipe_tally_58331246_h
+#define pipe_tally_58331246_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -44,6 +44,7 @@ namespace PipeHandling {
         #endif
 
         DataTypes::Uuid   id ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Time   timestamp ;
         DDS_Char *   serialNumber ;
         DDS_UnsignedLong   jointNumber ;

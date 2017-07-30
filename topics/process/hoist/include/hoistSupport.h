@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef hoistSupport_1013693446_h
-#define hoistSupport_1013693446_h
+#ifndef hoistSupport_1013695219_h
+#define hoistSupport_1013695219_h
 
 /* Uses */
 #include "hoist.h"
@@ -26,7 +26,7 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace ProcessHoist {
+namespace SafeHoistFunctions {
     /* ========================================================================= */
     /**
     Uses:     T
@@ -114,7 +114,7 @@ namespace ProcessHoist {
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport
     #endif
-} /* namespace ProcessHoist  */
+} /* namespace SafeHoistFunctions  */
 
-#endif  /* hoistSupport_1013693446_h */
+#endif  /* hoistSupport_1013695219_h */
 

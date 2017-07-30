@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef objective_1315698079_h
-#define objective_1315698079_h
+#ifndef objective_1315698119_h
+#define objective_1315698119_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -44,6 +44,7 @@ namespace Plan {
         #endif
 
         DataTypes::Uuid   id ;
+        DataTypes::Uuid   parentId ;
         DataTypes::Time   timestamp ;
         DataTypes::Objective   objective ;
 

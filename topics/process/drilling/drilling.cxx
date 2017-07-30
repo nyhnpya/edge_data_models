@@ -39,7 +39,7 @@ namespace Hoisting {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member DrillingRequest_g_tc_members[12]=
+        static DDS_TypeCode_Member DrillingRequest_g_tc_members[13]=
         {
 
             {
@@ -60,7 +60,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"priority",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -77,7 +77,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"timeNeeded",/* Member name */
+                (char *)"priority",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -94,7 +94,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"duration",/* Member name */
+                (char *)"timeNeeded",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -111,7 +111,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ropLimit",/* Member name */
+                (char *)"duration",/* Member name */
                 {
                     4,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -128,7 +128,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobLimit",/* Member name */
+                (char *)"ropLimit",/* Member name */
                 {
                     5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -145,7 +145,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureLimit",/* Member name */
+                (char *)"wobLimit",/* Member name */
                 {
                     6,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -162,7 +162,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueLimit",/* Member name */
+                (char *)"differentialPressureLimit",/* Member name */
                 {
                     7,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -179,7 +179,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ropMode",/* Member name */
+                (char *)"torqueLimit",/* Member name */
                 {
                     8,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -196,7 +196,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobMode",/* Member name */
+                (char *)"ropMode",/* Member name */
                 {
                     9,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -213,7 +213,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureMode",/* Member name */
+                (char *)"wobMode",/* Member name */
                 {
                     10,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -230,9 +230,26 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueMode",/* Member name */
+                (char *)"differentialPressureMode",/* Member name */
                 {
                     11,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"torqueMode",/* Member name */
+                {
+                    12,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -258,7 +275,7 @@ namespace Hoisting {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                12, /* Number of members */
+                13, /* Number of members */
                 DrillingRequest_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for DrillingRequest*/
@@ -269,13 +286,13 @@ namespace Hoisting {
 
         DrillingRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        DrillingRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Priority_get_typecode();
+        DrillingRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        DrillingRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+        DrillingRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Priority_get_typecode();
 
         DrillingRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-        DrillingRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        DrillingRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
         DrillingRequest_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -283,13 +300,15 @@ namespace Hoisting {
 
         DrillingRequest_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        DrillingRequest_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+        DrillingRequest_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         DrillingRequest_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         DrillingRequest_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         DrillingRequest_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+
+        DrillingRequest_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         is_initialized = RTI_TRUE;
 
@@ -323,6 +342,10 @@ namespace Hoisting {
         if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -408,6 +431,8 @@ namespace Hoisting {
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
+
         DataTypes::Priority_finalize_w_params(&sample->priority,deallocParams);
 
         DataTypes::Time_finalize_w_params(&sample->timeNeeded,deallocParams);
@@ -433,6 +458,7 @@ namespace Hoisting {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
         DataTypes::Priority_finalize_optional_members(&sample->priority, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->timeNeeded, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->duration, deallocParams->delete_pointers);
@@ -445,6 +471,10 @@ namespace Hoisting {
 
         if (!DataTypes::Uuid_copy(
             &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::Priority_copy(
@@ -529,7 +559,7 @@ namespace Hoisting {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member DrillingObjective_g_tc_members[10]=
+        static DDS_TypeCode_Member DrillingObjective_g_tc_members[11]=
         {
 
             {
@@ -550,7 +580,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"estimatedDuration",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -567,7 +597,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ropLimit",/* Member name */
+                (char *)"estimatedDuration",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -584,7 +614,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobLimit",/* Member name */
+                (char *)"ropLimit",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -601,7 +631,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureLimit",/* Member name */
+                (char *)"wobLimit",/* Member name */
                 {
                     4,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -618,7 +648,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueLimit",/* Member name */
+                (char *)"differentialPressureLimit",/* Member name */
                 {
                     5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -635,7 +665,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ropMode",/* Member name */
+                (char *)"torqueLimit",/* Member name */
                 {
                     6,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -652,7 +682,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobMode",/* Member name */
+                (char *)"ropMode",/* Member name */
                 {
                     7,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -669,7 +699,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureMode",/* Member name */
+                (char *)"wobMode",/* Member name */
                 {
                     8,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -686,9 +716,26 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueMode",/* Member name */
+                (char *)"differentialPressureMode",/* Member name */
                 {
                     9,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"torqueMode",/* Member name */
+                {
+                    10,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -714,7 +761,7 @@ namespace Hoisting {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                10, /* Number of members */
+                11, /* Number of members */
                 DrillingObjective_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for DrillingObjective*/
@@ -725,9 +772,9 @@ namespace Hoisting {
 
         DrillingObjective_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        DrillingObjective_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+        DrillingObjective_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        DrillingObjective_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        DrillingObjective_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
         DrillingObjective_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -735,13 +782,15 @@ namespace Hoisting {
 
         DrillingObjective_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        DrillingObjective_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+        DrillingObjective_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         DrillingObjective_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         DrillingObjective_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         DrillingObjective_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+
+        DrillingObjective_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         is_initialized = RTI_TRUE;
 
@@ -775,6 +824,10 @@ namespace Hoisting {
         if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -852,6 +905,8 @@ namespace Hoisting {
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
+
         DataTypes::Time_finalize_w_params(&sample->estimatedDuration,deallocParams);
 
     }
@@ -873,6 +928,7 @@ namespace Hoisting {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
     }
 
@@ -883,6 +939,10 @@ namespace Hoisting {
 
         if (!DataTypes::Uuid_copy(
             &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::Time_copy(
@@ -959,7 +1019,7 @@ namespace Hoisting {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member DrillingState_g_tc_members[19]=
+        static DDS_TypeCode_Member DrillingState_g_tc_members[20]=
         {
 
             {
@@ -980,7 +1040,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"timestamp",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -997,7 +1057,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ropActual",/* Member name */
+                (char *)"timestamp",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1014,7 +1074,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobActual",/* Member name */
+                (char *)"ropActual",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1031,7 +1091,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureActual",/* Member name */
+                (char *)"wobActual",/* Member name */
                 {
                     4,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1048,7 +1108,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueActual",/* Member name */
+                (char *)"differentialPressureActual",/* Member name */
                 {
                     5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1065,7 +1125,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ropLimit",/* Member name */
+                (char *)"torqueActual",/* Member name */
                 {
                     6,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1082,7 +1142,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobLimit",/* Member name */
+                (char *)"ropLimit",/* Member name */
                 {
                     7,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1099,7 +1159,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureLimit",/* Member name */
+                (char *)"wobLimit",/* Member name */
                 {
                     8,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1116,7 +1176,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueLimit",/* Member name */
+                (char *)"differentialPressureLimit",/* Member name */
                 {
                     9,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1133,7 +1193,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ropMode",/* Member name */
+                (char *)"torqueLimit",/* Member name */
                 {
                     10,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1150,7 +1210,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobMode",/* Member name */
+                (char *)"ropMode",/* Member name */
                 {
                     11,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1167,7 +1227,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureMode",/* Member name */
+                (char *)"wobMode",/* Member name */
                 {
                     12,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1184,7 +1244,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueMode",/* Member name */
+                (char *)"differentialPressureMode",/* Member name */
                 {
                     13,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1201,7 +1261,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ropTarget",/* Member name */
+                (char *)"torqueMode",/* Member name */
                 {
                     14,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1218,7 +1278,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"wobTarget",/* Member name */
+                (char *)"ropTarget",/* Member name */
                 {
                     15,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1235,7 +1295,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"differentialPressureTarget",/* Member name */
+                (char *)"wobTarget",/* Member name */
                 {
                     16,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1252,7 +1312,7 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"torqueTarget",/* Member name */
+                (char *)"differentialPressureTarget",/* Member name */
                 {
                     17,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1269,9 +1329,26 @@ namespace Hoisting {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"bitOnBottom",/* Member name */
+                (char *)"torqueTarget",/* Member name */
                 {
                     18,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"bitOnBottom",/* Member name */
+                {
+                    19,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -1297,7 +1374,7 @@ namespace Hoisting {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                19, /* Number of members */
+                20, /* Number of members */
                 DrillingState_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for DrillingState*/
@@ -1308,9 +1385,9 @@ namespace Hoisting {
 
         DrillingState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        DrillingState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+        DrillingState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        DrillingState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        DrillingState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
         DrillingState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -1326,7 +1403,7 @@ namespace Hoisting {
 
         DrillingState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        DrillingState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+        DrillingState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         DrillingState_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
@@ -1334,7 +1411,7 @@ namespace Hoisting {
 
         DrillingState_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-        DrillingState_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        DrillingState_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         DrillingState_g_tc_members[15]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -1342,7 +1419,9 @@ namespace Hoisting {
 
         DrillingState_g_tc_members[17]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        DrillingState_g_tc_members[18]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+        DrillingState_g_tc_members[18]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        DrillingState_g_tc_members[19]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
         is_initialized = RTI_TRUE;
 
@@ -1376,6 +1455,10 @@ namespace Hoisting {
         if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -1489,6 +1572,8 @@ namespace Hoisting {
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
+
         DataTypes::Time_finalize_w_params(&sample->timestamp,deallocParams);
 
     }
@@ -1510,6 +1595,7 @@ namespace Hoisting {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
     }
 
@@ -1520,6 +1606,10 @@ namespace Hoisting {
 
         if (!DataTypes::Uuid_copy(
             &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::Time_copy(

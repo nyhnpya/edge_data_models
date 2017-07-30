@@ -155,6 +155,9 @@ namespace Plan {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->parentId, "parentId", indent_level + 1);
+
         DataTypes::TimePluginSupport_print_data(
             &sample->timestamp, "timestamp", indent_level + 1);
 
@@ -366,6 +369,16 @@ namespace Plan {
                 return RTI_FALSE;
             }
 
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->parentId,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
             if(!DataTypes::TimePlugin_serialize(
                 endpoint_data,
                 &sample->timestamp,
@@ -426,6 +439,14 @@ namespace Plan {
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->parentId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -586,6 +607,13 @@ namespace Plan {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::TimePlugin_skip(
                 endpoint_data,
                 stream, 
@@ -639,6 +667,9 @@ namespace Plan {
             current_alignment = 0;
             initial_alignment = 0;
         }
+
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
@@ -702,6 +733,8 @@ namespace Plan {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::ObjectivePlugin_get_serialized_sample_min_size(
@@ -751,6 +784,9 @@ namespace Plan {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->parentId);
         current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->timestamp);
@@ -971,6 +1007,14 @@ namespace Plan {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::TimePlugin_skip(
                 endpoint_data,
                 stream, 

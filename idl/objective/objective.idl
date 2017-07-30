@@ -7,6 +7,7 @@ module Plan
     struct ObjectiveState
     {
         DataTypes::Uuid      id; //@key
+        DataTypes::Uuid      parentId; 
         DataTypes::Time      timestamp;
         DataTypes::Objective objective;
     };

@@ -5,10 +5,10 @@
 #include "rotate.h"
 #include "rotateSupport.h"
 
-class CRotateObjectiveSubscriber : public TSubscriber< ProcessRotation::RotateObjective >
+class CRotateObjectiveSubscriber : public TSubscriber< SafeRotationFunctions::RotateObjective >
 {
  public:
-    typedef std::function<void(const ProcessRotation::RotateObjective &data)> OnDataAvailableEvent;
+    typedef std::function<void(const SafeRotationFunctions::RotateObjective &data)> OnDataAvailableEvent;
 
     CRotateObjectiveSubscriber();
     ~CRotateObjectiveSubscriber();
@@ -25,13 +25,13 @@ class CRotateObjectiveSubscriber : public TSubscriber< ProcessRotation::RotateOb
     bool GetTargetRate(double &targetRate);
 
  protected:
-    void DataAvailable(const ProcessRotation::RotateObjective &data, 
+    void DataAvailable(const SafeRotationFunctions::RotateObjective &data, 
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
  private:
-    ProcessRotation::RotateObjective m_data;
+    SafeRotationFunctions::RotateObjective m_data;
     DDS::SampleInfo                  m_sampleInfo;
     DDS::LivelinessChangedStatus     m_livelinessStatus;
     OnDataAvailableEvent             m_pOnDataAvailable;

@@ -15,7 +15,7 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace ProcessCirculation {
+namespace SafeCirculateFunctions {
 
     /* ========================================================================= */
     /**
@@ -46,7 +46,7 @@ namespace ProcessCirculation {
 
     /* Defines */
     #define TDataWriter CirculateRequestDataWriter
-    #define TData       ProcessCirculation::CirculateRequest
+    #define TData       SafeCirculateFunctions::CirculateRequest
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -71,7 +71,7 @@ namespace ProcessCirculation {
     /* Defines */
     #define TDataReader CirculateRequestDataReader
     #define TDataSeq    CirculateRequestSeq
-    #define TData       ProcessCirculation::CirculateRequest
+    #define TData       SafeCirculateFunctions::CirculateRequest
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -94,12 +94,12 @@ namespace ProcessCirculation {
 
     /* Requires */
     #define TTYPENAME    CirculateRequestTYPENAME
-    #define TPlugin_new  ProcessCirculation::CirculateRequestPlugin_new
-    #define TPlugin_delete  ProcessCirculation::CirculateRequestPlugin_delete
+    #define TPlugin_new  SafeCirculateFunctions::CirculateRequestPlugin_new
+    #define TPlugin_delete  SafeCirculateFunctions::CirculateRequestPlugin_delete
 
     /* Defines */
     #define TTypeSupport CirculateRequestTypeSupport
-    #define TData        ProcessCirculation::CirculateRequest
+    #define TData        SafeCirculateFunctions::CirculateRequest
     #define TDataReader  CirculateRequestDataReader
     #define TDataWriter  CirculateRequestDataWriter
     #define TGENERATE_SER_CODE
@@ -146,7 +146,7 @@ namespace ProcessCirculation {
 
     /* Defines */
     #define TDataWriter CirculateObjectiveDataWriter
-    #define TData       ProcessCirculation::CirculateObjective
+    #define TData       SafeCirculateFunctions::CirculateObjective
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -171,7 +171,7 @@ namespace ProcessCirculation {
     /* Defines */
     #define TDataReader CirculateObjectiveDataReader
     #define TDataSeq    CirculateObjectiveSeq
-    #define TData       ProcessCirculation::CirculateObjective
+    #define TData       SafeCirculateFunctions::CirculateObjective
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -194,12 +194,12 @@ namespace ProcessCirculation {
 
     /* Requires */
     #define TTYPENAME    CirculateObjectiveTYPENAME
-    #define TPlugin_new  ProcessCirculation::CirculateObjectivePlugin_new
-    #define TPlugin_delete  ProcessCirculation::CirculateObjectivePlugin_delete
+    #define TPlugin_new  SafeCirculateFunctions::CirculateObjectivePlugin_new
+    #define TPlugin_delete  SafeCirculateFunctions::CirculateObjectivePlugin_delete
 
     /* Defines */
     #define TTypeSupport CirculateObjectiveTypeSupport
-    #define TData        ProcessCirculation::CirculateObjective
+    #define TData        SafeCirculateFunctions::CirculateObjective
     #define TDataReader  CirculateObjectiveDataReader
     #define TDataWriter  CirculateObjectiveDataWriter
     #define TGENERATE_SER_CODE
@@ -246,7 +246,7 @@ namespace ProcessCirculation {
 
     /* Defines */
     #define TDataWriter CirculateStateDataWriter
-    #define TData       ProcessCirculation::CirculateState
+    #define TData       SafeCirculateFunctions::CirculateState
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -271,7 +271,7 @@ namespace ProcessCirculation {
     /* Defines */
     #define TDataReader CirculateStateDataReader
     #define TDataSeq    CirculateStateSeq
-    #define TData       ProcessCirculation::CirculateState
+    #define TData       SafeCirculateFunctions::CirculateState
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -294,12 +294,12 @@ namespace ProcessCirculation {
 
     /* Requires */
     #define TTYPENAME    CirculateStateTYPENAME
-    #define TPlugin_new  ProcessCirculation::CirculateStatePlugin_new
-    #define TPlugin_delete  ProcessCirculation::CirculateStatePlugin_delete
+    #define TPlugin_new  SafeCirculateFunctions::CirculateStatePlugin_new
+    #define TPlugin_delete  SafeCirculateFunctions::CirculateStatePlugin_delete
 
     /* Defines */
     #define TTypeSupport CirculateStateTypeSupport
-    #define TData        ProcessCirculation::CirculateState
+    #define TData        SafeCirculateFunctions::CirculateState
     #define TDataReader  CirculateStateDataReader
     #define TDataWriter  CirculateStateDataWriter
     #define TGENERATE_SER_CODE
@@ -317,5 +317,5 @@ namespace ProcessCirculation {
     #undef TPlugin_new
     #undef TPlugin_delete
 
-} /* namespace ProcessCirculation  */
+} /* namespace SafeCirculateFunctions  */
 

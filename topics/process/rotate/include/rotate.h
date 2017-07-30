@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef rotate_79875357_h
-#define rotate_79875357_h
+#ifndef rotate_79878318_h
+#define rotate_79878318_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -21,7 +21,7 @@ or consult the RTI Connext manual.
 #endif
 
 #include "base_data_types.h"
-namespace ProcessRotation {
+namespace SafeRotationFunctions {
     static const char ROTATE_REQUEST[] = "RotateRequest"; 
 
     extern const char *RotateRequestTYPENAME;
@@ -44,6 +44,7 @@ namespace ProcessRotation {
         #endif
 
         DataTypes::Uuid   id ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Priority   priority ;
         DataTypes::Time   timeNeeded ;
         DataTypes::Time   estimatedDuration ;
@@ -124,6 +125,7 @@ namespace ProcessRotation {
         #endif
 
         DataTypes::Uuid   id ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Time   estimatedDuration ;
         DDS_Double   targetRate ;
 
@@ -202,8 +204,9 @@ namespace ProcessRotation {
         #endif
 
         DataTypes::Uuid   id ;
-        DataTypes::Status   status ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Time   timestamp ;
+        DataTypes::Status   status ;
         DDS_Double   actualRate ;
         DDS_Double   minRate ;
         DDS_Double   maxRate ;
@@ -262,7 +265,7 @@ namespace ProcessRotation {
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport
     #endif
-} /* namespace ProcessRotation  */
+} /* namespace SafeRotationFunctions  */
 
 #endif /* rotate */
 

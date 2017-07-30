@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef circulateSupport_1746883627_h
-#define circulateSupport_1746883627_h
+#ifndef circulateSupport_1746884186_h
+#define circulateSupport_1746884186_h
 
 /* Uses */
 #include "circulate.h"
@@ -26,7 +26,7 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace ProcessCirculation {
+namespace SafeCirculateFunctions {
     /* ========================================================================= */
     /**
     Uses:     T
@@ -114,7 +114,7 @@ namespace ProcessCirculation {
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport
     #endif
-} /* namespace ProcessCirculation  */
+} /* namespace SafeCirculateFunctions  */
 
-#endif  /* circulateSupport_1746883627_h */
+#endif  /* circulateSupport_1746884186_h */
 

@@ -6,10 +6,10 @@
 #include "circulate.h"
 #include "circulateSupport.h"
 
-class CCirculateStateSubscriber : public TSubscriber< ProcessCirculation::CirculateState>
+class CCirculateStateSubscriber : public TSubscriber< SafeCirculateFunctions::CirculateState>
 {
 public:
-    typedef std::function<void(const ProcessCirculation::CirculateState &data)> OnDataAvailableEvent;
+    typedef std::function<void(const SafeCirculateFunctions::CirculateState &data)> OnDataAvailableEvent;
 
     CCirculateStateSubscriber();
     virtual ~CCirculateStateSubscriber();
@@ -34,14 +34,14 @@ public:
 
 protected:
     ///Derived Methods
-    void DataAvailable(const ProcessCirculation::CirculateState &data,
+    void DataAvailable(const SafeCirculateFunctions::CirculateState &data,
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
 private:
-    ProcessCirculation::CirculateState m_data;
+    SafeCirculateFunctions::CirculateState m_data;
     DDS::SampleInfo                    m_sampleInfo;
     DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent               m_pOnDataAvailable;

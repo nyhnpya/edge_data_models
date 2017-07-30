@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drillingSupport_1428077238_h
-#define drillingSupport_1428077238_h
+#ifndef drillingSupport_1428077360_h
+#define drillingSupport_1428077360_h
 
 /* Uses */
 #include "drilling.h"
@@ -116,5 +116,5 @@ namespace Hoisting {
     #endif
 } /* namespace Hoisting  */
 
-#endif  /* drillingSupport_1428077238_h */
+#endif  /* drillingSupport_1428077360_h */
 

@@ -76,7 +76,7 @@ bool CRotateStatePublisher::PublishSample()
 bool CRotateStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              ProcessRotation::ROTATE_STATE,
+                              SafeRotationFunctions::ROTATE_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

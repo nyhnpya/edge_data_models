@@ -15,7 +15,7 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace Downhole {
+namespace DownholeFunctions {
 
     /* ========================================================================= */
     /**
@@ -46,7 +46,7 @@ namespace Downhole {
 
     /* Defines */
     #define TDataWriter SurveyRequestDataWriter
-    #define TData       Downhole::SurveyRequest
+    #define TData       DownholeFunctions::SurveyRequest
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -71,7 +71,7 @@ namespace Downhole {
     /* Defines */
     #define TDataReader SurveyRequestDataReader
     #define TDataSeq    SurveyRequestSeq
-    #define TData       Downhole::SurveyRequest
+    #define TData       DownholeFunctions::SurveyRequest
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -94,12 +94,12 @@ namespace Downhole {
 
     /* Requires */
     #define TTYPENAME    SurveyRequestTYPENAME
-    #define TPlugin_new  Downhole::SurveyRequestPlugin_new
-    #define TPlugin_delete  Downhole::SurveyRequestPlugin_delete
+    #define TPlugin_new  DownholeFunctions::SurveyRequestPlugin_new
+    #define TPlugin_delete  DownholeFunctions::SurveyRequestPlugin_delete
 
     /* Defines */
     #define TTypeSupport SurveyRequestTypeSupport
-    #define TData        Downhole::SurveyRequest
+    #define TData        DownholeFunctions::SurveyRequest
     #define TDataReader  SurveyRequestDataReader
     #define TDataWriter  SurveyRequestDataWriter
     #define TGENERATE_SER_CODE
@@ -146,7 +146,7 @@ namespace Downhole {
 
     /* Defines */
     #define TDataWriter SurveyObjectiveDataWriter
-    #define TData       Downhole::SurveyObjective
+    #define TData       DownholeFunctions::SurveyObjective
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -171,7 +171,7 @@ namespace Downhole {
     /* Defines */
     #define TDataReader SurveyObjectiveDataReader
     #define TDataSeq    SurveyObjectiveSeq
-    #define TData       Downhole::SurveyObjective
+    #define TData       DownholeFunctions::SurveyObjective
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -194,12 +194,12 @@ namespace Downhole {
 
     /* Requires */
     #define TTYPENAME    SurveyObjectiveTYPENAME
-    #define TPlugin_new  Downhole::SurveyObjectivePlugin_new
-    #define TPlugin_delete  Downhole::SurveyObjectivePlugin_delete
+    #define TPlugin_new  DownholeFunctions::SurveyObjectivePlugin_new
+    #define TPlugin_delete  DownholeFunctions::SurveyObjectivePlugin_delete
 
     /* Defines */
     #define TTypeSupport SurveyObjectiveTypeSupport
-    #define TData        Downhole::SurveyObjective
+    #define TData        DownholeFunctions::SurveyObjective
     #define TDataReader  SurveyObjectiveDataReader
     #define TDataWriter  SurveyObjectiveDataWriter
     #define TGENERATE_SER_CODE
@@ -246,7 +246,7 @@ namespace Downhole {
 
     /* Defines */
     #define TDataWriter SurveyStateDataWriter
-    #define TData       Downhole::SurveyState
+    #define TData       DownholeFunctions::SurveyState
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -271,7 +271,7 @@ namespace Downhole {
     /* Defines */
     #define TDataReader SurveyStateDataReader
     #define TDataSeq    SurveyStateSeq
-    #define TData       Downhole::SurveyState
+    #define TData       DownholeFunctions::SurveyState
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -294,12 +294,12 @@ namespace Downhole {
 
     /* Requires */
     #define TTYPENAME    SurveyStateTYPENAME
-    #define TPlugin_new  Downhole::SurveyStatePlugin_new
-    #define TPlugin_delete  Downhole::SurveyStatePlugin_delete
+    #define TPlugin_new  DownholeFunctions::SurveyStatePlugin_new
+    #define TPlugin_delete  DownholeFunctions::SurveyStatePlugin_delete
 
     /* Defines */
     #define TTypeSupport SurveyStateTypeSupport
-    #define TData        Downhole::SurveyState
+    #define TData        DownholeFunctions::SurveyState
     #define TDataReader  SurveyStateDataReader
     #define TDataWriter  SurveyStateDataWriter
     #define TGENERATE_SER_CODE
@@ -317,5 +317,5 @@ namespace Downhole {
     #undef TPlugin_new
     #undef TPlugin_delete
 
-} /* namespace Downhole  */
+} /* namespace DownholeFunctions  */
 

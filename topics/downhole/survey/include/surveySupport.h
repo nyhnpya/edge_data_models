@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef surveySupport_675099750_h
-#define surveySupport_675099750_h
+#ifndef surveySupport_675098841_h
+#define surveySupport_675098841_h
 
 /* Uses */
 #include "survey.h"
@@ -26,7 +26,7 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace Downhole {
+namespace DownholeFunctions {
     /* ========================================================================= */
     /**
     Uses:     T
@@ -114,7 +114,7 @@ namespace Downhole {
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport
     #endif
-} /* namespace Downhole  */
+} /* namespace DownholeFunctions  */
 
-#endif  /* surveySupport_675099750_h */
+#endif  /* surveySupport_675098841_h */
 

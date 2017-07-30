@@ -35,9 +35,9 @@ bool CHoistObjectiveSubscriber::GetTargetVelocity(double targetVelocity)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistObjectiveSubscriber::GetTargetDestination(double targetDestination)
+bool CHoistObjectiveSubscriber::GetTargetPosition(double targetPosition)
 {
-    targetDestination = m_data.targetDestination;
+    targetPosition = m_data.targetPosition;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
@@ -45,7 +45,7 @@ bool CHoistObjectiveSubscriber::GetTargetDestination(double targetDestination)
 bool CHoistObjectiveSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               ProcessHoist::HOIST_OBJECTIVE,
+                               SafeHoistFunctions::HOIST_OBJECTIVE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -65,7 +65,7 @@ void CHoistObjectiveSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent eve
     m_pOnLivelinessChanged = event;
 }
 
-void CHoistObjectiveSubscriber::DataAvailable(const ProcessHoist::HoistObjective &data,
+void CHoistObjectiveSubscriber::DataAvailable(const SafeHoistFunctions::HoistObjective &data,
                                               const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

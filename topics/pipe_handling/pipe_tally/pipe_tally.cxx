@@ -41,7 +41,7 @@ namespace PipeHandling {
 
         static DDS_TypeCode PipeTally_g_tc_serialNumber_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode PipeTally_g_tc_description_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode_Member PipeTally_g_tc_members[14]=
+        static DDS_TypeCode_Member PipeTally_g_tc_members[15]=
         {
 
             {
@@ -62,7 +62,7 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"timestamp",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -79,7 +79,7 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"serialNumber",/* Member name */
+                (char *)"timestamp",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -96,7 +96,7 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"jointNumber",/* Member name */
+                (char *)"serialNumber",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -113,7 +113,7 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"standNumber",/* Member name */
+                (char *)"jointNumber",/* Member name */
                 {
                     4,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -130,7 +130,7 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"weight",/* Member name */
+                (char *)"standNumber",/* Member name */
                 {
                     5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -147,7 +147,7 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"outerDiameter",/* Member name */
+                (char *)"weight",/* Member name */
                 {
                     6,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -164,7 +164,7 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"innerDiameter",/* Member name */
+                (char *)"outerDiameter",/* Member name */
                 {
                     7,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -181,7 +181,7 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"kellyDown",/* Member name */
+                (char *)"innerDiameter",/* Member name */
                 {
                     8,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -198,7 +198,7 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"length",/* Member name */
+                (char *)"kellyDown",/* Member name */
                 {
                     9,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -215,7 +215,7 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"pipeLength",/* Member name */
+                (char *)"length",/* Member name */
                 {
                     10,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -232,7 +232,7 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"stringLength",/* Member name */
+                (char *)"pipeLength",/* Member name */
                 {
                     11,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -249,7 +249,7 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"description",/* Member name */
+                (char *)"stringLength",/* Member name */
                 {
                     12,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -266,9 +266,26 @@ namespace PipeHandling {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"pipeType",/* Member name */
+                (char *)"description",/* Member name */
                 {
                     13,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"pipeType",/* Member name */
+                {
+                    14,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -294,7 +311,7 @@ namespace PipeHandling {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                14, /* Number of members */
+                15, /* Number of members */
                 PipeTally_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for PipeTally*/
@@ -305,15 +322,15 @@ namespace PipeHandling {
 
         PipeTally_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        PipeTally_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+        PipeTally_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        PipeTally_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&PipeTally_g_tc_serialNumber_string;
+        PipeTally_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-        PipeTally_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ulong;
+        PipeTally_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&PipeTally_g_tc_serialNumber_string;
 
         PipeTally_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ulong;
 
-        PipeTally_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        PipeTally_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ulong;
 
         PipeTally_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -327,9 +344,11 @@ namespace PipeHandling {
 
         PipeTally_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        PipeTally_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&PipeTally_g_tc_description_string;
+        PipeTally_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        PipeTally_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)DataTypes::PipeType_get_typecode();
+        PipeTally_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&PipeTally_g_tc_description_string;
+
+        PipeTally_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)DataTypes::PipeType_get_typecode();
 
         is_initialized = RTI_TRUE;
 
@@ -363,6 +382,10 @@ namespace PipeHandling {
         if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -472,6 +495,8 @@ namespace PipeHandling {
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
+
         DataTypes::Time_finalize_w_params(&sample->timestamp,deallocParams);
 
         if (sample->serialNumber != NULL) {
@@ -506,6 +531,7 @@ namespace PipeHandling {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
         DataTypes::PipeType_finalize_optional_members(&sample->pipeType, deallocParams->delete_pointers);
     }
@@ -517,6 +543,10 @@ namespace PipeHandling {
 
         if (!DataTypes::Uuid_copy(
             &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::Time_copy(

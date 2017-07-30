@@ -5,7 +5,7 @@
 #include "rotate.h"
 #include "rotateSupport.h"
 
-class CRotateObjectivePublisher : public TPublisher< ProcessRotation::RotateObjective >
+class CRotateObjectivePublisher : public TPublisher< SafeRotationFunctions::RotateObjective >
 {
  public:
     CRotateObjectivePublisher();

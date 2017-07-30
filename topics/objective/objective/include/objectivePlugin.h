@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef objectivePlugin_1315698079_h
-#define objectivePlugin_1315698079_h
+#ifndef objectivePlugin_1315698119_h
+#define objectivePlugin_1315698119_h
 
 #include "objective.h"
 
@@ -332,5 +332,5 @@ namespace Plan {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* objectivePlugin_1315698079_h */
+#endif /* objectivePlugin_1315698119_h */
 

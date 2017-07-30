@@ -48,7 +48,7 @@ or consult the RTI Connext manual.
 
 #include "rotatePlugin.h"
 
-namespace ProcessRotation {
+namespace SafeRotationFunctions {
 
     /* ----------------------------------------------------------------------------
     *  Type RotateRequest
@@ -67,7 +67,7 @@ namespace ProcessRotation {
             &sample, RotateRequest);
 
         if(sample != NULL) {
-            if (!ProcessRotation::RotateRequest_initialize_w_params(sample,alloc_params)) {
+            if (!SafeRotationFunctions::RotateRequest_initialize_w_params(sample,alloc_params)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -83,7 +83,7 @@ namespace ProcessRotation {
             &sample, RotateRequest);
 
         if(sample != NULL) {
-            if (!ProcessRotation::RotateRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!SafeRotationFunctions::RotateRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -94,7 +94,7 @@ namespace ProcessRotation {
     RotateRequest *
     RotateRequestPluginSupport_create_data(void)
     {
-        return ProcessRotation::RotateRequestPluginSupport_create_data_ex(RTI_TRUE);
+        return SafeRotationFunctions::RotateRequestPluginSupport_create_data_ex(RTI_TRUE);
     }
 
     void 
@@ -102,7 +102,7 @@ namespace ProcessRotation {
         RotateRequest *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-        ProcessRotation::RotateRequest_finalize_w_params(sample,dealloc_params);
+        SafeRotationFunctions::RotateRequest_finalize_w_params(sample,dealloc_params);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -111,7 +111,7 @@ namespace ProcessRotation {
     RotateRequestPluginSupport_destroy_data_ex(
         RotateRequest *sample,RTIBool deallocate_pointers) {
 
-        ProcessRotation::RotateRequest_finalize_ex(sample,deallocate_pointers);
+        SafeRotationFunctions::RotateRequest_finalize_ex(sample,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -120,7 +120,7 @@ namespace ProcessRotation {
     RotateRequestPluginSupport_destroy_data(
         RotateRequest *sample) {
 
-        ProcessRotation::RotateRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+        SafeRotationFunctions::RotateRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
     }
 
@@ -129,7 +129,7 @@ namespace ProcessRotation {
         RotateRequest *dst,
         const RotateRequest *src)
     {
-        return ProcessRotation::RotateRequest_copy(dst,src);
+        return SafeRotationFunctions::RotateRequest_copy(dst,src);
     }
 
     void 
@@ -155,6 +155,9 @@ namespace ProcessRotation {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
+
         DataTypes::PriorityPluginSupport_print_data(
             &sample->priority, "priority", indent_level + 1);
 
@@ -175,21 +178,21 @@ namespace ProcessRotation {
         RTIOsapiHeap_allocateStructure(
             &key, RotateRequestKeyHolder);
 
-        ProcessRotation::RotateRequest_initialize_ex(key,allocate_pointers, RTI_TRUE);
+        SafeRotationFunctions::RotateRequest_initialize_ex(key,allocate_pointers, RTI_TRUE);
         return key;
     }
 
     RotateRequest *
     RotateRequestPluginSupport_create_key(void)
     {
-        return  ProcessRotation::RotateRequestPluginSupport_create_key_ex(RTI_TRUE);
+        return  SafeRotationFunctions::RotateRequestPluginSupport_create_key_ex(RTI_TRUE);
     }
 
     void 
     RotateRequestPluginSupport_destroy_key_ex(
         RotateRequestKeyHolder *key,RTIBool deallocate_pointers)
     {
-        ProcessRotation::RotateRequest_finalize_ex(key,deallocate_pointers);
+        SafeRotationFunctions::RotateRequest_finalize_ex(key,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(key);
     }
@@ -198,7 +201,7 @@ namespace ProcessRotation {
     RotateRequestPluginSupport_destroy_key(
         RotateRequestKeyHolder *key) {
 
-        ProcessRotation::RotateRequestPluginSupport_destroy_key_ex(key,RTI_TRUE);
+        SafeRotationFunctions::RotateRequestPluginSupport_destroy_key_ex(key,RTI_TRUE);
 
     }
 
@@ -252,18 +255,18 @@ namespace ProcessRotation {
             participant_data,
             endpoint_info,
             (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-            ProcessRotation::RotateRequestPluginSupport_create_data,
+            SafeRotationFunctions::RotateRequestPluginSupport_create_data,
             (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-            ProcessRotation::RotateRequestPluginSupport_destroy_data,
+            SafeRotationFunctions::RotateRequestPluginSupport_destroy_data,
             (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-            ProcessRotation::RotateRequestPluginSupport_create_key ,            
+            SafeRotationFunctions::RotateRequestPluginSupport_create_key ,            
             (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-            ProcessRotation::RotateRequestPluginSupport_destroy_key);
+            SafeRotationFunctions::RotateRequestPluginSupport_destroy_key);
 
         if (epd == NULL) {
             return NULL;
         } 
-        serializedKeyMaxSize =  ProcessRotation::RotateRequestPlugin_get_serialized_key_max_size(
+        serializedKeyMaxSize =  SafeRotationFunctions::RotateRequestPlugin_get_serialized_key_max_size(
             epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
         if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -274,7 +277,7 @@ namespace ProcessRotation {
         }
 
         if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-            serializedSampleMaxSize = ProcessRotation::RotateRequestPlugin_get_serialized_sample_max_size(
+            serializedSampleMaxSize = SafeRotationFunctions::RotateRequestPlugin_get_serialized_sample_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -283,9 +286,9 @@ namespace ProcessRotation {
                 epd,
                 endpoint_info,
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                ProcessRotation::RotateRequestPlugin_get_serialized_sample_max_size, epd,
+                SafeRotationFunctions::RotateRequestPlugin_get_serialized_sample_max_size, epd,
                 (PRESTypePluginGetSerializedSampleSizeFunction)
-                ProcessRotation::RotateRequestPlugin_get_serialized_sample_size,
+                SafeRotationFunctions::RotateRequestPlugin_get_serialized_sample_size,
                 epd) == RTI_FALSE) {
                 PRESTypePluginDefaultEndpointData_delete(epd);
                 return NULL;
@@ -323,7 +326,7 @@ namespace ProcessRotation {
         const RotateRequest *src)
     {
         if (endpoint_data) {} /* To avoid warnings */
-        return ProcessRotation::RotateRequestPluginSupport_copy_data(dst,src);
+        return SafeRotationFunctions::RotateRequestPluginSupport_copy_data(dst,src);
     }
 
     /* ----------------------------------------------------------------------------
@@ -365,6 +368,16 @@ namespace ProcessRotation {
             if(!DataTypes::UuidPlugin_serialize(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -442,11 +455,19 @@ namespace ProcessRotation {
         }
         if(deserialize_sample) {
 
-            ProcessRotation::RotateRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+            SafeRotationFunctions::RotateRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -533,7 +554,7 @@ namespace ProcessRotation {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, *length);
 
-        result = ProcessRotation::RotateRequestPlugin_serialize(
+        result = SafeRotationFunctions::RotateRequestPlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
             RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
@@ -574,7 +595,7 @@ namespace ProcessRotation {
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessRotation::RotateRequestPlugin_deserialize_sample( 
+        result= SafeRotationFunctions::RotateRequestPlugin_deserialize_sample( 
             endpoint_data, (sample != NULL)?*sample:NULL,
             stream, deserialize_encapsulation, deserialize_sample, 
             endpoint_plugin_qos);
@@ -612,6 +633,13 @@ namespace ProcessRotation {
 
         if (skip_sample) {
 
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::UuidPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -686,6 +714,9 @@ namespace ProcessRotation {
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
         current_alignment +=DataTypes::PriorityPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
@@ -751,6 +782,8 @@ namespace ProcessRotation {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::PriorityPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
@@ -804,6 +837,9 @@ namespace ProcessRotation {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::PriorityPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->priority);
@@ -925,7 +961,7 @@ namespace ProcessRotation {
         RTIBool result;
         if (drop_sample) {} /* To avoid warnings */
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessRotation::RotateRequestPlugin_deserialize_key_sample(
+        result= SafeRotationFunctions::RotateRequestPlugin_deserialize_key_sample(
             endpoint_data, (sample != NULL)?*sample:NULL, stream,
             deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
         if (result) {
@@ -1029,6 +1065,14 @@ namespace ProcessRotation {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::PriorityPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -1129,14 +1173,14 @@ namespace ProcessRotation {
         RTICdrStream_resetPosition(md5Stream);
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-        if (!ProcessRotation::RotateRequestPlugin_serialize_key(
+        if (!SafeRotationFunctions::RotateRequestPlugin_serialize_key(
             endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-            size = (int)ProcessRotation::RotateRequestPlugin_get_serialized_sample_size(
+            size = (int)SafeRotationFunctions::RotateRequestPlugin_get_serialized_sample_size(
                 endpoint_data,
                 RTI_FALSE,
                 RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -1161,7 +1205,7 @@ namespace ProcessRotation {
                 RTICdrStream_getBufferLength(md5Stream));
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-            if (!ProcessRotation::RotateRequestPlugin_serialize_key(
+            if (!SafeRotationFunctions::RotateRequestPlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
@@ -1248,7 +1292,7 @@ namespace ProcessRotation {
             RTICdrStream_restoreAlignment(stream,position);
         }
 
-        if (!ProcessRotation::RotateRequestPlugin_instance_to_keyhash(
+        if (!SafeRotationFunctions::RotateRequestPlugin_instance_to_keyhash(
             endpoint_data, keyhash, sample)) {
             return RTI_FALSE;
         }
@@ -1276,20 +1320,20 @@ namespace ProcessRotation {
         /* set up parent's function pointers */
         plugin->onParticipantAttached =
         (PRESTypePluginOnParticipantAttachedCallback)
-        ProcessRotation::RotateRequestPlugin_on_participant_attached;
+        SafeRotationFunctions::RotateRequestPlugin_on_participant_attached;
         plugin->onParticipantDetached =
         (PRESTypePluginOnParticipantDetachedCallback)
-        ProcessRotation::RotateRequestPlugin_on_participant_detached;
+        SafeRotationFunctions::RotateRequestPlugin_on_participant_detached;
         plugin->onEndpointAttached =
         (PRESTypePluginOnEndpointAttachedCallback)
-        ProcessRotation::RotateRequestPlugin_on_endpoint_attached;
+        SafeRotationFunctions::RotateRequestPlugin_on_endpoint_attached;
         plugin->onEndpointDetached =
         (PRESTypePluginOnEndpointDetachedCallback)
-        ProcessRotation::RotateRequestPlugin_on_endpoint_detached;
+        SafeRotationFunctions::RotateRequestPlugin_on_endpoint_detached;
 
         plugin->copySampleFnc =
         (PRESTypePluginCopySampleFunction)
-        ProcessRotation::RotateRequestPlugin_copy_sample;
+        SafeRotationFunctions::RotateRequestPlugin_copy_sample;
         plugin->createSampleFnc =
         (PRESTypePluginCreateSampleFunction)
         RotateRequestPlugin_create_sample;
@@ -1299,16 +1343,16 @@ namespace ProcessRotation {
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
-        ProcessRotation::RotateRequestPlugin_serialize;
+        SafeRotationFunctions::RotateRequestPlugin_serialize;
         plugin->deserializeFnc =
         (PRESTypePluginDeserializeFunction)
-        ProcessRotation::RotateRequestPlugin_deserialize;
+        SafeRotationFunctions::RotateRequestPlugin_deserialize;
         plugin->getSerializedSampleMaxSizeFnc =
         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-        ProcessRotation::RotateRequestPlugin_get_serialized_sample_max_size;
+        SafeRotationFunctions::RotateRequestPlugin_get_serialized_sample_max_size;
         plugin->getSerializedSampleMinSizeFnc =
         (PRESTypePluginGetSerializedSampleMinSizeFunction)
-        ProcessRotation::RotateRequestPlugin_get_serialized_sample_min_size;
+        SafeRotationFunctions::RotateRequestPlugin_get_serialized_sample_min_size;
 
         plugin->getSampleFnc =
         (PRESTypePluginGetSampleFunction)
@@ -1319,27 +1363,27 @@ namespace ProcessRotation {
 
         plugin->getKeyKindFnc =
         (PRESTypePluginGetKeyKindFunction)
-        ProcessRotation::RotateRequestPlugin_get_key_kind;
+        SafeRotationFunctions::RotateRequestPlugin_get_key_kind;
 
         plugin->getSerializedKeyMaxSizeFnc =   
         (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-        ProcessRotation::RotateRequestPlugin_get_serialized_key_max_size;
+        SafeRotationFunctions::RotateRequestPlugin_get_serialized_key_max_size;
         plugin->serializeKeyFnc =
         (PRESTypePluginSerializeKeyFunction)
-        ProcessRotation::RotateRequestPlugin_serialize_key;
+        SafeRotationFunctions::RotateRequestPlugin_serialize_key;
         plugin->deserializeKeyFnc =
         (PRESTypePluginDeserializeKeyFunction)
-        ProcessRotation::RotateRequestPlugin_deserialize_key;
+        SafeRotationFunctions::RotateRequestPlugin_deserialize_key;
         plugin->deserializeKeySampleFnc =
         (PRESTypePluginDeserializeKeySampleFunction)
-        ProcessRotation::RotateRequestPlugin_deserialize_key_sample;
+        SafeRotationFunctions::RotateRequestPlugin_deserialize_key_sample;
 
         plugin-> instanceToKeyHashFnc = 
         (PRESTypePluginInstanceToKeyHashFunction)
-        ProcessRotation::RotateRequestPlugin_instance_to_keyhash;
+        SafeRotationFunctions::RotateRequestPlugin_instance_to_keyhash;
         plugin->serializedSampleToKeyHashFnc = 
         (PRESTypePluginSerializedSampleToKeyHashFunction)
-        ProcessRotation::RotateRequestPlugin_serialized_sample_to_keyhash;
+        SafeRotationFunctions::RotateRequestPlugin_serialized_sample_to_keyhash;
 
         plugin->getKeyFnc =
         (PRESTypePluginGetKeyFunction)
@@ -1350,12 +1394,12 @@ namespace ProcessRotation {
 
         plugin->instanceToKeyFnc =
         (PRESTypePluginInstanceToKeyFunction)
-        ProcessRotation::RotateRequestPlugin_instance_to_key;
+        SafeRotationFunctions::RotateRequestPlugin_instance_to_key;
         plugin->keyToInstanceFnc =
         (PRESTypePluginKeyToInstanceFunction)
-        ProcessRotation::RotateRequestPlugin_key_to_instance;
+        SafeRotationFunctions::RotateRequestPlugin_key_to_instance;
         plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-        plugin->typeCode =  (struct RTICdrTypeCode *)ProcessRotation::RotateRequest_get_typecode();
+        plugin->typeCode =  (struct RTICdrTypeCode *)SafeRotationFunctions::RotateRequest_get_typecode();
 
         plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
@@ -1368,7 +1412,7 @@ namespace ProcessRotation {
         RotateRequestPlugin_return_buffer;
         plugin->getSerializedSampleSizeFnc =
         (PRESTypePluginGetSerializedSampleSizeFunction)
-        ProcessRotation::RotateRequestPlugin_get_serialized_sample_size;
+        SafeRotationFunctions::RotateRequestPlugin_get_serialized_sample_size;
 
         plugin->endpointTypeName = RotateRequestTYPENAME;
 
@@ -1398,7 +1442,7 @@ namespace ProcessRotation {
             &sample, RotateObjective);
 
         if(sample != NULL) {
-            if (!ProcessRotation::RotateObjective_initialize_w_params(sample,alloc_params)) {
+            if (!SafeRotationFunctions::RotateObjective_initialize_w_params(sample,alloc_params)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -1414,7 +1458,7 @@ namespace ProcessRotation {
             &sample, RotateObjective);
 
         if(sample != NULL) {
-            if (!ProcessRotation::RotateObjective_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!SafeRotationFunctions::RotateObjective_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -1425,7 +1469,7 @@ namespace ProcessRotation {
     RotateObjective *
     RotateObjectivePluginSupport_create_data(void)
     {
-        return ProcessRotation::RotateObjectivePluginSupport_create_data_ex(RTI_TRUE);
+        return SafeRotationFunctions::RotateObjectivePluginSupport_create_data_ex(RTI_TRUE);
     }
 
     void 
@@ -1433,7 +1477,7 @@ namespace ProcessRotation {
         RotateObjective *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-        ProcessRotation::RotateObjective_finalize_w_params(sample,dealloc_params);
+        SafeRotationFunctions::RotateObjective_finalize_w_params(sample,dealloc_params);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -1442,7 +1486,7 @@ namespace ProcessRotation {
     RotateObjectivePluginSupport_destroy_data_ex(
         RotateObjective *sample,RTIBool deallocate_pointers) {
 
-        ProcessRotation::RotateObjective_finalize_ex(sample,deallocate_pointers);
+        SafeRotationFunctions::RotateObjective_finalize_ex(sample,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -1451,7 +1495,7 @@ namespace ProcessRotation {
     RotateObjectivePluginSupport_destroy_data(
         RotateObjective *sample) {
 
-        ProcessRotation::RotateObjectivePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+        SafeRotationFunctions::RotateObjectivePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
     }
 
@@ -1460,7 +1504,7 @@ namespace ProcessRotation {
         RotateObjective *dst,
         const RotateObjective *src)
     {
-        return ProcessRotation::RotateObjective_copy(dst,src);
+        return SafeRotationFunctions::RotateObjective_copy(dst,src);
     }
 
     void 
@@ -1486,6 +1530,9 @@ namespace ProcessRotation {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
+
         DataTypes::TimePluginSupport_print_data(
             &sample->estimatedDuration, "estimatedDuration", indent_level + 1);
 
@@ -1500,21 +1547,21 @@ namespace ProcessRotation {
         RTIOsapiHeap_allocateStructure(
             &key, RotateObjectiveKeyHolder);
 
-        ProcessRotation::RotateObjective_initialize_ex(key,allocate_pointers, RTI_TRUE);
+        SafeRotationFunctions::RotateObjective_initialize_ex(key,allocate_pointers, RTI_TRUE);
         return key;
     }
 
     RotateObjective *
     RotateObjectivePluginSupport_create_key(void)
     {
-        return  ProcessRotation::RotateObjectivePluginSupport_create_key_ex(RTI_TRUE);
+        return  SafeRotationFunctions::RotateObjectivePluginSupport_create_key_ex(RTI_TRUE);
     }
 
     void 
     RotateObjectivePluginSupport_destroy_key_ex(
         RotateObjectiveKeyHolder *key,RTIBool deallocate_pointers)
     {
-        ProcessRotation::RotateObjective_finalize_ex(key,deallocate_pointers);
+        SafeRotationFunctions::RotateObjective_finalize_ex(key,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(key);
     }
@@ -1523,7 +1570,7 @@ namespace ProcessRotation {
     RotateObjectivePluginSupport_destroy_key(
         RotateObjectiveKeyHolder *key) {
 
-        ProcessRotation::RotateObjectivePluginSupport_destroy_key_ex(key,RTI_TRUE);
+        SafeRotationFunctions::RotateObjectivePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
     }
 
@@ -1577,18 +1624,18 @@ namespace ProcessRotation {
             participant_data,
             endpoint_info,
             (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-            ProcessRotation::RotateObjectivePluginSupport_create_data,
+            SafeRotationFunctions::RotateObjectivePluginSupport_create_data,
             (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-            ProcessRotation::RotateObjectivePluginSupport_destroy_data,
+            SafeRotationFunctions::RotateObjectivePluginSupport_destroy_data,
             (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-            ProcessRotation::RotateObjectivePluginSupport_create_key ,            
+            SafeRotationFunctions::RotateObjectivePluginSupport_create_key ,            
             (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-            ProcessRotation::RotateObjectivePluginSupport_destroy_key);
+            SafeRotationFunctions::RotateObjectivePluginSupport_destroy_key);
 
         if (epd == NULL) {
             return NULL;
         } 
-        serializedKeyMaxSize =  ProcessRotation::RotateObjectivePlugin_get_serialized_key_max_size(
+        serializedKeyMaxSize =  SafeRotationFunctions::RotateObjectivePlugin_get_serialized_key_max_size(
             epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
         if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -1599,7 +1646,7 @@ namespace ProcessRotation {
         }
 
         if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-            serializedSampleMaxSize = ProcessRotation::RotateObjectivePlugin_get_serialized_sample_max_size(
+            serializedSampleMaxSize = SafeRotationFunctions::RotateObjectivePlugin_get_serialized_sample_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -1608,9 +1655,9 @@ namespace ProcessRotation {
                 epd,
                 endpoint_info,
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                ProcessRotation::RotateObjectivePlugin_get_serialized_sample_max_size, epd,
+                SafeRotationFunctions::RotateObjectivePlugin_get_serialized_sample_max_size, epd,
                 (PRESTypePluginGetSerializedSampleSizeFunction)
-                ProcessRotation::RotateObjectivePlugin_get_serialized_sample_size,
+                SafeRotationFunctions::RotateObjectivePlugin_get_serialized_sample_size,
                 epd) == RTI_FALSE) {
                 PRESTypePluginDefaultEndpointData_delete(epd);
                 return NULL;
@@ -1648,7 +1695,7 @@ namespace ProcessRotation {
         const RotateObjective *src)
     {
         if (endpoint_data) {} /* To avoid warnings */
-        return ProcessRotation::RotateObjectivePluginSupport_copy_data(dst,src);
+        return SafeRotationFunctions::RotateObjectivePluginSupport_copy_data(dst,src);
     }
 
     /* ----------------------------------------------------------------------------
@@ -1690,6 +1737,16 @@ namespace ProcessRotation {
             if(!DataTypes::UuidPlugin_serialize(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -1747,11 +1804,19 @@ namespace ProcessRotation {
         }
         if(deserialize_sample) {
 
-            ProcessRotation::RotateObjective_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+            SafeRotationFunctions::RotateObjective_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -1822,7 +1887,7 @@ namespace ProcessRotation {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, *length);
 
-        result = ProcessRotation::RotateObjectivePlugin_serialize(
+        result = SafeRotationFunctions::RotateObjectivePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
             RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
@@ -1863,7 +1928,7 @@ namespace ProcessRotation {
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessRotation::RotateObjectivePlugin_deserialize_sample( 
+        result= SafeRotationFunctions::RotateObjectivePlugin_deserialize_sample( 
             endpoint_data, (sample != NULL)?*sample:NULL,
             stream, deserialize_encapsulation, deserialize_sample, 
             endpoint_plugin_qos);
@@ -1901,6 +1966,13 @@ namespace ProcessRotation {
 
         if (skip_sample) {
 
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::UuidPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -1957,6 +2029,9 @@ namespace ProcessRotation {
             current_alignment = 0;
             initial_alignment = 0;
         }
+
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
@@ -2020,6 +2095,8 @@ namespace ProcessRotation {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -2069,6 +2146,9 @@ namespace ProcessRotation {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->estimatedDuration);
@@ -2184,7 +2264,7 @@ namespace ProcessRotation {
         RTIBool result;
         if (drop_sample) {} /* To avoid warnings */
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessRotation::RotateObjectivePlugin_deserialize_key_sample(
+        result= SafeRotationFunctions::RotateObjectivePlugin_deserialize_key_sample(
             endpoint_data, (sample != NULL)?*sample:NULL, stream,
             deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
         if (result) {
@@ -2288,6 +2368,14 @@ namespace ProcessRotation {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::TimePlugin_skip(
                 endpoint_data,
                 stream, 
@@ -2372,14 +2460,14 @@ namespace ProcessRotation {
         RTICdrStream_resetPosition(md5Stream);
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-        if (!ProcessRotation::RotateObjectivePlugin_serialize_key(
+        if (!SafeRotationFunctions::RotateObjectivePlugin_serialize_key(
             endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-            size = (int)ProcessRotation::RotateObjectivePlugin_get_serialized_sample_size(
+            size = (int)SafeRotationFunctions::RotateObjectivePlugin_get_serialized_sample_size(
                 endpoint_data,
                 RTI_FALSE,
                 RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -2404,7 +2492,7 @@ namespace ProcessRotation {
                 RTICdrStream_getBufferLength(md5Stream));
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-            if (!ProcessRotation::RotateObjectivePlugin_serialize_key(
+            if (!SafeRotationFunctions::RotateObjectivePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
@@ -2491,7 +2579,7 @@ namespace ProcessRotation {
             RTICdrStream_restoreAlignment(stream,position);
         }
 
-        if (!ProcessRotation::RotateObjectivePlugin_instance_to_keyhash(
+        if (!SafeRotationFunctions::RotateObjectivePlugin_instance_to_keyhash(
             endpoint_data, keyhash, sample)) {
             return RTI_FALSE;
         }
@@ -2519,20 +2607,20 @@ namespace ProcessRotation {
         /* set up parent's function pointers */
         plugin->onParticipantAttached =
         (PRESTypePluginOnParticipantAttachedCallback)
-        ProcessRotation::RotateObjectivePlugin_on_participant_attached;
+        SafeRotationFunctions::RotateObjectivePlugin_on_participant_attached;
         plugin->onParticipantDetached =
         (PRESTypePluginOnParticipantDetachedCallback)
-        ProcessRotation::RotateObjectivePlugin_on_participant_detached;
+        SafeRotationFunctions::RotateObjectivePlugin_on_participant_detached;
         plugin->onEndpointAttached =
         (PRESTypePluginOnEndpointAttachedCallback)
-        ProcessRotation::RotateObjectivePlugin_on_endpoint_attached;
+        SafeRotationFunctions::RotateObjectivePlugin_on_endpoint_attached;
         plugin->onEndpointDetached =
         (PRESTypePluginOnEndpointDetachedCallback)
-        ProcessRotation::RotateObjectivePlugin_on_endpoint_detached;
+        SafeRotationFunctions::RotateObjectivePlugin_on_endpoint_detached;
 
         plugin->copySampleFnc =
         (PRESTypePluginCopySampleFunction)
-        ProcessRotation::RotateObjectivePlugin_copy_sample;
+        SafeRotationFunctions::RotateObjectivePlugin_copy_sample;
         plugin->createSampleFnc =
         (PRESTypePluginCreateSampleFunction)
         RotateObjectivePlugin_create_sample;
@@ -2542,16 +2630,16 @@ namespace ProcessRotation {
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
-        ProcessRotation::RotateObjectivePlugin_serialize;
+        SafeRotationFunctions::RotateObjectivePlugin_serialize;
         plugin->deserializeFnc =
         (PRESTypePluginDeserializeFunction)
-        ProcessRotation::RotateObjectivePlugin_deserialize;
+        SafeRotationFunctions::RotateObjectivePlugin_deserialize;
         plugin->getSerializedSampleMaxSizeFnc =
         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-        ProcessRotation::RotateObjectivePlugin_get_serialized_sample_max_size;
+        SafeRotationFunctions::RotateObjectivePlugin_get_serialized_sample_max_size;
         plugin->getSerializedSampleMinSizeFnc =
         (PRESTypePluginGetSerializedSampleMinSizeFunction)
-        ProcessRotation::RotateObjectivePlugin_get_serialized_sample_min_size;
+        SafeRotationFunctions::RotateObjectivePlugin_get_serialized_sample_min_size;
 
         plugin->getSampleFnc =
         (PRESTypePluginGetSampleFunction)
@@ -2562,27 +2650,27 @@ namespace ProcessRotation {
 
         plugin->getKeyKindFnc =
         (PRESTypePluginGetKeyKindFunction)
-        ProcessRotation::RotateObjectivePlugin_get_key_kind;
+        SafeRotationFunctions::RotateObjectivePlugin_get_key_kind;
 
         plugin->getSerializedKeyMaxSizeFnc =   
         (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-        ProcessRotation::RotateObjectivePlugin_get_serialized_key_max_size;
+        SafeRotationFunctions::RotateObjectivePlugin_get_serialized_key_max_size;
         plugin->serializeKeyFnc =
         (PRESTypePluginSerializeKeyFunction)
-        ProcessRotation::RotateObjectivePlugin_serialize_key;
+        SafeRotationFunctions::RotateObjectivePlugin_serialize_key;
         plugin->deserializeKeyFnc =
         (PRESTypePluginDeserializeKeyFunction)
-        ProcessRotation::RotateObjectivePlugin_deserialize_key;
+        SafeRotationFunctions::RotateObjectivePlugin_deserialize_key;
         plugin->deserializeKeySampleFnc =
         (PRESTypePluginDeserializeKeySampleFunction)
-        ProcessRotation::RotateObjectivePlugin_deserialize_key_sample;
+        SafeRotationFunctions::RotateObjectivePlugin_deserialize_key_sample;
 
         plugin-> instanceToKeyHashFnc = 
         (PRESTypePluginInstanceToKeyHashFunction)
-        ProcessRotation::RotateObjectivePlugin_instance_to_keyhash;
+        SafeRotationFunctions::RotateObjectivePlugin_instance_to_keyhash;
         plugin->serializedSampleToKeyHashFnc = 
         (PRESTypePluginSerializedSampleToKeyHashFunction)
-        ProcessRotation::RotateObjectivePlugin_serialized_sample_to_keyhash;
+        SafeRotationFunctions::RotateObjectivePlugin_serialized_sample_to_keyhash;
 
         plugin->getKeyFnc =
         (PRESTypePluginGetKeyFunction)
@@ -2593,12 +2681,12 @@ namespace ProcessRotation {
 
         plugin->instanceToKeyFnc =
         (PRESTypePluginInstanceToKeyFunction)
-        ProcessRotation::RotateObjectivePlugin_instance_to_key;
+        SafeRotationFunctions::RotateObjectivePlugin_instance_to_key;
         plugin->keyToInstanceFnc =
         (PRESTypePluginKeyToInstanceFunction)
-        ProcessRotation::RotateObjectivePlugin_key_to_instance;
+        SafeRotationFunctions::RotateObjectivePlugin_key_to_instance;
         plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-        plugin->typeCode =  (struct RTICdrTypeCode *)ProcessRotation::RotateObjective_get_typecode();
+        plugin->typeCode =  (struct RTICdrTypeCode *)SafeRotationFunctions::RotateObjective_get_typecode();
 
         plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
@@ -2611,7 +2699,7 @@ namespace ProcessRotation {
         RotateObjectivePlugin_return_buffer;
         plugin->getSerializedSampleSizeFnc =
         (PRESTypePluginGetSerializedSampleSizeFunction)
-        ProcessRotation::RotateObjectivePlugin_get_serialized_sample_size;
+        SafeRotationFunctions::RotateObjectivePlugin_get_serialized_sample_size;
 
         plugin->endpointTypeName = RotateObjectiveTYPENAME;
 
@@ -2641,7 +2729,7 @@ namespace ProcessRotation {
             &sample, RotateState);
 
         if(sample != NULL) {
-            if (!ProcessRotation::RotateState_initialize_w_params(sample,alloc_params)) {
+            if (!SafeRotationFunctions::RotateState_initialize_w_params(sample,alloc_params)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -2657,7 +2745,7 @@ namespace ProcessRotation {
             &sample, RotateState);
 
         if(sample != NULL) {
-            if (!ProcessRotation::RotateState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!SafeRotationFunctions::RotateState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -2668,7 +2756,7 @@ namespace ProcessRotation {
     RotateState *
     RotateStatePluginSupport_create_data(void)
     {
-        return ProcessRotation::RotateStatePluginSupport_create_data_ex(RTI_TRUE);
+        return SafeRotationFunctions::RotateStatePluginSupport_create_data_ex(RTI_TRUE);
     }
 
     void 
@@ -2676,7 +2764,7 @@ namespace ProcessRotation {
         RotateState *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-        ProcessRotation::RotateState_finalize_w_params(sample,dealloc_params);
+        SafeRotationFunctions::RotateState_finalize_w_params(sample,dealloc_params);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -2685,7 +2773,7 @@ namespace ProcessRotation {
     RotateStatePluginSupport_destroy_data_ex(
         RotateState *sample,RTIBool deallocate_pointers) {
 
-        ProcessRotation::RotateState_finalize_ex(sample,deallocate_pointers);
+        SafeRotationFunctions::RotateState_finalize_ex(sample,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -2694,7 +2782,7 @@ namespace ProcessRotation {
     RotateStatePluginSupport_destroy_data(
         RotateState *sample) {
 
-        ProcessRotation::RotateStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+        SafeRotationFunctions::RotateStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
     }
 
@@ -2703,7 +2791,7 @@ namespace ProcessRotation {
         RotateState *dst,
         const RotateState *src)
     {
-        return ProcessRotation::RotateState_copy(dst,src);
+        return SafeRotationFunctions::RotateState_copy(dst,src);
     }
 
     void 
@@ -2729,11 +2817,14 @@ namespace ProcessRotation {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
-        DataTypes::StatusPluginSupport_print_data(
-            &sample->status, "status", indent_level + 1);
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
 
         DataTypes::TimePluginSupport_print_data(
             &sample->timestamp, "timestamp", indent_level + 1);
+
+        DataTypes::StatusPluginSupport_print_data(
+            &sample->status, "status", indent_level + 1);
 
         RTICdrType_printDouble(
             &sample->actualRate, "actualRate", indent_level + 1);    
@@ -2755,21 +2846,21 @@ namespace ProcessRotation {
         RTIOsapiHeap_allocateStructure(
             &key, RotateStateKeyHolder);
 
-        ProcessRotation::RotateState_initialize_ex(key,allocate_pointers, RTI_TRUE);
+        SafeRotationFunctions::RotateState_initialize_ex(key,allocate_pointers, RTI_TRUE);
         return key;
     }
 
     RotateState *
     RotateStatePluginSupport_create_key(void)
     {
-        return  ProcessRotation::RotateStatePluginSupport_create_key_ex(RTI_TRUE);
+        return  SafeRotationFunctions::RotateStatePluginSupport_create_key_ex(RTI_TRUE);
     }
 
     void 
     RotateStatePluginSupport_destroy_key_ex(
         RotateStateKeyHolder *key,RTIBool deallocate_pointers)
     {
-        ProcessRotation::RotateState_finalize_ex(key,deallocate_pointers);
+        SafeRotationFunctions::RotateState_finalize_ex(key,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(key);
     }
@@ -2778,7 +2869,7 @@ namespace ProcessRotation {
     RotateStatePluginSupport_destroy_key(
         RotateStateKeyHolder *key) {
 
-        ProcessRotation::RotateStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
+        SafeRotationFunctions::RotateStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
     }
 
@@ -2832,18 +2923,18 @@ namespace ProcessRotation {
             participant_data,
             endpoint_info,
             (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-            ProcessRotation::RotateStatePluginSupport_create_data,
+            SafeRotationFunctions::RotateStatePluginSupport_create_data,
             (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-            ProcessRotation::RotateStatePluginSupport_destroy_data,
+            SafeRotationFunctions::RotateStatePluginSupport_destroy_data,
             (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-            ProcessRotation::RotateStatePluginSupport_create_key ,            
+            SafeRotationFunctions::RotateStatePluginSupport_create_key ,            
             (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-            ProcessRotation::RotateStatePluginSupport_destroy_key);
+            SafeRotationFunctions::RotateStatePluginSupport_destroy_key);
 
         if (epd == NULL) {
             return NULL;
         } 
-        serializedKeyMaxSize =  ProcessRotation::RotateStatePlugin_get_serialized_key_max_size(
+        serializedKeyMaxSize =  SafeRotationFunctions::RotateStatePlugin_get_serialized_key_max_size(
             epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
         if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -2854,7 +2945,7 @@ namespace ProcessRotation {
         }
 
         if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-            serializedSampleMaxSize = ProcessRotation::RotateStatePlugin_get_serialized_sample_max_size(
+            serializedSampleMaxSize = SafeRotationFunctions::RotateStatePlugin_get_serialized_sample_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -2863,9 +2954,9 @@ namespace ProcessRotation {
                 epd,
                 endpoint_info,
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                ProcessRotation::RotateStatePlugin_get_serialized_sample_max_size, epd,
+                SafeRotationFunctions::RotateStatePlugin_get_serialized_sample_max_size, epd,
                 (PRESTypePluginGetSerializedSampleSizeFunction)
-                ProcessRotation::RotateStatePlugin_get_serialized_sample_size,
+                SafeRotationFunctions::RotateStatePlugin_get_serialized_sample_size,
                 epd) == RTI_FALSE) {
                 PRESTypePluginDefaultEndpointData_delete(epd);
                 return NULL;
@@ -2903,7 +2994,7 @@ namespace ProcessRotation {
         const RotateState *src)
     {
         if (endpoint_data) {} /* To avoid warnings */
-        return ProcessRotation::RotateStatePluginSupport_copy_data(dst,src);
+        return SafeRotationFunctions::RotateStatePluginSupport_copy_data(dst,src);
     }
 
     /* ----------------------------------------------------------------------------
@@ -2952,9 +3043,9 @@ namespace ProcessRotation {
                 return RTI_FALSE;
             }
 
-            if(!DataTypes::StatusPlugin_serialize(
+            if(!DataTypes::UuidPlugin_serialize(
                 endpoint_data,
-                &sample->status,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -2965,6 +3056,16 @@ namespace ProcessRotation {
             if(!DataTypes::TimePlugin_serialize(
                 endpoint_data,
                 &sample->timestamp,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
+            if(!DataTypes::StatusPlugin_serialize(
+                endpoint_data,
+                &sample->status,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -3027,7 +3128,7 @@ namespace ProcessRotation {
         }
         if(deserialize_sample) {
 
-            ProcessRotation::RotateState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+            SafeRotationFunctions::RotateState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
@@ -3037,9 +3138,9 @@ namespace ProcessRotation {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
-            if(!DataTypes::StatusPlugin_deserialize_sample(
+            if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
-                &sample->status,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -3048,6 +3149,14 @@ namespace ProcessRotation {
             if(!DataTypes::TimePlugin_deserialize_sample(
                 endpoint_data,
                 &sample->timestamp,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::StatusPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->status,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -3122,7 +3231,7 @@ namespace ProcessRotation {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, *length);
 
-        result = ProcessRotation::RotateStatePlugin_serialize(
+        result = SafeRotationFunctions::RotateStatePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
             RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
@@ -3163,7 +3272,7 @@ namespace ProcessRotation {
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessRotation::RotateStatePlugin_deserialize_sample( 
+        result= SafeRotationFunctions::RotateStatePlugin_deserialize_sample( 
             endpoint_data, (sample != NULL)?*sample:NULL,
             stream, deserialize_encapsulation, deserialize_sample, 
             endpoint_plugin_qos);
@@ -3208,7 +3317,7 @@ namespace ProcessRotation {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
-            if (!DataTypes::StatusPlugin_skip(
+            if (!DataTypes::UuidPlugin_skip(
                 endpoint_data,
                 stream, 
                 RTI_FALSE, RTI_TRUE, 
@@ -3216,6 +3325,13 @@ namespace ProcessRotation {
                 goto fin; 
             }
             if (!DataTypes::TimePlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if (!DataTypes::StatusPlugin_skip(
                 endpoint_data,
                 stream, 
                 RTI_FALSE, RTI_TRUE, 
@@ -3277,10 +3393,13 @@ namespace ProcessRotation {
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
-        current_alignment +=DataTypes::StatusPlugin_get_serialized_sample_max_size_ex(
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
+        current_alignment +=DataTypes::StatusPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -3348,9 +3467,11 @@ namespace ProcessRotation {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
-        current_alignment +=DataTypes::StatusPlugin_get_serialized_sample_min_size(
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::StatusPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
@@ -3405,12 +3526,15 @@ namespace ProcessRotation {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
-        current_alignment += DataTypes::StatusPlugin_get_serialized_sample_size(
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
-            current_alignment, &sample->status);
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->timestamp);
+        current_alignment += DataTypes::StatusPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->status);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
@@ -3529,7 +3653,7 @@ namespace ProcessRotation {
         RTIBool result;
         if (drop_sample) {} /* To avoid warnings */
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessRotation::RotateStatePlugin_deserialize_key_sample(
+        result= SafeRotationFunctions::RotateStatePlugin_deserialize_key_sample(
             endpoint_data, (sample != NULL)?*sample:NULL, stream,
             deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
         if (result) {
@@ -3633,7 +3757,7 @@ namespace ProcessRotation {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
-            if (!DataTypes::StatusPlugin_skip(
+            if (!DataTypes::UuidPlugin_skip(
                 endpoint_data,
                 stream, 
                 RTI_FALSE, RTI_TRUE, 
@@ -3642,6 +3766,14 @@ namespace ProcessRotation {
             }
 
             if (!DataTypes::TimePlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
+            if (!DataTypes::StatusPlugin_skip(
                 endpoint_data,
                 stream, 
                 RTI_FALSE, RTI_TRUE, 
@@ -3737,14 +3869,14 @@ namespace ProcessRotation {
         RTICdrStream_resetPosition(md5Stream);
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-        if (!ProcessRotation::RotateStatePlugin_serialize_key(
+        if (!SafeRotationFunctions::RotateStatePlugin_serialize_key(
             endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-            size = (int)ProcessRotation::RotateStatePlugin_get_serialized_sample_size(
+            size = (int)SafeRotationFunctions::RotateStatePlugin_get_serialized_sample_size(
                 endpoint_data,
                 RTI_FALSE,
                 RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -3769,7 +3901,7 @@ namespace ProcessRotation {
                 RTICdrStream_getBufferLength(md5Stream));
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-            if (!ProcessRotation::RotateStatePlugin_serialize_key(
+            if (!SafeRotationFunctions::RotateStatePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
@@ -3856,7 +3988,7 @@ namespace ProcessRotation {
             RTICdrStream_restoreAlignment(stream,position);
         }
 
-        if (!ProcessRotation::RotateStatePlugin_instance_to_keyhash(
+        if (!SafeRotationFunctions::RotateStatePlugin_instance_to_keyhash(
             endpoint_data, keyhash, sample)) {
             return RTI_FALSE;
         }
@@ -3884,20 +4016,20 @@ namespace ProcessRotation {
         /* set up parent's function pointers */
         plugin->onParticipantAttached =
         (PRESTypePluginOnParticipantAttachedCallback)
-        ProcessRotation::RotateStatePlugin_on_participant_attached;
+        SafeRotationFunctions::RotateStatePlugin_on_participant_attached;
         plugin->onParticipantDetached =
         (PRESTypePluginOnParticipantDetachedCallback)
-        ProcessRotation::RotateStatePlugin_on_participant_detached;
+        SafeRotationFunctions::RotateStatePlugin_on_participant_detached;
         plugin->onEndpointAttached =
         (PRESTypePluginOnEndpointAttachedCallback)
-        ProcessRotation::RotateStatePlugin_on_endpoint_attached;
+        SafeRotationFunctions::RotateStatePlugin_on_endpoint_attached;
         plugin->onEndpointDetached =
         (PRESTypePluginOnEndpointDetachedCallback)
-        ProcessRotation::RotateStatePlugin_on_endpoint_detached;
+        SafeRotationFunctions::RotateStatePlugin_on_endpoint_detached;
 
         plugin->copySampleFnc =
         (PRESTypePluginCopySampleFunction)
-        ProcessRotation::RotateStatePlugin_copy_sample;
+        SafeRotationFunctions::RotateStatePlugin_copy_sample;
         plugin->createSampleFnc =
         (PRESTypePluginCreateSampleFunction)
         RotateStatePlugin_create_sample;
@@ -3907,16 +4039,16 @@ namespace ProcessRotation {
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
-        ProcessRotation::RotateStatePlugin_serialize;
+        SafeRotationFunctions::RotateStatePlugin_serialize;
         plugin->deserializeFnc =
         (PRESTypePluginDeserializeFunction)
-        ProcessRotation::RotateStatePlugin_deserialize;
+        SafeRotationFunctions::RotateStatePlugin_deserialize;
         plugin->getSerializedSampleMaxSizeFnc =
         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-        ProcessRotation::RotateStatePlugin_get_serialized_sample_max_size;
+        SafeRotationFunctions::RotateStatePlugin_get_serialized_sample_max_size;
         plugin->getSerializedSampleMinSizeFnc =
         (PRESTypePluginGetSerializedSampleMinSizeFunction)
-        ProcessRotation::RotateStatePlugin_get_serialized_sample_min_size;
+        SafeRotationFunctions::RotateStatePlugin_get_serialized_sample_min_size;
 
         plugin->getSampleFnc =
         (PRESTypePluginGetSampleFunction)
@@ -3927,27 +4059,27 @@ namespace ProcessRotation {
 
         plugin->getKeyKindFnc =
         (PRESTypePluginGetKeyKindFunction)
-        ProcessRotation::RotateStatePlugin_get_key_kind;
+        SafeRotationFunctions::RotateStatePlugin_get_key_kind;
 
         plugin->getSerializedKeyMaxSizeFnc =   
         (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-        ProcessRotation::RotateStatePlugin_get_serialized_key_max_size;
+        SafeRotationFunctions::RotateStatePlugin_get_serialized_key_max_size;
         plugin->serializeKeyFnc =
         (PRESTypePluginSerializeKeyFunction)
-        ProcessRotation::RotateStatePlugin_serialize_key;
+        SafeRotationFunctions::RotateStatePlugin_serialize_key;
         plugin->deserializeKeyFnc =
         (PRESTypePluginDeserializeKeyFunction)
-        ProcessRotation::RotateStatePlugin_deserialize_key;
+        SafeRotationFunctions::RotateStatePlugin_deserialize_key;
         plugin->deserializeKeySampleFnc =
         (PRESTypePluginDeserializeKeySampleFunction)
-        ProcessRotation::RotateStatePlugin_deserialize_key_sample;
+        SafeRotationFunctions::RotateStatePlugin_deserialize_key_sample;
 
         plugin-> instanceToKeyHashFnc = 
         (PRESTypePluginInstanceToKeyHashFunction)
-        ProcessRotation::RotateStatePlugin_instance_to_keyhash;
+        SafeRotationFunctions::RotateStatePlugin_instance_to_keyhash;
         plugin->serializedSampleToKeyHashFnc = 
         (PRESTypePluginSerializedSampleToKeyHashFunction)
-        ProcessRotation::RotateStatePlugin_serialized_sample_to_keyhash;
+        SafeRotationFunctions::RotateStatePlugin_serialized_sample_to_keyhash;
 
         plugin->getKeyFnc =
         (PRESTypePluginGetKeyFunction)
@@ -3958,12 +4090,12 @@ namespace ProcessRotation {
 
         plugin->instanceToKeyFnc =
         (PRESTypePluginInstanceToKeyFunction)
-        ProcessRotation::RotateStatePlugin_instance_to_key;
+        SafeRotationFunctions::RotateStatePlugin_instance_to_key;
         plugin->keyToInstanceFnc =
         (PRESTypePluginKeyToInstanceFunction)
-        ProcessRotation::RotateStatePlugin_key_to_instance;
+        SafeRotationFunctions::RotateStatePlugin_key_to_instance;
         plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-        plugin->typeCode =  (struct RTICdrTypeCode *)ProcessRotation::RotateState_get_typecode();
+        plugin->typeCode =  (struct RTICdrTypeCode *)SafeRotationFunctions::RotateState_get_typecode();
 
         plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
@@ -3976,7 +4108,7 @@ namespace ProcessRotation {
         RotateStatePlugin_return_buffer;
         plugin->getSerializedSampleSizeFnc =
         (PRESTypePluginGetSerializedSampleSizeFunction)
-        ProcessRotation::RotateStatePlugin_get_serialized_sample_size;
+        SafeRotationFunctions::RotateStatePlugin_get_serialized_sample_size;
 
         plugin->endpointTypeName = RotateStateTYPENAME;
 
@@ -3988,5 +4120,5 @@ namespace ProcessRotation {
     {
         RTIOsapiHeap_freeStructure(plugin);
     } 
-} /* namespace ProcessRotation  */
+} /* namespace SafeRotationFunctions  */
 

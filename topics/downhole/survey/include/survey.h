@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef survey_675099750_h
-#define survey_675099750_h
+#ifndef survey_675098841_h
+#define survey_675098841_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -21,7 +21,7 @@ or consult the RTI Connext manual.
 #endif
 
 #include "base_data_types.h"
-namespace Downhole {
+namespace DownholeFunctions {
     static const char SURVEY_REQUEST[] = "SurveyRequest"; 
 
     extern const char *SurveyRequestTYPENAME;
@@ -44,8 +44,11 @@ namespace Downhole {
         #endif
 
         DataTypes::Uuid   id ;
-        DDS_Long   timeNeeded ;
-        DataTypes::SurveyQuality   requestedSurveyQuality ;
+        DataTypes::Uuid   objectiveId ;
+        DataTypes::Priority   priority ;
+        DataTypes::Time   timeNeeded ;
+        DataTypes::Time   estimatedDuration ;
+        DataTypes::SurveyQuality   surveyQuality ;
 
     };
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
@@ -122,7 +125,8 @@ namespace Downhole {
         #endif
 
         DataTypes::Uuid   id ;
-        DataTypes::Time   timeEnabled ;
+        DataTypes::Uuid   objectiveId ;
+        DataTypes::Time   estimatedDuration ;
         DataTypes::SurveyQuality   requestedSurveyQuality ;
 
     };
@@ -199,8 +203,10 @@ namespace Downhole {
         typedef SurveyStateDataReader DataReader;
         #endif
 
-        DataTypes::Uuid   requestId ;
+        DataTypes::Uuid   id ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Time   timestamp ;
+        DataTypes::Status   status ;
         DataTypes::SurveyQuality   acutalSurveyQuality ;
         DDS_Double   measuredDepth ;
         DDS_Double   inclination ;
@@ -276,7 +282,7 @@ namespace Downhole {
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport
     #endif
-} /* namespace Downhole  */
+} /* namespace DownholeFunctions  */
 
 #endif /* survey */
 

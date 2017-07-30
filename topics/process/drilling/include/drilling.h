@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drilling_1428077238_h
-#define drilling_1428077238_h
+#ifndef drilling_1428077360_h
+#define drilling_1428077360_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -44,6 +44,7 @@ namespace Hoisting {
         #endif
 
         DataTypes::Uuid   id ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Priority   priority ;
         DataTypes::Time   timeNeeded ;
         DataTypes::Time   duration ;
@@ -131,6 +132,7 @@ namespace Hoisting {
         #endif
 
         DataTypes::Uuid   id ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Time   estimatedDuration ;
         DDS_Double   ropLimit ;
         DDS_Double   wobLimit ;
@@ -216,6 +218,7 @@ namespace Hoisting {
         #endif
 
         DataTypes::Uuid   id ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Time   timestamp ;
         DDS_Double   ropActual ;
         DDS_Double   wobActual ;

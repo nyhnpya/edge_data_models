@@ -30,16 +30,16 @@ or consult the RTI Connext manual.
 
 #include "rotate.h"
 
-namespace ProcessRotation {
+namespace SafeRotationFunctions {
 
     /* ========================================================================= */
-    const char *RotateRequestTYPENAME = "ProcessRotation::RotateRequest";
+    const char *RotateRequestTYPENAME = "SafeRotationFunctions::RotateRequest";
 
     DDS_TypeCode* RotateRequest_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member RotateRequest_g_tc_members[5]=
+        static DDS_TypeCode_Member RotateRequest_g_tc_members[6]=
         {
 
             {
@@ -60,7 +60,7 @@ namespace ProcessRotation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"priority",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -77,7 +77,7 @@ namespace ProcessRotation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"timeNeeded",/* Member name */
+                (char *)"priority",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -94,7 +94,7 @@ namespace ProcessRotation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"estimatedDuration",/* Member name */
+                (char *)"timeNeeded",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -111,9 +111,26 @@ namespace ProcessRotation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"targetRate",/* Member name */
+                (char *)"estimatedDuration",/* Member name */
                 {
                     4,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"targetRate",/* Member name */
+                {
+                    5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -134,12 +151,12 @@ namespace ProcessRotation {
                 DDS_TK_STRUCT,/* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
-                (char *)"ProcessRotation::RotateRequest", /* Name */
+                (char *)"SafeRotationFunctions::RotateRequest", /* Name */
                 NULL, /* Ignored */      
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                5, /* Number of members */
+                6, /* Number of members */
                 RotateRequest_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for RotateRequest*/
@@ -150,13 +167,15 @@ namespace ProcessRotation {
 
         RotateRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        RotateRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Priority_get_typecode();
+        RotateRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        RotateRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+        RotateRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Priority_get_typecode();
 
         RotateRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-        RotateRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        RotateRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+
+        RotateRequest_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         is_initialized = RTI_TRUE;
 
@@ -165,7 +184,7 @@ namespace ProcessRotation {
 
     RTIBool RotateRequest_initialize(
         RotateRequest* sample) {
-        return ProcessRotation::RotateRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        return SafeRotationFunctions::RotateRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
     }
 
     RTIBool RotateRequest_initialize_ex(
@@ -178,7 +197,7 @@ namespace ProcessRotation {
         allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
         allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-        return ProcessRotation::RotateRequest_initialize_w_params(
+        return SafeRotationFunctions::RotateRequest_initialize_w_params(
             sample,&allocParams);
 
     }
@@ -190,6 +209,10 @@ namespace ProcessRotation {
         if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -217,7 +240,7 @@ namespace ProcessRotation {
         RotateRequest* sample)
     {
 
-        ProcessRotation::RotateRequest_finalize_ex(sample,RTI_TRUE);
+        SafeRotationFunctions::RotateRequest_finalize_ex(sample,RTI_TRUE);
     }
 
     void RotateRequest_finalize_ex(
@@ -232,7 +255,7 @@ namespace ProcessRotation {
 
         deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-        ProcessRotation::RotateRequest_finalize_w_params(
+        SafeRotationFunctions::RotateRequest_finalize_w_params(
             sample,&deallocParams);
     }
 
@@ -246,6 +269,8 @@ namespace ProcessRotation {
         if (deallocParams) {} /* To avoid warnings */
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
+
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
 
         DataTypes::Priority_finalize_w_params(&sample->priority,deallocParams);
 
@@ -272,6 +297,7 @@ namespace ProcessRotation {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
         DataTypes::Priority_finalize_optional_members(&sample->priority, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->timeNeeded, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
@@ -284,6 +310,10 @@ namespace ProcessRotation {
 
         if (!DataTypes::Uuid_copy(
             &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::Priority_copy(
@@ -315,9 +345,9 @@ namespace ProcessRotation {
     */
     #define T RotateRequest
     #define TSeq RotateRequestSeq
-    #define T_initialize_w_params ProcessRotation::RotateRequest_initialize_w_params
-    #define T_finalize_w_params   ProcessRotation::RotateRequest_finalize_w_params
-    #define T_copy       ProcessRotation::RotateRequest_copy
+    #define T_initialize_w_params SafeRotationFunctions::RotateRequest_initialize_w_params
+    #define T_finalize_w_params   SafeRotationFunctions::RotateRequest_finalize_w_params
+    #define T_copy       SafeRotationFunctions::RotateRequest_copy
 
     #ifndef NDDS_STANDALONE_TYPE
     #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -334,13 +364,13 @@ namespace ProcessRotation {
     #undef T
 
     /* ========================================================================= */
-    const char *RotateObjectiveTYPENAME = "ProcessRotation::RotateObjective";
+    const char *RotateObjectiveTYPENAME = "SafeRotationFunctions::RotateObjective";
 
     DDS_TypeCode* RotateObjective_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member RotateObjective_g_tc_members[3]=
+        static DDS_TypeCode_Member RotateObjective_g_tc_members[4]=
         {
 
             {
@@ -361,7 +391,7 @@ namespace ProcessRotation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"estimatedDuration",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -378,9 +408,26 @@ namespace ProcessRotation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"targetRate",/* Member name */
+                (char *)"estimatedDuration",/* Member name */
                 {
                     2,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"targetRate",/* Member name */
+                {
+                    3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -401,12 +448,12 @@ namespace ProcessRotation {
                 DDS_TK_STRUCT,/* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
-                (char *)"ProcessRotation::RotateObjective", /* Name */
+                (char *)"SafeRotationFunctions::RotateObjective", /* Name */
                 NULL, /* Ignored */      
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                3, /* Number of members */
+                4, /* Number of members */
                 RotateObjective_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for RotateObjective*/
@@ -417,9 +464,11 @@ namespace ProcessRotation {
 
         RotateObjective_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        RotateObjective_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+        RotateObjective_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        RotateObjective_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        RotateObjective_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+
+        RotateObjective_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         is_initialized = RTI_TRUE;
 
@@ -428,7 +477,7 @@ namespace ProcessRotation {
 
     RTIBool RotateObjective_initialize(
         RotateObjective* sample) {
-        return ProcessRotation::RotateObjective_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        return SafeRotationFunctions::RotateObjective_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
     }
 
     RTIBool RotateObjective_initialize_ex(
@@ -441,7 +490,7 @@ namespace ProcessRotation {
         allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
         allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-        return ProcessRotation::RotateObjective_initialize_w_params(
+        return SafeRotationFunctions::RotateObjective_initialize_w_params(
             sample,&allocParams);
 
     }
@@ -453,6 +502,10 @@ namespace ProcessRotation {
         if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -472,7 +525,7 @@ namespace ProcessRotation {
         RotateObjective* sample)
     {
 
-        ProcessRotation::RotateObjective_finalize_ex(sample,RTI_TRUE);
+        SafeRotationFunctions::RotateObjective_finalize_ex(sample,RTI_TRUE);
     }
 
     void RotateObjective_finalize_ex(
@@ -487,7 +540,7 @@ namespace ProcessRotation {
 
         deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-        ProcessRotation::RotateObjective_finalize_w_params(
+        SafeRotationFunctions::RotateObjective_finalize_w_params(
             sample,&deallocParams);
     }
 
@@ -501,6 +554,8 @@ namespace ProcessRotation {
         if (deallocParams) {} /* To avoid warnings */
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
+
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
 
         DataTypes::Time_finalize_w_params(&sample->estimatedDuration,deallocParams);
 
@@ -523,6 +578,7 @@ namespace ProcessRotation {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
     }
 
@@ -533,6 +589,10 @@ namespace ProcessRotation {
 
         if (!DataTypes::Uuid_copy(
             &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::Time_copy(
@@ -556,9 +616,9 @@ namespace ProcessRotation {
     */
     #define T RotateObjective
     #define TSeq RotateObjectiveSeq
-    #define T_initialize_w_params ProcessRotation::RotateObjective_initialize_w_params
-    #define T_finalize_w_params   ProcessRotation::RotateObjective_finalize_w_params
-    #define T_copy       ProcessRotation::RotateObjective_copy
+    #define T_initialize_w_params SafeRotationFunctions::RotateObjective_initialize_w_params
+    #define T_finalize_w_params   SafeRotationFunctions::RotateObjective_finalize_w_params
+    #define T_copy       SafeRotationFunctions::RotateObjective_copy
 
     #ifndef NDDS_STANDALONE_TYPE
     #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -575,13 +635,13 @@ namespace ProcessRotation {
     #undef T
 
     /* ========================================================================= */
-    const char *RotateStateTYPENAME = "ProcessRotation::RotateState";
+    const char *RotateStateTYPENAME = "SafeRotationFunctions::RotateState";
 
     DDS_TypeCode* RotateState_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member RotateState_g_tc_members[7]=
+        static DDS_TypeCode_Member RotateState_g_tc_members[8]=
         {
 
             {
@@ -602,7 +662,7 @@ namespace ProcessRotation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"status",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -636,7 +696,7 @@ namespace ProcessRotation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"actualRate",/* Member name */
+                (char *)"status",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -653,7 +713,7 @@ namespace ProcessRotation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"minRate",/* Member name */
+                (char *)"actualRate",/* Member name */
                 {
                     4,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -670,7 +730,7 @@ namespace ProcessRotation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"maxRate",/* Member name */
+                (char *)"minRate",/* Member name */
                 {
                     5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -687,9 +747,26 @@ namespace ProcessRotation {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"targetRate",/* Member name */
+                (char *)"maxRate",/* Member name */
                 {
                     6,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"targetRate",/* Member name */
+                {
+                    7,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -710,12 +787,12 @@ namespace ProcessRotation {
                 DDS_TK_STRUCT,/* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
-                (char *)"ProcessRotation::RotateState", /* Name */
+                (char *)"SafeRotationFunctions::RotateState", /* Name */
                 NULL, /* Ignored */      
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                7, /* Number of members */
+                8, /* Number of members */
                 RotateState_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for RotateState*/
@@ -726,17 +803,19 @@ namespace ProcessRotation {
 
         RotateState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        RotateState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Status_get_typecode();
+        RotateState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
         RotateState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-        RotateState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        RotateState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Status_get_typecode();
 
         RotateState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         RotateState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         RotateState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        RotateState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         is_initialized = RTI_TRUE;
 
@@ -745,7 +824,7 @@ namespace ProcessRotation {
 
     RTIBool RotateState_initialize(
         RotateState* sample) {
-        return ProcessRotation::RotateState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        return SafeRotationFunctions::RotateState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
     }
 
     RTIBool RotateState_initialize_ex(
@@ -758,7 +837,7 @@ namespace ProcessRotation {
         allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
         allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-        return ProcessRotation::RotateState_initialize_w_params(
+        return SafeRotationFunctions::RotateState_initialize_w_params(
             sample,&allocParams);
 
     }
@@ -773,11 +852,15 @@ namespace ProcessRotation {
         allocParams)) {
             return RTI_FALSE;
         }
-        if (!DataTypes::Status_initialize_w_params(&sample->status,
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
         allocParams)) {
             return RTI_FALSE;
         }
         if (!DataTypes::Time_initialize_w_params(&sample->timestamp,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Status_initialize_w_params(&sample->status,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -805,7 +888,7 @@ namespace ProcessRotation {
         RotateState* sample)
     {
 
-        ProcessRotation::RotateState_finalize_ex(sample,RTI_TRUE);
+        SafeRotationFunctions::RotateState_finalize_ex(sample,RTI_TRUE);
     }
 
     void RotateState_finalize_ex(
@@ -820,7 +903,7 @@ namespace ProcessRotation {
 
         deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-        ProcessRotation::RotateState_finalize_w_params(
+        SafeRotationFunctions::RotateState_finalize_w_params(
             sample,&deallocParams);
     }
 
@@ -835,9 +918,11 @@ namespace ProcessRotation {
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
-        DataTypes::Status_finalize_w_params(&sample->status,deallocParams);
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
 
         DataTypes::Time_finalize_w_params(&sample->timestamp,deallocParams);
+
+        DataTypes::Status_finalize_w_params(&sample->status,deallocParams);
 
     }
 
@@ -858,8 +943,9 @@ namespace ProcessRotation {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
-        DataTypes::Status_finalize_optional_members(&sample->status, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
+        DataTypes::Status_finalize_optional_members(&sample->status, deallocParams->delete_pointers);
     }
 
     RTIBool RotateState_copy(
@@ -871,12 +957,16 @@ namespace ProcessRotation {
             &dst->id, &src->id)) {
             return RTI_FALSE;
         } 
-        if (!DataTypes::Status_copy(
-            &dst->status, &src->status)) {
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::Time_copy(
             &dst->timestamp, &src->timestamp)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Status_copy(
+            &dst->status, &src->status)) {
             return RTI_FALSE;
         } 
         if (!RTICdrType_copyDouble (
@@ -908,9 +998,9 @@ namespace ProcessRotation {
     */
     #define T RotateState
     #define TSeq RotateStateSeq
-    #define T_initialize_w_params ProcessRotation::RotateState_initialize_w_params
-    #define T_finalize_w_params   ProcessRotation::RotateState_finalize_w_params
-    #define T_copy       ProcessRotation::RotateState_copy
+    #define T_initialize_w_params SafeRotationFunctions::RotateState_initialize_w_params
+    #define T_finalize_w_params   SafeRotationFunctions::RotateState_finalize_w_params
+    #define T_copy       SafeRotationFunctions::RotateState_copy
 
     #ifndef NDDS_STANDALONE_TYPE
     #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -925,5 +1015,5 @@ namespace ProcessRotation {
     #undef T_initialize_w_params
     #undef TSeq
     #undef T
-} /* namespace ProcessRotation  */
+} /* namespace SafeRotationFunctions  */
 

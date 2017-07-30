@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef hoist_1013693446_h
-#define hoist_1013693446_h
+#ifndef hoist_1013695219_h
+#define hoist_1013695219_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -21,7 +21,7 @@ or consult the RTI Connext manual.
 #endif
 
 #include "base_data_types.h"
-namespace ProcessHoist {
+namespace SafeHoistFunctions {
     static const char HOIST_REQUEST[] = "HoistRequest"; 
 
     extern const char *HoistRequestTYPENAME;
@@ -44,11 +44,12 @@ namespace ProcessHoist {
         #endif
 
         DataTypes::Uuid   id ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Priority   priority ;
         DataTypes::Time   timeNeeded ;
         DataTypes::Time   estimatedDuration ;
         DDS_Double   targetVelocity ;
-        DDS_Double   targetDestination ;
+        DDS_Double   targetPosition ;
 
     };
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
@@ -125,9 +126,10 @@ namespace ProcessHoist {
         #endif
 
         DataTypes::Uuid   id ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Time   estimatedDuration ;
         DDS_Double   targetVelocity ;
-        DDS_Double   targetDestination ;
+        DDS_Double   targetPosition ;
 
     };
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
@@ -204,8 +206,9 @@ namespace ProcessHoist {
         #endif
 
         DataTypes::Uuid   id ;
-        DataTypes::Status   status ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Time   timestamp ;
+        DataTypes::Status   status ;
         DDS_Double   actualVelocity ;
         DDS_Double   actualPosition ;
         DDS_Double   maxHoistVelocity ;
@@ -268,7 +271,7 @@ namespace ProcessHoist {
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport
     #endif
-} /* namespace ProcessHoist  */
+} /* namespace SafeHoistFunctions  */
 
 #endif /* hoist */
 

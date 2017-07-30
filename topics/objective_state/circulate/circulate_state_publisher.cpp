@@ -100,7 +100,7 @@ bool CCirculateStatePublisher::PublishSample()
 bool CCirculateStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              ProcessCirculation::CIRCULATE_STATE,
+                              SafeCirculateFunctions::CIRCULATE_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

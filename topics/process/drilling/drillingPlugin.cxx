@@ -155,6 +155,9 @@ namespace Hoisting {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
+
         DataTypes::PriorityPluginSupport_print_data(
             &sample->priority, "priority", indent_level + 1);
 
@@ -393,6 +396,16 @@ namespace Hoisting {
                 return RTI_FALSE;
             }
 
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
             if(!DataTypes::PriorityPlugin_serialize(
                 endpoint_data,
                 &sample->priority,
@@ -503,6 +516,14 @@ namespace Hoisting {
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -703,6 +724,13 @@ namespace Hoisting {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::PriorityPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -787,6 +815,9 @@ namespace Hoisting {
             current_alignment = 0;
             initial_alignment = 0;
         }
+
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
@@ -877,6 +908,8 @@ namespace Hoisting {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::PriorityPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
@@ -944,6 +977,9 @@ namespace Hoisting {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::PriorityPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->priority);
@@ -1183,6 +1219,14 @@ namespace Hoisting {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::PriorityPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -1668,6 +1712,9 @@ namespace Hoisting {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
+
         DataTypes::TimePluginSupport_print_data(
             &sample->estimatedDuration, "estimatedDuration", indent_level + 1);
 
@@ -1900,6 +1947,16 @@ namespace Hoisting {
                 return RTI_FALSE;
             }
 
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
             if(!DataTypes::TimePlugin_serialize(
                 endpoint_data,
                 &sample->estimatedDuration,
@@ -1990,6 +2047,14 @@ namespace Hoisting {
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -2174,6 +2239,13 @@ namespace Hoisting {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::TimePlugin_skip(
                 endpoint_data,
                 stream, 
@@ -2244,6 +2316,9 @@ namespace Hoisting {
             current_alignment = 0;
             initial_alignment = 0;
         }
+
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
@@ -2328,6 +2403,8 @@ namespace Hoisting {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -2391,6 +2468,9 @@ namespace Hoisting {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->estimatedDuration);
@@ -2624,6 +2704,14 @@ namespace Hoisting {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::TimePlugin_skip(
                 endpoint_data,
                 stream, 
@@ -3093,6 +3181,9 @@ namespace Hoisting {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
+
         DataTypes::TimePluginSupport_print_data(
             &sample->timestamp, "timestamp", indent_level + 1);
 
@@ -3352,6 +3443,16 @@ namespace Hoisting {
                 return RTI_FALSE;
             }
 
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
             if(!DataTypes::TimePlugin_serialize(
                 endpoint_data,
                 &sample->timestamp,
@@ -3487,6 +3588,14 @@ namespace Hoisting {
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -3707,6 +3816,13 @@ namespace Hoisting {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::TimePlugin_skip(
                 endpoint_data,
                 stream, 
@@ -3804,6 +3920,9 @@ namespace Hoisting {
             current_alignment = 0;
             initial_alignment = 0;
         }
+
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
@@ -3915,6 +4034,8 @@ namespace Hoisting {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -3996,6 +4117,9 @@ namespace Hoisting {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->timestamp);
@@ -4247,6 +4371,14 @@ namespace Hoisting {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::TimePlugin_skip(
                 endpoint_data,
                 stream, 

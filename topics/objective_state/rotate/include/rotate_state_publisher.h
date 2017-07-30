@@ -5,7 +5,7 @@
 #include "rotate.h"
 #include "rotateSupport.h"
 
-class CRotateStatePublisher : public TPublisher< ProcessRotation::RotateState >
+class CRotateStatePublisher : public TPublisher< SafeRotationFunctions::RotateState >
 {
  public:
     CRotateStatePublisher();

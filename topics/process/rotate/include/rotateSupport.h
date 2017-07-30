@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef rotateSupport_79875357_h
-#define rotateSupport_79875357_h
+#ifndef rotateSupport_79878318_h
+#define rotateSupport_79878318_h
 
 /* Uses */
 #include "rotate.h"
@@ -26,7 +26,7 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace ProcessRotation {
+namespace SafeRotationFunctions {
     /* ========================================================================= */
     /**
     Uses:     T
@@ -114,7 +114,7 @@ namespace ProcessRotation {
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport
     #endif
-} /* namespace ProcessRotation  */
+} /* namespace SafeRotationFunctions  */
 
-#endif  /* rotateSupport_79875357_h */
+#endif  /* rotateSupport_79878318_h */
 

@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef circulate_1746883627_h
-#define circulate_1746883627_h
+#ifndef circulate_1746884186_h
+#define circulate_1746884186_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -21,7 +21,7 @@ or consult the RTI Connext manual.
 #endif
 
 #include "base_data_types.h"
-namespace ProcessCirculation {
+namespace SafeCirculateFunctions {
     static const char CIRCULATE_REQUEST[] = "CirculateRequest"; 
 
     extern const char *CirculateRequestTYPENAME;
@@ -44,6 +44,7 @@ namespace ProcessCirculation {
         #endif
 
         DataTypes::Uuid   id ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Priority   priority ;
         DataTypes::Time   timeNeeded ;
         DataTypes::Time   estimatedDuration ;
@@ -124,6 +125,7 @@ namespace ProcessCirculation {
         #endif
 
         DataTypes::Uuid   id ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Time   estimatedDuration ;
         DDS_Double   targetFlowRate ;
 
@@ -202,6 +204,7 @@ namespace ProcessCirculation {
         #endif
 
         DataTypes::Uuid   id ;
+        DataTypes::Uuid   objectiveId ;
         DataTypes::Time   timestamp ;
         DataTypes::Status   status ;
         DDS_Double   actualFlowRate ;
@@ -265,7 +268,7 @@ namespace ProcessCirculation {
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport
     #endif
-} /* namespace ProcessCirculation  */
+} /* namespace SafeCirculateFunctions  */
 
 #endif /* circulate */
 

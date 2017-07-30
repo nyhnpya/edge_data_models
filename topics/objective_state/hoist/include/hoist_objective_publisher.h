@@ -5,7 +5,7 @@
 #include "hoist.h"
 #include "hoistSupport.h"
 
-class CHoistObjectivePublisher : public TPublisher< ProcessHoist::HoistObjective >
+class CHoistObjectivePublisher : public TPublisher< SafeHoistFunctions::HoistObjective >
 {
  public:
     CHoistObjectivePublisher();
@@ -17,7 +17,7 @@ class CHoistObjectivePublisher : public TPublisher< ProcessHoist::HoistObjective
 
     void SetEstimatedDuration(DataTypes::Time &estimatedDuration);
     void SetTargetVelocity(double &targetVelocity);
-    void SetTargetDestination(double &targetDestination);
+    void SetTargetPosition(double &targetPosition);
 };
 
 #endif // __HOIST_OBJECTIVE_PUBLISHER_H__ 

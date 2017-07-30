@@ -5,10 +5,10 @@
 #include "circulate.h"
 #include "circulateSupport.h"
 
-class CCirculateObjectiveSubscriber : public TSubscriber< ProcessCirculation::CirculateObjective >
+class CCirculateObjectiveSubscriber : public TSubscriber< SafeCirculateFunctions::CirculateObjective >
 {
  public:
-    typedef std::function<void(const ProcessCirculation::CirculateObjective &data)> OnDataAvailableEvent;
+    typedef std::function<void(const SafeCirculateFunctions::CirculateObjective &data)> OnDataAvailableEvent;
 
     CCirculateObjectiveSubscriber();
     ~CCirculateObjectiveSubscriber();
@@ -25,13 +25,13 @@ class CCirculateObjectiveSubscriber : public TSubscriber< ProcessCirculation::Ci
     bool GetTargetFlowRate(double &targetFlowRate);
 
  protected:
-    void DataAvailable(const ProcessCirculation::CirculateObjective &data, 
+    void DataAvailable(const SafeCirculateFunctions::CirculateObjective &data, 
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
 private:
-    ProcessCirculation::CirculateObjective m_data;
+    SafeCirculateFunctions::CirculateObjective m_data;
     DDS::SampleInfo                        m_sampleInfo;
     DDS::LivelinessChangedStatus           m_livelinessStatus;
     OnDataAvailableEvent                   m_pOnDataAvailable;

@@ -48,7 +48,7 @@ or consult the RTI Connext manual.
 
 #include "circulatePlugin.h"
 
-namespace ProcessCirculation {
+namespace SafeCirculateFunctions {
 
     /* ----------------------------------------------------------------------------
     *  Type CirculateRequest
@@ -67,7 +67,7 @@ namespace ProcessCirculation {
             &sample, CirculateRequest);
 
         if(sample != NULL) {
-            if (!ProcessCirculation::CirculateRequest_initialize_w_params(sample,alloc_params)) {
+            if (!SafeCirculateFunctions::CirculateRequest_initialize_w_params(sample,alloc_params)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -83,7 +83,7 @@ namespace ProcessCirculation {
             &sample, CirculateRequest);
 
         if(sample != NULL) {
-            if (!ProcessCirculation::CirculateRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!SafeCirculateFunctions::CirculateRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -94,7 +94,7 @@ namespace ProcessCirculation {
     CirculateRequest *
     CirculateRequestPluginSupport_create_data(void)
     {
-        return ProcessCirculation::CirculateRequestPluginSupport_create_data_ex(RTI_TRUE);
+        return SafeCirculateFunctions::CirculateRequestPluginSupport_create_data_ex(RTI_TRUE);
     }
 
     void 
@@ -102,7 +102,7 @@ namespace ProcessCirculation {
         CirculateRequest *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-        ProcessCirculation::CirculateRequest_finalize_w_params(sample,dealloc_params);
+        SafeCirculateFunctions::CirculateRequest_finalize_w_params(sample,dealloc_params);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -111,7 +111,7 @@ namespace ProcessCirculation {
     CirculateRequestPluginSupport_destroy_data_ex(
         CirculateRequest *sample,RTIBool deallocate_pointers) {
 
-        ProcessCirculation::CirculateRequest_finalize_ex(sample,deallocate_pointers);
+        SafeCirculateFunctions::CirculateRequest_finalize_ex(sample,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -120,7 +120,7 @@ namespace ProcessCirculation {
     CirculateRequestPluginSupport_destroy_data(
         CirculateRequest *sample) {
 
-        ProcessCirculation::CirculateRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+        SafeCirculateFunctions::CirculateRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
     }
 
@@ -129,7 +129,7 @@ namespace ProcessCirculation {
         CirculateRequest *dst,
         const CirculateRequest *src)
     {
-        return ProcessCirculation::CirculateRequest_copy(dst,src);
+        return SafeCirculateFunctions::CirculateRequest_copy(dst,src);
     }
 
     void 
@@ -155,6 +155,9 @@ namespace ProcessCirculation {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
+
         DataTypes::PriorityPluginSupport_print_data(
             &sample->priority, "priority", indent_level + 1);
 
@@ -175,21 +178,21 @@ namespace ProcessCirculation {
         RTIOsapiHeap_allocateStructure(
             &key, CirculateRequestKeyHolder);
 
-        ProcessCirculation::CirculateRequest_initialize_ex(key,allocate_pointers, RTI_TRUE);
+        SafeCirculateFunctions::CirculateRequest_initialize_ex(key,allocate_pointers, RTI_TRUE);
         return key;
     }
 
     CirculateRequest *
     CirculateRequestPluginSupport_create_key(void)
     {
-        return  ProcessCirculation::CirculateRequestPluginSupport_create_key_ex(RTI_TRUE);
+        return  SafeCirculateFunctions::CirculateRequestPluginSupport_create_key_ex(RTI_TRUE);
     }
 
     void 
     CirculateRequestPluginSupport_destroy_key_ex(
         CirculateRequestKeyHolder *key,RTIBool deallocate_pointers)
     {
-        ProcessCirculation::CirculateRequest_finalize_ex(key,deallocate_pointers);
+        SafeCirculateFunctions::CirculateRequest_finalize_ex(key,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(key);
     }
@@ -198,7 +201,7 @@ namespace ProcessCirculation {
     CirculateRequestPluginSupport_destroy_key(
         CirculateRequestKeyHolder *key) {
 
-        ProcessCirculation::CirculateRequestPluginSupport_destroy_key_ex(key,RTI_TRUE);
+        SafeCirculateFunctions::CirculateRequestPluginSupport_destroy_key_ex(key,RTI_TRUE);
 
     }
 
@@ -252,18 +255,18 @@ namespace ProcessCirculation {
             participant_data,
             endpoint_info,
             (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-            ProcessCirculation::CirculateRequestPluginSupport_create_data,
+            SafeCirculateFunctions::CirculateRequestPluginSupport_create_data,
             (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-            ProcessCirculation::CirculateRequestPluginSupport_destroy_data,
+            SafeCirculateFunctions::CirculateRequestPluginSupport_destroy_data,
             (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-            ProcessCirculation::CirculateRequestPluginSupport_create_key ,            
+            SafeCirculateFunctions::CirculateRequestPluginSupport_create_key ,            
             (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-            ProcessCirculation::CirculateRequestPluginSupport_destroy_key);
+            SafeCirculateFunctions::CirculateRequestPluginSupport_destroy_key);
 
         if (epd == NULL) {
             return NULL;
         } 
-        serializedKeyMaxSize =  ProcessCirculation::CirculateRequestPlugin_get_serialized_key_max_size(
+        serializedKeyMaxSize =  SafeCirculateFunctions::CirculateRequestPlugin_get_serialized_key_max_size(
             epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
         if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -274,7 +277,7 @@ namespace ProcessCirculation {
         }
 
         if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-            serializedSampleMaxSize = ProcessCirculation::CirculateRequestPlugin_get_serialized_sample_max_size(
+            serializedSampleMaxSize = SafeCirculateFunctions::CirculateRequestPlugin_get_serialized_sample_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -283,9 +286,9 @@ namespace ProcessCirculation {
                 epd,
                 endpoint_info,
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                ProcessCirculation::CirculateRequestPlugin_get_serialized_sample_max_size, epd,
+                SafeCirculateFunctions::CirculateRequestPlugin_get_serialized_sample_max_size, epd,
                 (PRESTypePluginGetSerializedSampleSizeFunction)
-                ProcessCirculation::CirculateRequestPlugin_get_serialized_sample_size,
+                SafeCirculateFunctions::CirculateRequestPlugin_get_serialized_sample_size,
                 epd) == RTI_FALSE) {
                 PRESTypePluginDefaultEndpointData_delete(epd);
                 return NULL;
@@ -323,7 +326,7 @@ namespace ProcessCirculation {
         const CirculateRequest *src)
     {
         if (endpoint_data) {} /* To avoid warnings */
-        return ProcessCirculation::CirculateRequestPluginSupport_copy_data(dst,src);
+        return SafeCirculateFunctions::CirculateRequestPluginSupport_copy_data(dst,src);
     }
 
     /* ----------------------------------------------------------------------------
@@ -365,6 +368,16 @@ namespace ProcessCirculation {
             if(!DataTypes::UuidPlugin_serialize(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -442,11 +455,19 @@ namespace ProcessCirculation {
         }
         if(deserialize_sample) {
 
-            ProcessCirculation::CirculateRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+            SafeCirculateFunctions::CirculateRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -533,7 +554,7 @@ namespace ProcessCirculation {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, *length);
 
-        result = ProcessCirculation::CirculateRequestPlugin_serialize(
+        result = SafeCirculateFunctions::CirculateRequestPlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
             RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
@@ -574,7 +595,7 @@ namespace ProcessCirculation {
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessCirculation::CirculateRequestPlugin_deserialize_sample( 
+        result= SafeCirculateFunctions::CirculateRequestPlugin_deserialize_sample( 
             endpoint_data, (sample != NULL)?*sample:NULL,
             stream, deserialize_encapsulation, deserialize_sample, 
             endpoint_plugin_qos);
@@ -612,6 +633,13 @@ namespace ProcessCirculation {
 
         if (skip_sample) {
 
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::UuidPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -686,6 +714,9 @@ namespace ProcessCirculation {
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
         current_alignment +=DataTypes::PriorityPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
@@ -751,6 +782,8 @@ namespace ProcessCirculation {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::PriorityPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
@@ -804,6 +837,9 @@ namespace ProcessCirculation {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::PriorityPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->priority);
@@ -925,7 +961,7 @@ namespace ProcessCirculation {
         RTIBool result;
         if (drop_sample) {} /* To avoid warnings */
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessCirculation::CirculateRequestPlugin_deserialize_key_sample(
+        result= SafeCirculateFunctions::CirculateRequestPlugin_deserialize_key_sample(
             endpoint_data, (sample != NULL)?*sample:NULL, stream,
             deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
         if (result) {
@@ -1029,6 +1065,14 @@ namespace ProcessCirculation {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::PriorityPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -1129,14 +1173,14 @@ namespace ProcessCirculation {
         RTICdrStream_resetPosition(md5Stream);
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-        if (!ProcessCirculation::CirculateRequestPlugin_serialize_key(
+        if (!SafeCirculateFunctions::CirculateRequestPlugin_serialize_key(
             endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-            size = (int)ProcessCirculation::CirculateRequestPlugin_get_serialized_sample_size(
+            size = (int)SafeCirculateFunctions::CirculateRequestPlugin_get_serialized_sample_size(
                 endpoint_data,
                 RTI_FALSE,
                 RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -1161,7 +1205,7 @@ namespace ProcessCirculation {
                 RTICdrStream_getBufferLength(md5Stream));
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-            if (!ProcessCirculation::CirculateRequestPlugin_serialize_key(
+            if (!SafeCirculateFunctions::CirculateRequestPlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
@@ -1248,7 +1292,7 @@ namespace ProcessCirculation {
             RTICdrStream_restoreAlignment(stream,position);
         }
 
-        if (!ProcessCirculation::CirculateRequestPlugin_instance_to_keyhash(
+        if (!SafeCirculateFunctions::CirculateRequestPlugin_instance_to_keyhash(
             endpoint_data, keyhash, sample)) {
             return RTI_FALSE;
         }
@@ -1276,20 +1320,20 @@ namespace ProcessCirculation {
         /* set up parent's function pointers */
         plugin->onParticipantAttached =
         (PRESTypePluginOnParticipantAttachedCallback)
-        ProcessCirculation::CirculateRequestPlugin_on_participant_attached;
+        SafeCirculateFunctions::CirculateRequestPlugin_on_participant_attached;
         plugin->onParticipantDetached =
         (PRESTypePluginOnParticipantDetachedCallback)
-        ProcessCirculation::CirculateRequestPlugin_on_participant_detached;
+        SafeCirculateFunctions::CirculateRequestPlugin_on_participant_detached;
         plugin->onEndpointAttached =
         (PRESTypePluginOnEndpointAttachedCallback)
-        ProcessCirculation::CirculateRequestPlugin_on_endpoint_attached;
+        SafeCirculateFunctions::CirculateRequestPlugin_on_endpoint_attached;
         plugin->onEndpointDetached =
         (PRESTypePluginOnEndpointDetachedCallback)
-        ProcessCirculation::CirculateRequestPlugin_on_endpoint_detached;
+        SafeCirculateFunctions::CirculateRequestPlugin_on_endpoint_detached;
 
         plugin->copySampleFnc =
         (PRESTypePluginCopySampleFunction)
-        ProcessCirculation::CirculateRequestPlugin_copy_sample;
+        SafeCirculateFunctions::CirculateRequestPlugin_copy_sample;
         plugin->createSampleFnc =
         (PRESTypePluginCreateSampleFunction)
         CirculateRequestPlugin_create_sample;
@@ -1299,16 +1343,16 @@ namespace ProcessCirculation {
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
-        ProcessCirculation::CirculateRequestPlugin_serialize;
+        SafeCirculateFunctions::CirculateRequestPlugin_serialize;
         plugin->deserializeFnc =
         (PRESTypePluginDeserializeFunction)
-        ProcessCirculation::CirculateRequestPlugin_deserialize;
+        SafeCirculateFunctions::CirculateRequestPlugin_deserialize;
         plugin->getSerializedSampleMaxSizeFnc =
         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-        ProcessCirculation::CirculateRequestPlugin_get_serialized_sample_max_size;
+        SafeCirculateFunctions::CirculateRequestPlugin_get_serialized_sample_max_size;
         plugin->getSerializedSampleMinSizeFnc =
         (PRESTypePluginGetSerializedSampleMinSizeFunction)
-        ProcessCirculation::CirculateRequestPlugin_get_serialized_sample_min_size;
+        SafeCirculateFunctions::CirculateRequestPlugin_get_serialized_sample_min_size;
 
         plugin->getSampleFnc =
         (PRESTypePluginGetSampleFunction)
@@ -1319,27 +1363,27 @@ namespace ProcessCirculation {
 
         plugin->getKeyKindFnc =
         (PRESTypePluginGetKeyKindFunction)
-        ProcessCirculation::CirculateRequestPlugin_get_key_kind;
+        SafeCirculateFunctions::CirculateRequestPlugin_get_key_kind;
 
         plugin->getSerializedKeyMaxSizeFnc =   
         (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-        ProcessCirculation::CirculateRequestPlugin_get_serialized_key_max_size;
+        SafeCirculateFunctions::CirculateRequestPlugin_get_serialized_key_max_size;
         plugin->serializeKeyFnc =
         (PRESTypePluginSerializeKeyFunction)
-        ProcessCirculation::CirculateRequestPlugin_serialize_key;
+        SafeCirculateFunctions::CirculateRequestPlugin_serialize_key;
         plugin->deserializeKeyFnc =
         (PRESTypePluginDeserializeKeyFunction)
-        ProcessCirculation::CirculateRequestPlugin_deserialize_key;
+        SafeCirculateFunctions::CirculateRequestPlugin_deserialize_key;
         plugin->deserializeKeySampleFnc =
         (PRESTypePluginDeserializeKeySampleFunction)
-        ProcessCirculation::CirculateRequestPlugin_deserialize_key_sample;
+        SafeCirculateFunctions::CirculateRequestPlugin_deserialize_key_sample;
 
         plugin-> instanceToKeyHashFnc = 
         (PRESTypePluginInstanceToKeyHashFunction)
-        ProcessCirculation::CirculateRequestPlugin_instance_to_keyhash;
+        SafeCirculateFunctions::CirculateRequestPlugin_instance_to_keyhash;
         plugin->serializedSampleToKeyHashFnc = 
         (PRESTypePluginSerializedSampleToKeyHashFunction)
-        ProcessCirculation::CirculateRequestPlugin_serialized_sample_to_keyhash;
+        SafeCirculateFunctions::CirculateRequestPlugin_serialized_sample_to_keyhash;
 
         plugin->getKeyFnc =
         (PRESTypePluginGetKeyFunction)
@@ -1350,12 +1394,12 @@ namespace ProcessCirculation {
 
         plugin->instanceToKeyFnc =
         (PRESTypePluginInstanceToKeyFunction)
-        ProcessCirculation::CirculateRequestPlugin_instance_to_key;
+        SafeCirculateFunctions::CirculateRequestPlugin_instance_to_key;
         plugin->keyToInstanceFnc =
         (PRESTypePluginKeyToInstanceFunction)
-        ProcessCirculation::CirculateRequestPlugin_key_to_instance;
+        SafeCirculateFunctions::CirculateRequestPlugin_key_to_instance;
         plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-        plugin->typeCode =  (struct RTICdrTypeCode *)ProcessCirculation::CirculateRequest_get_typecode();
+        plugin->typeCode =  (struct RTICdrTypeCode *)SafeCirculateFunctions::CirculateRequest_get_typecode();
 
         plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
@@ -1368,7 +1412,7 @@ namespace ProcessCirculation {
         CirculateRequestPlugin_return_buffer;
         plugin->getSerializedSampleSizeFnc =
         (PRESTypePluginGetSerializedSampleSizeFunction)
-        ProcessCirculation::CirculateRequestPlugin_get_serialized_sample_size;
+        SafeCirculateFunctions::CirculateRequestPlugin_get_serialized_sample_size;
 
         plugin->endpointTypeName = CirculateRequestTYPENAME;
 
@@ -1398,7 +1442,7 @@ namespace ProcessCirculation {
             &sample, CirculateObjective);
 
         if(sample != NULL) {
-            if (!ProcessCirculation::CirculateObjective_initialize_w_params(sample,alloc_params)) {
+            if (!SafeCirculateFunctions::CirculateObjective_initialize_w_params(sample,alloc_params)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -1414,7 +1458,7 @@ namespace ProcessCirculation {
             &sample, CirculateObjective);
 
         if(sample != NULL) {
-            if (!ProcessCirculation::CirculateObjective_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!SafeCirculateFunctions::CirculateObjective_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -1425,7 +1469,7 @@ namespace ProcessCirculation {
     CirculateObjective *
     CirculateObjectivePluginSupport_create_data(void)
     {
-        return ProcessCirculation::CirculateObjectivePluginSupport_create_data_ex(RTI_TRUE);
+        return SafeCirculateFunctions::CirculateObjectivePluginSupport_create_data_ex(RTI_TRUE);
     }
 
     void 
@@ -1433,7 +1477,7 @@ namespace ProcessCirculation {
         CirculateObjective *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-        ProcessCirculation::CirculateObjective_finalize_w_params(sample,dealloc_params);
+        SafeCirculateFunctions::CirculateObjective_finalize_w_params(sample,dealloc_params);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -1442,7 +1486,7 @@ namespace ProcessCirculation {
     CirculateObjectivePluginSupport_destroy_data_ex(
         CirculateObjective *sample,RTIBool deallocate_pointers) {
 
-        ProcessCirculation::CirculateObjective_finalize_ex(sample,deallocate_pointers);
+        SafeCirculateFunctions::CirculateObjective_finalize_ex(sample,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -1451,7 +1495,7 @@ namespace ProcessCirculation {
     CirculateObjectivePluginSupport_destroy_data(
         CirculateObjective *sample) {
 
-        ProcessCirculation::CirculateObjectivePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+        SafeCirculateFunctions::CirculateObjectivePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
     }
 
@@ -1460,7 +1504,7 @@ namespace ProcessCirculation {
         CirculateObjective *dst,
         const CirculateObjective *src)
     {
-        return ProcessCirculation::CirculateObjective_copy(dst,src);
+        return SafeCirculateFunctions::CirculateObjective_copy(dst,src);
     }
 
     void 
@@ -1486,6 +1530,9 @@ namespace ProcessCirculation {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
+
         DataTypes::TimePluginSupport_print_data(
             &sample->estimatedDuration, "estimatedDuration", indent_level + 1);
 
@@ -1500,21 +1547,21 @@ namespace ProcessCirculation {
         RTIOsapiHeap_allocateStructure(
             &key, CirculateObjectiveKeyHolder);
 
-        ProcessCirculation::CirculateObjective_initialize_ex(key,allocate_pointers, RTI_TRUE);
+        SafeCirculateFunctions::CirculateObjective_initialize_ex(key,allocate_pointers, RTI_TRUE);
         return key;
     }
 
     CirculateObjective *
     CirculateObjectivePluginSupport_create_key(void)
     {
-        return  ProcessCirculation::CirculateObjectivePluginSupport_create_key_ex(RTI_TRUE);
+        return  SafeCirculateFunctions::CirculateObjectivePluginSupport_create_key_ex(RTI_TRUE);
     }
 
     void 
     CirculateObjectivePluginSupport_destroy_key_ex(
         CirculateObjectiveKeyHolder *key,RTIBool deallocate_pointers)
     {
-        ProcessCirculation::CirculateObjective_finalize_ex(key,deallocate_pointers);
+        SafeCirculateFunctions::CirculateObjective_finalize_ex(key,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(key);
     }
@@ -1523,7 +1570,7 @@ namespace ProcessCirculation {
     CirculateObjectivePluginSupport_destroy_key(
         CirculateObjectiveKeyHolder *key) {
 
-        ProcessCirculation::CirculateObjectivePluginSupport_destroy_key_ex(key,RTI_TRUE);
+        SafeCirculateFunctions::CirculateObjectivePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
     }
 
@@ -1577,18 +1624,18 @@ namespace ProcessCirculation {
             participant_data,
             endpoint_info,
             (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-            ProcessCirculation::CirculateObjectivePluginSupport_create_data,
+            SafeCirculateFunctions::CirculateObjectivePluginSupport_create_data,
             (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-            ProcessCirculation::CirculateObjectivePluginSupport_destroy_data,
+            SafeCirculateFunctions::CirculateObjectivePluginSupport_destroy_data,
             (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-            ProcessCirculation::CirculateObjectivePluginSupport_create_key ,            
+            SafeCirculateFunctions::CirculateObjectivePluginSupport_create_key ,            
             (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-            ProcessCirculation::CirculateObjectivePluginSupport_destroy_key);
+            SafeCirculateFunctions::CirculateObjectivePluginSupport_destroy_key);
 
         if (epd == NULL) {
             return NULL;
         } 
-        serializedKeyMaxSize =  ProcessCirculation::CirculateObjectivePlugin_get_serialized_key_max_size(
+        serializedKeyMaxSize =  SafeCirculateFunctions::CirculateObjectivePlugin_get_serialized_key_max_size(
             epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
         if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -1599,7 +1646,7 @@ namespace ProcessCirculation {
         }
 
         if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-            serializedSampleMaxSize = ProcessCirculation::CirculateObjectivePlugin_get_serialized_sample_max_size(
+            serializedSampleMaxSize = SafeCirculateFunctions::CirculateObjectivePlugin_get_serialized_sample_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -1608,9 +1655,9 @@ namespace ProcessCirculation {
                 epd,
                 endpoint_info,
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                ProcessCirculation::CirculateObjectivePlugin_get_serialized_sample_max_size, epd,
+                SafeCirculateFunctions::CirculateObjectivePlugin_get_serialized_sample_max_size, epd,
                 (PRESTypePluginGetSerializedSampleSizeFunction)
-                ProcessCirculation::CirculateObjectivePlugin_get_serialized_sample_size,
+                SafeCirculateFunctions::CirculateObjectivePlugin_get_serialized_sample_size,
                 epd) == RTI_FALSE) {
                 PRESTypePluginDefaultEndpointData_delete(epd);
                 return NULL;
@@ -1648,7 +1695,7 @@ namespace ProcessCirculation {
         const CirculateObjective *src)
     {
         if (endpoint_data) {} /* To avoid warnings */
-        return ProcessCirculation::CirculateObjectivePluginSupport_copy_data(dst,src);
+        return SafeCirculateFunctions::CirculateObjectivePluginSupport_copy_data(dst,src);
     }
 
     /* ----------------------------------------------------------------------------
@@ -1690,6 +1737,16 @@ namespace ProcessCirculation {
             if(!DataTypes::UuidPlugin_serialize(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -1747,11 +1804,19 @@ namespace ProcessCirculation {
         }
         if(deserialize_sample) {
 
-            ProcessCirculation::CirculateObjective_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+            SafeCirculateFunctions::CirculateObjective_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -1822,7 +1887,7 @@ namespace ProcessCirculation {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, *length);
 
-        result = ProcessCirculation::CirculateObjectivePlugin_serialize(
+        result = SafeCirculateFunctions::CirculateObjectivePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
             RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
@@ -1863,7 +1928,7 @@ namespace ProcessCirculation {
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessCirculation::CirculateObjectivePlugin_deserialize_sample( 
+        result= SafeCirculateFunctions::CirculateObjectivePlugin_deserialize_sample( 
             endpoint_data, (sample != NULL)?*sample:NULL,
             stream, deserialize_encapsulation, deserialize_sample, 
             endpoint_plugin_qos);
@@ -1901,6 +1966,13 @@ namespace ProcessCirculation {
 
         if (skip_sample) {
 
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::UuidPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -1957,6 +2029,9 @@ namespace ProcessCirculation {
             current_alignment = 0;
             initial_alignment = 0;
         }
+
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
@@ -2020,6 +2095,8 @@ namespace ProcessCirculation {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -2069,6 +2146,9 @@ namespace ProcessCirculation {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->estimatedDuration);
@@ -2184,7 +2264,7 @@ namespace ProcessCirculation {
         RTIBool result;
         if (drop_sample) {} /* To avoid warnings */
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessCirculation::CirculateObjectivePlugin_deserialize_key_sample(
+        result= SafeCirculateFunctions::CirculateObjectivePlugin_deserialize_key_sample(
             endpoint_data, (sample != NULL)?*sample:NULL, stream,
             deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
         if (result) {
@@ -2288,6 +2368,14 @@ namespace ProcessCirculation {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::TimePlugin_skip(
                 endpoint_data,
                 stream, 
@@ -2372,14 +2460,14 @@ namespace ProcessCirculation {
         RTICdrStream_resetPosition(md5Stream);
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-        if (!ProcessCirculation::CirculateObjectivePlugin_serialize_key(
+        if (!SafeCirculateFunctions::CirculateObjectivePlugin_serialize_key(
             endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-            size = (int)ProcessCirculation::CirculateObjectivePlugin_get_serialized_sample_size(
+            size = (int)SafeCirculateFunctions::CirculateObjectivePlugin_get_serialized_sample_size(
                 endpoint_data,
                 RTI_FALSE,
                 RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -2404,7 +2492,7 @@ namespace ProcessCirculation {
                 RTICdrStream_getBufferLength(md5Stream));
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-            if (!ProcessCirculation::CirculateObjectivePlugin_serialize_key(
+            if (!SafeCirculateFunctions::CirculateObjectivePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
@@ -2491,7 +2579,7 @@ namespace ProcessCirculation {
             RTICdrStream_restoreAlignment(stream,position);
         }
 
-        if (!ProcessCirculation::CirculateObjectivePlugin_instance_to_keyhash(
+        if (!SafeCirculateFunctions::CirculateObjectivePlugin_instance_to_keyhash(
             endpoint_data, keyhash, sample)) {
             return RTI_FALSE;
         }
@@ -2519,20 +2607,20 @@ namespace ProcessCirculation {
         /* set up parent's function pointers */
         plugin->onParticipantAttached =
         (PRESTypePluginOnParticipantAttachedCallback)
-        ProcessCirculation::CirculateObjectivePlugin_on_participant_attached;
+        SafeCirculateFunctions::CirculateObjectivePlugin_on_participant_attached;
         plugin->onParticipantDetached =
         (PRESTypePluginOnParticipantDetachedCallback)
-        ProcessCirculation::CirculateObjectivePlugin_on_participant_detached;
+        SafeCirculateFunctions::CirculateObjectivePlugin_on_participant_detached;
         plugin->onEndpointAttached =
         (PRESTypePluginOnEndpointAttachedCallback)
-        ProcessCirculation::CirculateObjectivePlugin_on_endpoint_attached;
+        SafeCirculateFunctions::CirculateObjectivePlugin_on_endpoint_attached;
         plugin->onEndpointDetached =
         (PRESTypePluginOnEndpointDetachedCallback)
-        ProcessCirculation::CirculateObjectivePlugin_on_endpoint_detached;
+        SafeCirculateFunctions::CirculateObjectivePlugin_on_endpoint_detached;
 
         plugin->copySampleFnc =
         (PRESTypePluginCopySampleFunction)
-        ProcessCirculation::CirculateObjectivePlugin_copy_sample;
+        SafeCirculateFunctions::CirculateObjectivePlugin_copy_sample;
         plugin->createSampleFnc =
         (PRESTypePluginCreateSampleFunction)
         CirculateObjectivePlugin_create_sample;
@@ -2542,16 +2630,16 @@ namespace ProcessCirculation {
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
-        ProcessCirculation::CirculateObjectivePlugin_serialize;
+        SafeCirculateFunctions::CirculateObjectivePlugin_serialize;
         plugin->deserializeFnc =
         (PRESTypePluginDeserializeFunction)
-        ProcessCirculation::CirculateObjectivePlugin_deserialize;
+        SafeCirculateFunctions::CirculateObjectivePlugin_deserialize;
         plugin->getSerializedSampleMaxSizeFnc =
         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-        ProcessCirculation::CirculateObjectivePlugin_get_serialized_sample_max_size;
+        SafeCirculateFunctions::CirculateObjectivePlugin_get_serialized_sample_max_size;
         plugin->getSerializedSampleMinSizeFnc =
         (PRESTypePluginGetSerializedSampleMinSizeFunction)
-        ProcessCirculation::CirculateObjectivePlugin_get_serialized_sample_min_size;
+        SafeCirculateFunctions::CirculateObjectivePlugin_get_serialized_sample_min_size;
 
         plugin->getSampleFnc =
         (PRESTypePluginGetSampleFunction)
@@ -2562,27 +2650,27 @@ namespace ProcessCirculation {
 
         plugin->getKeyKindFnc =
         (PRESTypePluginGetKeyKindFunction)
-        ProcessCirculation::CirculateObjectivePlugin_get_key_kind;
+        SafeCirculateFunctions::CirculateObjectivePlugin_get_key_kind;
 
         plugin->getSerializedKeyMaxSizeFnc =   
         (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-        ProcessCirculation::CirculateObjectivePlugin_get_serialized_key_max_size;
+        SafeCirculateFunctions::CirculateObjectivePlugin_get_serialized_key_max_size;
         plugin->serializeKeyFnc =
         (PRESTypePluginSerializeKeyFunction)
-        ProcessCirculation::CirculateObjectivePlugin_serialize_key;
+        SafeCirculateFunctions::CirculateObjectivePlugin_serialize_key;
         plugin->deserializeKeyFnc =
         (PRESTypePluginDeserializeKeyFunction)
-        ProcessCirculation::CirculateObjectivePlugin_deserialize_key;
+        SafeCirculateFunctions::CirculateObjectivePlugin_deserialize_key;
         plugin->deserializeKeySampleFnc =
         (PRESTypePluginDeserializeKeySampleFunction)
-        ProcessCirculation::CirculateObjectivePlugin_deserialize_key_sample;
+        SafeCirculateFunctions::CirculateObjectivePlugin_deserialize_key_sample;
 
         plugin-> instanceToKeyHashFnc = 
         (PRESTypePluginInstanceToKeyHashFunction)
-        ProcessCirculation::CirculateObjectivePlugin_instance_to_keyhash;
+        SafeCirculateFunctions::CirculateObjectivePlugin_instance_to_keyhash;
         plugin->serializedSampleToKeyHashFnc = 
         (PRESTypePluginSerializedSampleToKeyHashFunction)
-        ProcessCirculation::CirculateObjectivePlugin_serialized_sample_to_keyhash;
+        SafeCirculateFunctions::CirculateObjectivePlugin_serialized_sample_to_keyhash;
 
         plugin->getKeyFnc =
         (PRESTypePluginGetKeyFunction)
@@ -2593,12 +2681,12 @@ namespace ProcessCirculation {
 
         plugin->instanceToKeyFnc =
         (PRESTypePluginInstanceToKeyFunction)
-        ProcessCirculation::CirculateObjectivePlugin_instance_to_key;
+        SafeCirculateFunctions::CirculateObjectivePlugin_instance_to_key;
         plugin->keyToInstanceFnc =
         (PRESTypePluginKeyToInstanceFunction)
-        ProcessCirculation::CirculateObjectivePlugin_key_to_instance;
+        SafeCirculateFunctions::CirculateObjectivePlugin_key_to_instance;
         plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-        plugin->typeCode =  (struct RTICdrTypeCode *)ProcessCirculation::CirculateObjective_get_typecode();
+        plugin->typeCode =  (struct RTICdrTypeCode *)SafeCirculateFunctions::CirculateObjective_get_typecode();
 
         plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
@@ -2611,7 +2699,7 @@ namespace ProcessCirculation {
         CirculateObjectivePlugin_return_buffer;
         plugin->getSerializedSampleSizeFnc =
         (PRESTypePluginGetSerializedSampleSizeFunction)
-        ProcessCirculation::CirculateObjectivePlugin_get_serialized_sample_size;
+        SafeCirculateFunctions::CirculateObjectivePlugin_get_serialized_sample_size;
 
         plugin->endpointTypeName = CirculateObjectiveTYPENAME;
 
@@ -2641,7 +2729,7 @@ namespace ProcessCirculation {
             &sample, CirculateState);
 
         if(sample != NULL) {
-            if (!ProcessCirculation::CirculateState_initialize_w_params(sample,alloc_params)) {
+            if (!SafeCirculateFunctions::CirculateState_initialize_w_params(sample,alloc_params)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -2657,7 +2745,7 @@ namespace ProcessCirculation {
             &sample, CirculateState);
 
         if(sample != NULL) {
-            if (!ProcessCirculation::CirculateState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!SafeCirculateFunctions::CirculateState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -2668,7 +2756,7 @@ namespace ProcessCirculation {
     CirculateState *
     CirculateStatePluginSupport_create_data(void)
     {
-        return ProcessCirculation::CirculateStatePluginSupport_create_data_ex(RTI_TRUE);
+        return SafeCirculateFunctions::CirculateStatePluginSupport_create_data_ex(RTI_TRUE);
     }
 
     void 
@@ -2676,7 +2764,7 @@ namespace ProcessCirculation {
         CirculateState *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-        ProcessCirculation::CirculateState_finalize_w_params(sample,dealloc_params);
+        SafeCirculateFunctions::CirculateState_finalize_w_params(sample,dealloc_params);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -2685,7 +2773,7 @@ namespace ProcessCirculation {
     CirculateStatePluginSupport_destroy_data_ex(
         CirculateState *sample,RTIBool deallocate_pointers) {
 
-        ProcessCirculation::CirculateState_finalize_ex(sample,deallocate_pointers);
+        SafeCirculateFunctions::CirculateState_finalize_ex(sample,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -2694,7 +2782,7 @@ namespace ProcessCirculation {
     CirculateStatePluginSupport_destroy_data(
         CirculateState *sample) {
 
-        ProcessCirculation::CirculateStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+        SafeCirculateFunctions::CirculateStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
     }
 
@@ -2703,7 +2791,7 @@ namespace ProcessCirculation {
         CirculateState *dst,
         const CirculateState *src)
     {
-        return ProcessCirculation::CirculateState_copy(dst,src);
+        return SafeCirculateFunctions::CirculateState_copy(dst,src);
     }
 
     void 
@@ -2728,6 +2816,9 @@ namespace ProcessCirculation {
 
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
+
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
 
         DataTypes::TimePluginSupport_print_data(
             &sample->timestamp, "timestamp", indent_level + 1);
@@ -2764,21 +2855,21 @@ namespace ProcessCirculation {
         RTIOsapiHeap_allocateStructure(
             &key, CirculateStateKeyHolder);
 
-        ProcessCirculation::CirculateState_initialize_ex(key,allocate_pointers, RTI_TRUE);
+        SafeCirculateFunctions::CirculateState_initialize_ex(key,allocate_pointers, RTI_TRUE);
         return key;
     }
 
     CirculateState *
     CirculateStatePluginSupport_create_key(void)
     {
-        return  ProcessCirculation::CirculateStatePluginSupport_create_key_ex(RTI_TRUE);
+        return  SafeCirculateFunctions::CirculateStatePluginSupport_create_key_ex(RTI_TRUE);
     }
 
     void 
     CirculateStatePluginSupport_destroy_key_ex(
         CirculateStateKeyHolder *key,RTIBool deallocate_pointers)
     {
-        ProcessCirculation::CirculateState_finalize_ex(key,deallocate_pointers);
+        SafeCirculateFunctions::CirculateState_finalize_ex(key,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(key);
     }
@@ -2787,7 +2878,7 @@ namespace ProcessCirculation {
     CirculateStatePluginSupport_destroy_key(
         CirculateStateKeyHolder *key) {
 
-        ProcessCirculation::CirculateStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
+        SafeCirculateFunctions::CirculateStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
     }
 
@@ -2841,18 +2932,18 @@ namespace ProcessCirculation {
             participant_data,
             endpoint_info,
             (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-            ProcessCirculation::CirculateStatePluginSupport_create_data,
+            SafeCirculateFunctions::CirculateStatePluginSupport_create_data,
             (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-            ProcessCirculation::CirculateStatePluginSupport_destroy_data,
+            SafeCirculateFunctions::CirculateStatePluginSupport_destroy_data,
             (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-            ProcessCirculation::CirculateStatePluginSupport_create_key ,            
+            SafeCirculateFunctions::CirculateStatePluginSupport_create_key ,            
             (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-            ProcessCirculation::CirculateStatePluginSupport_destroy_key);
+            SafeCirculateFunctions::CirculateStatePluginSupport_destroy_key);
 
         if (epd == NULL) {
             return NULL;
         } 
-        serializedKeyMaxSize =  ProcessCirculation::CirculateStatePlugin_get_serialized_key_max_size(
+        serializedKeyMaxSize =  SafeCirculateFunctions::CirculateStatePlugin_get_serialized_key_max_size(
             epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
         if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -2863,7 +2954,7 @@ namespace ProcessCirculation {
         }
 
         if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-            serializedSampleMaxSize = ProcessCirculation::CirculateStatePlugin_get_serialized_sample_max_size(
+            serializedSampleMaxSize = SafeCirculateFunctions::CirculateStatePlugin_get_serialized_sample_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -2872,9 +2963,9 @@ namespace ProcessCirculation {
                 epd,
                 endpoint_info,
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                ProcessCirculation::CirculateStatePlugin_get_serialized_sample_max_size, epd,
+                SafeCirculateFunctions::CirculateStatePlugin_get_serialized_sample_max_size, epd,
                 (PRESTypePluginGetSerializedSampleSizeFunction)
-                ProcessCirculation::CirculateStatePlugin_get_serialized_sample_size,
+                SafeCirculateFunctions::CirculateStatePlugin_get_serialized_sample_size,
                 epd) == RTI_FALSE) {
                 PRESTypePluginDefaultEndpointData_delete(epd);
                 return NULL;
@@ -2912,7 +3003,7 @@ namespace ProcessCirculation {
         const CirculateState *src)
     {
         if (endpoint_data) {} /* To avoid warnings */
-        return ProcessCirculation::CirculateStatePluginSupport_copy_data(dst,src);
+        return SafeCirculateFunctions::CirculateStatePluginSupport_copy_data(dst,src);
     }
 
     /* ----------------------------------------------------------------------------
@@ -2954,6 +3045,16 @@ namespace ProcessCirculation {
             if(!DataTypes::UuidPlugin_serialize(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -3051,11 +3152,19 @@ namespace ProcessCirculation {
         }
         if(deserialize_sample) {
 
-            ProcessCirculation::CirculateState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+            SafeCirculateFunctions::CirculateState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -3158,7 +3267,7 @@ namespace ProcessCirculation {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, *length);
 
-        result = ProcessCirculation::CirculateStatePlugin_serialize(
+        result = SafeCirculateFunctions::CirculateStatePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
             RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
@@ -3199,7 +3308,7 @@ namespace ProcessCirculation {
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessCirculation::CirculateStatePlugin_deserialize_sample( 
+        result= SafeCirculateFunctions::CirculateStatePlugin_deserialize_sample( 
             endpoint_data, (sample != NULL)?*sample:NULL,
             stream, deserialize_encapsulation, deserialize_sample, 
             endpoint_plugin_qos);
@@ -3237,6 +3346,13 @@ namespace ProcessCirculation {
 
         if (skip_sample) {
 
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::UuidPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -3322,6 +3438,9 @@ namespace ProcessCirculation {
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
@@ -3402,6 +3521,8 @@ namespace ProcessCirculation {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::StatusPlugin_get_serialized_sample_min_size(
@@ -3465,6 +3586,9 @@ namespace ProcessCirculation {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->timestamp);
@@ -3595,7 +3719,7 @@ namespace ProcessCirculation {
         RTIBool result;
         if (drop_sample) {} /* To avoid warnings */
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessCirculation::CirculateStatePlugin_deserialize_key_sample(
+        result= SafeCirculateFunctions::CirculateStatePlugin_deserialize_key_sample(
             endpoint_data, (sample != NULL)?*sample:NULL, stream,
             deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
         if (result) {
@@ -3699,6 +3823,14 @@ namespace ProcessCirculation {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::TimePlugin_skip(
                 endpoint_data,
                 stream, 
@@ -3815,14 +3947,14 @@ namespace ProcessCirculation {
         RTICdrStream_resetPosition(md5Stream);
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-        if (!ProcessCirculation::CirculateStatePlugin_serialize_key(
+        if (!SafeCirculateFunctions::CirculateStatePlugin_serialize_key(
             endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-            size = (int)ProcessCirculation::CirculateStatePlugin_get_serialized_sample_size(
+            size = (int)SafeCirculateFunctions::CirculateStatePlugin_get_serialized_sample_size(
                 endpoint_data,
                 RTI_FALSE,
                 RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -3847,7 +3979,7 @@ namespace ProcessCirculation {
                 RTICdrStream_getBufferLength(md5Stream));
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-            if (!ProcessCirculation::CirculateStatePlugin_serialize_key(
+            if (!SafeCirculateFunctions::CirculateStatePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
@@ -3934,7 +4066,7 @@ namespace ProcessCirculation {
             RTICdrStream_restoreAlignment(stream,position);
         }
 
-        if (!ProcessCirculation::CirculateStatePlugin_instance_to_keyhash(
+        if (!SafeCirculateFunctions::CirculateStatePlugin_instance_to_keyhash(
             endpoint_data, keyhash, sample)) {
             return RTI_FALSE;
         }
@@ -3962,20 +4094,20 @@ namespace ProcessCirculation {
         /* set up parent's function pointers */
         plugin->onParticipantAttached =
         (PRESTypePluginOnParticipantAttachedCallback)
-        ProcessCirculation::CirculateStatePlugin_on_participant_attached;
+        SafeCirculateFunctions::CirculateStatePlugin_on_participant_attached;
         plugin->onParticipantDetached =
         (PRESTypePluginOnParticipantDetachedCallback)
-        ProcessCirculation::CirculateStatePlugin_on_participant_detached;
+        SafeCirculateFunctions::CirculateStatePlugin_on_participant_detached;
         plugin->onEndpointAttached =
         (PRESTypePluginOnEndpointAttachedCallback)
-        ProcessCirculation::CirculateStatePlugin_on_endpoint_attached;
+        SafeCirculateFunctions::CirculateStatePlugin_on_endpoint_attached;
         plugin->onEndpointDetached =
         (PRESTypePluginOnEndpointDetachedCallback)
-        ProcessCirculation::CirculateStatePlugin_on_endpoint_detached;
+        SafeCirculateFunctions::CirculateStatePlugin_on_endpoint_detached;
 
         plugin->copySampleFnc =
         (PRESTypePluginCopySampleFunction)
-        ProcessCirculation::CirculateStatePlugin_copy_sample;
+        SafeCirculateFunctions::CirculateStatePlugin_copy_sample;
         plugin->createSampleFnc =
         (PRESTypePluginCreateSampleFunction)
         CirculateStatePlugin_create_sample;
@@ -3985,16 +4117,16 @@ namespace ProcessCirculation {
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
-        ProcessCirculation::CirculateStatePlugin_serialize;
+        SafeCirculateFunctions::CirculateStatePlugin_serialize;
         plugin->deserializeFnc =
         (PRESTypePluginDeserializeFunction)
-        ProcessCirculation::CirculateStatePlugin_deserialize;
+        SafeCirculateFunctions::CirculateStatePlugin_deserialize;
         plugin->getSerializedSampleMaxSizeFnc =
         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-        ProcessCirculation::CirculateStatePlugin_get_serialized_sample_max_size;
+        SafeCirculateFunctions::CirculateStatePlugin_get_serialized_sample_max_size;
         plugin->getSerializedSampleMinSizeFnc =
         (PRESTypePluginGetSerializedSampleMinSizeFunction)
-        ProcessCirculation::CirculateStatePlugin_get_serialized_sample_min_size;
+        SafeCirculateFunctions::CirculateStatePlugin_get_serialized_sample_min_size;
 
         plugin->getSampleFnc =
         (PRESTypePluginGetSampleFunction)
@@ -4005,27 +4137,27 @@ namespace ProcessCirculation {
 
         plugin->getKeyKindFnc =
         (PRESTypePluginGetKeyKindFunction)
-        ProcessCirculation::CirculateStatePlugin_get_key_kind;
+        SafeCirculateFunctions::CirculateStatePlugin_get_key_kind;
 
         plugin->getSerializedKeyMaxSizeFnc =   
         (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-        ProcessCirculation::CirculateStatePlugin_get_serialized_key_max_size;
+        SafeCirculateFunctions::CirculateStatePlugin_get_serialized_key_max_size;
         plugin->serializeKeyFnc =
         (PRESTypePluginSerializeKeyFunction)
-        ProcessCirculation::CirculateStatePlugin_serialize_key;
+        SafeCirculateFunctions::CirculateStatePlugin_serialize_key;
         plugin->deserializeKeyFnc =
         (PRESTypePluginDeserializeKeyFunction)
-        ProcessCirculation::CirculateStatePlugin_deserialize_key;
+        SafeCirculateFunctions::CirculateStatePlugin_deserialize_key;
         plugin->deserializeKeySampleFnc =
         (PRESTypePluginDeserializeKeySampleFunction)
-        ProcessCirculation::CirculateStatePlugin_deserialize_key_sample;
+        SafeCirculateFunctions::CirculateStatePlugin_deserialize_key_sample;
 
         plugin-> instanceToKeyHashFnc = 
         (PRESTypePluginInstanceToKeyHashFunction)
-        ProcessCirculation::CirculateStatePlugin_instance_to_keyhash;
+        SafeCirculateFunctions::CirculateStatePlugin_instance_to_keyhash;
         plugin->serializedSampleToKeyHashFnc = 
         (PRESTypePluginSerializedSampleToKeyHashFunction)
-        ProcessCirculation::CirculateStatePlugin_serialized_sample_to_keyhash;
+        SafeCirculateFunctions::CirculateStatePlugin_serialized_sample_to_keyhash;
 
         plugin->getKeyFnc =
         (PRESTypePluginGetKeyFunction)
@@ -4036,12 +4168,12 @@ namespace ProcessCirculation {
 
         plugin->instanceToKeyFnc =
         (PRESTypePluginInstanceToKeyFunction)
-        ProcessCirculation::CirculateStatePlugin_instance_to_key;
+        SafeCirculateFunctions::CirculateStatePlugin_instance_to_key;
         plugin->keyToInstanceFnc =
         (PRESTypePluginKeyToInstanceFunction)
-        ProcessCirculation::CirculateStatePlugin_key_to_instance;
+        SafeCirculateFunctions::CirculateStatePlugin_key_to_instance;
         plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-        plugin->typeCode =  (struct RTICdrTypeCode *)ProcessCirculation::CirculateState_get_typecode();
+        plugin->typeCode =  (struct RTICdrTypeCode *)SafeCirculateFunctions::CirculateState_get_typecode();
 
         plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
@@ -4054,7 +4186,7 @@ namespace ProcessCirculation {
         CirculateStatePlugin_return_buffer;
         plugin->getSerializedSampleSizeFnc =
         (PRESTypePluginGetSerializedSampleSizeFunction)
-        ProcessCirculation::CirculateStatePlugin_get_serialized_sample_size;
+        SafeCirculateFunctions::CirculateStatePlugin_get_serialized_sample_size;
 
         plugin->endpointTypeName = CirculateStateTYPENAME;
 
@@ -4066,5 +4198,5 @@ namespace ProcessCirculation {
     {
         RTIOsapiHeap_freeStructure(plugin);
     } 
-} /* namespace ProcessCirculation  */
+} /* namespace SafeCirculateFunctions  */
 

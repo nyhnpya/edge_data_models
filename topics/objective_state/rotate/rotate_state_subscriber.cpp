@@ -59,7 +59,7 @@ bool CRotateStateSubscriber::GetTargetRate(double &targetRate)
 bool CRotateStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               ProcessRotation::ROTATE_STATE,
+                               SafeRotationFunctions::ROTATE_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -84,7 +84,7 @@ void CRotateStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent ev
     m_pOnSubscriptionMatched = event;
 }
 
-void CRotateStateSubscriber::DataAvailable(const ProcessRotation::RotateState &data,
+void CRotateStateSubscriber::DataAvailable(const SafeRotationFunctions::RotateState &data,
                                            const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

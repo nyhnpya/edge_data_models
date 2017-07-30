@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef base_data_typesSupport_308715257_h
-#define base_data_typesSupport_308715257_h
+#ifndef base_data_typesSupport_308715453_h
+#define base_data_typesSupport_308715453_h
 
 /* Uses */
 #include "base_data_types.h"
@@ -58,5 +58,5 @@ namespace DataTypes {
     #endif
 } /* namespace DataTypes  */
 
-#endif  /* base_data_typesSupport_308715257_h */
+#endif  /* base_data_typesSupport_308715453_h */
 

@@ -48,7 +48,7 @@ or consult the RTI Connext manual.
 
 #include "surveyPlugin.h"
 
-namespace Downhole {
+namespace DownholeFunctions {
 
     /* ----------------------------------------------------------------------------
     *  Type SurveyRequest
@@ -67,7 +67,7 @@ namespace Downhole {
             &sample, SurveyRequest);
 
         if(sample != NULL) {
-            if (!Downhole::SurveyRequest_initialize_w_params(sample,alloc_params)) {
+            if (!DownholeFunctions::SurveyRequest_initialize_w_params(sample,alloc_params)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -83,7 +83,7 @@ namespace Downhole {
             &sample, SurveyRequest);
 
         if(sample != NULL) {
-            if (!Downhole::SurveyRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!DownholeFunctions::SurveyRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -94,7 +94,7 @@ namespace Downhole {
     SurveyRequest *
     SurveyRequestPluginSupport_create_data(void)
     {
-        return Downhole::SurveyRequestPluginSupport_create_data_ex(RTI_TRUE);
+        return DownholeFunctions::SurveyRequestPluginSupport_create_data_ex(RTI_TRUE);
     }
 
     void 
@@ -102,7 +102,7 @@ namespace Downhole {
         SurveyRequest *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-        Downhole::SurveyRequest_finalize_w_params(sample,dealloc_params);
+        DownholeFunctions::SurveyRequest_finalize_w_params(sample,dealloc_params);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -111,7 +111,7 @@ namespace Downhole {
     SurveyRequestPluginSupport_destroy_data_ex(
         SurveyRequest *sample,RTIBool deallocate_pointers) {
 
-        Downhole::SurveyRequest_finalize_ex(sample,deallocate_pointers);
+        DownholeFunctions::SurveyRequest_finalize_ex(sample,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -120,7 +120,7 @@ namespace Downhole {
     SurveyRequestPluginSupport_destroy_data(
         SurveyRequest *sample) {
 
-        Downhole::SurveyRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+        DownholeFunctions::SurveyRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
     }
 
@@ -129,7 +129,7 @@ namespace Downhole {
         SurveyRequest *dst,
         const SurveyRequest *src)
     {
-        return Downhole::SurveyRequest_copy(dst,src);
+        return DownholeFunctions::SurveyRequest_copy(dst,src);
     }
 
     void 
@@ -155,11 +155,20 @@ namespace Downhole {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
-        RTICdrType_printLong(
-            &sample->timeNeeded, "timeNeeded", indent_level + 1);    
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
+
+        DataTypes::PriorityPluginSupport_print_data(
+            &sample->priority, "priority", indent_level + 1);
+
+        DataTypes::TimePluginSupport_print_data(
+            &sample->timeNeeded, "timeNeeded", indent_level + 1);
+
+        DataTypes::TimePluginSupport_print_data(
+            &sample->estimatedDuration, "estimatedDuration", indent_level + 1);
 
         DataTypes::SurveyQualityPluginSupport_print_data(
-            &sample->requestedSurveyQuality, "requestedSurveyQuality", indent_level + 1);
+            &sample->surveyQuality, "surveyQuality", indent_level + 1);
 
     }
     SurveyRequest *
@@ -169,21 +178,21 @@ namespace Downhole {
         RTIOsapiHeap_allocateStructure(
             &key, SurveyRequestKeyHolder);
 
-        Downhole::SurveyRequest_initialize_ex(key,allocate_pointers, RTI_TRUE);
+        DownholeFunctions::SurveyRequest_initialize_ex(key,allocate_pointers, RTI_TRUE);
         return key;
     }
 
     SurveyRequest *
     SurveyRequestPluginSupport_create_key(void)
     {
-        return  Downhole::SurveyRequestPluginSupport_create_key_ex(RTI_TRUE);
+        return  DownholeFunctions::SurveyRequestPluginSupport_create_key_ex(RTI_TRUE);
     }
 
     void 
     SurveyRequestPluginSupport_destroy_key_ex(
         SurveyRequestKeyHolder *key,RTIBool deallocate_pointers)
     {
-        Downhole::SurveyRequest_finalize_ex(key,deallocate_pointers);
+        DownholeFunctions::SurveyRequest_finalize_ex(key,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(key);
     }
@@ -192,7 +201,7 @@ namespace Downhole {
     SurveyRequestPluginSupport_destroy_key(
         SurveyRequestKeyHolder *key) {
 
-        Downhole::SurveyRequestPluginSupport_destroy_key_ex(key,RTI_TRUE);
+        DownholeFunctions::SurveyRequestPluginSupport_destroy_key_ex(key,RTI_TRUE);
 
     }
 
@@ -246,18 +255,18 @@ namespace Downhole {
             participant_data,
             endpoint_info,
             (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-            Downhole::SurveyRequestPluginSupport_create_data,
+            DownholeFunctions::SurveyRequestPluginSupport_create_data,
             (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-            Downhole::SurveyRequestPluginSupport_destroy_data,
+            DownholeFunctions::SurveyRequestPluginSupport_destroy_data,
             (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-            Downhole::SurveyRequestPluginSupport_create_key ,            
+            DownholeFunctions::SurveyRequestPluginSupport_create_key ,            
             (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-            Downhole::SurveyRequestPluginSupport_destroy_key);
+            DownholeFunctions::SurveyRequestPluginSupport_destroy_key);
 
         if (epd == NULL) {
             return NULL;
         } 
-        serializedKeyMaxSize =  Downhole::SurveyRequestPlugin_get_serialized_key_max_size(
+        serializedKeyMaxSize =  DownholeFunctions::SurveyRequestPlugin_get_serialized_key_max_size(
             epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
         if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -268,7 +277,7 @@ namespace Downhole {
         }
 
         if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-            serializedSampleMaxSize = Downhole::SurveyRequestPlugin_get_serialized_sample_max_size(
+            serializedSampleMaxSize = DownholeFunctions::SurveyRequestPlugin_get_serialized_sample_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -277,9 +286,9 @@ namespace Downhole {
                 epd,
                 endpoint_info,
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                Downhole::SurveyRequestPlugin_get_serialized_sample_max_size, epd,
+                DownholeFunctions::SurveyRequestPlugin_get_serialized_sample_max_size, epd,
                 (PRESTypePluginGetSerializedSampleSizeFunction)
-                Downhole::SurveyRequestPlugin_get_serialized_sample_size,
+                DownholeFunctions::SurveyRequestPlugin_get_serialized_sample_size,
                 epd) == RTI_FALSE) {
                 PRESTypePluginDefaultEndpointData_delete(epd);
                 return NULL;
@@ -317,7 +326,7 @@ namespace Downhole {
         const SurveyRequest *src)
     {
         if (endpoint_data) {} /* To avoid warnings */
-        return Downhole::SurveyRequestPluginSupport_copy_data(dst,src);
+        return DownholeFunctions::SurveyRequestPluginSupport_copy_data(dst,src);
     }
 
     /* ----------------------------------------------------------------------------
@@ -366,14 +375,49 @@ namespace Downhole {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrStream_serializeLong(
-                stream, &sample->timeNeeded)) {
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
+            if(!DataTypes::PriorityPlugin_serialize(
+                endpoint_data,
+                &sample->priority,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
+            if(!DataTypes::TimePlugin_serialize(
+                endpoint_data,
+                &sample->timeNeeded,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
+            if(!DataTypes::TimePlugin_serialize(
+                endpoint_data,
+                &sample->estimatedDuration,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
 
             if(!DataTypes::SurveyQualityPlugin_serialize(
                 endpoint_data,
-                &sample->requestedSurveyQuality,
+                &sample->surveyQuality,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -416,7 +460,7 @@ namespace Downhole {
         }
         if(deserialize_sample) {
 
-            Downhole::SurveyRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+            DownholeFunctions::SurveyRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
@@ -426,13 +470,41 @@ namespace Downhole {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
-            if (!RTICdrStream_deserializeLong(
-                stream, &sample->timeNeeded)) {
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::PriorityPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->priority,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::TimePlugin_deserialize_sample(
+                endpoint_data,
+                &sample->timeNeeded,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::TimePlugin_deserialize_sample(
+                endpoint_data,
+                &sample->estimatedDuration,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
                 goto fin; 
             }
             if(!DataTypes::SurveyQualityPlugin_deserialize_sample(
                 endpoint_data,
-                &sample->requestedSurveyQuality,
+                &sample->surveyQuality,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -491,7 +563,7 @@ namespace Downhole {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, *length);
 
-        result = Downhole::SurveyRequestPlugin_serialize(
+        result = DownholeFunctions::SurveyRequestPlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
             RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
@@ -532,7 +604,7 @@ namespace Downhole {
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= Downhole::SurveyRequestPlugin_deserialize_sample( 
+        result= DownholeFunctions::SurveyRequestPlugin_deserialize_sample( 
             endpoint_data, (sample != NULL)?*sample:NULL,
             stream, deserialize_encapsulation, deserialize_sample, 
             endpoint_plugin_qos);
@@ -577,7 +649,32 @@ namespace Downhole {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
-            if (!RTICdrStream_skipLong (stream)) {
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if (!DataTypes::PriorityPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if (!DataTypes::TimePlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if (!DataTypes::TimePlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
                 goto fin; 
             }
             if (!DataTypes::SurveyQualityPlugin_skip(
@@ -630,8 +727,17 @@ namespace Downhole {
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
-        current_alignment +=RTICdrType_getLongMaxSizeSerialized(
-            current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
+        current_alignment +=DataTypes::PriorityPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
+        current_alignment +=DataTypes::TimePlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
+        current_alignment +=DataTypes::TimePlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=DataTypes::SurveyQualityPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
@@ -689,8 +795,14 @@ namespace Downhole {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
-        current_alignment +=RTICdrType_getLongMaxSizeSerialized(
-            current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::PriorityPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::SurveyQualityPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
 
@@ -738,11 +850,21 @@ namespace Downhole {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
-        current_alignment += RTICdrType_getLongMaxSizeSerialized(
-            current_alignment);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
+        current_alignment += DataTypes::PriorityPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->priority);
+        current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->timeNeeded);
+        current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->estimatedDuration);
         current_alignment += DataTypes::SurveyQualityPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
-            current_alignment, &sample->requestedSurveyQuality);
+            current_alignment, &sample->surveyQuality);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -853,7 +975,7 @@ namespace Downhole {
         RTIBool result;
         if (drop_sample) {} /* To avoid warnings */
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= Downhole::SurveyRequestPlugin_deserialize_key_sample(
+        result= DownholeFunctions::SurveyRequestPlugin_deserialize_key_sample(
             endpoint_data, (sample != NULL)?*sample:NULL, stream,
             deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
         if (result) {
@@ -957,7 +1079,35 @@ namespace Downhole {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
-            if (!RTICdrStream_skipLong (stream)) {
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
+            if (!DataTypes::PriorityPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
+            if (!DataTypes::TimePlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
+            if (!DataTypes::TimePlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
                 goto fin; 
             }
 
@@ -1041,14 +1191,14 @@ namespace Downhole {
         RTICdrStream_resetPosition(md5Stream);
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-        if (!Downhole::SurveyRequestPlugin_serialize_key(
+        if (!DownholeFunctions::SurveyRequestPlugin_serialize_key(
             endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-            size = (int)Downhole::SurveyRequestPlugin_get_serialized_sample_size(
+            size = (int)DownholeFunctions::SurveyRequestPlugin_get_serialized_sample_size(
                 endpoint_data,
                 RTI_FALSE,
                 RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -1073,7 +1223,7 @@ namespace Downhole {
                 RTICdrStream_getBufferLength(md5Stream));
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-            if (!Downhole::SurveyRequestPlugin_serialize_key(
+            if (!DownholeFunctions::SurveyRequestPlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
@@ -1160,7 +1310,7 @@ namespace Downhole {
             RTICdrStream_restoreAlignment(stream,position);
         }
 
-        if (!Downhole::SurveyRequestPlugin_instance_to_keyhash(
+        if (!DownholeFunctions::SurveyRequestPlugin_instance_to_keyhash(
             endpoint_data, keyhash, sample)) {
             return RTI_FALSE;
         }
@@ -1188,20 +1338,20 @@ namespace Downhole {
         /* set up parent's function pointers */
         plugin->onParticipantAttached =
         (PRESTypePluginOnParticipantAttachedCallback)
-        Downhole::SurveyRequestPlugin_on_participant_attached;
+        DownholeFunctions::SurveyRequestPlugin_on_participant_attached;
         plugin->onParticipantDetached =
         (PRESTypePluginOnParticipantDetachedCallback)
-        Downhole::SurveyRequestPlugin_on_participant_detached;
+        DownholeFunctions::SurveyRequestPlugin_on_participant_detached;
         plugin->onEndpointAttached =
         (PRESTypePluginOnEndpointAttachedCallback)
-        Downhole::SurveyRequestPlugin_on_endpoint_attached;
+        DownholeFunctions::SurveyRequestPlugin_on_endpoint_attached;
         plugin->onEndpointDetached =
         (PRESTypePluginOnEndpointDetachedCallback)
-        Downhole::SurveyRequestPlugin_on_endpoint_detached;
+        DownholeFunctions::SurveyRequestPlugin_on_endpoint_detached;
 
         plugin->copySampleFnc =
         (PRESTypePluginCopySampleFunction)
-        Downhole::SurveyRequestPlugin_copy_sample;
+        DownholeFunctions::SurveyRequestPlugin_copy_sample;
         plugin->createSampleFnc =
         (PRESTypePluginCreateSampleFunction)
         SurveyRequestPlugin_create_sample;
@@ -1211,16 +1361,16 @@ namespace Downhole {
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
-        Downhole::SurveyRequestPlugin_serialize;
+        DownholeFunctions::SurveyRequestPlugin_serialize;
         plugin->deserializeFnc =
         (PRESTypePluginDeserializeFunction)
-        Downhole::SurveyRequestPlugin_deserialize;
+        DownholeFunctions::SurveyRequestPlugin_deserialize;
         plugin->getSerializedSampleMaxSizeFnc =
         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-        Downhole::SurveyRequestPlugin_get_serialized_sample_max_size;
+        DownholeFunctions::SurveyRequestPlugin_get_serialized_sample_max_size;
         plugin->getSerializedSampleMinSizeFnc =
         (PRESTypePluginGetSerializedSampleMinSizeFunction)
-        Downhole::SurveyRequestPlugin_get_serialized_sample_min_size;
+        DownholeFunctions::SurveyRequestPlugin_get_serialized_sample_min_size;
 
         plugin->getSampleFnc =
         (PRESTypePluginGetSampleFunction)
@@ -1231,27 +1381,27 @@ namespace Downhole {
 
         plugin->getKeyKindFnc =
         (PRESTypePluginGetKeyKindFunction)
-        Downhole::SurveyRequestPlugin_get_key_kind;
+        DownholeFunctions::SurveyRequestPlugin_get_key_kind;
 
         plugin->getSerializedKeyMaxSizeFnc =   
         (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-        Downhole::SurveyRequestPlugin_get_serialized_key_max_size;
+        DownholeFunctions::SurveyRequestPlugin_get_serialized_key_max_size;
         plugin->serializeKeyFnc =
         (PRESTypePluginSerializeKeyFunction)
-        Downhole::SurveyRequestPlugin_serialize_key;
+        DownholeFunctions::SurveyRequestPlugin_serialize_key;
         plugin->deserializeKeyFnc =
         (PRESTypePluginDeserializeKeyFunction)
-        Downhole::SurveyRequestPlugin_deserialize_key;
+        DownholeFunctions::SurveyRequestPlugin_deserialize_key;
         plugin->deserializeKeySampleFnc =
         (PRESTypePluginDeserializeKeySampleFunction)
-        Downhole::SurveyRequestPlugin_deserialize_key_sample;
+        DownholeFunctions::SurveyRequestPlugin_deserialize_key_sample;
 
         plugin-> instanceToKeyHashFnc = 
         (PRESTypePluginInstanceToKeyHashFunction)
-        Downhole::SurveyRequestPlugin_instance_to_keyhash;
+        DownholeFunctions::SurveyRequestPlugin_instance_to_keyhash;
         plugin->serializedSampleToKeyHashFnc = 
         (PRESTypePluginSerializedSampleToKeyHashFunction)
-        Downhole::SurveyRequestPlugin_serialized_sample_to_keyhash;
+        DownholeFunctions::SurveyRequestPlugin_serialized_sample_to_keyhash;
 
         plugin->getKeyFnc =
         (PRESTypePluginGetKeyFunction)
@@ -1262,12 +1412,12 @@ namespace Downhole {
 
         plugin->instanceToKeyFnc =
         (PRESTypePluginInstanceToKeyFunction)
-        Downhole::SurveyRequestPlugin_instance_to_key;
+        DownholeFunctions::SurveyRequestPlugin_instance_to_key;
         plugin->keyToInstanceFnc =
         (PRESTypePluginKeyToInstanceFunction)
-        Downhole::SurveyRequestPlugin_key_to_instance;
+        DownholeFunctions::SurveyRequestPlugin_key_to_instance;
         plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-        plugin->typeCode =  (struct RTICdrTypeCode *)Downhole::SurveyRequest_get_typecode();
+        plugin->typeCode =  (struct RTICdrTypeCode *)DownholeFunctions::SurveyRequest_get_typecode();
 
         plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
@@ -1280,7 +1430,7 @@ namespace Downhole {
         SurveyRequestPlugin_return_buffer;
         plugin->getSerializedSampleSizeFnc =
         (PRESTypePluginGetSerializedSampleSizeFunction)
-        Downhole::SurveyRequestPlugin_get_serialized_sample_size;
+        DownholeFunctions::SurveyRequestPlugin_get_serialized_sample_size;
 
         plugin->endpointTypeName = SurveyRequestTYPENAME;
 
@@ -1310,7 +1460,7 @@ namespace Downhole {
             &sample, SurveyObjective);
 
         if(sample != NULL) {
-            if (!Downhole::SurveyObjective_initialize_w_params(sample,alloc_params)) {
+            if (!DownholeFunctions::SurveyObjective_initialize_w_params(sample,alloc_params)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -1326,7 +1476,7 @@ namespace Downhole {
             &sample, SurveyObjective);
 
         if(sample != NULL) {
-            if (!Downhole::SurveyObjective_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!DownholeFunctions::SurveyObjective_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -1337,7 +1487,7 @@ namespace Downhole {
     SurveyObjective *
     SurveyObjectivePluginSupport_create_data(void)
     {
-        return Downhole::SurveyObjectivePluginSupport_create_data_ex(RTI_TRUE);
+        return DownholeFunctions::SurveyObjectivePluginSupport_create_data_ex(RTI_TRUE);
     }
 
     void 
@@ -1345,7 +1495,7 @@ namespace Downhole {
         SurveyObjective *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-        Downhole::SurveyObjective_finalize_w_params(sample,dealloc_params);
+        DownholeFunctions::SurveyObjective_finalize_w_params(sample,dealloc_params);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -1354,7 +1504,7 @@ namespace Downhole {
     SurveyObjectivePluginSupport_destroy_data_ex(
         SurveyObjective *sample,RTIBool deallocate_pointers) {
 
-        Downhole::SurveyObjective_finalize_ex(sample,deallocate_pointers);
+        DownholeFunctions::SurveyObjective_finalize_ex(sample,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -1363,7 +1513,7 @@ namespace Downhole {
     SurveyObjectivePluginSupport_destroy_data(
         SurveyObjective *sample) {
 
-        Downhole::SurveyObjectivePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+        DownholeFunctions::SurveyObjectivePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
     }
 
@@ -1372,7 +1522,7 @@ namespace Downhole {
         SurveyObjective *dst,
         const SurveyObjective *src)
     {
-        return Downhole::SurveyObjective_copy(dst,src);
+        return DownholeFunctions::SurveyObjective_copy(dst,src);
     }
 
     void 
@@ -1398,8 +1548,11 @@ namespace Downhole {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
+
         DataTypes::TimePluginSupport_print_data(
-            &sample->timeEnabled, "timeEnabled", indent_level + 1);
+            &sample->estimatedDuration, "estimatedDuration", indent_level + 1);
 
         DataTypes::SurveyQualityPluginSupport_print_data(
             &sample->requestedSurveyQuality, "requestedSurveyQuality", indent_level + 1);
@@ -1412,21 +1565,21 @@ namespace Downhole {
         RTIOsapiHeap_allocateStructure(
             &key, SurveyObjectiveKeyHolder);
 
-        Downhole::SurveyObjective_initialize_ex(key,allocate_pointers, RTI_TRUE);
+        DownholeFunctions::SurveyObjective_initialize_ex(key,allocate_pointers, RTI_TRUE);
         return key;
     }
 
     SurveyObjective *
     SurveyObjectivePluginSupport_create_key(void)
     {
-        return  Downhole::SurveyObjectivePluginSupport_create_key_ex(RTI_TRUE);
+        return  DownholeFunctions::SurveyObjectivePluginSupport_create_key_ex(RTI_TRUE);
     }
 
     void 
     SurveyObjectivePluginSupport_destroy_key_ex(
         SurveyObjectiveKeyHolder *key,RTIBool deallocate_pointers)
     {
-        Downhole::SurveyObjective_finalize_ex(key,deallocate_pointers);
+        DownholeFunctions::SurveyObjective_finalize_ex(key,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(key);
     }
@@ -1435,7 +1588,7 @@ namespace Downhole {
     SurveyObjectivePluginSupport_destroy_key(
         SurveyObjectiveKeyHolder *key) {
 
-        Downhole::SurveyObjectivePluginSupport_destroy_key_ex(key,RTI_TRUE);
+        DownholeFunctions::SurveyObjectivePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
     }
 
@@ -1489,18 +1642,18 @@ namespace Downhole {
             participant_data,
             endpoint_info,
             (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-            Downhole::SurveyObjectivePluginSupport_create_data,
+            DownholeFunctions::SurveyObjectivePluginSupport_create_data,
             (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-            Downhole::SurveyObjectivePluginSupport_destroy_data,
+            DownholeFunctions::SurveyObjectivePluginSupport_destroy_data,
             (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-            Downhole::SurveyObjectivePluginSupport_create_key ,            
+            DownholeFunctions::SurveyObjectivePluginSupport_create_key ,            
             (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-            Downhole::SurveyObjectivePluginSupport_destroy_key);
+            DownholeFunctions::SurveyObjectivePluginSupport_destroy_key);
 
         if (epd == NULL) {
             return NULL;
         } 
-        serializedKeyMaxSize =  Downhole::SurveyObjectivePlugin_get_serialized_key_max_size(
+        serializedKeyMaxSize =  DownholeFunctions::SurveyObjectivePlugin_get_serialized_key_max_size(
             epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
         if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -1511,7 +1664,7 @@ namespace Downhole {
         }
 
         if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-            serializedSampleMaxSize = Downhole::SurveyObjectivePlugin_get_serialized_sample_max_size(
+            serializedSampleMaxSize = DownholeFunctions::SurveyObjectivePlugin_get_serialized_sample_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -1520,9 +1673,9 @@ namespace Downhole {
                 epd,
                 endpoint_info,
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                Downhole::SurveyObjectivePlugin_get_serialized_sample_max_size, epd,
+                DownholeFunctions::SurveyObjectivePlugin_get_serialized_sample_max_size, epd,
                 (PRESTypePluginGetSerializedSampleSizeFunction)
-                Downhole::SurveyObjectivePlugin_get_serialized_sample_size,
+                DownholeFunctions::SurveyObjectivePlugin_get_serialized_sample_size,
                 epd) == RTI_FALSE) {
                 PRESTypePluginDefaultEndpointData_delete(epd);
                 return NULL;
@@ -1560,7 +1713,7 @@ namespace Downhole {
         const SurveyObjective *src)
     {
         if (endpoint_data) {} /* To avoid warnings */
-        return Downhole::SurveyObjectivePluginSupport_copy_data(dst,src);
+        return DownholeFunctions::SurveyObjectivePluginSupport_copy_data(dst,src);
     }
 
     /* ----------------------------------------------------------------------------
@@ -1609,9 +1762,19 @@ namespace Downhole {
                 return RTI_FALSE;
             }
 
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
             if(!DataTypes::TimePlugin_serialize(
                 endpoint_data,
-                &sample->timeEnabled,
+                &sample->estimatedDuration,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -1664,7 +1827,7 @@ namespace Downhole {
         }
         if(deserialize_sample) {
 
-            Downhole::SurveyObjective_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+            DownholeFunctions::SurveyObjective_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
@@ -1674,9 +1837,17 @@ namespace Downhole {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if(!DataTypes::TimePlugin_deserialize_sample(
                 endpoint_data,
-                &sample->timeEnabled,
+                &sample->estimatedDuration,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -1743,7 +1914,7 @@ namespace Downhole {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, *length);
 
-        result = Downhole::SurveyObjectivePlugin_serialize(
+        result = DownholeFunctions::SurveyObjectivePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
             RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
@@ -1784,7 +1955,7 @@ namespace Downhole {
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= Downhole::SurveyObjectivePlugin_deserialize_sample( 
+        result= DownholeFunctions::SurveyObjectivePlugin_deserialize_sample( 
             endpoint_data, (sample != NULL)?*sample:NULL,
             stream, deserialize_encapsulation, deserialize_sample, 
             endpoint_plugin_qos);
@@ -1822,6 +1993,13 @@ namespace Downhole {
 
         if (skip_sample) {
 
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::UuidPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -1886,6 +2064,9 @@ namespace Downhole {
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
@@ -1945,6 +2126,8 @@ namespace Downhole {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::SurveyQualityPlugin_get_serialized_sample_min_size(
@@ -1994,9 +2177,12 @@ namespace Downhole {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
-            current_alignment, &sample->timeEnabled);
+            current_alignment, &sample->estimatedDuration);
         current_alignment += DataTypes::SurveyQualityPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->requestedSurveyQuality);
@@ -2110,7 +2296,7 @@ namespace Downhole {
         RTIBool result;
         if (drop_sample) {} /* To avoid warnings */
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= Downhole::SurveyObjectivePlugin_deserialize_key_sample(
+        result= DownholeFunctions::SurveyObjectivePlugin_deserialize_key_sample(
             endpoint_data, (sample != NULL)?*sample:NULL, stream,
             deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
         if (result) {
@@ -2214,6 +2400,14 @@ namespace Downhole {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::TimePlugin_skip(
                 endpoint_data,
                 stream, 
@@ -2302,14 +2496,14 @@ namespace Downhole {
         RTICdrStream_resetPosition(md5Stream);
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-        if (!Downhole::SurveyObjectivePlugin_serialize_key(
+        if (!DownholeFunctions::SurveyObjectivePlugin_serialize_key(
             endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-            size = (int)Downhole::SurveyObjectivePlugin_get_serialized_sample_size(
+            size = (int)DownholeFunctions::SurveyObjectivePlugin_get_serialized_sample_size(
                 endpoint_data,
                 RTI_FALSE,
                 RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -2334,7 +2528,7 @@ namespace Downhole {
                 RTICdrStream_getBufferLength(md5Stream));
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-            if (!Downhole::SurveyObjectivePlugin_serialize_key(
+            if (!DownholeFunctions::SurveyObjectivePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
@@ -2421,7 +2615,7 @@ namespace Downhole {
             RTICdrStream_restoreAlignment(stream,position);
         }
 
-        if (!Downhole::SurveyObjectivePlugin_instance_to_keyhash(
+        if (!DownholeFunctions::SurveyObjectivePlugin_instance_to_keyhash(
             endpoint_data, keyhash, sample)) {
             return RTI_FALSE;
         }
@@ -2449,20 +2643,20 @@ namespace Downhole {
         /* set up parent's function pointers */
         plugin->onParticipantAttached =
         (PRESTypePluginOnParticipantAttachedCallback)
-        Downhole::SurveyObjectivePlugin_on_participant_attached;
+        DownholeFunctions::SurveyObjectivePlugin_on_participant_attached;
         plugin->onParticipantDetached =
         (PRESTypePluginOnParticipantDetachedCallback)
-        Downhole::SurveyObjectivePlugin_on_participant_detached;
+        DownholeFunctions::SurveyObjectivePlugin_on_participant_detached;
         plugin->onEndpointAttached =
         (PRESTypePluginOnEndpointAttachedCallback)
-        Downhole::SurveyObjectivePlugin_on_endpoint_attached;
+        DownholeFunctions::SurveyObjectivePlugin_on_endpoint_attached;
         plugin->onEndpointDetached =
         (PRESTypePluginOnEndpointDetachedCallback)
-        Downhole::SurveyObjectivePlugin_on_endpoint_detached;
+        DownholeFunctions::SurveyObjectivePlugin_on_endpoint_detached;
 
         plugin->copySampleFnc =
         (PRESTypePluginCopySampleFunction)
-        Downhole::SurveyObjectivePlugin_copy_sample;
+        DownholeFunctions::SurveyObjectivePlugin_copy_sample;
         plugin->createSampleFnc =
         (PRESTypePluginCreateSampleFunction)
         SurveyObjectivePlugin_create_sample;
@@ -2472,16 +2666,16 @@ namespace Downhole {
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
-        Downhole::SurveyObjectivePlugin_serialize;
+        DownholeFunctions::SurveyObjectivePlugin_serialize;
         plugin->deserializeFnc =
         (PRESTypePluginDeserializeFunction)
-        Downhole::SurveyObjectivePlugin_deserialize;
+        DownholeFunctions::SurveyObjectivePlugin_deserialize;
         plugin->getSerializedSampleMaxSizeFnc =
         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-        Downhole::SurveyObjectivePlugin_get_serialized_sample_max_size;
+        DownholeFunctions::SurveyObjectivePlugin_get_serialized_sample_max_size;
         plugin->getSerializedSampleMinSizeFnc =
         (PRESTypePluginGetSerializedSampleMinSizeFunction)
-        Downhole::SurveyObjectivePlugin_get_serialized_sample_min_size;
+        DownholeFunctions::SurveyObjectivePlugin_get_serialized_sample_min_size;
 
         plugin->getSampleFnc =
         (PRESTypePluginGetSampleFunction)
@@ -2492,27 +2686,27 @@ namespace Downhole {
 
         plugin->getKeyKindFnc =
         (PRESTypePluginGetKeyKindFunction)
-        Downhole::SurveyObjectivePlugin_get_key_kind;
+        DownholeFunctions::SurveyObjectivePlugin_get_key_kind;
 
         plugin->getSerializedKeyMaxSizeFnc =   
         (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-        Downhole::SurveyObjectivePlugin_get_serialized_key_max_size;
+        DownholeFunctions::SurveyObjectivePlugin_get_serialized_key_max_size;
         plugin->serializeKeyFnc =
         (PRESTypePluginSerializeKeyFunction)
-        Downhole::SurveyObjectivePlugin_serialize_key;
+        DownholeFunctions::SurveyObjectivePlugin_serialize_key;
         plugin->deserializeKeyFnc =
         (PRESTypePluginDeserializeKeyFunction)
-        Downhole::SurveyObjectivePlugin_deserialize_key;
+        DownholeFunctions::SurveyObjectivePlugin_deserialize_key;
         plugin->deserializeKeySampleFnc =
         (PRESTypePluginDeserializeKeySampleFunction)
-        Downhole::SurveyObjectivePlugin_deserialize_key_sample;
+        DownholeFunctions::SurveyObjectivePlugin_deserialize_key_sample;
 
         plugin-> instanceToKeyHashFnc = 
         (PRESTypePluginInstanceToKeyHashFunction)
-        Downhole::SurveyObjectivePlugin_instance_to_keyhash;
+        DownholeFunctions::SurveyObjectivePlugin_instance_to_keyhash;
         plugin->serializedSampleToKeyHashFnc = 
         (PRESTypePluginSerializedSampleToKeyHashFunction)
-        Downhole::SurveyObjectivePlugin_serialized_sample_to_keyhash;
+        DownholeFunctions::SurveyObjectivePlugin_serialized_sample_to_keyhash;
 
         plugin->getKeyFnc =
         (PRESTypePluginGetKeyFunction)
@@ -2523,12 +2717,12 @@ namespace Downhole {
 
         plugin->instanceToKeyFnc =
         (PRESTypePluginInstanceToKeyFunction)
-        Downhole::SurveyObjectivePlugin_instance_to_key;
+        DownholeFunctions::SurveyObjectivePlugin_instance_to_key;
         plugin->keyToInstanceFnc =
         (PRESTypePluginKeyToInstanceFunction)
-        Downhole::SurveyObjectivePlugin_key_to_instance;
+        DownholeFunctions::SurveyObjectivePlugin_key_to_instance;
         plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-        plugin->typeCode =  (struct RTICdrTypeCode *)Downhole::SurveyObjective_get_typecode();
+        plugin->typeCode =  (struct RTICdrTypeCode *)DownholeFunctions::SurveyObjective_get_typecode();
 
         plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
@@ -2541,7 +2735,7 @@ namespace Downhole {
         SurveyObjectivePlugin_return_buffer;
         plugin->getSerializedSampleSizeFnc =
         (PRESTypePluginGetSerializedSampleSizeFunction)
-        Downhole::SurveyObjectivePlugin_get_serialized_sample_size;
+        DownholeFunctions::SurveyObjectivePlugin_get_serialized_sample_size;
 
         plugin->endpointTypeName = SurveyObjectiveTYPENAME;
 
@@ -2571,7 +2765,7 @@ namespace Downhole {
             &sample, SurveyState);
 
         if(sample != NULL) {
-            if (!Downhole::SurveyState_initialize_w_params(sample,alloc_params)) {
+            if (!DownholeFunctions::SurveyState_initialize_w_params(sample,alloc_params)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -2587,7 +2781,7 @@ namespace Downhole {
             &sample, SurveyState);
 
         if(sample != NULL) {
-            if (!Downhole::SurveyState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!DownholeFunctions::SurveyState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -2598,7 +2792,7 @@ namespace Downhole {
     SurveyState *
     SurveyStatePluginSupport_create_data(void)
     {
-        return Downhole::SurveyStatePluginSupport_create_data_ex(RTI_TRUE);
+        return DownholeFunctions::SurveyStatePluginSupport_create_data_ex(RTI_TRUE);
     }
 
     void 
@@ -2606,7 +2800,7 @@ namespace Downhole {
         SurveyState *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-        Downhole::SurveyState_finalize_w_params(sample,dealloc_params);
+        DownholeFunctions::SurveyState_finalize_w_params(sample,dealloc_params);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -2615,7 +2809,7 @@ namespace Downhole {
     SurveyStatePluginSupport_destroy_data_ex(
         SurveyState *sample,RTIBool deallocate_pointers) {
 
-        Downhole::SurveyState_finalize_ex(sample,deallocate_pointers);
+        DownholeFunctions::SurveyState_finalize_ex(sample,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -2624,7 +2818,7 @@ namespace Downhole {
     SurveyStatePluginSupport_destroy_data(
         SurveyState *sample) {
 
-        Downhole::SurveyStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+        DownholeFunctions::SurveyStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
     }
 
@@ -2633,7 +2827,7 @@ namespace Downhole {
         SurveyState *dst,
         const SurveyState *src)
     {
-        return Downhole::SurveyState_copy(dst,src);
+        return DownholeFunctions::SurveyState_copy(dst,src);
     }
 
     void 
@@ -2657,10 +2851,16 @@ namespace Downhole {
         }
 
         DataTypes::UuidPluginSupport_print_data(
-            &sample->requestId, "requestId", indent_level + 1);
+            &sample->id, "id", indent_level + 1);
+
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
 
         DataTypes::TimePluginSupport_print_data(
             &sample->timestamp, "timestamp", indent_level + 1);
+
+        DataTypes::StatusPluginSupport_print_data(
+            &sample->status, "status", indent_level + 1);
 
         DataTypes::SurveyQualityPluginSupport_print_data(
             &sample->acutalSurveyQuality, "acutalSurveyQuality", indent_level + 1);
@@ -2733,21 +2933,21 @@ namespace Downhole {
         RTIOsapiHeap_allocateStructure(
             &key, SurveyStateKeyHolder);
 
-        Downhole::SurveyState_initialize_ex(key,allocate_pointers, RTI_TRUE);
+        DownholeFunctions::SurveyState_initialize_ex(key,allocate_pointers, RTI_TRUE);
         return key;
     }
 
     SurveyState *
     SurveyStatePluginSupport_create_key(void)
     {
-        return  Downhole::SurveyStatePluginSupport_create_key_ex(RTI_TRUE);
+        return  DownholeFunctions::SurveyStatePluginSupport_create_key_ex(RTI_TRUE);
     }
 
     void 
     SurveyStatePluginSupport_destroy_key_ex(
         SurveyStateKeyHolder *key,RTIBool deallocate_pointers)
     {
-        Downhole::SurveyState_finalize_ex(key,deallocate_pointers);
+        DownholeFunctions::SurveyState_finalize_ex(key,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(key);
     }
@@ -2756,7 +2956,7 @@ namespace Downhole {
     SurveyStatePluginSupport_destroy_key(
         SurveyStateKeyHolder *key) {
 
-        Downhole::SurveyStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
+        DownholeFunctions::SurveyStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
     }
 
@@ -2810,18 +3010,18 @@ namespace Downhole {
             participant_data,
             endpoint_info,
             (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-            Downhole::SurveyStatePluginSupport_create_data,
+            DownholeFunctions::SurveyStatePluginSupport_create_data,
             (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-            Downhole::SurveyStatePluginSupport_destroy_data,
+            DownholeFunctions::SurveyStatePluginSupport_destroy_data,
             (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-            Downhole::SurveyStatePluginSupport_create_key ,            
+            DownholeFunctions::SurveyStatePluginSupport_create_key ,            
             (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-            Downhole::SurveyStatePluginSupport_destroy_key);
+            DownholeFunctions::SurveyStatePluginSupport_destroy_key);
 
         if (epd == NULL) {
             return NULL;
         } 
-        serializedKeyMaxSize =  Downhole::SurveyStatePlugin_get_serialized_key_max_size(
+        serializedKeyMaxSize =  DownholeFunctions::SurveyStatePlugin_get_serialized_key_max_size(
             epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
         if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -2832,7 +3032,7 @@ namespace Downhole {
         }
 
         if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-            serializedSampleMaxSize = Downhole::SurveyStatePlugin_get_serialized_sample_max_size(
+            serializedSampleMaxSize = DownholeFunctions::SurveyStatePlugin_get_serialized_sample_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -2841,9 +3041,9 @@ namespace Downhole {
                 epd,
                 endpoint_info,
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                Downhole::SurveyStatePlugin_get_serialized_sample_max_size, epd,
+                DownholeFunctions::SurveyStatePlugin_get_serialized_sample_max_size, epd,
                 (PRESTypePluginGetSerializedSampleSizeFunction)
-                Downhole::SurveyStatePlugin_get_serialized_sample_size,
+                DownholeFunctions::SurveyStatePlugin_get_serialized_sample_size,
                 epd) == RTI_FALSE) {
                 PRESTypePluginDefaultEndpointData_delete(epd);
                 return NULL;
@@ -2881,7 +3081,7 @@ namespace Downhole {
         const SurveyState *src)
     {
         if (endpoint_data) {} /* To avoid warnings */
-        return Downhole::SurveyStatePluginSupport_copy_data(dst,src);
+        return DownholeFunctions::SurveyStatePluginSupport_copy_data(dst,src);
     }
 
     /* ----------------------------------------------------------------------------
@@ -2922,7 +3122,17 @@ namespace Downhole {
 
             if(!DataTypes::UuidPlugin_serialize(
                 endpoint_data,
-                &sample->requestId,
+                &sample->id,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -2933,6 +3143,16 @@ namespace Downhole {
             if(!DataTypes::TimePlugin_serialize(
                 endpoint_data,
                 &sample->timestamp,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
+            if(!DataTypes::StatusPlugin_serialize(
+                endpoint_data,
+                &sample->status,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -3090,11 +3310,19 @@ namespace Downhole {
         }
         if(deserialize_sample) {
 
-            Downhole::SurveyState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+            DownholeFunctions::SurveyState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
-                &sample->requestId,
+                &sample->id,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -3103,6 +3331,14 @@ namespace Downhole {
             if(!DataTypes::TimePlugin_deserialize_sample(
                 endpoint_data,
                 &sample->timestamp,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::StatusPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->status,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -3253,7 +3489,7 @@ namespace Downhole {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, *length);
 
-        result = Downhole::SurveyStatePlugin_serialize(
+        result = DownholeFunctions::SurveyStatePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
             RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
@@ -3294,7 +3530,7 @@ namespace Downhole {
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= Downhole::SurveyStatePlugin_deserialize_sample( 
+        result= DownholeFunctions::SurveyStatePlugin_deserialize_sample( 
             endpoint_data, (sample != NULL)?*sample:NULL,
             stream, deserialize_encapsulation, deserialize_sample, 
             endpoint_plugin_qos);
@@ -3339,7 +3575,21 @@ namespace Downhole {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::TimePlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if (!DataTypes::StatusPlugin_skip(
                 endpoint_data,
                 stream, 
                 RTI_FALSE, RTI_TRUE, 
@@ -3460,7 +3710,13 @@ namespace Downhole {
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
+        current_alignment +=DataTypes::StatusPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=DataTypes::SurveyQualityPlugin_get_serialized_sample_max_size_ex(
@@ -3579,7 +3835,11 @@ namespace Downhole {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::StatusPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::SurveyQualityPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
@@ -3667,10 +3927,16 @@ namespace Downhole {
 
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
-            current_alignment, &sample->requestId);
+            current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->timestamp);
+        current_alignment += DataTypes::StatusPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->status);
         current_alignment += DataTypes::SurveyQualityPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->acutalSurveyQuality);
@@ -3756,7 +4022,7 @@ namespace Downhole {
 
             if(!DataTypes::UuidPlugin_serialize_key(
                 endpoint_data,
-                &sample->requestId,
+                &sample->id,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -3798,7 +4064,7 @@ namespace Downhole {
 
             if(!DataTypes::UuidPlugin_deserialize_key_sample(
                 endpoint_data,
-                &sample->requestId,
+                &sample->id,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -3825,7 +4091,7 @@ namespace Downhole {
         RTIBool result;
         if (drop_sample) {} /* To avoid warnings */
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= Downhole::SurveyStatePlugin_deserialize_key_sample(
+        result= DownholeFunctions::SurveyStatePlugin_deserialize_key_sample(
             endpoint_data, (sample != NULL)?*sample:NULL, stream,
             deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
         if (result) {
@@ -3923,13 +4189,29 @@ namespace Downhole {
 
             if(!DataTypes::UuidPlugin_serialized_sample_to_key(
                 endpoint_data,
-                &sample->requestId,
+                &sample->id,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::TimePlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
+            if (!DataTypes::StatusPlugin_skip(
                 endpoint_data,
                 stream, 
                 RTI_FALSE, RTI_TRUE, 
@@ -4060,7 +4342,7 @@ namespace Downhole {
         if (endpoint_data) {} /* To avoid warnings */   
 
         if (!DataTypes::Uuid_copy(
-            &dst->requestId, &src->requestId)) {
+            &dst->id, &src->id)) {
             return RTI_FALSE;
         } 
         return RTI_TRUE;
@@ -4075,7 +4357,7 @@ namespace Downhole {
 
         if (endpoint_data) {} /* To avoid warnings */   
         if (!DataTypes::Uuid_copy(
-            &dst->requestId, &src->requestId)) {
+            &dst->id, &src->id)) {
             return RTI_FALSE;
         } 
         return RTI_TRUE;
@@ -4101,14 +4383,14 @@ namespace Downhole {
         RTICdrStream_resetPosition(md5Stream);
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-        if (!Downhole::SurveyStatePlugin_serialize_key(
+        if (!DownholeFunctions::SurveyStatePlugin_serialize_key(
             endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-            size = (int)Downhole::SurveyStatePlugin_get_serialized_sample_size(
+            size = (int)DownholeFunctions::SurveyStatePlugin_get_serialized_sample_size(
                 endpoint_data,
                 RTI_FALSE,
                 RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -4133,7 +4415,7 @@ namespace Downhole {
                 RTICdrStream_getBufferLength(md5Stream));
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-            if (!Downhole::SurveyStatePlugin_serialize_key(
+            if (!DownholeFunctions::SurveyStatePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
@@ -4198,7 +4480,7 @@ namespace Downhole {
 
         if(!DataTypes::UuidPlugin_serialized_sample_to_key(
             endpoint_data,
-            &sample->requestId,
+            &sample->id,
             stream,
             RTI_FALSE, RTI_TRUE,
             endpoint_plugin_qos)) {
@@ -4220,7 +4502,7 @@ namespace Downhole {
             RTICdrStream_restoreAlignment(stream,position);
         }
 
-        if (!Downhole::SurveyStatePlugin_instance_to_keyhash(
+        if (!DownholeFunctions::SurveyStatePlugin_instance_to_keyhash(
             endpoint_data, keyhash, sample)) {
             return RTI_FALSE;
         }
@@ -4248,20 +4530,20 @@ namespace Downhole {
         /* set up parent's function pointers */
         plugin->onParticipantAttached =
         (PRESTypePluginOnParticipantAttachedCallback)
-        Downhole::SurveyStatePlugin_on_participant_attached;
+        DownholeFunctions::SurveyStatePlugin_on_participant_attached;
         plugin->onParticipantDetached =
         (PRESTypePluginOnParticipantDetachedCallback)
-        Downhole::SurveyStatePlugin_on_participant_detached;
+        DownholeFunctions::SurveyStatePlugin_on_participant_detached;
         plugin->onEndpointAttached =
         (PRESTypePluginOnEndpointAttachedCallback)
-        Downhole::SurveyStatePlugin_on_endpoint_attached;
+        DownholeFunctions::SurveyStatePlugin_on_endpoint_attached;
         plugin->onEndpointDetached =
         (PRESTypePluginOnEndpointDetachedCallback)
-        Downhole::SurveyStatePlugin_on_endpoint_detached;
+        DownholeFunctions::SurveyStatePlugin_on_endpoint_detached;
 
         plugin->copySampleFnc =
         (PRESTypePluginCopySampleFunction)
-        Downhole::SurveyStatePlugin_copy_sample;
+        DownholeFunctions::SurveyStatePlugin_copy_sample;
         plugin->createSampleFnc =
         (PRESTypePluginCreateSampleFunction)
         SurveyStatePlugin_create_sample;
@@ -4271,16 +4553,16 @@ namespace Downhole {
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
-        Downhole::SurveyStatePlugin_serialize;
+        DownholeFunctions::SurveyStatePlugin_serialize;
         plugin->deserializeFnc =
         (PRESTypePluginDeserializeFunction)
-        Downhole::SurveyStatePlugin_deserialize;
+        DownholeFunctions::SurveyStatePlugin_deserialize;
         plugin->getSerializedSampleMaxSizeFnc =
         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-        Downhole::SurveyStatePlugin_get_serialized_sample_max_size;
+        DownholeFunctions::SurveyStatePlugin_get_serialized_sample_max_size;
         plugin->getSerializedSampleMinSizeFnc =
         (PRESTypePluginGetSerializedSampleMinSizeFunction)
-        Downhole::SurveyStatePlugin_get_serialized_sample_min_size;
+        DownholeFunctions::SurveyStatePlugin_get_serialized_sample_min_size;
 
         plugin->getSampleFnc =
         (PRESTypePluginGetSampleFunction)
@@ -4291,27 +4573,27 @@ namespace Downhole {
 
         plugin->getKeyKindFnc =
         (PRESTypePluginGetKeyKindFunction)
-        Downhole::SurveyStatePlugin_get_key_kind;
+        DownholeFunctions::SurveyStatePlugin_get_key_kind;
 
         plugin->getSerializedKeyMaxSizeFnc =   
         (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-        Downhole::SurveyStatePlugin_get_serialized_key_max_size;
+        DownholeFunctions::SurveyStatePlugin_get_serialized_key_max_size;
         plugin->serializeKeyFnc =
         (PRESTypePluginSerializeKeyFunction)
-        Downhole::SurveyStatePlugin_serialize_key;
+        DownholeFunctions::SurveyStatePlugin_serialize_key;
         plugin->deserializeKeyFnc =
         (PRESTypePluginDeserializeKeyFunction)
-        Downhole::SurveyStatePlugin_deserialize_key;
+        DownholeFunctions::SurveyStatePlugin_deserialize_key;
         plugin->deserializeKeySampleFnc =
         (PRESTypePluginDeserializeKeySampleFunction)
-        Downhole::SurveyStatePlugin_deserialize_key_sample;
+        DownholeFunctions::SurveyStatePlugin_deserialize_key_sample;
 
         plugin-> instanceToKeyHashFnc = 
         (PRESTypePluginInstanceToKeyHashFunction)
-        Downhole::SurveyStatePlugin_instance_to_keyhash;
+        DownholeFunctions::SurveyStatePlugin_instance_to_keyhash;
         plugin->serializedSampleToKeyHashFnc = 
         (PRESTypePluginSerializedSampleToKeyHashFunction)
-        Downhole::SurveyStatePlugin_serialized_sample_to_keyhash;
+        DownholeFunctions::SurveyStatePlugin_serialized_sample_to_keyhash;
 
         plugin->getKeyFnc =
         (PRESTypePluginGetKeyFunction)
@@ -4322,12 +4604,12 @@ namespace Downhole {
 
         plugin->instanceToKeyFnc =
         (PRESTypePluginInstanceToKeyFunction)
-        Downhole::SurveyStatePlugin_instance_to_key;
+        DownholeFunctions::SurveyStatePlugin_instance_to_key;
         plugin->keyToInstanceFnc =
         (PRESTypePluginKeyToInstanceFunction)
-        Downhole::SurveyStatePlugin_key_to_instance;
+        DownholeFunctions::SurveyStatePlugin_key_to_instance;
         plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-        plugin->typeCode =  (struct RTICdrTypeCode *)Downhole::SurveyState_get_typecode();
+        plugin->typeCode =  (struct RTICdrTypeCode *)DownholeFunctions::SurveyState_get_typecode();
 
         plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
@@ -4340,7 +4622,7 @@ namespace Downhole {
         SurveyStatePlugin_return_buffer;
         plugin->getSerializedSampleSizeFnc =
         (PRESTypePluginGetSerializedSampleSizeFunction)
-        Downhole::SurveyStatePlugin_get_serialized_sample_size;
+        DownholeFunctions::SurveyStatePlugin_get_serialized_sample_size;
 
         plugin->endpointTypeName = SurveyStateTYPENAME;
 
@@ -4352,5 +4634,5 @@ namespace Downhole {
     {
         RTIOsapiHeap_freeStructure(plugin);
     } 
-} /* namespace Downhole  */
+} /* namespace DownholeFunctions  */
 

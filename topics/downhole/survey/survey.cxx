@@ -30,16 +30,16 @@ or consult the RTI Connext manual.
 
 #include "survey.h"
 
-namespace Downhole {
+namespace DownholeFunctions {
 
     /* ========================================================================= */
-    const char *SurveyRequestTYPENAME = "Downhole::SurveyRequest";
+    const char *SurveyRequestTYPENAME = "DownholeFunctions::SurveyRequest";
 
     DDS_TypeCode* SurveyRequest_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member SurveyRequest_g_tc_members[3]=
+        static DDS_TypeCode_Member SurveyRequest_g_tc_members[6]=
         {
 
             {
@@ -60,7 +60,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"timeNeeded",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -77,9 +77,60 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"requestedSurveyQuality",/* Member name */
+                (char *)"priority",/* Member name */
                 {
                     2,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"timeNeeded",/* Member name */
+                {
+                    3,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"estimatedDuration",/* Member name */
+                {
+                    4,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"surveyQuality",/* Member name */
+                {
+                    5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -100,12 +151,12 @@ namespace Downhole {
                 DDS_TK_STRUCT,/* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
-                (char *)"Downhole::SurveyRequest", /* Name */
+                (char *)"DownholeFunctions::SurveyRequest", /* Name */
                 NULL, /* Ignored */      
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                3, /* Number of members */
+                6, /* Number of members */
                 SurveyRequest_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for SurveyRequest*/
@@ -116,9 +167,15 @@ namespace Downhole {
 
         SurveyRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        SurveyRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+        SurveyRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        SurveyRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::SurveyQuality_get_typecode();
+        SurveyRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Priority_get_typecode();
+
+        SurveyRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+
+        SurveyRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+
+        SurveyRequest_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)DataTypes::SurveyQuality_get_typecode();
 
         is_initialized = RTI_TRUE;
 
@@ -127,7 +184,7 @@ namespace Downhole {
 
     RTIBool SurveyRequest_initialize(
         SurveyRequest* sample) {
-        return Downhole::SurveyRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        return DownholeFunctions::SurveyRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
     }
 
     RTIBool SurveyRequest_initialize_ex(
@@ -140,7 +197,7 @@ namespace Downhole {
         allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
         allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-        return Downhole::SurveyRequest_initialize_w_params(
+        return DownholeFunctions::SurveyRequest_initialize_w_params(
             sample,&allocParams);
 
     }
@@ -155,12 +212,23 @@ namespace Downhole {
         allocParams)) {
             return RTI_FALSE;
         }
-
-        if (!RTICdrType_initLong(&sample->timeNeeded)) {
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
+        allocParams)) {
             return RTI_FALSE;
-        }     
-
-        if (!DataTypes::SurveyQuality_initialize_w_params(&sample->requestedSurveyQuality,
+        }
+        if (!DataTypes::Priority_initialize_w_params(&sample->priority,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Time_initialize_w_params(&sample->timeNeeded,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Time_initialize_w_params(&sample->estimatedDuration,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::SurveyQuality_initialize_w_params(&sample->surveyQuality,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -171,7 +239,7 @@ namespace Downhole {
         SurveyRequest* sample)
     {
 
-        Downhole::SurveyRequest_finalize_ex(sample,RTI_TRUE);
+        DownholeFunctions::SurveyRequest_finalize_ex(sample,RTI_TRUE);
     }
 
     void SurveyRequest_finalize_ex(
@@ -186,7 +254,7 @@ namespace Downhole {
 
         deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-        Downhole::SurveyRequest_finalize_w_params(
+        DownholeFunctions::SurveyRequest_finalize_w_params(
             sample,&deallocParams);
     }
 
@@ -201,7 +269,15 @@ namespace Downhole {
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
-        DataTypes::SurveyQuality_finalize_w_params(&sample->requestedSurveyQuality,deallocParams);
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
+
+        DataTypes::Priority_finalize_w_params(&sample->priority,deallocParams);
+
+        DataTypes::Time_finalize_w_params(&sample->timeNeeded,deallocParams);
+
+        DataTypes::Time_finalize_w_params(&sample->estimatedDuration,deallocParams);
+
+        DataTypes::SurveyQuality_finalize_w_params(&sample->surveyQuality,deallocParams);
 
     }
 
@@ -222,7 +298,11 @@ namespace Downhole {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
-        DataTypes::SurveyQuality_finalize_optional_members(&sample->requestedSurveyQuality, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
+        DataTypes::Priority_finalize_optional_members(&sample->priority, deallocParams->delete_pointers);
+        DataTypes::Time_finalize_optional_members(&sample->timeNeeded, deallocParams->delete_pointers);
+        DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
+        DataTypes::SurveyQuality_finalize_optional_members(&sample->surveyQuality, deallocParams->delete_pointers);
     }
 
     RTIBool SurveyRequest_copy(
@@ -234,12 +314,24 @@ namespace Downhole {
             &dst->id, &src->id)) {
             return RTI_FALSE;
         } 
-        if (!RTICdrType_copyLong (
-            &dst->timeNeeded, &src->timeNeeded)) { 
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
             return RTI_FALSE;
-        }
+        } 
+        if (!DataTypes::Priority_copy(
+            &dst->priority, &src->priority)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Time_copy(
+            &dst->timeNeeded, &src->timeNeeded)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Time_copy(
+            &dst->estimatedDuration, &src->estimatedDuration)) {
+            return RTI_FALSE;
+        } 
         if (!DataTypes::SurveyQuality_copy(
-            &dst->requestedSurveyQuality, &src->requestedSurveyQuality)) {
+            &dst->surveyQuality, &src->surveyQuality)) {
             return RTI_FALSE;
         } 
 
@@ -255,9 +347,9 @@ namespace Downhole {
     */
     #define T SurveyRequest
     #define TSeq SurveyRequestSeq
-    #define T_initialize_w_params Downhole::SurveyRequest_initialize_w_params
-    #define T_finalize_w_params   Downhole::SurveyRequest_finalize_w_params
-    #define T_copy       Downhole::SurveyRequest_copy
+    #define T_initialize_w_params DownholeFunctions::SurveyRequest_initialize_w_params
+    #define T_finalize_w_params   DownholeFunctions::SurveyRequest_finalize_w_params
+    #define T_copy       DownholeFunctions::SurveyRequest_copy
 
     #ifndef NDDS_STANDALONE_TYPE
     #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -274,13 +366,13 @@ namespace Downhole {
     #undef T
 
     /* ========================================================================= */
-    const char *SurveyObjectiveTYPENAME = "Downhole::SurveyObjective";
+    const char *SurveyObjectiveTYPENAME = "DownholeFunctions::SurveyObjective";
 
     DDS_TypeCode* SurveyObjective_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member SurveyObjective_g_tc_members[3]=
+        static DDS_TypeCode_Member SurveyObjective_g_tc_members[4]=
         {
 
             {
@@ -301,7 +393,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"timeEnabled",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -318,9 +410,26 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"requestedSurveyQuality",/* Member name */
+                (char *)"estimatedDuration",/* Member name */
                 {
                     2,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"requestedSurveyQuality",/* Member name */
+                {
+                    3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -341,12 +450,12 @@ namespace Downhole {
                 DDS_TK_STRUCT,/* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
-                (char *)"Downhole::SurveyObjective", /* Name */
+                (char *)"DownholeFunctions::SurveyObjective", /* Name */
                 NULL, /* Ignored */      
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                3, /* Number of members */
+                4, /* Number of members */
                 SurveyObjective_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for SurveyObjective*/
@@ -357,9 +466,11 @@ namespace Downhole {
 
         SurveyObjective_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        SurveyObjective_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+        SurveyObjective_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        SurveyObjective_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::SurveyQuality_get_typecode();
+        SurveyObjective_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+
+        SurveyObjective_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::SurveyQuality_get_typecode();
 
         is_initialized = RTI_TRUE;
 
@@ -368,7 +479,7 @@ namespace Downhole {
 
     RTIBool SurveyObjective_initialize(
         SurveyObjective* sample) {
-        return Downhole::SurveyObjective_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        return DownholeFunctions::SurveyObjective_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
     }
 
     RTIBool SurveyObjective_initialize_ex(
@@ -381,7 +492,7 @@ namespace Downhole {
         allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
         allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-        return Downhole::SurveyObjective_initialize_w_params(
+        return DownholeFunctions::SurveyObjective_initialize_w_params(
             sample,&allocParams);
 
     }
@@ -396,7 +507,11 @@ namespace Downhole {
         allocParams)) {
             return RTI_FALSE;
         }
-        if (!DataTypes::Time_initialize_w_params(&sample->timeEnabled,
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Time_initialize_w_params(&sample->estimatedDuration,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -411,7 +526,7 @@ namespace Downhole {
         SurveyObjective* sample)
     {
 
-        Downhole::SurveyObjective_finalize_ex(sample,RTI_TRUE);
+        DownholeFunctions::SurveyObjective_finalize_ex(sample,RTI_TRUE);
     }
 
     void SurveyObjective_finalize_ex(
@@ -426,7 +541,7 @@ namespace Downhole {
 
         deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-        Downhole::SurveyObjective_finalize_w_params(
+        DownholeFunctions::SurveyObjective_finalize_w_params(
             sample,&deallocParams);
     }
 
@@ -441,7 +556,9 @@ namespace Downhole {
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
-        DataTypes::Time_finalize_w_params(&sample->timeEnabled,deallocParams);
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
+
+        DataTypes::Time_finalize_w_params(&sample->estimatedDuration,deallocParams);
 
         DataTypes::SurveyQuality_finalize_w_params(&sample->requestedSurveyQuality,deallocParams);
 
@@ -464,7 +581,8 @@ namespace Downhole {
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
         DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
-        DataTypes::Time_finalize_optional_members(&sample->timeEnabled, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
+        DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
         DataTypes::SurveyQuality_finalize_optional_members(&sample->requestedSurveyQuality, deallocParams->delete_pointers);
     }
 
@@ -477,8 +595,12 @@ namespace Downhole {
             &dst->id, &src->id)) {
             return RTI_FALSE;
         } 
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
+            return RTI_FALSE;
+        } 
         if (!DataTypes::Time_copy(
-            &dst->timeEnabled, &src->timeEnabled)) {
+            &dst->estimatedDuration, &src->estimatedDuration)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::SurveyQuality_copy(
@@ -498,9 +620,9 @@ namespace Downhole {
     */
     #define T SurveyObjective
     #define TSeq SurveyObjectiveSeq
-    #define T_initialize_w_params Downhole::SurveyObjective_initialize_w_params
-    #define T_finalize_w_params   Downhole::SurveyObjective_finalize_w_params
-    #define T_copy       Downhole::SurveyObjective_copy
+    #define T_initialize_w_params DownholeFunctions::SurveyObjective_initialize_w_params
+    #define T_finalize_w_params   DownholeFunctions::SurveyObjective_finalize_w_params
+    #define T_copy       DownholeFunctions::SurveyObjective_copy
 
     #ifndef NDDS_STANDALONE_TYPE
     #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -517,17 +639,17 @@ namespace Downhole {
     #undef T
 
     /* ========================================================================= */
-    const char *SurveyStateTYPENAME = "Downhole::SurveyState";
+    const char *SurveyStateTYPENAME = "DownholeFunctions::SurveyState";
 
     DDS_TypeCode* SurveyState_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member SurveyState_g_tc_members[23]=
+        static DDS_TypeCode_Member SurveyState_g_tc_members[25]=
         {
 
             {
-                (char *)"requestId",/* Member name */
+                (char *)"id",/* Member name */
                 {
                     0,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -544,7 +666,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"timestamp",/* Member name */
+                (char *)"objectiveId",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -561,7 +683,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"acutalSurveyQuality",/* Member name */
+                (char *)"timestamp",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -578,7 +700,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"measuredDepth",/* Member name */
+                (char *)"status",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -595,7 +717,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"inclination",/* Member name */
+                (char *)"acutalSurveyQuality",/* Member name */
                 {
                     4,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -612,7 +734,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"azimuth",/* Member name */
+                (char *)"measuredDepth",/* Member name */
                 {
                     5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -629,7 +751,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"totalVerticalDepth",/* Member name */
+                (char *)"inclination",/* Member name */
                 {
                     6,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -646,7 +768,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"dogLeg",/* Member name */
+                (char *)"azimuth",/* Member name */
                 {
                     7,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -663,7 +785,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"verticalSection",/* Member name */
+                (char *)"totalVerticalDepth",/* Member name */
                 {
                     8,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -680,7 +802,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"eastWest",/* Member name */
+                (char *)"dogLeg",/* Member name */
                 {
                     9,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -697,7 +819,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"northSouth",/* Member name */
+                (char *)"verticalSection",/* Member name */
                 {
                     10,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -714,7 +836,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"courseLength",/* Member name */
+                (char *)"eastWest",/* Member name */
                 {
                     11,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -731,7 +853,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ca",/* Member name */
+                (char *)"northSouth",/* Member name */
                 {
                     12,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -748,7 +870,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"cd",/* Member name */
+                (char *)"courseLength",/* Member name */
                 {
                     13,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -765,7 +887,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"cl",/* Member name */
+                (char *)"ca",/* Member name */
                 {
                     14,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -782,7 +904,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"buildRate",/* Member name */
+                (char *)"cd",/* Member name */
                 {
                     15,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -799,7 +921,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"turnRate",/* Member name */
+                (char *)"cl",/* Member name */
                 {
                     16,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -816,7 +938,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"topOfTarget",/* Member name */
+                (char *)"buildRate",/* Member name */
                 {
                     17,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -833,7 +955,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"bottomOfTarget",/* Member name */
+                (char *)"turnRate",/* Member name */
                 {
                     18,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -850,7 +972,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"dip",/* Member name */
+                (char *)"topOfTarget",/* Member name */
                 {
                     19,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -867,7 +989,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"fault",/* Member name */
+                (char *)"bottomOfTarget",/* Member name */
                 {
                     20,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -884,7 +1006,7 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"surveyCost",/* Member name */
+                (char *)"dip",/* Member name */
                 {
                     21,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -901,9 +1023,43 @@ namespace Downhole {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"requestedSurveyQuality",/* Member name */
+                (char *)"fault",/* Member name */
                 {
                     22,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"surveyCost",/* Member name */
+                {
+                    23,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"requestedSurveyQuality",/* Member name */
+                {
+                    24,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -924,12 +1080,12 @@ namespace Downhole {
                 DDS_TK_STRUCT,/* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
-                (char *)"Downhole::SurveyState", /* Name */
+                (char *)"DownholeFunctions::SurveyState", /* Name */
                 NULL, /* Ignored */      
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                23, /* Number of members */
+                25, /* Number of members */
                 SurveyState_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for SurveyState*/
@@ -940,13 +1096,13 @@ namespace Downhole {
 
         SurveyState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        SurveyState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+        SurveyState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-        SurveyState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::SurveyQuality_get_typecode();
+        SurveyState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-        SurveyState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        SurveyState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Status_get_typecode();
 
-        SurveyState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+        SurveyState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)DataTypes::SurveyQuality_get_typecode();
 
         SurveyState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -982,7 +1138,11 @@ namespace Downhole {
 
         SurveyState_g_tc_members[21]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-        SurveyState_g_tc_members[22]._representation._typeCode = (RTICdrTypeCode *)DataTypes::SurveyQuality_get_typecode();
+        SurveyState_g_tc_members[22]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        SurveyState_g_tc_members[23]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        SurveyState_g_tc_members[24]._representation._typeCode = (RTICdrTypeCode *)DataTypes::SurveyQuality_get_typecode();
 
         is_initialized = RTI_TRUE;
 
@@ -991,7 +1151,7 @@ namespace Downhole {
 
     RTIBool SurveyState_initialize(
         SurveyState* sample) {
-        return Downhole::SurveyState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        return DownholeFunctions::SurveyState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
     }
 
     RTIBool SurveyState_initialize_ex(
@@ -1004,7 +1164,7 @@ namespace Downhole {
         allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
         allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-        return Downhole::SurveyState_initialize_w_params(
+        return DownholeFunctions::SurveyState_initialize_w_params(
             sample,&allocParams);
 
     }
@@ -1015,11 +1175,19 @@ namespace Downhole {
 
         if (allocParams) {} /* To avoid warnings */
 
-        if (!DataTypes::Uuid_initialize_w_params(&sample->requestId,
+        if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
         allocParams)) {
             return RTI_FALSE;
         }
         if (!DataTypes::Time_initialize_w_params(&sample->timestamp,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!DataTypes::Status_initialize_w_params(&sample->status,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -1115,7 +1283,7 @@ namespace Downhole {
         SurveyState* sample)
     {
 
-        Downhole::SurveyState_finalize_ex(sample,RTI_TRUE);
+        DownholeFunctions::SurveyState_finalize_ex(sample,RTI_TRUE);
     }
 
     void SurveyState_finalize_ex(
@@ -1130,7 +1298,7 @@ namespace Downhole {
 
         deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-        Downhole::SurveyState_finalize_w_params(
+        DownholeFunctions::SurveyState_finalize_w_params(
             sample,&deallocParams);
     }
 
@@ -1143,9 +1311,13 @@ namespace Downhole {
         }
         if (deallocParams) {} /* To avoid warnings */
 
-        DataTypes::Uuid_finalize_w_params(&sample->requestId,deallocParams);
+        DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
+
+        DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
 
         DataTypes::Time_finalize_w_params(&sample->timestamp,deallocParams);
+
+        DataTypes::Status_finalize_w_params(&sample->status,deallocParams);
 
         DataTypes::SurveyQuality_finalize_w_params(&sample->acutalSurveyQuality,deallocParams);
 
@@ -1169,8 +1341,10 @@ namespace Downhole {
         deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-        DataTypes::Uuid_finalize_optional_members(&sample->requestId, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+        DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
         DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
+        DataTypes::Status_finalize_optional_members(&sample->status, deallocParams->delete_pointers);
         DataTypes::SurveyQuality_finalize_optional_members(&sample->acutalSurveyQuality, deallocParams->delete_pointers);
         DataTypes::SurveyQuality_finalize_optional_members(&sample->requestedSurveyQuality, deallocParams->delete_pointers);
     }
@@ -1181,11 +1355,19 @@ namespace Downhole {
     {
 
         if (!DataTypes::Uuid_copy(
-            &dst->requestId, &src->requestId)) {
+            &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Uuid_copy(
+            &dst->objectiveId, &src->objectiveId)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::Time_copy(
             &dst->timestamp, &src->timestamp)) {
+            return RTI_FALSE;
+        } 
+        if (!DataTypes::Status_copy(
+            &dst->status, &src->status)) {
             return RTI_FALSE;
         } 
         if (!DataTypes::SurveyQuality_copy(
@@ -1285,9 +1467,9 @@ namespace Downhole {
     */
     #define T SurveyState
     #define TSeq SurveyStateSeq
-    #define T_initialize_w_params Downhole::SurveyState_initialize_w_params
-    #define T_finalize_w_params   Downhole::SurveyState_finalize_w_params
-    #define T_copy       Downhole::SurveyState_copy
+    #define T_initialize_w_params DownholeFunctions::SurveyState_initialize_w_params
+    #define T_finalize_w_params   DownholeFunctions::SurveyState_finalize_w_params
+    #define T_copy       DownholeFunctions::SurveyState_copy
 
     #ifndef NDDS_STANDALONE_TYPE
     #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -1302,5 +1484,5 @@ namespace Downhole {
     #undef T_initialize_w_params
     #undef TSeq
     #undef T
-} /* namespace Downhole  */
+} /* namespace DownholeFunctions  */
 

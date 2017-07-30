@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef rotatePlugin_79875357_h
-#define rotatePlugin_79875357_h
+#ifndef rotatePlugin_79878318_h
+#define rotatePlugin_79878318_h
 
 #include "rotate.h"
 
@@ -29,7 +29,7 @@ struct RTICdrStream;
 #define NDDSUSERDllExport __declspec(dllexport)
 #endif
 
-namespace ProcessRotation {
+namespace SafeRotationFunctions {
 
     /* The type used to store keys for instances of type struct
     * AnotherSimple.
@@ -907,7 +907,7 @@ namespace ProcessRotation {
     NDDSUSERDllExport extern void
     RotateStatePlugin_delete(struct PRESTypePlugin *);
 
-} /* namespace ProcessRotation  */
+} /* namespace SafeRotationFunctions  */
 
 #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, stop exporting symbols.
@@ -916,5 +916,5 @@ namespace ProcessRotation {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* rotatePlugin_79875357_h */
+#endif /* rotatePlugin_79878318_h */
 

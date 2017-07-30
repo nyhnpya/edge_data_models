@@ -38,7 +38,7 @@ bool CRotateObjectiveSubscriber::GetTargetRate(double &targetRate)
 bool CRotateObjectiveSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               ProcessRotation::ROTATE_OBJECTIVE,
+                               SafeRotationFunctions::ROTATE_OBJECTIVE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -58,7 +58,7 @@ void CRotateObjectiveSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent ev
     m_pOnLivelinessChanged = event;
 }
 
-void CRotateObjectiveSubscriber::DataAvailable(const ProcessRotation::RotateObjective &data,
+void CRotateObjectiveSubscriber::DataAvailable(const SafeRotationFunctions::RotateObjective &data,
                                                const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

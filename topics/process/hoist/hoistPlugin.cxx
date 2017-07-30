@@ -48,7 +48,7 @@ or consult the RTI Connext manual.
 
 #include "hoistPlugin.h"
 
-namespace ProcessHoist {
+namespace SafeHoistFunctions {
 
     /* ----------------------------------------------------------------------------
     *  Type HoistRequest
@@ -67,7 +67,7 @@ namespace ProcessHoist {
             &sample, HoistRequest);
 
         if(sample != NULL) {
-            if (!ProcessHoist::HoistRequest_initialize_w_params(sample,alloc_params)) {
+            if (!SafeHoistFunctions::HoistRequest_initialize_w_params(sample,alloc_params)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -83,7 +83,7 @@ namespace ProcessHoist {
             &sample, HoistRequest);
 
         if(sample != NULL) {
-            if (!ProcessHoist::HoistRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!SafeHoistFunctions::HoistRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -94,7 +94,7 @@ namespace ProcessHoist {
     HoistRequest *
     HoistRequestPluginSupport_create_data(void)
     {
-        return ProcessHoist::HoistRequestPluginSupport_create_data_ex(RTI_TRUE);
+        return SafeHoistFunctions::HoistRequestPluginSupport_create_data_ex(RTI_TRUE);
     }
 
     void 
@@ -102,7 +102,7 @@ namespace ProcessHoist {
         HoistRequest *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-        ProcessHoist::HoistRequest_finalize_w_params(sample,dealloc_params);
+        SafeHoistFunctions::HoistRequest_finalize_w_params(sample,dealloc_params);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -111,7 +111,7 @@ namespace ProcessHoist {
     HoistRequestPluginSupport_destroy_data_ex(
         HoistRequest *sample,RTIBool deallocate_pointers) {
 
-        ProcessHoist::HoistRequest_finalize_ex(sample,deallocate_pointers);
+        SafeHoistFunctions::HoistRequest_finalize_ex(sample,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -120,7 +120,7 @@ namespace ProcessHoist {
     HoistRequestPluginSupport_destroy_data(
         HoistRequest *sample) {
 
-        ProcessHoist::HoistRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+        SafeHoistFunctions::HoistRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
     }
 
@@ -129,7 +129,7 @@ namespace ProcessHoist {
         HoistRequest *dst,
         const HoistRequest *src)
     {
-        return ProcessHoist::HoistRequest_copy(dst,src);
+        return SafeHoistFunctions::HoistRequest_copy(dst,src);
     }
 
     void 
@@ -155,6 +155,9 @@ namespace ProcessHoist {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
+
         DataTypes::PriorityPluginSupport_print_data(
             &sample->priority, "priority", indent_level + 1);
 
@@ -168,7 +171,7 @@ namespace ProcessHoist {
             &sample->targetVelocity, "targetVelocity", indent_level + 1);    
 
         RTICdrType_printDouble(
-            &sample->targetDestination, "targetDestination", indent_level + 1);    
+            &sample->targetPosition, "targetPosition", indent_level + 1);    
 
     }
     HoistRequest *
@@ -178,21 +181,21 @@ namespace ProcessHoist {
         RTIOsapiHeap_allocateStructure(
             &key, HoistRequestKeyHolder);
 
-        ProcessHoist::HoistRequest_initialize_ex(key,allocate_pointers, RTI_TRUE);
+        SafeHoistFunctions::HoistRequest_initialize_ex(key,allocate_pointers, RTI_TRUE);
         return key;
     }
 
     HoistRequest *
     HoistRequestPluginSupport_create_key(void)
     {
-        return  ProcessHoist::HoistRequestPluginSupport_create_key_ex(RTI_TRUE);
+        return  SafeHoistFunctions::HoistRequestPluginSupport_create_key_ex(RTI_TRUE);
     }
 
     void 
     HoistRequestPluginSupport_destroy_key_ex(
         HoistRequestKeyHolder *key,RTIBool deallocate_pointers)
     {
-        ProcessHoist::HoistRequest_finalize_ex(key,deallocate_pointers);
+        SafeHoistFunctions::HoistRequest_finalize_ex(key,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(key);
     }
@@ -201,7 +204,7 @@ namespace ProcessHoist {
     HoistRequestPluginSupport_destroy_key(
         HoistRequestKeyHolder *key) {
 
-        ProcessHoist::HoistRequestPluginSupport_destroy_key_ex(key,RTI_TRUE);
+        SafeHoistFunctions::HoistRequestPluginSupport_destroy_key_ex(key,RTI_TRUE);
 
     }
 
@@ -255,18 +258,18 @@ namespace ProcessHoist {
             participant_data,
             endpoint_info,
             (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-            ProcessHoist::HoistRequestPluginSupport_create_data,
+            SafeHoistFunctions::HoistRequestPluginSupport_create_data,
             (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-            ProcessHoist::HoistRequestPluginSupport_destroy_data,
+            SafeHoistFunctions::HoistRequestPluginSupport_destroy_data,
             (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-            ProcessHoist::HoistRequestPluginSupport_create_key ,            
+            SafeHoistFunctions::HoistRequestPluginSupport_create_key ,            
             (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-            ProcessHoist::HoistRequestPluginSupport_destroy_key);
+            SafeHoistFunctions::HoistRequestPluginSupport_destroy_key);
 
         if (epd == NULL) {
             return NULL;
         } 
-        serializedKeyMaxSize =  ProcessHoist::HoistRequestPlugin_get_serialized_key_max_size(
+        serializedKeyMaxSize =  SafeHoistFunctions::HoistRequestPlugin_get_serialized_key_max_size(
             epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
         if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -277,7 +280,7 @@ namespace ProcessHoist {
         }
 
         if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-            serializedSampleMaxSize = ProcessHoist::HoistRequestPlugin_get_serialized_sample_max_size(
+            serializedSampleMaxSize = SafeHoistFunctions::HoistRequestPlugin_get_serialized_sample_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -286,9 +289,9 @@ namespace ProcessHoist {
                 epd,
                 endpoint_info,
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                ProcessHoist::HoistRequestPlugin_get_serialized_sample_max_size, epd,
+                SafeHoistFunctions::HoistRequestPlugin_get_serialized_sample_max_size, epd,
                 (PRESTypePluginGetSerializedSampleSizeFunction)
-                ProcessHoist::HoistRequestPlugin_get_serialized_sample_size,
+                SafeHoistFunctions::HoistRequestPlugin_get_serialized_sample_size,
                 epd) == RTI_FALSE) {
                 PRESTypePluginDefaultEndpointData_delete(epd);
                 return NULL;
@@ -326,7 +329,7 @@ namespace ProcessHoist {
         const HoistRequest *src)
     {
         if (endpoint_data) {} /* To avoid warnings */
-        return ProcessHoist::HoistRequestPluginSupport_copy_data(dst,src);
+        return SafeHoistFunctions::HoistRequestPluginSupport_copy_data(dst,src);
     }
 
     /* ----------------------------------------------------------------------------
@@ -375,6 +378,16 @@ namespace ProcessHoist {
                 return RTI_FALSE;
             }
 
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
             if(!DataTypes::PriorityPlugin_serialize(
                 endpoint_data,
                 &sample->priority,
@@ -411,7 +424,7 @@ namespace ProcessHoist {
             }
 
             if (!RTICdrStream_serializeDouble(
-                stream, &sample->targetDestination)) {
+                stream, &sample->targetPosition)) {
                 return RTI_FALSE;
             }
 
@@ -450,11 +463,19 @@ namespace ProcessHoist {
         }
         if(deserialize_sample) {
 
-            ProcessHoist::HoistRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+            SafeHoistFunctions::HoistRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -489,7 +510,7 @@ namespace ProcessHoist {
                 goto fin; 
             }
             if (!RTICdrStream_deserializeDouble(
-                stream, &sample->targetDestination)) {
+                stream, &sample->targetPosition)) {
                 goto fin; 
             }
         }
@@ -545,7 +566,7 @@ namespace ProcessHoist {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, *length);
 
-        result = ProcessHoist::HoistRequestPlugin_serialize(
+        result = SafeHoistFunctions::HoistRequestPlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
             RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
@@ -586,7 +607,7 @@ namespace ProcessHoist {
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessHoist::HoistRequestPlugin_deserialize_sample( 
+        result= SafeHoistFunctions::HoistRequestPlugin_deserialize_sample( 
             endpoint_data, (sample != NULL)?*sample:NULL,
             stream, deserialize_encapsulation, deserialize_sample, 
             endpoint_plugin_qos);
@@ -624,6 +645,13 @@ namespace ProcessHoist {
 
         if (skip_sample) {
 
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::UuidPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -701,6 +729,9 @@ namespace ProcessHoist {
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
         current_alignment +=DataTypes::PriorityPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
@@ -769,6 +800,8 @@ namespace ProcessHoist {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::PriorityPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
@@ -824,6 +857,9 @@ namespace ProcessHoist {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::PriorityPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->priority);
@@ -947,7 +983,7 @@ namespace ProcessHoist {
         RTIBool result;
         if (drop_sample) {} /* To avoid warnings */
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessHoist::HoistRequestPlugin_deserialize_key_sample(
+        result= SafeHoistFunctions::HoistRequestPlugin_deserialize_key_sample(
             endpoint_data, (sample != NULL)?*sample:NULL, stream,
             deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
         if (result) {
@@ -1051,6 +1087,14 @@ namespace ProcessHoist {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::PriorityPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -1155,14 +1199,14 @@ namespace ProcessHoist {
         RTICdrStream_resetPosition(md5Stream);
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-        if (!ProcessHoist::HoistRequestPlugin_serialize_key(
+        if (!SafeHoistFunctions::HoistRequestPlugin_serialize_key(
             endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-            size = (int)ProcessHoist::HoistRequestPlugin_get_serialized_sample_size(
+            size = (int)SafeHoistFunctions::HoistRequestPlugin_get_serialized_sample_size(
                 endpoint_data,
                 RTI_FALSE,
                 RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -1187,7 +1231,7 @@ namespace ProcessHoist {
                 RTICdrStream_getBufferLength(md5Stream));
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-            if (!ProcessHoist::HoistRequestPlugin_serialize_key(
+            if (!SafeHoistFunctions::HoistRequestPlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
@@ -1274,7 +1318,7 @@ namespace ProcessHoist {
             RTICdrStream_restoreAlignment(stream,position);
         }
 
-        if (!ProcessHoist::HoistRequestPlugin_instance_to_keyhash(
+        if (!SafeHoistFunctions::HoistRequestPlugin_instance_to_keyhash(
             endpoint_data, keyhash, sample)) {
             return RTI_FALSE;
         }
@@ -1302,20 +1346,20 @@ namespace ProcessHoist {
         /* set up parent's function pointers */
         plugin->onParticipantAttached =
         (PRESTypePluginOnParticipantAttachedCallback)
-        ProcessHoist::HoistRequestPlugin_on_participant_attached;
+        SafeHoistFunctions::HoistRequestPlugin_on_participant_attached;
         plugin->onParticipantDetached =
         (PRESTypePluginOnParticipantDetachedCallback)
-        ProcessHoist::HoistRequestPlugin_on_participant_detached;
+        SafeHoistFunctions::HoistRequestPlugin_on_participant_detached;
         plugin->onEndpointAttached =
         (PRESTypePluginOnEndpointAttachedCallback)
-        ProcessHoist::HoistRequestPlugin_on_endpoint_attached;
+        SafeHoistFunctions::HoistRequestPlugin_on_endpoint_attached;
         plugin->onEndpointDetached =
         (PRESTypePluginOnEndpointDetachedCallback)
-        ProcessHoist::HoistRequestPlugin_on_endpoint_detached;
+        SafeHoistFunctions::HoistRequestPlugin_on_endpoint_detached;
 
         plugin->copySampleFnc =
         (PRESTypePluginCopySampleFunction)
-        ProcessHoist::HoistRequestPlugin_copy_sample;
+        SafeHoistFunctions::HoistRequestPlugin_copy_sample;
         plugin->createSampleFnc =
         (PRESTypePluginCreateSampleFunction)
         HoistRequestPlugin_create_sample;
@@ -1325,16 +1369,16 @@ namespace ProcessHoist {
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
-        ProcessHoist::HoistRequestPlugin_serialize;
+        SafeHoistFunctions::HoistRequestPlugin_serialize;
         plugin->deserializeFnc =
         (PRESTypePluginDeserializeFunction)
-        ProcessHoist::HoistRequestPlugin_deserialize;
+        SafeHoistFunctions::HoistRequestPlugin_deserialize;
         plugin->getSerializedSampleMaxSizeFnc =
         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-        ProcessHoist::HoistRequestPlugin_get_serialized_sample_max_size;
+        SafeHoistFunctions::HoistRequestPlugin_get_serialized_sample_max_size;
         plugin->getSerializedSampleMinSizeFnc =
         (PRESTypePluginGetSerializedSampleMinSizeFunction)
-        ProcessHoist::HoistRequestPlugin_get_serialized_sample_min_size;
+        SafeHoistFunctions::HoistRequestPlugin_get_serialized_sample_min_size;
 
         plugin->getSampleFnc =
         (PRESTypePluginGetSampleFunction)
@@ -1345,27 +1389,27 @@ namespace ProcessHoist {
 
         plugin->getKeyKindFnc =
         (PRESTypePluginGetKeyKindFunction)
-        ProcessHoist::HoistRequestPlugin_get_key_kind;
+        SafeHoistFunctions::HoistRequestPlugin_get_key_kind;
 
         plugin->getSerializedKeyMaxSizeFnc =   
         (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-        ProcessHoist::HoistRequestPlugin_get_serialized_key_max_size;
+        SafeHoistFunctions::HoistRequestPlugin_get_serialized_key_max_size;
         plugin->serializeKeyFnc =
         (PRESTypePluginSerializeKeyFunction)
-        ProcessHoist::HoistRequestPlugin_serialize_key;
+        SafeHoistFunctions::HoistRequestPlugin_serialize_key;
         plugin->deserializeKeyFnc =
         (PRESTypePluginDeserializeKeyFunction)
-        ProcessHoist::HoistRequestPlugin_deserialize_key;
+        SafeHoistFunctions::HoistRequestPlugin_deserialize_key;
         plugin->deserializeKeySampleFnc =
         (PRESTypePluginDeserializeKeySampleFunction)
-        ProcessHoist::HoistRequestPlugin_deserialize_key_sample;
+        SafeHoistFunctions::HoistRequestPlugin_deserialize_key_sample;
 
         plugin-> instanceToKeyHashFnc = 
         (PRESTypePluginInstanceToKeyHashFunction)
-        ProcessHoist::HoistRequestPlugin_instance_to_keyhash;
+        SafeHoistFunctions::HoistRequestPlugin_instance_to_keyhash;
         plugin->serializedSampleToKeyHashFnc = 
         (PRESTypePluginSerializedSampleToKeyHashFunction)
-        ProcessHoist::HoistRequestPlugin_serialized_sample_to_keyhash;
+        SafeHoistFunctions::HoistRequestPlugin_serialized_sample_to_keyhash;
 
         plugin->getKeyFnc =
         (PRESTypePluginGetKeyFunction)
@@ -1376,12 +1420,12 @@ namespace ProcessHoist {
 
         plugin->instanceToKeyFnc =
         (PRESTypePluginInstanceToKeyFunction)
-        ProcessHoist::HoistRequestPlugin_instance_to_key;
+        SafeHoistFunctions::HoistRequestPlugin_instance_to_key;
         plugin->keyToInstanceFnc =
         (PRESTypePluginKeyToInstanceFunction)
-        ProcessHoist::HoistRequestPlugin_key_to_instance;
+        SafeHoistFunctions::HoistRequestPlugin_key_to_instance;
         plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-        plugin->typeCode =  (struct RTICdrTypeCode *)ProcessHoist::HoistRequest_get_typecode();
+        plugin->typeCode =  (struct RTICdrTypeCode *)SafeHoistFunctions::HoistRequest_get_typecode();
 
         plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
@@ -1394,7 +1438,7 @@ namespace ProcessHoist {
         HoistRequestPlugin_return_buffer;
         plugin->getSerializedSampleSizeFnc =
         (PRESTypePluginGetSerializedSampleSizeFunction)
-        ProcessHoist::HoistRequestPlugin_get_serialized_sample_size;
+        SafeHoistFunctions::HoistRequestPlugin_get_serialized_sample_size;
 
         plugin->endpointTypeName = HoistRequestTYPENAME;
 
@@ -1424,7 +1468,7 @@ namespace ProcessHoist {
             &sample, HoistObjective);
 
         if(sample != NULL) {
-            if (!ProcessHoist::HoistObjective_initialize_w_params(sample,alloc_params)) {
+            if (!SafeHoistFunctions::HoistObjective_initialize_w_params(sample,alloc_params)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -1440,7 +1484,7 @@ namespace ProcessHoist {
             &sample, HoistObjective);
 
         if(sample != NULL) {
-            if (!ProcessHoist::HoistObjective_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!SafeHoistFunctions::HoistObjective_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -1451,7 +1495,7 @@ namespace ProcessHoist {
     HoistObjective *
     HoistObjectivePluginSupport_create_data(void)
     {
-        return ProcessHoist::HoistObjectivePluginSupport_create_data_ex(RTI_TRUE);
+        return SafeHoistFunctions::HoistObjectivePluginSupport_create_data_ex(RTI_TRUE);
     }
 
     void 
@@ -1459,7 +1503,7 @@ namespace ProcessHoist {
         HoistObjective *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-        ProcessHoist::HoistObjective_finalize_w_params(sample,dealloc_params);
+        SafeHoistFunctions::HoistObjective_finalize_w_params(sample,dealloc_params);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -1468,7 +1512,7 @@ namespace ProcessHoist {
     HoistObjectivePluginSupport_destroy_data_ex(
         HoistObjective *sample,RTIBool deallocate_pointers) {
 
-        ProcessHoist::HoistObjective_finalize_ex(sample,deallocate_pointers);
+        SafeHoistFunctions::HoistObjective_finalize_ex(sample,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -1477,7 +1521,7 @@ namespace ProcessHoist {
     HoistObjectivePluginSupport_destroy_data(
         HoistObjective *sample) {
 
-        ProcessHoist::HoistObjectivePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+        SafeHoistFunctions::HoistObjectivePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
     }
 
@@ -1486,7 +1530,7 @@ namespace ProcessHoist {
         HoistObjective *dst,
         const HoistObjective *src)
     {
-        return ProcessHoist::HoistObjective_copy(dst,src);
+        return SafeHoistFunctions::HoistObjective_copy(dst,src);
     }
 
     void 
@@ -1512,6 +1556,9 @@ namespace ProcessHoist {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
+
         DataTypes::TimePluginSupport_print_data(
             &sample->estimatedDuration, "estimatedDuration", indent_level + 1);
 
@@ -1519,7 +1566,7 @@ namespace ProcessHoist {
             &sample->targetVelocity, "targetVelocity", indent_level + 1);    
 
         RTICdrType_printDouble(
-            &sample->targetDestination, "targetDestination", indent_level + 1);    
+            &sample->targetPosition, "targetPosition", indent_level + 1);    
 
     }
     HoistObjective *
@@ -1529,21 +1576,21 @@ namespace ProcessHoist {
         RTIOsapiHeap_allocateStructure(
             &key, HoistObjectiveKeyHolder);
 
-        ProcessHoist::HoistObjective_initialize_ex(key,allocate_pointers, RTI_TRUE);
+        SafeHoistFunctions::HoistObjective_initialize_ex(key,allocate_pointers, RTI_TRUE);
         return key;
     }
 
     HoistObjective *
     HoistObjectivePluginSupport_create_key(void)
     {
-        return  ProcessHoist::HoistObjectivePluginSupport_create_key_ex(RTI_TRUE);
+        return  SafeHoistFunctions::HoistObjectivePluginSupport_create_key_ex(RTI_TRUE);
     }
 
     void 
     HoistObjectivePluginSupport_destroy_key_ex(
         HoistObjectiveKeyHolder *key,RTIBool deallocate_pointers)
     {
-        ProcessHoist::HoistObjective_finalize_ex(key,deallocate_pointers);
+        SafeHoistFunctions::HoistObjective_finalize_ex(key,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(key);
     }
@@ -1552,7 +1599,7 @@ namespace ProcessHoist {
     HoistObjectivePluginSupport_destroy_key(
         HoistObjectiveKeyHolder *key) {
 
-        ProcessHoist::HoistObjectivePluginSupport_destroy_key_ex(key,RTI_TRUE);
+        SafeHoistFunctions::HoistObjectivePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
     }
 
@@ -1606,18 +1653,18 @@ namespace ProcessHoist {
             participant_data,
             endpoint_info,
             (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-            ProcessHoist::HoistObjectivePluginSupport_create_data,
+            SafeHoistFunctions::HoistObjectivePluginSupport_create_data,
             (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-            ProcessHoist::HoistObjectivePluginSupport_destroy_data,
+            SafeHoistFunctions::HoistObjectivePluginSupport_destroy_data,
             (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-            ProcessHoist::HoistObjectivePluginSupport_create_key ,            
+            SafeHoistFunctions::HoistObjectivePluginSupport_create_key ,            
             (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-            ProcessHoist::HoistObjectivePluginSupport_destroy_key);
+            SafeHoistFunctions::HoistObjectivePluginSupport_destroy_key);
 
         if (epd == NULL) {
             return NULL;
         } 
-        serializedKeyMaxSize =  ProcessHoist::HoistObjectivePlugin_get_serialized_key_max_size(
+        serializedKeyMaxSize =  SafeHoistFunctions::HoistObjectivePlugin_get_serialized_key_max_size(
             epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
         if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -1628,7 +1675,7 @@ namespace ProcessHoist {
         }
 
         if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-            serializedSampleMaxSize = ProcessHoist::HoistObjectivePlugin_get_serialized_sample_max_size(
+            serializedSampleMaxSize = SafeHoistFunctions::HoistObjectivePlugin_get_serialized_sample_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -1637,9 +1684,9 @@ namespace ProcessHoist {
                 epd,
                 endpoint_info,
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                ProcessHoist::HoistObjectivePlugin_get_serialized_sample_max_size, epd,
+                SafeHoistFunctions::HoistObjectivePlugin_get_serialized_sample_max_size, epd,
                 (PRESTypePluginGetSerializedSampleSizeFunction)
-                ProcessHoist::HoistObjectivePlugin_get_serialized_sample_size,
+                SafeHoistFunctions::HoistObjectivePlugin_get_serialized_sample_size,
                 epd) == RTI_FALSE) {
                 PRESTypePluginDefaultEndpointData_delete(epd);
                 return NULL;
@@ -1677,7 +1724,7 @@ namespace ProcessHoist {
         const HoistObjective *src)
     {
         if (endpoint_data) {} /* To avoid warnings */
-        return ProcessHoist::HoistObjectivePluginSupport_copy_data(dst,src);
+        return SafeHoistFunctions::HoistObjectivePluginSupport_copy_data(dst,src);
     }
 
     /* ----------------------------------------------------------------------------
@@ -1726,6 +1773,16 @@ namespace ProcessHoist {
                 return RTI_FALSE;
             }
 
+            if(!DataTypes::UuidPlugin_serialize(
+                endpoint_data,
+                &sample->objectiveId,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
             if(!DataTypes::TimePlugin_serialize(
                 endpoint_data,
                 &sample->estimatedDuration,
@@ -1742,7 +1799,7 @@ namespace ProcessHoist {
             }
 
             if (!RTICdrStream_serializeDouble(
-                stream, &sample->targetDestination)) {
+                stream, &sample->targetPosition)) {
                 return RTI_FALSE;
             }
 
@@ -1781,11 +1838,19 @@ namespace ProcessHoist {
         }
         if(deserialize_sample) {
 
-            ProcessHoist::HoistObjective_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+            SafeHoistFunctions::HoistObjective_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
                 &sample->id,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::UuidPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -1804,7 +1869,7 @@ namespace ProcessHoist {
                 goto fin; 
             }
             if (!RTICdrStream_deserializeDouble(
-                stream, &sample->targetDestination)) {
+                stream, &sample->targetPosition)) {
                 goto fin; 
             }
         }
@@ -1860,7 +1925,7 @@ namespace ProcessHoist {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, *length);
 
-        result = ProcessHoist::HoistObjectivePlugin_serialize(
+        result = SafeHoistFunctions::HoistObjectivePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
             RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
@@ -1901,7 +1966,7 @@ namespace ProcessHoist {
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessHoist::HoistObjectivePlugin_deserialize_sample( 
+        result= SafeHoistFunctions::HoistObjectivePlugin_deserialize_sample( 
             endpoint_data, (sample != NULL)?*sample:NULL,
             stream, deserialize_encapsulation, deserialize_sample, 
             endpoint_plugin_qos);
@@ -1939,6 +2004,13 @@ namespace ProcessHoist {
 
         if (skip_sample) {
 
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
             if (!DataTypes::UuidPlugin_skip(
                 endpoint_data,
                 stream, 
@@ -1998,6 +2070,9 @@ namespace ProcessHoist {
             current_alignment = 0;
             initial_alignment = 0;
         }
+
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
@@ -2064,6 +2139,8 @@ namespace ProcessHoist {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -2115,6 +2192,9 @@ namespace ProcessHoist {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->estimatedDuration);
@@ -2232,7 +2312,7 @@ namespace ProcessHoist {
         RTIBool result;
         if (drop_sample) {} /* To avoid warnings */
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessHoist::HoistObjectivePlugin_deserialize_key_sample(
+        result= SafeHoistFunctions::HoistObjectivePlugin_deserialize_key_sample(
             endpoint_data, (sample != NULL)?*sample:NULL, stream,
             deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
         if (result) {
@@ -2336,6 +2416,14 @@ namespace ProcessHoist {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
+            if (!DataTypes::UuidPlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
             if (!DataTypes::TimePlugin_skip(
                 endpoint_data,
                 stream, 
@@ -2424,14 +2512,14 @@ namespace ProcessHoist {
         RTICdrStream_resetPosition(md5Stream);
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-        if (!ProcessHoist::HoistObjectivePlugin_serialize_key(
+        if (!SafeHoistFunctions::HoistObjectivePlugin_serialize_key(
             endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-            size = (int)ProcessHoist::HoistObjectivePlugin_get_serialized_sample_size(
+            size = (int)SafeHoistFunctions::HoistObjectivePlugin_get_serialized_sample_size(
                 endpoint_data,
                 RTI_FALSE,
                 RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -2456,7 +2544,7 @@ namespace ProcessHoist {
                 RTICdrStream_getBufferLength(md5Stream));
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-            if (!ProcessHoist::HoistObjectivePlugin_serialize_key(
+            if (!SafeHoistFunctions::HoistObjectivePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
@@ -2543,7 +2631,7 @@ namespace ProcessHoist {
             RTICdrStream_restoreAlignment(stream,position);
         }
 
-        if (!ProcessHoist::HoistObjectivePlugin_instance_to_keyhash(
+        if (!SafeHoistFunctions::HoistObjectivePlugin_instance_to_keyhash(
             endpoint_data, keyhash, sample)) {
             return RTI_FALSE;
         }
@@ -2571,20 +2659,20 @@ namespace ProcessHoist {
         /* set up parent's function pointers */
         plugin->onParticipantAttached =
         (PRESTypePluginOnParticipantAttachedCallback)
-        ProcessHoist::HoistObjectivePlugin_on_participant_attached;
+        SafeHoistFunctions::HoistObjectivePlugin_on_participant_attached;
         plugin->onParticipantDetached =
         (PRESTypePluginOnParticipantDetachedCallback)
-        ProcessHoist::HoistObjectivePlugin_on_participant_detached;
+        SafeHoistFunctions::HoistObjectivePlugin_on_participant_detached;
         plugin->onEndpointAttached =
         (PRESTypePluginOnEndpointAttachedCallback)
-        ProcessHoist::HoistObjectivePlugin_on_endpoint_attached;
+        SafeHoistFunctions::HoistObjectivePlugin_on_endpoint_attached;
         plugin->onEndpointDetached =
         (PRESTypePluginOnEndpointDetachedCallback)
-        ProcessHoist::HoistObjectivePlugin_on_endpoint_detached;
+        SafeHoistFunctions::HoistObjectivePlugin_on_endpoint_detached;
 
         plugin->copySampleFnc =
         (PRESTypePluginCopySampleFunction)
-        ProcessHoist::HoistObjectivePlugin_copy_sample;
+        SafeHoistFunctions::HoistObjectivePlugin_copy_sample;
         plugin->createSampleFnc =
         (PRESTypePluginCreateSampleFunction)
         HoistObjectivePlugin_create_sample;
@@ -2594,16 +2682,16 @@ namespace ProcessHoist {
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
-        ProcessHoist::HoistObjectivePlugin_serialize;
+        SafeHoistFunctions::HoistObjectivePlugin_serialize;
         plugin->deserializeFnc =
         (PRESTypePluginDeserializeFunction)
-        ProcessHoist::HoistObjectivePlugin_deserialize;
+        SafeHoistFunctions::HoistObjectivePlugin_deserialize;
         plugin->getSerializedSampleMaxSizeFnc =
         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-        ProcessHoist::HoistObjectivePlugin_get_serialized_sample_max_size;
+        SafeHoistFunctions::HoistObjectivePlugin_get_serialized_sample_max_size;
         plugin->getSerializedSampleMinSizeFnc =
         (PRESTypePluginGetSerializedSampleMinSizeFunction)
-        ProcessHoist::HoistObjectivePlugin_get_serialized_sample_min_size;
+        SafeHoistFunctions::HoistObjectivePlugin_get_serialized_sample_min_size;
 
         plugin->getSampleFnc =
         (PRESTypePluginGetSampleFunction)
@@ -2614,27 +2702,27 @@ namespace ProcessHoist {
 
         plugin->getKeyKindFnc =
         (PRESTypePluginGetKeyKindFunction)
-        ProcessHoist::HoistObjectivePlugin_get_key_kind;
+        SafeHoistFunctions::HoistObjectivePlugin_get_key_kind;
 
         plugin->getSerializedKeyMaxSizeFnc =   
         (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-        ProcessHoist::HoistObjectivePlugin_get_serialized_key_max_size;
+        SafeHoistFunctions::HoistObjectivePlugin_get_serialized_key_max_size;
         plugin->serializeKeyFnc =
         (PRESTypePluginSerializeKeyFunction)
-        ProcessHoist::HoistObjectivePlugin_serialize_key;
+        SafeHoistFunctions::HoistObjectivePlugin_serialize_key;
         plugin->deserializeKeyFnc =
         (PRESTypePluginDeserializeKeyFunction)
-        ProcessHoist::HoistObjectivePlugin_deserialize_key;
+        SafeHoistFunctions::HoistObjectivePlugin_deserialize_key;
         plugin->deserializeKeySampleFnc =
         (PRESTypePluginDeserializeKeySampleFunction)
-        ProcessHoist::HoistObjectivePlugin_deserialize_key_sample;
+        SafeHoistFunctions::HoistObjectivePlugin_deserialize_key_sample;
 
         plugin-> instanceToKeyHashFnc = 
         (PRESTypePluginInstanceToKeyHashFunction)
-        ProcessHoist::HoistObjectivePlugin_instance_to_keyhash;
+        SafeHoistFunctions::HoistObjectivePlugin_instance_to_keyhash;
         plugin->serializedSampleToKeyHashFnc = 
         (PRESTypePluginSerializedSampleToKeyHashFunction)
-        ProcessHoist::HoistObjectivePlugin_serialized_sample_to_keyhash;
+        SafeHoistFunctions::HoistObjectivePlugin_serialized_sample_to_keyhash;
 
         plugin->getKeyFnc =
         (PRESTypePluginGetKeyFunction)
@@ -2645,12 +2733,12 @@ namespace ProcessHoist {
 
         plugin->instanceToKeyFnc =
         (PRESTypePluginInstanceToKeyFunction)
-        ProcessHoist::HoistObjectivePlugin_instance_to_key;
+        SafeHoistFunctions::HoistObjectivePlugin_instance_to_key;
         plugin->keyToInstanceFnc =
         (PRESTypePluginKeyToInstanceFunction)
-        ProcessHoist::HoistObjectivePlugin_key_to_instance;
+        SafeHoistFunctions::HoistObjectivePlugin_key_to_instance;
         plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-        plugin->typeCode =  (struct RTICdrTypeCode *)ProcessHoist::HoistObjective_get_typecode();
+        plugin->typeCode =  (struct RTICdrTypeCode *)SafeHoistFunctions::HoistObjective_get_typecode();
 
         plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
@@ -2663,7 +2751,7 @@ namespace ProcessHoist {
         HoistObjectivePlugin_return_buffer;
         plugin->getSerializedSampleSizeFnc =
         (PRESTypePluginGetSerializedSampleSizeFunction)
-        ProcessHoist::HoistObjectivePlugin_get_serialized_sample_size;
+        SafeHoistFunctions::HoistObjectivePlugin_get_serialized_sample_size;
 
         plugin->endpointTypeName = HoistObjectiveTYPENAME;
 
@@ -2693,7 +2781,7 @@ namespace ProcessHoist {
             &sample, HoistState);
 
         if(sample != NULL) {
-            if (!ProcessHoist::HoistState_initialize_w_params(sample,alloc_params)) {
+            if (!SafeHoistFunctions::HoistState_initialize_w_params(sample,alloc_params)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -2709,7 +2797,7 @@ namespace ProcessHoist {
             &sample, HoistState);
 
         if(sample != NULL) {
-            if (!ProcessHoist::HoistState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!SafeHoistFunctions::HoistState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 RTIOsapiHeap_freeStructure(sample);
                 return NULL;
             }
@@ -2720,7 +2808,7 @@ namespace ProcessHoist {
     HoistState *
     HoistStatePluginSupport_create_data(void)
     {
-        return ProcessHoist::HoistStatePluginSupport_create_data_ex(RTI_TRUE);
+        return SafeHoistFunctions::HoistStatePluginSupport_create_data_ex(RTI_TRUE);
     }
 
     void 
@@ -2728,7 +2816,7 @@ namespace ProcessHoist {
         HoistState *sample,
         const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-        ProcessHoist::HoistState_finalize_w_params(sample,dealloc_params);
+        SafeHoistFunctions::HoistState_finalize_w_params(sample,dealloc_params);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -2737,7 +2825,7 @@ namespace ProcessHoist {
     HoistStatePluginSupport_destroy_data_ex(
         HoistState *sample,RTIBool deallocate_pointers) {
 
-        ProcessHoist::HoistState_finalize_ex(sample,deallocate_pointers);
+        SafeHoistFunctions::HoistState_finalize_ex(sample,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(sample);
     }
@@ -2746,7 +2834,7 @@ namespace ProcessHoist {
     HoistStatePluginSupport_destroy_data(
         HoistState *sample) {
 
-        ProcessHoist::HoistStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+        SafeHoistFunctions::HoistStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
     }
 
@@ -2755,7 +2843,7 @@ namespace ProcessHoist {
         HoistState *dst,
         const HoistState *src)
     {
-        return ProcessHoist::HoistState_copy(dst,src);
+        return SafeHoistFunctions::HoistState_copy(dst,src);
     }
 
     void 
@@ -2781,11 +2869,14 @@ namespace ProcessHoist {
         DataTypes::UuidPluginSupport_print_data(
             &sample->id, "id", indent_level + 1);
 
-        DataTypes::StatusPluginSupport_print_data(
-            &sample->status, "status", indent_level + 1);
+        DataTypes::UuidPluginSupport_print_data(
+            &sample->objectiveId, "objectiveId", indent_level + 1);
 
         DataTypes::TimePluginSupport_print_data(
             &sample->timestamp, "timestamp", indent_level + 1);
+
+        DataTypes::StatusPluginSupport_print_data(
+            &sample->status, "status", indent_level + 1);
 
         RTICdrType_printDouble(
             &sample->actualVelocity, "actualVelocity", indent_level + 1);    
@@ -2819,21 +2910,21 @@ namespace ProcessHoist {
         RTIOsapiHeap_allocateStructure(
             &key, HoistStateKeyHolder);
 
-        ProcessHoist::HoistState_initialize_ex(key,allocate_pointers, RTI_TRUE);
+        SafeHoistFunctions::HoistState_initialize_ex(key,allocate_pointers, RTI_TRUE);
         return key;
     }
 
     HoistState *
     HoistStatePluginSupport_create_key(void)
     {
-        return  ProcessHoist::HoistStatePluginSupport_create_key_ex(RTI_TRUE);
+        return  SafeHoistFunctions::HoistStatePluginSupport_create_key_ex(RTI_TRUE);
     }
 
     void 
     HoistStatePluginSupport_destroy_key_ex(
         HoistStateKeyHolder *key,RTIBool deallocate_pointers)
     {
-        ProcessHoist::HoistState_finalize_ex(key,deallocate_pointers);
+        SafeHoistFunctions::HoistState_finalize_ex(key,deallocate_pointers);
 
         RTIOsapiHeap_freeStructure(key);
     }
@@ -2842,7 +2933,7 @@ namespace ProcessHoist {
     HoistStatePluginSupport_destroy_key(
         HoistStateKeyHolder *key) {
 
-        ProcessHoist::HoistStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
+        SafeHoistFunctions::HoistStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
     }
 
@@ -2896,18 +2987,18 @@ namespace ProcessHoist {
             participant_data,
             endpoint_info,
             (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-            ProcessHoist::HoistStatePluginSupport_create_data,
+            SafeHoistFunctions::HoistStatePluginSupport_create_data,
             (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-            ProcessHoist::HoistStatePluginSupport_destroy_data,
+            SafeHoistFunctions::HoistStatePluginSupport_destroy_data,
             (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-            ProcessHoist::HoistStatePluginSupport_create_key ,            
+            SafeHoistFunctions::HoistStatePluginSupport_create_key ,            
             (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-            ProcessHoist::HoistStatePluginSupport_destroy_key);
+            SafeHoistFunctions::HoistStatePluginSupport_destroy_key);
 
         if (epd == NULL) {
             return NULL;
         } 
-        serializedKeyMaxSize =  ProcessHoist::HoistStatePlugin_get_serialized_key_max_size(
+        serializedKeyMaxSize =  SafeHoistFunctions::HoistStatePlugin_get_serialized_key_max_size(
             epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
         if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -2918,7 +3009,7 @@ namespace ProcessHoist {
         }
 
         if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-            serializedSampleMaxSize = ProcessHoist::HoistStatePlugin_get_serialized_sample_max_size(
+            serializedSampleMaxSize = SafeHoistFunctions::HoistStatePlugin_get_serialized_sample_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -2927,9 +3018,9 @@ namespace ProcessHoist {
                 epd,
                 endpoint_info,
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                ProcessHoist::HoistStatePlugin_get_serialized_sample_max_size, epd,
+                SafeHoistFunctions::HoistStatePlugin_get_serialized_sample_max_size, epd,
                 (PRESTypePluginGetSerializedSampleSizeFunction)
-                ProcessHoist::HoistStatePlugin_get_serialized_sample_size,
+                SafeHoistFunctions::HoistStatePlugin_get_serialized_sample_size,
                 epd) == RTI_FALSE) {
                 PRESTypePluginDefaultEndpointData_delete(epd);
                 return NULL;
@@ -2967,7 +3058,7 @@ namespace ProcessHoist {
         const HoistState *src)
     {
         if (endpoint_data) {} /* To avoid warnings */
-        return ProcessHoist::HoistStatePluginSupport_copy_data(dst,src);
+        return SafeHoistFunctions::HoistStatePluginSupport_copy_data(dst,src);
     }
 
     /* ----------------------------------------------------------------------------
@@ -3016,9 +3107,9 @@ namespace ProcessHoist {
                 return RTI_FALSE;
             }
 
-            if(!DataTypes::StatusPlugin_serialize(
+            if(!DataTypes::UuidPlugin_serialize(
                 endpoint_data,
-                &sample->status,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -3029,6 +3120,16 @@ namespace ProcessHoist {
             if(!DataTypes::TimePlugin_serialize(
                 endpoint_data,
                 &sample->timestamp,
+                stream,
+                RTI_FALSE, encapsulation_id,
+                RTI_TRUE,
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+
+            if(!DataTypes::StatusPlugin_serialize(
+                endpoint_data,
+                &sample->status,
                 stream,
                 RTI_FALSE, encapsulation_id,
                 RTI_TRUE,
@@ -3111,7 +3212,7 @@ namespace ProcessHoist {
         }
         if(deserialize_sample) {
 
-            ProcessHoist::HoistState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+            SafeHoistFunctions::HoistState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
             if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
@@ -3121,9 +3222,9 @@ namespace ProcessHoist {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
-            if(!DataTypes::StatusPlugin_deserialize_sample(
+            if(!DataTypes::UuidPlugin_deserialize_sample(
                 endpoint_data,
-                &sample->status,
+                &sample->objectiveId,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -3132,6 +3233,14 @@ namespace ProcessHoist {
             if(!DataTypes::TimePlugin_deserialize_sample(
                 endpoint_data,
                 &sample->timestamp,
+                stream,
+                RTI_FALSE, RTI_TRUE,
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if(!DataTypes::StatusPlugin_deserialize_sample(
+                endpoint_data,
+                &sample->status,
                 stream,
                 RTI_FALSE, RTI_TRUE,
                 endpoint_plugin_qos)) {
@@ -3222,7 +3331,7 @@ namespace ProcessHoist {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, *length);
 
-        result = ProcessHoist::HoistStatePlugin_serialize(
+        result = SafeHoistFunctions::HoistStatePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
             RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
@@ -3263,7 +3372,7 @@ namespace ProcessHoist {
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessHoist::HoistStatePlugin_deserialize_sample( 
+        result= SafeHoistFunctions::HoistStatePlugin_deserialize_sample( 
             endpoint_data, (sample != NULL)?*sample:NULL,
             stream, deserialize_encapsulation, deserialize_sample, 
             endpoint_plugin_qos);
@@ -3308,7 +3417,7 @@ namespace ProcessHoist {
                 endpoint_plugin_qos)) {
                 goto fin; 
             }
-            if (!DataTypes::StatusPlugin_skip(
+            if (!DataTypes::UuidPlugin_skip(
                 endpoint_data,
                 stream, 
                 RTI_FALSE, RTI_TRUE, 
@@ -3316,6 +3425,13 @@ namespace ProcessHoist {
                 goto fin; 
             }
             if (!DataTypes::TimePlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if (!DataTypes::StatusPlugin_skip(
                 endpoint_data,
                 stream, 
                 RTI_FALSE, RTI_TRUE, 
@@ -3389,10 +3505,13 @@ namespace ProcessHoist {
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
-        current_alignment +=DataTypes::StatusPlugin_get_serialized_sample_max_size_ex(
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
+        current_alignment +=DataTypes::StatusPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
 
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -3472,9 +3591,11 @@ namespace ProcessHoist {
 
         current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
-        current_alignment +=DataTypes::StatusPlugin_get_serialized_sample_min_size(
+        current_alignment +=DataTypes::UuidPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+        current_alignment +=DataTypes::StatusPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
@@ -3537,12 +3658,15 @@ namespace ProcessHoist {
         current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->id);
-        current_alignment += DataTypes::StatusPlugin_get_serialized_sample_size(
+        current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
-            current_alignment, &sample->status);
+            current_alignment, &sample->objectiveId);
         current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
             endpoint_data,RTI_FALSE, encapsulation_id,
             current_alignment, &sample->timestamp);
+        current_alignment += DataTypes::StatusPlugin_get_serialized_sample_size(
+            endpoint_data,RTI_FALSE, encapsulation_id,
+            current_alignment, &sample->status);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
@@ -3669,7 +3793,7 @@ namespace ProcessHoist {
         RTIBool result;
         if (drop_sample) {} /* To avoid warnings */
         stream->_xTypesState.unassignable = RTI_FALSE;
-        result= ProcessHoist::HoistStatePlugin_deserialize_key_sample(
+        result= SafeHoistFunctions::HoistStatePlugin_deserialize_key_sample(
             endpoint_data, (sample != NULL)?*sample:NULL, stream,
             deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
         if (result) {
@@ -3773,7 +3897,7 @@ namespace ProcessHoist {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
-            if (!DataTypes::StatusPlugin_skip(
+            if (!DataTypes::UuidPlugin_skip(
                 endpoint_data,
                 stream, 
                 RTI_FALSE, RTI_TRUE, 
@@ -3782,6 +3906,14 @@ namespace ProcessHoist {
             }
 
             if (!DataTypes::TimePlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+
+            if (!DataTypes::StatusPlugin_skip(
                 endpoint_data,
                 stream, 
                 RTI_FALSE, RTI_TRUE, 
@@ -3893,14 +4025,14 @@ namespace ProcessHoist {
         RTICdrStream_resetPosition(md5Stream);
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-        if (!ProcessHoist::HoistStatePlugin_serialize_key(
+        if (!SafeHoistFunctions::HoistStatePlugin_serialize_key(
             endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-            size = (int)ProcessHoist::HoistStatePlugin_get_serialized_sample_size(
+            size = (int)SafeHoistFunctions::HoistStatePlugin_get_serialized_sample_size(
                 endpoint_data,
                 RTI_FALSE,
                 RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -3925,7 +4057,7 @@ namespace ProcessHoist {
                 RTICdrStream_getBufferLength(md5Stream));
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-            if (!ProcessHoist::HoistStatePlugin_serialize_key(
+            if (!SafeHoistFunctions::HoistStatePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
@@ -4012,7 +4144,7 @@ namespace ProcessHoist {
             RTICdrStream_restoreAlignment(stream,position);
         }
 
-        if (!ProcessHoist::HoistStatePlugin_instance_to_keyhash(
+        if (!SafeHoistFunctions::HoistStatePlugin_instance_to_keyhash(
             endpoint_data, keyhash, sample)) {
             return RTI_FALSE;
         }
@@ -4040,20 +4172,20 @@ namespace ProcessHoist {
         /* set up parent's function pointers */
         plugin->onParticipantAttached =
         (PRESTypePluginOnParticipantAttachedCallback)
-        ProcessHoist::HoistStatePlugin_on_participant_attached;
+        SafeHoistFunctions::HoistStatePlugin_on_participant_attached;
         plugin->onParticipantDetached =
         (PRESTypePluginOnParticipantDetachedCallback)
-        ProcessHoist::HoistStatePlugin_on_participant_detached;
+        SafeHoistFunctions::HoistStatePlugin_on_participant_detached;
         plugin->onEndpointAttached =
         (PRESTypePluginOnEndpointAttachedCallback)
-        ProcessHoist::HoistStatePlugin_on_endpoint_attached;
+        SafeHoistFunctions::HoistStatePlugin_on_endpoint_attached;
         plugin->onEndpointDetached =
         (PRESTypePluginOnEndpointDetachedCallback)
-        ProcessHoist::HoistStatePlugin_on_endpoint_detached;
+        SafeHoistFunctions::HoistStatePlugin_on_endpoint_detached;
 
         plugin->copySampleFnc =
         (PRESTypePluginCopySampleFunction)
-        ProcessHoist::HoistStatePlugin_copy_sample;
+        SafeHoistFunctions::HoistStatePlugin_copy_sample;
         plugin->createSampleFnc =
         (PRESTypePluginCreateSampleFunction)
         HoistStatePlugin_create_sample;
@@ -4063,16 +4195,16 @@ namespace ProcessHoist {
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
-        ProcessHoist::HoistStatePlugin_serialize;
+        SafeHoistFunctions::HoistStatePlugin_serialize;
         plugin->deserializeFnc =
         (PRESTypePluginDeserializeFunction)
-        ProcessHoist::HoistStatePlugin_deserialize;
+        SafeHoistFunctions::HoistStatePlugin_deserialize;
         plugin->getSerializedSampleMaxSizeFnc =
         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-        ProcessHoist::HoistStatePlugin_get_serialized_sample_max_size;
+        SafeHoistFunctions::HoistStatePlugin_get_serialized_sample_max_size;
         plugin->getSerializedSampleMinSizeFnc =
         (PRESTypePluginGetSerializedSampleMinSizeFunction)
-        ProcessHoist::HoistStatePlugin_get_serialized_sample_min_size;
+        SafeHoistFunctions::HoistStatePlugin_get_serialized_sample_min_size;
 
         plugin->getSampleFnc =
         (PRESTypePluginGetSampleFunction)
@@ -4083,27 +4215,27 @@ namespace ProcessHoist {
 
         plugin->getKeyKindFnc =
         (PRESTypePluginGetKeyKindFunction)
-        ProcessHoist::HoistStatePlugin_get_key_kind;
+        SafeHoistFunctions::HoistStatePlugin_get_key_kind;
 
         plugin->getSerializedKeyMaxSizeFnc =   
         (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-        ProcessHoist::HoistStatePlugin_get_serialized_key_max_size;
+        SafeHoistFunctions::HoistStatePlugin_get_serialized_key_max_size;
         plugin->serializeKeyFnc =
         (PRESTypePluginSerializeKeyFunction)
-        ProcessHoist::HoistStatePlugin_serialize_key;
+        SafeHoistFunctions::HoistStatePlugin_serialize_key;
         plugin->deserializeKeyFnc =
         (PRESTypePluginDeserializeKeyFunction)
-        ProcessHoist::HoistStatePlugin_deserialize_key;
+        SafeHoistFunctions::HoistStatePlugin_deserialize_key;
         plugin->deserializeKeySampleFnc =
         (PRESTypePluginDeserializeKeySampleFunction)
-        ProcessHoist::HoistStatePlugin_deserialize_key_sample;
+        SafeHoistFunctions::HoistStatePlugin_deserialize_key_sample;
 
         plugin-> instanceToKeyHashFnc = 
         (PRESTypePluginInstanceToKeyHashFunction)
-        ProcessHoist::HoistStatePlugin_instance_to_keyhash;
+        SafeHoistFunctions::HoistStatePlugin_instance_to_keyhash;
         plugin->serializedSampleToKeyHashFnc = 
         (PRESTypePluginSerializedSampleToKeyHashFunction)
-        ProcessHoist::HoistStatePlugin_serialized_sample_to_keyhash;
+        SafeHoistFunctions::HoistStatePlugin_serialized_sample_to_keyhash;
 
         plugin->getKeyFnc =
         (PRESTypePluginGetKeyFunction)
@@ -4114,12 +4246,12 @@ namespace ProcessHoist {
 
         plugin->instanceToKeyFnc =
         (PRESTypePluginInstanceToKeyFunction)
-        ProcessHoist::HoistStatePlugin_instance_to_key;
+        SafeHoistFunctions::HoistStatePlugin_instance_to_key;
         plugin->keyToInstanceFnc =
         (PRESTypePluginKeyToInstanceFunction)
-        ProcessHoist::HoistStatePlugin_key_to_instance;
+        SafeHoistFunctions::HoistStatePlugin_key_to_instance;
         plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-        plugin->typeCode =  (struct RTICdrTypeCode *)ProcessHoist::HoistState_get_typecode();
+        plugin->typeCode =  (struct RTICdrTypeCode *)SafeHoistFunctions::HoistState_get_typecode();
 
         plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
@@ -4132,7 +4264,7 @@ namespace ProcessHoist {
         HoistStatePlugin_return_buffer;
         plugin->getSerializedSampleSizeFnc =
         (PRESTypePluginGetSerializedSampleSizeFunction)
-        ProcessHoist::HoistStatePlugin_get_serialized_sample_size;
+        SafeHoistFunctions::HoistStatePlugin_get_serialized_sample_size;
 
         plugin->endpointTypeName = HoistStateTYPENAME;
 
@@ -4144,5 +4276,5 @@ namespace ProcessHoist {
     {
         RTIOsapiHeap_freeStructure(plugin);
     } 
-} /* namespace ProcessHoist  */
+} /* namespace SafeHoistFunctions  */
 

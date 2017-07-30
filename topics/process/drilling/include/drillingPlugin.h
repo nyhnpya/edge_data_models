@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drillingPlugin_1428077238_h
-#define drillingPlugin_1428077238_h
+#ifndef drillingPlugin_1428077360_h
+#define drillingPlugin_1428077360_h
 
 #include "drilling.h"
 
@@ -916,5 +916,5 @@ namespace Hoisting {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* drillingPlugin_1428077238_h */
+#endif /* drillingPlugin_1428077360_h */
 
