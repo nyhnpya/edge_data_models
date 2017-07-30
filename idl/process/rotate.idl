@@ -38,12 +38,14 @@ module SafeRotationFunctions
     * | Variable          | Description                                        | Data Type        | Unit  |
     * | ----------------- | -------------------------------------------------- | ---------------- | ----- |
     * | id                | id of requestor                                    | DataTypes::Uuid  | N/A   |
+    * | objectiveId       | id of current objective                            | DataTypes::Uuid  | N/A   |
     * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time  | N/A   |
     * | targetRate        | requested traget in rad/s                          | double           | rad/s |
     */
     struct RotateObjective
     {
         DataTypes::Uuid  id;                //@key
+        DataTypes::Uuid  objectiveId; 
         DataTypes::Time  estimatedDuration; // estimated time current requestor owns the resource
         double           targetRate;        // current traget in rad/s
     };
@@ -70,8 +72,8 @@ module SafeRotationFunctions
     {
         DataTypes::Uuid   id;           //@key
         DataTypes::Uuid   objectiveId; 
-        DataTypes::Status status;
         DataTypes::Time   timestamp;        
+        DataTypes::Status status;
 
         // actuals
         double            actualRate;

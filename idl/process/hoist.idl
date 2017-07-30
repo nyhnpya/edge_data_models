@@ -40,6 +40,7 @@ module SafeHoistFunctions
     * | Variable          | Description                                      | Data Type       | Unit  |
     * | ----------------- | ------------------------------------------------ | ----------------| ------|
     * | id                | id of requestor                                  | DataTypes::Uuid | N/A   |
+    * | objectiveId       | id of current objective                          | DataTypes::Uuid | N/A   |
     * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time | N/A   |
     * | targetVelocity    | requested target in m/s                          | double          | m/sec |
     * | targetPosition    | requested target position in m                   | double          | m/sec |
@@ -47,6 +48,7 @@ module SafeHoistFunctions
     struct HoistObjective
     {
         DataTypes::Uuid  id; //@key
+        DataTypes::Uuid  objectiveId; 
         DataTypes::Time  estimatedDuration;
         double           targetVelocity;
         double           targetPosition;

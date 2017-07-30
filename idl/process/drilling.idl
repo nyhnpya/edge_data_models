@@ -24,6 +24,7 @@ module Hoisting
     struct DrillingObjective
     {
         DataTypes::Uuid     id; //@key
+        DataTypes::Uuid     objectiveId; 
         DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
         double              ropLimit;
         double              wobLimit;

@@ -38,12 +38,14 @@ module SafeCirculateFunctions
     * | Variable          | Description                                        | Data Type        | Unit    |
     * | ----------------- | -------------------------------------------------- | ----------       | ------- |
     * | id                | id of requestor                                    | DataTypes::Uuid  | N/A     |
+    * | objectiveId       | id of current objective                            | DataTypes::Uuid  | N/A     |
     * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time  | N/A     |
     * | targetFlowRate    | requetsed flow rate                                | double           | m/sec^3 |
     */
     struct CirculateObjective
     {
         DataTypes::Uuid     id; //@key
+        DataTypes::Uuid     objectiveId; 
         DataTypes::Time     estimatedDuration;
         double              targetFlowRate;
     };
@@ -71,6 +73,7 @@ module SafeCirculateFunctions
     struct CirculateState
     {
         DataTypes::Uuid   id;           //@key
+        DataTypes::Uuid   objectiveId; 
         DataTypes::Time   timestamp;
         DataTypes::Status status;
 

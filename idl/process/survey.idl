@@ -43,6 +43,7 @@ module DownholeFunctions
      * | Variable               | Description                                      | Data Type       | Unit  |
      * | ---------------------- | ------------------------------------------------ | ----------------| ------|
      * | id                     | id of requestor                                  | DataTypes::Uuid | N/A   |
+     * | objectiveId            | id of current objective                          | DataTypes::Uuid | N/A   |
      * | estimatedDuration      | estimated duration requestor needs the resource  | DataTypes::Time | N/A   |
      * | requestedSurveyQuality | confidence level 0 - 100                         | double          |       |
      *
@@ -50,6 +51,7 @@ module DownholeFunctions
     struct SurveyObjective
     {
         DataTypes::Uuid  id; //@key
+        DataTypes::Uuid  objectiveId; 
         DataTypes::Time  estimatedDuration;
         DataTypes::SurveyQuality requestedSurveyQuality;
     };

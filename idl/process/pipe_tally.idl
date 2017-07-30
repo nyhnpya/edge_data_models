@@ -29,6 +29,7 @@ module PipeHandling
     struct PipeTally
     {
         DataTypes::Uuid     id; //@key
+        DataTypes::Uuid     objectiveId; 
         DataTypes::Time     timestamp;
         string              serialNumber;
         unsigned long       jointNumber;
