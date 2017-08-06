@@ -7,7 +7,10 @@ CObjectiveStatePublisher::CObjectiveStatePublisher()
 
 CObjectiveStatePublisher::~CObjectiveStatePublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
+    if (m_pDataInstance != nullptr)
+    {
+        DDS_String_free(m_pDataInstance->id);
+    }
 }
 
 bool CObjectiveStatePublisher::Initialize()

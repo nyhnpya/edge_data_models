@@ -12,6 +12,15 @@ CObjectiveStateSubscriber::CObjectiveStateSubscriber() :
 
 CObjectiveStateSubscriber::~CObjectiveStateSubscriber()
 {
+    if (m_data.id != nullptr)
+    {
+        DDS_String_free(m_data.id);
+    }
+
+    if (m_data.parentId == nullptr)
+    {
+        DDS_String_free(m_data.parentId);
+    }
 }
 
 bool CObjectiveStateSubscriber::ValidData()
@@ -24,6 +33,19 @@ bool CObjectiveStateSubscriber::ValidSubscription()
 	return m_subscriptionMatched;
 }
 
+bool CObjectiveStateSubscriber::GetId(DataTypes::Uuid id)
+{
+    id = m_data.id;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CObjectiveStateSubscriber::GetParentId(DataTypes::Uuid parentId)
+{
+    parentId = m_data.parentId;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
 
 bool CObjectiveStateSubscriber::GetObjective(DataTypes::Objective &objective)
 {
@@ -31,7 +53,6 @@ bool CObjectiveStateSubscriber::GetObjective(DataTypes::Objective &objective)
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
-
 
 bool CObjectiveStateSubscriber::Create(int32_t domain)
 {
@@ -68,9 +89,20 @@ void CObjectiveStateSubscriber::DataAvailable(const Plan::ObjectiveState &data,
 
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
-        memcpy(m_data.id, data.id, 16);
-        m_data.timestamp.sec = sampleInfo.source_timestamp.sec;
-        m_data.timestamp.nanosec = sampleInfo.source_timestamp.nanosec;
+        if (m_data.id != nullptr)
+        {
+            DDS_String_free(m_data.id);
+        }
+
+        m_data.id = DDS_String_dup(data.id);
+
+        if (m_data.parentId == nullptr)
+        {
+            DDS_String_free(m_data.parentId);
+        }
+
+        m_data.parentId = DDS_String_dup(data.parentId);
+        m_data.timestamp = data.timestamp;
         m_data.objective = data.objective;
 
         if (m_pOnDataAvailable != nullptr)

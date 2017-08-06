@@ -17,6 +17,7 @@ class CDrillingStatePublisher : public TPublisher< Hoisting::DrillingState >
     bool PublishSample();
 
     // Topic setters
+    void SetObjectiveId(DataTypes::Uuid pObjectiveId);
     void SetTimestamp(const DataTypes::Time timestamp);
     void SetRopActual(const double ropActual);
     void SetWobActual(const double wobActual);

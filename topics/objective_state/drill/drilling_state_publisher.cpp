@@ -20,6 +20,18 @@ bool CDrillingStatePublisher::Initialize()
     return true;
 }
 
+void CDrillingStatePublisher::SetObjectiveId(DataTypes::Uuid pObjectiveId)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->objectiveId = DDS_String_dup(pObjectiveId);
+    }
+    else
+    {
+        LOG_ERROR("Failed to set objective id because of uninitialized sample");
+    }
+}
+
 void CDrillingStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)
