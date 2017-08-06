@@ -1,0 +1,57 @@
+#include "base_data_types.idl"
+
+module Simulation
+{
+    //@copy-c-declaration static const char SIM_AUTODRILLER_REQUEST[] = "SimAutoDrillerRequest";
+    struct AutoDrillerRequest
+    {
+        DataTypes::Uuid     id; //@key
+        double              hookload;
+        double              ropLimit;
+        double              wobLimit;
+        double              differentialPressureLimit;
+        double              torqueLimit;
+        boolean             ropMode;
+        boolean             wobMode;
+        boolean             differentialPressureMode;
+        boolean             torqueMode;
+    };
+
+    //@copy-c-declaration static const char SIM_AUTODRILLER_OBJECTIVE[] = "SimAutoDrillerObjective";
+    struct AutoDrillerObjective
+    {
+        DataTypes::Uuid     id; //@key
+        double              hookload;
+        double              ropLimit;
+        double              wobLimit;
+        double              differentialPressureLimit;
+        double              torqueLimit;
+        boolean             ropMode;
+        boolean             wobMode;
+        boolean             differentialPressureMode;
+        boolean             torqueMode;
+    };
+
+    //@copy-c-declaration static const char SIM_AUTODRILLER_STATE[] = "SimAutoDrillerState";
+    struct AutoDrillerState
+    {
+        DataTypes::Uuid id; //@key
+        double          hookloadActual;
+        double          ropActual;
+        double          wobActual;
+        double          differentialPressureActual;
+        double          torqueActual;
+        double          ropLimit;
+        double          wobLimit;
+        double          differentialPressureLimit;
+        double          torqueLimit;
+        boolean         ropMode;
+        boolean         wobMode;
+        boolean         differentialPressureMode;
+        boolean         torqueMode;
+        double          ropTarget;
+        double          wobTarget;
+        double          differentialPressureTarget;
+        double          torqueTarget;
+    };
+};

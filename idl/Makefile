@@ -202,3 +202,11 @@ process_info.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/system/process_info
 	-@rm -rf $(TMPOUTDIR)
 
+drill_simulation.cpy: 
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/simulation
+	mkdir -p $(TOPIC_HOME)/simulation/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/simulation/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/simulation
+	-@rm -rf $(TMPOUTDIR)
+
