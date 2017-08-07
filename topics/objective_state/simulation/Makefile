@@ -51,7 +51,7 @@ PACKAGE_DESCRIPTION = "Library package for the Ensign sim_drill_request API."
 PACKAGE_EXTENDED_DESCRIPTION = "core files for Ensign sim_drill_request API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libsim_drill
-PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libsim_drill-dev
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libsimulation_drill-dev
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
