@@ -6,10 +6,10 @@
 #include "drilling_calibration.h"
 #include "drilling_calibrationSupport.h"
 
-class CDrillingCalibrationRequestSubscriber : public TSubscriber< CalibrationHoisting::DrillingCalibrationRequest >
+class CDrillingCalibrationRequestSubscriber : public TSubscriber< nec::control::DrillingCalibrationRequest >
 {
  public:
-    typedef std::function<void(const CalibrationHoisting::DrillingCalibrationRequest &data)> OnDataAvailableEvent;
+    typedef std::function<void(const nec::control::DrillingCalibrationRequest &data)> OnDataAvailableEvent;
 
     CDrillingCalibrationRequestSubscriber();
     ~CDrillingCalibrationRequestSubscriber();
@@ -32,14 +32,14 @@ class CDrillingCalibrationRequestSubscriber : public TSubscriber< CalibrationHoi
     bool GetTorqueIntegral(double &torqueIntegral);
 
  protected:
-    void DataAvailable(const CalibrationHoisting::DrillingCalibrationRequest &data,
+    void DataAvailable(const nec::control::DrillingCalibrationRequest &data,
                const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
  private:
-    CalibrationHoisting::DrillingCalibrationRequest m_data;
+    nec::control::DrillingCalibrationRequest m_data;
     DDS::SampleInfo                                 m_sampleInfo;
     DDS::LivelinessChangedStatus                    m_livelinessStatus;
     OnDataAvailableEvent                            m_pOnDataAvailable;

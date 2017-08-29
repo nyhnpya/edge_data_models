@@ -7,7 +7,7 @@
 #include "pipe_tally.h"
 #include "pipe_tallySupport.h"
 
-class CPipeTallyStatePublisher : public TPublisher< PipeHandling::PipeTally>
+class CPipeTallyStatePublisher : public TPublisher< nec::process::PipeTally>
 {
 public:
     /// @return singleton instance

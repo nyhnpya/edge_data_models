@@ -15,107 +15,109 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace Plan {
+namespace process {
+    namespace plan {
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'ObjectiveState' support classes.
+        Configure and implement 'ObjectiveState' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   ObjectiveStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   ObjectiveStateTYPENAME
 
-    /* Defines */
-    #define TDataWriter ObjectiveStateDataWriter
-    #define TData       Plan::ObjectiveState
+        /* Defines */
+        #define TDataWriter ObjectiveStateDataWriter
+        #define TData       process::plan::ObjectiveState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   ObjectiveStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   ObjectiveStateTYPENAME
 
-    /* Defines */
-    #define TDataReader ObjectiveStateDataReader
-    #define TDataSeq    ObjectiveStateSeq
-    #define TData       Plan::ObjectiveState
+        /* Defines */
+        #define TDataReader ObjectiveStateDataReader
+        #define TDataSeq    ObjectiveStateSeq
+        #define TData       process::plan::ObjectiveState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    ObjectiveStateTYPENAME
-    #define TPlugin_new  Plan::ObjectiveStatePlugin_new
-    #define TPlugin_delete  Plan::ObjectiveStatePlugin_delete
+        /* Requires */
+        #define TTYPENAME    ObjectiveStateTYPENAME
+        #define TPlugin_new  process::plan::ObjectiveStatePlugin_new
+        #define TPlugin_delete  process::plan::ObjectiveStatePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport ObjectiveStateTypeSupport
-    #define TData        Plan::ObjectiveState
-    #define TDataReader  ObjectiveStateDataReader
-    #define TDataWriter  ObjectiveStateDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport ObjectiveStateTypeSupport
+        #define TData        process::plan::ObjectiveState
+        #define TDataReader  ObjectiveStateDataReader
+        #define TDataWriter  ObjectiveStateDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-} /* namespace Plan  */
+    } /* namespace plan  */
+} /* namespace process  */
 

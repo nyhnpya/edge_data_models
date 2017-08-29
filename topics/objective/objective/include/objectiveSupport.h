@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef objectiveSupport_1315698119_h
-#define objectiveSupport_1315698119_h
+#ifndef objectiveSupport_1315698183_h
+#define objectiveSupport_1315698183_h
 
 /* Uses */
 #include "objective.h"
@@ -26,37 +26,39 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace Plan {
-    /* ========================================================================= */
-    /**
-    Uses:     T
+namespace process {
+    namespace plan {
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(ObjectiveStateTypeSupport, ObjectiveState);
+        DDS_TYPESUPPORT_CPP(ObjectiveStateTypeSupport, ObjectiveState);
 
-    DDS_DATAWRITER_CPP(ObjectiveStateDataWriter, ObjectiveState);
-    DDS_DATAREADER_CPP(ObjectiveStateDataReader, ObjectiveStateSeq, ObjectiveState);
+        DDS_DATAWRITER_CPP(ObjectiveStateDataWriter, ObjectiveState);
+        DDS_DATAREADER_CPP(ObjectiveStateDataReader, ObjectiveStateSeq, ObjectiveState);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-} /* namespace Plan  */
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+    } /* namespace plan  */
+} /* namespace process  */
 
-#endif  /* objectiveSupport_1315698119_h */
+#endif  /* objectiveSupport_1315698183_h */
 

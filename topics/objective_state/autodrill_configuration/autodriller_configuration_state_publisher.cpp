@@ -986,7 +986,7 @@ bool CAutoDrillerConfigurationStatePublisher::PublishSample()
 bool CAutoDrillerConfigurationStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              AutoDrillerConfiguration::HMI_STATE,
+                              nec::control::HMI_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

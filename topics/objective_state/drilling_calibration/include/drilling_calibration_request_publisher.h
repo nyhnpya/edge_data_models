@@ -6,7 +6,7 @@
 #include "drilling_calibration.h"
 #include "drilling_calibrationSupport.h"
 
-class CDrillingCalibrationRequestPublisher : public TPublisher< CalibrationHoisting::DrillingCalibrationRequest >
+class CDrillingCalibrationRequestPublisher : public TPublisher< nec::control::DrillingCalibrationRequest >
 {
  public:
     CDrillingCalibrationRequestPublisher();

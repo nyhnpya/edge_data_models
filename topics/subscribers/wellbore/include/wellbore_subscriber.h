@@ -7,10 +7,10 @@
 #include "wellbore.h"
 #include "wellboreSupport.h"
 
-class CWellboreStateSubscriber : public TSubscriber< Downhole::Wellbore>
+class CWellboreStateSubscriber : public TSubscriber< nec::process::Wellbore>
 {
 public:
-    typedef std::function<void(const Downhole::Wellbore &data)> OnDataAvailableEvent;
+    typedef std::function<void(const nec::process::Wellbore &data)> OnDataAvailableEvent;
 
     CWellboreStateSubscriber();
     virtual ~CWellboreStateSubscriber();
@@ -28,14 +28,14 @@ public:
 
 protected:
     ///Derived Methods
-    void DataAvailable(const Downhole::Wellbore &data,
+    void DataAvailable(const nec::process::Wellbore &data,
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
 private:
-    Downhole::Wellbore           m_data;
+    nec::process::Wellbore           m_data;
     DDS::SampleInfo              m_sampleInfo;
     DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent         m_pOnDataAvailable;

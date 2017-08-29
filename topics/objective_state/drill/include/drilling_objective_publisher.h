@@ -6,7 +6,7 @@
 #include "drilling.h"
 #include "drillingSupport.h"
 
-class CDrillingObjectivePublisher : public TPublisher< Hoisting::DrillingObjective >
+class CDrillingObjectivePublisher : public TPublisher< nec::process::DrillingObjective >
 {
  public:
     CDrillingObjectivePublisher();

@@ -23,7 +23,8 @@ TARGET_NAME = pipe_tally_subscriber
 # compilation flags
 ###############################################################################
 # Includes
-TARG_INCLUDES += -I /usr/local/include/dds-base
+TARG_INCLUDES += -I /usr/local/include/dds_base
+TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -I $(CURDIR)/include
 TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/pipe_handling/pipe_tally/include
 TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/base_data_types/include

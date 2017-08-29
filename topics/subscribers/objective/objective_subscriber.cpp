@@ -57,7 +57,7 @@ bool CObjectiveStateSubscriber::GetObjective(DataTypes::Objective &objective)
 bool CObjectiveStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               Plan::OBJECTIVE_STATE,
+                               process::plan::OBJECTIVE_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -82,7 +82,7 @@ void CObjectiveStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent
     m_pOnSubscriptionMatched = event;
 }
 
-void CObjectiveStateSubscriber::DataAvailable(const Plan::ObjectiveState &data,
+void CObjectiveStateSubscriber::DataAvailable(const process::plan::ObjectiveState &data,
                                               const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

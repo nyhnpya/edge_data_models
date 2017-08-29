@@ -1,47 +1,50 @@
 #include "base_data_types.idl"
 
-module EngineeringRotation
+module nec
 {
-    //@copy-c-declaration static const char ROTATE_ENGINEERING_REQUEST[] = "RotateEngineeringRequest";
-
-    struct RotateEngineeringRequest
+    module control
     {
-        DataTypes::Uuid     id;          //@key
-        DataTypes::Priority priority;    // priority of the request
-        DataTypes::Time     timeNeeded;  // time requester needs the resource
-        DataTypes::Time     duration;    // duration requester needs the resource
-        double              targetRate;  // requested traget in rad/s
-    };
+        //@copy-c-declaration static const char ROTATE_ENGINEERING_REQUEST[] = "RotateEngineeringRequest";
 
-    //@copy-c-declaration static const char ROTATE_ENGINEERING_OBJECTIVE[] = "RotateEngineeringObjective";
+        struct RotateEngineeringRequest
+        {
+            DataTypes::Uuid     id;          //@key
+            DataTypes::Priority priority;    // priority of the request
+            DataTypes::Time     timeNeeded;  // time requester needs the resource
+            DataTypes::Time     duration;    // duration requester needs the resource
+            double              targetRate;  // requested traget in rad/s
+        };
 
-    struct RotateEngineeringObjective
-    {
-        DataTypes::Uuid     id;                //@key
-        DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
-        double              targetRate;  // requested traget in rad/s
-        double              targetTorque;  // requested traget in rad/s
-    };
+        //@copy-c-declaration static const char ROTATE_ENGINEERING_OBJECTIVE[] = "RotateEngineeringObjective";
 
-    //@copy-c-declaration static const char ROTATE_ENGINEERING_STATE[] = "RotateEngineeringState";
+        struct RotateEngineeringObjective
+        {
+            DataTypes::Uuid     id;                //@key
+            DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
+            double              targetRate;  // requested traget in rad/s
+            double              targetTorque;  // requested traget in rad/s
+        };
 
-    struct RotateEngineeringState
-    {
-        DataTypes::Uuid     id;           //@key
-        DataTypes::Status   status;
-        DataTypes::Time     timestamp;        
+        //@copy-c-declaration static const char ROTATE_ENGINEERING_STATE[] = "RotateEngineeringState";
 
-        // acutals
-        double  actualRate;
-        double  actualTorque;
+        struct RotateEngineeringState
+        {
+            DataTypes::Uuid     id;           //@key
+            DataTypes::Status   status;
+            DataTypes::Time     timestamp;        
 
-        // constraints
-        double  minRate;
-        double  maxRate;
-        double  minTorque;
-        double  maxTorque;
+            // acutals
+            double  actualRate;
+            double  actualTorque;
 
-        // targets
-        double  targetRate;
+            // constraints
+            double  minRate;
+            double  maxRate;
+            double  minTorque;
+            double  maxTorque;
+
+            // targets
+            double  targetRate;
+        };
     };
 };

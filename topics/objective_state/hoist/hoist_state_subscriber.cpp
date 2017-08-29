@@ -87,7 +87,7 @@ bool CHoistStateSubscriber::GetTargetPosition(double &targetPosition)
 bool CHoistStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               SafeHoistFunctions::HOIST_STATE,
+                               nec::process::HOIST_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -112,7 +112,7 @@ void CHoistStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent eve
     m_pOnSubscriptionMatched = event;
 }
 
-void CHoistStateSubscriber::DataAvailable(const SafeHoistFunctions::HoistState &data,
+void CHoistStateSubscriber::DataAvailable(const nec::process::HoistState &data,
                                           const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

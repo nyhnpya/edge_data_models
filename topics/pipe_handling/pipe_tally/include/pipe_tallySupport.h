@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef pipe_tallySupport_58331246_h
-#define pipe_tallySupport_58331246_h
+#ifndef pipe_tallySupport_58331454_h
+#define pipe_tallySupport_58331454_h
 
 /* Uses */
 #include "pipe_tally.h"
@@ -26,37 +26,39 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace PipeHandling {
-    /* ========================================================================= */
-    /**
-    Uses:     T
+namespace nec {
+    namespace process {
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(PipeTallyTypeSupport, PipeTally);
+        DDS_TYPESUPPORT_CPP(PipeTallyTypeSupport, PipeTally);
 
-    DDS_DATAWRITER_CPP(PipeTallyDataWriter, PipeTally);
-    DDS_DATAREADER_CPP(PipeTallyDataReader, PipeTallySeq, PipeTally);
+        DDS_DATAWRITER_CPP(PipeTallyDataWriter, PipeTally);
+        DDS_DATAREADER_CPP(PipeTallyDataReader, PipeTallySeq, PipeTally);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-} /* namespace PipeHandling  */
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+    } /* namespace process  */
+} /* namespace nec  */
 
-#endif  /* pipe_tallySupport_58331246_h */
+#endif  /* pipe_tallySupport_58331454_h */
 

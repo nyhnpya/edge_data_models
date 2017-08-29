@@ -60,7 +60,7 @@ bool CCirculateRequestPublisher::PublishSample()
 bool CCirculateRequestPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain, 
-                              SafeCirculateFunctions::CIRCULATE_REQUEST,
+                              nec::process::CIRCULATE_REQUEST,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

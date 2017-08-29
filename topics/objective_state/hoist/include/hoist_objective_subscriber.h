@@ -5,10 +5,10 @@
 #include "hoist.h"
 #include "hoistSupport.h"
 
-class CHoistObjectiveSubscriber : public TSubscriber< SafeHoistFunctions::HoistObjective >
+class CHoistObjectiveSubscriber : public TSubscriber< nec::process::HoistObjective >
 {
  public:
-    typedef std::function<void(const SafeHoistFunctions::HoistObjective &data)> OnDataAvailableEvent;
+    typedef std::function<void(const nec::process::HoistObjective &data)> OnDataAvailableEvent;
 
     CHoistObjectiveSubscriber();
     ~CHoistObjectiveSubscriber();
@@ -27,13 +27,13 @@ class CHoistObjectiveSubscriber : public TSubscriber< SafeHoistFunctions::HoistO
 
  protected:
     ///Derived Methods
-    void DataAvailable(const SafeHoistFunctions::HoistObjective &data,
+    void DataAvailable(const nec::process::HoistObjective &data,
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
  private:
-    SafeHoistFunctions::HoistObjective m_data;
+    nec::process::HoistObjective m_data;
     DDS::SampleInfo              m_sampleInfo;
     DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent         m_pOnDataAvailable;

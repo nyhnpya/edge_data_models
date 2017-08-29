@@ -5,7 +5,7 @@
 #include "circulate.h"
 #include "circulateSupport.h"
 
-class CCirculateObjectivePublisher : public TPublisher< SafeCirculateFunctions::CirculateObjective >
+class CCirculateObjectivePublisher : public TPublisher< nec::process::CirculateObjective >
 {
  public:
     CCirculateObjectivePublisher();

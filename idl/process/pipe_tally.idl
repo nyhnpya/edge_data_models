@@ -1,47 +1,50 @@
 #include "base_data_types.idl"
 
-module PipeHandling
+module nec
 {
-    //@copy-c-declaration static const char PIPE_TALLY[] = "PipeTally";
-
-    /**
-    * \brief PipeTally state inforation.
-    *
-    * \ingroup PipeHandling
-    *
-    * | Variable         | Description                                            | Data Type  | Unit    |
-    * | ---------------- | ------------------------------------------------------ | -----------| --------|
-    * | id               | Unique id of publisher.                                | UUID       | N/A     |
-    * | timestamp        | Timestamp when the data was published.                 | Time_t     | ms      |
-    * | serialNumber     | Joint identifier.                                      | string     | N/A     |
-    * | jointNumber      | Drill pipe count (only includes items whos type is **DrillPipe**). | integer    | N/A     |
-    * | standNumber      | Depends on the number of joints per stand.             | integer    | N/A     |
-    * | weight           | Weight of the pipe component.                          | double     | N       |
-    * | outerDiameter    | Outside diameter of the joint selected                 | double     | cm      |
-    * | innerDiameter    | Inside diameter of the joint selected                  | double     | cm      |
-    * | kellyDown        | The depth at which Kelly Down will occur.              | double     | m       |
-    * | length           | Strapped length measured by the driller.               | double     | m       |
-    * | pipeLength       | Sum of all active drill pipe excluding the BHA.        | double     | m       |
-    * | stringLength     | Sum of all active elements in the drillstring, including the BHA and pipe. | double     |  m      |
-    * | description      |                                                        | string     | N/A     |
-    * | type             | **TypeUnknown** - unknown type<br> **HeavyWeight** - Heavy Weight drill pipe<br> **DrillCollar** - drill collar<br> **DrillPipe** - standard drill pipe  | enum       | N/A     |
-    */
-    struct PipeTally
+    module process
     {
-        DataTypes::Uuid     id; //@key
-        DataTypes::Uuid     objectiveId; 
-        DataTypes::Time     timestamp;
-        string              serialNumber;
-        unsigned long       jointNumber;
-        unsigned long       standNumber;
-        double              weight;
-        double              outerDiameter;
-        double              innerDiameter;
-        double              kellyDown;
-        double              length;
-        double              pipeLength;
-        double              stringLength;
-        string              description;
-        DataTypes::PipeType pipeType;
+        //@copy-c-declaration static const char PIPE_TALLY[] = "PipeTally";
+
+        /**
+         * \brief PipeTally state inforation.
+         *
+         * \ingroup PipeHandling
+         *
+         * | Variable         | Description                                            | Data Type  | Unit    |
+         * | ---------------- | ------------------------------------------------------ | -----------| --------|
+         * | id               | Unique id of publisher.                                | UUID       | N/A     |
+         * | timestamp        | Timestamp when the data was published.                 | Time_t     | ms      |
+         * | serialNumber     | Joint identifier.                                      | string     | N/A     |
+         * | jointNumber      | Drill pipe count (only includes items whos type is **DrillPipe**). | integer    | N/A     |
+         * | standNumber      | Depends on the number of joints per stand.             | integer    | N/A     |
+         * | weight           | Weight of the pipe component.                          | double     | N       |
+         * | outerDiameter    | Outside diameter of the joint selected                 | double     | cm      |
+         * | innerDiameter    | Inside diameter of the joint selected                  | double     | cm      |
+         * | kellyDown        | The depth at which Kelly Down will occur.              | double     | m       |
+         * | length           | Strapped length measured by the driller.               | double     | m       |
+         * | pipeLength       | Sum of all active drill pipe excluding the BHA.        | double     | m       |
+         * | stringLength     | Sum of all active elements in the drillstring, including the BHA and pipe. | double     |  m      |
+         * | description      |                                                        | string     | N/A     |
+         * | type             | **TypeUnknown** - unknown type<br> **HeavyWeight** - Heavy Weight drill pipe<br> **DrillCollar** - drill collar<br> **DrillPipe** - standard drill pipe  | enum       | N/A     |
+         */
+        struct PipeTally
+        {
+            DataTypes::Uuid     id; //@key
+            DataTypes::Uuid     objectiveId; 
+            DataTypes::Time     timestamp;
+            string              serialNumber;
+            unsigned long       jointNumber;
+            unsigned long       standNumber;
+            double              weight;
+            double              outerDiameter;
+            double              innerDiameter;
+            double              kellyDown;
+            double              length;
+            double              pipeLength;
+            double              stringLength;
+            string              description;
+            DataTypes::PipeType pipeType;
+        };
     };
 };

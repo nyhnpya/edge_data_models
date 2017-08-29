@@ -59,7 +59,7 @@ bool CHoistRequestSubscriber::GetTargetPosition(double &targetPosition)
 bool CHoistRequestSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               SafeHoistFunctions::HOIST_REQUEST,
+                               nec::process::HOIST_REQUEST,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -79,7 +79,7 @@ void CHoistRequestSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event
     m_pOnLivelinessChanged = event;
 }
 
-void CHoistRequestSubscriber::DataAvailable(const SafeHoistFunctions::HoistRequest &data,
+void CHoistRequestSubscriber::DataAvailable(const nec::process::HoistRequest &data,
                                             const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

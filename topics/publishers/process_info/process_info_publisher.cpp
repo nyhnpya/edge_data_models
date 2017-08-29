@@ -98,7 +98,7 @@ bool CProcessInfoPublisher::PublishSample()
 bool CProcessInfoPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              ProcessMonitor::PROCESS_INFO,
+                              process::maintanence::PROCESS_INFO,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

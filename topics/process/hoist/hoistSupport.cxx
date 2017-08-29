@@ -15,307 +15,309 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace SafeHoistFunctions {
+namespace nec {
+    namespace process {
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'HoistRequest' support classes.
+        Configure and implement 'HoistRequest' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   HoistRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   HoistRequestTYPENAME
 
-    /* Defines */
-    #define TDataWriter HoistRequestDataWriter
-    #define TData       SafeHoistFunctions::HoistRequest
+        /* Defines */
+        #define TDataWriter HoistRequestDataWriter
+        #define TData       nec::process::HoistRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   HoistRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   HoistRequestTYPENAME
 
-    /* Defines */
-    #define TDataReader HoistRequestDataReader
-    #define TDataSeq    HoistRequestSeq
-    #define TData       SafeHoistFunctions::HoistRequest
+        /* Defines */
+        #define TDataReader HoistRequestDataReader
+        #define TDataSeq    HoistRequestSeq
+        #define TData       nec::process::HoistRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    HoistRequestTYPENAME
-    #define TPlugin_new  SafeHoistFunctions::HoistRequestPlugin_new
-    #define TPlugin_delete  SafeHoistFunctions::HoistRequestPlugin_delete
+        /* Requires */
+        #define TTYPENAME    HoistRequestTYPENAME
+        #define TPlugin_new  nec::process::HoistRequestPlugin_new
+        #define TPlugin_delete  nec::process::HoistRequestPlugin_delete
 
-    /* Defines */
-    #define TTypeSupport HoistRequestTypeSupport
-    #define TData        SafeHoistFunctions::HoistRequest
-    #define TDataReader  HoistRequestDataReader
-    #define TDataWriter  HoistRequestDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport HoistRequestTypeSupport
+        #define TData        nec::process::HoistRequest
+        #define TDataReader  HoistRequestDataReader
+        #define TDataWriter  HoistRequestDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'HoistObjective' support classes.
+        Configure and implement 'HoistObjective' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   HoistObjectiveTYPENAME
+        /* Requires */
+        #define TTYPENAME   HoistObjectiveTYPENAME
 
-    /* Defines */
-    #define TDataWriter HoistObjectiveDataWriter
-    #define TData       SafeHoistFunctions::HoistObjective
+        /* Defines */
+        #define TDataWriter HoistObjectiveDataWriter
+        #define TData       nec::process::HoistObjective
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   HoistObjectiveTYPENAME
+        /* Requires */
+        #define TTYPENAME   HoistObjectiveTYPENAME
 
-    /* Defines */
-    #define TDataReader HoistObjectiveDataReader
-    #define TDataSeq    HoistObjectiveSeq
-    #define TData       SafeHoistFunctions::HoistObjective
+        /* Defines */
+        #define TDataReader HoistObjectiveDataReader
+        #define TDataSeq    HoistObjectiveSeq
+        #define TData       nec::process::HoistObjective
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    HoistObjectiveTYPENAME
-    #define TPlugin_new  SafeHoistFunctions::HoistObjectivePlugin_new
-    #define TPlugin_delete  SafeHoistFunctions::HoistObjectivePlugin_delete
+        /* Requires */
+        #define TTYPENAME    HoistObjectiveTYPENAME
+        #define TPlugin_new  nec::process::HoistObjectivePlugin_new
+        #define TPlugin_delete  nec::process::HoistObjectivePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport HoistObjectiveTypeSupport
-    #define TData        SafeHoistFunctions::HoistObjective
-    #define TDataReader  HoistObjectiveDataReader
-    #define TDataWriter  HoistObjectiveDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport HoistObjectiveTypeSupport
+        #define TData        nec::process::HoistObjective
+        #define TDataReader  HoistObjectiveDataReader
+        #define TDataWriter  HoistObjectiveDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'HoistState' support classes.
+        Configure and implement 'HoistState' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   HoistStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   HoistStateTYPENAME
 
-    /* Defines */
-    #define TDataWriter HoistStateDataWriter
-    #define TData       SafeHoistFunctions::HoistState
+        /* Defines */
+        #define TDataWriter HoistStateDataWriter
+        #define TData       nec::process::HoistState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   HoistStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   HoistStateTYPENAME
 
-    /* Defines */
-    #define TDataReader HoistStateDataReader
-    #define TDataSeq    HoistStateSeq
-    #define TData       SafeHoistFunctions::HoistState
+        /* Defines */
+        #define TDataReader HoistStateDataReader
+        #define TDataSeq    HoistStateSeq
+        #define TData       nec::process::HoistState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    HoistStateTYPENAME
-    #define TPlugin_new  SafeHoistFunctions::HoistStatePlugin_new
-    #define TPlugin_delete  SafeHoistFunctions::HoistStatePlugin_delete
+        /* Requires */
+        #define TTYPENAME    HoistStateTYPENAME
+        #define TPlugin_new  nec::process::HoistStatePlugin_new
+        #define TPlugin_delete  nec::process::HoistStatePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport HoistStateTypeSupport
-    #define TData        SafeHoistFunctions::HoistState
-    #define TDataReader  HoistStateDataReader
-    #define TDataWriter  HoistStateDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport HoistStateTypeSupport
+        #define TData        nec::process::HoistState
+        #define TDataReader  HoistStateDataReader
+        #define TDataWriter  HoistStateDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-} /* namespace SafeHoistFunctions  */
+    } /* namespace process  */
+} /* namespace nec  */
 

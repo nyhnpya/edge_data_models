@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef rotateSupport_79878318_h
-#define rotateSupport_79878318_h
+#ifndef rotateSupport_79878671_h
+#define rotateSupport_79878671_h
 
 /* Uses */
 #include "rotate.h"
@@ -26,95 +26,97 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace SafeRotationFunctions {
-    /* ========================================================================= */
-    /**
-    Uses:     T
+namespace nec {
+    namespace process {
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(RotateRequestTypeSupport, RotateRequest);
+        DDS_TYPESUPPORT_CPP(RotateRequestTypeSupport, RotateRequest);
 
-    DDS_DATAWRITER_CPP(RotateRequestDataWriter, RotateRequest);
-    DDS_DATAREADER_CPP(RotateRequestDataReader, RotateRequestSeq, RotateRequest);
+        DDS_DATAWRITER_CPP(RotateRequestDataWriter, RotateRequest);
+        DDS_DATAREADER_CPP(RotateRequestDataReader, RotateRequestSeq, RotateRequest);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-    /* ========================================================================= */
-    /**
-    Uses:     T
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(RotateObjectiveTypeSupport, RotateObjective);
+        DDS_TYPESUPPORT_CPP(RotateObjectiveTypeSupport, RotateObjective);
 
-    DDS_DATAWRITER_CPP(RotateObjectiveDataWriter, RotateObjective);
-    DDS_DATAREADER_CPP(RotateObjectiveDataReader, RotateObjectiveSeq, RotateObjective);
+        DDS_DATAWRITER_CPP(RotateObjectiveDataWriter, RotateObjective);
+        DDS_DATAREADER_CPP(RotateObjectiveDataReader, RotateObjectiveSeq, RotateObjective);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-    /* ========================================================================= */
-    /**
-    Uses:     T
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(RotateStateTypeSupport, RotateState);
+        DDS_TYPESUPPORT_CPP(RotateStateTypeSupport, RotateState);
 
-    DDS_DATAWRITER_CPP(RotateStateDataWriter, RotateState);
-    DDS_DATAREADER_CPP(RotateStateDataReader, RotateStateSeq, RotateState);
+        DDS_DATAWRITER_CPP(RotateStateDataWriter, RotateState);
+        DDS_DATAREADER_CPP(RotateStateDataReader, RotateStateSeq, RotateState);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-} /* namespace SafeRotationFunctions  */
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+    } /* namespace process  */
+} /* namespace nec  */
 
-#endif  /* rotateSupport_79878318_h */
+#endif  /* rotateSupport_79878671_h */
 

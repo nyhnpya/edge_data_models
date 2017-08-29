@@ -51,7 +51,7 @@ bool CObjectiveStatePublisher::PublishSample()
 bool CObjectiveStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              Plan::OBJECTIVE_STATE,
+                              process::plan::OBJECTIVE_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

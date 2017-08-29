@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef process_infoSupport_1743012901_h
-#define process_infoSupport_1743012901_h
+#ifndef process_infoSupport_1743012970_h
+#define process_infoSupport_1743012970_h
 
 /* Uses */
 #include "process_info.h"
@@ -26,37 +26,39 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace ProcessMonitor {
-    /* ========================================================================= */
-    /**
-    Uses:     T
+namespace process {
+    namespace maintanence {
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(ProcessInfoTypeSupport, ProcessInfo);
+        DDS_TYPESUPPORT_CPP(ProcessInfoTypeSupport, ProcessInfo);
 
-    DDS_DATAWRITER_CPP(ProcessInfoDataWriter, ProcessInfo);
-    DDS_DATAREADER_CPP(ProcessInfoDataReader, ProcessInfoSeq, ProcessInfo);
+        DDS_DATAWRITER_CPP(ProcessInfoDataWriter, ProcessInfo);
+        DDS_DATAREADER_CPP(ProcessInfoDataReader, ProcessInfoSeq, ProcessInfo);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-} /* namespace ProcessMonitor  */
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+    } /* namespace maintanence  */
+} /* namespace process  */
 
-#endif  /* process_infoSupport_1743012901_h */
+#endif  /* process_infoSupport_1743012970_h */
 

@@ -1,14 +1,17 @@
 #include "base_data_types.idl"
 
-module Plan
+module process
 {
-    //@copy-c-declaration static const char OBJECTIVE_STATE[] = "ObjectiveState";
-
-    struct ObjectiveState
+    module plan
     {
-        DataTypes::Uuid      id; //@key
-        DataTypes::Uuid      parentId; 
-        DataTypes::Time      timestamp;
-        DataTypes::Objective objective;
+        //@copy-c-declaration static const char OBJECTIVE_STATE[] = "ObjectiveState";
+
+        struct ObjectiveState
+        {
+            DataTypes::Uuid      id; //@key
+            DataTypes::Uuid      parentId; 
+            DataTypes::Time      timestamp;
+            DataTypes::Objective objective;
+        };
     };
 };

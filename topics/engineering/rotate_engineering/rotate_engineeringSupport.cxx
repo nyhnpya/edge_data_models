@@ -15,307 +15,309 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace EngineeringRotation {
+namespace nec {
+    namespace control {
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'RotateEngineeringRequest' support classes.
+        Configure and implement 'RotateEngineeringRequest' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   RotateEngineeringRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   RotateEngineeringRequestTYPENAME
 
-    /* Defines */
-    #define TDataWriter RotateEngineeringRequestDataWriter
-    #define TData       EngineeringRotation::RotateEngineeringRequest
+        /* Defines */
+        #define TDataWriter RotateEngineeringRequestDataWriter
+        #define TData       nec::control::RotateEngineeringRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   RotateEngineeringRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   RotateEngineeringRequestTYPENAME
 
-    /* Defines */
-    #define TDataReader RotateEngineeringRequestDataReader
-    #define TDataSeq    RotateEngineeringRequestSeq
-    #define TData       EngineeringRotation::RotateEngineeringRequest
+        /* Defines */
+        #define TDataReader RotateEngineeringRequestDataReader
+        #define TDataSeq    RotateEngineeringRequestSeq
+        #define TData       nec::control::RotateEngineeringRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    RotateEngineeringRequestTYPENAME
-    #define TPlugin_new  EngineeringRotation::RotateEngineeringRequestPlugin_new
-    #define TPlugin_delete  EngineeringRotation::RotateEngineeringRequestPlugin_delete
+        /* Requires */
+        #define TTYPENAME    RotateEngineeringRequestTYPENAME
+        #define TPlugin_new  nec::control::RotateEngineeringRequestPlugin_new
+        #define TPlugin_delete  nec::control::RotateEngineeringRequestPlugin_delete
 
-    /* Defines */
-    #define TTypeSupport RotateEngineeringRequestTypeSupport
-    #define TData        EngineeringRotation::RotateEngineeringRequest
-    #define TDataReader  RotateEngineeringRequestDataReader
-    #define TDataWriter  RotateEngineeringRequestDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport RotateEngineeringRequestTypeSupport
+        #define TData        nec::control::RotateEngineeringRequest
+        #define TDataReader  RotateEngineeringRequestDataReader
+        #define TDataWriter  RotateEngineeringRequestDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'RotateEngineeringObjective' support classes.
+        Configure and implement 'RotateEngineeringObjective' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   RotateEngineeringObjectiveTYPENAME
+        /* Requires */
+        #define TTYPENAME   RotateEngineeringObjectiveTYPENAME
 
-    /* Defines */
-    #define TDataWriter RotateEngineeringObjectiveDataWriter
-    #define TData       EngineeringRotation::RotateEngineeringObjective
+        /* Defines */
+        #define TDataWriter RotateEngineeringObjectiveDataWriter
+        #define TData       nec::control::RotateEngineeringObjective
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   RotateEngineeringObjectiveTYPENAME
+        /* Requires */
+        #define TTYPENAME   RotateEngineeringObjectiveTYPENAME
 
-    /* Defines */
-    #define TDataReader RotateEngineeringObjectiveDataReader
-    #define TDataSeq    RotateEngineeringObjectiveSeq
-    #define TData       EngineeringRotation::RotateEngineeringObjective
+        /* Defines */
+        #define TDataReader RotateEngineeringObjectiveDataReader
+        #define TDataSeq    RotateEngineeringObjectiveSeq
+        #define TData       nec::control::RotateEngineeringObjective
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    RotateEngineeringObjectiveTYPENAME
-    #define TPlugin_new  EngineeringRotation::RotateEngineeringObjectivePlugin_new
-    #define TPlugin_delete  EngineeringRotation::RotateEngineeringObjectivePlugin_delete
+        /* Requires */
+        #define TTYPENAME    RotateEngineeringObjectiveTYPENAME
+        #define TPlugin_new  nec::control::RotateEngineeringObjectivePlugin_new
+        #define TPlugin_delete  nec::control::RotateEngineeringObjectivePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport RotateEngineeringObjectiveTypeSupport
-    #define TData        EngineeringRotation::RotateEngineeringObjective
-    #define TDataReader  RotateEngineeringObjectiveDataReader
-    #define TDataWriter  RotateEngineeringObjectiveDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport RotateEngineeringObjectiveTypeSupport
+        #define TData        nec::control::RotateEngineeringObjective
+        #define TDataReader  RotateEngineeringObjectiveDataReader
+        #define TDataWriter  RotateEngineeringObjectiveDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'RotateEngineeringState' support classes.
+        Configure and implement 'RotateEngineeringState' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   RotateEngineeringStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   RotateEngineeringStateTYPENAME
 
-    /* Defines */
-    #define TDataWriter RotateEngineeringStateDataWriter
-    #define TData       EngineeringRotation::RotateEngineeringState
+        /* Defines */
+        #define TDataWriter RotateEngineeringStateDataWriter
+        #define TData       nec::control::RotateEngineeringState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   RotateEngineeringStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   RotateEngineeringStateTYPENAME
 
-    /* Defines */
-    #define TDataReader RotateEngineeringStateDataReader
-    #define TDataSeq    RotateEngineeringStateSeq
-    #define TData       EngineeringRotation::RotateEngineeringState
+        /* Defines */
+        #define TDataReader RotateEngineeringStateDataReader
+        #define TDataSeq    RotateEngineeringStateSeq
+        #define TData       nec::control::RotateEngineeringState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    RotateEngineeringStateTYPENAME
-    #define TPlugin_new  EngineeringRotation::RotateEngineeringStatePlugin_new
-    #define TPlugin_delete  EngineeringRotation::RotateEngineeringStatePlugin_delete
+        /* Requires */
+        #define TTYPENAME    RotateEngineeringStateTYPENAME
+        #define TPlugin_new  nec::control::RotateEngineeringStatePlugin_new
+        #define TPlugin_delete  nec::control::RotateEngineeringStatePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport RotateEngineeringStateTypeSupport
-    #define TData        EngineeringRotation::RotateEngineeringState
-    #define TDataReader  RotateEngineeringStateDataReader
-    #define TDataWriter  RotateEngineeringStateDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport RotateEngineeringStateTypeSupport
+        #define TData        nec::control::RotateEngineeringState
+        #define TDataReader  RotateEngineeringStateDataReader
+        #define TDataWriter  RotateEngineeringStateDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-} /* namespace EngineeringRotation  */
+    } /* namespace control  */
+} /* namespace nec  */
 

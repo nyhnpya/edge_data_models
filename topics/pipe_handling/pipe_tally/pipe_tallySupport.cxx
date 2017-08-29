@@ -15,107 +15,109 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace PipeHandling {
+namespace nec {
+    namespace process {
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'PipeTally' support classes.
+        Configure and implement 'PipeTally' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   PipeTallyTYPENAME
+        /* Requires */
+        #define TTYPENAME   PipeTallyTYPENAME
 
-    /* Defines */
-    #define TDataWriter PipeTallyDataWriter
-    #define TData       PipeHandling::PipeTally
+        /* Defines */
+        #define TDataWriter PipeTallyDataWriter
+        #define TData       nec::process::PipeTally
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   PipeTallyTYPENAME
+        /* Requires */
+        #define TTYPENAME   PipeTallyTYPENAME
 
-    /* Defines */
-    #define TDataReader PipeTallyDataReader
-    #define TDataSeq    PipeTallySeq
-    #define TData       PipeHandling::PipeTally
+        /* Defines */
+        #define TDataReader PipeTallyDataReader
+        #define TDataSeq    PipeTallySeq
+        #define TData       nec::process::PipeTally
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    PipeTallyTYPENAME
-    #define TPlugin_new  PipeHandling::PipeTallyPlugin_new
-    #define TPlugin_delete  PipeHandling::PipeTallyPlugin_delete
+        /* Requires */
+        #define TTYPENAME    PipeTallyTYPENAME
+        #define TPlugin_new  nec::process::PipeTallyPlugin_new
+        #define TPlugin_delete  nec::process::PipeTallyPlugin_delete
 
-    /* Defines */
-    #define TTypeSupport PipeTallyTypeSupport
-    #define TData        PipeHandling::PipeTally
-    #define TDataReader  PipeTallyDataReader
-    #define TDataWriter  PipeTallyDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport PipeTallyTypeSupport
+        #define TData        nec::process::PipeTally
+        #define TDataReader  PipeTallyDataReader
+        #define TDataWriter  PipeTallyDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-} /* namespace PipeHandling  */
+    } /* namespace process  */
+} /* namespace nec  */
 

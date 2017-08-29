@@ -7,7 +7,7 @@
 #include "wellbore.h"
 #include "wellboreSupport.h"
 
-class CWellboreStatePublisher : public TPublisher<Downhole::Wellbore>
+class CWellboreStatePublisher : public TPublisher<nec::process::Wellbore>
 {
 public:
     CWellboreStatePublisher();

@@ -196,7 +196,7 @@ bool CDrillingCalibrationStateSubscriber::GetTorqueMode(bool &torqueMode)
 bool CDrillingCalibrationStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               CalibrationHoisting::DRILLING_CALIBRATION_STATE,
+                               nec::control::DRILLING_CALIBRATION_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -221,7 +221,7 @@ void CDrillingCalibrationStateSubscriber::OnSubscriptionMatched(OnSubscriptionMa
     m_pOnSubscriptionMatched = event;
 }
 
-void CDrillingCalibrationStateSubscriber::DataAvailable(const CalibrationHoisting::DrillingCalibrationState &data,
+void CDrillingCalibrationStateSubscriber::DataAvailable(const nec::control::DrillingCalibrationState &data,
                                                         const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

@@ -15,307 +15,309 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace SafeCirculateFunctions {
+namespace nec {
+    namespace process {
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'CirculateRequest' support classes.
+        Configure and implement 'CirculateRequest' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   CirculateRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   CirculateRequestTYPENAME
 
-    /* Defines */
-    #define TDataWriter CirculateRequestDataWriter
-    #define TData       SafeCirculateFunctions::CirculateRequest
+        /* Defines */
+        #define TDataWriter CirculateRequestDataWriter
+        #define TData       nec::process::CirculateRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   CirculateRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   CirculateRequestTYPENAME
 
-    /* Defines */
-    #define TDataReader CirculateRequestDataReader
-    #define TDataSeq    CirculateRequestSeq
-    #define TData       SafeCirculateFunctions::CirculateRequest
+        /* Defines */
+        #define TDataReader CirculateRequestDataReader
+        #define TDataSeq    CirculateRequestSeq
+        #define TData       nec::process::CirculateRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    CirculateRequestTYPENAME
-    #define TPlugin_new  SafeCirculateFunctions::CirculateRequestPlugin_new
-    #define TPlugin_delete  SafeCirculateFunctions::CirculateRequestPlugin_delete
+        /* Requires */
+        #define TTYPENAME    CirculateRequestTYPENAME
+        #define TPlugin_new  nec::process::CirculateRequestPlugin_new
+        #define TPlugin_delete  nec::process::CirculateRequestPlugin_delete
 
-    /* Defines */
-    #define TTypeSupport CirculateRequestTypeSupport
-    #define TData        SafeCirculateFunctions::CirculateRequest
-    #define TDataReader  CirculateRequestDataReader
-    #define TDataWriter  CirculateRequestDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport CirculateRequestTypeSupport
+        #define TData        nec::process::CirculateRequest
+        #define TDataReader  CirculateRequestDataReader
+        #define TDataWriter  CirculateRequestDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'CirculateObjective' support classes.
+        Configure and implement 'CirculateObjective' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   CirculateObjectiveTYPENAME
+        /* Requires */
+        #define TTYPENAME   CirculateObjectiveTYPENAME
 
-    /* Defines */
-    #define TDataWriter CirculateObjectiveDataWriter
-    #define TData       SafeCirculateFunctions::CirculateObjective
+        /* Defines */
+        #define TDataWriter CirculateObjectiveDataWriter
+        #define TData       nec::process::CirculateObjective
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   CirculateObjectiveTYPENAME
+        /* Requires */
+        #define TTYPENAME   CirculateObjectiveTYPENAME
 
-    /* Defines */
-    #define TDataReader CirculateObjectiveDataReader
-    #define TDataSeq    CirculateObjectiveSeq
-    #define TData       SafeCirculateFunctions::CirculateObjective
+        /* Defines */
+        #define TDataReader CirculateObjectiveDataReader
+        #define TDataSeq    CirculateObjectiveSeq
+        #define TData       nec::process::CirculateObjective
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    CirculateObjectiveTYPENAME
-    #define TPlugin_new  SafeCirculateFunctions::CirculateObjectivePlugin_new
-    #define TPlugin_delete  SafeCirculateFunctions::CirculateObjectivePlugin_delete
+        /* Requires */
+        #define TTYPENAME    CirculateObjectiveTYPENAME
+        #define TPlugin_new  nec::process::CirculateObjectivePlugin_new
+        #define TPlugin_delete  nec::process::CirculateObjectivePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport CirculateObjectiveTypeSupport
-    #define TData        SafeCirculateFunctions::CirculateObjective
-    #define TDataReader  CirculateObjectiveDataReader
-    #define TDataWriter  CirculateObjectiveDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport CirculateObjectiveTypeSupport
+        #define TData        nec::process::CirculateObjective
+        #define TDataReader  CirculateObjectiveDataReader
+        #define TDataWriter  CirculateObjectiveDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'CirculateState' support classes.
+        Configure and implement 'CirculateState' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   CirculateStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   CirculateStateTYPENAME
 
-    /* Defines */
-    #define TDataWriter CirculateStateDataWriter
-    #define TData       SafeCirculateFunctions::CirculateState
+        /* Defines */
+        #define TDataWriter CirculateStateDataWriter
+        #define TData       nec::process::CirculateState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   CirculateStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   CirculateStateTYPENAME
 
-    /* Defines */
-    #define TDataReader CirculateStateDataReader
-    #define TDataSeq    CirculateStateSeq
-    #define TData       SafeCirculateFunctions::CirculateState
+        /* Defines */
+        #define TDataReader CirculateStateDataReader
+        #define TDataSeq    CirculateStateSeq
+        #define TData       nec::process::CirculateState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    CirculateStateTYPENAME
-    #define TPlugin_new  SafeCirculateFunctions::CirculateStatePlugin_new
-    #define TPlugin_delete  SafeCirculateFunctions::CirculateStatePlugin_delete
+        /* Requires */
+        #define TTYPENAME    CirculateStateTYPENAME
+        #define TPlugin_new  nec::process::CirculateStatePlugin_new
+        #define TPlugin_delete  nec::process::CirculateStatePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport CirculateStateTypeSupport
-    #define TData        SafeCirculateFunctions::CirculateState
-    #define TDataReader  CirculateStateDataReader
-    #define TDataWriter  CirculateStateDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport CirculateStateTypeSupport
+        #define TData        nec::process::CirculateState
+        #define TDataReader  CirculateStateDataReader
+        #define TDataWriter  CirculateStateDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-} /* namespace SafeCirculateFunctions  */
+    } /* namespace process  */
+} /* namespace nec  */
 

@@ -44,7 +44,7 @@ bool CRotateObjectivePublisher::PublishSample()
 bool CRotateObjectivePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              SafeRotationFunctions::ROTATE_OBJECTIVE,
+                              nec::process::ROTATE_OBJECTIVE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

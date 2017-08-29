@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef surveySupport_675098841_h
-#define surveySupport_675098841_h
+#ifndef surveySupport_675099319_h
+#define surveySupport_675099319_h
 
 /* Uses */
 #include "survey.h"
@@ -26,95 +26,97 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace DownholeFunctions {
-    /* ========================================================================= */
-    /**
-    Uses:     T
+namespace nec {
+    namespace process {
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(SurveyRequestTypeSupport, SurveyRequest);
+        DDS_TYPESUPPORT_CPP(SurveyRequestTypeSupport, SurveyRequest);
 
-    DDS_DATAWRITER_CPP(SurveyRequestDataWriter, SurveyRequest);
-    DDS_DATAREADER_CPP(SurveyRequestDataReader, SurveyRequestSeq, SurveyRequest);
+        DDS_DATAWRITER_CPP(SurveyRequestDataWriter, SurveyRequest);
+        DDS_DATAREADER_CPP(SurveyRequestDataReader, SurveyRequestSeq, SurveyRequest);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-    /* ========================================================================= */
-    /**
-    Uses:     T
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(SurveyObjectiveTypeSupport, SurveyObjective);
+        DDS_TYPESUPPORT_CPP(SurveyObjectiveTypeSupport, SurveyObjective);
 
-    DDS_DATAWRITER_CPP(SurveyObjectiveDataWriter, SurveyObjective);
-    DDS_DATAREADER_CPP(SurveyObjectiveDataReader, SurveyObjectiveSeq, SurveyObjective);
+        DDS_DATAWRITER_CPP(SurveyObjectiveDataWriter, SurveyObjective);
+        DDS_DATAREADER_CPP(SurveyObjectiveDataReader, SurveyObjectiveSeq, SurveyObjective);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-    /* ========================================================================= */
-    /**
-    Uses:     T
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(SurveyStateTypeSupport, SurveyState);
+        DDS_TYPESUPPORT_CPP(SurveyStateTypeSupport, SurveyState);
 
-    DDS_DATAWRITER_CPP(SurveyStateDataWriter, SurveyState);
-    DDS_DATAREADER_CPP(SurveyStateDataReader, SurveyStateSeq, SurveyState);
+        DDS_DATAWRITER_CPP(SurveyStateDataWriter, SurveyState);
+        DDS_DATAREADER_CPP(SurveyStateDataReader, SurveyStateSeq, SurveyState);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-} /* namespace DownholeFunctions  */
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+    } /* namespace process  */
+} /* namespace nec  */
 
-#endif  /* surveySupport_675098841_h */
+#endif  /* surveySupport_675099319_h */
 

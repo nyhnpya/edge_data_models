@@ -6,10 +6,10 @@
 #include "drilling.h"
 #include "drillingSupport.h"
 
-class CDrillingStateSubscriber : public TSubscriber< Hoisting::DrillingState >
+class CDrillingStateSubscriber : public TSubscriber< nec::process::DrillingState >
 {
  public:
-    typedef std::function<void(const Hoisting::DrillingState &data)> OnDataAvailableEvent;
+    typedef std::function<void(const nec::process::DrillingState &data)> OnDataAvailableEvent;
 
     CDrillingStateSubscriber();
     ~CDrillingStateSubscriber();
@@ -46,7 +46,7 @@ class CDrillingStateSubscriber : public TSubscriber< Hoisting::DrillingState >
 	bool ValidSubscription();
 
  protected:
-    void DataAvailable(const Hoisting::DrillingState &data,
+    void DataAvailable(const nec::process::DrillingState &data,
                const DDS::SampleInfo &sampleInfo);
 
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
@@ -55,7 +55,7 @@ class CDrillingStateSubscriber : public TSubscriber< Hoisting::DrillingState >
 
  private:
 	 bool                         m_subscriptionMatched;
-	 Hoisting::DrillingState      m_data;
+	 nec::process::DrillingState      m_data;
     DDS::SampleInfo              m_sampleInfo;
 	OnDataAvailableEvent         m_pOnDataAvailable;
 	OnDataDisposedEvent          m_pOnDataDisposed;

@@ -199,7 +199,7 @@ bool CPipeTallyStatePublisher::PublishSample()
 bool CPipeTallyStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              PipeHandling::PIPE_TALLY,
+                              nec::process::PIPE_TALLY,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

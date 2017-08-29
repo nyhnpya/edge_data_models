@@ -154,7 +154,7 @@ bool CDrillingStateSubscriber::GetTorqueTarget(double &torqueTarget)
 bool CDrillingStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               Hoisting::DRILLING_STATE,
+                               nec::process::DRILLING_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -179,7 +179,7 @@ void CDrillingStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent 
     m_pOnSubscriptionMatched = event;
 }
 
-void CDrillingStateSubscriber::DataAvailable(const Hoisting::DrillingState &data,
+void CDrillingStateSubscriber::DataAvailable(const nec::process::DrillingState &data,
                                              const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

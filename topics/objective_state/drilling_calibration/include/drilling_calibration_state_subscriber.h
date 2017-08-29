@@ -7,10 +7,10 @@
 #include "drilling_calibration.h"
 #include "drilling_calibrationSupport.h"
 
-class CDrillingCalibrationStateSubscriber : public TSubscriber< CalibrationHoisting::DrillingCalibrationState >
+class CDrillingCalibrationStateSubscriber : public TSubscriber< nec::control::DrillingCalibrationState >
 {
  public:
-    typedef std::function<void(const CalibrationHoisting::DrillingCalibrationState &data)> OnDataAvailableEvent;
+    typedef std::function<void(const nec::control::DrillingCalibrationState &data)> OnDataAvailableEvent;
 
     CDrillingCalibrationStateSubscriber();
     ~CDrillingCalibrationStateSubscriber();
@@ -53,7 +53,7 @@ class CDrillingCalibrationStateSubscriber : public TSubscriber< CalibrationHoist
 	bool ValidSubscription();
 
  protected:
-    void DataAvailable(const CalibrationHoisting::DrillingCalibrationState &data,
+    void DataAvailable(const nec::control::DrillingCalibrationState &data,
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
@@ -61,7 +61,7 @@ class CDrillingCalibrationStateSubscriber : public TSubscriber< CalibrationHoist
 
  private:
 	 bool                                          m_subscriptionMatched;
-	 CalibrationHoisting::DrillingCalibrationState m_data;
+	 nec::control::DrillingCalibrationState m_data;
     DDS::SampleInfo                               m_sampleInfo;
     OnDataAvailableEvent                          m_pOnDataAvailable;
 	OnDataDisposedEvent                           m_pOnDataDisposed;

@@ -125,7 +125,7 @@ bool CPipeTallyStateSubscriber::GetPipeType(DataTypes::PipeType &pipeType)
 bool CPipeTallyStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               PipeHandling::PIPE_TALLY,
+                               nec::process::PIPE_TALLY,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -135,7 +135,7 @@ void CPipeTallyStateSubscriber::OnDataAvailable(onDataAvailableEvent event)
     m_pOnDataAvailable = event;
 }
 
-void CPipeTallyStateSubscriber::DataAvailable(const PipeHandling::PipeTally &data,
+void CPipeTallyStateSubscriber::DataAvailable(const nec::process::PipeTally &data,
                                               const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

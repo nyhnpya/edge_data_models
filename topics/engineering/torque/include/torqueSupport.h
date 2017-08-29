@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef torqueSupport_1680233054_h
-#define torqueSupport_1680233054_h
+#ifndef torqueSupport_1680233190_h
+#define torqueSupport_1680233190_h
 
 /* Uses */
 #include "torque.h"
@@ -26,95 +26,97 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace ControlRotation {
-    /* ========================================================================= */
-    /**
-    Uses:     T
+namespace nec {
+    namespace control {
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(TorqueRequestTypeSupport, TorqueRequest);
+        DDS_TYPESUPPORT_CPP(TorqueRequestTypeSupport, TorqueRequest);
 
-    DDS_DATAWRITER_CPP(TorqueRequestDataWriter, TorqueRequest);
-    DDS_DATAREADER_CPP(TorqueRequestDataReader, TorqueRequestSeq, TorqueRequest);
+        DDS_DATAWRITER_CPP(TorqueRequestDataWriter, TorqueRequest);
+        DDS_DATAREADER_CPP(TorqueRequestDataReader, TorqueRequestSeq, TorqueRequest);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-    /* ========================================================================= */
-    /**
-    Uses:     T
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(TorqueObjectiveTypeSupport, TorqueObjective);
+        DDS_TYPESUPPORT_CPP(TorqueObjectiveTypeSupport, TorqueObjective);
 
-    DDS_DATAWRITER_CPP(TorqueObjectiveDataWriter, TorqueObjective);
-    DDS_DATAREADER_CPP(TorqueObjectiveDataReader, TorqueObjectiveSeq, TorqueObjective);
+        DDS_DATAWRITER_CPP(TorqueObjectiveDataWriter, TorqueObjective);
+        DDS_DATAREADER_CPP(TorqueObjectiveDataReader, TorqueObjectiveSeq, TorqueObjective);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-    /* ========================================================================= */
-    /**
-    Uses:     T
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(TorqueStateTypeSupport, TorqueState);
+        DDS_TYPESUPPORT_CPP(TorqueStateTypeSupport, TorqueState);
 
-    DDS_DATAWRITER_CPP(TorqueStateDataWriter, TorqueState);
-    DDS_DATAREADER_CPP(TorqueStateDataReader, TorqueStateSeq, TorqueState);
+        DDS_DATAWRITER_CPP(TorqueStateDataWriter, TorqueState);
+        DDS_DATAREADER_CPP(TorqueStateDataReader, TorqueStateSeq, TorqueState);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-} /* namespace ControlRotation  */
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+    } /* namespace control  */
+} /* namespace nec  */
 
-#endif  /* torqueSupport_1680233054_h */
+#endif  /* torqueSupport_1680233190_h */
 

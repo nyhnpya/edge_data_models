@@ -15,307 +15,309 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace DownholeFunctions {
+namespace nec {
+    namespace process {
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'SurveyRequest' support classes.
+        Configure and implement 'SurveyRequest' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   SurveyRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   SurveyRequestTYPENAME
 
-    /* Defines */
-    #define TDataWriter SurveyRequestDataWriter
-    #define TData       DownholeFunctions::SurveyRequest
+        /* Defines */
+        #define TDataWriter SurveyRequestDataWriter
+        #define TData       nec::process::SurveyRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   SurveyRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   SurveyRequestTYPENAME
 
-    /* Defines */
-    #define TDataReader SurveyRequestDataReader
-    #define TDataSeq    SurveyRequestSeq
-    #define TData       DownholeFunctions::SurveyRequest
+        /* Defines */
+        #define TDataReader SurveyRequestDataReader
+        #define TDataSeq    SurveyRequestSeq
+        #define TData       nec::process::SurveyRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    SurveyRequestTYPENAME
-    #define TPlugin_new  DownholeFunctions::SurveyRequestPlugin_new
-    #define TPlugin_delete  DownholeFunctions::SurveyRequestPlugin_delete
+        /* Requires */
+        #define TTYPENAME    SurveyRequestTYPENAME
+        #define TPlugin_new  nec::process::SurveyRequestPlugin_new
+        #define TPlugin_delete  nec::process::SurveyRequestPlugin_delete
 
-    /* Defines */
-    #define TTypeSupport SurveyRequestTypeSupport
-    #define TData        DownholeFunctions::SurveyRequest
-    #define TDataReader  SurveyRequestDataReader
-    #define TDataWriter  SurveyRequestDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport SurveyRequestTypeSupport
+        #define TData        nec::process::SurveyRequest
+        #define TDataReader  SurveyRequestDataReader
+        #define TDataWriter  SurveyRequestDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'SurveyObjective' support classes.
+        Configure and implement 'SurveyObjective' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   SurveyObjectiveTYPENAME
+        /* Requires */
+        #define TTYPENAME   SurveyObjectiveTYPENAME
 
-    /* Defines */
-    #define TDataWriter SurveyObjectiveDataWriter
-    #define TData       DownholeFunctions::SurveyObjective
+        /* Defines */
+        #define TDataWriter SurveyObjectiveDataWriter
+        #define TData       nec::process::SurveyObjective
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   SurveyObjectiveTYPENAME
+        /* Requires */
+        #define TTYPENAME   SurveyObjectiveTYPENAME
 
-    /* Defines */
-    #define TDataReader SurveyObjectiveDataReader
-    #define TDataSeq    SurveyObjectiveSeq
-    #define TData       DownholeFunctions::SurveyObjective
+        /* Defines */
+        #define TDataReader SurveyObjectiveDataReader
+        #define TDataSeq    SurveyObjectiveSeq
+        #define TData       nec::process::SurveyObjective
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    SurveyObjectiveTYPENAME
-    #define TPlugin_new  DownholeFunctions::SurveyObjectivePlugin_new
-    #define TPlugin_delete  DownholeFunctions::SurveyObjectivePlugin_delete
+        /* Requires */
+        #define TTYPENAME    SurveyObjectiveTYPENAME
+        #define TPlugin_new  nec::process::SurveyObjectivePlugin_new
+        #define TPlugin_delete  nec::process::SurveyObjectivePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport SurveyObjectiveTypeSupport
-    #define TData        DownholeFunctions::SurveyObjective
-    #define TDataReader  SurveyObjectiveDataReader
-    #define TDataWriter  SurveyObjectiveDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport SurveyObjectiveTypeSupport
+        #define TData        nec::process::SurveyObjective
+        #define TDataReader  SurveyObjectiveDataReader
+        #define TDataWriter  SurveyObjectiveDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'SurveyState' support classes.
+        Configure and implement 'SurveyState' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   SurveyStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   SurveyStateTYPENAME
 
-    /* Defines */
-    #define TDataWriter SurveyStateDataWriter
-    #define TData       DownholeFunctions::SurveyState
+        /* Defines */
+        #define TDataWriter SurveyStateDataWriter
+        #define TData       nec::process::SurveyState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   SurveyStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   SurveyStateTYPENAME
 
-    /* Defines */
-    #define TDataReader SurveyStateDataReader
-    #define TDataSeq    SurveyStateSeq
-    #define TData       DownholeFunctions::SurveyState
+        /* Defines */
+        #define TDataReader SurveyStateDataReader
+        #define TDataSeq    SurveyStateSeq
+        #define TData       nec::process::SurveyState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    SurveyStateTYPENAME
-    #define TPlugin_new  DownholeFunctions::SurveyStatePlugin_new
-    #define TPlugin_delete  DownholeFunctions::SurveyStatePlugin_delete
+        /* Requires */
+        #define TTYPENAME    SurveyStateTYPENAME
+        #define TPlugin_new  nec::process::SurveyStatePlugin_new
+        #define TPlugin_delete  nec::process::SurveyStatePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport SurveyStateTypeSupport
-    #define TData        DownholeFunctions::SurveyState
-    #define TDataReader  SurveyStateDataReader
-    #define TDataWriter  SurveyStateDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport SurveyStateTypeSupport
+        #define TData        nec::process::SurveyState
+        #define TDataReader  SurveyStateDataReader
+        #define TDataWriter  SurveyStateDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-} /* namespace DownholeFunctions  */
+    } /* namespace process  */
+} /* namespace nec  */
 

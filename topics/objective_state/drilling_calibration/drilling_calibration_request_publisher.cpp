@@ -122,7 +122,7 @@ bool CDrillingCalibrationRequestPublisher::PublishSample()
 bool CDrillingCalibrationRequestPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              CalibrationHoisting::DRILLING_CALIBRATION_REQUEST,
+                              nec::control::DRILLING_CALIBRATION_REQUEST,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

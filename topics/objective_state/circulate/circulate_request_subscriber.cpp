@@ -52,7 +52,7 @@ bool CCirculateRequestSubscriber::GetTargetFlowRate(double &targetFlowRate)
 bool CCirculateRequestSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               SafeCirculateFunctions::CIRCULATE_REQUEST,
+                               nec::process::CIRCULATE_REQUEST,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -72,7 +72,7 @@ void CCirculateRequestSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent e
     m_pOnLivelinessChanged = event;
 }
 
-void CCirculateRequestSubscriber::DataAvailable(const SafeCirculateFunctions::CirculateRequest &data,
+void CCirculateRequestSubscriber::DataAvailable(const nec::process::CirculateRequest &data,
                                                 const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

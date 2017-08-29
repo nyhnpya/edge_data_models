@@ -5,7 +5,7 @@
 #include "hoist.h"
 #include "hoistSupport.h"
 
-class CHoistRequestPublisher : public TPublisher< SafeHoistFunctions::HoistRequest >
+class CHoistRequestPublisher : public TPublisher< nec::process::HoistRequest >
 {
  public:
     CHoistRequestPublisher();

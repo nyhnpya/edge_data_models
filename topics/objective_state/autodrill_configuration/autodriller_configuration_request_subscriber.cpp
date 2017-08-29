@@ -208,12 +208,12 @@ void CAutoDrillerConfigurationRequestSubscriber::OnLivelinessChanged(OnLivelines
 bool CAutoDrillerConfigurationRequestSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               AutoDrillerConfiguration::HMI_REQUEST,
+                               nec::control::HMI_REQUEST,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
 
-void CAutoDrillerConfigurationRequestSubscriber::DataAvailable(const AutoDrillerConfiguration::HmiRequest &data,
+void CAutoDrillerConfigurationRequestSubscriber::DataAvailable(const nec::control::HmiRequest &data,
                                                                const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

@@ -45,7 +45,7 @@ bool CHoistObjectiveSubscriber::GetTargetPosition(double targetPosition)
 bool CHoistObjectiveSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               SafeHoistFunctions::HOIST_OBJECTIVE,
+                               nec::process::HOIST_OBJECTIVE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -65,7 +65,7 @@ void CHoistObjectiveSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent eve
     m_pOnLivelinessChanged = event;
 }
 
-void CHoistObjectiveSubscriber::DataAvailable(const SafeHoistFunctions::HoistObjective &data,
+void CHoistObjectiveSubscriber::DataAvailable(const nec::process::HoistObjective &data,
                                               const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

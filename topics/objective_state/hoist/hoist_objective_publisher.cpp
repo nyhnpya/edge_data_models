@@ -52,7 +52,7 @@ bool CHoistObjectivePublisher::PublishSample()
 bool CHoistObjectivePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              SafeHoistFunctions::HOIST_STATE,
+                              nec::process::HOIST_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

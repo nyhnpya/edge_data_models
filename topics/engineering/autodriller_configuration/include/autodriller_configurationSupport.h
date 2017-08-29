@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autodriller_configurationSupport_730533907_h
-#define autodriller_configurationSupport_730533907_h
+#ifndef autodriller_configurationSupport_730534370_h
+#define autodriller_configurationSupport_730534370_h
 
 /* Uses */
 #include "autodriller_configuration.h"
@@ -26,66 +26,68 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace AutoDrillerConfiguration {
-    /* ========================================================================= */
-    /**
-    Uses:     T
+namespace nec {
+    namespace control {
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(HmiRequestTypeSupport, HmiRequest);
+        DDS_TYPESUPPORT_CPP(HmiRequestTypeSupport, HmiRequest);
 
-    DDS_DATAWRITER_CPP(HmiRequestDataWriter, HmiRequest);
-    DDS_DATAREADER_CPP(HmiRequestDataReader, HmiRequestSeq, HmiRequest);
+        DDS_DATAWRITER_CPP(HmiRequestDataWriter, HmiRequest);
+        DDS_DATAREADER_CPP(HmiRequestDataReader, HmiRequestSeq, HmiRequest);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-    /* ========================================================================= */
-    /**
-    Uses:     T
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(HmiStateTypeSupport, HmiState);
+        DDS_TYPESUPPORT_CPP(HmiStateTypeSupport, HmiState);
 
-    DDS_DATAWRITER_CPP(HmiStateDataWriter, HmiState);
-    DDS_DATAREADER_CPP(HmiStateDataReader, HmiStateSeq, HmiState);
+        DDS_DATAWRITER_CPP(HmiStateDataWriter, HmiState);
+        DDS_DATAREADER_CPP(HmiStateDataReader, HmiStateSeq, HmiState);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-} /* namespace AutoDrillerConfiguration  */
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+    } /* namespace control  */
+} /* namespace nec  */
 
-#endif  /* autodriller_configurationSupport_730533907_h */
+#endif  /* autodriller_configurationSupport_730534370_h */
 

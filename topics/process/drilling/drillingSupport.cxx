@@ -15,307 +15,309 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace Hoisting {
+namespace nec {
+    namespace process {
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'DrillingRequest' support classes.
+        Configure and implement 'DrillingRequest' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   DrillingRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   DrillingRequestTYPENAME
 
-    /* Defines */
-    #define TDataWriter DrillingRequestDataWriter
-    #define TData       Hoisting::DrillingRequest
+        /* Defines */
+        #define TDataWriter DrillingRequestDataWriter
+        #define TData       nec::process::DrillingRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   DrillingRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   DrillingRequestTYPENAME
 
-    /* Defines */
-    #define TDataReader DrillingRequestDataReader
-    #define TDataSeq    DrillingRequestSeq
-    #define TData       Hoisting::DrillingRequest
+        /* Defines */
+        #define TDataReader DrillingRequestDataReader
+        #define TDataSeq    DrillingRequestSeq
+        #define TData       nec::process::DrillingRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    DrillingRequestTYPENAME
-    #define TPlugin_new  Hoisting::DrillingRequestPlugin_new
-    #define TPlugin_delete  Hoisting::DrillingRequestPlugin_delete
+        /* Requires */
+        #define TTYPENAME    DrillingRequestTYPENAME
+        #define TPlugin_new  nec::process::DrillingRequestPlugin_new
+        #define TPlugin_delete  nec::process::DrillingRequestPlugin_delete
 
-    /* Defines */
-    #define TTypeSupport DrillingRequestTypeSupport
-    #define TData        Hoisting::DrillingRequest
-    #define TDataReader  DrillingRequestDataReader
-    #define TDataWriter  DrillingRequestDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport DrillingRequestTypeSupport
+        #define TData        nec::process::DrillingRequest
+        #define TDataReader  DrillingRequestDataReader
+        #define TDataWriter  DrillingRequestDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'DrillingObjective' support classes.
+        Configure and implement 'DrillingObjective' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   DrillingObjectiveTYPENAME
+        /* Requires */
+        #define TTYPENAME   DrillingObjectiveTYPENAME
 
-    /* Defines */
-    #define TDataWriter DrillingObjectiveDataWriter
-    #define TData       Hoisting::DrillingObjective
+        /* Defines */
+        #define TDataWriter DrillingObjectiveDataWriter
+        #define TData       nec::process::DrillingObjective
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   DrillingObjectiveTYPENAME
+        /* Requires */
+        #define TTYPENAME   DrillingObjectiveTYPENAME
 
-    /* Defines */
-    #define TDataReader DrillingObjectiveDataReader
-    #define TDataSeq    DrillingObjectiveSeq
-    #define TData       Hoisting::DrillingObjective
+        /* Defines */
+        #define TDataReader DrillingObjectiveDataReader
+        #define TDataSeq    DrillingObjectiveSeq
+        #define TData       nec::process::DrillingObjective
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    DrillingObjectiveTYPENAME
-    #define TPlugin_new  Hoisting::DrillingObjectivePlugin_new
-    #define TPlugin_delete  Hoisting::DrillingObjectivePlugin_delete
+        /* Requires */
+        #define TTYPENAME    DrillingObjectiveTYPENAME
+        #define TPlugin_new  nec::process::DrillingObjectivePlugin_new
+        #define TPlugin_delete  nec::process::DrillingObjectivePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport DrillingObjectiveTypeSupport
-    #define TData        Hoisting::DrillingObjective
-    #define TDataReader  DrillingObjectiveDataReader
-    #define TDataWriter  DrillingObjectiveDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport DrillingObjectiveTypeSupport
+        #define TData        nec::process::DrillingObjective
+        #define TDataReader  DrillingObjectiveDataReader
+        #define TDataWriter  DrillingObjectiveDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'DrillingState' support classes.
+        Configure and implement 'DrillingState' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   DrillingStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   DrillingStateTYPENAME
 
-    /* Defines */
-    #define TDataWriter DrillingStateDataWriter
-    #define TData       Hoisting::DrillingState
+        /* Defines */
+        #define TDataWriter DrillingStateDataWriter
+        #define TData       nec::process::DrillingState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   DrillingStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   DrillingStateTYPENAME
 
-    /* Defines */
-    #define TDataReader DrillingStateDataReader
-    #define TDataSeq    DrillingStateSeq
-    #define TData       Hoisting::DrillingState
+        /* Defines */
+        #define TDataReader DrillingStateDataReader
+        #define TDataSeq    DrillingStateSeq
+        #define TData       nec::process::DrillingState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    DrillingStateTYPENAME
-    #define TPlugin_new  Hoisting::DrillingStatePlugin_new
-    #define TPlugin_delete  Hoisting::DrillingStatePlugin_delete
+        /* Requires */
+        #define TTYPENAME    DrillingStateTYPENAME
+        #define TPlugin_new  nec::process::DrillingStatePlugin_new
+        #define TPlugin_delete  nec::process::DrillingStatePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport DrillingStateTypeSupport
-    #define TData        Hoisting::DrillingState
-    #define TDataReader  DrillingStateDataReader
-    #define TDataWriter  DrillingStateDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport DrillingStateTypeSupport
+        #define TData        nec::process::DrillingState
+        #define TDataReader  DrillingStateDataReader
+        #define TDataWriter  DrillingStateDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-} /* namespace Hoisting  */
+    } /* namespace process  */
+} /* namespace nec  */
 

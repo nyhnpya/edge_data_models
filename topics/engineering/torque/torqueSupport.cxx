@@ -15,307 +15,309 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace ControlRotation {
+namespace nec {
+    namespace control {
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'TorqueRequest' support classes.
+        Configure and implement 'TorqueRequest' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   TorqueRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   TorqueRequestTYPENAME
 
-    /* Defines */
-    #define TDataWriter TorqueRequestDataWriter
-    #define TData       ControlRotation::TorqueRequest
+        /* Defines */
+        #define TDataWriter TorqueRequestDataWriter
+        #define TData       nec::control::TorqueRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   TorqueRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   TorqueRequestTYPENAME
 
-    /* Defines */
-    #define TDataReader TorqueRequestDataReader
-    #define TDataSeq    TorqueRequestSeq
-    #define TData       ControlRotation::TorqueRequest
+        /* Defines */
+        #define TDataReader TorqueRequestDataReader
+        #define TDataSeq    TorqueRequestSeq
+        #define TData       nec::control::TorqueRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    TorqueRequestTYPENAME
-    #define TPlugin_new  ControlRotation::TorqueRequestPlugin_new
-    #define TPlugin_delete  ControlRotation::TorqueRequestPlugin_delete
+        /* Requires */
+        #define TTYPENAME    TorqueRequestTYPENAME
+        #define TPlugin_new  nec::control::TorqueRequestPlugin_new
+        #define TPlugin_delete  nec::control::TorqueRequestPlugin_delete
 
-    /* Defines */
-    #define TTypeSupport TorqueRequestTypeSupport
-    #define TData        ControlRotation::TorqueRequest
-    #define TDataReader  TorqueRequestDataReader
-    #define TDataWriter  TorqueRequestDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport TorqueRequestTypeSupport
+        #define TData        nec::control::TorqueRequest
+        #define TDataReader  TorqueRequestDataReader
+        #define TDataWriter  TorqueRequestDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'TorqueObjective' support classes.
+        Configure and implement 'TorqueObjective' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   TorqueObjectiveTYPENAME
+        /* Requires */
+        #define TTYPENAME   TorqueObjectiveTYPENAME
 
-    /* Defines */
-    #define TDataWriter TorqueObjectiveDataWriter
-    #define TData       ControlRotation::TorqueObjective
+        /* Defines */
+        #define TDataWriter TorqueObjectiveDataWriter
+        #define TData       nec::control::TorqueObjective
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   TorqueObjectiveTYPENAME
+        /* Requires */
+        #define TTYPENAME   TorqueObjectiveTYPENAME
 
-    /* Defines */
-    #define TDataReader TorqueObjectiveDataReader
-    #define TDataSeq    TorqueObjectiveSeq
-    #define TData       ControlRotation::TorqueObjective
+        /* Defines */
+        #define TDataReader TorqueObjectiveDataReader
+        #define TDataSeq    TorqueObjectiveSeq
+        #define TData       nec::control::TorqueObjective
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    TorqueObjectiveTYPENAME
-    #define TPlugin_new  ControlRotation::TorqueObjectivePlugin_new
-    #define TPlugin_delete  ControlRotation::TorqueObjectivePlugin_delete
+        /* Requires */
+        #define TTYPENAME    TorqueObjectiveTYPENAME
+        #define TPlugin_new  nec::control::TorqueObjectivePlugin_new
+        #define TPlugin_delete  nec::control::TorqueObjectivePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport TorqueObjectiveTypeSupport
-    #define TData        ControlRotation::TorqueObjective
-    #define TDataReader  TorqueObjectiveDataReader
-    #define TDataWriter  TorqueObjectiveDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport TorqueObjectiveTypeSupport
+        #define TData        nec::control::TorqueObjective
+        #define TDataReader  TorqueObjectiveDataReader
+        #define TDataWriter  TorqueObjectiveDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'TorqueState' support classes.
+        Configure and implement 'TorqueState' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   TorqueStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   TorqueStateTYPENAME
 
-    /* Defines */
-    #define TDataWriter TorqueStateDataWriter
-    #define TData       ControlRotation::TorqueState
+        /* Defines */
+        #define TDataWriter TorqueStateDataWriter
+        #define TData       nec::control::TorqueState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   TorqueStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   TorqueStateTYPENAME
 
-    /* Defines */
-    #define TDataReader TorqueStateDataReader
-    #define TDataSeq    TorqueStateSeq
-    #define TData       ControlRotation::TorqueState
+        /* Defines */
+        #define TDataReader TorqueStateDataReader
+        #define TDataSeq    TorqueStateSeq
+        #define TData       nec::control::TorqueState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    TorqueStateTYPENAME
-    #define TPlugin_new  ControlRotation::TorqueStatePlugin_new
-    #define TPlugin_delete  ControlRotation::TorqueStatePlugin_delete
+        /* Requires */
+        #define TTYPENAME    TorqueStateTYPENAME
+        #define TPlugin_new  nec::control::TorqueStatePlugin_new
+        #define TPlugin_delete  nec::control::TorqueStatePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport TorqueStateTypeSupport
-    #define TData        ControlRotation::TorqueState
-    #define TDataReader  TorqueStateDataReader
-    #define TDataWriter  TorqueStateDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport TorqueStateTypeSupport
+        #define TData        nec::control::TorqueState
+        #define TDataReader  TorqueStateDataReader
+        #define TDataWriter  TorqueStateDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-} /* namespace ControlRotation  */
+    } /* namespace control  */
+} /* namespace nec  */
 

@@ -5,10 +5,10 @@
 #include "rotate.h"
 #include "rotateSupport.h"
 
-class CRotateRequestSubscriber : public TSubscriber< SafeRotationFunctions::RotateRequest >
+class CRotateRequestSubscriber : public TSubscriber< nec::process::RotateRequest >
 {
  public:
-    typedef std::function<void(const SafeRotationFunctions::RotateRequest &data)> OnDataAvailableEvent;
+    typedef std::function<void(const nec::process::RotateRequest &data)> OnDataAvailableEvent;
 
     CRotateRequestSubscriber();
     ~CRotateRequestSubscriber();
@@ -28,18 +28,18 @@ class CRotateRequestSubscriber : public TSubscriber< SafeRotationFunctions::Rota
 
  protected:
     ///Derived Methods
-    void DataAvailable(const SafeRotationFunctions::RotateRequest &data,
+    void DataAvailable(const nec::process::RotateRequest &data,
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
 private:
-    SafeRotationFunctions::RotateRequest m_data;
-    DDS::SampleInfo                m_sampleInfo;
-    DDS::LivelinessChangedStatus   m_livelinessStatus;
-    OnDataAvailableEvent           m_pOnDataAvailable;
-    OnDataDisposedEvent            m_pOnDataDisposed;
-    OnLivelinessChangedEvent       m_pOnLivelinessChanged;
+    nec::process::RotateRequest   m_data;
+    DDS::SampleInfo               m_sampleInfo;
+    DDS::LivelinessChangedStatus  m_livelinessStatus;
+    OnDataAvailableEvent          m_pOnDataAvailable;
+    OnDataDisposedEvent           m_pOnDataDisposed;
+    OnLivelinessChangedEvent      m_pOnLivelinessChanged;
 };
 
 #endif // __ROTATE_REQUEST_SUBSCRIBER_H__ 

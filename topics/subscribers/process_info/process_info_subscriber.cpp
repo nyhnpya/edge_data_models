@@ -59,7 +59,7 @@ bool CProcessInfoSubscriber::GetUsedPhysicalMemory(int64_t &usedPhysicalMemory)
 bool CProcessInfoSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               ProcessMonitor::PROCESS_INFO,
+                               process::maintanence::PROCESS_INFO,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -84,7 +84,7 @@ void CProcessInfoSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent ev
     m_pOnSubscriptionMatched = event;
 }
 
-void CProcessInfoSubscriber::DataAvailable(const ProcessMonitor::ProcessInfo &data,
+void CProcessInfoSubscriber::DataAvailable(const process::maintanence::ProcessInfo &data,
                                            const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef hoistSupport_1013695219_h
-#define hoistSupport_1013695219_h
+#ifndef hoistSupport_1013695610_h
+#define hoistSupport_1013695610_h
 
 /* Uses */
 #include "hoist.h"
@@ -26,95 +26,97 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace SafeHoistFunctions {
-    /* ========================================================================= */
-    /**
-    Uses:     T
+namespace nec {
+    namespace process {
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(HoistRequestTypeSupport, HoistRequest);
+        DDS_TYPESUPPORT_CPP(HoistRequestTypeSupport, HoistRequest);
 
-    DDS_DATAWRITER_CPP(HoistRequestDataWriter, HoistRequest);
-    DDS_DATAREADER_CPP(HoistRequestDataReader, HoistRequestSeq, HoistRequest);
+        DDS_DATAWRITER_CPP(HoistRequestDataWriter, HoistRequest);
+        DDS_DATAREADER_CPP(HoistRequestDataReader, HoistRequestSeq, HoistRequest);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-    /* ========================================================================= */
-    /**
-    Uses:     T
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(HoistObjectiveTypeSupport, HoistObjective);
+        DDS_TYPESUPPORT_CPP(HoistObjectiveTypeSupport, HoistObjective);
 
-    DDS_DATAWRITER_CPP(HoistObjectiveDataWriter, HoistObjective);
-    DDS_DATAREADER_CPP(HoistObjectiveDataReader, HoistObjectiveSeq, HoistObjective);
+        DDS_DATAWRITER_CPP(HoistObjectiveDataWriter, HoistObjective);
+        DDS_DATAREADER_CPP(HoistObjectiveDataReader, HoistObjectiveSeq, HoistObjective);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-    /* ========================================================================= */
-    /**
-    Uses:     T
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-    Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-    Organized using the well-documented "Generics Pattern" for
-    implementing generics in C and C++.
-    */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, start exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-    #endif
+        #endif
 
-    DDS_TYPESUPPORT_CPP(HoistStateTypeSupport, HoistState);
+        DDS_TYPESUPPORT_CPP(HoistStateTypeSupport, HoistState);
 
-    DDS_DATAWRITER_CPP(HoistStateDataWriter, HoistState);
-    DDS_DATAREADER_CPP(HoistStateDataReader, HoistStateSeq, HoistState);
+        DDS_DATAWRITER_CPP(HoistStateDataWriter, HoistState);
+        DDS_DATAREADER_CPP(HoistStateDataReader, HoistStateSeq, HoistState);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-    /* If the code is building on Windows, stop exporting symbols.
-    */
-    #undef NDDSUSERDllExport
-    #define NDDSUSERDllExport
-    #endif
-} /* namespace SafeHoistFunctions  */
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+    } /* namespace process  */
+} /* namespace nec  */
 
-#endif  /* hoistSupport_1013695219_h */
+#endif  /* hoistSupport_1013695610_h */
 

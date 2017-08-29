@@ -1,93 +1,96 @@
 #include "base_data_types.idl"
 
-module SafeCirculateFunctions
+module nec
 {
-    //@copy-c-declaration static const char CIRCULATE_REQUEST[] = "CirculateRequest";
-
-    /**
-    * \brief requested state change in the circulation system.
-    *
-    * \ingroup SafeCirculateFunctions
-    *
-    * | Variable          | Description                                        | Data Type           | Unit    |
-    * | ----------------- | -------------------------------------------------- | --------------------| ------- |
-    * | id                | id of requestor                                    | DataTypes::Uuid     | N/A     |
-    * | objectiveId       | id of current objective                            | DataTypes::Uuid     | N/A     |
-    * | priority          | priority of the request                            | DataTypes::Priority | sec     |
-    * | timeNeeded        | time requester needs the resource                  | DataTypes::Time     | sec     |
-    * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time     | N/A     |
-    * | targetFlowRate    | requetsed flow rate                                | double              | m/sec^3 |
-    */
-    struct CirculateRequest
+    module process
     {
-        DataTypes::Uuid     id; //@key
-        DataTypes::Uuid     objectiveId; 
-        DataTypes::Priority priority;
-        DataTypes::Time     timeNeeded;
-        DataTypes::Time     estimatedDuration;
-        double              targetFlowRate;
-    };
+        //@copy-c-declaration static const char CIRCULATE_REQUEST[] = "CirculateRequest";
 
-    //@copy-c-declaration static const char CIRCULATE_OBJECTIVE[] = "CirculateObjective";
+        /**
+         * \brief requested state change in the circulation system.
+         *
+         * \ingroup SafeCirculateFunctions
+         *
+         * | Variable          | Description                                        | Data Type           | Unit    |
+         * | ----------------- | -------------------------------------------------- | --------------------| ------- |
+         * | id                | id of requestor                                    | DataTypes::Uuid     | N/A     |
+         * | objectiveId       | id of current objective                            | DataTypes::Uuid     | N/A     |
+         * | priority          | priority of the request                            | DataTypes::Priority | sec     |
+         * | timeNeeded        | time requester needs the resource                  | DataTypes::Time     | sec     |
+         * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time     | N/A     |
+         * | targetFlowRate    | requetsed flow rate                                | double              | m/sec^3 |
+         */
+        struct CirculateRequest
+        {
+            DataTypes::Uuid     id; //@key
+            DataTypes::Uuid     objectiveId; 
+            DataTypes::Priority priority;
+            DataTypes::Time     timeNeeded;
+            DataTypes::Time     estimatedDuration;
+            double              targetFlowRate;
+        };
 
-    /**
-    * \brief current requested state change in the circulation system.
-    *
-    * \ingroup SafeCirculateFunctions
-    *
-    * | Variable          | Description                                        | Data Type        | Unit    |
-    * | ----------------- | -------------------------------------------------- | ----------       | ------- |
-    * | id                | id of requestor                                    | DataTypes::Uuid  | N/A     |
-    * | objectiveId       | id of current objective                            | DataTypes::Uuid  | N/A     |
-    * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time  | N/A     |
-    * | targetFlowRate    | requetsed flow rate                                | double           | m/sec^3 |
-    */
-    struct CirculateObjective
-    {
-        DataTypes::Uuid     id; //@key
-        DataTypes::Uuid     objectiveId; 
-        DataTypes::Time     estimatedDuration;
-        double              targetFlowRate;
-    };
+        //@copy-c-declaration static const char CIRCULATE_OBJECTIVE[] = "CirculateObjective";
 
-    //@copy-c-declaration static const char CIRCULATE_STATE[] = "CirculateState";
+        /**
+         * \brief current requested state change in the circulation system.
+         *
+         * \ingroup SafeCirculateFunctions
+         *
+         * | Variable          | Description                                        | Data Type        | Unit    |
+         * | ----------------- | -------------------------------------------------- | ----------       | ------- |
+         * | id                | id of requestor                                    | DataTypes::Uuid  | N/A     |
+         * | objectiveId       | id of current objective                            | DataTypes::Uuid  | N/A     |
+         * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time  | N/A     |
+         * | targetFlowRate    | requetsed flow rate                                | double           | m/sec^3 |
+         */
+        struct CirculateObjective
+        {
+            DataTypes::Uuid     id; //@key
+            DataTypes::Uuid     objectiveId; 
+            DataTypes::Time     estimatedDuration;
+            double              targetFlowRate;
+        };
 
-    /**
-    * \brief current state of circulation system.
-    *
-    * \ingroup SafeCirculateFunctions
-    *
-    * | Variable                | Description                            | Data Type         | Unit    |
-    * | ----------------------- | ---------------------------------------| ------------------| ------- |
-    * | id                      | id of requestor                        | DataTypes::Uuid   | N/A     |
-    * | timestamp               | timestamp when the data was published. | DataTypes::Time   | sec     |
-    * | status                  | status of ciruclation system           | Datatypes::Status | N/A     |
-    * | actualFlowRate          | actual flow rate                       | double            | m/sec^3 |
-    * | actualStandpipePressure | actual standpipe pressure              | double            | Pa      |
-    * | minFlowRate             | minimum machine flow rate              | double            | m/sec^3 |
-    * | maxFlowRate             | maximum machine flow rate              | double            | m/sec^3 |
-    * | minStandpipePressure    | minimum machine standpipe pressure     | double            | Pa      |
-    * | maxStandpipePressure    | maximum machine standpipe pressure     | double            | Pa      |
-    * | targetFlowRate          | requetsed flow rate                    | double            | m/sec^3 |
-    */
-    struct CirculateState
-    {
-        DataTypes::Uuid   id;           //@key
-        DataTypes::Uuid   objectiveId; 
-        DataTypes::Time   timestamp;
-        DataTypes::Status status;
+        //@copy-c-declaration static const char CIRCULATE_STATE[] = "CirculateState";
 
-        // actuals
-        double            actualFlowRate;
-        double            actualStandpipePressure;
+        /**
+         * \brief current state of circulation system.
+         *
+         * \ingroup SafeCirculateFunctions
+         *
+         * | Variable                | Description                            | Data Type         | Unit    |
+         * | ----------------------- | ---------------------------------------| ------------------| ------- |
+         * | id                      | id of requestor                        | DataTypes::Uuid   | N/A     |
+         * | timestamp               | timestamp when the data was published. | DataTypes::Time   | sec     |
+         * | status                  | status of ciruclation system           | Datatypes::Status | N/A     |
+         * | actualFlowRate          | actual flow rate                       | double            | m/sec^3 |
+         * | actualStandpipePressure | actual standpipe pressure              | double            | Pa      |
+         * | minFlowRate             | minimum machine flow rate              | double            | m/sec^3 |
+         * | maxFlowRate             | maximum machine flow rate              | double            | m/sec^3 |
+         * | minStandpipePressure    | minimum machine standpipe pressure     | double            | Pa      |
+         * | maxStandpipePressure    | maximum machine standpipe pressure     | double            | Pa      |
+         * | targetFlowRate          | requetsed flow rate                    | double            | m/sec^3 |
+         */
+        struct CirculateState
+        {
+            DataTypes::Uuid   id;           //@key
+            DataTypes::Uuid   objectiveId; 
+            DataTypes::Time   timestamp;
+            DataTypes::Status status;
 
-        // constraints
-        double            minFlowRate;
-        double            maxFlowRate;
-        double            minStandpipePressure;
-        double            maxStandpipePressure;
+            // actuals
+            double            actualFlowRate;
+            double            actualStandpipePressure;
 
-        // targets
-        double            targetFlowRate;
+            // constraints
+            double            minFlowRate;
+            double            maxFlowRate;
+            double            minStandpipePressure;
+            double            maxStandpipePressure;
+
+            // targets
+            double            targetFlowRate;
+        };
     };
 };

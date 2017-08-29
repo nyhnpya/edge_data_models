@@ -6,7 +6,7 @@
 #include "autodriller_configuration.h"
 #include "autodriller_configurationSupport.h"
 
-class CAutoDrillerConfigurationStatePublisher : public TPublisher< AutoDrillerConfiguration::HmiState >
+class CAutoDrillerConfigurationStatePublisher : public TPublisher< nec::control::HmiState >
 {
  public:
     CAutoDrillerConfigurationStatePublisher();

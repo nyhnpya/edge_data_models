@@ -7,10 +7,10 @@
 #include "objective.h"
 #include "objectiveSupport.h"
 
-class CObjectiveStateSubscriber : public TSubscriber< Plan::ObjectiveState>
+class CObjectiveStateSubscriber : public TSubscriber< process::plan::ObjectiveState>
 {
 public:
-    typedef std::function<void(const Plan::ObjectiveState &data)> OnDataAvailableEvent;
+    typedef std::function<void(const process::plan::ObjectiveState &data)> OnDataAvailableEvent;
 
     CObjectiveStateSubscriber();
     virtual ~CObjectiveStateSubscriber();
@@ -33,7 +33,7 @@ public:
 
 protected:
     ///Derived Methods
-    void DataAvailable(const Plan::ObjectiveState &data,
+    void DataAvailable(const process::plan::ObjectiveState &data,
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
@@ -41,7 +41,7 @@ protected:
 
 private:
 	bool                         m_subscriptionMatched;
-    Plan::ObjectiveState         m_data;
+    process::plan::ObjectiveState         m_data;
     DDS::SampleInfo              m_sampleInfo;
     OnDataAvailableEvent         m_pOnDataAvailable;
 	OnDataDisposedEvent          m_pOnDataDisposed;

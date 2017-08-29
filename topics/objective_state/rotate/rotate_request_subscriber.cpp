@@ -52,7 +52,7 @@ bool CRotateRequestSubscriber::GetTargetRate(double &targetRate)
 bool CRotateRequestSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               SafeRotationFunctions::ROTATE_REQUEST,
+                               nec::process::ROTATE_REQUEST,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -72,8 +72,8 @@ void CRotateRequestSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent even
     m_pOnLivelinessChanged = event;
 }
 
-void CRotateRequestSubscriber::DataAvailable(const SafeRotationFunctions::RotateRequest &data,
-                                           const DDS::SampleInfo &sampleInfo)
+void CRotateRequestSubscriber::DataAvailable(const nec::process::RotateRequest &data,
+                                             const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
 

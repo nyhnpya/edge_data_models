@@ -15,207 +15,209 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace CalibrationHoisting {
+namespace nec {
+    namespace control {
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'DrillingCalibrationRequest' support classes.
+        Configure and implement 'DrillingCalibrationRequest' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   DrillingCalibrationRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   DrillingCalibrationRequestTYPENAME
 
-    /* Defines */
-    #define TDataWriter DrillingCalibrationRequestDataWriter
-    #define TData       CalibrationHoisting::DrillingCalibrationRequest
+        /* Defines */
+        #define TDataWriter DrillingCalibrationRequestDataWriter
+        #define TData       nec::control::DrillingCalibrationRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   DrillingCalibrationRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   DrillingCalibrationRequestTYPENAME
 
-    /* Defines */
-    #define TDataReader DrillingCalibrationRequestDataReader
-    #define TDataSeq    DrillingCalibrationRequestSeq
-    #define TData       CalibrationHoisting::DrillingCalibrationRequest
+        /* Defines */
+        #define TDataReader DrillingCalibrationRequestDataReader
+        #define TDataSeq    DrillingCalibrationRequestSeq
+        #define TData       nec::control::DrillingCalibrationRequest
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    DrillingCalibrationRequestTYPENAME
-    #define TPlugin_new  CalibrationHoisting::DrillingCalibrationRequestPlugin_new
-    #define TPlugin_delete  CalibrationHoisting::DrillingCalibrationRequestPlugin_delete
+        /* Requires */
+        #define TTYPENAME    DrillingCalibrationRequestTYPENAME
+        #define TPlugin_new  nec::control::DrillingCalibrationRequestPlugin_new
+        #define TPlugin_delete  nec::control::DrillingCalibrationRequestPlugin_delete
 
-    /* Defines */
-    #define TTypeSupport DrillingCalibrationRequestTypeSupport
-    #define TData        CalibrationHoisting::DrillingCalibrationRequest
-    #define TDataReader  DrillingCalibrationRequestDataReader
-    #define TDataWriter  DrillingCalibrationRequestDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport DrillingCalibrationRequestTypeSupport
+        #define TData        nec::control::DrillingCalibrationRequest
+        #define TDataReader  DrillingCalibrationRequestDataReader
+        #define TDataWriter  DrillingCalibrationRequestDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'DrillingCalibrationState' support classes.
+        Configure and implement 'DrillingCalibrationState' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   DrillingCalibrationStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   DrillingCalibrationStateTYPENAME
 
-    /* Defines */
-    #define TDataWriter DrillingCalibrationStateDataWriter
-    #define TData       CalibrationHoisting::DrillingCalibrationState
+        /* Defines */
+        #define TDataWriter DrillingCalibrationStateDataWriter
+        #define TData       nec::control::DrillingCalibrationState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   DrillingCalibrationStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   DrillingCalibrationStateTYPENAME
 
-    /* Defines */
-    #define TDataReader DrillingCalibrationStateDataReader
-    #define TDataSeq    DrillingCalibrationStateSeq
-    #define TData       CalibrationHoisting::DrillingCalibrationState
+        /* Defines */
+        #define TDataReader DrillingCalibrationStateDataReader
+        #define TDataSeq    DrillingCalibrationStateSeq
+        #define TData       nec::control::DrillingCalibrationState
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    DrillingCalibrationStateTYPENAME
-    #define TPlugin_new  CalibrationHoisting::DrillingCalibrationStatePlugin_new
-    #define TPlugin_delete  CalibrationHoisting::DrillingCalibrationStatePlugin_delete
+        /* Requires */
+        #define TTYPENAME    DrillingCalibrationStateTYPENAME
+        #define TPlugin_new  nec::control::DrillingCalibrationStatePlugin_new
+        #define TPlugin_delete  nec::control::DrillingCalibrationStatePlugin_delete
 
-    /* Defines */
-    #define TTypeSupport DrillingCalibrationStateTypeSupport
-    #define TData        CalibrationHoisting::DrillingCalibrationState
-    #define TDataReader  DrillingCalibrationStateDataReader
-    #define TDataWriter  DrillingCalibrationStateDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport DrillingCalibrationStateTypeSupport
+        #define TData        nec::control::DrillingCalibrationState
+        #define TDataReader  DrillingCalibrationStateDataReader
+        #define TDataWriter  DrillingCalibrationStateDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-} /* namespace CalibrationHoisting  */
+    } /* namespace control  */
+} /* namespace nec  */
 

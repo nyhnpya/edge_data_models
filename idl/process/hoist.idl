@@ -1,100 +1,103 @@
 #include "base_data_types.idl"
 
-module SafeHoistFunctions
+module nec
 {
-    //@copy-c-declaration static const char HOIST_REQUEST[] = "HoistRequest";
-
-    /**
-    * \brief requested state change in the hoisting system.
-    *
-    * \ingroup SafeHoistFunctions
-    *
-    * | Variable          | Description                                      | Data Type           | Unit  |
-    * | ----------------- | -------------------------------------------------| --------------------| ------|
-    * | id                | id of requestor                                  | DataTypes::Uuid     | N/A   |
-    * | objectiveId       | id of current objective                          | DataTypes::Uuid     | N/A   |
-    * | priority          | priority of the request                          | DataTypes::Priority | ms    |
-    * | timeNeeded        | time requester needs the resource                | DataTypes::Time     | ms    |
-    * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time     | N/A   |
-    * | targetVelocity    | requested target in m/s                          | double              | m/sec |
-    * | targetPosition    | requested target position in m                   | double              | m/sec |
-    */
-    struct HoistRequest
+    module process
     {
-        DataTypes::Uuid     id;           //@key
-        DataTypes::Uuid     objectiveId; 
-        DataTypes::Priority priority;
-        DataTypes::Time     timeNeeded;
-        DataTypes::Time     estimatedDuration;
-        double              targetVelocity;
-        double              targetPosition;
-    };
+        //@copy-c-declaration static const char HOIST_REQUEST[] = "HoistRequest";
 
-    //@copy-c-declaration static const char HOIST_OBJECTIVE[] = "HoistObjective";
+        /**
+         * \brief requested state change in the hoisting system.
+         *
+         * \ingroup SafeHoistFunctions
+         *
+         * | Variable          | Description                                      | Data Type           | Unit  |
+         * | ----------------- | -------------------------------------------------| --------------------| ------|
+         * | id                | id of requestor                                  | DataTypes::Uuid     | N/A   |
+         * | objectiveId       | id of current objective                          | DataTypes::Uuid     | N/A   |
+         * | priority          | priority of the request                          | DataTypes::Priority | ms    |
+         * | timeNeeded        | time requester needs the resource                | DataTypes::Time     | ms    |
+         * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time     | N/A   |
+         * | targetVelocity    | requested target in m/s                          | double              | m/sec |
+         * | targetPosition    | requested target position in m                   | double              | m/sec |
+         */
+        struct HoistRequest
+        {
+            DataTypes::Uuid     id;           //@key
+            DataTypes::Uuid     objectiveId; 
+            DataTypes::Priority priority;
+            DataTypes::Time     timeNeeded;
+            DataTypes::Time     estimatedDuration;
+            double              targetVelocity;
+            double              targetPosition;
+        };
 
-    /**
-    * \brief current requested state change in the hoisting system.
-    *
-    * \ingroup SafeHoistFunctions
-    *
-    * | Variable          | Description                                      | Data Type       | Unit  |
-    * | ----------------- | ------------------------------------------------ | ----------------| ------|
-    * | id                | id of requestor                                  | DataTypes::Uuid | N/A   |
-    * | objectiveId       | id of current objective                          | DataTypes::Uuid | N/A   |
-    * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time | N/A   |
-    * | targetVelocity    | requested target in m/s                          | double          | m/sec |
-    * | targetPosition    | requested target position in m                   | double          | m/sec |
-    */
-    struct HoistObjective
-    {
-        DataTypes::Uuid  id; //@key
-        DataTypes::Uuid  objectiveId; 
-        DataTypes::Time  estimatedDuration;
-        double           targetVelocity;
-        double           targetPosition;
-    };
+        //@copy-c-declaration static const char HOIST_OBJECTIVE[] = "HoistObjective";
 
-    //@copy-c-declaration static const char HOIST_STATE[] = "HoistState";
+        /**
+         * \brief current requested state change in the hoisting system.
+         *
+         * \ingroup SafeHoistFunctions
+         *
+         * | Variable          | Description                                      | Data Type       | Unit  |
+         * | ----------------- | ------------------------------------------------ | ----------------| ------|
+         * | id                | id of requestor                                  | DataTypes::Uuid | N/A   |
+         * | objectiveId       | id of current objective                          | DataTypes::Uuid | N/A   |
+         * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time | N/A   |
+         * | targetVelocity    | requested target in m/s                          | double          | m/sec |
+         * | targetPosition    | requested target position in m                   | double          | m/sec |
+         */
+        struct HoistObjective
+        {
+            DataTypes::Uuid  id; //@key
+            DataTypes::Uuid  objectiveId; 
+            DataTypes::Time  estimatedDuration;
+            double           targetVelocity;
+            double           targetPosition;
+        };
 
-    /**
-     * \brief current state of the hoisting system.
-     *
-     * \ingroup SafeHoistFunctions
-     *
-     * | Variable          | Description                            | Data Type         | Unit  |
-     * | ----------------- | -------------------------------------- | ----------------- | ------|
-     * | id                | id of requestor                        | DataTypes::Uuid   | N/A   |
-     * | objectiveId       | id of current objective                | DataTypes::Uuid   | N/A   |
-     * | timestamp         | timestamp when the data was published. | DataTypes::Time   | sec   |
-     * | status            | status of ciruclation system           | Datatypes::Status | N/A   |
-     * | actualVelocity    | actual velicoty in m/s                 | double            | m/sec |
-     * | actualPosition    | requested target in m                  | double            | m/sec |
-     * | maxHoistVelocity  | requested target in m/s                | double            | m/sec |
-     * | maxLowerVelocity  | requested target in m/s                | double            | m/sec |
-     * | maxHoistPosition  | requested target in m/s                | double            | m/sec |
-     * | maxLowerPosition  | requested target in m/s                | double            | m/sec |
-     * | targetVelocity    | requested target in m/s                | double            | m/sec |
-     * | targetPosition    | requested target position in m         | double          | m/sec |
-     */
-    struct HoistState
-    {
-        DataTypes::Uuid     id;   //@key
-        DataTypes::Uuid     objectiveId; 
-        DataTypes::Time     timestamp;
-        DataTypes::Status   status;
+        //@copy-c-declaration static const char HOIST_STATE[] = "HoistState";
 
-        // actuals
-        double              actualVelocity;
-        double              actualPosition;
+        /**
+         * \brief current state of the hoisting system.
+         *
+         * \ingroup SafeHoistFunctions
+         *
+         * | Variable          | Description                            | Data Type         | Unit  |
+         * | ----------------- | -------------------------------------- | ----------------- | ------|
+         * | id                | id of requestor                        | DataTypes::Uuid   | N/A   |
+         * | objectiveId       | id of current objective                | DataTypes::Uuid   | N/A   |
+         * | timestamp         | timestamp when the data was published. | DataTypes::Time   | sec   |
+         * | status            | status of ciruclation system           | Datatypes::Status | N/A   |
+         * | actualVelocity    | actual velicoty in m/s                 | double            | m/sec |
+         * | actualPosition    | requested target in m                  | double            | m/sec |
+         * | maxHoistVelocity  | requested target in m/s                | double            | m/sec |
+         * | maxLowerVelocity  | requested target in m/s                | double            | m/sec |
+         * | maxHoistPosition  | requested target in m/s                | double            | m/sec |
+         * | maxLowerPosition  | requested target in m/s                | double            | m/sec |
+         * | targetVelocity    | requested target in m/s                | double            | m/sec |
+         * | targetPosition    | requested target position in m         | double          | m/sec |
+         */
+        struct HoistState
+        {
+            DataTypes::Uuid     id;   //@key
+            DataTypes::Uuid     objectiveId; 
+            DataTypes::Time     timestamp;
+            DataTypes::Status   status;
 
-        // constraints
-        double              maxHoistVelocity;
-        double              maxLowerVelocity;
-        double              maxHoistPosition;
-        double              maxLowerPosition;
+            // actuals
+            double              actualVelocity;
+            double              actualPosition;
 
-        // targets
-        double              targetVelocity;
-        double              targetPosition;
+            // constraints
+            double              maxHoistVelocity;
+            double              maxLowerVelocity;
+            double              maxHoistPosition;
+            double              maxLowerPosition;
+
+            // targets
+            double              targetVelocity;
+            double              targetPosition;
+        };
     };
 };

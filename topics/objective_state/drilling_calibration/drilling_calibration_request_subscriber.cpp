@@ -95,12 +95,12 @@ void CDrillingCalibrationRequestSubscriber::OnLivelinessChanged(OnLivelinessChan
 bool CDrillingCalibrationRequestSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               CalibrationHoisting::DRILLING_CALIBRATION_REQUEST,
+                               nec::control::DRILLING_CALIBRATION_REQUEST,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
 
-void CDrillingCalibrationRequestSubscriber::DataAvailable(const CalibrationHoisting::DrillingCalibrationRequest &data,
+void CDrillingCalibrationRequestSubscriber::DataAvailable(const nec::control::DrillingCalibrationRequest &data,
                                                           const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

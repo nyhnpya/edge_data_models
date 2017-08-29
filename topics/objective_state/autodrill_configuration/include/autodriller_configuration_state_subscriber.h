@@ -7,10 +7,10 @@
 #include "autodriller_configuration.h"
 #include "autodriller_configurationSupport.h"
 
-class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDrillerConfiguration::HmiState >
+class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< nec::control::HmiState >
 {
  public:
-    typedef std::function<void(const AutoDrillerConfiguration::HmiState &data)> OnDataAvailableEvent;
+    typedef std::function<void(const nec::control::HmiState &data)> OnDataAvailableEvent;
 
     CAutoDrillerConfigurationStateSubscriber();
     ~CAutoDrillerConfigurationStateSubscriber();
@@ -109,20 +109,20 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< AutoDriller
 	bool ValidSubscription();
 
  protected:
-    void DataAvailable(const AutoDrillerConfiguration::HmiState &data,
+    void DataAvailable(const nec::control::HmiState &data,
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
  private:
-    bool                               m_subscriptionMatched;
-    AutoDrillerConfiguration::HmiState m_data;
-    DDS::SampleInfo                    m_sampleInfo;
-    OnDataAvailableEvent               m_pOnDataAvailable;
-	OnDataDisposedEvent                m_pOnDataDisposed;
-	OnLivelinessChangedEvent           m_pOnLivelinessChanged;
-	OnSubscriptionMatchedEvent         m_pOnSubscriptionMatched;
+    bool                       m_subscriptionMatched;
+    nec::control::HmiState     m_data;
+    DDS::SampleInfo            m_sampleInfo;
+    OnDataAvailableEvent       m_pOnDataAvailable;
+	OnDataDisposedEvent        m_pOnDataDisposed;
+	OnLivelinessChangedEvent   m_pOnLivelinessChanged;
+	OnSubscriptionMatchedEvent m_pOnSubscriptionMatched;
 };
 
 #endif // __AUTODRILLER_CONFIGURATION_STATE_SUBSCRIBER_H__

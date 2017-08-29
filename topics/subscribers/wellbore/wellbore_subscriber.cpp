@@ -32,7 +32,7 @@ bool CWellboreStateSubscriber::GetHoleDepth(double &holeDepth)
 bool CWellboreStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               Downhole::WELLBORE_STATE,
+                               nec::process::WELLBORE_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -57,7 +57,7 @@ void CWellboreStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent 
     m_pOnSubscriptionMatched = event;
 }
 
-void CWellboreStateSubscriber::DataAvailable(const Downhole::Wellbore &data,
+void CWellboreStateSubscriber::DataAvailable(const nec::process::Wellbore &data,
                                              const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

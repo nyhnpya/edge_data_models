@@ -314,7 +314,7 @@ bool CAutoDrillerConfigurationRequestPublisher::PublishSample()
 bool CAutoDrillerConfigurationRequestPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              AutoDrillerConfiguration::HMI_REQUEST,
+                              nec::control::HMI_REQUEST,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

@@ -44,7 +44,7 @@ bool CCirculateObjectivePublisher::PublishSample()
 bool CCirculateObjectivePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              SafeCirculateFunctions::CIRCULATE_OBJECTIVE,
+                              nec::process::CIRCULATE_OBJECTIVE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

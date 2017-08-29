@@ -5,7 +5,7 @@
 #include "circulate.h"
 #include "circulateSupport.h"
 
-class CCirculateRequestPublisher : public TPublisher< SafeCirculateFunctions::CirculateRequest >
+class CCirculateRequestPublisher : public TPublisher< nec::process::CirculateRequest >
 {
  public:
     CCirculateRequestPublisher();

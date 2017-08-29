@@ -132,7 +132,7 @@ bool CDrillingObjectivePublisher::PublishSample()
 bool CDrillingObjectivePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              Hoisting::DRILLING_OBJECTIVE,
+                              nec::process::DRILLING_OBJECTIVE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

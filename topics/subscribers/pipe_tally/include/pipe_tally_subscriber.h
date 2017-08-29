@@ -7,10 +7,10 @@
 #include "pipe_tally.h"
 #include "pipe_tallySupport.h"
 
-class CPipeTallyStateSubscriber : public TSubscriber< PipeHandling::PipeTally>
+class CPipeTallyStateSubscriber : public TSubscriber< nec::process::PipeTally>
 {
 public:
-    typedef std::function<void(const PipeHandling::PipeTally &data)> OnDataAvailableEvent;
+    typedef std::function<void(const nec::process::PipeTally &data)> OnDataAvailableEvent;
 
     /// @return singleton instance
     static CPipeTallyStateSubscriber *Instance(void);
@@ -38,7 +38,7 @@ public:
 
 protected:
     ///Derived Methods
-    void OnDataAvailable(const PipeHandling::PipeTally &data,
+    void OnDataAvailable(const nec::process::PipeTally &data,
                          const DDS::SampleInfo &sampleInfo);
     void OnDataDisposed(const DDS::SampleInfo &sampleInfo);
     void OnLivelinessChanged(OnLivelinessChangedEvent event);
@@ -48,7 +48,7 @@ private:
     CPipeTallyStateSubscriber();
     virtual ~CPipeTallyStateSubscriber();
 
-    PipeHandling::PipeTally      m_data;
+    nec::process::PipeTally      m_data;
     DDS::SampleInfo              m_sampleInfo;
     DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent         m_pOnDataAvailable;

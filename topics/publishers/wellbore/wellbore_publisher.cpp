@@ -60,7 +60,7 @@ bool CWellboreStatePublisher::PublishSample()
 bool CWellboreStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              Downhole::WELLBORE_STATE,
+                              nec::process::WELLBORE_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

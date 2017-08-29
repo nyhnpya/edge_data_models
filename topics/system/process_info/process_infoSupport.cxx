@@ -15,107 +15,109 @@ or consult the RTI Connext manual.
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace ProcessMonitor {
+namespace process {
+    namespace maintanence {
 
-    /* ========================================================================= */
-    /**
-    <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-    Defines:   TData,
-    TDataWriter,
-    TDataReader,
-    TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-    Configure and implement 'ProcessInfo' support classes.
+        Configure and implement 'ProcessInfo' support classes.
 
-    Note: Only the #defined classes get defined
-    */
+        Note: Only the #defined classes get defined
+        */
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataWriter
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataWriter, TData
-    */
+        Defines:   TDataWriter, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   ProcessInfoTYPENAME
+        /* Requires */
+        #define TTYPENAME   ProcessInfoTYPENAME
 
-    /* Defines */
-    #define TDataWriter ProcessInfoDataWriter
-    #define TData       ProcessMonitor::ProcessInfo
+        /* Defines */
+        #define TDataWriter ProcessInfoDataWriter
+        #define TData       process::maintanence::ProcessInfo
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-    #undef TDataWriter
-    #undef TData
+        #undef TDataWriter
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* DDSDataReader
-    */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-    /**
-    <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-    Defines:   TDataReader, TDataSeq, TData
-    */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-    /* Requires */
-    #define TTYPENAME   ProcessInfoTYPENAME
+        /* Requires */
+        #define TTYPENAME   ProcessInfoTYPENAME
 
-    /* Defines */
-    #define TDataReader ProcessInfoDataReader
-    #define TDataSeq    ProcessInfoSeq
-    #define TData       ProcessMonitor::ProcessInfo
+        /* Defines */
+        #define TDataReader ProcessInfoDataReader
+        #define TDataSeq    ProcessInfoSeq
+        #define TData       process::maintanence::ProcessInfo
 
-    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-    #undef TDataReader
-    #undef TDataSeq
-    #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-    #undef TTYPENAME
+        #undef TTYPENAME
 
-    /* ----------------------------------------------------------------- */
-    /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-    <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-    Requires:  TTYPENAME,
-    TPlugin_new
-    TPlugin_delete
-    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-    */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-    /* Requires */
-    #define TTYPENAME    ProcessInfoTYPENAME
-    #define TPlugin_new  ProcessMonitor::ProcessInfoPlugin_new
-    #define TPlugin_delete  ProcessMonitor::ProcessInfoPlugin_delete
+        /* Requires */
+        #define TTYPENAME    ProcessInfoTYPENAME
+        #define TPlugin_new  process::maintanence::ProcessInfoPlugin_new
+        #define TPlugin_delete  process::maintanence::ProcessInfoPlugin_delete
 
-    /* Defines */
-    #define TTypeSupport ProcessInfoTypeSupport
-    #define TData        ProcessMonitor::ProcessInfo
-    #define TDataReader  ProcessInfoDataReader
-    #define TDataWriter  ProcessInfoDataWriter
-    #define TGENERATE_SER_CODE
-    #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport ProcessInfoTypeSupport
+        #define TData        process::maintanence::ProcessInfo
+        #define TDataReader  ProcessInfoDataReader
+        #define TDataWriter  ProcessInfoDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-    #undef TTypeSupport
-    #undef TData
-    #undef TDataReader
-    #undef TDataWriter
-    #undef TGENERATE_TYPECODE
-    #undef TGENERATE_SER_CODE
-    #undef TTYPENAME
-    #undef TPlugin_new
-    #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-} /* namespace ProcessMonitor  */
+    } /* namespace maintanence  */
+} /* namespace process  */
 

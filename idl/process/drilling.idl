@@ -1,63 +1,116 @@
 #include "base_data_types.idl"
-
-module Hoisting
+module nec
 {
-    //@copy-c-declaration static const char DRILLING_REQUEST[] = "DrillingRequest";
-    struct DrillingRequest
+    module process
     {
-        DataTypes::Uuid     id; //@key
-        DataTypes::Uuid     objectiveId; 
-        DataTypes::Priority priority;     // priority of the request
-        DataTypes::Time     timeNeeded;   // time requester needs the resource
-        DataTypes::Time     duration;     // duration requester needs the resource
-        double              ropLimit;
-        double              wobLimit;
-        double              differentialPressureLimit;
-        double              torqueLimit;
-        boolean             ropMode;
-        boolean             wobMode;
-        boolean             differentialPressureMode;
-        boolean             torqueMode;
-    };
+        //@copy-c-declaration static const char DRILLING_REQUEST[] = "DrillingRequest";
 
-    //@copy-c-declaration static const char DRILLING_OBJECTIVE[] = "DrillingObjective";
-    struct DrillingObjective
-    {
-        DataTypes::Uuid     id; //@key
-        DataTypes::Uuid     objectiveId; 
-        DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
-        double              ropLimit;
-        double              wobLimit;
-        double              differentialPressureLimit;
-        double              torqueLimit;
-        boolean             ropMode;
-        boolean             wobMode;
-        boolean             differentialPressureMode;
-        boolean             torqueMode;
-    };
+        /**
+         * \brief requested state change in the hoisting system.
+         *
+         * \ingroup SafeHoistFunctions
+         *
+         * | Variable          | Description                                      | Data Type           | Unit  |
+         * | ----------------- | -------------------------------------------------| --------------------| ------|
+         * | id                | id of requestor                                  | DataTypes::Uuid     | N/A   |
+         * | objectiveId       | id of current objective                          | DataTypes::Uuid     | N/A   |
+         * | priority          | priority of the request                          | DataTypes::Priority | ms    |
+         * | timeNeeded        | time requester needs the resource                | DataTypes::Time     | ms    |
+         * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time     | N/A   |
+         * | targetVelocity    | requested target in m/s                          | double              | m/sec |
+         * | targetPosition    | requested target position in m                   | double              | m/sec |
+         */
+        struct DrillingRequest
+        {
+            DataTypes::Uuid     id; //@key
+            DataTypes::Uuid     objectiveId; 
+            DataTypes::Priority priority;     // priority of the request
+            DataTypes::Time     timeNeeded;   // time requester needs the resource
+            DataTypes::Time     duration;     // duration requester needs the resource
+            double              ropLimit;
+            double              wobLimit;
+            double              differentialPressureLimit;
+            double              torqueLimit;
+            boolean             ropMode;
+            boolean             wobMode;
+            boolean             differentialPressureMode;
+            boolean             torqueMode;
+        };
 
-    //@copy-c-declaration static const char DRILLING_STATE[] = "DrillingState";
-    struct DrillingState
-    {
-        DataTypes::Uuid id; //@key
-        DataTypes::Uuid objectiveId; 
-        DataTypes::Time timestamp;
-        double          ropActual;
-        double          wobActual;
-        double          differentialPressureActual;
-        double          torqueActual;
-        double          ropLimit;
-        double          wobLimit;
-        double          differentialPressureLimit;
-        double          torqueLimit;
-        boolean         ropMode;
-        boolean         wobMode;
-        boolean         differentialPressureMode;
-        boolean         torqueMode;
-        double          ropTarget;
-        double          wobTarget;
-        double          differentialPressureTarget;
-        double          torqueTarget;
-        boolean         bitOnBottom;
+        //@copy-c-declaration static const char DRILLING_OBJECTIVE[] = "DrillingObjective";
+
+        /**
+         * \brief current requested state change in the hoisting system.
+         *
+         * \ingroup SafeHoistFunctions
+         *
+         * | Variable          | Description                                      | Data Type       | Unit  |
+         * | ----------------- | ------------------------------------------------ | ----------------| ------|
+         * | id                | id of requestor                                  | DataTypes::Uuid | N/A   |
+         * | objectiveId       | id of current objective                          | DataTypes::Uuid | N/A   |
+         * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time | N/A   |
+         * | targetVelocity    | requested target in m/s                          | double          | m/sec |
+         * | targetPosition    | requested target position in m                   | double          | m/sec |
+         */
+        struct DrillingObjective
+        {
+            DataTypes::Uuid     id; //@key
+            DataTypes::Uuid     objectiveId; 
+            DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
+            double              ropLimit;
+            double              wobLimit;
+            double              differentialPressureLimit;
+            double              torqueLimit;
+            boolean             ropMode;
+            boolean             wobMode;
+            boolean             differentialPressureMode;
+            boolean             torqueMode;
+        };
+
+        //@copy-c-declaration static const char DRILLING_STATE[] = "DrillingState";
+
+        /**
+         * \brief current state of the hoisting system.
+         *
+         * \ingroup SafeHoistFunctions
+         *
+         * | Variable          | Description                            | Data Type         | Unit  |
+         * | ----------------- | -------------------------------------- | ----------------- | ------|
+         * | id                | id of requestor                        | DataTypes::Uuid   | N/A   |
+         * | objectiveId       | id of current objective                | DataTypes::Uuid   | N/A   |
+         * | timestamp         | timestamp when the data was published. | DataTypes::Time   | sec   |
+         * | status            | status of ciruclation system           | Datatypes::Status | N/A   |
+         * | actualVelocity    | actual velicoty in m/s                 | double            | m/sec |
+         * | actualPosition    | requested target in m                  | double            | m/sec |
+         * | maxHoistVelocity  | requested target in m/s                | double            | m/sec |
+         * | maxLowerVelocity  | requested target in m/s                | double            | m/sec |
+         * | maxHoistPosition  | requested target in m/s                | double            | m/sec |
+         * | maxLowerPosition  | requested target in m/s                | double            | m/sec |
+         * | targetVelocity    | requested target in m/s                | double            | m/sec |
+         * | targetPosition    | requested target position in m         | double          | m/sec |
+         */
+        struct DrillingState
+        {
+            DataTypes::Uuid id; //@key
+            DataTypes::Uuid objectiveId; 
+            DataTypes::Time timestamp;
+            double          ropActual;
+            double          wobActual;
+            double          differentialPressureActual;
+            double          torqueActual;
+            double          ropLimit;
+            double          wobLimit;
+            double          differentialPressureLimit;
+            double          torqueLimit;
+            boolean         ropMode;
+            boolean         wobMode;
+            boolean         differentialPressureMode;
+            boolean         torqueMode;
+            double          ropTarget;
+            double          wobTarget;
+            double          differentialPressureTarget;
+            double          torqueTarget;
+            boolean         bitOnBottom;
+        };
     };
 };

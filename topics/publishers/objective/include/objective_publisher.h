@@ -7,7 +7,7 @@
 #include "objective.h"
 #include "objectiveSupport.h"
 
-class CObjectiveStatePublisher : public TPublisher< Plan::ObjectiveState>
+class CObjectiveStatePublisher : public TPublisher< process::plan::ObjectiveState>
 {
 public:
     CObjectiveStatePublisher();

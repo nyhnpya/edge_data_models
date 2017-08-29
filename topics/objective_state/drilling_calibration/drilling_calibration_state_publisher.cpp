@@ -314,7 +314,7 @@ bool CDrillingCalibrationStatePublisher::PublishSample()
 bool CDrillingCalibrationStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              CalibrationHoisting::DRILLING_CALIBRATION_STATE,
+                              nec::control::DRILLING_CALIBRATION_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

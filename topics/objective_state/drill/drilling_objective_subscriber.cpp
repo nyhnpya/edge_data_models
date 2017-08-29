@@ -102,12 +102,12 @@ void CDrillingObjectiveSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent 
 bool CDrillingObjectiveSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               Hoisting::DRILLING_OBJECTIVE,
+                               nec::process::DRILLING_OBJECTIVE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
 
-void CDrillingObjectiveSubscriber::DataAvailable(const Hoisting::DrillingObjective &data,
+void CDrillingObjectiveSubscriber::DataAvailable(const nec::process::DrillingObjective &data,
                                                  const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

@@ -1,128 +1,131 @@
 #include "base_data_types.idl"
 
-module DownholeFunctions
+module nec
 {
-    //@copy-c-declaration static const char SURVEY_REQUEST[] = "SurveyRequest";
-
-    /**
-     * @brief This interface allows the downhole service to initiate a suvey.
-     *
-     * @ingroup ProcessRequest
-     *
-     * A survey can be intitiated by the downhole service at anytime.  This survey
-     * about the ground that will be drilled. These parameters cannot always
-     * reliably be acquired in advance.
-     *
-     * | Variable          | Description                                      | Data Type           | Unit  |
-     * | ----------------- | -------------------------------------------------| --------------------| ------|
-     * | id                | id of requestor                                  | DataTypes::Uuid     | N/A   |
-     * | objectiveId       | id of current objective                          | DataTypes::Uuid     | N/A   |
-     * | priority          | priority of the request                          | DataTypes::Priority | sec   |
-     * | timeNeeded        | time requester needs the resource                | DataTypes::Time     | sec   |
-     * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time     | N/A   |
-     * | surveyQuality     | confidence level 0 - 100                         | double              |       |
-     *
-     */
-    struct SurveyRequest
+    module process
     {
-        DataTypes::Uuid          id;           //@key
-        DataTypes::Uuid          objectiveId; 
-        DataTypes::Priority      priority;
-        DataTypes::Time          timeNeeded;
-        DataTypes::Time          estimatedDuration;
-        DataTypes::SurveyQuality surveyQuality;
-    };
+        //@copy-c-declaration static const char SURVEY_REQUEST[] = "SurveyRequest";
 
-    //@copy-c-declaration static const char SURVEY_OBJECTIVE[] = "SurveyObjective";
+        /**
+         * @brief This interface allows the downhole service to initiate a suvey.
+         *
+         * @ingroup ProcessRequest
+         *
+         * A survey can be intitiated by the downhole service at anytime.  This survey
+         * about the ground that will be drilled. These parameters cannot always
+         * reliably be acquired in advance.
+         *
+         * | Variable          | Description                                      | Data Type           | Unit  |
+         * | ----------------- | -------------------------------------------------| --------------------| ------|
+         * | id                | id of requestor                                  | DataTypes::Uuid     | N/A   |
+         * | objectiveId       | id of current objective                          | DataTypes::Uuid     | N/A   |
+         * | priority          | priority of the request                          | DataTypes::Priority | sec   |
+         * | timeNeeded        | time requester needs the resource                | DataTypes::Time     | sec   |
+         * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time     | N/A   |
+         * | surveyQuality     | confidence level 0 - 100                         | double              |       |
+         *
+         */
+        struct SurveyRequest
+        {
+            DataTypes::Uuid          id;           //@key
+            DataTypes::Uuid          objectiveId; 
+            DataTypes::Priority      priority;
+            DataTypes::Time          timeNeeded;
+            DataTypes::Time          estimatedDuration;
+            DataTypes::SurveyQuality surveyQuality;
+        };
 
-    /**
-     *@brief Survey Objective data instance.
-     *
-     * @ingroup DownholeEffectors
-     *
-     * | Variable               | Description                                      | Data Type       | Unit  |
-     * | ---------------------- | ------------------------------------------------ | ----------------| ------|
-     * | id                     | id of requestor                                  | DataTypes::Uuid | N/A   |
-     * | objectiveId            | id of current objective                          | DataTypes::Uuid | N/A   |
-     * | estimatedDuration      | estimated duration requestor needs the resource  | DataTypes::Time | N/A   |
-     * | requestedSurveyQuality | confidence level 0 - 100                         | double          |       |
-     *
-     */
-    struct SurveyObjective
-    {
-        DataTypes::Uuid  id; //@key
-        DataTypes::Uuid  objectiveId; 
-        DataTypes::Time  estimatedDuration;
-        DataTypes::SurveyQuality requestedSurveyQuality;
-    };
+        //@copy-c-declaration static const char SURVEY_OBJECTIVE[] = "SurveyObjective";
 
-    //@copy-c-declaration static const char SURVEY_STATE[] = "SurveyState";
+        /**
+         *@brief Survey Objective data instance.
+         *
+         * @ingroup DownholeEffectors
+         *
+         * | Variable               | Description                                      | Data Type       | Unit  |
+         * | ---------------------- | ------------------------------------------------ | ----------------| ------|
+         * | id                     | id of requestor                                  | DataTypes::Uuid | N/A   |
+         * | objectiveId            | id of current objective                          | DataTypes::Uuid | N/A   |
+         * | estimatedDuration      | estimated duration requestor needs the resource  | DataTypes::Time | N/A   |
+         * | requestedSurveyQuality | confidence level 0 - 100                         | double          |       |
+         *
+         */
+        struct SurveyObjective
+        {
+            DataTypes::Uuid  id; //@key
+            DataTypes::Uuid  objectiveId; 
+            DataTypes::Time  estimatedDuration;
+            DataTypes::SurveyQuality requestedSurveyQuality;
+        };
 
-    /**
-     * @brief Survey state data interface
-     *
-     * @ingroup DownholeEffectors
-     *
-     * | Variable             | Description                                 | Data Type         | Unit    |
-     * | :------------------- | :-------------------------------------------| :---------------- | :------ |
-     * | id                   | id of requestor                             | DataTypes::Uuid   | N/A     |
-     * | objectiveId          | id of current objective                     | DataTypes::Uuid   | N/A     |
-     * | timestamp            | timestamp when the data was published.      | DataTypes::Time   | sec     |
-     * | status               | status of ciruclation system                | Datatypes::Status | N/A     |
-     * | acutalSurveyQuality  | confidence level 0 - 100                    | double            |         |
-     * | measuredDepth        | measured depth of the survey                | double            | m       |
-     * | inclination          | inclination of the survey                   | double            | rad/sec |
-     * | azimuth              | azimuth of the survey                       | double            | rad/sec |
-     * | totalVerticalDepth   | total vertical depth of the survey          | double            | m       |
-     * | dogLeg               | dog leg of the survey                       | double            | degrees/100ft |
-     * | verticalSection      | vertical section of the survey              | double            |         |
-     * | eastWest             | east/west position                          | double            | rad/sed |
-     * | northSouth           | north/south position                        | double            | rad/sec |
-     * | courseLength         | distance from last survey station to current survey station | double    | m  |
-     * | ca                   | ca of the survey                            | double |         |
-     * | cd                   | cd of the survey                            | double |         |
-     * | buildRate            | current build rate                          | double | degrees/100ft |
-     * | turnRate             | current turn rate                           | double | rad/sec |
-     * | topOfTarget          | top of target of the survey                 | double | m  |
-     * | bottomOfTarget       | bottom of target of the survey              | double | m  |
-     * | dip                  |                                             | double | rad/sec |
-     * | fault                | fault                                       | double |         |
-     * | surveyCost           | time                                        | time   | sec      |
-     * | requestedSurveyQuality    | confidence level 0 - 100               | double |         |
-     *
-     */
-    struct SurveyState
-    {
-        DataTypes::Uuid     id;   //@key
-        DataTypes::Uuid     objectiveId; 
-        DataTypes::Time     timestamp;
-        DataTypes::Status   status;
+        //@copy-c-declaration static const char SURVEY_STATE[] = "SurveyState";
 
-        // actuals
-        DataTypes::SurveyQuality  acutalSurveyQuality;
-        double                    measuredDepth;
-        double                    inclination;
-        double                    azimuth;
-        double                    totalVerticalDepth;
-        double                    dogLeg;
-        double                    verticalSection;
-        double                    eastWest;
-        double                    northSouth;
-        double                    courseLength;
-        double                    ca;
-        double                    cd;
-        double                    cl;
-        double                    buildRate;
-        double                    turnRate;
-        double                    topOfTarget;
-        double                    bottomOfTarget;
-        double                    dip;
-        double                    fault;
+        /**
+         * @brief Survey state data interface
+         *
+         * @ingroup DownholeEffectors
+         *
+         * | Variable             | Description                                 | Data Type         | Unit    |
+         * | :------------------- | :-------------------------------------------| :---------------- | :------ |
+         * | id                   | id of requestor                             | DataTypes::Uuid   | N/A     |
+         * | objectiveId          | id of current objective                     | DataTypes::Uuid   | N/A     |
+         * | timestamp            | timestamp when the data was published.      | DataTypes::Time   | sec     |
+         * | status               | status of ciruclation system                | Datatypes::Status | N/A     |
+         * | acutalSurveyQuality  | confidence level 0 - 100                    | double            |         |
+         * | measuredDepth        | measured depth of the survey                | double            | m       |
+         * | inclination          | inclination of the survey                   | double            | rad/sec |
+         * | azimuth              | azimuth of the survey                       | double            | rad/sec |
+         * | totalVerticalDepth   | total vertical depth of the survey          | double            | m       |
+         * | dogLeg               | dog leg of the survey                       | double            | degrees/100ft |
+         * | verticalSection      | vertical section of the survey              | double            |         |
+         * | eastWest             | east/west position                          | double            | rad/sed |
+         * | northSouth           | north/south position                        | double            | rad/sec |
+         * | courseLength         | distance from last survey station to current survey station | double    | m  |
+         * | ca                   | ca of the survey                            | double |         |
+         * | cd                   | cd of the survey                            | double |         |
+         * | buildRate            | current build rate                          | double | degrees/100ft |
+         * | turnRate             | current turn rate                           | double | rad/sec |
+         * | topOfTarget          | top of target of the survey                 | double | m  |
+         * | bottomOfTarget       | bottom of target of the survey              | double | m  |
+         * | dip                  |                                             | double | rad/sec |
+         * | fault                | fault                                       | double |         |
+         * | surveyCost           | time                                        | time   | sec      |
+         * | requestedSurveyQuality    | confidence level 0 - 100               | double |         |
+         *
+         */
+        struct SurveyState
+        {
+            DataTypes::Uuid     id;   //@key
+            DataTypes::Uuid     objectiveId; 
+            DataTypes::Time     timestamp;
+            DataTypes::Status   status;
 
-        // Constraints
-        double                    surveyCost;
+            // actuals
+            DataTypes::SurveyQuality  acutalSurveyQuality;
+            double                    measuredDepth;
+            double                    inclination;
+            double                    azimuth;
+            double                    totalVerticalDepth;
+            double                    dogLeg;
+            double                    verticalSection;
+            double                    eastWest;
+            double                    northSouth;
+            double                    courseLength;
+            double                    ca;
+            double                    cd;
+            double                    cl;
+            double                    buildRate;
+            double                    turnRate;
+            double                    topOfTarget;
+            double                    bottomOfTarget;
+            double                    dip;
+            double                    fault;
 
-        //Targets
-        DataTypes::SurveyQuality  requestedSurveyQuality;
+            // Constraints
+            double                    surveyCost;
+
+            //Targets
+            DataTypes::SurveyQuality  requestedSurveyQuality;
+        };
     };
 };

@@ -589,7 +589,7 @@ bool CAutoDrillerConfigurationStateSubscriber::GetTuningEnable(bool &tuningEnabl
 bool CAutoDrillerConfigurationStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               AutoDrillerConfiguration::HMI_STATE,
+                               nec::control::HMI_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -614,7 +614,7 @@ void CAutoDrillerConfigurationStateSubscriber::OnSubscriptionMatched(OnSubscript
     m_pOnSubscriptionMatched = event;
 }
 
-void CAutoDrillerConfigurationStateSubscriber::DataAvailable(const AutoDrillerConfiguration::HmiState &data,
+void CAutoDrillerConfigurationStateSubscriber::DataAvailable(const nec::control::HmiState &data,
                                                              const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

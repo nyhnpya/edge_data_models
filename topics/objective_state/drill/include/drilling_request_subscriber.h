@@ -6,10 +6,10 @@
 #include "drilling.h"
 #include "drillingSupport.h"
 
-class CDrillingRequestSubscriber : public TSubscriber< Hoisting::DrillingRequest >
+class CDrillingRequestSubscriber : public TSubscriber< nec::process::DrillingRequest >
 {
  public:
-    typedef std::function<void(const Hoisting::DrillingRequest &data)> OnDataAvailableEvent;
+    typedef std::function<void(const nec::process::DrillingRequest &data)> OnDataAvailableEvent;
 
     CDrillingRequestSubscriber();
     ~CDrillingRequestSubscriber();
@@ -35,14 +35,14 @@ class CDrillingRequestSubscriber : public TSubscriber< Hoisting::DrillingRequest
     bool GetTorqueMode(bool &torqueMode);
 
  protected:
-    void DataAvailable(const Hoisting::DrillingRequest &data,
+    void DataAvailable(const nec::process::DrillingRequest &data,
                const DDS::SampleInfo &sampleInfo);
 
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
  private:
-    Hoisting::DrillingRequest m_data;
+    nec::process::DrillingRequest m_data;
     DDS::SampleInfo           m_sampleInfo;
     DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent      m_pOnDataAvailable;

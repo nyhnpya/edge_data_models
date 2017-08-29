@@ -266,7 +266,7 @@ bool CDrillingStatePublisher::PublishSample()
 bool CDrillingStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              Hoisting::DRILLING_STATE,
+                              nec::process::DRILLING_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }
