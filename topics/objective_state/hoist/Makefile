@@ -48,8 +48,8 @@ TARG_SOURCES += hoist_state_subscriber.cpp
 ###############################################################################
 
 # package control file
-PACKAGE_DESCRIPTION = "Library package for the Ensign hoist_request API."
-PACKAGE_EXTENDED_DESCRIPTION = "core files for Ensign hoist_request API development."
+PACKAGE_DESCRIPTION = "EDGE hoist objective-state library"
+PACKAGE_EXTENDED_DESCRIPTION = "EDGE hoist objective-state library"
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libhoist
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libhoist-dev
