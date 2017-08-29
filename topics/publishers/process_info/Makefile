@@ -4,7 +4,7 @@
 #
 # TARG_BUILD_MAJOR   - Version number major
 # TARG_BUILD_MINOR   - Version number minor
-# TARG_BUILD_VERSION - Version number patch
+# TARG_BUILD_PATCH - Version number patch
 # TARGET_TYPE        - library, staticlib, executable, unittest or thirdparty
 # TARGET_NAME        - Name of final executable/library
 #
@@ -12,9 +12,9 @@
 include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
-TARG_BUILD_MAJOR = 0
-TARG_BUILD_MINOR = 5
-TARG_BUILD_VERSION = 1
+TARG_BUILD_MAJOR = 1
+TARG_BUILD_MINOR = 1
+TARG_BUILD_PATCH = 0
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
 TARGET_NAME = process_info_publisher
