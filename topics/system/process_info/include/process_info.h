@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef process_info_1743012970_h
-#define process_info_1743012970_h
+#ifndef process_info_1743013001_h
+#define process_info_1743013001_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -24,27 +24,28 @@ namespace process {
     namespace maintanence {
         static const char PROCESS_INFO[] = "ProcessInfo"; 
 
-        extern const char *ProcessInfoTYPENAME;
+        extern const char *ProcessStateTYPENAME;
 
-        struct ProcessInfoSeq;
+        struct ProcessStateSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class ProcessInfoTypeSupport;
-        class ProcessInfoDataWriter;
-        class ProcessInfoDataReader;
+        class ProcessStateTypeSupport;
+        class ProcessStateDataWriter;
+        class ProcessStateDataReader;
         #endif
 
-        class ProcessInfo 
+        class ProcessState 
         {
           public:
-            typedef struct ProcessInfoSeq Seq;
+            typedef struct ProcessStateSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef ProcessInfoTypeSupport TypeSupport;
-            typedef ProcessInfoDataWriter DataWriter;
-            typedef ProcessInfoDataReader DataReader;
+            typedef ProcessStateTypeSupport TypeSupport;
+            typedef ProcessStateDataWriter DataWriter;
+            typedef ProcessStateDataReader DataReader;
             #endif
 
             DDS_Char   processName [128];
             DDS_Long   pid ;
+            DDS_LongLong   upTime ;
             DDS_LongLong   totalVirtualMemory ;
             DDS_LongLong   usedVirtualMemory ;
             DDS_LongLong   totalPhysicalMemory ;
@@ -58,44 +59,44 @@ namespace process {
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
-        NDDSUSERDllExport DDS_TypeCode* ProcessInfo_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* ProcessState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(ProcessInfoSeq, ProcessInfo);                                        
-
-        NDDSUSERDllExport
-        RTIBool ProcessInfo_initialize(
-            ProcessInfo* self);
+        DDS_SEQUENCE(ProcessStateSeq, ProcessState);                                        
 
         NDDSUSERDllExport
-        RTIBool ProcessInfo_initialize_ex(
-            ProcessInfo* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool ProcessState_initialize(
+            ProcessState* self);
 
         NDDSUSERDllExport
-        RTIBool ProcessInfo_initialize_w_params(
-            ProcessInfo* self,
+        RTIBool ProcessState_initialize_ex(
+            ProcessState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool ProcessState_initialize_w_params(
+            ProcessState* self,
             const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
-        void ProcessInfo_finalize(
-            ProcessInfo* self);
+        void ProcessState_finalize(
+            ProcessState* self);
 
         NDDSUSERDllExport
-        void ProcessInfo_finalize_ex(
-            ProcessInfo* self,RTIBool deletePointers);
+        void ProcessState_finalize_ex(
+            ProcessState* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void ProcessInfo_finalize_w_params(
-            ProcessInfo* self,
+        void ProcessState_finalize_w_params(
+            ProcessState* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void ProcessInfo_finalize_optional_members(
-            ProcessInfo* self, RTIBool deletePointers);  
+        void ProcessState_finalize_optional_members(
+            ProcessState* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool ProcessInfo_copy(
-            ProcessInfo* dst,
-            const ProcessInfo* src);
+        RTIBool ProcessState_copy(
+            ProcessState* dst,
+            const ProcessState* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.

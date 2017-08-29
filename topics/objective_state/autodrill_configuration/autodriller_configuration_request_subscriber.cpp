@@ -44,69 +44,6 @@ bool CAutoDrillerConfigurationRequestSubscriber::GetModeController(double &modeC
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationRequestSubscriber::GetOnLivelinessLost(double &onLivelinessLost)
-{
-    onLivelinessLost = m_data.onLivelinessLost;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetModelOneDifferentialPressureRequestK(double &modelOneDifferentialPressureRequestK)
-{
-    modelOneDifferentialPressureRequestK = m_data.modelOneDifferentialPressureRequestK;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetModelOneDifferentialPressureRequestTau(double &modelOneDifferentialPressureRequestTau)
-{
-    modelOneDifferentialPressureRequestTau = m_data.modelOneDifferentialPressureRequestTau;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetModelOneRateOfPenetrationRequestK(double &modelOneRateOfPenetrationRequestK)
-{
-    modelOneRateOfPenetrationRequestK = m_data.modelOneRateOfPenetrationRequestK;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetModelOneRateOfPenetrationRequestTau(double &modelOneRateOfPenetrationRequestTau)
-{
-    modelOneRateOfPenetrationRequestTau = m_data.modelOneRateOfPenetrationRequestTau;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetModelOneTorqueRequestK(double &modelOneTorqueRequestK)
-{
-    modelOneTorqueRequestK = m_data.modelOneTorqueRequestK;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetModelOneTorqueRequestTau(double &modelOneTorqueRequestTau)
-{
-    modelOneTorqueRequestTau = m_data.modelOneTorqueRequestTau;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetModelOneWeightOnBitRequestK(double &modelOneWeightOnBitRequestK)
-{
-    modelOneWeightOnBitRequestK = m_data.modelOneWeightOnBitRequestK;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetModelOneWeightOnBitRequestTau(double &modelOneWeightOnBitRequestTau)
-{
-    modelOneWeightOnBitRequestTau = m_data.modelOneWeightOnBitRequestTau;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
 bool CAutoDrillerConfigurationRequestSubscriber::GetModelTwoDifferentialPressureRequestK(double &modelTwoDifferentialPressureRequestK)
 {
     modelTwoDifferentialPressureRequestK = m_data.modelTwoDifferentialPressureRequestK;
@@ -166,13 +103,6 @@ bool CAutoDrillerConfigurationRequestSubscriber::GetModelTwoWeightOnBitRequestTa
 bool CAutoDrillerConfigurationRequestSubscriber::GetStatus(long &status)
 {
     status = m_data.status;
-    
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationRequestSubscriber::GetTuningDisable(bool &tuningDisable)
-{
-    tuningDisable = (m_data.tuningDisable == DDS_BOOLEAN_TRUE);
     
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }

@@ -166,36 +166,6 @@ namespace nec {
                 &sample->modeController, "modeController", indent_level + 1);    
 
             RTICdrType_printDouble(
-                &sample->onDataAvailable, "onDataAvailable", indent_level + 1);    
-
-            RTICdrType_printDouble(
-                &sample->onLivelinessLost, "onLivelinessLost", indent_level + 1);    
-
-            RTICdrType_printDouble(
-                &sample->modelOneDifferentialPressureRequestK, "modelOneDifferentialPressureRequestK", indent_level + 1);    
-
-            RTICdrType_printDouble(
-                &sample->modelOneDifferentialPressureRequestTau, "modelOneDifferentialPressureRequestTau", indent_level + 1);    
-
-            RTICdrType_printDouble(
-                &sample->modelOneRateOfPenetrationRequestK, "modelOneRateOfPenetrationRequestK", indent_level + 1);    
-
-            RTICdrType_printDouble(
-                &sample->modelOneRateOfPenetrationRequestTau, "modelOneRateOfPenetrationRequestTau", indent_level + 1);    
-
-            RTICdrType_printDouble(
-                &sample->modelOneTorqueRequestK, "modelOneTorqueRequestK", indent_level + 1);    
-
-            RTICdrType_printDouble(
-                &sample->modelOneTorqueRequestTau, "modelOneTorqueRequestTau", indent_level + 1);    
-
-            RTICdrType_printDouble(
-                &sample->modelOneWeightOnBitRequestK, "modelOneWeightOnBitRequestK", indent_level + 1);    
-
-            RTICdrType_printDouble(
-                &sample->modelOneWeightOnBitRequestTau, "modelOneWeightOnBitRequestTau", indent_level + 1);    
-
-            RTICdrType_printDouble(
                 &sample->modelTwoDifferentialPressureRequestK, "modelTwoDifferentialPressureRequestK", indent_level + 1);    
 
             RTICdrType_printDouble(
@@ -221,9 +191,6 @@ namespace nec {
 
             RTICdrType_printLong(
                 &sample->status, "status", indent_level + 1);    
-
-            RTICdrType_printBoolean(
-                &sample->tuningDisable, "tuningDisable", indent_level + 1);    
 
             RTICdrType_printBoolean(
                 &sample->tuningEnable, "tuningEnable", indent_level + 1);    
@@ -454,56 +421,6 @@ namespace nec {
                 }
 
                 if (!RTICdrStream_serializeDouble(
-                    stream, &sample->onDataAvailable)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeDouble(
-                    stream, &sample->onLivelinessLost)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeDouble(
-                    stream, &sample->modelOneDifferentialPressureRequestK)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeDouble(
-                    stream, &sample->modelOneDifferentialPressureRequestTau)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeDouble(
-                    stream, &sample->modelOneRateOfPenetrationRequestK)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeDouble(
-                    stream, &sample->modelOneRateOfPenetrationRequestTau)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeDouble(
-                    stream, &sample->modelOneTorqueRequestK)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeDouble(
-                    stream, &sample->modelOneTorqueRequestTau)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeDouble(
-                    stream, &sample->modelOneWeightOnBitRequestK)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeDouble(
-                    stream, &sample->modelOneWeightOnBitRequestTau)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeDouble(
                     stream, &sample->modelTwoDifferentialPressureRequestK)) {
                     return RTI_FALSE;
                 }
@@ -545,11 +462,6 @@ namespace nec {
 
                 if (!RTICdrStream_serializeLong(
                     stream, &sample->status)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeBoolean(
-                    stream, &sample->tuningDisable)) {
                     return RTI_FALSE;
                 }
 
@@ -620,46 +532,6 @@ namespace nec {
                     goto fin; 
                 }
                 if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->onDataAvailable)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->onLivelinessLost)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->modelOneDifferentialPressureRequestK)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->modelOneDifferentialPressureRequestTau)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->modelOneRateOfPenetrationRequestK)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->modelOneRateOfPenetrationRequestTau)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->modelOneTorqueRequestK)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->modelOneTorqueRequestTau)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->modelOneWeightOnBitRequestK)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->modelOneWeightOnBitRequestTau)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
                     stream, &sample->modelTwoDifferentialPressureRequestK)) {
                     goto fin; 
                 }
@@ -693,10 +565,6 @@ namespace nec {
                 }
                 if (!RTICdrStream_deserializeLong(
                     stream, &sample->status)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeBoolean(
-                    stream, &sample->tuningDisable)) {
                     goto fin; 
                 }
                 if (!RTICdrStream_deserializeBoolean(
@@ -879,40 +747,7 @@ namespace nec {
                 if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
                 if (!RTICdrStream_skipLong (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipBoolean (stream)) {
                     goto fin; 
                 }
                 if (!RTICdrStream_skipBoolean (stream)) {
@@ -994,40 +829,7 @@ namespace nec {
             current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
 
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-
             current_alignment +=RTICdrType_getLongMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                 current_alignment);
 
             current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
@@ -1108,29 +910,7 @@ namespace nec {
                 current_alignment);
             current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
             current_alignment +=RTICdrType_getLongMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                 current_alignment);
             current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                 current_alignment);
@@ -1202,29 +982,7 @@ namespace nec {
                 current_alignment);
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
-            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
             current_alignment += RTICdrType_getLongMaxSizeSerialized(
-                current_alignment);
-            current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
                 current_alignment);
             current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
                 current_alignment);
@@ -1490,51 +1248,7 @@ namespace nec {
                     goto fin; 
                 }
 
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-
                 if (!RTICdrStream_skipLong (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipBoolean (stream)) {
                     goto fin; 
                 }
 
@@ -1980,9 +1694,6 @@ namespace nec {
             RTICdrType_printLong(
                 &sample->modeController, "modeController", indent_level + 1);    
 
-            RTICdrType_printBoolean(
-                &sample->modelReset, "modelReset", indent_level + 1);    
-
             RTICdrType_printDouble(
                 &sample->pipeInnerDiameter, "pipeInnerDiameter", indent_level + 1);    
 
@@ -2203,10 +1914,7 @@ namespace nec {
                 &sample->status, "status", indent_level + 1);    
 
             RTICdrType_printBoolean(
-                &sample->tuningDisable, "tuningDisable", indent_level + 1);    
-
-            RTICdrType_printBoolean(
-                &sample->tuningEnable, "tuningEnable", indent_level + 1);    
+                &sample->tuningEnabled, "tuningEnabled", indent_level + 1);    
 
         }
         HmiState *
@@ -2433,11 +2141,6 @@ namespace nec {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrStream_serializeBoolean(
-                    stream, &sample->modelReset)) {
-                    return RTI_FALSE;
-                }
-
                 if (!RTICdrStream_serializeDouble(
                     stream, &sample->pipeInnerDiameter)) {
                     return RTI_FALSE;
@@ -2804,12 +2507,7 @@ namespace nec {
                 }
 
                 if (!RTICdrStream_serializeBoolean(
-                    stream, &sample->tuningDisable)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeBoolean(
-                    stream, &sample->tuningEnable)) {
+                    stream, &sample->tuningEnabled)) {
                     return RTI_FALSE;
                 }
 
@@ -2872,10 +2570,6 @@ namespace nec {
                 }
                 if (!RTICdrStream_deserializeLong(
                     stream, &sample->modeController)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeBoolean(
-                    stream, &sample->modelReset)) {
                     goto fin; 
                 }
                 if (!RTICdrStream_deserializeDouble(
@@ -3171,11 +2865,7 @@ namespace nec {
                     goto fin; 
                 }
                 if (!RTICdrStream_deserializeBoolean(
-                    stream, &sample->tuningDisable)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeBoolean(
-                    stream, &sample->tuningEnable)) {
+                    stream, &sample->tuningEnabled)) {
                     goto fin; 
                 }
             }
@@ -3330,9 +3020,6 @@ namespace nec {
                 if (!RTICdrStream_skipLong (stream)) {
                     goto fin; 
                 }
-                if (!RTICdrStream_skipBoolean (stream)) {
-                    goto fin; 
-                }
                 if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
@@ -3555,9 +3242,6 @@ namespace nec {
                 if (!RTICdrStream_skipBoolean (stream)) {
                     goto fin; 
                 }
-                if (!RTICdrStream_skipBoolean (stream)) {
-                    goto fin; 
-                }
             }
 
             done = RTI_TRUE;
@@ -3610,9 +3294,6 @@ namespace nec {
             current_alignment +=RTICdrType_getLongMaxSizeSerialized(
                 current_alignment);
 
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
-                current_alignment);
-
             current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
 
@@ -3830,9 +3511,6 @@ namespace nec {
                 current_alignment);
 
             current_alignment +=RTICdrType_getLongMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                 current_alignment);
 
             current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
@@ -3897,8 +3575,6 @@ namespace nec {
                 current_alignment);
             current_alignment +=RTICdrType_getLongMaxSizeSerialized(
                 current_alignment);
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
-                current_alignment);
             current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
             current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -4047,8 +3723,6 @@ namespace nec {
                 current_alignment);
             current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                 current_alignment);
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
-                current_alignment);
 
             if (include_encapsulation) {
                 current_alignment += encapsulation_size;
@@ -4101,8 +3775,6 @@ namespace nec {
                 current_alignment);
             current_alignment += RTICdrType_getLongMaxSizeSerialized(
                 current_alignment);
-            current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
-                current_alignment);
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
@@ -4248,8 +3920,6 @@ namespace nec {
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
             current_alignment += RTICdrType_getLongMaxSizeSerialized(
-                current_alignment);
-            current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
                 current_alignment);
             current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
                 current_alignment);
@@ -4483,10 +4153,6 @@ namespace nec {
                     goto fin; 
                 }
 
-                if (!RTICdrStream_skipBoolean (stream)) {
-                    goto fin; 
-                }
-
                 if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
@@ -4776,10 +4442,6 @@ namespace nec {
                 }
 
                 if (!RTICdrStream_skipLong (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipBoolean (stream)) {
                     goto fin; 
                 }
 

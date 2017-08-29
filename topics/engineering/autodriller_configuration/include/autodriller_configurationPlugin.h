@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autodriller_configurationPlugin_730534370_h
-#define autodriller_configurationPlugin_730534370_h
+#ifndef autodriller_configurationPlugin_730533774_h
+#define autodriller_configurationPlugin_730533774_h
 
 #include "autodriller_configuration.h"
 
@@ -626,5 +626,5 @@ namespace nec {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* autodriller_configurationPlugin_730534370_h */
+#endif /* autodriller_configurationPlugin_730533774_h */
 

@@ -11,23 +11,15 @@ module nec
          *
          * \ingroup SafeCirculateFunctions
          *
-         * | Variable          | Description                                        | Data Type           | Unit    |
-         * | ----------------- | -------------------------------------------------- | --------------------| ------- |
-         * | id                | id of requestor                                    | DataTypes::Uuid     | N/A     |
-         * | objectiveId       | id of current objective                            | DataTypes::Uuid     | N/A     |
-         * | priority          | priority of the request                            | DataTypes::Priority | sec     |
-         * | timeNeeded        | time requester needs the resource                  | DataTypes::Time     | sec     |
-         * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time     | N/A     |
-         * | targetFlowRate    | requetsed flow rate                                | double              | m/sec^3 |
          */
         struct CirculateRequest
         {
-            DataTypes::Uuid     id; //@key
-            DataTypes::Uuid     objectiveId; 
-            DataTypes::Priority priority;
-            DataTypes::Time     timeNeeded;
-            DataTypes::Time     estimatedDuration;
-            double              targetFlowRate;
+            DataTypes::Uuid     id; //@key   ///< id of requestor
+            DataTypes::Uuid     objectiveId; ///< id of current objective
+            DataTypes::Priority priority;    ///< priority of the request
+            DataTypes::Time     timeNeeded;  ///< time requestor needs the resource
+            DataTypes::Time     estimatedDuration; ///< estimated duration requestor needs the resource
+            double              targetFlowRate; ///< requested flow rate in m/sec^3
         };
 
         //@copy-c-declaration static const char CIRCULATE_OBJECTIVE[] = "CirculateObjective";
@@ -36,20 +28,13 @@ module nec
          * \brief current requested state change in the circulation system.
          *
          * \ingroup SafeCirculateFunctions
-         *
-         * | Variable          | Description                                        | Data Type        | Unit    |
-         * | ----------------- | -------------------------------------------------- | ----------       | ------- |
-         * | id                | id of requestor                                    | DataTypes::Uuid  | N/A     |
-         * | objectiveId       | id of current objective                            | DataTypes::Uuid  | N/A     |
-         * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time  | N/A     |
-         * | targetFlowRate    | requetsed flow rate                                | double           | m/sec^3 |
          */
         struct CirculateObjective
         {
-            DataTypes::Uuid     id; //@key
-            DataTypes::Uuid     objectiveId; 
-            DataTypes::Time     estimatedDuration;
-            double              targetFlowRate;
+            DataTypes::Uuid     id; //@key   ///< id of requestor
+            DataTypes::Uuid     objectiveId; ///< id of current objective
+            DataTypes::Time     estimatedDuration; ///< estimated duration requestor needs the resource
+            double              targetFlowRate; ///< requested flow rate in m/sec^3
         };
 
         //@copy-c-declaration static const char CIRCULATE_STATE[] = "CirculateState";

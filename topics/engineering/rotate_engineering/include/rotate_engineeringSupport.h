@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef rotate_engineeringSupport_182432028_h
-#define rotate_engineeringSupport_182432028_h
+#ifndef rotate_engineeringSupport_182431995_h
+#define rotate_engineeringSupport_182431995_h
 
 /* Uses */
 #include "rotate_engineering.h"
@@ -46,39 +46,10 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(RotateEngineeringRequestTypeSupport, RotateEngineeringRequest);
+        DDS_TYPESUPPORT_CPP(RotateRequestTypeSupport, RotateRequest);
 
-        DDS_DATAWRITER_CPP(RotateEngineeringRequestDataWriter, RotateEngineeringRequest);
-        DDS_DATAREADER_CPP(RotateEngineeringRequestDataReader, RotateEngineeringRequestSeq, RotateEngineeringRequest);
-
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-        /* If the code is building on Windows, stop exporting symbols.
-        */
-        #undef NDDSUSERDllExport
-        #define NDDSUSERDllExport
-        #endif
-        /* ========================================================================= */
-        /**
-        Uses:     T
-
-        Defines:  TTypeSupport, TDataWriter, TDataReader
-
-        Organized using the well-documented "Generics Pattern" for
-        implementing generics in C and C++.
-        */
-
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-        /* If the code is building on Windows, start exporting symbols.
-        */
-        #undef NDDSUSERDllExport
-        #define NDDSUSERDllExport __declspec(dllexport)
-
-        #endif
-
-        DDS_TYPESUPPORT_CPP(RotateEngineeringObjectiveTypeSupport, RotateEngineeringObjective);
-
-        DDS_DATAWRITER_CPP(RotateEngineeringObjectiveDataWriter, RotateEngineeringObjective);
-        DDS_DATAREADER_CPP(RotateEngineeringObjectiveDataReader, RotateEngineeringObjectiveSeq, RotateEngineeringObjective);
+        DDS_DATAWRITER_CPP(RotateRequestDataWriter, RotateRequest);
+        DDS_DATAREADER_CPP(RotateRequestDataReader, RotateRequestSeq, RotateRequest);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -104,10 +75,39 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(RotateEngineeringStateTypeSupport, RotateEngineeringState);
+        DDS_TYPESUPPORT_CPP(RotateObjectiveTypeSupport, RotateObjective);
 
-        DDS_DATAWRITER_CPP(RotateEngineeringStateDataWriter, RotateEngineeringState);
-        DDS_DATAREADER_CPP(RotateEngineeringStateDataReader, RotateEngineeringStateSeq, RotateEngineeringState);
+        DDS_DATAWRITER_CPP(RotateObjectiveDataWriter, RotateObjective);
+        DDS_DATAREADER_CPP(RotateObjectiveDataReader, RotateObjectiveSeq, RotateObjective);
+
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
+
+        Defines:  TTypeSupport, TDataWriter, TDataReader
+
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
+
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
+
+        #endif
+
+        DDS_TYPESUPPORT_CPP(RotateStateTypeSupport, RotateState);
+
+        DDS_DATAWRITER_CPP(RotateStateDataWriter, RotateState);
+        DDS_DATAREADER_CPP(RotateStateDataReader, RotateStateSeq, RotateState);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -118,5 +118,5 @@ namespace nec {
     } /* namespace control  */
 } /* namespace nec  */
 
-#endif  /* rotate_engineeringSupport_182432028_h */
+#endif  /* rotate_engineeringSupport_182431995_h */
 

@@ -52,23 +52,23 @@ namespace nec {
     namespace control {
 
         /* ----------------------------------------------------------------------------
-        *  Type RotateEngineeringRequest
+        *  Type RotateRequest
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        RotateEngineeringRequest*
-        RotateEngineeringRequestPluginSupport_create_data_w_params(
+        RotateRequest*
+        RotateRequestPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params){
-            RotateEngineeringRequest *sample = NULL;
+            RotateRequest *sample = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &sample, RotateEngineeringRequest);
+                &sample, RotateRequest);
 
             if(sample != NULL) {
-                if (!nec::control::RotateEngineeringRequest_initialize_w_params(sample,alloc_params)) {
+                if (!nec::control::RotateRequest_initialize_w_params(sample,alloc_params)) {
                     RTIOsapiHeap_freeStructure(sample);
                     return NULL;
                 }
@@ -76,15 +76,15 @@ namespace nec {
             return sample; 
         } 
 
-        RotateEngineeringRequest *
-        RotateEngineeringRequestPluginSupport_create_data_ex(RTIBool allocate_pointers){
-            RotateEngineeringRequest *sample = NULL;
+        RotateRequest *
+        RotateRequestPluginSupport_create_data_ex(RTIBool allocate_pointers){
+            RotateRequest *sample = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &sample, RotateEngineeringRequest);
+                &sample, RotateRequest);
 
             if(sample != NULL) {
-                if (!nec::control::RotateEngineeringRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                if (!nec::control::RotateRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                     RTIOsapiHeap_freeStructure(sample);
                     return NULL;
                 }
@@ -92,50 +92,50 @@ namespace nec {
             return sample; 
         }
 
-        RotateEngineeringRequest *
-        RotateEngineeringRequestPluginSupport_create_data(void)
+        RotateRequest *
+        RotateRequestPluginSupport_create_data(void)
         {
-            return nec::control::RotateEngineeringRequestPluginSupport_create_data_ex(RTI_TRUE);
+            return nec::control::RotateRequestPluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        RotateEngineeringRequestPluginSupport_destroy_data_w_params(
-            RotateEngineeringRequest *sample,
+        RotateRequestPluginSupport_destroy_data_w_params(
+            RotateRequest *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-            nec::control::RotateEngineeringRequest_finalize_w_params(sample,dealloc_params);
+            nec::control::RotateRequest_finalize_w_params(sample,dealloc_params);
 
             RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
-        RotateEngineeringRequestPluginSupport_destroy_data_ex(
-            RotateEngineeringRequest *sample,RTIBool deallocate_pointers) {
+        RotateRequestPluginSupport_destroy_data_ex(
+            RotateRequest *sample,RTIBool deallocate_pointers) {
 
-            nec::control::RotateEngineeringRequest_finalize_ex(sample,deallocate_pointers);
+            nec::control::RotateRequest_finalize_ex(sample,deallocate_pointers);
 
             RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
-        RotateEngineeringRequestPluginSupport_destroy_data(
-            RotateEngineeringRequest *sample) {
+        RotateRequestPluginSupport_destroy_data(
+            RotateRequest *sample) {
 
-            nec::control::RotateEngineeringRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            nec::control::RotateRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        RotateEngineeringRequestPluginSupport_copy_data(
-            RotateEngineeringRequest *dst,
-            const RotateEngineeringRequest *src)
+        RotateRequestPluginSupport_copy_data(
+            RotateRequest *dst,
+            const RotateRequest *src)
         {
-            return nec::control::RotateEngineeringRequest_copy(dst,src);
+            return nec::control::RotateRequest_copy(dst,src);
         }
 
         void 
-        RotateEngineeringRequestPluginSupport_print_data(
-            const RotateEngineeringRequest *sample,
+        RotateRequestPluginSupport_print_data(
+            const RotateRequest *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -169,37 +169,37 @@ namespace nec {
                 &sample->targetRate, "targetRate", indent_level + 1);    
 
         }
-        RotateEngineeringRequest *
-        RotateEngineeringRequestPluginSupport_create_key_ex(RTIBool allocate_pointers){
-            RotateEngineeringRequest *key = NULL;
+        RotateRequest *
+        RotateRequestPluginSupport_create_key_ex(RTIBool allocate_pointers){
+            RotateRequest *key = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &key, RotateEngineeringRequestKeyHolder);
+                &key, RotateRequestKeyHolder);
 
-            nec::control::RotateEngineeringRequest_initialize_ex(key,allocate_pointers, RTI_TRUE);
+            nec::control::RotateRequest_initialize_ex(key,allocate_pointers, RTI_TRUE);
             return key;
         }
 
-        RotateEngineeringRequest *
-        RotateEngineeringRequestPluginSupport_create_key(void)
+        RotateRequest *
+        RotateRequestPluginSupport_create_key(void)
         {
-            return  nec::control::RotateEngineeringRequestPluginSupport_create_key_ex(RTI_TRUE);
+            return  nec::control::RotateRequestPluginSupport_create_key_ex(RTI_TRUE);
         }
 
         void 
-        RotateEngineeringRequestPluginSupport_destroy_key_ex(
-            RotateEngineeringRequestKeyHolder *key,RTIBool deallocate_pointers)
+        RotateRequestPluginSupport_destroy_key_ex(
+            RotateRequestKeyHolder *key,RTIBool deallocate_pointers)
         {
-            nec::control::RotateEngineeringRequest_finalize_ex(key,deallocate_pointers);
+            nec::control::RotateRequest_finalize_ex(key,deallocate_pointers);
 
             RTIOsapiHeap_freeStructure(key);
         }
 
         void 
-        RotateEngineeringRequestPluginSupport_destroy_key(
-            RotateEngineeringRequestKeyHolder *key) {
+        RotateRequestPluginSupport_destroy_key(
+            RotateRequestKeyHolder *key) {
 
-            nec::control::RotateEngineeringRequestPluginSupport_destroy_key_ex(key,RTI_TRUE);
+            nec::control::RotateRequestPluginSupport_destroy_key_ex(key,RTI_TRUE);
 
         }
 
@@ -208,7 +208,7 @@ namespace nec {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        RotateEngineeringRequestPlugin_on_participant_attached(
+        RotateRequestPlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -226,7 +226,7 @@ namespace nec {
         }
 
         void 
-        RotateEngineeringRequestPlugin_on_participant_detached(
+        RotateRequestPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {
 
@@ -234,7 +234,7 @@ namespace nec {
         }
 
         PRESTypePluginEndpointData
-        RotateEngineeringRequestPlugin_on_endpoint_attached(
+        RotateRequestPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -253,18 +253,18 @@ namespace nec {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                nec::control::RotateEngineeringRequestPluginSupport_create_data,
+                nec::control::RotateRequestPluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                nec::control::RotateEngineeringRequestPluginSupport_destroy_data,
+                nec::control::RotateRequestPluginSupport_destroy_data,
                 (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-                nec::control::RotateEngineeringRequestPluginSupport_create_key ,            
+                nec::control::RotateRequestPluginSupport_create_key ,            
                 (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-                nec::control::RotateEngineeringRequestPluginSupport_destroy_key);
+                nec::control::RotateRequestPluginSupport_destroy_key);
 
             if (epd == NULL) {
                 return NULL;
             } 
-            serializedKeyMaxSize =  nec::control::RotateEngineeringRequestPlugin_get_serialized_key_max_size(
+            serializedKeyMaxSize =  nec::control::RotateRequestPlugin_get_serialized_key_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -275,7 +275,7 @@ namespace nec {
             }
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = nec::control::RotateEngineeringRequestPlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = nec::control::RotateRequestPlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -284,9 +284,9 @@ namespace nec {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    nec::control::RotateEngineeringRequestPlugin_get_serialized_sample_max_size, epd,
+                    nec::control::RotateRequestPlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
-                    nec::control::RotateEngineeringRequestPlugin_get_serialized_sample_size,
+                    nec::control::RotateRequestPlugin_get_serialized_sample_size,
                     epd) == RTI_FALSE) {
                     PRESTypePluginDefaultEndpointData_delete(epd);
                     return NULL;
@@ -297,7 +297,7 @@ namespace nec {
         }
 
         void 
-        RotateEngineeringRequestPlugin_on_endpoint_detached(
+        RotateRequestPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {  
 
@@ -305,42 +305,42 @@ namespace nec {
         }
 
         void    
-        RotateEngineeringRequestPlugin_return_sample(
+        RotateRequestPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest *sample,
+            RotateRequest *sample,
             void *handle)
         {
 
-            RotateEngineeringRequest_finalize_optional_members(sample, RTI_TRUE);
+            RotateRequest_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        RotateEngineeringRequestPlugin_copy_sample(
+        RotateRequestPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest *dst,
-            const RotateEngineeringRequest *src)
+            RotateRequest *dst,
+            const RotateRequest *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return nec::control::RotateEngineeringRequestPluginSupport_copy_data(dst,src);
+            return nec::control::RotateRequestPluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        RotateEngineeringRequestPlugin_get_serialized_sample_max_size(
+        RotateRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool 
-        RotateEngineeringRequestPlugin_serialize(
+        RotateRequestPlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateEngineeringRequest *sample, 
+            const RotateRequest *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -418,9 +418,9 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringRequestPlugin_deserialize_sample(
+        RotateRequestPlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest *sample,
+            RotateRequest *sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
@@ -443,7 +443,7 @@ namespace nec {
             }
             if(deserialize_sample) {
 
-                nec::control::RotateEngineeringRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+                nec::control::RotateRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
                 if(!DataTypes::UuidPlugin_deserialize_sample(
                     endpoint_data,
@@ -498,10 +498,10 @@ namespace nec {
         }
 
         RTIBool
-        RotateEngineeringRequestPlugin_serialize_to_cdr_buffer(
+        RotateRequestPlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const RotateEngineeringRequest *sample)
+            const RotateRequest *sample)
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
@@ -512,12 +512,12 @@ namespace nec {
             }
 
             epd._maxSizeSerializedSample =
-            RotateEngineeringRequestPlugin_get_serialized_sample_max_size(
+            RotateRequestPlugin_get_serialized_sample_max_size(
                 NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
             if (buffer == NULL) {
                 *length = 
-                RotateEngineeringRequestPlugin_get_serialized_sample_size(
+                RotateRequestPlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
@@ -534,7 +534,7 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, *length);
 
-            result = nec::control::RotateEngineeringRequestPlugin_serialize(
+            result = nec::control::RotateRequestPlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
                 RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
                 RTI_TRUE, NULL);  
@@ -544,8 +544,8 @@ namespace nec {
         }
 
         RTIBool
-        RotateEngineeringRequestPlugin_deserialize_from_cdr_buffer(
-            RotateEngineeringRequest *sample,
+        RotateRequestPlugin_deserialize_from_cdr_buffer(
+            RotateRequest *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -554,16 +554,16 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            return RotateEngineeringRequestPlugin_deserialize_sample( 
+            return RotateRequestPlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
         }
 
         RTIBool 
-        RotateEngineeringRequestPlugin_deserialize(
+        RotateRequestPlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest **sample,
+            RotateRequest **sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
@@ -575,7 +575,7 @@ namespace nec {
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= nec::control::RotateEngineeringRequestPlugin_deserialize_sample( 
+            result= nec::control::RotateRequestPlugin_deserialize_sample( 
                 endpoint_data, (sample != NULL)?*sample:NULL,
                 stream, deserialize_encapsulation, deserialize_sample, 
                 endpoint_plugin_qos);
@@ -589,7 +589,7 @@ namespace nec {
 
         }
 
-        RTIBool RotateEngineeringRequestPlugin_skip(
+        RTIBool RotateRequestPlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream,   
             RTIBool skip_encapsulation,
@@ -661,7 +661,7 @@ namespace nec {
         }
 
         unsigned int 
-        RotateEngineeringRequestPlugin_get_serialized_sample_max_size_ex(
+        RotateRequestPlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -706,7 +706,7 @@ namespace nec {
         }
 
         unsigned int 
-        RotateEngineeringRequestPlugin_get_serialized_sample_max_size(
+        RotateRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -715,7 +715,7 @@ namespace nec {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = RotateEngineeringRequestPlugin_get_serialized_sample_max_size_ex(
+            size = RotateRequestPlugin_get_serialized_sample_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -726,7 +726,7 @@ namespace nec {
         }
 
         unsigned int 
-        RotateEngineeringRequestPlugin_get_serialized_sample_min_size(
+        RotateRequestPlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -774,12 +774,12 @@ namespace nec {
         * encapsulation flags.
         */
         unsigned int
-        RotateEngineeringRequestPlugin_get_serialized_sample_size(
+        RotateRequestPlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const RotateEngineeringRequest * sample) 
+            const RotateRequest * sample) 
         {
 
             unsigned int initial_alignment = current_alignment;
@@ -828,15 +828,15 @@ namespace nec {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        RotateEngineeringRequestPlugin_get_key_kind(void)
+        RotateRequestPlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_USER_KEY;
         }
 
         RTIBool 
-        RotateEngineeringRequestPlugin_serialize_key(
+        RotateRequestPlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateEngineeringRequest *sample, 
+            const RotateRequest *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -874,9 +874,9 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        RTIBool RotateEngineeringRequestPlugin_deserialize_key_sample(
+        RTIBool RotateRequestPlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest *sample, 
+            RotateRequest *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
@@ -914,9 +914,9 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        RTIBool RotateEngineeringRequestPlugin_deserialize_key(
+        RTIBool RotateRequestPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest **sample, 
+            RotateRequest **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -926,7 +926,7 @@ namespace nec {
             RTIBool result;
             if (drop_sample) {} /* To avoid warnings */
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= nec::control::RotateEngineeringRequestPlugin_deserialize_key_sample(
+            result= nec::control::RotateRequestPlugin_deserialize_key_sample(
                 endpoint_data, (sample != NULL)?*sample:NULL, stream,
                 deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
             if (result) {
@@ -940,7 +940,7 @@ namespace nec {
         }
 
         unsigned int
-        RotateEngineeringRequestPlugin_get_serialized_key_max_size_ex(
+        RotateRequestPlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -973,7 +973,7 @@ namespace nec {
         }
 
         unsigned int
-        RotateEngineeringRequestPlugin_get_serialized_key_max_size(
+        RotateRequestPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -982,7 +982,7 @@ namespace nec {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = RotateEngineeringRequestPlugin_get_serialized_key_max_size_ex(
+            size = RotateRequestPlugin_get_serialized_key_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -993,9 +993,9 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringRequestPlugin_serialized_sample_to_key(
+        RotateRequestPlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest *sample,
+            RotateRequest *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
@@ -1080,10 +1080,10 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringRequestPlugin_instance_to_key(
+        RotateRequestPlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequestKeyHolder *dst, 
-            const RotateEngineeringRequest *src)
+            RotateRequestKeyHolder *dst, 
+            const RotateRequest *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -1096,10 +1096,10 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringRequestPlugin_key_to_instance(
+        RotateRequestPlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest *dst, const
-            RotateEngineeringRequestKeyHolder *src)
+            RotateRequest *dst, const
+            RotateRequestKeyHolder *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -1111,10 +1111,10 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringRequestPlugin_instance_to_keyhash(
+        RotateRequestPlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const RotateEngineeringRequest *instance)
+            const RotateRequest *instance)
         {
             struct RTICdrStream * md5Stream = NULL;
             struct RTICdrStreamState cdrState;
@@ -1130,14 +1130,14 @@ namespace nec {
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-            if (!nec::control::RotateEngineeringRequestPlugin_serialize_key(
+            if (!nec::control::RotateRequestPlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
                 int size;
 
                 RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-                size = (int)nec::control::RotateEngineeringRequestPlugin_get_serialized_sample_size(
+                size = (int)nec::control::RotateRequestPlugin_get_serialized_sample_size(
                     endpoint_data,
                     RTI_FALSE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -1162,7 +1162,7 @@ namespace nec {
                     RTICdrStream_getBufferLength(md5Stream));
                 RTICdrStream_resetPosition(md5Stream);
                 RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-                if (!nec::control::RotateEngineeringRequestPlugin_serialize_key(
+                if (!nec::control::RotateRequestPlugin_serialize_key(
                     endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
                 {
                     RTICdrStream_popState(md5Stream, &cdrState);
@@ -1191,7 +1191,7 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringRequestPlugin_serialized_sample_to_keyhash(
+        RotateRequestPlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -1202,7 +1202,7 @@ namespace nec {
 
             RTIBool done = RTI_FALSE;
             RTIBool error = RTI_FALSE;
-            RotateEngineeringRequest * sample=NULL;
+            RotateRequest * sample=NULL;
 
             if (endpoint_plugin_qos) {} /* To avoid warnings */
             if (stream == NULL) {
@@ -1218,7 +1218,7 @@ namespace nec {
                 position = RTICdrStream_resetAlignment(stream);
             }
 
-            sample = (RotateEngineeringRequest *)
+            sample = (RotateRequest *)
             PRESTypePluginDefaultEndpointData_getTempSample(endpoint_data);
 
             if (sample == NULL) {
@@ -1249,7 +1249,7 @@ namespace nec {
                 RTICdrStream_restoreAlignment(stream,position);
             }
 
-            if (!nec::control::RotateEngineeringRequestPlugin_instance_to_keyhash(
+            if (!nec::control::RotateRequestPlugin_instance_to_keyhash(
                 endpoint_data, keyhash, sample)) {
                 return RTI_FALSE;
             }
@@ -1260,7 +1260,7 @@ namespace nec {
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *RotateEngineeringRequestPlugin_new(void) 
+        struct PRESTypePlugin *RotateRequestPlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -1277,129 +1277,129 @@ namespace nec {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            nec::control::RotateEngineeringRequestPlugin_on_participant_attached;
+            nec::control::RotateRequestPlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            nec::control::RotateEngineeringRequestPlugin_on_participant_detached;
+            nec::control::RotateRequestPlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            nec::control::RotateEngineeringRequestPlugin_on_endpoint_attached;
+            nec::control::RotateRequestPlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            nec::control::RotateEngineeringRequestPlugin_on_endpoint_detached;
+            nec::control::RotateRequestPlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            nec::control::RotateEngineeringRequestPlugin_copy_sample;
+            nec::control::RotateRequestPlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            RotateEngineeringRequestPlugin_create_sample;
+            RotateRequestPlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            RotateEngineeringRequestPlugin_destroy_sample;
+            RotateRequestPlugin_destroy_sample;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
-            nec::control::RotateEngineeringRequestPlugin_serialize;
+            nec::control::RotateRequestPlugin_serialize;
             plugin->deserializeFnc =
             (PRESTypePluginDeserializeFunction)
-            nec::control::RotateEngineeringRequestPlugin_deserialize;
+            nec::control::RotateRequestPlugin_deserialize;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            nec::control::RotateEngineeringRequestPlugin_get_serialized_sample_max_size;
+            nec::control::RotateRequestPlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
-            nec::control::RotateEngineeringRequestPlugin_get_serialized_sample_min_size;
+            nec::control::RotateRequestPlugin_get_serialized_sample_min_size;
 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            RotateEngineeringRequestPlugin_get_sample;
+            RotateRequestPlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            RotateEngineeringRequestPlugin_return_sample;
+            RotateRequestPlugin_return_sample;
 
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            nec::control::RotateEngineeringRequestPlugin_get_key_kind;
+            nec::control::RotateRequestPlugin_get_key_kind;
 
             plugin->getSerializedKeyMaxSizeFnc =   
             (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-            nec::control::RotateEngineeringRequestPlugin_get_serialized_key_max_size;
+            nec::control::RotateRequestPlugin_get_serialized_key_max_size;
             plugin->serializeKeyFnc =
             (PRESTypePluginSerializeKeyFunction)
-            nec::control::RotateEngineeringRequestPlugin_serialize_key;
+            nec::control::RotateRequestPlugin_serialize_key;
             plugin->deserializeKeyFnc =
             (PRESTypePluginDeserializeKeyFunction)
-            nec::control::RotateEngineeringRequestPlugin_deserialize_key;
+            nec::control::RotateRequestPlugin_deserialize_key;
             plugin->deserializeKeySampleFnc =
             (PRESTypePluginDeserializeKeySampleFunction)
-            nec::control::RotateEngineeringRequestPlugin_deserialize_key_sample;
+            nec::control::RotateRequestPlugin_deserialize_key_sample;
 
             plugin-> instanceToKeyHashFnc = 
             (PRESTypePluginInstanceToKeyHashFunction)
-            nec::control::RotateEngineeringRequestPlugin_instance_to_keyhash;
+            nec::control::RotateRequestPlugin_instance_to_keyhash;
             plugin->serializedSampleToKeyHashFnc = 
             (PRESTypePluginSerializedSampleToKeyHashFunction)
-            nec::control::RotateEngineeringRequestPlugin_serialized_sample_to_keyhash;
+            nec::control::RotateRequestPlugin_serialized_sample_to_keyhash;
 
             plugin->getKeyFnc =
             (PRESTypePluginGetKeyFunction)
-            RotateEngineeringRequestPlugin_get_key;
+            RotateRequestPlugin_get_key;
             plugin->returnKeyFnc =
             (PRESTypePluginReturnKeyFunction)
-            RotateEngineeringRequestPlugin_return_key;
+            RotateRequestPlugin_return_key;
 
             plugin->instanceToKeyFnc =
             (PRESTypePluginInstanceToKeyFunction)
-            nec::control::RotateEngineeringRequestPlugin_instance_to_key;
+            nec::control::RotateRequestPlugin_instance_to_key;
             plugin->keyToInstanceFnc =
             (PRESTypePluginKeyToInstanceFunction)
-            nec::control::RotateEngineeringRequestPlugin_key_to_instance;
+            nec::control::RotateRequestPlugin_key_to_instance;
             plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-            plugin->typeCode =  (struct RTICdrTypeCode *)nec::control::RotateEngineeringRequest_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)nec::control::RotateRequest_get_typecode();
 
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            RotateEngineeringRequestPlugin_get_buffer;
+            RotateRequestPlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            RotateEngineeringRequestPlugin_return_buffer;
+            RotateRequestPlugin_return_buffer;
             plugin->getSerializedSampleSizeFnc =
             (PRESTypePluginGetSerializedSampleSizeFunction)
-            nec::control::RotateEngineeringRequestPlugin_get_serialized_sample_size;
+            nec::control::RotateRequestPlugin_get_serialized_sample_size;
 
-            plugin->endpointTypeName = RotateEngineeringRequestTYPENAME;
+            plugin->endpointTypeName = RotateRequestTYPENAME;
 
             return plugin;
         }
 
         void
-        RotateEngineeringRequestPlugin_delete(struct PRESTypePlugin *plugin)
+        RotateRequestPlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 
 
         /* ----------------------------------------------------------------------------
-        *  Type RotateEngineeringObjective
+        *  Type RotateObjective
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        RotateEngineeringObjective*
-        RotateEngineeringObjectivePluginSupport_create_data_w_params(
+        RotateObjective*
+        RotateObjectivePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params){
-            RotateEngineeringObjective *sample = NULL;
+            RotateObjective *sample = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &sample, RotateEngineeringObjective);
+                &sample, RotateObjective);
 
             if(sample != NULL) {
-                if (!nec::control::RotateEngineeringObjective_initialize_w_params(sample,alloc_params)) {
+                if (!nec::control::RotateObjective_initialize_w_params(sample,alloc_params)) {
                     RTIOsapiHeap_freeStructure(sample);
                     return NULL;
                 }
@@ -1407,15 +1407,15 @@ namespace nec {
             return sample; 
         } 
 
-        RotateEngineeringObjective *
-        RotateEngineeringObjectivePluginSupport_create_data_ex(RTIBool allocate_pointers){
-            RotateEngineeringObjective *sample = NULL;
+        RotateObjective *
+        RotateObjectivePluginSupport_create_data_ex(RTIBool allocate_pointers){
+            RotateObjective *sample = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &sample, RotateEngineeringObjective);
+                &sample, RotateObjective);
 
             if(sample != NULL) {
-                if (!nec::control::RotateEngineeringObjective_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                if (!nec::control::RotateObjective_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                     RTIOsapiHeap_freeStructure(sample);
                     return NULL;
                 }
@@ -1423,50 +1423,50 @@ namespace nec {
             return sample; 
         }
 
-        RotateEngineeringObjective *
-        RotateEngineeringObjectivePluginSupport_create_data(void)
+        RotateObjective *
+        RotateObjectivePluginSupport_create_data(void)
         {
-            return nec::control::RotateEngineeringObjectivePluginSupport_create_data_ex(RTI_TRUE);
+            return nec::control::RotateObjectivePluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        RotateEngineeringObjectivePluginSupport_destroy_data_w_params(
-            RotateEngineeringObjective *sample,
+        RotateObjectivePluginSupport_destroy_data_w_params(
+            RotateObjective *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-            nec::control::RotateEngineeringObjective_finalize_w_params(sample,dealloc_params);
+            nec::control::RotateObjective_finalize_w_params(sample,dealloc_params);
 
             RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
-        RotateEngineeringObjectivePluginSupport_destroy_data_ex(
-            RotateEngineeringObjective *sample,RTIBool deallocate_pointers) {
+        RotateObjectivePluginSupport_destroy_data_ex(
+            RotateObjective *sample,RTIBool deallocate_pointers) {
 
-            nec::control::RotateEngineeringObjective_finalize_ex(sample,deallocate_pointers);
+            nec::control::RotateObjective_finalize_ex(sample,deallocate_pointers);
 
             RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
-        RotateEngineeringObjectivePluginSupport_destroy_data(
-            RotateEngineeringObjective *sample) {
+        RotateObjectivePluginSupport_destroy_data(
+            RotateObjective *sample) {
 
-            nec::control::RotateEngineeringObjectivePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            nec::control::RotateObjectivePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        RotateEngineeringObjectivePluginSupport_copy_data(
-            RotateEngineeringObjective *dst,
-            const RotateEngineeringObjective *src)
+        RotateObjectivePluginSupport_copy_data(
+            RotateObjective *dst,
+            const RotateObjective *src)
         {
-            return nec::control::RotateEngineeringObjective_copy(dst,src);
+            return nec::control::RotateObjective_copy(dst,src);
         }
 
         void 
-        RotateEngineeringObjectivePluginSupport_print_data(
-            const RotateEngineeringObjective *sample,
+        RotateObjectivePluginSupport_print_data(
+            const RotateObjective *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -1497,37 +1497,37 @@ namespace nec {
                 &sample->targetTorque, "targetTorque", indent_level + 1);    
 
         }
-        RotateEngineeringObjective *
-        RotateEngineeringObjectivePluginSupport_create_key_ex(RTIBool allocate_pointers){
-            RotateEngineeringObjective *key = NULL;
+        RotateObjective *
+        RotateObjectivePluginSupport_create_key_ex(RTIBool allocate_pointers){
+            RotateObjective *key = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &key, RotateEngineeringObjectiveKeyHolder);
+                &key, RotateObjectiveKeyHolder);
 
-            nec::control::RotateEngineeringObjective_initialize_ex(key,allocate_pointers, RTI_TRUE);
+            nec::control::RotateObjective_initialize_ex(key,allocate_pointers, RTI_TRUE);
             return key;
         }
 
-        RotateEngineeringObjective *
-        RotateEngineeringObjectivePluginSupport_create_key(void)
+        RotateObjective *
+        RotateObjectivePluginSupport_create_key(void)
         {
-            return  nec::control::RotateEngineeringObjectivePluginSupport_create_key_ex(RTI_TRUE);
+            return  nec::control::RotateObjectivePluginSupport_create_key_ex(RTI_TRUE);
         }
 
         void 
-        RotateEngineeringObjectivePluginSupport_destroy_key_ex(
-            RotateEngineeringObjectiveKeyHolder *key,RTIBool deallocate_pointers)
+        RotateObjectivePluginSupport_destroy_key_ex(
+            RotateObjectiveKeyHolder *key,RTIBool deallocate_pointers)
         {
-            nec::control::RotateEngineeringObjective_finalize_ex(key,deallocate_pointers);
+            nec::control::RotateObjective_finalize_ex(key,deallocate_pointers);
 
             RTIOsapiHeap_freeStructure(key);
         }
 
         void 
-        RotateEngineeringObjectivePluginSupport_destroy_key(
-            RotateEngineeringObjectiveKeyHolder *key) {
+        RotateObjectivePluginSupport_destroy_key(
+            RotateObjectiveKeyHolder *key) {
 
-            nec::control::RotateEngineeringObjectivePluginSupport_destroy_key_ex(key,RTI_TRUE);
+            nec::control::RotateObjectivePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
         }
 
@@ -1536,7 +1536,7 @@ namespace nec {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        RotateEngineeringObjectivePlugin_on_participant_attached(
+        RotateObjectivePlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -1554,7 +1554,7 @@ namespace nec {
         }
 
         void 
-        RotateEngineeringObjectivePlugin_on_participant_detached(
+        RotateObjectivePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {
 
@@ -1562,7 +1562,7 @@ namespace nec {
         }
 
         PRESTypePluginEndpointData
-        RotateEngineeringObjectivePlugin_on_endpoint_attached(
+        RotateObjectivePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -1581,18 +1581,18 @@ namespace nec {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                nec::control::RotateEngineeringObjectivePluginSupport_create_data,
+                nec::control::RotateObjectivePluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                nec::control::RotateEngineeringObjectivePluginSupport_destroy_data,
+                nec::control::RotateObjectivePluginSupport_destroy_data,
                 (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-                nec::control::RotateEngineeringObjectivePluginSupport_create_key ,            
+                nec::control::RotateObjectivePluginSupport_create_key ,            
                 (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-                nec::control::RotateEngineeringObjectivePluginSupport_destroy_key);
+                nec::control::RotateObjectivePluginSupport_destroy_key);
 
             if (epd == NULL) {
                 return NULL;
             } 
-            serializedKeyMaxSize =  nec::control::RotateEngineeringObjectivePlugin_get_serialized_key_max_size(
+            serializedKeyMaxSize =  nec::control::RotateObjectivePlugin_get_serialized_key_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -1603,7 +1603,7 @@ namespace nec {
             }
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = nec::control::RotateEngineeringObjectivePlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = nec::control::RotateObjectivePlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -1612,9 +1612,9 @@ namespace nec {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    nec::control::RotateEngineeringObjectivePlugin_get_serialized_sample_max_size, epd,
+                    nec::control::RotateObjectivePlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
-                    nec::control::RotateEngineeringObjectivePlugin_get_serialized_sample_size,
+                    nec::control::RotateObjectivePlugin_get_serialized_sample_size,
                     epd) == RTI_FALSE) {
                     PRESTypePluginDefaultEndpointData_delete(epd);
                     return NULL;
@@ -1625,7 +1625,7 @@ namespace nec {
         }
 
         void 
-        RotateEngineeringObjectivePlugin_on_endpoint_detached(
+        RotateObjectivePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {  
 
@@ -1633,42 +1633,42 @@ namespace nec {
         }
 
         void    
-        RotateEngineeringObjectivePlugin_return_sample(
+        RotateObjectivePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective *sample,
+            RotateObjective *sample,
             void *handle)
         {
 
-            RotateEngineeringObjective_finalize_optional_members(sample, RTI_TRUE);
+            RotateObjective_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        RotateEngineeringObjectivePlugin_copy_sample(
+        RotateObjectivePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective *dst,
-            const RotateEngineeringObjective *src)
+            RotateObjective *dst,
+            const RotateObjective *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return nec::control::RotateEngineeringObjectivePluginSupport_copy_data(dst,src);
+            return nec::control::RotateObjectivePluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        RotateEngineeringObjectivePlugin_get_serialized_sample_max_size(
+        RotateObjectivePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool 
-        RotateEngineeringObjectivePlugin_serialize(
+        RotateObjectivePlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateEngineeringObjective *sample, 
+            const RotateObjective *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1731,9 +1731,9 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringObjectivePlugin_deserialize_sample(
+        RotateObjectivePlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective *sample,
+            RotateObjective *sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
@@ -1756,7 +1756,7 @@ namespace nec {
             }
             if(deserialize_sample) {
 
-                nec::control::RotateEngineeringObjective_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+                nec::control::RotateObjective_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
                 if(!DataTypes::UuidPlugin_deserialize_sample(
                     endpoint_data,
@@ -1799,10 +1799,10 @@ namespace nec {
         }
 
         RTIBool
-        RotateEngineeringObjectivePlugin_serialize_to_cdr_buffer(
+        RotateObjectivePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const RotateEngineeringObjective *sample)
+            const RotateObjective *sample)
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
@@ -1813,12 +1813,12 @@ namespace nec {
             }
 
             epd._maxSizeSerializedSample =
-            RotateEngineeringObjectivePlugin_get_serialized_sample_max_size(
+            RotateObjectivePlugin_get_serialized_sample_max_size(
                 NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
             if (buffer == NULL) {
                 *length = 
-                RotateEngineeringObjectivePlugin_get_serialized_sample_size(
+                RotateObjectivePlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
@@ -1835,7 +1835,7 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, *length);
 
-            result = nec::control::RotateEngineeringObjectivePlugin_serialize(
+            result = nec::control::RotateObjectivePlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
                 RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
                 RTI_TRUE, NULL);  
@@ -1845,8 +1845,8 @@ namespace nec {
         }
 
         RTIBool
-        RotateEngineeringObjectivePlugin_deserialize_from_cdr_buffer(
-            RotateEngineeringObjective *sample,
+        RotateObjectivePlugin_deserialize_from_cdr_buffer(
+            RotateObjective *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -1855,16 +1855,16 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            return RotateEngineeringObjectivePlugin_deserialize_sample( 
+            return RotateObjectivePlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
         }
 
         RTIBool 
-        RotateEngineeringObjectivePlugin_deserialize(
+        RotateObjectivePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective **sample,
+            RotateObjective **sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
@@ -1876,7 +1876,7 @@ namespace nec {
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= nec::control::RotateEngineeringObjectivePlugin_deserialize_sample( 
+            result= nec::control::RotateObjectivePlugin_deserialize_sample( 
                 endpoint_data, (sample != NULL)?*sample:NULL,
                 stream, deserialize_encapsulation, deserialize_sample, 
                 endpoint_plugin_qos);
@@ -1890,7 +1890,7 @@ namespace nec {
 
         }
 
-        RTIBool RotateEngineeringObjectivePlugin_skip(
+        RTIBool RotateObjectivePlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream,   
             RTIBool skip_encapsulation,
@@ -1951,7 +1951,7 @@ namespace nec {
         }
 
         unsigned int 
-        RotateEngineeringObjectivePlugin_get_serialized_sample_max_size_ex(
+        RotateObjectivePlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -1993,7 +1993,7 @@ namespace nec {
         }
 
         unsigned int 
-        RotateEngineeringObjectivePlugin_get_serialized_sample_max_size(
+        RotateObjectivePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -2002,7 +2002,7 @@ namespace nec {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = RotateEngineeringObjectivePlugin_get_serialized_sample_max_size_ex(
+            size = RotateObjectivePlugin_get_serialized_sample_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -2013,7 +2013,7 @@ namespace nec {
         }
 
         unsigned int 
-        RotateEngineeringObjectivePlugin_get_serialized_sample_min_size(
+        RotateObjectivePlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -2059,12 +2059,12 @@ namespace nec {
         * encapsulation flags.
         */
         unsigned int
-        RotateEngineeringObjectivePlugin_get_serialized_sample_size(
+        RotateObjectivePlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const RotateEngineeringObjective * sample) 
+            const RotateObjective * sample) 
         {
 
             unsigned int initial_alignment = current_alignment;
@@ -2109,15 +2109,15 @@ namespace nec {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        RotateEngineeringObjectivePlugin_get_key_kind(void)
+        RotateObjectivePlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_USER_KEY;
         }
 
         RTIBool 
-        RotateEngineeringObjectivePlugin_serialize_key(
+        RotateObjectivePlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateEngineeringObjective *sample, 
+            const RotateObjective *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -2155,9 +2155,9 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        RTIBool RotateEngineeringObjectivePlugin_deserialize_key_sample(
+        RTIBool RotateObjectivePlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective *sample, 
+            RotateObjective *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
@@ -2195,9 +2195,9 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        RTIBool RotateEngineeringObjectivePlugin_deserialize_key(
+        RTIBool RotateObjectivePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective **sample, 
+            RotateObjective **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -2207,7 +2207,7 @@ namespace nec {
             RTIBool result;
             if (drop_sample) {} /* To avoid warnings */
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= nec::control::RotateEngineeringObjectivePlugin_deserialize_key_sample(
+            result= nec::control::RotateObjectivePlugin_deserialize_key_sample(
                 endpoint_data, (sample != NULL)?*sample:NULL, stream,
                 deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
             if (result) {
@@ -2221,7 +2221,7 @@ namespace nec {
         }
 
         unsigned int
-        RotateEngineeringObjectivePlugin_get_serialized_key_max_size_ex(
+        RotateObjectivePlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -2254,7 +2254,7 @@ namespace nec {
         }
 
         unsigned int
-        RotateEngineeringObjectivePlugin_get_serialized_key_max_size(
+        RotateObjectivePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -2263,7 +2263,7 @@ namespace nec {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = RotateEngineeringObjectivePlugin_get_serialized_key_max_size_ex(
+            size = RotateObjectivePlugin_get_serialized_key_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -2274,9 +2274,9 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringObjectivePlugin_serialized_sample_to_key(
+        RotateObjectivePlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective *sample,
+            RotateObjective *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
@@ -2349,10 +2349,10 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringObjectivePlugin_instance_to_key(
+        RotateObjectivePlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjectiveKeyHolder *dst, 
-            const RotateEngineeringObjective *src)
+            RotateObjectiveKeyHolder *dst, 
+            const RotateObjective *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -2365,10 +2365,10 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringObjectivePlugin_key_to_instance(
+        RotateObjectivePlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective *dst, const
-            RotateEngineeringObjectiveKeyHolder *src)
+            RotateObjective *dst, const
+            RotateObjectiveKeyHolder *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -2380,10 +2380,10 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringObjectivePlugin_instance_to_keyhash(
+        RotateObjectivePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const RotateEngineeringObjective *instance)
+            const RotateObjective *instance)
         {
             struct RTICdrStream * md5Stream = NULL;
             struct RTICdrStreamState cdrState;
@@ -2399,14 +2399,14 @@ namespace nec {
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-            if (!nec::control::RotateEngineeringObjectivePlugin_serialize_key(
+            if (!nec::control::RotateObjectivePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
                 int size;
 
                 RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-                size = (int)nec::control::RotateEngineeringObjectivePlugin_get_serialized_sample_size(
+                size = (int)nec::control::RotateObjectivePlugin_get_serialized_sample_size(
                     endpoint_data,
                     RTI_FALSE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -2431,7 +2431,7 @@ namespace nec {
                     RTICdrStream_getBufferLength(md5Stream));
                 RTICdrStream_resetPosition(md5Stream);
                 RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-                if (!nec::control::RotateEngineeringObjectivePlugin_serialize_key(
+                if (!nec::control::RotateObjectivePlugin_serialize_key(
                     endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
                 {
                     RTICdrStream_popState(md5Stream, &cdrState);
@@ -2460,7 +2460,7 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringObjectivePlugin_serialized_sample_to_keyhash(
+        RotateObjectivePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -2471,7 +2471,7 @@ namespace nec {
 
             RTIBool done = RTI_FALSE;
             RTIBool error = RTI_FALSE;
-            RotateEngineeringObjective * sample=NULL;
+            RotateObjective * sample=NULL;
 
             if (endpoint_plugin_qos) {} /* To avoid warnings */
             if (stream == NULL) {
@@ -2487,7 +2487,7 @@ namespace nec {
                 position = RTICdrStream_resetAlignment(stream);
             }
 
-            sample = (RotateEngineeringObjective *)
+            sample = (RotateObjective *)
             PRESTypePluginDefaultEndpointData_getTempSample(endpoint_data);
 
             if (sample == NULL) {
@@ -2518,7 +2518,7 @@ namespace nec {
                 RTICdrStream_restoreAlignment(stream,position);
             }
 
-            if (!nec::control::RotateEngineeringObjectivePlugin_instance_to_keyhash(
+            if (!nec::control::RotateObjectivePlugin_instance_to_keyhash(
                 endpoint_data, keyhash, sample)) {
                 return RTI_FALSE;
             }
@@ -2529,7 +2529,7 @@ namespace nec {
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *RotateEngineeringObjectivePlugin_new(void) 
+        struct PRESTypePlugin *RotateObjectivePlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -2546,129 +2546,129 @@ namespace nec {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            nec::control::RotateEngineeringObjectivePlugin_on_participant_attached;
+            nec::control::RotateObjectivePlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            nec::control::RotateEngineeringObjectivePlugin_on_participant_detached;
+            nec::control::RotateObjectivePlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            nec::control::RotateEngineeringObjectivePlugin_on_endpoint_attached;
+            nec::control::RotateObjectivePlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            nec::control::RotateEngineeringObjectivePlugin_on_endpoint_detached;
+            nec::control::RotateObjectivePlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            nec::control::RotateEngineeringObjectivePlugin_copy_sample;
+            nec::control::RotateObjectivePlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            RotateEngineeringObjectivePlugin_create_sample;
+            RotateObjectivePlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            RotateEngineeringObjectivePlugin_destroy_sample;
+            RotateObjectivePlugin_destroy_sample;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
-            nec::control::RotateEngineeringObjectivePlugin_serialize;
+            nec::control::RotateObjectivePlugin_serialize;
             plugin->deserializeFnc =
             (PRESTypePluginDeserializeFunction)
-            nec::control::RotateEngineeringObjectivePlugin_deserialize;
+            nec::control::RotateObjectivePlugin_deserialize;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            nec::control::RotateEngineeringObjectivePlugin_get_serialized_sample_max_size;
+            nec::control::RotateObjectivePlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
-            nec::control::RotateEngineeringObjectivePlugin_get_serialized_sample_min_size;
+            nec::control::RotateObjectivePlugin_get_serialized_sample_min_size;
 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            RotateEngineeringObjectivePlugin_get_sample;
+            RotateObjectivePlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            RotateEngineeringObjectivePlugin_return_sample;
+            RotateObjectivePlugin_return_sample;
 
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            nec::control::RotateEngineeringObjectivePlugin_get_key_kind;
+            nec::control::RotateObjectivePlugin_get_key_kind;
 
             plugin->getSerializedKeyMaxSizeFnc =   
             (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-            nec::control::RotateEngineeringObjectivePlugin_get_serialized_key_max_size;
+            nec::control::RotateObjectivePlugin_get_serialized_key_max_size;
             plugin->serializeKeyFnc =
             (PRESTypePluginSerializeKeyFunction)
-            nec::control::RotateEngineeringObjectivePlugin_serialize_key;
+            nec::control::RotateObjectivePlugin_serialize_key;
             plugin->deserializeKeyFnc =
             (PRESTypePluginDeserializeKeyFunction)
-            nec::control::RotateEngineeringObjectivePlugin_deserialize_key;
+            nec::control::RotateObjectivePlugin_deserialize_key;
             plugin->deserializeKeySampleFnc =
             (PRESTypePluginDeserializeKeySampleFunction)
-            nec::control::RotateEngineeringObjectivePlugin_deserialize_key_sample;
+            nec::control::RotateObjectivePlugin_deserialize_key_sample;
 
             plugin-> instanceToKeyHashFnc = 
             (PRESTypePluginInstanceToKeyHashFunction)
-            nec::control::RotateEngineeringObjectivePlugin_instance_to_keyhash;
+            nec::control::RotateObjectivePlugin_instance_to_keyhash;
             plugin->serializedSampleToKeyHashFnc = 
             (PRESTypePluginSerializedSampleToKeyHashFunction)
-            nec::control::RotateEngineeringObjectivePlugin_serialized_sample_to_keyhash;
+            nec::control::RotateObjectivePlugin_serialized_sample_to_keyhash;
 
             plugin->getKeyFnc =
             (PRESTypePluginGetKeyFunction)
-            RotateEngineeringObjectivePlugin_get_key;
+            RotateObjectivePlugin_get_key;
             plugin->returnKeyFnc =
             (PRESTypePluginReturnKeyFunction)
-            RotateEngineeringObjectivePlugin_return_key;
+            RotateObjectivePlugin_return_key;
 
             plugin->instanceToKeyFnc =
             (PRESTypePluginInstanceToKeyFunction)
-            nec::control::RotateEngineeringObjectivePlugin_instance_to_key;
+            nec::control::RotateObjectivePlugin_instance_to_key;
             plugin->keyToInstanceFnc =
             (PRESTypePluginKeyToInstanceFunction)
-            nec::control::RotateEngineeringObjectivePlugin_key_to_instance;
+            nec::control::RotateObjectivePlugin_key_to_instance;
             plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-            plugin->typeCode =  (struct RTICdrTypeCode *)nec::control::RotateEngineeringObjective_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)nec::control::RotateObjective_get_typecode();
 
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            RotateEngineeringObjectivePlugin_get_buffer;
+            RotateObjectivePlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            RotateEngineeringObjectivePlugin_return_buffer;
+            RotateObjectivePlugin_return_buffer;
             plugin->getSerializedSampleSizeFnc =
             (PRESTypePluginGetSerializedSampleSizeFunction)
-            nec::control::RotateEngineeringObjectivePlugin_get_serialized_sample_size;
+            nec::control::RotateObjectivePlugin_get_serialized_sample_size;
 
-            plugin->endpointTypeName = RotateEngineeringObjectiveTYPENAME;
+            plugin->endpointTypeName = RotateObjectiveTYPENAME;
 
             return plugin;
         }
 
         void
-        RotateEngineeringObjectivePlugin_delete(struct PRESTypePlugin *plugin)
+        RotateObjectivePlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 
 
         /* ----------------------------------------------------------------------------
-        *  Type RotateEngineeringState
+        *  Type RotateState
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        RotateEngineeringState*
-        RotateEngineeringStatePluginSupport_create_data_w_params(
+        RotateState*
+        RotateStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params){
-            RotateEngineeringState *sample = NULL;
+            RotateState *sample = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &sample, RotateEngineeringState);
+                &sample, RotateState);
 
             if(sample != NULL) {
-                if (!nec::control::RotateEngineeringState_initialize_w_params(sample,alloc_params)) {
+                if (!nec::control::RotateState_initialize_w_params(sample,alloc_params)) {
                     RTIOsapiHeap_freeStructure(sample);
                     return NULL;
                 }
@@ -2676,15 +2676,15 @@ namespace nec {
             return sample; 
         } 
 
-        RotateEngineeringState *
-        RotateEngineeringStatePluginSupport_create_data_ex(RTIBool allocate_pointers){
-            RotateEngineeringState *sample = NULL;
+        RotateState *
+        RotateStatePluginSupport_create_data_ex(RTIBool allocate_pointers){
+            RotateState *sample = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &sample, RotateEngineeringState);
+                &sample, RotateState);
 
             if(sample != NULL) {
-                if (!nec::control::RotateEngineeringState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                if (!nec::control::RotateState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                     RTIOsapiHeap_freeStructure(sample);
                     return NULL;
                 }
@@ -2692,50 +2692,50 @@ namespace nec {
             return sample; 
         }
 
-        RotateEngineeringState *
-        RotateEngineeringStatePluginSupport_create_data(void)
+        RotateState *
+        RotateStatePluginSupport_create_data(void)
         {
-            return nec::control::RotateEngineeringStatePluginSupport_create_data_ex(RTI_TRUE);
+            return nec::control::RotateStatePluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        RotateEngineeringStatePluginSupport_destroy_data_w_params(
-            RotateEngineeringState *sample,
+        RotateStatePluginSupport_destroy_data_w_params(
+            RotateState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-            nec::control::RotateEngineeringState_finalize_w_params(sample,dealloc_params);
+            nec::control::RotateState_finalize_w_params(sample,dealloc_params);
 
             RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
-        RotateEngineeringStatePluginSupport_destroy_data_ex(
-            RotateEngineeringState *sample,RTIBool deallocate_pointers) {
+        RotateStatePluginSupport_destroy_data_ex(
+            RotateState *sample,RTIBool deallocate_pointers) {
 
-            nec::control::RotateEngineeringState_finalize_ex(sample,deallocate_pointers);
+            nec::control::RotateState_finalize_ex(sample,deallocate_pointers);
 
             RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
-        RotateEngineeringStatePluginSupport_destroy_data(
-            RotateEngineeringState *sample) {
+        RotateStatePluginSupport_destroy_data(
+            RotateState *sample) {
 
-            nec::control::RotateEngineeringStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            nec::control::RotateStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        RotateEngineeringStatePluginSupport_copy_data(
-            RotateEngineeringState *dst,
-            const RotateEngineeringState *src)
+        RotateStatePluginSupport_copy_data(
+            RotateState *dst,
+            const RotateState *src)
         {
-            return nec::control::RotateEngineeringState_copy(dst,src);
+            return nec::control::RotateState_copy(dst,src);
         }
 
         void 
-        RotateEngineeringStatePluginSupport_print_data(
-            const RotateEngineeringState *sample,
+        RotateStatePluginSupport_print_data(
+            const RotateState *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -2784,37 +2784,37 @@ namespace nec {
                 &sample->targetRate, "targetRate", indent_level + 1);    
 
         }
-        RotateEngineeringState *
-        RotateEngineeringStatePluginSupport_create_key_ex(RTIBool allocate_pointers){
-            RotateEngineeringState *key = NULL;
+        RotateState *
+        RotateStatePluginSupport_create_key_ex(RTIBool allocate_pointers){
+            RotateState *key = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &key, RotateEngineeringStateKeyHolder);
+                &key, RotateStateKeyHolder);
 
-            nec::control::RotateEngineeringState_initialize_ex(key,allocate_pointers, RTI_TRUE);
+            nec::control::RotateState_initialize_ex(key,allocate_pointers, RTI_TRUE);
             return key;
         }
 
-        RotateEngineeringState *
-        RotateEngineeringStatePluginSupport_create_key(void)
+        RotateState *
+        RotateStatePluginSupport_create_key(void)
         {
-            return  nec::control::RotateEngineeringStatePluginSupport_create_key_ex(RTI_TRUE);
+            return  nec::control::RotateStatePluginSupport_create_key_ex(RTI_TRUE);
         }
 
         void 
-        RotateEngineeringStatePluginSupport_destroy_key_ex(
-            RotateEngineeringStateKeyHolder *key,RTIBool deallocate_pointers)
+        RotateStatePluginSupport_destroy_key_ex(
+            RotateStateKeyHolder *key,RTIBool deallocate_pointers)
         {
-            nec::control::RotateEngineeringState_finalize_ex(key,deallocate_pointers);
+            nec::control::RotateState_finalize_ex(key,deallocate_pointers);
 
             RTIOsapiHeap_freeStructure(key);
         }
 
         void 
-        RotateEngineeringStatePluginSupport_destroy_key(
-            RotateEngineeringStateKeyHolder *key) {
+        RotateStatePluginSupport_destroy_key(
+            RotateStateKeyHolder *key) {
 
-            nec::control::RotateEngineeringStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
+            nec::control::RotateStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
         }
 
@@ -2823,7 +2823,7 @@ namespace nec {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        RotateEngineeringStatePlugin_on_participant_attached(
+        RotateStatePlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -2841,7 +2841,7 @@ namespace nec {
         }
 
         void 
-        RotateEngineeringStatePlugin_on_participant_detached(
+        RotateStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {
 
@@ -2849,7 +2849,7 @@ namespace nec {
         }
 
         PRESTypePluginEndpointData
-        RotateEngineeringStatePlugin_on_endpoint_attached(
+        RotateStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -2868,18 +2868,18 @@ namespace nec {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                nec::control::RotateEngineeringStatePluginSupport_create_data,
+                nec::control::RotateStatePluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                nec::control::RotateEngineeringStatePluginSupport_destroy_data,
+                nec::control::RotateStatePluginSupport_destroy_data,
                 (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-                nec::control::RotateEngineeringStatePluginSupport_create_key ,            
+                nec::control::RotateStatePluginSupport_create_key ,            
                 (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-                nec::control::RotateEngineeringStatePluginSupport_destroy_key);
+                nec::control::RotateStatePluginSupport_destroy_key);
 
             if (epd == NULL) {
                 return NULL;
             } 
-            serializedKeyMaxSize =  nec::control::RotateEngineeringStatePlugin_get_serialized_key_max_size(
+            serializedKeyMaxSize =  nec::control::RotateStatePlugin_get_serialized_key_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -2890,7 +2890,7 @@ namespace nec {
             }
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = nec::control::RotateEngineeringStatePlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = nec::control::RotateStatePlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -2899,9 +2899,9 @@ namespace nec {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    nec::control::RotateEngineeringStatePlugin_get_serialized_sample_max_size, epd,
+                    nec::control::RotateStatePlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
-                    nec::control::RotateEngineeringStatePlugin_get_serialized_sample_size,
+                    nec::control::RotateStatePlugin_get_serialized_sample_size,
                     epd) == RTI_FALSE) {
                     PRESTypePluginDefaultEndpointData_delete(epd);
                     return NULL;
@@ -2912,7 +2912,7 @@ namespace nec {
         }
 
         void 
-        RotateEngineeringStatePlugin_on_endpoint_detached(
+        RotateStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {  
 
@@ -2920,42 +2920,42 @@ namespace nec {
         }
 
         void    
-        RotateEngineeringStatePlugin_return_sample(
+        RotateStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState *sample,
+            RotateState *sample,
             void *handle)
         {
 
-            RotateEngineeringState_finalize_optional_members(sample, RTI_TRUE);
+            RotateState_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        RotateEngineeringStatePlugin_copy_sample(
+        RotateStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState *dst,
-            const RotateEngineeringState *src)
+            RotateState *dst,
+            const RotateState *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return nec::control::RotateEngineeringStatePluginSupport_copy_data(dst,src);
+            return nec::control::RotateStatePluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        RotateEngineeringStatePlugin_get_serialized_sample_max_size(
+        RotateStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool 
-        RotateEngineeringStatePlugin_serialize(
+        RotateStatePlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateEngineeringState *sample, 
+            const RotateState *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -3053,9 +3053,9 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringStatePlugin_deserialize_sample(
+        RotateStatePlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState *sample,
+            RotateState *sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
@@ -3078,7 +3078,7 @@ namespace nec {
             }
             if(deserialize_sample) {
 
-                nec::control::RotateEngineeringState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+                nec::control::RotateState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
                 if(!DataTypes::UuidPlugin_deserialize_sample(
                     endpoint_data,
@@ -3149,10 +3149,10 @@ namespace nec {
         }
 
         RTIBool
-        RotateEngineeringStatePlugin_serialize_to_cdr_buffer(
+        RotateStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const RotateEngineeringState *sample)
+            const RotateState *sample)
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
@@ -3163,12 +3163,12 @@ namespace nec {
             }
 
             epd._maxSizeSerializedSample =
-            RotateEngineeringStatePlugin_get_serialized_sample_max_size(
+            RotateStatePlugin_get_serialized_sample_max_size(
                 NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
             if (buffer == NULL) {
                 *length = 
-                RotateEngineeringStatePlugin_get_serialized_sample_size(
+                RotateStatePlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
@@ -3185,7 +3185,7 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, *length);
 
-            result = nec::control::RotateEngineeringStatePlugin_serialize(
+            result = nec::control::RotateStatePlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
                 RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
                 RTI_TRUE, NULL);  
@@ -3195,8 +3195,8 @@ namespace nec {
         }
 
         RTIBool
-        RotateEngineeringStatePlugin_deserialize_from_cdr_buffer(
-            RotateEngineeringState *sample,
+        RotateStatePlugin_deserialize_from_cdr_buffer(
+            RotateState *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -3205,16 +3205,16 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            return RotateEngineeringStatePlugin_deserialize_sample( 
+            return RotateStatePlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
         }
 
         RTIBool 
-        RotateEngineeringStatePlugin_deserialize(
+        RotateStatePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState **sample,
+            RotateState **sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
@@ -3226,7 +3226,7 @@ namespace nec {
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= nec::control::RotateEngineeringStatePlugin_deserialize_sample( 
+            result= nec::control::RotateStatePlugin_deserialize_sample( 
                 endpoint_data, (sample != NULL)?*sample:NULL,
                 stream, deserialize_encapsulation, deserialize_sample, 
                 endpoint_plugin_qos);
@@ -3240,7 +3240,7 @@ namespace nec {
 
         }
 
-        RTIBool RotateEngineeringStatePlugin_skip(
+        RTIBool RotateStatePlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream,   
             RTIBool skip_encapsulation,
@@ -3323,7 +3323,7 @@ namespace nec {
         }
 
         unsigned int 
-        RotateEngineeringStatePlugin_get_serialized_sample_max_size_ex(
+        RotateStatePlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -3383,7 +3383,7 @@ namespace nec {
         }
 
         unsigned int 
-        RotateEngineeringStatePlugin_get_serialized_sample_max_size(
+        RotateStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -3392,7 +3392,7 @@ namespace nec {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = RotateEngineeringStatePlugin_get_serialized_sample_max_size_ex(
+            size = RotateStatePlugin_get_serialized_sample_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -3403,7 +3403,7 @@ namespace nec {
         }
 
         unsigned int 
-        RotateEngineeringStatePlugin_get_serialized_sample_min_size(
+        RotateStatePlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -3461,12 +3461,12 @@ namespace nec {
         * encapsulation flags.
         */
         unsigned int
-        RotateEngineeringStatePlugin_get_serialized_sample_size(
+        RotateStatePlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const RotateEngineeringState * sample) 
+            const RotateState * sample) 
         {
 
             unsigned int initial_alignment = current_alignment;
@@ -3524,15 +3524,15 @@ namespace nec {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        RotateEngineeringStatePlugin_get_key_kind(void)
+        RotateStatePlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_USER_KEY;
         }
 
         RTIBool 
-        RotateEngineeringStatePlugin_serialize_key(
+        RotateStatePlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateEngineeringState *sample, 
+            const RotateState *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -3570,9 +3570,9 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        RTIBool RotateEngineeringStatePlugin_deserialize_key_sample(
+        RTIBool RotateStatePlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState *sample, 
+            RotateState *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
@@ -3610,9 +3610,9 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        RTIBool RotateEngineeringStatePlugin_deserialize_key(
+        RTIBool RotateStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState **sample, 
+            RotateState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -3622,7 +3622,7 @@ namespace nec {
             RTIBool result;
             if (drop_sample) {} /* To avoid warnings */
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= nec::control::RotateEngineeringStatePlugin_deserialize_key_sample(
+            result= nec::control::RotateStatePlugin_deserialize_key_sample(
                 endpoint_data, (sample != NULL)?*sample:NULL, stream,
                 deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
             if (result) {
@@ -3636,7 +3636,7 @@ namespace nec {
         }
 
         unsigned int
-        RotateEngineeringStatePlugin_get_serialized_key_max_size_ex(
+        RotateStatePlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -3669,7 +3669,7 @@ namespace nec {
         }
 
         unsigned int
-        RotateEngineeringStatePlugin_get_serialized_key_max_size(
+        RotateStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -3678,7 +3678,7 @@ namespace nec {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = RotateEngineeringStatePlugin_get_serialized_key_max_size_ex(
+            size = RotateStatePlugin_get_serialized_key_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -3689,9 +3689,9 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringStatePlugin_serialized_sample_to_key(
+        RotateStatePlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState *sample,
+            RotateState *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
@@ -3792,10 +3792,10 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringStatePlugin_instance_to_key(
+        RotateStatePlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringStateKeyHolder *dst, 
-            const RotateEngineeringState *src)
+            RotateStateKeyHolder *dst, 
+            const RotateState *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -3808,10 +3808,10 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringStatePlugin_key_to_instance(
+        RotateStatePlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState *dst, const
-            RotateEngineeringStateKeyHolder *src)
+            RotateState *dst, const
+            RotateStateKeyHolder *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -3823,10 +3823,10 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringStatePlugin_instance_to_keyhash(
+        RotateStatePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const RotateEngineeringState *instance)
+            const RotateState *instance)
         {
             struct RTICdrStream * md5Stream = NULL;
             struct RTICdrStreamState cdrState;
@@ -3842,14 +3842,14 @@ namespace nec {
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-            if (!nec::control::RotateEngineeringStatePlugin_serialize_key(
+            if (!nec::control::RotateStatePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
                 int size;
 
                 RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-                size = (int)nec::control::RotateEngineeringStatePlugin_get_serialized_sample_size(
+                size = (int)nec::control::RotateStatePlugin_get_serialized_sample_size(
                     endpoint_data,
                     RTI_FALSE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -3874,7 +3874,7 @@ namespace nec {
                     RTICdrStream_getBufferLength(md5Stream));
                 RTICdrStream_resetPosition(md5Stream);
                 RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-                if (!nec::control::RotateEngineeringStatePlugin_serialize_key(
+                if (!nec::control::RotateStatePlugin_serialize_key(
                     endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
                 {
                     RTICdrStream_popState(md5Stream, &cdrState);
@@ -3903,7 +3903,7 @@ namespace nec {
         }
 
         RTIBool 
-        RotateEngineeringStatePlugin_serialized_sample_to_keyhash(
+        RotateStatePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -3914,7 +3914,7 @@ namespace nec {
 
             RTIBool done = RTI_FALSE;
             RTIBool error = RTI_FALSE;
-            RotateEngineeringState * sample=NULL;
+            RotateState * sample=NULL;
 
             if (endpoint_plugin_qos) {} /* To avoid warnings */
             if (stream == NULL) {
@@ -3930,7 +3930,7 @@ namespace nec {
                 position = RTICdrStream_resetAlignment(stream);
             }
 
-            sample = (RotateEngineeringState *)
+            sample = (RotateState *)
             PRESTypePluginDefaultEndpointData_getTempSample(endpoint_data);
 
             if (sample == NULL) {
@@ -3961,7 +3961,7 @@ namespace nec {
                 RTICdrStream_restoreAlignment(stream,position);
             }
 
-            if (!nec::control::RotateEngineeringStatePlugin_instance_to_keyhash(
+            if (!nec::control::RotateStatePlugin_instance_to_keyhash(
                 endpoint_data, keyhash, sample)) {
                 return RTI_FALSE;
             }
@@ -3972,7 +3972,7 @@ namespace nec {
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *RotateEngineeringStatePlugin_new(void) 
+        struct PRESTypePlugin *RotateStatePlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -3989,107 +3989,107 @@ namespace nec {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            nec::control::RotateEngineeringStatePlugin_on_participant_attached;
+            nec::control::RotateStatePlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            nec::control::RotateEngineeringStatePlugin_on_participant_detached;
+            nec::control::RotateStatePlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            nec::control::RotateEngineeringStatePlugin_on_endpoint_attached;
+            nec::control::RotateStatePlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            nec::control::RotateEngineeringStatePlugin_on_endpoint_detached;
+            nec::control::RotateStatePlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            nec::control::RotateEngineeringStatePlugin_copy_sample;
+            nec::control::RotateStatePlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            RotateEngineeringStatePlugin_create_sample;
+            RotateStatePlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            RotateEngineeringStatePlugin_destroy_sample;
+            RotateStatePlugin_destroy_sample;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
-            nec::control::RotateEngineeringStatePlugin_serialize;
+            nec::control::RotateStatePlugin_serialize;
             plugin->deserializeFnc =
             (PRESTypePluginDeserializeFunction)
-            nec::control::RotateEngineeringStatePlugin_deserialize;
+            nec::control::RotateStatePlugin_deserialize;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            nec::control::RotateEngineeringStatePlugin_get_serialized_sample_max_size;
+            nec::control::RotateStatePlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
-            nec::control::RotateEngineeringStatePlugin_get_serialized_sample_min_size;
+            nec::control::RotateStatePlugin_get_serialized_sample_min_size;
 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            RotateEngineeringStatePlugin_get_sample;
+            RotateStatePlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            RotateEngineeringStatePlugin_return_sample;
+            RotateStatePlugin_return_sample;
 
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            nec::control::RotateEngineeringStatePlugin_get_key_kind;
+            nec::control::RotateStatePlugin_get_key_kind;
 
             plugin->getSerializedKeyMaxSizeFnc =   
             (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-            nec::control::RotateEngineeringStatePlugin_get_serialized_key_max_size;
+            nec::control::RotateStatePlugin_get_serialized_key_max_size;
             plugin->serializeKeyFnc =
             (PRESTypePluginSerializeKeyFunction)
-            nec::control::RotateEngineeringStatePlugin_serialize_key;
+            nec::control::RotateStatePlugin_serialize_key;
             plugin->deserializeKeyFnc =
             (PRESTypePluginDeserializeKeyFunction)
-            nec::control::RotateEngineeringStatePlugin_deserialize_key;
+            nec::control::RotateStatePlugin_deserialize_key;
             plugin->deserializeKeySampleFnc =
             (PRESTypePluginDeserializeKeySampleFunction)
-            nec::control::RotateEngineeringStatePlugin_deserialize_key_sample;
+            nec::control::RotateStatePlugin_deserialize_key_sample;
 
             plugin-> instanceToKeyHashFnc = 
             (PRESTypePluginInstanceToKeyHashFunction)
-            nec::control::RotateEngineeringStatePlugin_instance_to_keyhash;
+            nec::control::RotateStatePlugin_instance_to_keyhash;
             plugin->serializedSampleToKeyHashFnc = 
             (PRESTypePluginSerializedSampleToKeyHashFunction)
-            nec::control::RotateEngineeringStatePlugin_serialized_sample_to_keyhash;
+            nec::control::RotateStatePlugin_serialized_sample_to_keyhash;
 
             plugin->getKeyFnc =
             (PRESTypePluginGetKeyFunction)
-            RotateEngineeringStatePlugin_get_key;
+            RotateStatePlugin_get_key;
             plugin->returnKeyFnc =
             (PRESTypePluginReturnKeyFunction)
-            RotateEngineeringStatePlugin_return_key;
+            RotateStatePlugin_return_key;
 
             plugin->instanceToKeyFnc =
             (PRESTypePluginInstanceToKeyFunction)
-            nec::control::RotateEngineeringStatePlugin_instance_to_key;
+            nec::control::RotateStatePlugin_instance_to_key;
             plugin->keyToInstanceFnc =
             (PRESTypePluginKeyToInstanceFunction)
-            nec::control::RotateEngineeringStatePlugin_key_to_instance;
+            nec::control::RotateStatePlugin_key_to_instance;
             plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-            plugin->typeCode =  (struct RTICdrTypeCode *)nec::control::RotateEngineeringState_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)nec::control::RotateState_get_typecode();
 
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            RotateEngineeringStatePlugin_get_buffer;
+            RotateStatePlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            RotateEngineeringStatePlugin_return_buffer;
+            RotateStatePlugin_return_buffer;
             plugin->getSerializedSampleSizeFnc =
             (PRESTypePluginGetSerializedSampleSizeFunction)
-            nec::control::RotateEngineeringStatePlugin_get_serialized_sample_size;
+            nec::control::RotateStatePlugin_get_serialized_sample_size;
 
-            plugin->endpointTypeName = RotateEngineeringStateTYPENAME;
+            plugin->endpointTypeName = RotateStateTYPENAME;
 
             return plugin;
         }
 
         void
-        RotateEngineeringStatePlugin_delete(struct PRESTypePlugin *plugin)
+        RotateStatePlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 

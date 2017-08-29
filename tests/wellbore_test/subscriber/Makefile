@@ -31,7 +31,7 @@ TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -isystem/usr/local/include/edge_third_party
 TARG_INCLUDES += -I /usr/local/include/base_data_types
 TARG_INCLUDES += -I /usr/local/include/wellbore
-TARG_INCLUDES += -I /usr/local/include/wellbore_subscriber
+TARG_INCLUDES += -I /usr/local/include/wellbore_state_subscriber
 
 # Sources
 TARG_SOURCES = wellbore_subscriber.cpp
@@ -39,7 +39,7 @@ TARG_SOURCES = wellbore_subscriber.cpp
 # Libraries
 TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
 TARG_LIBS += -L /usr/local/lib 
-TARG_LIBS += -lwellbore_subscriber -lwellbore -lbase_data_types -ldds_base
+TARG_LIBS += -lwellbore_state_subscriber -lwellbore -lbase_data_types -ldds_base
 TARG_LIBS += -lncurses
 TARG_LIBS += -llogger -llog4cplus -luuid 
 TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/librtidlcppzd.a $(NDDSHOME)/lib/$(NDDSARCH)/librtidlczd.a 

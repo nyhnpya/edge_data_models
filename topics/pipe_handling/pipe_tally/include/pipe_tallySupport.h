@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef pipe_tallySupport_58331454_h
-#define pipe_tallySupport_58331454_h
+#ifndef pipe_tallySupport_58331459_h
+#define pipe_tallySupport_58331459_h
 
 /* Uses */
 #include "pipe_tally.h"
@@ -46,10 +46,10 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(PipeTallyTypeSupport, PipeTally);
+        DDS_TYPESUPPORT_CPP(PipeTallyStateTypeSupport, PipeTallyState);
 
-        DDS_DATAWRITER_CPP(PipeTallyDataWriter, PipeTally);
-        DDS_DATAREADER_CPP(PipeTallyDataReader, PipeTallySeq, PipeTally);
+        DDS_DATAWRITER_CPP(PipeTallyStateDataWriter, PipeTallyState);
+        DDS_DATAREADER_CPP(PipeTallyStateDataReader, PipeTallyStateSeq, PipeTallyState);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -60,5 +60,5 @@ namespace nec {
     } /* namespace process  */
 } /* namespace nec  */
 
-#endif  /* pipe_tallySupport_58331454_h */
+#endif  /* pipe_tallySupport_58331459_h */
 

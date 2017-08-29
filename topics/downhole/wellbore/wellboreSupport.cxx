@@ -27,7 +27,7 @@ namespace nec {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'Wellbore' support classes.
+        Configure and implement 'WellboreState' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -43,11 +43,11 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   WellboreTYPENAME
+        #define TTYPENAME   WellboreStateTYPENAME
 
         /* Defines */
-        #define TDataWriter WellboreDataWriter
-        #define TData       nec::process::Wellbore
+        #define TDataWriter WellboreStateDataWriter
+        #define TData       nec::process::WellboreState
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -67,12 +67,12 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   WellboreTYPENAME
+        #define TTYPENAME   WellboreStateTYPENAME
 
         /* Defines */
-        #define TDataReader WellboreDataReader
-        #define TDataSeq    WellboreSeq
-        #define TData       nec::process::Wellbore
+        #define TDataReader WellboreStateDataReader
+        #define TDataSeq    WellboreStateSeq
+        #define TData       nec::process::WellboreState
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -94,15 +94,15 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME    WellboreTYPENAME
-        #define TPlugin_new  nec::process::WellborePlugin_new
-        #define TPlugin_delete  nec::process::WellborePlugin_delete
+        #define TTYPENAME    WellboreStateTYPENAME
+        #define TPlugin_new  nec::process::WellboreStatePlugin_new
+        #define TPlugin_delete  nec::process::WellboreStatePlugin_delete
 
         /* Defines */
-        #define TTypeSupport WellboreTypeSupport
-        #define TData        nec::process::Wellbore
-        #define TDataReader  WellboreDataReader
-        #define TDataWriter  WellboreDataWriter
+        #define TTypeSupport WellboreStateTypeSupport
+        #define TData        nec::process::WellboreState
+        #define TDataReader  WellboreStateDataReader
+        #define TDataWriter  WellboreStateDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 

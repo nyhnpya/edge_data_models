@@ -7,7 +7,7 @@
 #include <string.h>
 #include <thread>
 #include "cmdparser.h"
-#include "wellbore_publisher.h"
+#include "wellbore_state_publisher.h"
 
 bool gTerminate = false;
 int32_t gHoleDepth = -1;

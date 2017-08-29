@@ -52,23 +52,23 @@ namespace process {
     namespace maintanence {
 
         /* ----------------------------------------------------------------------------
-        *  Type ProcessInfo
+        *  Type ProcessState
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        ProcessInfo*
-        ProcessInfoPluginSupport_create_data_w_params(
+        ProcessState*
+        ProcessStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params){
-            ProcessInfo *sample = NULL;
+            ProcessState *sample = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &sample, ProcessInfo);
+                &sample, ProcessState);
 
             if(sample != NULL) {
-                if (!process::maintanence::ProcessInfo_initialize_w_params(sample,alloc_params)) {
+                if (!process::maintanence::ProcessState_initialize_w_params(sample,alloc_params)) {
                     RTIOsapiHeap_freeStructure(sample);
                     return NULL;
                 }
@@ -76,15 +76,15 @@ namespace process {
             return sample; 
         } 
 
-        ProcessInfo *
-        ProcessInfoPluginSupport_create_data_ex(RTIBool allocate_pointers){
-            ProcessInfo *sample = NULL;
+        ProcessState *
+        ProcessStatePluginSupport_create_data_ex(RTIBool allocate_pointers){
+            ProcessState *sample = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &sample, ProcessInfo);
+                &sample, ProcessState);
 
             if(sample != NULL) {
-                if (!process::maintanence::ProcessInfo_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                if (!process::maintanence::ProcessState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                     RTIOsapiHeap_freeStructure(sample);
                     return NULL;
                 }
@@ -92,50 +92,50 @@ namespace process {
             return sample; 
         }
 
-        ProcessInfo *
-        ProcessInfoPluginSupport_create_data(void)
+        ProcessState *
+        ProcessStatePluginSupport_create_data(void)
         {
-            return process::maintanence::ProcessInfoPluginSupport_create_data_ex(RTI_TRUE);
+            return process::maintanence::ProcessStatePluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        ProcessInfoPluginSupport_destroy_data_w_params(
-            ProcessInfo *sample,
+        ProcessStatePluginSupport_destroy_data_w_params(
+            ProcessState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-            process::maintanence::ProcessInfo_finalize_w_params(sample,dealloc_params);
+            process::maintanence::ProcessState_finalize_w_params(sample,dealloc_params);
 
             RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
-        ProcessInfoPluginSupport_destroy_data_ex(
-            ProcessInfo *sample,RTIBool deallocate_pointers) {
+        ProcessStatePluginSupport_destroy_data_ex(
+            ProcessState *sample,RTIBool deallocate_pointers) {
 
-            process::maintanence::ProcessInfo_finalize_ex(sample,deallocate_pointers);
+            process::maintanence::ProcessState_finalize_ex(sample,deallocate_pointers);
 
             RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
-        ProcessInfoPluginSupport_destroy_data(
-            ProcessInfo *sample) {
+        ProcessStatePluginSupport_destroy_data(
+            ProcessState *sample) {
 
-            process::maintanence::ProcessInfoPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            process::maintanence::ProcessStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        ProcessInfoPluginSupport_copy_data(
-            ProcessInfo *dst,
-            const ProcessInfo *src)
+        ProcessStatePluginSupport_copy_data(
+            ProcessState *dst,
+            const ProcessState *src)
         {
-            return process::maintanence::ProcessInfo_copy(dst,src);
+            return process::maintanence::ProcessState_copy(dst,src);
         }
 
         void 
-        ProcessInfoPluginSupport_print_data(
-            const ProcessInfo *sample,
+        ProcessStatePluginSupport_print_data(
+            const ProcessState *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -162,6 +162,9 @@ namespace process {
                 &sample->pid, "pid", indent_level + 1);    
 
             RTICdrType_printLongLong(
+                &sample->upTime, "upTime", indent_level + 1);    
+
+            RTICdrType_printLongLong(
                 &sample->totalVirtualMemory, "totalVirtualMemory", indent_level + 1);    
 
             RTICdrType_printLongLong(
@@ -174,37 +177,37 @@ namespace process {
                 &sample->usedPhysicalMemory, "usedPhysicalMemory", indent_level + 1);    
 
         }
-        ProcessInfo *
-        ProcessInfoPluginSupport_create_key_ex(RTIBool allocate_pointers){
-            ProcessInfo *key = NULL;
+        ProcessState *
+        ProcessStatePluginSupport_create_key_ex(RTIBool allocate_pointers){
+            ProcessState *key = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &key, ProcessInfoKeyHolder);
+                &key, ProcessStateKeyHolder);
 
-            process::maintanence::ProcessInfo_initialize_ex(key,allocate_pointers, RTI_TRUE);
+            process::maintanence::ProcessState_initialize_ex(key,allocate_pointers, RTI_TRUE);
             return key;
         }
 
-        ProcessInfo *
-        ProcessInfoPluginSupport_create_key(void)
+        ProcessState *
+        ProcessStatePluginSupport_create_key(void)
         {
-            return  process::maintanence::ProcessInfoPluginSupport_create_key_ex(RTI_TRUE);
+            return  process::maintanence::ProcessStatePluginSupport_create_key_ex(RTI_TRUE);
         }
 
         void 
-        ProcessInfoPluginSupport_destroy_key_ex(
-            ProcessInfoKeyHolder *key,RTIBool deallocate_pointers)
+        ProcessStatePluginSupport_destroy_key_ex(
+            ProcessStateKeyHolder *key,RTIBool deallocate_pointers)
         {
-            process::maintanence::ProcessInfo_finalize_ex(key,deallocate_pointers);
+            process::maintanence::ProcessState_finalize_ex(key,deallocate_pointers);
 
             RTIOsapiHeap_freeStructure(key);
         }
 
         void 
-        ProcessInfoPluginSupport_destroy_key(
-            ProcessInfoKeyHolder *key) {
+        ProcessStatePluginSupport_destroy_key(
+            ProcessStateKeyHolder *key) {
 
-            process::maintanence::ProcessInfoPluginSupport_destroy_key_ex(key,RTI_TRUE);
+            process::maintanence::ProcessStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
         }
 
@@ -213,7 +216,7 @@ namespace process {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        ProcessInfoPlugin_on_participant_attached(
+        ProcessStatePlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -231,7 +234,7 @@ namespace process {
         }
 
         void 
-        ProcessInfoPlugin_on_participant_detached(
+        ProcessStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {
 
@@ -239,7 +242,7 @@ namespace process {
         }
 
         PRESTypePluginEndpointData
-        ProcessInfoPlugin_on_endpoint_attached(
+        ProcessStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -258,18 +261,18 @@ namespace process {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                process::maintanence::ProcessInfoPluginSupport_create_data,
+                process::maintanence::ProcessStatePluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                process::maintanence::ProcessInfoPluginSupport_destroy_data,
+                process::maintanence::ProcessStatePluginSupport_destroy_data,
                 (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-                process::maintanence::ProcessInfoPluginSupport_create_key ,            
+                process::maintanence::ProcessStatePluginSupport_create_key ,            
                 (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-                process::maintanence::ProcessInfoPluginSupport_destroy_key);
+                process::maintanence::ProcessStatePluginSupport_destroy_key);
 
             if (epd == NULL) {
                 return NULL;
             } 
-            serializedKeyMaxSize =  process::maintanence::ProcessInfoPlugin_get_serialized_key_max_size(
+            serializedKeyMaxSize =  process::maintanence::ProcessStatePlugin_get_serialized_key_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -280,7 +283,7 @@ namespace process {
             }
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = process::maintanence::ProcessInfoPlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = process::maintanence::ProcessStatePlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -289,9 +292,9 @@ namespace process {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    process::maintanence::ProcessInfoPlugin_get_serialized_sample_max_size, epd,
+                    process::maintanence::ProcessStatePlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
-                    process::maintanence::ProcessInfoPlugin_get_serialized_sample_size,
+                    process::maintanence::ProcessStatePlugin_get_serialized_sample_size,
                     epd) == RTI_FALSE) {
                     PRESTypePluginDefaultEndpointData_delete(epd);
                     return NULL;
@@ -302,7 +305,7 @@ namespace process {
         }
 
         void 
-        ProcessInfoPlugin_on_endpoint_detached(
+        ProcessStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {  
 
@@ -310,42 +313,42 @@ namespace process {
         }
 
         void    
-        ProcessInfoPlugin_return_sample(
+        ProcessStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessInfo *sample,
+            ProcessState *sample,
             void *handle)
         {
 
-            ProcessInfo_finalize_optional_members(sample, RTI_TRUE);
+            ProcessState_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        ProcessInfoPlugin_copy_sample(
+        ProcessStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessInfo *dst,
-            const ProcessInfo *src)
+            ProcessState *dst,
+            const ProcessState *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return process::maintanence::ProcessInfoPluginSupport_copy_data(dst,src);
+            return process::maintanence::ProcessStatePluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        ProcessInfoPlugin_get_serialized_sample_max_size(
+        ProcessStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool 
-        ProcessInfoPlugin_serialize(
+        ProcessStatePlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const ProcessInfo *sample, 
+            const ProcessState *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -379,6 +382,11 @@ namespace process {
                 }
 
                 if (!RTICdrStream_serializeLongLong(
+                    stream, &sample->upTime)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrStream_serializeLongLong(
                     stream, &sample->totalVirtualMemory)) {
                     return RTI_FALSE;
                 }
@@ -408,9 +416,9 @@ namespace process {
         }
 
         RTIBool 
-        ProcessInfoPlugin_deserialize_sample(
+        ProcessStatePlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessInfo *sample,
+            ProcessState *sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
@@ -433,7 +441,7 @@ namespace process {
             }
             if(deserialize_sample) {
 
-                process::maintanence::ProcessInfo_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+                process::maintanence::ProcessState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
                 if (!RTICdrStream_deserializePrimitiveArray(
                     stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
@@ -441,6 +449,10 @@ namespace process {
                 }
                 if (!RTICdrStream_deserializeLong(
                     stream, &sample->pid)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeLongLong(
+                    stream, &sample->upTime)) {
                     goto fin; 
                 }
                 if (!RTICdrStream_deserializeLongLong(
@@ -476,10 +488,10 @@ namespace process {
         }
 
         RTIBool
-        ProcessInfoPlugin_serialize_to_cdr_buffer(
+        ProcessStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const ProcessInfo *sample)
+            const ProcessState *sample)
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
@@ -490,12 +502,12 @@ namespace process {
             }
 
             epd._maxSizeSerializedSample =
-            ProcessInfoPlugin_get_serialized_sample_max_size(
+            ProcessStatePlugin_get_serialized_sample_max_size(
                 NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
             if (buffer == NULL) {
                 *length = 
-                ProcessInfoPlugin_get_serialized_sample_size(
+                ProcessStatePlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
@@ -512,7 +524,7 @@ namespace process {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, *length);
 
-            result = process::maintanence::ProcessInfoPlugin_serialize(
+            result = process::maintanence::ProcessStatePlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
                 RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
                 RTI_TRUE, NULL);  
@@ -522,8 +534,8 @@ namespace process {
         }
 
         RTIBool
-        ProcessInfoPlugin_deserialize_from_cdr_buffer(
-            ProcessInfo *sample,
+        ProcessStatePlugin_deserialize_from_cdr_buffer(
+            ProcessState *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -532,16 +544,16 @@ namespace process {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            return ProcessInfoPlugin_deserialize_sample( 
+            return ProcessStatePlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
         }
 
         RTIBool 
-        ProcessInfoPlugin_deserialize(
+        ProcessStatePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessInfo **sample,
+            ProcessState **sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
@@ -553,7 +565,7 @@ namespace process {
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= process::maintanence::ProcessInfoPlugin_deserialize_sample( 
+            result= process::maintanence::ProcessStatePlugin_deserialize_sample( 
                 endpoint_data, (sample != NULL)?*sample:NULL,
                 stream, deserialize_encapsulation, deserialize_sample, 
                 endpoint_plugin_qos);
@@ -567,7 +579,7 @@ namespace process {
 
         }
 
-        RTIBool ProcessInfoPlugin_skip(
+        RTIBool ProcessStatePlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream,   
             RTIBool skip_encapsulation,
@@ -610,6 +622,9 @@ namespace process {
                 if (!RTICdrStream_skipLongLong (stream)) {
                     goto fin; 
                 }
+                if (!RTICdrStream_skipLongLong (stream)) {
+                    goto fin; 
+                }
             }
 
             done = RTI_TRUE;
@@ -627,7 +642,7 @@ namespace process {
         }
 
         unsigned int 
-        ProcessInfoPlugin_get_serialized_sample_max_size_ex(
+        ProcessStatePlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -671,6 +686,9 @@ namespace process {
             current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
                 current_alignment);
 
+            current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+                current_alignment);
+
             if (include_encapsulation) {
                 current_alignment += encapsulation_size;
             }
@@ -678,7 +696,7 @@ namespace process {
         }
 
         unsigned int 
-        ProcessInfoPlugin_get_serialized_sample_max_size(
+        ProcessStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -687,7 +705,7 @@ namespace process {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = ProcessInfoPlugin_get_serialized_sample_max_size_ex(
+            size = ProcessStatePlugin_get_serialized_sample_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -698,7 +716,7 @@ namespace process {
         }
 
         unsigned int 
-        ProcessInfoPlugin_get_serialized_sample_min_size(
+        ProcessStatePlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -734,6 +752,8 @@ namespace process {
                 current_alignment);
             current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
                 current_alignment);
+            current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+                current_alignment);
 
             if (include_encapsulation) {
                 current_alignment += encapsulation_size;
@@ -748,12 +768,12 @@ namespace process {
         * encapsulation flags.
         */
         unsigned int
-        ProcessInfoPlugin_get_serialized_sample_size(
+        ProcessStatePlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const ProcessInfo * sample) 
+            const ProcessState * sample) 
         {
 
             unsigned int initial_alignment = current_alignment;
@@ -788,6 +808,8 @@ namespace process {
                 current_alignment);
             current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
                 current_alignment);
+            current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
+                current_alignment);
 
             if (include_encapsulation) {
                 current_alignment += encapsulation_size;
@@ -800,15 +822,15 @@ namespace process {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        ProcessInfoPlugin_get_key_kind(void)
+        ProcessStatePlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_USER_KEY;
         }
 
         RTIBool 
-        ProcessInfoPlugin_serialize_key(
+        ProcessStatePlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const ProcessInfo *sample, 
+            const ProcessState *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -844,9 +866,9 @@ namespace process {
             return RTI_TRUE;
         }
 
-        RTIBool ProcessInfoPlugin_deserialize_key_sample(
+        RTIBool ProcessStatePlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessInfo *sample, 
+            ProcessState *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
@@ -880,9 +902,9 @@ namespace process {
             return RTI_TRUE;
         }
 
-        RTIBool ProcessInfoPlugin_deserialize_key(
+        RTIBool ProcessStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessInfo **sample, 
+            ProcessState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -892,7 +914,7 @@ namespace process {
             RTIBool result;
             if (drop_sample) {} /* To avoid warnings */
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= process::maintanence::ProcessInfoPlugin_deserialize_key_sample(
+            result= process::maintanence::ProcessStatePlugin_deserialize_key_sample(
                 endpoint_data, (sample != NULL)?*sample:NULL, stream,
                 deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
             if (result) {
@@ -906,7 +928,7 @@ namespace process {
         }
 
         unsigned int
-        ProcessInfoPlugin_get_serialized_key_max_size_ex(
+        ProcessStatePlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -942,7 +964,7 @@ namespace process {
         }
 
         unsigned int
-        ProcessInfoPlugin_get_serialized_key_max_size(
+        ProcessStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -951,7 +973,7 @@ namespace process {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = ProcessInfoPlugin_get_serialized_key_max_size_ex(
+            size = ProcessStatePlugin_get_serialized_key_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -962,9 +984,9 @@ namespace process {
         }
 
         RTIBool 
-        ProcessInfoPlugin_serialized_sample_to_key(
+        ProcessStatePlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessInfo *sample,
+            ProcessState *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
@@ -1015,6 +1037,10 @@ namespace process {
                     goto fin; 
                 }
 
+                if (!RTICdrStream_skipLongLong (stream)) {
+                    goto fin; 
+                }
+
             }
 
             done = RTI_TRUE;
@@ -1037,10 +1063,10 @@ namespace process {
         }
 
         RTIBool 
-        ProcessInfoPlugin_instance_to_key(
+        ProcessStatePlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessInfoKeyHolder *dst, 
-            const ProcessInfo *src)
+            ProcessStateKeyHolder *dst, 
+            const ProcessState *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -1053,10 +1079,10 @@ namespace process {
         }
 
         RTIBool 
-        ProcessInfoPlugin_key_to_instance(
+        ProcessStatePlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessInfo *dst, const
-            ProcessInfoKeyHolder *src)
+            ProcessState *dst, const
+            ProcessStateKeyHolder *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -1068,10 +1094,10 @@ namespace process {
         }
 
         RTIBool 
-        ProcessInfoPlugin_instance_to_keyhash(
+        ProcessStatePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const ProcessInfo *instance)
+            const ProcessState *instance)
         {
             struct RTICdrStream * md5Stream = NULL;
             struct RTICdrStreamState cdrState;
@@ -1087,14 +1113,14 @@ namespace process {
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-            if (!process::maintanence::ProcessInfoPlugin_serialize_key(
+            if (!process::maintanence::ProcessStatePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
                 int size;
 
                 RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-                size = (int)process::maintanence::ProcessInfoPlugin_get_serialized_sample_size(
+                size = (int)process::maintanence::ProcessStatePlugin_get_serialized_sample_size(
                     endpoint_data,
                     RTI_FALSE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -1119,7 +1145,7 @@ namespace process {
                     RTICdrStream_getBufferLength(md5Stream));
                 RTICdrStream_resetPosition(md5Stream);
                 RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-                if (!process::maintanence::ProcessInfoPlugin_serialize_key(
+                if (!process::maintanence::ProcessStatePlugin_serialize_key(
                     endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
                 {
                     RTICdrStream_popState(md5Stream, &cdrState);
@@ -1148,7 +1174,7 @@ namespace process {
         }
 
         RTIBool 
-        ProcessInfoPlugin_serialized_sample_to_keyhash(
+        ProcessStatePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -1159,7 +1185,7 @@ namespace process {
 
             RTIBool done = RTI_FALSE;
             RTIBool error = RTI_FALSE;
-            ProcessInfo * sample=NULL;
+            ProcessState * sample=NULL;
 
             if (endpoint_plugin_qos) {} /* To avoid warnings */
             if (stream == NULL) {
@@ -1175,7 +1201,7 @@ namespace process {
                 position = RTICdrStream_resetAlignment(stream);
             }
 
-            sample = (ProcessInfo *)
+            sample = (ProcessState *)
             PRESTypePluginDefaultEndpointData_getTempSample(endpoint_data);
 
             if (sample == NULL) {
@@ -1202,7 +1228,7 @@ namespace process {
                 RTICdrStream_restoreAlignment(stream,position);
             }
 
-            if (!process::maintanence::ProcessInfoPlugin_instance_to_keyhash(
+            if (!process::maintanence::ProcessStatePlugin_instance_to_keyhash(
                 endpoint_data, keyhash, sample)) {
                 return RTI_FALSE;
             }
@@ -1213,7 +1239,7 @@ namespace process {
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *ProcessInfoPlugin_new(void) 
+        struct PRESTypePlugin *ProcessStatePlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -1230,107 +1256,107 @@ namespace process {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            process::maintanence::ProcessInfoPlugin_on_participant_attached;
+            process::maintanence::ProcessStatePlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            process::maintanence::ProcessInfoPlugin_on_participant_detached;
+            process::maintanence::ProcessStatePlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            process::maintanence::ProcessInfoPlugin_on_endpoint_attached;
+            process::maintanence::ProcessStatePlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            process::maintanence::ProcessInfoPlugin_on_endpoint_detached;
+            process::maintanence::ProcessStatePlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            process::maintanence::ProcessInfoPlugin_copy_sample;
+            process::maintanence::ProcessStatePlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            ProcessInfoPlugin_create_sample;
+            ProcessStatePlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            ProcessInfoPlugin_destroy_sample;
+            ProcessStatePlugin_destroy_sample;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
-            process::maintanence::ProcessInfoPlugin_serialize;
+            process::maintanence::ProcessStatePlugin_serialize;
             plugin->deserializeFnc =
             (PRESTypePluginDeserializeFunction)
-            process::maintanence::ProcessInfoPlugin_deserialize;
+            process::maintanence::ProcessStatePlugin_deserialize;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            process::maintanence::ProcessInfoPlugin_get_serialized_sample_max_size;
+            process::maintanence::ProcessStatePlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
-            process::maintanence::ProcessInfoPlugin_get_serialized_sample_min_size;
+            process::maintanence::ProcessStatePlugin_get_serialized_sample_min_size;
 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            ProcessInfoPlugin_get_sample;
+            ProcessStatePlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            ProcessInfoPlugin_return_sample;
+            ProcessStatePlugin_return_sample;
 
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            process::maintanence::ProcessInfoPlugin_get_key_kind;
+            process::maintanence::ProcessStatePlugin_get_key_kind;
 
             plugin->getSerializedKeyMaxSizeFnc =   
             (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-            process::maintanence::ProcessInfoPlugin_get_serialized_key_max_size;
+            process::maintanence::ProcessStatePlugin_get_serialized_key_max_size;
             plugin->serializeKeyFnc =
             (PRESTypePluginSerializeKeyFunction)
-            process::maintanence::ProcessInfoPlugin_serialize_key;
+            process::maintanence::ProcessStatePlugin_serialize_key;
             plugin->deserializeKeyFnc =
             (PRESTypePluginDeserializeKeyFunction)
-            process::maintanence::ProcessInfoPlugin_deserialize_key;
+            process::maintanence::ProcessStatePlugin_deserialize_key;
             plugin->deserializeKeySampleFnc =
             (PRESTypePluginDeserializeKeySampleFunction)
-            process::maintanence::ProcessInfoPlugin_deserialize_key_sample;
+            process::maintanence::ProcessStatePlugin_deserialize_key_sample;
 
             plugin-> instanceToKeyHashFnc = 
             (PRESTypePluginInstanceToKeyHashFunction)
-            process::maintanence::ProcessInfoPlugin_instance_to_keyhash;
+            process::maintanence::ProcessStatePlugin_instance_to_keyhash;
             plugin->serializedSampleToKeyHashFnc = 
             (PRESTypePluginSerializedSampleToKeyHashFunction)
-            process::maintanence::ProcessInfoPlugin_serialized_sample_to_keyhash;
+            process::maintanence::ProcessStatePlugin_serialized_sample_to_keyhash;
 
             plugin->getKeyFnc =
             (PRESTypePluginGetKeyFunction)
-            ProcessInfoPlugin_get_key;
+            ProcessStatePlugin_get_key;
             plugin->returnKeyFnc =
             (PRESTypePluginReturnKeyFunction)
-            ProcessInfoPlugin_return_key;
+            ProcessStatePlugin_return_key;
 
             plugin->instanceToKeyFnc =
             (PRESTypePluginInstanceToKeyFunction)
-            process::maintanence::ProcessInfoPlugin_instance_to_key;
+            process::maintanence::ProcessStatePlugin_instance_to_key;
             plugin->keyToInstanceFnc =
             (PRESTypePluginKeyToInstanceFunction)
-            process::maintanence::ProcessInfoPlugin_key_to_instance;
+            process::maintanence::ProcessStatePlugin_key_to_instance;
             plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-            plugin->typeCode =  (struct RTICdrTypeCode *)process::maintanence::ProcessInfo_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)process::maintanence::ProcessState_get_typecode();
 
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            ProcessInfoPlugin_get_buffer;
+            ProcessStatePlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            ProcessInfoPlugin_return_buffer;
+            ProcessStatePlugin_return_buffer;
             plugin->getSerializedSampleSizeFnc =
             (PRESTypePluginGetSerializedSampleSizeFunction)
-            process::maintanence::ProcessInfoPlugin_get_serialized_sample_size;
+            process::maintanence::ProcessStatePlugin_get_serialized_sample_size;
 
-            plugin->endpointTypeName = ProcessInfoTYPENAME;
+            plugin->endpointTypeName = ProcessStateTYPENAME;
 
             return plugin;
         }
 
         void
-        ProcessInfoPlugin_delete(struct PRESTypePlugin *plugin)
+        ProcessStatePlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 

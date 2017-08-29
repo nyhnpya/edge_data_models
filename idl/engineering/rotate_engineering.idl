@@ -6,7 +6,7 @@ module nec
     {
         //@copy-c-declaration static const char ROTATE_ENGINEERING_REQUEST[] = "RotateEngineeringRequest";
 
-        struct RotateEngineeringRequest
+        struct RotateRequest
         {
             DataTypes::Uuid     id;          //@key
             DataTypes::Priority priority;    // priority of the request
@@ -17,7 +17,7 @@ module nec
 
         //@copy-c-declaration static const char ROTATE_ENGINEERING_OBJECTIVE[] = "RotateEngineeringObjective";
 
-        struct RotateEngineeringObjective
+        struct RotateObjective
         {
             DataTypes::Uuid     id;                //@key
             DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
@@ -27,7 +27,7 @@ module nec
 
         //@copy-c-declaration static const char ROTATE_ENGINEERING_STATE[] = "RotateEngineeringState";
 
-        struct RotateEngineeringState
+        struct RotateState
         {
             DataTypes::Uuid     id;           //@key
             DataTypes::Status   status;

@@ -34,15 +34,15 @@ namespace nec {
     namespace process {
 
         /* ========================================================================= */
-        const char *PipeTallyTYPENAME = "nec::process::PipeTally";
+        const char *PipeTallyStateTYPENAME = "nec::process::PipeTallyState";
 
-        DDS_TypeCode* PipeTally_get_typecode()
+        DDS_TypeCode* PipeTallyState_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode PipeTally_g_tc_serialNumber_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-            static DDS_TypeCode PipeTally_g_tc_description_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-            static DDS_TypeCode_Member PipeTally_g_tc_members[15]=
+            static DDS_TypeCode PipeTallyState_g_tc_serialNumber_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+            static DDS_TypeCode PipeTallyState_g_tc_description_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+            static DDS_TypeCode_Member PipeTallyState_g_tc_members[15]=
             {
 
                 {
@@ -302,67 +302,67 @@ namespace nec {
                 }
             };
 
-            static DDS_TypeCode PipeTally_g_tc =
+            static DDS_TypeCode PipeTallyState_g_tc =
             {{
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"nec::process::PipeTally", /* Name */
+                    (char *)"nec::process::PipeTallyState", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     15, /* Number of members */
-                    PipeTally_g_tc_members, /* Members */
+                    PipeTallyState_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
-                }}; /* Type code for PipeTally*/
+                }}; /* Type code for PipeTallyState*/
 
             if (is_initialized) {
-                return &PipeTally_g_tc;
+                return &PipeTallyState_g_tc;
             }
 
-            PipeTally_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+            PipeTallyState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-            PipeTally_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+            PipeTallyState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-            PipeTally_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+            PipeTallyState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-            PipeTally_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&PipeTally_g_tc_serialNumber_string;
+            PipeTallyState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&PipeTallyState_g_tc_serialNumber_string;
 
-            PipeTally_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ulong;
+            PipeTallyState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ulong;
 
-            PipeTally_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ulong;
+            PipeTallyState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ulong;
 
-            PipeTally_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            PipeTallyState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            PipeTally_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            PipeTallyState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            PipeTally_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            PipeTallyState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            PipeTally_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            PipeTallyState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            PipeTally_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            PipeTallyState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            PipeTally_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            PipeTallyState_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            PipeTally_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            PipeTallyState_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            PipeTally_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&PipeTally_g_tc_description_string;
+            PipeTallyState_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&PipeTallyState_g_tc_description_string;
 
-            PipeTally_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)DataTypes::PipeType_get_typecode();
+            PipeTallyState_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)DataTypes::PipeType_get_typecode();
 
             is_initialized = RTI_TRUE;
 
-            return &PipeTally_g_tc;
+            return &PipeTallyState_g_tc;
         }
 
-        RTIBool PipeTally_initialize(
-            PipeTally* sample) {
-            return nec::process::PipeTally_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool PipeTallyState_initialize(
+            PipeTallyState* sample) {
+            return nec::process::PipeTallyState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool PipeTally_initialize_ex(
-            PipeTally* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool PipeTallyState_initialize_ex(
+            PipeTallyState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -371,13 +371,13 @@ namespace nec {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return nec::process::PipeTally_initialize_w_params(
+            return nec::process::PipeTallyState_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool PipeTally_initialize_w_params(
-            PipeTally* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool PipeTallyState_initialize_w_params(
+            PipeTallyState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (allocParams) {} /* To avoid warnings */
@@ -462,15 +462,15 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        void PipeTally_finalize(
-            PipeTally* sample)
+        void PipeTallyState_finalize(
+            PipeTallyState* sample)
         {
 
-            nec::process::PipeTally_finalize_ex(sample,RTI_TRUE);
+            nec::process::PipeTallyState_finalize_ex(sample,RTI_TRUE);
         }
 
-        void PipeTally_finalize_ex(
-            PipeTally* sample,RTIBool deletePointers)
+        void PipeTallyState_finalize_ex(
+            PipeTallyState* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -481,12 +481,12 @@ namespace nec {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            nec::process::PipeTally_finalize_w_params(
+            nec::process::PipeTallyState_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void PipeTally_finalize_w_params(
-            PipeTally* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void PipeTallyState_finalize_w_params(
+            PipeTallyState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -515,8 +515,8 @@ namespace nec {
 
         }
 
-        void PipeTally_finalize_optional_members(
-            PipeTally* sample, RTIBool deletePointers)
+        void PipeTallyState_finalize_optional_members(
+            PipeTallyState* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -537,9 +537,9 @@ namespace nec {
             DataTypes::PipeType_finalize_optional_members(&sample->pipeType, deallocParams->delete_pointers);
         }
 
-        RTIBool PipeTally_copy(
-            PipeTally* dst,
-            const PipeTally* src)
+        RTIBool PipeTallyState_copy(
+            PipeTallyState* dst,
+            const PipeTallyState* src)
         {
 
             if (!DataTypes::Uuid_copy(
@@ -613,13 +613,13 @@ namespace nec {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'PipeTally' sequence class.
+        * Configure and implement 'PipeTallyState' sequence class.
         */
-        #define T PipeTally
-        #define TSeq PipeTallySeq
-        #define T_initialize_w_params nec::process::PipeTally_initialize_w_params
-        #define T_finalize_w_params   nec::process::PipeTally_finalize_w_params
-        #define T_copy       nec::process::PipeTally_copy
+        #define T PipeTallyState
+        #define TSeq PipeTallyStateSeq
+        #define T_initialize_w_params nec::process::PipeTallyState_initialize_w_params
+        #define T_finalize_w_params   nec::process::PipeTallyState_finalize_w_params
+        #define T_copy       nec::process::PipeTallyState_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"

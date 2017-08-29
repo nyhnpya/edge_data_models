@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef rotate_engineeringPlugin_182432028_h
-#define rotate_engineeringPlugin_182432028_h
+#ifndef rotate_engineeringPlugin_182431995_h
+#define rotate_engineeringPlugin_182431995_h
 
 #include "rotate_engineering.h"
 
@@ -35,87 +35,87 @@ namespace nec {
         /* The type used to store keys for instances of type struct
         * AnotherSimple.
         *
-        * By default, this type is struct RotateEngineeringRequest
+        * By default, this type is struct RotateRequest
         * itself. However, if for some reason this choice is not practical for your
-        * system (e.g. if sizeof(struct RotateEngineeringRequest)
+        * system (e.g. if sizeof(struct RotateRequest)
         * is very large), you may redefine this typedef in terms of another type of
         * your choosing. HOWEVER, if you define the KeyHolder type to be something
         * other than struct AnotherSimple, the
         * following restriction applies: the key of struct
-        * RotateEngineeringRequest must consist of a
+        * RotateRequest must consist of a
         * single field of your redefined KeyHolder type and that field must be the
-        * first field in struct RotateEngineeringRequest.
+        * first field in struct RotateRequest.
         */
-        typedef  class RotateEngineeringRequest RotateEngineeringRequestKeyHolder;
+        typedef  class RotateRequest RotateRequestKeyHolder;
 
-        #define RotateEngineeringRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-        #define RotateEngineeringRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define RotateEngineeringRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define RotateRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define RotateRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define RotateRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
 
-        #define RotateEngineeringRequestPlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
-        #define RotateEngineeringRequestPlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
+        #define RotateRequestPlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
+        #define RotateRequestPlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
 
-        #define RotateEngineeringRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define RotateEngineeringRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define RotateRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define RotateRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern RotateEngineeringRequest*
-        RotateEngineeringRequestPluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern RotateRequest*
+        RotateRequestPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern RotateEngineeringRequest*
-        RotateEngineeringRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern RotateRequest*
+        RotateRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern RotateEngineeringRequest*
-        RotateEngineeringRequestPluginSupport_create_data(void);
+        NDDSUSERDllExport extern RotateRequest*
+        RotateRequestPluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringRequestPluginSupport_copy_data(
-            RotateEngineeringRequest *out,
-            const RotateEngineeringRequest *in);
+        RotateRequestPluginSupport_copy_data(
+            RotateRequest *out,
+            const RotateRequest *in);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringRequestPluginSupport_destroy_data_w_params(
-            RotateEngineeringRequest *sample,
+        RotateRequestPluginSupport_destroy_data_w_params(
+            RotateRequest *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringRequestPluginSupport_destroy_data_ex(
-            RotateEngineeringRequest *sample,RTIBool deallocate_pointers);
+        RotateRequestPluginSupport_destroy_data_ex(
+            RotateRequest *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringRequestPluginSupport_destroy_data(
-            RotateEngineeringRequest *sample);
+        RotateRequestPluginSupport_destroy_data(
+            RotateRequest *sample);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringRequestPluginSupport_print_data(
-            const RotateEngineeringRequest *sample,
+        RotateRequestPluginSupport_print_data(
+            const RotateRequest *sample,
             const char *desc,
             unsigned int indent);
 
-        NDDSUSERDllExport extern RotateEngineeringRequest*
-        RotateEngineeringRequestPluginSupport_create_key_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern RotateRequest*
+        RotateRequestPluginSupport_create_key_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern RotateEngineeringRequest*
-        RotateEngineeringRequestPluginSupport_create_key(void);
-
-        NDDSUSERDllExport extern void 
-        RotateEngineeringRequestPluginSupport_destroy_key_ex(
-            RotateEngineeringRequestKeyHolder *key,RTIBool deallocate_pointers);
+        NDDSUSERDllExport extern RotateRequest*
+        RotateRequestPluginSupport_create_key(void);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringRequestPluginSupport_destroy_key(
-            RotateEngineeringRequestKeyHolder *key);
+        RotateRequestPluginSupport_destroy_key_ex(
+            RotateRequestKeyHolder *key,RTIBool deallocate_pointers);
+
+        NDDSUSERDllExport extern void 
+        RotateRequestPluginSupport_destroy_key(
+            RotateRequestKeyHolder *key);
 
         /* ----------------------------------------------------------------------------
         Callback functions:
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        RotateEngineeringRequestPlugin_on_participant_attached(
+        RotateRequestPlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -123,40 +123,40 @@ namespace nec {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringRequestPlugin_on_participant_detached(
+        RotateRequestPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        RotateEngineeringRequestPlugin_on_endpoint_attached(
+        RotateRequestPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringRequestPlugin_on_endpoint_detached(
+        RotateRequestPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        RotateEngineeringRequestPlugin_return_sample(
+        RotateRequestPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest *sample,
+            RotateRequest *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringRequestPlugin_copy_sample(
+        RotateRequestPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest *out,
-            const RotateEngineeringRequest *in);
+            RotateRequest *out,
+            const RotateRequest *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringRequestPlugin_serialize(
+        RotateRequestPlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateEngineeringRequest *sample,
+            const RotateRequest *sample,
             struct RTICdrStream *stream, 
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -164,24 +164,24 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringRequestPlugin_deserialize_sample(
+        RotateRequestPlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest *sample, 
+            RotateRequest *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        RotateEngineeringRequestPlugin_serialize_to_cdr_buffer(
+        RotateRequestPlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const RotateEngineeringRequest *sample); 
+            const RotateRequest *sample); 
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringRequestPlugin_deserialize(
+        RotateRequestPlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest **sample, 
+            RotateRequest **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -189,13 +189,13 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        RotateEngineeringRequestPlugin_deserialize_from_cdr_buffer(
-            RotateEngineeringRequest *sample,
+        RotateRequestPlugin_deserialize_from_cdr_buffer(
+            RotateRequest *sample,
             const char * buffer,
             unsigned int length);    
 
         NDDSUSERDllExport extern RTIBool
-        RotateEngineeringRequestPlugin_skip(
+        RotateRequestPlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             RTIBool skip_encapsulation,  
@@ -203,7 +203,7 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringRequestPlugin_get_serialized_sample_max_size_ex(
+        RotateRequestPlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -211,35 +211,35 @@ namespace nec {
             unsigned int current_alignment);    
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringRequestPlugin_get_serialized_sample_max_size(
+        RotateRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringRequestPlugin_get_serialized_sample_min_size(
+        RotateRequestPlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int
-        RotateEngineeringRequestPlugin_get_serialized_sample_size(
+        RotateRequestPlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const RotateEngineeringRequest * sample);
+            const RotateRequest * sample);
 
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        RotateEngineeringRequestPlugin_get_key_kind(void);
+        RotateRequestPlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringRequestPlugin_get_serialized_key_max_size_ex(
+        RotateRequestPlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -247,16 +247,16 @@ namespace nec {
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringRequestPlugin_get_serialized_key_max_size(
+        RotateRequestPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringRequestPlugin_serialize_key(
+        RotateRequestPlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateEngineeringRequest *sample,
+            const RotateRequest *sample,
             struct RTICdrStream *stream,
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -264,18 +264,18 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringRequestPlugin_deserialize_key_sample(
+        RotateRequestPlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest * sample,
+            RotateRequest * sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringRequestPlugin_deserialize_key(
+        RotateRequestPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest ** sample,
+            RotateRequest ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -283,34 +283,34 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        RotateEngineeringRequestPlugin_serialized_sample_to_key(
+        RotateRequestPlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest *sample,
+            RotateRequest *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringRequestPlugin_instance_to_key(
+        RotateRequestPlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequestKeyHolder *key, 
-            const RotateEngineeringRequest *instance);
+            RotateRequestKeyHolder *key, 
+            const RotateRequest *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringRequestPlugin_key_to_instance(
+        RotateRequestPlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringRequest *instance, 
-            const RotateEngineeringRequestKeyHolder *key);
+            RotateRequest *instance, 
+            const RotateRequestKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringRequestPlugin_instance_to_keyhash(
+        RotateRequestPlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const RotateEngineeringRequest *instance);
+            const RotateRequest *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringRequestPlugin_serialized_sample_to_keyhash(
+        RotateRequestPlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -319,95 +319,95 @@ namespace nec {
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        RotateEngineeringRequestPlugin_new(void);
+        RotateRequestPlugin_new(void);
 
         NDDSUSERDllExport extern void
-        RotateEngineeringRequestPlugin_delete(struct PRESTypePlugin *);
+        RotateRequestPlugin_delete(struct PRESTypePlugin *);
 
         /* The type used to store keys for instances of type struct
         * AnotherSimple.
         *
-        * By default, this type is struct RotateEngineeringObjective
+        * By default, this type is struct RotateObjective
         * itself. However, if for some reason this choice is not practical for your
-        * system (e.g. if sizeof(struct RotateEngineeringObjective)
+        * system (e.g. if sizeof(struct RotateObjective)
         * is very large), you may redefine this typedef in terms of another type of
         * your choosing. HOWEVER, if you define the KeyHolder type to be something
         * other than struct AnotherSimple, the
         * following restriction applies: the key of struct
-        * RotateEngineeringObjective must consist of a
+        * RotateObjective must consist of a
         * single field of your redefined KeyHolder type and that field must be the
-        * first field in struct RotateEngineeringObjective.
+        * first field in struct RotateObjective.
         */
-        typedef  class RotateEngineeringObjective RotateEngineeringObjectiveKeyHolder;
+        typedef  class RotateObjective RotateObjectiveKeyHolder;
 
-        #define RotateEngineeringObjectivePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-        #define RotateEngineeringObjectivePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define RotateEngineeringObjectivePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define RotateObjectivePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define RotateObjectivePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define RotateObjectivePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
 
-        #define RotateEngineeringObjectivePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
-        #define RotateEngineeringObjectivePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
+        #define RotateObjectivePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
+        #define RotateObjectivePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
 
-        #define RotateEngineeringObjectivePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define RotateEngineeringObjectivePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define RotateObjectivePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define RotateObjectivePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern RotateEngineeringObjective*
-        RotateEngineeringObjectivePluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern RotateObjective*
+        RotateObjectivePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern RotateEngineeringObjective*
-        RotateEngineeringObjectivePluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern RotateObjective*
+        RotateObjectivePluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern RotateEngineeringObjective*
-        RotateEngineeringObjectivePluginSupport_create_data(void);
+        NDDSUSERDllExport extern RotateObjective*
+        RotateObjectivePluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringObjectivePluginSupport_copy_data(
-            RotateEngineeringObjective *out,
-            const RotateEngineeringObjective *in);
+        RotateObjectivePluginSupport_copy_data(
+            RotateObjective *out,
+            const RotateObjective *in);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringObjectivePluginSupport_destroy_data_w_params(
-            RotateEngineeringObjective *sample,
+        RotateObjectivePluginSupport_destroy_data_w_params(
+            RotateObjective *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringObjectivePluginSupport_destroy_data_ex(
-            RotateEngineeringObjective *sample,RTIBool deallocate_pointers);
+        RotateObjectivePluginSupport_destroy_data_ex(
+            RotateObjective *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringObjectivePluginSupport_destroy_data(
-            RotateEngineeringObjective *sample);
+        RotateObjectivePluginSupport_destroy_data(
+            RotateObjective *sample);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringObjectivePluginSupport_print_data(
-            const RotateEngineeringObjective *sample,
+        RotateObjectivePluginSupport_print_data(
+            const RotateObjective *sample,
             const char *desc,
             unsigned int indent);
 
-        NDDSUSERDllExport extern RotateEngineeringObjective*
-        RotateEngineeringObjectivePluginSupport_create_key_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern RotateObjective*
+        RotateObjectivePluginSupport_create_key_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern RotateEngineeringObjective*
-        RotateEngineeringObjectivePluginSupport_create_key(void);
-
-        NDDSUSERDllExport extern void 
-        RotateEngineeringObjectivePluginSupport_destroy_key_ex(
-            RotateEngineeringObjectiveKeyHolder *key,RTIBool deallocate_pointers);
+        NDDSUSERDllExport extern RotateObjective*
+        RotateObjectivePluginSupport_create_key(void);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringObjectivePluginSupport_destroy_key(
-            RotateEngineeringObjectiveKeyHolder *key);
+        RotateObjectivePluginSupport_destroy_key_ex(
+            RotateObjectiveKeyHolder *key,RTIBool deallocate_pointers);
+
+        NDDSUSERDllExport extern void 
+        RotateObjectivePluginSupport_destroy_key(
+            RotateObjectiveKeyHolder *key);
 
         /* ----------------------------------------------------------------------------
         Callback functions:
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        RotateEngineeringObjectivePlugin_on_participant_attached(
+        RotateObjectivePlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -415,40 +415,40 @@ namespace nec {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringObjectivePlugin_on_participant_detached(
+        RotateObjectivePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        RotateEngineeringObjectivePlugin_on_endpoint_attached(
+        RotateObjectivePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringObjectivePlugin_on_endpoint_detached(
+        RotateObjectivePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        RotateEngineeringObjectivePlugin_return_sample(
+        RotateObjectivePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective *sample,
+            RotateObjective *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringObjectivePlugin_copy_sample(
+        RotateObjectivePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective *out,
-            const RotateEngineeringObjective *in);
+            RotateObjective *out,
+            const RotateObjective *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringObjectivePlugin_serialize(
+        RotateObjectivePlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateEngineeringObjective *sample,
+            const RotateObjective *sample,
             struct RTICdrStream *stream, 
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -456,24 +456,24 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringObjectivePlugin_deserialize_sample(
+        RotateObjectivePlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective *sample, 
+            RotateObjective *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        RotateEngineeringObjectivePlugin_serialize_to_cdr_buffer(
+        RotateObjectivePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const RotateEngineeringObjective *sample); 
+            const RotateObjective *sample); 
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringObjectivePlugin_deserialize(
+        RotateObjectivePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective **sample, 
+            RotateObjective **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -481,13 +481,13 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        RotateEngineeringObjectivePlugin_deserialize_from_cdr_buffer(
-            RotateEngineeringObjective *sample,
+        RotateObjectivePlugin_deserialize_from_cdr_buffer(
+            RotateObjective *sample,
             const char * buffer,
             unsigned int length);    
 
         NDDSUSERDllExport extern RTIBool
-        RotateEngineeringObjectivePlugin_skip(
+        RotateObjectivePlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             RTIBool skip_encapsulation,  
@@ -495,7 +495,7 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringObjectivePlugin_get_serialized_sample_max_size_ex(
+        RotateObjectivePlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -503,35 +503,35 @@ namespace nec {
             unsigned int current_alignment);    
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringObjectivePlugin_get_serialized_sample_max_size(
+        RotateObjectivePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringObjectivePlugin_get_serialized_sample_min_size(
+        RotateObjectivePlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int
-        RotateEngineeringObjectivePlugin_get_serialized_sample_size(
+        RotateObjectivePlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const RotateEngineeringObjective * sample);
+            const RotateObjective * sample);
 
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        RotateEngineeringObjectivePlugin_get_key_kind(void);
+        RotateObjectivePlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringObjectivePlugin_get_serialized_key_max_size_ex(
+        RotateObjectivePlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -539,16 +539,16 @@ namespace nec {
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringObjectivePlugin_get_serialized_key_max_size(
+        RotateObjectivePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringObjectivePlugin_serialize_key(
+        RotateObjectivePlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateEngineeringObjective *sample,
+            const RotateObjective *sample,
             struct RTICdrStream *stream,
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -556,18 +556,18 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringObjectivePlugin_deserialize_key_sample(
+        RotateObjectivePlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective * sample,
+            RotateObjective * sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringObjectivePlugin_deserialize_key(
+        RotateObjectivePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective ** sample,
+            RotateObjective ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -575,34 +575,34 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        RotateEngineeringObjectivePlugin_serialized_sample_to_key(
+        RotateObjectivePlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective *sample,
+            RotateObjective *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringObjectivePlugin_instance_to_key(
+        RotateObjectivePlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjectiveKeyHolder *key, 
-            const RotateEngineeringObjective *instance);
+            RotateObjectiveKeyHolder *key, 
+            const RotateObjective *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringObjectivePlugin_key_to_instance(
+        RotateObjectivePlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringObjective *instance, 
-            const RotateEngineeringObjectiveKeyHolder *key);
+            RotateObjective *instance, 
+            const RotateObjectiveKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringObjectivePlugin_instance_to_keyhash(
+        RotateObjectivePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const RotateEngineeringObjective *instance);
+            const RotateObjective *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringObjectivePlugin_serialized_sample_to_keyhash(
+        RotateObjectivePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -611,95 +611,95 @@ namespace nec {
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        RotateEngineeringObjectivePlugin_new(void);
+        RotateObjectivePlugin_new(void);
 
         NDDSUSERDllExport extern void
-        RotateEngineeringObjectivePlugin_delete(struct PRESTypePlugin *);
+        RotateObjectivePlugin_delete(struct PRESTypePlugin *);
 
         /* The type used to store keys for instances of type struct
         * AnotherSimple.
         *
-        * By default, this type is struct RotateEngineeringState
+        * By default, this type is struct RotateState
         * itself. However, if for some reason this choice is not practical for your
-        * system (e.g. if sizeof(struct RotateEngineeringState)
+        * system (e.g. if sizeof(struct RotateState)
         * is very large), you may redefine this typedef in terms of another type of
         * your choosing. HOWEVER, if you define the KeyHolder type to be something
         * other than struct AnotherSimple, the
         * following restriction applies: the key of struct
-        * RotateEngineeringState must consist of a
+        * RotateState must consist of a
         * single field of your redefined KeyHolder type and that field must be the
-        * first field in struct RotateEngineeringState.
+        * first field in struct RotateState.
         */
-        typedef  class RotateEngineeringState RotateEngineeringStateKeyHolder;
+        typedef  class RotateState RotateStateKeyHolder;
 
-        #define RotateEngineeringStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-        #define RotateEngineeringStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define RotateEngineeringStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define RotateStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define RotateStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define RotateStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
 
-        #define RotateEngineeringStatePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
-        #define RotateEngineeringStatePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
+        #define RotateStatePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
+        #define RotateStatePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
 
-        #define RotateEngineeringStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define RotateEngineeringStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define RotateStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define RotateStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern RotateEngineeringState*
-        RotateEngineeringStatePluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern RotateState*
+        RotateStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern RotateEngineeringState*
-        RotateEngineeringStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern RotateState*
+        RotateStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern RotateEngineeringState*
-        RotateEngineeringStatePluginSupport_create_data(void);
+        NDDSUSERDllExport extern RotateState*
+        RotateStatePluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringStatePluginSupport_copy_data(
-            RotateEngineeringState *out,
-            const RotateEngineeringState *in);
+        RotateStatePluginSupport_copy_data(
+            RotateState *out,
+            const RotateState *in);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringStatePluginSupport_destroy_data_w_params(
-            RotateEngineeringState *sample,
+        RotateStatePluginSupport_destroy_data_w_params(
+            RotateState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringStatePluginSupport_destroy_data_ex(
-            RotateEngineeringState *sample,RTIBool deallocate_pointers);
+        RotateStatePluginSupport_destroy_data_ex(
+            RotateState *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringStatePluginSupport_destroy_data(
-            RotateEngineeringState *sample);
+        RotateStatePluginSupport_destroy_data(
+            RotateState *sample);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringStatePluginSupport_print_data(
-            const RotateEngineeringState *sample,
+        RotateStatePluginSupport_print_data(
+            const RotateState *sample,
             const char *desc,
             unsigned int indent);
 
-        NDDSUSERDllExport extern RotateEngineeringState*
-        RotateEngineeringStatePluginSupport_create_key_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern RotateState*
+        RotateStatePluginSupport_create_key_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern RotateEngineeringState*
-        RotateEngineeringStatePluginSupport_create_key(void);
-
-        NDDSUSERDllExport extern void 
-        RotateEngineeringStatePluginSupport_destroy_key_ex(
-            RotateEngineeringStateKeyHolder *key,RTIBool deallocate_pointers);
+        NDDSUSERDllExport extern RotateState*
+        RotateStatePluginSupport_create_key(void);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringStatePluginSupport_destroy_key(
-            RotateEngineeringStateKeyHolder *key);
+        RotateStatePluginSupport_destroy_key_ex(
+            RotateStateKeyHolder *key,RTIBool deallocate_pointers);
+
+        NDDSUSERDllExport extern void 
+        RotateStatePluginSupport_destroy_key(
+            RotateStateKeyHolder *key);
 
         /* ----------------------------------------------------------------------------
         Callback functions:
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        RotateEngineeringStatePlugin_on_participant_attached(
+        RotateStatePlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -707,40 +707,40 @@ namespace nec {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringStatePlugin_on_participant_detached(
+        RotateStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        RotateEngineeringStatePlugin_on_endpoint_attached(
+        RotateStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        RotateEngineeringStatePlugin_on_endpoint_detached(
+        RotateStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        RotateEngineeringStatePlugin_return_sample(
+        RotateStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState *sample,
+            RotateState *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringStatePlugin_copy_sample(
+        RotateStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState *out,
-            const RotateEngineeringState *in);
+            RotateState *out,
+            const RotateState *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringStatePlugin_serialize(
+        RotateStatePlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateEngineeringState *sample,
+            const RotateState *sample,
             struct RTICdrStream *stream, 
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -748,24 +748,24 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringStatePlugin_deserialize_sample(
+        RotateStatePlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState *sample, 
+            RotateState *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        RotateEngineeringStatePlugin_serialize_to_cdr_buffer(
+        RotateStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const RotateEngineeringState *sample); 
+            const RotateState *sample); 
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringStatePlugin_deserialize(
+        RotateStatePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState **sample, 
+            RotateState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -773,13 +773,13 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        RotateEngineeringStatePlugin_deserialize_from_cdr_buffer(
-            RotateEngineeringState *sample,
+        RotateStatePlugin_deserialize_from_cdr_buffer(
+            RotateState *sample,
             const char * buffer,
             unsigned int length);    
 
         NDDSUSERDllExport extern RTIBool
-        RotateEngineeringStatePlugin_skip(
+        RotateStatePlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             RTIBool skip_encapsulation,  
@@ -787,7 +787,7 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringStatePlugin_get_serialized_sample_max_size_ex(
+        RotateStatePlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -795,35 +795,35 @@ namespace nec {
             unsigned int current_alignment);    
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringStatePlugin_get_serialized_sample_max_size(
+        RotateStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringStatePlugin_get_serialized_sample_min_size(
+        RotateStatePlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int
-        RotateEngineeringStatePlugin_get_serialized_sample_size(
+        RotateStatePlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const RotateEngineeringState * sample);
+            const RotateState * sample);
 
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        RotateEngineeringStatePlugin_get_key_kind(void);
+        RotateStatePlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringStatePlugin_get_serialized_key_max_size_ex(
+        RotateStatePlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -831,16 +831,16 @@ namespace nec {
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        RotateEngineeringStatePlugin_get_serialized_key_max_size(
+        RotateStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringStatePlugin_serialize_key(
+        RotateStatePlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateEngineeringState *sample,
+            const RotateState *sample,
             struct RTICdrStream *stream,
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -848,18 +848,18 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringStatePlugin_deserialize_key_sample(
+        RotateStatePlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState * sample,
+            RotateState * sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringStatePlugin_deserialize_key(
+        RotateStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState ** sample,
+            RotateState ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -867,34 +867,34 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        RotateEngineeringStatePlugin_serialized_sample_to_key(
+        RotateStatePlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState *sample,
+            RotateState *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringStatePlugin_instance_to_key(
+        RotateStatePlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringStateKeyHolder *key, 
-            const RotateEngineeringState *instance);
+            RotateStateKeyHolder *key, 
+            const RotateState *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringStatePlugin_key_to_instance(
+        RotateStatePlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            RotateEngineeringState *instance, 
-            const RotateEngineeringStateKeyHolder *key);
+            RotateState *instance, 
+            const RotateStateKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringStatePlugin_instance_to_keyhash(
+        RotateStatePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const RotateEngineeringState *instance);
+            const RotateState *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        RotateEngineeringStatePlugin_serialized_sample_to_keyhash(
+        RotateStatePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -903,10 +903,10 @@ namespace nec {
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        RotateEngineeringStatePlugin_new(void);
+        RotateStatePlugin_new(void);
 
         NDDSUSERDllExport extern void
-        RotateEngineeringStatePlugin_delete(struct PRESTypePlugin *);
+        RotateStatePlugin_delete(struct PRESTypePlugin *);
 
     } /* namespace control  */
 } /* namespace nec  */
@@ -918,5 +918,5 @@ namespace nec {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* rotate_engineeringPlugin_182432028_h */
+#endif /* rotate_engineeringPlugin_182431995_h */
 

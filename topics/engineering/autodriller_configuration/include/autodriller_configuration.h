@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autodriller_configuration_730534370_h
-#define autodriller_configuration_730534370_h
+#ifndef autodriller_configuration_730533774_h
+#define autodriller_configuration_730533774_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -48,16 +48,6 @@ namespace nec {
             DataTypes::Time   timestamp ;
             DDS_Long   mode ;
             DDS_Double   modeController ;
-            DDS_Double   onDataAvailable ;
-            DDS_Double   onLivelinessLost ;
-            DDS_Double   modelOneDifferentialPressureRequestK ;
-            DDS_Double   modelOneDifferentialPressureRequestTau ;
-            DDS_Double   modelOneRateOfPenetrationRequestK ;
-            DDS_Double   modelOneRateOfPenetrationRequestTau ;
-            DDS_Double   modelOneTorqueRequestK ;
-            DDS_Double   modelOneTorqueRequestTau ;
-            DDS_Double   modelOneWeightOnBitRequestK ;
-            DDS_Double   modelOneWeightOnBitRequestTau ;
             DDS_Double   modelTwoDifferentialPressureRequestK ;
             DDS_Double   modelTwoDifferentialPressureRequestTau ;
             DDS_Double   modelTwoRateOfPenetrationRequestK ;
@@ -67,7 +57,6 @@ namespace nec {
             DDS_Double   modelTwoWeightOnBitRequestK ;
             DDS_Double   modelTwoWeightOnBitRequestTau ;
             DDS_Long   status ;
-            DDS_Boolean   tuningDisable ;
             DDS_Boolean   tuningEnable ;
 
         };
@@ -148,7 +137,6 @@ namespace nec {
             DataTypes::Time   timestamp ;
             DDS_Long   mode ;
             DDS_Long   modeController ;
-            DDS_Boolean   modelReset ;
             DDS_Double   pipeInnerDiameter ;
             DDS_Double   pipeOuterDiameter ;
             DDS_Double   slopeFilter ;
@@ -222,8 +210,7 @@ namespace nec {
             DDS_Boolean   torqueEpsManual ;
             DDS_Double   torqueF ;
             DDS_Long   status ;
-            DDS_Boolean   tuningDisable ;
-            DDS_Boolean   tuningEnable ;
+            DDS_Boolean   tuningEnabled ;
 
         };
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)

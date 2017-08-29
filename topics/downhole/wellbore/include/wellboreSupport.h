@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef wellboreSupport_1776161730_h
-#define wellboreSupport_1776161730_h
+#ifndef wellboreSupport_1776161735_h
+#define wellboreSupport_1776161735_h
 
 /* Uses */
 #include "wellbore.h"
@@ -46,10 +46,10 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(WellboreTypeSupport, Wellbore);
+        DDS_TYPESUPPORT_CPP(WellboreStateTypeSupport, WellboreState);
 
-        DDS_DATAWRITER_CPP(WellboreDataWriter, Wellbore);
-        DDS_DATAREADER_CPP(WellboreDataReader, WellboreSeq, Wellbore);
+        DDS_DATAWRITER_CPP(WellboreStateDataWriter, WellboreState);
+        DDS_DATAREADER_CPP(WellboreStateDataReader, WellboreStateSeq, WellboreState);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -60,5 +60,5 @@ namespace nec {
     } /* namespace process  */
 } /* namespace nec  */
 
-#endif  /* wellboreSupport_1776161730_h */
+#endif  /* wellboreSupport_1776161735_h */
 

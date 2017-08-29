@@ -52,23 +52,23 @@ namespace nec {
     namespace process {
 
         /* ----------------------------------------------------------------------------
-        *  Type PipeTally
+        *  Type PipeTallyState
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        PipeTally*
-        PipeTallyPluginSupport_create_data_w_params(
+        PipeTallyState*
+        PipeTallyStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params){
-            PipeTally *sample = NULL;
+            PipeTallyState *sample = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &sample, PipeTally);
+                &sample, PipeTallyState);
 
             if(sample != NULL) {
-                if (!nec::process::PipeTally_initialize_w_params(sample,alloc_params)) {
+                if (!nec::process::PipeTallyState_initialize_w_params(sample,alloc_params)) {
                     RTIOsapiHeap_freeStructure(sample);
                     return NULL;
                 }
@@ -76,15 +76,15 @@ namespace nec {
             return sample; 
         } 
 
-        PipeTally *
-        PipeTallyPluginSupport_create_data_ex(RTIBool allocate_pointers){
-            PipeTally *sample = NULL;
+        PipeTallyState *
+        PipeTallyStatePluginSupport_create_data_ex(RTIBool allocate_pointers){
+            PipeTallyState *sample = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &sample, PipeTally);
+                &sample, PipeTallyState);
 
             if(sample != NULL) {
-                if (!nec::process::PipeTally_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                if (!nec::process::PipeTallyState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                     RTIOsapiHeap_freeStructure(sample);
                     return NULL;
                 }
@@ -92,50 +92,50 @@ namespace nec {
             return sample; 
         }
 
-        PipeTally *
-        PipeTallyPluginSupport_create_data(void)
+        PipeTallyState *
+        PipeTallyStatePluginSupport_create_data(void)
         {
-            return nec::process::PipeTallyPluginSupport_create_data_ex(RTI_TRUE);
+            return nec::process::PipeTallyStatePluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        PipeTallyPluginSupport_destroy_data_w_params(
-            PipeTally *sample,
+        PipeTallyStatePluginSupport_destroy_data_w_params(
+            PipeTallyState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-            nec::process::PipeTally_finalize_w_params(sample,dealloc_params);
+            nec::process::PipeTallyState_finalize_w_params(sample,dealloc_params);
 
             RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
-        PipeTallyPluginSupport_destroy_data_ex(
-            PipeTally *sample,RTIBool deallocate_pointers) {
+        PipeTallyStatePluginSupport_destroy_data_ex(
+            PipeTallyState *sample,RTIBool deallocate_pointers) {
 
-            nec::process::PipeTally_finalize_ex(sample,deallocate_pointers);
+            nec::process::PipeTallyState_finalize_ex(sample,deallocate_pointers);
 
             RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
-        PipeTallyPluginSupport_destroy_data(
-            PipeTally *sample) {
+        PipeTallyStatePluginSupport_destroy_data(
+            PipeTallyState *sample) {
 
-            nec::process::PipeTallyPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            nec::process::PipeTallyStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        PipeTallyPluginSupport_copy_data(
-            PipeTally *dst,
-            const PipeTally *src)
+        PipeTallyStatePluginSupport_copy_data(
+            PipeTallyState *dst,
+            const PipeTallyState *src)
         {
-            return nec::process::PipeTally_copy(dst,src);
+            return nec::process::PipeTallyState_copy(dst,src);
         }
 
         void 
-        PipeTallyPluginSupport_print_data(
-            const PipeTally *sample,
+        PipeTallyStatePluginSupport_print_data(
+            const PipeTallyState *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -209,37 +209,37 @@ namespace nec {
                 &sample->pipeType, "pipeType", indent_level + 1);
 
         }
-        PipeTally *
-        PipeTallyPluginSupport_create_key_ex(RTIBool allocate_pointers){
-            PipeTally *key = NULL;
+        PipeTallyState *
+        PipeTallyStatePluginSupport_create_key_ex(RTIBool allocate_pointers){
+            PipeTallyState *key = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &key, PipeTallyKeyHolder);
+                &key, PipeTallyStateKeyHolder);
 
-            nec::process::PipeTally_initialize_ex(key,allocate_pointers, RTI_TRUE);
+            nec::process::PipeTallyState_initialize_ex(key,allocate_pointers, RTI_TRUE);
             return key;
         }
 
-        PipeTally *
-        PipeTallyPluginSupport_create_key(void)
+        PipeTallyState *
+        PipeTallyStatePluginSupport_create_key(void)
         {
-            return  nec::process::PipeTallyPluginSupport_create_key_ex(RTI_TRUE);
+            return  nec::process::PipeTallyStatePluginSupport_create_key_ex(RTI_TRUE);
         }
 
         void 
-        PipeTallyPluginSupport_destroy_key_ex(
-            PipeTallyKeyHolder *key,RTIBool deallocate_pointers)
+        PipeTallyStatePluginSupport_destroy_key_ex(
+            PipeTallyStateKeyHolder *key,RTIBool deallocate_pointers)
         {
-            nec::process::PipeTally_finalize_ex(key,deallocate_pointers);
+            nec::process::PipeTallyState_finalize_ex(key,deallocate_pointers);
 
             RTIOsapiHeap_freeStructure(key);
         }
 
         void 
-        PipeTallyPluginSupport_destroy_key(
-            PipeTallyKeyHolder *key) {
+        PipeTallyStatePluginSupport_destroy_key(
+            PipeTallyStateKeyHolder *key) {
 
-            nec::process::PipeTallyPluginSupport_destroy_key_ex(key,RTI_TRUE);
+            nec::process::PipeTallyStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
         }
 
@@ -248,7 +248,7 @@ namespace nec {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        PipeTallyPlugin_on_participant_attached(
+        PipeTallyStatePlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -266,7 +266,7 @@ namespace nec {
         }
 
         void 
-        PipeTallyPlugin_on_participant_detached(
+        PipeTallyStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {
 
@@ -274,7 +274,7 @@ namespace nec {
         }
 
         PRESTypePluginEndpointData
-        PipeTallyPlugin_on_endpoint_attached(
+        PipeTallyStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -293,18 +293,18 @@ namespace nec {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                nec::process::PipeTallyPluginSupport_create_data,
+                nec::process::PipeTallyStatePluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                nec::process::PipeTallyPluginSupport_destroy_data,
+                nec::process::PipeTallyStatePluginSupport_destroy_data,
                 (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-                nec::process::PipeTallyPluginSupport_create_key ,            
+                nec::process::PipeTallyStatePluginSupport_create_key ,            
                 (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-                nec::process::PipeTallyPluginSupport_destroy_key);
+                nec::process::PipeTallyStatePluginSupport_destroy_key);
 
             if (epd == NULL) {
                 return NULL;
             } 
-            serializedKeyMaxSize =  nec::process::PipeTallyPlugin_get_serialized_key_max_size(
+            serializedKeyMaxSize =  nec::process::PipeTallyStatePlugin_get_serialized_key_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -315,7 +315,7 @@ namespace nec {
             }
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = nec::process::PipeTallyPlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = nec::process::PipeTallyStatePlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -324,9 +324,9 @@ namespace nec {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    nec::process::PipeTallyPlugin_get_serialized_sample_max_size, epd,
+                    nec::process::PipeTallyStatePlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
-                    nec::process::PipeTallyPlugin_get_serialized_sample_size,
+                    nec::process::PipeTallyStatePlugin_get_serialized_sample_size,
                     epd) == RTI_FALSE) {
                     PRESTypePluginDefaultEndpointData_delete(epd);
                     return NULL;
@@ -337,7 +337,7 @@ namespace nec {
         }
 
         void 
-        PipeTallyPlugin_on_endpoint_detached(
+        PipeTallyStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {  
 
@@ -345,42 +345,42 @@ namespace nec {
         }
 
         void    
-        PipeTallyPlugin_return_sample(
+        PipeTallyStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally *sample,
+            PipeTallyState *sample,
             void *handle)
         {
 
-            PipeTally_finalize_optional_members(sample, RTI_TRUE);
+            PipeTallyState_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        PipeTallyPlugin_copy_sample(
+        PipeTallyStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally *dst,
-            const PipeTally *src)
+            PipeTallyState *dst,
+            const PipeTallyState *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return nec::process::PipeTallyPluginSupport_copy_data(dst,src);
+            return nec::process::PipeTallyStatePluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        PipeTallyPlugin_get_serialized_sample_max_size(
+        PipeTallyStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool 
-        PipeTallyPlugin_serialize(
+        PipeTallyStatePlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const PipeTally *sample, 
+            const PipeTallyState *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -508,9 +508,9 @@ namespace nec {
         }
 
         RTIBool 
-        PipeTallyPlugin_deserialize_sample(
+        PipeTallyStatePlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally *sample,
+            PipeTallyState *sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
@@ -533,7 +533,7 @@ namespace nec {
             }
             if(deserialize_sample) {
 
-                nec::process::PipeTally_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+                nec::process::PipeTallyState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
                 if(!DataTypes::UuidPlugin_deserialize_sample(
                     endpoint_data,
@@ -628,10 +628,10 @@ namespace nec {
         }
 
         RTIBool
-        PipeTallyPlugin_serialize_to_cdr_buffer(
+        PipeTallyStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const PipeTally *sample)
+            const PipeTallyState *sample)
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
@@ -642,12 +642,12 @@ namespace nec {
             }
 
             epd._maxSizeSerializedSample =
-            PipeTallyPlugin_get_serialized_sample_max_size(
+            PipeTallyStatePlugin_get_serialized_sample_max_size(
                 NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
             if (buffer == NULL) {
                 *length = 
-                PipeTallyPlugin_get_serialized_sample_size(
+                PipeTallyStatePlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
@@ -664,7 +664,7 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, *length);
 
-            result = nec::process::PipeTallyPlugin_serialize(
+            result = nec::process::PipeTallyStatePlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
                 RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
                 RTI_TRUE, NULL);  
@@ -674,8 +674,8 @@ namespace nec {
         }
 
         RTIBool
-        PipeTallyPlugin_deserialize_from_cdr_buffer(
-            PipeTally *sample,
+        PipeTallyStatePlugin_deserialize_from_cdr_buffer(
+            PipeTallyState *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -684,16 +684,16 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            return PipeTallyPlugin_deserialize_sample( 
+            return PipeTallyStatePlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
         }
 
         RTIBool 
-        PipeTallyPlugin_deserialize(
+        PipeTallyStatePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally **sample,
+            PipeTallyState **sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
@@ -705,7 +705,7 @@ namespace nec {
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= nec::process::PipeTallyPlugin_deserialize_sample( 
+            result= nec::process::PipeTallyStatePlugin_deserialize_sample( 
                 endpoint_data, (sample != NULL)?*sample:NULL,
                 stream, deserialize_encapsulation, deserialize_sample, 
                 endpoint_plugin_qos);
@@ -719,7 +719,7 @@ namespace nec {
 
         }
 
-        RTIBool PipeTallyPlugin_skip(
+        RTIBool PipeTallyStatePlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream,   
             RTIBool skip_encapsulation,
@@ -821,7 +821,7 @@ namespace nec {
         }
 
         unsigned int 
-        PipeTallyPlugin_get_serialized_sample_max_size_ex(
+        PipeTallyStatePlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -896,7 +896,7 @@ namespace nec {
         }
 
         unsigned int 
-        PipeTallyPlugin_get_serialized_sample_max_size(
+        PipeTallyStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -905,7 +905,7 @@ namespace nec {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = PipeTallyPlugin_get_serialized_sample_max_size_ex(
+            size = PipeTallyStatePlugin_get_serialized_sample_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -916,7 +916,7 @@ namespace nec {
         }
 
         unsigned int 
-        PipeTallyPlugin_get_serialized_sample_min_size(
+        PipeTallyStatePlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -984,12 +984,12 @@ namespace nec {
         * encapsulation flags.
         */
         unsigned int
-        PipeTallyPlugin_get_serialized_sample_size(
+        PipeTallyStatePlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const PipeTally * sample) 
+            const PipeTallyState * sample) 
         {
 
             unsigned int initial_alignment = current_alignment;
@@ -1058,15 +1058,15 @@ namespace nec {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        PipeTallyPlugin_get_key_kind(void)
+        PipeTallyStatePlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_USER_KEY;
         }
 
         RTIBool 
-        PipeTallyPlugin_serialize_key(
+        PipeTallyStatePlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const PipeTally *sample, 
+            const PipeTallyState *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1104,9 +1104,9 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        RTIBool PipeTallyPlugin_deserialize_key_sample(
+        RTIBool PipeTallyStatePlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally *sample, 
+            PipeTallyState *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
@@ -1144,9 +1144,9 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        RTIBool PipeTallyPlugin_deserialize_key(
+        RTIBool PipeTallyStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally **sample, 
+            PipeTallyState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -1156,7 +1156,7 @@ namespace nec {
             RTIBool result;
             if (drop_sample) {} /* To avoid warnings */
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= nec::process::PipeTallyPlugin_deserialize_key_sample(
+            result= nec::process::PipeTallyStatePlugin_deserialize_key_sample(
                 endpoint_data, (sample != NULL)?*sample:NULL, stream,
                 deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
             if (result) {
@@ -1170,7 +1170,7 @@ namespace nec {
         }
 
         unsigned int
-        PipeTallyPlugin_get_serialized_key_max_size_ex(
+        PipeTallyStatePlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -1203,7 +1203,7 @@ namespace nec {
         }
 
         unsigned int
-        PipeTallyPlugin_get_serialized_key_max_size(
+        PipeTallyStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1212,7 +1212,7 @@ namespace nec {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = PipeTallyPlugin_get_serialized_key_max_size_ex(
+            size = PipeTallyStatePlugin_get_serialized_key_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -1223,9 +1223,9 @@ namespace nec {
         }
 
         RTIBool 
-        PipeTallyPlugin_serialized_sample_to_key(
+        PipeTallyStatePlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally *sample,
+            PipeTallyState *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
@@ -1350,10 +1350,10 @@ namespace nec {
         }
 
         RTIBool 
-        PipeTallyPlugin_instance_to_key(
+        PipeTallyStatePlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTallyKeyHolder *dst, 
-            const PipeTally *src)
+            PipeTallyStateKeyHolder *dst, 
+            const PipeTallyState *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -1366,10 +1366,10 @@ namespace nec {
         }
 
         RTIBool 
-        PipeTallyPlugin_key_to_instance(
+        PipeTallyStatePlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally *dst, const
-            PipeTallyKeyHolder *src)
+            PipeTallyState *dst, const
+            PipeTallyStateKeyHolder *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -1381,10 +1381,10 @@ namespace nec {
         }
 
         RTIBool 
-        PipeTallyPlugin_instance_to_keyhash(
+        PipeTallyStatePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const PipeTally *instance)
+            const PipeTallyState *instance)
         {
             struct RTICdrStream * md5Stream = NULL;
             struct RTICdrStreamState cdrState;
@@ -1400,14 +1400,14 @@ namespace nec {
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-            if (!nec::process::PipeTallyPlugin_serialize_key(
+            if (!nec::process::PipeTallyStatePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
                 int size;
 
                 RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-                size = (int)nec::process::PipeTallyPlugin_get_serialized_sample_size(
+                size = (int)nec::process::PipeTallyStatePlugin_get_serialized_sample_size(
                     endpoint_data,
                     RTI_FALSE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -1432,7 +1432,7 @@ namespace nec {
                     RTICdrStream_getBufferLength(md5Stream));
                 RTICdrStream_resetPosition(md5Stream);
                 RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-                if (!nec::process::PipeTallyPlugin_serialize_key(
+                if (!nec::process::PipeTallyStatePlugin_serialize_key(
                     endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
                 {
                     RTICdrStream_popState(md5Stream, &cdrState);
@@ -1461,7 +1461,7 @@ namespace nec {
         }
 
         RTIBool 
-        PipeTallyPlugin_serialized_sample_to_keyhash(
+        PipeTallyStatePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -1472,7 +1472,7 @@ namespace nec {
 
             RTIBool done = RTI_FALSE;
             RTIBool error = RTI_FALSE;
-            PipeTally * sample=NULL;
+            PipeTallyState * sample=NULL;
 
             if (endpoint_plugin_qos) {} /* To avoid warnings */
             if (stream == NULL) {
@@ -1488,7 +1488,7 @@ namespace nec {
                 position = RTICdrStream_resetAlignment(stream);
             }
 
-            sample = (PipeTally *)
+            sample = (PipeTallyState *)
             PRESTypePluginDefaultEndpointData_getTempSample(endpoint_data);
 
             if (sample == NULL) {
@@ -1519,7 +1519,7 @@ namespace nec {
                 RTICdrStream_restoreAlignment(stream,position);
             }
 
-            if (!nec::process::PipeTallyPlugin_instance_to_keyhash(
+            if (!nec::process::PipeTallyStatePlugin_instance_to_keyhash(
                 endpoint_data, keyhash, sample)) {
                 return RTI_FALSE;
             }
@@ -1530,7 +1530,7 @@ namespace nec {
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *PipeTallyPlugin_new(void) 
+        struct PRESTypePlugin *PipeTallyStatePlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -1547,107 +1547,107 @@ namespace nec {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            nec::process::PipeTallyPlugin_on_participant_attached;
+            nec::process::PipeTallyStatePlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            nec::process::PipeTallyPlugin_on_participant_detached;
+            nec::process::PipeTallyStatePlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            nec::process::PipeTallyPlugin_on_endpoint_attached;
+            nec::process::PipeTallyStatePlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            nec::process::PipeTallyPlugin_on_endpoint_detached;
+            nec::process::PipeTallyStatePlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            nec::process::PipeTallyPlugin_copy_sample;
+            nec::process::PipeTallyStatePlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            PipeTallyPlugin_create_sample;
+            PipeTallyStatePlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            PipeTallyPlugin_destroy_sample;
+            PipeTallyStatePlugin_destroy_sample;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
-            nec::process::PipeTallyPlugin_serialize;
+            nec::process::PipeTallyStatePlugin_serialize;
             plugin->deserializeFnc =
             (PRESTypePluginDeserializeFunction)
-            nec::process::PipeTallyPlugin_deserialize;
+            nec::process::PipeTallyStatePlugin_deserialize;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            nec::process::PipeTallyPlugin_get_serialized_sample_max_size;
+            nec::process::PipeTallyStatePlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
-            nec::process::PipeTallyPlugin_get_serialized_sample_min_size;
+            nec::process::PipeTallyStatePlugin_get_serialized_sample_min_size;
 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            PipeTallyPlugin_get_sample;
+            PipeTallyStatePlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            PipeTallyPlugin_return_sample;
+            PipeTallyStatePlugin_return_sample;
 
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            nec::process::PipeTallyPlugin_get_key_kind;
+            nec::process::PipeTallyStatePlugin_get_key_kind;
 
             plugin->getSerializedKeyMaxSizeFnc =   
             (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-            nec::process::PipeTallyPlugin_get_serialized_key_max_size;
+            nec::process::PipeTallyStatePlugin_get_serialized_key_max_size;
             plugin->serializeKeyFnc =
             (PRESTypePluginSerializeKeyFunction)
-            nec::process::PipeTallyPlugin_serialize_key;
+            nec::process::PipeTallyStatePlugin_serialize_key;
             plugin->deserializeKeyFnc =
             (PRESTypePluginDeserializeKeyFunction)
-            nec::process::PipeTallyPlugin_deserialize_key;
+            nec::process::PipeTallyStatePlugin_deserialize_key;
             plugin->deserializeKeySampleFnc =
             (PRESTypePluginDeserializeKeySampleFunction)
-            nec::process::PipeTallyPlugin_deserialize_key_sample;
+            nec::process::PipeTallyStatePlugin_deserialize_key_sample;
 
             plugin-> instanceToKeyHashFnc = 
             (PRESTypePluginInstanceToKeyHashFunction)
-            nec::process::PipeTallyPlugin_instance_to_keyhash;
+            nec::process::PipeTallyStatePlugin_instance_to_keyhash;
             plugin->serializedSampleToKeyHashFnc = 
             (PRESTypePluginSerializedSampleToKeyHashFunction)
-            nec::process::PipeTallyPlugin_serialized_sample_to_keyhash;
+            nec::process::PipeTallyStatePlugin_serialized_sample_to_keyhash;
 
             plugin->getKeyFnc =
             (PRESTypePluginGetKeyFunction)
-            PipeTallyPlugin_get_key;
+            PipeTallyStatePlugin_get_key;
             plugin->returnKeyFnc =
             (PRESTypePluginReturnKeyFunction)
-            PipeTallyPlugin_return_key;
+            PipeTallyStatePlugin_return_key;
 
             plugin->instanceToKeyFnc =
             (PRESTypePluginInstanceToKeyFunction)
-            nec::process::PipeTallyPlugin_instance_to_key;
+            nec::process::PipeTallyStatePlugin_instance_to_key;
             plugin->keyToInstanceFnc =
             (PRESTypePluginKeyToInstanceFunction)
-            nec::process::PipeTallyPlugin_key_to_instance;
+            nec::process::PipeTallyStatePlugin_key_to_instance;
             plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-            plugin->typeCode =  (struct RTICdrTypeCode *)nec::process::PipeTally_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)nec::process::PipeTallyState_get_typecode();
 
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            PipeTallyPlugin_get_buffer;
+            PipeTallyStatePlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            PipeTallyPlugin_return_buffer;
+            PipeTallyStatePlugin_return_buffer;
             plugin->getSerializedSampleSizeFnc =
             (PRESTypePluginGetSerializedSampleSizeFunction)
-            nec::process::PipeTallyPlugin_get_serialized_sample_size;
+            nec::process::PipeTallyStatePlugin_get_serialized_sample_size;
 
-            plugin->endpointTypeName = PipeTallyTYPENAME;
+            plugin->endpointTypeName = PipeTallyStateTYPENAME;
 
             return plugin;
         }
 
         void
-        PipeTallyPlugin_delete(struct PRESTypePlugin *plugin)
+        PipeTallyStatePlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 

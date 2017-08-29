@@ -11,16 +11,6 @@ module nec
             DataTypes::Time   timestamp;
             long    mode;
             double  modeController;
-            double  onDataAvailable;
-            double  onLivelinessLost;
-            double  modelOneDifferentialPressureRequestK;
-            double  modelOneDifferentialPressureRequestTau;
-            double  modelOneRateOfPenetrationRequestK;
-            double  modelOneRateOfPenetrationRequestTau;
-            double  modelOneTorqueRequestK;
-            double  modelOneTorqueRequestTau;
-            double  modelOneWeightOnBitRequestK;
-            double  modelOneWeightOnBitRequestTau;
             double  modelTwoDifferentialPressureRequestK;
             double  modelTwoDifferentialPressureRequestTau;
             double  modelTwoRateOfPenetrationRequestK;
@@ -30,7 +20,6 @@ module nec
             double  modelTwoWeightOnBitRequestK;
             double  modelTwoWeightOnBitRequestTau;
             long    status;
-            boolean tuningDisable;
             boolean tuningEnable;
         };
 
@@ -41,7 +30,6 @@ module nec
             DataTypes::Time   timestamp;
             long    mode;
             long    modeController;
-            boolean modelReset;
             double  pipeInnerDiameter;
             double  pipeOuterDiameter;
             double  slopeFilter;
@@ -115,8 +103,7 @@ module nec
             boolean torqueEpsManual;
             double  torqueF;
             long    status;
-            boolean tuningDisable;
-            boolean tuningEnable;
+            boolean tuningEnabled;
         };
     };
 };

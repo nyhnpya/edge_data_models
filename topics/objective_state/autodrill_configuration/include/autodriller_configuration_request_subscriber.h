@@ -42,16 +42,6 @@ class CAutoDrillerConfigurationRequestSubscriber : public TSubscriber< nec::cont
     bool GetWeightOnBitTiCurrent(double &weightOnBitTiCurrent);
     bool GetMode(long &mode);
     bool GetModeController(double &modeController);
-    bool GetOnDataAvailable(double &OnDataAvailable);
-    bool GetOnLivelinessLost(double &onLivelinessLost);
-    bool GetModelOneDifferentialPressureRequestK(double &modelOneDifferentialPressureRequestK);
-    bool GetModelOneDifferentialPressureRequestTau(double &modelOneDifferentialPressureRequestTau);
-    bool GetModelOneRateOfPenetrationRequestK(double &modelOneRateOfPenetrationRequestK);
-    bool GetModelOneRateOfPenetrationRequestTau(double &modelOneRateOfPenetrationRequestTau);
-    bool GetModelOneTorqueRequestK(double &modelOneTorqueRequestK);
-    bool GetModelOneTorqueRequestTau(double &modelOneTorqueRequestTau);
-    bool GetModelOneWeightOnBitRequestK(double &modelOneWeightOnBitRequestK);
-    bool GetModelOneWeightOnBitRequestTau(double &modelOneWeightOnBitRequestTau);
     bool GetModelTwoDifferentialPressureRequestK(double &modelTwoDifferentialPressureRequestK);
     bool GetModelTwoDifferentialPressureRequestTau(double &modelTwoDifferentialPressureRequestTau);
     bool GetModelTwoRateOfPenetrationRequestK(double &modelTwoRateOfPenetrationRequestK);
@@ -61,7 +51,6 @@ class CAutoDrillerConfigurationRequestSubscriber : public TSubscriber< nec::cont
     bool GetModelTwoWeightOnBitRequestK(double &modelTwoWeightOnBitRequestK);
     bool GetModelTwoWeightOnBitRequestTau(double &modelTwoWeightOnBitRequestTau);
     bool GetStatus(long &status);
-    bool GetTuningDisable(bool &tuningDisable);
     bool GetTuningEnable(bool &tuningEnable);
 
  protected:

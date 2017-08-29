@@ -5,7 +5,7 @@
 #include "process_info.h"
 #include "process_infoSupport.h"
 
-class CProcessInfoPublisher : public TPublisher<process::maintanence::ProcessInfo>
+class CProcessInfoPublisher : public TPublisher<process::maintanence::ProcessState>
 {
 public:
     CProcessInfoPublisher();

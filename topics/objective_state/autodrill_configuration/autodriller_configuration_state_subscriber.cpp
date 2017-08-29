@@ -53,13 +53,6 @@ bool CAutoDrillerConfigurationStateSubscriber::GetModeController(int32_t &modeCo
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetModelReset(bool &modelReset)
-{
-    modelReset = (m_data.modelReset == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
 bool CAutoDrillerConfigurationStateSubscriber::GetSlopeFilter(double &slopeFilter)
 {
     slopeFilter = m_data.slopeFilter;
@@ -571,16 +564,9 @@ bool CAutoDrillerConfigurationStateSubscriber::GetStatus(int32_t &status)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoDrillerConfigurationStateSubscriber::GetTuningDisable(bool &tuningDisable)
+bool CAutoDrillerConfigurationStateSubscriber::GetTuningEnabled(bool &tuningEnable)
 {
-    tuningDisable = (m_data.tuningDisable == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CAutoDrillerConfigurationStateSubscriber::GetTuningEnable(bool &tuningEnable)
-{
-    tuningEnable = (m_data.tuningEnable == DDS_BOOLEAN_TRUE);
+    tuningEnable = (m_data.tuningEnabled == DDS_BOOLEAN_TRUE);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
@@ -626,7 +612,6 @@ void CAutoDrillerConfigurationStateSubscriber::DataAvailable(const nec::control:
         m_data.timestamp.nanosec = data.timestamp.nanosec;
         m_data.mode = data.mode;
         m_data.modeController = data.modeController;
-        m_data.modelReset = data.modelReset;
         m_data.pipeInnerDiameter = data.pipeInnerDiameter;
         m_data.pipeOuterDiameter = data.pipeOuterDiameter;
         m_data.slopeFilter = data.slopeFilter;
@@ -700,8 +685,7 @@ void CAutoDrillerConfigurationStateSubscriber::DataAvailable(const nec::control:
         m_data.torqueEpsManual = data.torqueEpsManual;
         m_data.torqueF = data.torqueF;
         m_data.status = data.status;
-        m_data.tuningDisable = data.tuningDisable;
-        m_data.tuningEnable = data.tuningEnable;
+        m_data.tuningEnabled = data.tuningEnabled;
 
         if (m_pOnDataAvailable != nullptr)
         {

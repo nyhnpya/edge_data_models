@@ -84,7 +84,7 @@ void CProcessInfoSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent ev
     m_pOnSubscriptionMatched = event;
 }
 
-void CProcessInfoSubscriber::DataAvailable(const process::maintanence::ProcessInfo &data,
+void CProcessInfoSubscriber::DataAvailable(const process::maintanence::ProcessState &data,
                                            const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

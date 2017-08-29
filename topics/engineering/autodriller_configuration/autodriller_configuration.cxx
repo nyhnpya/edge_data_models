@@ -40,7 +40,7 @@ namespace nec {
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member HmiRequest_g_tc_members[25]=
+            static DDS_TypeCode_Member HmiRequest_g_tc_members[14]=
             {
 
                 {
@@ -112,7 +112,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"onDataAvailable",/* Member name */
+                    (char *)"modelTwoDifferentialPressureRequestK",/* Member name */
                     {
                         4,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -129,7 +129,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"onLivelinessLost",/* Member name */
+                    (char *)"modelTwoDifferentialPressureRequestTau",/* Member name */
                     {
                         5,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -146,7 +146,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"modelOneDifferentialPressureRequestK",/* Member name */
+                    (char *)"modelTwoRateOfPenetrationRequestK",/* Member name */
                     {
                         6,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -163,7 +163,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"modelOneDifferentialPressureRequestTau",/* Member name */
+                    (char *)"modelTwoRateOfPenetrationRequestTau",/* Member name */
                     {
                         7,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -180,7 +180,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"modelOneRateOfPenetrationRequestK",/* Member name */
+                    (char *)"modelTwoTorqueRequestK",/* Member name */
                     {
                         8,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -197,7 +197,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"modelOneRateOfPenetrationRequestTau",/* Member name */
+                    (char *)"modelTwoTorqueRequestTau",/* Member name */
                     {
                         9,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -214,7 +214,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"modelOneTorqueRequestK",/* Member name */
+                    (char *)"modelTwoWeightOnBitRequestK",/* Member name */
                     {
                         10,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -231,7 +231,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"modelOneTorqueRequestTau",/* Member name */
+                    (char *)"modelTwoWeightOnBitRequestTau",/* Member name */
                     {
                         11,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -248,7 +248,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"modelOneWeightOnBitRequestK",/* Member name */
+                    (char *)"status",/* Member name */
                     {
                         12,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -265,196 +265,9 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"modelOneWeightOnBitRequestTau",/* Member name */
-                    {
-                        13,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"modelTwoDifferentialPressureRequestK",/* Member name */
-                    {
-                        14,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"modelTwoDifferentialPressureRequestTau",/* Member name */
-                    {
-                        15,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"modelTwoRateOfPenetrationRequestK",/* Member name */
-                    {
-                        16,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"modelTwoRateOfPenetrationRequestTau",/* Member name */
-                    {
-                        17,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"modelTwoTorqueRequestK",/* Member name */
-                    {
-                        18,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"modelTwoTorqueRequestTau",/* Member name */
-                    {
-                        19,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"modelTwoWeightOnBitRequestK",/* Member name */
-                    {
-                        20,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"modelTwoWeightOnBitRequestTau",/* Member name */
-                    {
-                        21,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"status",/* Member name */
-                    {
-                        22,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"tuningDisable",/* Member name */
-                    {
-                        23,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
                     (char *)"tuningEnable",/* Member name */
                     {
-                        24,/* Representation ID */          
+                        13,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -480,7 +293,7 @@ namespace nec {
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    25, /* Number of members */
+                    14, /* Number of members */
                     HmiRequest_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
                 }}; /* Type code for HmiRequest*/
@@ -513,31 +326,9 @@ namespace nec {
 
             HmiRequest_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            HmiRequest_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            HmiRequest_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-            HmiRequest_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            HmiRequest_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            HmiRequest_g_tc_members[15]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            HmiRequest_g_tc_members[16]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            HmiRequest_g_tc_members[17]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            HmiRequest_g_tc_members[18]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            HmiRequest_g_tc_members[19]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            HmiRequest_g_tc_members[20]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            HmiRequest_g_tc_members[21]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            HmiRequest_g_tc_members[22]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
-
-            HmiRequest_g_tc_members[23]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-            HmiRequest_g_tc_members[24]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+            HmiRequest_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
             is_initialized = RTI_TRUE;
 
@@ -587,46 +378,6 @@ namespace nec {
                 return RTI_FALSE;
             }     
 
-            if (!RTICdrType_initDouble(&sample->onDataAvailable)) {
-                return RTI_FALSE;
-            }     
-
-            if (!RTICdrType_initDouble(&sample->onLivelinessLost)) {
-                return RTI_FALSE;
-            }     
-
-            if (!RTICdrType_initDouble(&sample->modelOneDifferentialPressureRequestK)) {
-                return RTI_FALSE;
-            }     
-
-            if (!RTICdrType_initDouble(&sample->modelOneDifferentialPressureRequestTau)) {
-                return RTI_FALSE;
-            }     
-
-            if (!RTICdrType_initDouble(&sample->modelOneRateOfPenetrationRequestK)) {
-                return RTI_FALSE;
-            }     
-
-            if (!RTICdrType_initDouble(&sample->modelOneRateOfPenetrationRequestTau)) {
-                return RTI_FALSE;
-            }     
-
-            if (!RTICdrType_initDouble(&sample->modelOneTorqueRequestK)) {
-                return RTI_FALSE;
-            }     
-
-            if (!RTICdrType_initDouble(&sample->modelOneTorqueRequestTau)) {
-                return RTI_FALSE;
-            }     
-
-            if (!RTICdrType_initDouble(&sample->modelOneWeightOnBitRequestK)) {
-                return RTI_FALSE;
-            }     
-
-            if (!RTICdrType_initDouble(&sample->modelOneWeightOnBitRequestTau)) {
-                return RTI_FALSE;
-            }     
-
             if (!RTICdrType_initDouble(&sample->modelTwoDifferentialPressureRequestK)) {
                 return RTI_FALSE;
             }     
@@ -660,10 +411,6 @@ namespace nec {
             }     
 
             if (!RTICdrType_initLong(&sample->status)) {
-                return RTI_FALSE;
-            }     
-
-            if (!RTICdrType_initBoolean(&sample->tuningDisable)) {
                 return RTI_FALSE;
             }     
 
@@ -754,46 +501,6 @@ namespace nec {
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyDouble (
-                &dst->onDataAvailable, &src->onDataAvailable)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->onLivelinessLost, &src->onLivelinessLost)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelOneDifferentialPressureRequestK, &src->modelOneDifferentialPressureRequestK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelOneDifferentialPressureRequestTau, &src->modelOneDifferentialPressureRequestTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelOneRateOfPenetrationRequestK, &src->modelOneRateOfPenetrationRequestK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelOneRateOfPenetrationRequestTau, &src->modelOneRateOfPenetrationRequestTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelOneTorqueRequestK, &src->modelOneTorqueRequestK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelOneTorqueRequestTau, &src->modelOneTorqueRequestTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelOneWeightOnBitRequestK, &src->modelOneWeightOnBitRequestK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelOneWeightOnBitRequestTau, &src->modelOneWeightOnBitRequestTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
                 &dst->modelTwoDifferentialPressureRequestK, &src->modelTwoDifferentialPressureRequestK)) { 
                 return RTI_FALSE;
             }
@@ -827,10 +534,6 @@ namespace nec {
             }
             if (!RTICdrType_copyLong (
                 &dst->status, &src->status)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->tuningDisable, &src->tuningDisable)) { 
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyBoolean (
@@ -875,7 +578,7 @@ namespace nec {
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member HmiState_g_tc_members[80]=
+            static DDS_TypeCode_Member HmiState_g_tc_members[78]=
             {
 
                 {
@@ -947,7 +650,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"modelReset",/* Member name */
+                    (char *)"pipeInnerDiameter",/* Member name */
                     {
                         4,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -964,7 +667,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"pipeInnerDiameter",/* Member name */
+                    (char *)"pipeOuterDiameter",/* Member name */
                     {
                         5,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -981,7 +684,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"pipeOuterDiameter",/* Member name */
+                    (char *)"slopeFilter",/* Member name */
                     {
                         6,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -998,7 +701,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"slopeFilter",/* Member name */
+                    (char *)"tauMax",/* Member name */
                     {
                         7,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1015,7 +718,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"tauMax",/* Member name */
+                    (char *)"tauMin",/* Member name */
                     {
                         8,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1032,7 +735,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"tauMin",/* Member name */
+                    (char *)"tauMultiplier",/* Member name */
                     {
                         9,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1049,7 +752,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"tauMultiplier",/* Member name */
+                    (char *)"differentialPressureInitializeK",/* Member name */
                     {
                         10,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1066,7 +769,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureInitializeK",/* Member name */
+                    (char *)"differentialPressureInitializeTau",/* Member name */
                     {
                         11,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1083,7 +786,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureInitializeTau",/* Member name */
+                    (char *)"differentialPressureInitializePreFilter",/* Member name */
                     {
                         12,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1100,7 +803,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureInitializePreFilter",/* Member name */
+                    (char *)"differentialPressureR1",/* Member name */
                     {
                         13,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1117,7 +820,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureR1",/* Member name */
+                    (char *)"differentialPressureR2",/* Member name */
                     {
                         14,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1134,7 +837,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureR2",/* Member name */
+                    (char *)"rateOfPenetrationInitializeK",/* Member name */
                     {
                         15,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1151,7 +854,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationInitializeK",/* Member name */
+                    (char *)"rateOfPenetrationInitializeTau",/* Member name */
                     {
                         16,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1168,7 +871,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationInitializeTau",/* Member name */
+                    (char *)"rateOfPenetrationInitializePreFilter",/* Member name */
                     {
                         17,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1185,7 +888,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationInitializePreFilter",/* Member name */
+                    (char *)"rateOfPenetrationInitializeR1",/* Member name */
                     {
                         18,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1202,7 +905,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationInitializeR1",/* Member name */
+                    (char *)"rateOfPenetrationInitializeR2",/* Member name */
                     {
                         19,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1219,7 +922,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationInitializeR2",/* Member name */
+                    (char *)"torqueInitializeK",/* Member name */
                     {
                         20,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1236,7 +939,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueInitializeK",/* Member name */
+                    (char *)"torqueInitializeTau",/* Member name */
                     {
                         21,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1253,7 +956,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueInitializeTau",/* Member name */
+                    (char *)"torqueInitializePreFilter",/* Member name */
                     {
                         22,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1270,7 +973,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueInitializePreFilter",/* Member name */
+                    (char *)"torqueInitializeR1",/* Member name */
                     {
                         23,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1287,7 +990,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueInitializeR1",/* Member name */
+                    (char *)"torqueInitializeR2",/* Member name */
                     {
                         24,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1304,7 +1007,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueInitializeR2",/* Member name */
+                    (char *)"weightOnBitInitializeK",/* Member name */
                     {
                         25,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1321,7 +1024,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitInitializeK",/* Member name */
+                    (char *)"weightOnBitInitializeTau",/* Member name */
                     {
                         26,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1338,7 +1041,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitInitializeTau",/* Member name */
+                    (char *)"weightOnBitInitializePreFilter",/* Member name */
                     {
                         27,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1355,7 +1058,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitInitializePreFilter",/* Member name */
+                    (char *)"weightOnBitInitializeR1",/* Member name */
                     {
                         28,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1372,7 +1075,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitInitializeR1",/* Member name */
+                    (char *)"weightOnBitInitializeR2",/* Member name */
                     {
                         29,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1389,7 +1092,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitInitializeR2",/* Member name */
+                    (char *)"devMin",/* Member name */
                     {
                         30,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1406,7 +1109,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"devMin",/* Member name */
+                    (char *)"intervalMin",/* Member name */
                     {
                         31,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1423,7 +1126,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"intervalMin",/* Member name */
+                    (char *)"differentialPressureFilter",/* Member name */
                     {
                         32,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1440,7 +1143,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureFilter",/* Member name */
+                    (char *)"differentialPressureKcMax",/* Member name */
                     {
                         33,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1457,7 +1160,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureKcMax",/* Member name */
+                    (char *)"differentialPressureKcMin",/* Member name */
                     {
                         34,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1474,7 +1177,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureKcMin",/* Member name */
+                    (char *)"differentialPressureTdMax",/* Member name */
                     {
                         35,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1491,7 +1194,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureTdMax",/* Member name */
+                    (char *)"differentialPressureTdMin",/* Member name */
                     {
                         36,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1508,7 +1211,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureTdMin",/* Member name */
+                    (char *)"differentialPressureTiMax",/* Member name */
                     {
                         37,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1525,7 +1228,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureTiMax",/* Member name */
+                    (char *)"differentialPressureTiMin",/* Member name */
                     {
                         38,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1542,7 +1245,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureTiMin",/* Member name */
+                    (char *)"differentialPressureD",/* Member name */
                     {
                         39,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1559,7 +1262,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureD",/* Member name */
+                    (char *)"differentialPressureEps",/* Member name */
                     {
                         40,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1576,7 +1279,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureEps",/* Member name */
+                    (char *)"differentialPressureEpsManual",/* Member name */
                     {
                         41,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1593,7 +1296,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureEpsManual",/* Member name */
+                    (char *)"differentialPressureF",/* Member name */
                     {
                         42,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1610,7 +1313,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"differentialPressureF",/* Member name */
+                    (char *)"rateOfPenetrationFilter",/* Member name */
                     {
                         43,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1627,7 +1330,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationFilter",/* Member name */
+                    (char *)"rateOfPenetrationKcMax",/* Member name */
                     {
                         44,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1644,7 +1347,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationKcMax",/* Member name */
+                    (char *)"rateOfPenetrationKcMin",/* Member name */
                     {
                         45,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1661,7 +1364,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationKcMin",/* Member name */
+                    (char *)"rateOfPenetrationTdMax",/* Member name */
                     {
                         46,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1678,7 +1381,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationTdMax",/* Member name */
+                    (char *)"rateOfPenetrationTdMin",/* Member name */
                     {
                         47,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1695,7 +1398,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationTdMin",/* Member name */
+                    (char *)"rateOfPenetrationTiMax",/* Member name */
                     {
                         48,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1712,7 +1415,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationTiMax",/* Member name */
+                    (char *)"rateOfPenetrationTiMin",/* Member name */
                     {
                         49,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1729,7 +1432,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationTiMin",/* Member name */
+                    (char *)"rateOfPenetrationD",/* Member name */
                     {
                         50,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1746,7 +1449,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationD",/* Member name */
+                    (char *)"rateOfPenetrationEps",/* Member name */
                     {
                         51,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1763,7 +1466,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationEps",/* Member name */
+                    (char *)"rateOfPenetrationEpsManual",/* Member name */
                     {
                         52,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1780,7 +1483,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationEpsManual",/* Member name */
+                    (char *)"rateOfPenetrationF",/* Member name */
                     {
                         53,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1797,7 +1500,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"rateOfPenetrationF",/* Member name */
+                    (char *)"weightOnBitFilter",/* Member name */
                     {
                         54,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1814,7 +1517,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitFilter",/* Member name */
+                    (char *)"weightOnBitKcMax",/* Member name */
                     {
                         55,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1831,7 +1534,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitKcMax",/* Member name */
+                    (char *)"weightOnBitKcMin",/* Member name */
                     {
                         56,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1848,7 +1551,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitKcMin",/* Member name */
+                    (char *)"weightOnBitTdMax",/* Member name */
                     {
                         57,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1865,7 +1568,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitTdMax",/* Member name */
+                    (char *)"weightOnBitTdMin",/* Member name */
                     {
                         58,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1882,7 +1585,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitTdMin",/* Member name */
+                    (char *)"weightOnBitTiMax",/* Member name */
                     {
                         59,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1899,7 +1602,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitTiMax",/* Member name */
+                    (char *)"weightOnBitTiMin",/* Member name */
                     {
                         60,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1916,7 +1619,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitTiMin",/* Member name */
+                    (char *)"weightOnBitD",/* Member name */
                     {
                         61,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1933,7 +1636,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitD",/* Member name */
+                    (char *)"weightOnBitEps",/* Member name */
                     {
                         62,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1950,7 +1653,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitEps",/* Member name */
+                    (char *)"weightOnBitEpsManual",/* Member name */
                     {
                         63,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1967,7 +1670,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitEpsManual",/* Member name */
+                    (char *)"weightOnBitF",/* Member name */
                     {
                         64,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1984,7 +1687,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"weightOnBitF",/* Member name */
+                    (char *)"torqueFilter",/* Member name */
                     {
                         65,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2001,7 +1704,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueFilter",/* Member name */
+                    (char *)"torqueKcMax",/* Member name */
                     {
                         66,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2018,7 +1721,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueKcMax",/* Member name */
+                    (char *)"torqueKcMin",/* Member name */
                     {
                         67,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2035,7 +1738,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueKcMin",/* Member name */
+                    (char *)"torqueTdMax",/* Member name */
                     {
                         68,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2052,7 +1755,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueTdMax",/* Member name */
+                    (char *)"torqueTdMin",/* Member name */
                     {
                         69,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2069,7 +1772,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueTdMin",/* Member name */
+                    (char *)"torqueTiMax",/* Member name */
                     {
                         70,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2086,7 +1789,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueTiMax",/* Member name */
+                    (char *)"torqueTiMin",/* Member name */
                     {
                         71,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2103,7 +1806,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueTiMin",/* Member name */
+                    (char *)"torqueD",/* Member name */
                     {
                         72,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2120,7 +1823,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueD",/* Member name */
+                    (char *)"torqueEps",/* Member name */
                     {
                         73,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2137,7 +1840,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueEps",/* Member name */
+                    (char *)"torqueEpsManual",/* Member name */
                     {
                         74,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2154,7 +1857,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueEpsManual",/* Member name */
+                    (char *)"torqueF",/* Member name */
                     {
                         75,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2171,7 +1874,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueF",/* Member name */
+                    (char *)"status",/* Member name */
                     {
                         76,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -2188,43 +1891,9 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"status",/* Member name */
+                    (char *)"tuningEnabled",/* Member name */
                     {
                         77,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"tuningDisable",/* Member name */
-                    {
-                        78,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"tuningEnable",/* Member name */
-                    {
-                        79,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -2250,7 +1919,7 @@ namespace nec {
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    80, /* Number of members */
+                    78, /* Number of members */
                     HmiState_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
                 }}; /* Type code for HmiState*/
@@ -2267,7 +1936,7 @@ namespace nec {
 
             HmiState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-            HmiState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+            HmiState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             HmiState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2341,9 +2010,9 @@ namespace nec {
 
             HmiState_g_tc_members[40]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            HmiState_g_tc_members[41]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            HmiState_g_tc_members[41]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-            HmiState_g_tc_members[42]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+            HmiState_g_tc_members[42]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             HmiState_g_tc_members[43]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2363,9 +2032,9 @@ namespace nec {
 
             HmiState_g_tc_members[51]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            HmiState_g_tc_members[52]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            HmiState_g_tc_members[52]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-            HmiState_g_tc_members[53]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+            HmiState_g_tc_members[53]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             HmiState_g_tc_members[54]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2385,9 +2054,9 @@ namespace nec {
 
             HmiState_g_tc_members[62]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            HmiState_g_tc_members[63]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            HmiState_g_tc_members[63]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-            HmiState_g_tc_members[64]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+            HmiState_g_tc_members[64]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             HmiState_g_tc_members[65]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -2407,17 +2076,13 @@ namespace nec {
 
             HmiState_g_tc_members[73]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            HmiState_g_tc_members[74]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            HmiState_g_tc_members[74]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-            HmiState_g_tc_members[75]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+            HmiState_g_tc_members[75]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            HmiState_g_tc_members[76]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            HmiState_g_tc_members[76]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-            HmiState_g_tc_members[77]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
-
-            HmiState_g_tc_members[78]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-            HmiState_g_tc_members[79]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+            HmiState_g_tc_members[77]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
             is_initialized = RTI_TRUE;
 
@@ -2464,10 +2129,6 @@ namespace nec {
             }     
 
             if (!RTICdrType_initLong(&sample->modeController)) {
-                return RTI_FALSE;
-            }     
-
-            if (!RTICdrType_initBoolean(&sample->modelReset)) {
                 return RTI_FALSE;
             }     
 
@@ -2763,11 +2424,7 @@ namespace nec {
                 return RTI_FALSE;
             }     
 
-            if (!RTICdrType_initBoolean(&sample->tuningDisable)) {
-                return RTI_FALSE;
-            }     
-
-            if (!RTICdrType_initBoolean(&sample->tuningEnable)) {
+            if (!RTICdrType_initBoolean(&sample->tuningEnabled)) {
                 return RTI_FALSE;
             }     
 
@@ -2851,10 +2508,6 @@ namespace nec {
             }
             if (!RTICdrType_copyLong (
                 &dst->modeController, &src->modeController)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->modelReset, &src->modelReset)) { 
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyDouble (
@@ -3150,11 +2803,7 @@ namespace nec {
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyBoolean (
-                &dst->tuningDisable, &src->tuningDisable)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->tuningEnable, &src->tuningEnable)) { 
+                &dst->tuningEnabled, &src->tuningEnabled)) { 
                 return RTI_FALSE;
             }
 

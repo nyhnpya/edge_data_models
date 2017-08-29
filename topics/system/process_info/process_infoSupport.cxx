@@ -27,7 +27,7 @@ namespace process {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'ProcessInfo' support classes.
+        Configure and implement 'ProcessState' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -43,11 +43,11 @@ namespace process {
         */
 
         /* Requires */
-        #define TTYPENAME   ProcessInfoTYPENAME
+        #define TTYPENAME   ProcessStateTYPENAME
 
         /* Defines */
-        #define TDataWriter ProcessInfoDataWriter
-        #define TData       process::maintanence::ProcessInfo
+        #define TDataWriter ProcessStateDataWriter
+        #define TData       process::maintanence::ProcessState
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -67,12 +67,12 @@ namespace process {
         */
 
         /* Requires */
-        #define TTYPENAME   ProcessInfoTYPENAME
+        #define TTYPENAME   ProcessStateTYPENAME
 
         /* Defines */
-        #define TDataReader ProcessInfoDataReader
-        #define TDataSeq    ProcessInfoSeq
-        #define TData       process::maintanence::ProcessInfo
+        #define TDataReader ProcessStateDataReader
+        #define TDataSeq    ProcessStateSeq
+        #define TData       process::maintanence::ProcessState
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -94,15 +94,15 @@ namespace process {
         */
 
         /* Requires */
-        #define TTYPENAME    ProcessInfoTYPENAME
-        #define TPlugin_new  process::maintanence::ProcessInfoPlugin_new
-        #define TPlugin_delete  process::maintanence::ProcessInfoPlugin_delete
+        #define TTYPENAME    ProcessStateTYPENAME
+        #define TPlugin_new  process::maintanence::ProcessStatePlugin_new
+        #define TPlugin_delete  process::maintanence::ProcessStatePlugin_delete
 
         /* Defines */
-        #define TTypeSupport ProcessInfoTypeSupport
-        #define TData        process::maintanence::ProcessInfo
-        #define TDataReader  ProcessInfoDataReader
-        #define TDataWriter  ProcessInfoDataWriter
+        #define TTypeSupport ProcessStateTypeSupport
+        #define TData        process::maintanence::ProcessState
+        #define TDataReader  ProcessStateDataReader
+        #define TDataWriter  ProcessStateDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 

@@ -34,13 +34,13 @@ namespace nec {
     namespace process {
 
         /* ========================================================================= */
-        const char *WellboreTYPENAME = "nec::process::Wellbore";
+        const char *WellboreStateTYPENAME = "nec::process::WellboreState";
 
-        DDS_TypeCode* Wellbore_get_typecode()
+        DDS_TypeCode* WellboreState_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member Wellbore_g_tc_members[7]=
+            static DDS_TypeCode_Member WellboreState_g_tc_members[7]=
             {
 
                 {
@@ -164,51 +164,51 @@ namespace nec {
                 }
             };
 
-            static DDS_TypeCode Wellbore_g_tc =
+            static DDS_TypeCode WellboreState_g_tc =
             {{
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"nec::process::Wellbore", /* Name */
+                    (char *)"nec::process::WellboreState", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     7, /* Number of members */
-                    Wellbore_g_tc_members, /* Members */
+                    WellboreState_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
-                }}; /* Type code for Wellbore*/
+                }}; /* Type code for WellboreState*/
 
             if (is_initialized) {
-                return &Wellbore_g_tc;
+                return &WellboreState_g_tc;
             }
 
-            Wellbore_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+            WellboreState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-            Wellbore_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+            WellboreState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-            Wellbore_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+            WellboreState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-            Wellbore_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            WellboreState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            Wellbore_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            WellboreState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            Wellbore_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            WellboreState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            Wellbore_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            WellboreState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             is_initialized = RTI_TRUE;
 
-            return &Wellbore_g_tc;
+            return &WellboreState_g_tc;
         }
 
-        RTIBool Wellbore_initialize(
-            Wellbore* sample) {
-            return nec::process::Wellbore_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool WellboreState_initialize(
+            WellboreState* sample) {
+            return nec::process::WellboreState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool Wellbore_initialize_ex(
-            Wellbore* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool WellboreState_initialize_ex(
+            WellboreState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -217,13 +217,13 @@ namespace nec {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return nec::process::Wellbore_initialize_w_params(
+            return nec::process::WellboreState_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool Wellbore_initialize_w_params(
-            Wellbore* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool WellboreState_initialize_w_params(
+            WellboreState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (allocParams) {} /* To avoid warnings */
@@ -260,15 +260,15 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        void Wellbore_finalize(
-            Wellbore* sample)
+        void WellboreState_finalize(
+            WellboreState* sample)
         {
 
-            nec::process::Wellbore_finalize_ex(sample,RTI_TRUE);
+            nec::process::WellboreState_finalize_ex(sample,RTI_TRUE);
         }
 
-        void Wellbore_finalize_ex(
-            Wellbore* sample,RTIBool deletePointers)
+        void WellboreState_finalize_ex(
+            WellboreState* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -279,12 +279,12 @@ namespace nec {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            nec::process::Wellbore_finalize_w_params(
+            nec::process::WellboreState_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void Wellbore_finalize_w_params(
-            Wellbore* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void WellboreState_finalize_w_params(
+            WellboreState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -300,8 +300,8 @@ namespace nec {
 
         }
 
-        void Wellbore_finalize_optional_members(
-            Wellbore* sample, RTIBool deletePointers)
+        void WellboreState_finalize_optional_members(
+            WellboreState* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -321,9 +321,9 @@ namespace nec {
             DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
         }
 
-        RTIBool Wellbore_copy(
-            Wellbore* dst,
-            const Wellbore* src)
+        RTIBool WellboreState_copy(
+            WellboreState* dst,
+            const WellboreState* src)
         {
 
             if (!DataTypes::Uuid_copy(
@@ -363,13 +363,13 @@ namespace nec {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'Wellbore' sequence class.
+        * Configure and implement 'WellboreState' sequence class.
         */
-        #define T Wellbore
-        #define TSeq WellboreSeq
-        #define T_initialize_w_params nec::process::Wellbore_initialize_w_params
-        #define T_finalize_w_params   nec::process::Wellbore_finalize_w_params
-        #define T_copy       nec::process::Wellbore_copy
+        #define T WellboreState
+        #define TSeq WellboreStateSeq
+        #define T_initialize_w_params nec::process::WellboreState_initialize_w_params
+        #define T_finalize_w_params   nec::process::WellboreState_finalize_w_params
+        #define T_copy       nec::process::WellboreState_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"

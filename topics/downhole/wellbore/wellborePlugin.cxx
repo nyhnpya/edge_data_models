@@ -52,23 +52,23 @@ namespace nec {
     namespace process {
 
         /* ----------------------------------------------------------------------------
-        *  Type Wellbore
+        *  Type WellboreState
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        Wellbore*
-        WellborePluginSupport_create_data_w_params(
+        WellboreState*
+        WellboreStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params){
-            Wellbore *sample = NULL;
+            WellboreState *sample = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &sample, Wellbore);
+                &sample, WellboreState);
 
             if(sample != NULL) {
-                if (!nec::process::Wellbore_initialize_w_params(sample,alloc_params)) {
+                if (!nec::process::WellboreState_initialize_w_params(sample,alloc_params)) {
                     RTIOsapiHeap_freeStructure(sample);
                     return NULL;
                 }
@@ -76,15 +76,15 @@ namespace nec {
             return sample; 
         } 
 
-        Wellbore *
-        WellborePluginSupport_create_data_ex(RTIBool allocate_pointers){
-            Wellbore *sample = NULL;
+        WellboreState *
+        WellboreStatePluginSupport_create_data_ex(RTIBool allocate_pointers){
+            WellboreState *sample = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &sample, Wellbore);
+                &sample, WellboreState);
 
             if(sample != NULL) {
-                if (!nec::process::Wellbore_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                if (!nec::process::WellboreState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                     RTIOsapiHeap_freeStructure(sample);
                     return NULL;
                 }
@@ -92,50 +92,50 @@ namespace nec {
             return sample; 
         }
 
-        Wellbore *
-        WellborePluginSupport_create_data(void)
+        WellboreState *
+        WellboreStatePluginSupport_create_data(void)
         {
-            return nec::process::WellborePluginSupport_create_data_ex(RTI_TRUE);
+            return nec::process::WellboreStatePluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        WellborePluginSupport_destroy_data_w_params(
-            Wellbore *sample,
+        WellboreStatePluginSupport_destroy_data_w_params(
+            WellboreState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-            nec::process::Wellbore_finalize_w_params(sample,dealloc_params);
+            nec::process::WellboreState_finalize_w_params(sample,dealloc_params);
 
             RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
-        WellborePluginSupport_destroy_data_ex(
-            Wellbore *sample,RTIBool deallocate_pointers) {
+        WellboreStatePluginSupport_destroy_data_ex(
+            WellboreState *sample,RTIBool deallocate_pointers) {
 
-            nec::process::Wellbore_finalize_ex(sample,deallocate_pointers);
+            nec::process::WellboreState_finalize_ex(sample,deallocate_pointers);
 
             RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
-        WellborePluginSupport_destroy_data(
-            Wellbore *sample) {
+        WellboreStatePluginSupport_destroy_data(
+            WellboreState *sample) {
 
-            nec::process::WellborePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            nec::process::WellboreStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        WellborePluginSupport_copy_data(
-            Wellbore *dst,
-            const Wellbore *src)
+        WellboreStatePluginSupport_copy_data(
+            WellboreState *dst,
+            const WellboreState *src)
         {
-            return nec::process::Wellbore_copy(dst,src);
+            return nec::process::WellboreState_copy(dst,src);
         }
 
         void 
-        WellborePluginSupport_print_data(
-            const Wellbore *sample,
+        WellboreStatePluginSupport_print_data(
+            const WellboreState *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -175,37 +175,37 @@ namespace nec {
                 &sample->bitDepth, "bitDepth", indent_level + 1);    
 
         }
-        Wellbore *
-        WellborePluginSupport_create_key_ex(RTIBool allocate_pointers){
-            Wellbore *key = NULL;
+        WellboreState *
+        WellboreStatePluginSupport_create_key_ex(RTIBool allocate_pointers){
+            WellboreState *key = NULL;
 
             RTIOsapiHeap_allocateStructure(
-                &key, WellboreKeyHolder);
+                &key, WellboreStateKeyHolder);
 
-            nec::process::Wellbore_initialize_ex(key,allocate_pointers, RTI_TRUE);
+            nec::process::WellboreState_initialize_ex(key,allocate_pointers, RTI_TRUE);
             return key;
         }
 
-        Wellbore *
-        WellborePluginSupport_create_key(void)
+        WellboreState *
+        WellboreStatePluginSupport_create_key(void)
         {
-            return  nec::process::WellborePluginSupport_create_key_ex(RTI_TRUE);
+            return  nec::process::WellboreStatePluginSupport_create_key_ex(RTI_TRUE);
         }
 
         void 
-        WellborePluginSupport_destroy_key_ex(
-            WellboreKeyHolder *key,RTIBool deallocate_pointers)
+        WellboreStatePluginSupport_destroy_key_ex(
+            WellboreStateKeyHolder *key,RTIBool deallocate_pointers)
         {
-            nec::process::Wellbore_finalize_ex(key,deallocate_pointers);
+            nec::process::WellboreState_finalize_ex(key,deallocate_pointers);
 
             RTIOsapiHeap_freeStructure(key);
         }
 
         void 
-        WellborePluginSupport_destroy_key(
-            WellboreKeyHolder *key) {
+        WellboreStatePluginSupport_destroy_key(
+            WellboreStateKeyHolder *key) {
 
-            nec::process::WellborePluginSupport_destroy_key_ex(key,RTI_TRUE);
+            nec::process::WellboreStatePluginSupport_destroy_key_ex(key,RTI_TRUE);
 
         }
 
@@ -214,7 +214,7 @@ namespace nec {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        WellborePlugin_on_participant_attached(
+        WellboreStatePlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -232,7 +232,7 @@ namespace nec {
         }
 
         void 
-        WellborePlugin_on_participant_detached(
+        WellboreStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {
 
@@ -240,7 +240,7 @@ namespace nec {
         }
 
         PRESTypePluginEndpointData
-        WellborePlugin_on_endpoint_attached(
+        WellboreStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -259,18 +259,18 @@ namespace nec {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                nec::process::WellborePluginSupport_create_data,
+                nec::process::WellboreStatePluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                nec::process::WellborePluginSupport_destroy_data,
+                nec::process::WellboreStatePluginSupport_destroy_data,
                 (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-                nec::process::WellborePluginSupport_create_key ,            
+                nec::process::WellboreStatePluginSupport_create_key ,            
                 (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-                nec::process::WellborePluginSupport_destroy_key);
+                nec::process::WellboreStatePluginSupport_destroy_key);
 
             if (epd == NULL) {
                 return NULL;
             } 
-            serializedKeyMaxSize =  nec::process::WellborePlugin_get_serialized_key_max_size(
+            serializedKeyMaxSize =  nec::process::WellboreStatePlugin_get_serialized_key_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -281,7 +281,7 @@ namespace nec {
             }
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = nec::process::WellborePlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = nec::process::WellboreStatePlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -290,9 +290,9 @@ namespace nec {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    nec::process::WellborePlugin_get_serialized_sample_max_size, epd,
+                    nec::process::WellboreStatePlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
-                    nec::process::WellborePlugin_get_serialized_sample_size,
+                    nec::process::WellboreStatePlugin_get_serialized_sample_size,
                     epd) == RTI_FALSE) {
                     PRESTypePluginDefaultEndpointData_delete(epd);
                     return NULL;
@@ -303,7 +303,7 @@ namespace nec {
         }
 
         void 
-        WellborePlugin_on_endpoint_detached(
+        WellboreStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {  
 
@@ -311,42 +311,42 @@ namespace nec {
         }
 
         void    
-        WellborePlugin_return_sample(
+        WellboreStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            Wellbore *sample,
+            WellboreState *sample,
             void *handle)
         {
 
-            Wellbore_finalize_optional_members(sample, RTI_TRUE);
+            WellboreState_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        WellborePlugin_copy_sample(
+        WellboreStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            Wellbore *dst,
-            const Wellbore *src)
+            WellboreState *dst,
+            const WellboreState *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return nec::process::WellborePluginSupport_copy_data(dst,src);
+            return nec::process::WellboreStatePluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        WellborePlugin_get_serialized_sample_max_size(
+        WellboreStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool 
-        WellborePlugin_serialize(
+        WellboreStatePlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const Wellbore *sample, 
+            const WellboreState *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -429,9 +429,9 @@ namespace nec {
         }
 
         RTIBool 
-        WellborePlugin_deserialize_sample(
+        WellboreStatePlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            Wellbore *sample,
+            WellboreState *sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
@@ -454,7 +454,7 @@ namespace nec {
             }
             if(deserialize_sample) {
 
-                nec::process::Wellbore_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+                nec::process::WellboreState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
                 if(!DataTypes::UuidPlugin_deserialize_sample(
                     endpoint_data,
@@ -513,10 +513,10 @@ namespace nec {
         }
 
         RTIBool
-        WellborePlugin_serialize_to_cdr_buffer(
+        WellboreStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const Wellbore *sample)
+            const WellboreState *sample)
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
@@ -527,12 +527,12 @@ namespace nec {
             }
 
             epd._maxSizeSerializedSample =
-            WellborePlugin_get_serialized_sample_max_size(
+            WellboreStatePlugin_get_serialized_sample_max_size(
                 NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
             if (buffer == NULL) {
                 *length = 
-                WellborePlugin_get_serialized_sample_size(
+                WellboreStatePlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
@@ -549,7 +549,7 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, *length);
 
-            result = nec::process::WellborePlugin_serialize(
+            result = nec::process::WellboreStatePlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
                 RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
                 RTI_TRUE, NULL);  
@@ -559,8 +559,8 @@ namespace nec {
         }
 
         RTIBool
-        WellborePlugin_deserialize_from_cdr_buffer(
-            Wellbore *sample,
+        WellboreStatePlugin_deserialize_from_cdr_buffer(
+            WellboreState *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -569,16 +569,16 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            return WellborePlugin_deserialize_sample( 
+            return WellboreStatePlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
         }
 
         RTIBool 
-        WellborePlugin_deserialize(
+        WellboreStatePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            Wellbore **sample,
+            WellboreState **sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
@@ -590,7 +590,7 @@ namespace nec {
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= nec::process::WellborePlugin_deserialize_sample( 
+            result= nec::process::WellboreStatePlugin_deserialize_sample( 
                 endpoint_data, (sample != NULL)?*sample:NULL,
                 stream, deserialize_encapsulation, deserialize_sample, 
                 endpoint_plugin_qos);
@@ -604,7 +604,7 @@ namespace nec {
 
         }
 
-        RTIBool WellborePlugin_skip(
+        RTIBool WellboreStatePlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream,   
             RTIBool skip_encapsulation,
@@ -678,7 +678,7 @@ namespace nec {
         }
 
         unsigned int 
-        WellborePlugin_get_serialized_sample_max_size_ex(
+        WellboreStatePlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -729,7 +729,7 @@ namespace nec {
         }
 
         unsigned int 
-        WellborePlugin_get_serialized_sample_max_size(
+        WellboreStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -738,7 +738,7 @@ namespace nec {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = WellborePlugin_get_serialized_sample_max_size_ex(
+            size = WellboreStatePlugin_get_serialized_sample_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -749,7 +749,7 @@ namespace nec {
         }
 
         unsigned int 
-        WellborePlugin_get_serialized_sample_min_size(
+        WellboreStatePlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -801,12 +801,12 @@ namespace nec {
         * encapsulation flags.
         */
         unsigned int
-        WellborePlugin_get_serialized_sample_size(
+        WellboreStatePlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const Wellbore * sample) 
+            const WellboreState * sample) 
         {
 
             unsigned int initial_alignment = current_alignment;
@@ -858,15 +858,15 @@ namespace nec {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        WellborePlugin_get_key_kind(void)
+        WellboreStatePlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_USER_KEY;
         }
 
         RTIBool 
-        WellborePlugin_serialize_key(
+        WellboreStatePlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const Wellbore *sample, 
+            const WellboreState *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -904,9 +904,9 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        RTIBool WellborePlugin_deserialize_key_sample(
+        RTIBool WellboreStatePlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            Wellbore *sample, 
+            WellboreState *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
@@ -944,9 +944,9 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        RTIBool WellborePlugin_deserialize_key(
+        RTIBool WellboreStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            Wellbore **sample, 
+            WellboreState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -956,7 +956,7 @@ namespace nec {
             RTIBool result;
             if (drop_sample) {} /* To avoid warnings */
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= nec::process::WellborePlugin_deserialize_key_sample(
+            result= nec::process::WellboreStatePlugin_deserialize_key_sample(
                 endpoint_data, (sample != NULL)?*sample:NULL, stream,
                 deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
             if (result) {
@@ -970,7 +970,7 @@ namespace nec {
         }
 
         unsigned int
-        WellborePlugin_get_serialized_key_max_size_ex(
+        WellboreStatePlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -1003,7 +1003,7 @@ namespace nec {
         }
 
         unsigned int
-        WellborePlugin_get_serialized_key_max_size(
+        WellboreStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1012,7 +1012,7 @@ namespace nec {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = WellborePlugin_get_serialized_key_max_size_ex(
+            size = WellboreStatePlugin_get_serialized_key_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -1023,9 +1023,9 @@ namespace nec {
         }
 
         RTIBool 
-        WellborePlugin_serialized_sample_to_key(
+        WellboreStatePlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            Wellbore *sample,
+            WellboreState *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
@@ -1114,10 +1114,10 @@ namespace nec {
         }
 
         RTIBool 
-        WellborePlugin_instance_to_key(
+        WellboreStatePlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            WellboreKeyHolder *dst, 
-            const Wellbore *src)
+            WellboreStateKeyHolder *dst, 
+            const WellboreState *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -1130,10 +1130,10 @@ namespace nec {
         }
 
         RTIBool 
-        WellborePlugin_key_to_instance(
+        WellboreStatePlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            Wellbore *dst, const
-            WellboreKeyHolder *src)
+            WellboreState *dst, const
+            WellboreStateKeyHolder *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -1145,10 +1145,10 @@ namespace nec {
         }
 
         RTIBool 
-        WellborePlugin_instance_to_keyhash(
+        WellboreStatePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const Wellbore *instance)
+            const WellboreState *instance)
         {
             struct RTICdrStream * md5Stream = NULL;
             struct RTICdrStreamState cdrState;
@@ -1164,14 +1164,14 @@ namespace nec {
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-            if (!nec::process::WellborePlugin_serialize_key(
+            if (!nec::process::WellboreStatePlugin_serialize_key(
                 endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
 
                 int size;
 
                 RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-                size = (int)nec::process::WellborePlugin_get_serialized_sample_size(
+                size = (int)nec::process::WellboreStatePlugin_get_serialized_sample_size(
                     endpoint_data,
                     RTI_FALSE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -1196,7 +1196,7 @@ namespace nec {
                     RTICdrStream_getBufferLength(md5Stream));
                 RTICdrStream_resetPosition(md5Stream);
                 RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-                if (!nec::process::WellborePlugin_serialize_key(
+                if (!nec::process::WellboreStatePlugin_serialize_key(
                     endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
                 {
                     RTICdrStream_popState(md5Stream, &cdrState);
@@ -1225,7 +1225,7 @@ namespace nec {
         }
 
         RTIBool 
-        WellborePlugin_serialized_sample_to_keyhash(
+        WellboreStatePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -1236,7 +1236,7 @@ namespace nec {
 
             RTIBool done = RTI_FALSE;
             RTIBool error = RTI_FALSE;
-            Wellbore * sample=NULL;
+            WellboreState * sample=NULL;
 
             if (endpoint_plugin_qos) {} /* To avoid warnings */
             if (stream == NULL) {
@@ -1252,7 +1252,7 @@ namespace nec {
                 position = RTICdrStream_resetAlignment(stream);
             }
 
-            sample = (Wellbore *)
+            sample = (WellboreState *)
             PRESTypePluginDefaultEndpointData_getTempSample(endpoint_data);
 
             if (sample == NULL) {
@@ -1283,7 +1283,7 @@ namespace nec {
                 RTICdrStream_restoreAlignment(stream,position);
             }
 
-            if (!nec::process::WellborePlugin_instance_to_keyhash(
+            if (!nec::process::WellboreStatePlugin_instance_to_keyhash(
                 endpoint_data, keyhash, sample)) {
                 return RTI_FALSE;
             }
@@ -1294,7 +1294,7 @@ namespace nec {
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *WellborePlugin_new(void) 
+        struct PRESTypePlugin *WellboreStatePlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -1311,107 +1311,107 @@ namespace nec {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            nec::process::WellborePlugin_on_participant_attached;
+            nec::process::WellboreStatePlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            nec::process::WellborePlugin_on_participant_detached;
+            nec::process::WellboreStatePlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            nec::process::WellborePlugin_on_endpoint_attached;
+            nec::process::WellboreStatePlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            nec::process::WellborePlugin_on_endpoint_detached;
+            nec::process::WellboreStatePlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            nec::process::WellborePlugin_copy_sample;
+            nec::process::WellboreStatePlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            WellborePlugin_create_sample;
+            WellboreStatePlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            WellborePlugin_destroy_sample;
+            WellboreStatePlugin_destroy_sample;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
-            nec::process::WellborePlugin_serialize;
+            nec::process::WellboreStatePlugin_serialize;
             plugin->deserializeFnc =
             (PRESTypePluginDeserializeFunction)
-            nec::process::WellborePlugin_deserialize;
+            nec::process::WellboreStatePlugin_deserialize;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            nec::process::WellborePlugin_get_serialized_sample_max_size;
+            nec::process::WellboreStatePlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
-            nec::process::WellborePlugin_get_serialized_sample_min_size;
+            nec::process::WellboreStatePlugin_get_serialized_sample_min_size;
 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            WellborePlugin_get_sample;
+            WellboreStatePlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            WellborePlugin_return_sample;
+            WellboreStatePlugin_return_sample;
 
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            nec::process::WellborePlugin_get_key_kind;
+            nec::process::WellboreStatePlugin_get_key_kind;
 
             plugin->getSerializedKeyMaxSizeFnc =   
             (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-            nec::process::WellborePlugin_get_serialized_key_max_size;
+            nec::process::WellboreStatePlugin_get_serialized_key_max_size;
             plugin->serializeKeyFnc =
             (PRESTypePluginSerializeKeyFunction)
-            nec::process::WellborePlugin_serialize_key;
+            nec::process::WellboreStatePlugin_serialize_key;
             plugin->deserializeKeyFnc =
             (PRESTypePluginDeserializeKeyFunction)
-            nec::process::WellborePlugin_deserialize_key;
+            nec::process::WellboreStatePlugin_deserialize_key;
             plugin->deserializeKeySampleFnc =
             (PRESTypePluginDeserializeKeySampleFunction)
-            nec::process::WellborePlugin_deserialize_key_sample;
+            nec::process::WellboreStatePlugin_deserialize_key_sample;
 
             plugin-> instanceToKeyHashFnc = 
             (PRESTypePluginInstanceToKeyHashFunction)
-            nec::process::WellborePlugin_instance_to_keyhash;
+            nec::process::WellboreStatePlugin_instance_to_keyhash;
             plugin->serializedSampleToKeyHashFnc = 
             (PRESTypePluginSerializedSampleToKeyHashFunction)
-            nec::process::WellborePlugin_serialized_sample_to_keyhash;
+            nec::process::WellboreStatePlugin_serialized_sample_to_keyhash;
 
             plugin->getKeyFnc =
             (PRESTypePluginGetKeyFunction)
-            WellborePlugin_get_key;
+            WellboreStatePlugin_get_key;
             plugin->returnKeyFnc =
             (PRESTypePluginReturnKeyFunction)
-            WellborePlugin_return_key;
+            WellboreStatePlugin_return_key;
 
             plugin->instanceToKeyFnc =
             (PRESTypePluginInstanceToKeyFunction)
-            nec::process::WellborePlugin_instance_to_key;
+            nec::process::WellboreStatePlugin_instance_to_key;
             plugin->keyToInstanceFnc =
             (PRESTypePluginKeyToInstanceFunction)
-            nec::process::WellborePlugin_key_to_instance;
+            nec::process::WellboreStatePlugin_key_to_instance;
             plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-            plugin->typeCode =  (struct RTICdrTypeCode *)nec::process::Wellbore_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)nec::process::WellboreState_get_typecode();
 
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            WellborePlugin_get_buffer;
+            WellboreStatePlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            WellborePlugin_return_buffer;
+            WellboreStatePlugin_return_buffer;
             plugin->getSerializedSampleSizeFnc =
             (PRESTypePluginGetSerializedSampleSizeFunction)
-            nec::process::WellborePlugin_get_serialized_sample_size;
+            nec::process::WellboreStatePlugin_get_serialized_sample_size;
 
-            plugin->endpointTypeName = WellboreTYPENAME;
+            plugin->endpointTypeName = WellboreStateTYPENAME;
 
             return plugin;
         }
 
         void
-        WellborePlugin_delete(struct PRESTypePlugin *plugin)
+        WellboreStatePlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 

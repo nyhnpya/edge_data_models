@@ -4,7 +4,7 @@
 #include <signal.h>
 #include <string.h>
 #include "cmdparser.h"
-#include "wellbore_subscriber.h"
+#include "wellbore_state_subscriber.h"
 
 bool gTerminate = false;
 
@@ -61,7 +61,7 @@ void register_signal_handler()
     sigaction(SIGTERM, &sigact, (struct sigaction *)NULL);
 }
 
-void get_depths(const Downhole::Wellbore &data)
+void get_depths(const nec::process::WellboreState &data)
 {
     double value; 
 
@@ -117,7 +117,7 @@ int32_t main(int32_t argc, char **argv)
 
     if (pSubscriber->Create(domain) == true)
     {
-        pSubscriber->OnDataAvailable([&](const Downhole::Wellbore &data)
+        pSubscriber->OnDataAvailable([&](const nec::process::WellboreState &data)
                                      {
                                          get_depths(data);
                                      });

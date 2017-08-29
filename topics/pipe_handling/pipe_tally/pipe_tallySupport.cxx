@@ -27,7 +27,7 @@ namespace nec {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'PipeTally' support classes.
+        Configure and implement 'PipeTallyState' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -43,11 +43,11 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   PipeTallyTYPENAME
+        #define TTYPENAME   PipeTallyStateTYPENAME
 
         /* Defines */
-        #define TDataWriter PipeTallyDataWriter
-        #define TData       nec::process::PipeTally
+        #define TDataWriter PipeTallyStateDataWriter
+        #define TData       nec::process::PipeTallyState
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -67,12 +67,12 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   PipeTallyTYPENAME
+        #define TTYPENAME   PipeTallyStateTYPENAME
 
         /* Defines */
-        #define TDataReader PipeTallyDataReader
-        #define TDataSeq    PipeTallySeq
-        #define TData       nec::process::PipeTally
+        #define TDataReader PipeTallyStateDataReader
+        #define TDataSeq    PipeTallyStateSeq
+        #define TData       nec::process::PipeTallyState
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -94,15 +94,15 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME    PipeTallyTYPENAME
-        #define TPlugin_new  nec::process::PipeTallyPlugin_new
-        #define TPlugin_delete  nec::process::PipeTallyPlugin_delete
+        #define TTYPENAME    PipeTallyStateTYPENAME
+        #define TPlugin_new  nec::process::PipeTallyStatePlugin_new
+        #define TPlugin_delete  nec::process::PipeTallyStatePlugin_delete
 
         /* Defines */
-        #define TTypeSupport PipeTallyTypeSupport
-        #define TData        nec::process::PipeTally
-        #define TDataReader  PipeTallyDataReader
-        #define TDataWriter  PipeTallyDataWriter
+        #define TTypeSupport PipeTallyStateTypeSupport
+        #define TData        nec::process::PipeTallyState
+        #define TDataReader  PipeTallyStateDataReader
+        #define TDataWriter  PipeTallyStateDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 

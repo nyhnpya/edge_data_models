@@ -27,7 +27,6 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< nec::contro
     bool GetTimestamp(DataTypes::Time &timestamp);
     bool GetMode(int32_t &mode);
     bool GetModeController(int32_t &modeController);
-    bool GetModelReset(bool &modelReset);
     bool GetPipeInnerDiameter(double &pipeInnerDiameter);
     bool GetPipeOuterDiameter(double &pipeOuterDiameter);
     bool GetSlopeFilter(double &slopeFilter);
@@ -101,8 +100,7 @@ class CAutoDrillerConfigurationStateSubscriber : public TSubscriber< nec::contro
     bool GetTorqueEpsManual(bool &torqueEpsManual);
     bool GetTorqueF(double &torqueF);
     bool GetStatus(int32_t &status);
-    bool GetTuningDisable(bool &tuningDisable);
-    bool GetTuningEnable(bool &tuningEnable);
+    bool GetTuningEnabled(bool &tuningEnable);
 
 	// Topic Status
 	bool ValidData();

@@ -5,10 +5,10 @@
 #include "process_info.h"
 #include "process_infoSupport.h"
 
-class CProcessInfoSubscriber : public TSubscriber< process::maintanence::ProcessInfo>
+class CProcessInfoSubscriber : public TSubscriber< process::maintanence::ProcessState>
 {
 public:
-    typedef std::function<void(const process::maintanence::ProcessInfo &data)> OnDataAvailableEvent;
+    typedef std::function<void(const process::maintanence::ProcessState &data)> OnDataAvailableEvent;
 
     CProcessInfoSubscriber();
     virtual ~CProcessInfoSubscriber();
@@ -30,14 +30,14 @@ public:
 
 protected:
     ///Derived Methods
-    void DataAvailable(const process::maintanence::ProcessInfo &data,
+    void DataAvailable(const process::maintanence::ProcessState &data,
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
 private:
-    process::maintanence::ProcessInfo  m_data;
+    process::maintanence::ProcessState  m_data;
     DDS::SampleInfo              m_sampleInfo;
     DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent         m_pOnDataAvailable;

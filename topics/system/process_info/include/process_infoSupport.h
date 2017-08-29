@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef process_infoSupport_1743012970_h
-#define process_infoSupport_1743012970_h
+#ifndef process_infoSupport_1743013001_h
+#define process_infoSupport_1743013001_h
 
 /* Uses */
 #include "process_info.h"
@@ -46,10 +46,10 @@ namespace process {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(ProcessInfoTypeSupport, ProcessInfo);
+        DDS_TYPESUPPORT_CPP(ProcessStateTypeSupport, ProcessState);
 
-        DDS_DATAWRITER_CPP(ProcessInfoDataWriter, ProcessInfo);
-        DDS_DATAREADER_CPP(ProcessInfoDataReader, ProcessInfoSeq, ProcessInfo);
+        DDS_DATAWRITER_CPP(ProcessStateDataWriter, ProcessState);
+        DDS_DATAREADER_CPP(ProcessStateDataReader, ProcessStateSeq, ProcessState);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -60,5 +60,5 @@ namespace process {
     } /* namespace maintanence  */
 } /* namespace process  */
 
-#endif  /* process_infoSupport_1743012970_h */
+#endif  /* process_infoSupport_1743013001_h */
 

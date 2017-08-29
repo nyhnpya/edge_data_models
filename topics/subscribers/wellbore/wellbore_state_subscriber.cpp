@@ -1,5 +1,5 @@
 #include <string.h>
-#include "wellbore_subscriber.h"
+#include "wellbore_state_subscriber.h"
 
 CWellboreStateSubscriber::CWellboreStateSubscriber()
 {
@@ -57,7 +57,7 @@ void CWellboreStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent 
     m_pOnSubscriptionMatched = event;
 }
 
-void CWellboreStateSubscriber::DataAvailable(const nec::process::Wellbore &data,
+void CWellboreStateSubscriber::DataAvailable(const nec::process::WellboreState &data,
                                              const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

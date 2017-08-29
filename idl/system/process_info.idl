@@ -4,10 +4,11 @@ module process
     {
         //@copy-c-declaration static const char PROCESS_INFO[] = "ProcessInfo";
 
-        struct ProcessInfo
+        struct ProcessState
         {
             char      processName[128]; //@key
             long      pid;
+            long long upTime;
             long long totalVirtualMemory;
             long long usedVirtualMemory;
             long long totalPhysicalMemory;

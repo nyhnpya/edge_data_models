@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef wellbore_1776161730_h
-#define wellbore_1776161730_h
+#ifndef wellbore_1776161735_h
+#define wellbore_1776161735_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -25,23 +25,23 @@ namespace nec {
     namespace process {
         static const char WELLBORE_STATE[] = "WellboreState"; 
 
-        extern const char *WellboreTYPENAME;
+        extern const char *WellboreStateTYPENAME;
 
-        struct WellboreSeq;
+        struct WellboreStateSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class WellboreTypeSupport;
-        class WellboreDataWriter;
-        class WellboreDataReader;
+        class WellboreStateTypeSupport;
+        class WellboreStateDataWriter;
+        class WellboreStateDataReader;
         #endif
 
-        class Wellbore 
+        class WellboreState 
         {
           public:
-            typedef struct WellboreSeq Seq;
+            typedef struct WellboreStateSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef WellboreTypeSupport TypeSupport;
-            typedef WellboreDataWriter DataWriter;
-            typedef WellboreDataReader DataReader;
+            typedef WellboreStateTypeSupport TypeSupport;
+            typedef WellboreStateDataWriter DataWriter;
+            typedef WellboreStateDataReader DataReader;
             #endif
 
             DataTypes::Uuid   id ;
@@ -60,44 +60,44 @@ namespace nec {
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
-        NDDSUSERDllExport DDS_TypeCode* Wellbore_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* WellboreState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(WellboreSeq, Wellbore);                                        
-
-        NDDSUSERDllExport
-        RTIBool Wellbore_initialize(
-            Wellbore* self);
+        DDS_SEQUENCE(WellboreStateSeq, WellboreState);                                        
 
         NDDSUSERDllExport
-        RTIBool Wellbore_initialize_ex(
-            Wellbore* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool WellboreState_initialize(
+            WellboreState* self);
 
         NDDSUSERDllExport
-        RTIBool Wellbore_initialize_w_params(
-            Wellbore* self,
+        RTIBool WellboreState_initialize_ex(
+            WellboreState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool WellboreState_initialize_w_params(
+            WellboreState* self,
             const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
-        void Wellbore_finalize(
-            Wellbore* self);
+        void WellboreState_finalize(
+            WellboreState* self);
 
         NDDSUSERDllExport
-        void Wellbore_finalize_ex(
-            Wellbore* self,RTIBool deletePointers);
+        void WellboreState_finalize_ex(
+            WellboreState* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void Wellbore_finalize_w_params(
-            Wellbore* self,
+        void WellboreState_finalize_w_params(
+            WellboreState* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void Wellbore_finalize_optional_members(
-            Wellbore* self, RTIBool deletePointers);  
+        void WellboreState_finalize_optional_members(
+            WellboreState* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool Wellbore_copy(
-            Wellbore* dst,
-            const Wellbore* src);
+        RTIBool WellboreState_copy(
+            WellboreState* dst,
+            const WellboreState* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.

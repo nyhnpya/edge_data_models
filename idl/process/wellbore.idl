@@ -20,7 +20,7 @@ module nec
          * | trueVerticalDepth| Measured true vertical depth of hole.                  | double     | m       |
          * | bitDepth         | Measured depth of bit.                                 | double     | m       |
          */
-        struct Wellbore
+        struct WellboreState
         {
             DataTypes::Uuid  id; //@key
             DataTypes::Uuid  objectiveId; 

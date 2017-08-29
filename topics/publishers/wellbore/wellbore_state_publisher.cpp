@@ -1,5 +1,5 @@
 #include "dds_uuid.h"
-#include "wellbore_publisher.h"
+#include "wellbore_state_publisher.h"
 
 CWellboreStatePublisher::CWellboreStatePublisher()
 {

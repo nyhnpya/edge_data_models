@@ -57,18 +57,6 @@ void CAutoDrillerConfigurationStatePublisher::SetModeController(int32_t modeCont
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetModelReset(bool modelReset)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->modelReset = modelReset;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set modelReset because of uninitialized sample");
-    }
-}
-
 void CAutoDrillerConfigurationStatePublisher::SetPipeInnerDiameter(double pipeInnerDiameter)
 {
     if (m_pDataInstance != nullptr)
@@ -945,23 +933,11 @@ void CAutoDrillerConfigurationStatePublisher::SetStatus(int32_t status)
     }
 }
 
-void CAutoDrillerConfigurationStatePublisher::SetTuningDisable(bool tuningDisable)
+void CAutoDrillerConfigurationStatePublisher::SetTuningEnable(bool tuningEnabled)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->tuningDisable = tuningDisable;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set tuningDisable because of uninitialized sample");
-    }
-}
-
-void CAutoDrillerConfigurationStatePublisher::SetTuningEnable(bool tuningEnable)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->tuningEnable = tuningEnable;
+        m_pDataInstance->tuningEnabled = tuningEnabled;
     }
     else
     {

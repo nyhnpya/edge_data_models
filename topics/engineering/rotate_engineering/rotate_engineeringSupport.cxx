@@ -27,7 +27,7 @@ namespace nec {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'RotateEngineeringRequest' support classes.
+        Configure and implement 'RotateRequest' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -43,11 +43,11 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   RotateEngineeringRequestTYPENAME
+        #define TTYPENAME   RotateRequestTYPENAME
 
         /* Defines */
-        #define TDataWriter RotateEngineeringRequestDataWriter
-        #define TData       nec::control::RotateEngineeringRequest
+        #define TDataWriter RotateRequestDataWriter
+        #define TData       nec::control::RotateRequest
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -67,12 +67,12 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   RotateEngineeringRequestTYPENAME
+        #define TTYPENAME   RotateRequestTYPENAME
 
         /* Defines */
-        #define TDataReader RotateEngineeringRequestDataReader
-        #define TDataSeq    RotateEngineeringRequestSeq
-        #define TData       nec::control::RotateEngineeringRequest
+        #define TDataReader RotateRequestDataReader
+        #define TDataSeq    RotateRequestSeq
+        #define TData       nec::control::RotateRequest
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -94,15 +94,15 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME    RotateEngineeringRequestTYPENAME
-        #define TPlugin_new  nec::control::RotateEngineeringRequestPlugin_new
-        #define TPlugin_delete  nec::control::RotateEngineeringRequestPlugin_delete
+        #define TTYPENAME    RotateRequestTYPENAME
+        #define TPlugin_new  nec::control::RotateRequestPlugin_new
+        #define TPlugin_delete  nec::control::RotateRequestPlugin_delete
 
         /* Defines */
-        #define TTypeSupport RotateEngineeringRequestTypeSupport
-        #define TData        nec::control::RotateEngineeringRequest
-        #define TDataReader  RotateEngineeringRequestDataReader
-        #define TDataWriter  RotateEngineeringRequestDataWriter
+        #define TTypeSupport RotateRequestTypeSupport
+        #define TData        nec::control::RotateRequest
+        #define TDataReader  RotateRequestDataReader
+        #define TDataWriter  RotateRequestDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 
@@ -127,7 +127,7 @@ namespace nec {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'RotateEngineeringObjective' support classes.
+        Configure and implement 'RotateObjective' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -143,11 +143,11 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   RotateEngineeringObjectiveTYPENAME
+        #define TTYPENAME   RotateObjectiveTYPENAME
 
         /* Defines */
-        #define TDataWriter RotateEngineeringObjectiveDataWriter
-        #define TData       nec::control::RotateEngineeringObjective
+        #define TDataWriter RotateObjectiveDataWriter
+        #define TData       nec::control::RotateObjective
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -167,12 +167,12 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   RotateEngineeringObjectiveTYPENAME
+        #define TTYPENAME   RotateObjectiveTYPENAME
 
         /* Defines */
-        #define TDataReader RotateEngineeringObjectiveDataReader
-        #define TDataSeq    RotateEngineeringObjectiveSeq
-        #define TData       nec::control::RotateEngineeringObjective
+        #define TDataReader RotateObjectiveDataReader
+        #define TDataSeq    RotateObjectiveSeq
+        #define TData       nec::control::RotateObjective
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -194,15 +194,15 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME    RotateEngineeringObjectiveTYPENAME
-        #define TPlugin_new  nec::control::RotateEngineeringObjectivePlugin_new
-        #define TPlugin_delete  nec::control::RotateEngineeringObjectivePlugin_delete
+        #define TTYPENAME    RotateObjectiveTYPENAME
+        #define TPlugin_new  nec::control::RotateObjectivePlugin_new
+        #define TPlugin_delete  nec::control::RotateObjectivePlugin_delete
 
         /* Defines */
-        #define TTypeSupport RotateEngineeringObjectiveTypeSupport
-        #define TData        nec::control::RotateEngineeringObjective
-        #define TDataReader  RotateEngineeringObjectiveDataReader
-        #define TDataWriter  RotateEngineeringObjectiveDataWriter
+        #define TTypeSupport RotateObjectiveTypeSupport
+        #define TData        nec::control::RotateObjective
+        #define TDataReader  RotateObjectiveDataReader
+        #define TDataWriter  RotateObjectiveDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 
@@ -227,7 +227,7 @@ namespace nec {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'RotateEngineeringState' support classes.
+        Configure and implement 'RotateState' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -243,11 +243,11 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   RotateEngineeringStateTYPENAME
+        #define TTYPENAME   RotateStateTYPENAME
 
         /* Defines */
-        #define TDataWriter RotateEngineeringStateDataWriter
-        #define TData       nec::control::RotateEngineeringState
+        #define TDataWriter RotateStateDataWriter
+        #define TData       nec::control::RotateState
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -267,12 +267,12 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   RotateEngineeringStateTYPENAME
+        #define TTYPENAME   RotateStateTYPENAME
 
         /* Defines */
-        #define TDataReader RotateEngineeringStateDataReader
-        #define TDataSeq    RotateEngineeringStateSeq
-        #define TData       nec::control::RotateEngineeringState
+        #define TDataReader RotateStateDataReader
+        #define TDataSeq    RotateStateSeq
+        #define TData       nec::control::RotateState
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -294,15 +294,15 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME    RotateEngineeringStateTYPENAME
-        #define TPlugin_new  nec::control::RotateEngineeringStatePlugin_new
-        #define TPlugin_delete  nec::control::RotateEngineeringStatePlugin_delete
+        #define TTYPENAME    RotateStateTYPENAME
+        #define TPlugin_new  nec::control::RotateStatePlugin_new
+        #define TPlugin_delete  nec::control::RotateStatePlugin_delete
 
         /* Defines */
-        #define TTypeSupport RotateEngineeringStateTypeSupport
-        #define TData        nec::control::RotateEngineeringState
-        #define TDataReader  RotateEngineeringStateDataReader
-        #define TDataWriter  RotateEngineeringStateDataWriter
+        #define TTypeSupport RotateStateTypeSupport
+        #define TData        nec::control::RotateState
+        #define TDataReader  RotateStateDataReader
+        #define TDataWriter  RotateStateDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 

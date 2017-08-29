@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef pipe_tallyPlugin_58331454_h
-#define pipe_tallyPlugin_58331454_h
+#ifndef pipe_tallyPlugin_58331459_h
+#define pipe_tallyPlugin_58331459_h
 
 #include "pipe_tally.h"
 
@@ -35,87 +35,87 @@ namespace nec {
         /* The type used to store keys for instances of type struct
         * AnotherSimple.
         *
-        * By default, this type is struct PipeTally
+        * By default, this type is struct PipeTallyState
         * itself. However, if for some reason this choice is not practical for your
-        * system (e.g. if sizeof(struct PipeTally)
+        * system (e.g. if sizeof(struct PipeTallyState)
         * is very large), you may redefine this typedef in terms of another type of
         * your choosing. HOWEVER, if you define the KeyHolder type to be something
         * other than struct AnotherSimple, the
         * following restriction applies: the key of struct
-        * PipeTally must consist of a
+        * PipeTallyState must consist of a
         * single field of your redefined KeyHolder type and that field must be the
-        * first field in struct PipeTally.
+        * first field in struct PipeTallyState.
         */
-        typedef  class PipeTally PipeTallyKeyHolder;
+        typedef  class PipeTallyState PipeTallyStateKeyHolder;
 
-        #define PipeTallyPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-        #define PipeTallyPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define PipeTallyPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define PipeTallyStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define PipeTallyStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define PipeTallyStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
 
-        #define PipeTallyPlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
-        #define PipeTallyPlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
+        #define PipeTallyStatePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
+        #define PipeTallyStatePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
 
-        #define PipeTallyPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define PipeTallyPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define PipeTallyStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define PipeTallyStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern PipeTally*
-        PipeTallyPluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern PipeTallyState*
+        PipeTallyStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern PipeTally*
-        PipeTallyPluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern PipeTallyState*
+        PipeTallyStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern PipeTally*
-        PipeTallyPluginSupport_create_data(void);
+        NDDSUSERDllExport extern PipeTallyState*
+        PipeTallyStatePluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        PipeTallyPluginSupport_copy_data(
-            PipeTally *out,
-            const PipeTally *in);
+        PipeTallyStatePluginSupport_copy_data(
+            PipeTallyState *out,
+            const PipeTallyState *in);
 
         NDDSUSERDllExport extern void 
-        PipeTallyPluginSupport_destroy_data_w_params(
-            PipeTally *sample,
+        PipeTallyStatePluginSupport_destroy_data_w_params(
+            PipeTallyState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        PipeTallyPluginSupport_destroy_data_ex(
-            PipeTally *sample,RTIBool deallocate_pointers);
+        PipeTallyStatePluginSupport_destroy_data_ex(
+            PipeTallyState *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        PipeTallyPluginSupport_destroy_data(
-            PipeTally *sample);
+        PipeTallyStatePluginSupport_destroy_data(
+            PipeTallyState *sample);
 
         NDDSUSERDllExport extern void 
-        PipeTallyPluginSupport_print_data(
-            const PipeTally *sample,
+        PipeTallyStatePluginSupport_print_data(
+            const PipeTallyState *sample,
             const char *desc,
             unsigned int indent);
 
-        NDDSUSERDllExport extern PipeTally*
-        PipeTallyPluginSupport_create_key_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern PipeTallyState*
+        PipeTallyStatePluginSupport_create_key_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern PipeTally*
-        PipeTallyPluginSupport_create_key(void);
-
-        NDDSUSERDllExport extern void 
-        PipeTallyPluginSupport_destroy_key_ex(
-            PipeTallyKeyHolder *key,RTIBool deallocate_pointers);
+        NDDSUSERDllExport extern PipeTallyState*
+        PipeTallyStatePluginSupport_create_key(void);
 
         NDDSUSERDllExport extern void 
-        PipeTallyPluginSupport_destroy_key(
-            PipeTallyKeyHolder *key);
+        PipeTallyStatePluginSupport_destroy_key_ex(
+            PipeTallyStateKeyHolder *key,RTIBool deallocate_pointers);
+
+        NDDSUSERDllExport extern void 
+        PipeTallyStatePluginSupport_destroy_key(
+            PipeTallyStateKeyHolder *key);
 
         /* ----------------------------------------------------------------------------
         Callback functions:
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        PipeTallyPlugin_on_participant_attached(
+        PipeTallyStatePlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -123,40 +123,40 @@ namespace nec {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        PipeTallyPlugin_on_participant_detached(
+        PipeTallyStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        PipeTallyPlugin_on_endpoint_attached(
+        PipeTallyStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        PipeTallyPlugin_on_endpoint_detached(
+        PipeTallyStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        PipeTallyPlugin_return_sample(
+        PipeTallyStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally *sample,
+            PipeTallyState *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        PipeTallyPlugin_copy_sample(
+        PipeTallyStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally *out,
-            const PipeTally *in);
+            PipeTallyState *out,
+            const PipeTallyState *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool 
-        PipeTallyPlugin_serialize(
+        PipeTallyStatePlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const PipeTally *sample,
+            const PipeTallyState *sample,
             struct RTICdrStream *stream, 
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -164,24 +164,24 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        PipeTallyPlugin_deserialize_sample(
+        PipeTallyStatePlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally *sample, 
+            PipeTallyState *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        PipeTallyPlugin_serialize_to_cdr_buffer(
+        PipeTallyStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const PipeTally *sample); 
+            const PipeTallyState *sample); 
 
         NDDSUSERDllExport extern RTIBool 
-        PipeTallyPlugin_deserialize(
+        PipeTallyStatePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally **sample, 
+            PipeTallyState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -189,13 +189,13 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        PipeTallyPlugin_deserialize_from_cdr_buffer(
-            PipeTally *sample,
+        PipeTallyStatePlugin_deserialize_from_cdr_buffer(
+            PipeTallyState *sample,
             const char * buffer,
             unsigned int length);    
 
         NDDSUSERDllExport extern RTIBool
-        PipeTallyPlugin_skip(
+        PipeTallyStatePlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             RTIBool skip_encapsulation,  
@@ -203,7 +203,7 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern unsigned int 
-        PipeTallyPlugin_get_serialized_sample_max_size_ex(
+        PipeTallyStatePlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -211,35 +211,35 @@ namespace nec {
             unsigned int current_alignment);    
 
         NDDSUSERDllExport extern unsigned int 
-        PipeTallyPlugin_get_serialized_sample_max_size(
+        PipeTallyStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        PipeTallyPlugin_get_serialized_sample_min_size(
+        PipeTallyStatePlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int
-        PipeTallyPlugin_get_serialized_sample_size(
+        PipeTallyStatePlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const PipeTally * sample);
+            const PipeTallyState * sample);
 
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        PipeTallyPlugin_get_key_kind(void);
+        PipeTallyStatePlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        PipeTallyPlugin_get_serialized_key_max_size_ex(
+        PipeTallyStatePlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -247,16 +247,16 @@ namespace nec {
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        PipeTallyPlugin_get_serialized_key_max_size(
+        PipeTallyStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        PipeTallyPlugin_serialize_key(
+        PipeTallyStatePlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const PipeTally *sample,
+            const PipeTallyState *sample,
             struct RTICdrStream *stream,
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -264,18 +264,18 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        PipeTallyPlugin_deserialize_key_sample(
+        PipeTallyStatePlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally * sample,
+            PipeTallyState * sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        PipeTallyPlugin_deserialize_key(
+        PipeTallyStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally ** sample,
+            PipeTallyState ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -283,34 +283,34 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        PipeTallyPlugin_serialized_sample_to_key(
+        PipeTallyStatePlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally *sample,
+            PipeTallyState *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        PipeTallyPlugin_instance_to_key(
+        PipeTallyStatePlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTallyKeyHolder *key, 
-            const PipeTally *instance);
+            PipeTallyStateKeyHolder *key, 
+            const PipeTallyState *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        PipeTallyPlugin_key_to_instance(
+        PipeTallyStatePlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            PipeTally *instance, 
-            const PipeTallyKeyHolder *key);
+            PipeTallyState *instance, 
+            const PipeTallyStateKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
-        PipeTallyPlugin_instance_to_keyhash(
+        PipeTallyStatePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const PipeTally *instance);
+            const PipeTallyState *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        PipeTallyPlugin_serialized_sample_to_keyhash(
+        PipeTallyStatePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -319,10 +319,10 @@ namespace nec {
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        PipeTallyPlugin_new(void);
+        PipeTallyStatePlugin_new(void);
 
         NDDSUSERDllExport extern void
-        PipeTallyPlugin_delete(struct PRESTypePlugin *);
+        PipeTallyStatePlugin_delete(struct PRESTypePlugin *);
 
     } /* namespace process  */
 } /* namespace nec  */
@@ -334,5 +334,5 @@ namespace nec {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* pipe_tallyPlugin_58331454_h */
+#endif /* pipe_tallyPlugin_58331459_h */
 

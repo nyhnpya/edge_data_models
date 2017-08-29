@@ -36,16 +36,6 @@ class CAutoDrillerConfigurationRequestPublisher : public TPublisher< nec::contro
     void SetWeightOnBitTiCurrent(double weightOnBitTiCurrent);
     void SetMode(long mode);
     void SetModeController(double modeController);
-    void SetOnDataAvailable(double OnDataAvailable);
-    void SetOnLivelinessLost(double onLivelinessLost);
-    void SetModelOneDifferentialPressureRequestK(double modelOneDifferentialPressureRequestK);
-    void SetModelOneDifferentialPressureRequestTau(double modelOneDifferentialPressureRequestTau);
-    void SetModelOneRateOfPenetrationRequestK(double modelOneRateOfPenetrationRequestK);
-    void SetModelOneRateOfPenetrationRequestTau(double modelOneRateOfPenetrationRequestTau);
-    void SetModelOneTorqueRequestK(double modelOneTorqueRequestK);
-    void SetModelOneTorqueRequestTau(double modelOneTorqueRequestTau);
-    void SetModelOneWeightOnBitRequestK(double modelOneWeightOnBitRequestK);
-    void SetModelOneWeightOnBitRequestTau(double modelOneWeightOnBitRequestTau);
     void SetModelTwoDifferentialPressureRequestK(double modelTwoDifferentialPressureRequestK);
     void SetModelTwoDifferentialPressureRequestTau(double modelTwoDifferentialPressureRequestTau);
     void SetModelTwoRateOfPenetrationRequestK(double modelTwoRateOfPenetrationRequestK);
@@ -55,7 +45,6 @@ class CAutoDrillerConfigurationRequestPublisher : public TPublisher< nec::contro
     void SetModelTwoWeightOnBitRequestK(double modelTwoWeightOnBitRequestK);
     void SetModelTwoWeightOnBitRequestTau(double modelTwoWeightOnBitRequestTau);
     void SetStatus(long status);
-    void SetTuningDisable(bool tuningDisable);
     void SetTuningEnable(bool tuningEnable);
 };
 

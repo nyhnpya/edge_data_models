@@ -28,7 +28,7 @@ module nec
          * | description      |                                                        | string     | N/A     |
          * | type             | **TypeUnknown** - unknown type<br> **HeavyWeight** - Heavy Weight drill pipe<br> **DrillCollar** - drill collar<br> **DrillPipe** - standard drill pipe  | enum       | N/A     |
          */
-        struct PipeTally
+        struct PipeTallyState
         {
             DataTypes::Uuid     id; //@key
             DataTypes::Uuid     objectiveId; 

@@ -17,7 +17,7 @@ TARG_BUILD_MINOR = 1
 TARG_BUILD_PATCH = 0
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
-TARGET_NAME = wellbore_publisher
+TARGET_NAME = wellbore_state_publisher
 
 ###############################################################################
 # compilation flags
@@ -30,7 +30,7 @@ TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/downhole/wellbore/include
 TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/base_data_types/include
 
 # Sources
-TARG_SOURCES = wellbore_publisher.cpp
+TARG_SOURCES = wellbore_state_publisher.cpp
 
 ###############################################################################
 # Installation section
@@ -45,7 +45,7 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wellbore_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wellbore_state_publisher.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(TOP_DIR)/edge_data_models/package

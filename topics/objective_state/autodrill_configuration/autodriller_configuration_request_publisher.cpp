@@ -57,114 +57,6 @@ void CAutoDrillerConfigurationRequestPublisher::SetModeController(double modeCon
     }
 }
 
-void CAutoDrillerConfigurationRequestPublisher::SetOnLivelinessLost(double onLivelinessLost)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->onLivelinessLost = onLivelinessLost;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set onLivelinessLost because of uninitialized sample");
-    }
-}
-
-void CAutoDrillerConfigurationRequestPublisher::SetModelOneDifferentialPressureRequestK(double modelOneDifferentialPressureRequestK)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->modelOneDifferentialPressureRequestK = modelOneDifferentialPressureRequestK;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set modelOneDifferentialPressureRequestK because of uninitialized sample");
-    }
-}
-
-void CAutoDrillerConfigurationRequestPublisher::SetModelOneDifferentialPressureRequestTau(double modelOneDifferentialPressureRequestTau)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->modelOneDifferentialPressureRequestTau = modelOneDifferentialPressureRequestTau;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set modelOneDifferentialPressureRequestTau because of uninitialized sample");
-    }
-}
-
-void CAutoDrillerConfigurationRequestPublisher::SetModelOneRateOfPenetrationRequestK(double modelOneRateOfPenetrationRequestK)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->modelOneRateOfPenetrationRequestK = modelOneRateOfPenetrationRequestK;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set modelOneRateOfPenetrationRequestK because of uninitialized sample");
-    }
-}
-
-void CAutoDrillerConfigurationRequestPublisher::SetModelOneRateOfPenetrationRequestTau(double modelOneRateOfPenetrationRequestTau)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->modelOneRateOfPenetrationRequestTau = modelOneRateOfPenetrationRequestTau;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set modelOneRateOfPenetrationRequestTau because of uninitialized sample");
-    }
-}
-
-void CAutoDrillerConfigurationRequestPublisher::SetModelOneTorqueRequestK(double modelOneTorqueRequestK)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->modelOneTorqueRequestK = modelOneTorqueRequestK;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set modelOneTorqueRequestK because of uninitialized sample");
-    }
-}
-
-void CAutoDrillerConfigurationRequestPublisher::SetModelOneTorqueRequestTau(double modelOneTorqueRequestTau)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->modelOneTorqueRequestTau = modelOneTorqueRequestTau;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set modelOneTorqueRequestTau because of uninitialized sample");
-    }
-}
-
-void CAutoDrillerConfigurationRequestPublisher::SetModelOneWeightOnBitRequestK(double modelOneWeightOnBitRequestK)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->modelOneWeightOnBitRequestK = modelOneWeightOnBitRequestK;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set modelOneWeightOnBitRequestK because of uninitialized sample");
-    }
-}
-
-void CAutoDrillerConfigurationRequestPublisher::SetModelOneWeightOnBitRequestTau(double modelOneWeightOnBitRequestTau)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->modelOneWeightOnBitRequestTau = modelOneWeightOnBitRequestTau;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set modelOneWeightOnBitRequestTau because of uninitialized sample");
-    }
-}
-
 void CAutoDrillerConfigurationRequestPublisher::SetModelTwoDifferentialPressureRequestK(double modelTwoDifferentialPressureRequestK)
 {
     if (m_pDataInstance != nullptr)
@@ -270,18 +162,6 @@ void CAutoDrillerConfigurationRequestPublisher::SetStatus(long status)
     else
     {
         LOG_ERROR("Failed to set status because of uninitialized sample");
-    }
-}
-
-void CAutoDrillerConfigurationRequestPublisher::SetTuningDisable(bool tuningDisable)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->tuningDisable = tuningDisable;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set tuningDisable because of uninitialized sample");
     }
 }
 

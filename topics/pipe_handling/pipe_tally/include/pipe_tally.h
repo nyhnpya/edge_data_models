@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef pipe_tally_58331454_h
-#define pipe_tally_58331454_h
+#ifndef pipe_tally_58331459_h
+#define pipe_tally_58331459_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -25,23 +25,23 @@ namespace nec {
     namespace process {
         static const char PIPE_TALLY[] = "PipeTally"; 
 
-        extern const char *PipeTallyTYPENAME;
+        extern const char *PipeTallyStateTYPENAME;
 
-        struct PipeTallySeq;
+        struct PipeTallyStateSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class PipeTallyTypeSupport;
-        class PipeTallyDataWriter;
-        class PipeTallyDataReader;
+        class PipeTallyStateTypeSupport;
+        class PipeTallyStateDataWriter;
+        class PipeTallyStateDataReader;
         #endif
 
-        class PipeTally 
+        class PipeTallyState 
         {
           public:
-            typedef struct PipeTallySeq Seq;
+            typedef struct PipeTallyStateSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef PipeTallyTypeSupport TypeSupport;
-            typedef PipeTallyDataWriter DataWriter;
-            typedef PipeTallyDataReader DataReader;
+            typedef PipeTallyStateTypeSupport TypeSupport;
+            typedef PipeTallyStateDataWriter DataWriter;
+            typedef PipeTallyStateDataReader DataReader;
             #endif
 
             DataTypes::Uuid   id ;
@@ -68,44 +68,44 @@ namespace nec {
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
-        NDDSUSERDllExport DDS_TypeCode* PipeTally_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* PipeTallyState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(PipeTallySeq, PipeTally);                                        
-
-        NDDSUSERDllExport
-        RTIBool PipeTally_initialize(
-            PipeTally* self);
+        DDS_SEQUENCE(PipeTallyStateSeq, PipeTallyState);                                        
 
         NDDSUSERDllExport
-        RTIBool PipeTally_initialize_ex(
-            PipeTally* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool PipeTallyState_initialize(
+            PipeTallyState* self);
 
         NDDSUSERDllExport
-        RTIBool PipeTally_initialize_w_params(
-            PipeTally* self,
+        RTIBool PipeTallyState_initialize_ex(
+            PipeTallyState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool PipeTallyState_initialize_w_params(
+            PipeTallyState* self,
             const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
-        void PipeTally_finalize(
-            PipeTally* self);
+        void PipeTallyState_finalize(
+            PipeTallyState* self);
 
         NDDSUSERDllExport
-        void PipeTally_finalize_ex(
-            PipeTally* self,RTIBool deletePointers);
+        void PipeTallyState_finalize_ex(
+            PipeTallyState* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void PipeTally_finalize_w_params(
-            PipeTally* self,
+        void PipeTallyState_finalize_w_params(
+            PipeTallyState* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void PipeTally_finalize_optional_members(
-            PipeTally* self, RTIBool deletePointers);  
+        void PipeTallyState_finalize_optional_members(
+            PipeTallyState* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool PipeTally_copy(
-            PipeTally* dst,
-            const PipeTally* src);
+        RTIBool PipeTallyState_copy(
+            PipeTallyState* dst,
+            const PipeTallyState* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
