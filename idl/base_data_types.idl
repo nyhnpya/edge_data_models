@@ -46,6 +46,7 @@ module DataTypes
         Casing,
         CleaningHole,
         Drilling,
+        AutoReaming,
         Tripping
     };
 };

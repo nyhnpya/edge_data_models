@@ -1223,7 +1223,7 @@ namespace DataTypes {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member Objective_g_tc_members[5]=
+        static DDS_TypeCode_Member Objective_g_tc_members[6]=
         {
 
             {
@@ -1299,6 +1299,24 @@ namespace DataTypes {
                 NULL/* Ignored */
             }, 
             {
+                (char *)"AutoReaming",/* Member name */
+                {
+                    0, /* Ignored */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                AutoReaming, /* Enumerator ordinal */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PRIVATE_MEMBER,/* Member visibility */ 
+
+                1,
+                NULL/* Ignored */
+            }, 
+            {
                 (char *)"Tripping",/* Member name */
                 {
                     0, /* Ignored */          
@@ -1328,7 +1346,7 @@ namespace DataTypes {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                5, /* Number of members */
+                6, /* Number of members */
                 Objective_g_tc_members, /* Members */
                 DDS_VM_NONE   /* Type Modifier */        
             }}; /* Type code for Objective*/

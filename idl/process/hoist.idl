@@ -76,7 +76,7 @@ module nec
          * | maxHoistPosition  | requested target in m/s                | double            | m/sec |
          * | maxLowerPosition  | requested target in m/s                | double            | m/sec |
          * | targetVelocity    | requested target in m/s                | double            | m/sec |
-         * | targetPosition    | requested target position in m         | double          | m/sec |
+         * | targetPosition    | requested target position in m         | double            | m/sec |
          */
         struct HoistState
         {

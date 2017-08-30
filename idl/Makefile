@@ -98,6 +98,14 @@ configuration.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/configuration/
 	-@rm -rf $(TMPOUTDIR)
 
+auto_ream.cpy: 
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/process/auto_ream
+	mkdir -p $(TOPIC_HOME)/process/auto_ream/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/process/auto_ream/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/process/auto_ream
+	-@rm -rf $(TMPOUTDIR)
+
 circulate.cpy:
 	@echo "Copying generated files..."
 	mkdir -p $(TOPIC_HOME)/process/circulate

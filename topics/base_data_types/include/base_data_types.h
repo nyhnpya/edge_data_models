@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef base_data_types_308715453_h
-#define base_data_types_308715453_h
+#ifndef base_data_types_308715474_h
+#define base_data_types_308715474_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -386,6 +386,7 @@ namespace DataTypes {
         Casing ,      
         CleaningHole ,      
         Drilling ,      
+        AutoReaming ,      
         Tripping      
     } Objective;
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)

@@ -2908,6 +2908,9 @@ namespace DataTypes {
                 case Drilling:
                 *sample=Drilling;
                 break;
+                case AutoReaming:
+                *sample=AutoReaming;
+                break;
                 case Tripping:
                 *sample=Tripping;
                 break;
