@@ -3,7 +3,7 @@ module nec
 {
     module process
     {
-        //@copy-c-declaration static const char DRILLING_REQUEST[] = "DrillingRequest";
+        //@copy-c-declaration static const char AUTO_REAM_REQUEST[] = "AutoReamRequest";
 
         struct AutoReamRequest
         {
@@ -13,7 +13,7 @@ module nec
             DataTypes::Time     timeNeeded;   // time requester needs the resource
             DataTypes::Time     duration;     // duration requester needs the resource
             double QuillTipPosPV_m;   ///<      This is block position in meters;
-            double Hole_depth;            ///<      This is constant, so you can see that there is no drilling, only cleaning;
+            double Hole_depth;            ///<      This is constant, so you can see that there is no autoream, only cleaning;
             double Dp_PressurePV_kPa;   ///< This is DP in kiloPascals;
             double WeightOnBitPV_daN;  ///< This is WOB in decaNewtons;
             double StandpipePressUnfiltPV_kPa;  ///< This is standpipe pressure in kiloPascals;
@@ -21,13 +21,14 @@ module nec
             double TD_Quill_SpeedPV_rpm;  ///< This is TD rotary speed in RPM;
         };
  
+        //@copy-c-declaration static const char AUTO_REAM_OBJECTIVE[] = "AutoReamObjective";
         struct AutoReamObjective
         {
             DataTypes::Uuid  id; //@key
             DataTypes::Uuid  objectiveId; 
             DataTypes::Time  estimatedDuration;
             double QuillTipPosPV_m;   ///<      This is block position in meters;
-            double Hole_depth;            ///<      This is constant, so you can see that there is no drilling, only cleaning;
+            double Hole_depth;            ///<      This is constant, so you can see that there is no autoream, only cleaning;
             double Dp_PressurePV_kPa;   ///< This is DP in kiloPascals;
             double WeightOnBitPV_daN;  ///< This is WOB in decaNewtons;
             double StandpipePressUnfiltPV_kPa;  ///< This is standpipe pressure in kiloPascals;
@@ -35,20 +36,21 @@ module nec
             double TD_Quill_SpeedPV_rpm;  ///< This is TD rotary speed in RPM;
         };
  
+        //@copy-c-declaration static const char AUTO_REAM_STATE[] = "AutoReamState";
         struct AutoReamState
         {
             DataTypes::Uuid     id;   //@key
             DataTypes::Uuid     objectiveId; 
             DataTypes::Time     timestamp;
             DataTypes::Status   status;
-            double              hookloadActual;          ///< This is constant, so you can see that there is no drilling, only cleaning;
-            double              holeDepthActual;         ///< This is constant, so you can see that there is no drilling, only cleaning;
-            double              deltaPressureActual;     ///< This is DP in kiloPascals;
-            double              weightOnBitActual;       ///< This is WOB in decaNewtons;
-            double              standpipePressureActual; ///< This is standpipe pressure in kiloPascals;
-            double              blockSpeedActual;        ///< This is block speed in meters/second;
-            double              quillPositionActual;     ///< This is block position in meters;
-            double              quillRateActual;         ///< This is TD rotary speed in RPM;
+            double              hookloadActual;             ///< This is constant, so you can see that there is no autoream, only cleaning;
+            double              holeDepthActual;            ///< This is constant, so you can see that there is no autoream, only cleaning;
+            double              differentialPressureActual; ///< This is DP in kiloPascals;
+            double              weightOnBitActual;          ///< This is WOB in decaNewtons;
+            double              standpipePressureActual;    ///< This is standpipe pressure in kiloPascals;
+            double              blockSpeedActual;           ///< This is block speed in meters/second;
+            double              quillPositionActual;        ///< This is block position in meters;
+            double              quillRateActual;            ///< This is TD rotary speed in RPM;
         };
  
     };
