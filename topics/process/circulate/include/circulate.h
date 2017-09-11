@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef circulate_1746883267_h
-#define circulate_1746883267_h
+#ifndef circulate_1746883224_h
+#define circulate_1746883224_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -61,7 +61,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* CirculateRequest_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(CirculateRequestSeq, CirculateRequest);                                        
+        DDS_SEQUENCE(CirculateRequestSeq, CirculateRequest);
 
         NDDSUSERDllExport
         RTIBool CirculateRequest_initialize(
@@ -74,7 +74,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool CirculateRequest_initialize_w_params(
             CirculateRequest* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void CirculateRequest_finalize(
@@ -140,7 +140,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* CirculateObjective_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(CirculateObjectiveSeq, CirculateObjective);                                        
+        DDS_SEQUENCE(CirculateObjectiveSeq, CirculateObjective);
 
         NDDSUSERDllExport
         RTIBool CirculateObjective_initialize(
@@ -153,7 +153,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool CirculateObjective_initialize_w_params(
             CirculateObjective* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void CirculateObjective_finalize(
@@ -226,7 +226,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* CirculateState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(CirculateStateSeq, CirculateState);                                        
+        DDS_SEQUENCE(CirculateStateSeq, CirculateState);
 
         NDDSUSERDllExport
         RTIBool CirculateState_initialize(
@@ -239,7 +239,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool CirculateState_initialize_w_params(
             CirculateState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void CirculateState_finalize(

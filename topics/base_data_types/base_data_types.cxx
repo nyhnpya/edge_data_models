@@ -30,6 +30,8 @@ or consult the RTI Connext manual.
 
 #include "base_data_types.h"
 
+#include <new>
+
 namespace DataTypes {
 
     /* ========================================================================= */
@@ -90,7 +92,12 @@ namespace DataTypes {
         Uuid* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
 
         if (allocParams->allocate_memory){
             (*sample)= DDS_String_alloc ((36));
@@ -137,7 +144,10 @@ namespace DataTypes {
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
+
+        if (deallocParams == NULL) {
+            return;
+        }
 
         if ((*sample) != NULL) {
             DDS_String_free((*sample));
@@ -168,14 +178,23 @@ namespace DataTypes {
         Uuid* dst,
         const Uuid* src)
     {
+        try {
 
-        if (!RTICdrType_copyStringEx (
-            &(*dst), (*src), 
-            (36) + 1, RTI_FALSE)){
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_copyStringEx (
+                &(*dst), (*src), 
+                (36) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
+
+        } catch (std::bad_alloc&) {
             return RTI_FALSE;
         }
-
-        return RTI_TRUE;
     }
 
     /**
@@ -187,7 +206,9 @@ namespace DataTypes {
     */
     #define T Uuid
     #define TSeq UuidSeq
+
     #define T_initialize_w_params DataTypes::Uuid_initialize_w_params
+
     #define T_finalize_w_params   DataTypes::Uuid_finalize_w_params
     #define T_copy       DataTypes::Uuid_copy
 
@@ -201,7 +222,9 @@ namespace DataTypes {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
+
     #undef TSeq
     #undef T
 
@@ -303,15 +326,20 @@ namespace DataTypes {
         Time* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
 
         if (!RTICdrType_initLong(&sample->sec)) {
             return RTI_FALSE;
-        }     
+        }
 
         if (!RTICdrType_initUnsignedLong(&sample->nanosec)) {
             return RTI_FALSE;
-        }     
+        }
 
         return RTI_TRUE;
     }
@@ -346,7 +374,10 @@ namespace DataTypes {
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
+
+        if (deallocParams == NULL) {
+            return;
+        }
 
     }
 
@@ -372,17 +403,26 @@ namespace DataTypes {
         Time* dst,
         const Time* src)
     {
+        try {
 
-        if (!RTICdrType_copyLong (
-            &dst->sec, &src->sec)) { 
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_copyLong (
+                &dst->sec, &src->sec)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyUnsignedLong (
+                &dst->nanosec, &src->nanosec)) { 
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
+
+        } catch (std::bad_alloc&) {
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyUnsignedLong (
-            &dst->nanosec, &src->nanosec)) { 
-            return RTI_FALSE;
-        }
-
-        return RTI_TRUE;
     }
 
     /**
@@ -394,7 +434,9 @@ namespace DataTypes {
     */
     #define T Time
     #define TSeq TimeSeq
+
     #define T_initialize_w_params DataTypes::Time_initialize_w_params
+
     #define T_finalize_w_params   DataTypes::Time_finalize_w_params
     #define T_copy       DataTypes::Time_copy
 
@@ -408,7 +450,9 @@ namespace DataTypes {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
+
     #undef TSeq
     #undef T
 
@@ -430,7 +474,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                Normal, /* Enumerator ordinal */
+                Normal, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -448,7 +492,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                High, /* Enumerator ordinal */
+                High, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -466,7 +510,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                Critical, /* Enumerator ordinal */
+                Critical, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -527,7 +571,12 @@ namespace DataTypes {
         Priority* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
         *sample = Normal;
         return RTI_TRUE;
     }
@@ -564,7 +613,10 @@ namespace DataTypes {
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
+
+        if (deallocParams == NULL) {
+            return;
+        }
 
     }
 
@@ -590,9 +642,17 @@ namespace DataTypes {
         Priority* dst,
         const Priority* src)
     {
+        try {
 
-        return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
 
+            return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+
+        } catch (std::bad_alloc&) {
+            return RTI_FALSE;
+        }
     }
 
     /**
@@ -604,7 +664,9 @@ namespace DataTypes {
     */
     #define T Priority
     #define TSeq PrioritySeq
+
     #define T_initialize_w_params DataTypes::Priority_initialize_w_params
+
     #define T_finalize_w_params   DataTypes::Priority_finalize_w_params
     #define T_copy       DataTypes::Priority_copy
 
@@ -618,7 +680,9 @@ namespace DataTypes {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
+
     #undef TSeq
     #undef T
 
@@ -640,7 +704,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                Definitive, /* Enumerator ordinal */
+                Definitive, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -658,7 +722,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                Inconclusive, /* Enumerator ordinal */
+                Inconclusive, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -719,7 +783,12 @@ namespace DataTypes {
         SurveyQuality* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
         *sample = Definitive;
         return RTI_TRUE;
     }
@@ -756,7 +825,10 @@ namespace DataTypes {
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
+
+        if (deallocParams == NULL) {
+            return;
+        }
 
     }
 
@@ -782,9 +854,17 @@ namespace DataTypes {
         SurveyQuality* dst,
         const SurveyQuality* src)
     {
+        try {
 
-        return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
 
+            return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+
+        } catch (std::bad_alloc&) {
+            return RTI_FALSE;
+        }
     }
 
     /**
@@ -796,7 +876,9 @@ namespace DataTypes {
     */
     #define T SurveyQuality
     #define TSeq SurveyQualitySeq
+
     #define T_initialize_w_params DataTypes::SurveyQuality_initialize_w_params
+
     #define T_finalize_w_params   DataTypes::SurveyQuality_finalize_w_params
     #define T_copy       DataTypes::SurveyQuality_copy
 
@@ -810,7 +892,9 @@ namespace DataTypes {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
+
     #undef TSeq
     #undef T
 
@@ -832,7 +916,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                Fault, /* Enumerator ordinal */
+                Fault, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -850,7 +934,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                Good, /* Enumerator ordinal */
+                Good, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -911,7 +995,12 @@ namespace DataTypes {
         Status* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
         *sample = Fault;
         return RTI_TRUE;
     }
@@ -948,7 +1037,10 @@ namespace DataTypes {
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
+
+        if (deallocParams == NULL) {
+            return;
+        }
 
     }
 
@@ -974,9 +1066,17 @@ namespace DataTypes {
         Status* dst,
         const Status* src)
     {
+        try {
 
-        return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
 
+            return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+
+        } catch (std::bad_alloc&) {
+            return RTI_FALSE;
+        }
     }
 
     /**
@@ -988,7 +1088,9 @@ namespace DataTypes {
     */
     #define T Status
     #define TSeq StatusSeq
+
     #define T_initialize_w_params DataTypes::Status_initialize_w_params
+
     #define T_finalize_w_params   DataTypes::Status_finalize_w_params
     #define T_copy       DataTypes::Status_copy
 
@@ -1002,7 +1104,9 @@ namespace DataTypes {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
+
     #undef TSeq
     #undef T
 
@@ -1024,7 +1128,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                DrillCollar, /* Enumerator ordinal */
+                DrillCollar, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -1042,7 +1146,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                HeavyWeight, /* Enumerator ordinal */
+                HeavyWeight, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -1060,7 +1164,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                DrillPipe, /* Enumerator ordinal */
+                DrillPipe, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -1121,7 +1225,12 @@ namespace DataTypes {
         PipeType* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
         *sample = DrillCollar;
         return RTI_TRUE;
     }
@@ -1158,7 +1267,10 @@ namespace DataTypes {
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
+
+        if (deallocParams == NULL) {
+            return;
+        }
 
     }
 
@@ -1184,9 +1296,17 @@ namespace DataTypes {
         PipeType* dst,
         const PipeType* src)
     {
+        try {
 
-        return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
 
+            return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+
+        } catch (std::bad_alloc&) {
+            return RTI_FALSE;
+        }
     }
 
     /**
@@ -1198,7 +1318,9 @@ namespace DataTypes {
     */
     #define T PipeType
     #define TSeq PipeTypeSeq
+
     #define T_initialize_w_params DataTypes::PipeType_initialize_w_params
+
     #define T_finalize_w_params   DataTypes::PipeType_finalize_w_params
     #define T_copy       DataTypes::PipeType_copy
 
@@ -1212,7 +1334,9 @@ namespace DataTypes {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
+
     #undef TSeq
     #undef T
 
@@ -1234,7 +1358,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                None, /* Enumerator ordinal */
+                None, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -1252,7 +1376,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                Casing, /* Enumerator ordinal */
+                Casing, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -1270,7 +1394,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                CleaningHole, /* Enumerator ordinal */
+                CleaningHole, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -1288,7 +1412,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                Drilling, /* Enumerator ordinal */
+                Drilling, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -1306,7 +1430,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                AutoReaming, /* Enumerator ordinal */
+                AutoReaming, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -1324,7 +1448,7 @@ namespace DataTypes {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                Tripping, /* Enumerator ordinal */
+                Tripping, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -1385,7 +1509,12 @@ namespace DataTypes {
         Objective* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
         *sample = None;
         return RTI_TRUE;
     }
@@ -1422,7 +1551,10 @@ namespace DataTypes {
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
+
+        if (deallocParams == NULL) {
+            return;
+        }
 
     }
 
@@ -1448,9 +1580,17 @@ namespace DataTypes {
         Objective* dst,
         const Objective* src)
     {
+        try {
 
-        return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
 
+            return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+
+        } catch (std::bad_alloc&) {
+            return RTI_FALSE;
+        }
     }
 
     /**
@@ -1462,7 +1602,9 @@ namespace DataTypes {
     */
     #define T Objective
     #define TSeq ObjectiveSeq
+
     #define T_initialize_w_params DataTypes::Objective_initialize_w_params
+
     #define T_finalize_w_params   DataTypes::Objective_finalize_w_params
     #define T_copy       DataTypes::Objective_copy
 
@@ -1476,7 +1618,9 @@ namespace DataTypes {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
+
     #undef TSeq
     #undef T
 } /* namespace DataTypes  */

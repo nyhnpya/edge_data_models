@@ -30,6 +30,8 @@ or consult the RTI Connext manual.
 
 #include "autodriller_configuration.h"
 
+#include <new>
+
 namespace nec {
     namespace control {
 
@@ -359,7 +361,12 @@ namespace nec {
             HmiRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (allocParams) {} /* To avoid warnings */
+            if (sample == NULL) {
+                return RTI_FALSE;
+            }
+            if (allocParams == NULL) {
+                return RTI_FALSE;
+            }
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -372,51 +379,51 @@ namespace nec {
 
             if (!RTICdrType_initLong(&sample->mode)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->modeController)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->modelTwoDifferentialPressureRequestK)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->modelTwoDifferentialPressureRequestTau)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->modelTwoRateOfPenetrationRequestK)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->modelTwoRateOfPenetrationRequestTau)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->modelTwoTorqueRequestK)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->modelTwoTorqueRequestTau)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->modelTwoWeightOnBitRequestK)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->modelTwoWeightOnBitRequestTau)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initLong(&sample->status)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initBoolean(&sample->tuningEnable)) {
                 return RTI_FALSE;
-            }     
+            }
 
             return RTI_TRUE;
         }
@@ -451,7 +458,10 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-            if (deallocParams) {} /* To avoid warnings */
+
+            if (deallocParams == NULL) {
+                return;
+            }
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -483,65 +493,74 @@ namespace nec {
             HmiRequest* dst,
             const HmiRequest* src)
         {
+            try {
 
-            if (!DataTypes::Uuid_copy(
-                &dst->id, &src->id)) {
-                return RTI_FALSE;
-            } 
-            if (!DataTypes::Time_copy(
-                &dst->timestamp, &src->timestamp)) {
-                return RTI_FALSE;
-            } 
-            if (!RTICdrType_copyLong (
-                &dst->mode, &src->mode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modeController, &src->modeController)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelTwoDifferentialPressureRequestK, &src->modelTwoDifferentialPressureRequestK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelTwoDifferentialPressureRequestTau, &src->modelTwoDifferentialPressureRequestTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelTwoRateOfPenetrationRequestK, &src->modelTwoRateOfPenetrationRequestK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelTwoRateOfPenetrationRequestTau, &src->modelTwoRateOfPenetrationRequestTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelTwoTorqueRequestK, &src->modelTwoTorqueRequestK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelTwoTorqueRequestTau, &src->modelTwoTorqueRequestTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelTwoWeightOnBitRequestK, &src->modelTwoWeightOnBitRequestK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->modelTwoWeightOnBitRequestTau, &src->modelTwoWeightOnBitRequestTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyLong (
-                &dst->status, &src->status)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->tuningEnable, &src->tuningEnable)) { 
-                return RTI_FALSE;
-            }
+                if (dst == NULL || src == NULL) {
+                    return RTI_FALSE;
+                }
 
-            return RTI_TRUE;
+                if (!DataTypes::Uuid_copy(
+                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Time_copy(
+                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
+                    return RTI_FALSE;
+                } 
+                if (!RTICdrType_copyLong (
+                    &dst->mode, &src->mode)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->modeController, &src->modeController)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->modelTwoDifferentialPressureRequestK, &src->modelTwoDifferentialPressureRequestK)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->modelTwoDifferentialPressureRequestTau, &src->modelTwoDifferentialPressureRequestTau)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->modelTwoRateOfPenetrationRequestK, &src->modelTwoRateOfPenetrationRequestK)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->modelTwoRateOfPenetrationRequestTau, &src->modelTwoRateOfPenetrationRequestTau)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->modelTwoTorqueRequestK, &src->modelTwoTorqueRequestK)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->modelTwoTorqueRequestTau, &src->modelTwoTorqueRequestTau)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->modelTwoWeightOnBitRequestK, &src->modelTwoWeightOnBitRequestK)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->modelTwoWeightOnBitRequestTau, &src->modelTwoWeightOnBitRequestTau)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyLong (
+                    &dst->status, &src->status)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyBoolean (
+                    &dst->tuningEnable, &src->tuningEnable)) { 
+                    return RTI_FALSE;
+                }
+
+                return RTI_TRUE;
+
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
+            }
         }
 
         /**
@@ -553,7 +572,9 @@ namespace nec {
         */
         #define T HmiRequest
         #define TSeq HmiRequestSeq
+
         #define T_initialize_w_params nec::control::HmiRequest_initialize_w_params
+
         #define T_finalize_w_params   nec::control::HmiRequest_finalize_w_params
         #define T_copy       nec::control::HmiRequest_copy
 
@@ -567,7 +588,9 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
+
         #undef T_initialize_w_params
+
         #undef TSeq
         #undef T
 
@@ -2113,7 +2136,12 @@ namespace nec {
             HmiState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (allocParams) {} /* To avoid warnings */
+            if (sample == NULL) {
+                return RTI_FALSE;
+            }
+            if (allocParams == NULL) {
+                return RTI_FALSE;
+            }
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -2126,307 +2154,307 @@ namespace nec {
 
             if (!RTICdrType_initLong(&sample->mode)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initLong(&sample->modeController)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->pipeInnerDiameter)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->pipeOuterDiameter)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->slopeFilter)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->tauMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->tauMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->tauMultiplier)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureInitializeK)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureInitializeTau)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureInitializePreFilter)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureR1)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureR2)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationInitializeK)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationInitializeTau)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationInitializePreFilter)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationInitializeR1)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationInitializeR2)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueInitializeK)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueInitializeTau)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueInitializePreFilter)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueInitializeR1)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueInitializeR2)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitInitializeK)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitInitializeTau)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitInitializePreFilter)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitInitializeR1)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitInitializeR2)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->devMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->intervalMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureFilter)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureKcMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureKcMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureTdMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureTdMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureTiMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureTiMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureD)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureEps)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initBoolean(&sample->differentialPressureEpsManual)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureF)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationFilter)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationKcMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationKcMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationTdMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationTdMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationTiMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationTiMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationD)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationEps)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initBoolean(&sample->rateOfPenetrationEpsManual)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->rateOfPenetrationF)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitFilter)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitKcMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitKcMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitTdMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitTdMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitTiMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitTiMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitD)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitEps)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initBoolean(&sample->weightOnBitEpsManual)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->weightOnBitF)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueFilter)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueKcMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueKcMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueTdMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueTdMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueTiMax)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueTiMin)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueD)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueEps)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initBoolean(&sample->torqueEpsManual)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueF)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initLong(&sample->status)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initBoolean(&sample->tuningEnabled)) {
                 return RTI_FALSE;
-            }     
+            }
 
             return RTI_TRUE;
         }
@@ -2461,7 +2489,10 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-            if (deallocParams) {} /* To avoid warnings */
+
+            if (deallocParams == NULL) {
+                return;
+            }
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -2493,321 +2524,330 @@ namespace nec {
             HmiState* dst,
             const HmiState* src)
         {
+            try {
 
-            if (!DataTypes::Uuid_copy(
-                &dst->id, &src->id)) {
-                return RTI_FALSE;
-            } 
-            if (!DataTypes::Time_copy(
-                &dst->timestamp, &src->timestamp)) {
-                return RTI_FALSE;
-            } 
-            if (!RTICdrType_copyLong (
-                &dst->mode, &src->mode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyLong (
-                &dst->modeController, &src->modeController)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->pipeInnerDiameter, &src->pipeInnerDiameter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->pipeOuterDiameter, &src->pipeOuterDiameter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->slopeFilter, &src->slopeFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->tauMax, &src->tauMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->tauMin, &src->tauMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->tauMultiplier, &src->tauMultiplier)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureInitializeK, &src->differentialPressureInitializeK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureInitializeTau, &src->differentialPressureInitializeTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureInitializePreFilter, &src->differentialPressureInitializePreFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureR1, &src->differentialPressureR1)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureR2, &src->differentialPressureR2)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationInitializeK, &src->rateOfPenetrationInitializeK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationInitializeTau, &src->rateOfPenetrationInitializeTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationInitializePreFilter, &src->rateOfPenetrationInitializePreFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationInitializeR1, &src->rateOfPenetrationInitializeR1)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationInitializeR2, &src->rateOfPenetrationInitializeR2)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueInitializeK, &src->torqueInitializeK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueInitializeTau, &src->torqueInitializeTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueInitializePreFilter, &src->torqueInitializePreFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueInitializeR1, &src->torqueInitializeR1)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueInitializeR2, &src->torqueInitializeR2)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitInitializeK, &src->weightOnBitInitializeK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitInitializeTau, &src->weightOnBitInitializeTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitInitializePreFilter, &src->weightOnBitInitializePreFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitInitializeR1, &src->weightOnBitInitializeR1)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitInitializeR2, &src->weightOnBitInitializeR2)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->devMin, &src->devMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->intervalMin, &src->intervalMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureFilter, &src->differentialPressureFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureKcMax, &src->differentialPressureKcMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureKcMin, &src->differentialPressureKcMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureTdMax, &src->differentialPressureTdMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureTdMin, &src->differentialPressureTdMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureTiMax, &src->differentialPressureTiMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureTiMin, &src->differentialPressureTiMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureD, &src->differentialPressureD)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureEps, &src->differentialPressureEps)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->differentialPressureEpsManual, &src->differentialPressureEpsManual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureF, &src->differentialPressureF)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationFilter, &src->rateOfPenetrationFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationKcMax, &src->rateOfPenetrationKcMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationKcMin, &src->rateOfPenetrationKcMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationTdMax, &src->rateOfPenetrationTdMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationTdMin, &src->rateOfPenetrationTdMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationTiMax, &src->rateOfPenetrationTiMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationTiMin, &src->rateOfPenetrationTiMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationD, &src->rateOfPenetrationD)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationEps, &src->rateOfPenetrationEps)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->rateOfPenetrationEpsManual, &src->rateOfPenetrationEpsManual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->rateOfPenetrationF, &src->rateOfPenetrationF)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitFilter, &src->weightOnBitFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitKcMax, &src->weightOnBitKcMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitKcMin, &src->weightOnBitKcMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitTdMax, &src->weightOnBitTdMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitTdMin, &src->weightOnBitTdMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitTiMax, &src->weightOnBitTiMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitTiMin, &src->weightOnBitTiMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitD, &src->weightOnBitD)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitEps, &src->weightOnBitEps)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->weightOnBitEpsManual, &src->weightOnBitEpsManual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->weightOnBitF, &src->weightOnBitF)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueFilter, &src->torqueFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueKcMax, &src->torqueKcMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueKcMin, &src->torqueKcMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueTdMax, &src->torqueTdMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueTdMin, &src->torqueTdMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueTiMax, &src->torqueTiMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueTiMin, &src->torqueTiMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueD, &src->torqueD)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueEps, &src->torqueEps)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->torqueEpsManual, &src->torqueEpsManual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueF, &src->torqueF)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyLong (
-                &dst->status, &src->status)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->tuningEnabled, &src->tuningEnabled)) { 
-                return RTI_FALSE;
-            }
+                if (dst == NULL || src == NULL) {
+                    return RTI_FALSE;
+                }
 
-            return RTI_TRUE;
+                if (!DataTypes::Uuid_copy(
+                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Time_copy(
+                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
+                    return RTI_FALSE;
+                } 
+                if (!RTICdrType_copyLong (
+                    &dst->mode, &src->mode)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyLong (
+                    &dst->modeController, &src->modeController)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->pipeInnerDiameter, &src->pipeInnerDiameter)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->pipeOuterDiameter, &src->pipeOuterDiameter)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->slopeFilter, &src->slopeFilter)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->tauMax, &src->tauMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->tauMin, &src->tauMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->tauMultiplier, &src->tauMultiplier)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureInitializeK, &src->differentialPressureInitializeK)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureInitializeTau, &src->differentialPressureInitializeTau)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureInitializePreFilter, &src->differentialPressureInitializePreFilter)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureR1, &src->differentialPressureR1)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureR2, &src->differentialPressureR2)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationInitializeK, &src->rateOfPenetrationInitializeK)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationInitializeTau, &src->rateOfPenetrationInitializeTau)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationInitializePreFilter, &src->rateOfPenetrationInitializePreFilter)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationInitializeR1, &src->rateOfPenetrationInitializeR1)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationInitializeR2, &src->rateOfPenetrationInitializeR2)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueInitializeK, &src->torqueInitializeK)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueInitializeTau, &src->torqueInitializeTau)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueInitializePreFilter, &src->torqueInitializePreFilter)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueInitializeR1, &src->torqueInitializeR1)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueInitializeR2, &src->torqueInitializeR2)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitInitializeK, &src->weightOnBitInitializeK)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitInitializeTau, &src->weightOnBitInitializeTau)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitInitializePreFilter, &src->weightOnBitInitializePreFilter)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitInitializeR1, &src->weightOnBitInitializeR1)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitInitializeR2, &src->weightOnBitInitializeR2)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->devMin, &src->devMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->intervalMin, &src->intervalMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureFilter, &src->differentialPressureFilter)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureKcMax, &src->differentialPressureKcMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureKcMin, &src->differentialPressureKcMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureTdMax, &src->differentialPressureTdMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureTdMin, &src->differentialPressureTdMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureTiMax, &src->differentialPressureTiMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureTiMin, &src->differentialPressureTiMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureD, &src->differentialPressureD)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureEps, &src->differentialPressureEps)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyBoolean (
+                    &dst->differentialPressureEpsManual, &src->differentialPressureEpsManual)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureF, &src->differentialPressureF)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationFilter, &src->rateOfPenetrationFilter)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationKcMax, &src->rateOfPenetrationKcMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationKcMin, &src->rateOfPenetrationKcMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationTdMax, &src->rateOfPenetrationTdMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationTdMin, &src->rateOfPenetrationTdMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationTiMax, &src->rateOfPenetrationTiMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationTiMin, &src->rateOfPenetrationTiMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationD, &src->rateOfPenetrationD)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationEps, &src->rateOfPenetrationEps)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyBoolean (
+                    &dst->rateOfPenetrationEpsManual, &src->rateOfPenetrationEpsManual)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->rateOfPenetrationF, &src->rateOfPenetrationF)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitFilter, &src->weightOnBitFilter)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitKcMax, &src->weightOnBitKcMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitKcMin, &src->weightOnBitKcMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitTdMax, &src->weightOnBitTdMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitTdMin, &src->weightOnBitTdMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitTiMax, &src->weightOnBitTiMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitTiMin, &src->weightOnBitTiMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitD, &src->weightOnBitD)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitEps, &src->weightOnBitEps)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyBoolean (
+                    &dst->weightOnBitEpsManual, &src->weightOnBitEpsManual)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->weightOnBitF, &src->weightOnBitF)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueFilter, &src->torqueFilter)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueKcMax, &src->torqueKcMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueKcMin, &src->torqueKcMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueTdMax, &src->torqueTdMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueTdMin, &src->torqueTdMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueTiMax, &src->torqueTiMax)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueTiMin, &src->torqueTiMin)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueD, &src->torqueD)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueEps, &src->torqueEps)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyBoolean (
+                    &dst->torqueEpsManual, &src->torqueEpsManual)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueF, &src->torqueF)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyLong (
+                    &dst->status, &src->status)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyBoolean (
+                    &dst->tuningEnabled, &src->tuningEnabled)) { 
+                    return RTI_FALSE;
+                }
+
+                return RTI_TRUE;
+
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
+            }
         }
 
         /**
@@ -2819,7 +2859,9 @@ namespace nec {
         */
         #define T HmiState
         #define TSeq HmiStateSeq
+
         #define T_initialize_w_params nec::control::HmiState_initialize_w_params
+
         #define T_finalize_w_params   nec::control::HmiState_finalize_w_params
         #define T_copy       nec::control::HmiState_copy
 
@@ -2833,7 +2875,9 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
+
         #undef T_initialize_w_params
+
         #undef TSeq
         #undef T
     } /* namespace control  */

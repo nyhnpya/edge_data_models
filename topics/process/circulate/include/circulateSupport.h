@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef circulateSupport_1746883267_h
-#define circulateSupport_1746883267_h
+#ifndef circulateSupport_1746883224_h
+#define circulateSupport_1746883224_h
 
 /* Uses */
 #include "circulate.h"
@@ -46,7 +46,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(CirculateRequestTypeSupport, CirculateRequest);
+        DDS_TYPESUPPORT_CPP(
+            CirculateRequestTypeSupport, 
+            CirculateRequest);
 
         DDS_DATAWRITER_CPP(CirculateRequestDataWriter, CirculateRequest);
         DDS_DATAREADER_CPP(CirculateRequestDataReader, CirculateRequestSeq, CirculateRequest);
@@ -75,7 +77,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(CirculateObjectiveTypeSupport, CirculateObjective);
+        DDS_TYPESUPPORT_CPP(
+            CirculateObjectiveTypeSupport, 
+            CirculateObjective);
 
         DDS_DATAWRITER_CPP(CirculateObjectiveDataWriter, CirculateObjective);
         DDS_DATAREADER_CPP(CirculateObjectiveDataReader, CirculateObjectiveSeq, CirculateObjective);
@@ -104,7 +108,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(CirculateStateTypeSupport, CirculateState);
+        DDS_TYPESUPPORT_CPP(
+            CirculateStateTypeSupport, 
+            CirculateState);
 
         DDS_DATAWRITER_CPP(CirculateStateDataWriter, CirculateState);
         DDS_DATAREADER_CPP(CirculateStateDataReader, CirculateStateSeq, CirculateState);
@@ -118,5 +124,5 @@ namespace nec {
     } /* namespace process  */
 } /* namespace nec  */
 
-#endif  /* circulateSupport_1746883267_h */
+#endif  /* circulateSupport_1746883224_h */
 

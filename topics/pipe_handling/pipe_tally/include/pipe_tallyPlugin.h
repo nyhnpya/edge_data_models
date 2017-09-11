@@ -193,6 +193,12 @@ namespace nec {
             PipeTallyState *sample,
             const char * buffer,
             unsigned int length);    
+        NDDSUSERDllExport extern DDS_ReturnCode_t
+        PipeTallyStatePlugin_data_to_string(
+            const PipeTallyState *sample,
+            char *str,
+            DDS_UnsignedLong *str_size, 
+            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         PipeTallyStatePlugin_skip(

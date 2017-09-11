@@ -30,6 +30,8 @@ or consult the RTI Connext manual.
 
 #include "process_info.h"
 
+#include <new>
+
 namespace process {
     namespace maintanence {
 
@@ -228,7 +230,12 @@ namespace process {
             ProcessState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (allocParams) {} /* To avoid warnings */
+            if (sample == NULL) {
+                return RTI_FALSE;
+            }
+            if (allocParams == NULL) {
+                return RTI_FALSE;
+            }
 
             if (!RTICdrType_initArray(
                 sample->processName, (128), RTI_CDR_CHAR_SIZE)) {
@@ -237,27 +244,27 @@ namespace process {
 
             if (!RTICdrType_initLong(&sample->pid)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initLongLong(&sample->upTime)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initLongLong(&sample->totalVirtualMemory)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initLongLong(&sample->usedVirtualMemory)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initLongLong(&sample->totalPhysicalMemory)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initLongLong(&sample->usedPhysicalMemory)) {
                 return RTI_FALSE;
-            }     
+            }
 
             return RTI_TRUE;
         }
@@ -292,7 +299,10 @@ namespace process {
             if (sample==NULL) {
                 return;
             }
-            if (deallocParams) {} /* To avoid warnings */
+
+            if (deallocParams == NULL) {
+                return;
+            }
 
         }
 
@@ -318,37 +328,46 @@ namespace process {
             ProcessState* dst,
             const ProcessState* src)
         {
+            try {
 
-            if (!RTICdrType_copyArray(
-                dst->processName ,src->processName,(128), RTI_CDR_CHAR_SIZE)) {
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyLong (
-                &dst->pid, &src->pid)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyLongLong (
-                &dst->upTime, &src->upTime)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyLongLong (
-                &dst->totalVirtualMemory, &src->totalVirtualMemory)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyLongLong (
-                &dst->usedVirtualMemory, &src->usedVirtualMemory)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyLongLong (
-                &dst->totalPhysicalMemory, &src->totalPhysicalMemory)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyLongLong (
-                &dst->usedPhysicalMemory, &src->usedPhysicalMemory)) { 
-                return RTI_FALSE;
-            }
+                if (dst == NULL || src == NULL) {
+                    return RTI_FALSE;
+                }
 
-            return RTI_TRUE;
+                if (!RTICdrType_copyArray(
+                    dst->processName ,src->processName,(128), RTI_CDR_CHAR_SIZE)) {
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyLong (
+                    &dst->pid, &src->pid)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyLongLong (
+                    &dst->upTime, &src->upTime)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyLongLong (
+                    &dst->totalVirtualMemory, &src->totalVirtualMemory)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyLongLong (
+                    &dst->usedVirtualMemory, &src->usedVirtualMemory)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyLongLong (
+                    &dst->totalPhysicalMemory, &src->totalPhysicalMemory)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyLongLong (
+                    &dst->usedPhysicalMemory, &src->usedPhysicalMemory)) { 
+                    return RTI_FALSE;
+                }
+
+                return RTI_TRUE;
+
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
+            }
         }
 
         /**
@@ -360,7 +379,9 @@ namespace process {
         */
         #define T ProcessState
         #define TSeq ProcessStateSeq
+
         #define T_initialize_w_params process::maintanence::ProcessState_initialize_w_params
+
         #define T_finalize_w_params   process::maintanence::ProcessState_finalize_w_params
         #define T_copy       process::maintanence::ProcessState_copy
 
@@ -374,7 +395,9 @@ namespace process {
 
         #undef T_copy
         #undef T_finalize_w_params
+
         #undef T_initialize_w_params
+
         #undef TSeq
         #undef T
     } /* namespace maintanence  */

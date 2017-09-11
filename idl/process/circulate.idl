@@ -14,7 +14,7 @@ module nec
          */
         struct CirculateRequest
         {
-            DataTypes::Uuid     id; //@key   ///< id of requestor
+            DataTypes::Uuid     id; //@key   
             DataTypes::Uuid     objectiveId; ///< id of current objective
             DataTypes::Priority priority;    ///< priority of the request
             DataTypes::Time     timeNeeded;  ///< time requestor needs the resource
@@ -31,7 +31,7 @@ module nec
          */
         struct CirculateObjective
         {
-            DataTypes::Uuid     id; //@key   ///< id of requestor
+            DataTypes::Uuid     id; //@key
             DataTypes::Uuid     objectiveId; ///< id of current objective
             DataTypes::Time     estimatedDuration; ///< estimated duration requestor needs the resource
             double              targetFlowRate; ///< requested flow rate in m/sec^3

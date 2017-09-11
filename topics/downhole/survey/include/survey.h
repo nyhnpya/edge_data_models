@@ -61,7 +61,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* SurveyRequest_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(SurveyRequestSeq, SurveyRequest);                                        
+        DDS_SEQUENCE(SurveyRequestSeq, SurveyRequest);
 
         NDDSUSERDllExport
         RTIBool SurveyRequest_initialize(
@@ -74,7 +74,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool SurveyRequest_initialize_w_params(
             SurveyRequest* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void SurveyRequest_finalize(
@@ -140,7 +140,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* SurveyObjective_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(SurveyObjectiveSeq, SurveyObjective);                                        
+        DDS_SEQUENCE(SurveyObjectiveSeq, SurveyObjective);
 
         NDDSUSERDllExport
         RTIBool SurveyObjective_initialize(
@@ -153,7 +153,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool SurveyObjective_initialize_w_params(
             SurveyObjective* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void SurveyObjective_finalize(
@@ -240,7 +240,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* SurveyState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(SurveyStateSeq, SurveyState);                                        
+        DDS_SEQUENCE(SurveyStateSeq, SurveyState);
 
         NDDSUSERDllExport
         RTIBool SurveyState_initialize(
@@ -253,7 +253,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool SurveyState_initialize_w_params(
             SurveyState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void SurveyState_finalize(

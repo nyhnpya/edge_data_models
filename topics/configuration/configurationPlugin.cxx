@@ -1,5 +1,4 @@
 
-
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
@@ -42,9 +41,17 @@ or consult the RTI Connext manual.
 #include "cdr/cdr_stream.h"
 #endif
 
+#ifndef cdr_log_h
+#include "cdr/cdr_log.h"
+#endif
+
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
+
+#define RTI_CDR_CURRENT_SUBMODULE RTI_CDR_SUBMODULE_MASK_STREAM
+
+#include <new>
 
 #include "configurationPlugin.h"
 
@@ -60,34 +67,38 @@ namespace Configuration {
 
     Item*
     ItemPluginSupport_create_data_w_params(
-        const struct DDS_TypeAllocationParams_t * alloc_params){
+        const struct DDS_TypeAllocationParams_t * alloc_params) 
+    {
         Item *sample = NULL;
 
-        RTIOsapiHeap_allocateStructure(
-            &sample, Item);
+        sample = new (std::nothrow) Item ;
+        if (sample == NULL) {
+            return NULL;
+        }
 
-        if(sample != NULL) {
-            if (!Configuration::Item_initialize_w_params(sample,alloc_params)) {
-                RTIOsapiHeap_freeStructure(sample);
-                return NULL;
-            }
-        }        
+        if (!Configuration::Item_initialize_w_params(sample,alloc_params)) {
+            delete  sample;
+            sample=NULL;
+        }
         return sample; 
     } 
 
     Item *
-    ItemPluginSupport_create_data_ex(RTIBool allocate_pointers){
+    ItemPluginSupport_create_data_ex(RTIBool allocate_pointers) 
+    {
         Item *sample = NULL;
 
-        RTIOsapiHeap_allocateStructure(
-            &sample, Item);
+        sample = new (std::nothrow) Item ;
 
-        if(sample != NULL) {
-            if (!Configuration::Item_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-                RTIOsapiHeap_freeStructure(sample);
-                return NULL;
-            }
+        if(sample == NULL) {
+            return NULL;
         }
+
+        if (!Configuration::Item_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            delete  sample;
+            sample=NULL;
+        }
+
         return sample; 
     }
 
@@ -104,7 +115,8 @@ namespace Configuration {
 
         Configuration::Item_finalize_w_params(sample,dealloc_params);
 
-        RTIOsapiHeap_freeStructure(sample);
+        delete  sample;
+        sample=NULL;
     }
 
     void 
@@ -113,7 +125,8 @@ namespace Configuration {
 
         Configuration::Item_finalize_ex(sample,deallocate_pointers);
 
-        RTIOsapiHeap_freeStructure(sample);
+        delete  sample;
+        sample=NULL;
     }
 
     void 
@@ -129,7 +142,7 @@ namespace Configuration {
         Item *dst,
         const Item *src)
     {
-        return Configuration::Item_copy(dst,src);
+        return Configuration::Item_copy(dst,(const Item*) src);
     }
 
     void 
@@ -173,10 +186,10 @@ namespace Configuration {
     ItemPluginSupport_create_key_ex(RTIBool allocate_pointers){
         Item *key = NULL;
 
-        RTIOsapiHeap_allocateStructure(
-            &key, ItemKeyHolder);
+        key = new (std::nothrow) ItemKeyHolder ;
 
         Configuration::Item_initialize_ex(key,allocate_pointers, RTI_TRUE);
+
         return key;
     }
 
@@ -192,7 +205,9 @@ namespace Configuration {
     {
         Configuration::Item_finalize_ex(key,deallocate_pointers);
 
-        RTIOsapiHeap_freeStructure(key);
+        delete  key;
+        key=NULL;
+
     }
 
     void 
@@ -396,42 +411,48 @@ namespace Configuration {
 
         RTIBool done = RTI_FALSE;
 
-        if (endpoint_data) {} /* To avoid warnings */
-        if (endpoint_plugin_qos) {} /* To avoid warnings */
-        if(deserialize_encapsulation) {
+        try {
 
-            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                return RTI_FALSE;
+            if (endpoint_data) {} /* To avoid warnings */
+            if (endpoint_plugin_qos) {} /* To avoid warnings */
+            if(deserialize_encapsulation) {
+
+                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                    return RTI_FALSE;
+                }
+
+                position = RTICdrStream_resetAlignment(stream);
+            }
+            if(deserialize_sample) {
+
+                Configuration::Item_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+                if (!RTICdrStream_deserializeStringEx(
+                    stream,&sample->key, (255) + 1, RTI_FALSE)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeStringEx(
+                    stream,&sample->value, (255) + 1, RTI_FALSE)) {
+                    goto fin; 
+                }
             }
 
-            position = RTICdrStream_resetAlignment(stream);
-        }
-        if(deserialize_sample) {
-
-            Configuration::Item_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-            if (!RTICdrStream_deserializeStringEx(
-                stream,&sample->key, (255) + 1, RTI_FALSE)) {
-                goto fin; 
+            done = RTI_TRUE;
+          fin:
+            if (done != RTI_TRUE && 
+            RTICdrStream_getRemainder(stream) >=
+            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+                return RTI_FALSE;   
             }
-            if (!RTICdrStream_deserializeStringEx(
-                stream,&sample->value, (255) + 1, RTI_FALSE)) {
-                goto fin; 
+            if(deserialize_encapsulation) {
+                RTICdrStream_restoreAlignment(stream,position);
             }
-        }
 
-        done = RTI_TRUE;
-      fin:
-        if (done != RTI_TRUE && 
-        RTICdrStream_getRemainder(stream) >=
-        RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-            return RTI_FALSE;   
-        }
-        if(deserialize_encapsulation) {
-            RTICdrStream_restoreAlignment(stream,position);
-        }
+            return RTI_TRUE;
 
-        return RTI_TRUE;
+        } catch (std::bad_alloc&) {
+            return RTI_FALSE;
+        }
     }
 
     RTIBool
@@ -450,14 +471,14 @@ namespace Configuration {
 
         epd._maxSizeSerializedSample =
         ItemPlugin_get_serialized_sample_max_size(
-            NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
+            NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
 
         if (buffer == NULL) {
             *length = 
             ItemPlugin_get_serialized_sample_size(
                 (PRESTypePluginEndpointData)&epd,
                 RTI_TRUE,
-                RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
+                RTICdrEncapsulation_getNativeCdrEncapsulationId(),
                 0,
                 sample);
 
@@ -473,7 +494,7 @@ namespace Configuration {
 
         result = Configuration::ItemPlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
-            RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
+            RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
             RTI_TRUE, NULL);  
 
         *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -491,10 +512,96 @@ namespace Configuration {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, length);
 
+        Item_finalize_optional_members(sample, RTI_TRUE);
         return ItemPlugin_deserialize_sample( 
             NULL, sample,
             &stream, RTI_TRUE, RTI_TRUE, 
             NULL);
+    }
+
+    DDS_ReturnCode_t
+    ItemPlugin_data_to_string(
+        const Item *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property)
+    {
+        DDS_DynamicData *data = NULL;
+        char *buffer = NULL;
+        unsigned int length = 0;
+        struct DDS_PrintFormat printFormat;
+        DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
+
+        if (sample == NULL) {
+            return DDS_RETCODE_BAD_PARAMETER;
+        }
+
+        if (str_size == NULL) {
+            return DDS_RETCODE_BAD_PARAMETER;
+        }
+
+        if (property == NULL) {
+            return DDS_RETCODE_BAD_PARAMETER;
+        }
+
+        if (!ItemPlugin_serialize_to_cdr_buffer(
+            NULL, 
+            &length, 
+            sample)) {
+            return DDS_RETCODE_ERROR;
+        }
+
+        RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
+        if (buffer == NULL) {
+            return DDS_RETCODE_ERROR;
+        }
+
+        if (!ItemPlugin_serialize_to_cdr_buffer(
+            buffer, 
+            &length, 
+            sample)) {
+            RTIOsapiHeap_freeBuffer(buffer);
+            return DDS_RETCODE_ERROR;
+        }
+
+        data = DDS_DynamicData_new(
+            Item_get_typecode(), 
+            &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
+        if (data == NULL) {
+            RTIOsapiHeap_freeBuffer(buffer);
+            return DDS_RETCODE_ERROR;
+        }
+
+        retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
+        if (retCode != DDS_RETCODE_OK) {
+            RTIOsapiHeap_freeBuffer(buffer);
+            DDS_DynamicData_delete(data);
+            return retCode;
+        }
+
+        retCode = DDS_PrintFormatProperty_to_print_format(
+            property, 
+            &printFormat);
+        if (retCode != DDS_RETCODE_OK) {
+            RTIOsapiHeap_freeBuffer(buffer);
+            DDS_DynamicData_delete(data);
+            return retCode;
+        }
+
+        retCode = DDS_DynamicDataFormatter_to_string_w_format(
+            data, 
+            str,
+            str_size, 
+            &printFormat);
+        if (retCode != DDS_RETCODE_OK) {
+            RTIOsapiHeap_freeBuffer(buffer);
+            DDS_DynamicData_delete(data);
+            return retCode;
+        }
+
+        RTIOsapiHeap_freeBuffer(buffer);
+        DDS_DynamicData_delete(data);
+        return DDS_RETCODE_OK;
     }
 
     RTIBool 
@@ -509,6 +616,7 @@ namespace Configuration {
     {
 
         RTIBool result;
+        const char *METHOD_NAME = "ItemPlugin_deserialize";
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
@@ -520,6 +628,14 @@ namespace Configuration {
             if (stream->_xTypesState.unassignable) {
                 result = RTI_FALSE;
             }
+        }
+        if (!result && stream->_xTypesState.unassignable ) {
+
+            RTICdrLog_exception(
+                METHOD_NAME, 
+                &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
+                "Item");
+
         }
 
         return result;
@@ -685,10 +801,16 @@ namespace Configuration {
         unsigned int initial_alignment = current_alignment;
 
         unsigned int encapsulation_size = current_alignment;
+        struct PRESTypePluginDefaultEndpointData epd;   
 
-        if (endpoint_data) {} /* To avoid warnings */ 
         if (sample==NULL) {
             return 0;
+        }
+        if (endpoint_data == NULL) {
+            endpoint_data = (PRESTypePluginEndpointData) &epd;
+            PRESTypePluginDefaultEndpointData_setBaseAlignment(
+                endpoint_data,
+                current_alignment);        
         }
 
         if (include_encapsulation) {
@@ -700,12 +822,18 @@ namespace Configuration {
             encapsulation_size -= current_alignment;
             current_alignment = 0;
             initial_alignment = 0;
+            PRESTypePluginDefaultEndpointData_setBaseAlignment(
+                endpoint_data,
+                current_alignment);
         }
 
         current_alignment += RTICdrType_getStringSerializedSize(
-            current_alignment, sample->key);
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment), sample->key);
+
         current_alignment += RTICdrType_getStringSerializedSize(
-            current_alignment, sample->value);
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment), sample->value);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -770,32 +898,38 @@ namespace Configuration {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        char * position = NULL;
+        try {
 
-        if (endpoint_data) {} /* To avoid warnings */
-        if (endpoint_plugin_qos) {} /* To avoid warnings */
+            char * position = NULL;
 
-        if(deserialize_encapsulation) {
+            if (endpoint_data) {} /* To avoid warnings */
+            if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                return RTI_FALSE;
+            if(deserialize_encapsulation) {
+
+                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                    return RTI_FALSE;
+                }
+
+                position = RTICdrStream_resetAlignment(stream);
+            }
+            if (deserialize_key) {
+
+                if (!RTICdrStream_deserializeStringEx(
+                    stream,&sample->key, (255) + 1, RTI_FALSE)) {
+                    return RTI_FALSE;
+                }
             }
 
-            position = RTICdrStream_resetAlignment(stream);
-        }
-        if (deserialize_key) {
-
-            if (!RTICdrStream_deserializeStringEx(
-                stream,&sample->key, (255) + 1, RTI_FALSE)) {
-                return RTI_FALSE;
+            if(deserialize_encapsulation) {
+                RTICdrStream_restoreAlignment(stream,position);
             }
-        }
 
-        if(deserialize_encapsulation) {
-            RTICdrStream_restoreAlignment(stream,position);
-        }
+            return RTI_TRUE;
 
-        return RTI_TRUE;
+        } catch (std::bad_alloc&) {
+            return RTI_FALSE;
+        }
     }
 
     RTIBool ItemPlugin_deserialize_key(
@@ -928,7 +1062,7 @@ namespace Configuration {
                 return RTI_FALSE;   
             }
         } else {
-            return error;
+            return RTI_FALSE;
         }       
 
         if(deserialize_encapsulation) {
@@ -992,8 +1126,14 @@ namespace Configuration {
         RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
         if (!Configuration::ItemPlugin_serialize_key(
-            endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
-
+            endpoint_data,
+            instance,
+            md5Stream, 
+            RTI_FALSE, 
+            RTI_CDR_ENCAPSULATION_ID_CDR_BE, 
+            RTI_TRUE,
+            NULL)) 
+        {
             int size;
 
             RTICdrStream_pushState(md5Stream, &cdrState, -1);
@@ -1024,7 +1164,13 @@ namespace Configuration {
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
             if (!Configuration::ItemPlugin_serialize_key(
-                endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
+                endpoint_data,
+                instance,
+                md5Stream, 
+                RTI_FALSE, 
+                RTI_CDR_ENCAPSULATION_ID_CDR_BE, 
+                RTI_TRUE,
+                NULL)) 
             {
                 RTICdrStream_popState(md5Stream, &cdrState);
                 RTIOsapiHeap_freeBuffer(buffer);
@@ -1032,7 +1178,9 @@ namespace Configuration {
             }        
         }   
 
-        if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data) > (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH)) {
+        if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data) > 
+        (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH) ||
+        PRESTypePluginDefaultEndpointData_forceMD5KeyHash(endpoint_data)) {
             RTICdrStream_computeMD5(md5Stream, keyhash->value);
         } else {
             RTIOsapiMemory_zero(keyhash->value,MIG_RTPS_KEY_HASH_MAX_LENGTH);
@@ -1048,6 +1196,7 @@ namespace Configuration {
             RTICdrStream_popState(md5Stream, &cdrState);
             RTIOsapiHeap_freeBuffer(buffer);
         }
+
         return RTI_TRUE;
     }
 
@@ -1099,7 +1248,7 @@ namespace Configuration {
                 return RTI_FALSE;   
             }
         } else {
-            return error;
+            return RTI_FALSE;
         } 
 
         if(deserialize_encapsulation) {
@@ -1125,6 +1274,7 @@ namespace Configuration {
 
         RTIOsapiHeap_allocateStructure(
             &plugin, struct PRESTypePlugin);
+
         if (plugin == NULL) {
             return NULL;
         }
@@ -1239,4 +1389,4 @@ namespace Configuration {
         RTIOsapiHeap_freeStructure(plugin);
     } 
 } /* namespace Configuration  */
-
+#undef RTI_CDR_CURRENT_SUBMODULE 

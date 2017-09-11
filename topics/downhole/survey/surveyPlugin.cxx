@@ -1,5 +1,4 @@
 
-
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
@@ -42,9 +41,17 @@ or consult the RTI Connext manual.
 #include "cdr/cdr_stream.h"
 #endif
 
+#ifndef cdr_log_h
+#include "cdr/cdr_log.h"
+#endif
+
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
+
+#define RTI_CDR_CURRENT_SUBMODULE RTI_CDR_SUBMODULE_MASK_STREAM
+
+#include <new>
 
 #include "surveyPlugin.h"
 
@@ -61,34 +68,38 @@ namespace nec {
 
         SurveyRequest*
         SurveyRequestPluginSupport_create_data_w_params(
-            const struct DDS_TypeAllocationParams_t * alloc_params){
+            const struct DDS_TypeAllocationParams_t * alloc_params) 
+        {
             SurveyRequest *sample = NULL;
 
-            RTIOsapiHeap_allocateStructure(
-                &sample, SurveyRequest);
+            sample = new (std::nothrow) SurveyRequest ;
+            if (sample == NULL) {
+                return NULL;
+            }
 
-            if(sample != NULL) {
-                if (!nec::process::SurveyRequest_initialize_w_params(sample,alloc_params)) {
-                    RTIOsapiHeap_freeStructure(sample);
-                    return NULL;
-                }
-            }        
+            if (!nec::process::SurveyRequest_initialize_w_params(sample,alloc_params)) {
+                delete  sample;
+                sample=NULL;
+            }
             return sample; 
         } 
 
         SurveyRequest *
-        SurveyRequestPluginSupport_create_data_ex(RTIBool allocate_pointers){
+        SurveyRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
+        {
             SurveyRequest *sample = NULL;
 
-            RTIOsapiHeap_allocateStructure(
-                &sample, SurveyRequest);
+            sample = new (std::nothrow) SurveyRequest ;
 
-            if(sample != NULL) {
-                if (!nec::process::SurveyRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-                    RTIOsapiHeap_freeStructure(sample);
-                    return NULL;
-                }
+            if(sample == NULL) {
+                return NULL;
             }
+
+            if (!nec::process::SurveyRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                delete  sample;
+                sample=NULL;
+            }
+
             return sample; 
         }
 
@@ -105,7 +116,8 @@ namespace nec {
 
             nec::process::SurveyRequest_finalize_w_params(sample,dealloc_params);
 
-            RTIOsapiHeap_freeStructure(sample);
+            delete  sample;
+            sample=NULL;
         }
 
         void 
@@ -114,7 +126,8 @@ namespace nec {
 
             nec::process::SurveyRequest_finalize_ex(sample,deallocate_pointers);
 
-            RTIOsapiHeap_freeStructure(sample);
+            delete  sample;
+            sample=NULL;
         }
 
         void 
@@ -130,7 +143,7 @@ namespace nec {
             SurveyRequest *dst,
             const SurveyRequest *src)
         {
-            return nec::process::SurveyRequest_copy(dst,src);
+            return nec::process::SurveyRequest_copy(dst,(const SurveyRequest*) src);
         }
 
         void 
@@ -154,32 +167,32 @@ namespace nec {
             }
 
             DataTypes::UuidPluginSupport_print_data(
-                &sample->id, "id", indent_level + 1);
+                (const DataTypes::Uuid*) &sample->id, "id", indent_level + 1);
 
             DataTypes::UuidPluginSupport_print_data(
-                &sample->objectiveId, "objectiveId", indent_level + 1);
+                (const DataTypes::Uuid*) &sample->objectiveId, "objectiveId", indent_level + 1);
 
             DataTypes::PriorityPluginSupport_print_data(
-                &sample->priority, "priority", indent_level + 1);
+                (const DataTypes::Priority*) &sample->priority, "priority", indent_level + 1);
 
             DataTypes::TimePluginSupport_print_data(
-                &sample->timeNeeded, "timeNeeded", indent_level + 1);
+                (const DataTypes::Time*) &sample->timeNeeded, "timeNeeded", indent_level + 1);
 
             DataTypes::TimePluginSupport_print_data(
-                &sample->estimatedDuration, "estimatedDuration", indent_level + 1);
+                (const DataTypes::Time*) &sample->estimatedDuration, "estimatedDuration", indent_level + 1);
 
             DataTypes::SurveyQualityPluginSupport_print_data(
-                &sample->surveyQuality, "surveyQuality", indent_level + 1);
+                (const DataTypes::SurveyQuality*) &sample->surveyQuality, "surveyQuality", indent_level + 1);
 
         }
         SurveyRequest *
         SurveyRequestPluginSupport_create_key_ex(RTIBool allocate_pointers){
             SurveyRequest *key = NULL;
 
-            RTIOsapiHeap_allocateStructure(
-                &key, SurveyRequestKeyHolder);
+            key = new (std::nothrow) SurveyRequestKeyHolder ;
 
             nec::process::SurveyRequest_initialize_ex(key,allocate_pointers, RTI_TRUE);
+
             return key;
         }
 
@@ -195,7 +208,9 @@ namespace nec {
         {
             nec::process::SurveyRequest_finalize_ex(key,deallocate_pointers);
 
-            RTIOsapiHeap_freeStructure(key);
+            delete  key;
+            key=NULL;
+
         }
 
         void 
@@ -368,7 +383,7 @@ namespace nec {
 
                 if(!DataTypes::UuidPlugin_serialize(
                     endpoint_data,
-                    &sample->id,
+                    (const DataTypes::Uuid*) &sample->id,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -378,7 +393,7 @@ namespace nec {
 
                 if(!DataTypes::UuidPlugin_serialize(
                     endpoint_data,
-                    &sample->objectiveId,
+                    (const DataTypes::Uuid*) &sample->objectiveId,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -388,7 +403,7 @@ namespace nec {
 
                 if(!DataTypes::PriorityPlugin_serialize(
                     endpoint_data,
-                    &sample->priority,
+                    (const DataTypes::Priority*) &sample->priority,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -398,7 +413,7 @@ namespace nec {
 
                 if(!DataTypes::TimePlugin_serialize(
                     endpoint_data,
-                    &sample->timeNeeded,
+                    (const DataTypes::Time*) &sample->timeNeeded,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -408,7 +423,7 @@ namespace nec {
 
                 if(!DataTypes::TimePlugin_serialize(
                     endpoint_data,
-                    &sample->estimatedDuration,
+                    (const DataTypes::Time*) &sample->estimatedDuration,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -418,7 +433,7 @@ namespace nec {
 
                 if(!DataTypes::SurveyQualityPlugin_serialize(
                     endpoint_data,
-                    &sample->surveyQuality,
+                    (const DataTypes::SurveyQuality*) &sample->surveyQuality,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -449,82 +464,88 @@ namespace nec {
 
             RTIBool done = RTI_FALSE;
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
+            try {
 
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
+                if (endpoint_data) {} /* To avoid warnings */
+                if (endpoint_plugin_qos) {} /* To avoid warnings */
+                if(deserialize_encapsulation) {
+
+                    if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                        return RTI_FALSE;
+                    }
+
+                    position = RTICdrStream_resetAlignment(stream);
+                }
+                if(deserialize_sample) {
+
+                    nec::process::SurveyRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+                    if(!DataTypes::UuidPlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->id,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::UuidPlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->objectiveId,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::PriorityPlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->priority,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::TimePlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->timeNeeded,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::TimePlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->estimatedDuration,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::SurveyQualityPlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->surveyQuality,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
                 }
 
-                position = RTICdrStream_resetAlignment(stream);
+                done = RTI_TRUE;
+              fin:
+                if (done != RTI_TRUE && 
+                RTICdrStream_getRemainder(stream) >=
+                RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+                    return RTI_FALSE;   
+                }
+                if(deserialize_encapsulation) {
+                    RTICdrStream_restoreAlignment(stream,position);
+                }
+
+                return RTI_TRUE;
+
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
             }
-            if(deserialize_sample) {
-
-                nec::process::SurveyRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if(!DataTypes::UuidPlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->id,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if(!DataTypes::UuidPlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->objectiveId,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if(!DataTypes::PriorityPlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->priority,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if(!DataTypes::TimePlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->timeNeeded,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if(!DataTypes::TimePlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->estimatedDuration,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if(!DataTypes::SurveyQualityPlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->surveyQuality,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-            }
-
-            done = RTI_TRUE;
-          fin:
-            if (done != RTI_TRUE && 
-            RTICdrStream_getRemainder(stream) >=
-            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                return RTI_FALSE;   
-            }
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
         }
 
         RTIBool
@@ -543,14 +564,14 @@ namespace nec {
 
             epd._maxSizeSerializedSample =
             SurveyRequestPlugin_get_serialized_sample_max_size(
-                NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
+                NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
 
             if (buffer == NULL) {
                 *length = 
                 SurveyRequestPlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
-                    RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
+                    RTICdrEncapsulation_getNativeCdrEncapsulationId(),
                     0,
                     sample);
 
@@ -566,7 +587,7 @@ namespace nec {
 
             result = nec::process::SurveyRequestPlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
-                RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
+                RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
                 RTI_TRUE, NULL);  
 
             *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -584,10 +605,96 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
+            SurveyRequest_finalize_optional_members(sample, RTI_TRUE);
             return SurveyRequestPlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
+        }
+
+        DDS_ReturnCode_t
+        SurveyRequestPlugin_data_to_string(
+            const SurveyRequest *sample,
+            char *str,
+            DDS_UnsignedLong *str_size, 
+            const struct DDS_PrintFormatProperty *property)
+        {
+            DDS_DynamicData *data = NULL;
+            char *buffer = NULL;
+            unsigned int length = 0;
+            struct DDS_PrintFormat printFormat;
+            DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
+
+            if (sample == NULL) {
+                return DDS_RETCODE_BAD_PARAMETER;
+            }
+
+            if (str_size == NULL) {
+                return DDS_RETCODE_BAD_PARAMETER;
+            }
+
+            if (property == NULL) {
+                return DDS_RETCODE_BAD_PARAMETER;
+            }
+
+            if (!SurveyRequestPlugin_serialize_to_cdr_buffer(
+                NULL, 
+                &length, 
+                sample)) {
+                return DDS_RETCODE_ERROR;
+            }
+
+            RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
+            if (buffer == NULL) {
+                return DDS_RETCODE_ERROR;
+            }
+
+            if (!SurveyRequestPlugin_serialize_to_cdr_buffer(
+                buffer, 
+                &length, 
+                sample)) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                return DDS_RETCODE_ERROR;
+            }
+
+            data = DDS_DynamicData_new(
+                SurveyRequest_get_typecode(), 
+                &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
+            if (data == NULL) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                return DDS_RETCODE_ERROR;
+            }
+
+            retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
+            if (retCode != DDS_RETCODE_OK) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                DDS_DynamicData_delete(data);
+                return retCode;
+            }
+
+            retCode = DDS_PrintFormatProperty_to_print_format(
+                property, 
+                &printFormat);
+            if (retCode != DDS_RETCODE_OK) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                DDS_DynamicData_delete(data);
+                return retCode;
+            }
+
+            retCode = DDS_DynamicDataFormatter_to_string_w_format(
+                data, 
+                str,
+                str_size, 
+                &printFormat);
+            if (retCode != DDS_RETCODE_OK) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                DDS_DynamicData_delete(data);
+                return retCode;
+            }
+
+            RTIOsapiHeap_freeBuffer(buffer);
+            DDS_DynamicData_delete(data);
+            return DDS_RETCODE_OK;
         }
 
         RTIBool 
@@ -602,6 +709,7 @@ namespace nec {
         {
 
             RTIBool result;
+            const char *METHOD_NAME = "SurveyRequestPlugin_deserialize";
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
@@ -613,6 +721,14 @@ namespace nec {
                 if (stream->_xTypesState.unassignable) {
                     result = RTI_FALSE;
                 }
+            }
+            if (!result && stream->_xTypesState.unassignable ) {
+
+                RTICdrLog_exception(
+                    METHOD_NAME, 
+                    &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
+                    "SurveyRequest");
+
             }
 
             return result;
@@ -831,10 +947,16 @@ namespace nec {
             unsigned int initial_alignment = current_alignment;
 
             unsigned int encapsulation_size = current_alignment;
+            struct PRESTypePluginDefaultEndpointData epd;   
 
-            if (endpoint_data) {} /* To avoid warnings */ 
             if (sample==NULL) {
                 return 0;
+            }
+            if (endpoint_data == NULL) {
+                endpoint_data = (PRESTypePluginEndpointData) &epd;
+                PRESTypePluginDefaultEndpointData_setBaseAlignment(
+                    endpoint_data,
+                    current_alignment);        
             }
 
             if (include_encapsulation) {
@@ -846,26 +968,34 @@ namespace nec {
                 encapsulation_size -= current_alignment;
                 current_alignment = 0;
                 initial_alignment = 0;
+                PRESTypePluginDefaultEndpointData_setBaseAlignment(
+                    endpoint_data,
+                    current_alignment);
             }
 
             current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->id);
+                current_alignment, (const DataTypes::Uuid*) &sample->id);
+
             current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->objectiveId);
+                current_alignment, (const DataTypes::Uuid*) &sample->objectiveId);
+
             current_alignment += DataTypes::PriorityPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->priority);
+                current_alignment, (const DataTypes::Priority*) &sample->priority);
+
             current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->timeNeeded);
+                current_alignment, (const DataTypes::Time*) &sample->timeNeeded);
+
             current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->estimatedDuration);
+                current_alignment, (const DataTypes::Time*) &sample->estimatedDuration);
+
             current_alignment += DataTypes::SurveyQualityPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->surveyQuality);
+                current_alignment, (const DataTypes::SurveyQuality*) &sample->surveyQuality);
 
             if (include_encapsulation) {
                 current_alignment += encapsulation_size;
@@ -907,7 +1037,7 @@ namespace nec {
 
                 if(!DataTypes::UuidPlugin_serialize_key(
                     endpoint_data,
-                    &sample->id,
+                    (const DataTypes::Uuid*) &sample->id,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -932,36 +1062,42 @@ namespace nec {
             RTIBool deserialize_key,
             void *endpoint_plugin_qos)
         {
-            char * position = NULL;
+            try {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+                char * position = NULL;
 
-            if(deserialize_encapsulation) {
+                if (endpoint_data) {} /* To avoid warnings */
+                if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
+                if(deserialize_encapsulation) {
+
+                    if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                        return RTI_FALSE;
+                    }
+
+                    position = RTICdrStream_resetAlignment(stream);
+                }
+                if (deserialize_key) {
+
+                    if(!DataTypes::UuidPlugin_deserialize_key_sample(
+                        endpoint_data,
+                        &sample->id,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        return RTI_FALSE;
+                    }
                 }
 
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if(!DataTypes::UuidPlugin_deserialize_key_sample(
-                    endpoint_data,
-                    &sample->id,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    return RTI_FALSE;
+                if(deserialize_encapsulation) {
+                    RTICdrStream_restoreAlignment(stream,position);
                 }
-            }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
+                return RTI_TRUE;
 
-            return RTI_TRUE;
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
+            }
         }
 
         RTIBool SurveyRequestPlugin_deserialize_key(
@@ -1131,7 +1267,7 @@ namespace nec {
                     return RTI_FALSE;   
                 }
             } else {
-                return error;
+                return RTI_FALSE;
             }       
 
             if(deserialize_encapsulation) {
@@ -1151,7 +1287,7 @@ namespace nec {
             if (endpoint_data) {} /* To avoid warnings */   
 
             if (!DataTypes::Uuid_copy(
-                &dst->id, &src->id)) {
+                &dst->id,(const DataTypes::Uuid*)&src->id)) {
                 return RTI_FALSE;
             } 
             return RTI_TRUE;
@@ -1166,7 +1302,7 @@ namespace nec {
 
             if (endpoint_data) {} /* To avoid warnings */   
             if (!DataTypes::Uuid_copy(
-                &dst->id, &src->id)) {
+                &dst->id,(const DataTypes::Uuid*)&src->id)) {
                 return RTI_FALSE;
             } 
             return RTI_TRUE;
@@ -1193,8 +1329,14 @@ namespace nec {
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
             if (!nec::process::SurveyRequestPlugin_serialize_key(
-                endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
-
+                endpoint_data,
+                instance,
+                md5Stream, 
+                RTI_FALSE, 
+                RTI_CDR_ENCAPSULATION_ID_CDR_BE, 
+                RTI_TRUE,
+                NULL)) 
+            {
                 int size;
 
                 RTICdrStream_pushState(md5Stream, &cdrState, -1);
@@ -1225,7 +1367,13 @@ namespace nec {
                 RTICdrStream_resetPosition(md5Stream);
                 RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
                 if (!nec::process::SurveyRequestPlugin_serialize_key(
-                    endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
+                    endpoint_data,
+                    instance,
+                    md5Stream, 
+                    RTI_FALSE, 
+                    RTI_CDR_ENCAPSULATION_ID_CDR_BE, 
+                    RTI_TRUE,
+                    NULL)) 
                 {
                     RTICdrStream_popState(md5Stream, &cdrState);
                     RTIOsapiHeap_freeBuffer(buffer);
@@ -1233,7 +1381,9 @@ namespace nec {
                 }        
             }   
 
-            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data) > (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH)) {
+            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data) > 
+            (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH) ||
+            PRESTypePluginDefaultEndpointData_forceMD5KeyHash(endpoint_data)) {
                 RTICdrStream_computeMD5(md5Stream, keyhash->value);
             } else {
                 RTIOsapiMemory_zero(keyhash->value,MIG_RTPS_KEY_HASH_MAX_LENGTH);
@@ -1249,6 +1399,7 @@ namespace nec {
                 RTICdrStream_popState(md5Stream, &cdrState);
                 RTIOsapiHeap_freeBuffer(buffer);
             }
+
             return RTI_TRUE;
         }
 
@@ -1304,7 +1455,7 @@ namespace nec {
                     return RTI_FALSE;   
                 }
             } else {
-                return error;
+                return RTI_FALSE;
             } 
 
             if(deserialize_encapsulation) {
@@ -1330,6 +1481,7 @@ namespace nec {
 
             RTIOsapiHeap_allocateStructure(
                 &plugin, struct PRESTypePlugin);
+
             if (plugin == NULL) {
                 return NULL;
             }
@@ -1454,34 +1606,38 @@ namespace nec {
 
         SurveyObjective*
         SurveyObjectivePluginSupport_create_data_w_params(
-            const struct DDS_TypeAllocationParams_t * alloc_params){
+            const struct DDS_TypeAllocationParams_t * alloc_params) 
+        {
             SurveyObjective *sample = NULL;
 
-            RTIOsapiHeap_allocateStructure(
-                &sample, SurveyObjective);
+            sample = new (std::nothrow) SurveyObjective ;
+            if (sample == NULL) {
+                return NULL;
+            }
 
-            if(sample != NULL) {
-                if (!nec::process::SurveyObjective_initialize_w_params(sample,alloc_params)) {
-                    RTIOsapiHeap_freeStructure(sample);
-                    return NULL;
-                }
-            }        
+            if (!nec::process::SurveyObjective_initialize_w_params(sample,alloc_params)) {
+                delete  sample;
+                sample=NULL;
+            }
             return sample; 
         } 
 
         SurveyObjective *
-        SurveyObjectivePluginSupport_create_data_ex(RTIBool allocate_pointers){
+        SurveyObjectivePluginSupport_create_data_ex(RTIBool allocate_pointers) 
+        {
             SurveyObjective *sample = NULL;
 
-            RTIOsapiHeap_allocateStructure(
-                &sample, SurveyObjective);
+            sample = new (std::nothrow) SurveyObjective ;
 
-            if(sample != NULL) {
-                if (!nec::process::SurveyObjective_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-                    RTIOsapiHeap_freeStructure(sample);
-                    return NULL;
-                }
+            if(sample == NULL) {
+                return NULL;
             }
+
+            if (!nec::process::SurveyObjective_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                delete  sample;
+                sample=NULL;
+            }
+
             return sample; 
         }
 
@@ -1498,7 +1654,8 @@ namespace nec {
 
             nec::process::SurveyObjective_finalize_w_params(sample,dealloc_params);
 
-            RTIOsapiHeap_freeStructure(sample);
+            delete  sample;
+            sample=NULL;
         }
 
         void 
@@ -1507,7 +1664,8 @@ namespace nec {
 
             nec::process::SurveyObjective_finalize_ex(sample,deallocate_pointers);
 
-            RTIOsapiHeap_freeStructure(sample);
+            delete  sample;
+            sample=NULL;
         }
 
         void 
@@ -1523,7 +1681,7 @@ namespace nec {
             SurveyObjective *dst,
             const SurveyObjective *src)
         {
-            return nec::process::SurveyObjective_copy(dst,src);
+            return nec::process::SurveyObjective_copy(dst,(const SurveyObjective*) src);
         }
 
         void 
@@ -1547,26 +1705,26 @@ namespace nec {
             }
 
             DataTypes::UuidPluginSupport_print_data(
-                &sample->id, "id", indent_level + 1);
+                (const DataTypes::Uuid*) &sample->id, "id", indent_level + 1);
 
             DataTypes::UuidPluginSupport_print_data(
-                &sample->objectiveId, "objectiveId", indent_level + 1);
+                (const DataTypes::Uuid*) &sample->objectiveId, "objectiveId", indent_level + 1);
 
             DataTypes::TimePluginSupport_print_data(
-                &sample->estimatedDuration, "estimatedDuration", indent_level + 1);
+                (const DataTypes::Time*) &sample->estimatedDuration, "estimatedDuration", indent_level + 1);
 
             DataTypes::SurveyQualityPluginSupport_print_data(
-                &sample->requestedSurveyQuality, "requestedSurveyQuality", indent_level + 1);
+                (const DataTypes::SurveyQuality*) &sample->requestedSurveyQuality, "requestedSurveyQuality", indent_level + 1);
 
         }
         SurveyObjective *
         SurveyObjectivePluginSupport_create_key_ex(RTIBool allocate_pointers){
             SurveyObjective *key = NULL;
 
-            RTIOsapiHeap_allocateStructure(
-                &key, SurveyObjectiveKeyHolder);
+            key = new (std::nothrow) SurveyObjectiveKeyHolder ;
 
             nec::process::SurveyObjective_initialize_ex(key,allocate_pointers, RTI_TRUE);
+
             return key;
         }
 
@@ -1582,7 +1740,9 @@ namespace nec {
         {
             nec::process::SurveyObjective_finalize_ex(key,deallocate_pointers);
 
-            RTIOsapiHeap_freeStructure(key);
+            delete  key;
+            key=NULL;
+
         }
 
         void 
@@ -1755,7 +1915,7 @@ namespace nec {
 
                 if(!DataTypes::UuidPlugin_serialize(
                     endpoint_data,
-                    &sample->id,
+                    (const DataTypes::Uuid*) &sample->id,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -1765,7 +1925,7 @@ namespace nec {
 
                 if(!DataTypes::UuidPlugin_serialize(
                     endpoint_data,
-                    &sample->objectiveId,
+                    (const DataTypes::Uuid*) &sample->objectiveId,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -1775,7 +1935,7 @@ namespace nec {
 
                 if(!DataTypes::TimePlugin_serialize(
                     endpoint_data,
-                    &sample->estimatedDuration,
+                    (const DataTypes::Time*) &sample->estimatedDuration,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -1785,7 +1945,7 @@ namespace nec {
 
                 if(!DataTypes::SurveyQualityPlugin_serialize(
                     endpoint_data,
-                    &sample->requestedSurveyQuality,
+                    (const DataTypes::SurveyQuality*) &sample->requestedSurveyQuality,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -1816,66 +1976,72 @@ namespace nec {
 
             RTIBool done = RTI_FALSE;
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
+            try {
 
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
+                if (endpoint_data) {} /* To avoid warnings */
+                if (endpoint_plugin_qos) {} /* To avoid warnings */
+                if(deserialize_encapsulation) {
+
+                    if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                        return RTI_FALSE;
+                    }
+
+                    position = RTICdrStream_resetAlignment(stream);
+                }
+                if(deserialize_sample) {
+
+                    nec::process::SurveyObjective_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+                    if(!DataTypes::UuidPlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->id,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::UuidPlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->objectiveId,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::TimePlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->estimatedDuration,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::SurveyQualityPlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->requestedSurveyQuality,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
                 }
 
-                position = RTICdrStream_resetAlignment(stream);
+                done = RTI_TRUE;
+              fin:
+                if (done != RTI_TRUE && 
+                RTICdrStream_getRemainder(stream) >=
+                RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+                    return RTI_FALSE;   
+                }
+                if(deserialize_encapsulation) {
+                    RTICdrStream_restoreAlignment(stream,position);
+                }
+
+                return RTI_TRUE;
+
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
             }
-            if(deserialize_sample) {
-
-                nec::process::SurveyObjective_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if(!DataTypes::UuidPlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->id,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if(!DataTypes::UuidPlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->objectiveId,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if(!DataTypes::TimePlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->estimatedDuration,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if(!DataTypes::SurveyQualityPlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->requestedSurveyQuality,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-            }
-
-            done = RTI_TRUE;
-          fin:
-            if (done != RTI_TRUE && 
-            RTICdrStream_getRemainder(stream) >=
-            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                return RTI_FALSE;   
-            }
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
         }
 
         RTIBool
@@ -1894,14 +2060,14 @@ namespace nec {
 
             epd._maxSizeSerializedSample =
             SurveyObjectivePlugin_get_serialized_sample_max_size(
-                NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
+                NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
 
             if (buffer == NULL) {
                 *length = 
                 SurveyObjectivePlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
-                    RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
+                    RTICdrEncapsulation_getNativeCdrEncapsulationId(),
                     0,
                     sample);
 
@@ -1917,7 +2083,7 @@ namespace nec {
 
             result = nec::process::SurveyObjectivePlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
-                RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
+                RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
                 RTI_TRUE, NULL);  
 
             *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -1935,10 +2101,96 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
+            SurveyObjective_finalize_optional_members(sample, RTI_TRUE);
             return SurveyObjectivePlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
+        }
+
+        DDS_ReturnCode_t
+        SurveyObjectivePlugin_data_to_string(
+            const SurveyObjective *sample,
+            char *str,
+            DDS_UnsignedLong *str_size, 
+            const struct DDS_PrintFormatProperty *property)
+        {
+            DDS_DynamicData *data = NULL;
+            char *buffer = NULL;
+            unsigned int length = 0;
+            struct DDS_PrintFormat printFormat;
+            DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
+
+            if (sample == NULL) {
+                return DDS_RETCODE_BAD_PARAMETER;
+            }
+
+            if (str_size == NULL) {
+                return DDS_RETCODE_BAD_PARAMETER;
+            }
+
+            if (property == NULL) {
+                return DDS_RETCODE_BAD_PARAMETER;
+            }
+
+            if (!SurveyObjectivePlugin_serialize_to_cdr_buffer(
+                NULL, 
+                &length, 
+                sample)) {
+                return DDS_RETCODE_ERROR;
+            }
+
+            RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
+            if (buffer == NULL) {
+                return DDS_RETCODE_ERROR;
+            }
+
+            if (!SurveyObjectivePlugin_serialize_to_cdr_buffer(
+                buffer, 
+                &length, 
+                sample)) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                return DDS_RETCODE_ERROR;
+            }
+
+            data = DDS_DynamicData_new(
+                SurveyObjective_get_typecode(), 
+                &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
+            if (data == NULL) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                return DDS_RETCODE_ERROR;
+            }
+
+            retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
+            if (retCode != DDS_RETCODE_OK) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                DDS_DynamicData_delete(data);
+                return retCode;
+            }
+
+            retCode = DDS_PrintFormatProperty_to_print_format(
+                property, 
+                &printFormat);
+            if (retCode != DDS_RETCODE_OK) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                DDS_DynamicData_delete(data);
+                return retCode;
+            }
+
+            retCode = DDS_DynamicDataFormatter_to_string_w_format(
+                data, 
+                str,
+                str_size, 
+                &printFormat);
+            if (retCode != DDS_RETCODE_OK) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                DDS_DynamicData_delete(data);
+                return retCode;
+            }
+
+            RTIOsapiHeap_freeBuffer(buffer);
+            DDS_DynamicData_delete(data);
+            return DDS_RETCODE_OK;
         }
 
         RTIBool 
@@ -1953,6 +2205,7 @@ namespace nec {
         {
 
             RTIBool result;
+            const char *METHOD_NAME = "SurveyObjectivePlugin_deserialize";
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
@@ -1964,6 +2217,14 @@ namespace nec {
                 if (stream->_xTypesState.unassignable) {
                     result = RTI_FALSE;
                 }
+            }
+            if (!result && stream->_xTypesState.unassignable ) {
+
+                RTICdrLog_exception(
+                    METHOD_NAME, 
+                    &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
+                    "SurveyObjective");
+
             }
 
             return result;
@@ -2158,10 +2419,16 @@ namespace nec {
             unsigned int initial_alignment = current_alignment;
 
             unsigned int encapsulation_size = current_alignment;
+            struct PRESTypePluginDefaultEndpointData epd;   
 
-            if (endpoint_data) {} /* To avoid warnings */ 
             if (sample==NULL) {
                 return 0;
+            }
+            if (endpoint_data == NULL) {
+                endpoint_data = (PRESTypePluginEndpointData) &epd;
+                PRESTypePluginDefaultEndpointData_setBaseAlignment(
+                    endpoint_data,
+                    current_alignment);        
             }
 
             if (include_encapsulation) {
@@ -2173,20 +2440,26 @@ namespace nec {
                 encapsulation_size -= current_alignment;
                 current_alignment = 0;
                 initial_alignment = 0;
+                PRESTypePluginDefaultEndpointData_setBaseAlignment(
+                    endpoint_data,
+                    current_alignment);
             }
 
             current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->id);
+                current_alignment, (const DataTypes::Uuid*) &sample->id);
+
             current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->objectiveId);
+                current_alignment, (const DataTypes::Uuid*) &sample->objectiveId);
+
             current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->estimatedDuration);
+                current_alignment, (const DataTypes::Time*) &sample->estimatedDuration);
+
             current_alignment += DataTypes::SurveyQualityPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->requestedSurveyQuality);
+                current_alignment, (const DataTypes::SurveyQuality*) &sample->requestedSurveyQuality);
 
             if (include_encapsulation) {
                 current_alignment += encapsulation_size;
@@ -2228,7 +2501,7 @@ namespace nec {
 
                 if(!DataTypes::UuidPlugin_serialize_key(
                     endpoint_data,
-                    &sample->id,
+                    (const DataTypes::Uuid*) &sample->id,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -2253,36 +2526,42 @@ namespace nec {
             RTIBool deserialize_key,
             void *endpoint_plugin_qos)
         {
-            char * position = NULL;
+            try {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+                char * position = NULL;
 
-            if(deserialize_encapsulation) {
+                if (endpoint_data) {} /* To avoid warnings */
+                if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
+                if(deserialize_encapsulation) {
+
+                    if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                        return RTI_FALSE;
+                    }
+
+                    position = RTICdrStream_resetAlignment(stream);
+                }
+                if (deserialize_key) {
+
+                    if(!DataTypes::UuidPlugin_deserialize_key_sample(
+                        endpoint_data,
+                        &sample->id,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        return RTI_FALSE;
+                    }
                 }
 
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if(!DataTypes::UuidPlugin_deserialize_key_sample(
-                    endpoint_data,
-                    &sample->id,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    return RTI_FALSE;
+                if(deserialize_encapsulation) {
+                    RTICdrStream_restoreAlignment(stream,position);
                 }
-            }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
+                return RTI_TRUE;
 
-            return RTI_TRUE;
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
+            }
         }
 
         RTIBool SurveyObjectivePlugin_deserialize_key(
@@ -2436,7 +2715,7 @@ namespace nec {
                     return RTI_FALSE;   
                 }
             } else {
-                return error;
+                return RTI_FALSE;
             }       
 
             if(deserialize_encapsulation) {
@@ -2456,7 +2735,7 @@ namespace nec {
             if (endpoint_data) {} /* To avoid warnings */   
 
             if (!DataTypes::Uuid_copy(
-                &dst->id, &src->id)) {
+                &dst->id,(const DataTypes::Uuid*)&src->id)) {
                 return RTI_FALSE;
             } 
             return RTI_TRUE;
@@ -2471,7 +2750,7 @@ namespace nec {
 
             if (endpoint_data) {} /* To avoid warnings */   
             if (!DataTypes::Uuid_copy(
-                &dst->id, &src->id)) {
+                &dst->id,(const DataTypes::Uuid*)&src->id)) {
                 return RTI_FALSE;
             } 
             return RTI_TRUE;
@@ -2498,8 +2777,14 @@ namespace nec {
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
             if (!nec::process::SurveyObjectivePlugin_serialize_key(
-                endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
-
+                endpoint_data,
+                instance,
+                md5Stream, 
+                RTI_FALSE, 
+                RTI_CDR_ENCAPSULATION_ID_CDR_BE, 
+                RTI_TRUE,
+                NULL)) 
+            {
                 int size;
 
                 RTICdrStream_pushState(md5Stream, &cdrState, -1);
@@ -2530,7 +2815,13 @@ namespace nec {
                 RTICdrStream_resetPosition(md5Stream);
                 RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
                 if (!nec::process::SurveyObjectivePlugin_serialize_key(
-                    endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
+                    endpoint_data,
+                    instance,
+                    md5Stream, 
+                    RTI_FALSE, 
+                    RTI_CDR_ENCAPSULATION_ID_CDR_BE, 
+                    RTI_TRUE,
+                    NULL)) 
                 {
                     RTICdrStream_popState(md5Stream, &cdrState);
                     RTIOsapiHeap_freeBuffer(buffer);
@@ -2538,7 +2829,9 @@ namespace nec {
                 }        
             }   
 
-            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data) > (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH)) {
+            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data) > 
+            (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH) ||
+            PRESTypePluginDefaultEndpointData_forceMD5KeyHash(endpoint_data)) {
                 RTICdrStream_computeMD5(md5Stream, keyhash->value);
             } else {
                 RTIOsapiMemory_zero(keyhash->value,MIG_RTPS_KEY_HASH_MAX_LENGTH);
@@ -2554,6 +2847,7 @@ namespace nec {
                 RTICdrStream_popState(md5Stream, &cdrState);
                 RTIOsapiHeap_freeBuffer(buffer);
             }
+
             return RTI_TRUE;
         }
 
@@ -2609,7 +2903,7 @@ namespace nec {
                     return RTI_FALSE;   
                 }
             } else {
-                return error;
+                return RTI_FALSE;
             } 
 
             if(deserialize_encapsulation) {
@@ -2635,6 +2929,7 @@ namespace nec {
 
             RTIOsapiHeap_allocateStructure(
                 &plugin, struct PRESTypePlugin);
+
             if (plugin == NULL) {
                 return NULL;
             }
@@ -2759,34 +3054,38 @@ namespace nec {
 
         SurveyState*
         SurveyStatePluginSupport_create_data_w_params(
-            const struct DDS_TypeAllocationParams_t * alloc_params){
+            const struct DDS_TypeAllocationParams_t * alloc_params) 
+        {
             SurveyState *sample = NULL;
 
-            RTIOsapiHeap_allocateStructure(
-                &sample, SurveyState);
+            sample = new (std::nothrow) SurveyState ;
+            if (sample == NULL) {
+                return NULL;
+            }
 
-            if(sample != NULL) {
-                if (!nec::process::SurveyState_initialize_w_params(sample,alloc_params)) {
-                    RTIOsapiHeap_freeStructure(sample);
-                    return NULL;
-                }
-            }        
+            if (!nec::process::SurveyState_initialize_w_params(sample,alloc_params)) {
+                delete  sample;
+                sample=NULL;
+            }
             return sample; 
         } 
 
         SurveyState *
-        SurveyStatePluginSupport_create_data_ex(RTIBool allocate_pointers){
+        SurveyStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
+        {
             SurveyState *sample = NULL;
 
-            RTIOsapiHeap_allocateStructure(
-                &sample, SurveyState);
+            sample = new (std::nothrow) SurveyState ;
 
-            if(sample != NULL) {
-                if (!nec::process::SurveyState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-                    RTIOsapiHeap_freeStructure(sample);
-                    return NULL;
-                }
+            if(sample == NULL) {
+                return NULL;
             }
+
+            if (!nec::process::SurveyState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                delete  sample;
+                sample=NULL;
+            }
+
             return sample; 
         }
 
@@ -2803,7 +3102,8 @@ namespace nec {
 
             nec::process::SurveyState_finalize_w_params(sample,dealloc_params);
 
-            RTIOsapiHeap_freeStructure(sample);
+            delete  sample;
+            sample=NULL;
         }
 
         void 
@@ -2812,7 +3112,8 @@ namespace nec {
 
             nec::process::SurveyState_finalize_ex(sample,deallocate_pointers);
 
-            RTIOsapiHeap_freeStructure(sample);
+            delete  sample;
+            sample=NULL;
         }
 
         void 
@@ -2828,7 +3129,7 @@ namespace nec {
             SurveyState *dst,
             const SurveyState *src)
         {
-            return nec::process::SurveyState_copy(dst,src);
+            return nec::process::SurveyState_copy(dst,(const SurveyState*) src);
         }
 
         void 
@@ -2852,19 +3153,19 @@ namespace nec {
             }
 
             DataTypes::UuidPluginSupport_print_data(
-                &sample->id, "id", indent_level + 1);
+                (const DataTypes::Uuid*) &sample->id, "id", indent_level + 1);
 
             DataTypes::UuidPluginSupport_print_data(
-                &sample->objectiveId, "objectiveId", indent_level + 1);
+                (const DataTypes::Uuid*) &sample->objectiveId, "objectiveId", indent_level + 1);
 
             DataTypes::TimePluginSupport_print_data(
-                &sample->timestamp, "timestamp", indent_level + 1);
+                (const DataTypes::Time*) &sample->timestamp, "timestamp", indent_level + 1);
 
             DataTypes::StatusPluginSupport_print_data(
-                &sample->status, "status", indent_level + 1);
+                (const DataTypes::Status*) &sample->status, "status", indent_level + 1);
 
             DataTypes::SurveyQualityPluginSupport_print_data(
-                &sample->acutalSurveyQuality, "acutalSurveyQuality", indent_level + 1);
+                (const DataTypes::SurveyQuality*) &sample->acutalSurveyQuality, "acutalSurveyQuality", indent_level + 1);
 
             RTICdrType_printDouble(
                 &sample->measuredDepth, "measuredDepth", indent_level + 1);    
@@ -2924,17 +3225,17 @@ namespace nec {
                 &sample->surveyCost, "surveyCost", indent_level + 1);    
 
             DataTypes::SurveyQualityPluginSupport_print_data(
-                &sample->requestedSurveyQuality, "requestedSurveyQuality", indent_level + 1);
+                (const DataTypes::SurveyQuality*) &sample->requestedSurveyQuality, "requestedSurveyQuality", indent_level + 1);
 
         }
         SurveyState *
         SurveyStatePluginSupport_create_key_ex(RTIBool allocate_pointers){
             SurveyState *key = NULL;
 
-            RTIOsapiHeap_allocateStructure(
-                &key, SurveyStateKeyHolder);
+            key = new (std::nothrow) SurveyStateKeyHolder ;
 
             nec::process::SurveyState_initialize_ex(key,allocate_pointers, RTI_TRUE);
+
             return key;
         }
 
@@ -2950,7 +3251,9 @@ namespace nec {
         {
             nec::process::SurveyState_finalize_ex(key,deallocate_pointers);
 
-            RTIOsapiHeap_freeStructure(key);
+            delete  key;
+            key=NULL;
+
         }
 
         void 
@@ -3123,7 +3426,7 @@ namespace nec {
 
                 if(!DataTypes::UuidPlugin_serialize(
                     endpoint_data,
-                    &sample->id,
+                    (const DataTypes::Uuid*) &sample->id,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -3133,7 +3436,7 @@ namespace nec {
 
                 if(!DataTypes::UuidPlugin_serialize(
                     endpoint_data,
-                    &sample->objectiveId,
+                    (const DataTypes::Uuid*) &sample->objectiveId,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -3143,7 +3446,7 @@ namespace nec {
 
                 if(!DataTypes::TimePlugin_serialize(
                     endpoint_data,
-                    &sample->timestamp,
+                    (const DataTypes::Time*) &sample->timestamp,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -3153,7 +3456,7 @@ namespace nec {
 
                 if(!DataTypes::StatusPlugin_serialize(
                     endpoint_data,
-                    &sample->status,
+                    (const DataTypes::Status*) &sample->status,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -3163,7 +3466,7 @@ namespace nec {
 
                 if(!DataTypes::SurveyQualityPlugin_serialize(
                     endpoint_data,
-                    &sample->acutalSurveyQuality,
+                    (const DataTypes::SurveyQuality*) &sample->acutalSurveyQuality,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -3268,7 +3571,7 @@ namespace nec {
 
                 if(!DataTypes::SurveyQualityPlugin_serialize(
                     endpoint_data,
-                    &sample->requestedSurveyQuality,
+                    (const DataTypes::SurveyQuality*) &sample->requestedSurveyQuality,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -3299,158 +3602,164 @@ namespace nec {
 
             RTIBool done = RTI_FALSE;
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
+            try {
 
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
+                if (endpoint_data) {} /* To avoid warnings */
+                if (endpoint_plugin_qos) {} /* To avoid warnings */
+                if(deserialize_encapsulation) {
+
+                    if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                        return RTI_FALSE;
+                    }
+
+                    position = RTICdrStream_resetAlignment(stream);
+                }
+                if(deserialize_sample) {
+
+                    nec::process::SurveyState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+                    if(!DataTypes::UuidPlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->id,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::UuidPlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->objectiveId,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::TimePlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->timestamp,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::StatusPlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->status,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::SurveyQualityPlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->acutalSurveyQuality,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->measuredDepth)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->inclination)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->azimuth)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->totalVerticalDepth)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->dogLeg)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->verticalSection)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->eastWest)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->northSouth)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->courseLength)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->ca)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->cd)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->cl)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->buildRate)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->turnRate)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->topOfTarget)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->bottomOfTarget)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->dip)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->fault)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->surveyCost)) {
+                        goto fin; 
+                    }
+                    if(!DataTypes::SurveyQualityPlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->requestedSurveyQuality,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        goto fin; 
+                    }
                 }
 
-                position = RTICdrStream_resetAlignment(stream);
+                done = RTI_TRUE;
+              fin:
+                if (done != RTI_TRUE && 
+                RTICdrStream_getRemainder(stream) >=
+                RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+                    return RTI_FALSE;   
+                }
+                if(deserialize_encapsulation) {
+                    RTICdrStream_restoreAlignment(stream,position);
+                }
+
+                return RTI_TRUE;
+
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
             }
-            if(deserialize_sample) {
-
-                nec::process::SurveyState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if(!DataTypes::UuidPlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->id,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if(!DataTypes::UuidPlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->objectiveId,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if(!DataTypes::TimePlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->timestamp,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if(!DataTypes::StatusPlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->status,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if(!DataTypes::SurveyQualityPlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->acutalSurveyQuality,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->measuredDepth)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->inclination)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->azimuth)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->totalVerticalDepth)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->dogLeg)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->verticalSection)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->eastWest)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->northSouth)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->courseLength)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->ca)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->cd)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->cl)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->buildRate)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->turnRate)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->topOfTarget)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->bottomOfTarget)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->dip)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->fault)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->surveyCost)) {
-                    goto fin; 
-                }
-                if(!DataTypes::SurveyQualityPlugin_deserialize_sample(
-                    endpoint_data,
-                    &sample->requestedSurveyQuality,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    goto fin; 
-                }
-            }
-
-            done = RTI_TRUE;
-          fin:
-            if (done != RTI_TRUE && 
-            RTICdrStream_getRemainder(stream) >=
-            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                return RTI_FALSE;   
-            }
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
         }
 
         RTIBool
@@ -3469,14 +3778,14 @@ namespace nec {
 
             epd._maxSizeSerializedSample =
             SurveyStatePlugin_get_serialized_sample_max_size(
-                NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
+                NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
 
             if (buffer == NULL) {
                 *length = 
                 SurveyStatePlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
-                    RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
+                    RTICdrEncapsulation_getNativeCdrEncapsulationId(),
                     0,
                     sample);
 
@@ -3492,7 +3801,7 @@ namespace nec {
 
             result = nec::process::SurveyStatePlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
-                RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
+                RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
                 RTI_TRUE, NULL);  
 
             *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -3510,10 +3819,96 @@ namespace nec {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
+            SurveyState_finalize_optional_members(sample, RTI_TRUE);
             return SurveyStatePlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
+        }
+
+        DDS_ReturnCode_t
+        SurveyStatePlugin_data_to_string(
+            const SurveyState *sample,
+            char *str,
+            DDS_UnsignedLong *str_size, 
+            const struct DDS_PrintFormatProperty *property)
+        {
+            DDS_DynamicData *data = NULL;
+            char *buffer = NULL;
+            unsigned int length = 0;
+            struct DDS_PrintFormat printFormat;
+            DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
+
+            if (sample == NULL) {
+                return DDS_RETCODE_BAD_PARAMETER;
+            }
+
+            if (str_size == NULL) {
+                return DDS_RETCODE_BAD_PARAMETER;
+            }
+
+            if (property == NULL) {
+                return DDS_RETCODE_BAD_PARAMETER;
+            }
+
+            if (!SurveyStatePlugin_serialize_to_cdr_buffer(
+                NULL, 
+                &length, 
+                sample)) {
+                return DDS_RETCODE_ERROR;
+            }
+
+            RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
+            if (buffer == NULL) {
+                return DDS_RETCODE_ERROR;
+            }
+
+            if (!SurveyStatePlugin_serialize_to_cdr_buffer(
+                buffer, 
+                &length, 
+                sample)) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                return DDS_RETCODE_ERROR;
+            }
+
+            data = DDS_DynamicData_new(
+                SurveyState_get_typecode(), 
+                &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
+            if (data == NULL) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                return DDS_RETCODE_ERROR;
+            }
+
+            retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
+            if (retCode != DDS_RETCODE_OK) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                DDS_DynamicData_delete(data);
+                return retCode;
+            }
+
+            retCode = DDS_PrintFormatProperty_to_print_format(
+                property, 
+                &printFormat);
+            if (retCode != DDS_RETCODE_OK) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                DDS_DynamicData_delete(data);
+                return retCode;
+            }
+
+            retCode = DDS_DynamicDataFormatter_to_string_w_format(
+                data, 
+                str,
+                str_size, 
+                &printFormat);
+            if (retCode != DDS_RETCODE_OK) {
+                RTIOsapiHeap_freeBuffer(buffer);
+                DDS_DynamicData_delete(data);
+                return retCode;
+            }
+
+            RTIOsapiHeap_freeBuffer(buffer);
+            DDS_DynamicData_delete(data);
+            return DDS_RETCODE_OK;
         }
 
         RTIBool 
@@ -3528,6 +3923,7 @@ namespace nec {
         {
 
             RTIBool result;
+            const char *METHOD_NAME = "SurveyStatePlugin_deserialize";
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
@@ -3539,6 +3935,14 @@ namespace nec {
                 if (stream->_xTypesState.unassignable) {
                     result = RTI_FALSE;
                 }
+            }
+            if (!result && stream->_xTypesState.unassignable ) {
+
+                RTICdrLog_exception(
+                    METHOD_NAME, 
+                    &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
+                    "SurveyState");
+
             }
 
             return result;
@@ -3909,10 +4313,16 @@ namespace nec {
             unsigned int initial_alignment = current_alignment;
 
             unsigned int encapsulation_size = current_alignment;
+            struct PRESTypePluginDefaultEndpointData epd;   
 
-            if (endpoint_data) {} /* To avoid warnings */ 
             if (sample==NULL) {
                 return 0;
+            }
+            if (endpoint_data == NULL) {
+                endpoint_data = (PRESTypePluginEndpointData) &epd;
+                PRESTypePluginDefaultEndpointData_setBaseAlignment(
+                    endpoint_data,
+                    current_alignment);        
             }
 
             if (include_encapsulation) {
@@ -3924,64 +4334,110 @@ namespace nec {
                 encapsulation_size -= current_alignment;
                 current_alignment = 0;
                 initial_alignment = 0;
+                PRESTypePluginDefaultEndpointData_setBaseAlignment(
+                    endpoint_data,
+                    current_alignment);
             }
 
             current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->id);
+                current_alignment, (const DataTypes::Uuid*) &sample->id);
+
             current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->objectiveId);
+                current_alignment, (const DataTypes::Uuid*) &sample->objectiveId);
+
             current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->timestamp);
+                current_alignment, (const DataTypes::Time*) &sample->timestamp);
+
             current_alignment += DataTypes::StatusPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->status);
+                current_alignment, (const DataTypes::Status*) &sample->status);
+
             current_alignment += DataTypes::SurveyQualityPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->acutalSurveyQuality);
+                current_alignment, (const DataTypes::SurveyQuality*) &sample->acutalSurveyQuality);
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
             current_alignment += DataTypes::SurveyQualityPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, &sample->requestedSurveyQuality);
+                current_alignment, (const DataTypes::SurveyQuality*) &sample->requestedSurveyQuality);
 
             if (include_encapsulation) {
                 current_alignment += encapsulation_size;
@@ -4023,7 +4479,7 @@ namespace nec {
 
                 if(!DataTypes::UuidPlugin_serialize_key(
                     endpoint_data,
-                    &sample->id,
+                    (const DataTypes::Uuid*) &sample->id,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -4048,36 +4504,42 @@ namespace nec {
             RTIBool deserialize_key,
             void *endpoint_plugin_qos)
         {
-            char * position = NULL;
+            try {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+                char * position = NULL;
 
-            if(deserialize_encapsulation) {
+                if (endpoint_data) {} /* To avoid warnings */
+                if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
+                if(deserialize_encapsulation) {
+
+                    if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                        return RTI_FALSE;
+                    }
+
+                    position = RTICdrStream_resetAlignment(stream);
+                }
+                if (deserialize_key) {
+
+                    if(!DataTypes::UuidPlugin_deserialize_key_sample(
+                        endpoint_data,
+                        &sample->id,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
+                        return RTI_FALSE;
+                    }
                 }
 
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if(!DataTypes::UuidPlugin_deserialize_key_sample(
-                    endpoint_data,
-                    &sample->id,
-                    stream,
-                    RTI_FALSE, RTI_TRUE,
-                    endpoint_plugin_qos)) {
-                    return RTI_FALSE;
+                if(deserialize_encapsulation) {
+                    RTICdrStream_restoreAlignment(stream,position);
                 }
-            }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
+                return RTI_TRUE;
 
-            return RTI_TRUE;
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
+            }
         }
 
         RTIBool SurveyStatePlugin_deserialize_key(
@@ -4323,7 +4785,7 @@ namespace nec {
                     return RTI_FALSE;   
                 }
             } else {
-                return error;
+                return RTI_FALSE;
             }       
 
             if(deserialize_encapsulation) {
@@ -4343,7 +4805,7 @@ namespace nec {
             if (endpoint_data) {} /* To avoid warnings */   
 
             if (!DataTypes::Uuid_copy(
-                &dst->id, &src->id)) {
+                &dst->id,(const DataTypes::Uuid*)&src->id)) {
                 return RTI_FALSE;
             } 
             return RTI_TRUE;
@@ -4358,7 +4820,7 @@ namespace nec {
 
             if (endpoint_data) {} /* To avoid warnings */   
             if (!DataTypes::Uuid_copy(
-                &dst->id, &src->id)) {
+                &dst->id,(const DataTypes::Uuid*)&src->id)) {
                 return RTI_FALSE;
             } 
             return RTI_TRUE;
@@ -4385,8 +4847,14 @@ namespace nec {
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
             if (!nec::process::SurveyStatePlugin_serialize_key(
-                endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
-
+                endpoint_data,
+                instance,
+                md5Stream, 
+                RTI_FALSE, 
+                RTI_CDR_ENCAPSULATION_ID_CDR_BE, 
+                RTI_TRUE,
+                NULL)) 
+            {
                 int size;
 
                 RTICdrStream_pushState(md5Stream, &cdrState, -1);
@@ -4417,7 +4885,13 @@ namespace nec {
                 RTICdrStream_resetPosition(md5Stream);
                 RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
                 if (!nec::process::SurveyStatePlugin_serialize_key(
-                    endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
+                    endpoint_data,
+                    instance,
+                    md5Stream, 
+                    RTI_FALSE, 
+                    RTI_CDR_ENCAPSULATION_ID_CDR_BE, 
+                    RTI_TRUE,
+                    NULL)) 
                 {
                     RTICdrStream_popState(md5Stream, &cdrState);
                     RTIOsapiHeap_freeBuffer(buffer);
@@ -4425,7 +4899,9 @@ namespace nec {
                 }        
             }   
 
-            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data) > (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH)) {
+            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data) > 
+            (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH) ||
+            PRESTypePluginDefaultEndpointData_forceMD5KeyHash(endpoint_data)) {
                 RTICdrStream_computeMD5(md5Stream, keyhash->value);
             } else {
                 RTIOsapiMemory_zero(keyhash->value,MIG_RTPS_KEY_HASH_MAX_LENGTH);
@@ -4441,6 +4917,7 @@ namespace nec {
                 RTICdrStream_popState(md5Stream, &cdrState);
                 RTIOsapiHeap_freeBuffer(buffer);
             }
+
             return RTI_TRUE;
         }
 
@@ -4496,7 +4973,7 @@ namespace nec {
                     return RTI_FALSE;   
                 }
             } else {
-                return error;
+                return RTI_FALSE;
             } 
 
             if(deserialize_encapsulation) {
@@ -4522,6 +4999,7 @@ namespace nec {
 
             RTIOsapiHeap_allocateStructure(
                 &plugin, struct PRESTypePlugin);
+
             if (plugin == NULL) {
                 return NULL;
             }
@@ -4637,4 +5115,4 @@ namespace nec {
         } 
     } /* namespace process  */
 } /* namespace nec  */
-
+#undef RTI_CDR_CURRENT_SUBMODULE 

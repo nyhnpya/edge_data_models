@@ -46,7 +46,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(PipeTallyStateTypeSupport, PipeTallyState);
+        DDS_TYPESUPPORT_CPP(
+            PipeTallyStateTypeSupport, 
+            PipeTallyState);
 
         DDS_DATAWRITER_CPP(PipeTallyStateDataWriter, PipeTallyState);
         DDS_DATAREADER_CPP(PipeTallyStateDataReader, PipeTallyStateSeq, PipeTallyState);

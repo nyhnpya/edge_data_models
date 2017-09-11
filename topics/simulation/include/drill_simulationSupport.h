@@ -45,7 +45,9 @@ namespace Simulation {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(AutoDrillerRequestTypeSupport, AutoDrillerRequest);
+    DDS_TYPESUPPORT_CPP(
+        AutoDrillerRequestTypeSupport, 
+        AutoDrillerRequest);
 
     DDS_DATAWRITER_CPP(AutoDrillerRequestDataWriter, AutoDrillerRequest);
     DDS_DATAREADER_CPP(AutoDrillerRequestDataReader, AutoDrillerRequestSeq, AutoDrillerRequest);
@@ -74,7 +76,9 @@ namespace Simulation {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(AutoDrillerObjectiveTypeSupport, AutoDrillerObjective);
+    DDS_TYPESUPPORT_CPP(
+        AutoDrillerObjectiveTypeSupport, 
+        AutoDrillerObjective);
 
     DDS_DATAWRITER_CPP(AutoDrillerObjectiveDataWriter, AutoDrillerObjective);
     DDS_DATAREADER_CPP(AutoDrillerObjectiveDataReader, AutoDrillerObjectiveSeq, AutoDrillerObjective);
@@ -103,7 +107,9 @@ namespace Simulation {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(AutoDrillerStateTypeSupport, AutoDrillerState);
+    DDS_TYPESUPPORT_CPP(
+        AutoDrillerStateTypeSupport, 
+        AutoDrillerState);
 
     DDS_DATAWRITER_CPP(AutoDrillerStateDataWriter, AutoDrillerState);
     DDS_DATAREADER_CPP(AutoDrillerStateDataReader, AutoDrillerStateSeq, AutoDrillerState);

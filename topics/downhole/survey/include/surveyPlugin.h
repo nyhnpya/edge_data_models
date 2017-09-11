@@ -193,6 +193,12 @@ namespace nec {
             SurveyRequest *sample,
             const char * buffer,
             unsigned int length);    
+        NDDSUSERDllExport extern DDS_ReturnCode_t
+        SurveyRequestPlugin_data_to_string(
+            const SurveyRequest *sample,
+            char *str,
+            DDS_UnsignedLong *str_size, 
+            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         SurveyRequestPlugin_skip(
@@ -485,6 +491,12 @@ namespace nec {
             SurveyObjective *sample,
             const char * buffer,
             unsigned int length);    
+        NDDSUSERDllExport extern DDS_ReturnCode_t
+        SurveyObjectivePlugin_data_to_string(
+            const SurveyObjective *sample,
+            char *str,
+            DDS_UnsignedLong *str_size, 
+            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         SurveyObjectivePlugin_skip(
@@ -777,6 +789,12 @@ namespace nec {
             SurveyState *sample,
             const char * buffer,
             unsigned int length);    
+        NDDSUSERDllExport extern DDS_ReturnCode_t
+        SurveyStatePlugin_data_to_string(
+            const SurveyState *sample,
+            char *str,
+            DDS_UnsignedLong *str_size, 
+            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         SurveyStatePlugin_skip(
