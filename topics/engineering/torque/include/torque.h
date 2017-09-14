@@ -60,7 +60,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* TorqueRequest_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(TorqueRequestSeq, TorqueRequest);                                        
+        DDS_SEQUENCE(TorqueRequestSeq, TorqueRequest);
 
         NDDSUSERDllExport
         RTIBool TorqueRequest_initialize(
@@ -73,7 +73,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool TorqueRequest_initialize_w_params(
             TorqueRequest* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void TorqueRequest_finalize(
@@ -138,7 +138,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* TorqueObjective_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(TorqueObjectiveSeq, TorqueObjective);                                        
+        DDS_SEQUENCE(TorqueObjectiveSeq, TorqueObjective);
 
         NDDSUSERDllExport
         RTIBool TorqueObjective_initialize(
@@ -151,7 +151,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool TorqueObjective_initialize_w_params(
             TorqueObjective* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void TorqueObjective_finalize(
@@ -219,7 +219,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* TorqueState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(TorqueStateSeq, TorqueState);                                        
+        DDS_SEQUENCE(TorqueStateSeq, TorqueState);
 
         NDDSUSERDllExport
         RTIBool TorqueState_initialize(
@@ -232,7 +232,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool TorqueState_initialize_w_params(
             TorqueState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void TorqueState_finalize(

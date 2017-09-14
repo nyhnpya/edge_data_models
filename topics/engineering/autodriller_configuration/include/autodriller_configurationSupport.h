@@ -46,7 +46,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(HmiRequestTypeSupport, HmiRequest);
+        DDS_TYPESUPPORT_CPP(
+            HmiRequestTypeSupport, 
+            HmiRequest);
 
         DDS_DATAWRITER_CPP(HmiRequestDataWriter, HmiRequest);
         DDS_DATAREADER_CPP(HmiRequestDataReader, HmiRequestSeq, HmiRequest);
@@ -75,7 +77,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(HmiStateTypeSupport, HmiState);
+        DDS_TYPESUPPORT_CPP(
+            HmiStateTypeSupport, 
+            HmiState);
 
         DDS_DATAWRITER_CPP(HmiStateDataWriter, HmiState);
         DDS_DATAREADER_CPP(HmiStateDataReader, HmiStateSeq, HmiState);

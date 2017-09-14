@@ -46,7 +46,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(SurveyRequestTypeSupport, SurveyRequest);
+        DDS_TYPESUPPORT_CPP(
+            SurveyRequestTypeSupport, 
+            SurveyRequest);
 
         DDS_DATAWRITER_CPP(SurveyRequestDataWriter, SurveyRequest);
         DDS_DATAREADER_CPP(SurveyRequestDataReader, SurveyRequestSeq, SurveyRequest);
@@ -75,7 +77,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(SurveyObjectiveTypeSupport, SurveyObjective);
+        DDS_TYPESUPPORT_CPP(
+            SurveyObjectiveTypeSupport, 
+            SurveyObjective);
 
         DDS_DATAWRITER_CPP(SurveyObjectiveDataWriter, SurveyObjective);
         DDS_DATAREADER_CPP(SurveyObjectiveDataReader, SurveyObjectiveSeq, SurveyObjective);
@@ -104,7 +108,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(SurveyStateTypeSupport, SurveyState);
+        DDS_TYPESUPPORT_CPP(
+            SurveyStateTypeSupport, 
+            SurveyState);
 
         DDS_DATAWRITER_CPP(SurveyStateDataWriter, SurveyState);
         DDS_DATAREADER_CPP(SurveyStateDataReader, SurveyStateSeq, SurveyState);

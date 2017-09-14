@@ -30,6 +30,8 @@ or consult the RTI Connext manual.
 
 #include "drilling_calibration.h"
 
+#include <new>
+
 namespace nec {
     namespace control {
 
@@ -245,7 +247,12 @@ namespace nec {
             DrillingCalibrationRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (allocParams) {} /* To avoid warnings */
+            if (sample == NULL) {
+                return RTI_FALSE;
+            }
+            if (allocParams == NULL) {
+                return RTI_FALSE;
+            }
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -258,27 +265,27 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->wobProportional)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->wobIntegral)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureProportional)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureIntegral)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueProportional)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueIntegral)) {
                 return RTI_FALSE;
-            }     
+            }
 
             return RTI_TRUE;
         }
@@ -313,7 +320,10 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-            if (deallocParams) {} /* To avoid warnings */
+
+            if (deallocParams == NULL) {
+                return;
+            }
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -345,41 +355,50 @@ namespace nec {
             DrillingCalibrationRequest* dst,
             const DrillingCalibrationRequest* src)
         {
+            try {
 
-            if (!DataTypes::Uuid_copy(
-                &dst->id, &src->id)) {
-                return RTI_FALSE;
-            } 
-            if (!DataTypes::Time_copy(
-                &dst->timestamp, &src->timestamp)) {
-                return RTI_FALSE;
-            } 
-            if (!RTICdrType_copyDouble (
-                &dst->wobProportional, &src->wobProportional)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobIntegral, &src->wobIntegral)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureProportional, &src->differentialPressureProportional)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureIntegral, &src->differentialPressureIntegral)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueProportional, &src->torqueProportional)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueIntegral, &src->torqueIntegral)) { 
-                return RTI_FALSE;
-            }
+                if (dst == NULL || src == NULL) {
+                    return RTI_FALSE;
+                }
 
-            return RTI_TRUE;
+                if (!DataTypes::Uuid_copy(
+                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Time_copy(
+                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
+                    return RTI_FALSE;
+                } 
+                if (!RTICdrType_copyDouble (
+                    &dst->wobProportional, &src->wobProportional)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->wobIntegral, &src->wobIntegral)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureProportional, &src->differentialPressureProportional)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureIntegral, &src->differentialPressureIntegral)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueProportional, &src->torqueProportional)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueIntegral, &src->torqueIntegral)) { 
+                    return RTI_FALSE;
+                }
+
+                return RTI_TRUE;
+
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
+            }
         }
 
         /**
@@ -391,7 +410,9 @@ namespace nec {
         */
         #define T DrillingCalibrationRequest
         #define TSeq DrillingCalibrationRequestSeq
+
         #define T_initialize_w_params nec::control::DrillingCalibrationRequest_initialize_w_params
+
         #define T_finalize_w_params   nec::control::DrillingCalibrationRequest_finalize_w_params
         #define T_copy       nec::control::DrillingCalibrationRequest_copy
 
@@ -405,7 +426,9 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
+
         #undef T_initialize_w_params
+
         #undef TSeq
         #undef T
 
@@ -925,7 +948,12 @@ namespace nec {
             DrillingCalibrationState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (allocParams) {} /* To avoid warnings */
+            if (sample == NULL) {
+                return RTI_FALSE;
+            }
+            if (allocParams == NULL) {
+                return RTI_FALSE;
+            }
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -938,91 +966,91 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->wobProportional)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->wobIntegral)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureProportional)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->differentialPressureIntegral)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueProportional)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->torqueIntegral)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->minWobProportional)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->maxWobProportional)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->minWobIntegral)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->maxWobIntegral)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->minDifferentialPressureProportional)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->maxDifferentialPressureProportional)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->minDifferentialPressureIntegral)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->maxDifferentialPressureIntegral)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->minTorqueProportional)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->maxTorqueProportional)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->minTorqueIntegral)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initDouble(&sample->maxTorqueIntegral)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initBoolean(&sample->ropMode)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initBoolean(&sample->wobMode)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initBoolean(&sample->differentialPressureMode)) {
                 return RTI_FALSE;
-            }     
+            }
 
             if (!RTICdrType_initBoolean(&sample->torqueMode)) {
                 return RTI_FALSE;
-            }     
+            }
 
             return RTI_TRUE;
         }
@@ -1057,7 +1085,10 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-            if (deallocParams) {} /* To avoid warnings */
+
+            if (deallocParams == NULL) {
+                return;
+            }
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -1089,105 +1120,114 @@ namespace nec {
             DrillingCalibrationState* dst,
             const DrillingCalibrationState* src)
         {
+            try {
 
-            if (!DataTypes::Uuid_copy(
-                &dst->id, &src->id)) {
-                return RTI_FALSE;
-            } 
-            if (!DataTypes::Time_copy(
-                &dst->timestamp, &src->timestamp)) {
-                return RTI_FALSE;
-            } 
-            if (!RTICdrType_copyDouble (
-                &dst->wobProportional, &src->wobProportional)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobIntegral, &src->wobIntegral)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureProportional, &src->differentialPressureProportional)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureIntegral, &src->differentialPressureIntegral)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueProportional, &src->torqueProportional)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueIntegral, &src->torqueIntegral)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->minWobProportional, &src->minWobProportional)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->maxWobProportional, &src->maxWobProportional)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->minWobIntegral, &src->minWobIntegral)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->maxWobIntegral, &src->maxWobIntegral)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->minDifferentialPressureProportional, &src->minDifferentialPressureProportional)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->maxDifferentialPressureProportional, &src->maxDifferentialPressureProportional)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->minDifferentialPressureIntegral, &src->minDifferentialPressureIntegral)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->maxDifferentialPressureIntegral, &src->maxDifferentialPressureIntegral)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->minTorqueProportional, &src->minTorqueProportional)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->maxTorqueProportional, &src->maxTorqueProportional)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->minTorqueIntegral, &src->minTorqueIntegral)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->maxTorqueIntegral, &src->maxTorqueIntegral)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->ropMode, &src->ropMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->wobMode, &src->wobMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->differentialPressureMode, &src->differentialPressureMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->torqueMode, &src->torqueMode)) { 
-                return RTI_FALSE;
-            }
+                if (dst == NULL || src == NULL) {
+                    return RTI_FALSE;
+                }
 
-            return RTI_TRUE;
+                if (!DataTypes::Uuid_copy(
+                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Time_copy(
+                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
+                    return RTI_FALSE;
+                } 
+                if (!RTICdrType_copyDouble (
+                    &dst->wobProportional, &src->wobProportional)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->wobIntegral, &src->wobIntegral)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureProportional, &src->differentialPressureProportional)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->differentialPressureIntegral, &src->differentialPressureIntegral)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueProportional, &src->torqueProportional)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->torqueIntegral, &src->torqueIntegral)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->minWobProportional, &src->minWobProportional)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->maxWobProportional, &src->maxWobProportional)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->minWobIntegral, &src->minWobIntegral)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->maxWobIntegral, &src->maxWobIntegral)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->minDifferentialPressureProportional, &src->minDifferentialPressureProportional)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->maxDifferentialPressureProportional, &src->maxDifferentialPressureProportional)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->minDifferentialPressureIntegral, &src->minDifferentialPressureIntegral)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->maxDifferentialPressureIntegral, &src->maxDifferentialPressureIntegral)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->minTorqueProportional, &src->minTorqueProportional)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->maxTorqueProportional, &src->maxTorqueProportional)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->minTorqueIntegral, &src->minTorqueIntegral)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->maxTorqueIntegral, &src->maxTorqueIntegral)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyBoolean (
+                    &dst->ropMode, &src->ropMode)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyBoolean (
+                    &dst->wobMode, &src->wobMode)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyBoolean (
+                    &dst->differentialPressureMode, &src->differentialPressureMode)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyBoolean (
+                    &dst->torqueMode, &src->torqueMode)) { 
+                    return RTI_FALSE;
+                }
+
+                return RTI_TRUE;
+
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
+            }
         }
 
         /**
@@ -1199,7 +1239,9 @@ namespace nec {
         */
         #define T DrillingCalibrationState
         #define TSeq DrillingCalibrationStateSeq
+
         #define T_initialize_w_params nec::control::DrillingCalibrationState_initialize_w_params
+
         #define T_finalize_w_params   nec::control::DrillingCalibrationState_finalize_w_params
         #define T_copy       nec::control::DrillingCalibrationState_copy
 
@@ -1213,7 +1255,9 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
+
         #undef T_initialize_w_params
+
         #undef TSeq
         #undef T
     } /* namespace control  */

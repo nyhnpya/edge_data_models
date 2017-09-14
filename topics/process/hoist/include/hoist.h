@@ -62,7 +62,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* HoistRequest_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(HoistRequestSeq, HoistRequest);                                        
+        DDS_SEQUENCE(HoistRequestSeq, HoistRequest);
 
         NDDSUSERDllExport
         RTIBool HoistRequest_initialize(
@@ -75,7 +75,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool HoistRequest_initialize_w_params(
             HoistRequest* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void HoistRequest_finalize(
@@ -142,7 +142,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* HoistObjective_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(HoistObjectiveSeq, HoistObjective);                                        
+        DDS_SEQUENCE(HoistObjectiveSeq, HoistObjective);
 
         NDDSUSERDllExport
         RTIBool HoistObjective_initialize(
@@ -155,7 +155,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool HoistObjective_initialize_w_params(
             HoistObjective* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void HoistObjective_finalize(
@@ -229,7 +229,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* HoistState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(HoistStateSeq, HoistState);                                        
+        DDS_SEQUENCE(HoistStateSeq, HoistState);
 
         NDDSUSERDllExport
         RTIBool HoistState_initialize(
@@ -242,7 +242,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool HoistState_initialize_w_params(
             HoistState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void HoistState_finalize(

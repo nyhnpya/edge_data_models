@@ -192,6 +192,12 @@ namespace Simulation {
         AutoDrillerRequest *sample,
         const char * buffer,
         unsigned int length);    
+    NDDSUSERDllExport extern DDS_ReturnCode_t
+    AutoDrillerRequestPlugin_data_to_string(
+        const AutoDrillerRequest *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     AutoDrillerRequestPlugin_skip(
@@ -484,6 +490,12 @@ namespace Simulation {
         AutoDrillerObjective *sample,
         const char * buffer,
         unsigned int length);    
+    NDDSUSERDllExport extern DDS_ReturnCode_t
+    AutoDrillerObjectivePlugin_data_to_string(
+        const AutoDrillerObjective *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     AutoDrillerObjectivePlugin_skip(
@@ -776,6 +788,12 @@ namespace Simulation {
         AutoDrillerState *sample,
         const char * buffer,
         unsigned int length);    
+    NDDSUSERDllExport extern DDS_ReturnCode_t
+    AutoDrillerStatePlugin_data_to_string(
+        const AutoDrillerState *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     AutoDrillerStatePlugin_skip(

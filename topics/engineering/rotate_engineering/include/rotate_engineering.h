@@ -60,7 +60,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* RotateRequest_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(RotateRequestSeq, RotateRequest);                                        
+        DDS_SEQUENCE(RotateRequestSeq, RotateRequest);
 
         NDDSUSERDllExport
         RTIBool RotateRequest_initialize(
@@ -73,7 +73,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool RotateRequest_initialize_w_params(
             RotateRequest* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void RotateRequest_finalize(
@@ -139,7 +139,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* RotateObjective_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(RotateObjectiveSeq, RotateObjective);                                        
+        DDS_SEQUENCE(RotateObjectiveSeq, RotateObjective);
 
         NDDSUSERDllExport
         RTIBool RotateObjective_initialize(
@@ -152,7 +152,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool RotateObjective_initialize_w_params(
             RotateObjective* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void RotateObjective_finalize(
@@ -224,7 +224,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* RotateState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(RotateStateSeq, RotateState);                                        
+        DDS_SEQUENCE(RotateStateSeq, RotateState);
 
         NDDSUSERDllExport
         RTIBool RotateState_initialize(
@@ -237,7 +237,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool RotateState_initialize_w_params(
             RotateState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void RotateState_finalize(

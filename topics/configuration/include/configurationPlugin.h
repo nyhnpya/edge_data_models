@@ -190,6 +190,12 @@ namespace Configuration {
         Item *sample,
         const char * buffer,
         unsigned int length);    
+    NDDSUSERDllExport extern DDS_ReturnCode_t
+    ItemPlugin_data_to_string(
+        const Item *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     ItemPlugin_skip(

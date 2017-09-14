@@ -62,7 +62,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* WellboreState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(WellboreStateSeq, WellboreState);                                        
+        DDS_SEQUENCE(WellboreStateSeq, WellboreState);
 
         NDDSUSERDllExport
         RTIBool WellboreState_initialize(
@@ -75,7 +75,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool WellboreState_initialize_w_params(
             WellboreState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void WellboreState_finalize(

@@ -55,7 +55,7 @@ namespace Configuration {
 
     NDDSUSERDllExport DDS_TypeCode* Item_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(ItemSeq, Item);                                        
+    DDS_SEQUENCE(ItemSeq, Item);
 
     NDDSUSERDllExport
     RTIBool Item_initialize(
@@ -68,7 +68,7 @@ namespace Configuration {
     NDDSUSERDllExport
     RTIBool Item_initialize_w_params(
         Item* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);        
+        const struct DDS_TypeAllocationParams_t * allocParams);  
 
     NDDSUSERDllExport
     void Item_finalize(

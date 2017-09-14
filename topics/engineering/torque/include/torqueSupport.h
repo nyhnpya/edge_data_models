@@ -46,7 +46,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(TorqueRequestTypeSupport, TorqueRequest);
+        DDS_TYPESUPPORT_CPP(
+            TorqueRequestTypeSupport, 
+            TorqueRequest);
 
         DDS_DATAWRITER_CPP(TorqueRequestDataWriter, TorqueRequest);
         DDS_DATAREADER_CPP(TorqueRequestDataReader, TorqueRequestSeq, TorqueRequest);
@@ -75,7 +77,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(TorqueObjectiveTypeSupport, TorqueObjective);
+        DDS_TYPESUPPORT_CPP(
+            TorqueObjectiveTypeSupport, 
+            TorqueObjective);
 
         DDS_DATAWRITER_CPP(TorqueObjectiveDataWriter, TorqueObjective);
         DDS_DATAREADER_CPP(TorqueObjectiveDataReader, TorqueObjectiveSeq, TorqueObjective);
@@ -104,7 +108,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(TorqueStateTypeSupport, TorqueState);
+        DDS_TYPESUPPORT_CPP(
+            TorqueStateTypeSupport, 
+            TorqueState);
 
         DDS_DATAWRITER_CPP(TorqueStateDataWriter, TorqueState);
         DDS_DATAREADER_CPP(TorqueStateDataReader, TorqueStateSeq, TorqueState);
