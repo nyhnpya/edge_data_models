@@ -61,7 +61,7 @@ namespace process {
 
         NDDSUSERDllExport DDS_TypeCode* ProcessState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(ProcessStateSeq, ProcessState);
+        DDS_SEQUENCE(ProcessStateSeq, ProcessState);                                        
 
         NDDSUSERDllExport
         RTIBool ProcessState_initialize(
@@ -74,7 +74,7 @@ namespace process {
         NDDSUSERDllExport
         RTIBool ProcessState_initialize_w_params(
             ProcessState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);  
+            const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
         void ProcessState_finalize(

@@ -46,9 +46,7 @@ namespace process {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(
-            ProcessStateTypeSupport, 
-            ProcessState);
+        DDS_TYPESUPPORT_CPP(ProcessStateTypeSupport, ProcessState);
 
         DDS_DATAWRITER_CPP(ProcessStateDataWriter, ProcessState);
         DDS_DATAREADER_CPP(ProcessStateDataReader, ProcessStateSeq, ProcessState);

@@ -70,7 +70,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* PipeTallyState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(PipeTallyStateSeq, PipeTallyState);
+        DDS_SEQUENCE(PipeTallyStateSeq, PipeTallyState);                                        
 
         NDDSUSERDllExport
         RTIBool PipeTallyState_initialize(
@@ -83,7 +83,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool PipeTallyState_initialize_w_params(
             PipeTallyState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);  
+            const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
         void PipeTallyState_finalize(

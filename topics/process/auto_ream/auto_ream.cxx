@@ -30,8 +30,6 @@ or consult the RTI Connext manual.
 
 #include "auto_ream.h"
 
-#include <new>
-
 namespace nec {
     namespace process {
 
@@ -323,12 +321,7 @@ namespace nec {
             AutoReamRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -353,31 +346,31 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->QuillTipPosPV_m)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->Hole_depth)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->Dp_PressurePV_kPa)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->WeightOnBitPV_daN)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->StandpipePressUnfiltPV_kPa)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->BlockSpeedPV_mps)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->TD_Quill_SpeedPV_rpm)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -412,10 +405,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -456,66 +446,57 @@ namespace nec {
             AutoReamRequest* dst,
             const AutoReamRequest* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Priority_copy(
-                    &dst->priority,(const DataTypes::Priority*)&src->priority)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timeNeeded,(const DataTypes::Time*)&src->timeNeeded)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->duration,(const DataTypes::Time*)&src->duration)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->QuillTipPosPV_m, &src->QuillTipPosPV_m)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->Hole_depth, &src->Hole_depth)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->Dp_PressurePV_kPa, &src->Dp_PressurePV_kPa)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->WeightOnBitPV_daN, &src->WeightOnBitPV_daN)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->StandpipePressUnfiltPV_kPa, &src->StandpipePressUnfiltPV_kPa)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->BlockSpeedPV_mps, &src->BlockSpeedPV_mps)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->TD_Quill_SpeedPV_rpm, &src->TD_Quill_SpeedPV_rpm)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Uuid_copy(
+                &dst->objectiveId, &src->objectiveId)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Priority_copy(
+                &dst->priority, &src->priority)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->timeNeeded, &src->timeNeeded)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->duration, &src->duration)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->QuillTipPosPV_m, &src->QuillTipPosPV_m)) { 
                 return RTI_FALSE;
             }
+            if (!RTICdrType_copyDouble (
+                &dst->Hole_depth, &src->Hole_depth)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->Dp_PressurePV_kPa, &src->Dp_PressurePV_kPa)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->WeightOnBitPV_daN, &src->WeightOnBitPV_daN)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->StandpipePressUnfiltPV_kPa, &src->StandpipePressUnfiltPV_kPa)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->BlockSpeedPV_mps, &src->BlockSpeedPV_mps)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->TD_Quill_SpeedPV_rpm, &src->TD_Quill_SpeedPV_rpm)) { 
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -527,9 +508,7 @@ namespace nec {
         */
         #define T AutoReamRequest
         #define TSeq AutoReamRequestSeq
-
         #define T_initialize_w_params nec::process::AutoReamRequest_initialize_w_params
-
         #define T_finalize_w_params   nec::process::AutoReamRequest_finalize_w_params
         #define T_copy       nec::process::AutoReamRequest_copy
 
@@ -543,9 +522,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
 
@@ -799,12 +776,7 @@ namespace nec {
             AutoReamObjective* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -821,31 +793,31 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->QuillTipPosPV_m)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->Hole_depth)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->Dp_PressurePV_kPa)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->WeightOnBitPV_daN)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->StandpipePressUnfiltPV_kPa)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->BlockSpeedPV_mps)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->TD_Quill_SpeedPV_rpm)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -880,10 +852,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -918,58 +887,49 @@ namespace nec {
             AutoReamObjective* dst,
             const AutoReamObjective* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->estimatedDuration,(const DataTypes::Time*)&src->estimatedDuration)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->QuillTipPosPV_m, &src->QuillTipPosPV_m)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->Hole_depth, &src->Hole_depth)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->Dp_PressurePV_kPa, &src->Dp_PressurePV_kPa)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->WeightOnBitPV_daN, &src->WeightOnBitPV_daN)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->StandpipePressUnfiltPV_kPa, &src->StandpipePressUnfiltPV_kPa)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->BlockSpeedPV_mps, &src->BlockSpeedPV_mps)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->TD_Quill_SpeedPV_rpm, &src->TD_Quill_SpeedPV_rpm)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Uuid_copy(
+                &dst->objectiveId, &src->objectiveId)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->estimatedDuration, &src->estimatedDuration)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->QuillTipPosPV_m, &src->QuillTipPosPV_m)) { 
                 return RTI_FALSE;
             }
+            if (!RTICdrType_copyDouble (
+                &dst->Hole_depth, &src->Hole_depth)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->Dp_PressurePV_kPa, &src->Dp_PressurePV_kPa)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->WeightOnBitPV_daN, &src->WeightOnBitPV_daN)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->StandpipePressUnfiltPV_kPa, &src->StandpipePressUnfiltPV_kPa)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->BlockSpeedPV_mps, &src->BlockSpeedPV_mps)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->TD_Quill_SpeedPV_rpm, &src->TD_Quill_SpeedPV_rpm)) { 
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -981,9 +941,7 @@ namespace nec {
         */
         #define T AutoReamObjective
         #define TSeq AutoReamObjectiveSeq
-
         #define T_initialize_w_params nec::process::AutoReamObjective_initialize_w_params
-
         #define T_finalize_w_params   nec::process::AutoReamObjective_finalize_w_params
         #define T_copy       nec::process::AutoReamObjective_copy
 
@@ -997,9 +955,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
 
@@ -1291,12 +1247,7 @@ namespace nec {
             AutoReamState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -1317,35 +1268,35 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->hookloadActual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->holeDepthActual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->differentialPressureActual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->weightOnBitActual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->standpipePressureActual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->blockSpeedActual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->quillPositionActual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->quillRateActual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -1380,10 +1331,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -1421,66 +1369,57 @@ namespace nec {
             AutoReamState* dst,
             const AutoReamState* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Status_copy(
-                    &dst->status,(const DataTypes::Status*)&src->status)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->hookloadActual, &src->hookloadActual)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->holeDepthActual, &src->holeDepthActual)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->differentialPressureActual, &src->differentialPressureActual)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->weightOnBitActual, &src->weightOnBitActual)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->standpipePressureActual, &src->standpipePressureActual)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->blockSpeedActual, &src->blockSpeedActual)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->quillPositionActual, &src->quillPositionActual)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->quillRateActual, &src->quillRateActual)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Uuid_copy(
+                &dst->objectiveId, &src->objectiveId)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->timestamp, &src->timestamp)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Status_copy(
+                &dst->status, &src->status)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->hookloadActual, &src->hookloadActual)) { 
                 return RTI_FALSE;
             }
+            if (!RTICdrType_copyDouble (
+                &dst->holeDepthActual, &src->holeDepthActual)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->differentialPressureActual, &src->differentialPressureActual)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->weightOnBitActual, &src->weightOnBitActual)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->standpipePressureActual, &src->standpipePressureActual)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->blockSpeedActual, &src->blockSpeedActual)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->quillPositionActual, &src->quillPositionActual)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->quillRateActual, &src->quillRateActual)) { 
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -1492,9 +1431,7 @@ namespace nec {
         */
         #define T AutoReamState
         #define TSeq AutoReamStateSeq
-
         #define T_initialize_w_params nec::process::AutoReamState_initialize_w_params
-
         #define T_finalize_w_params   nec::process::AutoReamState_finalize_w_params
         #define T_copy       nec::process::AutoReamState_copy
 
@@ -1508,9 +1445,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
     } /* namespace process  */

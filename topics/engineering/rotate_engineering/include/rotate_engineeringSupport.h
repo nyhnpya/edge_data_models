@@ -46,9 +46,7 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(
-            RotateRequestTypeSupport, 
-            RotateRequest);
+        DDS_TYPESUPPORT_CPP(RotateRequestTypeSupport, RotateRequest);
 
         DDS_DATAWRITER_CPP(RotateRequestDataWriter, RotateRequest);
         DDS_DATAREADER_CPP(RotateRequestDataReader, RotateRequestSeq, RotateRequest);
@@ -77,9 +75,7 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(
-            RotateObjectiveTypeSupport, 
-            RotateObjective);
+        DDS_TYPESUPPORT_CPP(RotateObjectiveTypeSupport, RotateObjective);
 
         DDS_DATAWRITER_CPP(RotateObjectiveDataWriter, RotateObjective);
         DDS_DATAREADER_CPP(RotateObjectiveDataReader, RotateObjectiveSeq, RotateObjective);
@@ -108,9 +104,7 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(
-            RotateStateTypeSupport, 
-            RotateState);
+        DDS_TYPESUPPORT_CPP(RotateStateTypeSupport, RotateState);
 
         DDS_DATAWRITER_CPP(RotateStateDataWriter, RotateState);
         DDS_DATAREADER_CPP(RotateStateDataReader, RotateStateSeq, RotateState);

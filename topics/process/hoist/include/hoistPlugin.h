@@ -193,12 +193,6 @@ namespace nec {
             HoistRequest *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        HoistRequestPlugin_data_to_string(
-            const HoistRequest *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         HoistRequestPlugin_skip(
@@ -491,12 +485,6 @@ namespace nec {
             HoistObjective *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        HoistObjectivePlugin_data_to_string(
-            const HoistObjective *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         HoistObjectivePlugin_skip(
@@ -789,12 +777,6 @@ namespace nec {
             HoistState *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        HoistStatePlugin_data_to_string(
-            const HoistState *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         HoistStatePlugin_skip(

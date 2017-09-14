@@ -30,8 +30,6 @@ or consult the RTI Connext manual.
 
 #include "pipe_tally.h"
 
-#include <new>
-
 namespace nec {
     namespace process {
 
@@ -382,12 +380,7 @@ namespace nec {
             PipeTallyState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -401,6 +394,7 @@ namespace nec {
             allocParams)) {
                 return RTI_FALSE;
             }
+
             if (allocParams->allocate_memory){
                 sample->serialNumber= DDS_String_alloc ((255));
                 if (sample->serialNumber == NULL) {
@@ -415,39 +409,39 @@ namespace nec {
 
             if (!RTICdrType_initUnsignedLong(&sample->jointNumber)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initUnsignedLong(&sample->standNumber)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->weight)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->outerDiameter)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->innerDiameter)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->kellyDown)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->length)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->pipeLength)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->stringLength)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (allocParams->allocate_memory){
                 sample->description= DDS_String_alloc ((255));
@@ -498,10 +492,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -550,80 +541,71 @@ namespace nec {
             PipeTallyState* dst,
             const PipeTallyState* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyStringEx (
-                    &dst->serialNumber, src->serialNumber, 
-                    (255) + 1, RTI_FALSE)){
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyUnsignedLong (
-                    &dst->jointNumber, &src->jointNumber)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyUnsignedLong (
-                    &dst->standNumber, &src->standNumber)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->weight, &src->weight)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->outerDiameter, &src->outerDiameter)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->innerDiameter, &src->innerDiameter)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->kellyDown, &src->kellyDown)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->length, &src->length)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->pipeLength, &src->pipeLength)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->stringLength, &src->stringLength)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyStringEx (
-                    &dst->description, src->description, 
-                    (255) + 1, RTI_FALSE)){
-                    return RTI_FALSE;
-                }
-                if (!DataTypes::PipeType_copy(
-                    &dst->pipeType,(const DataTypes::PipeType*)&src->pipeType)) {
-                    return RTI_FALSE;
-                } 
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Uuid_copy(
+                &dst->objectiveId, &src->objectiveId)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->timestamp, &src->timestamp)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyStringEx (
+                &dst->serialNumber, src->serialNumber, 
+                (255) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
+            if (!RTICdrType_copyUnsignedLong (
+                &dst->jointNumber, &src->jointNumber)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyUnsignedLong (
+                &dst->standNumber, &src->standNumber)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->weight, &src->weight)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->outerDiameter, &src->outerDiameter)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->innerDiameter, &src->innerDiameter)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->kellyDown, &src->kellyDown)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->length, &src->length)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->pipeLength, &src->pipeLength)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->stringLength, &src->stringLength)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyStringEx (
+                &dst->description, src->description, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+            if (!DataTypes::PipeType_copy(
+                &dst->pipeType, &src->pipeType)) {
+                return RTI_FALSE;
+            } 
+
+            return RTI_TRUE;
         }
 
         /**
@@ -635,9 +617,7 @@ namespace nec {
         */
         #define T PipeTallyState
         #define TSeq PipeTallyStateSeq
-
         #define T_initialize_w_params nec::process::PipeTallyState_initialize_w_params
-
         #define T_finalize_w_params   nec::process::PipeTallyState_finalize_w_params
         #define T_copy       nec::process::PipeTallyState_copy
 
@@ -651,9 +631,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
     } /* namespace process  */

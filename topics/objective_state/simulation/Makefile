@@ -49,7 +49,7 @@ TARG_SOURCES += sim_drill_state_publisher.cpp
 
 # package control files
 PACKAGE_DESCRIPTION = "EDGE drilling simulation objective-state library"
-PACKAGE_EXTENDED_DESCRIPTION = "EDGE drilling simulation objective-state library"
+PACKAGE_DEV_DESCRIPTION = "EDGE drilling simulation objective-state library"
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libsimulation_drill
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libsimulation_drill-dev

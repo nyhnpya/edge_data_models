@@ -322,12 +322,6 @@ namespace DataTypes {
         Time *sample,
         const char * buffer,
         unsigned int length);    
-    NDDSUSERDllExport extern DDS_ReturnCode_t
-    TimePlugin_data_to_string(
-        const Time *sample,
-        char *str,
-        DDS_UnsignedLong *str_size, 
-        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     TimePlugin_skip(

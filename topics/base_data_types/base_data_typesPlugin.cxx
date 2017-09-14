@@ -1,4 +1,5 @@
 
+
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
@@ -41,17 +42,9 @@ or consult the RTI Connext manual.
 #include "cdr/cdr_stream.h"
 #endif
 
-#ifndef cdr_log_h
-#include "cdr/cdr_log.h"
-#endif
-
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
-
-#define RTI_CDR_CURRENT_SUBMODULE RTI_CDR_SUBMODULE_MASK_STREAM
-
-#include <new>
 
 #include "base_data_typesPlugin.h"
 
@@ -67,38 +60,34 @@ namespace DataTypes {
 
     Uuid*
     UuidPluginSupport_create_data_w_params(
-        const struct DDS_TypeAllocationParams_t * alloc_params) 
-    {
+        const struct DDS_TypeAllocationParams_t * alloc_params){
         Uuid *sample = NULL;
 
-        sample = new (std::nothrow) Uuid ;
-        if (sample == NULL) {
-            return NULL;
-        }
+        RTIOsapiHeap_allocateStructure(
+            &sample, Uuid);
 
-        if (!DataTypes::Uuid_initialize_w_params(sample,alloc_params)) {
-            delete  sample;
-            sample=NULL;
-        }
+        if(sample != NULL) {
+            if (!DataTypes::Uuid_initialize_w_params(sample,alloc_params)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
+        }        
         return sample; 
     } 
 
     Uuid *
-    UuidPluginSupport_create_data_ex(RTIBool allocate_pointers) 
-    {
+    UuidPluginSupport_create_data_ex(RTIBool allocate_pointers){
         Uuid *sample = NULL;
 
-        sample = new (std::nothrow) Uuid ;
+        RTIOsapiHeap_allocateStructure(
+            &sample, Uuid);
 
-        if(sample == NULL) {
-            return NULL;
+        if(sample != NULL) {
+            if (!DataTypes::Uuid_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
         }
-
-        if (!DataTypes::Uuid_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-            delete  sample;
-            sample=NULL;
-        }
-
         return sample; 
     }
 
@@ -115,8 +104,7 @@ namespace DataTypes {
 
         DataTypes::Uuid_finalize_w_params(sample,dealloc_params);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -125,8 +113,7 @@ namespace DataTypes {
 
         DataTypes::Uuid_finalize_ex(sample,deallocate_pointers);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -142,7 +129,7 @@ namespace DataTypes {
         Uuid *dst,
         const Uuid *src)
     {
-        return DataTypes::Uuid_copy(dst,(const Uuid*) src);
+        return DataTypes::Uuid_copy(dst,src);
     }
 
     void 
@@ -251,37 +238,31 @@ namespace DataTypes {
 
         char * position = NULL;
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                DataTypes::Uuid_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if (!RTICdrStream_deserializeStringEx(
-                    stream,&(*sample), (36) + 1, RTI_FALSE)) {
-                    return RTI_FALSE;
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            DataTypes::Uuid_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+            if (!RTICdrStream_deserializeStringEx(
+                stream,&(*sample), (36) + 1, RTI_FALSE)) {
+                return RTI_FALSE;
+            }
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool UuidPlugin_skip(
@@ -426,16 +407,10 @@ namespace DataTypes {
         unsigned int initial_alignment = current_alignment;
 
         unsigned int encapsulation_size = current_alignment;
-        struct PRESTypePluginDefaultEndpointData epd;   
 
+        if (endpoint_data) {} /* To avoid warnings */ 
         if (sample==NULL) {
             return 0;
-        }
-        if (endpoint_data == NULL) {
-            endpoint_data = (PRESTypePluginEndpointData) &epd;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);        
         }
 
         if (include_encapsulation) {
@@ -447,14 +422,10 @@ namespace DataTypes {
             encapsulation_size -= current_alignment;
             current_alignment = 0;
             initial_alignment = 0;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);
         }
 
         current_alignment += RTICdrType_getStringSerializedSize(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment), (*sample));
+            current_alignment, (*sample));
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -519,38 +490,32 @@ namespace DataTypes {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
+        char * position = NULL;
 
-            char * position = NULL;
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if (!RTICdrStream_deserializeStringEx(
-                    stream,&(*sample), (36) + 1, RTI_FALSE)) {
-                    return RTI_FALSE;
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if (deserialize_key) {
+
+            if (!RTICdrStream_deserializeStringEx(
+                stream,&(*sample), (36) + 1, RTI_FALSE)) {
+                return RTI_FALSE;
+            }
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     unsigned int
@@ -660,38 +625,34 @@ namespace DataTypes {
 
     Time*
     TimePluginSupport_create_data_w_params(
-        const struct DDS_TypeAllocationParams_t * alloc_params) 
-    {
+        const struct DDS_TypeAllocationParams_t * alloc_params){
         Time *sample = NULL;
 
-        sample = new (std::nothrow) Time ;
-        if (sample == NULL) {
-            return NULL;
-        }
+        RTIOsapiHeap_allocateStructure(
+            &sample, Time);
 
-        if (!DataTypes::Time_initialize_w_params(sample,alloc_params)) {
-            delete  sample;
-            sample=NULL;
-        }
+        if(sample != NULL) {
+            if (!DataTypes::Time_initialize_w_params(sample,alloc_params)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
+        }        
         return sample; 
     } 
 
     Time *
-    TimePluginSupport_create_data_ex(RTIBool allocate_pointers) 
-    {
+    TimePluginSupport_create_data_ex(RTIBool allocate_pointers){
         Time *sample = NULL;
 
-        sample = new (std::nothrow) Time ;
+        RTIOsapiHeap_allocateStructure(
+            &sample, Time);
 
-        if(sample == NULL) {
-            return NULL;
+        if(sample != NULL) {
+            if (!DataTypes::Time_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
         }
-
-        if (!DataTypes::Time_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-            delete  sample;
-            sample=NULL;
-        }
-
         return sample; 
     }
 
@@ -708,8 +669,7 @@ namespace DataTypes {
 
         DataTypes::Time_finalize_w_params(sample,dealloc_params);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -718,8 +678,7 @@ namespace DataTypes {
 
         DataTypes::Time_finalize_ex(sample,deallocate_pointers);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -735,7 +694,7 @@ namespace DataTypes {
         Time *dst,
         const Time *src)
     {
-        return DataTypes::Time_copy(dst,(const Time*) src);
+        return DataTypes::Time_copy(dst,src);
     }
 
     void 
@@ -945,48 +904,42 @@ namespace DataTypes {
 
         RTIBool done = RTI_FALSE;
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                DataTypes::Time_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if (!RTICdrStream_deserializeLong(
-                    stream, &sample->sec)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeUnsignedLong(
-                    stream, &sample->nanosec)) {
-                    goto fin; 
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            done = RTI_TRUE;
-          fin:
-            if (done != RTI_TRUE && 
-            RTICdrStream_getRemainder(stream) >=
-            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                return RTI_FALSE;   
-            }
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            DataTypes::Time_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+            if (!RTICdrStream_deserializeLong(
+                stream, &sample->sec)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeUnsignedLong(
+                stream, &sample->nanosec)) {
+                goto fin; 
+            }
+        }
+
+        done = RTI_TRUE;
+      fin:
+        if (done != RTI_TRUE && 
+        RTICdrStream_getRemainder(stream) >=
+        RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+            return RTI_FALSE;   
+        }
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool
@@ -1005,14 +958,14 @@ namespace DataTypes {
 
         epd._maxSizeSerializedSample =
         TimePlugin_get_serialized_sample_max_size(
-            NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
+            NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
         if (buffer == NULL) {
             *length = 
             TimePlugin_get_serialized_sample_size(
                 (PRESTypePluginEndpointData)&epd,
                 RTI_TRUE,
-                RTICdrEncapsulation_getNativeCdrEncapsulationId(),
+                RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
                 0,
                 sample);
 
@@ -1028,7 +981,7 @@ namespace DataTypes {
 
         result = DataTypes::TimePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
-            RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
+            RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
 
         *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -1046,96 +999,10 @@ namespace DataTypes {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, length);
 
-        Time_finalize_optional_members(sample, RTI_TRUE);
         return TimePlugin_deserialize_sample( 
             NULL, sample,
             &stream, RTI_TRUE, RTI_TRUE, 
             NULL);
-    }
-
-    DDS_ReturnCode_t
-    TimePlugin_data_to_string(
-        const Time *sample,
-        char *str,
-        DDS_UnsignedLong *str_size, 
-        const struct DDS_PrintFormatProperty *property)
-    {
-        DDS_DynamicData *data = NULL;
-        char *buffer = NULL;
-        unsigned int length = 0;
-        struct DDS_PrintFormat printFormat;
-        DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-        if (sample == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (str_size == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (property == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (!TimePlugin_serialize_to_cdr_buffer(
-            NULL, 
-            &length, 
-            sample)) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-        if (buffer == NULL) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        if (!TimePlugin_serialize_to_cdr_buffer(
-            buffer, 
-            &length, 
-            sample)) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        data = DDS_DynamicData_new(
-            Time_get_typecode(), 
-            &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-        if (data == NULL) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_PrintFormatProperty_to_print_format(
-            property, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_DynamicDataFormatter_to_string_w_format(
-            data, 
-            str,
-            str_size, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        RTIOsapiHeap_freeBuffer(buffer);
-        DDS_DynamicData_delete(data);
-        return DDS_RETCODE_OK;
     }
 
     RTIBool 
@@ -1150,7 +1017,6 @@ namespace DataTypes {
     {
 
         RTIBool result;
-        const char *METHOD_NAME = "TimePlugin_deserialize";
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
@@ -1162,14 +1028,6 @@ namespace DataTypes {
             if (stream->_xTypesState.unassignable) {
                 result = RTI_FALSE;
             }
-        }
-        if (!result && stream->_xTypesState.unassignable ) {
-
-            RTICdrLog_exception(
-                METHOD_NAME, 
-                &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                "Time");
-
         }
 
         return result;
@@ -1335,16 +1193,10 @@ namespace DataTypes {
         unsigned int initial_alignment = current_alignment;
 
         unsigned int encapsulation_size = current_alignment;
-        struct PRESTypePluginDefaultEndpointData epd;   
 
+        if (endpoint_data) {} /* To avoid warnings */ 
         if (sample==NULL) {
             return 0;
-        }
-        if (endpoint_data == NULL) {
-            endpoint_data = (PRESTypePluginEndpointData) &epd;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);        
         }
 
         if (include_encapsulation) {
@@ -1356,18 +1208,12 @@ namespace DataTypes {
             encapsulation_size -= current_alignment;
             current_alignment = 0;
             initial_alignment = 0;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);
         }
 
         current_alignment += RTICdrType_getLongMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getUnsignedLongMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
+            current_alignment);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -1434,40 +1280,34 @@ namespace DataTypes {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
+        char * position = NULL;
 
-            char * position = NULL;
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if (!DataTypes::TimePlugin_deserialize_sample(
-                    endpoint_data, sample, stream, 
-                    RTI_FALSE, RTI_TRUE, 
-                    endpoint_plugin_qos)) {
-                    return RTI_FALSE;
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if (deserialize_key) {
+
+            if (!DataTypes::TimePlugin_deserialize_sample(
+                endpoint_data, sample, stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool TimePlugin_deserialize_key(
@@ -1595,7 +1435,7 @@ namespace DataTypes {
                 return RTI_FALSE;   
             }
         } else {
-            return RTI_FALSE;
+            return error;
         }       
 
         if(deserialize_encapsulation) {
@@ -1616,7 +1456,6 @@ namespace DataTypes {
 
         RTIOsapiHeap_allocateStructure(
             &plugin, struct PRESTypePlugin);
-
         if (plugin == NULL) {
             return NULL;
         }
@@ -1725,7 +1564,6 @@ namespace DataTypes {
         void *endpoint_plugin_qos)
     {
         char * position = NULL;
-        const char *METHOD_NAME = "PriorityPlugin_serialize";
 
         if (endpoint_data) {} /* To avoid warnings */
         if (endpoint_plugin_qos) {} /* To avoid warnings */
@@ -1739,15 +1577,6 @@ namespace DataTypes {
         }
 
         if(serialize_sample) {
-
-            if (*sample != Normal && *sample != High && *sample != Critical){
-                RTICdrLog_exception(
-                    METHOD_NAME, 
-                    &RTI_CDR_LOG_SERIALIZE_INVALID_ENUMERATOR_ds, 
-                    *sample, 
-                    "Priority");
-                return RTI_FALSE;       
-            }
 
             if (!RTICdrStream_serializeEnum(stream, sample))
             {
@@ -1775,69 +1604,45 @@ namespace DataTypes {
 
         char * position = NULL;
         DDS_Enum enum_tmp;
-        const char *METHOD_NAME = "PriorityPlugin_deserialize_sample";
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                if (!RTICdrStream_deserializeEnum(stream, &enum_tmp))
-                {
-                    return RTI_FALSE;
-                }
-                switch (enum_tmp) {
-                    case Normal:
-                    *sample=Normal;
-                    break;
-                    case High:
-                    *sample=High;
-                    break;
-                    case Critical:
-                    *sample=Critical;
-                    break;
-                    default:
-                    {
-                        struct PRESTypePluginDefaultEndpointData * epd =
-                        (struct PRESTypePluginDefaultEndpointData *)
-                        endpoint_data;
-                        const struct PRESTypePluginSampleAssignabilityProperty * ap =
-                        PRESTypePluginDefaultEndpointData_getAssignabilityProperty(epd);
-
-                        if (ap->acceptUnknownEnumValue) {
-                            Priority_initialize(sample);
-                        } else {
-                            stream->_xTypesState.unassignable = RTI_TRUE;
-                            RTICdrLog_exception(
-                                METHOD_NAME, 
-                                &RTI_CDR_LOG_DESERIALIZE_INVALID_ENUMERATOR_ds, 
-                                enum_tmp, 
-                                "Priority");
-                            return RTI_FALSE;
-                        }
-                    }
-                }
-
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            if (!RTICdrStream_deserializeEnum(stream, &enum_tmp))
+            {
+                return RTI_FALSE;
+            }
+            switch (enum_tmp) {
+                case Normal:
+                *sample=Normal;
+                break;
+                case High:
+                *sample=High;
+                break;
+                case Critical:
+                *sample=Critical;
+                break;
+                default:
+                stream->_xTypesState.unassignable = RTI_TRUE;
+                return RTI_FALSE;
+            }
+
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool PriorityPlugin_skip(
@@ -1965,10 +1770,7 @@ namespace DataTypes {
 
         current_alignment += DataTypes::PriorityPlugin_get_serialized_sample_max_size(
             endpoint_data,include_encapsulation,
-            encapsulation_id,
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data,
-                current_alignment));
+            encapsulation_id, current_alignment);
 
         return current_alignment - initial_alignment;
     }
@@ -2002,15 +1804,9 @@ namespace DataTypes {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
-
-            return  DataTypes::PriorityPlugin_deserialize_sample(
-                endpoint_data, sample, stream, deserialize_encapsulation, 
-                deserialize_key, endpoint_plugin_qos);
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
-        }
+        return  DataTypes::PriorityPlugin_deserialize_sample(
+            endpoint_data, sample, stream, deserialize_encapsulation, 
+            deserialize_key, endpoint_plugin_qos);
     }
 
     unsigned int
@@ -2088,7 +1884,6 @@ namespace DataTypes {
         void *endpoint_plugin_qos)
     {
         char * position = NULL;
-        const char *METHOD_NAME = "SurveyQualityPlugin_serialize";
 
         if (endpoint_data) {} /* To avoid warnings */
         if (endpoint_plugin_qos) {} /* To avoid warnings */
@@ -2102,15 +1897,6 @@ namespace DataTypes {
         }
 
         if(serialize_sample) {
-
-            if (*sample != Definitive && *sample != Inconclusive){
-                RTICdrLog_exception(
-                    METHOD_NAME, 
-                    &RTI_CDR_LOG_SERIALIZE_INVALID_ENUMERATOR_ds, 
-                    *sample, 
-                    "SurveyQuality");
-                return RTI_FALSE;       
-            }
 
             if (!RTICdrStream_serializeEnum(stream, sample))
             {
@@ -2138,66 +1924,42 @@ namespace DataTypes {
 
         char * position = NULL;
         DDS_Enum enum_tmp;
-        const char *METHOD_NAME = "SurveyQualityPlugin_deserialize_sample";
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                if (!RTICdrStream_deserializeEnum(stream, &enum_tmp))
-                {
-                    return RTI_FALSE;
-                }
-                switch (enum_tmp) {
-                    case Definitive:
-                    *sample=Definitive;
-                    break;
-                    case Inconclusive:
-                    *sample=Inconclusive;
-                    break;
-                    default:
-                    {
-                        struct PRESTypePluginDefaultEndpointData * epd =
-                        (struct PRESTypePluginDefaultEndpointData *)
-                        endpoint_data;
-                        const struct PRESTypePluginSampleAssignabilityProperty * ap =
-                        PRESTypePluginDefaultEndpointData_getAssignabilityProperty(epd);
-
-                        if (ap->acceptUnknownEnumValue) {
-                            SurveyQuality_initialize(sample);
-                        } else {
-                            stream->_xTypesState.unassignable = RTI_TRUE;
-                            RTICdrLog_exception(
-                                METHOD_NAME, 
-                                &RTI_CDR_LOG_DESERIALIZE_INVALID_ENUMERATOR_ds, 
-                                enum_tmp, 
-                                "SurveyQuality");
-                            return RTI_FALSE;
-                        }
-                    }
-                }
-
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            if (!RTICdrStream_deserializeEnum(stream, &enum_tmp))
+            {
+                return RTI_FALSE;
+            }
+            switch (enum_tmp) {
+                case Definitive:
+                *sample=Definitive;
+                break;
+                case Inconclusive:
+                *sample=Inconclusive;
+                break;
+                default:
+                stream->_xTypesState.unassignable = RTI_TRUE;
+                return RTI_FALSE;
+            }
+
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool SurveyQualityPlugin_skip(
@@ -2325,10 +2087,7 @@ namespace DataTypes {
 
         current_alignment += DataTypes::SurveyQualityPlugin_get_serialized_sample_max_size(
             endpoint_data,include_encapsulation,
-            encapsulation_id,
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data,
-                current_alignment));
+            encapsulation_id, current_alignment);
 
         return current_alignment - initial_alignment;
     }
@@ -2362,15 +2121,9 @@ namespace DataTypes {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
-
-            return  DataTypes::SurveyQualityPlugin_deserialize_sample(
-                endpoint_data, sample, stream, deserialize_encapsulation, 
-                deserialize_key, endpoint_plugin_qos);
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
-        }
+        return  DataTypes::SurveyQualityPlugin_deserialize_sample(
+            endpoint_data, sample, stream, deserialize_encapsulation, 
+            deserialize_key, endpoint_plugin_qos);
     }
 
     unsigned int
@@ -2448,7 +2201,6 @@ namespace DataTypes {
         void *endpoint_plugin_qos)
     {
         char * position = NULL;
-        const char *METHOD_NAME = "StatusPlugin_serialize";
 
         if (endpoint_data) {} /* To avoid warnings */
         if (endpoint_plugin_qos) {} /* To avoid warnings */
@@ -2462,15 +2214,6 @@ namespace DataTypes {
         }
 
         if(serialize_sample) {
-
-            if (*sample != Fault && *sample != Good){
-                RTICdrLog_exception(
-                    METHOD_NAME, 
-                    &RTI_CDR_LOG_SERIALIZE_INVALID_ENUMERATOR_ds, 
-                    *sample, 
-                    "Status");
-                return RTI_FALSE;       
-            }
 
             if (!RTICdrStream_serializeEnum(stream, sample))
             {
@@ -2498,66 +2241,42 @@ namespace DataTypes {
 
         char * position = NULL;
         DDS_Enum enum_tmp;
-        const char *METHOD_NAME = "StatusPlugin_deserialize_sample";
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                if (!RTICdrStream_deserializeEnum(stream, &enum_tmp))
-                {
-                    return RTI_FALSE;
-                }
-                switch (enum_tmp) {
-                    case Fault:
-                    *sample=Fault;
-                    break;
-                    case Good:
-                    *sample=Good;
-                    break;
-                    default:
-                    {
-                        struct PRESTypePluginDefaultEndpointData * epd =
-                        (struct PRESTypePluginDefaultEndpointData *)
-                        endpoint_data;
-                        const struct PRESTypePluginSampleAssignabilityProperty * ap =
-                        PRESTypePluginDefaultEndpointData_getAssignabilityProperty(epd);
-
-                        if (ap->acceptUnknownEnumValue) {
-                            Status_initialize(sample);
-                        } else {
-                            stream->_xTypesState.unassignable = RTI_TRUE;
-                            RTICdrLog_exception(
-                                METHOD_NAME, 
-                                &RTI_CDR_LOG_DESERIALIZE_INVALID_ENUMERATOR_ds, 
-                                enum_tmp, 
-                                "Status");
-                            return RTI_FALSE;
-                        }
-                    }
-                }
-
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            if (!RTICdrStream_deserializeEnum(stream, &enum_tmp))
+            {
+                return RTI_FALSE;
+            }
+            switch (enum_tmp) {
+                case Fault:
+                *sample=Fault;
+                break;
+                case Good:
+                *sample=Good;
+                break;
+                default:
+                stream->_xTypesState.unassignable = RTI_TRUE;
+                return RTI_FALSE;
+            }
+
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool StatusPlugin_skip(
@@ -2685,10 +2404,7 @@ namespace DataTypes {
 
         current_alignment += DataTypes::StatusPlugin_get_serialized_sample_max_size(
             endpoint_data,include_encapsulation,
-            encapsulation_id,
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data,
-                current_alignment));
+            encapsulation_id, current_alignment);
 
         return current_alignment - initial_alignment;
     }
@@ -2722,15 +2438,9 @@ namespace DataTypes {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
-
-            return  DataTypes::StatusPlugin_deserialize_sample(
-                endpoint_data, sample, stream, deserialize_encapsulation, 
-                deserialize_key, endpoint_plugin_qos);
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
-        }
+        return  DataTypes::StatusPlugin_deserialize_sample(
+            endpoint_data, sample, stream, deserialize_encapsulation, 
+            deserialize_key, endpoint_plugin_qos);
     }
 
     unsigned int
@@ -2808,7 +2518,6 @@ namespace DataTypes {
         void *endpoint_plugin_qos)
     {
         char * position = NULL;
-        const char *METHOD_NAME = "PipeTypePlugin_serialize";
 
         if (endpoint_data) {} /* To avoid warnings */
         if (endpoint_plugin_qos) {} /* To avoid warnings */
@@ -2822,15 +2531,6 @@ namespace DataTypes {
         }
 
         if(serialize_sample) {
-
-            if (*sample != DrillCollar && *sample != HeavyWeight && *sample != DrillPipe){
-                RTICdrLog_exception(
-                    METHOD_NAME, 
-                    &RTI_CDR_LOG_SERIALIZE_INVALID_ENUMERATOR_ds, 
-                    *sample, 
-                    "PipeType");
-                return RTI_FALSE;       
-            }
 
             if (!RTICdrStream_serializeEnum(stream, sample))
             {
@@ -2858,69 +2558,45 @@ namespace DataTypes {
 
         char * position = NULL;
         DDS_Enum enum_tmp;
-        const char *METHOD_NAME = "PipeTypePlugin_deserialize_sample";
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                if (!RTICdrStream_deserializeEnum(stream, &enum_tmp))
-                {
-                    return RTI_FALSE;
-                }
-                switch (enum_tmp) {
-                    case DrillCollar:
-                    *sample=DrillCollar;
-                    break;
-                    case HeavyWeight:
-                    *sample=HeavyWeight;
-                    break;
-                    case DrillPipe:
-                    *sample=DrillPipe;
-                    break;
-                    default:
-                    {
-                        struct PRESTypePluginDefaultEndpointData * epd =
-                        (struct PRESTypePluginDefaultEndpointData *)
-                        endpoint_data;
-                        const struct PRESTypePluginSampleAssignabilityProperty * ap =
-                        PRESTypePluginDefaultEndpointData_getAssignabilityProperty(epd);
-
-                        if (ap->acceptUnknownEnumValue) {
-                            PipeType_initialize(sample);
-                        } else {
-                            stream->_xTypesState.unassignable = RTI_TRUE;
-                            RTICdrLog_exception(
-                                METHOD_NAME, 
-                                &RTI_CDR_LOG_DESERIALIZE_INVALID_ENUMERATOR_ds, 
-                                enum_tmp, 
-                                "PipeType");
-                            return RTI_FALSE;
-                        }
-                    }
-                }
-
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            if (!RTICdrStream_deserializeEnum(stream, &enum_tmp))
+            {
+                return RTI_FALSE;
+            }
+            switch (enum_tmp) {
+                case DrillCollar:
+                *sample=DrillCollar;
+                break;
+                case HeavyWeight:
+                *sample=HeavyWeight;
+                break;
+                case DrillPipe:
+                *sample=DrillPipe;
+                break;
+                default:
+                stream->_xTypesState.unassignable = RTI_TRUE;
+                return RTI_FALSE;
+            }
+
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool PipeTypePlugin_skip(
@@ -3048,10 +2724,7 @@ namespace DataTypes {
 
         current_alignment += DataTypes::PipeTypePlugin_get_serialized_sample_max_size(
             endpoint_data,include_encapsulation,
-            encapsulation_id,
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data,
-                current_alignment));
+            encapsulation_id, current_alignment);
 
         return current_alignment - initial_alignment;
     }
@@ -3085,15 +2758,9 @@ namespace DataTypes {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
-
-            return  DataTypes::PipeTypePlugin_deserialize_sample(
-                endpoint_data, sample, stream, deserialize_encapsulation, 
-                deserialize_key, endpoint_plugin_qos);
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
-        }
+        return  DataTypes::PipeTypePlugin_deserialize_sample(
+            endpoint_data, sample, stream, deserialize_encapsulation, 
+            deserialize_key, endpoint_plugin_qos);
     }
 
     unsigned int
@@ -3171,7 +2838,6 @@ namespace DataTypes {
         void *endpoint_plugin_qos)
     {
         char * position = NULL;
-        const char *METHOD_NAME = "ObjectivePlugin_serialize";
 
         if (endpoint_data) {} /* To avoid warnings */
         if (endpoint_plugin_qos) {} /* To avoid warnings */
@@ -3185,15 +2851,6 @@ namespace DataTypes {
         }
 
         if(serialize_sample) {
-
-            if (*sample != None && *sample != Casing && *sample != CleaningHole && *sample != Drilling && *sample != AutoReaming && *sample != Tripping){
-                RTICdrLog_exception(
-                    METHOD_NAME, 
-                    &RTI_CDR_LOG_SERIALIZE_INVALID_ENUMERATOR_ds, 
-                    *sample, 
-                    "Objective");
-                return RTI_FALSE;       
-            }
 
             if (!RTICdrStream_serializeEnum(stream, sample))
             {
@@ -3221,78 +2878,54 @@ namespace DataTypes {
 
         char * position = NULL;
         DDS_Enum enum_tmp;
-        const char *METHOD_NAME = "ObjectivePlugin_deserialize_sample";
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                if (!RTICdrStream_deserializeEnum(stream, &enum_tmp))
-                {
-                    return RTI_FALSE;
-                }
-                switch (enum_tmp) {
-                    case None:
-                    *sample=None;
-                    break;
-                    case Casing:
-                    *sample=Casing;
-                    break;
-                    case CleaningHole:
-                    *sample=CleaningHole;
-                    break;
-                    case Drilling:
-                    *sample=Drilling;
-                    break;
-                    case AutoReaming:
-                    *sample=AutoReaming;
-                    break;
-                    case Tripping:
-                    *sample=Tripping;
-                    break;
-                    default:
-                    {
-                        struct PRESTypePluginDefaultEndpointData * epd =
-                        (struct PRESTypePluginDefaultEndpointData *)
-                        endpoint_data;
-                        const struct PRESTypePluginSampleAssignabilityProperty * ap =
-                        PRESTypePluginDefaultEndpointData_getAssignabilityProperty(epd);
-
-                        if (ap->acceptUnknownEnumValue) {
-                            Objective_initialize(sample);
-                        } else {
-                            stream->_xTypesState.unassignable = RTI_TRUE;
-                            RTICdrLog_exception(
-                                METHOD_NAME, 
-                                &RTI_CDR_LOG_DESERIALIZE_INVALID_ENUMERATOR_ds, 
-                                enum_tmp, 
-                                "Objective");
-                            return RTI_FALSE;
-                        }
-                    }
-                }
-
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            if (!RTICdrStream_deserializeEnum(stream, &enum_tmp))
+            {
+                return RTI_FALSE;
+            }
+            switch (enum_tmp) {
+                case None:
+                *sample=None;
+                break;
+                case Casing:
+                *sample=Casing;
+                break;
+                case CleaningHole:
+                *sample=CleaningHole;
+                break;
+                case Drilling:
+                *sample=Drilling;
+                break;
+                case AutoReaming:
+                *sample=AutoReaming;
+                break;
+                case Tripping:
+                *sample=Tripping;
+                break;
+                default:
+                stream->_xTypesState.unassignable = RTI_TRUE;
+                return RTI_FALSE;
+            }
+
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool ObjectivePlugin_skip(
@@ -3420,10 +3053,7 @@ namespace DataTypes {
 
         current_alignment += DataTypes::ObjectivePlugin_get_serialized_sample_max_size(
             endpoint_data,include_encapsulation,
-            encapsulation_id,
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data,
-                current_alignment));
+            encapsulation_id, current_alignment);
 
         return current_alignment - initial_alignment;
     }
@@ -3457,15 +3087,9 @@ namespace DataTypes {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
-
-            return  DataTypes::ObjectivePlugin_deserialize_sample(
-                endpoint_data, sample, stream, deserialize_encapsulation, 
-                deserialize_key, endpoint_plugin_qos);
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
-        }
+        return  DataTypes::ObjectivePlugin_deserialize_sample(
+            endpoint_data, sample, stream, deserialize_encapsulation, 
+            deserialize_key, endpoint_plugin_qos);
     }
 
     unsigned int
@@ -3528,4 +3152,4 @@ namespace DataTypes {
     * Plug-in Installation Methods
     * ------------------------------------------------------------------------ */
 } /* namespace DataTypes  */
-#undef RTI_CDR_CURRENT_SUBMODULE 
+

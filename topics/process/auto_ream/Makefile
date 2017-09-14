@@ -37,7 +37,7 @@ TARG_SOURCES += auto_reamSupport.cxx
 
 # package control file
 PACKAGE_DESCRIPTION = "EDGE DDS auto_ream library"
-PACKAGE_EXTENDED_DESCRIPTION = "EDGE DDS base auto_ream Library"
+PACKAGE_DEV_DESCRIPTION = "EDGE DDS base auto_ream Library"
 PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev

@@ -193,12 +193,6 @@ namespace nec {
             TorqueRequest *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        TorqueRequestPlugin_data_to_string(
-            const TorqueRequest *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         TorqueRequestPlugin_skip(
@@ -491,12 +485,6 @@ namespace nec {
             TorqueObjective *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        TorqueObjectivePlugin_data_to_string(
-            const TorqueObjective *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         TorqueObjectivePlugin_skip(
@@ -789,12 +777,6 @@ namespace nec {
             TorqueState *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        TorqueStatePlugin_data_to_string(
-            const TorqueState *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         TorqueStatePlugin_skip(

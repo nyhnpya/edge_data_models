@@ -30,8 +30,6 @@ or consult the RTI Connext manual.
 
 #include "torque.h"
 
-#include <new>
-
 namespace nec {
     namespace control {
 
@@ -190,12 +188,7 @@ namespace nec {
             TorqueRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -216,7 +209,7 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->target)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -251,10 +244,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -292,38 +282,29 @@ namespace nec {
             TorqueRequest* dst,
             const TorqueRequest* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Priority_copy(
-                    &dst->priority,(const DataTypes::Priority*)&src->priority)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timeNeeded,(const DataTypes::Time*)&src->timeNeeded)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->duration,(const DataTypes::Time*)&src->duration)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->target, &src->target)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Priority_copy(
+                &dst->priority, &src->priority)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->timeNeeded, &src->timeNeeded)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->duration, &src->duration)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->target, &src->target)) { 
                 return RTI_FALSE;
             }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -335,9 +316,7 @@ namespace nec {
         */
         #define T TorqueRequest
         #define TSeq TorqueRequestSeq
-
         #define T_initialize_w_params nec::control::TorqueRequest_initialize_w_params
-
         #define T_finalize_w_params   nec::control::TorqueRequest_finalize_w_params
         #define T_copy       nec::control::TorqueRequest_copy
 
@@ -351,9 +330,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
 
@@ -474,12 +451,7 @@ namespace nec {
             TorqueObjective* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -492,7 +464,7 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->limit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -527,10 +499,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -562,30 +531,21 @@ namespace nec {
             TorqueObjective* dst,
             const TorqueObjective* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->estimatedDuration,(const DataTypes::Time*)&src->estimatedDuration)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->limit, &src->limit)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->estimatedDuration, &src->estimatedDuration)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->limit, &src->limit)) { 
                 return RTI_FALSE;
             }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -597,9 +557,7 @@ namespace nec {
         */
         #define T TorqueObjective
         #define TSeq TorqueObjectiveSeq
-
         #define T_initialize_w_params nec::control::TorqueObjective_initialize_w_params
-
         #define T_finalize_w_params   nec::control::TorqueObjective_finalize_w_params
         #define T_copy       nec::control::TorqueObjective_copy
 
@@ -613,9 +571,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
 
@@ -793,12 +749,7 @@ namespace nec {
             TorqueState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -811,19 +762,19 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->actual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->minForce)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->maxForce)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->limit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -858,10 +809,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -893,42 +841,33 @@ namespace nec {
             TorqueState* dst,
             const TorqueState* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Status_copy(
-                    &dst->status,(const DataTypes::Status*)&src->status)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->actual, &src->actual)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->minForce, &src->minForce)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->maxForce, &src->maxForce)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->limit, &src->limit)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Status_copy(
+                &dst->status, &src->status)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->actual, &src->actual)) { 
                 return RTI_FALSE;
             }
+            if (!RTICdrType_copyDouble (
+                &dst->minForce, &src->minForce)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->maxForce, &src->maxForce)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->limit, &src->limit)) { 
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -940,9 +879,7 @@ namespace nec {
         */
         #define T TorqueState
         #define TSeq TorqueStateSeq
-
         #define T_initialize_w_params nec::control::TorqueState_initialize_w_params
-
         #define T_finalize_w_params   nec::control::TorqueState_finalize_w_params
         #define T_copy       nec::control::TorqueState_copy
 
@@ -956,9 +893,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
     } /* namespace control  */

@@ -49,7 +49,7 @@ TARG_SOURCES += drilling_state_publisher.cpp
 
 # package control files
 PACKAGE_DESCRIPTION = "EDGE drilling objective-state library"
-PACKAGE_EXTENDED_DESCRIPTION = "EDGE drilling objective-state library"
+PACKAGE_DEV_DESCRIPTION = "EDGE drilling objective-state library"
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libdrilling
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libdrilling-dev

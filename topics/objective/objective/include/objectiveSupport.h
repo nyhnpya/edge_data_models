@@ -46,9 +46,7 @@ namespace process {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(
-            ObjectiveStateTypeSupport, 
-            ObjectiveState);
+        DDS_TYPESUPPORT_CPP(ObjectiveStateTypeSupport, ObjectiveState);
 
         DDS_DATAWRITER_CPP(ObjectiveStateDataWriter, ObjectiveState);
         DDS_DATAREADER_CPP(ObjectiveStateDataReader, ObjectiveStateSeq, ObjectiveState);

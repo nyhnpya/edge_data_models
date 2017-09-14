@@ -44,9 +44,9 @@ TARG_SOURCES += circulate_state_subscriber.cpp
 
 # package control file
 PACKAGE_DESCRIPTION = "EDGE circulate objective-state library"
-PACKAGE_EXTENDED_DESCRIPTION = "EDGE circulate objective-state library"
+PACKAGE_DEV_DESCRIPTION = "EDGE circulate objective-state library"
 PACKAGE_DESCRIPTION = "Library package for the Ensign circulate_request API."
-PACKAGE_EXTENDED_DESCRIPTION = "core files for Ensign circulate_request API development."
+PACKAGE_DEV_DESCRIPTION = "core files for Ensign circulate_request API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libcirculate
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libcirculate-dev

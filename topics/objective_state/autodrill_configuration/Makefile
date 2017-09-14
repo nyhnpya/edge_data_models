@@ -47,7 +47,7 @@ TARG_SOURCES += autodriller_configuration_state_publisher.cpp
 
 # pacakge control file
 PACKAGE_DESCRIPTION = "EDGE autodriller configuration objective-state library"
-PACKAGE_EXTENDED_DESCRIPTION = "EDGE autodriller configuration objective-state library"
+PACKAGE_DEV_DESCRIPTION = "EDGE autodriller configuration objective-state library"
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libautodriller_configuration
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libautodriller_configuration-dev

@@ -37,7 +37,7 @@ TARG_SOURCES = process_info_publisher.cpp
 
 # package control file
 PACKAGE_DESCRIPTION = "Ensign EDGE Process_Info Library"
-PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Process_Info Library"
+PACKAGE_DEV_DESCRIPTION = "Ensign EDGE Process_Info Library"
 PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libprocess_info
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libprocess_info-dev

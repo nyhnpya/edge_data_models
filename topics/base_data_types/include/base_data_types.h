@@ -31,7 +31,7 @@ namespace DataTypes {
 
     NDDSUSERDllExport DDS_TypeCode* Uuid_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(UuidSeq, Uuid);
+    DDS_SEQUENCE(UuidSeq, Uuid);                                        
 
     NDDSUSERDllExport
     RTIBool Uuid_initialize(
@@ -44,7 +44,7 @@ namespace DataTypes {
     NDDSUSERDllExport
     RTIBool Uuid_initialize_w_params(
         Uuid* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void Uuid_finalize(
@@ -107,7 +107,7 @@ namespace DataTypes {
 
     NDDSUSERDllExport DDS_TypeCode* Time_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(TimeSeq, Time);
+    DDS_SEQUENCE(TimeSeq, Time);                                        
 
     NDDSUSERDllExport
     RTIBool Time_initialize(
@@ -120,7 +120,7 @@ namespace DataTypes {
     NDDSUSERDllExport
     RTIBool Time_initialize_w_params(
         Time* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void Time_finalize(
@@ -165,7 +165,7 @@ namespace DataTypes {
 
     NDDSUSERDllExport DDS_TypeCode* Priority_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(PrioritySeq, Priority);
+    DDS_SEQUENCE(PrioritySeq, Priority);                                        
 
     NDDSUSERDllExport
     RTIBool Priority_initialize(
@@ -178,7 +178,7 @@ namespace DataTypes {
     NDDSUSERDllExport
     RTIBool Priority_initialize_w_params(
         Priority* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void Priority_finalize(
@@ -222,7 +222,7 @@ namespace DataTypes {
 
     NDDSUSERDllExport DDS_TypeCode* SurveyQuality_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(SurveyQualitySeq, SurveyQuality);
+    DDS_SEQUENCE(SurveyQualitySeq, SurveyQuality);                                        
 
     NDDSUSERDllExport
     RTIBool SurveyQuality_initialize(
@@ -235,7 +235,7 @@ namespace DataTypes {
     NDDSUSERDllExport
     RTIBool SurveyQuality_initialize_w_params(
         SurveyQuality* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void SurveyQuality_finalize(
@@ -279,7 +279,7 @@ namespace DataTypes {
 
     NDDSUSERDllExport DDS_TypeCode* Status_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(StatusSeq, Status);
+    DDS_SEQUENCE(StatusSeq, Status);                                        
 
     NDDSUSERDllExport
     RTIBool Status_initialize(
@@ -292,7 +292,7 @@ namespace DataTypes {
     NDDSUSERDllExport
     RTIBool Status_initialize_w_params(
         Status* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void Status_finalize(
@@ -337,7 +337,7 @@ namespace DataTypes {
 
     NDDSUSERDllExport DDS_TypeCode* PipeType_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(PipeTypeSeq, PipeType);
+    DDS_SEQUENCE(PipeTypeSeq, PipeType);                                        
 
     NDDSUSERDllExport
     RTIBool PipeType_initialize(
@@ -350,7 +350,7 @@ namespace DataTypes {
     NDDSUSERDllExport
     RTIBool PipeType_initialize_w_params(
         PipeType* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void PipeType_finalize(
@@ -398,7 +398,7 @@ namespace DataTypes {
 
     NDDSUSERDllExport DDS_TypeCode* Objective_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(ObjectiveSeq, Objective);
+    DDS_SEQUENCE(ObjectiveSeq, Objective);                                        
 
     NDDSUSERDllExport
     RTIBool Objective_initialize(
@@ -411,7 +411,7 @@ namespace DataTypes {
     NDDSUSERDllExport
     RTIBool Objective_initialize_w_params(
         Objective* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void Objective_finalize(

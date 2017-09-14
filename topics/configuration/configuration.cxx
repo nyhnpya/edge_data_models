@@ -30,8 +30,6 @@ or consult the RTI Connext manual.
 
 #include "configuration.h"
 
-#include <new>
-
 namespace Configuration {
 
     /* ========================================================================= */
@@ -134,12 +132,7 @@ namespace Configuration {
         Item* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (sample == NULL) {
-            return RTI_FALSE;
-        }
-        if (allocParams == NULL) {
-            return RTI_FALSE;
-        }
+        if (allocParams) {} /* To avoid warnings */
 
         if (allocParams->allocate_memory){
             sample->key= DDS_String_alloc ((255));
@@ -198,10 +191,7 @@ namespace Configuration {
         if (sample==NULL) {
             return;
         }
-
-        if (deallocParams == NULL) {
-            return;
-        }
+        if (deallocParams) {} /* To avoid warnings */
 
         if (sample->key != NULL) {
             DDS_String_free(sample->key);
@@ -237,28 +227,19 @@ namespace Configuration {
         Item* dst,
         const Item* src)
     {
-        try {
 
-            if (dst == NULL || src == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_copyStringEx (
-                &dst->key, src->key, 
-                (255) + 1, RTI_FALSE)){
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyStringEx (
-                &dst->value, src->value, 
-                (255) + 1, RTI_FALSE)){
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
+        if (!RTICdrType_copyStringEx (
+            &dst->key, src->key, 
+            (255) + 1, RTI_FALSE)){
             return RTI_FALSE;
         }
+        if (!RTICdrType_copyStringEx (
+            &dst->value, src->value, 
+            (255) + 1, RTI_FALSE)){
+            return RTI_FALSE;
+        }
+
+        return RTI_TRUE;
     }
 
     /**
@@ -270,9 +251,7 @@ namespace Configuration {
     */
     #define T Item
     #define TSeq ItemSeq
-
     #define T_initialize_w_params Configuration::Item_initialize_w_params
-
     #define T_finalize_w_params   Configuration::Item_finalize_w_params
     #define T_copy       Configuration::Item_copy
 
@@ -286,9 +265,7 @@ namespace Configuration {
 
     #undef T_copy
     #undef T_finalize_w_params
-
     #undef T_initialize_w_params
-
     #undef TSeq
     #undef T
 } /* namespace Configuration  */

@@ -45,9 +45,7 @@ namespace Configuration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(
-        ItemTypeSupport, 
-        Item);
+    DDS_TYPESUPPORT_CPP(ItemTypeSupport, Item);
 
     DDS_DATAWRITER_CPP(ItemDataWriter, Item);
     DDS_DATAREADER_CPP(ItemDataReader, ItemSeq, Item);

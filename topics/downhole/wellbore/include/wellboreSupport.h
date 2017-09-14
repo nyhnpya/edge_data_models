@@ -46,9 +46,7 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(
-            WellboreStateTypeSupport, 
-            WellboreState);
+        DDS_TYPESUPPORT_CPP(WellboreStateTypeSupport, WellboreState);
 
         DDS_DATAWRITER_CPP(WellboreStateDataWriter, WellboreState);
         DDS_DATAREADER_CPP(WellboreStateDataReader, WellboreStateSeq, WellboreState);

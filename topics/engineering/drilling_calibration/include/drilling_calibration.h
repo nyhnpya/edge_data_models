@@ -63,7 +63,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* DrillingCalibrationRequest_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(DrillingCalibrationRequestSeq, DrillingCalibrationRequest);
+        DDS_SEQUENCE(DrillingCalibrationRequestSeq, DrillingCalibrationRequest);                                        
 
         NDDSUSERDllExport
         RTIBool DrillingCalibrationRequest_initialize(
@@ -76,7 +76,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool DrillingCalibrationRequest_initialize_w_params(
             DrillingCalibrationRequest* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);  
+            const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
         void DrillingCalibrationRequest_finalize(
@@ -162,7 +162,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* DrillingCalibrationState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(DrillingCalibrationStateSeq, DrillingCalibrationState);
+        DDS_SEQUENCE(DrillingCalibrationStateSeq, DrillingCalibrationState);                                        
 
         NDDSUSERDllExport
         RTIBool DrillingCalibrationState_initialize(
@@ -175,7 +175,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool DrillingCalibrationState_initialize_w_params(
             DrillingCalibrationState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);  
+            const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
         void DrillingCalibrationState_finalize(

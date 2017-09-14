@@ -30,8 +30,6 @@ or consult the RTI Connext manual.
 
 #include "drill_simulation.h"
 
-#include <new>
-
 namespace Simulation {
 
     /* ========================================================================= */
@@ -284,12 +282,7 @@ namespace Simulation {
         AutoDrillerRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (sample == NULL) {
-            return RTI_FALSE;
-        }
-        if (allocParams == NULL) {
-            return RTI_FALSE;
-        }
+        if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
         allocParams)) {
@@ -298,39 +291,39 @@ namespace Simulation {
 
         if (!RTICdrType_initDouble(&sample->hookload)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->ropLimit)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobLimit)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->differentialPressureLimit)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueLimit)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->ropMode)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->wobMode)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->differentialPressureMode)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->torqueMode)) {
             return RTI_FALSE;
-        }
+        }     
 
         return RTI_TRUE;
     }
@@ -365,10 +358,7 @@ namespace Simulation {
         if (sample==NULL) {
             return;
         }
-
-        if (deallocParams == NULL) {
-            return;
-        }
+        if (deallocParams) {} /* To avoid warnings */
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -397,58 +387,49 @@ namespace Simulation {
         AutoDrillerRequest* dst,
         const AutoDrillerRequest* src)
     {
-        try {
 
-            if (dst == NULL || src == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!DataTypes::Uuid_copy(
-                &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                return RTI_FALSE;
-            } 
-            if (!RTICdrType_copyDouble (
-                &dst->hookload, &src->hookload)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->ropLimit, &src->ropLimit)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobLimit, &src->wobLimit)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureLimit, &src->differentialPressureLimit)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueLimit, &src->torqueLimit)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->ropMode, &src->ropMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->wobMode, &src->wobMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->differentialPressureMode, &src->differentialPressureMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->torqueMode, &src->torqueMode)) { 
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
+        if (!DataTypes::Uuid_copy(
+            &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!RTICdrType_copyDouble (
+            &dst->hookload, &src->hookload)) { 
             return RTI_FALSE;
         }
+        if (!RTICdrType_copyDouble (
+            &dst->ropLimit, &src->ropLimit)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobLimit, &src->wobLimit)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->differentialPressureLimit, &src->differentialPressureLimit)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueLimit, &src->torqueLimit)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->ropMode, &src->ropMode)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->wobMode, &src->wobMode)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->differentialPressureMode, &src->differentialPressureMode)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->torqueMode, &src->torqueMode)) { 
+            return RTI_FALSE;
+        }
+
+        return RTI_TRUE;
     }
 
     /**
@@ -460,9 +441,7 @@ namespace Simulation {
     */
     #define T AutoDrillerRequest
     #define TSeq AutoDrillerRequestSeq
-
     #define T_initialize_w_params Simulation::AutoDrillerRequest_initialize_w_params
-
     #define T_finalize_w_params   Simulation::AutoDrillerRequest_finalize_w_params
     #define T_copy       Simulation::AutoDrillerRequest_copy
 
@@ -476,9 +455,7 @@ namespace Simulation {
 
     #undef T_copy
     #undef T_finalize_w_params
-
     #undef T_initialize_w_params
-
     #undef TSeq
     #undef T
 
@@ -732,12 +709,7 @@ namespace Simulation {
         AutoDrillerObjective* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (sample == NULL) {
-            return RTI_FALSE;
-        }
-        if (allocParams == NULL) {
-            return RTI_FALSE;
-        }
+        if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
         allocParams)) {
@@ -746,39 +718,39 @@ namespace Simulation {
 
         if (!RTICdrType_initDouble(&sample->hookload)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->ropLimit)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobLimit)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->differentialPressureLimit)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueLimit)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->ropMode)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->wobMode)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->differentialPressureMode)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->torqueMode)) {
             return RTI_FALSE;
-        }
+        }     
 
         return RTI_TRUE;
     }
@@ -813,10 +785,7 @@ namespace Simulation {
         if (sample==NULL) {
             return;
         }
-
-        if (deallocParams == NULL) {
-            return;
-        }
+        if (deallocParams) {} /* To avoid warnings */
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -845,58 +814,49 @@ namespace Simulation {
         AutoDrillerObjective* dst,
         const AutoDrillerObjective* src)
     {
-        try {
 
-            if (dst == NULL || src == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!DataTypes::Uuid_copy(
-                &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                return RTI_FALSE;
-            } 
-            if (!RTICdrType_copyDouble (
-                &dst->hookload, &src->hookload)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->ropLimit, &src->ropLimit)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobLimit, &src->wobLimit)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureLimit, &src->differentialPressureLimit)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueLimit, &src->torqueLimit)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->ropMode, &src->ropMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->wobMode, &src->wobMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->differentialPressureMode, &src->differentialPressureMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->torqueMode, &src->torqueMode)) { 
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
+        if (!DataTypes::Uuid_copy(
+            &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!RTICdrType_copyDouble (
+            &dst->hookload, &src->hookload)) { 
             return RTI_FALSE;
         }
+        if (!RTICdrType_copyDouble (
+            &dst->ropLimit, &src->ropLimit)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobLimit, &src->wobLimit)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->differentialPressureLimit, &src->differentialPressureLimit)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueLimit, &src->torqueLimit)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->ropMode, &src->ropMode)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->wobMode, &src->wobMode)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->differentialPressureMode, &src->differentialPressureMode)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->torqueMode, &src->torqueMode)) { 
+            return RTI_FALSE;
+        }
+
+        return RTI_TRUE;
     }
 
     /**
@@ -908,9 +868,7 @@ namespace Simulation {
     */
     #define T AutoDrillerObjective
     #define TSeq AutoDrillerObjectiveSeq
-
     #define T_initialize_w_params Simulation::AutoDrillerObjective_initialize_w_params
-
     #define T_finalize_w_params   Simulation::AutoDrillerObjective_finalize_w_params
     #define T_copy       Simulation::AutoDrillerObjective_copy
 
@@ -924,9 +882,7 @@ namespace Simulation {
 
     #undef T_copy
     #undef T_finalize_w_params
-
     #undef T_initialize_w_params
-
     #undef TSeq
     #undef T
 
@@ -1332,12 +1288,7 @@ namespace Simulation {
         AutoDrillerState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (sample == NULL) {
-            return RTI_FALSE;
-        }
-        if (allocParams == NULL) {
-            return RTI_FALSE;
-        }
+        if (allocParams) {} /* To avoid warnings */
 
         if (!DataTypes::Uuid_initialize_w_params(&sample->id,
         allocParams)) {
@@ -1346,71 +1297,71 @@ namespace Simulation {
 
         if (!RTICdrType_initDouble(&sample->hookloadActual)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->ropActual)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobActual)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->differentialPressureActual)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueActual)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->ropLimit)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobLimit)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->differentialPressureLimit)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueLimit)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->ropMode)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->wobMode)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->differentialPressureMode)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->torqueMode)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->ropTarget)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobTarget)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->differentialPressureTarget)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueTarget)) {
             return RTI_FALSE;
-        }
+        }     
 
         return RTI_TRUE;
     }
@@ -1445,10 +1396,7 @@ namespace Simulation {
         if (sample==NULL) {
             return;
         }
-
-        if (deallocParams == NULL) {
-            return;
-        }
+        if (deallocParams) {} /* To avoid warnings */
 
         DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -1477,90 +1425,81 @@ namespace Simulation {
         AutoDrillerState* dst,
         const AutoDrillerState* src)
     {
-        try {
 
-            if (dst == NULL || src == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!DataTypes::Uuid_copy(
-                &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                return RTI_FALSE;
-            } 
-            if (!RTICdrType_copyDouble (
-                &dst->hookloadActual, &src->hookloadActual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->ropActual, &src->ropActual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobActual, &src->wobActual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureActual, &src->differentialPressureActual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueActual, &src->torqueActual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->ropLimit, &src->ropLimit)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobLimit, &src->wobLimit)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureLimit, &src->differentialPressureLimit)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueLimit, &src->torqueLimit)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->ropMode, &src->ropMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->wobMode, &src->wobMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->differentialPressureMode, &src->differentialPressureMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->torqueMode, &src->torqueMode)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->ropTarget, &src->ropTarget)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobTarget, &src->wobTarget)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->differentialPressureTarget, &src->differentialPressureTarget)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueTarget, &src->torqueTarget)) { 
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
+        if (!DataTypes::Uuid_copy(
+            &dst->id, &src->id)) {
+            return RTI_FALSE;
+        } 
+        if (!RTICdrType_copyDouble (
+            &dst->hookloadActual, &src->hookloadActual)) { 
             return RTI_FALSE;
         }
+        if (!RTICdrType_copyDouble (
+            &dst->ropActual, &src->ropActual)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobActual, &src->wobActual)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->differentialPressureActual, &src->differentialPressureActual)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueActual, &src->torqueActual)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->ropLimit, &src->ropLimit)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobLimit, &src->wobLimit)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->differentialPressureLimit, &src->differentialPressureLimit)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueLimit, &src->torqueLimit)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->ropMode, &src->ropMode)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->wobMode, &src->wobMode)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->differentialPressureMode, &src->differentialPressureMode)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->torqueMode, &src->torqueMode)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->ropTarget, &src->ropTarget)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobTarget, &src->wobTarget)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->differentialPressureTarget, &src->differentialPressureTarget)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueTarget, &src->torqueTarget)) { 
+            return RTI_FALSE;
+        }
+
+        return RTI_TRUE;
     }
 
     /**
@@ -1572,9 +1511,7 @@ namespace Simulation {
     */
     #define T AutoDrillerState
     #define TSeq AutoDrillerStateSeq
-
     #define T_initialize_w_params Simulation::AutoDrillerState_initialize_w_params
-
     #define T_finalize_w_params   Simulation::AutoDrillerState_finalize_w_params
     #define T_copy       Simulation::AutoDrillerState_copy
 
@@ -1588,9 +1525,7 @@ namespace Simulation {
 
     #undef T_copy
     #undef T_finalize_w_params
-
     #undef T_initialize_w_params
-
     #undef TSeq
     #undef T
 } /* namespace Simulation  */

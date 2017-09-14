@@ -38,7 +38,7 @@ TARG_SOURCES = pipe_tally_subscriber.cpp
 
 # package control files
 PACKAGE_DESCRIPTION = "Ensign EDGE Pipe_Tally Library"
-PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Pipe_Tally Library"
+PACKAGE_DEV_DESCRIPTION = "Ensign EDGE Pipe_Tally Library"
 PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libpipe_tally
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libpipe_tally-dev

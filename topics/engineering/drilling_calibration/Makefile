@@ -37,7 +37,7 @@ TARG_SOURCES += drilling_calibrationSupport.cxx
 
 # package control file
 PACKAGE_DESCRIPTION = "Ensign EDGE Drilling_Calibration Library"
-PACKAGE_EXTENDED_DESCRIPTION = "Ensign EDGE Drilling_Calibration Library"
+PACKAGE_DEV_DESCRIPTION = "Ensign EDGE Drilling_Calibration Library"
 PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev

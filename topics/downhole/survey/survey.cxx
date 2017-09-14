@@ -30,8 +30,6 @@ or consult the RTI Connext manual.
 
 #include "survey.h"
 
-#include <new>
-
 namespace nec {
     namespace process {
 
@@ -209,12 +207,7 @@ namespace nec {
             SurveyRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -273,10 +266,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -320,42 +310,33 @@ namespace nec {
             SurveyRequest* dst,
             const SurveyRequest* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Priority_copy(
-                    &dst->priority,(const DataTypes::Priority*)&src->priority)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timeNeeded,(const DataTypes::Time*)&src->timeNeeded)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->estimatedDuration,(const DataTypes::Time*)&src->estimatedDuration)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::SurveyQuality_copy(
-                    &dst->surveyQuality,(const DataTypes::SurveyQuality*)&src->surveyQuality)) {
-                    return RTI_FALSE;
-                } 
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
                 return RTI_FALSE;
-            }
+            } 
+            if (!DataTypes::Uuid_copy(
+                &dst->objectiveId, &src->objectiveId)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Priority_copy(
+                &dst->priority, &src->priority)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->timeNeeded, &src->timeNeeded)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->estimatedDuration, &src->estimatedDuration)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::SurveyQuality_copy(
+                &dst->surveyQuality, &src->surveyQuality)) {
+                return RTI_FALSE;
+            } 
+
+            return RTI_TRUE;
         }
 
         /**
@@ -367,9 +348,7 @@ namespace nec {
         */
         #define T SurveyRequest
         #define TSeq SurveyRequestSeq
-
         #define T_initialize_w_params nec::process::SurveyRequest_initialize_w_params
-
         #define T_finalize_w_params   nec::process::SurveyRequest_finalize_w_params
         #define T_copy       nec::process::SurveyRequest_copy
 
@@ -383,9 +362,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
 
@@ -525,12 +502,7 @@ namespace nec {
             SurveyObjective* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -581,10 +553,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -622,34 +591,25 @@ namespace nec {
             SurveyObjective* dst,
             const SurveyObjective* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->estimatedDuration,(const DataTypes::Time*)&src->estimatedDuration)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::SurveyQuality_copy(
-                    &dst->requestedSurveyQuality,(const DataTypes::SurveyQuality*)&src->requestedSurveyQuality)) {
-                    return RTI_FALSE;
-                } 
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
                 return RTI_FALSE;
-            }
+            } 
+            if (!DataTypes::Uuid_copy(
+                &dst->objectiveId, &src->objectiveId)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->estimatedDuration, &src->estimatedDuration)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::SurveyQuality_copy(
+                &dst->requestedSurveyQuality, &src->requestedSurveyQuality)) {
+                return RTI_FALSE;
+            } 
+
+            return RTI_TRUE;
         }
 
         /**
@@ -661,9 +621,7 @@ namespace nec {
         */
         #define T SurveyObjective
         #define TSeq SurveyObjectiveSeq
-
         #define T_initialize_w_params nec::process::SurveyObjective_initialize_w_params
-
         #define T_finalize_w_params   nec::process::SurveyObjective_finalize_w_params
         #define T_copy       nec::process::SurveyObjective_copy
 
@@ -677,9 +635,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
 
@@ -1218,12 +1174,7 @@ namespace nec {
             SurveyState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -1248,79 +1199,79 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->measuredDepth)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->inclination)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->azimuth)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->totalVerticalDepth)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->dogLeg)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->verticalSection)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->eastWest)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->northSouth)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->courseLength)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->ca)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->cd)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->cl)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->buildRate)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->turnRate)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->topOfTarget)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->bottomOfTarget)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->dip)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->fault)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->surveyCost)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!DataTypes::SurveyQuality_initialize_w_params(&sample->requestedSurveyQuality,
             allocParams)) {
@@ -1359,10 +1310,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -1406,118 +1354,109 @@ namespace nec {
             SurveyState* dst,
             const SurveyState* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Status_copy(
-                    &dst->status,(const DataTypes::Status*)&src->status)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::SurveyQuality_copy(
-                    &dst->acutalSurveyQuality,(const DataTypes::SurveyQuality*)&src->acutalSurveyQuality)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->measuredDepth, &src->measuredDepth)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->inclination, &src->inclination)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->azimuth, &src->azimuth)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->totalVerticalDepth, &src->totalVerticalDepth)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->dogLeg, &src->dogLeg)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->verticalSection, &src->verticalSection)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->eastWest, &src->eastWest)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->northSouth, &src->northSouth)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->courseLength, &src->courseLength)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->ca, &src->ca)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->cd, &src->cd)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->cl, &src->cl)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->buildRate, &src->buildRate)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->turnRate, &src->turnRate)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->topOfTarget, &src->topOfTarget)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->bottomOfTarget, &src->bottomOfTarget)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->dip, &src->dip)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->fault, &src->fault)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->surveyCost, &src->surveyCost)) { 
-                    return RTI_FALSE;
-                }
-                if (!DataTypes::SurveyQuality_copy(
-                    &dst->requestedSurveyQuality,(const DataTypes::SurveyQuality*)&src->requestedSurveyQuality)) {
-                    return RTI_FALSE;
-                } 
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Uuid_copy(
+                &dst->objectiveId, &src->objectiveId)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->timestamp, &src->timestamp)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Status_copy(
+                &dst->status, &src->status)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::SurveyQuality_copy(
+                &dst->acutalSurveyQuality, &src->acutalSurveyQuality)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->measuredDepth, &src->measuredDepth)) { 
                 return RTI_FALSE;
             }
+            if (!RTICdrType_copyDouble (
+                &dst->inclination, &src->inclination)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->azimuth, &src->azimuth)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->totalVerticalDepth, &src->totalVerticalDepth)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->dogLeg, &src->dogLeg)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->verticalSection, &src->verticalSection)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->eastWest, &src->eastWest)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->northSouth, &src->northSouth)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->courseLength, &src->courseLength)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->ca, &src->ca)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->cd, &src->cd)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->cl, &src->cl)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->buildRate, &src->buildRate)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->turnRate, &src->turnRate)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->topOfTarget, &src->topOfTarget)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->bottomOfTarget, &src->bottomOfTarget)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->dip, &src->dip)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->fault, &src->fault)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->surveyCost, &src->surveyCost)) { 
+                return RTI_FALSE;
+            }
+            if (!DataTypes::SurveyQuality_copy(
+                &dst->requestedSurveyQuality, &src->requestedSurveyQuality)) {
+                return RTI_FALSE;
+            } 
+
+            return RTI_TRUE;
         }
 
         /**
@@ -1529,9 +1468,7 @@ namespace nec {
         */
         #define T SurveyState
         #define TSeq SurveyStateSeq
-
         #define T_initialize_w_params nec::process::SurveyState_initialize_w_params
-
         #define T_finalize_w_params   nec::process::SurveyState_finalize_w_params
         #define T_copy       nec::process::SurveyState_copy
 
@@ -1545,9 +1482,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
     } /* namespace process  */

@@ -46,9 +46,7 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(
-            CirculateRequestTypeSupport, 
-            CirculateRequest);
+        DDS_TYPESUPPORT_CPP(CirculateRequestTypeSupport, CirculateRequest);
 
         DDS_DATAWRITER_CPP(CirculateRequestDataWriter, CirculateRequest);
         DDS_DATAREADER_CPP(CirculateRequestDataReader, CirculateRequestSeq, CirculateRequest);
@@ -77,9 +75,7 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(
-            CirculateObjectiveTypeSupport, 
-            CirculateObjective);
+        DDS_TYPESUPPORT_CPP(CirculateObjectiveTypeSupport, CirculateObjective);
 
         DDS_DATAWRITER_CPP(CirculateObjectiveDataWriter, CirculateObjective);
         DDS_DATAREADER_CPP(CirculateObjectiveDataReader, CirculateObjectiveSeq, CirculateObjective);
@@ -108,9 +104,7 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(
-            CirculateStateTypeSupport, 
-            CirculateState);
+        DDS_TYPESUPPORT_CPP(CirculateStateTypeSupport, CirculateState);
 
         DDS_DATAWRITER_CPP(CirculateStateDataWriter, CirculateState);
         DDS_DATAREADER_CPP(CirculateStateDataReader, CirculateStateSeq, CirculateState);

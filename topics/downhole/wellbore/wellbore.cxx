@@ -30,8 +30,6 @@ or consult the RTI Connext manual.
 
 #include "wellbore.h"
 
-#include <new>
-
 namespace nec {
     namespace process {
 
@@ -228,12 +226,7 @@ namespace nec {
             WellboreState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -250,19 +243,19 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->holeDepth)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->measuredDepth)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->trueVerticalDepth)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->bitDepth)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -297,10 +290,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -335,46 +325,37 @@ namespace nec {
             WellboreState* dst,
             const WellboreState* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->holeDepth, &src->holeDepth)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->measuredDepth, &src->measuredDepth)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->trueVerticalDepth, &src->trueVerticalDepth)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->bitDepth, &src->bitDepth)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Uuid_copy(
+                &dst->objectiveId, &src->objectiveId)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->timestamp, &src->timestamp)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->holeDepth, &src->holeDepth)) { 
                 return RTI_FALSE;
             }
+            if (!RTICdrType_copyDouble (
+                &dst->measuredDepth, &src->measuredDepth)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->trueVerticalDepth, &src->trueVerticalDepth)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->bitDepth, &src->bitDepth)) { 
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -386,9 +367,7 @@ namespace nec {
         */
         #define T WellboreState
         #define TSeq WellboreStateSeq
-
         #define T_initialize_w_params nec::process::WellboreState_initialize_w_params
-
         #define T_finalize_w_params   nec::process::WellboreState_finalize_w_params
         #define T_copy       nec::process::WellboreState_copy
 
@@ -402,9 +381,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
     } /* namespace process  */

@@ -30,8 +30,6 @@ or consult the RTI Connext manual.
 
 #include "rotate_engineering.h"
 
-#include <new>
-
 namespace nec {
     namespace control {
 
@@ -190,12 +188,7 @@ namespace nec {
             RotateRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -216,7 +209,7 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->targetRate)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -251,10 +244,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -292,38 +282,29 @@ namespace nec {
             RotateRequest* dst,
             const RotateRequest* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Priority_copy(
-                    &dst->priority,(const DataTypes::Priority*)&src->priority)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timeNeeded,(const DataTypes::Time*)&src->timeNeeded)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->duration,(const DataTypes::Time*)&src->duration)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->targetRate, &src->targetRate)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Priority_copy(
+                &dst->priority, &src->priority)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->timeNeeded, &src->timeNeeded)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->duration, &src->duration)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->targetRate, &src->targetRate)) { 
                 return RTI_FALSE;
             }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -335,9 +316,7 @@ namespace nec {
         */
         #define T RotateRequest
         #define TSeq RotateRequestSeq
-
         #define T_initialize_w_params nec::control::RotateRequest_initialize_w_params
-
         #define T_finalize_w_params   nec::control::RotateRequest_finalize_w_params
         #define T_copy       nec::control::RotateRequest_copy
 
@@ -351,9 +330,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
 
@@ -493,12 +470,7 @@ namespace nec {
             RotateObjective* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -511,11 +483,11 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->targetRate)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->targetTorque)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -550,10 +522,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -585,34 +554,25 @@ namespace nec {
             RotateObjective* dst,
             const RotateObjective* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->estimatedDuration,(const DataTypes::Time*)&src->estimatedDuration)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->targetRate, &src->targetRate)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->targetTorque, &src->targetTorque)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->estimatedDuration, &src->estimatedDuration)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->targetRate, &src->targetRate)) { 
                 return RTI_FALSE;
             }
+            if (!RTICdrType_copyDouble (
+                &dst->targetTorque, &src->targetTorque)) { 
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -624,9 +584,7 @@ namespace nec {
         */
         #define T RotateObjective
         #define TSeq RotateObjectiveSeq
-
         #define T_initialize_w_params nec::control::RotateObjective_initialize_w_params
-
         #define T_finalize_w_params   nec::control::RotateObjective_finalize_w_params
         #define T_copy       nec::control::RotateObjective_copy
 
@@ -640,9 +598,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
 
@@ -896,12 +852,7 @@ namespace nec {
             RotateState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -918,31 +869,31 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->actualRate)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->actualTorque)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->minRate)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->maxRate)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->minTorque)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->maxTorque)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->targetRate)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -977,10 +928,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -1015,58 +963,49 @@ namespace nec {
             RotateState* dst,
             const RotateState* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Status_copy(
-                    &dst->status,(const DataTypes::Status*)&src->status)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->actualRate, &src->actualRate)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->actualTorque, &src->actualTorque)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->minRate, &src->minRate)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->maxRate, &src->maxRate)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->minTorque, &src->minTorque)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->maxTorque, &src->maxTorque)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->targetRate, &src->targetRate)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Status_copy(
+                &dst->status, &src->status)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->timestamp, &src->timestamp)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->actualRate, &src->actualRate)) { 
                 return RTI_FALSE;
             }
+            if (!RTICdrType_copyDouble (
+                &dst->actualTorque, &src->actualTorque)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->minRate, &src->minRate)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->maxRate, &src->maxRate)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->minTorque, &src->minTorque)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->maxTorque, &src->maxTorque)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->targetRate, &src->targetRate)) { 
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -1078,9 +1017,7 @@ namespace nec {
         */
         #define T RotateState
         #define TSeq RotateStateSeq
-
         #define T_initialize_w_params nec::control::RotateState_initialize_w_params
-
         #define T_finalize_w_params   nec::control::RotateState_finalize_w_params
         #define T_copy       nec::control::RotateState_copy
 
@@ -1094,9 +1031,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
     } /* namespace control  */

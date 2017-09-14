@@ -64,7 +64,7 @@ namespace Simulation {
 
     NDDSUSERDllExport DDS_TypeCode* AutoDrillerRequest_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(AutoDrillerRequestSeq, AutoDrillerRequest);
+    DDS_SEQUENCE(AutoDrillerRequestSeq, AutoDrillerRequest);                                        
 
     NDDSUSERDllExport
     RTIBool AutoDrillerRequest_initialize(
@@ -77,7 +77,7 @@ namespace Simulation {
     NDDSUSERDllExport
     RTIBool AutoDrillerRequest_initialize_w_params(
         AutoDrillerRequest* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void AutoDrillerRequest_finalize(
@@ -149,7 +149,7 @@ namespace Simulation {
 
     NDDSUSERDllExport DDS_TypeCode* AutoDrillerObjective_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(AutoDrillerObjectiveSeq, AutoDrillerObjective);
+    DDS_SEQUENCE(AutoDrillerObjectiveSeq, AutoDrillerObjective);                                        
 
     NDDSUSERDllExport
     RTIBool AutoDrillerObjective_initialize(
@@ -162,7 +162,7 @@ namespace Simulation {
     NDDSUSERDllExport
     RTIBool AutoDrillerObjective_initialize_w_params(
         AutoDrillerObjective* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void AutoDrillerObjective_finalize(
@@ -242,7 +242,7 @@ namespace Simulation {
 
     NDDSUSERDllExport DDS_TypeCode* AutoDrillerState_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(AutoDrillerStateSeq, AutoDrillerState);
+    DDS_SEQUENCE(AutoDrillerStateSeq, AutoDrillerState);                                        
 
     NDDSUSERDllExport
     RTIBool AutoDrillerState_initialize(
@@ -255,7 +255,7 @@ namespace Simulation {
     NDDSUSERDllExport
     RTIBool AutoDrillerState_initialize_w_params(
         AutoDrillerState* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void AutoDrillerState_finalize(

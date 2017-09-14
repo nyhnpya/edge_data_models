@@ -1,4 +1,5 @@
 
+
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
@@ -41,17 +42,9 @@ or consult the RTI Connext manual.
 #include "cdr/cdr_stream.h"
 #endif
 
-#ifndef cdr_log_h
-#include "cdr/cdr_log.h"
-#endif
-
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
-
-#define RTI_CDR_CURRENT_SUBMODULE RTI_CDR_SUBMODULE_MASK_STREAM
-
-#include <new>
 
 #include "process_infoPlugin.h"
 
@@ -68,38 +61,34 @@ namespace process {
 
         ProcessState*
         ProcessStatePluginSupport_create_data_w_params(
-            const struct DDS_TypeAllocationParams_t * alloc_params) 
-        {
+            const struct DDS_TypeAllocationParams_t * alloc_params){
             ProcessState *sample = NULL;
 
-            sample = new (std::nothrow) ProcessState ;
-            if (sample == NULL) {
-                return NULL;
-            }
+            RTIOsapiHeap_allocateStructure(
+                &sample, ProcessState);
 
-            if (!process::maintanence::ProcessState_initialize_w_params(sample,alloc_params)) {
-                delete  sample;
-                sample=NULL;
-            }
+            if(sample != NULL) {
+                if (!process::maintanence::ProcessState_initialize_w_params(sample,alloc_params)) {
+                    RTIOsapiHeap_freeStructure(sample);
+                    return NULL;
+                }
+            }        
             return sample; 
         } 
 
         ProcessState *
-        ProcessStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
-        {
+        ProcessStatePluginSupport_create_data_ex(RTIBool allocate_pointers){
             ProcessState *sample = NULL;
 
-            sample = new (std::nothrow) ProcessState ;
+            RTIOsapiHeap_allocateStructure(
+                &sample, ProcessState);
 
-            if(sample == NULL) {
-                return NULL;
+            if(sample != NULL) {
+                if (!process::maintanence::ProcessState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                    RTIOsapiHeap_freeStructure(sample);
+                    return NULL;
+                }
             }
-
-            if (!process::maintanence::ProcessState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-                delete  sample;
-                sample=NULL;
-            }
-
             return sample; 
         }
 
@@ -116,8 +105,7 @@ namespace process {
 
             process::maintanence::ProcessState_finalize_w_params(sample,dealloc_params);
 
-            delete  sample;
-            sample=NULL;
+            RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
@@ -126,8 +114,7 @@ namespace process {
 
             process::maintanence::ProcessState_finalize_ex(sample,deallocate_pointers);
 
-            delete  sample;
-            sample=NULL;
+            RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
@@ -143,7 +130,7 @@ namespace process {
             ProcessState *dst,
             const ProcessState *src)
         {
-            return process::maintanence::ProcessState_copy(dst,(const ProcessState*) src);
+            return process::maintanence::ProcessState_copy(dst,src);
         }
 
         void 
@@ -194,10 +181,10 @@ namespace process {
         ProcessStatePluginSupport_create_key_ex(RTIBool allocate_pointers){
             ProcessState *key = NULL;
 
-            key = new (std::nothrow) ProcessStateKeyHolder ;
+            RTIOsapiHeap_allocateStructure(
+                &key, ProcessStateKeyHolder);
 
             process::maintanence::ProcessState_initialize_ex(key,allocate_pointers, RTI_TRUE);
-
             return key;
         }
 
@@ -213,9 +200,7 @@ namespace process {
         {
             process::maintanence::ProcessState_finalize_ex(key,deallocate_pointers);
 
-            delete  key;
-            key=NULL;
-
+            RTIOsapiHeap_freeStructure(key);
         }
 
         void 
@@ -444,69 +429,62 @@ namespace process {
 
             RTIBool done = RTI_FALSE;
 
-            try {
+            if (endpoint_data) {} /* To avoid warnings */
+            if (endpoint_plugin_qos) {} /* To avoid warnings */
+            if(deserialize_encapsulation) {
 
-                if (endpoint_data) {} /* To avoid warnings */
-                if (endpoint_plugin_qos) {} /* To avoid warnings */
-                if(deserialize_encapsulation) {
-
-                    if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                        return RTI_FALSE;
-                    }
-
-                    position = RTICdrStream_resetAlignment(stream);
-                }
-                if(deserialize_sample) {
-
-                    process::maintanence::ProcessState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                    if (!RTICdrStream_deserializePrimitiveArray(
-                        stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
-                        goto fin; 
-                    }
-
-                    if (!RTICdrStream_deserializeLong(
-                        stream, &sample->pid)) {
-                        goto fin; 
-                    }
-                    if (!RTICdrStream_deserializeLongLong(
-                        stream, &sample->upTime)) {
-                        goto fin; 
-                    }
-                    if (!RTICdrStream_deserializeLongLong(
-                        stream, &sample->totalVirtualMemory)) {
-                        goto fin; 
-                    }
-                    if (!RTICdrStream_deserializeLongLong(
-                        stream, &sample->usedVirtualMemory)) {
-                        goto fin; 
-                    }
-                    if (!RTICdrStream_deserializeLongLong(
-                        stream, &sample->totalPhysicalMemory)) {
-                        goto fin; 
-                    }
-                    if (!RTICdrStream_deserializeLongLong(
-                        stream, &sample->usedPhysicalMemory)) {
-                        goto fin; 
-                    }
+                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                    return RTI_FALSE;
                 }
 
-                done = RTI_TRUE;
-              fin:
-                if (done != RTI_TRUE && 
-                RTICdrStream_getRemainder(stream) >=
-                RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                    return RTI_FALSE;   
-                }
-                if(deserialize_encapsulation) {
-                    RTICdrStream_restoreAlignment(stream,position);
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
-                return RTI_FALSE;
+                position = RTICdrStream_resetAlignment(stream);
             }
+            if(deserialize_sample) {
+
+                process::maintanence::ProcessState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+                if (!RTICdrStream_deserializePrimitiveArray(
+                    stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeLong(
+                    stream, &sample->pid)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeLongLong(
+                    stream, &sample->upTime)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeLongLong(
+                    stream, &sample->totalVirtualMemory)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeLongLong(
+                    stream, &sample->usedVirtualMemory)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeLongLong(
+                    stream, &sample->totalPhysicalMemory)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeLongLong(
+                    stream, &sample->usedPhysicalMemory)) {
+                    goto fin; 
+                }
+            }
+
+            done = RTI_TRUE;
+          fin:
+            if (done != RTI_TRUE && 
+            RTICdrStream_getRemainder(stream) >=
+            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+                return RTI_FALSE;   
+            }
+            if(deserialize_encapsulation) {
+                RTICdrStream_restoreAlignment(stream,position);
+            }
+
+            return RTI_TRUE;
         }
 
         RTIBool
@@ -525,14 +503,14 @@ namespace process {
 
             epd._maxSizeSerializedSample =
             ProcessStatePlugin_get_serialized_sample_max_size(
-                NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
+                NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
             if (buffer == NULL) {
                 *length = 
                 ProcessStatePlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
-                    RTICdrEncapsulation_getNativeCdrEncapsulationId(),
+                    RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
                     0,
                     sample);
 
@@ -548,7 +526,7 @@ namespace process {
 
             result = process::maintanence::ProcessStatePlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
-                RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
+                RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
                 RTI_TRUE, NULL);  
 
             *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -566,96 +544,10 @@ namespace process {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            ProcessState_finalize_optional_members(sample, RTI_TRUE);
             return ProcessStatePlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
-        }
-
-        DDS_ReturnCode_t
-        ProcessStatePlugin_data_to_string(
-            const ProcessState *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property)
-        {
-            DDS_DynamicData *data = NULL;
-            char *buffer = NULL;
-            unsigned int length = 0;
-            struct DDS_PrintFormat printFormat;
-            DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-            if (sample == NULL) {
-                return DDS_RETCODE_BAD_PARAMETER;
-            }
-
-            if (str_size == NULL) {
-                return DDS_RETCODE_BAD_PARAMETER;
-            }
-
-            if (property == NULL) {
-                return DDS_RETCODE_BAD_PARAMETER;
-            }
-
-            if (!ProcessStatePlugin_serialize_to_cdr_buffer(
-                NULL, 
-                &length, 
-                sample)) {
-                return DDS_RETCODE_ERROR;
-            }
-
-            RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-            if (buffer == NULL) {
-                return DDS_RETCODE_ERROR;
-            }
-
-            if (!ProcessStatePlugin_serialize_to_cdr_buffer(
-                buffer, 
-                &length, 
-                sample)) {
-                RTIOsapiHeap_freeBuffer(buffer);
-                return DDS_RETCODE_ERROR;
-            }
-
-            data = DDS_DynamicData_new(
-                ProcessState_get_typecode(), 
-                &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-            if (data == NULL) {
-                RTIOsapiHeap_freeBuffer(buffer);
-                return DDS_RETCODE_ERROR;
-            }
-
-            retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-            if (retCode != DDS_RETCODE_OK) {
-                RTIOsapiHeap_freeBuffer(buffer);
-                DDS_DynamicData_delete(data);
-                return retCode;
-            }
-
-            retCode = DDS_PrintFormatProperty_to_print_format(
-                property, 
-                &printFormat);
-            if (retCode != DDS_RETCODE_OK) {
-                RTIOsapiHeap_freeBuffer(buffer);
-                DDS_DynamicData_delete(data);
-                return retCode;
-            }
-
-            retCode = DDS_DynamicDataFormatter_to_string_w_format(
-                data, 
-                str,
-                str_size, 
-                &printFormat);
-            if (retCode != DDS_RETCODE_OK) {
-                RTIOsapiHeap_freeBuffer(buffer);
-                DDS_DynamicData_delete(data);
-                return retCode;
-            }
-
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return DDS_RETCODE_OK;
         }
 
         RTIBool 
@@ -670,7 +562,6 @@ namespace process {
         {
 
             RTIBool result;
-            const char *METHOD_NAME = "ProcessStatePlugin_deserialize";
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
@@ -682,14 +573,6 @@ namespace process {
                 if (stream->_xTypesState.unassignable) {
                     result = RTI_FALSE;
                 }
-            }
-            if (!result && stream->_xTypesState.unassignable ) {
-
-                RTICdrLog_exception(
-                    METHOD_NAME, 
-                    &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                    "ProcessState");
-
             }
 
             return result;
@@ -896,16 +779,10 @@ namespace process {
             unsigned int initial_alignment = current_alignment;
 
             unsigned int encapsulation_size = current_alignment;
-            struct PRESTypePluginDefaultEndpointData epd;   
 
+            if (endpoint_data) {} /* To avoid warnings */ 
             if (sample==NULL) {
                 return 0;
-            }
-            if (endpoint_data == NULL) {
-                endpoint_data = (PRESTypePluginEndpointData) &epd;
-                PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                    endpoint_data,
-                    current_alignment);        
             }
 
             if (include_encapsulation) {
@@ -917,39 +794,22 @@ namespace process {
                 encapsulation_size -= current_alignment;
                 current_alignment = 0;
                 initial_alignment = 0;
-                PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                    endpoint_data,
-                    current_alignment);
             }
 
             current_alignment += RTICdrType_getPrimitiveArrayMaxSizeSerialized(
-                PRESTypePluginDefaultEndpointData_getAlignment(
-                    endpoint_data, current_alignment), 
-                    (128), RTI_CDR_CHAR_TYPE);  
-
+                current_alignment, (128),  RTI_CDR_CHAR_TYPE);
             current_alignment += RTICdrType_getLongMaxSizeSerialized(
-                PRESTypePluginDefaultEndpointData_getAlignment(
-                    endpoint_data, current_alignment));
-
+                current_alignment);
             current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
-                PRESTypePluginDefaultEndpointData_getAlignment(
-                    endpoint_data, current_alignment));
-
+                current_alignment);
             current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
-                PRESTypePluginDefaultEndpointData_getAlignment(
-                    endpoint_data, current_alignment));
-
+                current_alignment);
             current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
-                PRESTypePluginDefaultEndpointData_getAlignment(
-                    endpoint_data, current_alignment));
-
+                current_alignment);
             current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
-                PRESTypePluginDefaultEndpointData_getAlignment(
-                    endpoint_data, current_alignment));
-
+                current_alignment);
             current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
-                PRESTypePluginDefaultEndpointData_getAlignment(
-                    endpoint_data, current_alignment));
+                current_alignment);
 
             if (include_encapsulation) {
                 current_alignment += encapsulation_size;
@@ -1014,39 +874,32 @@ namespace process {
             RTIBool deserialize_key,
             void *endpoint_plugin_qos)
         {
-            try {
+            char * position = NULL;
 
-                char * position = NULL;
+            if (endpoint_data) {} /* To avoid warnings */
+            if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-                if (endpoint_data) {} /* To avoid warnings */
-                if (endpoint_plugin_qos) {} /* To avoid warnings */
+            if(deserialize_encapsulation) {
 
-                if(deserialize_encapsulation) {
-
-                    if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                        return RTI_FALSE;
-                    }
-
-                    position = RTICdrStream_resetAlignment(stream);
-                }
-                if (deserialize_key) {
-
-                    if (!RTICdrStream_deserializePrimitiveArray(
-                        stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
-                        return RTI_FALSE;
-                    }
-
+                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                    return RTI_FALSE;
                 }
 
-                if(deserialize_encapsulation) {
-                    RTICdrStream_restoreAlignment(stream,position);
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
-                return RTI_FALSE;
+                position = RTICdrStream_resetAlignment(stream);
             }
+            if (deserialize_key) {
+
+                if (!RTICdrStream_deserializePrimitiveArray(
+                    stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
+                    return RTI_FALSE;
+                }
+            }
+
+            if(deserialize_encapsulation) {
+                RTICdrStream_restoreAlignment(stream,position);
+            }
+
+            return RTI_TRUE;
         }
 
         RTIBool ProcessStatePlugin_deserialize_key(
@@ -1164,7 +1017,6 @@ namespace process {
                     stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
                     return RTI_FALSE;
                 }
-
                 if (!RTICdrStream_skipLong (stream)) {
                     goto fin; 
                 }
@@ -1200,7 +1052,7 @@ namespace process {
                     return RTI_FALSE;   
                 }
             } else {
-                return RTI_FALSE;
+                return error;
             }       
 
             if(deserialize_encapsulation) {
@@ -1262,14 +1114,8 @@ namespace process {
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
             if (!process::maintanence::ProcessStatePlugin_serialize_key(
-                endpoint_data,
-                instance,
-                md5Stream, 
-                RTI_FALSE, 
-                RTI_CDR_ENCAPSULATION_ID_CDR_BE, 
-                RTI_TRUE,
-                NULL)) 
-            {
+                endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
+
                 int size;
 
                 RTICdrStream_pushState(md5Stream, &cdrState, -1);
@@ -1300,13 +1146,7 @@ namespace process {
                 RTICdrStream_resetPosition(md5Stream);
                 RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
                 if (!process::maintanence::ProcessStatePlugin_serialize_key(
-                    endpoint_data,
-                    instance,
-                    md5Stream, 
-                    RTI_FALSE, 
-                    RTI_CDR_ENCAPSULATION_ID_CDR_BE, 
-                    RTI_TRUE,
-                    NULL)) 
+                    endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
                 {
                     RTICdrStream_popState(md5Stream, &cdrState);
                     RTIOsapiHeap_freeBuffer(buffer);
@@ -1314,9 +1154,7 @@ namespace process {
                 }        
             }   
 
-            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data) > 
-            (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH) ||
-            PRESTypePluginDefaultEndpointData_forceMD5KeyHash(endpoint_data)) {
+            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data) > (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH)) {
                 RTICdrStream_computeMD5(md5Stream, keyhash->value);
             } else {
                 RTIOsapiMemory_zero(keyhash->value,MIG_RTPS_KEY_HASH_MAX_LENGTH);
@@ -1332,7 +1170,6 @@ namespace process {
                 RTICdrStream_popState(md5Stream, &cdrState);
                 RTIOsapiHeap_freeBuffer(buffer);
             }
-
             return RTI_TRUE;
         }
 
@@ -1375,7 +1212,6 @@ namespace process {
                 stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
                 return RTI_FALSE;
             }
-
             done = RTI_TRUE;
           fin:
             if(!error) {
@@ -1385,7 +1221,7 @@ namespace process {
                     return RTI_FALSE;   
                 }
             } else {
-                return RTI_FALSE;
+                return error;
             } 
 
             if(deserialize_encapsulation) {
@@ -1411,7 +1247,6 @@ namespace process {
 
             RTIOsapiHeap_allocateStructure(
                 &plugin, struct PRESTypePlugin);
-
             if (plugin == NULL) {
                 return NULL;
             }
@@ -1527,4 +1362,4 @@ namespace process {
         } 
     } /* namespace maintanence  */
 } /* namespace process  */
-#undef RTI_CDR_CURRENT_SUBMODULE 
+

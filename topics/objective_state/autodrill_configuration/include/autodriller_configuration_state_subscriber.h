@@ -2,7 +2,6 @@
 #define __AUTODRILLER_CONFIGURATION_STATE_SUBSCRIBER_H__
 
 #include "subscriber.h"
-#include "fd_event_handlers.h"
 #include "base_data_types.h"
 #include "autodriller_configuration.h"
 #include "autodriller_configurationSupport.h"
