@@ -9,7 +9,7 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../../Makefiles/Makefile.platform
+include ../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
@@ -32,8 +32,8 @@ TARG_LIBS +=
 TARG_INCLUDES += -I /usr/local/include/dds_base
 TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -I $(CURDIR)/include
-TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/base_data_types/include
-TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/simulation/include
+TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
+TARG_INCLUDES += -I $(TOP_DIR)/topics/simulation/include
 
 # Sources
 TARG_SOURCES = sim_drill_request_subscriber.cpp
@@ -64,7 +64,7 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/sim_drill_objective_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/sim_drill_objective_subscriber.h
 
 # package installation directory
-PACKAGE_INSTALL_DIR += $(TOP_DIR)/edge_data_models/package
+PACKAGE_INSTALL_DIR += $(TOP_DIR)/package
 
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform

@@ -9,7 +9,7 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../../Makefiles/Makefile.platform
+include ../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
@@ -25,7 +25,7 @@ TARGET_NAME = objective
 # Includes
 TARG_INCLUDES += -I /usr/local/lib/dds_base
 TARG_INCLUDES += -I $(CURDIR)/include
-TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/base_data_types/include
+TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
 
 # Sources
 TARG_SOURCES = objective.cxx
@@ -50,7 +50,7 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/objectivePlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/objectiveSupport.h
 
 # package installation directory
-PACKAGE_INSTALL_DIR += $(TOP_DIR)/edge_data_models/package
+PACKAGE_INSTALL_DIR += $(TOP_DIR)/package
 
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform

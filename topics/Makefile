@@ -1,4 +1,4 @@
-include ../../Makefiles/Makefile.platform
+include ../Makefiles/Makefile.platform
 
 # Lists of all the sub-directories that have a Makefile. Libraries and
 # executables are placed in separate lists to be able to build the libraries

@@ -9,7 +9,7 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../../Makefiles/Makefile.platform
+include ../../../Makefiles/Makefile.platform
 include $(TOP_DIR)/Makefiles/Makefile.rti
 
 TARG_SOURCE_DIR = $(CURDIR)
@@ -25,7 +25,7 @@ TARGET_NAME = pipe_tally
 ###############################################################################
 # Includes
 TARG_INCLUDES += -I $(CURDIR)/include
-TARG_INCLUDES += -I $(TOP_DIR)/edge_data_models/topics/base_data_types/include
+TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
 
 # Sources
 TARG_SOURCES = pipe_tally.cxx
@@ -50,7 +50,7 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/pipe_tallyPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/pipe_tallySupport.h
 
 # package installation directory
-PACKAGE_INSTALL_DIR += $(TOP_DIR)/edge_data_models/package
+PACKAGE_INSTALL_DIR += $(TOP_DIR)/package
 
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform

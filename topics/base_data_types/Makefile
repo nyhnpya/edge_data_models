@@ -9,7 +9,7 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../Makefiles/Makefile.platform
+include ../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
@@ -50,7 +50,7 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/base_data_typesSupport.h
 # package configuration files
 
 # package installation directory
-PACKAGE_INSTALL_DIR += $(TOP_DIR)/edge_data_models/package
+PACKAGE_INSTALL_DIR += $(TOP_DIR)/package
 
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform
