@@ -1,0 +1,17 @@
+# Default compiler options for every single compile
+TARG_OPTIONS += -Wall
+TARG_OPTIONS += -Wconversion
+TARG_OPTIONS += -Werror
+#TARG_OPTIONS += -Wextra
+
+ifeq ($(PLATFORM),Linux)
+    TARG_OPTIONS += -D_LINUX
+endif
+
+# Special compiler options for debug and optimized builds (none)
+TARG_DEBUG_OPTIONS +=
+TARG_OPTIMIZED_OPTIONS += -O2
+
+# Default value for description and extended description
+TARG_DESCRIPTION = "Description"
+TARG_EXTENDED_DESCRIPTION = "Extended description"

@@ -1,0 +1,440 @@
+##############################################################################
+# THIS IS A SHARED MAKEFILE
+#
+# This Makefile is meant to be included by all other tool Makefiles. It
+# defines the basic object file rules based on some defined interface
+# variables.
+##############################################################################
+.PHONY: all clean doc dep dep_clean install install_clean install_dev \
+install_dev_clean deb deb_dev install_deb install_deb_clean install_deb_dev \
+install_deb_dev_clean tests filelist cfilelist info
+
+# If make is given more than one make rule, we split the list of given rules
+# into non-parallel executions. This is to avoid overlapping when building in
+# parallel. If make is not given any rules, we default to the "all" rule.
+ifneq ($(words $(MAKECMDGOALS)),1)
+
+.NOTPARALLEL:
+
+# Sort removes duplicats. The "all" target is required in the list,
+# in case user invokes make with no targets.
+$(sort all $(MAKECMDGOALS)):
+	$(MAKE) $@
+
+else
+
+#all:
+#	@if [ "$(TARGET_TYPE)" != "unittest" ] ; then \
+#		$(MAKE) $(TARGET) ; \
+#	fi
+all: $(TARGET)
+
+clean:
+	if [ "$(TARGET_TYPE)" != "thirdparty" ] ; then \
+		rm -rf $(BIN_DIR) ; \
+		rm -rf $(LIB_DIR) ; \
+		rm -rf $(OBJ_DIR) ; \
+		rm -f $(TARG_DEPENDS) ; \
+		rm -rf package ; \
+		rm -rf doc/html ; \
+		rm -rf doc/man ; \
+	else \
+		rm -rf package ; \
+		rm -f $(TARG_DEPENDS) ; \
+	fi
+
+$(TARGET): $(OBJ_FILES) | $(OUT_DIR)
+	$(BUILD_TARGET)
+
+doc:
+	@if [ "$(TARGET_TYPE)" = "executable" ] \
+	|| [ "$(TARGET_TYPE)" = "staticlib" ] \
+	|| [ "$(TARGET_TYPE)" = "library" ] ; then \
+		if [ -f ./doc/Doxyfile ] ; then \
+			doxygen -s doc/Doxyfile ; \
+		fi ; \
+	fi
+
+dep: dep_clean $(TARG_DEPENDS)
+
+dep_clean:
+	rm -f $(TARG_DEPENDS)
+
+ifeq ($(PLATFORM),Linux)
+
+install: $(TARGET)
+	if [ "$(TARGET_TYPE)" = "library" ] ; then \
+		if [ "$(TARG_INSTALL)" = "" ] ; then \
+			$(eval TARG_INSTALL:=/usr/local/lib) : ; \
+		fi ; \
+		mkdir -m755 -p $(TARG_INSTALL) ; \
+		cp -a $(LIB_DIR)/$(TARGET_REAL_NAME) $(TARG_INSTALL)/ ; \
+		cp -a $(LIB_DIR)/$(TARGET_SO_NAME) $(TARG_INSTALL)/ ; \
+		cp -a $(LIB_DIR)/$(TARGET_LINKER_NAME) $(TARG_INSTALL)/ ; \
+	elif [ "$(TARGET_TYPE)" = "executable" ] ; then \
+		if [ "$(TARG_INSTALL)" = "" ] ; then \
+			$(eval TARG_INSTALL:=/usr/local/bin) : ; \
+		fi ; \
+		mkdir -m755 -p $(TARG_INSTALL) ; \
+		cp -a $(LIB_DIR)/$(TARGET_NAME) $(TARG_INSTALL)/ ; \
+	elif [ "$(TARGET_TYPE)" = "thirdparty" ] ; then \
+		if [ "$(TARG_INSTALL)" = "" ] ; then \
+			$(eval TARG_INSTALL:=/usr/local/lib) : ; \
+		fi ; \
+		mkdir -m755 -p $(TARG_INSTALL) ; \
+		cp -a ./lib/*.so* $(TARG_INSTALL) ; \
+		cp -a ./lib/*.a $(TARG_INSTALL) ; \
+	fi
+
+install_clean:
+	if [ "$(TARGET_TYPE)" = "library" ] ; then \
+		if [ "$(TARG_INSTALL)" = "" ] ; then \
+			$(eval TARG_INSTALL:=/usr/local/lib) : ; \
+		fi ; \
+		rm -f $(TARG_INSTALL)/$(TARGET_REAL_NAME) ; \
+		rm -f $(TARG_INSTALL)/$(TARGET_SO_NAME) ; \
+		rm -f $(TARG_INSTALL)/$(TARGET_LINKER_NAME) ; \
+	elif [ "$(TARGET_TYPE)" = "executable" ] ; then \
+		if [ "$(TARG_INSTALL)" = "" ] ; then \
+			$(eval TARG_INSTALL:=/usr/local/bin) : ; \
+		fi ; \
+		rm -f $(TARG_INSTALL)/$(TARGET_NAME) ; \
+	elif [ "$(TARGET_TYPE)" = "thirdparty" ] ; then \
+		if [ "$(TARG_INSTALL)" = "" ] ; then \
+			$(eval TARG_INSTALL:=/usr/local/lib) : ; \
+		fi ; \
+		rm -f $(patsubst lib/%,$(TARG_INSTALL)/%,$(wildcard lib/*.so*)) ; \
+		rm -f $(patsubst lib/%,$(TARG_INSTALL)/%,$(wildcard lib/*.a)) ; \
+	fi
+
+install_dev: install
+	if [ "$(PACKAGE_INCLUDE_FILES)" != "" ] ; then \
+		if [ "$(TARG_INSTALL_INCLUDE)" = "" ] ; then \
+			$(eval TARG_INSTALL_INCLUDE:=/usr/local/include/$(TARGET_NAME)) : ; \
+		fi ; \
+		mkdir -m755 -p $(TARG_INSTALL_INCLUDE) ; \
+		cp -a $(PACKAGE_INCLUDE_FILES) $(TARG_INSTALL_INCLUDE)/ ; \
+	fi ; \
+	if [ "$(TARGET_TYPE)" = "staticlib" ] ; then \
+		if [ "$(TARG_INSTALL)" = "" ] ; then \
+			$(eval TARG_INSTALL:=/usr/local/lib) : ; \
+		fi ; \
+		mkdir -m755 -p $(TARG_INSTALL) ; \
+		cp -a $(LIB_DIR)/$(TARGET_FILE) $(TARG_INSTALL)/ ; \
+	elif [ "$(TARGET_TYPE)" = "thirdparty" ] ; then \
+		if [ "$(TARG_INSTALL_INCLUDE)" = "" ] ; then \
+			$(eval TARG_INSTALL_INCLUDE:=/usr/local/include/$(TARGET_NAME)) : ; \
+		fi ; \
+		mkdir -m755 -p $(TARG_INSTALL_INCLUDE) ; \
+		cp -a ./include/*.h $(TARG_INSTALL_INCLUDE) ; \
+	fi
+
+install_dev_clean: install_clean
+	if [ "$(PACKAGE_INCLUDE_FILES)" != "" ] ; then \
+		if [ "$(TARG_INSTALL_INCLUDE)" = "" ] ; then \
+			$(eval TARG_INSTALL_INCLUDE:=/usr/local/include/$(TARGET_NAME)) : ; \
+		fi ; \
+		rm -f $(patsubst %,$(TARG_INSTALL_INCLUDE)/%,$(PACKAGE_INCLUDE_FILES)) ; \
+	fi ; \
+	if [ "$(TARGET_TYPE)" = "staticlib" ] ; then \
+		if [ "$(TARG_INSTALL)" = "" ] ; then \
+			$(eval TARG_INSTALL:=/usr/local/lib) : ; \
+		fi ; \
+		rm -f $(TARG_INSTALL)/$(TARGET_FILE) ; \
+	elif [ "$(TARGET_TYPE)" = "thirdparty" ] ; then \
+		if [ "$(TARG_INSTALL_INCLUDE)" = "" ] ; then \
+			$(eval TARG_INSTALL_INCLUDE:=/usr/local/include/$(TARGET_NAME)) : ; \
+		fi ; \
+		rm -f $(patsubst include/%,$(TARG_INSTALL_INCLUDE)/%,$(wildcard include/*)) ; \
+	fi
+
+deb: all
+	@echo "pre $(TARGET_FILE)"
+	if [ "$(TARGET_FILE)" != "" ] ; then \
+		if [ "$(TARGET_TYPE)" != "unittest" ] ; then \
+			$(eval DEB_NAME:=$(TARGET_FILE)_$(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)_$(shell dpkg-architecture -qDEB_BUILD_ARCH)) : ; \
+			echo "Deb $(DEB_NAME)" ; \
+			rm -rf ./package/$(DEB_NAME)/DEBIAN ; \
+			mkdir -p ./package/$(DEB_NAME)/DEBIAN ; \
+			touch ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Package: $(TARGET_FILE)" > ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Version: $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)" >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Section: misc" >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Priority: optional" >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Architecture: $(shell dpkg-architecture -qDEB_BUILD_ARCH)" >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Depends: $(PACKAGE_DEPENDENCIES)" >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Maintainer: $(PACKAGE_MAINTAINER) " >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Description: $(PACKAGE_DESCRIPTION) " >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			rm -rf ./package/$(DEB_NAME)/usr/share/doc/$(TARGET_FILE)/ ; \
+			mkdir -p ./package/$(DEB_NAME)/usr/share/doc/$(TARGET_FILE)/ ; \
+			touch ./package/$(DEB_NAME)/usr/share/doc/$(TARGET_FILE)/copyright ; \
+			echo "Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/" > ./package/$(DEB_NAME)/usr/share/doc/$(TARGET_FILE)/copyright ; \
+			echo "Upstream-Name: $(TARGET_FILE)" >> ./package/$(DEB_NAME)/usr/share/doc/$(TARGET_FILE)/copyright ; \
+			echo "Upstream-Contact: $(PACKAGE_MAINTAINER) " >> ./package/$(DEB_NAME)/usr/share/doc/$(TARGET_FILE)/copyright ; \
+			echo "" >> ./package/$(DEB_NAME)/usr/share/doc/$(TARGET_FILE)/copyright ; \
+			echo "Files: *" >> ./package/$(DEB_NAME)/usr/share/doc/$(TARGET_FILE)/copyright ; \
+			echo "Copyright: Copyright 2017 Ensign Energy" >> ./package/$(DEB_NAME)/usr/share/doc/$(TARGET_FILE)/copyright ; \
+			echo "License: Closed license" >> ./package/$(DEB_NAME)/usr/share/doc/$(TARGET_FILE)/copyright ; \
+			if [ "$(PACKAGE_CONFIGURATION_FILES)" != "" ] ; then \
+ 			        mkdir -p ./package/$(DEB_NAME)/usr/share/$(TARGET_FILE) ; \
+				cp -a $(PACKAGE_CONFIGURATION_FILES) ./package/$(DEB_NAME)/usr/share/$(TARGET_FILE) ; \
+			fi ; \
+		fi ; \
+		if [ "$(TARGET_TYPE)" = "executable" ] ; then \
+			if [ "$(TARG_INSTALL)" = "" ] ; then \
+				$(eval TARG_INSTALL:=/usr/local/bin) : ; \
+			fi ; \
+			mkdir -p ./package/$(DEB_NAME)/$(TARG_INSTALL) ; \
+			touch ./package/$(DEB_NAME)/DEBIAN/postinst ; \
+			chmod 755 ./package/$(DEB_NAME)/DEBIAN/postinst ; \
+			touch ./package/$(DEB_NAME)/DEBIAN/postrm ; \
+			chmod 755 ./package/$(DEB_NAME)/DEBIAN/postrm ; \
+			cp -a $(TARGET) ./package/$(DEB_NAME)/$(TARG_INSTALL) ; \
+		elif [ "$(TARGET_TYPE)" = "library" ] || [ "$(TARGET_TYPE)" = "thirdparty" ] ; then \
+			if [ "$(TARG_INSTALL)" = "" ] ; then \
+				$(eval TARG_INSTALL:=/usr/local/lib) : ; \
+			fi ; \
+			mkdir -p ./package/$(DEB_NAME)/$(TARG_INSTALL) ; \
+			touch ./package/$(DEB_NAME)/DEBIAN/postinst ; \
+			chmod 755 ./package/$(DEB_NAME)/DEBIAN/postinst ; \
+			touch ./package/$(DEB_NAME)/DEBIAN/postrm ; \
+			chmod 755 ./package/$(DEB_NAME)/DEBIAN/postrm ; \
+			echo "ldconfig" > ./package/$(DEB_NAME)/DEBIAN/postinst ; \
+			echo "ldconfig" > ./package/$(DEB_NAME)/DEBIAN/postrm ; \
+			rm -rf ./package/$(DEB_NAME)/etc/ld.so.conf.d/ ; \
+			mkdir -p ./package/$(DEB_NAME)/etc/ld.so.conf.d/ ; \
+			touch ./package/$(DEB_NAME)/etc/ld.so.conf.d/$(TARGET_FILE).conf ; \
+			chmod 644 ./package/$(DEB_NAME)/etc/ld.so.conf.d/$(TARGET_FILE).conf ; \
+			echo "$(TARG_INSTALL)" > ./package/$(DEB_NAME)/etc/ld.so.conf.d/$(TARGET_FILE).conf ; \
+			if [ "$(TARGET_TYPE)" = "library" ] ; then \
+				cp -a $(TARGET_SO) ./package/$(DEB_NAME)/$(TARG_INSTALL) ; \
+				ln -sf $(TARGET_REAL_NAME) ./package/$(DEB_NAME)/$(TARG_INSTALL)/$(TARGET_SO_NAME); \
+				ln -sf $(TARGET_SO_NAME) ./package/$(DEB_NAME)/$(TARG_INSTALL)/$(TARGET_LINKER_NAME); \
+			elif [ "$(TARGET_TYPE)" = "thirdparty" ] ; then \
+				cp -a ./lib/*.so* ./package/$(DEB_NAME)/$(TARG_INSTALL) ; \
+			fi ; \
+		fi ; \
+		if [ "$(PACKAGE_LIB_FILES)" != "" ] ; then \
+		   cp -a $(PACKAGE_LIB_FILES) ./package/$(DEB_NAME)/$(TARG_INSTALL) ; \
+		fi ; \
+		if [ "$(TARGET_TYPE)" != "unittest" ] ; then \
+			fakeroot dpkg-deb --nocheck --build ./package/$(DEB_NAME) ; \
+		fi ; \
+		if [ "$(PACKAGE_INSTALL_DIR)" != "" ] ; then \
+			mkdir -p $(PACKAGE_INSTALL_DIR); \
+			cp ./package/$(DEB_NAME).deb $(PACKAGE_INSTALL_DIR); \
+		fi ; \
+	fi
+	@echo "post"
+
+deb_dev: deb
+	@echo "dev pre $(TARGET_FILE)"
+	if [ "$(TARGET_FILE)" != "" ] ; then \
+		if [ "$(TARGET_TYPE)" != "unittest" ] ; then \
+			$(eval DEB_NAME:=$(TARGET_FILE)-dev_$(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)_$(shell dpkg-architecture -qDEB_BUILD_ARCH)) : ; \
+			echo "Deb $(DEB_NAME)" ; \
+			rm -rf ./package/$(DEB_NAME)/DEBIAN ; \
+			mkdir -p ./package/$(DEB_NAME)/DEBIAN ; \
+			touch ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Package: $(TARGET_FILE)-dev" > ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Version: $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)" >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Section: misc" >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Priority: optional" >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Architecture: $(shell dpkg-architecture -qDEB_BUILD_ARCH)" >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			if [ "$(PACKAGE_DEV_DEPENDENCIES)" != "" ] ; then \
+				echo "Depends: $(TARGET_FILE) (= $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)), $(PACKAGE_DEV_DEPENDENCIES)" >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			else \
+				echo "Depends: $(TARGET_FILE) (= $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION))" >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			fi ; \
+			echo "Maintainer: $(PACKAGE_MAINTAINER)" >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			echo "Description: $(PACKAGE_DEV_DESCRIPTION) " >> ./package/$(DEB_NAME)/DEBIAN/control ; \
+			if [ "$(PACKAGE_INCLUDE_FILES)" != "" ] ; then \
+				if [ "$(TARG_INSTALL_INCLUDE)" = "" ] ; then \
+					$(eval TARG_INSTALL_INCLUDE=/usr/local/include/$(TARGET_NAME)) : ; \
+				fi ; \
+				mkdir -p ./package/$(DEB_NAME)/$(TARG_INSTALL_INCLUDE) ; \
+				cp -a $(PACKAGE_INCLUDE_FILES) ./package/$(DEB_NAME)/$(TARG_INSTALL_INCLUDE) ; \
+			fi ; \
+			if [ "$(PACKAGE_INCLUDE_DIRS)" != "" ] ; then \
+				if [ "$(TARG_INSTALL_INCLUDE)" = "" ] ; then \
+					$(eval TARG_INSTALL_INCLUDE=/usr/local/include/$(TARGET_NAME)) : ; \
+				fi ; \
+				mkdir -p ./package/$(DEB_NAME)/$(TARG_INSTALL_INCLUDE) ; \
+				cp -ar $(PACKAGE_INCLUDE_DIRS) ./package/$(DEB_NAME)/$(TARG_INSTALL_INCLUDE) ; \
+			fi ; \
+		fi ; \
+		if [ "$(TARGET_TYPE)" = "staticlib" ] ; then \
+			if [ "$(TARG_INSTALL)" = "" ] ; then \
+				$(eval TARG_INSTALL=/usr/local/lib) : ; \
+			fi ; \
+			mkdir -p ./package/$(DEB_NAME)/$(TARG_INSTALL) ; \
+			cp -a $(TARGET) ./package/$(DEB_NAME)/$(TARG_INSTALL) ; \
+			if [ -d ./doc/html ] && [ -d ./doc/man ] ; then \
+				mkdir -m755 -p ./package/$(DEB_NAME)/usr/share/man/ ; \
+				cp -a ./doc/man/* ./package/$(DEB_NAME)/usr/share/man/ ; \
+				mkdir -m755 -p ./package/$(DEB_NAME)/usr/share/doc/$(TARGET_FILE)/html ; \
+				cp -a ./doc/html/* ./package/$(DEB_NAME)/usr/share/doc/$(TARGET_FILE)/html ; \
+			fi ; \
+		elif [ "$(TARGET_TYPE)" = "thirdparty" ] ; then \
+			if [ "$(TARG_INSTALL)" = "" ] ; then \
+				$(eval TARG_INSTALL=/usr/local/lib) : ; \
+			fi ; \
+			if [ "$(TARG_INSTALL_INCLUDE)" = "" ] ; then \
+				$(eval TARG_INSTALL_INCLUDE=/usr/local/include/$(TARGET_NAME)) : ; \
+			fi ; \
+			mkdir -p ./package/$(DEB_NAME)/$(TARG_INSTALL) ; \
+			mkdir -p ./package/$(DEB_NAME)/$(TARG_INSTALL_INCLUDE) ; \
+			cp -a ./lib/*.a ./package/$(DEB_NAME)/$(TARG_INSTALL) ; \
+			cp -a ./include/* ./package/$(DEB_NAME)/$(TARG_INSTALL_INCLUDE) ; \
+		fi ; \
+		if [ "$(TARGET_TYPE)" != "unittest" ] ; then \
+			fakeroot dpkg-deb --nocheck --build ./package/$(DEB_NAME) ; \
+		fi ; \
+		if [ "$(PACKAGE_INSTALL_DIR)" != "" ] ; then \
+			mkdir -p $(PACKAGE_INSTALL_DIR); \
+			cp ./package/$(DEB_NAME).deb $(PACKAGE_INSTALL_DIR); \
+		fi ; \
+	fi
+	@echo "post"
+
+install_deb:
+	@if [ "$(TARGET_TYPE)" != "unittest" ] ; then \
+		$(eval DEB_NAME:=$(TARGET_FILE)_$(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)_$(shell dpkg-architecture -qDEB_BUILD_ARCH)) : ; \
+		if [ -f ./package/$(DEB_NAME).deb ] ; then \
+			dpkg -i ./package/$(DEB_NAME).deb ; \
+		else \
+			echo "Could not find $(DEB_NAME).deb. Try doing a make deb first and try again." ; \
+		fi ; \
+	fi
+
+install_deb_clean:
+	@if [ "$(TARGET_TYPE)" != "unittest" ] ; then \
+		if [ "$(TARGET_FILE)" != "" ] ; then \
+			dpkg -P $(TARGET_FILE) ; \
+		fi ; \
+	fi
+
+install_deb_dev: install_deb
+	@if [ "$(TARGET_TYPE)" != "unittest" ] ; then \
+		$(eval DEB_NAME_DEV:=$(TARGET_FILE)-dev_$(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)_$(shell dpkg-architecture -qDEB_BUILD_ARCH)) : ; \
+		if [ -f ./package/$(DEB_NAME_DEV).deb ] ; then \
+			dpkg -i ./package/$(DEB_NAME_DEV).deb ; \
+		else \
+			echo "Could not find $(DEB_NAME_DEV).deb. Try doing a make deb_dev first and try again." ; \
+		fi ; \
+	fi
+
+install_deb_dev_clean:
+	@if [ "$(TARGET_TYPE)" != "unittest" ] ; then \
+		if [ "$(TARGET_FILE)" != "" ] ; then \
+			dpkg -P $(TARGET_FILE)-dev ; \
+		fi ; \
+	fi
+
+tests: $(TARGET)
+
+endif # Linux
+
+##############################################################################
+# DEBUG RULES
+##############################################################################
+
+filelist:
+	@echo $(TARG_SOURCES)
+
+cfilelist:
+	@echo $(filter-out %.h, $(TARG_SOURCES))
+
+info:
+	@echo -------------------------------------------------------------------------------
+	@echo "TOP_DIR            = $(TOP_DIR)"
+	@echo "PLATFORM           = $(PLATFORM)"
+	@echo "ARCH               = $(ARCH)"
+	@echo "TARGET_TYPE          = $(TARGET_TYPE)"
+	@echo -------------------------------------------------------------------------------
+	@echo "BUILD_DATE         = $(BUILD_DATE)"
+	@echo "BUILD_MAJOR        = $(BUILD_MAJOR)"
+	@echo "BUILD_MINOR        = $(BUILD_MINOR)"
+	@echo -------------------------------------------------------------------------------
+	@echo "_AR                = $(_AR)"
+	@echo "_CC                = $(_CC)"
+	@echo "_CPP               = $(_CPP)"
+	@echo "_CPFLAGS           = $(_CPFLAGS)"
+	@echo "_LDFLAGS           = $(_LDFLAGS)"
+	@echo -------------------------------------------------------------------------------
+	@echo "AR                 = $(AR)"
+	@echo "CC                 = $(CC)"
+	@echo "CPP                = $(CPP)"
+	@echo "CFLAGS             = $(CFLAGS)"
+	@echo "LD_FLAGS           = $(LD_FLAGS)"
+	@echo "TARG_OPTIONS       = $(TARG_OPTIONS)"
+	@echo -------------------------------------------------------------------------------
+	@echo "OBJ_DIR            = $(OBJ_DIR)"
+	@echo "BIN_DIR            = $(BIN_DIR)"
+	@echo "LIB_DIR            = $(LIB_DIR)"
+	@echo "TARG_DIR           = $(TARG_DIR)"
+	@echo -------------------------------------------------------------------------------
+	@echo "OBJ_FILES          = $(OBJ_FILES)"
+	@echo "TARGET_FILE        = $(TARGET_FILE)"
+	@echo "TARGET             = $(TARGET)"
+	@echo "TARGET_SO          = $(TARGET_SO)"
+	@echo "TARGET_REAL_NAME   = $(TARGET_REAL_NAME)"
+	@echo "TARGET_SO_NAME     = $(TARGET_SO_NAME)"
+	@echo "TARGET_LINKER_NAME = $(TARGET_LINKER_NAME)"
+	@echo "TARGET_NAME          = $(TARGET_NAME)"
+	@echo "TARGET_FILE        = $(TARGET_FILE)"
+	@echo -------------------------------------------------------------------------------
+	@echo "BUILD_TARGET       = $(BUILD_TARGET)"
+	@echo "TARG_LIBS          = $(TARG_LIBS)"
+	@echo "TARG_INCLUDES      = $(TARG_INCLUDES)"
+	@echo -------------------------------------------------------------------------------
+	@echo "PACKAGE_MAINTAINER = $(PACKAGE_MAINTAINER)"
+	@echo "PACKAGE_DESCRIPTION= $(PACKAGE_DESCRIPTION)"
+	@echo "PACKAGE_DEPENDENCIES = $(PACKAGE_DEPENDENCIES)"
+	@echo "PACKAGE_INSTALL_DIR = $(PACKAGE_INSTALL_DIR)"
+
+endif # MAKECMDGOALS
+
+##############################################################################
+# BASIC OBJECT FILE RULES
+##############################################################################
+$(OBJ_DIR)/%.o: $(TARG_SOURCE_DIR)/%.cpp
+	$(CPP) $(CFLAGS) -c $< -o $(OBJ_DIR)/$*.o
+
+$(OBJ_DIR)/%.o: $(TARG_SOURCE_DIR)/%.cxx
+	$(CPP) $(CFLAGS) -c $< -o $(OBJ_DIR)/$*.o
+
+$(OBJ_DIR)/%.o: $(TARG_SOURCE_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $(OBJ_DIR)/$*.o
+
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
+
+$(LIB_DIR):
+	mkdir -p $(LIB_DIR)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(OBJ_FILES): Makefile $(TARG_DEPENDS) | $(OBJ_DIR)
+
+$(TARG_DEPENDS):
+	@rm -f *.d
+	@OB='$$(OBJ_DIR)'; \
+	for i in $(TARG_SOURCES); do \
+		$(CPP) $(CFLAGS) -E -MT"$$OB/`echo $$i | sed 's,\..*,.o,'`" \
+				-MMD $(TARG_SOURCE_DIR)/$$i > /dev/null; \
+	done
+	@FILES=$(shell ls *.d 2> /dev/null | wc -l)
+	@if [ "$$FILES" != "0" ] ; then \
+		cat *.d > $(TARG_DEPENDS); \
+		rm -f *.d; \
+	fi
+
+##############################################################################
+# Conditionally include the depends file
+# Conditional, because if you just include it it will auto-generate
+##############################################################################
+ifeq ($(wildcard $(TARG_DEPENDS)),$(TARG_DEPENDS))
+-include $(TARG_DEPENDS)
+endif

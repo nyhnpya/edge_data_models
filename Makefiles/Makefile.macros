@@ -1,0 +1,172 @@
+###############################################################################
+# Set the project root.
+# The Makefile.platform defines TOP_DIR.
+###############################################################################
+TARG_DIR=$(TOP_DIR)
+
+ifeq ($(PLATFORM),Linux)
+    BUILD_DATE := $(shell date +%Y-%m-%d)
+    BUILD_MAJOR = $(TARG_BUILD_MAJOR)
+    BUILD_MINOR = $(TARG_BUILD_MINOR)
+    BUILD_PATCH = $(TARG_BUILD_PATCH)
+    BUILD_REVISION = $(TARG_BUILD_REVISION)
+
+    ##########################################################################
+    # DEFINE Linux SUPPORT MACROS
+    ##########################################################################
+    BIN_DIR = ./bin${SUFFIX}
+    LIB_DIR = ./lib${SUFFIX}
+    OBJ_DIR = ./obj${SUFFIX}
+
+##############################################################################
+# Architecture
+##############################################################################
+    ifeq ($(TARGET_TYPE),executable)
+        TARGET_FILE = $(TARGET_NAME)
+        TARGET = $(BIN_DIR)/$(TARGET_NAME)
+    else ifeq ($(TARGET_TYPE),unittest)
+        TARGET = $(BIN_DIR)/$(TARGET_NAME)
+    else ifeq ($(TARGET_TYPE),library)
+        TARGET_FILE = lib$(TARGET_NAME)
+        TARGET = $(LIB_DIR)/$(TARGET_FILE)
+        TARGET_SO_FILE = $(TARGET_FILE).so.$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_PATCH).$(BUILD_REVISION)
+        TARGET_SO = $(LIB_DIR)/$(TARGET_SO_FILE)
+        TARGET_REAL_NAME = $(TARGET_FILE).so.$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_PATCH).$(BUILD_REVISION)
+        TARGET_SO_NAME = $(TARGET_FILE).so.$(BUILD_MAJOR)
+        TARGET_LINKER_NAME = $(TARGET_FILE).so
+        TARG_OPTIONS += -fPIC
+    else ifeq ($(TARGET_TYPE),staticlib)
+        TARGET_FILE = lib$(TARGET_NAME).a
+        TARGET = $(LIB_DIR)/$(TARGET_FILE)
+        TARGET_A = $(TARGET_FILE).a
+        TARGET_SO_FILE = $(TARGET_FILE).so.$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_PATCH).$(BUILD_REVISION)
+        TARGET_SO = $(LIB_DIR)/$(TARGET_SO_FILE)
+        TARGET_REAL_NAME = $(TARGET_FILE).so.$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_PATCH).$(BUILD_REVISION)
+        TARGET_SO_NAME = $(TARGET_FILE).so.$(BUILD_MAJOR)
+        TARGET_LINKER_NAME = $(TARGET_FILE).so
+        TARG_OPTIONS += -fPIC
+    else ifeq ($(TARGET_TYPE),thirdparty)
+        TARGET = $(TARGET_NAME)
+    endif
+
+    ##########################################################################
+    # Target specific macro definitions
+    ##########################################################################
+    _AR = ar -rs
+    _CC = gcc
+    _CPP = g++ -std=c++11
+    _INCLUDES = $(TARG_INCLUDES)
+    _LDFLAGS = $(TARG_LDFLAGS)
+
+    ##########################################################################
+    # Build Profile Mode
+    ##########################################################################
+    ifeq ($(BUILD),Profile)
+        _CPFLAGS += -D_DEBUG -g3 -pg -DSIMPROF $(TARG_OPTIONS)
+	_LDFLAGS += -pg 
+    ##########################################################################
+    # Build Release Mode
+    ##########################################################################
+    else ifeq ($(BUILD),Release)
+        _CPFLAGS += -g3 -fcaller-saves -finline-functions \
+                    -frerun-cse-after-loop -fschedule-insns2 \
+                    -fstrength-reduce $(TARG_OPTIMIZED_OPTIONS) $(TARG_OPTIONS)
+        _LDFLAGS += -s
+    ##########################################################################
+    # Build Debug Mode
+    ##########################################################################
+    else
+        _CPFLAGS += $(TARG_DEBUG_OPTIONS) -D_DEBUG -g $(TARG_OPTIONS)
+    endif
+endif # linux
+
+ifeq ($(PLATFORM),Darwin)
+    BUILD_DATE := $(shell date +%Y-%m-%d)
+    BUILD_MAJOR = $(TARG_BUILD_MAJOR)
+    BUILD_MINOR = $(TARG_BUILD_MINOR)
+    BUILD_PATCH = $(TARG_BUILD_PATCH)
+    BUILD_REVISION := $(shell svn info | grep Revision | cut -d' ' -f2)
+
+    ##########################################################################
+    # DEFINE Linux SUPPORT MACROS
+    ##########################################################################
+    BIN_DIR = $(TARG_DIR)/bin${SUFFIX}
+    LIB_DIR = ./lib${SUFFIX}
+    OBJ_DIR = ./obj${SUFFIX}
+
+    ifeq ($(TARGET_TYPE),executable)
+        TARGET = $(BIN_DIR)/$(TARGET_NAME)
+    else ifeq ($(TARGET_TYPE),unittest)
+        TARGET = $(BIN_DIR)/$(TARGET_NAME)
+    else ifeq ($(TARGET_TYPE),library)
+        TARGET = $(LIB_DIR)/$(TARGET_NAME).a
+        TARGET_A = $(TARGET_NAME).a
+        TARGET_SO = $(LIB_DIR)/$(TARGET_NAME).so.$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_PATCH)
+        TARGET_REAL_NAME = $(TARGET_NAME).so.$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_PATCH).$(BUILD_REVISION)
+        TARGET_SO_NAME = $(TARGET_NAME).so.$(BUILD_MAJOR)
+        TARGET_LINKER_NAME = $(TARGET_NAME).so
+    endif
+
+    ##########################################################################
+    # Target specific macro definitions
+    ##########################################################################
+    _AR = ar -rs
+    _CC = gcc
+    _CPP = g++ -std=c++11
+    _INCLUDES = $(TARG_INCLUDES)
+    _CPFLAGS = -D_DARWIN
+    _LDFLAGS = $(TARG_LDFLAGS)
+
+    ##########################################################################
+    # Build Profile Mode
+    ##########################################################################
+    ifeq ($(BUILD),Profile)
+        _CPFLAGS += -D_DEBUG -g3 -pg -DSIMPROF $(TARG_OPTIONS)
+    ##########################################################################
+    # Build Release Mode
+    ##########################################################################
+    else ifeq ($(BUILD),Release)
+        _CPFLAGS += -g3 -fcaller-saves -finline-functions \
+                    -frerun-cse-after-loop -fschedule-insns2 \
+                    -fstrength-reduce $(TARG_OPTIMIZED_OPTIONS) $(TARG_OPTIONS)
+        _LDFLAGS += -s
+    ##########################################################################
+    # Build Debug Mode
+    ##########################################################################
+    else
+        _CPFLAGS += $(TARG_DEBUG_OPTIONS) -D_DEBUG -g $(TARG_OPTIONS)
+    endif
+endif # darwin
+
+##############################################################################
+# Global macro definitions
+##############################################################################
+TARG_DEPENDS = $(TARGET_NAME).depend
+
+AR = $(_AR)
+CC = $(_CC)
+CPP = $(_CPP)
+CFLAGS = $(_INCLUDES) $(_CPFLAGS) -DBUILD_DATE=\"$(BUILD_DATE)\" -DBUILD_MAJOR=$(BUILD_MAJOR) -DBUILD_MINOR=$(BUILD_MINOR) -DBUILD_PATCH=$(BUILD_PATCH) -DBUILD_REVISION=$(BUILD_REVISION)
+LD_FLAGS = $(_LDFLAGS)
+
+ifeq ($(TARGET_TYPE),executable)
+    BUILD_TARGET = $(CPP) -o $(TARGET) $(OBJ_FILES) $(TARG_LIBS) $(LD_FLAGS)
+    OUT_DIR = $(BIN_DIR)
+else ifeq ($(TARGET_TYPE),unittest)
+    BUILD_TARGET = $(CPP) -o $(TARGET) $(OBJ_FILES) $(TARG_LIBS) $(LD_FLAGS)
+    OUT_DIR = $(BIN_DIR)
+else ifeq ($(TARGET_TYPE),library)
+#    BUILD_TARGET = $(CPP) $(OBJ_FILES) $(LD_FLAGS) -shared -Wl,-soname,$(TARGET_SO_NAME) -o $(TARGET_SO); chmod 644 $(TARGET_SO); $(AR) $(TARGET) $(OBJ_FILES); ln -fs $(TARGET_REAL_NAME) $(LIB_DIR)/$(TARGET_SO_NAME); ln -fs $(TARGET_SO_NAME) $(LIB_DIR)/$(TARGET_LINKER_NAME)
+    BUILD_TARGET = $(CPP) $(OBJ_FILES) $(LD_FLAGS) -shared -Wl,-soname,$(TARGET_SO_NAME) -o $(TARGET_SO); chmod 644 $(TARGET_SO); ln -fs $(TARGET_REAL_NAME) $(LIB_DIR)/$(TARGET_SO_NAME); ln -fs $(TARGET_SO_NAME) $(LIB_DIR)/$(TARGET_LINKER_NAME)
+    OUT_DIR = $(LIB_DIR)
+else ifeq ($(TARGET_TYPE),staticlib)
+    BUILD_TARGET = $(AR) $(TARGET) $(OBJ_FILES)
+    OUT_DIR = $(LIB_DIR)
+else ifeq ($(TARGET_TYPE),thirdparty)
+    BUILD_TARGET = :
+    OUT_DIR = lib
+endif
+
+T1 = $(patsubst %.c, $(OBJ_DIR)/%.o, $(TARG_SOURCES))
+T2 = $(patsubst %.cxx, $(OBJ_DIR)/%.o, $(T1))
+OBJ_FILES = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(T2))

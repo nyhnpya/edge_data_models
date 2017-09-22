@@ -1,0 +1,19 @@
+# Platform specific options
+ifeq ($(PLATFORM),Linux)
+	TARG_OPTIONS += -DRTI_LINUX
+	TARG_OPTIONS += -DRTI_UNIX
+	TARG_OPTIONS += -DRTI_64BIT
+	TARG_OPTIONS += -m64
+	TARG_OPTIONS += -Wno-unused-variable
+else
+	TARG_OPTIONS += -DNDDS_USER_DDL_EXPORT
+	TARG_OPTIONS += -DNDDS_DDL_VARIABLE
+	TARG_OPTIONS += -DRTI_WIN32
+	TARG_OPTIONS += -DSHARED_INTERNAL_LIBRARY
+	TARG_OPTIONS += -DNOMINMAX
+endif
+
+TARG_INCLUDES += -I$(NDDSHOME)/include/
+TARG_INCLUDES += -I$(NDDSHOME)/include/ndds
+TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
+#TARG_LIBS += -lrticonnextmsgcpp -lnddscpp -lnddsc -lnddscore -ldl
