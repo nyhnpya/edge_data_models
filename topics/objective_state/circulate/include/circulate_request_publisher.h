@@ -4,6 +4,11 @@
 #include "publisher.h"
 #include "circulate.h"
 #include "circulateSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::pressure;
 
 class CCirculateRequestPublisher : public TPublisher< nec::process::CirculateRequest >
 {

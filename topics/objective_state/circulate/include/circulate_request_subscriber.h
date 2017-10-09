@@ -4,6 +4,11 @@
 #include "subscriber.h"
 #include "circulate.h"
 #include "circulateSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::pressure;
 
 class CCirculateRequestSubscriber : public TSubscriber< nec::process::CirculateRequest >
 {
@@ -34,11 +39,11 @@ class CCirculateRequestSubscriber : public TSubscriber< nec::process::CirculateR
 
 private:
     nec::process::CirculateRequest m_data;
-    DDS::SampleInfo                      m_sampleInfo;
-    DDS::LivelinessChangedStatus m_livelinessStatus;
-    OnDataAvailableEvent                 m_pOnDataAvailable;
-    OnDataDisposedEvent                  m_pOnDataDisposed;
-    OnLivelinessChangedEvent     m_pOnLivelinessChanged;
+    DDS::SampleInfo                m_sampleInfo;
+    DDS::LivelinessChangedStatus   m_livelinessStatus;
+    OnDataAvailableEvent           m_pOnDataAvailable;
+    OnDataDisposedEvent            m_pOnDataDisposed;
+    OnLivelinessChangedEvent       m_pOnLivelinessChanged;
 };
 
 #endif // __CIRCULATE_REQUEST_SUBSCRIBER_H__ 

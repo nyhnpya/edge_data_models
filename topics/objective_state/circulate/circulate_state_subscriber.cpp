@@ -35,9 +35,9 @@ bool CCirculateStateSubscriber::GetActualFlowRate(double &actualFlowRate)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CCirculateStateSubscriber::GetActualStandpipePressure(double &actualStandpipePressure)
+bool CCirculateStateSubscriber::GetActualStandpipePressure(pascal_t &actualStandpipePressure)
 {
-    actualStandpipePressure = m_data.actualStandpipePressure;
+    actualStandpipePressure = ((pascal_t)m_data.actualStandpipePressure / 1000);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
@@ -56,16 +56,16 @@ bool CCirculateStateSubscriber::GetMaxFlowRate(double &maxFlowRate)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CCirculateStateSubscriber::GetMinStandpipePressure(double &minStandpipePressure)
+bool CCirculateStateSubscriber::GetMinStandpipePressure(pascal_t &minStandpipePressure)
 {
-    minStandpipePressure = m_data.minStandpipePressure;
+    minStandpipePressure = ((pascal_t)m_data.minStandpipePressure / 1000);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CCirculateStateSubscriber::GetMaxStandpipePressure(double &maxStandpipePressure)
+bool CCirculateStateSubscriber::GetMaxStandpipePressure(pascal_t &maxStandpipePressure)
 {
-    maxStandpipePressure = m_data.maxStandpipePressure;
+    maxStandpipePressure = ((pascal_t)m_data.maxStandpipePressure / 1000);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }

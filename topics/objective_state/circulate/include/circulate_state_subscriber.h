@@ -5,6 +5,11 @@
 #include "subscriber.h"
 #include "circulate.h"
 #include "circulateSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::pressure;
 
 class CCirculateStateSubscriber : public TSubscriber< nec::process::CirculateState>
 {
@@ -25,11 +30,11 @@ public:
     bool GetId(DataTypes::Uuid &id);
     bool GetStatus(DataTypes::Status &status);
     bool GetActualFlowRate(double &actualFlowRate);
-    bool GetActualStandpipePressure(double &actualStandpipePressure);
+    bool GetActualStandpipePressure(pascal_t &actualStandpipePressure);
     bool GetMinFlowRate(double &minRateFlowRate);
     bool GetMaxFlowRate(double &maxRateFlowRate);
-    bool GetMinStandpipePressure(double &minStandpipePressure);
-    bool GetMaxStandpipePressure(double &maxStandpipePressure);
+    bool GetMinStandpipePressure(pascal_t &minStandpipePressure);
+    bool GetMaxStandpipePressure(pascal_t &maxStandpipePressure);
     bool GetTargetFlowRate(double &targetFlowRate);
 
 protected:

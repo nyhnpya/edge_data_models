@@ -36,11 +36,11 @@ void CCirculateStatePublisher::SetActualFlowRate(double actualFlowRate)
     }
 }
 
-void CCirculateStatePublisher::SetActualStandpipePressure(double actualStandpipePressure)
+void CCirculateStatePublisher::SetActualStandpipePressure(pascal_t actualStandpipePressure)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->actualStandpipePressure = actualStandpipePressure;
+        m_pDataInstance->actualStandpipePressure = units::unit_cast<double>(actualStandpipePressure);
     }
 }
 
@@ -60,19 +60,19 @@ void CCirculateStatePublisher::SetMaxFlowRate(double maxFlowRate)
     }
 }
 
-void CCirculateStatePublisher::SetMinStandpipePressure(double minStandpipePressure)
+void CCirculateStatePublisher::SetMinStandpipePressure(pascal_t minStandpipePressure)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->minStandpipePressure = minStandpipePressure;
+        m_pDataInstance->minStandpipePressure = units::unit_cast<double>(minStandpipePressure);
     }
 }
 
-void CCirculateStatePublisher::SetMaxStandpipePressure(double maxStandpipePressure)
+void CCirculateStatePublisher::SetMaxStandpipePressure(pascal_t maxStandpipePressure)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->maxStandpipePressure = maxStandpipePressure;
+        m_pDataInstance->maxStandpipePressure = units::unit_cast<double>(maxStandpipePressure);
     }
 }
 

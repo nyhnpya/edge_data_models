@@ -32,11 +32,11 @@ class CCirculateObjectiveSubscriber : public TSubscriber< nec::process::Circulat
 
 private:
     nec::process::CirculateObjective m_data;
-    DDS::SampleInfo                        m_sampleInfo;
-    DDS::LivelinessChangedStatus           m_livelinessStatus;
-    OnDataAvailableEvent                   m_pOnDataAvailable;
-    OnDataDisposedEvent                    m_pOnDataDisposed;
-    OnLivelinessChangedEvent               m_pOnLivelinessChanged;
+    DDS::SampleInfo                  m_sampleInfo;
+    DDS::LivelinessChangedStatus     m_livelinessStatus;
+    OnDataAvailableEvent             m_pOnDataAvailable;
+    OnDataDisposedEvent              m_pOnDataDisposed;
+    OnLivelinessChangedEvent         m_pOnLivelinessChanged;
 };
 
 #endif // __CIRCULATE_OBJECTIVE_SUBSCRIBER_H__ 

@@ -20,11 +20,11 @@ bool CWellboreStatePublisher::Initialize()
     return true;
 }
 
-void CWellboreStatePublisher::SetBitDepth(double bitDepth)
+void CWellboreStatePublisher::SetBitDepth(meter_t bitDepth)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->bitDepth = bitDepth;
+        m_pDataInstance->bitDepth = units::unit_cast<double>(bitDepth);
     }
     else
     {
@@ -32,11 +32,11 @@ void CWellboreStatePublisher::SetBitDepth(double bitDepth)
     }
 }
 
-void CWellboreStatePublisher::SetHoleDepth(double holeDepth)
+void CWellboreStatePublisher::SetHoleDepth(meter_t holeDepth)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->holeDepth = holeDepth;
+        m_pDataInstance->holeDepth = units::unit_cast<double>(holeDepth);
     }
     else
     {

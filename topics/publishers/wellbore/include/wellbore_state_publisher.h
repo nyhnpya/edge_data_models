@@ -6,6 +6,11 @@
 #include "base_data_types.h"
 #include "wellbore.h"
 #include "wellboreSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::length;
 
 class CWellboreStatePublisher : public TPublisher<nec::process::WellboreState>
 {
@@ -18,8 +23,8 @@ public:
     bool PublishSample();
 
     // Topic getters
-    void SetBitDepth(double bitDept);
-    void SetHoleDepth(double holeDepth);
+    void SetBitDepth(meter_t bitDept);
+    void SetHoleDepth(meter_t holeDepth);
 
 private:
 };

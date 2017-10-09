@@ -6,6 +6,11 @@
 #include "base_data_types.h"
 #include "wellbore.h"
 #include "wellboreSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::length;
 
 class CWellboreStateSubscriber : public TSubscriber< nec::process::WellboreState>
 {
@@ -23,8 +28,8 @@ public:
     bool ValidData();
 
     // Topic getters
-    bool GetBitDepth(double &bitDept);
-    bool GetHoleDepth(double &holeDepth);
+    bool GetBitDepth(meter_t &bitDept);
+    bool GetHoleDepth(meter_t &holeDepth);
 
 protected:
     ///Derived Methods
