@@ -28,9 +28,9 @@ bool CRotateObjectiveSubscriber::GetEstimatedDuration(DataTypes::Time &estimated
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CRotateObjectiveSubscriber::GetTargetRate(double &targetRate)
+bool CRotateObjectiveSubscriber::GetTargetRate(radians_per_second_t &targetRate)
 {
-    targetRate = m_data.targetRate;
+    targetRate = (radians_per_second_t)m_data.targetRate;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }

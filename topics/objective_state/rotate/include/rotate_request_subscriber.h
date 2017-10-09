@@ -4,6 +4,11 @@
 #include "subscriber.h"
 #include "rotate.h"
 #include "rotateSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::angular_velocity;
 
 class CRotateRequestSubscriber : public TSubscriber< nec::process::RotateRequest >
 {
@@ -24,7 +29,7 @@ class CRotateRequestSubscriber : public TSubscriber< nec::process::RotateRequest
     bool GetPriority(DataTypes::Priority &priority);
     bool GetTimeNeeded(DataTypes::Time &timeNeeded);
     bool GetDuration(DataTypes::Time &duration);
-    bool GetTargetRate(double &targetRate);
+    bool GetTargetRate(radians_per_second_t &targetRate);
 
  protected:
     ///Derived Methods

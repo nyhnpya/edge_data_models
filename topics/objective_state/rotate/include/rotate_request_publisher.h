@@ -4,6 +4,11 @@
 #include "publisher.h"
 #include "rotate.h"
 #include "rotateSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::angular_velocity;
 
 class CRotateRequestPublisher : public TPublisher< nec::process::RotateRequest >
 {
@@ -18,7 +23,7 @@ class CRotateRequestPublisher : public TPublisher< nec::process::RotateRequest >
     void SetPriority(DataTypes::Priority priority);
     void SetTimeNeeded(DataTypes::Time timeNeeded);
     void SetDuration(DataTypes::Time duration);
-    void SetTargetRate(double targetRate);
+    void SetTargetRate(radians_per_second_t targetRate);
 };
 
 #endif // __ROTATE_REQUEST_PUBLISHER_H__ 

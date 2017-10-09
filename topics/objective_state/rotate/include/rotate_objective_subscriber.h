@@ -4,6 +4,11 @@
 #include "subscriber.h"
 #include "rotate.h"
 #include "rotateSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::angular_velocity;
 
 class CRotateObjectiveSubscriber : public TSubscriber< nec::process::RotateObjective >
 {
@@ -22,7 +27,7 @@ class CRotateObjectiveSubscriber : public TSubscriber< nec::process::RotateObjec
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
     bool GetEstimatedDuration(DataTypes::Time &estimatedDuration);
-    bool GetTargetRate(double &targetRate);
+    bool GetTargetRate(radians_per_second_t &targetRate);
 
  protected:
     void DataAvailable(const nec::process::RotateObjective &data, 

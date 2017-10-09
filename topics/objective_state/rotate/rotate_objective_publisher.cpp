@@ -28,11 +28,11 @@ void CRotateObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimatedDu
     }
 }
 
-void CRotateObjectivePublisher::SetTargetRate(double targetRate)
+void CRotateObjectivePublisher::SetTargetRate(radians_per_second_t targetRate)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetRate = targetRate;
+        m_pDataInstance->targetRate = units::unit_cast<double>(targetRate);
     }
 }
 

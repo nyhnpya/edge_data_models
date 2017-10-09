@@ -4,6 +4,11 @@
 #include "publisher.h"
 #include "rotate.h"
 #include "rotateSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::angular_velocity;
 
 class CRotateObjectivePublisher : public TPublisher< nec::process::RotateObjective >
 {
@@ -16,7 +21,7 @@ class CRotateObjectivePublisher : public TPublisher< nec::process::RotateObjecti
     bool PublishSample();
 
     void SetEstimatedDuration(DataTypes::Time estimatedDuration);
-    void SetTargetRate(double targetRate);
+    void SetTargetRate(radians_per_second_t targetRate);
 };
 
 #endif // __ROTATE_OBJECTIVE_PUBLISHER_H__ 
