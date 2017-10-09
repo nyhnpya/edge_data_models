@@ -28,30 +28,30 @@ bool CRotateStateSubscriber::GetStatus(DataTypes::Status &status)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CRotateStateSubscriber::GetActualRate(double &actualRate)
+bool CRotateStateSubscriber::GetActualRate(radians_per_second_t &actualRate)
 {
-    actualRate = m_data.actualRate;
+    actualRate = (radians_per_second_t)m_data.actualRate;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CRotateStateSubscriber::GetMinRate(double &minRate)
+bool CRotateStateSubscriber::GetMinRate(radians_per_second_t &minRate)
 {
-    minRate = m_data.minRate;
+    minRate = (radians_per_second_t)m_data.minRate;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CRotateStateSubscriber::GetMaxRate(double &maxRate)
+bool CRotateStateSubscriber::GetMaxRate(radians_per_second_t &maxRate)
 {
-    maxRate = m_data.maxRate;
+    maxRate = (radians_per_second_t)m_data.maxRate;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CRotateStateSubscriber::GetTargetRate(double &targetRate)
+bool CRotateStateSubscriber::GetTargetRate(radians_per_second_t &targetRate)
 {
-    targetRate = m_data.targetRate;
+    targetRate = (radians_per_second_t)m_data.targetRate;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }

@@ -4,6 +4,11 @@
 #include "publisher.h"
 #include "rotate.h"
 #include "rotateSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::angular_velocity;
 
 class CRotateStatePublisher : public TPublisher< nec::process::RotateState >
 {
@@ -16,10 +21,10 @@ class CRotateStatePublisher : public TPublisher< nec::process::RotateState >
     bool PublishSample();
 
     void SetStatus(const DataTypes::Status status);
-    void SetActualRate(double actualRate);
-    void SetMinRate(double minRate);
-    void SetMaxRate(double maxRate);
-    void SetTargetRate(double targetRate);
+    void SetActualRate(radians_per_second_t actualRate);
+    void SetMinRate(radians_per_second_t minRate);
+    void SetMaxRate(radians_per_second_t maxRate);
+    void SetTargetRate(radians_per_second_t targetRate);
 };
 
 #endif // __ROTATE_STATE_PUBLISHER_H__ 

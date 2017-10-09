@@ -30,6 +30,7 @@ TARG_LIBS +=
 
 # Includes
 TARG_INCLUDES += -I /usr/local/include/dds_base
+TARG_INCLUDES += -isystem/usr/local/include/edge_third_party
 TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
 TARG_INCLUDES += -I $(TOP_DIR)/topics/process/rotate/include

@@ -5,6 +5,11 @@
 #include "subscriber.h"
 #include "rotate.h"
 #include "rotateSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::angular_velocity;
 
 class CRotateStateSubscriber : public TSubscriber< nec::process::RotateState>
 {
@@ -24,10 +29,10 @@ public:
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
     bool GetStatus(DataTypes::Status &status);
-    bool GetActualRate(double &actualRate);
-    bool GetMinRate(double &minRate);
-    bool GetMaxRate(double &maxRate);
-    bool GetTargetRate(double &targetRate);
+    bool GetActualRate(radians_per_second_t &actualRate);
+    bool GetMinRate(radians_per_second_t &minRate);
+    bool GetMaxRate(radians_per_second_t &maxRate);
+    bool GetTargetRate(radians_per_second_t &targetRate);
 
 protected:
     ///Derived Methods

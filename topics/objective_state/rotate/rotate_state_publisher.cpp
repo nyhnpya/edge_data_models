@@ -28,35 +28,35 @@ void CRotateStatePublisher::SetStatus(const DataTypes::Status status)
     }
 }
 
-void CRotateStatePublisher::SetActualRate(double actualRate)
+void CRotateStatePublisher::SetActualRate(radians_per_second_t actualRate)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->actualRate = actualRate;
+        m_pDataInstance->actualRate = units::unit_cast<double>(actualRate);
     }
 }
 
-void CRotateStatePublisher::SetMinRate(double minRate)
+void CRotateStatePublisher::SetMinRate(radians_per_second_t minRate)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->minRate = minRate;;
+        m_pDataInstance->minRate = units::unit_cast<double>(minRate);
     }
 }
 
-void CRotateStatePublisher::SetMaxRate(double maxRate)
+void CRotateStatePublisher::SetMaxRate(radians_per_second_t maxRate)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->maxRate = maxRate;
+        m_pDataInstance->maxRate = units::unit_cast<double>(maxRate);
     }
 }
 
-void CRotateStatePublisher::SetTargetRate(double targetRate)
+void CRotateStatePublisher::SetTargetRate(radians_per_second_t targetRate)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetRate = targetRate;
+        m_pDataInstance->targetRate = units::unit_cast<double>(targetRate);
     }
 }
 
