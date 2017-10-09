@@ -44,19 +44,19 @@ void CHoistRequestPublisher::SetDuration(DataTypes::Time duration)
     }
 }
 
-void CHoistRequestPublisher::SetTargetVelocity(DDS_Double targetVelocity)
+void CHoistRequestPublisher::SetTargetVelocity(meters_per_second_t targetVelocity)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetVelocity = targetVelocity;
+        m_pDataInstance->targetVelocity = units::unit_cast<double>(targetVelocity);
     }
 }
 
-void CHoistRequestPublisher::SetTargetPosition(DDS_Double targetPosition)
+void CHoistRequestPublisher::SetTargetPosition(meter_t targetPosition)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetPosition = targetPosition;
+        m_pDataInstance->targetPosition = units::unit_cast<double>(targetPosition);
     }
 }
 

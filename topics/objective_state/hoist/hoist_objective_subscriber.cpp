@@ -21,23 +21,23 @@ bool CHoistObjectiveSubscriber::GetId(DataTypes::Uuid id)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistObjectiveSubscriber::GetEstimatedDuration(DataTypes::Time estimatedDuration)
+bool CHoistObjectiveSubscriber::GetEstimatedDuration(DataTypes::Time &estimatedDuration)
 {
     estimatedDuration = m_data.estimatedDuration;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistObjectiveSubscriber::GetTargetVelocity(double targetVelocity)
+bool CHoistObjectiveSubscriber::GetTargetVelocity(meters_per_second_t &targetVelocity)
 {
-    targetVelocity = m_data.targetVelocity;
+    targetVelocity = (meters_per_second_t)m_data.targetVelocity;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistObjectiveSubscriber::GetTargetPosition(double targetPosition)
+bool CHoistObjectiveSubscriber::GetTargetPosition(meter_t &targetPosition)
 {
-    targetPosition = m_data.targetPosition;
+    targetPosition = (meter_t)m_data.targetPosition;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }

@@ -4,6 +4,12 @@
 #include "publisher.h"
 #include "hoist.h"
 #include "hoistSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::length;
+using namespace units::velocity;
 
 class CHoistStatePublisher : public TPublisher< nec::process::HoistState >
 {
@@ -16,14 +22,14 @@ class CHoistStatePublisher : public TPublisher< nec::process::HoistState >
     bool PublishSample();
 
     void SetStatus(const DataTypes::Status status);
-    void SetActualVelocity(double actualVelocity);
-    void SetActualPosition(double actualPosition);
-    void SetMaxHoistVelocity(double maxHoistVelocity);
-    void SetMaxLowerVelocity(double maxLowerVelocity);
-    void SetMaxHoistPosition(double maxHoistPosition);
-    void SetMaxLowerPosition(double maxLowerPosition);
-    void SetTargetVelocity(double targetVelocity);
-    void SetTargetPosition(double targetPosition);
+    void SetActualVelocity(meters_per_second_t actualVelocity);
+    void SetActualPosition(meter_t actualPosition);
+    void SetMaxHoistVelocity(meters_per_second_t maxHoistVelocity);
+    void SetMaxLowerVelocity(meters_per_second_t maxLowerVelocity);
+    void SetMaxHoistPosition(meter_t maxHoistPosition);
+    void SetMaxLowerPosition(meter_t maxLowerPosition);
+    void SetTargetVelocity(meters_per_second_t targetVelocity);
+    void SetTargetPosition(meter_t targetPosition);
 };
 
 #endif // __HOIST_STATE_PUBLISHER_H__ 

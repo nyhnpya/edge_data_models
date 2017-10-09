@@ -4,6 +4,12 @@
 #include "subscriber.h"
 #include "hoist.h"
 #include "hoistSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::length;
+using namespace units::velocity;
 
 class CHoistStateSubscriber : public TSubscriber< nec::process::HoistState >
 {
@@ -23,14 +29,14 @@ class CHoistStateSubscriber : public TSubscriber< nec::process::HoistState >
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
     bool GetStatus(DataTypes::Status &status);
-    bool GetActualVelocity(double &actualVelocity);
-    bool GetActualPosition(double &actualPosition);
-    bool GetMaxHoistVelocity(double &maxHoistVelocity);
-    bool GetMaxLowerVelocity(double &maxLowerVelocity);
-    bool GetMaxHoistPosition(double &maxHoistPosition);
-    bool GetMaxLowerPosition(double &maxLowerPosition);
-    bool GetTargetVelocity(double &targetVelocity);
-    bool GetTargetPosition(double &targetPosition);
+    bool GetActualVelocity(meters_per_second_t &actualVelocity);
+    bool GetActualPosition(meter_t &actualPosition);
+    bool GetMaxHoistVelocity(meters_per_second_t &maxHoistVelocity);
+    bool GetMaxLowerVelocity(meters_per_second_t  &maxLowerVelocity);
+    bool GetMaxHoistPosition(meter_t &maxHoistPosition);
+    bool GetMaxLowerPosition(meter_t &maxLowerPosition);
+    bool GetTargetVelocity(meters_per_second_t &targetVelocity);
+    bool GetTargetPosition(meter_t &targetPosition);
 
  protected:
     ///Derived Methods

@@ -28,58 +28,58 @@ bool CHoistStateSubscriber::GetStatus(DataTypes::Status &status)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistStateSubscriber::GetActualVelocity(double &actualVelocity)
+bool CHoistStateSubscriber::GetActualVelocity(meters_per_second_t &actualVelocity)
 {
-    actualVelocity = m_data.actualVelocity;
+    actualVelocity = (meters_per_second_t)m_data.actualVelocity;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistStateSubscriber::GetActualPosition(double &actualPosition)
+bool CHoistStateSubscriber::GetActualPosition(meter_t &actualPosition)
 {
-    actualPosition = m_data.actualPosition;
+    actualPosition = (meter_t)m_data.actualPosition;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistStateSubscriber::GetMaxHoistVelocity(double &maxHoistVelocity)
+bool CHoistStateSubscriber::GetMaxHoistVelocity(meters_per_second_t &maxHoistVelocity)
 {
-    maxHoistVelocity = m_data.maxHoistVelocity;
+    maxHoistVelocity = (meters_per_second_t)m_data.maxHoistVelocity;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistStateSubscriber::GetMaxLowerVelocity(double &maxLowerVelocity)
+bool CHoistStateSubscriber::GetMaxLowerVelocity(meters_per_second_t &maxLowerVelocity)
 {
-    maxLowerVelocity = m_data.maxLowerVelocity;
+    maxLowerVelocity = (meters_per_second_t)m_data.maxLowerVelocity;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistStateSubscriber::GetMaxHoistPosition(double &maxHoistPosition)
+bool CHoistStateSubscriber::GetMaxHoistPosition(meter_t &maxHoistPosition)
 {
-    maxHoistPosition = m_data.maxHoistPosition;
+    maxHoistPosition = (meter_t)m_data.maxHoistPosition;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistStateSubscriber::GetMaxLowerPosition(double &maxLowerPosition)
+bool CHoistStateSubscriber::GetMaxLowerPosition(meter_t &maxLowerPosition)
 {
-    maxLowerPosition = m_data.maxLowerPosition;
+    maxLowerPosition = (meter_t)m_data.maxLowerPosition;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistStateSubscriber::GetTargetVelocity(double &targetVelocity)
+bool CHoistStateSubscriber::GetTargetVelocity(meters_per_second_t &targetVelocity)
 {
-    targetVelocity = m_data.targetVelocity;
+    targetVelocity = (meters_per_second_t)m_data.targetVelocity;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistStateSubscriber::GetTargetPosition(double &targetPosition)
+bool CHoistStateSubscriber::GetTargetPosition(meter_t &targetPosition)
 {
-    targetPosition = m_data.targetPosition;
+    targetPosition = (meter_t)m_data.targetPosition;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }

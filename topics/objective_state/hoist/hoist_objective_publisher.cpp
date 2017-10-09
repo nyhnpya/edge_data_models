@@ -20,7 +20,7 @@ bool CHoistObjectivePublisher::Initialize()
     return true;
 }
 
-void CHoistObjectivePublisher::SetEstimatedDuration(DataTypes::Time &estimatedDuration)
+void CHoistObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -28,19 +28,19 @@ void CHoistObjectivePublisher::SetEstimatedDuration(DataTypes::Time &estimatedDu
     }
 }
 
-void CHoistObjectivePublisher::SetTargetVelocity(DDS_Double &targetVelocity)
+void CHoistObjectivePublisher::SetTargetVelocity(meters_per_second_t targetVelocity)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetVelocity = targetVelocity;
+        m_pDataInstance->targetVelocity = units::unit_cast<double>(targetVelocity);
     }
 }
 
-void CHoistObjectivePublisher::SetTargetPosition(DDS_Double &targetPosition)
+void CHoistObjectivePublisher::SetTargetPosition(meter_t targetPosition)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetPosition = targetPosition;
+        m_pDataInstance->targetPosition = units::unit_cast<double>(targetPosition);
     }
 }
 

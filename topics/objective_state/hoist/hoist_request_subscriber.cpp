@@ -42,16 +42,16 @@ bool CHoistRequestSubscriber::GetDuration(DataTypes::Time &duration)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistRequestSubscriber::GetTargetVelocity(double &targetVelocity)
+bool CHoistRequestSubscriber::GetTargetVelocity(meters_per_second_t &targetVelocity)
 {
-    targetVelocity = m_data.targetVelocity;
+    targetVelocity = (meters_per_second_t)m_data.targetVelocity;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistRequestSubscriber::GetTargetPosition(double &targetPosition)
+bool CHoistRequestSubscriber::GetTargetPosition(meter_t &targetPosition)
 {
-    targetPosition = m_data.targetPosition;
+    targetPosition = (meter_t)m_data.targetPosition;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }

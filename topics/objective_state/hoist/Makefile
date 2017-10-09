@@ -2,11 +2,11 @@
 #
 # The following variables must be set for the makefile to work correctly
 #
-# TARG_BUILD_MAJOR   - Version number major
-# TARG_BUILD_MINOR   - Version number minor
+# TARG_BUILD_MAJOR - Version number major
+# TARG_BUILD_MINOR - Version number minor
 # TARG_BUILD_PATCH - Version number patch
-# TARGET_TYPE        - library, staticlib, executable, unittest or thirdparty
-# TARGET_NAME        - Name of final executable/library
+# TARGET_TYPE      - library, staticlib, executable, unittest or thirdparty
+# TARGET_NAME      - Name of final executable/library
 #
 ###############################################################################
 include ../../../Makefiles/Makefile.platform
@@ -29,6 +29,7 @@ TARG_OPTIONS += -ggdb
 TARG_LIBS +=
 
 # Includes
+TARG_INCLUDES += -isystem /usr/local/include/edge_third_party
 TARG_INCLUDES += -I /usr/local/include/dds_base
 TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include

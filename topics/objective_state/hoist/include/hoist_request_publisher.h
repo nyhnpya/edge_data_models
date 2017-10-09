@@ -4,6 +4,12 @@
 #include "publisher.h"
 #include "hoist.h"
 #include "hoistSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::length;
+using namespace units::velocity;
 
 class CHoistRequestPublisher : public TPublisher< nec::process::HoistRequest >
 {
@@ -18,8 +24,8 @@ class CHoistRequestPublisher : public TPublisher< nec::process::HoistRequest >
     void SetPriority(DataTypes::Priority priority);
     void SetTimeNeeded(DataTypes::Time timeNeeded);
     void SetDuration(DataTypes::Time duration);
-    void SetTargetVelocity(double targetVelocity);
-    void SetTargetPosition(double targetPosition);
+    void SetTargetVelocity(meters_per_second_t targetVelocity);
+    void SetTargetPosition(meter_t targetPosition);
 };
 
 #endif // __HOIST_REQUEST_PUBLISHER_H__ 

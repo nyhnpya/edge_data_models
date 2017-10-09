@@ -4,6 +4,12 @@
 #include "subscriber.h"
 #include "hoist.h"
 #include "hoistSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::length;
+using namespace units::velocity;
 
 class CHoistRequestSubscriber : public TSubscriber< nec::process::HoistRequest >
 {
@@ -24,8 +30,8 @@ class CHoistRequestSubscriber : public TSubscriber< nec::process::HoistRequest >
     bool GetPriority(DataTypes::Priority &priority);
     bool GetTimeNeeded(DataTypes::Time &timeNeeded);
     bool GetDuration(DataTypes::Time &duration);
-    bool GetTargetVelocity(double &targetVelocity);
-    bool GetTargetPosition(double &targetPosition);
+    bool GetTargetVelocity(meters_per_second_t &targetVelocity);
+    bool GetTargetPosition(meter_t &targetPosition);
 
  protected:
     ///Derived Methods

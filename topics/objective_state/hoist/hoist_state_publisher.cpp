@@ -28,67 +28,67 @@ void CHoistStatePublisher::SetStatus(const DataTypes::Status status)
     }
 }
 
-void CHoistStatePublisher::SetActualVelocity(double actualVelocity)
+void CHoistStatePublisher::SetActualVelocity(meters_per_second_t actualVelocity)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->actualVelocity = actualVelocity;
+        m_pDataInstance->actualVelocity = units::unit_cast<double>(actualVelocity);
     }
 }
 
-void CHoistStatePublisher::SetActualPosition(double actualPosition)
+void CHoistStatePublisher::SetActualPosition(meter_t actualPosition)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->actualPosition = actualPosition;
+        m_pDataInstance->actualPosition = units::unit_cast<double>(actualPosition);
     }
 }
 
-void CHoistStatePublisher::SetMaxHoistVelocity(double maxHoistVelocity)
+void CHoistStatePublisher::SetMaxHoistVelocity(meters_per_second_t maxHoistVelocity)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->maxHoistVelocity = maxHoistVelocity;
+        m_pDataInstance->maxHoistVelocity = units::unit_cast<double>(maxHoistVelocity);
     }
 }
 
-void CHoistStatePublisher::SetMaxLowerVelocity(double maxLowerVelocity)
+void CHoistStatePublisher::SetMaxLowerVelocity(meters_per_second_t maxLowerVelocity)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->maxLowerVelocity = maxLowerVelocity;
+        m_pDataInstance->maxLowerVelocity = units::unit_cast<double>(maxLowerVelocity);
     }
 }
 
-void CHoistStatePublisher::SetMaxHoistPosition(double maxHoistPosition)
+void CHoistStatePublisher::SetMaxHoistPosition(meter_t maxHoistPosition)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->maxHoistPosition = maxHoistPosition;
+        m_pDataInstance->maxHoistPosition = units::unit_cast<double>(maxHoistPosition);
     }
 }
 
-void CHoistStatePublisher::SetMaxLowerPosition(double maxLowerPosition)
+void CHoistStatePublisher::SetMaxLowerPosition(meter_t maxLowerPosition)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->maxLowerPosition = maxLowerPosition;
+        m_pDataInstance->maxLowerPosition = units::unit_cast<double>(maxLowerPosition);
     }
 }
 
-void CHoistStatePublisher::SetTargetVelocity(double targetVelocity)
+void CHoistStatePublisher::SetTargetVelocity(meters_per_second_t targetVelocity)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetVelocity = targetVelocity;
+        m_pDataInstance->targetVelocity = units::unit_cast<double>(targetVelocity);
     }
 }
 
-void CHoistStatePublisher::SetTargetPosition(double targetPosition)
+void CHoistStatePublisher::SetTargetPosition(meter_t targetPosition)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetPosition = targetPosition;
+        m_pDataInstance->targetPosition = units::unit_cast<double>(targetPosition);
     }
 }
 
