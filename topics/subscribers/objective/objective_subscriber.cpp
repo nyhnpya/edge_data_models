@@ -89,18 +89,7 @@ void CObjectiveStateSubscriber::DataAvailable(const process::plan::ObjectiveStat
 
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
-        if (m_data.id != nullptr)
-        {
-            DDS_String_free(m_data.id);
-        }
-
         m_data.id = DDS_String_dup(data.id);
-
-        if (m_data.parentId == nullptr)
-        {
-            DDS_String_free(m_data.parentId);
-        }
-
         m_data.parentId = DDS_String_dup(data.parentId);
         m_data.timestamp = data.timestamp;
         m_data.objective = data.objective;
