@@ -42,30 +42,30 @@ bool CDrillingRequestSubscriber::GetDuration(DataTypes::Time &duration)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingRequestSubscriber::GetRopLimit(double &ropLimit)
+bool CDrillingRequestSubscriber::GetRopLimit(meters_per_second_t &ropLimit)
 {
-    ropLimit = m_data.ropLimit;
+    ropLimit = (meters_per_second_t)m_data.ropLimit;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingRequestSubscriber::GetWobLimit(double &wobLimit)
+bool CDrillingRequestSubscriber::GetWobLimit(newton_t &wobLimit)
 {
-    wobLimit = m_data.wobLimit;
+    wobLimit = (newton_t)m_data.wobLimit;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingRequestSubscriber::GetDifferentialPressureLimit(double &differentialPressureLimit)
+bool CDrillingRequestSubscriber::GetDifferentialPressureLimit(pascal_t &differentialPressureLimit)
 {
-    differentialPressureLimit = m_data.differentialPressureLimit;
+    differentialPressureLimit = (pascal_t)m_data.differentialPressureLimit;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingRequestSubscriber::GetTorqueLimit(double &torqueLimit)
+bool CDrillingRequestSubscriber::GetTorqueLimit(newton_meter_t &torqueLimit)
 {
-    torqueLimit = m_data.torqueLimit;
+    torqueLimit = (newton_meter_t)m_data.torqueLimit;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }

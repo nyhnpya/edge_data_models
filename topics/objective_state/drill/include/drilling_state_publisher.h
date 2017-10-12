@@ -2,9 +2,17 @@
 #define __DRILLING_STATE_PUBLISHER_H__
 
 #include "publisher.h"
-#include "base_data_types.h"
 #include "drilling.h"
 #include "drillingSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::length;
+using namespace units::velocity;
+using namespace units::force;
+using namespace units::torque;
+using namespace units::pressure;
 
 class CDrillingStatePublisher : public TPublisher< nec::process::DrillingState >
 {
@@ -19,22 +27,22 @@ class CDrillingStatePublisher : public TPublisher< nec::process::DrillingState >
     // Topic setters
     void SetObjectiveId(DataTypes::Uuid pObjectiveId);
     void SetTimestamp(const DataTypes::Time timestamp);
-    void SetRopActual(const double ropActual);
-    void SetWobActual(const double wobActual);
-    void SetDifferentialPressureActual(const double differentialPressureActual);
-    void SetTorqueActual(const double torqueActual);
-    void SetRopLimit(const double ropLimit);
-    void SetWobLimit(const double wobLimit);
-    void SetDifferentialPressureLimit(const double differentialPressureLimit);
-    void SetTorqueLimit(const double torqueLimit);
+    void SetRopActual(const meters_per_second_t ropActual);
+    void SetWobActual(const newton_t wobActual);
+    void SetDifferentialPressureActual(const pascal_t differentialPressureActual);
+    void SetTorqueActual(const newton_meter_t torqueActual);
+    void SetRopLimit(const meters_per_second_t ropLimit);
+    void SetWobLimit(const newton_t wobLimit);
+    void SetDifferentialPressureLimit(const pascal_t differentialPressureLimit);
+    void SetTorqueLimit(const newton_meter_t torqueLimit);
     void SetRopMode(const bool ropMode);
     void SetWobMode(const bool wobMode);
     void SetDifferentialPressureMode(const bool differentialPressureMode);
     void SetTorqueMode(const bool torqueMode);
-    void SetRopTarget(const double ropTarget);
-    void SetWobTarget(const double wobTarget);
-    void SetDifferentialPressureTarget(const double differentialPressureTarget);
-    void SetTorqueTarget(const double torqueTarget);
+    void SetRopTarget(const meters_per_second_t ropTarget);
+    void SetWobTarget(const newton_t wobTarget);
+    void SetDifferentialPressureTarget(const pascal_t differentialPressureTarget);
+    void SetTorqueTarget(const newton_meter_t torqueTarget);
     void SetBitOnBottom(const bool bitOnBottom);
 };
 

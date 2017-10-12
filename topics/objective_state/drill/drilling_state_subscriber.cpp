@@ -39,58 +39,58 @@ bool CDrillingStateSubscriber::GetTimestamp(DataTypes::Time &timestamp)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetRopActual(double &ropActual)
+bool CDrillingStateSubscriber::GetRopActual(meters_per_second_t &ropActual)
 {
-    ropActual = m_data.ropActual;
+    ropActual = (meters_per_second_t)m_data.ropActual;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetWobActual(double &wobActual)
+bool CDrillingStateSubscriber::GetWobActual(newton_t &wobActual)
 {
-    wobActual = m_data.wobActual;
+    wobActual = (newton_t)m_data.wobActual;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetDifferentialPressureActual(double &differentialPressureActual)
+bool CDrillingStateSubscriber::GetDifferentialPressureActual(pascal_t &differentialPressureActual)
 {
-    differentialPressureActual = m_data.differentialPressureActual;
+    differentialPressureActual = (pascal_t)m_data.differentialPressureActual;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetTorqueActual(double &torqueActual)
+bool CDrillingStateSubscriber::GetTorqueActual(newton_meter_t &torqueActual)
 {
-    torqueActual = m_data.torqueActual;
+    torqueActual = (newton_meter_t)m_data.torqueActual;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetRopLimit(double &ropLimit)
+bool CDrillingStateSubscriber::GetRopLimit(meters_per_second_t &ropLimit)
 {
-    ropLimit = m_data.ropLimit;
+    ropLimit = (meters_per_second_t)m_data.ropLimit;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetWobLimit(double &wobLimit)
+bool CDrillingStateSubscriber::GetWobLimit(newton_t &wobLimit)
 {
-    wobLimit = m_data.wobLimit;
+    wobLimit = (newton_t)m_data.wobLimit;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetDifferentialPressureLimit(double &differentialPressureLimit)
+bool CDrillingStateSubscriber::GetDifferentialPressureLimit(pascal_t &differentialPressureLimit)
 {
-    differentialPressureLimit = m_data.differentialPressureLimit;
+    differentialPressureLimit = (pascal_t)m_data.differentialPressureLimit;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetTorqueLimit(double &torqueLimit)
+bool CDrillingStateSubscriber::GetTorqueLimit(newton_meter_t &torqueLimit)
 {
-    torqueLimit = m_data.torqueLimit;
+    torqueLimit = (newton_meter_t)m_data.torqueLimit;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
@@ -123,30 +123,30 @@ bool CDrillingStateSubscriber::GetTorqueMode(bool &torqueMode)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetRopTarget(double &ropTarget)
+bool CDrillingStateSubscriber::GetRopTarget(meters_per_second_t &ropTarget)
 {
-    ropTarget = m_data.ropTarget;
+  ropTarget = (meters_per_second_t)m_data.ropTarget;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetWobTarget(double &wobTarget)
+bool CDrillingStateSubscriber::GetWobTarget(newton_t &wobTarget)
 {
-    wobTarget = m_data.wobTarget;
+    wobTarget = (newton_t)m_data.wobTarget;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetDifferentialPressureTarget(double &differentialPressureTarget)
+bool CDrillingStateSubscriber::GetDifferentialPressureTarget(pascal_t &differentialPressureTarget)
 {
-    differentialPressureTarget = m_data.differentialPressureTarget;
+    differentialPressureTarget = (pascal_t)m_data.differentialPressureTarget;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetTorqueTarget(double &torqueTarget)
+bool CDrillingStateSubscriber::GetTorqueTarget(newton_meter_t &torqueTarget)
 {
-    torqueTarget = m_data.torqueTarget;
+    torqueTarget = (newton_meter_t)m_data.torqueTarget;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }

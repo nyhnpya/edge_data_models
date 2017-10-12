@@ -44,11 +44,11 @@ void CDrillingRequestPublisher::SetDuration(DataTypes::Time duration)
     }
 }
 
-void CDrillingRequestPublisher::SetRopLimit(const double ropLimit)
+void CDrillingRequestPublisher::SetRopLimit(const meters_per_second_t ropLimit)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->ropLimit = ropLimit;
+        m_pDataInstance->ropLimit = units::unit_cast<double>(ropLimit);
     }
     else
     {
@@ -56,11 +56,11 @@ void CDrillingRequestPublisher::SetRopLimit(const double ropLimit)
     }
 }
 
-void CDrillingRequestPublisher::SetWobLimit(const double wobLimit)
+void CDrillingRequestPublisher::SetWobLimit(const newton_t wobLimit)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobLimit = wobLimit;
+        m_pDataInstance->wobLimit = units::unit_cast<double>(wobLimit);
     }
     else
     {
@@ -68,11 +68,11 @@ void CDrillingRequestPublisher::SetWobLimit(const double wobLimit)
     }
 }
 
-void CDrillingRequestPublisher::SetDifferentialPressureLimit(const double differentialPressureLimit)
+void CDrillingRequestPublisher::SetDifferentialPressureLimit(const pascal_t differentialPressureLimit)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressureLimit = differentialPressureLimit;
+        m_pDataInstance->differentialPressureLimit = units::unit_cast<double>(differentialPressureLimit);
     }
     else
     {
@@ -80,11 +80,11 @@ void CDrillingRequestPublisher::SetDifferentialPressureLimit(const double differ
     }
 }
 
-void CDrillingRequestPublisher::SetTorqueLimit(const double torqueLimit)
+void CDrillingRequestPublisher::SetTorqueLimit(const newton_meter_t torqueLimit)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueLimit = torqueLimit;
+        m_pDataInstance->torqueLimit = units::unit_cast<double>(torqueLimit);
     }
     else
     {

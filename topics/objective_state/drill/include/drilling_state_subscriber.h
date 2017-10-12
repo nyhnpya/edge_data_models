@@ -2,9 +2,17 @@
 #define __DRILLING_STATE_SUBSCRIBER_H__
 
 #include "subscriber.h"
-#include "base_data_types.h"
 #include "drilling.h"
 #include "drillingSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::length;
+using namespace units::velocity;
+using namespace units::force;
+using namespace units::torque;
+using namespace units::pressure;
 
 class CDrillingStateSubscriber : public TSubscriber< nec::process::DrillingState >
 {
@@ -14,7 +22,7 @@ class CDrillingStateSubscriber : public TSubscriber< nec::process::DrillingState
     CDrillingStateSubscriber();
     ~CDrillingStateSubscriber();
 
-	// Topic initialization
+        // Topic initialization
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnDataDisposed(OnDataDisposedEvent event);
@@ -24,43 +32,43 @@ class CDrillingStateSubscriber : public TSubscriber< nec::process::DrillingState
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
     bool GetTimestamp(DataTypes::Time &timestamp);
-    bool GetRopActual(double &ropActual);
-    bool GetWobActual(double &wobActual);
-    bool GetDifferentialPressureActual(double &differentialPressureActual);
-    bool GetTorqueActual(double &torqueActual);
-    bool GetRopLimit(double &ropLimit);
-    bool GetWobLimit(double &wobLimit);
-    bool GetDifferentialPressureLimit(double &differentialPressureLimit);
-    bool GetTorqueLimit(double &torqueLimit);
+    bool GetRopActual(meters_per_second_t &ropActual);
+    bool GetWobActual(newton_t &wobActual);
+    bool GetDifferentialPressureActual(pascal_t &differentialPressureActual);
+    bool GetTorqueActual(newton_meter_t &torqueActual);
+    bool GetRopLimit(meters_per_second_t &ropLimit);
+    bool GetWobLimit(newton_t &wobLimit);
+    bool GetDifferentialPressureLimit(pascal_t &differentialPressureLimit);
+    bool GetTorqueLimit(newton_meter_t &torqueLimit);
     bool GetRopMode(bool &ropMode);
     bool GetWobMode(bool &wobMode);
     bool GetDifferentialPressureMode(bool &differentialPressureMode);
     bool GetTorqueMode(bool &torqueMode);
-    bool GetRopTarget(double &ropTarget);
-    bool GetWobTarget(double &wobTarget);
-    bool GetDifferentialPressureTarget(double &differentialPressureTarget);
-    bool GetTorqueTarget(double &torqueTarget);
+    bool GetRopTarget(meters_per_second_t &ropTarget);
+    bool GetWobTarget(newton_t &wobTarget);
+    bool GetDifferentialPressureTarget(pascal_t &differentialPressureTarget);
+    bool GetTorqueTarget(newton_meter_t &torqueTarget);
 
-	// Topic status
-	bool ValidData();
-	bool ValidSubscription();
+    // Topic status
+    bool ValidData();
+    bool ValidSubscription();
 
  protected:
     void DataAvailable(const nec::process::DrillingState &data,
-               const DDS::SampleInfo &sampleInfo);
-
+		       const DDS::SampleInfo &sampleInfo);
+    
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
  private:
-	 bool                         m_subscriptionMatched;
-	 nec::process::DrillingState      m_data;
+    bool                         m_subscriptionMatched;
+    nec::process::DrillingState      m_data;
     DDS::SampleInfo              m_sampleInfo;
-	OnDataAvailableEvent         m_pOnDataAvailable;
-	OnDataDisposedEvent          m_pOnDataDisposed;
-	OnLivelinessChangedEvent     m_pOnLivelinessChanged;
-	OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
+    OnDataAvailableEvent         m_pOnDataAvailable;
+    OnDataDisposedEvent          m_pOnDataDisposed;
+    OnLivelinessChangedEvent     m_pOnLivelinessChanged;
+    OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
 };
 
 #endif // __DRILLING_STATE_SUBSCRIBER_H__

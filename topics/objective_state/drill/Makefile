@@ -29,6 +29,7 @@ TARG_OPTIONS += -ggdb
 TARG_LIBS +=
 
 # Includes
+TARG_INCLUDES += -isystem /usr/local/include/edge_third_party
 TARG_INCLUDES += -I /usr/local/include/dds_base
 TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -I $(CURDIR)/include

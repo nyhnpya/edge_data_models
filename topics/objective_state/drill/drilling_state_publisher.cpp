@@ -45,11 +45,11 @@ void CDrillingStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
     }
 }
 
-void CDrillingStatePublisher::SetRopActual(const double ropActual)
+void CDrillingStatePublisher::SetRopActual(const meters_per_second_t ropActual)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->ropActual = ropActual;
+        m_pDataInstance->ropActual = units::unit_cast<double>(ropActual);
     }
     else
     {
@@ -57,11 +57,11 @@ void CDrillingStatePublisher::SetRopActual(const double ropActual)
     }
 }
 
-void CDrillingStatePublisher::SetWobActual(const double wobActual)
+void CDrillingStatePublisher::SetWobActual(const newton_t wobActual)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobActual = wobActual;
+        m_pDataInstance->wobActual = units::unit_cast<double>(wobActual);
     }
     else
     {
@@ -69,11 +69,11 @@ void CDrillingStatePublisher::SetWobActual(const double wobActual)
     }
 }
 
-void CDrillingStatePublisher::SetDifferentialPressureActual(const double differentialPressureActual)
+void CDrillingStatePublisher::SetDifferentialPressureActual(const pascal_t differentialPressureActual)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressureActual = differentialPressureActual;
+        m_pDataInstance->differentialPressureActual = units::unit_cast<double>(differentialPressureActual);
     }
     else
     {
@@ -81,11 +81,11 @@ void CDrillingStatePublisher::SetDifferentialPressureActual(const double differe
     }
 }
 
-void CDrillingStatePublisher::SetTorqueActual(const double torqueActual)
+void CDrillingStatePublisher::SetTorqueActual(const newton_meter_t torqueActual)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueActual = torqueActual;
+        m_pDataInstance->torqueActual = units::unit_cast<double>(torqueActual);
     }
     else
     {
@@ -93,11 +93,11 @@ void CDrillingStatePublisher::SetTorqueActual(const double torqueActual)
     }
 }
 
-void CDrillingStatePublisher::SetRopLimit(const double ropLimit)
+void CDrillingStatePublisher::SetRopLimit(const meters_per_second_t ropLimit)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->ropLimit = ropLimit;
+        m_pDataInstance->ropLimit = units::unit_cast<double>(ropLimit);
     }
     else
     {
@@ -105,11 +105,11 @@ void CDrillingStatePublisher::SetRopLimit(const double ropLimit)
     }
 }
 
-void CDrillingStatePublisher::SetWobLimit(const double wobLimit)
+void CDrillingStatePublisher::SetWobLimit(const newton_t wobLimit)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobLimit = wobLimit;
+        m_pDataInstance->wobLimit = units::unit_cast<double>(wobLimit);
     }
     else
     {
@@ -117,11 +117,11 @@ void CDrillingStatePublisher::SetWobLimit(const double wobLimit)
     }
 }
 
-void CDrillingStatePublisher::SetDifferentialPressureLimit(const double differentialPressureLimit)
+void CDrillingStatePublisher::SetDifferentialPressureLimit(const pascal_t differentialPressureLimit)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressureLimit = differentialPressureLimit;
+        m_pDataInstance->differentialPressureLimit = units::unit_cast<double>(differentialPressureLimit);
     }
     else
     {
@@ -129,11 +129,11 @@ void CDrillingStatePublisher::SetDifferentialPressureLimit(const double differen
     }
 }
 
-void CDrillingStatePublisher::SetTorqueLimit(const double torqueLimit)
+void CDrillingStatePublisher::SetTorqueLimit(const newton_meter_t torqueLimit)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueLimit = torqueLimit;
+        m_pDataInstance->torqueLimit = units::unit_cast<double>(torqueLimit);
     }
     else
     {
@@ -189,23 +189,23 @@ void CDrillingStatePublisher::SetTorqueMode(const bool torqueMode)
     }
 }
 
-void CDrillingStatePublisher::SetRopTarget(const double ropTarget)
+void CDrillingStatePublisher::SetRopTarget(const meters_per_second_t ropTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->ropTarget = ropTarget;
+        m_pDataInstance->ropTarget = units::unit_cast<double>(ropTarget);
     }
     else
     {
         LOG_ERROR("Failed to set rop target because of uninitialized sample");
     }
 }
-
-void CDrillingStatePublisher::SetWobTarget(const double wobTarget)
+     
+void CDrillingStatePublisher::SetWobTarget(const newton_t wobTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobTarget = wobTarget;
+        m_pDataInstance->wobTarget = units::unit_cast<double>(wobTarget);
     }
     else
     {
@@ -213,11 +213,11 @@ void CDrillingStatePublisher::SetWobTarget(const double wobTarget)
     }
 }
 
-void CDrillingStatePublisher::SetDifferentialPressureTarget(const double differentialPressureTarget)
+void CDrillingStatePublisher::SetDifferentialPressureTarget(const pascal_t differentialPressureTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressureTarget = differentialPressureTarget;
+        m_pDataInstance->differentialPressureTarget = units::unit_cast<double>(differentialPressureTarget);
     }
     else
     {
@@ -225,11 +225,11 @@ void CDrillingStatePublisher::SetDifferentialPressureTarget(const double differe
     }
 }
 
-void CDrillingStatePublisher::SetTorqueTarget(const double torqueTarget)
+void CDrillingStatePublisher::SetTorqueTarget(const newton_meter_t torqueTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueTarget = torqueTarget;
+        m_pDataInstance->torqueTarget = units::unit_cast<double>(torqueTarget);
     }
     else
     {

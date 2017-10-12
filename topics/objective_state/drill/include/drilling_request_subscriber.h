@@ -2,9 +2,17 @@
 #define __DRILLING_REQUEST_SUBSCRIBER_H__
 
 #include "subscriber.h"
-#include "base_data_types.h"
 #include "drilling.h"
 #include "drillingSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::length;
+using namespace units::velocity;
+using namespace units::force;
+using namespace units::torque;
+using namespace units::pressure;
 
 class CDrillingRequestSubscriber : public TSubscriber< nec::process::DrillingRequest >
 {
@@ -25,10 +33,10 @@ class CDrillingRequestSubscriber : public TSubscriber< nec::process::DrillingReq
     bool GetPriority(DataTypes::Priority &priority);
     bool GetTimeNeeded(DataTypes::Time &timeNeeded);
     bool GetDuration(DataTypes::Time &duration);
-    bool GetRopLimit(double &ropLimit);
-    bool GetWobLimit(double &wobLimit);
-    bool GetDifferentialPressureLimit(double &differentialPressureLimit);
-    bool GetTorqueLimit(double &torqueLimit);
+    bool GetRopLimit(meters_per_second_t &ropLimit);
+    bool GetWobLimit(newton_t &wobLimit);
+    bool GetDifferentialPressureLimit(pascal_t &differentialPressureLimit);
+    bool GetTorqueLimit(newton_meter_t &torqueLimit);
     bool GetRopMode(bool &ropMode);
     bool GetWobMode(bool &wobMode);
     bool GetDifferentialPressureMode(bool &differentialPressureMode);
