@@ -5,6 +5,11 @@
 #include <string.h>
 #include "cmdparser.h"
 #include "wellbore_state_subscriber.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::length;
 
 bool gTerminate = false;
 
@@ -67,8 +72,8 @@ void get_depths(const nec::process::WellboreState &data)
 
     init_pair(1, COLOR_RED, COLOR_BLACK);
     attron(COLOR_PAIR(1));
-    mvprintw(2, 1, "Bit depth: [%6.2f]", data.bitDepth);
-    mvprintw(3, 1, "Hole depth: [%6.2f]", data.holeDepth);
+    mvprintw(2, 1, "Bit depth: [%6.2f]", convert<meters, feet>(data.bitDepth));
+    mvprintw(3, 1, "Hole depth: [%6.2f]", convert<meters, feet>(data.holeDepth));
     mvprintw(4, 1, "Timestamp: [%d]:[%d]", data.timestamp.sec, data.timestamp.nanosec);
     attroff(COLOR_PAIR(1));
 

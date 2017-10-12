@@ -16,7 +16,7 @@ bool CWellboreStateSubscriber::ValidData()
 
 bool CWellboreStateSubscriber::GetBitDepth(meter_t &bitDepth)
 {
-    bitDepth = (meter_t)m_data.bitDepth;
+    bitDepth = meter_t(m_data.bitDepth);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
@@ -24,7 +24,7 @@ bool CWellboreStateSubscriber::GetBitDepth(meter_t &bitDepth)
 
 bool CWellboreStateSubscriber::GetHoleDepth(meter_t &holeDepth)
 {
-    holeDepth = (meter_t)m_data.holeDepth;
+    holeDepth = meter_t(m_data.holeDepth);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }

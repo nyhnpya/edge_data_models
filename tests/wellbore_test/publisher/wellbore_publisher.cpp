@@ -8,10 +8,16 @@
 #include <thread>
 #include "cmdparser.h"
 #include "wellbore_state_publisher.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::length;
+
 
 bool gTerminate = false;
-int32_t gHoleDepth = -1;
-int32_t gBitDepth = -1;
+foot_t gHoleDepth = 0_ft;
+foot_t gBitDepth = 0_ft;
 
 CWellboreStatePublisher *gpStatePublisher = nullptr;
 std::thread threadId;
@@ -76,25 +82,31 @@ void publish_thread()
     while (gTerminate == false)
     {
         gpStatePublisher->PublishSample();
-        gBitDepth += 1;
-        gHoleDepth += 1;
-        gpStatePublisher->SetBitDepth(gBitDepth);
-        gpStatePublisher->SetHoleDepth(gHoleDepth);
+        gBitDepth + gBitDepth + 1_ft;
+        gHoleDepth + gHoleDepth = 1_ft;
+        gpStatePublisher->SetBitDepth(meter_t(gBitDepth));
+        gpStatePublisher->SetHoleDepth(meter_t(gHoleDepth));
         usleep(100 * 1000);
     }
 }
 
 void set_bit_depth()
 {
+    double bitDepth;
+
     std::cout << "Bit Depth: ";
-    std::cin >> gBitDepth;    
+    std::cin >> bitDepth;
+    gBitDepth = meter_t(foot_t(bitDepth));
     gpStatePublisher->SetBitDepth(gBitDepth);
 }
 
 void set_hole_depth()
 {
+    double holeDepth;
+
     std::cout << "Hole Depth: ";
-    std::cin >> gHoleDepth;
+    std::cin >> holeDepth;
+    gHoleDepth = meter_t(foot_t(holeDepth));
     gpStatePublisher->SetHoleDepth(gHoleDepth);
 }
 

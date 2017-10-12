@@ -2,9 +2,16 @@
 #define __AUTO_REAM_STATE_SUBSCRIBER_H__
 
 #include "subscriber.h"
-#include "base_data_types.h"
 #include "auto_ream.h"
 #include "auto_reamSupport.h"
+#include "units.h"
+
+using namespace units;
+using namespace units::literals;
+using namespace units::length;
+using namespace units::velocity;
+using namespace units::pressure;
+using namespace units::angular_velocity;
 
 class CAutoReamStateSubscriber : public TSubscriber< nec::process::AutoReamState >
 {
@@ -24,14 +31,14 @@ class CAutoReamStateSubscriber : public TSubscriber< nec::process::AutoReamState
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
     bool GetTimestamp(DataTypes::Time &timestamp);
-    bool GetHookloadActual(double &hookloadActual);
-    bool GetHoleDepthActual(double &holeDepthActual);
-    bool GetDeltaPressureActual(double &deltaPressureActual);
-    bool GetWeightOnBitActual(double &weightOnBitActual);
-    bool GetStandpipePressureActual(double &standpipePressureActual);
-    bool GetBlockSpeedActual(double &blockSpeedActual);
-    bool GetQuillPositionActual(double &quillPositionActual);
-    bool GetQuillRateActual(double &quillRateActual);
+    bool GetHookloadActual(newtons_t &hookloadActual);
+    bool GetHoleDepthActual(meter_t &holeDepthActual);
+    bool GetDeltaPressureActual(pascal_t &deltaPressureActual);
+    bool GetWeightOnBitActual(newtons_t &weightOnBitActual);
+    bool GetStandpipePressureActual(pascal_t &standpipePressureActual);
+    bool GetBlockSpeedActual(meters_per_second_t &blockSpeedActual);
+    bool GetQuillPositionActual(radians_t &quillPositionActual);
+    bool GetQuillRateActual(radians_per_second_t &quillRateActual);
 
 	// Topic status
 	bool ValidData();
