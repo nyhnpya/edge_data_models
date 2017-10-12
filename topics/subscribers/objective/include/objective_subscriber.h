@@ -23,13 +23,13 @@ public:
     void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
 
     // Topic getters
-    bool GetId(DataTypes::Uuid id);
-    bool GetParentId(DataTypes::Uuid parentId);
+    bool GetId(DataTypes::Uuid &id);
+    bool GetParentId(DataTypes::Uuid &parentId);
     bool GetObjective(DataTypes::Objective &objective);
 	
-	// Topic status
-	bool ValidData();
-	bool ValidSubscription();
+    // Topic status
+    bool ValidData();
+    bool ValidSubscription();
 
 protected:
     ///Derived Methods

@@ -33,14 +33,15 @@ bool CObjectiveStateSubscriber::ValidSubscription()
 	return m_subscriptionMatched;
 }
 
-bool CObjectiveStateSubscriber::GetId(DataTypes::Uuid id)
+bool CObjectiveStateSubscriber::GetId(DataTypes::Uuid &id)
 {
-    id = m_data.id;
+
+    id = DDS_String_dup(m_data.id);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CObjectiveStateSubscriber::GetParentId(DataTypes::Uuid parentId)
+bool CObjectiveStateSubscriber::GetParentId(DataTypes::Uuid &parentId)
 {
     parentId = m_data.parentId;
 
