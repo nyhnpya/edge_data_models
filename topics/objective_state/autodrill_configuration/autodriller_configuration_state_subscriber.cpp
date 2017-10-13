@@ -607,7 +607,7 @@ void CAutoDrillerConfigurationStateSubscriber::DataAvailable(const nec::control:
 
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
-        memcpy(m_data.id, data.id, 16);
+        m_data.id = DDS_String_dup(data.id);
         m_data.timestamp.sec = data.timestamp.sec;
         m_data.timestamp.nanosec = data.timestamp.nanosec;
         m_data.mode = data.mode;

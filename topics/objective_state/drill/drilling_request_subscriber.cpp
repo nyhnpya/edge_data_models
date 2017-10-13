@@ -128,7 +128,7 @@ void CDrillingRequestSubscriber::DataAvailable(const nec::process::DrillingReque
 
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
-        memcpy(m_data.id, data.id, 16);
+        m_data.id = DDS_String_dup(data.id);
         m_data.ropLimit = data.ropLimit;
         m_data.wobLimit = data.wobLimit;
         m_data.differentialPressureLimit = data.differentialPressureLimit;

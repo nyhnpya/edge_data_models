@@ -26,7 +26,7 @@ bool CAutoReamStateSubscriber::ValidSubscription()
 
 bool CAutoReamStateSubscriber::GetId(DataTypes::Uuid &id)
 {
-    //    memcpy(id, m_data.id, 16);
+    id = DDS_String_dup(m_data.id);
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
@@ -39,58 +39,58 @@ bool CAutoReamStateSubscriber::GetTimestamp(DataTypes::Time &timestamp)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoReamStateSubscriber::GetHookloadActual(double &hookloadActual)
+bool CAutoReamStateSubscriber::GetHookloadActual(newton_t &hookloadActual)
 {
-    hookloadActual = m_data.hookloadActual;
+    hookloadActual = (newton_t)m_data.hookloadActual;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoReamStateSubscriber::GetHoleDepthActual(double &holeDepthActual)
+bool CAutoReamStateSubscriber::GetHoleDepthActual(meter_t &holeDepthActual)
 {
-    holeDepthActual = m_data.holeDepthActual;
+    holeDepthActual = (meter_t)m_data.holeDepthActual;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoReamStateSubscriber::GetDeltaPressureActual(double &differentialPressureActual)
+bool CAutoReamStateSubscriber::GetDeltaPressureActual(pascal_t &differentialPressureActual)
 {
-    differentialPressureActual = m_data.differentialPressureActual;
+    differentialPressureActual = (pascal_t)m_data.differentialPressureActual;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoReamStateSubscriber::GetWeightOnBitActual(double &weightOnBitActual)
+bool CAutoReamStateSubscriber::GetWeightOnBitActual(newton_t &weightOnBitActual)
 {
-    weightOnBitActual = m_data.weightOnBitActual;
+    weightOnBitActual = (newton_t)m_data.weightOnBitActual;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoReamStateSubscriber::GetStandpipePressureActual(double &standpipePressureActual)
+bool CAutoReamStateSubscriber::GetStandpipePressureActual(pascal_t &standpipePressureActual)
 {
-    standpipePressureActual = m_data.standpipePressureActual;
+    standpipePressureActual = (pascal_t)m_data.standpipePressureActual;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoReamStateSubscriber::GetBlockSpeedActual(double &blockSpeedActual)
+bool CAutoReamStateSubscriber::GetBlockSpeedActual(meters_per_second_t &blockSpeedActual)
 {
-    blockSpeedActual = m_data.blockSpeedActual;
+    blockSpeedActual = (meters_per_second_t)m_data.blockSpeedActual;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoReamStateSubscriber::GetQuillPositionActual(double &quillPositionActual)
+bool CAutoReamStateSubscriber::GetQuillPositionActual(meter_t &quillPositionActual)
 {
-    quillPositionActual = m_data.quillPositionActual;
+    quillPositionActual = (meter_t)m_data.quillPositionActual;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CAutoReamStateSubscriber::GetQuillRateActual(double &quillRateActual)
+bool CAutoReamStateSubscriber::GetQuillRateActual(radians_per_second_t &quillRateActual)
 {
-    quillRateActual = m_data.quillRateActual;
+    quillRateActual = (radians_per_second_t)m_data.quillRateActual;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }

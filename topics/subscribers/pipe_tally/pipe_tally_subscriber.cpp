@@ -142,7 +142,7 @@ void CPipeTallyStateSubscriber::DataAvailable(const nec::process::PipeTally &dat
 
     if (sampleInfo.valid_data == true)
     {
-        memcpy(m_data.id, data.id, 16);
+        m_data.id = DDS_String_dup(data.id);
         m_data.timestamp.sec = data.timestamp.sec;
         m_data.timestamp.nanosec = data.timestamp.nanosec;
         m_data.serialNumber = DDS_String_dup(data.serialNumber);

@@ -8,6 +8,7 @@
 
 using namespace units;
 using namespace units::literals;
+using namespace units::force;
 using namespace units::length;
 using namespace units::velocity;
 using namespace units::pressure;
@@ -31,13 +32,13 @@ class CAutoReamStateSubscriber : public TSubscriber< nec::process::AutoReamState
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
     bool GetTimestamp(DataTypes::Time &timestamp);
-    bool GetHookloadActual(newtons_t &hookloadActual);
+    bool GetHookloadActual(newton_t &hookloadActual);
     bool GetHoleDepthActual(meter_t &holeDepthActual);
     bool GetDeltaPressureActual(pascal_t &deltaPressureActual);
-    bool GetWeightOnBitActual(newtons_t &weightOnBitActual);
+    bool GetWeightOnBitActual(newton_t &weightOnBitActual);
     bool GetStandpipePressureActual(pascal_t &standpipePressureActual);
     bool GetBlockSpeedActual(meters_per_second_t &blockSpeedActual);
-    bool GetQuillPositionActual(radians_t &quillPositionActual);
+    bool GetQuillPositionActual(meter_t &quillPositionActual);
     bool GetQuillRateActual(radians_per_second_t &quillRateActual);
 
 	// Topic status
