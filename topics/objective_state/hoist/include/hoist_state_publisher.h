@@ -21,15 +21,16 @@ class CHoistStatePublisher : public TPublisher< nec::process::HoistState >
     bool Initialize();
     bool PublishSample();
 
-    void SetStatus(const DataTypes::Status status);
-    void SetActualVelocity(meters_per_second_t actualVelocity);
     void SetActualPosition(meter_t actualPosition);
-    void SetMaxHoistVelocity(meters_per_second_t maxHoistVelocity);
-    void SetMaxLowerVelocity(meters_per_second_t maxLowerVelocity);
+    void SetActualVelocity(meters_per_second_t actualVelocity);
     void SetMaxHoistPosition(meter_t maxHoistPosition);
+    void SetMaxHoistVelocity(meters_per_second_t maxHoistVelocity);
     void SetMaxLowerPosition(meter_t maxLowerPosition);
-    void SetTargetVelocity(meters_per_second_t targetVelocity);
+    void SetMaxLowerVelocity(meters_per_second_t maxLowerVelocity);
+    void SetObjectiveId(const DataTypes::Uuid objectiveId);
+    void SetStatus(const DataTypes::Status status);
     void SetTargetPosition(meter_t targetPosition);
+    void SetTargetVelocity(meters_per_second_t targetVelocity);
 };
 
 #endif // __HOIST_STATE_PUBLISHER_H__ 
