@@ -20,6 +20,14 @@ bool CRotateStatePublisher::Initialize()
     return true;
 }
 
+void CRotateStatePublisher::SetObjectiveId(const DataTypes::Uuid objectiveId)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->objectiveId = DDS_String_dup(objectiveId);
+    }
+}
+
 void CRotateStatePublisher::SetStatus(const DataTypes::Status status)
 {
     if (m_pDataInstance != nullptr)

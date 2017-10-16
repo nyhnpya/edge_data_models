@@ -20,10 +20,11 @@ class CRotateStatePublisher : public TPublisher< nec::process::RotateState >
     bool Initialize();
     bool PublishSample();
 
-    void SetStatus(const DataTypes::Status status);
     void SetActualRate(radians_per_second_t actualRate);
-    void SetMinRate(radians_per_second_t minRate);
     void SetMaxRate(radians_per_second_t maxRate);
+    void SetMinRate(radians_per_second_t minRate);
+    void SetObjectiveId(const DataTypes::Uuid objectiveId);
+    void SetStatus(const DataTypes::Status status);
     void SetTargetRate(radians_per_second_t targetRate);
 };
 
