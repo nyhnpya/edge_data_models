@@ -20,13 +20,14 @@ class CCirculateStatePublisher : public TPublisher< nec::process::CirculateState
     bool Initialize();
     bool PublishSample();
 
-    void SetStatus(const DataTypes::Status status);
     void SetActualFlowRate(double actualFlowRate);
     void SetActualStandpipePressure(pascal_t actualStandpipePressure);
-    void SetMinFlowRate(double minRateFlowRate);
     void SetMaxFlowRate(double maxRateFlowRate);
-    void SetMinStandpipePressure(pascal_t minStandpipePressure);
     void SetMaxStandpipePressure(pascal_t maxStandpipePressure);
+    void SetMinFlowRate(double minRateFlowRate);
+    void SetMinStandpipePressure(pascal_t minStandpipePressure);
+    void SetObjectiveId(const DataTypes::Uuid objectiveId);
+    void SetStatus(const DataTypes::Status status);
     void SetTargetFlowRate(double targetFlowRate);
 };
 
