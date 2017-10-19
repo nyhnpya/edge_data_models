@@ -1,0 +1,15 @@
+#include "base_data_types.idl"
+
+module nec
+{
+    module control
+    {
+        //@copy-c-declaration static const char DRILLING_CALIBRATION_REQUEST[] = "TareWobRequest";
+        struct TareWobRequest
+        {
+            DataTypes::Uuid id; //@key
+            DataTypes::Time timestamp;
+            boolean         tare;
+        };
+    };
+};
