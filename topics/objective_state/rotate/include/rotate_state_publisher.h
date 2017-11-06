@@ -4,6 +4,7 @@
 #include "publisher.h"
 #include "rotate.h"
 #include "rotateSupport.h"
+#undef pascal
 #include "units.h"
 
 using namespace units;

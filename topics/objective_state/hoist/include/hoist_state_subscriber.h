@@ -4,6 +4,7 @@
 #include "subscriber.h"
 #include "hoist.h"
 #include "hoistSupport.h"
+#undef pascal
 #include "units.h"
 
 using namespace units;

@@ -4,6 +4,7 @@
 #include "subscriber.h"
 #include "circulate.h"
 #include "circulateSupport.h"
+#undef pascal
 #include "units.h"
 
 using namespace units;

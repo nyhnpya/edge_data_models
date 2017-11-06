@@ -6,6 +6,7 @@
 #include "base_data_types.h"
 #include "wellbore.h"
 #include "wellboreSupport.h"
+#undef pascal
 #include "units.h"
 
 using namespace units;
