@@ -75,37 +75,42 @@ void register_signal_handler()
 //    void SetTorqueMode(const bool torqueMode);
 void set_rop()
 {
-    double ropLimit;
+    feet_per_hour_t ropLimit;
+    double input;
 
     std::cout << "ROP Limit: ";
-    std::cin >> ropLimit;
+    std::cin >> input;
+    ropLimit = (feet_per_hour_t)input;
     gpStatePublisher->SetRopLimit((meters_per_second_t)ropLimit);
 }
 
 void set_wob()
 {
-    double wobLimit;
+    double input;
 
     std::cout << "WOB Limit: ";
-    std::cin >> wobLimit;
+    std::cin >> input;
+    pound_t wobLimit = (pound_t)(input * 1000);
     gpStatePublisher->SetWobLimit((newton_t)wobLimit);
 }
 
 void set_diffp()
 {
-    double diffpLimit;
+    double input;
 
     std::cout << "DiffP Limit: ";
-    std::cin >> diffpLimit;
+    std::cin >> input;
+    pounds_per_square_inch_t diffpLimit = (pounds_per_square_inch_t)input;
     gpStatePublisher->SetDifferentialPressureLimit((pascal_t)diffpLimit);
 }
 
 void set_torque()
 {
-    double torqueLimit;
+    double input;
 
     std::cout << "Torque Limit: ";
-    std::cin >> torqueLimit;
+    std::cin >> input;
+    foot_pound_t torqueLimit = (foot_pound_t)(input * 1000);
     gpStatePublisher->SetTorqueLimit((newton_meter_t)torqueLimit);
 }
 
@@ -139,6 +144,10 @@ void top_level_menu()
                 set_wob();
                 set_diffp();
                 set_torque();
+                gpStatePublisher->SetRopMode(true);
+                gpStatePublisher->SetWobMode(true);
+                gpStatePublisher->SetDifferentialPressureMode(true);
+                gpStatePublisher->SetTorqueMode(true);
                 gpStatePublisher->PublishSample();
                 break;
         }

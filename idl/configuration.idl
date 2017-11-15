@@ -1,9 +1,53 @@
 module Configuration
 {
+    enum config_type
+    {
+        PROTOCOL,
+        INTERFACE
+    };
+
+    enum plant_type
+    {
+        BOOLEAN,
+        INT8,
+        UNSIGNEDINT8,
+        INT16,
+        UNSIGNEDINT16,
+        INT32,
+        UNSIGNEDINT32,
+        INT64,
+        UNSIGNEDINT64,
+        FLOAT,
+        DOUBLE
+    };
+    
+    struct protocol_t
+    {
+        string endpoint;
+    };
+
+    struct interface_t
+    {
+        string protocol;
+        string type;
+        string unit;
+        string tag;
+    };
+
+    union config_data switch ( config_type )
+    {
+        case PROTOCOL:
+            protocol_t  event;
+
+        case INTERFACE:
+            interface_t  request;
+    };
+
     //@copy-c-declaration static const char CONFIGURATION_ITEM[] = "ConfigurationItem";
     struct Item
     {
-        string key; //@key
-        string value;
+        string       key; //@key
+        config_type  configType;
+        config_data  configData;
     };
 };

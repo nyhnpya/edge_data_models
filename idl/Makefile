@@ -53,7 +53,7 @@ all: $(TARGETS)
 	@mkdir -p $(TMPOUTDIR)
 	@echo
 	@echo "making target $@ ..."
-	$(DDSGEN) $(GENOPT) -d $(TMPOUTDIR) -inputIdl $(lastword $^) $(addprefix -I , $(VPATH))
+	$(NDDSHOME)/bin/$(DDSGEN) $(GENOPT) -d $(TMPOUTDIR) -inputIdl $(lastword $^) $(addprefix -I , $(VPATH))
 	@$(MAKE) -f $(firstword $(MAKEFILE_LIST)) --no-print-directory $@.cpy
 
 # empty rule to satisfy the "%.idl" dependency of rule above.
