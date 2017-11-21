@@ -4,6 +4,9 @@
 #include "publisher.h"
 #include "drilling.h"
 #include "drillingSupport.h"
+#ifdef _WIN32
+#undef pascal
+#endif
 #include "units.h"
 
 using namespace units;
