@@ -4,13 +4,13 @@
 #include "publisher.h"
 #include "drilling.h"
 #include "drillingSupport.h"
+
 #ifdef _WIN32
 #undef pascal
 #endif
 #include "units.h"
 
 using namespace units;
-using namespace units::literals;
 using namespace units::length;
 using namespace units::velocity;
 using namespace units::force;

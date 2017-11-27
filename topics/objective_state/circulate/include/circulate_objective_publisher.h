@@ -4,11 +4,13 @@
 #include "publisher.h"
 #include "circulate.h"
 #include "circulateSupport.h"
+
+#ifdef _WIN32
 #undef pascal
+#endif
 #include "units.h"
 
 using namespace units;
-using namespace units::literals;
 using namespace units::pressure;
 
 class CCirculateObjectivePublisher : public TPublisher< nec::process::CirculateObjective >

@@ -6,11 +6,13 @@
 #include "base_data_types.h"
 #include "wellbore.h"
 #include "wellboreSupport.h"
+
+#ifdef _WIN32
 #undef pascal
+#endif
 #include "units.h"
 
 using namespace units;
-using namespace units::literals;
 using namespace units::length;
 
 class CWellboreStatePublisher : public TPublisher<nec::process::WellboreState>

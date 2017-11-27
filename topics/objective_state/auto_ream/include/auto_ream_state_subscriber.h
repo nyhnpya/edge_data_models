@@ -7,7 +7,6 @@
 #include "units.h"
 
 using namespace units;
-using namespace units::literals;
 using namespace units::force;
 using namespace units::length;
 using namespace units::velocity;

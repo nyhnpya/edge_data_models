@@ -4,11 +4,13 @@
 #include "publisher.h"
 #include "hoist.h"
 #include "hoistSupport.h"
+
+#ifdef _WIN32
 #undef pascal
+#endif
 #include "units.h"
 
 using namespace units;
-//using namespace units::literals;
 using namespace units::length;
 using namespace units::velocity;
 

@@ -4,11 +4,13 @@
 #include "publisher.h"
 #include "rotate.h"
 #include "rotateSupport.h"
+
+#ifdef _WIN32
 #undef pascal
+#endif
 #include "units.h"
 
 using namespace units;
-using namespace units::literals;
 using namespace units::angular_velocity;
 
 class CRotateStatePublisher : public TPublisher< nec::process::RotateState >
