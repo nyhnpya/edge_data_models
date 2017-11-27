@@ -86,10 +86,12 @@ module nec
             DataTypes::Status   status;
 
             // actuals
+            double              actualHookload;
             double              actualVelocity;
             double              actualPosition;
 
             // constraints
+            double              maxHookload;
             double              maxHoistVelocity;
             double              maxLowerVelocity;
             double              maxHoistPosition;
