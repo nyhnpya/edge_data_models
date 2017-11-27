@@ -12,6 +12,7 @@
 
 using namespace units;
 using namespace units::length;
+using namespace units::force;
 using namespace units::velocity;
 
 class CHoistStatePublisher : public TPublisher< nec::process::HoistState >
@@ -26,10 +27,12 @@ class CHoistStatePublisher : public TPublisher< nec::process::HoistState >
 
     void SetActualPosition(meter_t actualPosition);
     void SetActualVelocity(meters_per_second_t actualVelocity);
+    void SetActualHookload(newton_t actualHookload);
     void SetMaxHoistPosition(meter_t maxHoistPosition);
     void SetMaxHoistVelocity(meters_per_second_t maxHoistVelocity);
     void SetMaxLowerPosition(meter_t maxLowerPosition);
     void SetMaxLowerVelocity(meters_per_second_t maxLowerVelocity);
+    void SetMaxHookload(newton_t maxHookload);
     void SetObjectiveId(const DataTypes::Uuid objectiveId);
     void SetStatus(const DataTypes::Status status);
     void SetTargetPosition(meter_t targetPosition);

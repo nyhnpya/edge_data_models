@@ -3187,10 +3187,16 @@ namespace nec {
                 (const DataTypes::Status*) &sample->status, "status", indent_level + 1);
 
             RTICdrType_printDouble(
+                &sample->actualHookload, "actualHookload", indent_level + 1);    
+
+            RTICdrType_printDouble(
                 &sample->actualVelocity, "actualVelocity", indent_level + 1);    
 
             RTICdrType_printDouble(
                 &sample->actualPosition, "actualPosition", indent_level + 1);    
+
+            RTICdrType_printDouble(
+                &sample->maxHookload, "maxHookload", indent_level + 1);    
 
             RTICdrType_printDouble(
                 &sample->maxHoistVelocity, "maxHoistVelocity", indent_level + 1);    
@@ -3448,12 +3454,22 @@ namespace nec {
                 }
 
                 if (!RTICdrStream_serializeDouble(
+                    stream, &sample->actualHookload)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrStream_serializeDouble(
                     stream, &sample->actualVelocity)) {
                     return RTI_FALSE;
                 }
 
                 if (!RTICdrStream_serializeDouble(
                     stream, &sample->actualPosition)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrStream_serializeDouble(
+                    stream, &sample->maxHookload)) {
                     return RTI_FALSE;
                 }
 
@@ -3559,11 +3575,19 @@ namespace nec {
                         goto fin; 
                     }
                     if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->actualHookload)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
                         stream, &sample->actualVelocity)) {
                         goto fin; 
                     }
                     if (!RTICdrStream_deserializeDouble(
                         stream, &sample->actualPosition)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->maxHookload)) {
                         goto fin; 
                     }
                     if (!RTICdrStream_deserializeDouble(
@@ -3873,6 +3897,12 @@ namespace nec {
                 if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
+                if (!RTICdrStream_skipDouble (stream)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_skipDouble (stream)) {
+                    goto fin; 
+                }
             }
 
             done = RTI_TRUE;
@@ -3924,6 +3954,12 @@ namespace nec {
 
             current_alignment +=DataTypes::StatusPlugin_get_serialized_sample_max_size_ex(
                 endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment);
+
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment);
 
             current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
@@ -4024,6 +4060,10 @@ namespace nec {
                 current_alignment);
             current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment);
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment);
 
             if (include_encapsulation) {
                 current_alignment += encapsulation_size;
@@ -4090,6 +4130,14 @@ namespace nec {
             current_alignment += DataTypes::StatusPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
                 current_alignment, (const DataTypes::Status*) &sample->status);
+
+            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
+            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
 
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                 PRESTypePluginDefaultEndpointData_getAlignment(
@@ -4363,6 +4411,14 @@ namespace nec {
                     stream, 
                     RTI_FALSE, RTI_TRUE, 
                     endpoint_plugin_qos)) {
+                    goto fin; 
+                }
+
+                if (!RTICdrStream_skipDouble (stream)) {
+                    goto fin; 
+                }
+
+                if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
 

@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef hoist_1013695612_h
-#define hoist_1013695612_h
+#ifndef hoist_1013695705_h
+#define hoist_1013695705_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -210,8 +210,10 @@ namespace nec {
             DataTypes::Uuid   objectiveId ;
             DataTypes::Time   timestamp ;
             DataTypes::Status   status ;
+            DDS_Double   actualHookload ;
             DDS_Double   actualVelocity ;
             DDS_Double   actualPosition ;
+            DDS_Double   maxHookload ;
             DDS_Double   maxHoistVelocity ;
             DDS_Double   maxLowerVelocity ;
             DDS_Double   maxHoistPosition ;

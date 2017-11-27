@@ -12,6 +12,7 @@
 
 using namespace units;
 using namespace units::length;
+using namespace units::force;
 using namespace units::velocity;
 
 class CHoistStateSubscriber : public TSubscriber< nec::process::HoistState >
@@ -32,12 +33,14 @@ class CHoistStateSubscriber : public TSubscriber< nec::process::HoistState >
     // Topic getters
     bool GetId(DataTypes::Uuid &id);
     bool GetStatus(DataTypes::Status &status);
+    bool GetActualHookload(newton_t &actualHookload);
     bool GetActualVelocity(meters_per_second_t &actualVelocity);
     bool GetActualPosition(meter_t &actualPosition);
     bool GetMaxHoistVelocity(meters_per_second_t &maxHoistVelocity);
     bool GetMaxLowerVelocity(meters_per_second_t  &maxLowerVelocity);
     bool GetMaxHoistPosition(meter_t &maxHoistPosition);
     bool GetMaxLowerPosition(meter_t &maxLowerPosition);
+    bool GetMaxHookload(newton_t &maxHookload);
     bool GetTargetVelocity(meters_per_second_t &targetVelocity);
     bool GetTargetPosition(meter_t &targetPosition);
 

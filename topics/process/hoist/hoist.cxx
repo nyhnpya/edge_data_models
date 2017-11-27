@@ -740,7 +740,7 @@ namespace nec {
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member HoistState_g_tc_members[12]=
+            static DDS_TypeCode_Member HoistState_g_tc_members[14]=
             {
 
                 {
@@ -812,7 +812,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"actualVelocity",/* Member name */
+                    (char *)"actualHookload",/* Member name */
                     {
                         4,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -829,7 +829,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"actualPosition",/* Member name */
+                    (char *)"actualVelocity",/* Member name */
                     {
                         5,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -846,7 +846,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"maxHoistVelocity",/* Member name */
+                    (char *)"actualPosition",/* Member name */
                     {
                         6,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -863,7 +863,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"maxLowerVelocity",/* Member name */
+                    (char *)"maxHookload",/* Member name */
                     {
                         7,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -880,7 +880,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"maxHoistPosition",/* Member name */
+                    (char *)"maxHoistVelocity",/* Member name */
                     {
                         8,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -897,7 +897,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"maxLowerPosition",/* Member name */
+                    (char *)"maxLowerVelocity",/* Member name */
                     {
                         9,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -914,7 +914,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"targetVelocity",/* Member name */
+                    (char *)"maxHoistPosition",/* Member name */
                     {
                         10,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -931,9 +931,43 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"targetPosition",/* Member name */
+                    (char *)"maxLowerPosition",/* Member name */
                     {
                         11,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"targetVelocity",/* Member name */
+                    {
+                        12,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"targetPosition",/* Member name */
+                    {
+                        13,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -959,7 +993,7 @@ namespace nec {
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    12, /* Number of members */
+                    14, /* Number of members */
                     HoistState_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
                 }}; /* Type code for HoistState*/
@@ -991,6 +1025,10 @@ namespace nec {
             HoistState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             HoistState_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            HoistState_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            HoistState_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             is_initialized = RTI_TRUE;
 
@@ -1045,11 +1083,19 @@ namespace nec {
                 return RTI_FALSE;
             }
 
+            if (!RTICdrType_initDouble(&sample->actualHookload)) {
+                return RTI_FALSE;
+            }
+
             if (!RTICdrType_initDouble(&sample->actualVelocity)) {
                 return RTI_FALSE;
             }
 
             if (!RTICdrType_initDouble(&sample->actualPosition)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initDouble(&sample->maxHookload)) {
                 return RTI_FALSE;
             }
 
@@ -1174,11 +1220,19 @@ namespace nec {
                     return RTI_FALSE;
                 } 
                 if (!RTICdrType_copyDouble (
+                    &dst->actualHookload, &src->actualHookload)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
                     &dst->actualVelocity, &src->actualVelocity)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
                     &dst->actualPosition, &src->actualPosition)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->maxHookload, &src->maxHookload)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (

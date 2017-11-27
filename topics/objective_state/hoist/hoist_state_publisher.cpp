@@ -36,6 +36,14 @@ void CHoistStatePublisher::SetStatus(const DataTypes::Status status)
     }
 }
 
+void CHoistStatePublisher::SetActualHookload(newton_t actualHookload)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->actualHookload = units::unit_cast<double>(actualHookload);
+    }
+}
+
 void CHoistStatePublisher::SetActualVelocity(meters_per_second_t actualVelocity)
 {
     if (m_pDataInstance != nullptr)
@@ -81,6 +89,14 @@ void CHoistStatePublisher::SetMaxLowerPosition(meter_t maxLowerPosition)
     if (m_pDataInstance != nullptr)
     {
         m_pDataInstance->maxLowerPosition = units::unit_cast<double>(maxLowerPosition);
+    }
+}
+
+void CHoistStatePublisher::SetMaxHookload(newton_t maxHookload)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->maxHookload = units::unit_cast<double>(maxHookload);
     }
 }
 

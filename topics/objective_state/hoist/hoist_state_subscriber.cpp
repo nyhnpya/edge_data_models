@@ -28,6 +28,13 @@ bool CHoistStateSubscriber::GetStatus(DataTypes::Status &status)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
+bool CHoistStateSubscriber::GetActualHookload(newton_t &actualHookload)
+{
+    actualHookload = (newton_t)m_data.actualHookload;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
 bool CHoistStateSubscriber::GetActualVelocity(meters_per_second_t &actualVelocity)
 {
     actualVelocity = (meters_per_second_t)m_data.actualVelocity;
@@ -66,6 +73,13 @@ bool CHoistStateSubscriber::GetMaxHoistPosition(meter_t &maxHoistPosition)
 bool CHoistStateSubscriber::GetMaxLowerPosition(meter_t &maxLowerPosition)
 {
     maxLowerPosition = (meter_t)m_data.maxLowerPosition;
+
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+}
+
+bool CHoistStateSubscriber::GetMaxHookload(newton_t &maxHookload)
+{
+    maxHookload = (newton_t)m_data.maxHookload;
 
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
