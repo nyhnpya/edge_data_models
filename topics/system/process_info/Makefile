@@ -9,7 +9,7 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../Makefiles/Makefile.platform
+include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1

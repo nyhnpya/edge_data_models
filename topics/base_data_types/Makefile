@@ -9,12 +9,12 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../Makefiles/Makefile.platform
+include ../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
-TARG_BUILD_MAJOR = 1
-TARG_BUILD_MINOR = 1
-TARG_BUILD_PATCH = 0
+TARG_BUILD_MAJOR = 0
+TARG_BUILD_MINOR = 5
+TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
 TARGET_NAME = base_data_types
@@ -50,7 +50,7 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/base_data_typesSupport.h
 # package configuration files
 
 # package installation directory
-PACKAGE_INSTALL_DIR += $(TOP_DIR)/package
+PACKAGE_INSTALL_DIR += $(CURDIR)/../../package
 
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform

@@ -98,68 +98,34 @@ configuration.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/configuration/
 	-@rm -rf $(TMPOUTDIR)
 
-auto_ream.cpy: 
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/process/auto_ream
-	mkdir -p $(TOPIC_HOME)/process/auto_ream/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/process/auto_ream/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/process/auto_ream
-	-@rm -rf $(TMPOUTDIR)
-
 circulate.cpy:
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/process/circulate
-	mkdir -p $(TOPIC_HOME)/process/circulate/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/process/circulate/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/process/circulate
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/circulate/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/circulate
 	-@rm -rf $(TMPOUTDIR)
 
-drilling.cpy: 
+drill.cpy: 
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/process/drilling
-	mkdir -p $(TOPIC_HOME)/process/drilling/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/process/drilling/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/process/drilling
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/drill/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/drill
+	-@rm -rf $(TMPOUTDIR)
+
+auto_ream.cpy: 
+	@echo "Copying generated files..."
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/auto_ream/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/auto_ream
 	-@rm -rf $(TMPOUTDIR)
 
 hoist.cpy: 
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/process/hoist
-	mkdir -p $(TOPIC_HOME)/process/hoist/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/process/hoist/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/process/hoist
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/hoist/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/hoist
 	-@rm -rf $(TMPOUTDIR)
 
 rotate.cpy:
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/process/rotate
-	mkdir -p $(TOPIC_HOME)/process/rotate/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/process/rotate/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/process/rotate
-	-@rm -rf $(TMPOUTDIR)
-
-rotate_engineering.cpy:
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/engineering/rotate_engineering
-	mkdir -p $(TOPIC_HOME)/engineering/rotate_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/rotate_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/rotate_engineering
-	-@rm -rf $(TMPOUTDIR)
-
-torque.cpy:
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/engineering/torque
-	mkdir -p $(TOPIC_HOME)/engineering/torque/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/torque/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/torque
-	-@rm -rf $(TMPOUTDIR)
-
-survey.cpy:
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/downhole/survey
-	mkdir -p $(TOPIC_HOME)/downhole/survey/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/downhole/survey/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/downhole/survey/
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/rotate/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/rotate
 	-@rm -rf $(TMPOUTDIR)
 
 wellbore.cpy:
@@ -168,14 +134,6 @@ wellbore.cpy:
 	mkdir -p $(TOPIC_HOME)/downhole/wellbore/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/downhole/wellbore/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/downhole/wellbore/
-	-@rm -rf $(TMPOUTDIR)
-
-pipe_tally.cpy:
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/pipe_handling/pipe_tally
-	mkdir -p $(TOPIC_HOME)/pipe_handling/pipe_tally/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/pipe_handling/pipe_tally/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/pipe_handling/pipe_tally/
 	-@rm -rf $(TMPOUTDIR)
 
 objective.cpy:
@@ -188,18 +146,20 @@ objective.cpy:
 
 drilling_calibration.cpy: 
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/engineering/drilling_calibration
-	mkdir -p $(TOPIC_HOME)/engineering/drilling_calibration/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/drilling_calibration/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/drilling_calibration
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/drilling_calibration/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/drilling_calibration
 	-@rm -rf $(TMPOUTDIR)
 
 autodriller_configuration.cpy: 
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/engineering/autodriller_configuration
-	mkdir -p $(TOPIC_HOME)/engineering/autodriller_configuration/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/autodriller_configuration/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/autodriller_configuration
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/autodriller_configuration/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/autodriller_configuration
+	-@rm -rf $(TMPOUTDIR)
+
+autotuner_configuration.cpy: 
+	@echo "Copying generated files..."
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/autotuner_configuration/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/autotuner_configuration
 	-@rm -rf $(TMPOUTDIR)
 
 process_info.cpy:
@@ -212,9 +172,41 @@ process_info.cpy:
 
 drill_simulation.cpy: 
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/simulation/
+	mkdir -p $(TOPIC_HOME)/simulation
 	mkdir -p $(TOPIC_HOME)/simulation/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/simulation/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/simulation
+	-@rm -rf $(TMPOUTDIR)
+
+rotate_engineering.cpy:
+	@echo "Copying generated files..."
+#	mkdir -p $(TOPIC_HOME)/engineering/rotate_engineering
+#	mkdir -p $(TOPIC_HOME)/engineering/rotate_engineering/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/rotate_engineering/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/rotate_engineering
+	-@rm -rf $(TMPOUTDIR)
+
+torque.cpy:
+	@echo "Copying generated files..."
+#	mkdir -p $(TOPIC_HOME)/engineering/torque
+#	mkdir -p $(TOPIC_HOME)/engineering/torque/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/torque/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/torque
+	-@rm -rf $(TMPOUTDIR)
+
+survey.cpy:
+	@echo "Copying generated files..."
+#	mkdir -p $(TOPIC_HOME)/downhole/survey
+#	mkdir -p $(TOPIC_HOME)/downhole/survey/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/downhole/survey/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/downhole/survey/
+	-@rm -rf $(TMPOUTDIR)
+
+pipe_tally.cpy:
+	@echo "Copying generated files..."
+#	mkdir -p $(TOPIC_HOME)/pipe_handling/pipe_tally
+#	mkdir -p $(TOPIC_HOME)/pipe_handling/pipe_tally/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/pipe_handling/pipe_tally/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/pipe_handling/pipe_tally/
 	-@rm -rf $(TMPOUTDIR)
 

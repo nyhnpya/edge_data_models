@@ -9,7 +9,7 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../Makefiles/Makefile.platform
+include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
@@ -22,11 +22,11 @@ TARGET_NAME = process_info_subscriber
 ###############################################################################
 # compilation flags
 ###############################################################################
-# Includes
-TARG_INCLUDES += -I /usr/local/include/dds_base
-TARG_INCLUDES += -I /usr/local/include/logger
+TARG_INCLUDES += -isystem $(EDGE_THIRD_PARTY_INCLUDE)
+TARG_INCLUDES += -I $(DDS_INCLUDE)
+TARG_INCLUDES += -I $(LOG_INCLUDE)
 TARG_INCLUDES += -I $(CURDIR)/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/system/process_info/include
+TARG_INCLUDES += -I $(CURDIR)/../../system/process_info/include
 
 # Sources
 TARG_SOURCES = process_info_subscriber.cpp

@@ -1,4 +1,4 @@
-include ../Makefiles/Makefile.platform
+include ../../Makefiles/Makefile.platform
 
 # Lists of all the sub-directories that have a Makefile. Libraries and
 # executables are placed in separate lists to be able to build the libraries
@@ -6,22 +6,13 @@ include ../Makefiles/Makefile.platform
 MAKEFILE_LIBRARY_DIRS = base_data_types
 MAKEFILE_LIBRARY_DIRS += configuration
 MAKEFILE_LIBRARY_DIRS += downhole/wellbore
-MAKEFILE_LIBRARY_DIRS += engineering/autodriller_configuration
-MAKEFILE_LIBRARY_DIRS += engineering/drilling_calibration
-MAKEFILE_LIBRARY_DIRS += process/auto_ream
-MAKEFILE_LIBRARY_DIRS += process/circulate
-MAKEFILE_LIBRARY_DIRS += process/drilling
-MAKEFILE_LIBRARY_DIRS += process/hoist
-MAKEFILE_LIBRARY_DIRS += process/rotate
 MAKEFILE_LIBRARY_DIRS += simulation
-#MAKEFILE_LIBRARY_DIRS += engineering/rotate_engineering
-#MAKEFILE_LIBRARY_DIRS += engineering/torque
 #MAKEFILE_LIBRARY_DIRS += downhole/survey
-#MAKEFILE_LIBRARY_DIRS += pipe_handling/pipe_tally
 #MAKEFILE_LIBRARY_DIRS += subscribers/survey
+#MAKEFILE_LIBRARY_DIRS += pipe_handling/pipe_tally
 MAKEFILE_LIBRARY_DIRS += objective/objective
-MAKEFILE_LIBRARY_DIRS += objective_state/autodrill_configuration
-MAKEFILE_LIBRARY_DIRS += objective_state/auto_ream
+MAKEFILE_LIBRARY_DIRS += objective_state/autodriller_configuration
+MAKEFILE_LIBRARY_DIRS += objective_state/autotuner_configuration
 MAKEFILE_LIBRARY_DIRS += objective_state/circulate
 MAKEFILE_LIBRARY_DIRS += objective_state/drill
 MAKEFILE_LIBRARY_DIRS += objective_state/drilling_calibration
@@ -53,7 +44,7 @@ ifneq ($(words $(MAKECMDGOALS)),1)
 # Sort removes duplicats. The "all" target is required in the list,
 # in case user invokes make with no targets.
 $(sort all $(MAKECMDGOALS)):
-	$(MAKE) $@
+	$(MAKE) $(MFLAGS) $@
 
 else
 
@@ -96,7 +87,7 @@ endif # MAKECMDGOALS
 ##############################################################################
 
 $(MAKEFILE_EXECUTABLE_DIRS): $(MAKEFILE_LIBRARY_DIRS)
-	$(MAKE) -C $@ $(RULE)
+	$(MAKE) -C $@ $(RULE) $(MFLAGS)
 
 $(MAKEFILE_LIBRARY_DIRS):
-	$(MAKE) -C $@ $(RULE)
+	$(MAKE) -e -C $@ $(RULE)

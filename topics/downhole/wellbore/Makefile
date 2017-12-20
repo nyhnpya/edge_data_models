@@ -9,12 +9,12 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../Makefiles/Makefile.platform
+include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
-TARG_BUILD_MAJOR = 1
-TARG_BUILD_MINOR = 1
-TARG_BUILD_PATCH = 0
+TARG_BUILD_MAJOR = 0
+TARG_BUILD_MINOR = 5
+TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
 TARGET_NAME = wellbore
@@ -24,7 +24,7 @@ TARGET_NAME = wellbore
 ###############################################################################
 # Includes
 TARG_INCLUDES += -I $(CURDIR)/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
+TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 
 # Sources
 TARG_SOURCES = wellbore.cxx
@@ -49,7 +49,7 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wellborePlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wellboreSupport.h
 
 # package installation directory
-PACKAGE_INSTALL_DIR += $(TOP_DIR)/package
+PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
 
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform

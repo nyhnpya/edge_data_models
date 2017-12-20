@@ -9,7 +9,7 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../Makefiles/Makefile.platform
+include ../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
@@ -23,8 +23,11 @@ TARGET_NAME = simulation_drill
 # compilation flags
 ###############################################################################
 # Includes
+TARG_INCLUDES += -isystem $(EDGE_THIRD_PARTY_INCLUDE)
+TARG_INCLUDES += -I $(DDS_INCLUDE)
+TARG_INCLUDES += -I $(LOG_INCLUDE)
+TARG_INCLUDES += -I $(CURDIR)/../base_data_types/include
 TARG_INCLUDES += -I $(CURDIR)/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
 
 # Sources
 TARG_SOURCES += drill_simulation.cxx

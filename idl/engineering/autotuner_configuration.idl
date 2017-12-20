@@ -1,0 +1,114 @@
+module AutoTunerConfiguration
+{
+    //@copy-c-declaration static const char MODEL_STATE_REQUEST[] = "ModelStateRequest";
+    struct ModelStateRequest
+    {
+        boolean modelReset;
+        double  pipeInnerDiameter;
+        double  pipeOuterDiameter;
+        double  slopeFilter;
+        double  tauMax;
+        double  tauMin;
+        double  tauMultiplier;
+        double  maxDeviation;
+        double  minInterval;
+    };
+
+    //@copy-c-declaration static const char MODEL_STATE_STATE[] = "ModelStateState";
+    struct ModelStateState
+    {
+        double  pipeInnerDiameter;
+        double  pipeOuterDiameter;
+        double  slopeFilter;
+        double  tauMax;
+        double  tauMin;
+        double  tauMultiplier;
+        double  maxDeviation;
+        double  minInterval;
+        boolean tunerEnabled;
+    };
+
+    //@copy-c-declaration static const char DIFFP_TUNING_REQUEST[] = "DiffpTuningRequest";
+    struct DiffpTuningRequest
+    {
+        double  diffPFilter;
+        double  diffPD;
+        double  diffPF;
+        double  diffPEps;
+        boolean diffPEpsManual;
+        double  diffPKcMin;
+        double  diffPKcMax;
+        double  diffPTiMin;
+        double  diffPTiMax;
+    };
+
+    //@copy-c-declaration static const char DIFFP_TUNING_STATE[] = "DiffpTuningState";
+    struct DiffpTuningState
+    {
+        double  diffPFilter;
+        double  diffPD;
+        double  diffPF;
+        double  diffPEps;
+        boolean diffPEpsManual;
+        double  diffPKcMin;
+        double  diffPKcMax;
+        double  diffPTiMin;
+        double  diffPTiMax;
+    };
+    
+    //@copy-c-declaration static const char WOB_TUNING_REQUEST[] = "WobTuningRequest";
+    struct WobTuningRequest
+    {
+        double  wobFilter;
+        double  wobD;
+        double  wobF;
+        double  wobEps;
+        boolean wobEpsManual;
+        double  wobKcMin;
+        double  wobKcMax;
+        double  wobTiMin;
+        double  wobTiMax;
+    };
+
+    //@copy-c-declaration static const char WOB_TUNING_STATE[] = "WobTuningState";
+    struct WobTuningState
+    {
+        double  wobFilter;
+        double  wobD;
+        double  wobF;
+        double  wobEps;
+        boolean wobEpsManual;
+        double  wobKcMin;
+        double  wobKcMax;
+        double  wobTiMin;
+        double  wobTiMax;
+    };
+    
+    //@copy-c-declaration static const char TORQUE_TUNING_REQUEST[] = "TorqueTuningRequest";
+    struct TorqueTuningRequest
+    {
+        double  torqueFilter;
+        double  torqueD;
+        double  torqueF;
+        double  torqueEps;
+        boolean torqueEpsManual;
+        double  torqueKcMin;
+        double  torqueKcMax;
+        double  torqueTiMin;
+        double  torqueTiMax;
+    };
+
+    //@copy-c-declaration static const char TORQUE_TUNING_STATE[] = "TorqueTuningState";
+    struct TorqueTuningState
+    {
+        double  torqueFilter;
+        double  torqueD;
+        double  torqueF;
+        double  torqueEps;
+        boolean torqueEpsManual;
+        double  torqueKcMin;
+        double  torqueKcMax;
+        double  torqueTiMin;
+        double  torqueTiMax;
+    };
+};

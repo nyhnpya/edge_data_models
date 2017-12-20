@@ -9,7 +9,7 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../Makefiles/Makefile.platform
+include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
@@ -22,13 +22,12 @@ TARGET_NAME = wellbore_state_subscriber
 ###############################################################################
 # compilation flags
 ###############################################################################
-# Includes
-TARG_INCLUDES += -isystem /usr/local/include/edge_third_party
-TARG_INCLUDES += -I /usr/local/include/dds_base
-TARG_INCLUDES += -I /usr/local/include/logger
+TARG_INCLUDES += -isystem $(EDGE_THIRD_PARTY_INCLUDE)
+TARG_INCLUDES += -I $(DDS_INCLUDE)
+TARG_INCLUDES += -I $(LOG_INCLUDE)
 TARG_INCLUDES += -I $(CURDIR)/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/downhole/wellbore/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
+TARG_INCLUDES += -I $(CURDIR)/../../downhole/wellbore/include
+TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 
 # Sources
 TARG_SOURCES = wellbore_state_subscriber.cpp
@@ -38,8 +37,8 @@ TARG_SOURCES = wellbore_state_subscriber.cpp
 ###############################################################################
 
 # package control file
-PACKAGE_DESCRIPTION = "Ensign EDGE Wellbore Library"
-PACKAGE_DEV_DESCRIPTION = "Ensign EDGE Wellbore Library"
+PACKAGE_DESCRIPTION = "Ensign EDGE C++ API wellbore state subscription library"
+PACKAGE_DEV_DESCRIPTION = "Ensign EDGE C++ API wellbore state subscription library - development"
 PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libwellbore
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libwellbore-dev

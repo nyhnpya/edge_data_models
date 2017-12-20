@@ -9,12 +9,12 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../Makefiles/Makefile.platform
+include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
-TARG_BUILD_MAJOR = 1
-TARG_BUILD_MINOR = 1
-TARG_BUILD_PATCH = 0
+TARG_BUILD_MAJOR = 0
+TARG_BUILD_MINOR = 5
+TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
 TARGET_NAME = wellbore_state_publisher
@@ -22,13 +22,12 @@ TARGET_NAME = wellbore_state_publisher
 ###############################################################################
 # compilation flags
 ###############################################################################
-# Includes
-TARG_INCLUDES += -isystem /usr/local/include/edge_third_party
-TARG_INCLUDES += -I /usr/local/include/dds_base
-TARG_INCLUDES += -I /usr/local/include/logger
+TARG_INCLUDES += -isystem $(EDGE_THIRD_PARTY_INCLUDE)
+TARG_INCLUDES += -I $(DDS_INCLUDE)
+TARG_INCLUDES += -I $(LOG_INCLUDE)
 TARG_INCLUDES += -I $(CURDIR)/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/downhole/wellbore/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
+TARG_INCLUDES += -I $(CURDIR)/../../downhole/wellbore/include
+TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 
 # Sources
 TARG_SOURCES = wellbore_state_publisher.cpp
@@ -46,10 +45,10 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wellbore_state_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wellbore_publisher.h
 
 # package installation directory
-PACKAGE_INSTALL_DIR += $(TOP_DIR)/package
+PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
 
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform

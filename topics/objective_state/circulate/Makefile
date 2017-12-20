@@ -9,12 +9,12 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../Makefiles/Makefile.platform
+include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
-TARG_BUILD_MAJOR = 1
-TARG_BUILD_MINOR = 1
-TARG_BUILD_PATCH = 0
+TARG_BUILD_MAJOR = 0
+TARG_BUILD_MINOR = 5
+TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
 TARGET_NAME = circulate_objective_state
@@ -24,15 +24,17 @@ TARGET_NAME = circulate_objective_state
 ###############################################################################
 
 # Includes
-TARG_INCLUDES += -isystem /usr/local/include/edge_third_party
-TARG_INCLUDES += -I /usr/local/include/dds_base
-TARG_INCLUDES += -I /usr/local/include/logger
-TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/process/circulate/include
+TARG_INCLUDES += -I $(DDS_INCLUDE)
+TARG_INCLUDES += -I $(LOG_INCLUDE)
+TARG_INCLUDES += -isystem $(EDGE_THIRD_PARTY_INCLUDE)
 TARG_INCLUDES += -I $(CURDIR)/include
+TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 
 # Sources
-TARG_SOURCES = circulate_request_publisher.cpp
+TARG_SOURCES = circulate.cxx
+TARG_SOURCES += circulatePlugin.cxx
+TARG_SOURCES += circulateSupport.cxx
+TARG_SOURCES += circulate_request_publisher.cpp
 TARG_SOURCES += circulate_request_subscriber.cpp
 TARG_SOURCES += circulate_objective_publisher.cpp
 TARG_SOURCES += circulate_objective_subscriber.cpp
@@ -44,11 +46,11 @@ TARG_SOURCES += circulate_state_subscriber.cpp
 ###############################################################################
 
 # package control file
-PACKAGE_DESCRIPTION = "EDGE circulate objective-state library"
-PACKAGE_DEV_DESCRIPTION = "EDGE circulate objective-state library"
+PACKAGE_DESCRIPTION = "Library package for the Ensign circulate_request API."
+PACKAGE_DEV_DESCRIPTION = "core files for Ensign circulate_request API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
-PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libcirculate
-PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libcirculate-dev
+PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
 PACKAGE_LICENSE = "Closed License"
 
 # package Install include files
@@ -60,7 +62,7 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/circulate_state_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/circulate_state_subscriber.h
 
 # package installation directory
-PACKAGE_INSTALL_DIR += $(TOP_DIR)/package
+PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
 
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform

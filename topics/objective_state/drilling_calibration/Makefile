@@ -9,12 +9,12 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../Makefiles/Makefile.platform
+include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
-TARG_BUILD_MAJOR = 1
-TARG_BUILD_MINOR = 1
-TARG_BUILD_PATCH = 0
+TARG_BUILD_MAJOR = 0
+TARG_BUILD_MINOR = 5
+TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
 TARGET_NAME = drilling_calibration_objective_state
@@ -23,14 +23,16 @@ TARGET_NAME = drilling_calibration_objective_state
 # compilation flags
 ###############################################################################
 # Includes
-TARG_INCLUDES += -I /usr/local/include/dds_base
-TARG_INCLUDES += -I /usr/local/include/logger
+TARG_INCLUDES += -I $(DDS_INCLUDE)
+TARG_INCLUDES += -I $(LOG_INCLUDE)
 TARG_INCLUDES += -I $(CURDIR)/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/engineering/drilling_calibration/include
+TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 
 # Sources
-TARG_SOURCES = drilling_calibration_state_subscriber.cpp
+TARG_SOURCES = drilling_calibration.cxx
+TARG_SOURCES += drilling_calibrationPlugin.cxx
+TARG_SOURCES += drilling_calibrationSupport.cxx
+TARG_SOURCES += drilling_calibration_state_subscriber.cpp
 TARG_SOURCES += drilling_calibration_request_publisher.cpp
 TARG_SOURCES += drilling_calibration_request_subscriber.cpp
 TARG_SOURCES += drilling_calibration_state_publisher.cpp
@@ -40,8 +42,8 @@ TARG_SOURCES += drilling_calibration_state_publisher.cpp
 ###############################################################################
 
 #package control file
-PACKAGE_DESCRIPTION = "EDGE drilling calibration objective-state library"
-PACKAGE_DEV_DESCRIPTION = "EDGE drilling calibration objective-state library"
+PACKAGE_DESCRIPTION = "Library package for the Ensign drilling_calibration_request API."
+PACKAGE_DEV_DESCRIPTION = "core files for Ensign drilling_calibration_request API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
@@ -54,7 +56,7 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_calibration_state_publisher.
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_calibration_state_subscriber.h
 
 # package installation directory
-PACKAGE_INSTALL_DIR += $(TOP_DIR)/package
+PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
 
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform
