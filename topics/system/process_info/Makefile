@@ -49,7 +49,7 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_infoPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_infoSupport.h
 
 # package installation directory
-PACKAGE_INSTALL_DIR += $(TOP_DIR)/package
+PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
 
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform
