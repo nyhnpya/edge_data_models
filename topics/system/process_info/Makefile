@@ -22,7 +22,6 @@ TARGET_NAME = process_info
 ###############################################################################
 # compilation flags
 ###############################################################################
-# Includes
 TARG_INCLUDES += -I $(CURDIR)/include
 TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
 

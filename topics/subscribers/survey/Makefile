@@ -22,7 +22,6 @@ TARGET_NAME = survey_subscriber
 ###############################################################################
 # compilation flags
 ###############################################################################
-# Includes
 TARG_INCLUDES += -I /usr/local/include/dds-base
 TARG_INCLUDES += -I $(CURDIR)/include
 TARG_INCLUDES += -I $(TOP_DIR)/topics/downhole/survey/include

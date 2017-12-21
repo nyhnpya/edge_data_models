@@ -12,8 +12,8 @@
 include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
-TARG_BUILD_MAJOR = 0
-TARG_BUILD_MINOR = 5
+TARG_BUILD_MAJOR = 1
+TARG_BUILD_MINOR = 0
 TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
@@ -22,7 +22,6 @@ TARGET_NAME = process_info_publisher
 ###############################################################################
 # compilation flags
 ###############################################################################
-# Includes
 TARG_INCLUDES += -I $(DDS_INCLUDE)
 TARG_INCLUDES += -I $(LOG_INCLUDE)
 TARG_INCLUDES += -I $(CURDIR)/include

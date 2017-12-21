@@ -22,7 +22,6 @@ TARGET_NAME = auto_ream_objective_state
 ###############################################################################
 # compilation flags
 ###############################################################################
-# Includes
 TARG_INCLUDES += -isystem $(EDGE_THIRD_PARTY_INCLUDE)
 TARG_INCLUDES += -I $(DDS_INCLUDE)
 TARG_INCLUDES += -I $(LOG_INCLUDE)
