@@ -9,7 +9,7 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../Makefiles/Makefile.platform
+include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
@@ -22,19 +22,12 @@ TARGET_NAME = auto_ream_objective_state
 ###############################################################################
 # compilation flags
 ###############################################################################
-# Options
-TARG_OPTIONS += -ggdb
-
-# Libraries
-TARG_LIBS +=
-
 # Includes
-TARG_INCLUDES += -isystem /usr/local/include/edge_third_party
-TARG_INCLUDES += -I /usr/local/include/dds_base
-TARG_INCLUDES += -I /usr/local/include/logger
+TARG_INCLUDES += -isystem $(EDGE_THIRD_PARTY_INCLUDE)
+TARG_INCLUDES += -I $(DDS_INCLUDE)
+TARG_INCLUDES += -I $(LOG_INCLUDE)
+TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 TARG_INCLUDES += -I $(CURDIR)/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/process/auto_ream/include
 
 # Sources
 TARG_SOURCES = auto_ream_request_subscriber.cpp

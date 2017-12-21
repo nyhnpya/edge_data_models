@@ -11,6 +11,7 @@ MAKEFILE_LIBRARY_DIRS += simulation
 #MAKEFILE_LIBRARY_DIRS += subscribers/survey
 #MAKEFILE_LIBRARY_DIRS += pipe_handling/pipe_tally
 MAKEFILE_LIBRARY_DIRS += objective/objective
+MAKEFILE_LIBRARY_DIRS += objective_state/auto_ream
 MAKEFILE_LIBRARY_DIRS += objective_state/autodriller_configuration
 MAKEFILE_LIBRARY_DIRS += objective_state/autotuner_configuration
 MAKEFILE_LIBRARY_DIRS += objective_state/circulate
