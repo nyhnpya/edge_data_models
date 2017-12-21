@@ -30,7 +30,10 @@ TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 TARG_INCLUDES += -I $(CURDIR)/../../simulation/include
 
 # Sources
-TARG_SOURCES = sim_drill_request_subscriber.cpp
+TARG_SOURCES = drill_simulation.cxx
+TARG_SOURCES += drill_simulationPlugin.cxx
+TARG_SOURCES += drill_simulationSupport.cxx
+TARG_SOURCES += sim_drill_request_subscriber.cpp
 TARG_SOURCES += sim_drill_objective_subscriber.cpp
 TARG_SOURCES += sim_drill_state_subscriber.cpp
 TARG_SOURCES += sim_drill_request_publisher.cpp
@@ -50,12 +53,16 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drill_simulation.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drill_simulationPlugin.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drill_simulationSupport.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/sim_drill_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/sim_drill_request_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/sim_drill_state_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/sim_drill_state_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/sim_drill_objective_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/sim_drill_objective_subscriber.h
+
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package

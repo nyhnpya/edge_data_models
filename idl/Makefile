@@ -172,10 +172,8 @@ process_info.cpy:
 
 drill_simulation.cpy: 
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/simulation
-	mkdir -p $(TOPIC_HOME)/simulation/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/simulation/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/simulation
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/simulation/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/simulation
 	-@rm -rf $(TMPOUTDIR)
 
 rotate_engineering.cpy:
