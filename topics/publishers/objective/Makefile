@@ -17,7 +17,7 @@ TARG_BUILD_MINOR = 5
 TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
-TARGET_NAME = objective_publisher
+TARGET_NAME = objective_state_publisher
 
 ###############################################################################
 # compilation flags
@@ -30,7 +30,7 @@ TARG_INCLUDES += -I $(CURDIR)/../../objective/objective/include
 TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 
 # Sources
-TARG_SOURCES = objective_publisher.cpp
+TARG_SOURCES = objective_state_publisher.cpp
 
 ###############################################################################
 # Installation section
@@ -45,7 +45,7 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/objective_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/objective_state_publisher.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package

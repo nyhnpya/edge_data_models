@@ -1,5 +1,5 @@
 #include "dds_uuid.h"
-#include "objective_publisher.h"
+#include "objective_state_publisher.h"
 
 CObjectiveStatePublisher::CObjectiveStatePublisher()
 {
