@@ -52,6 +52,9 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drill.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drillSupport.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drillPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drill_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drill_request_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drill_state_publisher.h
