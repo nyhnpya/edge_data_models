@@ -29,7 +29,10 @@ TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 TARG_INCLUDES += -I $(CURDIR)/include
 
 # Sources
-TARG_SOURCES = auto_ream_request_subscriber.cpp
+TARG_SOURCES = auto_ream.cxx
+TARG_SOURCES += auto_reamSupport.cxx
+TARG_SOURCES += auto_reamPlugin.cxx
+TARG_SOURCES += auto_ream_request_subscriber.cpp
 TARG_SOURCES += auto_ream_objective_subscriber.cpp
 TARG_SOURCES += auto_ream_state_subscriber.cpp
 TARG_SOURCES += auto_ream_request_publisher.cpp
