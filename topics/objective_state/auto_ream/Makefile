@@ -49,6 +49,9 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
+PACKAGE_INCLUDE_FILES = $(CURDIR)/include/auto_ream.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_reamSupport.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_reamPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_ream_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_ream_request_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_ream_state_publisher.h
