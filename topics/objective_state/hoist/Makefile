@@ -52,6 +52,9 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/hoist.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/hoistSupport.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/hoistPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/hoist_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/hoist_request_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/hoist_objective_publisher.h

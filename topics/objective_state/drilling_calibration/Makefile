@@ -49,6 +49,9 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_calibration.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_calibrationSupport.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_calibrationPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_calibration_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_calibration_request_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_calibration_state_publisher.h

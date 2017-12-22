@@ -50,6 +50,9 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configuration.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configurationSupport.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configurationPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configuration_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configuration_request_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configuration_state_publisher.h

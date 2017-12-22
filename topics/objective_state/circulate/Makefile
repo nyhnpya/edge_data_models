@@ -52,6 +52,9 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package Install include files
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/circulate.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/circulateSupport.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/circulatePlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/circulate_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/circulate_request_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/circulate_objective_publisher.h

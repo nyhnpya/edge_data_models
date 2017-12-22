@@ -52,6 +52,9 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotateSupport.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotatePlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_request_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_objective_publisher.h
