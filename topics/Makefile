@@ -5,7 +5,6 @@ include ../../Makefiles/Makefile.platform
 # before building the executables.
 MAKEFILE_LIBRARY_DIRS = base_data_types
 MAKEFILE_LIBRARY_DIRS += configuration
-MAKEFILE_LIBRARY_DIRS += downhole/wellbore
 MAKEFILE_LIBRARY_DIRS += simulation
 #MAKEFILE_LIBRARY_DIRS += downhole/survey
 #MAKEFILE_LIBRARY_DIRS += subscribers/survey
@@ -20,12 +19,10 @@ MAKEFILE_LIBRARY_DIRS += objective_state/drilling_calibration
 MAKEFILE_LIBRARY_DIRS += objective_state/hoist
 MAKEFILE_LIBRARY_DIRS += objective_state/rotate
 MAKEFILE_LIBRARY_DIRS += objective_state/simulation
-MAKEFILE_LIBRARY_DIRS += publishers/objective
+MAKEFILE_LIBRARY_DIRS += objective_state/wellbore
 MAKEFILE_LIBRARY_DIRS += publishers/process_info
-MAKEFILE_LIBRARY_DIRS += publishers/wellbore
 MAKEFILE_LIBRARY_DIRS += subscribers/objective
 MAKEFILE_LIBRARY_DIRS += subscribers/process_info
-MAKEFILE_LIBRARY_DIRS += subscribers/wellbore
 MAKEFILE_LIBRARY_DIRS += system/process_info
 
 .PHONY: all clean dep install install_clean install_dev install_dev_clean \

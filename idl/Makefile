@@ -130,10 +130,8 @@ rotate.cpy:
 
 wellbore.cpy:
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/downhole/wellbore
-	mkdir -p $(TOPIC_HOME)/downhole/wellbore/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/downhole/wellbore/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/downhole/wellbore/
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/wellbore/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/wellbore/
 	-@rm -rf $(TMPOUTDIR)
 
 objective.cpy:
@@ -186,18 +184,14 @@ rotate_engineering.cpy:
 
 torque.cpy:
 	@echo "Copying generated files..."
-#	mkdir -p $(TOPIC_HOME)/engineering/torque
-#	mkdir -p $(TOPIC_HOME)/engineering/torque/include
 #	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/torque/include
 #	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/torque
 	-@rm -rf $(TMPOUTDIR)
 
 survey.cpy:
 	@echo "Copying generated files..."
-#	mkdir -p $(TOPIC_HOME)/downhole/survey
-#	mkdir -p $(TOPIC_HOME)/downhole/survey/include
-#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/downhole/survey/include
-#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/downhole/survey/
+#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/survey/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/survey/
 	-@rm -rf $(TMPOUTDIR)
 
 pipe_tally.cpy:
