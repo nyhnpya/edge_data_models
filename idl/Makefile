@@ -136,10 +136,8 @@ wellbore.cpy:
 
 objective.cpy:
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/objective/objective
-	mkdir -p $(TOPIC_HOME)/objective/objective/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective/objective/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective/objective/
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/objective/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/objective/
 	-@rm -rf $(TMPOUTDIR)
 
 drilling_calibration.cpy: 

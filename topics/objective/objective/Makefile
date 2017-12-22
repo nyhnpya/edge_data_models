@@ -27,9 +27,6 @@ TARG_INCLUDES += -I $(CURDIR)/include
 TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 
 # Sources
-TARG_SOURCES = objective.cxx
-TARG_SOURCES += objectivePlugin.cxx
-TARG_SOURCES += objectiveSupport.cxx
 
 ###############################################################################
 # Installation section
