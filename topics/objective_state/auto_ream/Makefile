@@ -44,8 +44,8 @@ TARG_SOURCES += auto_ream_state_publisher.cpp
 PACKAGE_DESCRIPTION = "EDGE drilling objective-state library"
 PACKAGE_DEV_DESCRIPTION = "EDGE drilling objective-state library"
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
-PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types, libauto_ream
-PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev, libauto_ream-dev
+PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
