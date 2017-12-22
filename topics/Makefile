@@ -5,7 +5,6 @@ include ../../Makefiles/Makefile.platform
 # before building the executables.
 MAKEFILE_LIBRARY_DIRS = base_data_types
 MAKEFILE_LIBRARY_DIRS += configuration
-MAKEFILE_LIBRARY_DIRS += simulation
 #MAKEFILE_LIBRARY_DIRS += downhole/survey
 #MAKEFILE_LIBRARY_DIRS += subscribers/survey
 #MAKEFILE_LIBRARY_DIRS += pipe_handling/pipe_tally
