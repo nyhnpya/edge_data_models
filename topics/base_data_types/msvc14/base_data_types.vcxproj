@@ -145,7 +145,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_WIN32;_DEBUG;_LIB;RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(ProjectDir)..\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include</AdditionalIncludeDirectories>
       <BasicRuntimeChecks />
     </ClCompile>
     <Link>
@@ -162,11 +162,11 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_WIN32;_DEBUG;_LIB;RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(ProjectDir)..\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include</AdditionalIncludeDirectories>
-      <BasicRuntimeChecks>
-      </BasicRuntimeChecks>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)log4cplus\include;$(SolutionDir)logger\include</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -184,14 +184,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;..\..\..\base_data_types\include;..\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include\ndds;$(NDDSHOME)\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
     </Link>
     <Lib>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;C:\Users\mark\git\logger\logger\Debug;C:\Users\mark\git\log4cplus\msvc14\Win32\bin.Debug;C:\Users\mark\git\dds_base\dds_base\Debug;C:\Users\mark\git\edge_data_models\Edge_Data_Models\Debug;C:\Users\mark\git\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(NDDSHOME)\lib\$(NDDSARCH);$(SolutionDir)\logger\logger\Debug;C:\Users\mark\git\log4cplus\msvc14\Win32\bin.Debug;C:\Users\mark\git\dds_base\dds_base\Debug;C:\Users\mark\git\edge_data_models\Edge_Data_Models\Debug;C:\Users\mark\git\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug_vs2013|x64'">
@@ -202,14 +202,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;..\..\..\base_data_types\include;..\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include\ndds;$(NDDSHOME)\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
     </Link>
     <Lib>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;C:\Users\mark\git\logger\logger\Debug;C:\Users\mark\git\log4cplus\msvc14\Win32\bin.Debug;C:\Users\mark\git\dds_base\dds_base\Debug;C:\Users\mark\git\edge_data_models\Edge_Data_Models\Debug;C:\Users\mark\git\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(NDDSHOME)\lib\$(NDDSARCH);C:\Users\mark\git\logger\logger\Debug;C:\Users\mark\git\log4cplus\msvc14\Win32\bin.Debug;C:\Users\mark\git\dds_base\dds_base\Debug;C:\Users\mark\git\edge_data_models\Edge_Data_Models\Debug;C:\Users\mark\git\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -221,7 +221,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_WIN32;NDEBUG;_LIB;RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(ProjectDir)..\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -242,7 +242,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_WIN32;NDEBUG;_LIB;RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(ProjectDir)..\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>

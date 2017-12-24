@@ -145,7 +145,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_WIN32;_DEBUG;_LIB;RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\process\rotate\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;$(SolutionDir)\edge_data_models\topics\objective_state\rotate\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -161,9 +161,10 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_WIN32;_DEBUG;_LIB;RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\process\rotate\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;$(SolutionDir)\edge_data_models\topics\objective_state\rotate\include</AdditionalIncludeDirectories>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -181,7 +182,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;C:\Users\mark\git\edge_data_models\topics\base_data_types\include;..\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include;C:\Users\mark\git\dds_base\include;C:\Users\mark\git\edge_data_models\topics\process\rotate\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;C:\Users\mark\git\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\objective_state\rotate\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include;C:\Users\mark\git\dds_base\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -199,7 +200,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;C:\Users\mark\git\edge_data_models\topics\base_data_types\include;..\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include;C:\Users\mark\git\dds_base\include;C:\Users\mark\git\edge_data_models\topics\process\rotate\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;C:\Users\mark\git\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\objective_state\rotate\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include;C:\Users\mark\git\dds_base\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -218,7 +219,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_WIN32;NDEBUG;_LIB;RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\process\rotate\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;$(SolutionDir)\edge_data_models\topics\objective_state\rotate\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -239,7 +240,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_WIN32;NDEBUG;_LIB;RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\process\rotate\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;$(SolutionDir)\edge_data_models\topics\objective_state\rotate\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -287,6 +288,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\rotate.h" />
+    <ClInclude Include="..\include\rotatePlugin.h" />
+    <ClInclude Include="..\include\rotateSupport.h" />
     <ClInclude Include="..\include\rotate_objective_publisher.h" />
     <ClInclude Include="..\include\rotate_objective_subscriber.h" />
     <ClInclude Include="..\include\rotate_request_publisher.h" />
@@ -295,6 +299,9 @@
     <ClInclude Include="..\include\rotate_state_subscriber.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\rotate.cxx" />
+    <ClCompile Include="..\rotatePlugin.cxx" />
+    <ClCompile Include="..\rotateSupport.cxx" />
     <ClCompile Include="..\rotate_objective_publisher.cpp" />
     <ClCompile Include="..\rotate_objective_subscriber.cpp" />
     <ClCompile Include="..\rotate_request_publisher.cpp" />

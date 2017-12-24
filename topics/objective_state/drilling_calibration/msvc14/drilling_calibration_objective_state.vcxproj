@@ -161,9 +161,10 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_WIN32;_DEBUG;_LIB;RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\engineering\drilling_calibration\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;..\include</AdditionalIncludeDirectories>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -287,12 +288,18 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\drilling_calibration.cxx" />
+    <ClCompile Include="..\drilling_calibrationPlugin.cxx" />
+    <ClCompile Include="..\drilling_calibrationSupport.cxx" />
     <ClCompile Include="..\drilling_calibration_request_publisher.cpp" />
     <ClCompile Include="..\drilling_calibration_request_subscriber.cpp" />
     <ClCompile Include="..\drilling_calibration_state_publisher.cpp" />
     <ClCompile Include="..\drilling_calibration_state_subscriber.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\drilling_calibration.h" />
+    <ClInclude Include="..\include\drilling_calibrationPlugin.h" />
+    <ClInclude Include="..\include\drilling_calibrationSupport.h" />
     <ClInclude Include="..\include\drilling_calibration_request_publisher.h" />
     <ClInclude Include="..\include\drilling_calibration_request_subscriber.h" />
     <ClInclude Include="..\include\drilling_calibration_state_publisher.h" />
