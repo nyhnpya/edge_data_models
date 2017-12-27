@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="debug_vs2013|Win32">
@@ -164,6 +164,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;$(SolutionDir)\edge_data_models\topics\objective_state\autotuner_configuration\include</AdditionalIncludeDirectories>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -292,8 +293,6 @@
     <ClCompile Include="..\autotuner_configurationSupport.cxx" />
     <ClCompile Include="..\autotuner_configurationPlugin.cxx" />
     <ClCompile Include="..\autotuner_configuration_request_publisher.cpp" />
-    <ClCompile Include="..\autotuner_configuration_request_subscriber.cpp" />
-    <ClCompile Include="..\autotuner_configuration_state_publisher.cpp" />
     <ClCompile Include="..\autotuner_configuration_state_subscriber.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -301,8 +300,6 @@
     <ClInclude Include="..\include\autotuner_configurationSupport.h" />
     <ClInclude Include="..\include\autotuner_configurationPlugin.h" />
     <ClInclude Include="..\include\autotuner_configuration_request_publisher.h" />
-    <ClInclude Include="..\include\autotuner_configuration_request_subscriber.h" />
-    <ClInclude Include="..\include\autotuner_configuration_state_publisher.h" />
     <ClInclude Include="..\include\autotuner_configuration_state_subscriber.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
