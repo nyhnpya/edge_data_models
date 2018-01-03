@@ -912,6 +912,14 @@ namespace Configuration {
             return;
         }
 
+        if (sample->protocol==NULL) {
+            RTICdrType_printString(
+                NULL,"protocol", indent_level + 1);
+        } else {
+            RTICdrType_printString(
+                sample->protocol,"protocol", indent_level + 1);    
+        }
+
         if (sample->endpoint==NULL) {
             RTICdrType_printString(
                 NULL,"endpoint", indent_level + 1);
@@ -1069,6 +1077,11 @@ namespace Configuration {
         if(serialize_sample) {
 
             if (!RTICdrStream_serializeString(
+                stream, sample->protocol, (255) + 1)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeString(
                 stream, sample->endpoint, (255) + 1)) {
                 return RTI_FALSE;
             }
@@ -1112,6 +1125,10 @@ namespace Configuration {
 
                 Configuration::protocol_t_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
+                if (!RTICdrStream_deserializeStringEx(
+                    stream,&sample->protocol, (255) + 1, RTI_FALSE)) {
+                    goto fin; 
+                }
                 if (!RTICdrStream_deserializeStringEx(
                     stream,&sample->endpoint, (255) + 1, RTI_FALSE)) {
                     goto fin; 
@@ -1350,6 +1367,9 @@ namespace Configuration {
             if (!RTICdrStream_skipString (stream, (255)+1)) {
                 goto fin; 
             }
+            if (!RTICdrStream_skipString (stream, (255)+1)) {
+                goto fin; 
+            }
         }
 
         done = RTI_TRUE;
@@ -1392,6 +1412,9 @@ namespace Configuration {
             current_alignment = 0;
             initial_alignment = 0;
         }
+
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, (255)+1);
 
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
             current_alignment, (255)+1);
@@ -1449,6 +1472,8 @@ namespace Configuration {
 
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
             current_alignment, 1);
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, 1);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -1499,6 +1524,10 @@ namespace Configuration {
                 endpoint_data,
                 current_alignment);
         }
+
+        current_alignment += RTICdrType_getStringSerializedSize(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment), sample->protocol);
 
         current_alignment += RTICdrType_getStringSerializedSize(
             PRESTypePluginDefaultEndpointData_getAlignment(

@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef configuration_301632834_h
-#define configuration_301632834_h
+#ifndef configuration_301632859_h
+#define configuration_301632859_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -164,6 +164,7 @@ namespace Configuration {
         typedef protocol_tDataReader DataReader;
         #endif
 
+        DDS_Char *   protocol ;
         DDS_Char *   endpoint ;
 
     };

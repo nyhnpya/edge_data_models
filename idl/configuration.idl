@@ -23,6 +23,7 @@ module Configuration
     
     struct protocol_t
     {
+        string protocol;
         string endpoint;
     };
 

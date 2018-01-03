@@ -627,14 +627,32 @@ namespace Configuration {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
+        static DDS_TypeCode protocol_t_g_tc_protocol_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode protocol_t_g_tc_endpoint_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode_Member protocol_t_g_tc_members[1]=
+        static DDS_TypeCode_Member protocol_t_g_tc_members[2]=
         {
 
             {
-                (char *)"endpoint",/* Member name */
+                (char *)"protocol",/* Member name */
                 {
                     0,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"endpoint",/* Member name */
+                {
+                    1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -660,7 +678,7 @@ namespace Configuration {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                1, /* Number of members */
+                2, /* Number of members */
                 protocol_t_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for protocol_t*/
@@ -669,7 +687,9 @@ namespace Configuration {
             return &protocol_t_g_tc;
         }
 
-        protocol_t_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&protocol_t_g_tc_endpoint_string;
+        protocol_t_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&protocol_t_g_tc_protocol_string;
+
+        protocol_t_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&protocol_t_g_tc_endpoint_string;
 
         is_initialized = RTI_TRUE;
 
@@ -705,6 +725,18 @@ namespace Configuration {
         }
         if (allocParams == NULL) {
             return RTI_FALSE;
+        }
+
+        if (allocParams->allocate_memory){
+            sample->protocol= DDS_String_alloc ((255));
+            if (sample->protocol == NULL) {
+                return RTI_FALSE;
+            }
+
+        } else {
+            if (sample->protocol!= NULL) { 
+                sample->protocol[0] = '\0';
+            }
         }
 
         if (allocParams->allocate_memory){
@@ -757,6 +789,11 @@ namespace Configuration {
             return;
         }
 
+        if (sample->protocol != NULL) {
+            DDS_String_free(sample->protocol);
+            sample->protocol=NULL;
+
+        }
         if (sample->endpoint != NULL) {
             DDS_String_free(sample->endpoint);
             sample->endpoint=NULL;
@@ -792,6 +829,11 @@ namespace Configuration {
                 return RTI_FALSE;
             }
 
+            if (!RTICdrType_copyStringEx (
+                &dst->protocol, src->protocol, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
             if (!RTICdrType_copyStringEx (
                 &dst->endpoint, src->endpoint, 
                 (255) + 1, RTI_FALSE)){

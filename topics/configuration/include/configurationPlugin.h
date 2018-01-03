@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef configurationPlugin_301632834_h
-#define configurationPlugin_301632834_h
+#ifndef configurationPlugin_301632859_h
+#define configurationPlugin_301632859_h
 
 #include "configuration.h"
 
@@ -1285,5 +1285,5 @@ namespace Configuration {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* configurationPlugin_301632834_h */
+#endif /* configurationPlugin_301632859_h */
 
