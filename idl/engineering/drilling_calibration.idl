@@ -43,10 +43,6 @@ module nec
             double          maxTorqueProportional;
             double          minTorqueIntegral;
             double          maxTorqueIntegral;
-            boolean         ropMode;
-            boolean         wobMode;
-            boolean         differentialPressureMode; 
-            boolean         torqueMode;
         };
     };
 };
