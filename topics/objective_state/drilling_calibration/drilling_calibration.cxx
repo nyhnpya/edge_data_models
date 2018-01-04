@@ -439,7 +439,7 @@ namespace nec {
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member DrillingCalibrationState_g_tc_members[24]=
+            static DDS_TypeCode_Member DrillingCalibrationState_g_tc_members[20]=
             {
 
                 {
@@ -781,74 +781,6 @@ namespace nec {
                     DDS_PUBLIC_MEMBER,/* Member visibility */
                     1,
                     NULL/* Ignored */
-                }, 
-                {
-                    (char *)"ropMode",/* Member name */
-                    {
-                        20,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"wobMode",/* Member name */
-                    {
-                        21,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"differentialPressureMode",/* Member name */
-                    {
-                        22,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"torqueMode",/* Member name */
-                    {
-                        23,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
                 }
             };
 
@@ -862,7 +794,7 @@ namespace nec {
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    24, /* Number of members */
+                    20, /* Number of members */
                     DrillingCalibrationState_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
                 }}; /* Type code for DrillingCalibrationState*/
@@ -910,14 +842,6 @@ namespace nec {
             DrillingCalibrationState_g_tc_members[18]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             DrillingCalibrationState_g_tc_members[19]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            DrillingCalibrationState_g_tc_members[20]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-            DrillingCalibrationState_g_tc_members[21]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-            DrillingCalibrationState_g_tc_members[22]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-            DrillingCalibrationState_g_tc_members[23]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
             is_initialized = RTI_TRUE;
 
@@ -1033,22 +957,6 @@ namespace nec {
             }
 
             if (!RTICdrType_initDouble(&sample->maxTorqueIntegral)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initBoolean(&sample->ropMode)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initBoolean(&sample->wobMode)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initBoolean(&sample->differentialPressureMode)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initBoolean(&sample->torqueMode)) {
                 return RTI_FALSE;
             }
 
@@ -1204,22 +1112,6 @@ namespace nec {
                 }
                 if (!RTICdrType_copyDouble (
                     &dst->maxTorqueIntegral, &src->maxTorqueIntegral)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->ropMode, &src->ropMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->wobMode, &src->wobMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->differentialPressureMode, &src->differentialPressureMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->torqueMode, &src->torqueMode)) { 
                     return RTI_FALSE;
                 }
 

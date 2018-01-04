@@ -50,10 +50,6 @@ class CDrillingCalibrationStatePublisher : public TPublisher< nec::control::Dril
     void SetMaxTorqueProportional(const double maxTorqueProportional);
     void SetMinTorqueIntegral(const double minTorqueIntegral);
     void SetMaxTorqueIntegral(const double maxTorqueIntegral);
-    void SetRopMode(const bool ropMode);
-    void SetWobMode(const bool wobMode);
-    void SetDifferentialPressureMode(const bool differentialPressureMode);
-    void SetTorqueMode(const bool torqueMode);
 };
 
 #endif // __DRILLING_CALIBRATION_STATE_PUBLISHER_H__

@@ -253,6 +253,66 @@ void CWobTuningStatePublisher::SetWobTiMax(double wobTiMax)
     }
 }
 
+void CWobTuningStatePublisher::SetWobInitK(double wobInitK)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->wobInitK = wobInitK;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CWobTuningStatePublisher::SetWobInitTau(double wobInitTau)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->wobInitTau = wobInitTau;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CWobTuningStatePublisher::SetWobInitPreFilter(double wobInitPreFilter)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->wobInitPreFilter = wobInitPreFilter;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CWobTuningStatePublisher::SetWobR1(double wobR1)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->wobR1 = wobR1;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CWobTuningStatePublisher::SetWobR2(double wobR2)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->wobR2 = wobR2;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
 bool CWobTuningStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
@@ -386,6 +446,66 @@ void CDiffpTuningStatePublisher::SetDiffpTiMax(double diffPTiMax)
     }
 }
 
+void CDiffpTuningStatePublisher::SetDiffpInitK(double diffpInitK)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->diffpInitK = diffpInitK;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CDiffpTuningStatePublisher::SetDiffpInitTau(double diffpInitTau)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->diffpInitTau = diffpInitTau;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CDiffpTuningStatePublisher::SetDiffpInitPreFilter(double diffpInitPreFilter)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->diffpInitPreFilter = diffpInitPreFilter;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CDiffpTuningStatePublisher::SetDiffpR1(double diffpR1)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->diffpR1 = diffpR1;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CDiffpTuningStatePublisher::SetDiffpR2(double diffpR2)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->diffpR2 = diffpR2;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
 bool CDiffpTuningStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
@@ -512,6 +632,66 @@ void CTorqueTuningStatePublisher::SetTorqueTiMax(double torqueTiMax)
     if (m_pDataInstance != nullptr)
     {
         m_pDataInstance->torqueTiMax = torqueTiMax;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CTorqueTuningStatePublisher::SetTorqueInitK(double torqueInitK)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->torqueInitK = torqueInitK;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CTorqueTuningStatePublisher::SetTorqueInitTau(double torqueInitTau)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->torqueInitTau = torqueInitTau;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CTorqueTuningStatePublisher::SetTorqueInitPreFilter(double torqueInitPreFilter)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->torqueInitPreFilter = torqueInitPreFilter;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CTorqueTuningStatePublisher::SetTorqueR1(double torqueR1)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->torqueR1 = torqueR1;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set mode because of uninitialized sample");
+    }
+}
+
+void CTorqueTuningStatePublisher::SetTorqueR2(double torqueR2)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->torqueR2 = torqueR2;
     }
     else
     {

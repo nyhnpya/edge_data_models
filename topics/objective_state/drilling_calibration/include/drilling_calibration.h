@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drilling_calibration_1168089606_h
-#define drilling_calibration_1168089606_h
+#ifndef drilling_calibration_1168089437_h
+#define drilling_calibration_1168089437_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -147,10 +147,6 @@ namespace nec {
             DDS_Double   maxTorqueProportional ;
             DDS_Double   minTorqueIntegral ;
             DDS_Double   maxTorqueIntegral ;
-            DDS_Boolean   ropMode ;
-            DDS_Boolean   wobMode ;
-            DDS_Boolean   differentialPressureMode ;
-            DDS_Boolean   torqueMode ;
 
         };
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)

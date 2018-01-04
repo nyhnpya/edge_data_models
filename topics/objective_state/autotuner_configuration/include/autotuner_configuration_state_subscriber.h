@@ -90,6 +90,11 @@ namespace CAutoTunerConfigurationStateSubscriber
         bool GetWobKcMax(double &wobKcMax);
         bool GetWobTiMin(double &wobTiMin);
         bool GetWobTiMax(double &wobTiMax);
+        bool GetWobInitK(double &wobInitK);
+        bool GetWobInitTau(double &wobInitTau);
+        bool GetWobInitPreFilter(double &wobInitPreFilter);
+        bool GetWobR1(double &wobR1);
+        bool GetWobR2(double &wobR2);
 
     protected:
         void DataAvailable(const AutoTunerConfiguration::WobTuningState &data,
@@ -133,6 +138,11 @@ namespace CAutoTunerConfigurationStateSubscriber
         bool GetDiffpKcMax(double &diffPKcMax);
         bool GetDiffpTiMin(double &diffPTiMin);
         bool GetDiffpTiMax(double &diffPTiMax);
+        bool GetDiffpInitK(double diffpInitK);
+        bool GetDiffpInitTau(double diffpInitTau);
+        bool GetDiffpInitPreFilter(double diffpInitPreFilter);
+        bool GetDiffpR1(double diffpR1);
+        bool GetDiffpR2(double diffpR2);
 
     protected:
         void DataAvailable(const AutoTunerConfiguration::DiffpTuningState &data,
@@ -176,6 +186,11 @@ namespace CAutoTunerConfigurationStateSubscriber
         bool GetTorqueKcMax(double &torqueKcMax);
         bool GetTorqueTiMin(double &torqueTiMin);
         bool GetTorqueTiMax(double &torqueTiMax);
+        bool GetTorqueInitK(double torqueInitK);
+        bool GetTorqueInitTau(double torqueInitTau);
+        bool GetTorqueInitPreFilter(double torqueInitPreFilter);
+        bool GetTorqueR1(double torqueR1);
+        bool GetTorqueR2(double torqueR2);
 
     protected:
         void DataAvailable(const AutoTunerConfiguration::TorqueTuningState &data,

@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drilling_calibrationSupport_1168089606_h
-#define drilling_calibrationSupport_1168089606_h
+#ifndef drilling_calibrationSupport_1168089437_h
+#define drilling_calibrationSupport_1168089437_h
 
 /* Uses */
 #include "drilling_calibration.h"
@@ -93,5 +93,5 @@ namespace nec {
     } /* namespace control  */
 } /* namespace nec  */
 
-#endif  /* drilling_calibrationSupport_1168089606_h */
+#endif  /* drilling_calibrationSupport_1168089437_h */
 

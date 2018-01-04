@@ -64,6 +64,11 @@ namespace CAutoTunerConfigurationStatePublisher
         void SetWobKcMax(double wobKcMax);
         void SetWobTiMin(double wobTiMin);
         void SetWobTiMax(double wobTiMax);
+        void SetWobInitK(double wobInitK);
+        void SetWobInitTau(double wobInitTau);
+        void SetWobInitPreFilter(double wobInitPreFilter);
+        void SetWobR1(double wobR1);
+        void SetWobR2(double wobR2);
     };
 
     class CDiffpTuningStatePublisher : public TPublisher< AutoTunerConfiguration::DiffpTuningState >
@@ -86,6 +91,11 @@ namespace CAutoTunerConfigurationStatePublisher
         void SetDiffpKcMax(double diffPKcMax);
         void SetDiffpTiMin(double diffPTiMin);
         void SetDiffpTiMax(double diffPTiMax);
+        void SetDiffpInitK(double diffpInitK);
+        void SetDiffpInitTau(double diffpInitTau);
+        void SetDiffpInitPreFilter(double diffpInitPreFilter);
+        void SetDiffpR1(double diffpR1);
+        void SetDiffpR2(double diffpR2);
     };
 
     class CTorqueTuningStatePublisher : public TPublisher< AutoTunerConfiguration::TorqueTuningState >
@@ -108,6 +118,11 @@ namespace CAutoTunerConfigurationStatePublisher
         void SetTorqueKcMax(double torqueKcMax);
         void SetTorqueTiMin(double torqueTiMin);
         void SetTorqueTiMax(double torqueTiMax);
+        void SetTorqueInitK(double torqueInitK);
+        void SetTorqueInitTau(double torqueInitTau);
+        void SetTorqueInitPreFilter(double torqueInitPreFilter);
+        void SetTorqueR1(double torqueR1);
+        void SetTorqueR2(double torqueR2);
     };
 };
 

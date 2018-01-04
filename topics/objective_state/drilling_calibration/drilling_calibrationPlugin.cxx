@@ -1752,18 +1752,6 @@ namespace nec {
             RTICdrType_printDouble(
                 &sample->maxTorqueIntegral, "maxTorqueIntegral", indent_level + 1);    
 
-            RTICdrType_printBoolean(
-                &sample->ropMode, "ropMode", indent_level + 1);    
-
-            RTICdrType_printBoolean(
-                &sample->wobMode, "wobMode", indent_level + 1);    
-
-            RTICdrType_printBoolean(
-                &sample->differentialPressureMode, "differentialPressureMode", indent_level + 1);    
-
-            RTICdrType_printBoolean(
-                &sample->torqueMode, "torqueMode", indent_level + 1);    
-
         }
         DrillingCalibrationState *
         DrillingCalibrationStatePluginSupport_create_key_ex(RTIBool allocate_pointers){
@@ -2071,26 +2059,6 @@ namespace nec {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrStream_serializeBoolean(
-                    stream, &sample->ropMode)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeBoolean(
-                    stream, &sample->wobMode)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeBoolean(
-                    stream, &sample->differentialPressureMode)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeBoolean(
-                    stream, &sample->torqueMode)) {
-                    return RTI_FALSE;
-                }
-
             }
 
             if(serialize_encapsulation) {
@@ -2216,22 +2184,6 @@ namespace nec {
                     }
                     if (!RTICdrStream_deserializeDouble(
                         stream, &sample->maxTorqueIntegral)) {
-                        goto fin; 
-                    }
-                    if (!RTICdrStream_deserializeBoolean(
-                        stream, &sample->ropMode)) {
-                        goto fin; 
-                    }
-                    if (!RTICdrStream_deserializeBoolean(
-                        stream, &sample->wobMode)) {
-                        goto fin; 
-                    }
-                    if (!RTICdrStream_deserializeBoolean(
-                        stream, &sample->differentialPressureMode)) {
-                        goto fin; 
-                    }
-                    if (!RTICdrStream_deserializeBoolean(
-                        stream, &sample->torqueMode)) {
                         goto fin; 
                     }
                 }
@@ -2533,18 +2485,6 @@ namespace nec {
                 if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
-                if (!RTICdrStream_skipBoolean (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipBoolean (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipBoolean (stream)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_skipBoolean (stream)) {
-                    goto fin; 
-                }
             }
 
             done = RTI_TRUE;
@@ -2645,18 +2585,6 @@ namespace nec {
             current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
 
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
-                current_alignment);
-
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
-                current_alignment);
-
             if (include_encapsulation) {
                 current_alignment += encapsulation_size;
             }
@@ -2747,14 +2675,6 @@ namespace nec {
             current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
             current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
-                current_alignment);
-            current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                 current_alignment);
 
             if (include_encapsulation) {
@@ -2884,22 +2804,6 @@ namespace nec {
                     endpoint_data, current_alignment));
 
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                PRESTypePluginDefaultEndpointData_getAlignment(
-                    endpoint_data, current_alignment));
-
-            current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
-                PRESTypePluginDefaultEndpointData_getAlignment(
-                    endpoint_data, current_alignment));
-
-            current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
-                PRESTypePluginDefaultEndpointData_getAlignment(
-                    endpoint_data, current_alignment));
-
-            current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
-                PRESTypePluginDefaultEndpointData_getAlignment(
-                    endpoint_data, current_alignment));
-
-            current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
                 PRESTypePluginDefaultEndpointData_getAlignment(
                     endpoint_data, current_alignment));
 
@@ -3199,22 +3103,6 @@ namespace nec {
                 }
 
                 if (!RTICdrStream_skipDouble (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipBoolean (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipBoolean (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipBoolean (stream)) {
-                    goto fin; 
-                }
-
-                if (!RTICdrStream_skipBoolean (stream)) {
                     goto fin; 
                 }
 

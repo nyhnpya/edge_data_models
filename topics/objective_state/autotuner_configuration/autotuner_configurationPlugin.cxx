@@ -3876,6 +3876,21 @@ namespace AutoTunerConfiguration {
         RTICdrType_printDouble(
             &sample->diffPTiMax, "diffPTiMax", indent_level + 1);    
 
+        RTICdrType_printDouble(
+            &sample->diffpInitK, "diffpInitK", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->diffpInitTau, "diffpInitTau", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->diffpInitPreFilter, "diffpInitPreFilter", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->diffpR1, "diffpR1", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->diffpR2, "diffpR2", indent_level + 1);    
+
     }
 
     /* ----------------------------------------------------------------------------
@@ -4069,6 +4084,31 @@ namespace AutoTunerConfiguration {
                 return RTI_FALSE;
             }
 
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->diffpInitK)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->diffpInitTau)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->diffpInitPreFilter)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->diffpR1)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->diffpR2)) {
+                return RTI_FALSE;
+            }
+
         }
 
         if(serialize_encapsulation) {
@@ -4142,6 +4182,26 @@ namespace AutoTunerConfiguration {
                 }
                 if (!RTICdrStream_deserializeDouble(
                     stream, &sample->diffPTiMax)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->diffpInitK)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->diffpInitTau)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->diffpInitPreFilter)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->diffpR1)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->diffpR2)) {
                     goto fin; 
                 }
             }
@@ -4402,6 +4462,21 @@ namespace AutoTunerConfiguration {
             if (!RTICdrStream_skipDouble (stream)) {
                 goto fin; 
             }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
         }
 
         done = RTI_TRUE;
@@ -4458,6 +4533,21 @@ namespace AutoTunerConfiguration {
             current_alignment);
 
         current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
 
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -4541,6 +4631,16 @@ namespace AutoTunerConfiguration {
             current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -4609,6 +4709,26 @@ namespace AutoTunerConfiguration {
                 endpoint_data, current_alignment));
 
         current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
             PRESTypePluginDefaultEndpointData_getAlignment(
                 endpoint_data, current_alignment));
 
@@ -6332,6 +6452,21 @@ namespace AutoTunerConfiguration {
         RTICdrType_printDouble(
             &sample->wobTiMax, "wobTiMax", indent_level + 1);    
 
+        RTICdrType_printDouble(
+            &sample->wobInitK, "wobInitK", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->wobInitTau, "wobInitTau", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->wobInitPreFilter, "wobInitPreFilter", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->wobR1, "wobR1", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->wobR2, "wobR2", indent_level + 1);    
+
     }
 
     /* ----------------------------------------------------------------------------
@@ -6525,6 +6660,31 @@ namespace AutoTunerConfiguration {
                 return RTI_FALSE;
             }
 
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->wobInitK)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->wobInitTau)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->wobInitPreFilter)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->wobR1)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->wobR2)) {
+                return RTI_FALSE;
+            }
+
         }
 
         if(serialize_encapsulation) {
@@ -6598,6 +6758,26 @@ namespace AutoTunerConfiguration {
                 }
                 if (!RTICdrStream_deserializeDouble(
                     stream, &sample->wobTiMax)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->wobInitK)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->wobInitTau)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->wobInitPreFilter)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->wobR1)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->wobR2)) {
                     goto fin; 
                 }
             }
@@ -6858,6 +7038,21 @@ namespace AutoTunerConfiguration {
             if (!RTICdrStream_skipDouble (stream)) {
                 goto fin; 
             }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
         }
 
         done = RTI_TRUE;
@@ -6914,6 +7109,21 @@ namespace AutoTunerConfiguration {
             current_alignment);
 
         current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
 
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -6997,6 +7207,16 @@ namespace AutoTunerConfiguration {
             current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -7065,6 +7285,26 @@ namespace AutoTunerConfiguration {
                 endpoint_data, current_alignment));
 
         current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
             PRESTypePluginDefaultEndpointData_getAlignment(
                 endpoint_data, current_alignment));
 
@@ -8788,6 +9028,21 @@ namespace AutoTunerConfiguration {
         RTICdrType_printDouble(
             &sample->torqueTiMax, "torqueTiMax", indent_level + 1);    
 
+        RTICdrType_printDouble(
+            &sample->torqueInitK, "torqueInitK", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->torqueInitTau, "torqueInitTau", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->torqueInitPreFilter, "torqueInitPreFilter", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->torqueR1, "torqueR1", indent_level + 1);    
+
+        RTICdrType_printDouble(
+            &sample->torqueR2, "torqueR2", indent_level + 1);    
+
     }
 
     /* ----------------------------------------------------------------------------
@@ -8981,6 +9236,31 @@ namespace AutoTunerConfiguration {
                 return RTI_FALSE;
             }
 
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->torqueInitK)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->torqueInitTau)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->torqueInitPreFilter)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->torqueR1)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeDouble(
+                stream, &sample->torqueR2)) {
+                return RTI_FALSE;
+            }
+
         }
 
         if(serialize_encapsulation) {
@@ -9054,6 +9334,26 @@ namespace AutoTunerConfiguration {
                 }
                 if (!RTICdrStream_deserializeDouble(
                     stream, &sample->torqueTiMax)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->torqueInitK)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->torqueInitTau)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->torqueInitPreFilter)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->torqueR1)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeDouble(
+                    stream, &sample->torqueR2)) {
                     goto fin; 
                 }
             }
@@ -9314,6 +9614,21 @@ namespace AutoTunerConfiguration {
             if (!RTICdrStream_skipDouble (stream)) {
                 goto fin; 
             }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_skipDouble (stream)) {
+                goto fin; 
+            }
         }
 
         done = RTI_TRUE;
@@ -9370,6 +9685,21 @@ namespace AutoTunerConfiguration {
             current_alignment);
 
         current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
 
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
@@ -9453,6 +9783,16 @@ namespace AutoTunerConfiguration {
             current_alignment);
         current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
             current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
+        current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+            current_alignment);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -9521,6 +9861,26 @@ namespace AutoTunerConfiguration {
                 endpoint_data, current_alignment));
 
         current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment));
+
+        current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
             PRESTypePluginDefaultEndpointData_getAlignment(
                 endpoint_data, current_alignment));
 

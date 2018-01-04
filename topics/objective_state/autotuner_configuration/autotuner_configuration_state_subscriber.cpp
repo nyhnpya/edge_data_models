@@ -216,6 +216,36 @@ bool CWobTuningStateSubscriber::GetWobTiMax(double &wobTiMax)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 };
 
+bool CWobTuningStateSubscriber::GetWobInitK(double &wobInitK)
+{
+    wobInitK = m_data.wobInitK;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+bool CWobTuningStateSubscriber::GetWobInitTau(double &wobInitTau)
+{
+    wobInitTau = m_data.wobInitTau;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+bool CWobTuningStateSubscriber::GetWobInitPreFilter(double &wobInitPreFilter)
+{
+    wobInitPreFilter = m_data.wobInitPreFilter;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+bool CWobTuningStateSubscriber::GetWobR1(double &wobR1)
+{
+    wobR1 = m_data.wobR1;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+bool CWobTuningStateSubscriber::GetWobR2(double &wobR2)
+{
+    wobR2 = m_data.wobR2;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
 void CWobTuningStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
@@ -359,6 +389,37 @@ bool CDiffpTuningStateSubscriber::GetDiffpTiMax(double &diffPTiMax)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 };
 
+bool CDiffpTuningStateSubscriber::GetDiffpInitK(double diffpInitK)
+{
+    diffpInitK = m_data.diffpInitK;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+bool CDiffpTuningStateSubscriber::GetDiffpInitTau(double diffpInitTau)
+{
+    diffpInitTau = m_data.diffpInitTau;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+bool CDiffpTuningStateSubscriber::GetDiffpInitPreFilter(double diffpInitPreFilter)
+{
+    diffpInitPreFilter = m_data.diffpInitPreFilter;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+bool CDiffpTuningStateSubscriber::GetDiffpR1(double diffpR1)
+{
+    diffpR1 = m_data.diffpR1;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+bool CDiffpTuningStateSubscriber::GetDiffpR2(double diffpR2)
+{
+    diffpR2 = m_data.diffpR2;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+
 void CDiffpTuningStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
@@ -501,6 +562,37 @@ bool CTorqueTuningStateSubscriber::GetTorqueTiMax(double &torqueTiMax)
     torqueTiMax = m_data.torqueTiMax;
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 };
+
+bool CTorqueTuningStateSubscriber::GetTorqueInitK(double torqueInitK)
+{
+    torqueInitK = m_data.torqueInitK;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+bool CTorqueTuningStateSubscriber::GetTorqueInitTau(double torqueInitTau)
+{
+    torqueInitTau = m_data.torqueInitTau;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+bool CTorqueTuningStateSubscriber::GetTorqueInitPreFilter(double torqueInitPreFilter)
+{
+    torqueInitPreFilter = m_data.torqueInitPreFilter;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+bool CTorqueTuningStateSubscriber::GetTorqueR1(double torqueR1)
+{
+    torqueR1 = m_data.torqueR1;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
+bool CTorqueTuningStateSubscriber::GetTorqueR2(double torqueR2)
+{
+    torqueR2 = m_data.torqueR2;
+    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+};
+
 
 void CTorqueTuningStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {

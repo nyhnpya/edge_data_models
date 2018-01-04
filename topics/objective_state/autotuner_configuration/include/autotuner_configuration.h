@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configuration_985792943_h
-#define autotuner_configuration_985792943_h
+#ifndef autotuner_configuration_985793370_h
+#define autotuner_configuration_985793370_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -303,6 +303,11 @@ namespace AutoTunerConfiguration {
         DDS_Double   diffPKcMax ;
         DDS_Double   diffPTiMin ;
         DDS_Double   diffPTiMax ;
+        DDS_Double   diffpInitK ;
+        DDS_Double   diffpInitTau ;
+        DDS_Double   diffpInitPreFilter ;
+        DDS_Double   diffpR1 ;
+        DDS_Double   diffpR2 ;
 
     };
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
@@ -471,6 +476,11 @@ namespace AutoTunerConfiguration {
         DDS_Double   wobKcMax ;
         DDS_Double   wobTiMin ;
         DDS_Double   wobTiMax ;
+        DDS_Double   wobInitK ;
+        DDS_Double   wobInitTau ;
+        DDS_Double   wobInitPreFilter ;
+        DDS_Double   wobR1 ;
+        DDS_Double   wobR2 ;
 
     };
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
@@ -639,6 +649,11 @@ namespace AutoTunerConfiguration {
         DDS_Double   torqueKcMax ;
         DDS_Double   torqueTiMin ;
         DDS_Double   torqueTiMax ;
+        DDS_Double   torqueInitK ;
+        DDS_Double   torqueInitTau ;
+        DDS_Double   torqueInitPreFilter ;
+        DDS_Double   torqueR1 ;
+        DDS_Double   torqueR2 ;
 
     };
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)

@@ -56,10 +56,6 @@ class CDrillingCalibrationStateSubscriber : public TSubscriber< nec::control::Dr
     bool GetMaxTorqueProportional(double &maxTorqueProportional);
     bool GetMinTorqueIntegral(double &minTorqueIntegral);
     bool GetMaxTorqueIntegral(double &maxTorqueIntegral);
-    bool GetRopMode(bool &ropMode);
-    bool GetWobMode(bool &wobMode);
-    bool GetDifferentialPressureMode(bool &differentialPressureMode);
-    bool GetTorqueMode(bool &torqueMode);
 	
 	// Topic status
 	bool ValidData();

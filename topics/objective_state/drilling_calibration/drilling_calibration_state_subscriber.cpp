@@ -165,34 +165,6 @@ bool CDrillingCalibrationStateSubscriber::GetMaxTorqueIntegral(double &maxTorque
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingCalibrationStateSubscriber::GetRopMode(bool &ropMode)
-{
-    ropMode = (m_data.ropMode == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CDrillingCalibrationStateSubscriber::GetWobMode(bool &wobMode)
-{
-    wobMode = (m_data.wobMode == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CDrillingCalibrationStateSubscriber::GetDifferentialPressureMode(bool &differentialPressureMode)
-{
-    differentialPressureMode = (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CDrillingCalibrationStateSubscriber::GetTorqueMode(bool &torqueMode)
-{
-    torqueMode = (m_data.torqueMode == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
 bool CDrillingCalibrationStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,

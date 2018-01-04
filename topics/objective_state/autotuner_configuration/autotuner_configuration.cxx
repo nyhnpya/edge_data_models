@@ -1292,7 +1292,7 @@ namespace AutoTunerConfiguration {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member DiffpTuningState_g_tc_members[9]=
+        static DDS_TypeCode_Member DiffpTuningState_g_tc_members[14]=
         {
 
             {
@@ -1447,6 +1447,91 @@ namespace AutoTunerConfiguration {
                 DDS_PUBLIC_MEMBER,/* Member visibility */
                 1,
                 NULL/* Ignored */
+            }, 
+            {
+                (char *)"diffpInitK",/* Member name */
+                {
+                    9,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"diffpInitTau",/* Member name */
+                {
+                    10,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"diffpInitPreFilter",/* Member name */
+                {
+                    11,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"diffpR1",/* Member name */
+                {
+                    12,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"diffpR2",/* Member name */
+                {
+                    13,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
             }
         };
 
@@ -1460,7 +1545,7 @@ namespace AutoTunerConfiguration {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                9, /* Number of members */
+                14, /* Number of members */
                 DiffpTuningState_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for DiffpTuningState*/
@@ -1486,6 +1571,16 @@ namespace AutoTunerConfiguration {
         DiffpTuningState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         DiffpTuningState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        DiffpTuningState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        DiffpTuningState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        DiffpTuningState_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        DiffpTuningState_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        DiffpTuningState_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         is_initialized = RTI_TRUE;
 
@@ -1556,6 +1651,26 @@ namespace AutoTunerConfiguration {
         }
 
         if (!RTICdrType_initDouble(&sample->diffPTiMax)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->diffpInitK)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->diffpInitTau)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->diffpInitPreFilter)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->diffpR1)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->diffpR2)) {
             return RTI_FALSE;
         }
 
@@ -1661,6 +1776,26 @@ namespace AutoTunerConfiguration {
             }
             if (!RTICdrType_copyDouble (
                 &dst->diffPTiMax, &src->diffPTiMax)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->diffpInitK, &src->diffpInitK)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->diffpInitTau, &src->diffpInitTau)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->diffpInitPreFilter, &src->diffpInitPreFilter)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->diffpR1, &src->diffpR1)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->diffpR2, &src->diffpR2)) { 
                 return RTI_FALSE;
             }
 
@@ -2126,7 +2261,7 @@ namespace AutoTunerConfiguration {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member WobTuningState_g_tc_members[9]=
+        static DDS_TypeCode_Member WobTuningState_g_tc_members[14]=
         {
 
             {
@@ -2281,6 +2416,91 @@ namespace AutoTunerConfiguration {
                 DDS_PUBLIC_MEMBER,/* Member visibility */
                 1,
                 NULL/* Ignored */
+            }, 
+            {
+                (char *)"wobInitK",/* Member name */
+                {
+                    9,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"wobInitTau",/* Member name */
+                {
+                    10,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"wobInitPreFilter",/* Member name */
+                {
+                    11,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"wobR1",/* Member name */
+                {
+                    12,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"wobR2",/* Member name */
+                {
+                    13,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
             }
         };
 
@@ -2294,7 +2514,7 @@ namespace AutoTunerConfiguration {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                9, /* Number of members */
+                14, /* Number of members */
                 WobTuningState_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for WobTuningState*/
@@ -2320,6 +2540,16 @@ namespace AutoTunerConfiguration {
         WobTuningState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         WobTuningState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        WobTuningState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        WobTuningState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        WobTuningState_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        WobTuningState_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        WobTuningState_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         is_initialized = RTI_TRUE;
 
@@ -2390,6 +2620,26 @@ namespace AutoTunerConfiguration {
         }
 
         if (!RTICdrType_initDouble(&sample->wobTiMax)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->wobInitK)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->wobInitTau)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->wobInitPreFilter)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->wobR1)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->wobR2)) {
             return RTI_FALSE;
         }
 
@@ -2495,6 +2745,26 @@ namespace AutoTunerConfiguration {
             }
             if (!RTICdrType_copyDouble (
                 &dst->wobTiMax, &src->wobTiMax)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->wobInitK, &src->wobInitK)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->wobInitTau, &src->wobInitTau)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->wobInitPreFilter, &src->wobInitPreFilter)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->wobR1, &src->wobR1)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->wobR2, &src->wobR2)) { 
                 return RTI_FALSE;
             }
 
@@ -2960,7 +3230,7 @@ namespace AutoTunerConfiguration {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member TorqueTuningState_g_tc_members[9]=
+        static DDS_TypeCode_Member TorqueTuningState_g_tc_members[14]=
         {
 
             {
@@ -3115,6 +3385,91 @@ namespace AutoTunerConfiguration {
                 DDS_PUBLIC_MEMBER,/* Member visibility */
                 1,
                 NULL/* Ignored */
+            }, 
+            {
+                (char *)"torqueInitK",/* Member name */
+                {
+                    9,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"torqueInitTau",/* Member name */
+                {
+                    10,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"torqueInitPreFilter",/* Member name */
+                {
+                    11,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"torqueR1",/* Member name */
+                {
+                    12,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"torqueR2",/* Member name */
+                {
+                    13,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
             }
         };
 
@@ -3128,7 +3483,7 @@ namespace AutoTunerConfiguration {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                9, /* Number of members */
+                14, /* Number of members */
                 TorqueTuningState_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for TorqueTuningState*/
@@ -3154,6 +3509,16 @@ namespace AutoTunerConfiguration {
         TorqueTuningState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         TorqueTuningState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        TorqueTuningState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        TorqueTuningState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        TorqueTuningState_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        TorqueTuningState_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+        TorqueTuningState_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
         is_initialized = RTI_TRUE;
 
@@ -3224,6 +3589,26 @@ namespace AutoTunerConfiguration {
         }
 
         if (!RTICdrType_initDouble(&sample->torqueTiMax)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->torqueInitK)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->torqueInitTau)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->torqueInitPreFilter)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->torqueR1)) {
+            return RTI_FALSE;
+        }
+
+        if (!RTICdrType_initDouble(&sample->torqueR2)) {
             return RTI_FALSE;
         }
 
@@ -3329,6 +3714,26 @@ namespace AutoTunerConfiguration {
             }
             if (!RTICdrType_copyDouble (
                 &dst->torqueTiMax, &src->torqueTiMax)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->torqueInitK, &src->torqueInitK)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->torqueInitTau, &src->torqueInitTau)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->torqueInitPreFilter, &src->torqueInitPreFilter)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->torqueR1, &src->torqueR1)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->torqueR2, &src->torqueR2)) { 
                 return RTI_FALSE;
             }
 

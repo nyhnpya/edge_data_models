@@ -249,54 +249,6 @@ void CDrillingCalibrationStatePublisher::SetMaxTorqueIntegral(const double maxTo
     }
 }
 
-void CDrillingCalibrationStatePublisher::SetRopMode(const bool ropMode)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->ropMode = ropMode;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set rop mode because of uninitialized sample");
-    }
-}
-
-void CDrillingCalibrationStatePublisher::SetWobMode(const bool wobMode)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->wobMode = wobMode;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set wob mode because of uninitialized sample");
-    }
-}
-
-void CDrillingCalibrationStatePublisher::SetDifferentialPressureMode(const bool differentialPressureMode)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->differentialPressureMode = differentialPressureMode;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set differential pressure mode because of uninitialized sample");
-    }
-}
-
-void CDrillingCalibrationStatePublisher::SetTorqueMode(const bool torqueMode)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->torqueMode = torqueMode;
-    }
-    else
-    {
-        LOG_ERROR("Failed to set torque mode because of uninitialized sample");
-    }
-}
-
 bool CDrillingCalibrationStatePublisher::PublishSample()
 {
     bool bRetVal = false;

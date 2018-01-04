@@ -54,6 +54,11 @@ module AutoTunerConfiguration
         double  diffPKcMax;
         double  diffPTiMin;
         double  diffPTiMax;
+        double  diffpInitK;
+        double  diffpInitTau;
+        double  diffpInitPreFilter;
+        double  diffpR1;
+        double  diffpR2;
     };
     
     //@copy-c-declaration static const char WOB_TUNING_REQUEST[] = "WobTuningRequest";
@@ -82,6 +87,11 @@ module AutoTunerConfiguration
         double  wobKcMax;
         double  wobTiMin;
         double  wobTiMax;
+        double  wobInitK;
+        double  wobInitTau;
+        double  wobInitPreFilter;
+        double  wobR1;
+        double  wobR2;
     };
     
     //@copy-c-declaration static const char TORQUE_TUNING_REQUEST[] = "TorqueTuningRequest";
@@ -110,5 +120,10 @@ module AutoTunerConfiguration
         double  torqueKcMax;
         double  torqueTiMin;
         double  torqueTiMax;
+        double  torqueInitK;
+        double  torqueInitTau;
+        double  torqueInitPreFilter;
+        double  torqueR1;
+        double  torqueR2;
     };
 };
