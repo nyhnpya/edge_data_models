@@ -14,46 +14,34 @@ bool CHoistRequestSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistRequestSubscriber::GetId(DataTypes::Uuid &id)
+DataTypes::Uuid CHoistRequestSubscriber::GetId()
 {
-    //    memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.id;
 }
 
-bool CHoistRequestSubscriber::GetPriority(DataTypes::Priority &priority)
+DataTypes::Priority CHoistRequestSubscriber::GetPriority()
 {
-    priority = m_data.priority;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.priority;
 }
 
-bool CHoistRequestSubscriber::GetTimeNeeded(DataTypes::Time &timeNeeded)
+DataTypes::Time CHoistRequestSubscriber::GetTimeNeeded()
 {
-    timeNeeded = m_data.timeNeeded;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.timeNeeded;
 }
 
-bool CHoistRequestSubscriber::GetDuration(DataTypes::Time &duration)
+DataTypes::Time CHoistRequestSubscriber::GetDuration()
 {
-    duration = m_data.estimatedDuration;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.estimatedDuration;
 }
 
-bool CHoistRequestSubscriber::GetTargetVelocity(meters_per_second_t &targetVelocity)
+meters_per_second_t CHoistRequestSubscriber::GetTargetVelocity()
 {
-    targetVelocity = (meters_per_second_t)m_data.targetVelocity;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meters_per_second_t)m_data.targetVelocity;
 }
 
-bool CHoistRequestSubscriber::GetTargetPosition(meter_t &targetPosition)
+meter_t CHoistRequestSubscriber::GetTargetPosition()
 {
-    targetPosition = (meter_t)m_data.targetPosition;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meter_t)m_data.targetPosition;
 }
 
 bool CHoistRequestSubscriber::Create(int32_t domain)
@@ -90,7 +78,7 @@ void CHoistRequestSubscriber::DataAvailable(const nec::process::HoistRequest &da
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }

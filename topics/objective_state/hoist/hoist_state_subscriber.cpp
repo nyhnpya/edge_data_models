@@ -14,88 +14,64 @@ bool CHoistStateSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistStateSubscriber::GetId(DataTypes::Uuid &id)
+DataTypes::Uuid CHoistStateSubscriber::GetId()
 {
-    //    memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.id;
 }
 
-bool CHoistStateSubscriber::GetStatus(DataTypes::Status &status)
+DataTypes::Status CHoistStateSubscriber::GetStatus()
 {
-    status = m_data.status;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.status;
 }
 
-bool CHoistStateSubscriber::GetActualHookload(newton_t &actualHookload)
+newton_t  CHoistStateSubscriber::GetActualHookload()
 {
-    actualHookload = (newton_t)m_data.actualHookload;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (newton_t)m_data.actualHookload;
 }
 
-bool CHoistStateSubscriber::GetActualVelocity(meters_per_second_t &actualVelocity)
+meters_per_second_t  CHoistStateSubscriber::GetActualVelocity()
 {
-    actualVelocity = (meters_per_second_t)m_data.actualVelocity;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meters_per_second_t)m_data.actualVelocity;
 }
 
-bool CHoistStateSubscriber::GetActualPosition(meter_t &actualPosition)
+meter_t CHoistStateSubscriber::GetActualPosition()
 {
-    actualPosition = (meter_t)m_data.actualPosition;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meter_t)m_data.actualPosition;
 }
 
-bool CHoistStateSubscriber::GetMaxHoistVelocity(meters_per_second_t &maxHoistVelocity)
+meters_per_second_t CHoistStateSubscriber::GetMaxHoistVelocity()
 {
-    maxHoistVelocity = (meters_per_second_t)m_data.maxHoistVelocity;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meters_per_second_t)m_data.maxHoistVelocity;
 }
 
-bool CHoistStateSubscriber::GetMaxLowerVelocity(meters_per_second_t &maxLowerVelocity)
+meters_per_second_t CHoistStateSubscriber::GetMaxLowerVelocity()
 {
-    maxLowerVelocity = (meters_per_second_t)m_data.maxLowerVelocity;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meters_per_second_t)m_data.maxLowerVelocity;
 }
 
-bool CHoistStateSubscriber::GetMaxHoistPosition(meter_t &maxHoistPosition)
+meter_t CHoistStateSubscriber::GetMaxHoistPosition()
 {
-    maxHoistPosition = (meter_t)m_data.maxHoistPosition;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meter_t)m_data.maxHoistPosition;
 }
 
-bool CHoistStateSubscriber::GetMaxLowerPosition(meter_t &maxLowerPosition)
+meter_t  CHoistStateSubscriber::GetMaxLowerPosition()
 {
-    maxLowerPosition = (meter_t)m_data.maxLowerPosition;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meter_t)m_data.maxLowerPosition;
 }
 
-bool CHoistStateSubscriber::GetMaxHookload(newton_t &maxHookload)
+newton_t CHoistStateSubscriber::GetMaxHookload()
 {
-    maxHookload = (newton_t)m_data.maxHookload;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (newton_t)m_data.maxHookload;
 }
 
-bool CHoistStateSubscriber::GetTargetVelocity(meters_per_second_t &targetVelocity)
+meters_per_second_t CHoistStateSubscriber::GetTargetVelocity()
 {
-    targetVelocity = (meters_per_second_t)m_data.targetVelocity;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meters_per_second_t)m_data.targetVelocity;
 }
 
-bool CHoistStateSubscriber::GetTargetPosition(meter_t &targetPosition)
+meter_t CHoistStateSubscriber::GetTargetPosition()
 {
-    targetPosition = (meter_t)m_data.targetPosition;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meter_t)m_data.targetPosition;
 }
 
 bool CHoistStateSubscriber::Create(int32_t domain)
@@ -137,7 +113,7 @@ void CHoistStateSubscriber::DataAvailable(const nec::process::HoistState &data,
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }

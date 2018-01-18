@@ -33,26 +33,19 @@ bool CObjectiveStateSubscriber::ValidSubscription()
 	return m_subscriptionMatched;
 }
 
-bool CObjectiveStateSubscriber::GetId(DataTypes::Uuid &id)
+DataTypes::Uuid CObjectiveStateSubscriber::GetId()
 {
-
-    id = DDS_String_dup(m_data.id);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return DDS_String_dup(m_data.id);
 }
 
-bool CObjectiveStateSubscriber::GetParentId(DataTypes::Uuid &parentId)
+DataTypes::Uuid CObjectiveStateSubscriber::GetParentId()
 {
-    parentId = m_data.parentId;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.parentId;
 }
 
-bool CObjectiveStateSubscriber::GetObjective(DataTypes::Objective &objective)
+DataTypes::Objective CObjectiveStateSubscriber::GetObjective()
 {
-    objective = m_data.objective;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.objective;
 }
 
 bool CObjectiveStateSubscriber::Create(int32_t domain)
@@ -97,7 +90,7 @@ void CObjectiveStateSubscriber::DataAvailable(const process::plan::ObjectiveStat
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }

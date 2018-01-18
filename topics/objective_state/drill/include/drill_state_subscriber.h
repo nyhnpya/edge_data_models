@@ -34,8 +34,6 @@ using namespace units::pressure;
 class CDrillingStateSubscriber : public TSubscriber< nec::process::DrillingState >
 {
  public:
-    typedef std::function<void(const nec::process::DrillingState &data)> OnDataAvailableEvent;
-
     CDrillingStateSubscriber();
     ~CDrillingStateSubscriber();
 
@@ -47,24 +45,24 @@ class CDrillingStateSubscriber : public TSubscriber< nec::process::DrillingState
     void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
 
     // Topic getters
-    bool GetId(DataTypes::Uuid &id);
-    bool GetTimestamp(DataTypes::Time &timestamp);
-    bool GetRopActual(meters_per_second_t &ropActual);
-    bool GetWobActual(newton_t &wobActual);
-    bool GetDifferentialPressureActual(pascal_t &differentialPressureActual);
-    bool GetTorqueActual(newton_meter_t &torqueActual);
-    bool GetRopLimit(meters_per_second_t &ropLimit);
-    bool GetWobLimit(newton_t &wobLimit);
-    bool GetDifferentialPressureLimit(pascal_t &differentialPressureLimit);
-    bool GetTorqueLimit(newton_meter_t &torqueLimit);
-    bool GetRopMode(bool &ropMode);
-    bool GetWobMode(bool &wobMode);
-    bool GetDifferentialPressureMode(bool &differentialPressureMode);
-    bool GetTorqueMode(bool &torqueMode);
-    bool GetRopTarget(meters_per_second_t &ropTarget);
-    bool GetWobTarget(newton_t &wobTarget);
-    bool GetDifferentialPressureTarget(pascal_t &differentialPressureTarget);
-    bool GetTorqueTarget(newton_meter_t &torqueTarget);
+    DataTypes::Uuid GetId();
+    DataTypes::Time GetTimestamp();
+    meters_per_second_t GetRopActual();
+    newton_t GetWobActual();
+    pascal_t GetDifferentialPressureActual();
+    newton_meter_t GetTorqueActual();
+    meters_per_second_t GetRopLimit();
+    newton_t GetWobLimit();
+    pascal_t GetDifferentialPressureLimit();
+    newton_meter_t GetTorqueLimit();
+    bool GetRopMode();
+    bool GetWobMode();
+    bool GetDifferentialPressureMode();
+    bool GetTorqueMode();
+    meters_per_second_t GetRopTarget();
+    newton_t GetWobTarget();
+    pascal_t GetDifferentialPressureTarget();
+    newton_meter_t GetTorqueTarget();
 
     // Topic status
     bool ValidData();

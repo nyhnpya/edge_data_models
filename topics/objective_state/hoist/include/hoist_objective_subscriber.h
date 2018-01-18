@@ -31,8 +31,6 @@ using namespace units::velocity;
 class CHoistObjectiveSubscriber : public TSubscriber< nec::process::HoistObjective >
 {
  public:
-    typedef std::function<void(const nec::process::HoistObjective &data)> OnDataAvailableEvent;
-
     CHoistObjectiveSubscriber();
     ~CHoistObjectiveSubscriber();
 
@@ -43,10 +41,10 @@ class CHoistObjectiveSubscriber : public TSubscriber< nec::process::HoistObjecti
     bool ValidData();
 
     // Topic getters
-    bool GetId(DataTypes::Uuid id);
-    bool GetEstimatedDuration(DataTypes::Time &estimatedDuration);
-    bool GetTargetVelocity(meters_per_second_t &targetVelocity);
-    bool GetTargetPosition(meter_t &targetPosition);
+    DataTypes::Uuid GetId();
+    DataTypes::Time GetEstimatedDuration();
+    meters_per_second_t GetTargetVelocity();
+    meter_t GetTargetPosition();
 
  protected:
     ///Derived Methods

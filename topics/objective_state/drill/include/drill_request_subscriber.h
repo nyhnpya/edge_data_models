@@ -34,8 +34,6 @@ using namespace units::pressure;
 class CDrillingRequestSubscriber : public TSubscriber< nec::process::DrillingRequest >
 {
  public:
-    typedef std::function<void(const nec::process::DrillingRequest &data)> OnDataAvailableEvent;
-
     CDrillingRequestSubscriber();
     ~CDrillingRequestSubscriber();
 
@@ -46,18 +44,18 @@ class CDrillingRequestSubscriber : public TSubscriber< nec::process::DrillingReq
     bool ValidData();
 
     // getters
-    bool GetId(DataTypes::Uuid &id);
-    bool GetPriority(DataTypes::Priority &priority);
-    bool GetTimeNeeded(DataTypes::Time &timeNeeded);
-    bool GetDuration(DataTypes::Time &duration);
-    bool GetRopLimit(meters_per_second_t &ropLimit);
-    bool GetWobLimit(newton_t &wobLimit);
-    bool GetDifferentialPressureLimit(pascal_t &differentialPressureLimit);
-    bool GetTorqueLimit(newton_meter_t &torqueLimit);
-    bool GetRopMode(bool &ropMode);
-    bool GetWobMode(bool &wobMode);
-    bool GetDifferentialPressureMode(bool &differentialPressureMode);
-    bool GetTorqueMode(bool &torqueMode);
+    DataTypes::Uuid GetId();
+    DataTypes::Priority GetPriority();
+    DataTypes::Time GetTimeNeeded();
+    DataTypes::Time GetDuration();
+    meters_per_second_t GetRopLimit();
+    newton_t GetWobLimit();
+    pascal_t GetDifferentialPressureLimit();
+    newton_meter_t GetTorqueLimit();
+    bool GetRopMode();
+    bool GetWobMode();
+    bool GetDifferentialPressureMode();
+    bool GetTorqueMode();
 
  protected:
     void DataAvailable(const nec::process::DrillingRequest &data,

@@ -22,8 +22,6 @@
 class CCirculateObjectiveSubscriber : public TSubscriber< nec::process::CirculateObjective >
 {
  public:
-    typedef std::function<void(const nec::process::CirculateObjective &data)> OnDataAvailableEvent;
-
     CCirculateObjectiveSubscriber();
     ~CCirculateObjectiveSubscriber();
 
@@ -34,9 +32,9 @@ class CCirculateObjectiveSubscriber : public TSubscriber< nec::process::Circulat
     bool ValidData();
 
     // Topic getters
-    bool GetId(DataTypes::Uuid &id);
-    bool GetEstimatedDuration(DataTypes::Time &estimatedDuration);
-    bool GetTargetFlowRate(double &targetFlowRate);
+    DataTypes::Uuid GetId();
+    DataTypes::Time GetEstimatedDuration();
+    double GetTargetFlowRate();
 
  protected:
     void DataAvailable(const nec::process::CirculateObjective &data, 

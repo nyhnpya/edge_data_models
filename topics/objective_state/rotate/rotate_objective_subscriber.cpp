@@ -14,25 +14,19 @@ bool CRotateObjectiveSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CRotateObjectiveSubscriber::GetId(DataTypes::Uuid &id)
+DataTypes::Uuid CRotateObjectiveSubscriber::GetId()
 {
-    //    memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.id;
 }
 
-bool CRotateObjectiveSubscriber::GetEstimatedDuration(DataTypes::Time &estimatedDuration)
+DataTypes::Time CRotateObjectiveSubscriber::GetEstimatedDuration()
 {
-    estimatedDuration = m_data.estimatedDuration;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.estimatedDuration;
 }
 
-bool CRotateObjectiveSubscriber::GetTargetRate(radians_per_second_t &targetRate)
+radians_per_second_t CRotateObjectiveSubscriber::GetTargetRate()
 {
-    targetRate = (radians_per_second_t)m_data.targetRate;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (radians_per_second_t)m_data.targetRate;
 }
 
 bool CRotateObjectiveSubscriber::Create(int32_t domain)
@@ -69,7 +63,7 @@ void CRotateObjectiveSubscriber::DataAvailable(const nec::process::RotateObjecti
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }

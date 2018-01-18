@@ -14,39 +14,29 @@ bool CRotateRequestSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CRotateRequestSubscriber::GetId(DataTypes::Uuid &id)
+DataTypes::Uuid CRotateRequestSubscriber::GetId()
 {
-    //    memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.id;
 }
 
-bool CRotateRequestSubscriber::GetPriority(DataTypes::Priority &priority)
+DataTypes::Priority CRotateRequestSubscriber::GetPriority()
 {
-    priority = m_data.priority;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.priority;
 }
 
-bool CRotateRequestSubscriber::GetTimeNeeded(DataTypes::Time &timeNeeded)
+DataTypes::Time CRotateRequestSubscriber::GetTimeNeeded()
 {
-    timeNeeded = m_data.timeNeeded;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.timeNeeded;
 }
 
-bool CRotateRequestSubscriber::GetDuration(DataTypes::Time &duration)
+DataTypes::Time CRotateRequestSubscriber::GetDuration()
 {
-    duration = m_data.estimatedDuration;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.estimatedDuration;
 }
 
-bool CRotateRequestSubscriber::GetTargetRate(radians_per_second_t &targetRate)
+radians_per_second_t CRotateRequestSubscriber::GetTargetRate()
 {
-    targetRate = (radians_per_second_t)m_data.targetRate;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (radians_per_second_t)m_data.targetRate;
 }
 
 bool CRotateRequestSubscriber::Create(int32_t domain)
@@ -83,7 +73,7 @@ void CRotateRequestSubscriber::DataAvailable(const nec::process::RotateRequest &
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }

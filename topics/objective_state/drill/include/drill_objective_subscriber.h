@@ -23,8 +23,6 @@
 class CDrillingObjectiveSubscriber : public TSubscriber< nec::process::DrillingObjective >
 {
  public:
-    typedef std::function<void(const nec::process::DrillingObjective &data)> OnDataAvailableEvent;
-
     CDrillingObjectiveSubscriber();
     ~CDrillingObjectiveSubscriber();
 
@@ -35,16 +33,16 @@ class CDrillingObjectiveSubscriber : public TSubscriber< nec::process::DrillingO
     bool ValidData();
 
     // getters
-    bool GetId(DataTypes::Uuid &id);
-    bool GetEstimatedDuration(DataTypes::Time &estimatedDuration);
-    bool GetRopLimit(double &ropLimit);
-    bool GetWobLimit(double &wobLimit);
-    bool GetDifferentialPressureLimit(double &differentialPressureLimit);
-    bool GetTorqueLimit(double &torqueLimit);
-    bool GetRopMode(bool &ropMode);
-    bool GetWobMode(bool &wobMode);
-    bool GetDifferentialPressureMode(bool &differentialPressureMode);
-    bool GetTorqueMode(bool &torqueMode);
+    DataTypes::Uuid GetId();
+    DataTypes::Time GetEstimatedDuration();
+    double GetRopLimit();
+    double GetWobLimit();
+    double GetDifferentialPressureLimit();
+    double GetTorqueLimit();
+    bool GetRopMode();
+    bool GetWobMode();
+    bool GetDifferentialPressureMode();
+    bool GetTorqueMode();
 
  protected:
     void DataAvailable(const nec::process::DrillingObjective &data,

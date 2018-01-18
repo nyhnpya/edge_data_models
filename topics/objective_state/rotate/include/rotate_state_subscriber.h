@@ -30,8 +30,6 @@ using namespace units::angular_velocity;
 class CRotateStateSubscriber : public TSubscriber< nec::process::RotateState>
 {
 public:
-    typedef std::function<void(const nec::process::RotateState &data)> OnDataAvailableEvent;
-
     CRotateStateSubscriber();
     virtual ~CRotateStateSubscriber();
 
@@ -43,12 +41,12 @@ public:
     bool ValidData();
 
     // Topic getters
-    bool GetId(DataTypes::Uuid &id);
-    bool GetStatus(DataTypes::Status &status);
-    bool GetActualRate(radians_per_second_t &actualRate);
-    bool GetMinRate(radians_per_second_t &minRate);
-    bool GetMaxRate(radians_per_second_t &maxRate);
-    bool GetTargetRate(radians_per_second_t &targetRate);
+    DataTypes::Uuid GetId();
+    DataTypes::Status GetStatus();
+    radians_per_second_t GetActualRate();
+    radians_per_second_t GetMinRate();
+    radians_per_second_t GetMaxRate();
+    radians_per_second_t GetTargetRate();
 
 protected:
     ///Derived Methods

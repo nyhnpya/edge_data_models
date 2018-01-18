@@ -14,67 +14,49 @@ bool CCirculateStateSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CCirculateStateSubscriber::GetId(DataTypes::Uuid &id)
+DataTypes::Uuid CCirculateStateSubscriber::GetId()
 {
-    //    memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.id;
 }
 
-bool CCirculateStateSubscriber::GetStatus(DataTypes::Status &status)
+DataTypes::Status CCirculateStateSubscriber::GetStatus()
 {
-    status = m_data.status;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.status;
 }
 
-bool CCirculateStateSubscriber::GetActualFlowRate(double &actualFlowRate)
+double CCirculateStateSubscriber::GetActualFlowRate()
 {
-    actualFlowRate = m_data.actualFlowRate;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.actualFlowRate;
 }
 
-bool CCirculateStateSubscriber::GetActualStandpipePressure(pascal_t &actualStandpipePressure)
+pascal_t CCirculateStateSubscriber::GetActualStandpipePressure()
 {
-    actualStandpipePressure = ((pascal_t)m_data.actualStandpipePressure / 1000);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return ((pascal_t)m_data.actualStandpipePressure / 1000);
 }
 
-bool CCirculateStateSubscriber::GetMinFlowRate(double &minFlowRate)
+double CCirculateStateSubscriber::GetMinFlowRate()
 {
-    minFlowRate = m_data.minFlowRate;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.minFlowRate;
 }
 
-bool CCirculateStateSubscriber::GetMaxFlowRate(double &maxFlowRate)
+double CCirculateStateSubscriber::GetMaxFlowRate()
 {
-    maxFlowRate = m_data.maxFlowRate;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.maxFlowRate;
 }
 
-bool CCirculateStateSubscriber::GetMinStandpipePressure(pascal_t &minStandpipePressure)
+pascal_t CCirculateStateSubscriber::GetMinStandpipePressure()
 {
-    minStandpipePressure = ((pascal_t)m_data.minStandpipePressure / 1000);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return ((pascal_t)m_data.minStandpipePressure / 1000);
 }
 
-bool CCirculateStateSubscriber::GetMaxStandpipePressure(pascal_t &maxStandpipePressure)
+pascal_t CCirculateStateSubscriber::GetMaxStandpipePressure()
 {
-    maxStandpipePressure = ((pascal_t)m_data.maxStandpipePressure / 1000);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return ((pascal_t)m_data.maxStandpipePressure / 1000);
 }
 
-bool CCirculateStateSubscriber::GetTargetFlowRate(double &targetFlowRate)
+double CCirculateStateSubscriber::GetTargetFlowRate()
 {
-    targetFlowRate = m_data.targetFlowRate;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.targetFlowRate;
 }
 
 bool CCirculateStateSubscriber::Create(int32_t domain)
@@ -116,7 +98,7 @@ void CCirculateStateSubscriber::DataAvailable(const nec::process::CirculateState
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }

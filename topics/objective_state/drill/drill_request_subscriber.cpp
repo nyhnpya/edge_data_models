@@ -14,88 +14,64 @@ bool CDrillingRequestSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingRequestSubscriber::GetId(DataTypes::Uuid &id)
+DataTypes::Uuid CDrillingRequestSubscriber::GetId()
 {
-    //    memcpy(id, m_data.id, 16);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.id;
 }
 
-bool CDrillingRequestSubscriber::GetPriority(DataTypes::Priority &priority)
+DataTypes::Priority CDrillingRequestSubscriber::GetPriority()
 {
-    priority = m_data.priority;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.priority;
 }
 
-bool CDrillingRequestSubscriber::GetTimeNeeded(DataTypes::Time &timeNeeded)
+DataTypes::Time CDrillingRequestSubscriber::GetTimeNeeded()
 {
-    timeNeeded = m_data.timeNeeded;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.timeNeeded;
 }
 
-bool CDrillingRequestSubscriber::GetDuration(DataTypes::Time &duration)
+DataTypes::Time CDrillingRequestSubscriber::GetDuration()
 {
-    duration = m_data.duration;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.duration;
 }
 
-bool CDrillingRequestSubscriber::GetRopLimit(meters_per_second_t &ropLimit)
+meters_per_second_t CDrillingRequestSubscriber::GetRopLimit()
 {
-    ropLimit = (meters_per_second_t)m_data.ropLimit;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meters_per_second_t)m_data.ropLimit;
 }
 
-bool CDrillingRequestSubscriber::GetWobLimit(newton_t &wobLimit)
+newton_t CDrillingRequestSubscriber::GetWobLimit()
 {
-    wobLimit = (newton_t)m_data.wobLimit;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (newton_t)m_data.wobLimit;
 }
 
-bool CDrillingRequestSubscriber::GetDifferentialPressureLimit(pascal_t &differentialPressureLimit)
+pascal_t CDrillingRequestSubscriber::GetDifferentialPressureLimit()
 {
-    differentialPressureLimit = (pascal_t)m_data.differentialPressureLimit;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (pascal_t)m_data.differentialPressureLimit;
 }
 
-bool CDrillingRequestSubscriber::GetTorqueLimit(newton_meter_t &torqueLimit)
+newton_meter_t CDrillingRequestSubscriber::GetTorqueLimit()
 {
-    torqueLimit = (newton_meter_t)m_data.torqueLimit;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (newton_meter_t)m_data.torqueLimit;
 }
 
-bool CDrillingRequestSubscriber::GetRopMode(bool &ropMode)
+bool CDrillingRequestSubscriber::GetRopMode()
 {
-    ropMode = (m_data.ropMode == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (m_data.ropMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingRequestSubscriber::GetWobMode(bool &wobMode)
+bool CDrillingRequestSubscriber::GetWobMode()
 {
-    wobMode = (m_data.wobMode == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (m_data.wobMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingRequestSubscriber::GetDifferentialPressureMode(bool &differentialPressureMode)
+bool CDrillingRequestSubscriber::GetDifferentialPressureMode()
 {
-    differentialPressureMode = (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingRequestSubscriber::GetTorqueMode(bool &torqueMode)
+bool CDrillingRequestSubscriber::GetTorqueMode()
 {
-    torqueMode = (m_data.torqueMode == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (m_data.torqueMode == DDS_BOOLEAN_TRUE);
 }
 
 void CDrillingRequestSubscriber::OnDataAvailable(OnDataAvailableEvent event)
@@ -140,7 +116,7 @@ void CDrillingRequestSubscriber::DataAvailable(const nec::process::DrillingReque
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }

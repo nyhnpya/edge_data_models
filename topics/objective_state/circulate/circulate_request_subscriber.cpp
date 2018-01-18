@@ -14,39 +14,29 @@ bool CCirculateRequestSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CCirculateRequestSubscriber::GetId(DataTypes::Uuid &id)
+DataTypes::Uuid CCirculateRequestSubscriber::GetId()
 {
-    //    memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.id;
 }
 
-bool CCirculateRequestSubscriber::GetPriority(DataTypes::Priority &priority)
+DataTypes::Priority CCirculateRequestSubscriber::GetPriority()
 {
-    priority = m_data.priority;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.priority;
 }
 
-bool CCirculateRequestSubscriber::GetTimeNeeded(DataTypes::Time &timeNeeded)
+DataTypes::Time CCirculateRequestSubscriber::GetTimeNeeded()
 {
-    timeNeeded = m_data.timeNeeded;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.timeNeeded;
 }
 
-bool CCirculateRequestSubscriber::GetDuration(DataTypes::Time &duration)
+DataTypes::Time CCirculateRequestSubscriber::GetDuration()
 {
-    duration = m_data.estimatedDuration;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.estimatedDuration;
 }
 
-bool CCirculateRequestSubscriber::GetTargetFlowRate(double &targetFlowRate)
+double CCirculateRequestSubscriber::GetTargetFlowRate()
 {
-    targetFlowRate = m_data.targetFlowRate;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.targetFlowRate;
 }
 
 bool CCirculateRequestSubscriber::Create(int32_t domain)
@@ -83,7 +73,7 @@ void CCirculateRequestSubscriber::DataAvailable(const nec::process::CirculateReq
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }

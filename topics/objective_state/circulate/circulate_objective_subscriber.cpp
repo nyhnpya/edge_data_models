@@ -14,25 +14,19 @@ bool CCirculateObjectiveSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CCirculateObjectiveSubscriber::GetId(DataTypes::Uuid &id)
+DataTypes::Uuid CCirculateObjectiveSubscriber::GetId()
 {
-    //    memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.id;
 }
 
-bool CCirculateObjectiveSubscriber::GetEstimatedDuration(DataTypes::Time &estimatedDuration)
+DataTypes::Time CCirculateObjectiveSubscriber::GetEstimatedDuration()
 {
-    estimatedDuration = m_data.estimatedDuration;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.estimatedDuration;
 }
 
-bool CCirculateObjectiveSubscriber::GetTargetFlowRate(double &targetFlowRate)
+double CCirculateObjectiveSubscriber::GetTargetFlowRate()
 {
-    targetFlowRate = m_data.targetFlowRate;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.targetFlowRate;
 }
 
 bool CCirculateObjectiveSubscriber::Create(int32_t domain)
@@ -69,7 +63,7 @@ void CCirculateObjectiveSubscriber::DataAvailable(const nec::process::CirculateO
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }

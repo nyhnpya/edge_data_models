@@ -29,8 +29,6 @@ using namespace units::angular_velocity;
 class CRotateRequestSubscriber : public TSubscriber< nec::process::RotateRequest >
 {
  public:
-    typedef std::function<void(const nec::process::RotateRequest &data)> OnDataAvailableEvent;
-
     CRotateRequestSubscriber();
     ~CRotateRequestSubscriber();
 
@@ -41,11 +39,11 @@ class CRotateRequestSubscriber : public TSubscriber< nec::process::RotateRequest
     bool ValidData();
 
     // getters
-    bool GetId(DataTypes::Uuid &id);
-    bool GetPriority(DataTypes::Priority &priority);
-    bool GetTimeNeeded(DataTypes::Time &timeNeeded);
-    bool GetDuration(DataTypes::Time &duration);
-    bool GetTargetRate(radians_per_second_t &targetRate);
+    DataTypes::Uuid GetId();
+    DataTypes::Priority GetPriority();
+    DataTypes::Time GetTimeNeeded();
+    DataTypes::Time GetDuration();
+    radians_per_second_t GetTargetRate();
 
  protected:
     ///Derived Methods

@@ -14,46 +14,34 @@ bool CRotateStateSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CRotateStateSubscriber::GetId(DataTypes::Uuid &id)
+DataTypes::Uuid CRotateStateSubscriber::GetId()
 {
-    //    memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.id;
 }
 
-bool CRotateStateSubscriber::GetStatus(DataTypes::Status &status)
+DataTypes::Status CRotateStateSubscriber::GetStatus()
 {
-    status = m_data.status;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.status;
 }
 
-bool CRotateStateSubscriber::GetActualRate(radians_per_second_t &actualRate)
+radians_per_second_t CRotateStateSubscriber::GetActualRate()
 {
-    actualRate = (radians_per_second_t)m_data.actualRate;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (radians_per_second_t)m_data.actualRate;
 }
 
-bool CRotateStateSubscriber::GetMinRate(radians_per_second_t &minRate)
+radians_per_second_t CRotateStateSubscriber::GetMinRate()
 {
-    minRate = (radians_per_second_t)m_data.minRate;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (radians_per_second_t)m_data.minRate;
 }
 
-bool CRotateStateSubscriber::GetMaxRate(radians_per_second_t &maxRate)
+radians_per_second_t CRotateStateSubscriber::GetMaxRate()
 {
-    maxRate = (radians_per_second_t)m_data.maxRate;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (radians_per_second_t)m_data.maxRate;
 }
 
-bool CRotateStateSubscriber::GetTargetRate(radians_per_second_t &targetRate)
+radians_per_second_t CRotateStateSubscriber::GetTargetRate()
 {
-    targetRate = (radians_per_second_t)m_data.targetRate;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (radians_per_second_t)m_data.targetRate;
 }
 
 bool CRotateStateSubscriber::Create(int32_t domain)
@@ -95,7 +83,7 @@ void CRotateStateSubscriber::DataAvailable(const nec::process::RotateState &data
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }

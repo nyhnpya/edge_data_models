@@ -30,8 +30,6 @@ using namespace units::pressure;
 class CCirculateRequestSubscriber : public TSubscriber< nec::process::CirculateRequest >
 {
  public:
-    typedef std::function<void(const nec::process::CirculateRequest &data)> OnDataAvailableEvent;
-
     CCirculateRequestSubscriber();
     ~CCirculateRequestSubscriber();
 
@@ -42,11 +40,11 @@ class CCirculateRequestSubscriber : public TSubscriber< nec::process::CirculateR
     bool ValidData();
 
     // Topic getters
-    bool GetId(DataTypes::Uuid &id);
-    bool GetPriority(DataTypes::Priority &priority);
-    bool GetTimeNeeded(DataTypes::Time &timeNeeded);
-    bool GetDuration(DataTypes::Time &duration);
-    bool GetTargetFlowRate(double &targetFlowRate);
+    DataTypes::Uuid GetId();
+    DataTypes::Priority GetPriority();
+    DataTypes::Time GetTimeNeeded();
+    DataTypes::Time GetDuration();
+    double GetTargetFlowRate();
 
  protected:
     void DataAvailable(const nec::process::CirculateRequest &data, 

@@ -31,8 +31,6 @@ using namespace units::pressure;
 class CCirculateStateSubscriber : public TSubscriber< nec::process::CirculateState>
 {
 public:
-    typedef std::function<void(const nec::process::CirculateState &data)> OnDataAvailableEvent;
-
     CCirculateStateSubscriber();
     virtual ~CCirculateStateSubscriber();
 
@@ -44,15 +42,15 @@ public:
     bool ValidData();
 
     // Topic getters
-    bool GetId(DataTypes::Uuid &id);
-    bool GetStatus(DataTypes::Status &status);
-    bool GetActualFlowRate(double &actualFlowRate);
-    bool GetActualStandpipePressure(pascal_t &actualStandpipePressure);
-    bool GetMinFlowRate(double &minRateFlowRate);
-    bool GetMaxFlowRate(double &maxRateFlowRate);
-    bool GetMinStandpipePressure(pascal_t &minStandpipePressure);
-    bool GetMaxStandpipePressure(pascal_t &maxStandpipePressure);
-    bool GetTargetFlowRate(double &targetFlowRate);
+    DataTypes::Uuid GetId();
+    DataTypes::Status GetStatus();
+    double GetActualFlowRate();
+    pascal_t GetActualStandpipePressure();
+    double GetMinFlowRate();
+    double GetMaxFlowRate();
+    pascal_t GetMinStandpipePressure();
+    pascal_t GetMaxStandpipePressure();
+    double GetTargetFlowRate();
 
 protected:
     ///Derived Methods

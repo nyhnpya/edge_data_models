@@ -24,8 +24,6 @@
 class CObjectiveStateSubscriber : public TSubscriber< process::plan::ObjectiveState>
 {
 public:
-    typedef std::function<void(const process::plan::ObjectiveState &data)> OnDataAvailableEvent;
-
     CObjectiveStateSubscriber();
     virtual ~CObjectiveStateSubscriber();
 
@@ -37,9 +35,9 @@ public:
     void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
 
     // Topic getters
-    bool GetId(DataTypes::Uuid &id);
-    bool GetParentId(DataTypes::Uuid &parentId);
-    bool GetObjective(DataTypes::Objective &objective);
+    DataTypes::Uuid  GetId();
+    DataTypes::Uuid  GetParentId();
+    DataTypes::Objective GetObjective();
 	
     // Topic status
     bool ValidData();

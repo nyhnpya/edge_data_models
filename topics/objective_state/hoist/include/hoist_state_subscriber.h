@@ -32,8 +32,6 @@ using namespace units::velocity;
 class CHoistStateSubscriber : public TSubscriber< nec::process::HoistState >
 {
  public:
-    typedef std::function<void(const nec::process::HoistState &data)> OnDataAvailableEvent;
-
     CHoistStateSubscriber();
     ~CHoistStateSubscriber();
 
@@ -45,18 +43,18 @@ class CHoistStateSubscriber : public TSubscriber< nec::process::HoistState >
     bool ValidData();
 
     // Topic getters
-    bool GetId(DataTypes::Uuid &id);
-    bool GetStatus(DataTypes::Status &status);
-    bool GetActualHookload(newton_t &actualHookload);
-    bool GetActualVelocity(meters_per_second_t &actualVelocity);
-    bool GetActualPosition(meter_t &actualPosition);
-    bool GetMaxHoistVelocity(meters_per_second_t &maxHoistVelocity);
-    bool GetMaxLowerVelocity(meters_per_second_t  &maxLowerVelocity);
-    bool GetMaxHoistPosition(meter_t &maxHoistPosition);
-    bool GetMaxLowerPosition(meter_t &maxLowerPosition);
-    bool GetMaxHookload(newton_t &maxHookload);
-    bool GetTargetVelocity(meters_per_second_t &targetVelocity);
-    bool GetTargetPosition(meter_t &targetPosition);
+    DataTypes::Uuid GetId();
+    DataTypes::Status GetStatus();
+    newton_t GetActualHookload();
+    meters_per_second_t GetActualVelocity();
+    meter_t GetActualPosition();
+    meters_per_second_t GetMaxHoistVelocity();
+    meters_per_second_t GetMaxLowerVelocity();
+    meter_t GetMaxHoistPosition();
+    meter_t GetMaxLowerPosition();
+    newton_t GetMaxHookload();
+    meters_per_second_t GetTargetVelocity();
+    meter_t GetTargetPosition();
 
  protected:
     ///Derived Methods
@@ -67,11 +65,11 @@ class CHoistStateSubscriber : public TSubscriber< nec::process::HoistState >
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
  private:
-    nec::process::HoistState m_data;
-    DDS::SampleInfo          m_sampleInfo;
+    nec::process::HoistState     m_data;
+    DDS::SampleInfo              m_sampleInfo;
     DDS::LivelinessChangedStatus m_livelinessStatus;
-    OnDataAvailableEvent     m_pOnDataAvailable;
-    OnDataDisposedEvent      m_pOnDataDisposed;
+    OnDataAvailableEvent         m_pOnDataAvailable;
+    OnDataDisposedEvent          m_pOnDataDisposed;
     OnLivelinessChangedEvent     m_pOnLivelinessChanged;
     OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
 };

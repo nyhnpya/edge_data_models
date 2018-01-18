@@ -14,32 +14,24 @@ bool CHoistObjectiveSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CHoistObjectiveSubscriber::GetId(DataTypes::Uuid id)
+DataTypes::Uuid CHoistObjectiveSubscriber::GetId()
 {
-    //    memcpy(id, m_data.id, sizeof(DataTypes::Uuid));
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.id;
 }
 
-bool CHoistObjectiveSubscriber::GetEstimatedDuration(DataTypes::Time &estimatedDuration)
+DataTypes::Time CHoistObjectiveSubscriber::GetEstimatedDuration()
 {
-    estimatedDuration = m_data.estimatedDuration;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.estimatedDuration;
 }
 
-bool CHoistObjectiveSubscriber::GetTargetVelocity(meters_per_second_t &targetVelocity)
+meters_per_second_t CHoistObjectiveSubscriber::GetTargetVelocity()
 {
-    targetVelocity = (meters_per_second_t)m_data.targetVelocity;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meters_per_second_t)m_data.targetVelocity;
 }
 
-bool CHoistObjectiveSubscriber::GetTargetPosition(meter_t &targetPosition)
+meter_t CHoistObjectiveSubscriber::GetTargetPosition()
 {
-    targetPosition = (meter_t)m_data.targetPosition;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meter_t)m_data.targetPosition;
 }
 
 bool CHoistObjectiveSubscriber::Create(int32_t domain)
@@ -76,7 +68,7 @@ void CHoistObjectiveSubscriber::DataAvailable(const nec::process::HoistObjective
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }

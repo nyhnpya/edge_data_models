@@ -24,131 +24,94 @@ bool CDrillingStateSubscriber::ValidSubscription()
 	return m_subscriptionMatched;
 }
 
-bool CDrillingStateSubscriber::GetId(DataTypes::Uuid &id)
+DataTypes::Uuid CDrillingStateSubscriber::GetId()
 {
-    //    memcpy(id, m_data.id, 16);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.id;
 }
 
-bool CDrillingStateSubscriber::GetTimestamp(DataTypes::Time &timestamp)
+DataTypes::Time CDrillingStateSubscriber::GetTimestamp()
 {
-    timestamp.sec = m_data.timestamp.sec;
-    timestamp.nanosec = m_data.timestamp.nanosec;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.timestamp;
 }
 
-bool CDrillingStateSubscriber::GetRopActual(meters_per_second_t &ropActual)
+meters_per_second_t CDrillingStateSubscriber::GetRopActual()
 {
-    ropActual = (meters_per_second_t)m_data.ropActual;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meters_per_second_t)m_data.ropActual;
 }
 
-bool CDrillingStateSubscriber::GetWobActual(newton_t &wobActual)
+newton_t CDrillingStateSubscriber::GetWobActual()
 {
-    wobActual = (newton_t)m_data.wobActual;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (newton_t)m_data.wobActual;
 }
 
-bool CDrillingStateSubscriber::GetDifferentialPressureActual(pascal_t &differentialPressureActual)
+pascal_t CDrillingStateSubscriber::GetDifferentialPressureActual()
 {
-    differentialPressureActual = (pascal_t)m_data.differentialPressureActual;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (pascal_t)m_data.differentialPressureActual;
 }
 
-bool CDrillingStateSubscriber::GetTorqueActual(newton_meter_t &torqueActual)
+newton_meter_t CDrillingStateSubscriber::GetTorqueActual()
 {
-    torqueActual = (newton_meter_t)m_data.torqueActual;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (newton_meter_t)m_data.torqueActual;
 }
 
-bool CDrillingStateSubscriber::GetRopLimit(meters_per_second_t &ropLimit)
+meters_per_second_t CDrillingStateSubscriber::GetRopLimit()
 {
-    ropLimit = (meters_per_second_t)m_data.ropLimit;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meters_per_second_t)m_data.ropLimit;
 }
 
-bool CDrillingStateSubscriber::GetWobLimit(newton_t &wobLimit)
+newton_t CDrillingStateSubscriber::GetWobLimit()
 {
-    wobLimit = (newton_t)m_data.wobLimit;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (newton_t)m_data.wobLimit;
 }
 
-bool CDrillingStateSubscriber::GetDifferentialPressureLimit(pascal_t &differentialPressureLimit)
+pascal_t CDrillingStateSubscriber::GetDifferentialPressureLimit()
 {
-    differentialPressureLimit = (pascal_t)m_data.differentialPressureLimit;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (pascal_t)m_data.differentialPressureLimit;
 }
 
-bool CDrillingStateSubscriber::GetTorqueLimit(newton_meter_t &torqueLimit)
+newton_meter_t CDrillingStateSubscriber::GetTorqueLimit()
 {
-    torqueLimit = (newton_meter_t)m_data.torqueLimit;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (newton_meter_t)m_data.torqueLimit;
 }
 
-bool CDrillingStateSubscriber::GetRopMode(bool &ropMode)
+bool CDrillingStateSubscriber::GetRopMode()
 {
-	ropMode = (m_data.ropMode == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+	return (m_data.ropMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetWobMode(bool &wobMode)
+bool CDrillingStateSubscriber::GetWobMode()
 {
-    wobMode = (m_data.wobMode == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (m_data.wobMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetDifferentialPressureMode(bool &differentialPressureMode)
+bool CDrillingStateSubscriber::GetDifferentialPressureMode()
 {
-    differentialPressureMode = (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetTorqueMode(bool &torqueMode)
+bool CDrillingStateSubscriber::GetTorqueMode()
 {
-    torqueMode = (m_data.torqueMode == DDS_BOOLEAN_TRUE);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (m_data.torqueMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetRopTarget(meters_per_second_t &ropTarget)
+meters_per_second_t CDrillingStateSubscriber::GetRopTarget()
 {
-  ropTarget = (meters_per_second_t)m_data.ropTarget;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (meters_per_second_t)m_data.ropTarget;
 }
 
-bool CDrillingStateSubscriber::GetWobTarget(newton_t &wobTarget)
+newton_t CDrillingStateSubscriber::GetWobTarget()
 {
-    wobTarget = (newton_t)m_data.wobTarget;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (newton_t)m_data.wobTarget;
 }
 
-bool CDrillingStateSubscriber::GetDifferentialPressureTarget(pascal_t &differentialPressureTarget)
+pascal_t CDrillingStateSubscriber::GetDifferentialPressureTarget()
 {
-    differentialPressureTarget = (pascal_t)m_data.differentialPressureTarget;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (pascal_t)m_data.differentialPressureTarget;
 }
 
-bool CDrillingStateSubscriber::GetTorqueTarget(newton_meter_t &torqueTarget)
+newton_meter_t CDrillingStateSubscriber::GetTorqueTarget()
 {
-    torqueTarget = (newton_meter_t)m_data.torqueTarget;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return (newton_meter_t)m_data.torqueTarget;
 }
 
 bool CDrillingStateSubscriber::Create(int32_t domain)
@@ -190,7 +153,7 @@ void CDrillingStateSubscriber::DataAvailable(const nec::process::DrillingState &
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }
