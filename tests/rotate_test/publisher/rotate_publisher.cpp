@@ -7,11 +7,11 @@
 #include <string.h>
 #include <thread>
 #include "cmdparser.h"
-#include "drill_request_publisher.h"
+#include "rotate_request_publisher.h"
 
 bool gTerminate = false;
 
-CDrillingRequestPublisher *gpStatePublisher = nullptr;
+CRotateRequestPublisher *gpRequestPublisher = nullptr;
 std::thread threadId;
 
 #ifdef _LINUX
@@ -69,49 +69,15 @@ void register_signal_handler()
 }
 #endif
 
-//    void SetRopMode(const bool ropMode);
-//    void SetWobMode(const bool wobMode);
-//    void SetDifferentialPressureMode(const bool differentialPressureMode);
-//    void SetTorqueMode(const bool torqueMode);
-void set_rop()
+void set_rate()
 {
-    feet_per_hour_t ropLimit;
+    radians_per_second_t targetRate;
     double input;
 
     std::cout << "ROP Limit: ";
     std::cin >> input;
-    ropLimit = (feet_per_hour_t)input;
-    gpStatePublisher->SetRopLimit((meters_per_second_t)ropLimit);
-}
-
-void set_wob()
-{
-    double input;
-
-    std::cout << "WOB Limit: ";
-    std::cin >> input;
-    pound_t wobLimit = (pound_t)(input * 1000);
-    gpStatePublisher->SetWobLimit((newton_t)wobLimit);
-}
-
-void set_diffp()
-{
-    double input;
-
-    std::cout << "DiffP Limit: ";
-    std::cin >> input;
-    pounds_per_square_inch_t diffpLimit = (pounds_per_square_inch_t)input;
-    gpStatePublisher->SetDifferentialPressureLimit((pascal_t)diffpLimit);
-}
-
-void set_torque()
-{
-    double input;
-
-    std::cout << "Torque Limit: ";
-    std::cin >> input;
-    foot_pound_t torqueLimit = (foot_pound_t)(input * 1000);
-    gpStatePublisher->SetTorqueLimit((newton_meter_t)torqueLimit);
+    targetRate = (radians_per_second_t)input;
+    gpRequestPublisher->SetTargetRate(targetRate);
 }
 
 void top_level_menu()
@@ -123,7 +89,7 @@ void top_level_menu()
         std::cout << std::endl;
         std::cout << "Objective State Publisher" << std::endl;
         std::cout << "------------------------" << std::endl;
-        std::cout << "1. Publish drilling parameters" << std::endl;
+        std::cout << "1. Publish rotate parameters" << std::endl;
         std::cout << "q. exit" << std::endl;
         std::cout << "option: ";
         std::cin >> choice;
@@ -140,15 +106,8 @@ void top_level_menu()
                 }
                 break;
             case '1':
-                set_rop();
-                set_wob();
-                set_diffp();
-                set_torque();
-                gpStatePublisher->SetRopMode(true);
-                gpStatePublisher->SetWobMode(true);
-                gpStatePublisher->SetDifferentialPressureMode(true);
-                gpStatePublisher->SetTorqueMode(true);
-                gpStatePublisher->PublishSample();
+                set_rate();
+                gpRequestPublisher->PublishSample();
                 break;
         }
     } while (gTerminate == false);
@@ -171,11 +130,11 @@ int32_t main(int32_t argc, char **argv)
     CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
     CDomainParticipant::Instance()->Create(domain);
 
-    gpStatePublisher = new CDrillingRequestPublisher();
+    gpRequestPublisher = new CRotateRequestPublisher();
 
-    if (gpStatePublisher->Create(domain) == true)
+    if (gpRequestPublisher->Create(domain) == true)
     {
-        gpStatePublisher->CreateInstance();
+        gpRequestPublisher->CreateInstance();
         top_level_menu();
     }
 
@@ -186,5 +145,5 @@ int32_t main(int32_t argc, char **argv)
         threadId.join();
     }
 
-    gpStatePublisher->Destroy();
+    gpRequestPublisher->Destroy();
 }

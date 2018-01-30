@@ -20,7 +20,7 @@ TARG_BUILD_MINOR = 0
 TARG_BUILD_VERSION = 2
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = executable
-TARGET_NAME = drilling_publisher
+TARGET_NAME = rotate_publisher
 
 ###############################################################################
 # compilation flags
@@ -30,15 +30,15 @@ TARG_INCLUDES += -I /usr/local/include/dds_base
 TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -isystem/usr/local/include/edge_third_party
 TARG_INCLUDES += -I /usr/local/include/base_data_types
-TARG_INCLUDES += -I /usr/local/include/drill_objective_state
+TARG_INCLUDES += -I /usr/local/include/rotate_objective_state
 
 # Sources
-TARG_SOURCES = drilling_publisher.cpp
+TARG_SOURCES = rotate_publisher.cpp
 
 # Libraries
 TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
 TARG_LIBS += -L /usr/local/lib 
-TARG_LIBS += -ldrill_objective_state -lbase_data_types -ldds_base -luuid
+TARG_LIBS += -lrotate_objective_state -lbase_data_types -ldds_base -luuid
 
 TARG_LIBS += -llogger -llog4cplus -luuid 
 TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/librtidlcppzd.a $(NDDSHOME)/lib/$(NDDSARCH)/librtidlczd.a 

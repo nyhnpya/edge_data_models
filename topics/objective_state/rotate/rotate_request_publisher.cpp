@@ -60,7 +60,7 @@ bool CRotateRequestPublisher::PublishSample()
 bool CRotateRequestPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              nec::process::ROTATE_STATE,
+                              nec::process::ROTATE_REQUEST,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }
