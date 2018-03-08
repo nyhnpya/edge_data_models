@@ -4,7 +4,7 @@ module nec
 {
     module control
     {
-         enum SlipsState  
+         enum SlipsStateEnum 
         {
             Set,       ///< Slip State is Set in hole.
             NotSet     ///< Slip State is Not Set in hole.
@@ -18,7 +18,7 @@ module nec
             DataTypes::Priority priority;    // priority of the request
             DataTypes::Time     timeNeeded;  // time requester needs the resource
             DataTypes::Time     duration;    // duration requester needs the resource
-            SlipsState          targetState;  // requested target state
+            SlipsStateEnum      targetState;  // requested target state
         };
 
         //@copy-c-declaration static const char SLIPS_OBJECTIVE[] = "SlipsObjective";
@@ -27,7 +27,7 @@ module nec
         {
             DataTypes::Uuid     id;                //@key
             DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
-            SlipsState          targetState;  // requested target state
+            SlipsStateEnum      targetState;  // requested target state
         };
 
         //@copy-c-declaration static const char SLIPS_STATE[] = "SlipsState";
@@ -39,10 +39,10 @@ module nec
             DataTypes::Time     timestamp;        
 
             // acutals
-            SlipsState          actualState;  // requested target state
+            SlipsStateEnum      actualState;  // requested target state
 
             // targets
-            SlipsState          targetState;  // requested target state
+            SlipsStateEnum      targetState;  // requested target state
         };
     };
 };

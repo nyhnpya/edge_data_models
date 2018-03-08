@@ -198,6 +198,13 @@ drill_simulation.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/simulation
 	-@rm -rf $(TMPOUTDIR)
 
+slips.cpy: 
+	@echo "Copying generated files..."
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/slips/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/slips
+	-@rm -rf $(TMPOUTDIR)
+
+
 rotate_engineering.cpy:
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py engineering/$@ $(TMPOUTDIR) 
