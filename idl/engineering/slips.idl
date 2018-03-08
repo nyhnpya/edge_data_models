@@ -1,0 +1,48 @@
+#include "base_data_types.idl"
+
+module nec
+{
+    module control
+    {
+         enum SlipsState  
+        {
+            Set,       ///< Slip State is Set in hole.
+            NotSet     ///< Slip State is Not Set in hole.
+        };
+
+        //@copy-c-declaration static const char SLIPS_REQUEST[] = "SlipsRequest";
+
+        struct SlipsRequest
+        {
+            DataTypes::Uuid     id;          //@key
+            DataTypes::Priority priority;    // priority of the request
+            DataTypes::Time     timeNeeded;  // time requester needs the resource
+            DataTypes::Time     duration;    // duration requester needs the resource
+            SlipsState          targetState;  // requested target state
+        };
+
+        //@copy-c-declaration static const char SLIPS_OBJECTIVE[] = "SlipsObjective";
+
+        struct SlipsObjective
+        {
+            DataTypes::Uuid     id;                //@key
+            DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
+            SlipsState          targetState;  // requested target state
+        };
+
+        //@copy-c-declaration static const char SLIPS_STATE[] = "SlipsState";
+
+        struct SlipsState
+        {
+            DataTypes::Uuid     id;           //@key
+            DataTypes::Status   status;
+            DataTypes::Time     timestamp;        
+
+            // acutals
+            SlipsState          actualState;  // requested target state
+
+            // targets
+            SlipsState          targetState;  // requested target state
+        };
+    };
+};
