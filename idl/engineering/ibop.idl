@@ -1,0 +1,48 @@
+#include "base_data_types.idl"
+
+module nec
+{
+    module control
+    {
+         enum IbopStateEnum 
+        {
+            Open,      ///< IBOP State is Open.
+            Close      ///< IBOP State is Closed.
+        };
+
+        //@copy-c-declaration static const char IBOP_REQUEST[] = "IbopRequest";
+
+        struct IbopRequest
+        {
+            DataTypes::Uuid     id;          //@key
+            DataTypes::Priority priority;    // priority of the request
+            DataTypes::Time     timeNeeded;  // time requester needs the resource
+            DataTypes::Time     duration;    // duration requester needs the resource
+            IbopStateEnum       targetState; // requested target state
+        };
+
+        //@copy-c-declaration static const char IBOP_OBJECTIVE[] = "IbopObjective";
+
+        struct IbopObjective
+        {
+            DataTypes::Uuid     id;                //@key
+            DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
+            IbopStateEnum       targetState;       // requested target state
+        };
+
+        //@copy-c-declaration static const char IBOP_STATE[] = "IbopState";
+
+        struct IbopState
+        {
+            DataTypes::Uuid     id;           //@key
+            DataTypes::Status   status;
+            DataTypes::Time     timestamp;        
+
+            // actuals
+            IbopStateEnum       actualState;  // requested target state
+
+            // targets
+            IbopStateEnum       targetState;  // requested target state
+        };
+    };
+};

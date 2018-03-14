@@ -204,6 +204,13 @@ slips.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/slips
 	-@rm -rf $(TMPOUTDIR)
 
+ibop.cpy: 
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/ibop/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/ibop/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/ibop
+	-@rm -rf $(TMPOUTDIR)
+
 
 rotate_engineering.cpy:
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
