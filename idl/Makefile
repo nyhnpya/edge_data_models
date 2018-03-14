@@ -212,6 +212,13 @@ ibop.cpy:
 	-@rm -rf $(TMPOUTDIR)
 
 
+ir_engineering.cpy: 
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/ir_engineering/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/ir_engineering/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/ir_engineering
+	-@rm -rf $(TMPOUTDIR)
+
 rotate_engineering.cpy:
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py engineering/$@ $(TMPOUTDIR) 

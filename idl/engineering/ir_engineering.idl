@@ -1,0 +1,52 @@
+#include "base_data_types.idl"
+
+module nec
+{
+    module control
+    {
+        //@copy-c-declaration static const char IR_ENGINEERING_STATE[] = "IrEngineeringState";
+
+        enum GripState
+        {
+        	Gripped,
+        	NotGripped
+        };
+        
+        struct Position
+        {
+        	double	x;
+        	double	y;
+        	double	z;
+        };
+
+        struct IrEngineeringState
+        {
+            DataTypes::Uuid     id;           //@key
+            DataTypes::Status   status;
+            DataTypes::Time     timestamp;        
+
+            // actuals
+           	GripState 			lowerClampState;
+           	GripState			upperClampState;
+			GripState          	spinnerClampState;
+           	double				systemPressureActual;
+           	double				makeUpTorqueActual;
+	       	double           	upperClampPositionActual;
+           	double				spinnerOperationActual;
+           	Position 			wrenchPositionActual;
+           	
+            // constraints
+            double				verticalVelocityMax;
+            double				horizontalVelocityMax;
+            double				rotationalVelocityMax;
+
+            // targets
+            double				verticalVelocity;
+            double				horizontalVelocity;
+            double				rotationalVelocity;
+            double				upperClampVelocity;
+            double				spinnerOperationVelocity;
+            Position			wrenchPosition;
+        };
+    };
+};
