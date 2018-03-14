@@ -82,6 +82,16 @@ clean:
 
 # PHONY targets to copy the generated files.  
 # The copy destinations are specific to each target.
+
+pipehandler_engineering.cpy:
+	@echo "Copying generated files ..."
+	mkdir -p $(TOPIC_HOME)/engineering/pipehandler_engineering
+	mkdir -p $(TOPIC_HOME)/engineering/pipehandler_engineering/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/pipehandler_engineering/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/pipehandler_engineering
+	-@rm -rf $(TMPOUTDIR)
+
+	
 base_data_types.cpy:
 	@echo "Copying generated files ..."
 	mkdir -p $(TOPIC_HOME)/base_data_types/
@@ -171,6 +181,10 @@ drill_simulation.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/simulation/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/simulation
 	-@rm -rf $(TMPOUTDIR)
+
+
+
+
 
 rotate_engineering.cpy:
 	@echo "Copying generated files..."
