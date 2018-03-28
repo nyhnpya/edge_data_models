@@ -193,12 +193,6 @@ namespace nec {
             DrillingCalibrationRequest *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        DrillingCalibrationRequestPlugin_data_to_string(
-            const DrillingCalibrationRequest *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         DrillingCalibrationRequestPlugin_skip(
@@ -491,12 +485,6 @@ namespace nec {
             DrillingCalibrationState *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        DrillingCalibrationStatePlugin_data_to_string(
-            const DrillingCalibrationState *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         DrillingCalibrationStatePlugin_skip(

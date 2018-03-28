@@ -1,4 +1,5 @@
 
+
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
@@ -41,17 +42,9 @@ or consult the RTI Connext manual.
 #include "cdr/cdr_stream.h"
 #endif
 
-#ifndef cdr_log_h
-#include "cdr/cdr_log.h"
-#endif
-
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
-
-#define RTI_CDR_CURRENT_SUBMODULE RTI_CDR_SUBMODULE_MASK_STREAM
-
-#include <new>
 
 #include "objectivePlugin.h"
 
@@ -68,38 +61,34 @@ namespace process {
 
         ObjectiveState*
         ObjectiveStatePluginSupport_create_data_w_params(
-            const struct DDS_TypeAllocationParams_t * alloc_params) 
-        {
+            const struct DDS_TypeAllocationParams_t * alloc_params){
             ObjectiveState *sample = NULL;
 
-            sample = new (std::nothrow) ObjectiveState ;
-            if (sample == NULL) {
-                return NULL;
-            }
+            RTIOsapiHeap_allocateStructure(
+                &sample, ObjectiveState);
 
-            if (!process::plan::ObjectiveState_initialize_w_params(sample,alloc_params)) {
-                delete  sample;
-                sample=NULL;
-            }
+            if(sample != NULL) {
+                if (!process::plan::ObjectiveState_initialize_w_params(sample,alloc_params)) {
+                    RTIOsapiHeap_freeStructure(sample);
+                    return NULL;
+                }
+            }        
             return sample; 
         } 
 
         ObjectiveState *
-        ObjectiveStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
-        {
+        ObjectiveStatePluginSupport_create_data_ex(RTIBool allocate_pointers){
             ObjectiveState *sample = NULL;
 
-            sample = new (std::nothrow) ObjectiveState ;
+            RTIOsapiHeap_allocateStructure(
+                &sample, ObjectiveState);
 
-            if(sample == NULL) {
-                return NULL;
+            if(sample != NULL) {
+                if (!process::plan::ObjectiveState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                    RTIOsapiHeap_freeStructure(sample);
+                    return NULL;
+                }
             }
-
-            if (!process::plan::ObjectiveState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-                delete  sample;
-                sample=NULL;
-            }
-
             return sample; 
         }
 
@@ -116,8 +105,7 @@ namespace process {
 
             process::plan::ObjectiveState_finalize_w_params(sample,dealloc_params);
 
-            delete  sample;
-            sample=NULL;
+            RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
@@ -126,8 +114,7 @@ namespace process {
 
             process::plan::ObjectiveState_finalize_ex(sample,deallocate_pointers);
 
-            delete  sample;
-            sample=NULL;
+            RTIOsapiHeap_freeStructure(sample);
         }
 
         void 
@@ -143,7 +130,7 @@ namespace process {
             ObjectiveState *dst,
             const ObjectiveState *src)
         {
-            return process::plan::ObjectiveState_copy(dst,(const ObjectiveState*) src);
+            return process::plan::ObjectiveState_copy(dst,src);
         }
 
         void 
@@ -167,26 +154,26 @@ namespace process {
             }
 
             DataTypes::UuidPluginSupport_print_data(
-                (const DataTypes::Uuid*) &sample->id, "id", indent_level + 1);
+                &sample->id, "id", indent_level + 1);
 
             DataTypes::UuidPluginSupport_print_data(
-                (const DataTypes::Uuid*) &sample->parentId, "parentId", indent_level + 1);
+                &sample->parentId, "parentId", indent_level + 1);
 
             DataTypes::TimePluginSupport_print_data(
-                (const DataTypes::Time*) &sample->timestamp, "timestamp", indent_level + 1);
+                &sample->timestamp, "timestamp", indent_level + 1);
 
             DataTypes::ObjectivePluginSupport_print_data(
-                (const DataTypes::Objective*) &sample->objective, "objective", indent_level + 1);
+                &sample->objective, "objective", indent_level + 1);
 
         }
         ObjectiveState *
         ObjectiveStatePluginSupport_create_key_ex(RTIBool allocate_pointers){
             ObjectiveState *key = NULL;
 
-            key = new (std::nothrow) ObjectiveStateKeyHolder ;
+            RTIOsapiHeap_allocateStructure(
+                &key, ObjectiveStateKeyHolder);
 
             process::plan::ObjectiveState_initialize_ex(key,allocate_pointers, RTI_TRUE);
-
             return key;
         }
 
@@ -202,9 +189,7 @@ namespace process {
         {
             process::plan::ObjectiveState_finalize_ex(key,deallocate_pointers);
 
-            delete  key;
-            key=NULL;
-
+            RTIOsapiHeap_freeStructure(key);
         }
 
         void 
@@ -377,7 +362,7 @@ namespace process {
 
                 if(!DataTypes::UuidPlugin_serialize(
                     endpoint_data,
-                    (const DataTypes::Uuid*) &sample->id,
+                    &sample->id,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -387,7 +372,7 @@ namespace process {
 
                 if(!DataTypes::UuidPlugin_serialize(
                     endpoint_data,
-                    (const DataTypes::Uuid*) &sample->parentId,
+                    &sample->parentId,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -397,7 +382,7 @@ namespace process {
 
                 if(!DataTypes::TimePlugin_serialize(
                     endpoint_data,
-                    (const DataTypes::Time*) &sample->timestamp,
+                    &sample->timestamp,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -407,7 +392,7 @@ namespace process {
 
                 if(!DataTypes::ObjectivePlugin_serialize(
                     endpoint_data,
-                    (const DataTypes::Objective*) &sample->objective,
+                    &sample->objective,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -438,72 +423,66 @@ namespace process {
 
             RTIBool done = RTI_FALSE;
 
-            try {
+            if (endpoint_data) {} /* To avoid warnings */
+            if (endpoint_plugin_qos) {} /* To avoid warnings */
+            if(deserialize_encapsulation) {
 
-                if (endpoint_data) {} /* To avoid warnings */
-                if (endpoint_plugin_qos) {} /* To avoid warnings */
-                if(deserialize_encapsulation) {
-
-                    if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                        return RTI_FALSE;
-                    }
-
-                    position = RTICdrStream_resetAlignment(stream);
-                }
-                if(deserialize_sample) {
-
-                    process::plan::ObjectiveState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                    if(!DataTypes::UuidPlugin_deserialize_sample(
-                        endpoint_data,
-                        &sample->id,
-                        stream,
-                        RTI_FALSE, RTI_TRUE,
-                        endpoint_plugin_qos)) {
-                        goto fin; 
-                    }
-                    if(!DataTypes::UuidPlugin_deserialize_sample(
-                        endpoint_data,
-                        &sample->parentId,
-                        stream,
-                        RTI_FALSE, RTI_TRUE,
-                        endpoint_plugin_qos)) {
-                        goto fin; 
-                    }
-                    if(!DataTypes::TimePlugin_deserialize_sample(
-                        endpoint_data,
-                        &sample->timestamp,
-                        stream,
-                        RTI_FALSE, RTI_TRUE,
-                        endpoint_plugin_qos)) {
-                        goto fin; 
-                    }
-                    if(!DataTypes::ObjectivePlugin_deserialize_sample(
-                        endpoint_data,
-                        &sample->objective,
-                        stream,
-                        RTI_FALSE, RTI_TRUE,
-                        endpoint_plugin_qos)) {
-                        goto fin; 
-                    }
+                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                    return RTI_FALSE;
                 }
 
-                done = RTI_TRUE;
-              fin:
-                if (done != RTI_TRUE && 
-                RTICdrStream_getRemainder(stream) >=
-                RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                    return RTI_FALSE;   
-                }
-                if(deserialize_encapsulation) {
-                    RTICdrStream_restoreAlignment(stream,position);
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
-                return RTI_FALSE;
+                position = RTICdrStream_resetAlignment(stream);
             }
+            if(deserialize_sample) {
+
+                process::plan::ObjectiveState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+                if(!DataTypes::UuidPlugin_deserialize_sample(
+                    endpoint_data,
+                    &sample->id,
+                    stream,
+                    RTI_FALSE, RTI_TRUE,
+                    endpoint_plugin_qos)) {
+                    goto fin; 
+                }
+                if(!DataTypes::UuidPlugin_deserialize_sample(
+                    endpoint_data,
+                    &sample->parentId,
+                    stream,
+                    RTI_FALSE, RTI_TRUE,
+                    endpoint_plugin_qos)) {
+                    goto fin; 
+                }
+                if(!DataTypes::TimePlugin_deserialize_sample(
+                    endpoint_data,
+                    &sample->timestamp,
+                    stream,
+                    RTI_FALSE, RTI_TRUE,
+                    endpoint_plugin_qos)) {
+                    goto fin; 
+                }
+                if(!DataTypes::ObjectivePlugin_deserialize_sample(
+                    endpoint_data,
+                    &sample->objective,
+                    stream,
+                    RTI_FALSE, RTI_TRUE,
+                    endpoint_plugin_qos)) {
+                    goto fin; 
+                }
+            }
+
+            done = RTI_TRUE;
+          fin:
+            if (done != RTI_TRUE && 
+            RTICdrStream_getRemainder(stream) >=
+            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+                return RTI_FALSE;   
+            }
+            if(deserialize_encapsulation) {
+                RTICdrStream_restoreAlignment(stream,position);
+            }
+
+            return RTI_TRUE;
         }
 
         RTIBool
@@ -522,14 +501,14 @@ namespace process {
 
             epd._maxSizeSerializedSample =
             ObjectiveStatePlugin_get_serialized_sample_max_size(
-                NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
+                NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
             if (buffer == NULL) {
                 *length = 
                 ObjectiveStatePlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
-                    RTICdrEncapsulation_getNativeCdrEncapsulationId(),
+                    RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
                     0,
                     sample);
 
@@ -545,7 +524,7 @@ namespace process {
 
             result = process::plan::ObjectiveStatePlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
-                RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
+                RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
                 RTI_TRUE, NULL);  
 
             *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -563,96 +542,10 @@ namespace process {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            ObjectiveState_finalize_optional_members(sample, RTI_TRUE);
             return ObjectiveStatePlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
-        }
-
-        DDS_ReturnCode_t
-        ObjectiveStatePlugin_data_to_string(
-            const ObjectiveState *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property)
-        {
-            DDS_DynamicData *data = NULL;
-            char *buffer = NULL;
-            unsigned int length = 0;
-            struct DDS_PrintFormat printFormat;
-            DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-            if (sample == NULL) {
-                return DDS_RETCODE_BAD_PARAMETER;
-            }
-
-            if (str_size == NULL) {
-                return DDS_RETCODE_BAD_PARAMETER;
-            }
-
-            if (property == NULL) {
-                return DDS_RETCODE_BAD_PARAMETER;
-            }
-
-            if (!ObjectiveStatePlugin_serialize_to_cdr_buffer(
-                NULL, 
-                &length, 
-                sample)) {
-                return DDS_RETCODE_ERROR;
-            }
-
-            RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-            if (buffer == NULL) {
-                return DDS_RETCODE_ERROR;
-            }
-
-            if (!ObjectiveStatePlugin_serialize_to_cdr_buffer(
-                buffer, 
-                &length, 
-                sample)) {
-                RTIOsapiHeap_freeBuffer(buffer);
-                return DDS_RETCODE_ERROR;
-            }
-
-            data = DDS_DynamicData_new(
-                ObjectiveState_get_typecode(), 
-                &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-            if (data == NULL) {
-                RTIOsapiHeap_freeBuffer(buffer);
-                return DDS_RETCODE_ERROR;
-            }
-
-            retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-            if (retCode != DDS_RETCODE_OK) {
-                RTIOsapiHeap_freeBuffer(buffer);
-                DDS_DynamicData_delete(data);
-                return retCode;
-            }
-
-            retCode = DDS_PrintFormatProperty_to_print_format(
-                property, 
-                &printFormat);
-            if (retCode != DDS_RETCODE_OK) {
-                RTIOsapiHeap_freeBuffer(buffer);
-                DDS_DynamicData_delete(data);
-                return retCode;
-            }
-
-            retCode = DDS_DynamicDataFormatter_to_string_w_format(
-                data, 
-                str,
-                str_size, 
-                &printFormat);
-            if (retCode != DDS_RETCODE_OK) {
-                RTIOsapiHeap_freeBuffer(buffer);
-                DDS_DynamicData_delete(data);
-                return retCode;
-            }
-
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return DDS_RETCODE_OK;
         }
 
         RTIBool 
@@ -667,7 +560,6 @@ namespace process {
         {
 
             RTIBool result;
-            const char *METHOD_NAME = "ObjectiveStatePlugin_deserialize";
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
@@ -679,14 +571,6 @@ namespace process {
                 if (stream->_xTypesState.unassignable) {
                     result = RTI_FALSE;
                 }
-            }
-            if (!result && stream->_xTypesState.unassignable ) {
-
-                RTICdrLog_exception(
-                    METHOD_NAME, 
-                    &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                    "ObjectiveState");
-
             }
 
             return result;
@@ -881,16 +765,10 @@ namespace process {
             unsigned int initial_alignment = current_alignment;
 
             unsigned int encapsulation_size = current_alignment;
-            struct PRESTypePluginDefaultEndpointData epd;   
 
+            if (endpoint_data) {} /* To avoid warnings */ 
             if (sample==NULL) {
                 return 0;
-            }
-            if (endpoint_data == NULL) {
-                endpoint_data = (PRESTypePluginEndpointData) &epd;
-                PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                    endpoint_data,
-                    current_alignment);        
             }
 
             if (include_encapsulation) {
@@ -902,26 +780,20 @@ namespace process {
                 encapsulation_size -= current_alignment;
                 current_alignment = 0;
                 initial_alignment = 0;
-                PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                    endpoint_data,
-                    current_alignment);
             }
 
             current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, (const DataTypes::Uuid*) &sample->id);
-
+                current_alignment, &sample->id);
             current_alignment += DataTypes::UuidPlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, (const DataTypes::Uuid*) &sample->parentId);
-
+                current_alignment, &sample->parentId);
             current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, (const DataTypes::Time*) &sample->timestamp);
-
+                current_alignment, &sample->timestamp);
             current_alignment += DataTypes::ObjectivePlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, (const DataTypes::Objective*) &sample->objective);
+                current_alignment, &sample->objective);
 
             if (include_encapsulation) {
                 current_alignment += encapsulation_size;
@@ -963,7 +835,7 @@ namespace process {
 
                 if(!DataTypes::UuidPlugin_serialize_key(
                     endpoint_data,
-                    (const DataTypes::Uuid*) &sample->id,
+                    &sample->id,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -988,42 +860,36 @@ namespace process {
             RTIBool deserialize_key,
             void *endpoint_plugin_qos)
         {
-            try {
+            char * position = NULL;
 
-                char * position = NULL;
+            if (endpoint_data) {} /* To avoid warnings */
+            if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-                if (endpoint_data) {} /* To avoid warnings */
-                if (endpoint_plugin_qos) {} /* To avoid warnings */
+            if(deserialize_encapsulation) {
 
-                if(deserialize_encapsulation) {
-
-                    if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                        return RTI_FALSE;
-                    }
-
-                    position = RTICdrStream_resetAlignment(stream);
-                }
-                if (deserialize_key) {
-
-                    if(!DataTypes::UuidPlugin_deserialize_key_sample(
-                        endpoint_data,
-                        &sample->id,
-                        stream,
-                        RTI_FALSE, RTI_TRUE,
-                        endpoint_plugin_qos)) {
-                        return RTI_FALSE;
-                    }
+                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                    return RTI_FALSE;
                 }
 
-                if(deserialize_encapsulation) {
-                    RTICdrStream_restoreAlignment(stream,position);
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
-                return RTI_FALSE;
+                position = RTICdrStream_resetAlignment(stream);
             }
+            if (deserialize_key) {
+
+                if(!DataTypes::UuidPlugin_deserialize_key_sample(
+                    endpoint_data,
+                    &sample->id,
+                    stream,
+                    RTI_FALSE, RTI_TRUE,
+                    endpoint_plugin_qos)) {
+                    return RTI_FALSE;
+                }
+            }
+
+            if(deserialize_encapsulation) {
+                RTICdrStream_restoreAlignment(stream,position);
+            }
+
+            return RTI_TRUE;
         }
 
         RTIBool ObjectiveStatePlugin_deserialize_key(
@@ -1177,7 +1043,7 @@ namespace process {
                     return RTI_FALSE;   
                 }
             } else {
-                return RTI_FALSE;
+                return error;
             }       
 
             if(deserialize_encapsulation) {
@@ -1197,7 +1063,7 @@ namespace process {
             if (endpoint_data) {} /* To avoid warnings */   
 
             if (!DataTypes::Uuid_copy(
-                &dst->id,(const DataTypes::Uuid*)&src->id)) {
+                &dst->id, &src->id)) {
                 return RTI_FALSE;
             } 
             return RTI_TRUE;
@@ -1212,7 +1078,7 @@ namespace process {
 
             if (endpoint_data) {} /* To avoid warnings */   
             if (!DataTypes::Uuid_copy(
-                &dst->id,(const DataTypes::Uuid*)&src->id)) {
+                &dst->id, &src->id)) {
                 return RTI_FALSE;
             } 
             return RTI_TRUE;
@@ -1239,14 +1105,8 @@ namespace process {
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
             if (!process::plan::ObjectiveStatePlugin_serialize_key(
-                endpoint_data,
-                instance,
-                md5Stream, 
-                RTI_FALSE, 
-                RTI_CDR_ENCAPSULATION_ID_CDR_BE, 
-                RTI_TRUE,
-                NULL)) 
-            {
+                endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) {
+
                 int size;
 
                 RTICdrStream_pushState(md5Stream, &cdrState, -1);
@@ -1277,13 +1137,7 @@ namespace process {
                 RTICdrStream_resetPosition(md5Stream);
                 RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
                 if (!process::plan::ObjectiveStatePlugin_serialize_key(
-                    endpoint_data,
-                    instance,
-                    md5Stream, 
-                    RTI_FALSE, 
-                    RTI_CDR_ENCAPSULATION_ID_CDR_BE, 
-                    RTI_TRUE,
-                    NULL)) 
+                    endpoint_data,instance,md5Stream, RTI_FALSE, RTI_CDR_ENCAPSULATION_ID_CDR_BE, RTI_TRUE,NULL)) 
                 {
                     RTICdrStream_popState(md5Stream, &cdrState);
                     RTIOsapiHeap_freeBuffer(buffer);
@@ -1291,9 +1145,7 @@ namespace process {
                 }        
             }   
 
-            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data) > 
-            (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH) ||
-            PRESTypePluginDefaultEndpointData_forceMD5KeyHash(endpoint_data)) {
+            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data) > (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH)) {
                 RTICdrStream_computeMD5(md5Stream, keyhash->value);
             } else {
                 RTIOsapiMemory_zero(keyhash->value,MIG_RTPS_KEY_HASH_MAX_LENGTH);
@@ -1309,7 +1161,6 @@ namespace process {
                 RTICdrStream_popState(md5Stream, &cdrState);
                 RTIOsapiHeap_freeBuffer(buffer);
             }
-
             return RTI_TRUE;
         }
 
@@ -1365,7 +1216,7 @@ namespace process {
                     return RTI_FALSE;   
                 }
             } else {
-                return RTI_FALSE;
+                return error;
             } 
 
             if(deserialize_encapsulation) {
@@ -1391,7 +1242,6 @@ namespace process {
 
             RTIOsapiHeap_allocateStructure(
                 &plugin, struct PRESTypePlugin);
-
             if (plugin == NULL) {
                 return NULL;
             }
@@ -1507,4 +1357,4 @@ namespace process {
         } 
     } /* namespace plan  */
 } /* namespace process  */
-#undef RTI_CDR_CURRENT_SUBMODULE 
+

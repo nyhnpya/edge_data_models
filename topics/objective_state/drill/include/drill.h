@@ -68,7 +68,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* DrillingRequest_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(DrillingRequestSeq, DrillingRequest);
+        DDS_SEQUENCE(DrillingRequestSeq, DrillingRequest);                                        
 
         NDDSUSERDllExport
         RTIBool DrillingRequest_initialize(
@@ -81,7 +81,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool DrillingRequest_initialize_w_params(
             DrillingRequest* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);  
+            const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
         void DrillingRequest_finalize(
@@ -154,7 +154,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* DrillingObjective_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(DrillingObjectiveSeq, DrillingObjective);
+        DDS_SEQUENCE(DrillingObjectiveSeq, DrillingObjective);                                        
 
         NDDSUSERDllExport
         RTIBool DrillingObjective_initialize(
@@ -167,7 +167,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool DrillingObjective_initialize_w_params(
             DrillingObjective* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);  
+            const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
         void DrillingObjective_finalize(
@@ -249,7 +249,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* DrillingState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(DrillingStateSeq, DrillingState);
+        DDS_SEQUENCE(DrillingStateSeq, DrillingState);                                        
 
         NDDSUSERDllExport
         RTIBool DrillingState_initialize(
@@ -262,7 +262,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool DrillingState_initialize_w_params(
             DrillingState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);  
+            const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
         void DrillingState_finalize(

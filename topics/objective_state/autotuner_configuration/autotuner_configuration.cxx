@@ -30,8 +30,6 @@ or consult the RTI Connext manual.
 
 #include "autotuner_configuration.h"
 
-#include <new>
-
 namespace AutoTunerConfiguration {
 
     /* ========================================================================= */
@@ -265,48 +263,43 @@ namespace AutoTunerConfiguration {
         ModelStateRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (sample == NULL) {
-            return RTI_FALSE;
-        }
-        if (allocParams == NULL) {
-            return RTI_FALSE;
-        }
+        if (allocParams) {} /* To avoid warnings */
 
         if (!RTICdrType_initBoolean(&sample->modelReset)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->pipeInnerDiameter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->pipeOuterDiameter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->slopeFilter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->tauMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->tauMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->tauMultiplier)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->maxDeviation)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->minInterval)) {
             return RTI_FALSE;
-        }
+        }     
 
         return RTI_TRUE;
     }
@@ -341,10 +334,7 @@ namespace AutoTunerConfiguration {
         if (sample==NULL) {
             return;
         }
-
-        if (deallocParams == NULL) {
-            return;
-        }
+        if (deallocParams) {} /* To avoid warnings */
 
     }
 
@@ -370,54 +360,45 @@ namespace AutoTunerConfiguration {
         ModelStateRequest* dst,
         const ModelStateRequest* src)
     {
-        try {
 
-            if (dst == NULL || src == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_copyBoolean (
-                &dst->modelReset, &src->modelReset)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->pipeInnerDiameter, &src->pipeInnerDiameter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->pipeOuterDiameter, &src->pipeOuterDiameter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->slopeFilter, &src->slopeFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->tauMax, &src->tauMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->tauMin, &src->tauMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->tauMultiplier, &src->tauMultiplier)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->maxDeviation, &src->maxDeviation)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->minInterval, &src->minInterval)) { 
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
+        if (!RTICdrType_copyBoolean (
+            &dst->modelReset, &src->modelReset)) { 
             return RTI_FALSE;
         }
+        if (!RTICdrType_copyDouble (
+            &dst->pipeInnerDiameter, &src->pipeInnerDiameter)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->pipeOuterDiameter, &src->pipeOuterDiameter)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->slopeFilter, &src->slopeFilter)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->tauMax, &src->tauMax)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->tauMin, &src->tauMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->tauMultiplier, &src->tauMultiplier)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->maxDeviation, &src->maxDeviation)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->minInterval, &src->minInterval)) { 
+            return RTI_FALSE;
+        }
+
+        return RTI_TRUE;
     }
 
     /**
@@ -429,9 +410,7 @@ namespace AutoTunerConfiguration {
     */
     #define T ModelStateRequest
     #define TSeq ModelStateRequestSeq
-
     #define T_initialize_w_params AutoTunerConfiguration::ModelStateRequest_initialize_w_params
-
     #define T_finalize_w_params   AutoTunerConfiguration::ModelStateRequest_finalize_w_params
     #define T_copy       AutoTunerConfiguration::ModelStateRequest_copy
 
@@ -445,9 +424,7 @@ namespace AutoTunerConfiguration {
 
     #undef T_copy
     #undef T_finalize_w_params
-
     #undef T_initialize_w_params
-
     #undef TSeq
     #undef T
 
@@ -682,48 +659,43 @@ namespace AutoTunerConfiguration {
         ModelStateState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (sample == NULL) {
-            return RTI_FALSE;
-        }
-        if (allocParams == NULL) {
-            return RTI_FALSE;
-        }
+        if (allocParams) {} /* To avoid warnings */
 
         if (!RTICdrType_initDouble(&sample->pipeInnerDiameter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->pipeOuterDiameter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->slopeFilter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->tauMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->tauMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->tauMultiplier)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->maxDeviation)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->minInterval)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->tunerEnabled)) {
             return RTI_FALSE;
-        }
+        }     
 
         return RTI_TRUE;
     }
@@ -758,10 +730,7 @@ namespace AutoTunerConfiguration {
         if (sample==NULL) {
             return;
         }
-
-        if (deallocParams == NULL) {
-            return;
-        }
+        if (deallocParams) {} /* To avoid warnings */
 
     }
 
@@ -787,54 +756,45 @@ namespace AutoTunerConfiguration {
         ModelStateState* dst,
         const ModelStateState* src)
     {
-        try {
 
-            if (dst == NULL || src == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_copyDouble (
-                &dst->pipeInnerDiameter, &src->pipeInnerDiameter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->pipeOuterDiameter, &src->pipeOuterDiameter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->slopeFilter, &src->slopeFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->tauMax, &src->tauMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->tauMin, &src->tauMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->tauMultiplier, &src->tauMultiplier)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->maxDeviation, &src->maxDeviation)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->minInterval, &src->minInterval)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->tunerEnabled, &src->tunerEnabled)) { 
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
+        if (!RTICdrType_copyDouble (
+            &dst->pipeInnerDiameter, &src->pipeInnerDiameter)) { 
             return RTI_FALSE;
         }
+        if (!RTICdrType_copyDouble (
+            &dst->pipeOuterDiameter, &src->pipeOuterDiameter)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->slopeFilter, &src->slopeFilter)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->tauMax, &src->tauMax)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->tauMin, &src->tauMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->tauMultiplier, &src->tauMultiplier)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->maxDeviation, &src->maxDeviation)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->minInterval, &src->minInterval)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->tunerEnabled, &src->tunerEnabled)) { 
+            return RTI_FALSE;
+        }
+
+        return RTI_TRUE;
     }
 
     /**
@@ -846,9 +806,7 @@ namespace AutoTunerConfiguration {
     */
     #define T ModelStateState
     #define TSeq ModelStateStateSeq
-
     #define T_initialize_w_params AutoTunerConfiguration::ModelStateState_initialize_w_params
-
     #define T_finalize_w_params   AutoTunerConfiguration::ModelStateState_finalize_w_params
     #define T_copy       AutoTunerConfiguration::ModelStateState_copy
 
@@ -862,9 +820,7 @@ namespace AutoTunerConfiguration {
 
     #undef T_copy
     #undef T_finalize_w_params
-
     #undef T_initialize_w_params
-
     #undef TSeq
     #undef T
 
@@ -1099,48 +1055,43 @@ namespace AutoTunerConfiguration {
         DiffpTuningRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (sample == NULL) {
-            return RTI_FALSE;
-        }
-        if (allocParams == NULL) {
-            return RTI_FALSE;
-        }
+        if (allocParams) {} /* To avoid warnings */
 
         if (!RTICdrType_initDouble(&sample->diffPFilter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPD)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPF)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPEps)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->diffPEpsManual)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPKcMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPKcMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPTiMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPTiMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         return RTI_TRUE;
     }
@@ -1175,10 +1126,7 @@ namespace AutoTunerConfiguration {
         if (sample==NULL) {
             return;
         }
-
-        if (deallocParams == NULL) {
-            return;
-        }
+        if (deallocParams) {} /* To avoid warnings */
 
     }
 
@@ -1204,54 +1152,45 @@ namespace AutoTunerConfiguration {
         DiffpTuningRequest* dst,
         const DiffpTuningRequest* src)
     {
-        try {
 
-            if (dst == NULL || src == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_copyDouble (
-                &dst->diffPFilter, &src->diffPFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPD, &src->diffPD)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPF, &src->diffPF)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPEps, &src->diffPEps)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->diffPEpsManual, &src->diffPEpsManual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPKcMin, &src->diffPKcMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPKcMax, &src->diffPKcMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPTiMin, &src->diffPTiMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPTiMax, &src->diffPTiMax)) { 
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
+        if (!RTICdrType_copyDouble (
+            &dst->diffPFilter, &src->diffPFilter)) { 
             return RTI_FALSE;
         }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPD, &src->diffPD)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPF, &src->diffPF)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPEps, &src->diffPEps)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->diffPEpsManual, &src->diffPEpsManual)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPKcMin, &src->diffPKcMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPKcMax, &src->diffPKcMax)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPTiMin, &src->diffPTiMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPTiMax, &src->diffPTiMax)) { 
+            return RTI_FALSE;
+        }
+
+        return RTI_TRUE;
     }
 
     /**
@@ -1263,9 +1202,7 @@ namespace AutoTunerConfiguration {
     */
     #define T DiffpTuningRequest
     #define TSeq DiffpTuningRequestSeq
-
     #define T_initialize_w_params AutoTunerConfiguration::DiffpTuningRequest_initialize_w_params
-
     #define T_finalize_w_params   AutoTunerConfiguration::DiffpTuningRequest_finalize_w_params
     #define T_copy       AutoTunerConfiguration::DiffpTuningRequest_copy
 
@@ -1279,9 +1216,7 @@ namespace AutoTunerConfiguration {
 
     #undef T_copy
     #undef T_finalize_w_params
-
     #undef T_initialize_w_params
-
     #undef TSeq
     #undef T
 
@@ -1611,68 +1546,63 @@ namespace AutoTunerConfiguration {
         DiffpTuningState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (sample == NULL) {
-            return RTI_FALSE;
-        }
-        if (allocParams == NULL) {
-            return RTI_FALSE;
-        }
+        if (allocParams) {} /* To avoid warnings */
 
         if (!RTICdrType_initDouble(&sample->diffPFilter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPD)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPF)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPEps)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->diffPEpsManual)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPKcMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPKcMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPTiMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffPTiMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffpInitK)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffpInitTau)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffpInitPreFilter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffpR1)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->diffpR2)) {
             return RTI_FALSE;
-        }
+        }     
 
         return RTI_TRUE;
     }
@@ -1707,10 +1637,7 @@ namespace AutoTunerConfiguration {
         if (sample==NULL) {
             return;
         }
-
-        if (deallocParams == NULL) {
-            return;
-        }
+        if (deallocParams) {} /* To avoid warnings */
 
     }
 
@@ -1736,74 +1663,65 @@ namespace AutoTunerConfiguration {
         DiffpTuningState* dst,
         const DiffpTuningState* src)
     {
-        try {
 
-            if (dst == NULL || src == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_copyDouble (
-                &dst->diffPFilter, &src->diffPFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPD, &src->diffPD)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPF, &src->diffPF)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPEps, &src->diffPEps)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->diffPEpsManual, &src->diffPEpsManual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPKcMin, &src->diffPKcMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPKcMax, &src->diffPKcMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPTiMin, &src->diffPTiMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffPTiMax, &src->diffPTiMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffpInitK, &src->diffpInitK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffpInitTau, &src->diffpInitTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffpInitPreFilter, &src->diffpInitPreFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffpR1, &src->diffpR1)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->diffpR2, &src->diffpR2)) { 
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
+        if (!RTICdrType_copyDouble (
+            &dst->diffPFilter, &src->diffPFilter)) { 
             return RTI_FALSE;
         }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPD, &src->diffPD)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPF, &src->diffPF)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPEps, &src->diffPEps)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->diffPEpsManual, &src->diffPEpsManual)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPKcMin, &src->diffPKcMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPKcMax, &src->diffPKcMax)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPTiMin, &src->diffPTiMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffPTiMax, &src->diffPTiMax)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffpInitK, &src->diffpInitK)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffpInitTau, &src->diffpInitTau)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffpInitPreFilter, &src->diffpInitPreFilter)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffpR1, &src->diffpR1)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->diffpR2, &src->diffpR2)) { 
+            return RTI_FALSE;
+        }
+
+        return RTI_TRUE;
     }
 
     /**
@@ -1815,9 +1733,7 @@ namespace AutoTunerConfiguration {
     */
     #define T DiffpTuningState
     #define TSeq DiffpTuningStateSeq
-
     #define T_initialize_w_params AutoTunerConfiguration::DiffpTuningState_initialize_w_params
-
     #define T_finalize_w_params   AutoTunerConfiguration::DiffpTuningState_finalize_w_params
     #define T_copy       AutoTunerConfiguration::DiffpTuningState_copy
 
@@ -1831,9 +1747,7 @@ namespace AutoTunerConfiguration {
 
     #undef T_copy
     #undef T_finalize_w_params
-
     #undef T_initialize_w_params
-
     #undef TSeq
     #undef T
 
@@ -2068,48 +1982,43 @@ namespace AutoTunerConfiguration {
         WobTuningRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (sample == NULL) {
-            return RTI_FALSE;
-        }
-        if (allocParams == NULL) {
-            return RTI_FALSE;
-        }
+        if (allocParams) {} /* To avoid warnings */
 
         if (!RTICdrType_initDouble(&sample->wobFilter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobD)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobF)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobEps)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->wobEpsManual)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobKcMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobKcMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobTiMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobTiMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         return RTI_TRUE;
     }
@@ -2144,10 +2053,7 @@ namespace AutoTunerConfiguration {
         if (sample==NULL) {
             return;
         }
-
-        if (deallocParams == NULL) {
-            return;
-        }
+        if (deallocParams) {} /* To avoid warnings */
 
     }
 
@@ -2173,54 +2079,45 @@ namespace AutoTunerConfiguration {
         WobTuningRequest* dst,
         const WobTuningRequest* src)
     {
-        try {
 
-            if (dst == NULL || src == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_copyDouble (
-                &dst->wobFilter, &src->wobFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobD, &src->wobD)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobF, &src->wobF)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobEps, &src->wobEps)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->wobEpsManual, &src->wobEpsManual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobKcMin, &src->wobKcMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobKcMax, &src->wobKcMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobTiMin, &src->wobTiMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobTiMax, &src->wobTiMax)) { 
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
+        if (!RTICdrType_copyDouble (
+            &dst->wobFilter, &src->wobFilter)) { 
             return RTI_FALSE;
         }
+        if (!RTICdrType_copyDouble (
+            &dst->wobD, &src->wobD)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobF, &src->wobF)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobEps, &src->wobEps)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->wobEpsManual, &src->wobEpsManual)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobKcMin, &src->wobKcMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobKcMax, &src->wobKcMax)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobTiMin, &src->wobTiMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobTiMax, &src->wobTiMax)) { 
+            return RTI_FALSE;
+        }
+
+        return RTI_TRUE;
     }
 
     /**
@@ -2232,9 +2129,7 @@ namespace AutoTunerConfiguration {
     */
     #define T WobTuningRequest
     #define TSeq WobTuningRequestSeq
-
     #define T_initialize_w_params AutoTunerConfiguration::WobTuningRequest_initialize_w_params
-
     #define T_finalize_w_params   AutoTunerConfiguration::WobTuningRequest_finalize_w_params
     #define T_copy       AutoTunerConfiguration::WobTuningRequest_copy
 
@@ -2248,9 +2143,7 @@ namespace AutoTunerConfiguration {
 
     #undef T_copy
     #undef T_finalize_w_params
-
     #undef T_initialize_w_params
-
     #undef TSeq
     #undef T
 
@@ -2580,68 +2473,63 @@ namespace AutoTunerConfiguration {
         WobTuningState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (sample == NULL) {
-            return RTI_FALSE;
-        }
-        if (allocParams == NULL) {
-            return RTI_FALSE;
-        }
+        if (allocParams) {} /* To avoid warnings */
 
         if (!RTICdrType_initDouble(&sample->wobFilter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobD)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobF)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobEps)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->wobEpsManual)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobKcMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobKcMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobTiMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobTiMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobInitK)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobInitTau)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobInitPreFilter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobR1)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->wobR2)) {
             return RTI_FALSE;
-        }
+        }     
 
         return RTI_TRUE;
     }
@@ -2676,10 +2564,7 @@ namespace AutoTunerConfiguration {
         if (sample==NULL) {
             return;
         }
-
-        if (deallocParams == NULL) {
-            return;
-        }
+        if (deallocParams) {} /* To avoid warnings */
 
     }
 
@@ -2705,74 +2590,65 @@ namespace AutoTunerConfiguration {
         WobTuningState* dst,
         const WobTuningState* src)
     {
-        try {
 
-            if (dst == NULL || src == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_copyDouble (
-                &dst->wobFilter, &src->wobFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobD, &src->wobD)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobF, &src->wobF)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobEps, &src->wobEps)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->wobEpsManual, &src->wobEpsManual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobKcMin, &src->wobKcMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobKcMax, &src->wobKcMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobTiMin, &src->wobTiMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobTiMax, &src->wobTiMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobInitK, &src->wobInitK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobInitTau, &src->wobInitTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobInitPreFilter, &src->wobInitPreFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobR1, &src->wobR1)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->wobR2, &src->wobR2)) { 
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
+        if (!RTICdrType_copyDouble (
+            &dst->wobFilter, &src->wobFilter)) { 
             return RTI_FALSE;
         }
+        if (!RTICdrType_copyDouble (
+            &dst->wobD, &src->wobD)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobF, &src->wobF)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobEps, &src->wobEps)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->wobEpsManual, &src->wobEpsManual)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobKcMin, &src->wobKcMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobKcMax, &src->wobKcMax)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobTiMin, &src->wobTiMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobTiMax, &src->wobTiMax)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobInitK, &src->wobInitK)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobInitTau, &src->wobInitTau)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobInitPreFilter, &src->wobInitPreFilter)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobR1, &src->wobR1)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->wobR2, &src->wobR2)) { 
+            return RTI_FALSE;
+        }
+
+        return RTI_TRUE;
     }
 
     /**
@@ -2784,9 +2660,7 @@ namespace AutoTunerConfiguration {
     */
     #define T WobTuningState
     #define TSeq WobTuningStateSeq
-
     #define T_initialize_w_params AutoTunerConfiguration::WobTuningState_initialize_w_params
-
     #define T_finalize_w_params   AutoTunerConfiguration::WobTuningState_finalize_w_params
     #define T_copy       AutoTunerConfiguration::WobTuningState_copy
 
@@ -2800,9 +2674,7 @@ namespace AutoTunerConfiguration {
 
     #undef T_copy
     #undef T_finalize_w_params
-
     #undef T_initialize_w_params
-
     #undef TSeq
     #undef T
 
@@ -3037,48 +2909,43 @@ namespace AutoTunerConfiguration {
         TorqueTuningRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (sample == NULL) {
-            return RTI_FALSE;
-        }
-        if (allocParams == NULL) {
-            return RTI_FALSE;
-        }
+        if (allocParams) {} /* To avoid warnings */
 
         if (!RTICdrType_initDouble(&sample->torqueFilter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueD)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueF)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueEps)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->torqueEpsManual)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueKcMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueKcMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueTiMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueTiMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         return RTI_TRUE;
     }
@@ -3113,10 +2980,7 @@ namespace AutoTunerConfiguration {
         if (sample==NULL) {
             return;
         }
-
-        if (deallocParams == NULL) {
-            return;
-        }
+        if (deallocParams) {} /* To avoid warnings */
 
     }
 
@@ -3142,54 +3006,45 @@ namespace AutoTunerConfiguration {
         TorqueTuningRequest* dst,
         const TorqueTuningRequest* src)
     {
-        try {
 
-            if (dst == NULL || src == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_copyDouble (
-                &dst->torqueFilter, &src->torqueFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueD, &src->torqueD)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueF, &src->torqueF)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueEps, &src->torqueEps)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->torqueEpsManual, &src->torqueEpsManual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueKcMin, &src->torqueKcMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueKcMax, &src->torqueKcMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueTiMin, &src->torqueTiMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueTiMax, &src->torqueTiMax)) { 
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
+        if (!RTICdrType_copyDouble (
+            &dst->torqueFilter, &src->torqueFilter)) { 
             return RTI_FALSE;
         }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueD, &src->torqueD)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueF, &src->torqueF)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueEps, &src->torqueEps)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->torqueEpsManual, &src->torqueEpsManual)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueKcMin, &src->torqueKcMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueKcMax, &src->torqueKcMax)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueTiMin, &src->torqueTiMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueTiMax, &src->torqueTiMax)) { 
+            return RTI_FALSE;
+        }
+
+        return RTI_TRUE;
     }
 
     /**
@@ -3201,9 +3056,7 @@ namespace AutoTunerConfiguration {
     */
     #define T TorqueTuningRequest
     #define TSeq TorqueTuningRequestSeq
-
     #define T_initialize_w_params AutoTunerConfiguration::TorqueTuningRequest_initialize_w_params
-
     #define T_finalize_w_params   AutoTunerConfiguration::TorqueTuningRequest_finalize_w_params
     #define T_copy       AutoTunerConfiguration::TorqueTuningRequest_copy
 
@@ -3217,9 +3070,7 @@ namespace AutoTunerConfiguration {
 
     #undef T_copy
     #undef T_finalize_w_params
-
     #undef T_initialize_w_params
-
     #undef TSeq
     #undef T
 
@@ -3549,68 +3400,63 @@ namespace AutoTunerConfiguration {
         TorqueTuningState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (sample == NULL) {
-            return RTI_FALSE;
-        }
-        if (allocParams == NULL) {
-            return RTI_FALSE;
-        }
+        if (allocParams) {} /* To avoid warnings */
 
         if (!RTICdrType_initDouble(&sample->torqueFilter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueD)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueF)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueEps)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initBoolean(&sample->torqueEpsManual)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueKcMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueKcMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueTiMin)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueTiMax)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueInitK)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueInitTau)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueInitPreFilter)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueR1)) {
             return RTI_FALSE;
-        }
+        }     
 
         if (!RTICdrType_initDouble(&sample->torqueR2)) {
             return RTI_FALSE;
-        }
+        }     
 
         return RTI_TRUE;
     }
@@ -3645,10 +3491,7 @@ namespace AutoTunerConfiguration {
         if (sample==NULL) {
             return;
         }
-
-        if (deallocParams == NULL) {
-            return;
-        }
+        if (deallocParams) {} /* To avoid warnings */
 
     }
 
@@ -3674,74 +3517,65 @@ namespace AutoTunerConfiguration {
         TorqueTuningState* dst,
         const TorqueTuningState* src)
     {
-        try {
 
-            if (dst == NULL || src == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_copyDouble (
-                &dst->torqueFilter, &src->torqueFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueD, &src->torqueD)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueF, &src->torqueF)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueEps, &src->torqueEps)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyBoolean (
-                &dst->torqueEpsManual, &src->torqueEpsManual)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueKcMin, &src->torqueKcMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueKcMax, &src->torqueKcMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueTiMin, &src->torqueTiMin)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueTiMax, &src->torqueTiMax)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueInitK, &src->torqueInitK)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueInitTau, &src->torqueInitTau)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueInitPreFilter, &src->torqueInitPreFilter)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueR1, &src->torqueR1)) { 
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyDouble (
-                &dst->torqueR2, &src->torqueR2)) { 
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
+        if (!RTICdrType_copyDouble (
+            &dst->torqueFilter, &src->torqueFilter)) { 
             return RTI_FALSE;
         }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueD, &src->torqueD)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueF, &src->torqueF)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueEps, &src->torqueEps)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyBoolean (
+            &dst->torqueEpsManual, &src->torqueEpsManual)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueKcMin, &src->torqueKcMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueKcMax, &src->torqueKcMax)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueTiMin, &src->torqueTiMin)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueTiMax, &src->torqueTiMax)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueInitK, &src->torqueInitK)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueInitTau, &src->torqueInitTau)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueInitPreFilter, &src->torqueInitPreFilter)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueR1, &src->torqueR1)) { 
+            return RTI_FALSE;
+        }
+        if (!RTICdrType_copyDouble (
+            &dst->torqueR2, &src->torqueR2)) { 
+            return RTI_FALSE;
+        }
+
+        return RTI_TRUE;
     }
 
     /**
@@ -3753,9 +3587,7 @@ namespace AutoTunerConfiguration {
     */
     #define T TorqueTuningState
     #define TSeq TorqueTuningStateSeq
-
     #define T_initialize_w_params AutoTunerConfiguration::TorqueTuningState_initialize_w_params
-
     #define T_finalize_w_params   AutoTunerConfiguration::TorqueTuningState_finalize_w_params
     #define T_copy       AutoTunerConfiguration::TorqueTuningState_copy
 
@@ -3769,9 +3601,7 @@ namespace AutoTunerConfiguration {
 
     #undef T_copy
     #undef T_finalize_w_params
-
     #undef T_initialize_w_params
-
     #undef TSeq
     #undef T
 } /* namespace AutoTunerConfiguration  */

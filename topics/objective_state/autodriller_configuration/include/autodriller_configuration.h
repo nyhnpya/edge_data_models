@@ -69,7 +69,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* HmiRequest_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(HmiRequestSeq, HmiRequest);
+        DDS_SEQUENCE(HmiRequestSeq, HmiRequest);                                        
 
         NDDSUSERDllExport
         RTIBool HmiRequest_initialize(
@@ -82,7 +82,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool HmiRequest_initialize_w_params(
             HmiRequest* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);  
+            const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
         void HmiRequest_finalize(
@@ -222,7 +222,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* HmiState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(HmiStateSeq, HmiState);
+        DDS_SEQUENCE(HmiStateSeq, HmiState);                                        
 
         NDDSUSERDllExport
         RTIBool HmiState_initialize(
@@ -235,7 +235,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool HmiState_initialize_w_params(
             HmiState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);  
+            const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
         void HmiState_finalize(

@@ -193,12 +193,6 @@ namespace nec {
             CirculateRequest *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        CirculateRequestPlugin_data_to_string(
-            const CirculateRequest *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         CirculateRequestPlugin_skip(
@@ -491,12 +485,6 @@ namespace nec {
             CirculateObjective *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        CirculateObjectivePlugin_data_to_string(
-            const CirculateObjective *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         CirculateObjectivePlugin_skip(
@@ -789,12 +777,6 @@ namespace nec {
             CirculateState *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        CirculateStatePlugin_data_to_string(
-            const CirculateState *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         CirculateStatePlugin_skip(

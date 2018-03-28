@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef configurationSupport_301632859_h
-#define configurationSupport_301632859_h
+#ifndef configurationSupport_301633117_h
+#define configurationSupport_301633117_h
 
 /* Uses */
 #include "configuration.h"
@@ -45,9 +45,7 @@ namespace Configuration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(
-        protocol_tTypeSupport, 
-        protocol_t);
+    DDS_TYPESUPPORT_CPP(protocol_tTypeSupport, protocol_t);
 
     DDS_DATAWRITER_CPP(protocol_tDataWriter, protocol_t);
     DDS_DATAREADER_CPP(protocol_tDataReader, protocol_tSeq, protocol_t);
@@ -76,9 +74,7 @@ namespace Configuration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(
-        interface_tTypeSupport, 
-        interface_t);
+    DDS_TYPESUPPORT_CPP(interface_tTypeSupport, interface_t);
 
     DDS_DATAWRITER_CPP(interface_tDataWriter, interface_t);
     DDS_DATAREADER_CPP(interface_tDataReader, interface_tSeq, interface_t);
@@ -107,9 +103,36 @@ namespace Configuration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(
-        config_dataTypeSupport, 
-        config_data);
+    DDS_TYPESUPPORT_CPP(step7_interface_tTypeSupport, step7_interface_t);
+
+    DDS_DATAWRITER_CPP(step7_interface_tDataWriter, step7_interface_t);
+    DDS_DATAREADER_CPP(step7_interface_tDataReader, step7_interface_tSeq, step7_interface_t);
+
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    /* If the code is building on Windows, stop exporting symbols.
+    */
+    #undef NDDSUSERDllExport
+    #define NDDSUSERDllExport
+    #endif
+    /* ========================================================================= */
+    /**
+    Uses:     T
+
+    Defines:  TTypeSupport, TDataWriter, TDataReader
+
+    Organized using the well-documented "Generics Pattern" for
+    implementing generics in C and C++.
+    */
+
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    /* If the code is building on Windows, start exporting symbols.
+    */
+    #undef NDDSUSERDllExport
+    #define NDDSUSERDllExport __declspec(dllexport)
+
+    #endif
+
+    DDS_TYPESUPPORT_CPP(config_dataTypeSupport, config_data);
 
     DDS_DATAWRITER_CPP(config_dataDataWriter, config_data);
     DDS_DATAREADER_CPP(config_dataDataReader, config_dataSeq, config_data);
@@ -138,9 +161,7 @@ namespace Configuration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(
-        ItemTypeSupport, 
-        Item);
+    DDS_TYPESUPPORT_CPP(ItemTypeSupport, Item);
 
     DDS_DATAWRITER_CPP(ItemDataWriter, Item);
     DDS_DATAREADER_CPP(ItemDataReader, ItemSeq, Item);
@@ -153,5 +174,5 @@ namespace Configuration {
     #endif
 } /* namespace Configuration  */
 
-#endif  /* configurationSupport_301632859_h */
+#endif  /* configurationSupport_301633117_h */
 

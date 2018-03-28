@@ -59,7 +59,7 @@ namespace process {
 
         NDDSUSERDllExport DDS_TypeCode* ObjectiveState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(ObjectiveStateSeq, ObjectiveState);
+        DDS_SEQUENCE(ObjectiveStateSeq, ObjectiveState);                                        
 
         NDDSUSERDllExport
         RTIBool ObjectiveState_initialize(
@@ -72,7 +72,7 @@ namespace process {
         NDDSUSERDllExport
         RTIBool ObjectiveState_initialize_w_params(
             ObjectiveState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);  
+            const struct DDS_TypeAllocationParams_t * allocParams);        
 
         NDDSUSERDllExport
         void ObjectiveState_finalize(

@@ -46,9 +46,7 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(
-            HoistRequestTypeSupport, 
-            HoistRequest);
+        DDS_TYPESUPPORT_CPP(HoistRequestTypeSupport, HoistRequest);
 
         DDS_DATAWRITER_CPP(HoistRequestDataWriter, HoistRequest);
         DDS_DATAREADER_CPP(HoistRequestDataReader, HoistRequestSeq, HoistRequest);
@@ -77,9 +75,7 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(
-            HoistObjectiveTypeSupport, 
-            HoistObjective);
+        DDS_TYPESUPPORT_CPP(HoistObjectiveTypeSupport, HoistObjective);
 
         DDS_DATAWRITER_CPP(HoistObjectiveDataWriter, HoistObjective);
         DDS_DATAREADER_CPP(HoistObjectiveDataReader, HoistObjectiveSeq, HoistObjective);
@@ -108,9 +104,7 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(
-            HoistStateTypeSupport, 
-            HoistState);
+        DDS_TYPESUPPORT_CPP(HoistStateTypeSupport, HoistState);
 
         DDS_DATAWRITER_CPP(HoistStateDataWriter, HoistState);
         DDS_DATAREADER_CPP(HoistStateDataReader, HoistStateSeq, HoistState);

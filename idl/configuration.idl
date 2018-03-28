@@ -3,7 +3,8 @@ module Configuration
     enum config_type
     {
         PROTOCOL,
-        INTERFACE
+        INTERFACE,
+        STEP7_INTERFACE
     };
 
     enum plant_type
@@ -35,6 +36,15 @@ module Configuration
         string tag;
     };
 
+    struct step7_interface_t
+    {
+        string protocol;
+        string type;
+        string unit;
+        long   dataBlock;
+        long   offset;
+    };
+
     union config_data switch ( config_type )
     {
         case PROTOCOL:
@@ -42,6 +52,9 @@ module Configuration
 
         case INTERFACE:
             interface_t  request;
+
+        case STEP7_INTERFACE:
+            step7_interface_t  step7_data;
     };
 
     //@copy-c-declaration static const char CONFIGURATION_ITEM[] = "ConfigurationItem";

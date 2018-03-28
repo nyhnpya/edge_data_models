@@ -1,4 +1,5 @@
 
+
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
@@ -41,17 +42,9 @@ or consult the RTI Connext manual.
 #include "cdr/cdr_stream.h"
 #endif
 
-#ifndef cdr_log_h
-#include "cdr/cdr_log.h"
-#endif
-
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
-
-#define RTI_CDR_CURRENT_SUBMODULE RTI_CDR_SUBMODULE_MASK_STREAM
-
-#include <new>
 
 #include "autotuner_configurationPlugin.h"
 
@@ -67,38 +60,34 @@ namespace AutoTunerConfiguration {
 
     ModelStateRequest*
     ModelStateRequestPluginSupport_create_data_w_params(
-        const struct DDS_TypeAllocationParams_t * alloc_params) 
-    {
+        const struct DDS_TypeAllocationParams_t * alloc_params){
         ModelStateRequest *sample = NULL;
 
-        sample = new (std::nothrow) ModelStateRequest ;
-        if (sample == NULL) {
-            return NULL;
-        }
+        RTIOsapiHeap_allocateStructure(
+            &sample, ModelStateRequest);
 
-        if (!AutoTunerConfiguration::ModelStateRequest_initialize_w_params(sample,alloc_params)) {
-            delete  sample;
-            sample=NULL;
-        }
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::ModelStateRequest_initialize_w_params(sample,alloc_params)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
+        }        
         return sample; 
     } 
 
     ModelStateRequest *
-    ModelStateRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
-    {
+    ModelStateRequestPluginSupport_create_data_ex(RTIBool allocate_pointers){
         ModelStateRequest *sample = NULL;
 
-        sample = new (std::nothrow) ModelStateRequest ;
+        RTIOsapiHeap_allocateStructure(
+            &sample, ModelStateRequest);
 
-        if(sample == NULL) {
-            return NULL;
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::ModelStateRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
         }
-
-        if (!AutoTunerConfiguration::ModelStateRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-            delete  sample;
-            sample=NULL;
-        }
-
         return sample; 
     }
 
@@ -115,8 +104,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::ModelStateRequest_finalize_w_params(sample,dealloc_params);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -125,8 +113,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::ModelStateRequest_finalize_ex(sample,deallocate_pointers);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -142,7 +129,7 @@ namespace AutoTunerConfiguration {
         ModelStateRequest *dst,
         const ModelStateRequest *src)
     {
-        return AutoTunerConfiguration::ModelStateRequest_copy(dst,(const ModelStateRequest*) src);
+        return AutoTunerConfiguration::ModelStateRequest_copy(dst,src);
     }
 
     void 
@@ -408,76 +395,70 @@ namespace AutoTunerConfiguration {
 
         RTIBool done = RTI_FALSE;
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                AutoTunerConfiguration::ModelStateRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if (!RTICdrStream_deserializeBoolean(
-                    stream, &sample->modelReset)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->pipeInnerDiameter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->pipeOuterDiameter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->slopeFilter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->tauMax)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->tauMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->tauMultiplier)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->maxDeviation)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->minInterval)) {
-                    goto fin; 
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            done = RTI_TRUE;
-          fin:
-            if (done != RTI_TRUE && 
-            RTICdrStream_getRemainder(stream) >=
-            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                return RTI_FALSE;   
-            }
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            AutoTunerConfiguration::ModelStateRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+            if (!RTICdrStream_deserializeBoolean(
+                stream, &sample->modelReset)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->pipeInnerDiameter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->pipeOuterDiameter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->slopeFilter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->tauMax)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->tauMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->tauMultiplier)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->maxDeviation)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->minInterval)) {
+                goto fin; 
+            }
+        }
+
+        done = RTI_TRUE;
+      fin:
+        if (done != RTI_TRUE && 
+        RTICdrStream_getRemainder(stream) >=
+        RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+            return RTI_FALSE;   
+        }
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool
@@ -496,14 +477,14 @@ namespace AutoTunerConfiguration {
 
         epd._maxSizeSerializedSample =
         ModelStateRequestPlugin_get_serialized_sample_max_size(
-            NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
+            NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
         if (buffer == NULL) {
             *length = 
             ModelStateRequestPlugin_get_serialized_sample_size(
                 (PRESTypePluginEndpointData)&epd,
                 RTI_TRUE,
-                RTICdrEncapsulation_getNativeCdrEncapsulationId(),
+                RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
                 0,
                 sample);
 
@@ -519,7 +500,7 @@ namespace AutoTunerConfiguration {
 
         result = AutoTunerConfiguration::ModelStateRequestPlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
-            RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
+            RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
 
         *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -537,96 +518,10 @@ namespace AutoTunerConfiguration {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, length);
 
-        ModelStateRequest_finalize_optional_members(sample, RTI_TRUE);
         return ModelStateRequestPlugin_deserialize_sample( 
             NULL, sample,
             &stream, RTI_TRUE, RTI_TRUE, 
             NULL);
-    }
-
-    DDS_ReturnCode_t
-    ModelStateRequestPlugin_data_to_string(
-        const ModelStateRequest *sample,
-        char *str,
-        DDS_UnsignedLong *str_size, 
-        const struct DDS_PrintFormatProperty *property)
-    {
-        DDS_DynamicData *data = NULL;
-        char *buffer = NULL;
-        unsigned int length = 0;
-        struct DDS_PrintFormat printFormat;
-        DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-        if (sample == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (str_size == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (property == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (!ModelStateRequestPlugin_serialize_to_cdr_buffer(
-            NULL, 
-            &length, 
-            sample)) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-        if (buffer == NULL) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        if (!ModelStateRequestPlugin_serialize_to_cdr_buffer(
-            buffer, 
-            &length, 
-            sample)) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        data = DDS_DynamicData_new(
-            ModelStateRequest_get_typecode(), 
-            &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-        if (data == NULL) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_PrintFormatProperty_to_print_format(
-            property, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_DynamicDataFormatter_to_string_w_format(
-            data, 
-            str,
-            str_size, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        RTIOsapiHeap_freeBuffer(buffer);
-        DDS_DynamicData_delete(data);
-        return DDS_RETCODE_OK;
     }
 
     RTIBool 
@@ -641,7 +536,6 @@ namespace AutoTunerConfiguration {
     {
 
         RTIBool result;
-        const char *METHOD_NAME = "ModelStateRequestPlugin_deserialize";
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
@@ -653,14 +547,6 @@ namespace AutoTunerConfiguration {
             if (stream->_xTypesState.unassignable) {
                 result = RTI_FALSE;
             }
-        }
-        if (!result && stream->_xTypesState.unassignable ) {
-
-            RTICdrLog_exception(
-                METHOD_NAME, 
-                &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                "ModelStateRequest");
-
         }
 
         return result;
@@ -882,16 +768,10 @@ namespace AutoTunerConfiguration {
         unsigned int initial_alignment = current_alignment;
 
         unsigned int encapsulation_size = current_alignment;
-        struct PRESTypePluginDefaultEndpointData epd;   
 
+        if (endpoint_data) {} /* To avoid warnings */ 
         if (sample==NULL) {
             return 0;
-        }
-        if (endpoint_data == NULL) {
-            endpoint_data = (PRESTypePluginEndpointData) &epd;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);        
         }
 
         if (include_encapsulation) {
@@ -903,46 +783,26 @@ namespace AutoTunerConfiguration {
             encapsulation_size -= current_alignment;
             current_alignment = 0;
             initial_alignment = 0;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);
         }
 
         current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
+            current_alignment);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -1009,40 +869,34 @@ namespace AutoTunerConfiguration {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
+        char * position = NULL;
 
-            char * position = NULL;
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if (!AutoTunerConfiguration::ModelStateRequestPlugin_deserialize_sample(
-                    endpoint_data, sample, stream, 
-                    RTI_FALSE, RTI_TRUE, 
-                    endpoint_plugin_qos)) {
-                    return RTI_FALSE;
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if (deserialize_key) {
+
+            if (!AutoTunerConfiguration::ModelStateRequestPlugin_deserialize_sample(
+                endpoint_data, sample, stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool ModelStateRequestPlugin_deserialize_key(
@@ -1170,7 +1024,7 @@ namespace AutoTunerConfiguration {
                 return RTI_FALSE;   
             }
         } else {
-            return RTI_FALSE;
+            return error;
         }       
 
         if(deserialize_encapsulation) {
@@ -1191,7 +1045,6 @@ namespace AutoTunerConfiguration {
 
         RTIOsapiHeap_allocateStructure(
             &plugin, struct PRESTypePlugin);
-
         if (plugin == NULL) {
             return NULL;
         }
@@ -1295,38 +1148,34 @@ namespace AutoTunerConfiguration {
 
     ModelStateState*
     ModelStateStatePluginSupport_create_data_w_params(
-        const struct DDS_TypeAllocationParams_t * alloc_params) 
-    {
+        const struct DDS_TypeAllocationParams_t * alloc_params){
         ModelStateState *sample = NULL;
 
-        sample = new (std::nothrow) ModelStateState ;
-        if (sample == NULL) {
-            return NULL;
-        }
+        RTIOsapiHeap_allocateStructure(
+            &sample, ModelStateState);
 
-        if (!AutoTunerConfiguration::ModelStateState_initialize_w_params(sample,alloc_params)) {
-            delete  sample;
-            sample=NULL;
-        }
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::ModelStateState_initialize_w_params(sample,alloc_params)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
+        }        
         return sample; 
     } 
 
     ModelStateState *
-    ModelStateStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
-    {
+    ModelStateStatePluginSupport_create_data_ex(RTIBool allocate_pointers){
         ModelStateState *sample = NULL;
 
-        sample = new (std::nothrow) ModelStateState ;
+        RTIOsapiHeap_allocateStructure(
+            &sample, ModelStateState);
 
-        if(sample == NULL) {
-            return NULL;
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::ModelStateState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
         }
-
-        if (!AutoTunerConfiguration::ModelStateState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-            delete  sample;
-            sample=NULL;
-        }
-
         return sample; 
     }
 
@@ -1343,8 +1192,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::ModelStateState_finalize_w_params(sample,dealloc_params);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -1353,8 +1201,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::ModelStateState_finalize_ex(sample,deallocate_pointers);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -1370,7 +1217,7 @@ namespace AutoTunerConfiguration {
         ModelStateState *dst,
         const ModelStateState *src)
     {
-        return AutoTunerConfiguration::ModelStateState_copy(dst,(const ModelStateState*) src);
+        return AutoTunerConfiguration::ModelStateState_copy(dst,src);
     }
 
     void 
@@ -1636,76 +1483,70 @@ namespace AutoTunerConfiguration {
 
         RTIBool done = RTI_FALSE;
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                AutoTunerConfiguration::ModelStateState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->pipeInnerDiameter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->pipeOuterDiameter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->slopeFilter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->tauMax)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->tauMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->tauMultiplier)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->maxDeviation)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->minInterval)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeBoolean(
-                    stream, &sample->tunerEnabled)) {
-                    goto fin; 
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            done = RTI_TRUE;
-          fin:
-            if (done != RTI_TRUE && 
-            RTICdrStream_getRemainder(stream) >=
-            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                return RTI_FALSE;   
-            }
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            AutoTunerConfiguration::ModelStateState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->pipeInnerDiameter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->pipeOuterDiameter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->slopeFilter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->tauMax)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->tauMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->tauMultiplier)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->maxDeviation)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->minInterval)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeBoolean(
+                stream, &sample->tunerEnabled)) {
+                goto fin; 
+            }
+        }
+
+        done = RTI_TRUE;
+      fin:
+        if (done != RTI_TRUE && 
+        RTICdrStream_getRemainder(stream) >=
+        RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+            return RTI_FALSE;   
+        }
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool
@@ -1724,14 +1565,14 @@ namespace AutoTunerConfiguration {
 
         epd._maxSizeSerializedSample =
         ModelStateStatePlugin_get_serialized_sample_max_size(
-            NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
+            NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
         if (buffer == NULL) {
             *length = 
             ModelStateStatePlugin_get_serialized_sample_size(
                 (PRESTypePluginEndpointData)&epd,
                 RTI_TRUE,
-                RTICdrEncapsulation_getNativeCdrEncapsulationId(),
+                RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
                 0,
                 sample);
 
@@ -1747,7 +1588,7 @@ namespace AutoTunerConfiguration {
 
         result = AutoTunerConfiguration::ModelStateStatePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
-            RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
+            RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
 
         *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -1765,96 +1606,10 @@ namespace AutoTunerConfiguration {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, length);
 
-        ModelStateState_finalize_optional_members(sample, RTI_TRUE);
         return ModelStateStatePlugin_deserialize_sample( 
             NULL, sample,
             &stream, RTI_TRUE, RTI_TRUE, 
             NULL);
-    }
-
-    DDS_ReturnCode_t
-    ModelStateStatePlugin_data_to_string(
-        const ModelStateState *sample,
-        char *str,
-        DDS_UnsignedLong *str_size, 
-        const struct DDS_PrintFormatProperty *property)
-    {
-        DDS_DynamicData *data = NULL;
-        char *buffer = NULL;
-        unsigned int length = 0;
-        struct DDS_PrintFormat printFormat;
-        DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-        if (sample == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (str_size == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (property == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (!ModelStateStatePlugin_serialize_to_cdr_buffer(
-            NULL, 
-            &length, 
-            sample)) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-        if (buffer == NULL) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        if (!ModelStateStatePlugin_serialize_to_cdr_buffer(
-            buffer, 
-            &length, 
-            sample)) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        data = DDS_DynamicData_new(
-            ModelStateState_get_typecode(), 
-            &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-        if (data == NULL) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_PrintFormatProperty_to_print_format(
-            property, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_DynamicDataFormatter_to_string_w_format(
-            data, 
-            str,
-            str_size, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        RTIOsapiHeap_freeBuffer(buffer);
-        DDS_DynamicData_delete(data);
-        return DDS_RETCODE_OK;
     }
 
     RTIBool 
@@ -1869,7 +1624,6 @@ namespace AutoTunerConfiguration {
     {
 
         RTIBool result;
-        const char *METHOD_NAME = "ModelStateStatePlugin_deserialize";
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
@@ -1881,14 +1635,6 @@ namespace AutoTunerConfiguration {
             if (stream->_xTypesState.unassignable) {
                 result = RTI_FALSE;
             }
-        }
-        if (!result && stream->_xTypesState.unassignable ) {
-
-            RTICdrLog_exception(
-                METHOD_NAME, 
-                &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                "ModelStateState");
-
         }
 
         return result;
@@ -2110,16 +1856,10 @@ namespace AutoTunerConfiguration {
         unsigned int initial_alignment = current_alignment;
 
         unsigned int encapsulation_size = current_alignment;
-        struct PRESTypePluginDefaultEndpointData epd;   
 
+        if (endpoint_data) {} /* To avoid warnings */ 
         if (sample==NULL) {
             return 0;
-        }
-        if (endpoint_data == NULL) {
-            endpoint_data = (PRESTypePluginEndpointData) &epd;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);        
         }
 
         if (include_encapsulation) {
@@ -2131,46 +1871,26 @@ namespace AutoTunerConfiguration {
             encapsulation_size -= current_alignment;
             current_alignment = 0;
             initial_alignment = 0;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);
         }
 
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
+            current_alignment);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -2237,40 +1957,34 @@ namespace AutoTunerConfiguration {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
+        char * position = NULL;
 
-            char * position = NULL;
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if (!AutoTunerConfiguration::ModelStateStatePlugin_deserialize_sample(
-                    endpoint_data, sample, stream, 
-                    RTI_FALSE, RTI_TRUE, 
-                    endpoint_plugin_qos)) {
-                    return RTI_FALSE;
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if (deserialize_key) {
+
+            if (!AutoTunerConfiguration::ModelStateStatePlugin_deserialize_sample(
+                endpoint_data, sample, stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool ModelStateStatePlugin_deserialize_key(
@@ -2398,7 +2112,7 @@ namespace AutoTunerConfiguration {
                 return RTI_FALSE;   
             }
         } else {
-            return RTI_FALSE;
+            return error;
         }       
 
         if(deserialize_encapsulation) {
@@ -2419,7 +2133,6 @@ namespace AutoTunerConfiguration {
 
         RTIOsapiHeap_allocateStructure(
             &plugin, struct PRESTypePlugin);
-
         if (plugin == NULL) {
             return NULL;
         }
@@ -2523,38 +2236,34 @@ namespace AutoTunerConfiguration {
 
     DiffpTuningRequest*
     DiffpTuningRequestPluginSupport_create_data_w_params(
-        const struct DDS_TypeAllocationParams_t * alloc_params) 
-    {
+        const struct DDS_TypeAllocationParams_t * alloc_params){
         DiffpTuningRequest *sample = NULL;
 
-        sample = new (std::nothrow) DiffpTuningRequest ;
-        if (sample == NULL) {
-            return NULL;
-        }
+        RTIOsapiHeap_allocateStructure(
+            &sample, DiffpTuningRequest);
 
-        if (!AutoTunerConfiguration::DiffpTuningRequest_initialize_w_params(sample,alloc_params)) {
-            delete  sample;
-            sample=NULL;
-        }
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::DiffpTuningRequest_initialize_w_params(sample,alloc_params)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
+        }        
         return sample; 
     } 
 
     DiffpTuningRequest *
-    DiffpTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
-    {
+    DiffpTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers){
         DiffpTuningRequest *sample = NULL;
 
-        sample = new (std::nothrow) DiffpTuningRequest ;
+        RTIOsapiHeap_allocateStructure(
+            &sample, DiffpTuningRequest);
 
-        if(sample == NULL) {
-            return NULL;
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::DiffpTuningRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
         }
-
-        if (!AutoTunerConfiguration::DiffpTuningRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-            delete  sample;
-            sample=NULL;
-        }
-
         return sample; 
     }
 
@@ -2571,8 +2280,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::DiffpTuningRequest_finalize_w_params(sample,dealloc_params);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -2581,8 +2289,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::DiffpTuningRequest_finalize_ex(sample,deallocate_pointers);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -2598,7 +2305,7 @@ namespace AutoTunerConfiguration {
         DiffpTuningRequest *dst,
         const DiffpTuningRequest *src)
     {
-        return AutoTunerConfiguration::DiffpTuningRequest_copy(dst,(const DiffpTuningRequest*) src);
+        return AutoTunerConfiguration::DiffpTuningRequest_copy(dst,src);
     }
 
     void 
@@ -2864,76 +2571,70 @@ namespace AutoTunerConfiguration {
 
         RTIBool done = RTI_FALSE;
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                AutoTunerConfiguration::DiffpTuningRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPFilter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPD)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPF)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPEps)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeBoolean(
-                    stream, &sample->diffPEpsManual)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPKcMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPKcMax)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPTiMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPTiMax)) {
-                    goto fin; 
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            done = RTI_TRUE;
-          fin:
-            if (done != RTI_TRUE && 
-            RTICdrStream_getRemainder(stream) >=
-            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                return RTI_FALSE;   
-            }
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            AutoTunerConfiguration::DiffpTuningRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPFilter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPD)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPF)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPEps)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeBoolean(
+                stream, &sample->diffPEpsManual)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPKcMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPKcMax)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPTiMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPTiMax)) {
+                goto fin; 
+            }
+        }
+
+        done = RTI_TRUE;
+      fin:
+        if (done != RTI_TRUE && 
+        RTICdrStream_getRemainder(stream) >=
+        RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+            return RTI_FALSE;   
+        }
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool
@@ -2952,14 +2653,14 @@ namespace AutoTunerConfiguration {
 
         epd._maxSizeSerializedSample =
         DiffpTuningRequestPlugin_get_serialized_sample_max_size(
-            NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
+            NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
         if (buffer == NULL) {
             *length = 
             DiffpTuningRequestPlugin_get_serialized_sample_size(
                 (PRESTypePluginEndpointData)&epd,
                 RTI_TRUE,
-                RTICdrEncapsulation_getNativeCdrEncapsulationId(),
+                RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
                 0,
                 sample);
 
@@ -2975,7 +2676,7 @@ namespace AutoTunerConfiguration {
 
         result = AutoTunerConfiguration::DiffpTuningRequestPlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
-            RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
+            RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
 
         *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -2993,96 +2694,10 @@ namespace AutoTunerConfiguration {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, length);
 
-        DiffpTuningRequest_finalize_optional_members(sample, RTI_TRUE);
         return DiffpTuningRequestPlugin_deserialize_sample( 
             NULL, sample,
             &stream, RTI_TRUE, RTI_TRUE, 
             NULL);
-    }
-
-    DDS_ReturnCode_t
-    DiffpTuningRequestPlugin_data_to_string(
-        const DiffpTuningRequest *sample,
-        char *str,
-        DDS_UnsignedLong *str_size, 
-        const struct DDS_PrintFormatProperty *property)
-    {
-        DDS_DynamicData *data = NULL;
-        char *buffer = NULL;
-        unsigned int length = 0;
-        struct DDS_PrintFormat printFormat;
-        DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-        if (sample == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (str_size == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (property == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (!DiffpTuningRequestPlugin_serialize_to_cdr_buffer(
-            NULL, 
-            &length, 
-            sample)) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-        if (buffer == NULL) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        if (!DiffpTuningRequestPlugin_serialize_to_cdr_buffer(
-            buffer, 
-            &length, 
-            sample)) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        data = DDS_DynamicData_new(
-            DiffpTuningRequest_get_typecode(), 
-            &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-        if (data == NULL) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_PrintFormatProperty_to_print_format(
-            property, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_DynamicDataFormatter_to_string_w_format(
-            data, 
-            str,
-            str_size, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        RTIOsapiHeap_freeBuffer(buffer);
-        DDS_DynamicData_delete(data);
-        return DDS_RETCODE_OK;
     }
 
     RTIBool 
@@ -3097,7 +2712,6 @@ namespace AutoTunerConfiguration {
     {
 
         RTIBool result;
-        const char *METHOD_NAME = "DiffpTuningRequestPlugin_deserialize";
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
@@ -3109,14 +2723,6 @@ namespace AutoTunerConfiguration {
             if (stream->_xTypesState.unassignable) {
                 result = RTI_FALSE;
             }
-        }
-        if (!result && stream->_xTypesState.unassignable ) {
-
-            RTICdrLog_exception(
-                METHOD_NAME, 
-                &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                "DiffpTuningRequest");
-
         }
 
         return result;
@@ -3338,16 +2944,10 @@ namespace AutoTunerConfiguration {
         unsigned int initial_alignment = current_alignment;
 
         unsigned int encapsulation_size = current_alignment;
-        struct PRESTypePluginDefaultEndpointData epd;   
 
+        if (endpoint_data) {} /* To avoid warnings */ 
         if (sample==NULL) {
             return 0;
-        }
-        if (endpoint_data == NULL) {
-            endpoint_data = (PRESTypePluginEndpointData) &epd;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);        
         }
 
         if (include_encapsulation) {
@@ -3359,46 +2959,26 @@ namespace AutoTunerConfiguration {
             encapsulation_size -= current_alignment;
             current_alignment = 0;
             initial_alignment = 0;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);
         }
 
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
+            current_alignment);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -3465,40 +3045,34 @@ namespace AutoTunerConfiguration {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
+        char * position = NULL;
 
-            char * position = NULL;
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if (!AutoTunerConfiguration::DiffpTuningRequestPlugin_deserialize_sample(
-                    endpoint_data, sample, stream, 
-                    RTI_FALSE, RTI_TRUE, 
-                    endpoint_plugin_qos)) {
-                    return RTI_FALSE;
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if (deserialize_key) {
+
+            if (!AutoTunerConfiguration::DiffpTuningRequestPlugin_deserialize_sample(
+                endpoint_data, sample, stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool DiffpTuningRequestPlugin_deserialize_key(
@@ -3626,7 +3200,7 @@ namespace AutoTunerConfiguration {
                 return RTI_FALSE;   
             }
         } else {
-            return RTI_FALSE;
+            return error;
         }       
 
         if(deserialize_encapsulation) {
@@ -3647,7 +3221,6 @@ namespace AutoTunerConfiguration {
 
         RTIOsapiHeap_allocateStructure(
             &plugin, struct PRESTypePlugin);
-
         if (plugin == NULL) {
             return NULL;
         }
@@ -3751,38 +3324,34 @@ namespace AutoTunerConfiguration {
 
     DiffpTuningState*
     DiffpTuningStatePluginSupport_create_data_w_params(
-        const struct DDS_TypeAllocationParams_t * alloc_params) 
-    {
+        const struct DDS_TypeAllocationParams_t * alloc_params){
         DiffpTuningState *sample = NULL;
 
-        sample = new (std::nothrow) DiffpTuningState ;
-        if (sample == NULL) {
-            return NULL;
-        }
+        RTIOsapiHeap_allocateStructure(
+            &sample, DiffpTuningState);
 
-        if (!AutoTunerConfiguration::DiffpTuningState_initialize_w_params(sample,alloc_params)) {
-            delete  sample;
-            sample=NULL;
-        }
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::DiffpTuningState_initialize_w_params(sample,alloc_params)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
+        }        
         return sample; 
     } 
 
     DiffpTuningState *
-    DiffpTuningStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
-    {
+    DiffpTuningStatePluginSupport_create_data_ex(RTIBool allocate_pointers){
         DiffpTuningState *sample = NULL;
 
-        sample = new (std::nothrow) DiffpTuningState ;
+        RTIOsapiHeap_allocateStructure(
+            &sample, DiffpTuningState);
 
-        if(sample == NULL) {
-            return NULL;
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::DiffpTuningState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
         }
-
-        if (!AutoTunerConfiguration::DiffpTuningState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-            delete  sample;
-            sample=NULL;
-        }
-
         return sample; 
     }
 
@@ -3799,8 +3368,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::DiffpTuningState_finalize_w_params(sample,dealloc_params);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -3809,8 +3377,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::DiffpTuningState_finalize_ex(sample,deallocate_pointers);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -3826,7 +3393,7 @@ namespace AutoTunerConfiguration {
         DiffpTuningState *dst,
         const DiffpTuningState *src)
     {
-        return AutoTunerConfiguration::DiffpTuningState_copy(dst,(const DiffpTuningState*) src);
+        return AutoTunerConfiguration::DiffpTuningState_copy(dst,src);
     }
 
     void 
@@ -4132,96 +3699,90 @@ namespace AutoTunerConfiguration {
 
         RTIBool done = RTI_FALSE;
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                AutoTunerConfiguration::DiffpTuningState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPFilter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPD)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPF)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPEps)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeBoolean(
-                    stream, &sample->diffPEpsManual)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPKcMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPKcMax)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPTiMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffPTiMax)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffpInitK)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffpInitTau)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffpInitPreFilter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffpR1)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->diffpR2)) {
-                    goto fin; 
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            done = RTI_TRUE;
-          fin:
-            if (done != RTI_TRUE && 
-            RTICdrStream_getRemainder(stream) >=
-            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                return RTI_FALSE;   
-            }
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            AutoTunerConfiguration::DiffpTuningState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPFilter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPD)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPF)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPEps)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeBoolean(
+                stream, &sample->diffPEpsManual)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPKcMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPKcMax)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPTiMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffPTiMax)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffpInitK)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffpInitTau)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffpInitPreFilter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffpR1)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->diffpR2)) {
+                goto fin; 
+            }
+        }
+
+        done = RTI_TRUE;
+      fin:
+        if (done != RTI_TRUE && 
+        RTICdrStream_getRemainder(stream) >=
+        RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+            return RTI_FALSE;   
+        }
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool
@@ -4240,14 +3801,14 @@ namespace AutoTunerConfiguration {
 
         epd._maxSizeSerializedSample =
         DiffpTuningStatePlugin_get_serialized_sample_max_size(
-            NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
+            NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
         if (buffer == NULL) {
             *length = 
             DiffpTuningStatePlugin_get_serialized_sample_size(
                 (PRESTypePluginEndpointData)&epd,
                 RTI_TRUE,
-                RTICdrEncapsulation_getNativeCdrEncapsulationId(),
+                RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
                 0,
                 sample);
 
@@ -4263,7 +3824,7 @@ namespace AutoTunerConfiguration {
 
         result = AutoTunerConfiguration::DiffpTuningStatePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
-            RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
+            RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
 
         *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -4281,96 +3842,10 @@ namespace AutoTunerConfiguration {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, length);
 
-        DiffpTuningState_finalize_optional_members(sample, RTI_TRUE);
         return DiffpTuningStatePlugin_deserialize_sample( 
             NULL, sample,
             &stream, RTI_TRUE, RTI_TRUE, 
             NULL);
-    }
-
-    DDS_ReturnCode_t
-    DiffpTuningStatePlugin_data_to_string(
-        const DiffpTuningState *sample,
-        char *str,
-        DDS_UnsignedLong *str_size, 
-        const struct DDS_PrintFormatProperty *property)
-    {
-        DDS_DynamicData *data = NULL;
-        char *buffer = NULL;
-        unsigned int length = 0;
-        struct DDS_PrintFormat printFormat;
-        DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-        if (sample == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (str_size == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (property == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (!DiffpTuningStatePlugin_serialize_to_cdr_buffer(
-            NULL, 
-            &length, 
-            sample)) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-        if (buffer == NULL) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        if (!DiffpTuningStatePlugin_serialize_to_cdr_buffer(
-            buffer, 
-            &length, 
-            sample)) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        data = DDS_DynamicData_new(
-            DiffpTuningState_get_typecode(), 
-            &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-        if (data == NULL) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_PrintFormatProperty_to_print_format(
-            property, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_DynamicDataFormatter_to_string_w_format(
-            data, 
-            str,
-            str_size, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        RTIOsapiHeap_freeBuffer(buffer);
-        DDS_DynamicData_delete(data);
-        return DDS_RETCODE_OK;
     }
 
     RTIBool 
@@ -4385,7 +3860,6 @@ namespace AutoTunerConfiguration {
     {
 
         RTIBool result;
-        const char *METHOD_NAME = "DiffpTuningStatePlugin_deserialize";
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
@@ -4397,14 +3871,6 @@ namespace AutoTunerConfiguration {
             if (stream->_xTypesState.unassignable) {
                 result = RTI_FALSE;
             }
-        }
-        if (!result && stream->_xTypesState.unassignable ) {
-
-            RTICdrLog_exception(
-                METHOD_NAME, 
-                &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                "DiffpTuningState");
-
         }
 
         return result;
@@ -4666,16 +4132,10 @@ namespace AutoTunerConfiguration {
         unsigned int initial_alignment = current_alignment;
 
         unsigned int encapsulation_size = current_alignment;
-        struct PRESTypePluginDefaultEndpointData epd;   
 
+        if (endpoint_data) {} /* To avoid warnings */ 
         if (sample==NULL) {
             return 0;
-        }
-        if (endpoint_data == NULL) {
-            endpoint_data = (PRESTypePluginEndpointData) &epd;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);        
         }
 
         if (include_encapsulation) {
@@ -4687,66 +4147,36 @@ namespace AutoTunerConfiguration {
             encapsulation_size -= current_alignment;
             current_alignment = 0;
             initial_alignment = 0;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);
         }
 
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
+            current_alignment);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -4813,40 +4243,34 @@ namespace AutoTunerConfiguration {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
+        char * position = NULL;
 
-            char * position = NULL;
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if (!AutoTunerConfiguration::DiffpTuningStatePlugin_deserialize_sample(
-                    endpoint_data, sample, stream, 
-                    RTI_FALSE, RTI_TRUE, 
-                    endpoint_plugin_qos)) {
-                    return RTI_FALSE;
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if (deserialize_key) {
+
+            if (!AutoTunerConfiguration::DiffpTuningStatePlugin_deserialize_sample(
+                endpoint_data, sample, stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool DiffpTuningStatePlugin_deserialize_key(
@@ -4974,7 +4398,7 @@ namespace AutoTunerConfiguration {
                 return RTI_FALSE;   
             }
         } else {
-            return RTI_FALSE;
+            return error;
         }       
 
         if(deserialize_encapsulation) {
@@ -4995,7 +4419,6 @@ namespace AutoTunerConfiguration {
 
         RTIOsapiHeap_allocateStructure(
             &plugin, struct PRESTypePlugin);
-
         if (plugin == NULL) {
             return NULL;
         }
@@ -5099,38 +4522,34 @@ namespace AutoTunerConfiguration {
 
     WobTuningRequest*
     WobTuningRequestPluginSupport_create_data_w_params(
-        const struct DDS_TypeAllocationParams_t * alloc_params) 
-    {
+        const struct DDS_TypeAllocationParams_t * alloc_params){
         WobTuningRequest *sample = NULL;
 
-        sample = new (std::nothrow) WobTuningRequest ;
-        if (sample == NULL) {
-            return NULL;
-        }
+        RTIOsapiHeap_allocateStructure(
+            &sample, WobTuningRequest);
 
-        if (!AutoTunerConfiguration::WobTuningRequest_initialize_w_params(sample,alloc_params)) {
-            delete  sample;
-            sample=NULL;
-        }
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::WobTuningRequest_initialize_w_params(sample,alloc_params)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
+        }        
         return sample; 
     } 
 
     WobTuningRequest *
-    WobTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
-    {
+    WobTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers){
         WobTuningRequest *sample = NULL;
 
-        sample = new (std::nothrow) WobTuningRequest ;
+        RTIOsapiHeap_allocateStructure(
+            &sample, WobTuningRequest);
 
-        if(sample == NULL) {
-            return NULL;
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::WobTuningRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
         }
-
-        if (!AutoTunerConfiguration::WobTuningRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-            delete  sample;
-            sample=NULL;
-        }
-
         return sample; 
     }
 
@@ -5147,8 +4566,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::WobTuningRequest_finalize_w_params(sample,dealloc_params);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -5157,8 +4575,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::WobTuningRequest_finalize_ex(sample,deallocate_pointers);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -5174,7 +4591,7 @@ namespace AutoTunerConfiguration {
         WobTuningRequest *dst,
         const WobTuningRequest *src)
     {
-        return AutoTunerConfiguration::WobTuningRequest_copy(dst,(const WobTuningRequest*) src);
+        return AutoTunerConfiguration::WobTuningRequest_copy(dst,src);
     }
 
     void 
@@ -5440,76 +4857,70 @@ namespace AutoTunerConfiguration {
 
         RTIBool done = RTI_FALSE;
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                AutoTunerConfiguration::WobTuningRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobFilter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobD)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobF)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobEps)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeBoolean(
-                    stream, &sample->wobEpsManual)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobKcMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobKcMax)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobTiMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobTiMax)) {
-                    goto fin; 
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            done = RTI_TRUE;
-          fin:
-            if (done != RTI_TRUE && 
-            RTICdrStream_getRemainder(stream) >=
-            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                return RTI_FALSE;   
-            }
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            AutoTunerConfiguration::WobTuningRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobFilter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobD)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobF)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobEps)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeBoolean(
+                stream, &sample->wobEpsManual)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobKcMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobKcMax)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobTiMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobTiMax)) {
+                goto fin; 
+            }
+        }
+
+        done = RTI_TRUE;
+      fin:
+        if (done != RTI_TRUE && 
+        RTICdrStream_getRemainder(stream) >=
+        RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+            return RTI_FALSE;   
+        }
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool
@@ -5528,14 +4939,14 @@ namespace AutoTunerConfiguration {
 
         epd._maxSizeSerializedSample =
         WobTuningRequestPlugin_get_serialized_sample_max_size(
-            NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
+            NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
         if (buffer == NULL) {
             *length = 
             WobTuningRequestPlugin_get_serialized_sample_size(
                 (PRESTypePluginEndpointData)&epd,
                 RTI_TRUE,
-                RTICdrEncapsulation_getNativeCdrEncapsulationId(),
+                RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
                 0,
                 sample);
 
@@ -5551,7 +4962,7 @@ namespace AutoTunerConfiguration {
 
         result = AutoTunerConfiguration::WobTuningRequestPlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
-            RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
+            RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
 
         *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -5569,96 +4980,10 @@ namespace AutoTunerConfiguration {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, length);
 
-        WobTuningRequest_finalize_optional_members(sample, RTI_TRUE);
         return WobTuningRequestPlugin_deserialize_sample( 
             NULL, sample,
             &stream, RTI_TRUE, RTI_TRUE, 
             NULL);
-    }
-
-    DDS_ReturnCode_t
-    WobTuningRequestPlugin_data_to_string(
-        const WobTuningRequest *sample,
-        char *str,
-        DDS_UnsignedLong *str_size, 
-        const struct DDS_PrintFormatProperty *property)
-    {
-        DDS_DynamicData *data = NULL;
-        char *buffer = NULL;
-        unsigned int length = 0;
-        struct DDS_PrintFormat printFormat;
-        DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-        if (sample == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (str_size == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (property == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (!WobTuningRequestPlugin_serialize_to_cdr_buffer(
-            NULL, 
-            &length, 
-            sample)) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-        if (buffer == NULL) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        if (!WobTuningRequestPlugin_serialize_to_cdr_buffer(
-            buffer, 
-            &length, 
-            sample)) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        data = DDS_DynamicData_new(
-            WobTuningRequest_get_typecode(), 
-            &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-        if (data == NULL) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_PrintFormatProperty_to_print_format(
-            property, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_DynamicDataFormatter_to_string_w_format(
-            data, 
-            str,
-            str_size, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        RTIOsapiHeap_freeBuffer(buffer);
-        DDS_DynamicData_delete(data);
-        return DDS_RETCODE_OK;
     }
 
     RTIBool 
@@ -5673,7 +4998,6 @@ namespace AutoTunerConfiguration {
     {
 
         RTIBool result;
-        const char *METHOD_NAME = "WobTuningRequestPlugin_deserialize";
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
@@ -5685,14 +5009,6 @@ namespace AutoTunerConfiguration {
             if (stream->_xTypesState.unassignable) {
                 result = RTI_FALSE;
             }
-        }
-        if (!result && stream->_xTypesState.unassignable ) {
-
-            RTICdrLog_exception(
-                METHOD_NAME, 
-                &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                "WobTuningRequest");
-
         }
 
         return result;
@@ -5914,16 +5230,10 @@ namespace AutoTunerConfiguration {
         unsigned int initial_alignment = current_alignment;
 
         unsigned int encapsulation_size = current_alignment;
-        struct PRESTypePluginDefaultEndpointData epd;   
 
+        if (endpoint_data) {} /* To avoid warnings */ 
         if (sample==NULL) {
             return 0;
-        }
-        if (endpoint_data == NULL) {
-            endpoint_data = (PRESTypePluginEndpointData) &epd;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);        
         }
 
         if (include_encapsulation) {
@@ -5935,46 +5245,26 @@ namespace AutoTunerConfiguration {
             encapsulation_size -= current_alignment;
             current_alignment = 0;
             initial_alignment = 0;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);
         }
 
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
+            current_alignment);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -6041,40 +5331,34 @@ namespace AutoTunerConfiguration {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
+        char * position = NULL;
 
-            char * position = NULL;
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if (!AutoTunerConfiguration::WobTuningRequestPlugin_deserialize_sample(
-                    endpoint_data, sample, stream, 
-                    RTI_FALSE, RTI_TRUE, 
-                    endpoint_plugin_qos)) {
-                    return RTI_FALSE;
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if (deserialize_key) {
+
+            if (!AutoTunerConfiguration::WobTuningRequestPlugin_deserialize_sample(
+                endpoint_data, sample, stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool WobTuningRequestPlugin_deserialize_key(
@@ -6202,7 +5486,7 @@ namespace AutoTunerConfiguration {
                 return RTI_FALSE;   
             }
         } else {
-            return RTI_FALSE;
+            return error;
         }       
 
         if(deserialize_encapsulation) {
@@ -6223,7 +5507,6 @@ namespace AutoTunerConfiguration {
 
         RTIOsapiHeap_allocateStructure(
             &plugin, struct PRESTypePlugin);
-
         if (plugin == NULL) {
             return NULL;
         }
@@ -6327,38 +5610,34 @@ namespace AutoTunerConfiguration {
 
     WobTuningState*
     WobTuningStatePluginSupport_create_data_w_params(
-        const struct DDS_TypeAllocationParams_t * alloc_params) 
-    {
+        const struct DDS_TypeAllocationParams_t * alloc_params){
         WobTuningState *sample = NULL;
 
-        sample = new (std::nothrow) WobTuningState ;
-        if (sample == NULL) {
-            return NULL;
-        }
+        RTIOsapiHeap_allocateStructure(
+            &sample, WobTuningState);
 
-        if (!AutoTunerConfiguration::WobTuningState_initialize_w_params(sample,alloc_params)) {
-            delete  sample;
-            sample=NULL;
-        }
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::WobTuningState_initialize_w_params(sample,alloc_params)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
+        }        
         return sample; 
     } 
 
     WobTuningState *
-    WobTuningStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
-    {
+    WobTuningStatePluginSupport_create_data_ex(RTIBool allocate_pointers){
         WobTuningState *sample = NULL;
 
-        sample = new (std::nothrow) WobTuningState ;
+        RTIOsapiHeap_allocateStructure(
+            &sample, WobTuningState);
 
-        if(sample == NULL) {
-            return NULL;
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::WobTuningState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
         }
-
-        if (!AutoTunerConfiguration::WobTuningState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-            delete  sample;
-            sample=NULL;
-        }
-
         return sample; 
     }
 
@@ -6375,8 +5654,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::WobTuningState_finalize_w_params(sample,dealloc_params);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -6385,8 +5663,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::WobTuningState_finalize_ex(sample,deallocate_pointers);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -6402,7 +5679,7 @@ namespace AutoTunerConfiguration {
         WobTuningState *dst,
         const WobTuningState *src)
     {
-        return AutoTunerConfiguration::WobTuningState_copy(dst,(const WobTuningState*) src);
+        return AutoTunerConfiguration::WobTuningState_copy(dst,src);
     }
 
     void 
@@ -6708,96 +5985,90 @@ namespace AutoTunerConfiguration {
 
         RTIBool done = RTI_FALSE;
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                AutoTunerConfiguration::WobTuningState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobFilter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobD)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobF)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobEps)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeBoolean(
-                    stream, &sample->wobEpsManual)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobKcMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobKcMax)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobTiMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobTiMax)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobInitK)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobInitTau)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobInitPreFilter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobR1)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->wobR2)) {
-                    goto fin; 
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            done = RTI_TRUE;
-          fin:
-            if (done != RTI_TRUE && 
-            RTICdrStream_getRemainder(stream) >=
-            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                return RTI_FALSE;   
-            }
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            AutoTunerConfiguration::WobTuningState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobFilter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobD)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobF)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobEps)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeBoolean(
+                stream, &sample->wobEpsManual)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobKcMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobKcMax)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobTiMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobTiMax)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobInitK)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobInitTau)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobInitPreFilter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobR1)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->wobR2)) {
+                goto fin; 
+            }
+        }
+
+        done = RTI_TRUE;
+      fin:
+        if (done != RTI_TRUE && 
+        RTICdrStream_getRemainder(stream) >=
+        RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+            return RTI_FALSE;   
+        }
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool
@@ -6816,14 +6087,14 @@ namespace AutoTunerConfiguration {
 
         epd._maxSizeSerializedSample =
         WobTuningStatePlugin_get_serialized_sample_max_size(
-            NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
+            NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
         if (buffer == NULL) {
             *length = 
             WobTuningStatePlugin_get_serialized_sample_size(
                 (PRESTypePluginEndpointData)&epd,
                 RTI_TRUE,
-                RTICdrEncapsulation_getNativeCdrEncapsulationId(),
+                RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
                 0,
                 sample);
 
@@ -6839,7 +6110,7 @@ namespace AutoTunerConfiguration {
 
         result = AutoTunerConfiguration::WobTuningStatePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
-            RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
+            RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
 
         *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -6857,96 +6128,10 @@ namespace AutoTunerConfiguration {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, length);
 
-        WobTuningState_finalize_optional_members(sample, RTI_TRUE);
         return WobTuningStatePlugin_deserialize_sample( 
             NULL, sample,
             &stream, RTI_TRUE, RTI_TRUE, 
             NULL);
-    }
-
-    DDS_ReturnCode_t
-    WobTuningStatePlugin_data_to_string(
-        const WobTuningState *sample,
-        char *str,
-        DDS_UnsignedLong *str_size, 
-        const struct DDS_PrintFormatProperty *property)
-    {
-        DDS_DynamicData *data = NULL;
-        char *buffer = NULL;
-        unsigned int length = 0;
-        struct DDS_PrintFormat printFormat;
-        DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-        if (sample == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (str_size == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (property == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (!WobTuningStatePlugin_serialize_to_cdr_buffer(
-            NULL, 
-            &length, 
-            sample)) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-        if (buffer == NULL) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        if (!WobTuningStatePlugin_serialize_to_cdr_buffer(
-            buffer, 
-            &length, 
-            sample)) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        data = DDS_DynamicData_new(
-            WobTuningState_get_typecode(), 
-            &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-        if (data == NULL) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_PrintFormatProperty_to_print_format(
-            property, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_DynamicDataFormatter_to_string_w_format(
-            data, 
-            str,
-            str_size, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        RTIOsapiHeap_freeBuffer(buffer);
-        DDS_DynamicData_delete(data);
-        return DDS_RETCODE_OK;
     }
 
     RTIBool 
@@ -6961,7 +6146,6 @@ namespace AutoTunerConfiguration {
     {
 
         RTIBool result;
-        const char *METHOD_NAME = "WobTuningStatePlugin_deserialize";
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
@@ -6973,14 +6157,6 @@ namespace AutoTunerConfiguration {
             if (stream->_xTypesState.unassignable) {
                 result = RTI_FALSE;
             }
-        }
-        if (!result && stream->_xTypesState.unassignable ) {
-
-            RTICdrLog_exception(
-                METHOD_NAME, 
-                &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                "WobTuningState");
-
         }
 
         return result;
@@ -7242,16 +6418,10 @@ namespace AutoTunerConfiguration {
         unsigned int initial_alignment = current_alignment;
 
         unsigned int encapsulation_size = current_alignment;
-        struct PRESTypePluginDefaultEndpointData epd;   
 
+        if (endpoint_data) {} /* To avoid warnings */ 
         if (sample==NULL) {
             return 0;
-        }
-        if (endpoint_data == NULL) {
-            endpoint_data = (PRESTypePluginEndpointData) &epd;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);        
         }
 
         if (include_encapsulation) {
@@ -7263,66 +6433,36 @@ namespace AutoTunerConfiguration {
             encapsulation_size -= current_alignment;
             current_alignment = 0;
             initial_alignment = 0;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);
         }
 
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
+            current_alignment);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -7389,40 +6529,34 @@ namespace AutoTunerConfiguration {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
+        char * position = NULL;
 
-            char * position = NULL;
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if (!AutoTunerConfiguration::WobTuningStatePlugin_deserialize_sample(
-                    endpoint_data, sample, stream, 
-                    RTI_FALSE, RTI_TRUE, 
-                    endpoint_plugin_qos)) {
-                    return RTI_FALSE;
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if (deserialize_key) {
+
+            if (!AutoTunerConfiguration::WobTuningStatePlugin_deserialize_sample(
+                endpoint_data, sample, stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool WobTuningStatePlugin_deserialize_key(
@@ -7550,7 +6684,7 @@ namespace AutoTunerConfiguration {
                 return RTI_FALSE;   
             }
         } else {
-            return RTI_FALSE;
+            return error;
         }       
 
         if(deserialize_encapsulation) {
@@ -7571,7 +6705,6 @@ namespace AutoTunerConfiguration {
 
         RTIOsapiHeap_allocateStructure(
             &plugin, struct PRESTypePlugin);
-
         if (plugin == NULL) {
             return NULL;
         }
@@ -7675,38 +6808,34 @@ namespace AutoTunerConfiguration {
 
     TorqueTuningRequest*
     TorqueTuningRequestPluginSupport_create_data_w_params(
-        const struct DDS_TypeAllocationParams_t * alloc_params) 
-    {
+        const struct DDS_TypeAllocationParams_t * alloc_params){
         TorqueTuningRequest *sample = NULL;
 
-        sample = new (std::nothrow) TorqueTuningRequest ;
-        if (sample == NULL) {
-            return NULL;
-        }
+        RTIOsapiHeap_allocateStructure(
+            &sample, TorqueTuningRequest);
 
-        if (!AutoTunerConfiguration::TorqueTuningRequest_initialize_w_params(sample,alloc_params)) {
-            delete  sample;
-            sample=NULL;
-        }
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::TorqueTuningRequest_initialize_w_params(sample,alloc_params)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
+        }        
         return sample; 
     } 
 
     TorqueTuningRequest *
-    TorqueTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
-    {
+    TorqueTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers){
         TorqueTuningRequest *sample = NULL;
 
-        sample = new (std::nothrow) TorqueTuningRequest ;
+        RTIOsapiHeap_allocateStructure(
+            &sample, TorqueTuningRequest);
 
-        if(sample == NULL) {
-            return NULL;
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::TorqueTuningRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
         }
-
-        if (!AutoTunerConfiguration::TorqueTuningRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-            delete  sample;
-            sample=NULL;
-        }
-
         return sample; 
     }
 
@@ -7723,8 +6852,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::TorqueTuningRequest_finalize_w_params(sample,dealloc_params);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -7733,8 +6861,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::TorqueTuningRequest_finalize_ex(sample,deallocate_pointers);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -7750,7 +6877,7 @@ namespace AutoTunerConfiguration {
         TorqueTuningRequest *dst,
         const TorqueTuningRequest *src)
     {
-        return AutoTunerConfiguration::TorqueTuningRequest_copy(dst,(const TorqueTuningRequest*) src);
+        return AutoTunerConfiguration::TorqueTuningRequest_copy(dst,src);
     }
 
     void 
@@ -8016,76 +7143,70 @@ namespace AutoTunerConfiguration {
 
         RTIBool done = RTI_FALSE;
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                AutoTunerConfiguration::TorqueTuningRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueFilter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueD)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueF)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueEps)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeBoolean(
-                    stream, &sample->torqueEpsManual)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueKcMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueKcMax)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueTiMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueTiMax)) {
-                    goto fin; 
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            done = RTI_TRUE;
-          fin:
-            if (done != RTI_TRUE && 
-            RTICdrStream_getRemainder(stream) >=
-            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                return RTI_FALSE;   
-            }
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            AutoTunerConfiguration::TorqueTuningRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueFilter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueD)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueF)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueEps)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeBoolean(
+                stream, &sample->torqueEpsManual)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueKcMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueKcMax)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueTiMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueTiMax)) {
+                goto fin; 
+            }
+        }
+
+        done = RTI_TRUE;
+      fin:
+        if (done != RTI_TRUE && 
+        RTICdrStream_getRemainder(stream) >=
+        RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+            return RTI_FALSE;   
+        }
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool
@@ -8104,14 +7225,14 @@ namespace AutoTunerConfiguration {
 
         epd._maxSizeSerializedSample =
         TorqueTuningRequestPlugin_get_serialized_sample_max_size(
-            NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
+            NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
         if (buffer == NULL) {
             *length = 
             TorqueTuningRequestPlugin_get_serialized_sample_size(
                 (PRESTypePluginEndpointData)&epd,
                 RTI_TRUE,
-                RTICdrEncapsulation_getNativeCdrEncapsulationId(),
+                RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
                 0,
                 sample);
 
@@ -8127,7 +7248,7 @@ namespace AutoTunerConfiguration {
 
         result = AutoTunerConfiguration::TorqueTuningRequestPlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
-            RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
+            RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
 
         *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -8145,96 +7266,10 @@ namespace AutoTunerConfiguration {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, length);
 
-        TorqueTuningRequest_finalize_optional_members(sample, RTI_TRUE);
         return TorqueTuningRequestPlugin_deserialize_sample( 
             NULL, sample,
             &stream, RTI_TRUE, RTI_TRUE, 
             NULL);
-    }
-
-    DDS_ReturnCode_t
-    TorqueTuningRequestPlugin_data_to_string(
-        const TorqueTuningRequest *sample,
-        char *str,
-        DDS_UnsignedLong *str_size, 
-        const struct DDS_PrintFormatProperty *property)
-    {
-        DDS_DynamicData *data = NULL;
-        char *buffer = NULL;
-        unsigned int length = 0;
-        struct DDS_PrintFormat printFormat;
-        DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-        if (sample == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (str_size == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (property == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (!TorqueTuningRequestPlugin_serialize_to_cdr_buffer(
-            NULL, 
-            &length, 
-            sample)) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-        if (buffer == NULL) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        if (!TorqueTuningRequestPlugin_serialize_to_cdr_buffer(
-            buffer, 
-            &length, 
-            sample)) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        data = DDS_DynamicData_new(
-            TorqueTuningRequest_get_typecode(), 
-            &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-        if (data == NULL) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_PrintFormatProperty_to_print_format(
-            property, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_DynamicDataFormatter_to_string_w_format(
-            data, 
-            str,
-            str_size, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        RTIOsapiHeap_freeBuffer(buffer);
-        DDS_DynamicData_delete(data);
-        return DDS_RETCODE_OK;
     }
 
     RTIBool 
@@ -8249,7 +7284,6 @@ namespace AutoTunerConfiguration {
     {
 
         RTIBool result;
-        const char *METHOD_NAME = "TorqueTuningRequestPlugin_deserialize";
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
@@ -8261,14 +7295,6 @@ namespace AutoTunerConfiguration {
             if (stream->_xTypesState.unassignable) {
                 result = RTI_FALSE;
             }
-        }
-        if (!result && stream->_xTypesState.unassignable ) {
-
-            RTICdrLog_exception(
-                METHOD_NAME, 
-                &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                "TorqueTuningRequest");
-
         }
 
         return result;
@@ -8490,16 +7516,10 @@ namespace AutoTunerConfiguration {
         unsigned int initial_alignment = current_alignment;
 
         unsigned int encapsulation_size = current_alignment;
-        struct PRESTypePluginDefaultEndpointData epd;   
 
+        if (endpoint_data) {} /* To avoid warnings */ 
         if (sample==NULL) {
             return 0;
-        }
-        if (endpoint_data == NULL) {
-            endpoint_data = (PRESTypePluginEndpointData) &epd;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);        
         }
 
         if (include_encapsulation) {
@@ -8511,46 +7531,26 @@ namespace AutoTunerConfiguration {
             encapsulation_size -= current_alignment;
             current_alignment = 0;
             initial_alignment = 0;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);
         }
 
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
+            current_alignment);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -8617,40 +7617,34 @@ namespace AutoTunerConfiguration {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
+        char * position = NULL;
 
-            char * position = NULL;
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if (!AutoTunerConfiguration::TorqueTuningRequestPlugin_deserialize_sample(
-                    endpoint_data, sample, stream, 
-                    RTI_FALSE, RTI_TRUE, 
-                    endpoint_plugin_qos)) {
-                    return RTI_FALSE;
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if (deserialize_key) {
+
+            if (!AutoTunerConfiguration::TorqueTuningRequestPlugin_deserialize_sample(
+                endpoint_data, sample, stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool TorqueTuningRequestPlugin_deserialize_key(
@@ -8778,7 +7772,7 @@ namespace AutoTunerConfiguration {
                 return RTI_FALSE;   
             }
         } else {
-            return RTI_FALSE;
+            return error;
         }       
 
         if(deserialize_encapsulation) {
@@ -8799,7 +7793,6 @@ namespace AutoTunerConfiguration {
 
         RTIOsapiHeap_allocateStructure(
             &plugin, struct PRESTypePlugin);
-
         if (plugin == NULL) {
             return NULL;
         }
@@ -8903,38 +7896,34 @@ namespace AutoTunerConfiguration {
 
     TorqueTuningState*
     TorqueTuningStatePluginSupport_create_data_w_params(
-        const struct DDS_TypeAllocationParams_t * alloc_params) 
-    {
+        const struct DDS_TypeAllocationParams_t * alloc_params){
         TorqueTuningState *sample = NULL;
 
-        sample = new (std::nothrow) TorqueTuningState ;
-        if (sample == NULL) {
-            return NULL;
-        }
+        RTIOsapiHeap_allocateStructure(
+            &sample, TorqueTuningState);
 
-        if (!AutoTunerConfiguration::TorqueTuningState_initialize_w_params(sample,alloc_params)) {
-            delete  sample;
-            sample=NULL;
-        }
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::TorqueTuningState_initialize_w_params(sample,alloc_params)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
+        }        
         return sample; 
     } 
 
     TorqueTuningState *
-    TorqueTuningStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
-    {
+    TorqueTuningStatePluginSupport_create_data_ex(RTIBool allocate_pointers){
         TorqueTuningState *sample = NULL;
 
-        sample = new (std::nothrow) TorqueTuningState ;
+        RTIOsapiHeap_allocateStructure(
+            &sample, TorqueTuningState);
 
-        if(sample == NULL) {
-            return NULL;
+        if(sample != NULL) {
+            if (!AutoTunerConfiguration::TorqueTuningState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                RTIOsapiHeap_freeStructure(sample);
+                return NULL;
+            }
         }
-
-        if (!AutoTunerConfiguration::TorqueTuningState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-            delete  sample;
-            sample=NULL;
-        }
-
         return sample; 
     }
 
@@ -8951,8 +7940,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::TorqueTuningState_finalize_w_params(sample,dealloc_params);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -8961,8 +7949,7 @@ namespace AutoTunerConfiguration {
 
         AutoTunerConfiguration::TorqueTuningState_finalize_ex(sample,deallocate_pointers);
 
-        delete  sample;
-        sample=NULL;
+        RTIOsapiHeap_freeStructure(sample);
     }
 
     void 
@@ -8978,7 +7965,7 @@ namespace AutoTunerConfiguration {
         TorqueTuningState *dst,
         const TorqueTuningState *src)
     {
-        return AutoTunerConfiguration::TorqueTuningState_copy(dst,(const TorqueTuningState*) src);
+        return AutoTunerConfiguration::TorqueTuningState_copy(dst,src);
     }
 
     void 
@@ -9284,96 +8271,90 @@ namespace AutoTunerConfiguration {
 
         RTIBool done = RTI_FALSE;
 
-        try {
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if(deserialize_sample) {
-
-                AutoTunerConfiguration::TorqueTuningState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
-
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueFilter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueD)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueF)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueEps)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeBoolean(
-                    stream, &sample->torqueEpsManual)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueKcMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueKcMax)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueTiMin)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueTiMax)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueInitK)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueInitTau)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueInitPreFilter)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueR1)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeDouble(
-                    stream, &sample->torqueR2)) {
-                    goto fin; 
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            done = RTI_TRUE;
-          fin:
-            if (done != RTI_TRUE && 
-            RTICdrStream_getRemainder(stream) >=
-            RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
-                return RTI_FALSE;   
-            }
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if(deserialize_sample) {
+
+            AutoTunerConfiguration::TorqueTuningState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueFilter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueD)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueF)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueEps)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeBoolean(
+                stream, &sample->torqueEpsManual)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueKcMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueKcMax)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueTiMin)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueTiMax)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueInitK)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueInitTau)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueInitPreFilter)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueR1)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeDouble(
+                stream, &sample->torqueR2)) {
+                goto fin; 
+            }
+        }
+
+        done = RTI_TRUE;
+      fin:
+        if (done != RTI_TRUE && 
+        RTICdrStream_getRemainder(stream) >=
+        RTI_CDR_PARAMETER_HEADER_ALIGNMENT) {
+            return RTI_FALSE;   
+        }
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool
@@ -9392,14 +8373,14 @@ namespace AutoTunerConfiguration {
 
         epd._maxSizeSerializedSample =
         TorqueTuningStatePlugin_get_serialized_sample_max_size(
-            NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
+            NULL, RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 0);
 
         if (buffer == NULL) {
             *length = 
             TorqueTuningStatePlugin_get_serialized_sample_size(
                 (PRESTypePluginEndpointData)&epd,
                 RTI_TRUE,
-                RTICdrEncapsulation_getNativeCdrEncapsulationId(),
+                RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE,
                 0,
                 sample);
 
@@ -9415,7 +8396,7 @@ namespace AutoTunerConfiguration {
 
         result = AutoTunerConfiguration::TorqueTuningStatePlugin_serialize(
             (PRESTypePluginEndpointData)&epd, sample, &stream, 
-            RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
+            RTI_TRUE, RTI_CDR_ENCAPSULATION_ID_CDR_NATIVE, 
             RTI_TRUE, NULL);  
 
         *length = RTICdrStream_getCurrentPositionOffset(&stream);
@@ -9433,96 +8414,10 @@ namespace AutoTunerConfiguration {
         RTICdrStream_init(&stream);
         RTICdrStream_set(&stream, (char *)buffer, length);
 
-        TorqueTuningState_finalize_optional_members(sample, RTI_TRUE);
         return TorqueTuningStatePlugin_deserialize_sample( 
             NULL, sample,
             &stream, RTI_TRUE, RTI_TRUE, 
             NULL);
-    }
-
-    DDS_ReturnCode_t
-    TorqueTuningStatePlugin_data_to_string(
-        const TorqueTuningState *sample,
-        char *str,
-        DDS_UnsignedLong *str_size, 
-        const struct DDS_PrintFormatProperty *property)
-    {
-        DDS_DynamicData *data = NULL;
-        char *buffer = NULL;
-        unsigned int length = 0;
-        struct DDS_PrintFormat printFormat;
-        DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-        if (sample == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (str_size == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (property == NULL) {
-            return DDS_RETCODE_BAD_PARAMETER;
-        }
-
-        if (!TorqueTuningStatePlugin_serialize_to_cdr_buffer(
-            NULL, 
-            &length, 
-            sample)) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-        if (buffer == NULL) {
-            return DDS_RETCODE_ERROR;
-        }
-
-        if (!TorqueTuningStatePlugin_serialize_to_cdr_buffer(
-            buffer, 
-            &length, 
-            sample)) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        data = DDS_DynamicData_new(
-            TorqueTuningState_get_typecode(), 
-            &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-        if (data == NULL) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            return DDS_RETCODE_ERROR;
-        }
-
-        retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_PrintFormatProperty_to_print_format(
-            property, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        retCode = DDS_DynamicDataFormatter_to_string_w_format(
-            data, 
-            str,
-            str_size, 
-            &printFormat);
-        if (retCode != DDS_RETCODE_OK) {
-            RTIOsapiHeap_freeBuffer(buffer);
-            DDS_DynamicData_delete(data);
-            return retCode;
-        }
-
-        RTIOsapiHeap_freeBuffer(buffer);
-        DDS_DynamicData_delete(data);
-        return DDS_RETCODE_OK;
     }
 
     RTIBool 
@@ -9537,7 +8432,6 @@ namespace AutoTunerConfiguration {
     {
 
         RTIBool result;
-        const char *METHOD_NAME = "TorqueTuningStatePlugin_deserialize";
         if (drop_sample) {} /* To avoid warnings */
 
         stream->_xTypesState.unassignable = RTI_FALSE;
@@ -9549,14 +8443,6 @@ namespace AutoTunerConfiguration {
             if (stream->_xTypesState.unassignable) {
                 result = RTI_FALSE;
             }
-        }
-        if (!result && stream->_xTypesState.unassignable ) {
-
-            RTICdrLog_exception(
-                METHOD_NAME, 
-                &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                "TorqueTuningState");
-
         }
 
         return result;
@@ -9818,16 +8704,10 @@ namespace AutoTunerConfiguration {
         unsigned int initial_alignment = current_alignment;
 
         unsigned int encapsulation_size = current_alignment;
-        struct PRESTypePluginDefaultEndpointData epd;   
 
+        if (endpoint_data) {} /* To avoid warnings */ 
         if (sample==NULL) {
             return 0;
-        }
-        if (endpoint_data == NULL) {
-            endpoint_data = (PRESTypePluginEndpointData) &epd;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);        
         }
 
         if (include_encapsulation) {
@@ -9839,66 +8719,36 @@ namespace AutoTunerConfiguration {
             encapsulation_size -= current_alignment;
             current_alignment = 0;
             initial_alignment = 0;
-            PRESTypePluginDefaultEndpointData_setBaseAlignment(
-                endpoint_data,
-                current_alignment);
         }
 
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
-
+            current_alignment);
         current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment));
+            current_alignment);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -9965,40 +8815,34 @@ namespace AutoTunerConfiguration {
         RTIBool deserialize_key,
         void *endpoint_plugin_qos)
     {
-        try {
+        char * position = NULL;
 
-            char * position = NULL;
+        if (endpoint_data) {} /* To avoid warnings */
+        if (endpoint_plugin_qos) {} /* To avoid warnings */
 
-            if (endpoint_data) {} /* To avoid warnings */
-            if (endpoint_plugin_qos) {} /* To avoid warnings */
+        if(deserialize_encapsulation) {
 
-            if(deserialize_encapsulation) {
-
-                if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
-                    return RTI_FALSE;
-                }
-
-                position = RTICdrStream_resetAlignment(stream);
-            }
-            if (deserialize_key) {
-
-                if (!AutoTunerConfiguration::TorqueTuningStatePlugin_deserialize_sample(
-                    endpoint_data, sample, stream, 
-                    RTI_FALSE, RTI_TRUE, 
-                    endpoint_plugin_qos)) {
-                    return RTI_FALSE;
-                }
+            if (!RTICdrStream_deserializeAndSetCdrEncapsulation(stream)) {
+                return RTI_FALSE;
             }
 
-            if(deserialize_encapsulation) {
-                RTICdrStream_restoreAlignment(stream,position);
-            }
-
-            return RTI_TRUE;
-
-        } catch (std::bad_alloc&) {
-            return RTI_FALSE;
+            position = RTICdrStream_resetAlignment(stream);
         }
+        if (deserialize_key) {
+
+            if (!AutoTunerConfiguration::TorqueTuningStatePlugin_deserialize_sample(
+                endpoint_data, sample, stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                return RTI_FALSE;
+            }
+        }
+
+        if(deserialize_encapsulation) {
+            RTICdrStream_restoreAlignment(stream,position);
+        }
+
+        return RTI_TRUE;
     }
 
     RTIBool TorqueTuningStatePlugin_deserialize_key(
@@ -10126,7 +8970,7 @@ namespace AutoTunerConfiguration {
                 return RTI_FALSE;   
             }
         } else {
-            return RTI_FALSE;
+            return error;
         }       
 
         if(deserialize_encapsulation) {
@@ -10147,7 +8991,6 @@ namespace AutoTunerConfiguration {
 
         RTIOsapiHeap_allocateStructure(
             &plugin, struct PRESTypePlugin);
-
         if (plugin == NULL) {
             return NULL;
         }
@@ -10241,4 +9084,4 @@ namespace AutoTunerConfiguration {
         RTIOsapiHeap_freeStructure(plugin);
     } 
 } /* namespace AutoTunerConfiguration  */
-#undef RTI_CDR_CURRENT_SUBMODULE 
+

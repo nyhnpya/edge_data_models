@@ -226,6 +226,106 @@ namespace Configuration {
     TDataReader,
     TTypeSupport
 
+    Configure and implement 'step7_interface_t' support classes.
+
+    Note: Only the #defined classes get defined
+    */
+
+    /* ----------------------------------------------------------------- */
+    /* DDSDataWriter
+    */
+
+    /**
+    <<IMPLEMENTATION >>
+
+    Defines:   TDataWriter, TData
+    */
+
+    /* Requires */
+    #define TTYPENAME   step7_interface_tTYPENAME
+
+    /* Defines */
+    #define TDataWriter step7_interface_tDataWriter
+    #define TData       Configuration::step7_interface_t
+
+    #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+
+    #undef TDataWriter
+    #undef TData
+
+    #undef TTYPENAME
+
+    /* ----------------------------------------------------------------- */
+    /* DDSDataReader
+    */
+
+    /**
+    <<IMPLEMENTATION >>
+
+    Defines:   TDataReader, TDataSeq, TData
+    */
+
+    /* Requires */
+    #define TTYPENAME   step7_interface_tTYPENAME
+
+    /* Defines */
+    #define TDataReader step7_interface_tDataReader
+    #define TDataSeq    step7_interface_tSeq
+    #define TData       Configuration::step7_interface_t
+
+    #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+
+    #undef TDataReader
+    #undef TDataSeq
+    #undef TData
+
+    #undef TTYPENAME
+
+    /* ----------------------------------------------------------------- */
+    /* TypeSupport
+
+    <<IMPLEMENTATION >>
+
+    Requires:  TTYPENAME,
+    TPlugin_new
+    TPlugin_delete
+    Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+    */
+
+    /* Requires */
+    #define TTYPENAME    step7_interface_tTYPENAME
+    #define TPlugin_new  Configuration::step7_interface_tPlugin_new
+    #define TPlugin_delete  Configuration::step7_interface_tPlugin_delete
+
+    /* Defines */
+    #define TTypeSupport step7_interface_tTypeSupport
+    #define TData        Configuration::step7_interface_t
+    #define TDataReader  step7_interface_tDataReader
+    #define TDataWriter  step7_interface_tDataWriter
+    #define TGENERATE_SER_CODE
+    #define TGENERATE_TYPECODE
+
+    #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+
+    #undef TTypeSupport
+    #undef TData
+    #undef TDataReader
+    #undef TDataWriter
+    #undef TGENERATE_TYPECODE
+    #undef TGENERATE_SER_CODE
+    #undef TTYPENAME
+    #undef TPlugin_new
+    #undef TPlugin_delete
+
+    /* ========================================================================= */
+    /**
+    <<IMPLEMENTATION>>
+
+    Defines:   TData,
+    TDataWriter,
+    TDataReader,
+    TTypeSupport
+
     Configure and implement 'config_data' support classes.
 
     Note: Only the #defined classes get defined

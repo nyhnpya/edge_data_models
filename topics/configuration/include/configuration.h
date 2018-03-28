@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef configuration_301632859_h
-#define configuration_301632859_h
+#ifndef configuration_301633117_h
+#define configuration_301633117_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -24,7 +24,8 @@ namespace Configuration {
     typedef enum config_type
     {
         PROTOCOL ,      
-        INTERFACE      
+        INTERFACE ,      
+        STEP7_INTERFACE      
     } config_type;
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
@@ -35,7 +36,7 @@ namespace Configuration {
 
     NDDSUSERDllExport DDS_TypeCode* config_type_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(config_typeSeq, config_type);
+    DDS_SEQUENCE(config_typeSeq, config_type);                                        
 
     NDDSUSERDllExport
     RTIBool config_type_initialize(
@@ -48,7 +49,7 @@ namespace Configuration {
     NDDSUSERDllExport
     RTIBool config_type_initialize_w_params(
         config_type* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void config_type_finalize(
@@ -101,7 +102,7 @@ namespace Configuration {
 
     NDDSUSERDllExport DDS_TypeCode* plant_type_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(plant_typeSeq, plant_type);
+    DDS_SEQUENCE(plant_typeSeq, plant_type);                                        
 
     NDDSUSERDllExport
     RTIBool plant_type_initialize(
@@ -114,7 +115,7 @@ namespace Configuration {
     NDDSUSERDllExport
     RTIBool plant_type_initialize_w_params(
         plant_type* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void plant_type_finalize(
@@ -177,7 +178,7 @@ namespace Configuration {
 
     NDDSUSERDllExport DDS_TypeCode* protocol_t_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(protocol_tSeq, protocol_t);
+    DDS_SEQUENCE(protocol_tSeq, protocol_t);                                        
 
     NDDSUSERDllExport
     RTIBool protocol_t_initialize(
@@ -190,7 +191,7 @@ namespace Configuration {
     NDDSUSERDllExport
     RTIBool protocol_t_initialize_w_params(
         protocol_t* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void protocol_t_finalize(
@@ -255,7 +256,7 @@ namespace Configuration {
 
     NDDSUSERDllExport DDS_TypeCode* interface_t_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(interface_tSeq, interface_t);
+    DDS_SEQUENCE(interface_tSeq, interface_t);                                        
 
     NDDSUSERDllExport
     RTIBool interface_t_initialize(
@@ -268,7 +269,7 @@ namespace Configuration {
     NDDSUSERDllExport
     RTIBool interface_t_initialize_w_params(
         interface_t* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void interface_t_finalize(
@@ -291,6 +292,85 @@ namespace Configuration {
     RTIBool interface_t_copy(
         interface_t* dst,
         const interface_t* src);
+
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    /* If the code is building on Windows, stop exporting symbols.
+    */
+    #undef NDDSUSERDllExport
+    #define NDDSUSERDllExport
+    #endif
+
+    extern const char *step7_interface_tTYPENAME;
+
+    struct step7_interface_tSeq;
+    #ifndef NDDS_STANDALONE_TYPE
+    class step7_interface_tTypeSupport;
+    class step7_interface_tDataWriter;
+    class step7_interface_tDataReader;
+    #endif
+
+    class step7_interface_t 
+    {
+      public:
+        typedef struct step7_interface_tSeq Seq;
+        #ifndef NDDS_STANDALONE_TYPE
+        typedef step7_interface_tTypeSupport TypeSupport;
+        typedef step7_interface_tDataWriter DataWriter;
+        typedef step7_interface_tDataReader DataReader;
+        #endif
+
+        DDS_Char *   protocol ;
+        DDS_Char *   type ;
+        DDS_Char *   unit ;
+        DDS_Long   dataBlock ;
+        DDS_Long   offset ;
+
+    };
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    /* If the code is building on Windows, start exporting symbols.
+    */
+    #undef NDDSUSERDllExport
+    #define NDDSUSERDllExport __declspec(dllexport)
+    #endif
+
+    NDDSUSERDllExport DDS_TypeCode* step7_interface_t_get_typecode(void); /* Type code */
+
+    DDS_SEQUENCE(step7_interface_tSeq, step7_interface_t);                                        
+
+    NDDSUSERDllExport
+    RTIBool step7_interface_t_initialize(
+        step7_interface_t* self);
+
+    NDDSUSERDllExport
+    RTIBool step7_interface_t_initialize_ex(
+        step7_interface_t* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+    NDDSUSERDllExport
+    RTIBool step7_interface_t_initialize_w_params(
+        step7_interface_t* self,
+        const struct DDS_TypeAllocationParams_t * allocParams);        
+
+    NDDSUSERDllExport
+    void step7_interface_t_finalize(
+        step7_interface_t* self);
+
+    NDDSUSERDllExport
+    void step7_interface_t_finalize_ex(
+        step7_interface_t* self,RTIBool deletePointers);
+
+    NDDSUSERDllExport
+    void step7_interface_t_finalize_w_params(
+        step7_interface_t* self,
+        const struct DDS_TypeDeallocationParams_t * deallocParams);
+
+    NDDSUSERDllExport
+    void step7_interface_t_finalize_optional_members(
+        step7_interface_t* self, RTIBool deletePointers);  
+
+    NDDSUSERDllExport
+    RTIBool step7_interface_t_copy(
+        step7_interface_t* dst,
+        const step7_interface_t* src);
 
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
@@ -322,6 +402,7 @@ namespace Configuration {
 
             Configuration::protocol_t   event ;
             Configuration::interface_t   request ;
+            Configuration::step7_interface_t   step7_data ;
         }_u;
 
     } config_data ;
@@ -334,7 +415,7 @@ namespace Configuration {
 
     NDDSUSERDllExport DDS_TypeCode* config_data_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(config_dataSeq, config_data);
+    DDS_SEQUENCE(config_dataSeq, config_data);                                        
 
     NDDSUSERDllExport
     RTIBool config_data_initialize(
@@ -347,7 +428,7 @@ namespace Configuration {
     NDDSUSERDllExport
     RTIBool config_data_initialize_w_params(
         config_data* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void config_data_finalize(
@@ -415,7 +496,7 @@ namespace Configuration {
 
     NDDSUSERDllExport DDS_TypeCode* Item_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(ItemSeq, Item);
+    DDS_SEQUENCE(ItemSeq, Item);                                        
 
     NDDSUSERDllExport
     RTIBool Item_initialize(
@@ -428,7 +509,7 @@ namespace Configuration {
     NDDSUSERDllExport
     RTIBool Item_initialize_w_params(
         Item* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);  
+        const struct DDS_TypeAllocationParams_t * allocParams);        
 
     NDDSUSERDllExport
     void Item_finalize(

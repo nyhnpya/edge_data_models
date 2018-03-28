@@ -193,12 +193,6 @@ namespace nec {
             RotateRequest *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        RotateRequestPlugin_data_to_string(
-            const RotateRequest *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         RotateRequestPlugin_skip(
@@ -491,12 +485,6 @@ namespace nec {
             RotateObjective *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        RotateObjectivePlugin_data_to_string(
-            const RotateObjective *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         RotateObjectivePlugin_skip(
@@ -789,12 +777,6 @@ namespace nec {
             RotateState *sample,
             const char * buffer,
             unsigned int length);    
-        NDDSUSERDllExport extern DDS_ReturnCode_t
-        RotateStatePlugin_data_to_string(
-            const RotateState *sample,
-            char *str,
-            DDS_UnsignedLong *str_size, 
-            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         RotateStatePlugin_skip(

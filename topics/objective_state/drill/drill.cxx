@@ -30,8 +30,6 @@ or consult the RTI Connext manual.
 
 #include "drill.h"
 
-#include <new>
-
 namespace nec {
     namespace process {
 
@@ -342,12 +340,7 @@ namespace nec {
             DrillingRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -372,35 +365,35 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->ropLimit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->wobLimit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->differentialPressureLimit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->torqueLimit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->ropMode)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->wobMode)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->differentialPressureMode)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->torqueMode)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -435,10 +428,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -479,70 +469,61 @@ namespace nec {
             DrillingRequest* dst,
             const DrillingRequest* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Priority_copy(
-                    &dst->priority,(const DataTypes::Priority*)&src->priority)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timeNeeded,(const DataTypes::Time*)&src->timeNeeded)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->duration,(const DataTypes::Time*)&src->duration)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->ropLimit, &src->ropLimit)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->wobLimit, &src->wobLimit)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->differentialPressureLimit, &src->differentialPressureLimit)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->torqueLimit, &src->torqueLimit)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->ropMode, &src->ropMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->wobMode, &src->wobMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->differentialPressureMode, &src->differentialPressureMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->torqueMode, &src->torqueMode)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Uuid_copy(
+                &dst->objectiveId, &src->objectiveId)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Priority_copy(
+                &dst->priority, &src->priority)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->timeNeeded, &src->timeNeeded)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->duration, &src->duration)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->ropLimit, &src->ropLimit)) { 
                 return RTI_FALSE;
             }
+            if (!RTICdrType_copyDouble (
+                &dst->wobLimit, &src->wobLimit)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->differentialPressureLimit, &src->differentialPressureLimit)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->torqueLimit, &src->torqueLimit)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->ropMode, &src->ropMode)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->wobMode, &src->wobMode)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->differentialPressureMode, &src->differentialPressureMode)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->torqueMode, &src->torqueMode)) { 
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -554,9 +535,7 @@ namespace nec {
         */
         #define T DrillingRequest
         #define TSeq DrillingRequestSeq
-
         #define T_initialize_w_params nec::process::DrillingRequest_initialize_w_params
-
         #define T_finalize_w_params   nec::process::DrillingRequest_finalize_w_params
         #define T_copy       nec::process::DrillingRequest_copy
 
@@ -570,9 +549,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
 
@@ -845,12 +822,7 @@ namespace nec {
             DrillingObjective* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -867,35 +839,35 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->ropLimit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->wobLimit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->differentialPressureLimit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->torqueLimit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->ropMode)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->wobMode)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->differentialPressureMode)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->torqueMode)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -930,10 +902,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -968,62 +937,53 @@ namespace nec {
             DrillingObjective* dst,
             const DrillingObjective* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->estimatedDuration,(const DataTypes::Time*)&src->estimatedDuration)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->ropLimit, &src->ropLimit)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->wobLimit, &src->wobLimit)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->differentialPressureLimit, &src->differentialPressureLimit)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->torqueLimit, &src->torqueLimit)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->ropMode, &src->ropMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->wobMode, &src->wobMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->differentialPressureMode, &src->differentialPressureMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->torqueMode, &src->torqueMode)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Uuid_copy(
+                &dst->objectiveId, &src->objectiveId)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->estimatedDuration, &src->estimatedDuration)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->ropLimit, &src->ropLimit)) { 
                 return RTI_FALSE;
             }
+            if (!RTICdrType_copyDouble (
+                &dst->wobLimit, &src->wobLimit)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->differentialPressureLimit, &src->differentialPressureLimit)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->torqueLimit, &src->torqueLimit)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->ropMode, &src->ropMode)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->wobMode, &src->wobMode)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->differentialPressureMode, &src->differentialPressureMode)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->torqueMode, &src->torqueMode)) { 
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -1035,9 +995,7 @@ namespace nec {
         */
         #define T DrillingObjective
         #define TSeq DrillingObjectiveSeq
-
         #define T_initialize_w_params nec::process::DrillingObjective_initialize_w_params
-
         #define T_finalize_w_params   nec::process::DrillingObjective_finalize_w_params
         #define T_copy       nec::process::DrillingObjective_copy
 
@@ -1051,9 +1009,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
 
@@ -1497,12 +1453,7 @@ namespace nec {
             DrillingState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
+            if (allocParams) {} /* To avoid warnings */
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -1519,71 +1470,71 @@ namespace nec {
 
             if (!RTICdrType_initDouble(&sample->ropActual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->wobActual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->differentialPressureActual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->torqueActual)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->ropLimit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->wobLimit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->differentialPressureLimit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->torqueLimit)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->ropMode)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->wobMode)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->differentialPressureMode)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->torqueMode)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->ropTarget)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->wobTarget)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->differentialPressureTarget)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initDouble(&sample->torqueTarget)) {
                 return RTI_FALSE;
-            }
+            }     
 
             if (!RTICdrType_initBoolean(&sample->bitOnBottom)) {
                 return RTI_FALSE;
-            }
+            }     
 
             return RTI_TRUE;
         }
@@ -1618,10 +1569,7 @@ namespace nec {
             if (sample==NULL) {
                 return;
             }
-
-            if (deallocParams == NULL) {
-                return;
-            }
+            if (deallocParams) {} /* To avoid warnings */
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -1656,98 +1604,89 @@ namespace nec {
             DrillingState* dst,
             const DrillingState* src)
         {
-            try {
 
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->ropActual, &src->ropActual)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->wobActual, &src->wobActual)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->differentialPressureActual, &src->differentialPressureActual)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->torqueActual, &src->torqueActual)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->ropLimit, &src->ropLimit)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->wobLimit, &src->wobLimit)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->differentialPressureLimit, &src->differentialPressureLimit)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->torqueLimit, &src->torqueLimit)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->ropMode, &src->ropMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->wobMode, &src->wobMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->differentialPressureMode, &src->differentialPressureMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->torqueMode, &src->torqueMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->ropTarget, &src->ropTarget)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->wobTarget, &src->wobTarget)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->differentialPressureTarget, &src->differentialPressureTarget)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->torqueTarget, &src->torqueTarget)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->bitOnBottom, &src->bitOnBottom)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
+            if (!DataTypes::Uuid_copy(
+                &dst->id, &src->id)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Uuid_copy(
+                &dst->objectiveId, &src->objectiveId)) {
+                return RTI_FALSE;
+            } 
+            if (!DataTypes::Time_copy(
+                &dst->timestamp, &src->timestamp)) {
+                return RTI_FALSE;
+            } 
+            if (!RTICdrType_copyDouble (
+                &dst->ropActual, &src->ropActual)) { 
                 return RTI_FALSE;
             }
+            if (!RTICdrType_copyDouble (
+                &dst->wobActual, &src->wobActual)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->differentialPressureActual, &src->differentialPressureActual)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->torqueActual, &src->torqueActual)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->ropLimit, &src->ropLimit)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->wobLimit, &src->wobLimit)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->differentialPressureLimit, &src->differentialPressureLimit)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->torqueLimit, &src->torqueLimit)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->ropMode, &src->ropMode)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->wobMode, &src->wobMode)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->differentialPressureMode, &src->differentialPressureMode)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->torqueMode, &src->torqueMode)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->ropTarget, &src->ropTarget)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->wobTarget, &src->wobTarget)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->differentialPressureTarget, &src->differentialPressureTarget)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyDouble (
+                &dst->torqueTarget, &src->torqueTarget)) { 
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyBoolean (
+                &dst->bitOnBottom, &src->bitOnBottom)) { 
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
         }
 
         /**
@@ -1759,9 +1698,7 @@ namespace nec {
         */
         #define T DrillingState
         #define TSeq DrillingStateSeq
-
         #define T_initialize_w_params nec::process::DrillingState_initialize_w_params
-
         #define T_finalize_w_params   nec::process::DrillingState_finalize_w_params
         #define T_copy       nec::process::DrillingState_copy
 
@@ -1775,9 +1712,7 @@ namespace nec {
 
         #undef T_copy
         #undef T_finalize_w_params
-
         #undef T_initialize_w_params
-
         #undef TSeq
         #undef T
     } /* namespace process  */
