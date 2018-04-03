@@ -62,11 +62,11 @@ $(DEPENDS):
 # making sure the TOPIC_HOME and IDL_HOME env are defined.
 env_test:
 	@if test -z "$(TOPIC_HOME)"; then \
-	    echo 'TOPIC_HOME is not set. Need the path to MC code. e.g. /home/src/mc/'; \
+	    echo 'TOPIC_HOME is not set. '; \
 	    exit 1; \
 	fi; 
 	@if test -z "$(IDL_HOME)"; then \
-	    echo 'IDL_HOME is not set. Need the path to IDL files. e.g. /home/novos_data_models/idl'; \
+	    echo 'IDL_HOME is not set. ';\
 	    exit 1; \
 	fi;
 	@if test ! -d "$(TOPIC_HOME)"; then \

@@ -26,6 +26,8 @@ module Configuration
     {
         string protocol;
         string endpoint;
+        long   dataBlock;
+        long   size;
     };
 
     struct interface_t
