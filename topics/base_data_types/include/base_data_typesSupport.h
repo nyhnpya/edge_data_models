@@ -45,7 +45,9 @@ namespace DataTypes {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(TimeTypeSupport, Time);
+    DDS_TYPESUPPORT_CPP(
+        TimeTypeSupport, 
+        Time);
 
     DDS_DATAWRITER_CPP(TimeDataWriter, Time);
     DDS_DATAREADER_CPP(TimeDataReader, TimeSeq, Time);

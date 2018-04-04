@@ -67,7 +67,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* AutoReamRequest_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(AutoReamRequestSeq, AutoReamRequest);                                        
+        DDS_SEQUENCE(AutoReamRequestSeq, AutoReamRequest);
 
         NDDSUSERDllExport
         RTIBool AutoReamRequest_initialize(
@@ -80,7 +80,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool AutoReamRequest_initialize_w_params(
             AutoReamRequest* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void AutoReamRequest_finalize(
@@ -152,7 +152,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* AutoReamObjective_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(AutoReamObjectiveSeq, AutoReamObjective);                                        
+        DDS_SEQUENCE(AutoReamObjectiveSeq, AutoReamObjective);
 
         NDDSUSERDllExport
         RTIBool AutoReamObjective_initialize(
@@ -165,7 +165,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool AutoReamObjective_initialize_w_params(
             AutoReamObjective* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void AutoReamObjective_finalize(
@@ -239,7 +239,7 @@ namespace nec {
 
         NDDSUSERDllExport DDS_TypeCode* AutoReamState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(AutoReamStateSeq, AutoReamState);                                        
+        DDS_SEQUENCE(AutoReamStateSeq, AutoReamState);
 
         NDDSUSERDllExport
         RTIBool AutoReamState_initialize(
@@ -252,7 +252,7 @@ namespace nec {
         NDDSUSERDllExport
         RTIBool AutoReamState_initialize_w_params(
             AutoReamState* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);        
+            const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
         void AutoReamState_finalize(

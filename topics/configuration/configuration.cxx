@@ -30,6 +30,8 @@ or consult the RTI Connext manual.
 
 #include "configuration.h"
 
+#include <new>
+
 namespace Configuration {
 
     /* ========================================================================= */
@@ -50,7 +52,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                PROTOCOL, /* Enumerator ordinal */
+                PROTOCOL, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -68,7 +70,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                INTERFACE, /* Enumerator ordinal */
+                INTERFACE, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -79,14 +81,14 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"STEP7_INTERFACE",/* Member name */
+                (char *)"TAG",/* Member name */
                 {
                     0, /* Ignored */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                STEP7_INTERFACE, /* Enumerator ordinal */
+                TAG, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -147,7 +149,12 @@ namespace Configuration {
         config_type* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
         *sample = PROTOCOL;
         return RTI_TRUE;
     }
@@ -184,7 +191,10 @@ namespace Configuration {
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
+
+        if (deallocParams == NULL) {
+            return;
+        }
 
     }
 
@@ -210,9 +220,17 @@ namespace Configuration {
         config_type* dst,
         const config_type* src)
     {
+        try {
 
-        return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
 
+            return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+
+        } catch (std::bad_alloc&) {
+            return RTI_FALSE;
+        }
     }
 
     /**
@@ -224,7 +242,9 @@ namespace Configuration {
     */
     #define T config_type
     #define TSeq config_typeSeq
+
     #define T_initialize_w_params Configuration::config_type_initialize_w_params
+
     #define T_finalize_w_params   Configuration::config_type_finalize_w_params
     #define T_copy       Configuration::config_type_copy
 
@@ -238,7 +258,9 @@ namespace Configuration {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
+
     #undef TSeq
     #undef T
 
@@ -260,7 +282,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                BOOLEAN, /* Enumerator ordinal */
+                BOOLEAN, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -278,7 +300,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                INT8, /* Enumerator ordinal */
+                INT8, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -296,7 +318,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                UNSIGNEDINT8, /* Enumerator ordinal */
+                UNSIGNEDINT8, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -314,7 +336,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                INT16, /* Enumerator ordinal */
+                INT16, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -332,7 +354,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                UNSIGNEDINT16, /* Enumerator ordinal */
+                UNSIGNEDINT16, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -350,7 +372,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                INT32, /* Enumerator ordinal */
+                INT32, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -368,7 +390,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                UNSIGNEDINT32, /* Enumerator ordinal */
+                UNSIGNEDINT32, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -386,7 +408,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                INT64, /* Enumerator ordinal */
+                INT64, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -404,7 +426,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                UNSIGNEDINT64, /* Enumerator ordinal */
+                UNSIGNEDINT64, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -422,7 +444,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                FLOAT, /* Enumerator ordinal */
+                FLOAT, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -440,7 +462,7 @@ namespace Configuration {
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
                 },
-                DOUBLE, /* Enumerator ordinal */
+                DOUBLE, 
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
@@ -501,7 +523,12 @@ namespace Configuration {
         plant_type* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
         *sample = BOOLEAN;
         return RTI_TRUE;
     }
@@ -538,7 +565,10 @@ namespace Configuration {
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
+
+        if (deallocParams == NULL) {
+            return;
+        }
 
     }
 
@@ -564,9 +594,17 @@ namespace Configuration {
         plant_type* dst,
         const plant_type* src)
     {
+        try {
 
-        return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
 
+            return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+
+        } catch (std::bad_alloc&) {
+            return RTI_FALSE;
+        }
     }
 
     /**
@@ -578,7 +616,9 @@ namespace Configuration {
     */
     #define T plant_type
     #define TSeq plant_typeSeq
+
     #define T_initialize_w_params Configuration::plant_type_initialize_w_params
+
     #define T_finalize_w_params   Configuration::plant_type_finalize_w_params
     #define T_copy       Configuration::plant_type_copy
 
@@ -592,7 +632,9 @@ namespace Configuration {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
+
     #undef TSeq
     #undef T
 
@@ -603,13 +645,14 @@ namespace Configuration {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
+        static DDS_TypeCode protocol_t_g_tc_protocolId_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode protocol_t_g_tc_protocol_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode protocol_t_g_tc_endpoint_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode_Member protocol_t_g_tc_members[2]=
+        static DDS_TypeCode_Member protocol_t_g_tc_members[3]=
         {
 
             {
-                (char *)"protocol",/* Member name */
+                (char *)"protocolId",/* Member name */
                 {
                     0,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -626,9 +669,26 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"endpoint",/* Member name */
+                (char *)"protocol",/* Member name */
                 {
                     1,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"endpoint",/* Member name */
+                {
+                    2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -654,7 +714,7 @@ namespace Configuration {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                2, /* Number of members */
+                3, /* Number of members */
                 protocol_t_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for protocol_t*/
@@ -663,9 +723,11 @@ namespace Configuration {
             return &protocol_t_g_tc;
         }
 
-        protocol_t_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&protocol_t_g_tc_protocol_string;
+        protocol_t_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&protocol_t_g_tc_protocolId_string;
 
-        protocol_t_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&protocol_t_g_tc_endpoint_string;
+        protocol_t_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&protocol_t_g_tc_protocol_string;
+
+        protocol_t_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&protocol_t_g_tc_endpoint_string;
 
         is_initialized = RTI_TRUE;
 
@@ -696,7 +758,24 @@ namespace Configuration {
         protocol_t* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
+
+        if (allocParams->allocate_memory){
+            sample->protocolId= DDS_String_alloc ((255));
+            if (sample->protocolId == NULL) {
+                return RTI_FALSE;
+            }
+
+        } else {
+            if (sample->protocolId!= NULL) { 
+                sample->protocolId[0] = '\0';
+            }
+        }
 
         if (allocParams->allocate_memory){
             sample->protocol= DDS_String_alloc ((255));
@@ -755,8 +834,16 @@ namespace Configuration {
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
 
+        if (deallocParams == NULL) {
+            return;
+        }
+
+        if (sample->protocolId != NULL) {
+            DDS_String_free(sample->protocolId);
+            sample->protocolId=NULL;
+
+        }
         if (sample->protocol != NULL) {
             DDS_String_free(sample->protocol);
             sample->protocol=NULL;
@@ -791,19 +878,33 @@ namespace Configuration {
         protocol_t* dst,
         const protocol_t* src)
     {
+        try {
 
-        if (!RTICdrType_copyStringEx (
-            &dst->protocol, src->protocol, 
-            (255) + 1, RTI_FALSE)){
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_copyStringEx (
+                &dst->protocolId, src->protocolId, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyStringEx (
+                &dst->protocol, src->protocol, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyStringEx (
+                &dst->endpoint, src->endpoint, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
+
+        } catch (std::bad_alloc&) {
             return RTI_FALSE;
         }
-        if (!RTICdrType_copyStringEx (
-            &dst->endpoint, src->endpoint, 
-            (255) + 1, RTI_FALSE)){
-            return RTI_FALSE;
-        }
-
-        return RTI_TRUE;
     }
 
     /**
@@ -815,7 +916,9 @@ namespace Configuration {
     */
     #define T protocol_t
     #define TSeq protocol_tSeq
+
     #define T_initialize_w_params Configuration::protocol_t_initialize_w_params
+
     #define T_finalize_w_params   Configuration::protocol_t_finalize_w_params
     #define T_copy       Configuration::protocol_t_copy
 
@@ -829,7 +932,9 @@ namespace Configuration {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
+
     #undef TSeq
     #undef T
 
@@ -840,11 +945,354 @@ namespace Configuration {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode interface_t_g_tc_protocol_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode interface_t_g_tc_type_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode interface_t_g_tc_unit_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode interface_t_g_tc_tag_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode interface_t_g_tc_ddsInterface_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode interface_t_g_tc_protocolId_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode interface_t_g_tc_baseAddress_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode interface_t_g_tc_elements_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode_Member interface_t_g_tc_members[4]=
+        {
+
+            {
+                (char *)"ddsInterface",/* Member name */
+                {
+                    0,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"protocolId",/* Member name */
+                {
+                    1,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"baseAddress",/* Member name */
+                {
+                    2,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"elements",/* Member name */
+                {
+                    3,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }
+        };
+
+        static DDS_TypeCode interface_t_g_tc =
+        {{
+                DDS_TK_STRUCT,/* Kind */
+                DDS_BOOLEAN_FALSE, /* Ignored */
+                -1, /*Ignored*/
+                (char *)"Configuration::interface_t", /* Name */
+                NULL, /* Ignored */      
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                4, /* Number of members */
+                interface_t_g_tc_members, /* Members */
+                DDS_VM_NONE  /* Ignored */         
+            }}; /* Type code for interface_t*/
+
+        if (is_initialized) {
+            return &interface_t_g_tc;
+        }
+
+        interface_t_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_ddsInterface_string;
+
+        interface_t_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_protocolId_string;
+
+        interface_t_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_baseAddress_string;
+
+        interface_t_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_elements_string;
+
+        is_initialized = RTI_TRUE;
+
+        return &interface_t_g_tc;
+    }
+
+    RTIBool interface_t_initialize(
+        interface_t* sample) {
+        return Configuration::interface_t_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+    }
+
+    RTIBool interface_t_initialize_ex(
+        interface_t* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+    {
+
+        struct DDS_TypeAllocationParams_t allocParams =
+        DDS_TYPE_ALLOCATION_PARAMS_DEFAULT;
+
+        allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
+        allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
+
+        return Configuration::interface_t_initialize_w_params(
+            sample,&allocParams);
+
+    }
+
+    RTIBool interface_t_initialize_w_params(
+        interface_t* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+    {
+
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
+
+        if (allocParams->allocate_memory){
+            sample->ddsInterface= DDS_String_alloc ((255));
+            if (sample->ddsInterface == NULL) {
+                return RTI_FALSE;
+            }
+
+        } else {
+            if (sample->ddsInterface!= NULL) { 
+                sample->ddsInterface[0] = '\0';
+            }
+        }
+
+        if (allocParams->allocate_memory){
+            sample->protocolId= DDS_String_alloc ((255));
+            if (sample->protocolId == NULL) {
+                return RTI_FALSE;
+            }
+
+        } else {
+            if (sample->protocolId!= NULL) { 
+                sample->protocolId[0] = '\0';
+            }
+        }
+
+        if (allocParams->allocate_memory){
+            sample->baseAddress= DDS_String_alloc ((255));
+            if (sample->baseAddress == NULL) {
+                return RTI_FALSE;
+            }
+
+        } else {
+            if (sample->baseAddress!= NULL) { 
+                sample->baseAddress[0] = '\0';
+            }
+        }
+
+        if (allocParams->allocate_memory){
+            sample->elements= DDS_String_alloc ((255));
+            if (sample->elements == NULL) {
+                return RTI_FALSE;
+            }
+
+        } else {
+            if (sample->elements!= NULL) { 
+                sample->elements[0] = '\0';
+            }
+        }
+
+        return RTI_TRUE;
+    }
+
+    void interface_t_finalize(
+        interface_t* sample)
+    {
+
+        Configuration::interface_t_finalize_ex(sample,RTI_TRUE);
+    }
+
+    void interface_t_finalize_ex(
+        interface_t* sample,RTIBool deletePointers)
+    {
+        struct DDS_TypeDeallocationParams_t deallocParams =
+        DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
+
+        if (sample==NULL) {
+            return;
+        } 
+
+        deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
+
+        Configuration::interface_t_finalize_w_params(
+            sample,&deallocParams);
+    }
+
+    void interface_t_finalize_w_params(
+        interface_t* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+    {
+
+        if (sample==NULL) {
+            return;
+        }
+
+        if (deallocParams == NULL) {
+            return;
+        }
+
+        if (sample->ddsInterface != NULL) {
+            DDS_String_free(sample->ddsInterface);
+            sample->ddsInterface=NULL;
+
+        }
+        if (sample->protocolId != NULL) {
+            DDS_String_free(sample->protocolId);
+            sample->protocolId=NULL;
+
+        }
+        if (sample->baseAddress != NULL) {
+            DDS_String_free(sample->baseAddress);
+            sample->baseAddress=NULL;
+
+        }
+        if (sample->elements != NULL) {
+            DDS_String_free(sample->elements);
+            sample->elements=NULL;
+
+        }
+    }
+
+    void interface_t_finalize_optional_members(
+        interface_t* sample, RTIBool deletePointers)
+    {
+        struct DDS_TypeDeallocationParams_t deallocParamsTmp =
+        DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
+        struct DDS_TypeDeallocationParams_t * deallocParams =
+        &deallocParamsTmp;
+
+        if (sample==NULL) {
+            return;
+        } 
+        if (deallocParams) {} /* To avoid warnings */
+
+        deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
+        deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
+
+    }
+
+    RTIBool interface_t_copy(
+        interface_t* dst,
+        const interface_t* src)
+    {
+        try {
+
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_copyStringEx (
+                &dst->ddsInterface, src->ddsInterface, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyStringEx (
+                &dst->protocolId, src->protocolId, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyStringEx (
+                &dst->baseAddress, src->baseAddress, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyStringEx (
+                &dst->elements, src->elements, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
+
+        } catch (std::bad_alloc&) {
+            return RTI_FALSE;
+        }
+    }
+
+    /**
+    * <<IMPLEMENTATION>>
+    *
+    * Defines:  TSeq, T
+    *
+    * Configure and implement 'interface_t' sequence class.
+    */
+    #define T interface_t
+    #define TSeq interface_tSeq
+
+    #define T_initialize_w_params Configuration::interface_t_initialize_w_params
+
+    #define T_finalize_w_params   Configuration::interface_t_finalize_w_params
+    #define T_copy       Configuration::interface_t_copy
+
+    #ifndef NDDS_STANDALONE_TYPE
+    #include "dds_c/generic/dds_c_sequence_TSeq.gen"
+    #include "dds_cpp/generic/dds_cpp_sequence_TSeq.gen"
+    #else
+    #include "dds_c_sequence_TSeq.gen"
+    #include "dds_cpp_sequence_TSeq.gen"
+    #endif
+
+    #undef T_copy
+    #undef T_finalize_w_params
+
+    #undef T_initialize_w_params
+
+    #undef TSeq
+    #undef T
+
+    /* ========================================================================= */
+    const char *tag_tTYPENAME = "Configuration::tag_t";
+
+    DDS_TypeCode* tag_t_get_typecode()
+    {
+        static RTIBool is_initialized = RTI_FALSE;
+
+        static DDS_TypeCode tag_t_g_tc_protocol_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode tag_t_g_tc_type_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode tag_t_g_tc_unit_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode tag_t_g_tc_tag_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode tag_t_g_tc_address_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode_Member tag_t_g_tc_members[5]=
         {
 
             {
@@ -914,48 +1362,67 @@ namespace Configuration {
                 DDS_PUBLIC_MEMBER,/* Member visibility */
                 1,
                 NULL/* Ignored */
+            }, 
+            {
+                (char *)"address",/* Member name */
+                {
+                    4,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
             }
         };
 
-        static DDS_TypeCode interface_t_g_tc =
+        static DDS_TypeCode tag_t_g_tc =
         {{
                 DDS_TK_STRUCT,/* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
-                (char *)"Configuration::interface_t", /* Name */
+                (char *)"Configuration::tag_t", /* Name */
                 NULL, /* Ignored */      
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                4, /* Number of members */
-                interface_t_g_tc_members, /* Members */
+                5, /* Number of members */
+                tag_t_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
-            }}; /* Type code for interface_t*/
+            }}; /* Type code for tag_t*/
 
         if (is_initialized) {
-            return &interface_t_g_tc;
+            return &tag_t_g_tc;
         }
 
-        interface_t_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_protocol_string;
+        tag_t_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_protocol_string;
 
-        interface_t_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_type_string;
+        tag_t_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_type_string;
 
-        interface_t_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_unit_string;
+        tag_t_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_unit_string;
 
-        interface_t_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_tag_string;
+        tag_t_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_tag_string;
+
+        tag_t_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_address_string;
 
         is_initialized = RTI_TRUE;
 
-        return &interface_t_g_tc;
+        return &tag_t_g_tc;
     }
 
-    RTIBool interface_t_initialize(
-        interface_t* sample) {
-        return Configuration::interface_t_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+    RTIBool tag_t_initialize(
+        tag_t* sample) {
+        return Configuration::tag_t_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
     }
 
-    RTIBool interface_t_initialize_ex(
-        interface_t* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+    RTIBool tag_t_initialize_ex(
+        tag_t* sample,RTIBool allocatePointers, RTIBool allocateMemory)
     {
 
         struct DDS_TypeAllocationParams_t allocParams =
@@ -964,16 +1431,21 @@ namespace Configuration {
         allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
         allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-        return Configuration::interface_t_initialize_w_params(
+        return Configuration::tag_t_initialize_w_params(
             sample,&allocParams);
 
     }
 
-    RTIBool interface_t_initialize_w_params(
-        interface_t* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+    RTIBool tag_t_initialize_w_params(
+        tag_t* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
 
         if (allocParams->allocate_memory){
             sample->protocol= DDS_String_alloc ((255));
@@ -1023,18 +1495,30 @@ namespace Configuration {
             }
         }
 
+        if (allocParams->allocate_memory){
+            sample->address= DDS_String_alloc ((255));
+            if (sample->address == NULL) {
+                return RTI_FALSE;
+            }
+
+        } else {
+            if (sample->address!= NULL) { 
+                sample->address[0] = '\0';
+            }
+        }
+
         return RTI_TRUE;
     }
 
-    void interface_t_finalize(
-        interface_t* sample)
+    void tag_t_finalize(
+        tag_t* sample)
     {
 
-        Configuration::interface_t_finalize_ex(sample,RTI_TRUE);
+        Configuration::tag_t_finalize_ex(sample,RTI_TRUE);
     }
 
-    void interface_t_finalize_ex(
-        interface_t* sample,RTIBool deletePointers)
+    void tag_t_finalize_ex(
+        tag_t* sample,RTIBool deletePointers)
     {
         struct DDS_TypeDeallocationParams_t deallocParams =
         DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -1045,18 +1529,21 @@ namespace Configuration {
 
         deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-        Configuration::interface_t_finalize_w_params(
+        Configuration::tag_t_finalize_w_params(
             sample,&deallocParams);
     }
 
-    void interface_t_finalize_w_params(
-        interface_t* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+    void tag_t_finalize_w_params(
+        tag_t* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
     {
 
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
+
+        if (deallocParams == NULL) {
+            return;
+        }
 
         if (sample->protocol != NULL) {
             DDS_String_free(sample->protocol);
@@ -1078,10 +1565,15 @@ namespace Configuration {
             sample->tag=NULL;
 
         }
+        if (sample->address != NULL) {
+            DDS_String_free(sample->address);
+            sample->address=NULL;
+
+        }
     }
 
-    void interface_t_finalize_optional_members(
-        interface_t* sample, RTIBool deletePointers)
+    void tag_t_finalize_optional_members(
+        tag_t* sample, RTIBool deletePointers)
     {
         struct DDS_TypeDeallocationParams_t deallocParamsTmp =
         DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -1098,33 +1590,47 @@ namespace Configuration {
 
     }
 
-    RTIBool interface_t_copy(
-        interface_t* dst,
-        const interface_t* src)
+    RTIBool tag_t_copy(
+        tag_t* dst,
+        const tag_t* src)
     {
+        try {
 
-        if (!RTICdrType_copyStringEx (
-            &dst->protocol, src->protocol, 
-            (255) + 1, RTI_FALSE)){
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyStringEx (
-            &dst->type, src->type, 
-            (255) + 1, RTI_FALSE)){
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyStringEx (
-            &dst->unit, src->unit, 
-            (255) + 1, RTI_FALSE)){
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyStringEx (
-            &dst->tag, src->tag, 
-            (255) + 1, RTI_FALSE)){
-            return RTI_FALSE;
-        }
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
 
-        return RTI_TRUE;
+            if (!RTICdrType_copyStringEx (
+                &dst->protocol, src->protocol, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyStringEx (
+                &dst->type, src->type, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyStringEx (
+                &dst->unit, src->unit, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyStringEx (
+                &dst->tag, src->tag, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyStringEx (
+                &dst->address, src->address, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
+
+        } catch (std::bad_alloc&) {
+            return RTI_FALSE;
+        }
     }
 
     /**
@@ -1132,13 +1638,15 @@ namespace Configuration {
     *
     * Defines:  TSeq, T
     *
-    * Configure and implement 'interface_t' sequence class.
+    * Configure and implement 'tag_t' sequence class.
     */
-    #define T interface_t
-    #define TSeq interface_tSeq
-    #define T_initialize_w_params Configuration::interface_t_initialize_w_params
-    #define T_finalize_w_params   Configuration::interface_t_finalize_w_params
-    #define T_copy       Configuration::interface_t_copy
+    #define T tag_t
+    #define TSeq tag_tSeq
+
+    #define T_initialize_w_params Configuration::tag_t_initialize_w_params
+
+    #define T_finalize_w_params   Configuration::tag_t_finalize_w_params
+    #define T_copy       Configuration::tag_t_copy
 
     #ifndef NDDS_STANDALONE_TYPE
     #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -1150,341 +1658,9 @@ namespace Configuration {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
-    #undef TSeq
-    #undef T
 
-    /* ========================================================================= */
-    const char *step7_interface_tTYPENAME = "Configuration::step7_interface_t";
-
-    DDS_TypeCode* step7_interface_t_get_typecode()
-    {
-        static RTIBool is_initialized = RTI_FALSE;
-
-        static DDS_TypeCode step7_interface_t_g_tc_protocol_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode step7_interface_t_g_tc_type_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode step7_interface_t_g_tc_unit_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode_Member step7_interface_t_g_tc_members[5]=
-        {
-
-            {
-                (char *)"protocol",/* Member name */
-                {
-                    0,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"type",/* Member name */
-                {
-                    1,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"unit",/* Member name */
-                {
-                    2,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"dataBlock",/* Member name */
-                {
-                    3,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }, 
-            {
-                (char *)"offset",/* Member name */
-                {
-                    4,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
-            }
-        };
-
-        static DDS_TypeCode step7_interface_t_g_tc =
-        {{
-                DDS_TK_STRUCT,/* Kind */
-                DDS_BOOLEAN_FALSE, /* Ignored */
-                -1, /*Ignored*/
-                (char *)"Configuration::step7_interface_t", /* Name */
-                NULL, /* Ignored */      
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                5, /* Number of members */
-                step7_interface_t_g_tc_members, /* Members */
-                DDS_VM_NONE  /* Ignored */         
-            }}; /* Type code for step7_interface_t*/
-
-        if (is_initialized) {
-            return &step7_interface_t_g_tc;
-        }
-
-        step7_interface_t_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&step7_interface_t_g_tc_protocol_string;
-
-        step7_interface_t_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&step7_interface_t_g_tc_type_string;
-
-        step7_interface_t_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&step7_interface_t_g_tc_unit_string;
-
-        step7_interface_t_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
-
-        step7_interface_t_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
-
-        is_initialized = RTI_TRUE;
-
-        return &step7_interface_t_g_tc;
-    }
-
-    RTIBool step7_interface_t_initialize(
-        step7_interface_t* sample) {
-        return Configuration::step7_interface_t_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
-    }
-
-    RTIBool step7_interface_t_initialize_ex(
-        step7_interface_t* sample,RTIBool allocatePointers, RTIBool allocateMemory)
-    {
-
-        struct DDS_TypeAllocationParams_t allocParams =
-        DDS_TYPE_ALLOCATION_PARAMS_DEFAULT;
-
-        allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
-        allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
-
-        return Configuration::step7_interface_t_initialize_w_params(
-            sample,&allocParams);
-
-    }
-
-    RTIBool step7_interface_t_initialize_w_params(
-        step7_interface_t* sample, const struct DDS_TypeAllocationParams_t * allocParams)
-    {
-
-        if (allocParams) {} /* To avoid warnings */
-
-        if (allocParams->allocate_memory){
-            sample->protocol= DDS_String_alloc ((255));
-            if (sample->protocol == NULL) {
-                return RTI_FALSE;
-            }
-
-        } else {
-            if (sample->protocol!= NULL) { 
-                sample->protocol[0] = '\0';
-            }
-        }
-
-        if (allocParams->allocate_memory){
-            sample->type= DDS_String_alloc ((255));
-            if (sample->type == NULL) {
-                return RTI_FALSE;
-            }
-
-        } else {
-            if (sample->type!= NULL) { 
-                sample->type[0] = '\0';
-            }
-        }
-
-        if (allocParams->allocate_memory){
-            sample->unit= DDS_String_alloc ((255));
-            if (sample->unit == NULL) {
-                return RTI_FALSE;
-            }
-
-        } else {
-            if (sample->unit!= NULL) { 
-                sample->unit[0] = '\0';
-            }
-        }
-
-        if (!RTICdrType_initLong(&sample->dataBlock)) {
-            return RTI_FALSE;
-        }     
-
-        if (!RTICdrType_initLong(&sample->offset)) {
-            return RTI_FALSE;
-        }     
-
-        return RTI_TRUE;
-    }
-
-    void step7_interface_t_finalize(
-        step7_interface_t* sample)
-    {
-
-        Configuration::step7_interface_t_finalize_ex(sample,RTI_TRUE);
-    }
-
-    void step7_interface_t_finalize_ex(
-        step7_interface_t* sample,RTIBool deletePointers)
-    {
-        struct DDS_TypeDeallocationParams_t deallocParams =
-        DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
-
-        if (sample==NULL) {
-            return;
-        } 
-
-        deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
-
-        Configuration::step7_interface_t_finalize_w_params(
-            sample,&deallocParams);
-    }
-
-    void step7_interface_t_finalize_w_params(
-        step7_interface_t* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
-    {
-
-        if (sample==NULL) {
-            return;
-        }
-        if (deallocParams) {} /* To avoid warnings */
-
-        if (sample->protocol != NULL) {
-            DDS_String_free(sample->protocol);
-            sample->protocol=NULL;
-
-        }
-        if (sample->type != NULL) {
-            DDS_String_free(sample->type);
-            sample->type=NULL;
-
-        }
-        if (sample->unit != NULL) {
-            DDS_String_free(sample->unit);
-            sample->unit=NULL;
-
-        }
-
-    }
-
-    void step7_interface_t_finalize_optional_members(
-        step7_interface_t* sample, RTIBool deletePointers)
-    {
-        struct DDS_TypeDeallocationParams_t deallocParamsTmp =
-        DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
-        struct DDS_TypeDeallocationParams_t * deallocParams =
-        &deallocParamsTmp;
-
-        if (sample==NULL) {
-            return;
-        } 
-        if (deallocParams) {} /* To avoid warnings */
-
-        deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
-        deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
-
-    }
-
-    RTIBool step7_interface_t_copy(
-        step7_interface_t* dst,
-        const step7_interface_t* src)
-    {
-
-        if (!RTICdrType_copyStringEx (
-            &dst->protocol, src->protocol, 
-            (255) + 1, RTI_FALSE)){
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyStringEx (
-            &dst->type, src->type, 
-            (255) + 1, RTI_FALSE)){
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyStringEx (
-            &dst->unit, src->unit, 
-            (255) + 1, RTI_FALSE)){
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyLong (
-            &dst->dataBlock, &src->dataBlock)) { 
-            return RTI_FALSE;
-        }
-        if (!RTICdrType_copyLong (
-            &dst->offset, &src->offset)) { 
-            return RTI_FALSE;
-        }
-
-        return RTI_TRUE;
-    }
-
-    /**
-    * <<IMPLEMENTATION>>
-    *
-    * Defines:  TSeq, T
-    *
-    * Configure and implement 'step7_interface_t' sequence class.
-    */
-    #define T step7_interface_t
-    #define TSeq step7_interface_tSeq
-    #define T_initialize_w_params Configuration::step7_interface_t_initialize_w_params
-    #define T_finalize_w_params   Configuration::step7_interface_t_finalize_w_params
-    #define T_copy       Configuration::step7_interface_t_copy
-
-    #ifndef NDDS_STANDALONE_TYPE
-    #include "dds_c/generic/dds_c_sequence_TSeq.gen"
-    #include "dds_cpp/generic/dds_cpp_sequence_TSeq.gen"
-    #else
-    #include "dds_c_sequence_TSeq.gen"
-    #include "dds_cpp_sequence_TSeq.gen"
-    #endif
-
-    #undef T_copy
-    #undef T_finalize_w_params
-    #undef T_initialize_w_params
     #undef TSeq
     #undef T
 
@@ -1508,7 +1684,7 @@ namespace Configuration {
                 },
                 0, /* Ignored */
                 1, /* Number of labels */
-                (Configuration::PROTOCOL), /* First label */
+                (Configuration::PROTOCOL), /* First label Cpp (Configuration::PROTOCOL) */
                 NULL, /* Labels (it is NULL when there is only one label)*/
                 RTI_CDR_NONKEY_MEMBER, /* Is a key? */
                 DDS_PUBLIC_MEMBER,/* Member visibility */
@@ -1516,7 +1692,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"request",/* Member name */
+                (char *)"tag",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1525,7 +1701,7 @@ namespace Configuration {
                 },
                 0, /* Ignored */
                 1, /* Number of labels */
-                (Configuration::INTERFACE), /* First label */
+                (Configuration::TAG), /* First label Cpp (Configuration::TAG) */
                 NULL, /* Labels (it is NULL when there is only one label)*/
                 RTI_CDR_NONKEY_MEMBER, /* Is a key? */
                 DDS_PUBLIC_MEMBER,/* Member visibility */
@@ -1533,7 +1709,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"step7_data",/* Member name */
+                (char *)"interfaceSpec",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1542,7 +1718,7 @@ namespace Configuration {
                 },
                 0, /* Ignored */
                 1, /* Number of labels */
-                (Configuration::STEP7_INTERFACE), /* First label */
+                (Configuration::INTERFACE), /* First label Cpp (Configuration::INTERFACE) */
                 NULL, /* Labels (it is NULL when there is only one label)*/
                 RTI_CDR_NONKEY_MEMBER, /* Is a key? */
                 DDS_PUBLIC_MEMBER,/* Member visibility */
@@ -1572,9 +1748,9 @@ namespace Configuration {
 
         config_data_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)Configuration::protocol_t_get_typecode();
 
-        config_data_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)Configuration::interface_t_get_typecode();
+        config_data_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)Configuration::tag_t_get_typecode();
 
-        config_data_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)Configuration::step7_interface_t_get_typecode();
+        config_data_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)Configuration::interface_t_get_typecode();
 
         /* Discriminator type code */
         config_data_g_tc._data._typeCode = (RTICdrTypeCode *)Configuration::config_type_get_typecode();
@@ -1613,18 +1789,23 @@ namespace Configuration {
         config_data* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
 
         sample->_d = (Configuration::config_type)config_data_getDefaultDiscriminator();
         if (!Configuration::protocol_t_initialize_w_params(&sample->_u.event,
         allocParams)) {
             return RTI_FALSE;
         }
-        if (!Configuration::interface_t_initialize_w_params(&sample->_u.request,
+        if (!Configuration::tag_t_initialize_w_params(&sample->_u.tag,
         allocParams)) {
             return RTI_FALSE;
         }
-        if (!Configuration::step7_interface_t_initialize_w_params(&sample->_u.step7_data,
+        if (!Configuration::interface_t_initialize_w_params(&sample->_u.interfaceSpec,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -1661,13 +1842,16 @@ namespace Configuration {
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
+
+        if (deallocParams == NULL) {
+            return;
+        }
 
         Configuration::protocol_t_finalize_w_params(&sample->_u.event,deallocParams);
 
-        Configuration::interface_t_finalize_w_params(&sample->_u.request,deallocParams);
+        Configuration::tag_t_finalize_w_params(&sample->_u.tag,deallocParams);
 
-        Configuration::step7_interface_t_finalize_w_params(&sample->_u.step7_data,deallocParams);
+        Configuration::interface_t_finalize_w_params(&sample->_u.interfaceSpec,deallocParams);
 
     }
 
@@ -1689,16 +1873,16 @@ namespace Configuration {
 
         switch(sample->_d) {
             case (Configuration::PROTOCOL):
-                {  
+                {
                     Configuration::protocol_t_finalize_optional_members(&sample->_u.event, deallocParams->delete_pointers);
             } break ;
-            case (Configuration::INTERFACE):
-                {  
-                    Configuration::interface_t_finalize_optional_members(&sample->_u.request, deallocParams->delete_pointers);
+            case (Configuration::TAG):
+                {
+                    Configuration::tag_t_finalize_optional_members(&sample->_u.tag, deallocParams->delete_pointers);
             } break ;
-            case (Configuration::STEP7_INTERFACE):
-                {  
-                    Configuration::step7_interface_t_finalize_optional_members(&sample->_u.step7_data, deallocParams->delete_pointers);
+            case (Configuration::INTERFACE):
+                {
+                    Configuration::interface_t_finalize_optional_members(&sample->_u.interfaceSpec, deallocParams->delete_pointers);
             } break ;
         }
     }
@@ -1707,38 +1891,47 @@ namespace Configuration {
         config_data* dst,
         const config_data* src)
     {
+        try {
 
-        if (!Configuration::config_type_copy(
-            &dst->_d, &src->_d)) {
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
+
+            if (!Configuration::config_type_copy(
+                &dst->_d,(const Configuration::config_type*)&src->_d)) {
+                return RTI_FALSE;
+            } 
+
+            switch(src->_d) {
+
+                case (Configuration::PROTOCOL):
+                    {
+                        if (!Configuration::protocol_t_copy(
+                            &dst->_u.event,(const Configuration::protocol_t*)&src->_u.event)) {
+                            return RTI_FALSE;
+                    } 
+                } break ;
+                case (Configuration::TAG):
+                    {
+                        if (!Configuration::tag_t_copy(
+                            &dst->_u.tag,(const Configuration::tag_t*)&src->_u.tag)) {
+                            return RTI_FALSE;
+                    } 
+                } break ;
+                case (Configuration::INTERFACE):
+                    {
+                        if (!Configuration::interface_t_copy(
+                            &dst->_u.interfaceSpec,(const Configuration::interface_t*)&src->_u.interfaceSpec)) {
+                            return RTI_FALSE;
+                    } 
+                } break ;
+
+            }
+            return RTI_TRUE;
+
+        } catch (std::bad_alloc&) {
             return RTI_FALSE;
-        } 
-
-        switch(src->_d) {
-
-            case (Configuration::PROTOCOL):
-                {  
-                    if (!Configuration::protocol_t_copy(
-                        &dst->_u.event, &src->_u.event)) {
-                        return RTI_FALSE;
-                } 
-            } break ;
-            case (Configuration::INTERFACE):
-                {  
-                    if (!Configuration::interface_t_copy(
-                        &dst->_u.request, &src->_u.request)) {
-                        return RTI_FALSE;
-                } 
-            } break ;
-            case (Configuration::STEP7_INTERFACE):
-                {  
-                    if (!Configuration::step7_interface_t_copy(
-                        &dst->_u.step7_data, &src->_u.step7_data)) {
-                        return RTI_FALSE;
-                } 
-            } break ;
-
         }
-        return RTI_TRUE;
     }
 
     /**
@@ -1750,7 +1943,9 @@ namespace Configuration {
     */
     #define T config_data
     #define TSeq config_dataSeq
+
     #define T_initialize_w_params Configuration::config_data_initialize_w_params
+
     #define T_finalize_w_params   Configuration::config_data_finalize_w_params
     #define T_copy       Configuration::config_data_copy
 
@@ -1764,7 +1959,9 @@ namespace Configuration {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
+
     #undef TSeq
     #undef T
 
@@ -1886,7 +2083,12 @@ namespace Configuration {
         Item* sample, const struct DDS_TypeAllocationParams_t * allocParams)
     {
 
-        if (allocParams) {} /* To avoid warnings */
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
 
         if (allocParams->allocate_memory){
             sample->key= DDS_String_alloc ((255));
@@ -1941,7 +2143,10 @@ namespace Configuration {
         if (sample==NULL) {
             return;
         }
-        if (deallocParams) {} /* To avoid warnings */
+
+        if (deallocParams == NULL) {
+            return;
+        }
 
         if (sample->key != NULL) {
             DDS_String_free(sample->key);
@@ -1978,22 +2183,31 @@ namespace Configuration {
         Item* dst,
         const Item* src)
     {
+        try {
 
-        if (!RTICdrType_copyStringEx (
-            &dst->key, src->key, 
-            (255) + 1, RTI_FALSE)){
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_copyStringEx (
+                &dst->key, src->key, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+            if (!Configuration::config_type_copy(
+                &dst->configType,(const Configuration::config_type*)&src->configType)) {
+                return RTI_FALSE;
+            } 
+            if (!Configuration::config_data_copy(
+                &dst->configData,(const Configuration::config_data*)&src->configData)) {
+                return RTI_FALSE;
+            } 
+
+            return RTI_TRUE;
+
+        } catch (std::bad_alloc&) {
             return RTI_FALSE;
         }
-        if (!Configuration::config_type_copy(
-            &dst->configType, &src->configType)) {
-            return RTI_FALSE;
-        } 
-        if (!Configuration::config_data_copy(
-            &dst->configData, &src->configData)) {
-            return RTI_FALSE;
-        } 
-
-        return RTI_TRUE;
     }
 
     /**
@@ -2005,7 +2219,9 @@ namespace Configuration {
     */
     #define T Item
     #define TSeq ItemSeq
+
     #define T_initialize_w_params Configuration::Item_initialize_w_params
+
     #define T_finalize_w_params   Configuration::Item_finalize_w_params
     #define T_copy       Configuration::Item_copy
 
@@ -2019,7 +2235,9 @@ namespace Configuration {
 
     #undef T_copy
     #undef T_finalize_w_params
+
     #undef T_initialize_w_params
+
     #undef TSeq
     #undef T
 } /* namespace Configuration  */

@@ -193,6 +193,12 @@ namespace nec {
             HmiRequest *sample,
             const char * buffer,
             unsigned int length);    
+        NDDSUSERDllExport extern DDS_ReturnCode_t
+        HmiRequestPlugin_data_to_string(
+            const HmiRequest *sample,
+            char *str,
+            DDS_UnsignedLong *str_size, 
+            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         HmiRequestPlugin_skip(
@@ -485,6 +491,12 @@ namespace nec {
             HmiState *sample,
             const char * buffer,
             unsigned int length);    
+        NDDSUSERDllExport extern DDS_ReturnCode_t
+        HmiStatePlugin_data_to_string(
+            const HmiState *sample,
+            char *str,
+            DDS_UnsignedLong *str_size, 
+            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         HmiStatePlugin_skip(

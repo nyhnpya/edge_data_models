@@ -45,7 +45,9 @@ namespace AutoTunerConfiguration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(ModelStateRequestTypeSupport, ModelStateRequest);
+    DDS_TYPESUPPORT_CPP(
+        ModelStateRequestTypeSupport, 
+        ModelStateRequest);
 
     DDS_DATAWRITER_CPP(ModelStateRequestDataWriter, ModelStateRequest);
     DDS_DATAREADER_CPP(ModelStateRequestDataReader, ModelStateRequestSeq, ModelStateRequest);
@@ -74,7 +76,9 @@ namespace AutoTunerConfiguration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(ModelStateStateTypeSupport, ModelStateState);
+    DDS_TYPESUPPORT_CPP(
+        ModelStateStateTypeSupport, 
+        ModelStateState);
 
     DDS_DATAWRITER_CPP(ModelStateStateDataWriter, ModelStateState);
     DDS_DATAREADER_CPP(ModelStateStateDataReader, ModelStateStateSeq, ModelStateState);
@@ -103,7 +107,9 @@ namespace AutoTunerConfiguration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(DiffpTuningRequestTypeSupport, DiffpTuningRequest);
+    DDS_TYPESUPPORT_CPP(
+        DiffpTuningRequestTypeSupport, 
+        DiffpTuningRequest);
 
     DDS_DATAWRITER_CPP(DiffpTuningRequestDataWriter, DiffpTuningRequest);
     DDS_DATAREADER_CPP(DiffpTuningRequestDataReader, DiffpTuningRequestSeq, DiffpTuningRequest);
@@ -132,7 +138,9 @@ namespace AutoTunerConfiguration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(DiffpTuningStateTypeSupport, DiffpTuningState);
+    DDS_TYPESUPPORT_CPP(
+        DiffpTuningStateTypeSupport, 
+        DiffpTuningState);
 
     DDS_DATAWRITER_CPP(DiffpTuningStateDataWriter, DiffpTuningState);
     DDS_DATAREADER_CPP(DiffpTuningStateDataReader, DiffpTuningStateSeq, DiffpTuningState);
@@ -161,7 +169,9 @@ namespace AutoTunerConfiguration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(WobTuningRequestTypeSupport, WobTuningRequest);
+    DDS_TYPESUPPORT_CPP(
+        WobTuningRequestTypeSupport, 
+        WobTuningRequest);
 
     DDS_DATAWRITER_CPP(WobTuningRequestDataWriter, WobTuningRequest);
     DDS_DATAREADER_CPP(WobTuningRequestDataReader, WobTuningRequestSeq, WobTuningRequest);
@@ -190,7 +200,9 @@ namespace AutoTunerConfiguration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(WobTuningStateTypeSupport, WobTuningState);
+    DDS_TYPESUPPORT_CPP(
+        WobTuningStateTypeSupport, 
+        WobTuningState);
 
     DDS_DATAWRITER_CPP(WobTuningStateDataWriter, WobTuningState);
     DDS_DATAREADER_CPP(WobTuningStateDataReader, WobTuningStateSeq, WobTuningState);
@@ -219,7 +231,9 @@ namespace AutoTunerConfiguration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(TorqueTuningRequestTypeSupport, TorqueTuningRequest);
+    DDS_TYPESUPPORT_CPP(
+        TorqueTuningRequestTypeSupport, 
+        TorqueTuningRequest);
 
     DDS_DATAWRITER_CPP(TorqueTuningRequestDataWriter, TorqueTuningRequest);
     DDS_DATAREADER_CPP(TorqueTuningRequestDataReader, TorqueTuningRequestSeq, TorqueTuningRequest);
@@ -248,7 +262,9 @@ namespace AutoTunerConfiguration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(TorqueTuningStateTypeSupport, TorqueTuningState);
+    DDS_TYPESUPPORT_CPP(
+        TorqueTuningStateTypeSupport, 
+        TorqueTuningState);
 
     DDS_DATAWRITER_CPP(TorqueTuningStateDataWriter, TorqueTuningState);
     DDS_DATAREADER_CPP(TorqueTuningStateDataReader, TorqueTuningStateSeq, TorqueTuningState);

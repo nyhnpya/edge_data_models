@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef configurationSupport_301633117_h
-#define configurationSupport_301633117_h
+#ifndef configurationSupport_301633119_h
+#define configurationSupport_301633119_h
 
 /* Uses */
 #include "configuration.h"
@@ -45,7 +45,9 @@ namespace Configuration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(protocol_tTypeSupport, protocol_t);
+    DDS_TYPESUPPORT_CPP(
+        protocol_tTypeSupport, 
+        protocol_t);
 
     DDS_DATAWRITER_CPP(protocol_tDataWriter, protocol_t);
     DDS_DATAREADER_CPP(protocol_tDataReader, protocol_tSeq, protocol_t);
@@ -74,7 +76,9 @@ namespace Configuration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(interface_tTypeSupport, interface_t);
+    DDS_TYPESUPPORT_CPP(
+        interface_tTypeSupport, 
+        interface_t);
 
     DDS_DATAWRITER_CPP(interface_tDataWriter, interface_t);
     DDS_DATAREADER_CPP(interface_tDataReader, interface_tSeq, interface_t);
@@ -103,10 +107,12 @@ namespace Configuration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(step7_interface_tTypeSupport, step7_interface_t);
+    DDS_TYPESUPPORT_CPP(
+        tag_tTypeSupport, 
+        tag_t);
 
-    DDS_DATAWRITER_CPP(step7_interface_tDataWriter, step7_interface_t);
-    DDS_DATAREADER_CPP(step7_interface_tDataReader, step7_interface_tSeq, step7_interface_t);
+    DDS_DATAWRITER_CPP(tag_tDataWriter, tag_t);
+    DDS_DATAREADER_CPP(tag_tDataReader, tag_tSeq, tag_t);
 
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
@@ -132,7 +138,9 @@ namespace Configuration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(config_dataTypeSupport, config_data);
+    DDS_TYPESUPPORT_CPP(
+        config_dataTypeSupport, 
+        config_data);
 
     DDS_DATAWRITER_CPP(config_dataDataWriter, config_data);
     DDS_DATAREADER_CPP(config_dataDataReader, config_dataSeq, config_data);
@@ -161,7 +169,9 @@ namespace Configuration {
 
     #endif
 
-    DDS_TYPESUPPORT_CPP(ItemTypeSupport, Item);
+    DDS_TYPESUPPORT_CPP(
+        ItemTypeSupport, 
+        Item);
 
     DDS_DATAWRITER_CPP(ItemDataWriter, Item);
     DDS_DATAREADER_CPP(ItemDataReader, ItemSeq, Item);
@@ -174,5 +184,5 @@ namespace Configuration {
     #endif
 } /* namespace Configuration  */
 
-#endif  /* configurationSupport_301633117_h */
+#endif  /* configurationSupport_301633119_h */
 

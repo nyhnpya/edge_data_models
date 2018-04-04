@@ -30,6 +30,8 @@ or consult the RTI Connext manual.
 
 #include "objective.h"
 
+#include <new>
+
 namespace process {
     namespace plan {
 
@@ -169,7 +171,12 @@ namespace process {
             ObjectiveState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
-            if (allocParams) {} /* To avoid warnings */
+            if (sample == NULL) {
+                return RTI_FALSE;
+            }
+            if (allocParams == NULL) {
+                return RTI_FALSE;
+            }
 
             if (!DataTypes::Uuid_initialize_w_params(&sample->id,
             allocParams)) {
@@ -220,7 +227,10 @@ namespace process {
             if (sample==NULL) {
                 return;
             }
-            if (deallocParams) {} /* To avoid warnings */
+
+            if (deallocParams == NULL) {
+                return;
+            }
 
             DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
 
@@ -258,25 +268,34 @@ namespace process {
             ObjectiveState* dst,
             const ObjectiveState* src)
         {
+            try {
 
-            if (!DataTypes::Uuid_copy(
-                &dst->id, &src->id)) {
-                return RTI_FALSE;
-            } 
-            if (!DataTypes::Uuid_copy(
-                &dst->parentId, &src->parentId)) {
-                return RTI_FALSE;
-            } 
-            if (!DataTypes::Time_copy(
-                &dst->timestamp, &src->timestamp)) {
-                return RTI_FALSE;
-            } 
-            if (!DataTypes::Objective_copy(
-                &dst->objective, &src->objective)) {
-                return RTI_FALSE;
-            } 
+                if (dst == NULL || src == NULL) {
+                    return RTI_FALSE;
+                }
 
-            return RTI_TRUE;
+                if (!DataTypes::Uuid_copy(
+                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Uuid_copy(
+                    &dst->parentId,(const DataTypes::Uuid*)&src->parentId)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Time_copy(
+                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Objective_copy(
+                    &dst->objective,(const DataTypes::Objective*)&src->objective)) {
+                    return RTI_FALSE;
+                } 
+
+                return RTI_TRUE;
+
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
+            }
         }
 
         /**
@@ -288,7 +307,9 @@ namespace process {
         */
         #define T ObjectiveState
         #define TSeq ObjectiveStateSeq
+
         #define T_initialize_w_params process::plan::ObjectiveState_initialize_w_params
+
         #define T_finalize_w_params   process::plan::ObjectiveState_finalize_w_params
         #define T_copy       process::plan::ObjectiveState_copy
 
@@ -302,7 +323,9 @@ namespace process {
 
         #undef T_copy
         #undef T_finalize_w_params
+
         #undef T_initialize_w_params
+
         #undef TSeq
         #undef T
     } /* namespace plan  */

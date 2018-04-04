@@ -46,7 +46,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(AutoReamRequestTypeSupport, AutoReamRequest);
+        DDS_TYPESUPPORT_CPP(
+            AutoReamRequestTypeSupport, 
+            AutoReamRequest);
 
         DDS_DATAWRITER_CPP(AutoReamRequestDataWriter, AutoReamRequest);
         DDS_DATAREADER_CPP(AutoReamRequestDataReader, AutoReamRequestSeq, AutoReamRequest);
@@ -75,7 +77,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(AutoReamObjectiveTypeSupport, AutoReamObjective);
+        DDS_TYPESUPPORT_CPP(
+            AutoReamObjectiveTypeSupport, 
+            AutoReamObjective);
 
         DDS_DATAWRITER_CPP(AutoReamObjectiveDataWriter, AutoReamObjective);
         DDS_DATAREADER_CPP(AutoReamObjectiveDataReader, AutoReamObjectiveSeq, AutoReamObjective);
@@ -104,7 +108,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(AutoReamStateTypeSupport, AutoReamState);
+        DDS_TYPESUPPORT_CPP(
+            AutoReamStateTypeSupport, 
+            AutoReamState);
 
         DDS_DATAWRITER_CPP(AutoReamStateDataWriter, AutoReamState);
         DDS_DATAREADER_CPP(AutoReamStateDataReader, AutoReamStateSeq, AutoReamState);

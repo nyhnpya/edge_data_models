@@ -62,7 +62,7 @@ namespace AutoTunerConfiguration {
 
     NDDSUSERDllExport DDS_TypeCode* ModelStateRequest_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(ModelStateRequestSeq, ModelStateRequest);                                        
+    DDS_SEQUENCE(ModelStateRequestSeq, ModelStateRequest);
 
     NDDSUSERDllExport
     RTIBool ModelStateRequest_initialize(
@@ -75,7 +75,7 @@ namespace AutoTunerConfiguration {
     NDDSUSERDllExport
     RTIBool ModelStateRequest_initialize_w_params(
         ModelStateRequest* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);        
+        const struct DDS_TypeAllocationParams_t * allocParams);  
 
     NDDSUSERDllExport
     void ModelStateRequest_finalize(
@@ -146,7 +146,7 @@ namespace AutoTunerConfiguration {
 
     NDDSUSERDllExport DDS_TypeCode* ModelStateState_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(ModelStateStateSeq, ModelStateState);                                        
+    DDS_SEQUENCE(ModelStateStateSeq, ModelStateState);
 
     NDDSUSERDllExport
     RTIBool ModelStateState_initialize(
@@ -159,7 +159,7 @@ namespace AutoTunerConfiguration {
     NDDSUSERDllExport
     RTIBool ModelStateState_initialize_w_params(
         ModelStateState* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);        
+        const struct DDS_TypeAllocationParams_t * allocParams);  
 
     NDDSUSERDllExport
     void ModelStateState_finalize(
@@ -230,7 +230,7 @@ namespace AutoTunerConfiguration {
 
     NDDSUSERDllExport DDS_TypeCode* DiffpTuningRequest_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(DiffpTuningRequestSeq, DiffpTuningRequest);                                        
+    DDS_SEQUENCE(DiffpTuningRequestSeq, DiffpTuningRequest);
 
     NDDSUSERDllExport
     RTIBool DiffpTuningRequest_initialize(
@@ -243,7 +243,7 @@ namespace AutoTunerConfiguration {
     NDDSUSERDllExport
     RTIBool DiffpTuningRequest_initialize_w_params(
         DiffpTuningRequest* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);        
+        const struct DDS_TypeAllocationParams_t * allocParams);  
 
     NDDSUSERDllExport
     void DiffpTuningRequest_finalize(
@@ -319,7 +319,7 @@ namespace AutoTunerConfiguration {
 
     NDDSUSERDllExport DDS_TypeCode* DiffpTuningState_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(DiffpTuningStateSeq, DiffpTuningState);                                        
+    DDS_SEQUENCE(DiffpTuningStateSeq, DiffpTuningState);
 
     NDDSUSERDllExport
     RTIBool DiffpTuningState_initialize(
@@ -332,7 +332,7 @@ namespace AutoTunerConfiguration {
     NDDSUSERDllExport
     RTIBool DiffpTuningState_initialize_w_params(
         DiffpTuningState* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);        
+        const struct DDS_TypeAllocationParams_t * allocParams);  
 
     NDDSUSERDllExport
     void DiffpTuningState_finalize(
@@ -403,7 +403,7 @@ namespace AutoTunerConfiguration {
 
     NDDSUSERDllExport DDS_TypeCode* WobTuningRequest_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(WobTuningRequestSeq, WobTuningRequest);                                        
+    DDS_SEQUENCE(WobTuningRequestSeq, WobTuningRequest);
 
     NDDSUSERDllExport
     RTIBool WobTuningRequest_initialize(
@@ -416,7 +416,7 @@ namespace AutoTunerConfiguration {
     NDDSUSERDllExport
     RTIBool WobTuningRequest_initialize_w_params(
         WobTuningRequest* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);        
+        const struct DDS_TypeAllocationParams_t * allocParams);  
 
     NDDSUSERDllExport
     void WobTuningRequest_finalize(
@@ -492,7 +492,7 @@ namespace AutoTunerConfiguration {
 
     NDDSUSERDllExport DDS_TypeCode* WobTuningState_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(WobTuningStateSeq, WobTuningState);                                        
+    DDS_SEQUENCE(WobTuningStateSeq, WobTuningState);
 
     NDDSUSERDllExport
     RTIBool WobTuningState_initialize(
@@ -505,7 +505,7 @@ namespace AutoTunerConfiguration {
     NDDSUSERDllExport
     RTIBool WobTuningState_initialize_w_params(
         WobTuningState* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);        
+        const struct DDS_TypeAllocationParams_t * allocParams);  
 
     NDDSUSERDllExport
     void WobTuningState_finalize(
@@ -576,7 +576,7 @@ namespace AutoTunerConfiguration {
 
     NDDSUSERDllExport DDS_TypeCode* TorqueTuningRequest_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(TorqueTuningRequestSeq, TorqueTuningRequest);                                        
+    DDS_SEQUENCE(TorqueTuningRequestSeq, TorqueTuningRequest);
 
     NDDSUSERDllExport
     RTIBool TorqueTuningRequest_initialize(
@@ -589,7 +589,7 @@ namespace AutoTunerConfiguration {
     NDDSUSERDllExport
     RTIBool TorqueTuningRequest_initialize_w_params(
         TorqueTuningRequest* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);        
+        const struct DDS_TypeAllocationParams_t * allocParams);  
 
     NDDSUSERDllExport
     void TorqueTuningRequest_finalize(
@@ -665,7 +665,7 @@ namespace AutoTunerConfiguration {
 
     NDDSUSERDllExport DDS_TypeCode* TorqueTuningState_get_typecode(void); /* Type code */
 
-    DDS_SEQUENCE(TorqueTuningStateSeq, TorqueTuningState);                                        
+    DDS_SEQUENCE(TorqueTuningStateSeq, TorqueTuningState);
 
     NDDSUSERDllExport
     RTIBool TorqueTuningState_initialize(
@@ -678,7 +678,7 @@ namespace AutoTunerConfiguration {
     NDDSUSERDllExport
     RTIBool TorqueTuningState_initialize_w_params(
         TorqueTuningState* self,
-        const struct DDS_TypeAllocationParams_t * allocParams);        
+        const struct DDS_TypeAllocationParams_t * allocParams);  
 
     NDDSUSERDllExport
     void TorqueTuningState_finalize(

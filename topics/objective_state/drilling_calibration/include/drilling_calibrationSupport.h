@@ -46,7 +46,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(DrillingCalibrationRequestTypeSupport, DrillingCalibrationRequest);
+        DDS_TYPESUPPORT_CPP(
+            DrillingCalibrationRequestTypeSupport, 
+            DrillingCalibrationRequest);
 
         DDS_DATAWRITER_CPP(DrillingCalibrationRequestDataWriter, DrillingCalibrationRequest);
         DDS_DATAREADER_CPP(DrillingCalibrationRequestDataReader, DrillingCalibrationRequestSeq, DrillingCalibrationRequest);
@@ -75,7 +77,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(DrillingCalibrationStateTypeSupport, DrillingCalibrationState);
+        DDS_TYPESUPPORT_CPP(
+            DrillingCalibrationStateTypeSupport, 
+            DrillingCalibrationState);
 
         DDS_DATAWRITER_CPP(DrillingCalibrationStateDataWriter, DrillingCalibrationState);
         DDS_DATAREADER_CPP(DrillingCalibrationStateDataReader, DrillingCalibrationStateSeq, DrillingCalibrationState);

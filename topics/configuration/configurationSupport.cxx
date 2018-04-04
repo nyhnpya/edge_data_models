@@ -226,7 +226,7 @@ namespace Configuration {
     TDataReader,
     TTypeSupport
 
-    Configure and implement 'step7_interface_t' support classes.
+    Configure and implement 'tag_t' support classes.
 
     Note: Only the #defined classes get defined
     */
@@ -242,11 +242,11 @@ namespace Configuration {
     */
 
     /* Requires */
-    #define TTYPENAME   step7_interface_tTYPENAME
+    #define TTYPENAME   tag_tTYPENAME
 
     /* Defines */
-    #define TDataWriter step7_interface_tDataWriter
-    #define TData       Configuration::step7_interface_t
+    #define TDataWriter tag_tDataWriter
+    #define TData       Configuration::tag_t
 
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -266,12 +266,12 @@ namespace Configuration {
     */
 
     /* Requires */
-    #define TTYPENAME   step7_interface_tTYPENAME
+    #define TTYPENAME   tag_tTYPENAME
 
     /* Defines */
-    #define TDataReader step7_interface_tDataReader
-    #define TDataSeq    step7_interface_tSeq
-    #define TData       Configuration::step7_interface_t
+    #define TDataReader tag_tDataReader
+    #define TDataSeq    tag_tSeq
+    #define TData       Configuration::tag_t
 
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -293,15 +293,15 @@ namespace Configuration {
     */
 
     /* Requires */
-    #define TTYPENAME    step7_interface_tTYPENAME
-    #define TPlugin_new  Configuration::step7_interface_tPlugin_new
-    #define TPlugin_delete  Configuration::step7_interface_tPlugin_delete
+    #define TTYPENAME    tag_tTYPENAME
+    #define TPlugin_new  Configuration::tag_tPlugin_new
+    #define TPlugin_delete  Configuration::tag_tPlugin_delete
 
     /* Defines */
-    #define TTypeSupport step7_interface_tTypeSupport
-    #define TData        Configuration::step7_interface_t
-    #define TDataReader  step7_interface_tDataReader
-    #define TDataWriter  step7_interface_tDataWriter
+    #define TTypeSupport tag_tTypeSupport
+    #define TData        Configuration::tag_t
+    #define TDataReader  tag_tDataReader
+    #define TDataWriter  tag_tDataWriter
     #define TGENERATE_SER_CODE
     #define TGENERATE_TYPECODE
 

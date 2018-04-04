@@ -4,7 +4,7 @@ module Configuration
     {
         PROTOCOL,
         INTERFACE,
-        STEP7_INTERFACE
+        TAG
     };
 
     enum plant_type
@@ -24,39 +24,38 @@ module Configuration
     
     struct protocol_t
     {
+        string protocolId;
         string protocol;
         string endpoint;
-        long   dataBlock;
-        long   size;
     };
 
     struct interface_t
     {
-        string protocol;
-        string type;
-        string unit;
-        string tag;
+        string ddsInterface;
+        string protocolId;
+        string baseAddress;
+        string elements;
     };
 
-    struct step7_interface_t
+    struct tag_t
     {
         string protocol;
         string type;
-        string unit;
-        long   dataBlock;
-        long   offset;
+        string io_unit;
+        string tag;
+        string address;
     };
 
     union config_data switch ( config_type )
     {
         case PROTOCOL:
-            protocol_t  event;
+            protocol_t   event;
+
+        case TAG:
+            tag_t        tag;
 
         case INTERFACE:
-            interface_t  request;
-
-        case STEP7_INTERFACE:
-            step7_interface_t  step7_data;
+            interface_t  interfaceSpec;
     };
 
     //@copy-c-declaration static const char CONFIGURATION_ITEM[] = "ConfigurationItem";

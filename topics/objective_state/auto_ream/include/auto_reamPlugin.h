@@ -193,6 +193,12 @@ namespace nec {
             AutoReamRequest *sample,
             const char * buffer,
             unsigned int length);    
+        NDDSUSERDllExport extern DDS_ReturnCode_t
+        AutoReamRequestPlugin_data_to_string(
+            const AutoReamRequest *sample,
+            char *str,
+            DDS_UnsignedLong *str_size, 
+            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         AutoReamRequestPlugin_skip(
@@ -485,6 +491,12 @@ namespace nec {
             AutoReamObjective *sample,
             const char * buffer,
             unsigned int length);    
+        NDDSUSERDllExport extern DDS_ReturnCode_t
+        AutoReamObjectivePlugin_data_to_string(
+            const AutoReamObjective *sample,
+            char *str,
+            DDS_UnsignedLong *str_size, 
+            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         AutoReamObjectivePlugin_skip(
@@ -777,6 +789,12 @@ namespace nec {
             AutoReamState *sample,
             const char * buffer,
             unsigned int length);    
+        NDDSUSERDllExport extern DDS_ReturnCode_t
+        AutoReamStatePlugin_data_to_string(
+            const AutoReamState *sample,
+            char *str,
+            DDS_UnsignedLong *str_size, 
+            const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
         AutoReamStatePlugin_skip(

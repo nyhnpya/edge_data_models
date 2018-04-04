@@ -157,6 +157,12 @@ namespace AutoTunerConfiguration {
         ModelStateRequest *sample,
         const char * buffer,
         unsigned int length);    
+    NDDSUSERDllExport extern DDS_ReturnCode_t
+    ModelStateRequestPlugin_data_to_string(
+        const ModelStateRequest *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     ModelStateRequestPlugin_skip(
@@ -390,6 +396,12 @@ namespace AutoTunerConfiguration {
         ModelStateState *sample,
         const char * buffer,
         unsigned int length);    
+    NDDSUSERDllExport extern DDS_ReturnCode_t
+    ModelStateStatePlugin_data_to_string(
+        const ModelStateState *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     ModelStateStatePlugin_skip(
@@ -623,6 +635,12 @@ namespace AutoTunerConfiguration {
         DiffpTuningRequest *sample,
         const char * buffer,
         unsigned int length);    
+    NDDSUSERDllExport extern DDS_ReturnCode_t
+    DiffpTuningRequestPlugin_data_to_string(
+        const DiffpTuningRequest *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     DiffpTuningRequestPlugin_skip(
@@ -856,6 +874,12 @@ namespace AutoTunerConfiguration {
         DiffpTuningState *sample,
         const char * buffer,
         unsigned int length);    
+    NDDSUSERDllExport extern DDS_ReturnCode_t
+    DiffpTuningStatePlugin_data_to_string(
+        const DiffpTuningState *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     DiffpTuningStatePlugin_skip(
@@ -1089,6 +1113,12 @@ namespace AutoTunerConfiguration {
         WobTuningRequest *sample,
         const char * buffer,
         unsigned int length);    
+    NDDSUSERDllExport extern DDS_ReturnCode_t
+    WobTuningRequestPlugin_data_to_string(
+        const WobTuningRequest *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     WobTuningRequestPlugin_skip(
@@ -1322,6 +1352,12 @@ namespace AutoTunerConfiguration {
         WobTuningState *sample,
         const char * buffer,
         unsigned int length);    
+    NDDSUSERDllExport extern DDS_ReturnCode_t
+    WobTuningStatePlugin_data_to_string(
+        const WobTuningState *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     WobTuningStatePlugin_skip(
@@ -1555,6 +1591,12 @@ namespace AutoTunerConfiguration {
         TorqueTuningRequest *sample,
         const char * buffer,
         unsigned int length);    
+    NDDSUSERDllExport extern DDS_ReturnCode_t
+    TorqueTuningRequestPlugin_data_to_string(
+        const TorqueTuningRequest *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     TorqueTuningRequestPlugin_skip(
@@ -1788,6 +1830,12 @@ namespace AutoTunerConfiguration {
         TorqueTuningState *sample,
         const char * buffer,
         unsigned int length);    
+    NDDSUSERDllExport extern DDS_ReturnCode_t
+    TorqueTuningStatePlugin_data_to_string(
+        const TorqueTuningState *sample,
+        char *str,
+        DDS_UnsignedLong *str_size, 
+        const struct DDS_PrintFormatProperty *property);    
 
     NDDSUSERDllExport extern RTIBool
     TorqueTuningStatePlugin_skip(

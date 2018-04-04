@@ -46,7 +46,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(DrillingRequestTypeSupport, DrillingRequest);
+        DDS_TYPESUPPORT_CPP(
+            DrillingRequestTypeSupport, 
+            DrillingRequest);
 
         DDS_DATAWRITER_CPP(DrillingRequestDataWriter, DrillingRequest);
         DDS_DATAREADER_CPP(DrillingRequestDataReader, DrillingRequestSeq, DrillingRequest);
@@ -75,7 +77,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(DrillingObjectiveTypeSupport, DrillingObjective);
+        DDS_TYPESUPPORT_CPP(
+            DrillingObjectiveTypeSupport, 
+            DrillingObjective);
 
         DDS_DATAWRITER_CPP(DrillingObjectiveDataWriter, DrillingObjective);
         DDS_DATAREADER_CPP(DrillingObjectiveDataReader, DrillingObjectiveSeq, DrillingObjective);
@@ -104,7 +108,9 @@ namespace nec {
 
         #endif
 
-        DDS_TYPESUPPORT_CPP(DrillingStateTypeSupport, DrillingState);
+        DDS_TYPESUPPORT_CPP(
+            DrillingStateTypeSupport, 
+            DrillingState);
 
         DDS_DATAWRITER_CPP(DrillingStateDataWriter, DrillingState);
         DDS_DATAREADER_CPP(DrillingStateDataReader, DrillingStateSeq, DrillingState);
