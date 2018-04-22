@@ -39,23 +39,22 @@ module Configuration
 
     struct tag_t
     {
-        string protocol;
+        string edgeType;
         string type;
         string io_unit;
         string tag;
-        string address;
     };
 
     union config_data switch ( config_type )
     {
         case PROTOCOL:
-            protocol_t   event;
-
-        case TAG:
-            tag_t        tag;
+            protocol_t   protocolSpec;
 
         case INTERFACE:
             interface_t  interfaceSpec;
+
+        case TAG:
+            tag_t        tagSpec;
     };
 
     //@copy-c-declaration static const char CONFIGURATION_ITEM[] = "ConfigurationItem";

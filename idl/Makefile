@@ -1,31 +1,14 @@
-DDSGEN = rtiddsgen
-GENOPT = -language C++ -namespace -replace 
+###############################################################################
+# IDL Genration Makefile
+###############################################################################
+include ../../Makefiles/Makefile.platform
+include $(TOP_DIR)/Makefiles/Makefile.rti
+
 TMPOUTDIR = generated_code
 
 TOPIC_HOME = $(CURDIR)/../topics
 IDL_HOME = $(CURDIR)
 
-###############################################################################
-# Description: 
-# Generate RTI DDS C++ code from IDL files under IDL_HOME and copy the
-# generated files to locations in MC repository (TOPIC_HOME).
-# 
-# Usages: 
-# 1. make -f Makefile.dds [target]
-#    + target is the IDL file name without the "idl" extention.
-#    + If no target is specified, all IDL files under IDL_HOME will be built.
-#    + TOPIC_HOME and IDL_HOME variables are required.
-#
-# 2. make TOPIC_HOME=<path to mc repo> IDL_HOME=<path to IDL files> -f Makefile.dds
-#    + passed in the required TOPIC_HOME/IDL_HOME variables as parameters.
-#
-# Instruction to update this makefile for new IDL file:
-# + No need to add new rule. The makefile will auto detect the new 
-#   IDL file if it's under IDL_HOME.  
-# + Add the target <new idl file name>.cpy to the bottom of
-#   of the makefile, and add commands to copy the generated files to
-#   MC repository. 
-###############################################################################
 
 .NOTPARALLEL:
 .ONESHELL:
@@ -37,10 +20,10 @@ VPATH := $(shell find $(IDL_HOME) -type d)
 vpath %.idl $(VPATH)
 
 # extract all idl files from IDL_HOME
-DEPENDS := $(shell find $(IDL_HOME) -type f -name '*.idl')
+IDL_TARGETS := $(shell find $(IDL_HOME) -type f -name '*.idl')
 
 # extract the target name from all IDL files in current directory
-TARGETS := $(basename $(notdir $(DEPENDS)))
+TARGETS := $(basename $(notdir $(IDL_TARGETS)))
 
 # rule for all <target>.idl found under IDL_HOME
 all: $(TARGETS)
@@ -53,11 +36,11 @@ all: $(TARGETS)
 	@mkdir -p $(TMPOUTDIR)
 	@echo
 	@echo "making target $@ ..."
-	$(NDDSHOME)/bin/$(DDSGEN) $(GENOPT) -d $(TMPOUTDIR) -inputIdl $(lastword $^) $(addprefix -I , $(VPATH))
+	$(NDDSHOME)/bin/$(DDS_GEN) $(DDS_GEN_OPT) -d $(TMPOUTDIR) -inputIdl $(lastword $^) $(addprefix -I , $(VPATH))
 	@$(MAKE) -f $(firstword $(MAKEFILE_LIST)) --no-print-directory $@.cpy
 
 # empty rule to satisfy the "%.idl" dependency of rule above.
-$(DEPENDS):
+$(IDL_TARGETS):
 
 # making sure the TOPIC_HOME and IDL_HOME env are defined.
 env_test:
@@ -91,7 +74,6 @@ pipehandler_engineering.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/pipehandler_engineering
 	-@rm -rf $(TMPOUTDIR)
 
-	
 base_data_types.cpy:
 	@echo "Copying generated files ..."
 	mkdir -p $(TOPIC_HOME)/base_data_types/
@@ -181,10 +163,6 @@ drill_simulation.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/simulation/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/simulation
 	-@rm -rf $(TMPOUTDIR)
-
-
-
-
 
 rotate_engineering.cpy:
 	@echo "Copying generated files..."
