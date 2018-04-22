@@ -2038,12 +2038,12 @@ namespace Configuration {
                 sample->baseAddress,"baseAddress", indent_level + 1);    
         }
 
-        if (sample->elements==NULL) {
+        if (sample->size==NULL) {
             RTICdrType_printString(
-                NULL,"elements", indent_level + 1);
+                NULL,"size", indent_level + 1);
         } else {
             RTICdrType_printString(
-                sample->elements,"elements", indent_level + 1);    
+                sample->size,"size", indent_level + 1);    
         }
 
     }
@@ -2210,7 +2210,7 @@ namespace Configuration {
             }
 
             if (!RTICdrStream_serializeString(
-                stream, sample->elements, (255) + 1)) {
+                stream, sample->size, (255) + 1)) {
                 return RTI_FALSE;
             }
 
@@ -2266,7 +2266,7 @@ namespace Configuration {
                     goto fin; 
                 }
                 if (!RTICdrStream_deserializeStringEx(
-                    stream,&sample->elements, (255) + 1, RTI_FALSE)) {
+                    stream,&sample->size, (255) + 1, RTI_FALSE)) {
                     goto fin; 
                 }
             }
@@ -2691,7 +2691,7 @@ namespace Configuration {
 
         current_alignment += RTICdrType_getStringSerializedSize(
             PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment), sample->elements);
+                endpoint_data, current_alignment), sample->size);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -3142,28 +3142,28 @@ namespace Configuration {
             return;
         }
 
-        if (sample->protocol==NULL) {
+        if (sample->edgeType==NULL) {
             RTICdrType_printString(
-                NULL,"protocol", indent_level + 1);
+                NULL,"edgeType", indent_level + 1);
         } else {
             RTICdrType_printString(
-                sample->protocol,"protocol", indent_level + 1);    
+                sample->edgeType,"edgeType", indent_level + 1);    
         }
 
-        if (sample->type==NULL) {
+        if (sample->ioType==NULL) {
             RTICdrType_printString(
-                NULL,"type", indent_level + 1);
+                NULL,"ioType", indent_level + 1);
         } else {
             RTICdrType_printString(
-                sample->type,"type", indent_level + 1);    
+                sample->ioType,"ioType", indent_level + 1);    
         }
 
-        if (sample->unit==NULL) {
+        if (sample->ioUnit==NULL) {
             RTICdrType_printString(
-                NULL,"unit", indent_level + 1);
+                NULL,"ioUnit", indent_level + 1);
         } else {
             RTICdrType_printString(
-                sample->unit,"unit", indent_level + 1);    
+                sample->ioUnit,"ioUnit", indent_level + 1);    
         }
 
         if (sample->tag==NULL) {
@@ -3172,14 +3172,6 @@ namespace Configuration {
         } else {
             RTICdrType_printString(
                 sample->tag,"tag", indent_level + 1);    
-        }
-
-        if (sample->address==NULL) {
-            RTICdrType_printString(
-                NULL,"address", indent_level + 1);
-        } else {
-            RTICdrType_printString(
-                sample->address,"address", indent_level + 1);    
         }
 
     }
@@ -3331,27 +3323,22 @@ namespace Configuration {
         if(serialize_sample) {
 
             if (!RTICdrStream_serializeString(
-                stream, sample->protocol, (255) + 1)) {
+                stream, sample->edgeType, (255) + 1)) {
                 return RTI_FALSE;
             }
 
             if (!RTICdrStream_serializeString(
-                stream, sample->type, (255) + 1)) {
+                stream, sample->ioType, (255) + 1)) {
                 return RTI_FALSE;
             }
 
             if (!RTICdrStream_serializeString(
-                stream, sample->unit, (255) + 1)) {
+                stream, sample->ioUnit, (255) + 1)) {
                 return RTI_FALSE;
             }
 
             if (!RTICdrStream_serializeString(
                 stream, sample->tag, (255) + 1)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrStream_serializeString(
-                stream, sample->address, (255) + 1)) {
                 return RTI_FALSE;
             }
 
@@ -3395,23 +3382,19 @@ namespace Configuration {
                 Configuration::tag_t_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
                 if (!RTICdrStream_deserializeStringEx(
-                    stream,&sample->protocol, (255) + 1, RTI_FALSE)) {
+                    stream,&sample->edgeType, (255) + 1, RTI_FALSE)) {
                     goto fin; 
                 }
                 if (!RTICdrStream_deserializeStringEx(
-                    stream,&sample->type, (255) + 1, RTI_FALSE)) {
+                    stream,&sample->ioType, (255) + 1, RTI_FALSE)) {
                     goto fin; 
                 }
                 if (!RTICdrStream_deserializeStringEx(
-                    stream,&sample->unit, (255) + 1, RTI_FALSE)) {
+                    stream,&sample->ioUnit, (255) + 1, RTI_FALSE)) {
                     goto fin; 
                 }
                 if (!RTICdrStream_deserializeStringEx(
                     stream,&sample->tag, (255) + 1, RTI_FALSE)) {
-                    goto fin; 
-                }
-                if (!RTICdrStream_deserializeStringEx(
-                    stream,&sample->address, (255) + 1, RTI_FALSE)) {
                     goto fin; 
                 }
             }
@@ -3657,9 +3640,6 @@ namespace Configuration {
             if (!RTICdrStream_skipString (stream, (255)+1)) {
                 goto fin; 
             }
-            if (!RTICdrStream_skipString (stream, (255)+1)) {
-                goto fin; 
-            }
         }
 
         done = RTI_TRUE;
@@ -3702,9 +3682,6 @@ namespace Configuration {
             current_alignment = 0;
             initial_alignment = 0;
         }
-
-        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
-            current_alignment, (255)+1);
 
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
             current_alignment, (255)+1);
@@ -3777,8 +3754,6 @@ namespace Configuration {
             current_alignment, 1);
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
             current_alignment, 1);
-        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
-            current_alignment, 1);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -3832,23 +3807,19 @@ namespace Configuration {
 
         current_alignment += RTICdrType_getStringSerializedSize(
             PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment), sample->protocol);
+                endpoint_data, current_alignment), sample->edgeType);
 
         current_alignment += RTICdrType_getStringSerializedSize(
             PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment), sample->type);
+                endpoint_data, current_alignment), sample->ioType);
 
         current_alignment += RTICdrType_getStringSerializedSize(
             PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment), sample->unit);
+                endpoint_data, current_alignment), sample->ioUnit);
 
         current_alignment += RTICdrType_getStringSerializedSize(
             PRESTypePluginDefaultEndpointData_getAlignment(
                 endpoint_data, current_alignment), sample->tag);
-
-        current_alignment += RTICdrType_getStringSerializedSize(
-            PRESTypePluginDefaultEndpointData_getAlignment(
-                endpoint_data, current_alignment), sample->address);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -4307,19 +4278,19 @@ namespace Configuration {
             case (Configuration::PROTOCOL):
                 {
                     Configuration::protocol_tPluginSupport_print_data(
-                        (const Configuration::protocol_t*) &sample->_u.event, "_u.event", indent_level + 1);
-
-            } break ;
-            case (Configuration::TAG):
-                {
-                    Configuration::tag_tPluginSupport_print_data(
-                        (const Configuration::tag_t*) &sample->_u.tag, "_u.tag", indent_level + 1);
+                        (const Configuration::protocol_t*) &sample->_u.protocolSpec, "_u.protocolSpec", indent_level + 1);
 
             } break ;
             case (Configuration::INTERFACE):
                 {
                     Configuration::interface_tPluginSupport_print_data(
                         (const Configuration::interface_t*) &sample->_u.interfaceSpec, "_u.interfaceSpec", indent_level + 1);
+
+            } break ;
+            case (Configuration::TAG):
+                {
+                    Configuration::tag_tPluginSupport_print_data(
+                        (const Configuration::tag_t*) &sample->_u.tagSpec, "_u.tagSpec", indent_level + 1);
 
             } break ;
 
@@ -4490,21 +4461,7 @@ namespace Configuration {
 
                         if(!Configuration::protocol_tPlugin_serialize(
                             endpoint_data,
-                            (const Configuration::protocol_t*) &sample->_u.event,
-                            stream,
-                            RTI_FALSE, encapsulation_id,
-                            RTI_TRUE,
-                            endpoint_plugin_qos)) {
-                            return RTI_FALSE;
-                    }
-
-                } break ;
-                case (Configuration::TAG):
-                    {
-
-                        if(!Configuration::tag_tPlugin_serialize(
-                            endpoint_data,
-                            (const Configuration::tag_t*) &sample->_u.tag,
+                            (const Configuration::protocol_t*) &sample->_u.protocolSpec,
                             stream,
                             RTI_FALSE, encapsulation_id,
                             RTI_TRUE,
@@ -4519,6 +4476,20 @@ namespace Configuration {
                         if(!Configuration::interface_tPlugin_serialize(
                             endpoint_data,
                             (const Configuration::interface_t*) &sample->_u.interfaceSpec,
+                            stream,
+                            RTI_FALSE, encapsulation_id,
+                            RTI_TRUE,
+                            endpoint_plugin_qos)) {
+                            return RTI_FALSE;
+                    }
+
+                } break ;
+                case (Configuration::TAG):
+                    {
+
+                        if(!Configuration::tag_tPlugin_serialize(
+                            endpoint_data,
+                            (const Configuration::tag_t*) &sample->_u.tagSpec,
                             stream,
                             RTI_FALSE, encapsulation_id,
                             RTI_TRUE,
@@ -4577,18 +4548,7 @@ namespace Configuration {
                         {
                             if(!Configuration::protocol_tPlugin_deserialize_sample(
                                 endpoint_data,
-                                &sample->_u.event,
-                                stream,
-                                RTI_FALSE, RTI_TRUE,
-                                endpoint_plugin_qos)) {
-                                return RTI_FALSE;
-                        }
-                    } break ;
-                    case (Configuration::TAG):
-                        {
-                            if(!Configuration::tag_tPlugin_deserialize_sample(
-                                endpoint_data,
-                                &sample->_u.tag,
+                                &sample->_u.protocolSpec,
                                 stream,
                                 RTI_FALSE, RTI_TRUE,
                                 endpoint_plugin_qos)) {
@@ -4600,6 +4560,17 @@ namespace Configuration {
                             if(!Configuration::interface_tPlugin_deserialize_sample(
                                 endpoint_data,
                                 &sample->_u.interfaceSpec,
+                                stream,
+                                RTI_FALSE, RTI_TRUE,
+                                endpoint_plugin_qos)) {
+                                return RTI_FALSE;
+                        }
+                    } break ;
+                    case (Configuration::TAG):
+                        {
+                            if(!Configuration::tag_tPlugin_deserialize_sample(
+                                endpoint_data,
+                                &sample->_u.tagSpec,
                                 stream,
                                 RTI_FALSE, RTI_TRUE,
                                 endpoint_plugin_qos)) {
@@ -4852,9 +4823,9 @@ namespace Configuration {
                             return RTI_FALSE;
                     }
                 } break ;
-                case (Configuration::TAG):
+                case (Configuration::INTERFACE):
                     {
-                        if (!Configuration::tag_tPlugin_skip(
+                        if (!Configuration::interface_tPlugin_skip(
                             endpoint_data,
                             stream, 
                             RTI_FALSE, RTI_TRUE, 
@@ -4862,9 +4833,9 @@ namespace Configuration {
                             return RTI_FALSE;
                     }
                 } break ;
-                case (Configuration::INTERFACE):
+                case (Configuration::TAG):
                     {
-                        if (!Configuration::interface_tPlugin_skip(
+                        if (!Configuration::tag_tPlugin_skip(
                             endpoint_data,
                             stream, 
                             RTI_FALSE, RTI_TRUE, 
@@ -4916,9 +4887,9 @@ namespace Configuration {
 
         union_max_size_serialized = RTIOsapiUtility_max((unsigned int) Configuration::protocol_tPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment),                                    union_max_size_serialized);
-        union_max_size_serialized = RTIOsapiUtility_max((unsigned int) Configuration::tag_tPlugin_get_serialized_sample_max_size_ex(
-            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment),                                    union_max_size_serialized);
         union_max_size_serialized = RTIOsapiUtility_max((unsigned int) Configuration::interface_tPlugin_get_serialized_sample_max_size_ex(
+            endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment),                                    union_max_size_serialized);
+        union_max_size_serialized = RTIOsapiUtility_max((unsigned int) Configuration::tag_tPlugin_get_serialized_sample_max_size_ex(
             endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment),                                    union_max_size_serialized);
 
         if (include_encapsulation) {
@@ -4978,9 +4949,9 @@ namespace Configuration {
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
         union_min_size_serialized = RTIOsapiUtility_min((unsigned int) Configuration::protocol_tPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment), union_min_size_serialized);
-        union_min_size_serialized = RTIOsapiUtility_min((unsigned int) Configuration::tag_tPlugin_get_serialized_sample_min_size(
-            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment), union_min_size_serialized);
         union_min_size_serialized = RTIOsapiUtility_min((unsigned int) Configuration::interface_tPlugin_get_serialized_sample_min_size(
+            endpoint_data,RTI_FALSE,encapsulation_id,current_alignment), union_min_size_serialized);
+        union_min_size_serialized = RTIOsapiUtility_min((unsigned int) Configuration::tag_tPlugin_get_serialized_sample_min_size(
             endpoint_data,RTI_FALSE,encapsulation_id,current_alignment), union_min_size_serialized);
 
         if (include_encapsulation) {
@@ -5042,14 +5013,7 @@ namespace Configuration {
 
                     current_alignment += Configuration::protocol_tPlugin_get_serialized_sample_size(
                         endpoint_data,RTI_FALSE, encapsulation_id,
-                        current_alignment, (const Configuration::protocol_t*) &sample->_u.event);
-            }break ;
-            case (Configuration::TAG):
-                {
-
-                    current_alignment += Configuration::tag_tPlugin_get_serialized_sample_size(
-                        endpoint_data,RTI_FALSE, encapsulation_id,
-                        current_alignment, (const Configuration::tag_t*) &sample->_u.tag);
+                        current_alignment, (const Configuration::protocol_t*) &sample->_u.protocolSpec);
             }break ;
             case (Configuration::INTERFACE):
                 {
@@ -5057,6 +5021,13 @@ namespace Configuration {
                     current_alignment += Configuration::interface_tPlugin_get_serialized_sample_size(
                         endpoint_data,RTI_FALSE, encapsulation_id,
                         current_alignment, (const Configuration::interface_t*) &sample->_u.interfaceSpec);
+            }break ;
+            case (Configuration::TAG):
+                {
+
+                    current_alignment += Configuration::tag_tPlugin_get_serialized_sample_size(
+                        endpoint_data,RTI_FALSE, encapsulation_id,
+                        current_alignment, (const Configuration::tag_t*) &sample->_u.tagSpec);
             }break ;
         }
 

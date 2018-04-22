@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef configuration_301633119_h
-#define configuration_301633119_h
+#ifndef configuration_301633106_h
+#define configuration_301633106_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -245,7 +245,7 @@ namespace Configuration {
         DDS_Char *   ddsInterface ;
         DDS_Char *   protocolId ;
         DDS_Char *   baseAddress ;
-        DDS_Char *   elements ;
+        DDS_Char *   size ;
 
     };
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
@@ -320,11 +320,10 @@ namespace Configuration {
         typedef tag_tDataReader DataReader;
         #endif
 
-        DDS_Char *   protocol ;
-        DDS_Char *   type ;
-        DDS_Char *   unit ;
+        DDS_Char *   edgeType ;
+        DDS_Char *   ioType ;
+        DDS_Char *   ioUnit ;
         DDS_Char *   tag ;
-        DDS_Char *   address ;
 
     };
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
@@ -401,9 +400,9 @@ namespace Configuration {
         struct config_data_u 
         {
 
-            Configuration::protocol_t   event ;
-            Configuration::tag_t   tag ;
+            Configuration::protocol_t   protocolSpec ;
             Configuration::interface_t   interfaceSpec ;
+            Configuration::tag_t   tagSpec ;
         }_u;
 
     } config_data ;

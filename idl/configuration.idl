@@ -34,14 +34,15 @@ module Configuration
         string ddsInterface;
         string protocolId;
         string baseAddress;
-        string elements;
+        string size;
+        string frequency;
     };
 
     struct tag_t
     {
         string edgeType;
-        string type;
-        string io_unit;
+        string ioType;
+        string ioUnit;
         string tag;
     };
 

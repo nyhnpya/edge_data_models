@@ -948,7 +948,7 @@ namespace Configuration {
         static DDS_TypeCode interface_t_g_tc_ddsInterface_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode interface_t_g_tc_protocolId_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode interface_t_g_tc_baseAddress_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode interface_t_g_tc_elements_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode interface_t_g_tc_size_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode_Member interface_t_g_tc_members[4]=
         {
 
@@ -1004,7 +1004,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"elements",/* Member name */
+                (char *)"size",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1047,7 +1047,7 @@ namespace Configuration {
 
         interface_t_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_baseAddress_string;
 
-        interface_t_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_elements_string;
+        interface_t_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_size_string;
 
         is_initialized = RTI_TRUE;
 
@@ -1122,14 +1122,14 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory){
-            sample->elements= DDS_String_alloc ((255));
-            if (sample->elements == NULL) {
+            sample->size= DDS_String_alloc ((255));
+            if (sample->size == NULL) {
                 return RTI_FALSE;
             }
 
         } else {
-            if (sample->elements!= NULL) { 
-                sample->elements[0] = '\0';
+            if (sample->size!= NULL) { 
+                sample->size[0] = '\0';
             }
         }
 
@@ -1186,9 +1186,9 @@ namespace Configuration {
             sample->baseAddress=NULL;
 
         }
-        if (sample->elements != NULL) {
-            DDS_String_free(sample->elements);
-            sample->elements=NULL;
+        if (sample->size != NULL) {
+            DDS_String_free(sample->size);
+            sample->size=NULL;
 
         }
     }
@@ -1237,7 +1237,7 @@ namespace Configuration {
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
-                &dst->elements, src->elements, 
+                &dst->size, src->size, 
                 (255) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
@@ -1287,16 +1287,15 @@ namespace Configuration {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode tag_t_g_tc_protocol_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode tag_t_g_tc_type_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode tag_t_g_tc_unit_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode tag_t_g_tc_edgeType_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode tag_t_g_tc_ioType_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode tag_t_g_tc_ioUnit_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode tag_t_g_tc_tag_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode tag_t_g_tc_address_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode_Member tag_t_g_tc_members[5]=
+        static DDS_TypeCode_Member tag_t_g_tc_members[4]=
         {
 
             {
-                (char *)"protocol",/* Member name */
+                (char *)"edgeType",/* Member name */
                 {
                     0,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1313,7 +1312,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"type",/* Member name */
+                (char *)"ioType",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1330,7 +1329,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"unit",/* Member name */
+                (char *)"ioUnit",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1362,23 +1361,6 @@ namespace Configuration {
                 DDS_PUBLIC_MEMBER,/* Member visibility */
                 1,
                 NULL/* Ignored */
-            }, 
-            {
-                (char *)"address",/* Member name */
-                {
-                    4,/* Representation ID */          
-                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                    -1, /* Bitfield bits */
-                    NULL/* Member type code is assigned later */
-                },
-                0, /* Ignored */
-                0, /* Ignored */
-                0, /* Ignored */
-                NULL, /* Ignored */
-                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                DDS_PUBLIC_MEMBER,/* Member visibility */
-                1,
-                NULL/* Ignored */
             }
         };
 
@@ -1392,7 +1374,7 @@ namespace Configuration {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                5, /* Number of members */
+                4, /* Number of members */
                 tag_t_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for tag_t*/
@@ -1401,15 +1383,13 @@ namespace Configuration {
             return &tag_t_g_tc;
         }
 
-        tag_t_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_protocol_string;
+        tag_t_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_edgeType_string;
 
-        tag_t_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_type_string;
+        tag_t_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_ioType_string;
 
-        tag_t_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_unit_string;
+        tag_t_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_ioUnit_string;
 
         tag_t_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_tag_string;
-
-        tag_t_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_address_string;
 
         is_initialized = RTI_TRUE;
 
@@ -1448,38 +1428,38 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory){
-            sample->protocol= DDS_String_alloc ((255));
-            if (sample->protocol == NULL) {
+            sample->edgeType= DDS_String_alloc ((255));
+            if (sample->edgeType == NULL) {
                 return RTI_FALSE;
             }
 
         } else {
-            if (sample->protocol!= NULL) { 
-                sample->protocol[0] = '\0';
+            if (sample->edgeType!= NULL) { 
+                sample->edgeType[0] = '\0';
             }
         }
 
         if (allocParams->allocate_memory){
-            sample->type= DDS_String_alloc ((255));
-            if (sample->type == NULL) {
+            sample->ioType= DDS_String_alloc ((255));
+            if (sample->ioType == NULL) {
                 return RTI_FALSE;
             }
 
         } else {
-            if (sample->type!= NULL) { 
-                sample->type[0] = '\0';
+            if (sample->ioType!= NULL) { 
+                sample->ioType[0] = '\0';
             }
         }
 
         if (allocParams->allocate_memory){
-            sample->unit= DDS_String_alloc ((255));
-            if (sample->unit == NULL) {
+            sample->ioUnit= DDS_String_alloc ((255));
+            if (sample->ioUnit == NULL) {
                 return RTI_FALSE;
             }
 
         } else {
-            if (sample->unit!= NULL) { 
-                sample->unit[0] = '\0';
+            if (sample->ioUnit!= NULL) { 
+                sample->ioUnit[0] = '\0';
             }
         }
 
@@ -1492,18 +1472,6 @@ namespace Configuration {
         } else {
             if (sample->tag!= NULL) { 
                 sample->tag[0] = '\0';
-            }
-        }
-
-        if (allocParams->allocate_memory){
-            sample->address= DDS_String_alloc ((255));
-            if (sample->address == NULL) {
-                return RTI_FALSE;
-            }
-
-        } else {
-            if (sample->address!= NULL) { 
-                sample->address[0] = '\0';
             }
         }
 
@@ -1545,29 +1513,24 @@ namespace Configuration {
             return;
         }
 
-        if (sample->protocol != NULL) {
-            DDS_String_free(sample->protocol);
-            sample->protocol=NULL;
+        if (sample->edgeType != NULL) {
+            DDS_String_free(sample->edgeType);
+            sample->edgeType=NULL;
 
         }
-        if (sample->type != NULL) {
-            DDS_String_free(sample->type);
-            sample->type=NULL;
+        if (sample->ioType != NULL) {
+            DDS_String_free(sample->ioType);
+            sample->ioType=NULL;
 
         }
-        if (sample->unit != NULL) {
-            DDS_String_free(sample->unit);
-            sample->unit=NULL;
+        if (sample->ioUnit != NULL) {
+            DDS_String_free(sample->ioUnit);
+            sample->ioUnit=NULL;
 
         }
         if (sample->tag != NULL) {
             DDS_String_free(sample->tag);
             sample->tag=NULL;
-
-        }
-        if (sample->address != NULL) {
-            DDS_String_free(sample->address);
-            sample->address=NULL;
 
         }
     }
@@ -1601,27 +1564,22 @@ namespace Configuration {
             }
 
             if (!RTICdrType_copyStringEx (
-                &dst->protocol, src->protocol, 
+                &dst->edgeType, src->edgeType, 
                 (255) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
-                &dst->type, src->type, 
+                &dst->ioType, src->ioType, 
                 (255) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
-                &dst->unit, src->unit, 
+                &dst->ioUnit, src->ioUnit, 
                 (255) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->tag, src->tag, 
-                (255) + 1, RTI_FALSE)){
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyStringEx (
-                &dst->address, src->address, 
                 (255) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
@@ -1675,7 +1633,7 @@ namespace Configuration {
         {
 
             {
-                (char *)"event",/* Member name */
+                (char *)"protocolSpec",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1692,7 +1650,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"tag",/* Member name */
+                (char *)"interfaceSpec",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1701,7 +1659,7 @@ namespace Configuration {
                 },
                 0, /* Ignored */
                 1, /* Number of labels */
-                (Configuration::TAG), /* First label Cpp (Configuration::TAG) */
+                (Configuration::INTERFACE), /* First label Cpp (Configuration::INTERFACE) */
                 NULL, /* Labels (it is NULL when there is only one label)*/
                 RTI_CDR_NONKEY_MEMBER, /* Is a key? */
                 DDS_PUBLIC_MEMBER,/* Member visibility */
@@ -1709,7 +1667,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"interfaceSpec",/* Member name */
+                (char *)"tagSpec",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1718,7 +1676,7 @@ namespace Configuration {
                 },
                 0, /* Ignored */
                 1, /* Number of labels */
-                (Configuration::INTERFACE), /* First label Cpp (Configuration::INTERFACE) */
+                (Configuration::TAG), /* First label Cpp (Configuration::TAG) */
                 NULL, /* Labels (it is NULL when there is only one label)*/
                 RTI_CDR_NONKEY_MEMBER, /* Is a key? */
                 DDS_PUBLIC_MEMBER,/* Member visibility */
@@ -1748,9 +1706,9 @@ namespace Configuration {
 
         config_data_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)Configuration::protocol_t_get_typecode();
 
-        config_data_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)Configuration::tag_t_get_typecode();
+        config_data_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)Configuration::interface_t_get_typecode();
 
-        config_data_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)Configuration::interface_t_get_typecode();
+        config_data_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)Configuration::tag_t_get_typecode();
 
         /* Discriminator type code */
         config_data_g_tc._data._typeCode = (RTICdrTypeCode *)Configuration::config_type_get_typecode();
@@ -1797,15 +1755,15 @@ namespace Configuration {
         }
 
         sample->_d = (Configuration::config_type)config_data_getDefaultDiscriminator();
-        if (!Configuration::protocol_t_initialize_w_params(&sample->_u.event,
-        allocParams)) {
-            return RTI_FALSE;
-        }
-        if (!Configuration::tag_t_initialize_w_params(&sample->_u.tag,
+        if (!Configuration::protocol_t_initialize_w_params(&sample->_u.protocolSpec,
         allocParams)) {
             return RTI_FALSE;
         }
         if (!Configuration::interface_t_initialize_w_params(&sample->_u.interfaceSpec,
+        allocParams)) {
+            return RTI_FALSE;
+        }
+        if (!Configuration::tag_t_initialize_w_params(&sample->_u.tagSpec,
         allocParams)) {
             return RTI_FALSE;
         }
@@ -1847,11 +1805,11 @@ namespace Configuration {
             return;
         }
 
-        Configuration::protocol_t_finalize_w_params(&sample->_u.event,deallocParams);
-
-        Configuration::tag_t_finalize_w_params(&sample->_u.tag,deallocParams);
+        Configuration::protocol_t_finalize_w_params(&sample->_u.protocolSpec,deallocParams);
 
         Configuration::interface_t_finalize_w_params(&sample->_u.interfaceSpec,deallocParams);
+
+        Configuration::tag_t_finalize_w_params(&sample->_u.tagSpec,deallocParams);
 
     }
 
@@ -1874,15 +1832,15 @@ namespace Configuration {
         switch(sample->_d) {
             case (Configuration::PROTOCOL):
                 {
-                    Configuration::protocol_t_finalize_optional_members(&sample->_u.event, deallocParams->delete_pointers);
-            } break ;
-            case (Configuration::TAG):
-                {
-                    Configuration::tag_t_finalize_optional_members(&sample->_u.tag, deallocParams->delete_pointers);
+                    Configuration::protocol_t_finalize_optional_members(&sample->_u.protocolSpec, deallocParams->delete_pointers);
             } break ;
             case (Configuration::INTERFACE):
                 {
                     Configuration::interface_t_finalize_optional_members(&sample->_u.interfaceSpec, deallocParams->delete_pointers);
+            } break ;
+            case (Configuration::TAG):
+                {
+                    Configuration::tag_t_finalize_optional_members(&sample->_u.tagSpec, deallocParams->delete_pointers);
             } break ;
         }
     }
@@ -1907,14 +1865,7 @@ namespace Configuration {
                 case (Configuration::PROTOCOL):
                     {
                         if (!Configuration::protocol_t_copy(
-                            &dst->_u.event,(const Configuration::protocol_t*)&src->_u.event)) {
-                            return RTI_FALSE;
-                    } 
-                } break ;
-                case (Configuration::TAG):
-                    {
-                        if (!Configuration::tag_t_copy(
-                            &dst->_u.tag,(const Configuration::tag_t*)&src->_u.tag)) {
+                            &dst->_u.protocolSpec,(const Configuration::protocol_t*)&src->_u.protocolSpec)) {
                             return RTI_FALSE;
                     } 
                 } break ;
@@ -1922,6 +1873,13 @@ namespace Configuration {
                     {
                         if (!Configuration::interface_t_copy(
                             &dst->_u.interfaceSpec,(const Configuration::interface_t*)&src->_u.interfaceSpec)) {
+                            return RTI_FALSE;
+                    } 
+                } break ;
+                case (Configuration::TAG):
+                    {
+                        if (!Configuration::tag_t_copy(
+                            &dst->_u.tagSpec,(const Configuration::tag_t*)&src->_u.tagSpec)) {
                             return RTI_FALSE;
                     } 
                 } break ;
