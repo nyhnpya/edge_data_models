@@ -40,6 +40,7 @@ module Configuration
 
     struct tag_t
     {
+        string ddsInterface;
         string edgeType;
         string ioType;
         string ioUnit;

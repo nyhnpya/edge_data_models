@@ -2046,6 +2046,14 @@ namespace Configuration {
                 sample->size,"size", indent_level + 1);    
         }
 
+        if (sample->frequency==NULL) {
+            RTICdrType_printString(
+                NULL,"frequency", indent_level + 1);
+        } else {
+            RTICdrType_printString(
+                sample->frequency,"frequency", indent_level + 1);    
+        }
+
     }
 
     /* ----------------------------------------------------------------------------
@@ -2214,6 +2222,11 @@ namespace Configuration {
                 return RTI_FALSE;
             }
 
+            if (!RTICdrStream_serializeString(
+                stream, sample->frequency, (255) + 1)) {
+                return RTI_FALSE;
+            }
+
         }
 
         if(serialize_encapsulation) {
@@ -2267,6 +2280,10 @@ namespace Configuration {
                 }
                 if (!RTICdrStream_deserializeStringEx(
                     stream,&sample->size, (255) + 1, RTI_FALSE)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeStringEx(
+                    stream,&sample->frequency, (255) + 1, RTI_FALSE)) {
                     goto fin; 
                 }
             }
@@ -2512,6 +2529,9 @@ namespace Configuration {
             if (!RTICdrStream_skipString (stream, (255)+1)) {
                 goto fin; 
             }
+            if (!RTICdrStream_skipString (stream, (255)+1)) {
+                goto fin; 
+            }
         }
 
         done = RTI_TRUE;
@@ -2554,6 +2574,9 @@ namespace Configuration {
             current_alignment = 0;
             initial_alignment = 0;
         }
+
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, (255)+1);
 
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
             current_alignment, (255)+1);
@@ -2618,6 +2641,8 @@ namespace Configuration {
             initial_alignment = 0;
         }
 
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, 1);
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
             current_alignment, 1);
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
@@ -2692,6 +2717,10 @@ namespace Configuration {
         current_alignment += RTICdrType_getStringSerializedSize(
             PRESTypePluginDefaultEndpointData_getAlignment(
                 endpoint_data, current_alignment), sample->size);
+
+        current_alignment += RTICdrType_getStringSerializedSize(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment), sample->frequency);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -3142,6 +3171,14 @@ namespace Configuration {
             return;
         }
 
+        if (sample->ddsInterface==NULL) {
+            RTICdrType_printString(
+                NULL,"ddsInterface", indent_level + 1);
+        } else {
+            RTICdrType_printString(
+                sample->ddsInterface,"ddsInterface", indent_level + 1);    
+        }
+
         if (sample->edgeType==NULL) {
             RTICdrType_printString(
                 NULL,"edgeType", indent_level + 1);
@@ -3323,6 +3360,11 @@ namespace Configuration {
         if(serialize_sample) {
 
             if (!RTICdrStream_serializeString(
+                stream, sample->ddsInterface, (255) + 1)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeString(
                 stream, sample->edgeType, (255) + 1)) {
                 return RTI_FALSE;
             }
@@ -3381,6 +3423,10 @@ namespace Configuration {
 
                 Configuration::tag_t_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
+                if (!RTICdrStream_deserializeStringEx(
+                    stream,&sample->ddsInterface, (255) + 1, RTI_FALSE)) {
+                    goto fin; 
+                }
                 if (!RTICdrStream_deserializeStringEx(
                     stream,&sample->edgeType, (255) + 1, RTI_FALSE)) {
                     goto fin; 
@@ -3640,6 +3686,9 @@ namespace Configuration {
             if (!RTICdrStream_skipString (stream, (255)+1)) {
                 goto fin; 
             }
+            if (!RTICdrStream_skipString (stream, (255)+1)) {
+                goto fin; 
+            }
         }
 
         done = RTI_TRUE;
@@ -3682,6 +3731,9 @@ namespace Configuration {
             current_alignment = 0;
             initial_alignment = 0;
         }
+
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, (255)+1);
 
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
             current_alignment, (255)+1);
@@ -3754,6 +3806,8 @@ namespace Configuration {
             current_alignment, 1);
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
             current_alignment, 1);
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, 1);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -3804,6 +3858,10 @@ namespace Configuration {
                 endpoint_data,
                 current_alignment);
         }
+
+        current_alignment += RTICdrType_getStringSerializedSize(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment), sample->ddsInterface);
 
         current_alignment += RTICdrType_getStringSerializedSize(
             PRESTypePluginDefaultEndpointData_getAlignment(
