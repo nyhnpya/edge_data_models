@@ -7,7 +7,6 @@ CCirculateStatePublisher::CCirculateStatePublisher()
 
 CCirculateStatePublisher::~CCirculateStatePublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CCirculateStatePublisher::Initialize()

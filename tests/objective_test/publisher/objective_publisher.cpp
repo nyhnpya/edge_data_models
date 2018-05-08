@@ -7,7 +7,7 @@
 #include <string.h>
 #include <thread>
 #include "cmdparser.h"
-#include "objective_publisher.h"
+#include "objective_state_publisher.h"
 
 bool gTerminate = false;
 
@@ -114,21 +114,26 @@ void top_level_menu()
                 }
                 break;
             case '1':
+                gpStatePublisher->Initialize();
                 gpStatePublisher->SetObjective(DataTypes::Drilling);
                 gpStatePublisher->PublishSample();
                 break;
             case '2':
+                gpStatePublisher->Initialize();
                 gpStatePublisher->SetObjective(DataTypes::Tripping);
                 gpStatePublisher->PublishSample();
                 break;
             case '3':
+                gpStatePublisher->Initialize();
                 gpStatePublisher->SetObjective(DataTypes::CleaningHole);
                 gpStatePublisher->PublishSample();
                 break;
             case '4':
+                gpStatePublisher->Initialize();
                 gpStatePublisher->SetObjective(DataTypes::Casing);
                 gpStatePublisher->PublishSample();
             case '5':
+                gpStatePublisher->Initialize();
                 gpStatePublisher->SetObjective(DataTypes::None);
                 gpStatePublisher->PublishSample();
                 break;

@@ -77,7 +77,6 @@ void CWellboreStateSubscriber::DataAvailable(const nec::process::WellboreState &
 
 void CWellboreStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -88,7 +87,6 @@ void CWellboreStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CWellboreStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
-    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
@@ -97,7 +95,6 @@ void CWellboreStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedSta
 
 void CWellboreStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
-    LOG_INFO("Subscription matched");
     if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);

@@ -1,7 +1,7 @@
 module DataTypes
 {
     typedef string<36> Uuid;
-
+    
     /**
     * \brief time of day based on Unix Epoch
     */

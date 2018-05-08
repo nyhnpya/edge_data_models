@@ -696,7 +696,6 @@ void CAutoDrillerConfigurationStateSubscriber::DataAvailable(const nec::control:
 
 void CAutoDrillerConfigurationStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -707,7 +706,6 @@ void CAutoDrillerConfigurationStateSubscriber::DataDisposed(const DDS::SampleInf
 
 void CAutoDrillerConfigurationStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
-    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
@@ -716,7 +714,6 @@ void CAutoDrillerConfigurationStateSubscriber::LivelinessChanged(const DDS::Live
 
 void CAutoDrillerConfigurationStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
-    LOG_INFO("Subscription matched");
 	m_subscriptionMatched = (status.current_count > 0) ? true : false;
 	
 	if (m_pOnSubscriptionMatched != nullptr)

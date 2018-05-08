@@ -6,7 +6,6 @@ CTemplateStatePublisher::CTemplateStatePublisher()
 
 CTemplateStatePublisher::~CTemplateStatePublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CTemplateStatePublisher::Initialize()

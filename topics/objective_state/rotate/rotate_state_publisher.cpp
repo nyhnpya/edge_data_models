@@ -7,7 +7,6 @@ CRotateStatePublisher::CRotateStatePublisher()
 
 CRotateStatePublisher::~CRotateStatePublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CRotateStatePublisher::Initialize()

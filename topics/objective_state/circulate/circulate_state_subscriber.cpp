@@ -105,7 +105,6 @@ void CCirculateStateSubscriber::DataAvailable(const nec::process::CirculateState
 
 void CCirculateStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -116,7 +115,6 @@ void CCirculateStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CCirculateStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
-    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
@@ -125,7 +123,6 @@ void CCirculateStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedSt
 
 void CCirculateStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
-    LOG_INFO("Subscription matched");
     if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);

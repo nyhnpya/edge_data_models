@@ -7,7 +7,6 @@ CHoistObjectivePublisher::CHoistObjectivePublisher()
 
 CHoistObjectivePublisher::~CHoistObjectivePublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CHoistObjectivePublisher::Initialize()

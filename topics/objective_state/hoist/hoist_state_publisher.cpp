@@ -7,7 +7,6 @@ CHoistStatePublisher::CHoistStatePublisher()
 
 CHoistStatePublisher::~CHoistStatePublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CHoistStatePublisher::Initialize()

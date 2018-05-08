@@ -1,5 +1,6 @@
 #include <string.h>
 #include "objective_state_subscriber.h"
+#include "dds_uuid.h"
 
 CObjectiveStateSubscriber::CObjectiveStateSubscriber() :
     m_subscriptionMatched(false),
@@ -50,6 +51,12 @@ DataTypes::Objective CObjectiveStateSubscriber::GetObjective()
 
 bool CObjectiveStateSubscriber::Create(int32_t domain)
 {
+    CDdsUuid nullUuid;
+
+    nullUuid.Initialize();
+    m_data.id = DDS_String_dup(nullUuid.c_str());
+    m_data.objective = DataTypes::Objective::None;
+
     return TSubscriber::Create(domain,
                                process::plan::OBJECTIVE_STATE,
                                "EdgeBaseLibrary",
@@ -83,6 +90,7 @@ void CObjectiveStateSubscriber::DataAvailable(const process::plan::ObjectiveStat
 
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
+        DDS_String_free(m_data.id);
         m_data.id = DDS_String_dup(data.id);
         m_data.parentId = DDS_String_dup(data.parentId);
         m_data.timestamp = data.timestamp;
@@ -97,8 +105,17 @@ void CObjectiveStateSubscriber::DataAvailable(const process::plan::ObjectiveStat
 
 void CObjectiveStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
+    CDdsUuid nullUuid;
+
     m_sampleInfo = sampleInfo;
+
+    if (sampleInfo.valid_data == false)
+    {        
+        nullUuid.Initialize();
+        DDS_String_free(m_data.id);
+        m_data.id = DDS_String_dup(nullUuid.c_str());
+        m_data.objective = DataTypes::Objective::None;
+    }
 
     if (m_pOnDataDisposed != nullptr)
     {
@@ -108,7 +125,16 @@ void CObjectiveStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CObjectiveStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
-    LOG_INFO("Liveliness lost");
+    CDdsUuid nullUuid;
+
+    if (status.alive_count == 0)
+    {
+        nullUuid.Initialize();
+        DDS_String_free(m_data.id);
+        m_data.id = DDS_String_dup(nullUuid.c_str());
+        m_data.objective = DataTypes::Objective::None;
+    }
+
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
@@ -117,7 +143,6 @@ void CObjectiveStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedSt
 
 void CObjectiveStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
-    LOG_INFO("Subscription matched");
 	m_subscriptionMatched = (status.current_count > 0) ? true : false;
 	
 	if (m_pOnSubscriptionMatched != nullptr)

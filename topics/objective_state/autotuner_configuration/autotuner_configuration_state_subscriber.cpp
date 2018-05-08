@@ -119,7 +119,6 @@ void CModelStateStateSubscriber::DataAvailable(const AutoTunerConfiguration::Mod
 
 void CModelStateStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -292,7 +291,6 @@ void CWobTuningStateSubscriber::DataAvailable(const AutoTunerConfiguration::WobT
 
 void CWobTuningStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -466,7 +464,6 @@ void CDiffpTuningStateSubscriber::DataAvailable(const AutoTunerConfiguration::Di
 
 void CDiffpTuningStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -640,7 +637,6 @@ void CTorqueTuningStateSubscriber::DataAvailable(const AutoTunerConfiguration::T
 
 void CTorqueTuningStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)

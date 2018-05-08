@@ -7,7 +7,6 @@ CDrillingStatePublisher::CDrillingStatePublisher()
 
 CDrillingStatePublisher::~CDrillingStatePublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CDrillingStatePublisher::Initialize()

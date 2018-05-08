@@ -7,7 +7,6 @@ CCirculateObjectivePublisher::CCirculateObjectivePublisher()
 
 CCirculateObjectivePublisher::~CCirculateObjectivePublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CCirculateObjectivePublisher::Initialize()

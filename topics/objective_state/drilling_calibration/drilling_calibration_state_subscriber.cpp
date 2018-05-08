@@ -211,7 +211,6 @@ void CDrillingCalibrationStateSubscriber::DataAvailable(const nec::control::Dril
 
 void CDrillingCalibrationStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -222,7 +221,6 @@ void CDrillingCalibrationStateSubscriber::DataDisposed(const DDS::SampleInfo &sa
 
 void CDrillingCalibrationStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
-    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
@@ -231,7 +229,6 @@ void CDrillingCalibrationStateSubscriber::LivelinessChanged(const DDS::Livelines
 
 void CDrillingCalibrationStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
-    LOG_INFO("Subscription matched");
 	m_subscriptionMatched = (status.current_count > 0) ? true : false;
 
     if (m_pOnSubscriptionMatched != nullptr)

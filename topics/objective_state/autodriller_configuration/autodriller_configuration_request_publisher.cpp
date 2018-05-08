@@ -7,7 +7,6 @@ CAutoDrillerConfigurationRequestPublisher::CAutoDrillerConfigurationRequestPubli
 
 CAutoDrillerConfigurationRequestPublisher::~CAutoDrillerConfigurationRequestPublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CAutoDrillerConfigurationRequestPublisher::Initialize()

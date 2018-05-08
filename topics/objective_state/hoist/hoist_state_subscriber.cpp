@@ -120,7 +120,6 @@ void CHoistStateSubscriber::DataAvailable(const nec::process::HoistState &data,
 
 void CHoistStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -131,7 +130,6 @@ void CHoistStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CHoistStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
-    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
@@ -140,7 +138,6 @@ void CHoistStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus
 
 void CHoistStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
-    LOG_INFO("Subscription matched");
     if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);

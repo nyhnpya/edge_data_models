@@ -7,7 +7,6 @@ CAutoReamObjectivePublisher::CAutoReamObjectivePublisher()
 
 CAutoReamObjectivePublisher::~CAutoReamObjectivePublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CAutoReamObjectivePublisher::Initialize()

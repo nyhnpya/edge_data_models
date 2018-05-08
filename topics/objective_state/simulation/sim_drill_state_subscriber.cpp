@@ -189,7 +189,6 @@ void CSimDrillStateSubscriber::DataAvailable(const Simulation::AutoDrillerState 
 
 void CSimDrillStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -200,7 +199,6 @@ void CSimDrillStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CSimDrillStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
-    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
@@ -209,7 +207,6 @@ void CSimDrillStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedSta
 
 void CSimDrillStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
-    LOG_INFO("Subscription matched");
 	m_subscriptionMatched = (status.current_count > 0) ? true : false;
 
 	if (m_pOnSubscriptionMatched != nullptr)

@@ -7,7 +7,6 @@ CRotateRequestPublisher::CRotateRequestPublisher()
 
 CRotateRequestPublisher::~CRotateRequestPublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CRotateRequestPublisher::Initialize()

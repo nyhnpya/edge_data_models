@@ -75,7 +75,6 @@ void CHoistObjectiveSubscriber::DataAvailable(const nec::process::HoistObjective
 
 void CHoistObjectiveSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)

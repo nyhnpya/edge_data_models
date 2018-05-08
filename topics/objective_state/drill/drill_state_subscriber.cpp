@@ -160,7 +160,6 @@ void CDrillingStateSubscriber::DataAvailable(const nec::process::DrillingState &
 
 void CDrillingStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -171,7 +170,6 @@ void CDrillingStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CDrillingStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
-    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
@@ -180,7 +178,6 @@ void CDrillingStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedSta
 
 void CDrillingStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
-    LOG_INFO("Subscription matched");
 	m_subscriptionMatched = (status.current_count > 0) ? true : false;
 
 	if (m_pOnSubscriptionMatched != nullptr)

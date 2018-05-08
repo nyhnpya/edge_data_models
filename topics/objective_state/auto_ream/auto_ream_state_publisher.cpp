@@ -7,7 +7,6 @@ CAutoReamStatePublisher::CAutoReamStatePublisher()
 
 CAutoReamStatePublisher::~CAutoReamStatePublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CAutoReamStatePublisher::Initialize()

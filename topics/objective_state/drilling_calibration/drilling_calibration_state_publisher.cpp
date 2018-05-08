@@ -7,7 +7,6 @@ CDrillingCalibrationStatePublisher::CDrillingCalibrationStatePublisher()
 
 CDrillingCalibrationStatePublisher::~CDrillingCalibrationStatePublisher()
 {
-    DDS_String_free(m_pDataInstance->id);
 }
 
 bool CDrillingCalibrationStatePublisher::Initialize()

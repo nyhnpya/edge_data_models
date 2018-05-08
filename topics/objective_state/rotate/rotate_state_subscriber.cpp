@@ -90,7 +90,6 @@ void CRotateStateSubscriber::DataAvailable(const nec::process::RotateState &data
 
 void CRotateStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -101,7 +100,6 @@ void CRotateStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CRotateStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
-    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
@@ -110,7 +108,6 @@ void CRotateStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatu
 
 void CRotateStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
-    LOG_INFO("Subscription matched");
     if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);

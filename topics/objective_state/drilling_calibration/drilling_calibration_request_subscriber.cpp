@@ -118,7 +118,6 @@ void CDrillingCalibrationRequestSubscriber::DataAvailable(const nec::control::Dr
 
 void CDrillingCalibrationRequestSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)

@@ -63,7 +63,6 @@ void CTemplateStateSubscriber::DataAvailable(const nec::process::TemplateState &
 
 void CTemplateStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -74,7 +73,6 @@ void CTemplateStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CTemplateStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
-    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
@@ -83,7 +81,6 @@ void CTemplateStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedSta
 
 void CTemplateStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
-    LOG_INFO("Subscription matched");
     if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);

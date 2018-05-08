@@ -118,7 +118,6 @@ void CSimDrillObjectiveSubscriber::DataAvailable(const Simulation::AutoDrillerOb
 
 void CSimDrillObjectiveSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
