@@ -265,6 +265,218 @@ namespace Configuration {
     #undef T
 
     /* ========================================================================= */
+    const char *io_modeTYPENAME = "Configuration::io_mode";
+
+    DDS_TypeCode* io_mode_get_typecode()
+    {
+        static RTIBool is_initialized = RTI_FALSE;
+
+        static DDS_TypeCode_Member io_mode_g_tc_members[2]=
+        {
+
+            {
+                (char *)"READ",/* Member name */
+                {
+                    0, /* Ignored */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                READ, 
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PRIVATE_MEMBER,/* Member visibility */ 
+
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"WRITE",/* Member name */
+                {
+                    0, /* Ignored */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                WRITE, 
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PRIVATE_MEMBER,/* Member visibility */ 
+
+                1,
+                NULL/* Ignored */
+            }
+        };
+
+        static DDS_TypeCode io_mode_g_tc =
+        {{
+                DDS_TK_ENUM,/* Kind */
+                DDS_BOOLEAN_FALSE, /* Ignored */
+                -1, /*Ignored*/
+                (char *)"Configuration::io_mode", /* Name */
+                NULL,     /* Base class type code is assigned later */      
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                2, /* Number of members */
+                io_mode_g_tc_members, /* Members */
+                DDS_VM_NONE   /* Type Modifier */        
+            }}; /* Type code for io_mode*/
+
+        if (is_initialized) {
+            return &io_mode_g_tc;
+        }
+
+        is_initialized = RTI_TRUE;
+
+        return &io_mode_g_tc;
+    }
+
+    RTIBool io_mode_initialize(
+        io_mode* sample) {
+        *sample = READ;
+        return RTI_TRUE;
+    }
+
+    RTIBool io_mode_initialize_ex(
+        io_mode* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+    {
+
+        struct DDS_TypeAllocationParams_t allocParams =
+        DDS_TYPE_ALLOCATION_PARAMS_DEFAULT;
+
+        allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
+        allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
+
+        return Configuration::io_mode_initialize_w_params(
+            sample,&allocParams);
+
+    }
+
+    RTIBool io_mode_initialize_w_params(
+        io_mode* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+    {
+
+        if (sample == NULL) {
+            return RTI_FALSE;
+        }
+        if (allocParams == NULL) {
+            return RTI_FALSE;
+        }
+        *sample = READ;
+        return RTI_TRUE;
+    }
+
+    void io_mode_finalize(
+        io_mode* sample)
+    {
+
+        if (sample==NULL) {
+            return;
+        }
+    }
+
+    void io_mode_finalize_ex(
+        io_mode* sample,RTIBool deletePointers)
+    {
+        struct DDS_TypeDeallocationParams_t deallocParams =
+        DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
+
+        if (sample==NULL) {
+            return;
+        } 
+
+        deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
+
+        Configuration::io_mode_finalize_w_params(
+            sample,&deallocParams);
+    }
+
+    void io_mode_finalize_w_params(
+        io_mode* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+    {
+
+        if (sample==NULL) {
+            return;
+        }
+
+        if (deallocParams == NULL) {
+            return;
+        }
+
+    }
+
+    void io_mode_finalize_optional_members(
+        io_mode* sample, RTIBool deletePointers)
+    {
+        struct DDS_TypeDeallocationParams_t deallocParamsTmp =
+        DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
+        struct DDS_TypeDeallocationParams_t * deallocParams =
+        &deallocParamsTmp;
+
+        if (sample==NULL) {
+            return;
+        } 
+        if (deallocParams) {} /* To avoid warnings */
+
+        deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
+        deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
+
+    }
+
+    RTIBool io_mode_copy(
+        io_mode* dst,
+        const io_mode* src)
+    {
+        try {
+
+            if (dst == NULL || src == NULL) {
+                return RTI_FALSE;
+            }
+
+            return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
+
+        } catch (std::bad_alloc&) {
+            return RTI_FALSE;
+        }
+    }
+
+    /**
+    * <<IMPLEMENTATION>>
+    *
+    * Defines:  TSeq, T
+    *
+    * Configure and implement 'io_mode' sequence class.
+    */
+    #define T io_mode
+    #define TSeq io_modeSeq
+
+    #define T_initialize_w_params Configuration::io_mode_initialize_w_params
+
+    #define T_finalize_w_params   Configuration::io_mode_finalize_w_params
+    #define T_copy       Configuration::io_mode_copy
+
+    #ifndef NDDS_STANDALONE_TYPE
+    #include "dds_c/generic/dds_c_sequence_TSeq.gen"
+    #include "dds_cpp/generic/dds_cpp_sequence_TSeq.gen"
+    #else
+    #include "dds_c_sequence_TSeq.gen"
+    #include "dds_cpp_sequence_TSeq.gen"
+    #endif
+
+    #undef T_copy
+    #undef T_finalize_w_params
+
+    #undef T_initialize_w_params
+
+    #undef TSeq
+    #undef T
+
+    /* ========================================================================= */
     const char *plant_typeTYPENAME = "Configuration::plant_type";
 
     DDS_TypeCode* plant_type_get_typecode()
@@ -950,11 +1162,11 @@ namespace Configuration {
         static DDS_TypeCode interface_t_g_tc_baseAddress_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode interface_t_g_tc_size_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode interface_t_g_tc_frequency_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode_Member interface_t_g_tc_members[5]=
+        static DDS_TypeCode_Member interface_t_g_tc_members[6]=
         {
 
             {
-                (char *)"ddsInterface",/* Member name */
+                (char *)"mode",/* Member name */
                 {
                     0,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -971,7 +1183,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"protocolId",/* Member name */
+                (char *)"ddsInterface",/* Member name */
                 {
                     1,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -988,7 +1200,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"baseAddress",/* Member name */
+                (char *)"protocolId",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1005,7 +1217,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"size",/* Member name */
+                (char *)"baseAddress",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1022,9 +1234,26 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"frequency",/* Member name */
+                (char *)"size",/* Member name */
                 {
                     4,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"frequency",/* Member name */
+                {
+                    5,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -1050,7 +1279,7 @@ namespace Configuration {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                5, /* Number of members */
+                6, /* Number of members */
                 interface_t_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for interface_t*/
@@ -1059,15 +1288,17 @@ namespace Configuration {
             return &interface_t_g_tc;
         }
 
-        interface_t_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_ddsInterface_string;
+        interface_t_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)Configuration::io_mode_get_typecode();
 
-        interface_t_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_protocolId_string;
+        interface_t_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_ddsInterface_string;
 
-        interface_t_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_baseAddress_string;
+        interface_t_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_protocolId_string;
 
-        interface_t_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_size_string;
+        interface_t_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_baseAddress_string;
 
-        interface_t_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_frequency_string;
+        interface_t_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_size_string;
+
+        interface_t_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&interface_t_g_tc_frequency_string;
 
         is_initialized = RTI_TRUE;
 
@@ -1105,6 +1336,10 @@ namespace Configuration {
             return RTI_FALSE;
         }
 
+        if (!Configuration::io_mode_initialize_w_params(&sample->mode,
+        allocParams)) {
+            return RTI_FALSE;
+        }
         if (allocParams->allocate_memory){
             sample->ddsInterface= DDS_String_alloc ((255));
             if (sample->ddsInterface == NULL) {
@@ -1203,6 +1438,8 @@ namespace Configuration {
             return;
         }
 
+        Configuration::io_mode_finalize_w_params(&sample->mode,deallocParams);
+
         if (sample->ddsInterface != NULL) {
             DDS_String_free(sample->ddsInterface);
             sample->ddsInterface=NULL;
@@ -1246,6 +1483,7 @@ namespace Configuration {
         deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
+        Configuration::io_mode_finalize_optional_members(&sample->mode, deallocParams->delete_pointers);
     }
 
     RTIBool interface_t_copy(
@@ -1258,6 +1496,10 @@ namespace Configuration {
                 return RTI_FALSE;
             }
 
+            if (!Configuration::io_mode_copy(
+                &dst->mode,(const Configuration::io_mode*)&src->mode)) {
+                return RTI_FALSE;
+            } 
             if (!RTICdrType_copyStringEx (
                 &dst->ddsInterface, src->ddsInterface, 
                 (255) + 1, RTI_FALSE)){

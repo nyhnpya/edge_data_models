@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef configurationPlugin_301633161_h
-#define configurationPlugin_301633161_h
+#ifndef configurationPlugin_301633247_h
+#define configurationPlugin_301633247_h
 
 #include "configuration.h"
 
@@ -144,6 +144,122 @@ namespace Configuration {
     NDDSUSERDllExport extern void
     config_typePluginSupport_print_data(
         const config_type *sample, const char *desc, int indent_level);
+
+    /* ----------------------------------------------------------------------------
+    (De)Serialize functions:
+    * ------------------------------------------------------------------------- */
+
+    NDDSUSERDllExport extern RTIBool 
+    io_modePlugin_serialize(
+        PRESTypePluginEndpointData endpoint_data,
+        const io_mode *sample,
+        struct RTICdrStream *stream, 
+        RTIBool serialize_encapsulation,
+        RTIEncapsulationId encapsulation_id,
+        RTIBool serialize_sample, 
+        void *endpoint_plugin_qos);
+
+    NDDSUSERDllExport extern RTIBool 
+    io_modePlugin_deserialize_sample(
+        PRESTypePluginEndpointData endpoint_data,
+        io_mode *sample, 
+        struct RTICdrStream *stream,
+        RTIBool deserialize_encapsulation,
+        RTIBool deserialize_sample, 
+        void *endpoint_plugin_qos);
+
+    NDDSUSERDllExport extern RTIBool
+    io_modePlugin_skip(
+        PRESTypePluginEndpointData endpoint_data,
+        struct RTICdrStream *stream, 
+        RTIBool skip_encapsulation,  
+        RTIBool skip_sample, 
+        void *endpoint_plugin_qos);
+
+    NDDSUSERDllExport extern unsigned int 
+    io_modePlugin_get_serialized_sample_max_size_ex(
+        PRESTypePluginEndpointData endpoint_data,
+        RTIBool * overflow,
+        RTIBool include_encapsulation,
+        RTIEncapsulationId encapsulation_id,
+        unsigned int current_alignment);    
+
+    NDDSUSERDllExport extern unsigned int 
+    io_modePlugin_get_serialized_sample_max_size(
+        PRESTypePluginEndpointData endpoint_data,
+        RTIBool include_encapsulation,
+        RTIEncapsulationId encapsulation_id,
+        unsigned int current_alignment);
+
+    NDDSUSERDllExport extern unsigned int 
+    io_modePlugin_get_serialized_sample_min_size(
+        PRESTypePluginEndpointData endpoint_data,
+        RTIBool include_encapsulation,
+        RTIEncapsulationId encapsulation_id,
+        unsigned int current_alignment);
+
+    NDDSUSERDllExport extern unsigned int
+    io_modePlugin_get_serialized_sample_size(
+        PRESTypePluginEndpointData endpoint_data,
+        RTIBool include_encapsulation,
+        RTIEncapsulationId encapsulation_id,
+        unsigned int current_alignment,
+        const io_mode * sample);
+
+    /* --------------------------------------------------------------------------------------
+    Key Management functions:
+    * -------------------------------------------------------------------------------------- */
+
+    NDDSUSERDllExport extern unsigned int 
+    io_modePlugin_get_serialized_key_max_size_ex(
+        PRESTypePluginEndpointData endpoint_data,
+        RTIBool * overflow,
+        RTIBool include_encapsulation,
+        RTIEncapsulationId encapsulation_id,
+        unsigned int current_alignment);
+
+    NDDSUSERDllExport extern unsigned int 
+    io_modePlugin_get_serialized_key_max_size(
+        PRESTypePluginEndpointData endpoint_data,
+        RTIBool include_encapsulation,
+        RTIEncapsulationId encapsulation_id,
+        unsigned int current_alignment);
+
+    NDDSUSERDllExport extern RTIBool 
+    io_modePlugin_serialize_key(
+        PRESTypePluginEndpointData endpoint_data,
+        const io_mode *sample,
+        struct RTICdrStream *stream,
+        RTIBool serialize_encapsulation,
+        RTIEncapsulationId encapsulation_id,
+        RTIBool serialize_key,
+        void *endpoint_plugin_qos);
+
+    NDDSUSERDllExport extern RTIBool 
+    io_modePlugin_deserialize_key_sample(
+        PRESTypePluginEndpointData endpoint_data,
+        io_mode * sample,
+        struct RTICdrStream *stream,
+        RTIBool deserialize_encapsulation,
+        RTIBool deserialize_key,
+        void *endpoint_plugin_qos);
+
+    NDDSUSERDllExport extern RTIBool
+    io_modePlugin_serialized_sample_to_key(
+        PRESTypePluginEndpointData endpoint_data,
+        io_mode *sample,
+        struct RTICdrStream *stream, 
+        RTIBool deserialize_encapsulation,  
+        RTIBool deserialize_key, 
+        void *endpoint_plugin_qos);
+
+    /* ----------------------------------------------------------------------------
+    Support functions:
+    * ---------------------------------------------------------------------------- */
+
+    NDDSUSERDllExport extern void
+    io_modePluginSupport_print_data(
+        const io_mode *sample, const char *desc, int indent_level);
 
     /* ----------------------------------------------------------------------------
     (De)Serialize functions:
@@ -1524,5 +1640,5 @@ namespace Configuration {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* configurationPlugin_301633161_h */
+#endif /* configurationPlugin_301633247_h */
 

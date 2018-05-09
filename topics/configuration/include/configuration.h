@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef configuration_301633161_h
-#define configuration_301633161_h
+#ifndef configuration_301633247_h
+#define configuration_301633247_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -72,6 +72,63 @@ namespace Configuration {
     RTIBool config_type_copy(
         config_type* dst,
         const config_type* src);
+
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    /* If the code is building on Windows, stop exporting symbols.
+    */
+    #undef NDDSUSERDllExport
+    #define NDDSUSERDllExport
+    #endif
+    typedef enum io_mode
+    {
+        READ ,      
+        WRITE      
+    } io_mode;
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    /* If the code is building on Windows, start exporting symbols.
+    */
+    #undef NDDSUSERDllExport
+    #define NDDSUSERDllExport __declspec(dllexport)
+    #endif
+
+    NDDSUSERDllExport DDS_TypeCode* io_mode_get_typecode(void); /* Type code */
+
+    DDS_SEQUENCE(io_modeSeq, io_mode);
+
+    NDDSUSERDllExport
+    RTIBool io_mode_initialize(
+        io_mode* self);
+
+    NDDSUSERDllExport
+    RTIBool io_mode_initialize_ex(
+        io_mode* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+    NDDSUSERDllExport
+    RTIBool io_mode_initialize_w_params(
+        io_mode* self,
+        const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    void io_mode_finalize(
+        io_mode* self);
+
+    NDDSUSERDllExport
+    void io_mode_finalize_ex(
+        io_mode* self,RTIBool deletePointers);
+
+    NDDSUSERDllExport
+    void io_mode_finalize_w_params(
+        io_mode* self,
+        const struct DDS_TypeDeallocationParams_t * deallocParams);
+
+    NDDSUSERDllExport
+    void io_mode_finalize_optional_members(
+        io_mode* self, RTIBool deletePointers);  
+
+    NDDSUSERDllExport
+    RTIBool io_mode_copy(
+        io_mode* dst,
+        const io_mode* src);
 
     #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
@@ -242,6 +299,7 @@ namespace Configuration {
         typedef interface_tDataReader DataReader;
         #endif
 
+        Configuration::io_mode   mode ;
         DDS_Char *   ddsInterface ;
         DDS_Char *   protocolId ;
         DDS_Char *   baseAddress ;

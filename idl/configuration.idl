@@ -7,6 +7,12 @@ module Configuration
         TAG
     };
 
+    enum io_mode
+    {
+        READ,
+        WRITE
+    };
+
     enum plant_type
     {
         BOOLEAN,
@@ -31,11 +37,12 @@ module Configuration
 
     struct interface_t
     {
-        string ddsInterface;
-        string protocolId;
-        string baseAddress;
-        string size;
-        string frequency;
+        io_mode mode;
+        string  ddsInterface;
+        string  protocolId;
+        string  baseAddress;
+        string  size;
+        string  frequency;
     };
 
     struct tag_t
