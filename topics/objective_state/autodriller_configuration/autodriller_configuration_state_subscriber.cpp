@@ -689,7 +689,7 @@ void CAutoDrillerConfigurationStateSubscriber::DataAvailable(const nec::control:
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }

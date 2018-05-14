@@ -84,6 +84,11 @@ void CDrillingRequestSubscriber::OnDataDisposed(OnDataDisposedEvent event)
     m_pOnDataDisposed = event;
 }
 
+void CDrillingRequestSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
+{
+    m_pOnSubscriptionMatched = event;
+}
+
 void CDrillingRequestSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
 {
     m_pOnLivelinessChanged = event;

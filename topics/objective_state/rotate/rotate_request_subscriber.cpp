@@ -62,6 +62,11 @@ void CRotateRequestSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent even
     m_pOnLivelinessChanged = event;
 }
 
+void CRotateRequestSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
+{
+    m_pOnSubscriptionMatched = event;
+}
+
 void CRotateRequestSubscriber::DataAvailable(const nec::process::RotateRequest &data,
                                              const DDS::SampleInfo &sampleInfo)
 {
@@ -88,5 +93,13 @@ void CRotateRequestSubscriber::LivelinessChanged(const DDS::LivelinessChangedSta
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
+    }
+}
+
+void CRotateRequestSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
+{
+    if (m_pOnSubscriptionMatched != nullptr)
+    {
+        m_pOnSubscriptionMatched(status);
     }
 }

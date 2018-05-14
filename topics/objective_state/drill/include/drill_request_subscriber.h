@@ -18,7 +18,6 @@
 #include "subscriber.h"
 #include "drill.h"
 #include "drillSupport.h"
-
 #ifdef _WIN32
 #undef pascal
 #endif
@@ -41,6 +40,7 @@ class CDrillingRequestSubscriber : public TSubscriber< nec::process::DrillingReq
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnDataDisposed(OnDataDisposedEvent event);
     void OnLivelinessChanged(OnLivelinessChangedEvent event);
+    void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
     bool ValidData();
 
     // getters
@@ -71,6 +71,7 @@ class CDrillingRequestSubscriber : public TSubscriber< nec::process::DrillingReq
     OnDataAvailableEvent      m_pOnDataAvailable;
     OnDataDisposedEvent       m_pOnDataDisposed;
     OnLivelinessChangedEvent     m_pOnLivelinessChanged;
+	OnSubscriptionMatchedEvent m_pOnSubscriptionMatched;
 };
 
 #endif // __DRILLING_REQUEST_SUBSCRIBER_H__
