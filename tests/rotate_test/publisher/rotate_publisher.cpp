@@ -71,13 +71,16 @@ void register_signal_handler()
 
 void set_rate()
 {
-    radians_per_second_t targetRate;
+    revolutions_per_minute_t targetRate;
     double input;
 
-    std::cout << "ROP Limit: ";
+    std::cout << "RPM Target: ";
     std::cin >> input;
-    targetRate = (radians_per_second_t)input;
-    gpRequestPublisher->SetTargetRate(targetRate);
+    targetRate = (revolutions_per_minute_t)input;
+    LOG_INFO("Target Rate RPM: [%f]", targetRate);
+    LOG_INFO("Target Rate rad/sec: [%f]", (radians_per_second_t)targetRate);
+
+    gpRequestPublisher->SetTargetRate((radians_per_second_t)targetRate);
 }
 
 void top_level_menu()
