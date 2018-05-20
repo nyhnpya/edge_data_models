@@ -1,85 +1,85 @@
 #include "drill_objective_subscriber.h"
 
-CDrillingObjectiveSubscriber::CDrillingObjectiveSubscriber() :
+CDrillObjectiveSubscriber::CDrillObjectiveSubscriber() :
     m_pOnDataAvailable(nullptr)
 {
 }
 
-CDrillingObjectiveSubscriber::~CDrillingObjectiveSubscriber()
+CDrillObjectiveSubscriber::~CDrillObjectiveSubscriber()
 {
 }
 
-bool CDrillingObjectiveSubscriber::ValidData()
+bool CDrillObjectiveSubscriber::ValidData()
 {
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-DataTypes::Uuid CDrillingObjectiveSubscriber::GetId()
+DataTypes::Uuid CDrillObjectiveSubscriber::GetId()
 {
     return m_data.id;
 }
 
-DataTypes::Time CDrillingObjectiveSubscriber::GetEstimatedDuration()
+DataTypes::Time CDrillObjectiveSubscriber::GetEstimatedDuration()
 {
     return m_data.estimatedDuration;
 }
 
-double CDrillingObjectiveSubscriber::GetRopLimit()
+double CDrillObjectiveSubscriber::GetRopLimit()
 {
     return m_data.ropLimit;
 }
 
-double CDrillingObjectiveSubscriber::GetWobLimit()
+double CDrillObjectiveSubscriber::GetWobLimit()
 {
     return m_data.wobLimit;
 }
 
-double CDrillingObjectiveSubscriber::GetDifferentialPressureLimit()
+double CDrillObjectiveSubscriber::GetDifferentialPressureLimit()
 {
     return m_data.differentialPressureLimit;
 }
 
-double CDrillingObjectiveSubscriber::GetTorqueLimit()
+double CDrillObjectiveSubscriber::GetTorqueLimit()
 {
     return m_data.torqueLimit;
 }
 
-bool CDrillingObjectiveSubscriber::GetRopMode()
+bool CDrillObjectiveSubscriber::GetRopMode()
 {
     return (m_data.ropMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingObjectiveSubscriber::GetWobMode()
+bool CDrillObjectiveSubscriber::GetWobMode()
 {
     return (m_data.wobMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingObjectiveSubscriber::GetDifferentialPressureMode()
+bool CDrillObjectiveSubscriber::GetDifferentialPressureMode()
 {
     return (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingObjectiveSubscriber::GetTorqueMode()
+bool CDrillObjectiveSubscriber::GetTorqueMode()
 {
     return (m_data.torqueMode == DDS_BOOLEAN_TRUE);
 }
 
-void CDrillingObjectiveSubscriber::OnDataAvailable(OnDataAvailableEvent event)
+void CDrillObjectiveSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
 }
 
-void CDrillingObjectiveSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+void CDrillObjectiveSubscriber::OnDataDisposed(OnDataDisposedEvent event)
 {
     m_pOnDataDisposed = event;
 }
 
-void CDrillingObjectiveSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+void CDrillObjectiveSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
 {
     m_pOnLivelinessChanged = event;
 }
 
-bool CDrillingObjectiveSubscriber::Create(int32_t domain)
+bool CDrillObjectiveSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
                                nec::process::DRILLING_OBJECTIVE,
@@ -87,7 +87,7 @@ bool CDrillingObjectiveSubscriber::Create(int32_t domain)
                                "EdgeBaseProfile");
 }
 
-void CDrillingObjectiveSubscriber::DataAvailable(const nec::process::DrillingObjective &data,
+void CDrillObjectiveSubscriber::DataAvailable(const nec::process::DrillingObjective &data,
                                                  const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
@@ -103,7 +103,7 @@ void CDrillingObjectiveSubscriber::DataAvailable(const nec::process::DrillingObj
     }
 }
 
-void CDrillingObjectiveSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
+void CDrillObjectiveSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
 
@@ -113,7 +113,7 @@ void CDrillingObjectiveSubscriber::DataDisposed(const DDS::SampleInfo &sampleInf
     }
 }
 
-void CDrillingObjectiveSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+void CDrillObjectiveSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
     if (m_pOnLivelinessChanged != nullptr)
     {

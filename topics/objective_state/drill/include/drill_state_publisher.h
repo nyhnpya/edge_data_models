@@ -31,11 +31,11 @@ using namespace units::force;
 using namespace units::torque;
 using namespace units::pressure;
 
-class CDrillingStatePublisher : public TPublisher< nec::process::DrillingState >
+class CDrillStatePublisher : public TPublisher< nec::process::DrillingState >
 {
  public:
-    CDrillingStatePublisher();
-    ~CDrillingStatePublisher();
+    CDrillStatePublisher();
+    ~CDrillStatePublisher();
 
     bool Create(int32_t domain);
     bool Initialize();

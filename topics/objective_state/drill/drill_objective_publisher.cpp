@@ -1,15 +1,15 @@
 #include "dds_uuid.h"
 #include "drill_objective_publisher.h"
 
-CDrillingObjectivePublisher::CDrillingObjectivePublisher()
+CDrillObjectivePublisher::CDrillObjectivePublisher()
 {
 }
 
-CDrillingObjectivePublisher::~CDrillingObjectivePublisher()
+CDrillObjectivePublisher::~CDrillObjectivePublisher()
 {
 }
 
-bool CDrillingObjectivePublisher::Initialize()
+bool CDrillObjectivePublisher::Initialize()
 {
     CDdsUuid uuid;
 
@@ -19,7 +19,7 @@ bool CDrillingObjectivePublisher::Initialize()
     return true;
 }
 
-void CDrillingObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
+void CDrillObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -27,7 +27,7 @@ void CDrillingObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimated
     }
 }
 
-void CDrillingObjectivePublisher::SetRopLimit(const double ropLimit)
+void CDrillObjectivePublisher::SetRopLimit(const double ropLimit)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -39,7 +39,7 @@ void CDrillingObjectivePublisher::SetRopLimit(const double ropLimit)
     }
 }
 
-void CDrillingObjectivePublisher::SetWobLimit(const double wobLimit)
+void CDrillObjectivePublisher::SetWobLimit(const double wobLimit)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -51,7 +51,7 @@ void CDrillingObjectivePublisher::SetWobLimit(const double wobLimit)
     }
 }
 
-void CDrillingObjectivePublisher::SetDifferentialPressureLimit(const double differentialPressureLimit)
+void CDrillObjectivePublisher::SetDifferentialPressureLimit(const double differentialPressureLimit)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -63,7 +63,7 @@ void CDrillingObjectivePublisher::SetDifferentialPressureLimit(const double diff
     }
 }
 
-void CDrillingObjectivePublisher::SetTorqueLimit(const double torqueLimit)
+void CDrillObjectivePublisher::SetTorqueLimit(const double torqueLimit)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -75,7 +75,7 @@ void CDrillingObjectivePublisher::SetTorqueLimit(const double torqueLimit)
     }
 }
 
-void CDrillingObjectivePublisher::SetRopMode(const bool ropMode)
+void CDrillObjectivePublisher::SetRopMode(const bool ropMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -87,7 +87,7 @@ void CDrillingObjectivePublisher::SetRopMode(const bool ropMode)
     }
 }
 
-void CDrillingObjectivePublisher::SetWobMode(const bool wobMode)
+void CDrillObjectivePublisher::SetWobMode(const bool wobMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -99,7 +99,7 @@ void CDrillingObjectivePublisher::SetWobMode(const bool wobMode)
     }
 }
 
-void CDrillingObjectivePublisher::SetDifferentialPressureMode(const bool differentialPressureMode)
+void CDrillObjectivePublisher::SetDifferentialPressureMode(const bool differentialPressureMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -111,7 +111,7 @@ void CDrillingObjectivePublisher::SetDifferentialPressureMode(const bool differe
     }
 }
 
-void CDrillingObjectivePublisher::SetTorqueMode(const bool torqueMode)
+void CDrillObjectivePublisher::SetTorqueMode(const bool torqueMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -123,12 +123,12 @@ void CDrillingObjectivePublisher::SetTorqueMode(const bool torqueMode)
     }
 }
 
-bool CDrillingObjectivePublisher::PublishSample()
+bool CDrillObjectivePublisher::PublishSample()
 {
     return Publish();
 }
 
-bool CDrillingObjectivePublisher::Create(int32_t domain)
+bool CDrillObjectivePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
                               nec::process::DRILLING_OBJECTIVE,

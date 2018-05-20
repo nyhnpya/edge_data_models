@@ -1,15 +1,15 @@
 #include "dds_uuid.h"
 #include "drill_request_publisher.h"
 
-CDrillingRequestPublisher::CDrillingRequestPublisher()
+CDrillRequestPublisher::CDrillRequestPublisher()
 {
 }
 
-CDrillingRequestPublisher::~CDrillingRequestPublisher()
+CDrillRequestPublisher::~CDrillRequestPublisher()
 {
 }
 
-bool CDrillingRequestPublisher::Initialize()
+bool CDrillRequestPublisher::Initialize()
 {
     CDdsUuid uuid;
 
@@ -19,7 +19,7 @@ bool CDrillingRequestPublisher::Initialize()
     return true;
 }
 
-void CDrillingRequestPublisher::SetPriority(DataTypes::Priority priority)
+void CDrillRequestPublisher::SetPriority(DataTypes::Priority priority)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -27,7 +27,7 @@ void CDrillingRequestPublisher::SetPriority(DataTypes::Priority priority)
     }
 }
 
-void CDrillingRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
+void CDrillRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -35,7 +35,7 @@ void CDrillingRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
     }
 }
 
-void CDrillingRequestPublisher::SetDuration(DataTypes::Time duration)
+void CDrillRequestPublisher::SetDuration(DataTypes::Time duration)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -43,7 +43,7 @@ void CDrillingRequestPublisher::SetDuration(DataTypes::Time duration)
     }
 }
 
-void CDrillingRequestPublisher::SetRopLimit(const meters_per_second_t ropLimit)
+void CDrillRequestPublisher::SetRopLimit(const meters_per_second_t ropLimit)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -55,7 +55,7 @@ void CDrillingRequestPublisher::SetRopLimit(const meters_per_second_t ropLimit)
     }
 }
 
-void CDrillingRequestPublisher::SetWobLimit(const newton_t wobLimit)
+void CDrillRequestPublisher::SetWobLimit(const newton_t wobLimit)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -67,7 +67,7 @@ void CDrillingRequestPublisher::SetWobLimit(const newton_t wobLimit)
     }
 }
 
-void CDrillingRequestPublisher::SetDifferentialPressureLimit(const pascal_t differentialPressureLimit)
+void CDrillRequestPublisher::SetDifferentialPressureLimit(const pascal_t differentialPressureLimit)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -79,7 +79,7 @@ void CDrillingRequestPublisher::SetDifferentialPressureLimit(const pascal_t diff
     }
 }
 
-void CDrillingRequestPublisher::SetTorqueLimit(const newton_meter_t torqueLimit)
+void CDrillRequestPublisher::SetTorqueLimit(const newton_meter_t torqueLimit)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -91,7 +91,7 @@ void CDrillingRequestPublisher::SetTorqueLimit(const newton_meter_t torqueLimit)
     }
 }
 
-void CDrillingRequestPublisher::SetRopMode(const bool ropMode)
+void CDrillRequestPublisher::SetRopMode(const bool ropMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -103,7 +103,7 @@ void CDrillingRequestPublisher::SetRopMode(const bool ropMode)
     }
 }
 
-void CDrillingRequestPublisher::SetWobMode(const bool wobMode)
+void CDrillRequestPublisher::SetWobMode(const bool wobMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -115,7 +115,7 @@ void CDrillingRequestPublisher::SetWobMode(const bool wobMode)
     }
 }
 
-void CDrillingRequestPublisher::SetDifferentialPressureMode(const bool differentialPressureMode)
+void CDrillRequestPublisher::SetDifferentialPressureMode(const bool differentialPressureMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -127,7 +127,7 @@ void CDrillingRequestPublisher::SetDifferentialPressureMode(const bool different
     }
 }
 
-void CDrillingRequestPublisher::SetTorqueMode(const bool torqueMode)
+void CDrillRequestPublisher::SetTorqueMode(const bool torqueMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -139,12 +139,12 @@ void CDrillingRequestPublisher::SetTorqueMode(const bool torqueMode)
     }
 }
 
-bool CDrillingRequestPublisher::PublishSample()
+bool CDrillRequestPublisher::PublishSample()
 {
     return Publish();
 }
 
-bool CDrillingRequestPublisher::Create(int32_t domain)
+bool CDrillRequestPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
                               nec::process::DRILLING_REQUEST,

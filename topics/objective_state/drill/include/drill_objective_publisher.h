@@ -20,11 +20,11 @@
 #include "drill.h"
 #include "drillSupport.h"
 
-class CDrillingObjectivePublisher : public TPublisher< nec::process::DrillingObjective >
+class CDrillObjectivePublisher : public TPublisher< nec::process::DrillingObjective >
 {
  public:
-    CDrillingObjectivePublisher();
-    ~CDrillingObjectivePublisher();
+    CDrillObjectivePublisher();
+    ~CDrillObjectivePublisher();
 
     bool Create(int32_t domain);
     bool Initialize();

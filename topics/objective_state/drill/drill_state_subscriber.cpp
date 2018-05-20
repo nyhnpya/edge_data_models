@@ -1,6 +1,6 @@
 #include "drill_state_subscriber.h"
 
-CDrillingStateSubscriber::CDrillingStateSubscriber() :
+CDrillStateSubscriber::CDrillStateSubscriber() :
     m_subscriptionMatched(false),
     m_pOnDataAvailable(nullptr),
 	m_pOnDataDisposed(nullptr),
@@ -10,111 +10,111 @@ CDrillingStateSubscriber::CDrillingStateSubscriber() :
 	memset((void *)&m_sampleInfo, 0, sizeof(DDS::SampleInfo));
 }
 
-CDrillingStateSubscriber::~CDrillingStateSubscriber()
+CDrillStateSubscriber::~CDrillStateSubscriber()
 {
 }
 
-bool CDrillingStateSubscriber::ValidData()
+bool CDrillStateSubscriber::ValidData()
 {
 	return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::ValidSubscription()
+bool CDrillStateSubscriber::ValidSubscription()
 {
 	return m_subscriptionMatched;
 }
 
-DataTypes::Uuid CDrillingStateSubscriber::GetId()
+DataTypes::Uuid CDrillStateSubscriber::GetId()
 {
     return m_data.id;
 }
 
-DataTypes::Time CDrillingStateSubscriber::GetTimestamp()
+DataTypes::Time CDrillStateSubscriber::GetTimestamp()
 {
     return m_data.timestamp;
 }
 
-meters_per_second_t CDrillingStateSubscriber::GetRopActual()
+meters_per_second_t CDrillStateSubscriber::GetRopActual()
 {
     return (meters_per_second_t)m_data.ropActual;
 }
 
-newton_t CDrillingStateSubscriber::GetWobActual()
+newton_t CDrillStateSubscriber::GetWobActual()
 {
     return (newton_t)m_data.wobActual;
 }
 
-pascal_t CDrillingStateSubscriber::GetDifferentialPressureActual()
+pascal_t CDrillStateSubscriber::GetDifferentialPressureActual()
 {
     return (pascal_t)m_data.differentialPressureActual;
 }
 
-newton_meter_t CDrillingStateSubscriber::GetTorqueActual()
+newton_meter_t CDrillStateSubscriber::GetTorqueActual()
 {
     return (newton_meter_t)m_data.torqueActual;
 }
 
-meters_per_second_t CDrillingStateSubscriber::GetRopLimit()
+meters_per_second_t CDrillStateSubscriber::GetRopLimit()
 {
     return (meters_per_second_t)m_data.ropLimit;
 }
 
-newton_t CDrillingStateSubscriber::GetWobLimit()
+newton_t CDrillStateSubscriber::GetWobLimit()
 {
     return (newton_t)m_data.wobLimit;
 }
 
-pascal_t CDrillingStateSubscriber::GetDifferentialPressureLimit()
+pascal_t CDrillStateSubscriber::GetDifferentialPressureLimit()
 {
     return (pascal_t)m_data.differentialPressureLimit;
 }
 
-newton_meter_t CDrillingStateSubscriber::GetTorqueLimit()
+newton_meter_t CDrillStateSubscriber::GetTorqueLimit()
 {
     return (newton_meter_t)m_data.torqueLimit;
 }
 
-bool CDrillingStateSubscriber::GetRopMode()
+bool CDrillStateSubscriber::GetRopMode()
 {
 	return (m_data.ropMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetWobMode()
+bool CDrillStateSubscriber::GetWobMode()
 {
     return (m_data.wobMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetDifferentialPressureMode()
+bool CDrillStateSubscriber::GetDifferentialPressureMode()
 {
     return (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingStateSubscriber::GetTorqueMode()
+bool CDrillStateSubscriber::GetTorqueMode()
 {
     return (m_data.torqueMode == DDS_BOOLEAN_TRUE);
 }
 
-meters_per_second_t CDrillingStateSubscriber::GetRopTarget()
+meters_per_second_t CDrillStateSubscriber::GetRopTarget()
 {
     return (meters_per_second_t)m_data.ropTarget;
 }
 
-newton_t CDrillingStateSubscriber::GetWobTarget()
+newton_t CDrillStateSubscriber::GetWobTarget()
 {
     return (newton_t)m_data.wobTarget;
 }
 
-pascal_t CDrillingStateSubscriber::GetDifferentialPressureTarget()
+pascal_t CDrillStateSubscriber::GetDifferentialPressureTarget()
 {
     return (pascal_t)m_data.differentialPressureTarget;
 }
 
-newton_meter_t CDrillingStateSubscriber::GetTorqueTarget()
+newton_meter_t CDrillStateSubscriber::GetTorqueTarget()
 {
     return (newton_meter_t)m_data.torqueTarget;
 }
 
-bool CDrillingStateSubscriber::Create(int32_t domain)
+bool CDrillStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
                                nec::process::DRILLING_STATE,
@@ -122,27 +122,27 @@ bool CDrillingStateSubscriber::Create(int32_t domain)
                                "EdgeBaseProfile");
 }
 
-void CDrillingStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)
+void CDrillStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
 }
 
-void CDrillingStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+void CDrillStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
 {
     m_pOnDataDisposed = event;
 }
 
-void CDrillingStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+void CDrillStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
 {
     m_pOnLivelinessChanged = event;
 }
 
-void CDrillingStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
+void CDrillStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
 {
     m_pOnSubscriptionMatched = event;
 }
 
-void CDrillingStateSubscriber::DataAvailable(const nec::process::DrillingState &data,
+void CDrillStateSubscriber::DataAvailable(const nec::process::DrillingState &data,
                                              const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
@@ -158,7 +158,7 @@ void CDrillingStateSubscriber::DataAvailable(const nec::process::DrillingState &
     }
 }
 
-void CDrillingStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
+void CDrillStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
 
@@ -168,7 +168,7 @@ void CDrillingStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
     }
 }
 
-void CDrillingStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+void CDrillStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
     if (m_pOnLivelinessChanged != nullptr)
     {
@@ -176,7 +176,7 @@ void CDrillingStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedSta
     }
 }
 
-void CDrillingStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
+void CDrillStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
 	m_subscriptionMatched = (status.current_count > 0) ? true : false;
 

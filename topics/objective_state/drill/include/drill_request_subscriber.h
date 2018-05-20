@@ -30,11 +30,11 @@ using namespace units::force;
 using namespace units::torque;
 using namespace units::pressure;
 
-class CDrillingRequestSubscriber : public TSubscriber< nec::process::DrillingRequest >
+class CDrillRequestSubscriber : public TSubscriber< nec::process::DrillingRequest >
 {
  public:
-    CDrillingRequestSubscriber();
-    ~CDrillingRequestSubscriber();
+    CDrillRequestSubscriber();
+    ~CDrillRequestSubscriber();
 
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);

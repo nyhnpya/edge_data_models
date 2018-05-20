@@ -31,11 +31,11 @@ using namespace units::force;
 using namespace units::torque;
 using namespace units::pressure;
 
-class CDrillingStateSubscriber : public TSubscriber< nec::process::DrillingState >
+class CDrillStateSubscriber : public TSubscriber< nec::process::DrillingState >
 {
  public:
-    CDrillingStateSubscriber();
-    ~CDrillingStateSubscriber();
+    CDrillStateSubscriber();
+    ~CDrillStateSubscriber();
 
         // Topic initialization
     bool Create(int32_t domain);

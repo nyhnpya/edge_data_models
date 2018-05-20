@@ -1,15 +1,15 @@
 #include "dds_uuid.h"
 #include "drill_state_publisher.h"
 
-CDrillingStatePublisher::CDrillingStatePublisher()
+CDrillStatePublisher::CDrillStatePublisher()
 {
 }
 
-CDrillingStatePublisher::~CDrillingStatePublisher()
+CDrillStatePublisher::~CDrillStatePublisher()
 {
 }
 
-bool CDrillingStatePublisher::Initialize()
+bool CDrillStatePublisher::Initialize()
 {
     CDdsUuid uuid;
 
@@ -19,7 +19,7 @@ bool CDrillingStatePublisher::Initialize()
     return true;
 }
 
-void CDrillingStatePublisher::SetObjectiveId(DataTypes::Uuid pObjectiveId)
+void CDrillStatePublisher::SetObjectiveId(DataTypes::Uuid pObjectiveId)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -31,7 +31,7 @@ void CDrillingStatePublisher::SetObjectiveId(DataTypes::Uuid pObjectiveId)
     }
 }
 
-void CDrillingStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
+void CDrillStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -44,7 +44,7 @@ void CDrillingStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
     }
 }
 
-void CDrillingStatePublisher::SetRopActual(const meters_per_second_t ropActual)
+void CDrillStatePublisher::SetRopActual(const meters_per_second_t ropActual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -56,7 +56,7 @@ void CDrillingStatePublisher::SetRopActual(const meters_per_second_t ropActual)
     }
 }
 
-void CDrillingStatePublisher::SetWobActual(const newton_t wobActual)
+void CDrillStatePublisher::SetWobActual(const newton_t wobActual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -68,7 +68,7 @@ void CDrillingStatePublisher::SetWobActual(const newton_t wobActual)
     }
 }
 
-void CDrillingStatePublisher::SetDifferentialPressureActual(const pascal_t differentialPressureActual)
+void CDrillStatePublisher::SetDifferentialPressureActual(const pascal_t differentialPressureActual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -80,7 +80,7 @@ void CDrillingStatePublisher::SetDifferentialPressureActual(const pascal_t diffe
     }
 }
 
-void CDrillingStatePublisher::SetTorqueActual(const newton_meter_t torqueActual)
+void CDrillStatePublisher::SetTorqueActual(const newton_meter_t torqueActual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -92,7 +92,7 @@ void CDrillingStatePublisher::SetTorqueActual(const newton_meter_t torqueActual)
     }
 }
 
-void CDrillingStatePublisher::SetRopLimit(const meters_per_second_t ropLimit)
+void CDrillStatePublisher::SetRopLimit(const meters_per_second_t ropLimit)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -104,7 +104,7 @@ void CDrillingStatePublisher::SetRopLimit(const meters_per_second_t ropLimit)
     }
 }
 
-void CDrillingStatePublisher::SetWobLimit(const newton_t wobLimit)
+void CDrillStatePublisher::SetWobLimit(const newton_t wobLimit)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -116,7 +116,7 @@ void CDrillingStatePublisher::SetWobLimit(const newton_t wobLimit)
     }
 }
 
-void CDrillingStatePublisher::SetDifferentialPressureLimit(const pascal_t differentialPressureLimit)
+void CDrillStatePublisher::SetDifferentialPressureLimit(const pascal_t differentialPressureLimit)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -128,7 +128,7 @@ void CDrillingStatePublisher::SetDifferentialPressureLimit(const pascal_t differ
     }
 }
 
-void CDrillingStatePublisher::SetTorqueLimit(const newton_meter_t torqueLimit)
+void CDrillStatePublisher::SetTorqueLimit(const newton_meter_t torqueLimit)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -140,7 +140,7 @@ void CDrillingStatePublisher::SetTorqueLimit(const newton_meter_t torqueLimit)
     }
 }
 
-void CDrillingStatePublisher::SetRopMode(const bool ropMode)
+void CDrillStatePublisher::SetRopMode(const bool ropMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -152,7 +152,7 @@ void CDrillingStatePublisher::SetRopMode(const bool ropMode)
     }
 }
 
-void CDrillingStatePublisher::SetWobMode(const bool wobMode)
+void CDrillStatePublisher::SetWobMode(const bool wobMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -164,7 +164,7 @@ void CDrillingStatePublisher::SetWobMode(const bool wobMode)
     }
 }
 
-void CDrillingStatePublisher::SetDifferentialPressureMode(const bool differentialPressureMode)
+void CDrillStatePublisher::SetDifferentialPressureMode(const bool differentialPressureMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -176,7 +176,7 @@ void CDrillingStatePublisher::SetDifferentialPressureMode(const bool differentia
     }
 }
 
-void CDrillingStatePublisher::SetTorqueMode(const bool torqueMode)
+void CDrillStatePublisher::SetTorqueMode(const bool torqueMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -188,7 +188,7 @@ void CDrillingStatePublisher::SetTorqueMode(const bool torqueMode)
     }
 }
 
-void CDrillingStatePublisher::SetRopTarget(const meters_per_second_t ropTarget)
+void CDrillStatePublisher::SetRopTarget(const meters_per_second_t ropTarget)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -200,7 +200,7 @@ void CDrillingStatePublisher::SetRopTarget(const meters_per_second_t ropTarget)
     }
 }
      
-void CDrillingStatePublisher::SetWobTarget(const newton_t wobTarget)
+void CDrillStatePublisher::SetWobTarget(const newton_t wobTarget)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -212,7 +212,7 @@ void CDrillingStatePublisher::SetWobTarget(const newton_t wobTarget)
     }
 }
 
-void CDrillingStatePublisher::SetDifferentialPressureTarget(const pascal_t differentialPressureTarget)
+void CDrillStatePublisher::SetDifferentialPressureTarget(const pascal_t differentialPressureTarget)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -224,7 +224,7 @@ void CDrillingStatePublisher::SetDifferentialPressureTarget(const pascal_t diffe
     }
 }
 
-void CDrillingStatePublisher::SetTorqueTarget(const newton_meter_t torqueTarget)
+void CDrillStatePublisher::SetTorqueTarget(const newton_meter_t torqueTarget)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -236,7 +236,7 @@ void CDrillingStatePublisher::SetTorqueTarget(const newton_meter_t torqueTarget)
     }
 }
 
-void CDrillingStatePublisher::SetBitOnBottom(const bool bitOnBottom)
+void CDrillStatePublisher::SetBitOnBottom(const bool bitOnBottom)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -248,7 +248,7 @@ void CDrillingStatePublisher::SetBitOnBottom(const bool bitOnBottom)
     }
 }
 
-bool CDrillingStatePublisher::PublishSample()
+bool CDrillStatePublisher::PublishSample()
 {
     bool bRetVal = false;
 
@@ -262,7 +262,7 @@ bool CDrillingStatePublisher::PublishSample()
     return bRetVal;
 }
 
-bool CDrillingStatePublisher::Create(int32_t domain)
+bool CDrillStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
                               nec::process::DRILLING_STATE,

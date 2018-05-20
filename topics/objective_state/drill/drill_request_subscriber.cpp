@@ -1,100 +1,100 @@
 #include "drill_request_subscriber.h"
 
-CDrillingRequestSubscriber::CDrillingRequestSubscriber() :
+CDrillRequestSubscriber::CDrillRequestSubscriber() :
     m_pOnDataAvailable(nullptr)
 {
 }
 
-CDrillingRequestSubscriber::~CDrillingRequestSubscriber()
+CDrillRequestSubscriber::~CDrillRequestSubscriber()
 {
 }
 
-bool CDrillingRequestSubscriber::ValidData()
+bool CDrillRequestSubscriber::ValidData()
 {
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-DataTypes::Uuid CDrillingRequestSubscriber::GetId()
+DataTypes::Uuid CDrillRequestSubscriber::GetId()
 {
     return m_data.id;
 }
 
-DataTypes::Priority CDrillingRequestSubscriber::GetPriority()
+DataTypes::Priority CDrillRequestSubscriber::GetPriority()
 {
     return m_data.priority;
 }
 
-DataTypes::Time CDrillingRequestSubscriber::GetTimeNeeded()
+DataTypes::Time CDrillRequestSubscriber::GetTimeNeeded()
 {
     return m_data.timeNeeded;
 }
 
-DataTypes::Time CDrillingRequestSubscriber::GetDuration()
+DataTypes::Time CDrillRequestSubscriber::GetDuration()
 {
     return m_data.duration;
 }
 
-meters_per_second_t CDrillingRequestSubscriber::GetRopLimit()
+meters_per_second_t CDrillRequestSubscriber::GetRopLimit()
 {
     return (meters_per_second_t)m_data.ropLimit;
 }
 
-newton_t CDrillingRequestSubscriber::GetWobLimit()
+newton_t CDrillRequestSubscriber::GetWobLimit()
 {
     return (newton_t)m_data.wobLimit;
 }
 
-pascal_t CDrillingRequestSubscriber::GetDifferentialPressureLimit()
+pascal_t CDrillRequestSubscriber::GetDifferentialPressureLimit()
 {
     return (pascal_t)m_data.differentialPressureLimit;
 }
 
-newton_meter_t CDrillingRequestSubscriber::GetTorqueLimit()
+newton_meter_t CDrillRequestSubscriber::GetTorqueLimit()
 {
     return (newton_meter_t)m_data.torqueLimit;
 }
 
-bool CDrillingRequestSubscriber::GetRopMode()
+bool CDrillRequestSubscriber::GetRopMode()
 {
     return (m_data.ropMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingRequestSubscriber::GetWobMode()
+bool CDrillRequestSubscriber::GetWobMode()
 {
     return (m_data.wobMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingRequestSubscriber::GetDifferentialPressureMode()
+bool CDrillRequestSubscriber::GetDifferentialPressureMode()
 {
     return (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillingRequestSubscriber::GetTorqueMode()
+bool CDrillRequestSubscriber::GetTorqueMode()
 {
     return (m_data.torqueMode == DDS_BOOLEAN_TRUE);
 }
 
-void CDrillingRequestSubscriber::OnDataAvailable(OnDataAvailableEvent event)
+void CDrillRequestSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
 }
 
-void CDrillingRequestSubscriber::OnDataDisposed(OnDataDisposedEvent event)
+void CDrillRequestSubscriber::OnDataDisposed(OnDataDisposedEvent event)
 {
     m_pOnDataDisposed = event;
 }
 
-void CDrillingRequestSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
+void CDrillRequestSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
 {
     m_pOnSubscriptionMatched = event;
 }
 
-void CDrillingRequestSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
+void CDrillRequestSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
 {
     m_pOnLivelinessChanged = event;
 }
 
-bool CDrillingRequestSubscriber::Create(int32_t domain)
+bool CDrillRequestSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
                                nec::process::DRILLING_REQUEST,
@@ -102,7 +102,7 @@ bool CDrillingRequestSubscriber::Create(int32_t domain)
                                "EdgeBaseProfile");
 }
 
-void CDrillingRequestSubscriber::DataAvailable(const nec::process::DrillingRequest &data,
+void CDrillRequestSubscriber::DataAvailable(const nec::process::DrillingRequest &data,
                                                const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
@@ -126,7 +126,7 @@ void CDrillingRequestSubscriber::DataAvailable(const nec::process::DrillingReque
     }
 }
 
-void CDrillingRequestSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
+void CDrillRequestSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
 
@@ -136,7 +136,7 @@ void CDrillingRequestSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
     }
 }
 
-void CDrillingRequestSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
+void CDrillRequestSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
     if (m_pOnLivelinessChanged != nullptr)
     {

@@ -20,11 +20,11 @@
 #include "drill.h"
 #include "drillSupport.h"
 
-class CDrillingObjectiveSubscriber : public TSubscriber< nec::process::DrillingObjective >
+class CDrillObjectiveSubscriber : public TSubscriber< nec::process::DrillingObjective >
 {
  public:
-    CDrillingObjectiveSubscriber();
-    ~CDrillingObjectiveSubscriber();
+    CDrillObjectiveSubscriber();
+    ~CDrillObjectiveSubscriber();
 
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
