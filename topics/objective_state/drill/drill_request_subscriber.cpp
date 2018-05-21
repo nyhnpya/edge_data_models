@@ -143,3 +143,11 @@ void CDrillRequestSubscriber::LivelinessChanged(const DDS::LivelinessChangedStat
         m_pOnLivelinessChanged(status);
     }
 }
+
+void CDrillRequestSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
+{
+    if (m_pOnSubscriptionMatched != nullptr)
+    {
+        m_pOnSubscriptionMatched(status);
+    }
+}

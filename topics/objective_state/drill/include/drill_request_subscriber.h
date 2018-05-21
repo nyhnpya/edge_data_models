@@ -63,7 +63,8 @@ class CDrillRequestSubscriber : public TSubscriber< nec::process::DrillingReques
 
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
-
+    void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
+    
  private:
     nec::process::DrillingRequest m_data;
     DDS::SampleInfo           m_sampleInfo;
