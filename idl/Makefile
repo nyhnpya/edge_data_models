@@ -100,12 +100,24 @@ configuration.cpy:
 
 circulate.cpy:
 	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/circulate
+	mkdir -p $(TOPIC_HOME)/objective_state/circulate/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/circulate/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/circulate
 	-@rm -rf $(TMPOUTDIR)
 
+circulate_engineering.cpy:
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/circulate_engineering
+	mkdir -p $(TOPIC_HOME)/objective_state/circulate_engineering/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/circulate_engineering/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/circulate_engineering
+	-@rm -rf $(TMPOUTDIR)
+
 drill.cpy: 
 	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/drill
+	mkdir -p $(TOPIC_HOME)/objective_state/drill/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/drill/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/drill
 	-@rm -rf $(TMPOUTDIR)
@@ -118,18 +130,24 @@ auto_ream.cpy:
 
 hoist.cpy: 
 	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/hoist
+	mkdir -p $(TOPIC_HOME)/objective_state/hoist/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/hoist/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/hoist
 	-@rm -rf $(TMPOUTDIR)
 
 rotate.cpy:
 	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/rotate
+	mkdir -p $(TOPIC_HOME)/objective_state/rotate/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/rotate/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/rotate
 	-@rm -rf $(TMPOUTDIR)
 
 wellbore.cpy:
 	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/wellbore
+	mkdir -p $(TOPIC_HOME)/objective_state/wellbore/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/wellbore/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/wellbore/
 	-@rm -rf $(TMPOUTDIR)

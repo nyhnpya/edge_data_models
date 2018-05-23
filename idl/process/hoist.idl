@@ -70,13 +70,13 @@ module nec
          * | timestamp         | timestamp when the data was published. | DataTypes::Time   | sec   |
          * | status            | status of ciruclation system           | Datatypes::Status | N/A   |
          * | actualVelocity    | actual velicoty in m/s                 | double            | m/sec |
-         * | actualPosition    | requested target in m                  | double            | m/sec |
+         * | actualPosition    | requested target in m                  | double            | m     |
          * | maxHoistVelocity  | requested target in m/s                | double            | m/sec |
          * | maxLowerVelocity  | requested target in m/s                | double            | m/sec |
-         * | maxHoistPosition  | requested target in m/s                | double            | m/sec |
-         * | maxLowerPosition  | requested target in m/s                | double            | m/sec |
+         * | maxHoistPosition  | requested target in m/s                | double            | m     |
+         * | maxLowerPosition  | requested target in m/s                | double            | m     |
          * | targetVelocity    | requested target in m/s                | double            | m/sec |
-         * | targetPosition    | requested target position in m         | double            | m/sec |
+         * | targetPosition    | requested target position in m         | double            | m     |
          */
         struct HoistState
         {

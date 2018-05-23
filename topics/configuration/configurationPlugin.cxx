@@ -2202,6 +2202,9 @@ namespace Configuration {
         plugin->destroySampleFnc =
         (PRESTypePluginDestroySampleFunction)
         protocol_tPlugin_destroy_sample;
+        plugin->finalizeOptionalMembersFnc =
+        (PRESTypePluginFinalizeOptionalMembersFunction)
+        protocol_t_finalize_optional_members;
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
@@ -3393,6 +3396,9 @@ namespace Configuration {
         plugin->destroySampleFnc =
         (PRESTypePluginDestroySampleFunction)
         interface_tPlugin_destroy_sample;
+        plugin->finalizeOptionalMembersFnc =
+        (PRESTypePluginFinalizeOptionalMembersFunction)
+        interface_t_finalize_optional_members;
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
@@ -4550,6 +4556,9 @@ namespace Configuration {
         plugin->destroySampleFnc =
         (PRESTypePluginDestroySampleFunction)
         tag_tPlugin_destroy_sample;
+        plugin->finalizeOptionalMembersFnc =
+        (PRESTypePluginFinalizeOptionalMembersFunction)
+        tag_t_finalize_optional_members;
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
@@ -5741,6 +5750,9 @@ namespace Configuration {
         plugin->destroySampleFnc =
         (PRESTypePluginDestroySampleFunction)
         config_dataPlugin_destroy_sample;
+        plugin->finalizeOptionalMembersFnc =
+        (PRESTypePluginFinalizeOptionalMembersFunction)
+        config_data_finalize_optional_members;
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
@@ -7106,6 +7118,9 @@ namespace Configuration {
         plugin->destroySampleFnc =
         (PRESTypePluginDestroySampleFunction)
         ItemPlugin_destroy_sample;
+        plugin->finalizeOptionalMembersFnc =
+        (PRESTypePluginFinalizeOptionalMembersFunction)
+        Item_finalize_optional_members;
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)

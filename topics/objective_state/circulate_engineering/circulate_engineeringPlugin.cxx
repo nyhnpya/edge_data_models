@@ -701,7 +701,7 @@ namespace nec {
             if(serialize_sample) {
 
                 if (!RTICdrStream_serializeString(
-                    stream, sample->id, (255) + 1)) {
+                    stream, sample->id, (128) + 1)) {
                     return RTI_FALSE;
                 }
 
@@ -790,7 +790,7 @@ namespace nec {
                     nec::control::MudPumpEngineeringRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
                     if (!RTICdrStream_deserializeStringEx(
-                        stream,&sample->id, (255) + 1, RTI_FALSE)) {
+                        stream,&sample->id, (128) + 1, RTI_FALSE)) {
                         goto fin; 
                     }
                     if(!DataTypes::PriorityPlugin_deserialize_sample(
@@ -1060,7 +1060,7 @@ namespace nec {
 
             if (skip_sample) {
 
-                if (!RTICdrStream_skipString (stream, (255)+1)) {
+                if (!RTICdrStream_skipString (stream, (128)+1)) {
                     goto fin; 
                 }
                 if (!DataTypes::PriorityPlugin_skip(
@@ -1135,7 +1135,7 @@ namespace nec {
             }
 
             current_alignment +=RTICdrType_getStringMaxSizeSerialized(
-                current_alignment, (255)+1);
+                current_alignment, (128)+1);
 
             current_alignment +=DataTypes::PriorityPlugin_get_serialized_sample_max_size_ex(
                 endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
@@ -1923,7 +1923,7 @@ namespace nec {
             if(serialize_sample) {
 
                 if (!RTICdrStream_serializeString(
-                    stream, sample->id, (255) + 1)) {
+                    stream, sample->id, (128) + 1)) {
                     return RTI_FALSE;
                 }
 
@@ -2017,7 +2017,7 @@ namespace nec {
                     nec::control::MudPumpEngineeringState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
                     if (!RTICdrStream_deserializeStringEx(
-                        stream,&sample->id, (255) + 1, RTI_FALSE)) {
+                        stream,&sample->id, (128) + 1, RTI_FALSE)) {
                         goto fin; 
                     }
                     if(!nec::control::PumpStateEnumPlugin_deserialize_sample(
@@ -2291,7 +2291,7 @@ namespace nec {
 
             if (skip_sample) {
 
-                if (!RTICdrStream_skipString (stream, (255)+1)) {
+                if (!RTICdrStream_skipString (stream, (128)+1)) {
                     goto fin; 
                 }
                 if (!nec::control::PumpStateEnumPlugin_skip(
@@ -2367,7 +2367,7 @@ namespace nec {
             }
 
             current_alignment +=RTICdrType_getStringMaxSizeSerialized(
-                current_alignment, (255)+1);
+                current_alignment, (128)+1);
 
             current_alignment +=nec::control::PumpStateEnumPlugin_get_serialized_sample_max_size_ex(
                 endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);

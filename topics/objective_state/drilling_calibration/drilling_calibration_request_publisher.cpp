@@ -19,6 +19,14 @@ bool CDrillingCalibrationRequestPublisher::Initialize()
     return true;
 }
 
+void CDrillingCalibrationRequestPublisher::SetObjectiveId(const DataTypes::Uuid objectiveId)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->objectiveId = DDS_String_dup(objectiveId);
+    }
+}
+
 void CDrillingCalibrationRequestPublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)

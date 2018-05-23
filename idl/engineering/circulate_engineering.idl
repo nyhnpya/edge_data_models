@@ -24,7 +24,7 @@ module nec
 >>>>>>> 1f57e28... Added circualte engineering idl
         struct MudPumpEngineeringRequest
         {
-            string                 id;                        // name of mud pump
+            string<128>            id;                        // name of mud pump
             DataTypes::Priority    priority;                  // priority of the request
             DataTypes::Time        timeNeeded;                // time requester needs the resource
             DataTypes::Time        duration;                  // duration requester needs the resource
@@ -35,7 +35,7 @@ module nec
 
         struct MudPumpEngineeringState
         {
-            string                 id;                        // name of pump
+            string<128>            id;                        // name of pump
 
             // actuals
             PumpStateEnum          actualState;               // actual state of the pump

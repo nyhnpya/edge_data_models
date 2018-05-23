@@ -272,7 +272,7 @@ namespace nec {
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode MudPumpEngineeringRequest_g_tc_id_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+            static DDS_TypeCode MudPumpEngineeringRequest_g_tc_id_string = DDS_INITIALIZE_STRING_TYPECODE((128));
             static DDS_TypeCode_Member MudPumpEngineeringRequest_g_tc_members[6]=
             {
 
@@ -448,7 +448,7 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory){
-                sample->id= DDS_String_alloc ((255));
+                sample->id= DDS_String_alloc ((128));
                 if (sample->id == NULL) {
                     return RTI_FALSE;
                 }
@@ -567,7 +567,7 @@ namespace nec {
 
                 if (!RTICdrType_copyStringEx (
                     &dst->id, src->id, 
-                    (255) + 1, RTI_FALSE)){
+                    (128) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!DataTypes::Priority_copy(
@@ -636,7 +636,7 @@ namespace nec {
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode MudPumpEngineeringState_g_tc_id_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+            static DDS_TypeCode MudPumpEngineeringState_g_tc_id_string = DDS_INITIALIZE_STRING_TYPECODE((128));
             static DDS_TypeCode_Member MudPumpEngineeringState_g_tc_members[9]=
             {
 
@@ -869,7 +869,7 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory){
-                sample->id= DDS_String_alloc ((255));
+                sample->id= DDS_String_alloc ((128));
                 if (sample->id == NULL) {
                     return RTI_FALSE;
                 }
@@ -995,7 +995,7 @@ namespace nec {
 
                 if (!RTICdrType_copyStringEx (
                     &dst->id, src->id, 
-                    (255) + 1, RTI_FALSE)){
+                    (128) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!nec::control::PumpStateEnum_copy(
