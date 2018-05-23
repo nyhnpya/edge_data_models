@@ -1,15 +1,27 @@
 #include "base_data_types.idl"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1f57e28... Added circualte engineering idl
 module nec
 {
     module control
     {
         const long MaxNumberOfPumps = 4;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1f57e28... Added circualte engineering idl
         enum PumpStateEnum
         {
             Available,  // Pump is ready to run
             Run,        // Pump is running
             NotSafe     // Pump is not safe to run
         };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1f57e28... Added circualte engineering idl
         struct MudPumpEngineeringRequest
         {
             string                 id;                        // name of mud pump
@@ -37,14 +49,20 @@ module nec
             PumpStateEnum          targetState;               // requested state of the pump
             double                 targetVelocity;            // requested target in rad/s
         };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1f57e28... Added circualte engineering idl
         //@copy-c-declaration static const char CIRCULATE_ENGINEERING_REQUEST[] = "CirculateEngineeringRequest";
         struct CirculateEngineeringRequest
         {
             DataTypes::Uuid                                           id;      //@key
             sequence<MudPumpEngineeringRequest, MaxNumberOfPumps>     targetPumps;          // array of pumps
         };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1f57e28... Added circualte engineering idl
         //@copy-c-declaration static const char CIRCULATE_ENGINEERING_STATE[] = "CirculateEngineeringState";
         struct CirculateEngineeringState
         {
