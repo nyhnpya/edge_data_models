@@ -67,6 +67,11 @@ void CRotateRequestSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent 
     m_pOnSubscriptionMatched = event;
 }
 
+void CRotateRequestSubscriber::OnPublicationMatched(OnPublicationMatchedEvent event)
+{
+    m_pOnPublicationMatched = event;
+}
+
 void CRotateRequestSubscriber::DataAvailable(const nec::process::RotateRequest &data,
                                              const DDS::SampleInfo &sampleInfo)
 {
@@ -86,6 +91,11 @@ void CRotateRequestSubscriber::DataAvailable(const nec::process::RotateRequest &
 void CRotateRequestSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
+
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
+    }
 }
 
 void CRotateRequestSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
@@ -101,5 +111,13 @@ void CRotateRequestSubscriber::SubscriptionMatched(const DDS::SubscriptionMatche
     if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);
+    }
+}
+
+void CRotateRequestSubscriber::PublicationMatched(const DDS::PublicationMatchedStatus &status)
+{
+    if (m_pOnPublicationMatched != nullptr)
+    {
+        m_pOnPublicationMatched(status);
     }
 }

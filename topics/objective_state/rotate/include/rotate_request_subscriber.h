@@ -36,6 +36,7 @@ class CRotateRequestSubscriber : public TSubscriber< nec::process::RotateRequest
     void OnDataAvailable(OnDataAvailableEvent event);
     void OnDataDisposed(OnDataDisposedEvent event);
     void OnLivelinessChanged(OnLivelinessChangedEvent event);
+    void OnPublicationMatched(OnPublicationMatchedEvent event);
     void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
     bool ValidData();
 
@@ -53,6 +54,7 @@ class CRotateRequestSubscriber : public TSubscriber< nec::process::RotateRequest
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
+    void PublicationMatched(const DDS::PublicationMatchedStatus &status);
 
 private:
     nec::process::RotateRequest   m_data;
@@ -62,6 +64,7 @@ private:
     OnDataDisposedEvent           m_pOnDataDisposed;
     OnLivelinessChangedEvent      m_pOnLivelinessChanged;
 	OnSubscriptionMatchedEvent    m_pOnSubscriptionMatched;
+	OnPublicationMatchedEvent     m_pOnPublicationMatched;
 };
 
 #endif // __ROTATE_REQUEST_SUBSCRIBER_H__ 
