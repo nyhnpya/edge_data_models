@@ -1,0 +1,58 @@
+#include "base_data_types.idl"
+module nec
+{
+    module control
+    {
+        const long MaxNumberOfPumps = 4;
+        enum PumpStateEnum
+        {
+            Available,  // Pump is ready to run
+            Run,        // Pump is running
+            NotSafe     // Pump is not safe to run
+        };
+        struct MudPumpEngineeringRequest
+        {
+            string                 id;                        // name of mud pump
+            DataTypes::Priority    priority;                  // priority of the request
+            DataTypes::Time        timeNeeded;                // time requester needs the resource
+            DataTypes::Time        duration;                  // duration requester needs the resource
+            PumpStateEnum          targetState;               // requested state of the pump
+            double                 targetVelocity;            // requested target in rad/s
+        };
+
+
+        struct MudPumpEngineeringState
+        {
+            string                 id;                        // name of pump
+
+            // actuals
+            PumpStateEnum          actualState;               // actual state of the pump
+            double                 actualVelocity;            // actual in rad/s
+            double                 actualPower;               // actual in watts
+            // constraints
+            double                 minVelocity;               // min in rad/s
+            double                 maxVelocity;               // max in rad/s
+            double                 maxPower;                  // max in watts
+            // targets
+            PumpStateEnum          targetState;               // requested state of the pump
+            double                 targetVelocity;            // requested target in rad/s
+        };
+
+        //@copy-c-declaration static const char CIRCULATE_ENGINEERING_REQUEST[] = "CirculateEngineeringRequest";
+        struct CirculateEngineeringRequest
+        {
+            DataTypes::Uuid                                           id;      //@key
+            sequence<MudPumpEngineeringRequest, MaxNumberOfPumps>     targetPumps;          // array of pumps
+        };
+
+        //@copy-c-declaration static const char CIRCULATE_ENGINEERING_STATE[] = "CirculateEngineeringState";
+        struct CirculateEngineeringState
+        {
+            DataTypes::Uuid                                           id;      //@key
+            DataTypes::Uuid                                           objectiveId;
+            DataTypes::Time                                           timestamp;
+            //  actuals
+            sequence<MudPumpEngineeringState, MaxNumberOfPumps>       actualPumps;          // array of pumps
+        };
+    };
+};

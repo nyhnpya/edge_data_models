@@ -74,6 +74,14 @@ pipehandler_engineering.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/pipehandler_engineering
 	-@rm -rf $(TMPOUTDIR)
 
+circulate_engineering.cpy:
+	@echo "Copying generated files ..."
+	mkdir -p $(TOPIC_HOME)/engineering/circulate_engineering
+	mkdir -p $(TOPIC_HOME)/engineering/circulate_engineering/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/circulate_engineering/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/circulate_engineering
+	-@rm -rf $(TMPOUTDIR)
+
 base_data_types.cpy:
 	@echo "Copying generated files ..."
 	mkdir -p $(TOPIC_HOME)/base_data_types/
@@ -130,6 +138,14 @@ objective.cpy:
 	@echo "Copying generated files..."
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/objective/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/objective/
+	-@rm -rf $(TMPOUTDIR)
+
+drilling_setpoints.cpy:
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/drilling_setpoints
+	mkdir -p $(TOPIC_HOME)/objective_state/drilling_setpoints/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/drilling_setpoints/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/drilling_setpoints
 	-@rm -rf $(TMPOUTDIR)
 
 drilling_calibration.cpy: 

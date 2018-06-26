@@ -1,0 +1,37 @@
+#include "base_data_types.idl"
+
+module process
+{
+    module plan
+    {
+        //@copy-c-declaration static const char DRILLING_SETPOINT[] = "DrillingSetpoints";
+
+        /**
+         * \brief requested state change in the hoisting system.
+         *
+         * \ingroup 
+         *
+         * | Variable          | Description                                      | Data Type           | Unit  |
+         * | ----------------- | -------------------------------------------------| --------------------| ------|
+         * | id                | id of requestor                                  | DataTypes::Uuid     | N/A   |
+         */
+        struct DrillingSetpoints
+        {
+            DataTypes::Uuid  id; //@key
+            double           startDepth;
+            double           endDepth;
+            double           ropMin;
+            double           ropMax;
+            double           wobMin;
+            double           wobMax;
+            double           deltaPMin;
+            double           deltaPMax;
+            double           torqueMin;
+            double           torqueMax;
+            double           rotateMin;
+            double           rotateMax;
+        };
+    };
+};
+
+
