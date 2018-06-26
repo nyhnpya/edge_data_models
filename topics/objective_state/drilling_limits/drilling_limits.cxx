@@ -3,7 +3,7 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from drilling_setpoints.idl using "rtiddsgen".
+This file was generated from drilling_limits.idl using "rtiddsgen".
 The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
@@ -28,7 +28,7 @@ or consult the RTI Connext manual.
 #include "ndds_standalone_type.h"
 #endif
 
-#include "drilling_setpoints.h"
+#include "drilling_limits.h"
 
 #include <new>
 
@@ -36,13 +36,13 @@ namespace process {
     namespace plan {
 
         /* ========================================================================= */
-        const char *DrillingSetpointsTYPENAME = "process::plan::DrillingSetpoints";
+        const char *DrillingLimitsTYPENAME = "process::plan::DrillingLimits";
 
-        DDS_TypeCode* DrillingSetpoints_get_typecode()
+        DDS_TypeCode* DrillingLimits_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member DrillingSetpoints_g_tc_members[13]=
+            static DDS_TypeCode_Member DrillingLimits_g_tc_members[13]=
             {
 
                 {
@@ -268,63 +268,63 @@ namespace process {
                 }
             };
 
-            static DDS_TypeCode DrillingSetpoints_g_tc =
+            static DDS_TypeCode DrillingLimits_g_tc =
             {{
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"process::plan::DrillingSetpoints", /* Name */
+                    (char *)"process::plan::DrillingLimits", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     13, /* Number of members */
-                    DrillingSetpoints_g_tc_members, /* Members */
+                    DrillingLimits_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
-                }}; /* Type code for DrillingSetpoints*/
+                }}; /* Type code for DrillingLimits*/
 
             if (is_initialized) {
-                return &DrillingSetpoints_g_tc;
+                return &DrillingLimits_g_tc;
             }
 
-            DrillingSetpoints_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+            DrillingLimits_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-            DrillingSetpoints_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillingLimits_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillingSetpoints_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillingLimits_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillingSetpoints_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillingLimits_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillingSetpoints_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillingLimits_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillingSetpoints_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillingLimits_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillingSetpoints_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillingLimits_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillingSetpoints_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillingLimits_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillingSetpoints_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillingLimits_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillingSetpoints_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillingLimits_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillingSetpoints_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillingLimits_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillingSetpoints_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillingLimits_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillingSetpoints_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillingLimits_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             is_initialized = RTI_TRUE;
 
-            return &DrillingSetpoints_g_tc;
+            return &DrillingLimits_g_tc;
         }
 
-        RTIBool DrillingSetpoints_initialize(
-            DrillingSetpoints* sample) {
-            return process::plan::DrillingSetpoints_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool DrillingLimits_initialize(
+            DrillingLimits* sample) {
+            return process::plan::DrillingLimits_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool DrillingSetpoints_initialize_ex(
-            DrillingSetpoints* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool DrillingLimits_initialize_ex(
+            DrillingLimits* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -333,13 +333,13 @@ namespace process {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return process::plan::DrillingSetpoints_initialize_w_params(
+            return process::plan::DrillingLimits_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool DrillingSetpoints_initialize_w_params(
-            DrillingSetpoints* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool DrillingLimits_initialize_w_params(
+            DrillingLimits* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -405,15 +405,15 @@ namespace process {
             return RTI_TRUE;
         }
 
-        void DrillingSetpoints_finalize(
-            DrillingSetpoints* sample)
+        void DrillingLimits_finalize(
+            DrillingLimits* sample)
         {
 
-            process::plan::DrillingSetpoints_finalize_ex(sample,RTI_TRUE);
+            process::plan::DrillingLimits_finalize_ex(sample,RTI_TRUE);
         }
 
-        void DrillingSetpoints_finalize_ex(
-            DrillingSetpoints* sample,RTIBool deletePointers)
+        void DrillingLimits_finalize_ex(
+            DrillingLimits* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -424,12 +424,12 @@ namespace process {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            process::plan::DrillingSetpoints_finalize_w_params(
+            process::plan::DrillingLimits_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void DrillingSetpoints_finalize_w_params(
-            DrillingSetpoints* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void DrillingLimits_finalize_w_params(
+            DrillingLimits* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -444,8 +444,8 @@ namespace process {
 
         }
 
-        void DrillingSetpoints_finalize_optional_members(
-            DrillingSetpoints* sample, RTIBool deletePointers)
+        void DrillingLimits_finalize_optional_members(
+            DrillingLimits* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -463,9 +463,9 @@ namespace process {
             DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
         }
 
-        RTIBool DrillingSetpoints_copy(
-            DrillingSetpoints* dst,
-            const DrillingSetpoints* src)
+        RTIBool DrillingLimits_copy(
+            DrillingLimits* dst,
+            const DrillingLimits* src)
         {
             try {
 
@@ -538,15 +538,15 @@ namespace process {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'DrillingSetpoints' sequence class.
+        * Configure and implement 'DrillingLimits' sequence class.
         */
-        #define T DrillingSetpoints
-        #define TSeq DrillingSetpointsSeq
+        #define T DrillingLimits
+        #define TSeq DrillingLimitsSeq
 
-        #define T_initialize_w_params process::plan::DrillingSetpoints_initialize_w_params
+        #define T_initialize_w_params process::plan::DrillingLimits_initialize_w_params
 
-        #define T_finalize_w_params   process::plan::DrillingSetpoints_finalize_w_params
-        #define T_copy       process::plan::DrillingSetpoints_copy
+        #define T_finalize_w_params   process::plan::DrillingLimits_finalize_w_params
+        #define T_copy       process::plan::DrillingLimits_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"

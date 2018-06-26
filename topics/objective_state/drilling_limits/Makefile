@@ -17,7 +17,7 @@ TARG_BUILD_MINOR = 0
 TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
-TARGET_NAME = drilling_setpoints_objective_state
+TARGET_NAME = drilling_limits_objective_state
 
 ###############################################################################
 # compilation flags
@@ -28,34 +28,34 @@ TARG_INCLUDES += -I $(CURDIR)/include
 TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 
 # Sources
-TARG_SOURCES = drilling_setpoints.cxx
-TARG_SOURCES += drilling_setpointsPlugin.cxx
-TARG_SOURCES += drilling_setpointsSupport.cxx
-#TARG_SOURCES += drilling_setpoints_state_subscriber.cpp
-#TARG_SOURCES += drilling_setpoints_request_publisher.cpp
-#TARG_SOURCES += drilling_setpoints_request_subscriber.cpp
-#TARG_SOURCES += drilling_setpoints_state_publisher.cpp
+TARG_SOURCES = drilling_limits.cxx
+TARG_SOURCES += drilling_limitsPlugin.cxx
+TARG_SOURCES += drilling_limitsSupport.cxx
+#TARG_SOURCES += drilling_limits_state_subscriber.cpp
+#TARG_SOURCES += drilling_limits_request_publisher.cpp
+#TARG_SOURCES += drilling_limits_request_subscriber.cpp
+#TARG_SOURCES += drilling_limits_state_publisher.cpp
 
 ###############################################################################
 # Installation section
 ###############################################################################
 
 #package control file
-PACKAGE_DESCRIPTION = "Library package for the Ensign drilling_setpoints_request API."
-PACKAGE_DEV_DESCRIPTION = "core files for Ensign drilling_setpoints_request API development."
+PACKAGE_DESCRIPTION = "Library package for the Ensign drilling_limits_request API."
+PACKAGE_DEV_DESCRIPTION = "core files for Ensign drilling_limits_request API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_setpoints.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_setpointsSupport.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_setpointsPlugin.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_setpoints_request_publisher.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_setpoints_request_subscriber.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_setpoints_state_publisher.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_setpoints_state_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limits.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limitsSupport.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limitsPlugin.h
+#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limits_request_publisher.h
+#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limits_request_subscriber.h
+#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limits_state_publisher.h
+#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limits_state_subscriber.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package

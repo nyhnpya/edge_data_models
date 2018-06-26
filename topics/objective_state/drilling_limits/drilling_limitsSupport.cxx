@@ -2,14 +2,14 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from drilling_setpoints.idl using "rtiddsgen".
+This file was generated from drilling_limits.idl using "rtiddsgen".
 The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#include "drilling_setpointsSupport.h"
-#include "drilling_setpointsPlugin.h"
+#include "drilling_limitsSupport.h"
+#include "drilling_limitsPlugin.h"
 
 #ifndef dds_c_log_impl_h              
 #include "dds_c/dds_c_log_impl.h"                                
@@ -27,7 +27,7 @@ namespace process {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'DrillingSetpoints' support classes.
+        Configure and implement 'DrillingLimits' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -43,11 +43,11 @@ namespace process {
         */
 
         /* Requires */
-        #define TTYPENAME   DrillingSetpointsTYPENAME
+        #define TTYPENAME   DrillingLimitsTYPENAME
 
         /* Defines */
-        #define TDataWriter DrillingSetpointsDataWriter
-        #define TData       process::plan::DrillingSetpoints
+        #define TDataWriter DrillingLimitsDataWriter
+        #define TData       process::plan::DrillingLimits
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -67,12 +67,12 @@ namespace process {
         */
 
         /* Requires */
-        #define TTYPENAME   DrillingSetpointsTYPENAME
+        #define TTYPENAME   DrillingLimitsTYPENAME
 
         /* Defines */
-        #define TDataReader DrillingSetpointsDataReader
-        #define TDataSeq    DrillingSetpointsSeq
-        #define TData       process::plan::DrillingSetpoints
+        #define TDataReader DrillingLimitsDataReader
+        #define TDataSeq    DrillingLimitsSeq
+        #define TData       process::plan::DrillingLimits
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -94,15 +94,15 @@ namespace process {
         */
 
         /* Requires */
-        #define TTYPENAME    DrillingSetpointsTYPENAME
-        #define TPlugin_new  process::plan::DrillingSetpointsPlugin_new
-        #define TPlugin_delete  process::plan::DrillingSetpointsPlugin_delete
+        #define TTYPENAME    DrillingLimitsTYPENAME
+        #define TPlugin_new  process::plan::DrillingLimitsPlugin_new
+        #define TPlugin_delete  process::plan::DrillingLimitsPlugin_delete
 
         /* Defines */
-        #define TTypeSupport DrillingSetpointsTypeSupport
-        #define TData        process::plan::DrillingSetpoints
-        #define TDataReader  DrillingSetpointsDataReader
-        #define TDataWriter  DrillingSetpointsDataWriter
+        #define TTypeSupport DrillingLimitsTypeSupport
+        #define TData        process::plan::DrillingLimits
+        #define TDataReader  DrillingLimitsDataReader
+        #define TDataWriter  DrillingLimitsDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 

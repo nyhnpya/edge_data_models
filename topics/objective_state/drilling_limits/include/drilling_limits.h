@@ -3,14 +3,14 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from drilling_setpoints.idl using "rtiddsgen".
+This file was generated from drilling_limits.idl using "rtiddsgen".
 The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drilling_setpoints_937584715_h
-#define drilling_setpoints_937584715_h
+#ifndef drilling_limits_429956646_h
+#define drilling_limits_429956646_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -23,25 +23,25 @@ or consult the RTI Connext manual.
 #include "base_data_types.h"
 namespace process {
     namespace plan {
-        static const char DRILLING_SETPOINT[] = "DrillingSetpoints"; 
+        static const char DRILLING_LIMITS[] = "DrillingLimits"; 
 
-        extern const char *DrillingSetpointsTYPENAME;
+        extern const char *DrillingLimitsTYPENAME;
 
-        struct DrillingSetpointsSeq;
+        struct DrillingLimitsSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class DrillingSetpointsTypeSupport;
-        class DrillingSetpointsDataWriter;
-        class DrillingSetpointsDataReader;
+        class DrillingLimitsTypeSupport;
+        class DrillingLimitsDataWriter;
+        class DrillingLimitsDataReader;
         #endif
 
-        class DrillingSetpoints 
+        class DrillingLimits 
         {
           public:
-            typedef struct DrillingSetpointsSeq Seq;
+            typedef struct DrillingLimitsSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef DrillingSetpointsTypeSupport TypeSupport;
-            typedef DrillingSetpointsDataWriter DataWriter;
-            typedef DrillingSetpointsDataReader DataReader;
+            typedef DrillingLimitsTypeSupport TypeSupport;
+            typedef DrillingLimitsDataWriter DataWriter;
+            typedef DrillingLimitsDataReader DataReader;
             #endif
 
             DataTypes::Uuid   id ;
@@ -66,44 +66,44 @@ namespace process {
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
-        NDDSUSERDllExport DDS_TypeCode* DrillingSetpoints_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* DrillingLimits_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(DrillingSetpointsSeq, DrillingSetpoints);
-
-        NDDSUSERDllExport
-        RTIBool DrillingSetpoints_initialize(
-            DrillingSetpoints* self);
+        DDS_SEQUENCE(DrillingLimitsSeq, DrillingLimits);
 
         NDDSUSERDllExport
-        RTIBool DrillingSetpoints_initialize_ex(
-            DrillingSetpoints* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool DrillingLimits_initialize(
+            DrillingLimits* self);
 
         NDDSUSERDllExport
-        RTIBool DrillingSetpoints_initialize_w_params(
-            DrillingSetpoints* self,
+        RTIBool DrillingLimits_initialize_ex(
+            DrillingLimits* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool DrillingLimits_initialize_w_params(
+            DrillingLimits* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        void DrillingSetpoints_finalize(
-            DrillingSetpoints* self);
+        void DrillingLimits_finalize(
+            DrillingLimits* self);
 
         NDDSUSERDllExport
-        void DrillingSetpoints_finalize_ex(
-            DrillingSetpoints* self,RTIBool deletePointers);
+        void DrillingLimits_finalize_ex(
+            DrillingLimits* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void DrillingSetpoints_finalize_w_params(
-            DrillingSetpoints* self,
+        void DrillingLimits_finalize_w_params(
+            DrillingLimits* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void DrillingSetpoints_finalize_optional_members(
-            DrillingSetpoints* self, RTIBool deletePointers);  
+        void DrillingLimits_finalize_optional_members(
+            DrillingLimits* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool DrillingSetpoints_copy(
-            DrillingSetpoints* dst,
-            const DrillingSetpoints* src);
+        RTIBool DrillingLimits_copy(
+            DrillingLimits* dst,
+            const DrillingLimits* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -114,5 +114,5 @@ namespace process {
     } /* namespace plan  */
 } /* namespace process  */
 
-#endif /* drilling_setpoints */
+#endif /* drilling_limits */
 

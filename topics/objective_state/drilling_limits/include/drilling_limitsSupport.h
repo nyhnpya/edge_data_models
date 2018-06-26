@@ -2,17 +2,17 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from drilling_setpoints.idl using "rtiddsgen".
+This file was generated from drilling_limits.idl using "rtiddsgen".
 The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drilling_setpointsSupport_937584715_h
-#define drilling_setpointsSupport_937584715_h
+#ifndef drilling_limitsSupport_429956646_h
+#define drilling_limitsSupport_429956646_h
 
 /* Uses */
-#include "drilling_setpoints.h"
+#include "drilling_limits.h"
 
 #ifndef ndds_cpp_h
 #include "ndds/ndds_cpp.h"
@@ -47,11 +47,11 @@ namespace process {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            DrillingSetpointsTypeSupport, 
-            DrillingSetpoints);
+            DrillingLimitsTypeSupport, 
+            DrillingLimits);
 
-        DDS_DATAWRITER_CPP(DrillingSetpointsDataWriter, DrillingSetpoints);
-        DDS_DATAREADER_CPP(DrillingSetpointsDataReader, DrillingSetpointsSeq, DrillingSetpoints);
+        DDS_DATAWRITER_CPP(DrillingLimitsDataWriter, DrillingLimits);
+        DDS_DATAREADER_CPP(DrillingLimitsDataReader, DrillingLimitsSeq, DrillingLimits);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -62,5 +62,5 @@ namespace process {
     } /* namespace plan  */
 } /* namespace process  */
 
-#endif  /* drilling_setpointsSupport_937584715_h */
+#endif  /* drilling_limitsSupport_429956646_h */
 

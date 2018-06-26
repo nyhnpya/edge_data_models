@@ -2,7 +2,7 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from drilling_setpoints.idl using "rtiddsgen".
+This file was generated from drilling_limits.idl using "rtiddsgen".
 The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
@@ -53,49 +53,49 @@ or consult the RTI Connext manual.
 
 #include <new>
 
-#include "drilling_setpointsPlugin.h"
+#include "drilling_limitsPlugin.h"
 
 namespace process {
     namespace plan {
 
         /* ----------------------------------------------------------------------------
-        *  Type DrillingSetpoints
+        *  Type DrillingLimits
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        DrillingSetpoints*
-        DrillingSetpointsPluginSupport_create_data_w_params(
+        DrillingLimits*
+        DrillingLimitsPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params) 
         {
-            DrillingSetpoints *sample = NULL;
+            DrillingLimits *sample = NULL;
 
-            sample = new (std::nothrow) DrillingSetpoints ;
+            sample = new (std::nothrow) DrillingLimits ;
             if (sample == NULL) {
                 return NULL;
             }
 
-            if (!process::plan::DrillingSetpoints_initialize_w_params(sample,alloc_params)) {
+            if (!process::plan::DrillingLimits_initialize_w_params(sample,alloc_params)) {
                 delete  sample;
                 sample=NULL;
             }
             return sample; 
         } 
 
-        DrillingSetpoints *
-        DrillingSetpointsPluginSupport_create_data_ex(RTIBool allocate_pointers) 
+        DrillingLimits *
+        DrillingLimitsPluginSupport_create_data_ex(RTIBool allocate_pointers) 
         {
-            DrillingSetpoints *sample = NULL;
+            DrillingLimits *sample = NULL;
 
-            sample = new (std::nothrow) DrillingSetpoints ;
+            sample = new (std::nothrow) DrillingLimits ;
 
             if(sample == NULL) {
                 return NULL;
             }
 
-            if (!process::plan::DrillingSetpoints_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!process::plan::DrillingLimits_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 delete  sample;
                 sample=NULL;
             }
@@ -103,52 +103,52 @@ namespace process {
             return sample; 
         }
 
-        DrillingSetpoints *
-        DrillingSetpointsPluginSupport_create_data(void)
+        DrillingLimits *
+        DrillingLimitsPluginSupport_create_data(void)
         {
-            return process::plan::DrillingSetpointsPluginSupport_create_data_ex(RTI_TRUE);
+            return process::plan::DrillingLimitsPluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        DrillingSetpointsPluginSupport_destroy_data_w_params(
-            DrillingSetpoints *sample,
+        DrillingLimitsPluginSupport_destroy_data_w_params(
+            DrillingLimits *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-            process::plan::DrillingSetpoints_finalize_w_params(sample,dealloc_params);
+            process::plan::DrillingLimits_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        DrillingSetpointsPluginSupport_destroy_data_ex(
-            DrillingSetpoints *sample,RTIBool deallocate_pointers) {
+        DrillingLimitsPluginSupport_destroy_data_ex(
+            DrillingLimits *sample,RTIBool deallocate_pointers) {
 
-            process::plan::DrillingSetpoints_finalize_ex(sample,deallocate_pointers);
+            process::plan::DrillingLimits_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        DrillingSetpointsPluginSupport_destroy_data(
-            DrillingSetpoints *sample) {
+        DrillingLimitsPluginSupport_destroy_data(
+            DrillingLimits *sample) {
 
-            process::plan::DrillingSetpointsPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            process::plan::DrillingLimitsPluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        DrillingSetpointsPluginSupport_copy_data(
-            DrillingSetpoints *dst,
-            const DrillingSetpoints *src)
+        DrillingLimitsPluginSupport_copy_data(
+            DrillingLimits *dst,
+            const DrillingLimits *src)
         {
-            return process::plan::DrillingSetpoints_copy(dst,(const DrillingSetpoints*) src);
+            return process::plan::DrillingLimits_copy(dst,(const DrillingLimits*) src);
         }
 
         void 
-        DrillingSetpointsPluginSupport_print_data(
-            const DrillingSetpoints *sample,
+        DrillingLimitsPluginSupport_print_data(
+            const DrillingLimits *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -206,28 +206,28 @@ namespace process {
                 &sample->rotateMax, "rotateMax", indent_level + 1);    
 
         }
-        DrillingSetpoints *
-        DrillingSetpointsPluginSupport_create_key_ex(RTIBool allocate_pointers){
-            DrillingSetpoints *key = NULL;
+        DrillingLimits *
+        DrillingLimitsPluginSupport_create_key_ex(RTIBool allocate_pointers){
+            DrillingLimits *key = NULL;
 
-            key = new (std::nothrow) DrillingSetpointsKeyHolder ;
+            key = new (std::nothrow) DrillingLimitsKeyHolder ;
 
-            process::plan::DrillingSetpoints_initialize_ex(key,allocate_pointers, RTI_TRUE);
+            process::plan::DrillingLimits_initialize_ex(key,allocate_pointers, RTI_TRUE);
 
             return key;
         }
 
-        DrillingSetpoints *
-        DrillingSetpointsPluginSupport_create_key(void)
+        DrillingLimits *
+        DrillingLimitsPluginSupport_create_key(void)
         {
-            return  process::plan::DrillingSetpointsPluginSupport_create_key_ex(RTI_TRUE);
+            return  process::plan::DrillingLimitsPluginSupport_create_key_ex(RTI_TRUE);
         }
 
         void 
-        DrillingSetpointsPluginSupport_destroy_key_ex(
-            DrillingSetpointsKeyHolder *key,RTIBool deallocate_pointers)
+        DrillingLimitsPluginSupport_destroy_key_ex(
+            DrillingLimitsKeyHolder *key,RTIBool deallocate_pointers)
         {
-            process::plan::DrillingSetpoints_finalize_ex(key,deallocate_pointers);
+            process::plan::DrillingLimits_finalize_ex(key,deallocate_pointers);
 
             delete  key;
             key=NULL;
@@ -235,10 +235,10 @@ namespace process {
         }
 
         void 
-        DrillingSetpointsPluginSupport_destroy_key(
-            DrillingSetpointsKeyHolder *key) {
+        DrillingLimitsPluginSupport_destroy_key(
+            DrillingLimitsKeyHolder *key) {
 
-            process::plan::DrillingSetpointsPluginSupport_destroy_key_ex(key,RTI_TRUE);
+            process::plan::DrillingLimitsPluginSupport_destroy_key_ex(key,RTI_TRUE);
 
         }
 
@@ -247,7 +247,7 @@ namespace process {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        DrillingSetpointsPlugin_on_participant_attached(
+        DrillingLimitsPlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -265,7 +265,7 @@ namespace process {
         }
 
         void 
-        DrillingSetpointsPlugin_on_participant_detached(
+        DrillingLimitsPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {
 
@@ -273,7 +273,7 @@ namespace process {
         }
 
         PRESTypePluginEndpointData
-        DrillingSetpointsPlugin_on_endpoint_attached(
+        DrillingLimitsPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -292,18 +292,18 @@ namespace process {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                process::plan::DrillingSetpointsPluginSupport_create_data,
+                process::plan::DrillingLimitsPluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                process::plan::DrillingSetpointsPluginSupport_destroy_data,
+                process::plan::DrillingLimitsPluginSupport_destroy_data,
                 (PRESTypePluginDefaultEndpointDataCreateKeyFunction)
-                process::plan::DrillingSetpointsPluginSupport_create_key ,            
+                process::plan::DrillingLimitsPluginSupport_create_key ,            
                 (PRESTypePluginDefaultEndpointDataDestroyKeyFunction)
-                process::plan::DrillingSetpointsPluginSupport_destroy_key);
+                process::plan::DrillingLimitsPluginSupport_destroy_key);
 
             if (epd == NULL) {
                 return NULL;
             } 
-            serializedKeyMaxSize =  process::plan::DrillingSetpointsPlugin_get_serialized_key_max_size(
+            serializedKeyMaxSize =  process::plan::DrillingLimitsPlugin_get_serialized_key_max_size(
                 epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
             if(!PRESTypePluginDefaultEndpointData_createMD5StreamWithInfo(
@@ -314,7 +314,7 @@ namespace process {
             }
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = process::plan::DrillingSetpointsPlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = process::plan::DrillingLimitsPlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -323,9 +323,9 @@ namespace process {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    process::plan::DrillingSetpointsPlugin_get_serialized_sample_max_size, epd,
+                    process::plan::DrillingLimitsPlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
-                    process::plan::DrillingSetpointsPlugin_get_serialized_sample_size,
+                    process::plan::DrillingLimitsPlugin_get_serialized_sample_size,
                     epd) == RTI_FALSE) {
                     PRESTypePluginDefaultEndpointData_delete(epd);
                     return NULL;
@@ -336,7 +336,7 @@ namespace process {
         }
 
         void 
-        DrillingSetpointsPlugin_on_endpoint_detached(
+        DrillingLimitsPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {  
 
@@ -344,42 +344,42 @@ namespace process {
         }
 
         void    
-        DrillingSetpointsPlugin_return_sample(
+        DrillingLimitsPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingSetpoints *sample,
+            DrillingLimits *sample,
             void *handle)
         {
 
-            DrillingSetpoints_finalize_optional_members(sample, RTI_TRUE);
+            DrillingLimits_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        DrillingSetpointsPlugin_copy_sample(
+        DrillingLimitsPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingSetpoints *dst,
-            const DrillingSetpoints *src)
+            DrillingLimits *dst,
+            const DrillingLimits *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return process::plan::DrillingSetpointsPluginSupport_copy_data(dst,src);
+            return process::plan::DrillingLimitsPluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        DrillingSetpointsPlugin_get_serialized_sample_max_size(
+        DrillingLimitsPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool 
-        DrillingSetpointsPlugin_serialize(
+        DrillingLimitsPlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const DrillingSetpoints *sample, 
+            const DrillingLimits *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -482,9 +482,9 @@ namespace process {
         }
 
         RTIBool 
-        DrillingSetpointsPlugin_deserialize_sample(
+        DrillingLimitsPlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingSetpoints *sample,
+            DrillingLimits *sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
@@ -509,7 +509,7 @@ namespace process {
                 }
                 if(deserialize_sample) {
 
-                    process::plan::DrillingSetpoints_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+                    process::plan::DrillingLimits_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
                     if(!DataTypes::UuidPlugin_deserialize_sample(
                         endpoint_data,
@@ -588,10 +588,10 @@ namespace process {
         }
 
         RTIBool
-        DrillingSetpointsPlugin_serialize_to_cdr_buffer(
+        DrillingLimitsPlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const DrillingSetpoints *sample)
+            const DrillingLimits *sample)
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
@@ -602,12 +602,12 @@ namespace process {
             }
 
             epd._maxSizeSerializedSample =
-            DrillingSetpointsPlugin_get_serialized_sample_max_size(
+            DrillingLimitsPlugin_get_serialized_sample_max_size(
                 NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
 
             if (buffer == NULL) {
                 *length = 
-                DrillingSetpointsPlugin_get_serialized_sample_size(
+                DrillingLimitsPlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
                     RTICdrEncapsulation_getNativeCdrEncapsulationId(),
@@ -624,7 +624,7 @@ namespace process {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, *length);
 
-            result = process::plan::DrillingSetpointsPlugin_serialize(
+            result = process::plan::DrillingLimitsPlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
                 RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
                 RTI_TRUE, NULL);  
@@ -634,8 +634,8 @@ namespace process {
         }
 
         RTIBool
-        DrillingSetpointsPlugin_deserialize_from_cdr_buffer(
-            DrillingSetpoints *sample,
+        DrillingLimitsPlugin_deserialize_from_cdr_buffer(
+            DrillingLimits *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -644,16 +644,16 @@ namespace process {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            DrillingSetpoints_finalize_optional_members(sample, RTI_TRUE);
-            return DrillingSetpointsPlugin_deserialize_sample( 
+            DrillingLimits_finalize_optional_members(sample, RTI_TRUE);
+            return DrillingLimitsPlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
         }
 
         DDS_ReturnCode_t
-        DrillingSetpointsPlugin_data_to_string(
-            const DrillingSetpoints *sample,
+        DrillingLimitsPlugin_data_to_string(
+            const DrillingLimits *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property)
@@ -676,7 +676,7 @@ namespace process {
                 return DDS_RETCODE_BAD_PARAMETER;
             }
 
-            if (!DrillingSetpointsPlugin_serialize_to_cdr_buffer(
+            if (!DrillingLimitsPlugin_serialize_to_cdr_buffer(
                 NULL, 
                 &length, 
                 sample)) {
@@ -688,7 +688,7 @@ namespace process {
                 return DDS_RETCODE_ERROR;
             }
 
-            if (!DrillingSetpointsPlugin_serialize_to_cdr_buffer(
+            if (!DrillingLimitsPlugin_serialize_to_cdr_buffer(
                 buffer, 
                 &length, 
                 sample)) {
@@ -697,7 +697,7 @@ namespace process {
             }
 
             data = DDS_DynamicData_new(
-                DrillingSetpoints_get_typecode(), 
+                DrillingLimits_get_typecode(), 
                 &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
             if (data == NULL) {
                 RTIOsapiHeap_freeBuffer(buffer);
@@ -737,9 +737,9 @@ namespace process {
         }
 
         RTIBool 
-        DrillingSetpointsPlugin_deserialize(
+        DrillingLimitsPlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingSetpoints **sample,
+            DrillingLimits **sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
@@ -748,11 +748,11 @@ namespace process {
         {
 
             RTIBool result;
-            const char *METHOD_NAME = "DrillingSetpointsPlugin_deserialize";
+            const char *METHOD_NAME = "DrillingLimitsPlugin_deserialize";
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= process::plan::DrillingSetpointsPlugin_deserialize_sample( 
+            result= process::plan::DrillingLimitsPlugin_deserialize_sample( 
                 endpoint_data, (sample != NULL)?*sample:NULL,
                 stream, deserialize_encapsulation, deserialize_sample, 
                 endpoint_plugin_qos);
@@ -766,7 +766,7 @@ namespace process {
                 RTICdrLog_exception(
                     METHOD_NAME, 
                     &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                    "DrillingSetpoints");
+                    "DrillingLimits");
 
             }
 
@@ -774,7 +774,7 @@ namespace process {
 
         }
 
-        RTIBool DrillingSetpointsPlugin_skip(
+        RTIBool DrillingLimitsPlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream,   
             RTIBool skip_encapsulation,
@@ -858,7 +858,7 @@ namespace process {
         }
 
         unsigned int 
-        DrillingSetpointsPlugin_get_serialized_sample_max_size_ex(
+        DrillingLimitsPlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -927,7 +927,7 @@ namespace process {
         }
 
         unsigned int 
-        DrillingSetpointsPlugin_get_serialized_sample_max_size(
+        DrillingLimitsPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -936,7 +936,7 @@ namespace process {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = DrillingSetpointsPlugin_get_serialized_sample_max_size_ex(
+            size = DrillingLimitsPlugin_get_serialized_sample_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -947,7 +947,7 @@ namespace process {
         }
 
         unsigned int 
-        DrillingSetpointsPlugin_get_serialized_sample_min_size(
+        DrillingLimitsPlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1011,12 +1011,12 @@ namespace process {
         * encapsulation flags.
         */
         unsigned int
-        DrillingSetpointsPlugin_get_serialized_sample_size(
+        DrillingLimitsPlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const DrillingSetpoints * sample) 
+            const DrillingLimits * sample) 
         {
 
             unsigned int initial_alignment = current_alignment;
@@ -1111,15 +1111,15 @@ namespace process {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        DrillingSetpointsPlugin_get_key_kind(void)
+        DrillingLimitsPlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_USER_KEY;
         }
 
         RTIBool 
-        DrillingSetpointsPlugin_serialize_key(
+        DrillingLimitsPlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const DrillingSetpoints *sample, 
+            const DrillingLimits *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1157,9 +1157,9 @@ namespace process {
             return RTI_TRUE;
         }
 
-        RTIBool DrillingSetpointsPlugin_deserialize_key_sample(
+        RTIBool DrillingLimitsPlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingSetpoints *sample, 
+            DrillingLimits *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
@@ -1203,9 +1203,9 @@ namespace process {
             }
         }
 
-        RTIBool DrillingSetpointsPlugin_deserialize_key(
+        RTIBool DrillingLimitsPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingSetpoints **sample, 
+            DrillingLimits **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -1215,7 +1215,7 @@ namespace process {
             RTIBool result;
             if (drop_sample) {} /* To avoid warnings */
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= process::plan::DrillingSetpointsPlugin_deserialize_key_sample(
+            result= process::plan::DrillingLimitsPlugin_deserialize_key_sample(
                 endpoint_data, (sample != NULL)?*sample:NULL, stream,
                 deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
             if (result) {
@@ -1229,7 +1229,7 @@ namespace process {
         }
 
         unsigned int
-        DrillingSetpointsPlugin_get_serialized_key_max_size_ex(
+        DrillingLimitsPlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -1262,7 +1262,7 @@ namespace process {
         }
 
         unsigned int
-        DrillingSetpointsPlugin_get_serialized_key_max_size(
+        DrillingLimitsPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1271,7 +1271,7 @@ namespace process {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = DrillingSetpointsPlugin_get_serialized_key_max_size_ex(
+            size = DrillingLimitsPlugin_get_serialized_key_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -1282,9 +1282,9 @@ namespace process {
         }
 
         RTIBool 
-        DrillingSetpointsPlugin_serialized_sample_to_key(
+        DrillingLimitsPlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingSetpoints *sample,
+            DrillingLimits *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
@@ -1389,10 +1389,10 @@ namespace process {
         }
 
         RTIBool 
-        DrillingSetpointsPlugin_instance_to_key(
+        DrillingLimitsPlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingSetpointsKeyHolder *dst, 
-            const DrillingSetpoints *src)
+            DrillingLimitsKeyHolder *dst, 
+            const DrillingLimits *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -1405,10 +1405,10 @@ namespace process {
         }
 
         RTIBool 
-        DrillingSetpointsPlugin_key_to_instance(
+        DrillingLimitsPlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingSetpoints *dst, const
-            DrillingSetpointsKeyHolder *src)
+            DrillingLimits *dst, const
+            DrillingLimitsKeyHolder *src)
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
@@ -1420,10 +1420,10 @@ namespace process {
         }
 
         RTIBool 
-        DrillingSetpointsPlugin_instance_to_keyhash(
+        DrillingLimitsPlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const DrillingSetpoints *instance)
+            const DrillingLimits *instance)
         {
             struct RTICdrStream * md5Stream = NULL;
             struct RTICdrStreamState cdrState;
@@ -1439,7 +1439,7 @@ namespace process {
             RTICdrStream_resetPosition(md5Stream);
             RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
 
-            if (!process::plan::DrillingSetpointsPlugin_serialize_key(
+            if (!process::plan::DrillingLimitsPlugin_serialize_key(
                 endpoint_data,
                 instance,
                 md5Stream, 
@@ -1452,7 +1452,7 @@ namespace process {
 
                 RTICdrStream_pushState(md5Stream, &cdrState, -1);
 
-                size = (int)process::plan::DrillingSetpointsPlugin_get_serialized_sample_size(
+                size = (int)process::plan::DrillingLimitsPlugin_get_serialized_sample_size(
                     endpoint_data,
                     RTI_FALSE,
                     RTI_CDR_ENCAPSULATION_ID_CDR_BE,
@@ -1477,7 +1477,7 @@ namespace process {
                     RTICdrStream_getBufferLength(md5Stream));
                 RTICdrStream_resetPosition(md5Stream);
                 RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
-                if (!process::plan::DrillingSetpointsPlugin_serialize_key(
+                if (!process::plan::DrillingLimitsPlugin_serialize_key(
                     endpoint_data,
                     instance,
                     md5Stream, 
@@ -1515,7 +1515,7 @@ namespace process {
         }
 
         RTIBool 
-        DrillingSetpointsPlugin_serialized_sample_to_keyhash(
+        DrillingLimitsPlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -1526,7 +1526,7 @@ namespace process {
 
             RTIBool done = RTI_FALSE;
             RTIBool error = RTI_FALSE;
-            DrillingSetpoints * sample=NULL;
+            DrillingLimits * sample=NULL;
 
             if (endpoint_plugin_qos) {} /* To avoid warnings */
             if (stream == NULL) {
@@ -1542,7 +1542,7 @@ namespace process {
                 position = RTICdrStream_resetAlignment(stream);
             }
 
-            sample = (DrillingSetpoints *)
+            sample = (DrillingLimits *)
             PRESTypePluginDefaultEndpointData_getTempSample(endpoint_data);
 
             if (sample == NULL) {
@@ -1573,7 +1573,7 @@ namespace process {
                 RTICdrStream_restoreAlignment(stream,position);
             }
 
-            if (!process::plan::DrillingSetpointsPlugin_instance_to_keyhash(
+            if (!process::plan::DrillingLimitsPlugin_instance_to_keyhash(
                 endpoint_data, keyhash, sample)) {
                 return RTI_FALSE;
             }
@@ -1584,7 +1584,7 @@ namespace process {
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *DrillingSetpointsPlugin_new(void) 
+        struct PRESTypePlugin *DrillingLimitsPlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -1602,107 +1602,107 @@ namespace process {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            process::plan::DrillingSetpointsPlugin_on_participant_attached;
+            process::plan::DrillingLimitsPlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            process::plan::DrillingSetpointsPlugin_on_participant_detached;
+            process::plan::DrillingLimitsPlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            process::plan::DrillingSetpointsPlugin_on_endpoint_attached;
+            process::plan::DrillingLimitsPlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            process::plan::DrillingSetpointsPlugin_on_endpoint_detached;
+            process::plan::DrillingLimitsPlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            process::plan::DrillingSetpointsPlugin_copy_sample;
+            process::plan::DrillingLimitsPlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            DrillingSetpointsPlugin_create_sample;
+            DrillingLimitsPlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            DrillingSetpointsPlugin_destroy_sample;
+            DrillingLimitsPlugin_destroy_sample;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
-            process::plan::DrillingSetpointsPlugin_serialize;
+            process::plan::DrillingLimitsPlugin_serialize;
             plugin->deserializeFnc =
             (PRESTypePluginDeserializeFunction)
-            process::plan::DrillingSetpointsPlugin_deserialize;
+            process::plan::DrillingLimitsPlugin_deserialize;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            process::plan::DrillingSetpointsPlugin_get_serialized_sample_max_size;
+            process::plan::DrillingLimitsPlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
-            process::plan::DrillingSetpointsPlugin_get_serialized_sample_min_size;
+            process::plan::DrillingLimitsPlugin_get_serialized_sample_min_size;
 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            DrillingSetpointsPlugin_get_sample;
+            DrillingLimitsPlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            DrillingSetpointsPlugin_return_sample;
+            DrillingLimitsPlugin_return_sample;
 
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            process::plan::DrillingSetpointsPlugin_get_key_kind;
+            process::plan::DrillingLimitsPlugin_get_key_kind;
 
             plugin->getSerializedKeyMaxSizeFnc =   
             (PRESTypePluginGetSerializedKeyMaxSizeFunction)
-            process::plan::DrillingSetpointsPlugin_get_serialized_key_max_size;
+            process::plan::DrillingLimitsPlugin_get_serialized_key_max_size;
             plugin->serializeKeyFnc =
             (PRESTypePluginSerializeKeyFunction)
-            process::plan::DrillingSetpointsPlugin_serialize_key;
+            process::plan::DrillingLimitsPlugin_serialize_key;
             plugin->deserializeKeyFnc =
             (PRESTypePluginDeserializeKeyFunction)
-            process::plan::DrillingSetpointsPlugin_deserialize_key;
+            process::plan::DrillingLimitsPlugin_deserialize_key;
             plugin->deserializeKeySampleFnc =
             (PRESTypePluginDeserializeKeySampleFunction)
-            process::plan::DrillingSetpointsPlugin_deserialize_key_sample;
+            process::plan::DrillingLimitsPlugin_deserialize_key_sample;
 
             plugin-> instanceToKeyHashFnc = 
             (PRESTypePluginInstanceToKeyHashFunction)
-            process::plan::DrillingSetpointsPlugin_instance_to_keyhash;
+            process::plan::DrillingLimitsPlugin_instance_to_keyhash;
             plugin->serializedSampleToKeyHashFnc = 
             (PRESTypePluginSerializedSampleToKeyHashFunction)
-            process::plan::DrillingSetpointsPlugin_serialized_sample_to_keyhash;
+            process::plan::DrillingLimitsPlugin_serialized_sample_to_keyhash;
 
             plugin->getKeyFnc =
             (PRESTypePluginGetKeyFunction)
-            DrillingSetpointsPlugin_get_key;
+            DrillingLimitsPlugin_get_key;
             plugin->returnKeyFnc =
             (PRESTypePluginReturnKeyFunction)
-            DrillingSetpointsPlugin_return_key;
+            DrillingLimitsPlugin_return_key;
 
             plugin->instanceToKeyFnc =
             (PRESTypePluginInstanceToKeyFunction)
-            process::plan::DrillingSetpointsPlugin_instance_to_key;
+            process::plan::DrillingLimitsPlugin_instance_to_key;
             plugin->keyToInstanceFnc =
             (PRESTypePluginKeyToInstanceFunction)
-            process::plan::DrillingSetpointsPlugin_key_to_instance;
+            process::plan::DrillingLimitsPlugin_key_to_instance;
             plugin->serializedKeyToKeyHashFnc = NULL; /* Not supported yet */
-            plugin->typeCode =  (struct RTICdrTypeCode *)process::plan::DrillingSetpoints_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)process::plan::DrillingLimits_get_typecode();
 
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            DrillingSetpointsPlugin_get_buffer;
+            DrillingLimitsPlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            DrillingSetpointsPlugin_return_buffer;
+            DrillingLimitsPlugin_return_buffer;
             plugin->getSerializedSampleSizeFnc =
             (PRESTypePluginGetSerializedSampleSizeFunction)
-            process::plan::DrillingSetpointsPlugin_get_serialized_sample_size;
+            process::plan::DrillingLimitsPlugin_get_serialized_sample_size;
 
-            plugin->endpointTypeName = DrillingSetpointsTYPENAME;
+            plugin->endpointTypeName = DrillingLimitsTYPENAME;
 
             return plugin;
         }
 
         void
-        DrillingSetpointsPlugin_delete(struct PRESTypePlugin *plugin)
+        DrillingLimitsPlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 
