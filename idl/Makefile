@@ -140,12 +140,12 @@ objective.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/objective/
 	-@rm -rf $(TMPOUTDIR)
 
-drilling_setpoints.cpy:
+drilling_limits.cpy:
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/objective_state/drilling_setpoints
-	mkdir -p $(TOPIC_HOME)/objective_state/drilling_setpoints/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/drilling_setpoints/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/drilling_setpoints
+	mkdir -p $(TOPIC_HOME)/objective_state/drilling_limits
+	mkdir -p $(TOPIC_HOME)/objective_state/drilling_limits/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/drilling_limits/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/drilling_limits
 	-@rm -rf $(TMPOUTDIR)
 
 drilling_calibration.cpy: 

@@ -4,7 +4,7 @@ module process
 {
     module plan
     {
-        //@copy-c-declaration static const char DRILLING_SETPOINT[] = "DrillingSetpoints";
+        //@copy-c-declaration static const char DRILLING_LIMITS[] = "DrillingLimits";
 
         /**
          * \brief requested state change in the hoisting system.
@@ -15,7 +15,7 @@ module process
          * | ----------------- | -------------------------------------------------| --------------------| ------|
          * | id                | id of requestor                                  | DataTypes::Uuid     | N/A   |
          */
-        struct DrillingSetpoints
+        struct DrillingLimits
         {
             DataTypes::Uuid  id; //@key
             double           startDepth;
