@@ -9,7 +9,8 @@
 #include "cmdparser.h"
 #include "rotate_request_publisher.h"
 
-bool gTerminate = false;
+bool     gTerminate = false;
+int32_t  gDomain;
 
 CRotateRequestPublisher *gpRequestPublisher = nullptr;
 std::thread threadId;
@@ -92,7 +93,9 @@ void top_level_menu()
         std::cout << std::endl;
         std::cout << "Objective State Publisher" << std::endl;
         std::cout << "------------------------" << std::endl;
-        std::cout << "1. Publish rotate parameters" << std::endl;
+        std::cout << "1. Create new instance" << std::endl;
+        std::cout << "2. Dispose instance" << std::endl;
+        std::cout << "3. Publish rotate parameters" << std::endl;
         std::cout << "q. exit" << std::endl;
         std::cout << "option: ";
         std::cin >> choice;
@@ -109,6 +112,14 @@ void top_level_menu()
                 }
                 break;
             case '1':
+                gpRequestPublisher->CreateInstance();
+                set_rate();
+                gpRequestPublisher->PublishSample();
+                break;
+            case '2':
+                gpRequestPublisher->DeleteInstance();
+                break;
+            case '3':
                 set_rate();
                 gpRequestPublisher->PublishSample();
                 break;
@@ -120,7 +131,6 @@ void top_level_menu()
 int32_t main(int32_t argc, char **argv)
 {
     cli::Parser              parser(argc, argv);
-    int32_t                  domain;
 
 	register_signal_handler();
 
@@ -128,16 +138,15 @@ int32_t main(int32_t argc, char **argv)
     parser.set_optional<int32_t>("d", "domain", 100, "DDS Domain.");
     parser.run_and_exit_if_error();
 
-    domain = parser.get<int32_t>("d");
+    gDomain = parser.get<int32_t>("d");
 
     CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
-    CDomainParticipant::Instance()->Create(domain);
+    CDomainParticipant::Instance()->Create(gDomain);
 
     gpRequestPublisher = new CRotateRequestPublisher();
 
-    if (gpRequestPublisher->Create(domain) == true)
+    if (gpRequestPublisher->Create(gDomain) == true)
     {
-        gpRequestPublisher->CreateInstance();
         top_level_menu();
     }
 

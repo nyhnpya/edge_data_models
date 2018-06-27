@@ -24,8 +24,8 @@ module process
             double           ropMax;
             double           wobMin;
             double           wobMax;
-            double           deltaPMin;
-            double           deltaPMax;
+            double           diffPMin;
+            double           diffPMax;
             double           torqueMin;
             double           torqueMax;
             double           rotateMin;

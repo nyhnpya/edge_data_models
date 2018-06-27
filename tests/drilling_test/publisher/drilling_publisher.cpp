@@ -11,7 +11,7 @@
 
 bool gTerminate = false;
 
-CDrillingRequestPublisher *gpStatePublisher = nullptr;
+CDrillRequestPublisher *gpStatePublisher = nullptr;
 std::thread threadId;
 
 #ifdef _LINUX
@@ -171,7 +171,7 @@ int32_t main(int32_t argc, char **argv)
     CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
     CDomainParticipant::Instance()->Create(domain);
 
-    gpStatePublisher = new CDrillingRequestPublisher();
+    gpStatePublisher = new CDrillRequestPublisher();
 
     if (gpStatePublisher->Create(domain) == true)
     {
