@@ -15,6 +15,7 @@ MAKEFILE_LIBRARY_DIRS += objective_state/circulate
 MAKEFILE_LIBRARY_DIRS += objective_state/drill
 MAKEFILE_LIBRARY_DIRS += objective_state/drilling_calibration
 MAKEFILE_LIBRARY_DIRS += objective_state/drilling_limits
+MAKEFILE_LIBRARY_DIRS += objective_state/hoist
 MAKEFILE_LIBRARY_DIRS += objective_state/objective
 MAKEFILE_LIBRARY_DIRS += objective_state/rotate
 MAKEFILE_LIBRARY_DIRS += objective_state/simulation
