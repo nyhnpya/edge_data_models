@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drilling_limitsSupport_429956646_h
-#define drilling_limitsSupport_429956646_h
+#ifndef drilling_limitsSupport_429956644_h
+#define drilling_limitsSupport_429956644_h
 
 /* Uses */
 #include "drilling_limits.h"
@@ -62,5 +62,5 @@ namespace process {
     } /* namespace plan  */
 } /* namespace process  */
 
-#endif  /* drilling_limitsSupport_429956646_h */
+#endif  /* drilling_limitsSupport_429956644_h */
 

@@ -188,10 +188,10 @@ namespace process {
                 &sample->wobMax, "wobMax", indent_level + 1);    
 
             RTICdrType_printDouble(
-                &sample->deltaPMin, "deltaPMin", indent_level + 1);    
+                &sample->diffPMin, "diffPMin", indent_level + 1);    
 
             RTICdrType_printDouble(
-                &sample->deltaPMax, "deltaPMax", indent_level + 1);    
+                &sample->diffPMax, "diffPMax", indent_level + 1);    
 
             RTICdrType_printDouble(
                 &sample->torqueMin, "torqueMin", indent_level + 1);    
@@ -443,12 +443,12 @@ namespace process {
                 }
 
                 if (!RTICdrStream_serializeDouble(
-                    stream, &sample->deltaPMin)) {
+                    stream, &sample->diffPMin)) {
                     return RTI_FALSE;
                 }
 
                 if (!RTICdrStream_serializeDouble(
-                    stream, &sample->deltaPMax)) {
+                    stream, &sample->diffPMax)) {
                     return RTI_FALSE;
                 }
 
@@ -544,11 +544,11 @@ namespace process {
                         goto fin; 
                     }
                     if (!RTICdrStream_deserializeDouble(
-                        stream, &sample->deltaPMin)) {
+                        stream, &sample->diffPMin)) {
                         goto fin; 
                     }
                     if (!RTICdrStream_deserializeDouble(
-                        stream, &sample->deltaPMax)) {
+                        stream, &sample->diffPMax)) {
                         goto fin; 
                     }
                     if (!RTICdrStream_deserializeDouble(

@@ -22,19 +22,18 @@ TARGET_NAME = drilling_limits_objective_state
 ###############################################################################
 # compilation flags
 ###############################################################################
+TARG_INCLUDES += -isystem $(EDGE_THIRD_PARTY_INCLUDE)
 TARG_INCLUDES += -I $(DDS_INCLUDE)
 TARG_INCLUDES += -I $(LOG_INCLUDE)
-TARG_INCLUDES += -I $(CURDIR)/include
 TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
+TARG_INCLUDES += -I $(CURDIR)/include
 
 # Sources
 TARG_SOURCES = drilling_limits.cxx
 TARG_SOURCES += drilling_limitsPlugin.cxx
 TARG_SOURCES += drilling_limitsSupport.cxx
-#TARG_SOURCES += drilling_limits_state_subscriber.cpp
-#TARG_SOURCES += drilling_limits_request_publisher.cpp
-#TARG_SOURCES += drilling_limits_request_subscriber.cpp
-#TARG_SOURCES += drilling_limits_state_publisher.cpp
+TARG_SOURCES += drilling_limits_subscriber.cpp
+TARG_SOURCES += drilling_limits_publisher.cpp
 
 ###############################################################################
 # Installation section

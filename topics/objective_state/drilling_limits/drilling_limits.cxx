@@ -165,7 +165,7 @@ namespace process {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"deltaPMin",/* Member name */
+                    (char *)"diffPMin",/* Member name */
                     {
                         7,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -182,7 +182,7 @@ namespace process {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"deltaPMax",/* Member name */
+                    (char *)"diffPMax",/* Member name */
                     {
                         8,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -378,11 +378,11 @@ namespace process {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->deltaPMin)) {
+            if (!RTICdrType_initDouble(&sample->diffPMin)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->deltaPMax)) {
+            if (!RTICdrType_initDouble(&sample->diffPMax)) {
                 return RTI_FALSE;
             }
 
@@ -502,11 +502,11 @@ namespace process {
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->deltaPMin, &src->deltaPMin)) { 
+                    &dst->diffPMin, &src->diffPMin)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->deltaPMax, &src->deltaPMax)) { 
+                    &dst->diffPMax, &src->diffPMax)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (

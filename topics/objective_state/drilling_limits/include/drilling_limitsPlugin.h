@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drilling_limitsPlugin_429956646_h
-#define drilling_limitsPlugin_429956646_h
+#ifndef drilling_limitsPlugin_429956644_h
+#define drilling_limitsPlugin_429956644_h
 
 #include "drilling_limits.h"
 
@@ -340,5 +340,5 @@ namespace process {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* drilling_limitsPlugin_429956646_h */
+#endif /* drilling_limitsPlugin_429956644_h */
 

@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drilling_limits_429956646_h
-#define drilling_limits_429956646_h
+#ifndef drilling_limits_429956644_h
+#define drilling_limits_429956644_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -51,8 +51,8 @@ namespace process {
             DDS_Double   ropMax ;
             DDS_Double   wobMin ;
             DDS_Double   wobMax ;
-            DDS_Double   deltaPMin ;
-            DDS_Double   deltaPMax ;
+            DDS_Double   diffPMin ;
+            DDS_Double   diffPMax ;
             DDS_Double   torqueMin ;
             DDS_Double   torqueMax ;
             DDS_Double   rotateMin ;
