@@ -31,7 +31,6 @@ class CDrillingCalibrationRequestPublisher : public TPublisher< nec::control::Dr
     bool PublishSample();
 
     // Topic getters
-    void SetObjectiveId(const DataTypes::Uuid objectiveId);
     void SetTimestamp(const DataTypes::Time timestamp);
     void SetWobProportional(const double wobProportional);
     void SetWobIntegral(const double wobIntegral);
