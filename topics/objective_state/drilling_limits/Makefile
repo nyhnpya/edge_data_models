@@ -51,10 +51,8 @@ PACKAGE_LICENSE = "Closed License"
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limits.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limitsSupport.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limitsPlugin.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limits_request_publisher.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limits_request_subscriber.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limits_state_publisher.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limits_state_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limits_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/drilling_limits_subscriber.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
