@@ -30,18 +30,19 @@ TARG_INCLUDES += -I /usr/local/include/dds_base
 TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -isystem/usr/local/include/edge_third_party
 TARG_INCLUDES += -I /usr/local/include/base_data_types
-TARG_INCLUDES += -I /usr/local/include/objective
-TARG_INCLUDES += -I /usr/local/include/objective_subscriber
+TARG_INCLUDES += -I /usr/local/include/objective_objective_state
+TARG_INCLUDES += -I /usr/local/include/clrecordset
+TARG_INCLUDES += -I /usr/include/mysql
 
 # Sources
 TARG_SOURCES = objective_subscriber.cpp
+TARG_SOURCES += dds_accessor.cpp
 
 # Libraries
 TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
 TARG_LIBS += -L /usr/local/lib 
-TARG_LIBS += -lobjective_subscriber -lobjective -lbase_data_types -ldds_base
-TARG_LIBS += -lncurses
-TARG_LIBS += -llogger -llog4cplus -luuid 
+TARG_LIBS += -lobjective_objective_state -lbase_data_types -ldds_base
+TARG_LIBS += -llogger -llog4cplus -luuid -lclrecordset -lmysqlclient 
 TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/librtidlcppzd.a $(NDDSHOME)/lib/$(NDDSARCH)/librtidlczd.a 
 TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/librticonnextmsgcppzd.a 
 TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/libnddscppzd.a 

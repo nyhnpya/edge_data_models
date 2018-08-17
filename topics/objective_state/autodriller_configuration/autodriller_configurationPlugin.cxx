@@ -1667,6 +1667,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             HmiRequestPlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            HmiRequest_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -5153,6 +5156,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             HmiStatePlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            HmiState_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)

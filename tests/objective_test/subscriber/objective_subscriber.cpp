@@ -1,13 +1,15 @@
-#include <ncurses.h>
 #include <iostream>
 #include <unistd.h>
 #include <signal.h>
 #include <string.h>
 #include "cmdparser.h"
-#include "objective_subscriber.h"
+#include "objective_state_subscriber.h"
+#include "DBPool.h"
+#include "dds_accessor.h"
 
 bool gTerminate = false;
 bool gCreated = true;
+CObjectiveStateSubscriber *pSubscriber = nullptr;
 
 void SignalHandler(int32_t signal)
 {
@@ -62,32 +64,32 @@ void register_signal_handler()
     sigaction(SIGTERM, &sigact, (struct sigaction *)NULL);
 }
 
-void get_objective(const Plan::ObjectiveState &data)
+void get_objective()
 {
-    double value; 
+    CInsertObjectiveAccessor insertObjective;
 
-    mvprintw(2, 1, "Objective: [%d]", data.objective);
-    mvprintw(4, 1, "Timestamp: [%d]:[%d]", data.timestamp.sec, data.timestamp.nanosec);
-    mvprintw(8, 1, "Status [%s]", gCreated ? "Created  ": "Destroyed");
+    CDdsUuid id;
+    CDdsUuid parentId;
 
-    refresh();
+    id.GenerateUuid();
+    parentId.GenerateUuid();
+    
+    if (insertObjective.Open(id, parentId, pSubscriber->GetObjective()) == true)
+    {
+        insertObjective.CloseRecordset();
+    }
+    else
+    {
+        LOG_ERROR("Failed to insert objective record into database");
+    }
 }
 
 void update_state()
 {
-    mvprintw(8, 1, "Status [%s]", gCreated ? "Created  ": "Destroyed");
-
-    refresh();
 }
 
 void invalid_data()
 {
-    double value; 
-
-    mvprintw(2, 1, "Objective: [-]");
-    mvprintw(8, 1, "Status [%s]", gCreated ? "Created  ": "Destroyed");
-
-    refresh();
 }
 
 void liveliness_changed(const DDS::LivelinessChangedStatus &status)
@@ -118,18 +120,28 @@ int32_t main(int32_t argc, char **argv)
 
     domain = parser.get<int32_t>("d");
 
-    initscr();
-
     CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
     CDomainParticipant::Instance()->Create(domain);
 
-    CObjectiveStateSubscriber *pSubscriber = new CObjectiveStateSubscriber();
+    pSubscriber = new CObjectiveStateSubscriber();
 
+    CDBPool::Instance()->InitializeConnectionPool((const char *)"0.0.0.0",
+                                                  (const char *)"edge_automation",
+                                                  (const char *)"carrier",
+                                                  (const char *)"joshtraynor11",
+                                                  3306,
+                                                  0,
+                                                  "english",
+                                                  "english",
+                                                  CDBPool::dbStatic,
+                                                  10);
+
+    
     if (pSubscriber->Create(domain) == true)
     {
-        pSubscriber->OnDataAvailable([&](const Plan::ObjectiveState &data)
+        pSubscriber->OnDataAvailable([&]()
                                      {
-                                         get_objective(data);
+                                         get_objective();
                                      });
 
         pSubscriber->OnLivelinessChanged([&](const DDS::LivelinessChangedStatus &status)
@@ -173,8 +185,6 @@ int32_t main(int32_t argc, char **argv)
             }            
         }
     }
-
-    endwin();
 
     pSubscriber->Destroy();
 }
