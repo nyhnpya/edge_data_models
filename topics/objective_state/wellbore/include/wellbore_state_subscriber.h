@@ -15,9 +15,7 @@
 #ifndef __WELLBORE_STATE_SUBSCRIBER_H__
 #define __WELLBORE_STATE_SUBSCRIBER_H__
 
-#include <mutex>
 #include "subscriber.h"
-#include "base_data_types.h"
 #include "wellbore.h"
 #include "wellboreSupport.h"
 #ifdef _WIN32
@@ -31,8 +29,6 @@ using namespace units::length;
 class CWellboreStateSubscriber : public TSubscriber< nec::process::WellboreState>
 {
 public:
-    typedef std::function<void(const nec::process::WellboreState &data)> OnDataAvailableEvent;
-
     CWellboreStateSubscriber();
     virtual ~CWellboreStateSubscriber();
 
