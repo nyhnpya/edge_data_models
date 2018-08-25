@@ -44,8 +44,9 @@ public:
     bool ValidData();
 
     // Topic getters
-    bool GetBitDepth(meter_t &bitDept);
-    bool GetHoleDepth(meter_t &holeDepth);
+    DataTypes::Uuid GetId();
+    meter_t GetBitDepth();
+    meter_t GetHoleDepth();
 
 protected:
     ///Derived Methods

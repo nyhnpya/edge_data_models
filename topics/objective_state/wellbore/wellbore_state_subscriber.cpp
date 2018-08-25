@@ -14,19 +14,20 @@ bool CWellboreStateSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CWellboreStateSubscriber::GetBitDepth(meter_t &bitDepth)
+DataTypes::Uuid CWellboreStateSubscriber::GetId()
 {
-    bitDepth = meter_t(m_data.bitDepth);
+    return m_data.id;
+}
 
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+meter_t CWellboreStateSubscriber::GetBitDepth()
+{
+    return meter_t(m_data.bitDepth);
 }
 
 
-bool CWellboreStateSubscriber::GetHoleDepth(meter_t &holeDepth)
+meter_t CWellboreStateSubscriber::GetHoleDepth()
 {
-    holeDepth = meter_t(m_data.holeDepth);
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return meter_t(m_data.holeDepth);
 }
 
 bool CWellboreStateSubscriber::Create(int32_t domain)
