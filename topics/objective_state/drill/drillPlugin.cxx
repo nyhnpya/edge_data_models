@@ -1690,9 +1690,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             DrillingRequestPlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            DrillingRequest_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -3320,9 +3317,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             DrillingObjectivePlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            DrillingObjective_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -5202,9 +5196,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             DrillingStatePlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            DrillingState_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)

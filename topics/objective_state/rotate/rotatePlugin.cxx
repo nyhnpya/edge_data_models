@@ -1494,9 +1494,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             RotateRequestPlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            RotateRequest_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -2928,9 +2925,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             RotateObjectivePlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            RotateObjective_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -4491,9 +4485,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             RotateStatePlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            RotateState_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
