@@ -75,11 +75,11 @@ pipehandler_engineering.cpy:
 	-@rm -rf $(TMPOUTDIR)
 
 circulate_engineering.cpy:
-	@echo "Copying generated files ..."
-	mkdir -p $(TOPIC_HOME)/engineering/circulate_engineering
-	mkdir -p $(TOPIC_HOME)/engineering/circulate_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/circulate_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/circulate_engineering
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/circulate_engineering
+	mkdir -p $(TOPIC_HOME)/objective_state/circulate_engineering/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/circulate_engineering/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/circulate_engineering
 	-@rm -rf $(TMPOUTDIR)
 
 base_data_types.cpy:
@@ -104,14 +104,6 @@ circulate.cpy:
 	mkdir -p $(TOPIC_HOME)/objective_state/circulate/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/circulate/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/circulate
-	-@rm -rf $(TMPOUTDIR)
-
-circulate_engineering.cpy:
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/objective_state/circulate_engineering
-	mkdir -p $(TOPIC_HOME)/objective_state/circulate_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/circulate_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/circulate_engineering
 	-@rm -rf $(TMPOUTDIR)
 
 drill.cpy: 
@@ -186,6 +178,8 @@ autotuner_configuration.cpy:
 
 roptimizer_configuration.cpy: 
 	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/roptimizer_configuration
+	mkdir -p $(TOPIC_HOME)/objective_state/roptimizer_configuration/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/roptimizer_configuration/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/roptimizer_configuration
 	-@rm -rf $(TMPOUTDIR)
