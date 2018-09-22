@@ -184,6 +184,12 @@ autotuner_configuration.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/autotuner_configuration
 	-@rm -rf $(TMPOUTDIR)
 
+roptimizer_configuration.cpy: 
+	@echo "Copying generated files..."
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/roptimizer_configuration/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/roptimizer_configuration
+	-@rm -rf $(TMPOUTDIR)
+
 process_info.cpy:
 	@echo "Copying generated files ..."
 	mkdir -p $(TOPIC_HOME)/system/process_info
