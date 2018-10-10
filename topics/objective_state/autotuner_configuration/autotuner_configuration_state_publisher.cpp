@@ -16,27 +16,27 @@ bool CModelStateStatePublisher::Initialize()
     return true;
 }
 
-void CModelStateStatePublisher::SetPipeInnerDiameter(double pipeInnerDiameter)
+void CModelStateStatePublisher::SetPipeInnerDiameter(meter_t pipeInnerDiameter)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->pipeInnerDiameter = pipeInnerDiameter;
+        m_pDataInstance->pipeInnerDiameter = units::unit_cast<double>(pipeInnerDiameter);
     }
     else
     {
-        LOG_ERROR("Failed to set mode because of uninitialized sample");
+        LOG_ERROR("Failed to set pipe inner diameter because of uninitialized sample");
     }
 }
 
-void CModelStateStatePublisher::SetPipeOuterDiameter(double pipeOuterDiameter)
+void CModelStateStatePublisher::SetPipeOuterDiameter(meter_t pipeOuterDiameter)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->pipeOuterDiameter = pipeOuterDiameter;
+        m_pDataInstance->pipeOuterDiameter = units::unit_cast<double>(pipeOuterDiameter);
     }
     else
     {
-        LOG_ERROR("Failed to set mode because of uninitialized sample");
+        LOG_ERROR("Failed to set pipe outer diameter because of uninitialized sample");
     }
 }
 

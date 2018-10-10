@@ -15,11 +15,11 @@ bool CModelStateRequestPublisher::Initialize()
     return true;
 }
 
-void CModelStateRequestPublisher::SetPipeInnerDiameter(double pipeInnerDiameter)
+void CModelStateRequestPublisher::SetPipeInnerDiameter(meter_t pipeInnerDiameter)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->pipeInnerDiameter = (int32_t)pipeInnerDiameter;
+        m_pDataInstance->pipeInnerDiameter = units::unit_cast<double>(pipeInnerDiameter);
     }
     else
     {
@@ -27,11 +27,11 @@ void CModelStateRequestPublisher::SetPipeInnerDiameter(double pipeInnerDiameter)
     }
 }
 
-void CModelStateRequestPublisher::SetPipeOuterDiameter(double pipeOuterDiameter)
+void CModelStateRequestPublisher::SetPipeOuterDiameter(meter_t pipeOuterDiameter)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->pipeOuterDiameter = (int32_t)pipeOuterDiameter;
+        m_pDataInstance->pipeOuterDiameter = units::unit_cast<double>(pipeOuterDiameter);
     }
     else
     {

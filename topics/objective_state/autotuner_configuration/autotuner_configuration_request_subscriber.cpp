@@ -25,16 +25,14 @@ bool CModelStateRequestSubscriber::GetModelReset(bool &modelReset)
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 };
 
-bool CModelStateRequestSubscriber::GetPipeInnerDiameter(double &pipeInnerDiameter)
+meter_t CModelStateRequestSubscriber::GetPipeInnerDiameter()
 {
-    pipeInnerDiameter = m_data.pipeInnerDiameter;
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return meter_t(inch_t(m_data.pipeInnerDiameter));
 };
 
-bool CModelStateRequestSubscriber::GetPipeOuterDiameter(double &pipeOuterDiameter)
+meter_t CModelStateRequestSubscriber::GetPipeOuterDiameter()
 {
-    pipeOuterDiameter = m_data.pipeOuterDiameter;
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return meter_t(inch_t(m_data.pipeOuterDiameter));
 };
 
 bool CModelStateRequestSubscriber::GetSlopeFilter(double &slopeFilter)

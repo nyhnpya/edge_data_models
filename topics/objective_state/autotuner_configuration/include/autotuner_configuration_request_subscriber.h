@@ -20,6 +20,14 @@
 #include "autotuner_configuration.h"
 #include "autotuner_configurationSupport.h"
 
+#ifdef _WIN32
+#undef pascal
+#endif
+#include "units.h"
+
+using namespace units;
+using namespace units::length;
+
 namespace CAutoTunerConfigurationRequestSubscriber
 {
     class CModelStateRequestSubscriber : public TSubscriber< AutoTunerConfiguration::ModelStateRequest >
@@ -39,8 +47,8 @@ namespace CAutoTunerConfigurationRequestSubscriber
 
         // Topic getters
         bool GetModelReset(bool &modelReset);
-        bool GetPipeInnerDiameter(double &pipeInnerDiameter);
-        bool GetPipeOuterDiameter(double &pipeOuterDiameter);
+        meter_t GetPipeInnerDiameter();
+        meter_t GetPipeOuterDiameter();
         bool GetSlopeFilter(double &slopeFilter);
         bool GetTauMax(double &tauMax);
         bool GetTauMin(double &tauMin);
