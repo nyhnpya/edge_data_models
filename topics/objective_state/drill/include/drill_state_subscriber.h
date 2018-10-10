@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __DRILLING_STATE_SUBSCRIBER_H__
-#define __DRILLING_STATE_SUBSCRIBER_H__
+#ifndef __DRILL_STATE_SUBSCRIBER_H__
+#define __DRILL_STATE_SUBSCRIBER_H__
 
 #include "subscriber.h"
 #include "drill.h"
@@ -31,7 +31,7 @@ using namespace units::force;
 using namespace units::torque;
 using namespace units::pressure;
 
-class CDrillStateSubscriber : public TSubscriber< nec::process::DrillingState >
+class CDrillStateSubscriber : public TSubscriber< nec::process::DrillState >
 {
  public:
     CDrillStateSubscriber();
@@ -49,19 +49,19 @@ class CDrillStateSubscriber : public TSubscriber< nec::process::DrillingState >
     DataTypes::Time GetTimestamp();
     meters_per_second_t GetRopActual();
     newton_t GetWobActual();
-    pascal_t GetDifferentialPressureActual();
+    pascal_t GetDiffPressureActual();
     newton_meter_t GetTorqueActual();
     meters_per_second_t GetRopLimit();
     newton_t GetWobLimit();
-    pascal_t GetDifferentialPressureLimit();
+    pascal_t GetDiffPressureLimit();
     newton_meter_t GetTorqueLimit();
     bool GetRopMode();
     bool GetWobMode();
-    bool GetDifferentialPressureMode();
+    bool GetDiffPressureMode();
     bool GetTorqueMode();
     meters_per_second_t GetRopTarget();
     newton_t GetWobTarget();
-    pascal_t GetDifferentialPressureTarget();
+    pascal_t GetDiffPressureTarget();
     newton_meter_t GetTorqueTarget();
 
     // Topic status
@@ -69,7 +69,7 @@ class CDrillStateSubscriber : public TSubscriber< nec::process::DrillingState >
     bool ValidSubscription();
 
  protected:
-    void DataAvailable(const nec::process::DrillingState &data,
+    void DataAvailable(const nec::process::DrillState &data,
 		       const DDS::SampleInfo &sampleInfo);
     
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
@@ -78,7 +78,7 @@ class CDrillStateSubscriber : public TSubscriber< nec::process::DrillingState >
 
  private:
     bool                         m_subscriptionMatched;
-    nec::process::DrillingState      m_data;
+    nec::process::DrillState      m_data;
     DDS::SampleInfo              m_sampleInfo;
     OnDataAvailableEvent         m_pOnDataAvailable;
     OnDataDisposedEvent          m_pOnDataDisposed;
@@ -86,4 +86,4 @@ class CDrillStateSubscriber : public TSubscriber< nec::process::DrillingState >
     OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
 };
 
-#endif // __DRILLING_STATE_SUBSCRIBER_H__
+#endif // __DRILL_STATE_SUBSCRIBER_H__

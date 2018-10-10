@@ -24,24 +24,24 @@ DataTypes::Time CDrillObjectiveSubscriber::GetEstimatedDuration()
     return m_data.estimatedDuration;
 }
 
-double CDrillObjectiveSubscriber::GetRopLimit()
+double CDrillObjectiveSubscriber::GetRopTarget()
 {
-    return m_data.ropLimit;
+    return m_data.ropTarget;
 }
 
-double CDrillObjectiveSubscriber::GetWobLimit()
+double CDrillObjectiveSubscriber::GetWobTarget()
 {
-    return m_data.wobLimit;
+    return m_data.wobTarget;
 }
 
-double CDrillObjectiveSubscriber::GetDifferentialPressureLimit()
+double CDrillObjectiveSubscriber::GetDiffPressureTarget()
 {
-    return m_data.differentialPressureLimit;
+    return m_data.diffPressureTarget;
 }
 
-double CDrillObjectiveSubscriber::GetTorqueLimit()
+double CDrillObjectiveSubscriber::GetTorqueTarget()
 {
-    return m_data.torqueLimit;
+    return m_data.torqueTarget;
 }
 
 bool CDrillObjectiveSubscriber::GetRopMode()
@@ -54,9 +54,9 @@ bool CDrillObjectiveSubscriber::GetWobMode()
     return (m_data.wobMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillObjectiveSubscriber::GetDifferentialPressureMode()
+bool CDrillObjectiveSubscriber::GetDiffPressureMode()
 {
-    return (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
+    return (m_data.diffPressureMode == DDS_BOOLEAN_TRUE);
 }
 
 bool CDrillObjectiveSubscriber::GetTorqueMode()
@@ -82,12 +82,12 @@ void CDrillObjectiveSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent eve
 bool CDrillObjectiveSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               nec::process::DRILLING_OBJECTIVE,
+                               nec::process::DRILL_OBJECTIVE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
 
-void CDrillObjectiveSubscriber::DataAvailable(const nec::process::DrillingObjective &data,
+void CDrillObjectiveSubscriber::DataAvailable(const nec::process::DrillObjective &data,
                                                  const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

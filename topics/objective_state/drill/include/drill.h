@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drill_1648141820_h
-#define drill_1648141820_h
+#ifndef drill_1648143797_h
+#define drill_1648143797_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -23,25 +23,25 @@ or consult the RTI Connext manual.
 #include "base_data_types.h"
 namespace nec {
     namespace process {
-        static const char DRILLING_REQUEST[] = "DrillingRequest"; 
+        static const char DRILL_REQUEST[] = "DrillRequest"; 
 
-        extern const char *DrillingRequestTYPENAME;
+        extern const char *DrillRequestTYPENAME;
 
-        struct DrillingRequestSeq;
+        struct DrillRequestSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class DrillingRequestTypeSupport;
-        class DrillingRequestDataWriter;
-        class DrillingRequestDataReader;
+        class DrillRequestTypeSupport;
+        class DrillRequestDataWriter;
+        class DrillRequestDataReader;
         #endif
 
-        class DrillingRequest 
+        class DrillRequest 
         {
           public:
-            typedef struct DrillingRequestSeq Seq;
+            typedef struct DrillRequestSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef DrillingRequestTypeSupport TypeSupport;
-            typedef DrillingRequestDataWriter DataWriter;
-            typedef DrillingRequestDataReader DataReader;
+            typedef DrillRequestTypeSupport TypeSupport;
+            typedef DrillRequestDataWriter DataWriter;
+            typedef DrillRequestDataReader DataReader;
             #endif
 
             DataTypes::Uuid   id ;
@@ -49,13 +49,13 @@ namespace nec {
             DataTypes::Priority   priority ;
             DataTypes::Time   timeNeeded ;
             DataTypes::Time   duration ;
-            DDS_Double   ropLimit ;
-            DDS_Double   wobLimit ;
-            DDS_Double   differentialPressureLimit ;
-            DDS_Double   torqueLimit ;
+            DDS_Double   ropTarget ;
+            DDS_Double   wobTarget ;
+            DDS_Double   diffPressureTarget ;
+            DDS_Double   torqueTarget ;
             DDS_Boolean   ropMode ;
             DDS_Boolean   wobMode ;
-            DDS_Boolean   differentialPressureMode ;
+            DDS_Boolean   diffPressureMode ;
             DDS_Boolean   torqueMode ;
 
         };
@@ -66,44 +66,44 @@ namespace nec {
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
-        NDDSUSERDllExport DDS_TypeCode* DrillingRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* DrillRequest_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(DrillingRequestSeq, DrillingRequest);
-
-        NDDSUSERDllExport
-        RTIBool DrillingRequest_initialize(
-            DrillingRequest* self);
+        DDS_SEQUENCE(DrillRequestSeq, DrillRequest);
 
         NDDSUSERDllExport
-        RTIBool DrillingRequest_initialize_ex(
-            DrillingRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool DrillRequest_initialize(
+            DrillRequest* self);
 
         NDDSUSERDllExport
-        RTIBool DrillingRequest_initialize_w_params(
-            DrillingRequest* self,
+        RTIBool DrillRequest_initialize_ex(
+            DrillRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool DrillRequest_initialize_w_params(
+            DrillRequest* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        void DrillingRequest_finalize(
-            DrillingRequest* self);
+        void DrillRequest_finalize(
+            DrillRequest* self);
 
         NDDSUSERDllExport
-        void DrillingRequest_finalize_ex(
-            DrillingRequest* self,RTIBool deletePointers);
+        void DrillRequest_finalize_ex(
+            DrillRequest* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void DrillingRequest_finalize_w_params(
-            DrillingRequest* self,
+        void DrillRequest_finalize_w_params(
+            DrillRequest* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void DrillingRequest_finalize_optional_members(
-            DrillingRequest* self, RTIBool deletePointers);  
+        void DrillRequest_finalize_optional_members(
+            DrillRequest* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool DrillingRequest_copy(
-            DrillingRequest* dst,
-            const DrillingRequest* src);
+        RTIBool DrillRequest_copy(
+            DrillRequest* dst,
+            const DrillRequest* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -111,37 +111,37 @@ namespace nec {
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport
         #endif
-        static const char DRILLING_OBJECTIVE[] = "DrillingObjective"; 
+        static const char DRILL_OBJECTIVE[] = "DrillObjective"; 
 
-        extern const char *DrillingObjectiveTYPENAME;
+        extern const char *DrillObjectiveTYPENAME;
 
-        struct DrillingObjectiveSeq;
+        struct DrillObjectiveSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class DrillingObjectiveTypeSupport;
-        class DrillingObjectiveDataWriter;
-        class DrillingObjectiveDataReader;
+        class DrillObjectiveTypeSupport;
+        class DrillObjectiveDataWriter;
+        class DrillObjectiveDataReader;
         #endif
 
-        class DrillingObjective 
+        class DrillObjective 
         {
           public:
-            typedef struct DrillingObjectiveSeq Seq;
+            typedef struct DrillObjectiveSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef DrillingObjectiveTypeSupport TypeSupport;
-            typedef DrillingObjectiveDataWriter DataWriter;
-            typedef DrillingObjectiveDataReader DataReader;
+            typedef DrillObjectiveTypeSupport TypeSupport;
+            typedef DrillObjectiveDataWriter DataWriter;
+            typedef DrillObjectiveDataReader DataReader;
             #endif
 
             DataTypes::Uuid   id ;
             DataTypes::Uuid   objectiveId ;
             DataTypes::Time   estimatedDuration ;
-            DDS_Double   ropLimit ;
-            DDS_Double   wobLimit ;
-            DDS_Double   differentialPressureLimit ;
-            DDS_Double   torqueLimit ;
+            DDS_Double   ropTarget ;
+            DDS_Double   wobTarget ;
+            DDS_Double   diffPressureTarget ;
+            DDS_Double   torqueTarget ;
             DDS_Boolean   ropMode ;
             DDS_Boolean   wobMode ;
-            DDS_Boolean   differentialPressureMode ;
+            DDS_Boolean   diffPressureMode ;
             DDS_Boolean   torqueMode ;
 
         };
@@ -152,44 +152,44 @@ namespace nec {
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
-        NDDSUSERDllExport DDS_TypeCode* DrillingObjective_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* DrillObjective_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(DrillingObjectiveSeq, DrillingObjective);
-
-        NDDSUSERDllExport
-        RTIBool DrillingObjective_initialize(
-            DrillingObjective* self);
+        DDS_SEQUENCE(DrillObjectiveSeq, DrillObjective);
 
         NDDSUSERDllExport
-        RTIBool DrillingObjective_initialize_ex(
-            DrillingObjective* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool DrillObjective_initialize(
+            DrillObjective* self);
 
         NDDSUSERDllExport
-        RTIBool DrillingObjective_initialize_w_params(
-            DrillingObjective* self,
+        RTIBool DrillObjective_initialize_ex(
+            DrillObjective* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool DrillObjective_initialize_w_params(
+            DrillObjective* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        void DrillingObjective_finalize(
-            DrillingObjective* self);
+        void DrillObjective_finalize(
+            DrillObjective* self);
 
         NDDSUSERDllExport
-        void DrillingObjective_finalize_ex(
-            DrillingObjective* self,RTIBool deletePointers);
+        void DrillObjective_finalize_ex(
+            DrillObjective* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void DrillingObjective_finalize_w_params(
-            DrillingObjective* self,
+        void DrillObjective_finalize_w_params(
+            DrillObjective* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void DrillingObjective_finalize_optional_members(
-            DrillingObjective* self, RTIBool deletePointers);  
+        void DrillObjective_finalize_optional_members(
+            DrillObjective* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool DrillingObjective_copy(
-            DrillingObjective* dst,
-            const DrillingObjective* src);
+        RTIBool DrillObjective_copy(
+            DrillObjective* dst,
+            const DrillObjective* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -197,25 +197,25 @@ namespace nec {
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport
         #endif
-        static const char DRILLING_STATE[] = "DrillingState"; 
+        static const char DRILL_STATE[] = "DrillState"; 
 
-        extern const char *DrillingStateTYPENAME;
+        extern const char *DrillStateTYPENAME;
 
-        struct DrillingStateSeq;
+        struct DrillStateSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class DrillingStateTypeSupport;
-        class DrillingStateDataWriter;
-        class DrillingStateDataReader;
+        class DrillStateTypeSupport;
+        class DrillStateDataWriter;
+        class DrillStateDataReader;
         #endif
 
-        class DrillingState 
+        class DrillState 
         {
           public:
-            typedef struct DrillingStateSeq Seq;
+            typedef struct DrillStateSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef DrillingStateTypeSupport TypeSupport;
-            typedef DrillingStateDataWriter DataWriter;
-            typedef DrillingStateDataReader DataReader;
+            typedef DrillStateTypeSupport TypeSupport;
+            typedef DrillStateDataWriter DataWriter;
+            typedef DrillStateDataReader DataReader;
             #endif
 
             DataTypes::Uuid   id ;
@@ -223,19 +223,19 @@ namespace nec {
             DataTypes::Time   timestamp ;
             DDS_Double   ropActual ;
             DDS_Double   wobActual ;
-            DDS_Double   differentialPressureActual ;
+            DDS_Double   diffPressureActual ;
             DDS_Double   torqueActual ;
             DDS_Double   ropLimit ;
             DDS_Double   wobLimit ;
-            DDS_Double   differentialPressureLimit ;
+            DDS_Double   diffPressureLimit ;
             DDS_Double   torqueLimit ;
             DDS_Boolean   ropMode ;
             DDS_Boolean   wobMode ;
-            DDS_Boolean   differentialPressureMode ;
+            DDS_Boolean   diffPressureMode ;
             DDS_Boolean   torqueMode ;
             DDS_Double   ropTarget ;
             DDS_Double   wobTarget ;
-            DDS_Double   differentialPressureTarget ;
+            DDS_Double   diffPressureTarget ;
             DDS_Double   torqueTarget ;
             DDS_Boolean   bitOnBottom ;
 
@@ -247,44 +247,44 @@ namespace nec {
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
-        NDDSUSERDllExport DDS_TypeCode* DrillingState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* DrillState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(DrillingStateSeq, DrillingState);
-
-        NDDSUSERDllExport
-        RTIBool DrillingState_initialize(
-            DrillingState* self);
+        DDS_SEQUENCE(DrillStateSeq, DrillState);
 
         NDDSUSERDllExport
-        RTIBool DrillingState_initialize_ex(
-            DrillingState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool DrillState_initialize(
+            DrillState* self);
 
         NDDSUSERDllExport
-        RTIBool DrillingState_initialize_w_params(
-            DrillingState* self,
+        RTIBool DrillState_initialize_ex(
+            DrillState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool DrillState_initialize_w_params(
+            DrillState* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        void DrillingState_finalize(
-            DrillingState* self);
+        void DrillState_finalize(
+            DrillState* self);
 
         NDDSUSERDllExport
-        void DrillingState_finalize_ex(
-            DrillingState* self,RTIBool deletePointers);
+        void DrillState_finalize_ex(
+            DrillState* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void DrillingState_finalize_w_params(
-            DrillingState* self,
+        void DrillState_finalize_w_params(
+            DrillState* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void DrillingState_finalize_optional_members(
-            DrillingState* self, RTIBool deletePointers);  
+        void DrillState_finalize_optional_members(
+            DrillState* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool DrillingState_copy(
-            DrillingState* dst,
-            const DrillingState* src);
+        RTIBool DrillState_copy(
+            DrillState* dst,
+            const DrillState* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.

@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __DRILLING_REQUEST_SUBSCRIBER_H__
-#define __DRILLING_REQUEST_SUBSCRIBER_H__
+#ifndef __DRILL_REQUEST_SUBSCRIBER_H__
+#define __DRILL_REQUEST_SUBSCRIBER_H__
 
 #include "subscriber.h"
 #include "drill.h"
@@ -30,7 +30,7 @@ using namespace units::force;
 using namespace units::torque;
 using namespace units::pressure;
 
-class CDrillRequestSubscriber : public TSubscriber< nec::process::DrillingRequest >
+class CDrillRequestSubscriber : public TSubscriber< nec::process::DrillRequest >
 {
  public:
     CDrillRequestSubscriber();
@@ -48,17 +48,17 @@ class CDrillRequestSubscriber : public TSubscriber< nec::process::DrillingReques
     DataTypes::Priority GetPriority();
     DataTypes::Time GetTimeNeeded();
     DataTypes::Time GetDuration();
-    meters_per_second_t GetRopLimit();
-    newton_t GetWobLimit();
-    pascal_t GetDifferentialPressureLimit();
-    newton_meter_t GetTorqueLimit();
+    meters_per_second_t GetRopTarget();
+    newton_t GetWobTarget();
+    pascal_t GetDiffPressureTarget();
+    newton_meter_t GetTorqueTarget();
     bool GetRopMode();
     bool GetWobMode();
-    bool GetDifferentialPressureMode();
+    bool GetDiffPressureMode();
     bool GetTorqueMode();
 
  protected:
-    void DataAvailable(const nec::process::DrillingRequest &data,
+    void DataAvailable(const nec::process::DrillRequest &data,
                const DDS::SampleInfo &sampleInfo);
 
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
@@ -66,7 +66,7 @@ class CDrillRequestSubscriber : public TSubscriber< nec::process::DrillingReques
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
     
  private:
-    nec::process::DrillingRequest m_data;
+    nec::process::DrillRequest m_data;
     DDS::SampleInfo           m_sampleInfo;
     DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent      m_pOnDataAvailable;
@@ -75,4 +75,4 @@ class CDrillRequestSubscriber : public TSubscriber< nec::process::DrillingReques
 	OnSubscriptionMatchedEvent m_pOnSubscriptionMatched;
 };
 
-#endif // __DRILLING_REQUEST_SUBSCRIBER_H__
+#endif // __DRILL_REQUEST_SUBSCRIBER_H__

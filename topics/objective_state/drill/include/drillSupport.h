@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drillSupport_1648141820_h
-#define drillSupport_1648141820_h
+#ifndef drillSupport_1648143797_h
+#define drillSupport_1648143797_h
 
 /* Uses */
 #include "drill.h"
@@ -47,42 +47,11 @@ namespace nec {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            DrillingRequestTypeSupport, 
-            DrillingRequest);
+            DrillRequestTypeSupport, 
+            DrillRequest);
 
-        DDS_DATAWRITER_CPP(DrillingRequestDataWriter, DrillingRequest);
-        DDS_DATAREADER_CPP(DrillingRequestDataReader, DrillingRequestSeq, DrillingRequest);
-
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-        /* If the code is building on Windows, stop exporting symbols.
-        */
-        #undef NDDSUSERDllExport
-        #define NDDSUSERDllExport
-        #endif
-        /* ========================================================================= */
-        /**
-        Uses:     T
-
-        Defines:  TTypeSupport, TDataWriter, TDataReader
-
-        Organized using the well-documented "Generics Pattern" for
-        implementing generics in C and C++.
-        */
-
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-        /* If the code is building on Windows, start exporting symbols.
-        */
-        #undef NDDSUSERDllExport
-        #define NDDSUSERDllExport __declspec(dllexport)
-
-        #endif
-
-        DDS_TYPESUPPORT_CPP(
-            DrillingObjectiveTypeSupport, 
-            DrillingObjective);
-
-        DDS_DATAWRITER_CPP(DrillingObjectiveDataWriter, DrillingObjective);
-        DDS_DATAREADER_CPP(DrillingObjectiveDataReader, DrillingObjectiveSeq, DrillingObjective);
+        DDS_DATAWRITER_CPP(DrillRequestDataWriter, DrillRequest);
+        DDS_DATAREADER_CPP(DrillRequestDataReader, DrillRequestSeq, DrillRequest);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -109,11 +78,42 @@ namespace nec {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            DrillingStateTypeSupport, 
-            DrillingState);
+            DrillObjectiveTypeSupport, 
+            DrillObjective);
 
-        DDS_DATAWRITER_CPP(DrillingStateDataWriter, DrillingState);
-        DDS_DATAREADER_CPP(DrillingStateDataReader, DrillingStateSeq, DrillingState);
+        DDS_DATAWRITER_CPP(DrillObjectiveDataWriter, DrillObjective);
+        DDS_DATAREADER_CPP(DrillObjectiveDataReader, DrillObjectiveSeq, DrillObjective);
+
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
+
+        Defines:  TTypeSupport, TDataWriter, TDataReader
+
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
+
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
+
+        #endif
+
+        DDS_TYPESUPPORT_CPP(
+            DrillStateTypeSupport, 
+            DrillState);
+
+        DDS_DATAWRITER_CPP(DrillStateDataWriter, DrillState);
+        DDS_DATAREADER_CPP(DrillStateDataReader, DrillStateSeq, DrillState);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -124,5 +124,5 @@ namespace nec {
     } /* namespace process  */
 } /* namespace nec  */
 
-#endif  /* drillSupport_1648141820_h */
+#endif  /* drillSupport_1648143797_h */
 

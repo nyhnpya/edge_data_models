@@ -27,7 +27,7 @@ namespace nec {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'DrillingRequest' support classes.
+        Configure and implement 'DrillRequest' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -43,11 +43,11 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   DrillingRequestTYPENAME
+        #define TTYPENAME   DrillRequestTYPENAME
 
         /* Defines */
-        #define TDataWriter DrillingRequestDataWriter
-        #define TData       nec::process::DrillingRequest
+        #define TDataWriter DrillRequestDataWriter
+        #define TData       nec::process::DrillRequest
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -67,12 +67,12 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   DrillingRequestTYPENAME
+        #define TTYPENAME   DrillRequestTYPENAME
 
         /* Defines */
-        #define TDataReader DrillingRequestDataReader
-        #define TDataSeq    DrillingRequestSeq
-        #define TData       nec::process::DrillingRequest
+        #define TDataReader DrillRequestDataReader
+        #define TDataSeq    DrillRequestSeq
+        #define TData       nec::process::DrillRequest
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -94,15 +94,15 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME    DrillingRequestTYPENAME
-        #define TPlugin_new  nec::process::DrillingRequestPlugin_new
-        #define TPlugin_delete  nec::process::DrillingRequestPlugin_delete
+        #define TTYPENAME    DrillRequestTYPENAME
+        #define TPlugin_new  nec::process::DrillRequestPlugin_new
+        #define TPlugin_delete  nec::process::DrillRequestPlugin_delete
 
         /* Defines */
-        #define TTypeSupport DrillingRequestTypeSupport
-        #define TData        nec::process::DrillingRequest
-        #define TDataReader  DrillingRequestDataReader
-        #define TDataWriter  DrillingRequestDataWriter
+        #define TTypeSupport DrillRequestTypeSupport
+        #define TData        nec::process::DrillRequest
+        #define TDataReader  DrillRequestDataReader
+        #define TDataWriter  DrillRequestDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 
@@ -127,7 +127,7 @@ namespace nec {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'DrillingObjective' support classes.
+        Configure and implement 'DrillObjective' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -143,11 +143,11 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   DrillingObjectiveTYPENAME
+        #define TTYPENAME   DrillObjectiveTYPENAME
 
         /* Defines */
-        #define TDataWriter DrillingObjectiveDataWriter
-        #define TData       nec::process::DrillingObjective
+        #define TDataWriter DrillObjectiveDataWriter
+        #define TData       nec::process::DrillObjective
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -167,12 +167,12 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   DrillingObjectiveTYPENAME
+        #define TTYPENAME   DrillObjectiveTYPENAME
 
         /* Defines */
-        #define TDataReader DrillingObjectiveDataReader
-        #define TDataSeq    DrillingObjectiveSeq
-        #define TData       nec::process::DrillingObjective
+        #define TDataReader DrillObjectiveDataReader
+        #define TDataSeq    DrillObjectiveSeq
+        #define TData       nec::process::DrillObjective
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -194,15 +194,15 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME    DrillingObjectiveTYPENAME
-        #define TPlugin_new  nec::process::DrillingObjectivePlugin_new
-        #define TPlugin_delete  nec::process::DrillingObjectivePlugin_delete
+        #define TTYPENAME    DrillObjectiveTYPENAME
+        #define TPlugin_new  nec::process::DrillObjectivePlugin_new
+        #define TPlugin_delete  nec::process::DrillObjectivePlugin_delete
 
         /* Defines */
-        #define TTypeSupport DrillingObjectiveTypeSupport
-        #define TData        nec::process::DrillingObjective
-        #define TDataReader  DrillingObjectiveDataReader
-        #define TDataWriter  DrillingObjectiveDataWriter
+        #define TTypeSupport DrillObjectiveTypeSupport
+        #define TData        nec::process::DrillObjective
+        #define TDataReader  DrillObjectiveDataReader
+        #define TDataWriter  DrillObjectiveDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 
@@ -227,7 +227,7 @@ namespace nec {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'DrillingState' support classes.
+        Configure and implement 'DrillState' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -243,11 +243,11 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   DrillingStateTYPENAME
+        #define TTYPENAME   DrillStateTYPENAME
 
         /* Defines */
-        #define TDataWriter DrillingStateDataWriter
-        #define TData       nec::process::DrillingState
+        #define TDataWriter DrillStateDataWriter
+        #define TData       nec::process::DrillState
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -267,12 +267,12 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME   DrillingStateTYPENAME
+        #define TTYPENAME   DrillStateTYPENAME
 
         /* Defines */
-        #define TDataReader DrillingStateDataReader
-        #define TDataSeq    DrillingStateSeq
-        #define TData       nec::process::DrillingState
+        #define TDataReader DrillStateDataReader
+        #define TDataSeq    DrillStateSeq
+        #define TData       nec::process::DrillState
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -294,15 +294,15 @@ namespace nec {
         */
 
         /* Requires */
-        #define TTYPENAME    DrillingStateTYPENAME
-        #define TPlugin_new  nec::process::DrillingStatePlugin_new
-        #define TPlugin_delete  nec::process::DrillingStatePlugin_delete
+        #define TTYPENAME    DrillStateTYPENAME
+        #define TPlugin_new  nec::process::DrillStatePlugin_new
+        #define TPlugin_delete  nec::process::DrillStatePlugin_delete
 
         /* Defines */
-        #define TTypeSupport DrillingStateTypeSupport
-        #define TData        nec::process::DrillingState
-        #define TDataReader  DrillingStateDataReader
-        #define TDataWriter  DrillingStateDataWriter
+        #define TTypeSupport DrillStateTypeSupport
+        #define TData        nec::process::DrillState
+        #define TDataReader  DrillStateDataReader
+        #define TDataWriter  DrillStateDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 

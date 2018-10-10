@@ -12,15 +12,15 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __DRILLING_OBJECTIVE_PUBLISHER_H__
-#define __DRILLING_OBJECTIVE_PUBLISHER_H__
+#ifndef __DRILL_OBJECTIVE_PUBLISHER_H__
+#define __DRILL_OBJECTIVE_PUBLISHER_H__
 
 #include "publisher.h"
 #include "base_data_types.h"
 #include "drill.h"
 #include "drillSupport.h"
 
-class CDrillObjectivePublisher : public TPublisher< nec::process::DrillingObjective >
+class CDrillObjectivePublisher : public TPublisher< nec::process::DrillObjective >
 {
  public:
     CDrillObjectivePublisher();
@@ -32,14 +32,14 @@ class CDrillObjectivePublisher : public TPublisher< nec::process::DrillingObject
 
     // setters
     void SetEstimatedDuration(DataTypes::Time estimatedDuration);
-    void SetRopLimit(const double ropLimit);
-    void SetWobLimit(const double wobLimit);
-    void SetDifferentialPressureLimit(const double differentialPressureLimit);
-    void SetTorqueLimit(const double torqueLimit);
+    void SetRopTarget(const double ropTarget);
+    void SetWobTarget(const double wobTarget);
+    void SetDiffPressureTarget(const double diffPressureTarget);
+    void SetTorqueTarget(const double torqueTarget);
     void SetRopMode(const bool ropMode);
     void SetWobMode(const bool wobMode);
-    void SetDifferentialPressureMode(const bool differentialPressureMode);
+    void SetDiffPressureMode(const bool diffPressureMode);
     void SetTorqueMode(const bool torqueMode);
 };
 
-#endif // __DRILLING_OBJECTIVE_PUBLISHER_H__
+#endif // __DRILL_OBJECTIVE_PUBLISHER_H__

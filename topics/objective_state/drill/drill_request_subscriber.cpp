@@ -34,24 +34,24 @@ DataTypes::Time CDrillRequestSubscriber::GetDuration()
     return m_data.duration;
 }
 
-meters_per_second_t CDrillRequestSubscriber::GetRopLimit()
+meters_per_second_t CDrillRequestSubscriber::GetRopTarget()
 {
-    return (meters_per_second_t)m_data.ropLimit;
+    return (meters_per_second_t)m_data.ropTarget;
 }
 
-newton_t CDrillRequestSubscriber::GetWobLimit()
+newton_t CDrillRequestSubscriber::GetWobTarget()
 {
-    return (newton_t)m_data.wobLimit;
+    return (newton_t)m_data.wobTarget;
 }
 
-pascal_t CDrillRequestSubscriber::GetDifferentialPressureLimit()
+pascal_t CDrillRequestSubscriber::GetDiffPressureTarget()
 {
-    return (pascal_t)m_data.differentialPressureLimit;
+    return (pascal_t)m_data.diffPressureTarget;
 }
 
-newton_meter_t CDrillRequestSubscriber::GetTorqueLimit()
+newton_meter_t CDrillRequestSubscriber::GetTorqueTarget()
 {
-    return (newton_meter_t)m_data.torqueLimit;
+    return (newton_meter_t)m_data.torqueTarget;
 }
 
 bool CDrillRequestSubscriber::GetRopMode()
@@ -64,9 +64,9 @@ bool CDrillRequestSubscriber::GetWobMode()
     return (m_data.wobMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillRequestSubscriber::GetDifferentialPressureMode()
+bool CDrillRequestSubscriber::GetDiffPressureMode()
 {
-    return (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
+    return (m_data.diffPressureMode == DDS_BOOLEAN_TRUE);
 }
 
 bool CDrillRequestSubscriber::GetTorqueMode()
@@ -97,12 +97,12 @@ void CDrillRequestSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event
 bool CDrillRequestSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               nec::process::DRILLING_REQUEST,
+                               nec::process::DRILL_REQUEST,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
 
-void CDrillRequestSubscriber::DataAvailable(const nec::process::DrillingRequest &data,
+void CDrillRequestSubscriber::DataAvailable(const nec::process::DrillRequest &data,
                                                const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
@@ -110,13 +110,13 @@ void CDrillRequestSubscriber::DataAvailable(const nec::process::DrillingRequest 
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
         m_data.id = DDS_String_dup(data.id);
-        m_data.ropLimit = data.ropLimit;
-        m_data.wobLimit = data.wobLimit;
-        m_data.differentialPressureLimit = data.differentialPressureLimit;
-        m_data.torqueLimit = data.torqueLimit;
+        m_data.ropTarget = data.ropTarget;
+        m_data.wobTarget = data.wobTarget;
+        m_data.diffPressureTarget = data.diffPressureTarget;
+        m_data.torqueTarget = data.torqueTarget;
         m_data.ropMode = data.ropMode;
         m_data.wobMode = data.wobMode;
-        m_data.differentialPressureMode = data.differentialPressureMode;
+        m_data.diffPressureMode = data.diffPressureMode;
         m_data.torqueMode = data.torqueMode;
 
         if (m_pOnDataAvailable != nullptr)

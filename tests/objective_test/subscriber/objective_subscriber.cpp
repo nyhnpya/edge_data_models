@@ -1,14 +1,15 @@
 #include <iostream>
 #include <unistd.h>
+#include <mutex>
+#include <condition_variable>
 #include <signal.h>
 #include <string.h>
+#include <logger.h>
 #include "cmdparser.h"
 #include "objective_state_subscriber.h"
-#include "DBPool.h"
-#include "dds_accessor.h"
 
-bool gTerminate = false;
-bool gCreated = true;
+std::mutex gTerminateMutex;
+std::condition_variable gTerminateCondition;
 CObjectiveStateSubscriber *pSubscriber = nullptr;
 
 void SignalHandler(int32_t signal)
@@ -17,32 +18,40 @@ void SignalHandler(int32_t signal)
     switch (signal)
     {
         case SIGINT:
-            std::cout << "Signal SIGINT received." << std::endl;
+            LOG_INFO("Signal SIGINT received.");
+            gTerminateCondition.notify_all();
             break;
         case SIGTERM:
-            std::cout << "Signal SIGTERM received." << std::endl;
+            LOG_WARN("Signal SIGTERM received.");
+            gTerminateCondition.notify_all();
             break;
         case SIGABRT:
-            std::cout << "Signal SIGABRT received." << std::endl;
+            LOG_FATAL("Signal SIGABRT received.");
+            gTerminateCondition.notify_all();
             break;
         case SIGFPE:
-            std::cout << "Signal SIGFPE received." << std::endl;
+            LOG_FATAL("Signal SIGFPE received.");
+            gTerminateCondition.notify_all();
             break;
         case SIGILL:
-            std::cout << "Signal SIGGILL received." << std::endl;
+            LOG_FATAL("Signal SIGGILL received.");
+            gTerminateCondition.notify_all();
             break;
         case SIGSEGV:
-            std::cout << "Signal SIGSEGV received." << std::endl;
+            LOG_FATAL("Signal SIGSEGV received.");
+            gTerminateCondition.notify_all();
             break;
         case SIGHUP:
-            std::cout << "Signal SIGHUB received." << std::endl;
+            LOG_WARN("Signal SIGHUB received.");
+            gTerminateCondition.notify_all();
+            break;
+        case SIGPIPE:
+            LOG_INFO("Signal SIGPIPE received.");
             break;
         default:
-            std::cout << "Undhandled Signal received: " << signal  << std::endl;
+            LOG_INFO("Undhandled Signal [%d] received.", signal);
             break;
     }
-
-    gTerminate = true;
 
     return;
 }
@@ -66,37 +75,36 @@ void register_signal_handler()
 
 void get_objective()
 {
-    CInsertObjectiveAccessor insertObjective;
+    DataTypes::Objective objective = pSubscriber->GetObjective();
 
-    CDdsUuid id;
-    CDdsUuid parentId;
-
-    id.GenerateUuid();
-    parentId.GenerateUuid();
-    
-    if (insertObjective.Open(id, parentId, pSubscriber->GetObjective()) == true)
+    switch (objective)
     {
-        insertObjective.CloseRecordset();
+        case DataTypes::Drilling:
+            LOG_INFO("Rig state Drilling");
+            break;
+        case DataTypes::Casing:
+            LOG_INFO("Rig state Casing");
+            break;
+        case DataTypes::Tripping:
+            LOG_INFO("Rig state Tripping");
+            break;
+        case DataTypes::CleaningHole:
+            LOG_INFO("Rig state CleaningHole");
+            break;
+        case DataTypes::AutoReaming:
+            LOG_INFO("Rig state AutoReaming");
+            break;
+        case DataTypes::None:
+            LOG_INFO("Rig state None");
+            break;
     }
-    else
-    {
-        LOG_ERROR("Failed to insert objective record into database");
-    }
-}
-
-void update_state()
-{
-}
-
-void invalid_data()
-{
 }
 
 void liveliness_changed(const DDS::LivelinessChangedStatus &status)
 {
     if (status.alive_count == 0)
     {
-        invalid_data();
+        LOG_INFO("Objective Completed - State [unknown]");
     }
 }
 
@@ -104,7 +112,7 @@ void data_disposed(const DDS::SampleInfo &sampleInfo)
 {
     if (sampleInfo.valid_data == DDS_BOOLEAN_FALSE)
     {
-        invalid_data();
+        LOG_INFO("Objective Completed - State [completed]");
     }
 }
 
@@ -125,18 +133,6 @@ int32_t main(int32_t argc, char **argv)
 
     pSubscriber = new CObjectiveStateSubscriber();
 
-    CDBPool::Instance()->InitializeConnectionPool((const char *)"0.0.0.0",
-                                                  (const char *)"edge_automation",
-                                                  (const char *)"carrier",
-                                                  (const char *)"joshtraynor11",
-                                                  3306,
-                                                  0,
-                                                  "english",
-                                                  "english",
-                                                  CDBPool::dbStatic,
-                                                  10);
-
-    
     if (pSubscriber->Create(domain) == true)
     {
         pSubscriber->OnDataAvailable([&]()
@@ -154,36 +150,9 @@ int32_t main(int32_t argc, char **argv)
                                         data_disposed(sampleInfo);
                                     });
 
-        invalid_data();
-        while (gTerminate == false)
-        {
-            char choice;
-
-            std::cin >> choice;
-
-            switch (choice)
-            {
-                case 'q':
-                    gTerminate = true;
-                    break;
-                case 'c':
-                    //                    if (gCreated == false)
-                    {
-                        pSubscriber->Create(domain);
-                        gCreated = true;
-                        update_state();
-                    }
-                    break;
-                case 'd':
-                    //                    if (gCreated == true)
-                    {
-                        pSubscriber->Destroy();
-                        gCreated = false;
-                        update_state();
-                    }
-                    break;
-            }            
-        }
+        std::unique_lock<std::mutex> lk(gTerminateMutex);
+        gTerminateCondition.wait(lk);
+        LOG_INFO("Signal received: terminating process");
     }
 
     pSubscriber->Destroy();

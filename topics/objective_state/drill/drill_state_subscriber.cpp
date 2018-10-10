@@ -44,9 +44,9 @@ newton_t CDrillStateSubscriber::GetWobActual()
     return (newton_t)m_data.wobActual;
 }
 
-pascal_t CDrillStateSubscriber::GetDifferentialPressureActual()
+pascal_t CDrillStateSubscriber::GetDiffPressureActual()
 {
-    return (pascal_t)m_data.differentialPressureActual;
+    return (pascal_t)m_data.diffPressureActual;
 }
 
 newton_meter_t CDrillStateSubscriber::GetTorqueActual()
@@ -64,9 +64,9 @@ newton_t CDrillStateSubscriber::GetWobLimit()
     return (newton_t)m_data.wobLimit;
 }
 
-pascal_t CDrillStateSubscriber::GetDifferentialPressureLimit()
+pascal_t CDrillStateSubscriber::GetDiffPressureLimit()
 {
-    return (pascal_t)m_data.differentialPressureLimit;
+    return (pascal_t)m_data.diffPressureLimit;
 }
 
 newton_meter_t CDrillStateSubscriber::GetTorqueLimit()
@@ -84,9 +84,9 @@ bool CDrillStateSubscriber::GetWobMode()
     return (m_data.wobMode == DDS_BOOLEAN_TRUE);
 }
 
-bool CDrillStateSubscriber::GetDifferentialPressureMode()
+bool CDrillStateSubscriber::GetDiffPressureMode()
 {
-    return (m_data.differentialPressureMode == DDS_BOOLEAN_TRUE);
+    return (m_data.diffPressureMode == DDS_BOOLEAN_TRUE);
 }
 
 bool CDrillStateSubscriber::GetTorqueMode()
@@ -104,9 +104,9 @@ newton_t CDrillStateSubscriber::GetWobTarget()
     return (newton_t)m_data.wobTarget;
 }
 
-pascal_t CDrillStateSubscriber::GetDifferentialPressureTarget()
+pascal_t CDrillStateSubscriber::GetDiffPressureTarget()
 {
-    return (pascal_t)m_data.differentialPressureTarget;
+    return (pascal_t)m_data.diffPressureTarget;
 }
 
 newton_meter_t CDrillStateSubscriber::GetTorqueTarget()
@@ -117,7 +117,7 @@ newton_meter_t CDrillStateSubscriber::GetTorqueTarget()
 bool CDrillStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               nec::process::DRILLING_STATE,
+                               nec::process::DRILL_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -142,7 +142,7 @@ void CDrillStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent eve
     m_pOnSubscriptionMatched = event;
 }
 
-void CDrillStateSubscriber::DataAvailable(const nec::process::DrillingState &data,
+void CDrillStateSubscriber::DataAvailable(const nec::process::DrillState &data,
                                              const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;

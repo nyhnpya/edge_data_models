@@ -31,12 +31,9 @@ TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -isystem/usr/local/include/edge_third_party
 TARG_INCLUDES += -I /usr/local/include/base_data_types
 TARG_INCLUDES += -I /usr/local/include/objective_objective_state
-TARG_INCLUDES += -I /usr/local/include/clrecordset
-TARG_INCLUDES += -I /usr/include/mysql
 
 # Sources
 TARG_SOURCES = objective_subscriber.cpp
-TARG_SOURCES += dds_accessor.cpp
 
 # Libraries
 TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)

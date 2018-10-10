@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drillPlugin_1648141820_h
-#define drillPlugin_1648141820_h
+#ifndef drillPlugin_1648143797_h
+#define drillPlugin_1648143797_h
 
 #include "drill.h"
 
@@ -35,87 +35,87 @@ namespace nec {
         /* The type used to store keys for instances of type struct
         * AnotherSimple.
         *
-        * By default, this type is struct DrillingRequest
+        * By default, this type is struct DrillRequest
         * itself. However, if for some reason this choice is not practical for your
-        * system (e.g. if sizeof(struct DrillingRequest)
+        * system (e.g. if sizeof(struct DrillRequest)
         * is very large), you may redefine this typedef in terms of another type of
         * your choosing. HOWEVER, if you define the KeyHolder type to be something
         * other than struct AnotherSimple, the
         * following restriction applies: the key of struct
-        * DrillingRequest must consist of a
+        * DrillRequest must consist of a
         * single field of your redefined KeyHolder type and that field must be the
-        * first field in struct DrillingRequest.
+        * first field in struct DrillRequest.
         */
-        typedef  class DrillingRequest DrillingRequestKeyHolder;
+        typedef  class DrillRequest DrillRequestKeyHolder;
 
-        #define DrillingRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-        #define DrillingRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define DrillingRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define DrillRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define DrillRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define DrillRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
 
-        #define DrillingRequestPlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
-        #define DrillingRequestPlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
+        #define DrillRequestPlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
+        #define DrillRequestPlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
 
-        #define DrillingRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define DrillingRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define DrillRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define DrillRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern DrillingRequest*
-        DrillingRequestPluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern DrillRequest*
+        DrillRequestPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern DrillingRequest*
-        DrillingRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern DrillRequest*
+        DrillRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern DrillingRequest*
-        DrillingRequestPluginSupport_create_data(void);
+        NDDSUSERDllExport extern DrillRequest*
+        DrillRequestPluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingRequestPluginSupport_copy_data(
-            DrillingRequest *out,
-            const DrillingRequest *in);
+        DrillRequestPluginSupport_copy_data(
+            DrillRequest *out,
+            const DrillRequest *in);
 
         NDDSUSERDllExport extern void 
-        DrillingRequestPluginSupport_destroy_data_w_params(
-            DrillingRequest *sample,
+        DrillRequestPluginSupport_destroy_data_w_params(
+            DrillRequest *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        DrillingRequestPluginSupport_destroy_data_ex(
-            DrillingRequest *sample,RTIBool deallocate_pointers);
+        DrillRequestPluginSupport_destroy_data_ex(
+            DrillRequest *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        DrillingRequestPluginSupport_destroy_data(
-            DrillingRequest *sample);
+        DrillRequestPluginSupport_destroy_data(
+            DrillRequest *sample);
 
         NDDSUSERDllExport extern void 
-        DrillingRequestPluginSupport_print_data(
-            const DrillingRequest *sample,
+        DrillRequestPluginSupport_print_data(
+            const DrillRequest *sample,
             const char *desc,
             unsigned int indent);
 
-        NDDSUSERDllExport extern DrillingRequest*
-        DrillingRequestPluginSupport_create_key_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern DrillRequest*
+        DrillRequestPluginSupport_create_key_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern DrillingRequest*
-        DrillingRequestPluginSupport_create_key(void);
-
-        NDDSUSERDllExport extern void 
-        DrillingRequestPluginSupport_destroy_key_ex(
-            DrillingRequestKeyHolder *key,RTIBool deallocate_pointers);
+        NDDSUSERDllExport extern DrillRequest*
+        DrillRequestPluginSupport_create_key(void);
 
         NDDSUSERDllExport extern void 
-        DrillingRequestPluginSupport_destroy_key(
-            DrillingRequestKeyHolder *key);
+        DrillRequestPluginSupport_destroy_key_ex(
+            DrillRequestKeyHolder *key,RTIBool deallocate_pointers);
+
+        NDDSUSERDllExport extern void 
+        DrillRequestPluginSupport_destroy_key(
+            DrillRequestKeyHolder *key);
 
         /* ----------------------------------------------------------------------------
         Callback functions:
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        DrillingRequestPlugin_on_participant_attached(
+        DrillRequestPlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -123,40 +123,40 @@ namespace nec {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        DrillingRequestPlugin_on_participant_detached(
+        DrillRequestPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        DrillingRequestPlugin_on_endpoint_attached(
+        DrillRequestPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        DrillingRequestPlugin_on_endpoint_detached(
+        DrillRequestPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        DrillingRequestPlugin_return_sample(
+        DrillRequestPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingRequest *sample,
+            DrillRequest *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingRequestPlugin_copy_sample(
+        DrillRequestPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingRequest *out,
-            const DrillingRequest *in);
+            DrillRequest *out,
+            const DrillRequest *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingRequestPlugin_serialize(
+        DrillRequestPlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const DrillingRequest *sample,
+            const DrillRequest *sample,
             struct RTICdrStream *stream, 
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -164,24 +164,24 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingRequestPlugin_deserialize_sample(
+        DrillRequestPlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingRequest *sample, 
+            DrillRequest *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        DrillingRequestPlugin_serialize_to_cdr_buffer(
+        DrillRequestPlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const DrillingRequest *sample); 
+            const DrillRequest *sample); 
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingRequestPlugin_deserialize(
+        DrillRequestPlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingRequest **sample, 
+            DrillRequest **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -189,19 +189,19 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        DrillingRequestPlugin_deserialize_from_cdr_buffer(
-            DrillingRequest *sample,
+        DrillRequestPlugin_deserialize_from_cdr_buffer(
+            DrillRequest *sample,
             const char * buffer,
             unsigned int length);    
         NDDSUSERDllExport extern DDS_ReturnCode_t
-        DrillingRequestPlugin_data_to_string(
-            const DrillingRequest *sample,
+        DrillRequestPlugin_data_to_string(
+            const DrillRequest *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
-        DrillingRequestPlugin_skip(
+        DrillRequestPlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             RTIBool skip_encapsulation,  
@@ -209,7 +209,7 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingRequestPlugin_get_serialized_sample_max_size_ex(
+        DrillRequestPlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -217,35 +217,35 @@ namespace nec {
             unsigned int current_alignment);    
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingRequestPlugin_get_serialized_sample_max_size(
+        DrillRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingRequestPlugin_get_serialized_sample_min_size(
+        DrillRequestPlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int
-        DrillingRequestPlugin_get_serialized_sample_size(
+        DrillRequestPlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const DrillingRequest * sample);
+            const DrillRequest * sample);
 
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        DrillingRequestPlugin_get_key_kind(void);
+        DrillRequestPlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingRequestPlugin_get_serialized_key_max_size_ex(
+        DrillRequestPlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -253,16 +253,16 @@ namespace nec {
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingRequestPlugin_get_serialized_key_max_size(
+        DrillRequestPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingRequestPlugin_serialize_key(
+        DrillRequestPlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const DrillingRequest *sample,
+            const DrillRequest *sample,
             struct RTICdrStream *stream,
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -270,18 +270,18 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingRequestPlugin_deserialize_key_sample(
+        DrillRequestPlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingRequest * sample,
+            DrillRequest * sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingRequestPlugin_deserialize_key(
+        DrillRequestPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingRequest ** sample,
+            DrillRequest ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -289,34 +289,34 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        DrillingRequestPlugin_serialized_sample_to_key(
+        DrillRequestPlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingRequest *sample,
+            DrillRequest *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingRequestPlugin_instance_to_key(
+        DrillRequestPlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingRequestKeyHolder *key, 
-            const DrillingRequest *instance);
+            DrillRequestKeyHolder *key, 
+            const DrillRequest *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingRequestPlugin_key_to_instance(
+        DrillRequestPlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingRequest *instance, 
-            const DrillingRequestKeyHolder *key);
+            DrillRequest *instance, 
+            const DrillRequestKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingRequestPlugin_instance_to_keyhash(
+        DrillRequestPlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const DrillingRequest *instance);
+            const DrillRequest *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingRequestPlugin_serialized_sample_to_keyhash(
+        DrillRequestPlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -325,95 +325,95 @@ namespace nec {
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        DrillingRequestPlugin_new(void);
+        DrillRequestPlugin_new(void);
 
         NDDSUSERDllExport extern void
-        DrillingRequestPlugin_delete(struct PRESTypePlugin *);
+        DrillRequestPlugin_delete(struct PRESTypePlugin *);
 
         /* The type used to store keys for instances of type struct
         * AnotherSimple.
         *
-        * By default, this type is struct DrillingObjective
+        * By default, this type is struct DrillObjective
         * itself. However, if for some reason this choice is not practical for your
-        * system (e.g. if sizeof(struct DrillingObjective)
+        * system (e.g. if sizeof(struct DrillObjective)
         * is very large), you may redefine this typedef in terms of another type of
         * your choosing. HOWEVER, if you define the KeyHolder type to be something
         * other than struct AnotherSimple, the
         * following restriction applies: the key of struct
-        * DrillingObjective must consist of a
+        * DrillObjective must consist of a
         * single field of your redefined KeyHolder type and that field must be the
-        * first field in struct DrillingObjective.
+        * first field in struct DrillObjective.
         */
-        typedef  class DrillingObjective DrillingObjectiveKeyHolder;
+        typedef  class DrillObjective DrillObjectiveKeyHolder;
 
-        #define DrillingObjectivePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-        #define DrillingObjectivePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define DrillingObjectivePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define DrillObjectivePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define DrillObjectivePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define DrillObjectivePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
 
-        #define DrillingObjectivePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
-        #define DrillingObjectivePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
+        #define DrillObjectivePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
+        #define DrillObjectivePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
 
-        #define DrillingObjectivePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define DrillingObjectivePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define DrillObjectivePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define DrillObjectivePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern DrillingObjective*
-        DrillingObjectivePluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern DrillObjective*
+        DrillObjectivePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern DrillingObjective*
-        DrillingObjectivePluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern DrillObjective*
+        DrillObjectivePluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern DrillingObjective*
-        DrillingObjectivePluginSupport_create_data(void);
+        NDDSUSERDllExport extern DrillObjective*
+        DrillObjectivePluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingObjectivePluginSupport_copy_data(
-            DrillingObjective *out,
-            const DrillingObjective *in);
+        DrillObjectivePluginSupport_copy_data(
+            DrillObjective *out,
+            const DrillObjective *in);
 
         NDDSUSERDllExport extern void 
-        DrillingObjectivePluginSupport_destroy_data_w_params(
-            DrillingObjective *sample,
+        DrillObjectivePluginSupport_destroy_data_w_params(
+            DrillObjective *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        DrillingObjectivePluginSupport_destroy_data_ex(
-            DrillingObjective *sample,RTIBool deallocate_pointers);
+        DrillObjectivePluginSupport_destroy_data_ex(
+            DrillObjective *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        DrillingObjectivePluginSupport_destroy_data(
-            DrillingObjective *sample);
+        DrillObjectivePluginSupport_destroy_data(
+            DrillObjective *sample);
 
         NDDSUSERDllExport extern void 
-        DrillingObjectivePluginSupport_print_data(
-            const DrillingObjective *sample,
+        DrillObjectivePluginSupport_print_data(
+            const DrillObjective *sample,
             const char *desc,
             unsigned int indent);
 
-        NDDSUSERDllExport extern DrillingObjective*
-        DrillingObjectivePluginSupport_create_key_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern DrillObjective*
+        DrillObjectivePluginSupport_create_key_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern DrillingObjective*
-        DrillingObjectivePluginSupport_create_key(void);
-
-        NDDSUSERDllExport extern void 
-        DrillingObjectivePluginSupport_destroy_key_ex(
-            DrillingObjectiveKeyHolder *key,RTIBool deallocate_pointers);
+        NDDSUSERDllExport extern DrillObjective*
+        DrillObjectivePluginSupport_create_key(void);
 
         NDDSUSERDllExport extern void 
-        DrillingObjectivePluginSupport_destroy_key(
-            DrillingObjectiveKeyHolder *key);
+        DrillObjectivePluginSupport_destroy_key_ex(
+            DrillObjectiveKeyHolder *key,RTIBool deallocate_pointers);
+
+        NDDSUSERDllExport extern void 
+        DrillObjectivePluginSupport_destroy_key(
+            DrillObjectiveKeyHolder *key);
 
         /* ----------------------------------------------------------------------------
         Callback functions:
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        DrillingObjectivePlugin_on_participant_attached(
+        DrillObjectivePlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -421,40 +421,40 @@ namespace nec {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        DrillingObjectivePlugin_on_participant_detached(
+        DrillObjectivePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        DrillingObjectivePlugin_on_endpoint_attached(
+        DrillObjectivePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        DrillingObjectivePlugin_on_endpoint_detached(
+        DrillObjectivePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        DrillingObjectivePlugin_return_sample(
+        DrillObjectivePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingObjective *sample,
+            DrillObjective *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingObjectivePlugin_copy_sample(
+        DrillObjectivePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingObjective *out,
-            const DrillingObjective *in);
+            DrillObjective *out,
+            const DrillObjective *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingObjectivePlugin_serialize(
+        DrillObjectivePlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const DrillingObjective *sample,
+            const DrillObjective *sample,
             struct RTICdrStream *stream, 
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -462,24 +462,24 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingObjectivePlugin_deserialize_sample(
+        DrillObjectivePlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingObjective *sample, 
+            DrillObjective *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        DrillingObjectivePlugin_serialize_to_cdr_buffer(
+        DrillObjectivePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const DrillingObjective *sample); 
+            const DrillObjective *sample); 
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingObjectivePlugin_deserialize(
+        DrillObjectivePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingObjective **sample, 
+            DrillObjective **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -487,19 +487,19 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        DrillingObjectivePlugin_deserialize_from_cdr_buffer(
-            DrillingObjective *sample,
+        DrillObjectivePlugin_deserialize_from_cdr_buffer(
+            DrillObjective *sample,
             const char * buffer,
             unsigned int length);    
         NDDSUSERDllExport extern DDS_ReturnCode_t
-        DrillingObjectivePlugin_data_to_string(
-            const DrillingObjective *sample,
+        DrillObjectivePlugin_data_to_string(
+            const DrillObjective *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
-        DrillingObjectivePlugin_skip(
+        DrillObjectivePlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             RTIBool skip_encapsulation,  
@@ -507,7 +507,7 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingObjectivePlugin_get_serialized_sample_max_size_ex(
+        DrillObjectivePlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -515,35 +515,35 @@ namespace nec {
             unsigned int current_alignment);    
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingObjectivePlugin_get_serialized_sample_max_size(
+        DrillObjectivePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingObjectivePlugin_get_serialized_sample_min_size(
+        DrillObjectivePlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int
-        DrillingObjectivePlugin_get_serialized_sample_size(
+        DrillObjectivePlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const DrillingObjective * sample);
+            const DrillObjective * sample);
 
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        DrillingObjectivePlugin_get_key_kind(void);
+        DrillObjectivePlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingObjectivePlugin_get_serialized_key_max_size_ex(
+        DrillObjectivePlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -551,16 +551,16 @@ namespace nec {
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingObjectivePlugin_get_serialized_key_max_size(
+        DrillObjectivePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingObjectivePlugin_serialize_key(
+        DrillObjectivePlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const DrillingObjective *sample,
+            const DrillObjective *sample,
             struct RTICdrStream *stream,
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -568,18 +568,18 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingObjectivePlugin_deserialize_key_sample(
+        DrillObjectivePlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingObjective * sample,
+            DrillObjective * sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingObjectivePlugin_deserialize_key(
+        DrillObjectivePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingObjective ** sample,
+            DrillObjective ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -587,34 +587,34 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        DrillingObjectivePlugin_serialized_sample_to_key(
+        DrillObjectivePlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingObjective *sample,
+            DrillObjective *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingObjectivePlugin_instance_to_key(
+        DrillObjectivePlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingObjectiveKeyHolder *key, 
-            const DrillingObjective *instance);
+            DrillObjectiveKeyHolder *key, 
+            const DrillObjective *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingObjectivePlugin_key_to_instance(
+        DrillObjectivePlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingObjective *instance, 
-            const DrillingObjectiveKeyHolder *key);
+            DrillObjective *instance, 
+            const DrillObjectiveKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingObjectivePlugin_instance_to_keyhash(
+        DrillObjectivePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const DrillingObjective *instance);
+            const DrillObjective *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingObjectivePlugin_serialized_sample_to_keyhash(
+        DrillObjectivePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -623,95 +623,95 @@ namespace nec {
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        DrillingObjectivePlugin_new(void);
+        DrillObjectivePlugin_new(void);
 
         NDDSUSERDllExport extern void
-        DrillingObjectivePlugin_delete(struct PRESTypePlugin *);
+        DrillObjectivePlugin_delete(struct PRESTypePlugin *);
 
         /* The type used to store keys for instances of type struct
         * AnotherSimple.
         *
-        * By default, this type is struct DrillingState
+        * By default, this type is struct DrillState
         * itself. However, if for some reason this choice is not practical for your
-        * system (e.g. if sizeof(struct DrillingState)
+        * system (e.g. if sizeof(struct DrillState)
         * is very large), you may redefine this typedef in terms of another type of
         * your choosing. HOWEVER, if you define the KeyHolder type to be something
         * other than struct AnotherSimple, the
         * following restriction applies: the key of struct
-        * DrillingState must consist of a
+        * DrillState must consist of a
         * single field of your redefined KeyHolder type and that field must be the
-        * first field in struct DrillingState.
+        * first field in struct DrillState.
         */
-        typedef  class DrillingState DrillingStateKeyHolder;
+        typedef  class DrillState DrillStateKeyHolder;
 
-        #define DrillingStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-        #define DrillingStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define DrillingStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define DrillStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define DrillStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define DrillStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
 
-        #define DrillingStatePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
-        #define DrillingStatePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
+        #define DrillStatePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
+        #define DrillStatePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
 
-        #define DrillingStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define DrillingStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define DrillStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define DrillStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern DrillingState*
-        DrillingStatePluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern DrillState*
+        DrillStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern DrillingState*
-        DrillingStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern DrillState*
+        DrillStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern DrillingState*
-        DrillingStatePluginSupport_create_data(void);
+        NDDSUSERDllExport extern DrillState*
+        DrillStatePluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingStatePluginSupport_copy_data(
-            DrillingState *out,
-            const DrillingState *in);
+        DrillStatePluginSupport_copy_data(
+            DrillState *out,
+            const DrillState *in);
 
         NDDSUSERDllExport extern void 
-        DrillingStatePluginSupport_destroy_data_w_params(
-            DrillingState *sample,
+        DrillStatePluginSupport_destroy_data_w_params(
+            DrillState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        DrillingStatePluginSupport_destroy_data_ex(
-            DrillingState *sample,RTIBool deallocate_pointers);
+        DrillStatePluginSupport_destroy_data_ex(
+            DrillState *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        DrillingStatePluginSupport_destroy_data(
-            DrillingState *sample);
+        DrillStatePluginSupport_destroy_data(
+            DrillState *sample);
 
         NDDSUSERDllExport extern void 
-        DrillingStatePluginSupport_print_data(
-            const DrillingState *sample,
+        DrillStatePluginSupport_print_data(
+            const DrillState *sample,
             const char *desc,
             unsigned int indent);
 
-        NDDSUSERDllExport extern DrillingState*
-        DrillingStatePluginSupport_create_key_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern DrillState*
+        DrillStatePluginSupport_create_key_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern DrillingState*
-        DrillingStatePluginSupport_create_key(void);
-
-        NDDSUSERDllExport extern void 
-        DrillingStatePluginSupport_destroy_key_ex(
-            DrillingStateKeyHolder *key,RTIBool deallocate_pointers);
+        NDDSUSERDllExport extern DrillState*
+        DrillStatePluginSupport_create_key(void);
 
         NDDSUSERDllExport extern void 
-        DrillingStatePluginSupport_destroy_key(
-            DrillingStateKeyHolder *key);
+        DrillStatePluginSupport_destroy_key_ex(
+            DrillStateKeyHolder *key,RTIBool deallocate_pointers);
+
+        NDDSUSERDllExport extern void 
+        DrillStatePluginSupport_destroy_key(
+            DrillStateKeyHolder *key);
 
         /* ----------------------------------------------------------------------------
         Callback functions:
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        DrillingStatePlugin_on_participant_attached(
+        DrillStatePlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -719,40 +719,40 @@ namespace nec {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        DrillingStatePlugin_on_participant_detached(
+        DrillStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        DrillingStatePlugin_on_endpoint_attached(
+        DrillStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        DrillingStatePlugin_on_endpoint_detached(
+        DrillStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        DrillingStatePlugin_return_sample(
+        DrillStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingState *sample,
+            DrillState *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingStatePlugin_copy_sample(
+        DrillStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingState *out,
-            const DrillingState *in);
+            DrillState *out,
+            const DrillState *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingStatePlugin_serialize(
+        DrillStatePlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const DrillingState *sample,
+            const DrillState *sample,
             struct RTICdrStream *stream, 
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -760,24 +760,24 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingStatePlugin_deserialize_sample(
+        DrillStatePlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingState *sample, 
+            DrillState *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        DrillingStatePlugin_serialize_to_cdr_buffer(
+        DrillStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const DrillingState *sample); 
+            const DrillState *sample); 
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingStatePlugin_deserialize(
+        DrillStatePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingState **sample, 
+            DrillState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -785,19 +785,19 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        DrillingStatePlugin_deserialize_from_cdr_buffer(
-            DrillingState *sample,
+        DrillStatePlugin_deserialize_from_cdr_buffer(
+            DrillState *sample,
             const char * buffer,
             unsigned int length);    
         NDDSUSERDllExport extern DDS_ReturnCode_t
-        DrillingStatePlugin_data_to_string(
-            const DrillingState *sample,
+        DrillStatePlugin_data_to_string(
+            const DrillState *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
-        DrillingStatePlugin_skip(
+        DrillStatePlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             RTIBool skip_encapsulation,  
@@ -805,7 +805,7 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingStatePlugin_get_serialized_sample_max_size_ex(
+        DrillStatePlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -813,35 +813,35 @@ namespace nec {
             unsigned int current_alignment);    
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingStatePlugin_get_serialized_sample_max_size(
+        DrillStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingStatePlugin_get_serialized_sample_min_size(
+        DrillStatePlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int
-        DrillingStatePlugin_get_serialized_sample_size(
+        DrillStatePlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const DrillingState * sample);
+            const DrillState * sample);
 
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        DrillingStatePlugin_get_key_kind(void);
+        DrillStatePlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingStatePlugin_get_serialized_key_max_size_ex(
+        DrillStatePlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -849,16 +849,16 @@ namespace nec {
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        DrillingStatePlugin_get_serialized_key_max_size(
+        DrillStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingStatePlugin_serialize_key(
+        DrillStatePlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const DrillingState *sample,
+            const DrillState *sample,
             struct RTICdrStream *stream,
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -866,18 +866,18 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingStatePlugin_deserialize_key_sample(
+        DrillStatePlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingState * sample,
+            DrillState * sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingStatePlugin_deserialize_key(
+        DrillStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingState ** sample,
+            DrillState ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -885,34 +885,34 @@ namespace nec {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        DrillingStatePlugin_serialized_sample_to_key(
+        DrillStatePlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingState *sample,
+            DrillState *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingStatePlugin_instance_to_key(
+        DrillStatePlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingStateKeyHolder *key, 
-            const DrillingState *instance);
+            DrillStateKeyHolder *key, 
+            const DrillState *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingStatePlugin_key_to_instance(
+        DrillStatePlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            DrillingState *instance, 
-            const DrillingStateKeyHolder *key);
+            DrillState *instance, 
+            const DrillStateKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingStatePlugin_instance_to_keyhash(
+        DrillStatePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const DrillingState *instance);
+            const DrillState *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        DrillingStatePlugin_serialized_sample_to_keyhash(
+        DrillStatePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -921,10 +921,10 @@ namespace nec {
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        DrillingStatePlugin_new(void);
+        DrillStatePlugin_new(void);
 
         NDDSUSERDllExport extern void
-        DrillingStatePlugin_delete(struct PRESTypePlugin *);
+        DrillStatePlugin_delete(struct PRESTypePlugin *);
 
     } /* namespace process  */
 } /* namespace nec  */
@@ -936,5 +936,5 @@ namespace nec {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* drillPlugin_1648141820_h */
+#endif /* drillPlugin_1648143797_h */
 

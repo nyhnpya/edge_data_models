@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __DRILLING_REQUEST_PUBLISHER_H__
-#define __DRILLING_REQUEST_PUBLISHER_H__
+#ifndef __DRILL_REQUEST_PUBLISHER_H__
+#define __DRILL_REQUEST_PUBLISHER_H__
 
 #include "publisher.h"
 #include "drill.h"
@@ -31,7 +31,7 @@ using namespace units::force;
 using namespace units::torque;
 using namespace units::pressure;
 
-class CDrillRequestPublisher : public TPublisher< nec::process::DrillingRequest >
+class CDrillRequestPublisher : public TPublisher< nec::process::DrillRequest >
 {
  public:
     CDrillRequestPublisher();
@@ -45,14 +45,14 @@ class CDrillRequestPublisher : public TPublisher< nec::process::DrillingRequest 
     void SetPriority(DataTypes::Priority priority);
     void SetTimeNeeded(DataTypes::Time timeNeeded);
     void SetDuration(DataTypes::Time duration);
-    void SetRopLimit(const meters_per_second_t ropLimit);
-    void SetWobLimit(const newton_t wobLimit);
-    void SetDifferentialPressureLimit(const pascal_t differentialPressureLimit);
-    void SetTorqueLimit(const newton_meter_t torqueLimit);
+    void SetRopTarget(const meters_per_second_t ropTarget);
+    void SetWobTarget(const newton_t wobTarget);
+    void SetDiffPressureTarget(const pascal_t diffPressureTarget);
+    void SetTorqueTarget(const newton_meter_t torqueTarget);
     void SetRopMode(const bool ropMode);
     void SetWobMode(const bool wobMode);
-    void SetDifferentialPressureMode(const bool differentialPressureMode);
+    void SetDiffPressureMode(const bool diffPressureMode);
     void SetTorqueMode(const bool torqueMode);
 };
 
-#endif // __DRILLING_REQUEST_PUBLISHER_H__
+#endif // __DRILL_REQUEST_PUBLISHER_H__

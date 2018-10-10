@@ -12,15 +12,15 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __DRILLING_OBJECTIVE_SUBSCRIBER_H__
-#define __DRILLING_OBJECTIVE_SUBSCRIBER_H__
+#ifndef __DRILL_OBJECTIVE_SUBSCRIBER_H__
+#define __DRILL_OBJECTIVE_SUBSCRIBER_H__
 
 #include "subscriber.h"
 #include "base_data_types.h"
 #include "drill.h"
 #include "drillSupport.h"
 
-class CDrillObjectiveSubscriber : public TSubscriber< nec::process::DrillingObjective >
+class CDrillObjectiveSubscriber : public TSubscriber< nec::process::DrillObjective >
 {
  public:
     CDrillObjectiveSubscriber();
@@ -35,23 +35,23 @@ class CDrillObjectiveSubscriber : public TSubscriber< nec::process::DrillingObje
     // getters
     DataTypes::Uuid GetId();
     DataTypes::Time GetEstimatedDuration();
-    double GetRopLimit();
-    double GetWobLimit();
-    double GetDifferentialPressureLimit();
-    double GetTorqueLimit();
+    double GetRopTarget();
+    double GetWobTarget();
+    double GetDiffPressureTarget();
+    double GetTorqueTarget();
     bool GetRopMode();
     bool GetWobMode();
-    bool GetDifferentialPressureMode();
+    bool GetDiffPressureMode();
     bool GetTorqueMode();
 
  protected:
-    void DataAvailable(const nec::process::DrillingObjective &data,
+    void DataAvailable(const nec::process::DrillObjective &data,
                const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
  private:
-    nec::process::DrillingObjective m_data;
+    nec::process::DrillObjective m_data;
     DDS::SampleInfo             m_sampleInfo;
     DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent        m_pOnDataAvailable;
@@ -59,4 +59,4 @@ class CDrillObjectiveSubscriber : public TSubscriber< nec::process::DrillingObje
     OnLivelinessChangedEvent     m_pOnLivelinessChanged;
 };
 
-#endif // __DRILLING_OBJECTIVE_SUBSCRIBER_H__
+#endif // __DRILL_OBJECTIVE_SUBSCRIBER_H__

@@ -27,51 +27,51 @@ void CDrillObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimatedDur
     }
 }
 
-void CDrillObjectivePublisher::SetRopLimit(const double ropLimit)
+void CDrillObjectivePublisher::SetRopTarget(const double ropTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->ropLimit = ropLimit;
+        m_pDataInstance->ropTarget = ropTarget;
     }
     else
     {
-        LOG_ERROR("Failed to set rop limit on uninitialized sample");
+        LOG_ERROR("Failed to set rop target on uninitialized sample");
     }
 }
 
-void CDrillObjectivePublisher::SetWobLimit(const double wobLimit)
+void CDrillObjectivePublisher::SetWobTarget(const double wobTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobLimit = wobLimit;
+        m_pDataInstance->wobTarget = wobTarget;
     }
     else
     {
-        LOG_ERROR("Failed to set wob limit on uninitialized sample");
+        LOG_ERROR("Failed to set wob target on uninitialized sample");
     }
 }
 
-void CDrillObjectivePublisher::SetDifferentialPressureLimit(const double differentialPressureLimit)
+void CDrillObjectivePublisher::SetDiffPressureTarget(const double diffPressureTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressureLimit = differentialPressureLimit;
+        m_pDataInstance->diffPressureTarget = diffPressureTarget;
     }
     else
     {
-        LOG_ERROR("Failed to set differential pressure limit on uninitialized sample");
+        LOG_ERROR("Failed to set diff pressure target on uninitialized sample");
     }
 }
 
-void CDrillObjectivePublisher::SetTorqueLimit(const double torqueLimit)
+void CDrillObjectivePublisher::SetTorqueTarget(const double torqueTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueLimit = torqueLimit;
+        m_pDataInstance->torqueTarget = torqueTarget;
     }
     else
     {
-        LOG_ERROR("Failed to set torque limit on uninitialized sample");
+        LOG_ERROR("Failed to set torque target on uninitialized sample");
     }
 }
 
@@ -99,15 +99,15 @@ void CDrillObjectivePublisher::SetWobMode(const bool wobMode)
     }
 }
 
-void CDrillObjectivePublisher::SetDifferentialPressureMode(const bool differentialPressureMode)
+void CDrillObjectivePublisher::SetDiffPressureMode(const bool diffPressureMode)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressureMode = differentialPressureMode;
+        m_pDataInstance->diffPressureMode = diffPressureMode;
     }
     else
     {
-        LOG_ERROR("Failed to set differential pressure mode on uninitialized sample");
+        LOG_ERROR("Failed to set diff pressure mode on uninitialized sample");
     }
 }
 
@@ -131,7 +131,7 @@ bool CDrillObjectivePublisher::PublishSample()
 bool CDrillObjectivePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              nec::process::DRILLING_OBJECTIVE,
+                              nec::process::DRILL_OBJECTIVE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

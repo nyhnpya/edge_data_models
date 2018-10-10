@@ -43,51 +43,51 @@ void CDrillRequestPublisher::SetDuration(DataTypes::Time duration)
     }
 }
 
-void CDrillRequestPublisher::SetRopLimit(const meters_per_second_t ropLimit)
+void CDrillRequestPublisher::SetRopTarget(const meters_per_second_t ropTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->ropLimit = units::unit_cast<double>(ropLimit);
+        m_pDataInstance->ropTarget = units::unit_cast<double>(ropTarget);
     }
     else
     {
-        LOG_ERROR("Failed to set rop limit on uninitialized sample");
+        LOG_ERROR("Failed to set rop target on uninitialized sample");
     }
 }
 
-void CDrillRequestPublisher::SetWobLimit(const newton_t wobLimit)
+void CDrillRequestPublisher::SetWobTarget(const newton_t wobTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobLimit = units::unit_cast<double>(wobLimit);
+        m_pDataInstance->wobTarget = units::unit_cast<double>(wobTarget);
     }
     else
     {
-        LOG_ERROR("Failed to set wob limit on uninitialized sample");
+        LOG_ERROR("Failed to set wob target on uninitialized sample");
     }
 }
 
-void CDrillRequestPublisher::SetDifferentialPressureLimit(const pascal_t differentialPressureLimit)
+void CDrillRequestPublisher::SetDiffPressureTarget(const pascal_t diffPressureTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressureLimit = units::unit_cast<double>(differentialPressureLimit);
+        m_pDataInstance->diffPressureTarget = units::unit_cast<double>(diffPressureTarget);
     }
     else
     {
-        LOG_ERROR("Failed to set differential pressure limit on uninitialized sample");
+        LOG_ERROR("Failed to set diff pressure target on uninitialized sample");
     }
 }
 
-void CDrillRequestPublisher::SetTorqueLimit(const newton_meter_t torqueLimit)
+void CDrillRequestPublisher::SetTorqueTarget(const newton_meter_t torqueTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueLimit = units::unit_cast<double>(torqueLimit);
+        m_pDataInstance->torqueTarget = units::unit_cast<double>(torqueTarget);
     }
     else
     {
-        LOG_ERROR("Failed to set torque limit on uninitialized sample");
+        LOG_ERROR("Failed to set torque target on uninitialized sample");
     }
 }
 
@@ -115,15 +115,15 @@ void CDrillRequestPublisher::SetWobMode(const bool wobMode)
     }
 }
 
-void CDrillRequestPublisher::SetDifferentialPressureMode(const bool differentialPressureMode)
+void CDrillRequestPublisher::SetDiffPressureMode(const bool diffPressureMode)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressureMode = differentialPressureMode;
+        m_pDataInstance->diffPressureMode = diffPressureMode;
     }
     else
     {
-        LOG_ERROR("Failed to set differential pressure mode on uninitialized sample");
+        LOG_ERROR("Failed to set diff pressure mode on uninitialized sample");
     }
 }
 
@@ -147,7 +147,7 @@ bool CDrillRequestPublisher::PublishSample()
 bool CDrillRequestPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              nec::process::DRILLING_REQUEST,
+                              nec::process::DRILL_REQUEST,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

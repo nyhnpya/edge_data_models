@@ -68,15 +68,15 @@ void CDrillStatePublisher::SetWobActual(const newton_t wobActual)
     }
 }
 
-void CDrillStatePublisher::SetDifferentialPressureActual(const pascal_t differentialPressureActual)
+void CDrillStatePublisher::SetDiffPressureActual(const pascal_t diffPressureActual)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressureActual = units::unit_cast<double>(differentialPressureActual);
+        m_pDataInstance->diffPressureActual = units::unit_cast<double>(diffPressureActual);
     }
     else
     {
-        LOG_ERROR("Failed to set differential pressure actual because of uninitialized sample");
+        LOG_ERROR("Failed to set diff pressure actual because of uninitialized sample");
     }
 }
 
@@ -116,15 +116,15 @@ void CDrillStatePublisher::SetWobLimit(const newton_t wobLimit)
     }
 }
 
-void CDrillStatePublisher::SetDifferentialPressureLimit(const pascal_t differentialPressureLimit)
+void CDrillStatePublisher::SetDiffPressureLimit(const pascal_t diffPressureLimit)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressureLimit = units::unit_cast<double>(differentialPressureLimit);
+        m_pDataInstance->diffPressureLimit = units::unit_cast<double>(diffPressureLimit);
     }
     else
     {
-        LOG_ERROR("Failed to set differential pressure limit because of uninitialized sample");
+        LOG_ERROR("Failed to set diff pressure limit because of uninitialized sample");
     }
 }
 
@@ -164,15 +164,15 @@ void CDrillStatePublisher::SetWobMode(const bool wobMode)
     }
 }
 
-void CDrillStatePublisher::SetDifferentialPressureMode(const bool differentialPressureMode)
+void CDrillStatePublisher::SetDiffPressureMode(const bool diffPressureMode)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressureMode = differentialPressureMode;
+        m_pDataInstance->diffPressureMode = diffPressureMode;
     }
     else
     {
-        LOG_ERROR("Failed to set differential pressure mode because of uninitialized sample");
+        LOG_ERROR("Failed to set diff pressure mode because of uninitialized sample");
     }
 }
 
@@ -212,15 +212,15 @@ void CDrillStatePublisher::SetWobTarget(const newton_t wobTarget)
     }
 }
 
-void CDrillStatePublisher::SetDifferentialPressureTarget(const pascal_t differentialPressureTarget)
+void CDrillStatePublisher::SetDiffPressureTarget(const pascal_t diffPressureTarget)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->differentialPressureTarget = units::unit_cast<double>(differentialPressureTarget);
+        m_pDataInstance->diffPressureTarget = units::unit_cast<double>(diffPressureTarget);
     }
     else
     {
-        LOG_ERROR("Failed to set differential pressure target because of uninitialized sample");
+        LOG_ERROR("Failed to set diff pressure target because of uninitialized sample");
     }
 }
 
@@ -265,7 +265,7 @@ bool CDrillStatePublisher::PublishSample()
 bool CDrillStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              nec::process::DRILLING_STATE,
+                              nec::process::DRILL_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }
