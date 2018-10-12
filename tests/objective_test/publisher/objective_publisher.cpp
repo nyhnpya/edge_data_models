@@ -83,6 +83,24 @@ void publish_thread()
     std::cout << "thread terminated"  << std::endl;
 }
 
+void delete_instance()
+{
+    char choice;
+
+    std::cout << std::endl;
+    std::cout << "d. Delete Instance" << std::endl;
+    std::cout << "option: ";
+    std::cin >> choice;
+    std::cout << std::endl;
+
+    switch (choice)
+    {
+        case 'd':
+            gpStatePublisher->DeleteInstance();
+            break;
+    }
+}
+
 void top_level_menu()
 {
     char choice;
@@ -114,31 +132,45 @@ void top_level_menu()
                 }
                 break;
             case '1':
+                gpStatePublisher->CreateInstance();
                 gpStatePublisher->Initialize();
                 gpStatePublisher->SetObjective(DataTypes::Drilling);
                 gpStatePublisher->PublishSample();
+                delete_instance();
                 break;
             case '2':
+                gpStatePublisher->CreateInstance();
                 gpStatePublisher->Initialize();
                 gpStatePublisher->SetObjective(DataTypes::Tripping);
                 gpStatePublisher->PublishSample();
+                delete_instance();
                 break;
             case '3':
+                gpStatePublisher->CreateInstance();
                 gpStatePublisher->Initialize();
                 gpStatePublisher->SetObjective(DataTypes::CleaningHole);
                 gpStatePublisher->PublishSample();
+                delete_instance();
                 break;
             case '4':
+                gpStatePublisher->CreateInstance();
                 gpStatePublisher->Initialize();
                 gpStatePublisher->SetObjective(DataTypes::Casing);
                 gpStatePublisher->PublishSample();
+                delete_instance();
+                break;
             case '5':
+                gpStatePublisher->CreateInstance();
                 gpStatePublisher->Initialize();
                 gpStatePublisher->SetObjective(DataTypes::None);
                 gpStatePublisher->PublishSample();
+                delete_instance();
                 break;
             case '6':
+                gpStatePublisher->CreateInstance();
+                gpStatePublisher->Initialize();
                 threadId = std::thread(publish_thread);
+                delete_instance();
                 break;
         }
     } while (gTerminate == false);
@@ -165,7 +197,6 @@ int32_t main(int32_t argc, char **argv)
 
     if (gpStatePublisher->Create(domain) == true)
     {
-        gpStatePublisher->CreateInstance();
         top_level_menu();
     }
 
