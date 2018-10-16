@@ -1,23 +1,26 @@
-module Hmi
+module Shell
 {
-    module RoptimizerConfiguration
+    module Hmi
     {
-        //@copy-c-declaration static const char MODEL_STATE_REQUEST[] = "ModelStateRequest";
-        struct RoptimizerCnfigurationRequest
+        module RoptimizerConfiguration
         {
-            double steadyStateWindow;
-            double steadyStateMin;
-            double rpmStepSize;
-            double ropStepSize;
-        };
+            //@copy-c-declaration static const char MODEL_STATE_REQUEST[] = "ModelStateRequest";
+            struct RoptimizerCnfigurationRequest
+            {
+                double steadyStateWindow;
+                double steadyStateMin;
+                double rpmStepSize;
+                double ropStepSize;
+            };
 
-        //@copy-c-declaration static const char MODEL_STATE_REQUEST[] = "ModelStateRequest";
-        struct SteadyState
-        {
-            boolean rpm;
-            boolean rop;
-            boolean wob;
-            boolean torque;
+            //@copy-c-declaration static const char MODEL_STATE_REQUEST[] = "ModelStateRequest";
+            struct SteadyState
+            {
+                boolean rpm;
+                boolean rop;
+                boolean wob;
+                boolean torque;
+            };
         };
     };
 };
