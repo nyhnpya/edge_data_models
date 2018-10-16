@@ -4,8 +4,8 @@ module Shell
     {
         module RoptimizerConfiguration
         {
-            //@copy-c-declaration static const char MODEL_STATE_REQUEST[] = "ModelStateRequest";
-            struct RoptimizerCnfigurationRequest
+            //@copy-c-declaration static const char ROPTIMIZER_CONFIGURATION_REQUEST[] = "RoptimizerConfigurationRequest";
+            struct RoptimizerConfigurationRequest
             {
                 double steadyStateWindow;
                 double steadyStateMin;
@@ -13,13 +13,13 @@ module Shell
                 double ropStepSize;
             };
 
-            //@copy-c-declaration static const char MODEL_STATE_REQUEST[] = "ModelStateRequest";
-            struct SteadyState
+            //@copy-c-declaration static const char ROPTIMIZER_STEADY_STATE[] = "RoptimizerSteadyState";
+            struct RoptimizerSteadyState
             {
-                boolean rpm;
-                boolean rop;
-                boolean wob;
-                boolean torque;
+                boolean rpmState;
+                boolean ropState;
+                boolean wobState;
+                boolean torqueState;
             };
         };
     };

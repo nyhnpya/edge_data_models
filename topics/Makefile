@@ -18,6 +18,7 @@ MAKEFILE_LIBRARY_DIRS += objective_state/drilling_limits
 MAKEFILE_LIBRARY_DIRS += objective_state/hoist
 MAKEFILE_LIBRARY_DIRS += objective_state/objective
 MAKEFILE_LIBRARY_DIRS += objective_state/rotate
+MAKEFILE_LIBRARY_DIRS += objective_state/roptimizer_configuration
 MAKEFILE_LIBRARY_DIRS += objective_state/simulation
 MAKEFILE_LIBRARY_DIRS += objective_state/wellbore
 MAKEFILE_LIBRARY_DIRS += publishers/process_info

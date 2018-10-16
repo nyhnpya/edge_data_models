@@ -1646,6 +1646,9 @@ namespace DataTypes {
         plugin->destroySampleFnc =
         (PRESTypePluginDestroySampleFunction)
         TimePlugin_destroy_sample;
+        plugin->finalizeOptionalMembersFnc =
+        (PRESTypePluginFinalizeOptionalMembersFunction)
+        Time_finalize_optional_members;
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
