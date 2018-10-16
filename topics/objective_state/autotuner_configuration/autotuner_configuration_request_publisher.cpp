@@ -123,7 +123,7 @@ bool CModelStateRequestPublisher::PublishSample()
 bool CModelStateRequestPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              AutoTunerConfiguration::MODEL_STATE_REQUEST,
+                              Shell::Hmi::AutoTunerConfiguration::MODEL_STATE_REQUEST,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }
@@ -262,7 +262,7 @@ bool CWobTuningRequestPublisher::PublishSample()
 bool CWobTuningRequestPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              AutoTunerConfiguration::WOB_TUNING_REQUEST,
+                              Shell::Hmi::AutoTunerConfiguration::WOB_TUNING_REQUEST,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }
@@ -401,7 +401,7 @@ bool CDiffpTuningRequestPublisher::PublishSample()
 bool CDiffpTuningRequestPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              AutoTunerConfiguration::DIFFP_TUNING_REQUEST,
+                              Shell::Hmi::AutoTunerConfiguration::DIFFP_TUNING_REQUEST,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }
@@ -540,7 +540,7 @@ bool CTorqueTuningRequestPublisher::PublishSample()
 bool CTorqueTuningRequestPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              AutoTunerConfiguration::TORQUE_TUNING_REQUEST,
+                              Shell::Hmi::AutoTunerConfiguration::TORQUE_TUNING_REQUEST,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

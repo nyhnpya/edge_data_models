@@ -30,10 +30,10 @@ using namespace units::length;
 
 namespace CAutoTunerConfigurationStateSubscriber
 {
-    class CModelStateStateSubscriber : public TSubscriber< AutoTunerConfiguration::ModelStateState >
+    class CModelStateStateSubscriber : public TSubscriber< Shell::Hmi::AutoTunerConfiguration::ModelStateState >
     {
     public:
-        typedef std::function<void(const AutoTunerConfiguration::ModelStateState &data)> OnDataAvailableEvent;
+        typedef std::function<void(const Shell::Hmi::AutoTunerConfiguration::ModelStateState &data)> OnDataAvailableEvent;
 
         CModelStateStateSubscriber();
         ~CModelStateStateSubscriber();
@@ -57,14 +57,14 @@ namespace CAutoTunerConfigurationStateSubscriber
         bool GetTunerEnabled(bool &tunerEnabled);
 
     protected:
-        void DataAvailable(const AutoTunerConfiguration::ModelStateState &data,
+        void DataAvailable(const Shell::Hmi::AutoTunerConfiguration::ModelStateState &data,
                            const DDS::SampleInfo &sampleInfo);
         void DataDisposed(const DDS::SampleInfo &sampleInfo);
         void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
         void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
     private:
-        AutoTunerConfiguration::ModelStateState m_data;
+        Shell::Hmi::AutoTunerConfiguration::ModelStateState m_data;
         DDS::SampleInfo                         m_sampleInfo;
         DDS::LivelinessChangedStatus            m_livelinessStatus;
         OnDataAvailableEvent                    m_pOnDataAvailable;
@@ -73,10 +73,10 @@ namespace CAutoTunerConfigurationStateSubscriber
         OnLivelinessChangedEvent                m_pOnLivelinessChanged;
     };
 
-    class CWobTuningStateSubscriber : public TSubscriber< AutoTunerConfiguration::WobTuningState >
+    class CWobTuningStateSubscriber : public TSubscriber< Shell::Hmi::AutoTunerConfiguration::WobTuningState >
     {
     public:
-        typedef std::function<void(const AutoTunerConfiguration::WobTuningState &data)> OnDataAvailableEvent;
+        typedef std::function<void(const Shell::Hmi::AutoTunerConfiguration::WobTuningState &data)> OnDataAvailableEvent;
 
         CWobTuningStateSubscriber();
         ~CWobTuningStateSubscriber();
@@ -105,14 +105,14 @@ namespace CAutoTunerConfigurationStateSubscriber
         bool GetWobR2(double &wobR2);
 
     protected:
-        void DataAvailable(const AutoTunerConfiguration::WobTuningState &data,
+        void DataAvailable(const Shell::Hmi::AutoTunerConfiguration::WobTuningState &data,
                            const DDS::SampleInfo &sampleInfo);
         void DataDisposed(const DDS::SampleInfo &sampleInfo);
         void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
         void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
     private:
-        AutoTunerConfiguration::WobTuningState m_data;
+        Shell::Hmi::AutoTunerConfiguration::WobTuningState m_data;
         DDS::SampleInfo                        m_sampleInfo;
         DDS::LivelinessChangedStatus           m_livelinessStatus;
         OnDataAvailableEvent                   m_pOnDataAvailable;
@@ -121,10 +121,10 @@ namespace CAutoTunerConfigurationStateSubscriber
         OnLivelinessChangedEvent               m_pOnLivelinessChanged;
     };
 
-    class CDiffpTuningStateSubscriber : public TSubscriber< AutoTunerConfiguration::DiffpTuningState >
+    class CDiffpTuningStateSubscriber : public TSubscriber< Shell::Hmi::AutoTunerConfiguration::DiffpTuningState >
     {
     public:
-        typedef std::function<void(const AutoTunerConfiguration::DiffpTuningState &data)> OnDataAvailableEvent;
+        typedef std::function<void(const Shell::Hmi::AutoTunerConfiguration::DiffpTuningState &data)> OnDataAvailableEvent;
 
         CDiffpTuningStateSubscriber();
         ~CDiffpTuningStateSubscriber();
@@ -153,14 +153,14 @@ namespace CAutoTunerConfigurationStateSubscriber
         bool GetDiffpR2(double diffpR2);
 
     protected:
-        void DataAvailable(const AutoTunerConfiguration::DiffpTuningState &data,
+        void DataAvailable(const Shell::Hmi::AutoTunerConfiguration::DiffpTuningState &data,
                            const DDS::SampleInfo &sampleInfo);
         void DataDisposed(const DDS::SampleInfo &sampleInfo);
         void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
         void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
     private:
-        AutoTunerConfiguration::DiffpTuningState m_data;
+        Shell::Hmi::AutoTunerConfiguration::DiffpTuningState m_data;
         DDS::SampleInfo                          m_sampleInfo;
         DDS::LivelinessChangedStatus             m_livelinessStatus;
         OnDataAvailableEvent                     m_pOnDataAvailable;
@@ -169,10 +169,10 @@ namespace CAutoTunerConfigurationStateSubscriber
         OnLivelinessChangedEvent                 m_pOnLivelinessChanged;
     };
 
-    class CTorqueTuningStateSubscriber : public TSubscriber< AutoTunerConfiguration::TorqueTuningState >
+    class CTorqueTuningStateSubscriber : public TSubscriber< Shell::Hmi::AutoTunerConfiguration::TorqueTuningState >
     {
     public:
-        typedef std::function<void(const AutoTunerConfiguration::TorqueTuningState &data)> OnDataAvailableEvent;
+        typedef std::function<void(const Shell::Hmi::AutoTunerConfiguration::TorqueTuningState &data)> OnDataAvailableEvent;
 
         CTorqueTuningStateSubscriber();
         ~CTorqueTuningStateSubscriber();
@@ -201,14 +201,14 @@ namespace CAutoTunerConfigurationStateSubscriber
         bool GetTorqueR2(double torqueR2);
 
     protected:
-        void DataAvailable(const AutoTunerConfiguration::TorqueTuningState &data,
+        void DataAvailable(const Shell::Hmi::AutoTunerConfiguration::TorqueTuningState &data,
                            const DDS::SampleInfo &sampleInfo);
         void DataDisposed(const DDS::SampleInfo &sampleInfo);
         void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
         void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
     private:
-        AutoTunerConfiguration::TorqueTuningState m_data;
+        Shell::Hmi::AutoTunerConfiguration::TorqueTuningState m_data;
         DDS::SampleInfo                           m_sampleInfo;
         DDS::LivelinessChangedStatus              m_livelinessStatus;
         OnDataAvailableEvent                      m_pOnDataAvailable;

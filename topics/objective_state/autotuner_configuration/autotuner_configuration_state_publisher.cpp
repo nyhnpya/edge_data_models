@@ -132,7 +132,7 @@ bool CModelStateStatePublisher::PublishSample()
 bool CModelStateStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              AutoTunerConfiguration::MODEL_STATE_STATE,
+                              Shell::Hmi::AutoTunerConfiguration::MODEL_STATE_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }
@@ -316,7 +316,7 @@ void CWobTuningStatePublisher::SetWobR2(double wobR2)
 bool CWobTuningStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              AutoTunerConfiguration::WOB_TUNING_STATE,
+                              Shell::Hmi::AutoTunerConfiguration::WOB_TUNING_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }
@@ -509,7 +509,7 @@ void CDiffpTuningStatePublisher::SetDiffpR2(double diffpR2)
 bool CDiffpTuningStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              AutoTunerConfiguration::DIFFP_TUNING_STATE,
+                              Shell::Hmi::AutoTunerConfiguration::DIFFP_TUNING_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }
@@ -702,7 +702,7 @@ void CTorqueTuningStatePublisher::SetTorqueR2(double torqueR2)
 bool CTorqueTuningStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              AutoTunerConfiguration::TORQUE_TUNING_STATE,
+                              Shell::Hmi::AutoTunerConfiguration::TORQUE_TUNING_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

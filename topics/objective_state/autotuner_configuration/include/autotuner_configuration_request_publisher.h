@@ -30,7 +30,7 @@ using namespace units::length;
 
 namespace CAutoTunerConfigurationRequestPublisher 
 {
-    class CModelStateRequestPublisher : public TPublisher< AutoTunerConfiguration::ModelStateRequest >
+    class CModelStateRequestPublisher : public TPublisher< Shell::Hmi::AutoTunerConfiguration::ModelStateRequest >
     {
     public:
         CModelStateRequestPublisher();
@@ -51,7 +51,7 @@ namespace CAutoTunerConfigurationRequestPublisher
         void SetMinInterval(double minInterval);
     };
 
-    class CWobTuningRequestPublisher : public TPublisher< AutoTunerConfiguration::WobTuningRequest >
+    class CWobTuningRequestPublisher : public TPublisher< Shell::Hmi::AutoTunerConfiguration::WobTuningRequest >
     {
     public:
         CWobTuningRequestPublisher();
@@ -73,7 +73,7 @@ namespace CAutoTunerConfigurationRequestPublisher
         void SetWobTiMax(double wobTiMax);
     };
 
-    class CDiffpTuningRequestPublisher : public TPublisher< AutoTunerConfiguration::DiffpTuningRequest >
+    class CDiffpTuningRequestPublisher : public TPublisher< Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequest >
     {
     public:
         CDiffpTuningRequestPublisher();
@@ -95,7 +95,7 @@ namespace CAutoTunerConfigurationRequestPublisher
         void SetDiffpTiMax(double diffPTiMax);
     };
 
-    class CTorqueTuningRequestPublisher : public TPublisher< AutoTunerConfiguration::TorqueTuningRequest >
+    class CTorqueTuningRequestPublisher : public TPublisher< Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequest >
     {
     public:
         CTorqueTuningRequestPublisher();

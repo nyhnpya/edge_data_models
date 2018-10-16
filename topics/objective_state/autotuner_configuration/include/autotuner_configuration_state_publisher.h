@@ -30,7 +30,7 @@ using namespace units::length;
 
 namespace CAutoTunerConfigurationStatePublisher
 {
-    class CModelStateStatePublisher : public TPublisher< AutoTunerConfiguration::ModelStateState >
+    class CModelStateStatePublisher : public TPublisher< Shell::Hmi::AutoTunerConfiguration::ModelStateState >
     {
     public:
         CModelStateStatePublisher();
@@ -52,7 +52,7 @@ namespace CAutoTunerConfigurationStatePublisher
         void SetTunerEnabled(bool tunerEnabled);
     };
 
-    class CWobTuningStatePublisher : public TPublisher< AutoTunerConfiguration::WobTuningState >
+    class CWobTuningStatePublisher : public TPublisher< Shell::Hmi::AutoTunerConfiguration::WobTuningState >
     {
     public:
         CWobTuningStatePublisher();
@@ -79,7 +79,7 @@ namespace CAutoTunerConfigurationStatePublisher
         void SetWobR2(double wobR2);
     };
 
-    class CDiffpTuningStatePublisher : public TPublisher< AutoTunerConfiguration::DiffpTuningState >
+    class CDiffpTuningStatePublisher : public TPublisher< Shell::Hmi::AutoTunerConfiguration::DiffpTuningState >
     {
     public:
         CDiffpTuningStatePublisher();
@@ -106,7 +106,7 @@ namespace CAutoTunerConfigurationStatePublisher
         void SetDiffpR2(double diffpR2);
     };
 
-    class CTorqueTuningStatePublisher : public TPublisher< AutoTunerConfiguration::TorqueTuningState >
+    class CTorqueTuningStatePublisher : public TPublisher< Shell::Hmi::AutoTunerConfiguration::TorqueTuningState >
     {
     public:
         CTorqueTuningStatePublisher();

@@ -94,12 +94,12 @@ void CModelStateStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent ev
 bool CModelStateStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               AutoTunerConfiguration::MODEL_STATE_STATE,
+                               Shell::Hmi::AutoTunerConfiguration::MODEL_STATE_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
 
-void CModelStateStateSubscriber::DataAvailable(const AutoTunerConfiguration::ModelStateState &data,
+void CModelStateStateSubscriber::DataAvailable(const Shell::Hmi::AutoTunerConfiguration::ModelStateState &data,
                                                  const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
@@ -266,12 +266,12 @@ void CWobTuningStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent eve
 bool CWobTuningStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               AutoTunerConfiguration::WOB_TUNING_STATE,
+                               Shell::Hmi::AutoTunerConfiguration::WOB_TUNING_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
 
-void CWobTuningStateSubscriber::DataAvailable(const AutoTunerConfiguration::WobTuningState &data,
+void CWobTuningStateSubscriber::DataAvailable(const Shell::Hmi::AutoTunerConfiguration::WobTuningState &data,
                                                  const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
@@ -439,12 +439,12 @@ void CDiffpTuningStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent e
 bool CDiffpTuningStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               AutoTunerConfiguration::DIFFP_TUNING_STATE,
+                               Shell::Hmi::AutoTunerConfiguration::DIFFP_TUNING_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
 
-void CDiffpTuningStateSubscriber::DataAvailable(const AutoTunerConfiguration::DiffpTuningState &data,
+void CDiffpTuningStateSubscriber::DataAvailable(const Shell::Hmi::AutoTunerConfiguration::DiffpTuningState &data,
                                                  const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
@@ -612,12 +612,12 @@ void CTorqueTuningStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent 
 bool CTorqueTuningStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               AutoTunerConfiguration::TORQUE_TUNING_STATE,
+                               Shell::Hmi::AutoTunerConfiguration::TORQUE_TUNING_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
 
-void CTorqueTuningStateSubscriber::DataAvailable(const AutoTunerConfiguration::TorqueTuningState &data,
+void CTorqueTuningStateSubscriber::DataAvailable(const Shell::Hmi::AutoTunerConfiguration::TorqueTuningState &data,
                                                  const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
