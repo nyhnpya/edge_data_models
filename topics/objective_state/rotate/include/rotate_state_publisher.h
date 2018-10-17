@@ -36,6 +36,7 @@ class CRotateStatePublisher : public TPublisher< nec::process::RotateState >
     bool Create(int32_t domain);
     bool Initialize();
     bool PublishSample();
+    bool HasInterfaceChanged();
 
     void SetActualRate(radians_per_second_t actualRate);
     void SetMaxRate(radians_per_second_t maxRate);
@@ -43,6 +44,9 @@ class CRotateStatePublisher : public TPublisher< nec::process::RotateState >
     void SetObjectiveId(const DataTypes::Uuid objectiveId);
     void SetStatus(const DataTypes::Status status);
     void SetTargetRate(radians_per_second_t targetRate);
+
+ private:
+    bool m_interfaceChanged;
 };
 
 #endif // __ROTATE_STATE_PUBLISHER_H__ 

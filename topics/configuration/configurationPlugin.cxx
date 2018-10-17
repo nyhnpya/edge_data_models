@@ -3603,6 +3603,14 @@ namespace Configuration {
                 sample->ioUnit,"ioUnit", indent_level + 1);    
         }
 
+        if (sample->floatEpsilon==NULL) {
+            RTICdrType_printString(
+                NULL,"floatEpsilon", indent_level + 1);
+        } else {
+            RTICdrType_printString(
+                sample->floatEpsilon,"floatEpsilon", indent_level + 1);    
+        }
+
         if (sample->tag==NULL) {
             RTICdrType_printString(
                 NULL,"tag", indent_level + 1);
@@ -3780,6 +3788,11 @@ namespace Configuration {
             }
 
             if (!RTICdrStream_serializeString(
+                stream, sample->floatEpsilon, (255) + 1)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeString(
                 stream, sample->tag, (255) + 1)) {
                 return RTI_FALSE;
             }
@@ -3837,6 +3850,10 @@ namespace Configuration {
                 }
                 if (!RTICdrStream_deserializeStringEx(
                     stream,&sample->ioUnit, (255) + 1, RTI_FALSE)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeStringEx(
+                    stream,&sample->floatEpsilon, (255) + 1, RTI_FALSE)) {
                     goto fin; 
                 }
                 if (!RTICdrStream_deserializeStringEx(
@@ -4089,6 +4106,9 @@ namespace Configuration {
             if (!RTICdrStream_skipString (stream, (255)+1)) {
                 goto fin; 
             }
+            if (!RTICdrStream_skipString (stream, (255)+1)) {
+                goto fin; 
+            }
         }
 
         done = RTI_TRUE;
@@ -4131,6 +4151,9 @@ namespace Configuration {
             current_alignment = 0;
             initial_alignment = 0;
         }
+
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, (255)+1);
 
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
             current_alignment, (255)+1);
@@ -4208,6 +4231,8 @@ namespace Configuration {
             current_alignment, 1);
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
             current_alignment, 1);
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, 1);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -4274,6 +4299,10 @@ namespace Configuration {
         current_alignment += RTICdrType_getStringSerializedSize(
             PRESTypePluginDefaultEndpointData_getAlignment(
                 endpoint_data, current_alignment), sample->ioUnit);
+
+        current_alignment += RTICdrType_getStringSerializedSize(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment), sample->floatEpsilon);
 
         current_alignment += RTICdrType_getStringSerializedSize(
             PRESTypePluginDefaultEndpointData_getAlignment(

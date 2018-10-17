@@ -51,6 +51,7 @@ module Configuration
         string edgeType;
         string ioType;
         string ioUnit;
+        string floatEpsilon;
         string tag;
     };
 
