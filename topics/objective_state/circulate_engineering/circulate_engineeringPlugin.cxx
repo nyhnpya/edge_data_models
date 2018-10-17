@@ -1567,9 +1567,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             MudPumpEngineeringRequestPlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            MudPumpEngineeringRequest_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -2826,9 +2823,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             MudPumpEngineeringStatePlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            MudPumpEngineeringState_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -4251,9 +4245,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             CirculateEngineeringRequestPlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            CirculateEngineeringRequest_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -5787,9 +5778,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             CirculateEngineeringStatePlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            CirculateEngineeringState_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
