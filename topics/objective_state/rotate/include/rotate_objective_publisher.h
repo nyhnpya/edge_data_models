@@ -37,6 +37,8 @@ class CRotateObjectivePublisher : public TPublisher< nec::process::RotateObjecti
     bool Initialize();
     bool PublishSample();
 
+    void SetId(DataTypes::Uuid &uuid);
+    void SetObjectiveId(DataTypes::Uuid &uuid);
     void SetEstimatedDuration(DataTypes::Time estimatedDuration);
     void SetTargetRate(radians_per_second_t targetRate);
 };

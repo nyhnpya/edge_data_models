@@ -42,6 +42,7 @@ class CRotateRequestSubscriber : public TSubscriber< nec::process::RotateRequest
 
     // getters
     DataTypes::Uuid GetId();
+    DataTypes::Uuid GetObjectiveId();
     DataTypes::Priority GetPriority();
     DataTypes::Time GetTimeNeeded();
     DataTypes::Time GetDuration();

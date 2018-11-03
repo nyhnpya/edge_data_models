@@ -19,6 +19,11 @@ DataTypes::Uuid CRotateRequestSubscriber::GetId()
     return m_data.id;
 }
 
+DataTypes::Uuid CRotateRequestSubscriber::GetObjectiveId()
+{
+    return m_data.objectiveId;
+}
+
 DataTypes::Priority CRotateRequestSubscriber::GetPriority()
 {
     return m_data.priority;

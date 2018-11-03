@@ -11,12 +11,31 @@ CRotateObjectivePublisher::~CRotateObjectivePublisher()
 
 bool CRotateObjectivePublisher::Initialize()
 {
-    CDdsUuid uuid;
-
-    uuid.GenerateUuid();
-    m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-
     return true;
+}
+
+void CRotateObjectivePublisher::SetId(DataTypes::Uuid &uuid)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->objectiveId = DDS_String_dup(uuid);
+    }
+    else
+    {
+        LOG_ERROR("Failed to set objective id because of uninitialized sample");
+    }
+}
+
+void CRotateObjectivePublisher::SetObjectiveId(DataTypes::Uuid &uuid)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->objectiveId = DDS_String_dup(uuid);
+    }
+    else
+    {
+        LOG_ERROR("Failed to set objective objective id because of uninitialized sample");
+    }
 }
 
 void CRotateObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
