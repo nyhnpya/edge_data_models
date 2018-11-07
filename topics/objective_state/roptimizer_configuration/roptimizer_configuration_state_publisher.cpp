@@ -30,7 +30,7 @@ bool CConfigurationStateStatePublisher::Create(int32_t domain)
 }
 
 
-void CConfigurationStateStatePublisher::SetRpmState(bool state)
+void CConfigurationStateStatePublisher::SetRpmState(double state)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -42,7 +42,7 @@ void CConfigurationStateStatePublisher::SetRpmState(bool state)
     }
 }
 
-void CConfigurationStateStatePublisher::SetRopState(bool state)
+void CConfigurationStateStatePublisher::SetRopState(double state)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -54,7 +54,7 @@ void CConfigurationStateStatePublisher::SetRopState(bool state)
     }
 } 
 
-void CConfigurationStateStatePublisher::SetWobState(bool state)
+void CConfigurationStateStatePublisher::SetWobState(double state)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -66,7 +66,7 @@ void CConfigurationStateStatePublisher::SetWobState(bool state)
     }
 }
 
-void CConfigurationStateStatePublisher::SetTorqueState(bool state)
+void CConfigurationStateStatePublisher::SetTorqueState(double state)
 {
     if (m_pDataInstance != nullptr)
     {

@@ -19,6 +19,26 @@ bool CConfigurationStateStateSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
+double CConfigurationStateStateSubscriber::GetRpmState()
+{
+    return m_data.rpmState;
+}
+
+double CConfigurationStateStateSubscriber::GetRopState()
+{
+    return m_data.ropState;
+}
+
+double CConfigurationStateStateSubscriber::GetWobState()
+{
+    return m_data.wobState;
+}
+
+double CConfigurationStateStateSubscriber::GetTorqueState()
+{
+    return m_data.torqueState;
+}
+
 void CConfigurationStateStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;

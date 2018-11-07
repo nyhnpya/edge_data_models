@@ -16,10 +16,10 @@ module Shell
             //@copy-c-declaration static const char ROPTIMIZER_STEADY_STATE[] = "RoptimizerSteadyState";
             struct RoptimizerSteadyState
             {
-                boolean rpmState;
-                boolean ropState;
-                boolean wobState;
-                boolean torqueState;
+                double rpmState;
+                double ropState;
+                double wobState;
+                double torqueState;
             };
         };
     };

@@ -1103,6 +1103,9 @@ namespace Shell {
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
                 RoptimizerConfigurationRequestPlugin_destroy_sample;
+                plugin->finalizeOptionalMembersFnc =
+                (PRESTypePluginFinalizeOptionalMembersFunction)
+                RoptimizerConfigurationRequest_finalize_optional_members;
 
                 plugin->serializeFnc =
                 (PRESTypePluginSerializeFunction)
@@ -1275,16 +1278,16 @@ namespace Shell {
                     return;
                 }
 
-                RTICdrType_printBoolean(
+                RTICdrType_printDouble(
                     &sample->rpmState, "rpmState", indent_level + 1);    
 
-                RTICdrType_printBoolean(
+                RTICdrType_printDouble(
                     &sample->ropState, "ropState", indent_level + 1);    
 
-                RTICdrType_printBoolean(
+                RTICdrType_printDouble(
                     &sample->wobState, "wobState", indent_level + 1);    
 
-                RTICdrType_printBoolean(
+                RTICdrType_printDouble(
                     &sample->torqueState, "torqueState", indent_level + 1);    
 
             }
@@ -1435,22 +1438,22 @@ namespace Shell {
 
                 if(serialize_sample) {
 
-                    if (!RTICdrStream_serializeBoolean(
+                    if (!RTICdrStream_serializeDouble(
                         stream, &sample->rpmState)) {
                         return RTI_FALSE;
                     }
 
-                    if (!RTICdrStream_serializeBoolean(
+                    if (!RTICdrStream_serializeDouble(
                         stream, &sample->ropState)) {
                         return RTI_FALSE;
                     }
 
-                    if (!RTICdrStream_serializeBoolean(
+                    if (!RTICdrStream_serializeDouble(
                         stream, &sample->wobState)) {
                         return RTI_FALSE;
                     }
 
-                    if (!RTICdrStream_serializeBoolean(
+                    if (!RTICdrStream_serializeDouble(
                         stream, &sample->torqueState)) {
                         return RTI_FALSE;
                     }
@@ -1494,19 +1497,19 @@ namespace Shell {
 
                         Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
-                        if (!RTICdrStream_deserializeBoolean(
+                        if (!RTICdrStream_deserializeDouble(
                             stream, &sample->rpmState)) {
                             goto fin; 
                         }
-                        if (!RTICdrStream_deserializeBoolean(
+                        if (!RTICdrStream_deserializeDouble(
                             stream, &sample->ropState)) {
                             goto fin; 
                         }
-                        if (!RTICdrStream_deserializeBoolean(
+                        if (!RTICdrStream_deserializeDouble(
                             stream, &sample->wobState)) {
                             goto fin; 
                         }
-                        if (!RTICdrStream_deserializeBoolean(
+                        if (!RTICdrStream_deserializeDouble(
                             stream, &sample->torqueState)) {
                             goto fin; 
                         }
@@ -1741,16 +1744,16 @@ namespace Shell {
 
                 if (skip_sample) {
 
-                    if (!RTICdrStream_skipBoolean (stream)) {
+                    if (!RTICdrStream_skipDouble (stream)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_skipBoolean (stream)) {
+                    if (!RTICdrStream_skipDouble (stream)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_skipBoolean (stream)) {
+                    if (!RTICdrStream_skipDouble (stream)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_skipBoolean (stream)) {
+                    if (!RTICdrStream_skipDouble (stream)) {
                         goto fin; 
                     }
                 }
@@ -1796,16 +1799,16 @@ namespace Shell {
                     initial_alignment = 0;
                 }
 
-                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                     current_alignment);
 
-                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                     current_alignment);
 
-                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                     current_alignment);
 
-                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                     current_alignment);
 
                 if (include_encapsulation) {
@@ -1859,13 +1862,13 @@ namespace Shell {
                     initial_alignment = 0;
                 }
 
-                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                     current_alignment);
-                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                     current_alignment);
-                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                     current_alignment);
-                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                     current_alignment);
 
                 if (include_encapsulation) {
@@ -1918,19 +1921,19 @@ namespace Shell {
                         current_alignment);
                 }
 
-                current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
+                current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 
-                current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
+                current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 
-                current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
+                current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 
-                current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
+                current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 
@@ -2211,6 +2214,9 @@ namespace Shell {
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
                 RoptimizerSteadyStatePlugin_destroy_sample;
+                plugin->finalizeOptionalMembersFnc =
+                (PRESTypePluginFinalizeOptionalMembersFunction)
+                RoptimizerSteadyState_finalize_optional_members;
 
                 plugin->serializeFnc =
                 (PRESTypePluginSerializeFunction)

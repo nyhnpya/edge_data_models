@@ -417,13 +417,13 @@ namespace Shell {
                     return &RoptimizerSteadyState_g_tc;
                 }
 
-                RoptimizerSteadyState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+                RoptimizerSteadyState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-                RoptimizerSteadyState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+                RoptimizerSteadyState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-                RoptimizerSteadyState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+                RoptimizerSteadyState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-                RoptimizerSteadyState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+                RoptimizerSteadyState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
                 is_initialized = RTI_TRUE;
 
@@ -461,19 +461,19 @@ namespace Shell {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initBoolean(&sample->rpmState)) {
+                if (!RTICdrType_initDouble(&sample->rpmState)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initBoolean(&sample->ropState)) {
+                if (!RTICdrType_initDouble(&sample->ropState)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initBoolean(&sample->wobState)) {
+                if (!RTICdrType_initDouble(&sample->wobState)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initBoolean(&sample->torqueState)) {
+                if (!RTICdrType_initDouble(&sample->torqueState)) {
                     return RTI_FALSE;
                 }
 
@@ -545,19 +545,19 @@ namespace Shell {
                         return RTI_FALSE;
                     }
 
-                    if (!RTICdrType_copyBoolean (
+                    if (!RTICdrType_copyDouble (
                         &dst->rpmState, &src->rpmState)) { 
                         return RTI_FALSE;
                     }
-                    if (!RTICdrType_copyBoolean (
+                    if (!RTICdrType_copyDouble (
                         &dst->ropState, &src->ropState)) { 
                         return RTI_FALSE;
                     }
-                    if (!RTICdrType_copyBoolean (
+                    if (!RTICdrType_copyDouble (
                         &dst->wobState, &src->wobState)) { 
                         return RTI_FALSE;
                     }
-                    if (!RTICdrType_copyBoolean (
+                    if (!RTICdrType_copyDouble (
                         &dst->torqueState, &src->torqueState)) { 
                         return RTI_FALSE;
                     }

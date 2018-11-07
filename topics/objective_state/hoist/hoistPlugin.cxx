@@ -1522,6 +1522,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             HoistRequestPlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            HoistRequest_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -2981,6 +2984,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             HoistObjectivePlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            HoistObjective_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -4709,6 +4715,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             HoistStatePlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            HoistState_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)

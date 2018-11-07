@@ -46,10 +46,10 @@ namespace CRoptimizerConfigurationStateSubscriber
         bool ValidData();
 
         // Topic getters
-        bool GetRpmState();
-        bool GetRopState();
-        bool GetWobState();
-        bool GetTorqueState();
+        double GetRpmState();
+        double GetRopState();
+        double GetWobState();
+        double GetTorqueState();
 
     protected:
         void DataAvailable(const Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState &data,
