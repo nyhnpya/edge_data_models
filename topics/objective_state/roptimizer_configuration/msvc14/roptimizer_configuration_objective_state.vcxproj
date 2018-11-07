@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="debug_vs2013|Win32">
@@ -35,7 +35,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{30A5245F-400D-410C-BEEA-20DE3170C5FD}</ProjectGuid>
+    <ProjectGuid>{C9AC3D33-0D05-4BF2-A1E2-FF83283E6EBE}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>roptimizer_configuration_objective_state</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
@@ -293,8 +293,6 @@
     <ClCompile Include="..\roptimizer_configuration.cxx" />
     <ClCompile Include="..\roptimizer_configurationPlugin.cxx" />
     <ClCompile Include="..\roptimizer_configurationSupport.cxx" />
-    <ClCompile Include="..\roptimizer_configuration_objective_publisher.cpp" />
-    <ClCompile Include="..\roptimizer_configuration_objective_subscriber.cpp" />
     <ClCompile Include="..\roptimizer_configuration_request_publisher.cpp" />
     <ClCompile Include="..\roptimizer_configuration_request_subscriber.cpp" />
     <ClCompile Include="..\roptimizer_configuration_state_publisher.cpp" />
