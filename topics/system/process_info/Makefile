@@ -13,8 +13,8 @@ include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
-TARG_BUILD_MINOR = 1
-TARG_BUILD_PATCH = 0
+TARG_BUILD_MINOR = 0
+TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
 TARGET_NAME = process_info
@@ -22,13 +22,19 @@ TARGET_NAME = process_info
 ###############################################################################
 # compilation flags
 ###############################################################################
+TARG_INCLUDES += -I $(DDS_INCLUDE)
+TARG_INCLUDES += -I $(LOG_INCLUDE)
+TARG_INCLUDES += -isystem $(EDGE_THIRD_PARTY_INCLUDE)
 TARG_INCLUDES += -I $(CURDIR)/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
+TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 
 # Sources
 TARG_SOURCES = process_info.cxx
 TARG_SOURCES += process_infoPlugin.cxx
 TARG_SOURCES += process_infoSupport.cxx
+TARG_SOURCES += process_info_publisher.cpp
+TARG_SOURCES += process_info_subscriber.cpp
+TARG_SOURCES += process_info_monitor.cpp
 
 ###############################################################################
 # Installation section
@@ -46,6 +52,9 @@ PACKAGE_LICENSE = "Closed License"
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_info.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_infoPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_infoSupport.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_info_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_info_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_info_monitor.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package

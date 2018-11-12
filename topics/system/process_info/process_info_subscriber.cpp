@@ -1,7 +1,8 @@
-#include <string.h>
 #include "process_info_subscriber.h"
 
-CProcessInfoSubscriber::CProcessInfoSubscriber()
+
+CProcessInfoSubscriber::CProcessInfoSubscriber() :
+    m_pOnDataAvailable(nullptr)
 {
 }
 
@@ -14,46 +15,49 @@ bool CProcessInfoSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-bool CProcessInfoSubscriber::GetProcessName(const char *processName)
+const char* CProcessInfoSubscriber::GetProcessName()
 {
-    processName = m_data.processName;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.processName;
 }
 
-bool CProcessInfoSubscriber::GetPid(int32_t &pid)
+uint32_t CProcessInfoSubscriber::GetPID()
 {
-    pid = m_data.pid;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.pid;
 }
 
-bool CProcessInfoSubscriber::GetTotalVirtualMemaory(int64_t &totalVirtualMemory)
+double CProcessInfoSubscriber::GetUpTime()
 {
-    totalVirtualMemory = m_data.totalVirtualMemory;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.upTime;
 }
 
-bool CProcessInfoSubscriber::GetUsedVirtualMemory(int64_t &usedVirtualMemory)
+double CProcessInfoSubscriber::GetCPUPercent()
 {
-    usedVirtualMemory = m_data.usedVirtualMemory;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.cpuPercent;
 }
 
-bool CProcessInfoSubscriber::GetTotalPhysicalMemaory(int64_t &totalPhysicalMemory)
+double CProcessInfoSubscriber::GetVMPeak()
 {
-    totalPhysicalMemory = m_data.totalPhysicalMemory;
-
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+    return m_data.vmPeak;
 }
 
-bool CProcessInfoSubscriber::GetUsedPhysicalMemory(int64_t &usedPhysicalMemory)
+double CProcessInfoSubscriber::GetVMSize()
 {
-    usedPhysicalMemory = m_data.usedPhysicalMemory;
+    return m_data.vmSize;
+}
 
-    return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
+double CProcessInfoSubscriber::GetVMSwap()
+{
+    return m_data.vmSwap;
+}
+
+double CProcessInfoSubscriber::GetVMMaxSwap()
+{
+    return m_data.vmMaxSwap;
+}
+
+int32_t CProcessInfoSubscriber::GetThreads()
+{
+    return m_data.threads;
 }
 
 bool CProcessInfoSubscriber::Create(int32_t domain)
@@ -85,7 +89,7 @@ void CProcessInfoSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent ev
 }
 
 void CProcessInfoSubscriber::DataAvailable(const process::maintanence::ProcessState &data,
-                                           const DDS::SampleInfo &sampleInfo)
+                                              const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
 
@@ -95,14 +99,13 @@ void CProcessInfoSubscriber::DataAvailable(const process::maintanence::ProcessSt
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable();
         }
     }
 }
 
 void CProcessInfoSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_INFO("Sample disposed");
     m_sampleInfo = sampleInfo;
 
     if (m_pOnDataDisposed != nullptr)
@@ -113,7 +116,6 @@ void CProcessInfoSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void CProcessInfoSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
-    LOG_INFO("Liveliness lost");
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
@@ -122,7 +124,6 @@ void CProcessInfoSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatu
 
 void CProcessInfoSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
-    LOG_INFO("Subscription matched");
     if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);

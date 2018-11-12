@@ -1,3 +1,5 @@
+#include "base_data_types.idl"
+
 module process
 {
     module maintanence
@@ -6,13 +8,16 @@ module process
 
         struct ProcessState
         {
-            char      processName[128]; //@key
-            long      pid;
-            long long upTime;
-            long long totalVirtualMemory;
-            long long usedVirtualMemory;
-            long long totalPhysicalMemory;
-            long long usedPhysicalMemory;
+            DataTypes::Time     timestamp;
+            string              processName; //@key
+            long                pid;
+            double              upTime;
+            double              cpuPercent;
+            double              vmPeak;
+            double              vmSize;
+            double              vmSwap;
+            double              vmMaxSwap;
+            long                threads;
         };
     };
 };
