@@ -1,0 +1,101 @@
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/5.1.0/rti_dds_qos_profiles.xsd" version="5.2.0">
+    <!-- Qos Library -->
+    <qos_library name="EdgeBaseLibrary">
+
+        <qos_profile name="EdgeBaseProfile"  is_default_qos="true" >
+            <participant_qos>
+                <resource_limits>
+                    <topic_data_max_length>4096</topic_data_max_length> 
+                    <type_code_max_serialized_length>4096</type_code_max_serialized_length> 
+                </resource_limits>
+	    </participant_qos>
+            <datareader_qos>
+                <reliability>
+		    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+
+	        <durability>
+		    <kind>DDS_TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+	        </durability>
+		<liveliness>
+		  <kind>AUTOMATIC_LIVELINESS_QOS</kind>
+		  <lease_duration>
+		    <sec>1</sec>
+		    <nanosec>0</nanosec>
+		  </lease_duration>
+		</liveliness>
+		<time_based_filter>
+		  <minimum_separation>
+		    <sec>1</sec>
+		    <nanosec>0</nanosec>
+		  </minimum_separation>
+		</time_based_filter>
+            </datareader_qos>
+            <datawriter_qos>
+                <reliability>
+		    <kind>RELIABLE_RELIABILITY_QOS</kind>
+		</reliability>
+		<history>
+		    <kind>KEEP_LAST_HISTORY_QOS</kind>
+		</history>
+
+	        <durability>
+		    <kind>DDS_TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+	        </durability>
+		<liveliness>
+		  <kind>AUTOMATIC_LIVELINESS_QOS</kind>
+		  <lease_duration>
+		    <sec>1</sec>
+		    <nanosec>0</nanosec>
+		  </lease_duration>
+		</liveliness>
+            </datawriter_qos>
+        </qos_profile>
+
+        <qos_profile name="WellboreState"  base_name="EdgeBaseProfile">
+	</qos_profile>
+
+	<qos_profile name="ConfigProfile">
+	    <datawriter_qos>
+	        <reliability>
+		    <kind>RELIABLE_RELIABILITY_QOS</kind>
+		    <max_blocking_time>
+		      <sec>60</sec>
+		    </max_blocking_time>
+		</reliability>
+
+		<history>
+		    <kind>KEEP_ALL_HISTORY_QOS</kind>
+		</history>
+
+	        <durability>
+		    <kind>PERSISTENT_DURABILITY_QOS</kind>
+	        </durability>
+
+		<protocol>
+		  <rtps_reliable_writer>
+		    <min_send_window_size>50</min_send_window_size>
+		    <max_send_window_size>50</max_send_window_size>
+		  </rtps_reliable_writer>
+		</protocol>
+	    </datawriter_qos>
+
+	    <datareader_qos>
+		<reliability>
+		    <kind>RELIABLE_RELIABILITY_QOS</kind>
+  		</reliability>
+
+	        <durability>
+		    <kind>PERSISTENT_DURABILITY_QOS</kind>
+		    <direct_communication>true</direct_communication>
+
+		</durability>
+		<history>
+		    <kind>KEEP_ALL_HISTORY_QOS</kind>
+		</history>
+	    </datareader_qos>
+	</qos_profile>
+
+    </qos_library>
+</dds>
