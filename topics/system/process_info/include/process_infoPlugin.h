@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef process_infoPlugin_1743013001_h
-#define process_infoPlugin_1743013001_h
+#ifndef process_infoPlugin_1743013181_h
+#define process_infoPlugin_1743013181_h
 
 #include "process_info.h"
 
@@ -19,6 +19,8 @@ struct RTICdrStream;
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
+
+#include "base_data_typesPlugin.h"
 
 #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, start exporting symbols.
@@ -338,5 +340,5 @@ namespace process {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* process_infoPlugin_1743013001_h */
+#endif /* process_infoPlugin_1743013181_h */
 

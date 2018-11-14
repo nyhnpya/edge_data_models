@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef process_info_1743013001_h
-#define process_info_1743013001_h
+#ifndef process_info_1743013181_h
+#define process_info_1743013181_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -20,6 +20,7 @@ or consult the RTI Connext manual.
 #include "ndds_standalone_type.h"
 #endif
 
+#include "base_data_types.h"
 namespace process {
     namespace maintanence {
         static const char PROCESS_INFO[] = "ProcessInfo"; 
@@ -43,13 +44,16 @@ namespace process {
             typedef ProcessStateDataReader DataReader;
             #endif
 
-            DDS_Char   processName [128];
+            DataTypes::Time   timestamp ;
+            DDS_Char *   processName ;
             DDS_Long   pid ;
-            DDS_LongLong   upTime ;
-            DDS_LongLong   totalVirtualMemory ;
-            DDS_LongLong   usedVirtualMemory ;
-            DDS_LongLong   totalPhysicalMemory ;
-            DDS_LongLong   usedPhysicalMemory ;
+            DDS_Double   upTime ;
+            DDS_Double   cpuPercent ;
+            DDS_Double   vmPeak ;
+            DDS_Double   vmSize ;
+            DDS_Double   vmSwap ;
+            DDS_Double   vmMaxSwap ;
+            DDS_Long   threads ;
 
         };
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)

@@ -42,14 +42,31 @@ namespace process {
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode ProcessState_g_tc_processName_array =DDS_INITIALIZE_ARRAY_TYPECODE(1,128, NULL,NULL);
-            static DDS_TypeCode_Member ProcessState_g_tc_members[7]=
+            static DDS_TypeCode ProcessState_g_tc_processName_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+            static DDS_TypeCode_Member ProcessState_g_tc_members[10]=
             {
 
                 {
-                    (char *)"processName",/* Member name */
+                    (char *)"timestamp",/* Member name */
                     {
                         0,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"processName",/* Member name */
+                    {
+                        1,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -66,7 +83,7 @@ namespace process {
                 {
                     (char *)"pid",/* Member name */
                     {
-                        1,/* Representation ID */          
+                        2,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -83,23 +100,6 @@ namespace process {
                 {
                     (char *)"upTime",/* Member name */
                     {
-                        2,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"totalVirtualMemory",/* Member name */
-                    {
                         3,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
@@ -115,7 +115,7 @@ namespace process {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"usedVirtualMemory",/* Member name */
+                    (char *)"cpuPercent",/* Member name */
                     {
                         4,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -132,7 +132,7 @@ namespace process {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"totalPhysicalMemory",/* Member name */
+                    (char *)"vmPeak",/* Member name */
                     {
                         5,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -149,9 +149,60 @@ namespace process {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"usedPhysicalMemory",/* Member name */
+                    (char *)"vmSize",/* Member name */
                     {
                         6,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"vmSwap",/* Member name */
+                    {
+                        7,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"vmMaxSwap",/* Member name */
+                    {
+                        8,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"threads",/* Member name */
+                    {
+                        9,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -177,7 +228,7 @@ namespace process {
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    7, /* Number of members */
+                    10, /* Number of members */
                     ProcessState_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
                 }}; /* Type code for ProcessState*/
@@ -186,20 +237,25 @@ namespace process {
                 return &ProcessState_g_tc;
             }
 
-            ProcessState_g_tc_processName_array._data._typeCode =(RTICdrTypeCode *)&DDS_g_tc_char;
+            ProcessState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-            ProcessState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)& ProcessState_g_tc_processName_array;
-            ProcessState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+            ProcessState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&ProcessState_g_tc_processName_string;
 
-            ProcessState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
+            ProcessState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-            ProcessState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
+            ProcessState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            ProcessState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
+            ProcessState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            ProcessState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
+            ProcessState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            ProcessState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
+            ProcessState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            ProcessState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            ProcessState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            ProcessState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
             is_initialized = RTI_TRUE;
 
@@ -237,32 +293,51 @@ namespace process {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initArray(
-                sample->processName, (128), RTI_CDR_CHAR_SIZE)) {
+            if (!DataTypes::Time_initialize_w_params(&sample->timestamp,
+            allocParams)) {
                 return RTI_FALSE;
+            }
+            if (allocParams->allocate_memory){
+                sample->processName= DDS_String_alloc ((255));
+                if (sample->processName == NULL) {
+                    return RTI_FALSE;
+                }
+
+            } else {
+                if (sample->processName!= NULL) { 
+                    sample->processName[0] = '\0';
+                }
             }
 
             if (!RTICdrType_initLong(&sample->pid)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initLongLong(&sample->upTime)) {
+            if (!RTICdrType_initDouble(&sample->upTime)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initLongLong(&sample->totalVirtualMemory)) {
+            if (!RTICdrType_initDouble(&sample->cpuPercent)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initLongLong(&sample->usedVirtualMemory)) {
+            if (!RTICdrType_initDouble(&sample->vmPeak)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initLongLong(&sample->totalPhysicalMemory)) {
+            if (!RTICdrType_initDouble(&sample->vmSize)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initLongLong(&sample->usedPhysicalMemory)) {
+            if (!RTICdrType_initDouble(&sample->vmSwap)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initDouble(&sample->vmMaxSwap)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initLong(&sample->threads)) {
                 return RTI_FALSE;
             }
 
@@ -304,6 +379,14 @@ namespace process {
                 return;
             }
 
+            DataTypes::Time_finalize_w_params(&sample->timestamp,deallocParams);
+
+            if (sample->processName != NULL) {
+                DDS_String_free(sample->processName);
+                sample->processName=NULL;
+
+            }
+
         }
 
         void ProcessState_finalize_optional_members(
@@ -322,6 +405,7 @@ namespace process {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
+            DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
         }
 
         RTIBool ProcessState_copy(
@@ -334,32 +418,45 @@ namespace process {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_copyArray(
-                    dst->processName ,src->processName,(128), RTI_CDR_CHAR_SIZE)) {
+                if (!DataTypes::Time_copy(
+                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
+                    return RTI_FALSE;
+                } 
+                if (!RTICdrType_copyStringEx (
+                    &dst->processName, src->processName, 
+                    (255) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyLong (
                     &dst->pid, &src->pid)) { 
                     return RTI_FALSE;
                 }
-                if (!RTICdrType_copyLongLong (
+                if (!RTICdrType_copyDouble (
                     &dst->upTime, &src->upTime)) { 
                     return RTI_FALSE;
                 }
-                if (!RTICdrType_copyLongLong (
-                    &dst->totalVirtualMemory, &src->totalVirtualMemory)) { 
+                if (!RTICdrType_copyDouble (
+                    &dst->cpuPercent, &src->cpuPercent)) { 
                     return RTI_FALSE;
                 }
-                if (!RTICdrType_copyLongLong (
-                    &dst->usedVirtualMemory, &src->usedVirtualMemory)) { 
+                if (!RTICdrType_copyDouble (
+                    &dst->vmPeak, &src->vmPeak)) { 
                     return RTI_FALSE;
                 }
-                if (!RTICdrType_copyLongLong (
-                    &dst->totalPhysicalMemory, &src->totalPhysicalMemory)) { 
+                if (!RTICdrType_copyDouble (
+                    &dst->vmSize, &src->vmSize)) { 
                     return RTI_FALSE;
                 }
-                if (!RTICdrType_copyLongLong (
-                    &dst->usedPhysicalMemory, &src->usedPhysicalMemory)) { 
+                if (!RTICdrType_copyDouble (
+                    &dst->vmSwap, &src->vmSwap)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->vmMaxSwap, &src->vmMaxSwap)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyLong (
+                    &dst->threads, &src->threads)) { 
                     return RTI_FALSE;
                 }
 

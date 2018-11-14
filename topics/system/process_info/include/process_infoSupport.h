@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef process_infoSupport_1743013001_h
-#define process_infoSupport_1743013001_h
+#ifndef process_infoSupport_1743013181_h
+#define process_infoSupport_1743013181_h
 
 /* Uses */
 #include "process_info.h"
@@ -62,5 +62,5 @@ namespace process {
     } /* namespace maintanence  */
 } /* namespace process  */
 
-#endif  /* process_infoSupport_1743013001_h */
+#endif  /* process_infoSupport_1743013181_h */
 

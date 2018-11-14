@@ -166,28 +166,40 @@ namespace process {
                 return;
             }
 
-            RTICdrType_printArray(
-                sample->processName, (128), RTI_CDR_CHAR_SIZE,
-                (RTICdrTypePrintFunction)RTICdrType_printChar, 
-                "processName", indent_level + 1);        
+            DataTypes::TimePluginSupport_print_data(
+                (const DataTypes::Time*) &sample->timestamp, "timestamp", indent_level + 1);
+
+            if (sample->processName==NULL) {
+                RTICdrType_printString(
+                    NULL,"processName", indent_level + 1);
+            } else {
+                RTICdrType_printString(
+                    sample->processName,"processName", indent_level + 1);    
+            }
 
             RTICdrType_printLong(
                 &sample->pid, "pid", indent_level + 1);    
 
-            RTICdrType_printLongLong(
+            RTICdrType_printDouble(
                 &sample->upTime, "upTime", indent_level + 1);    
 
-            RTICdrType_printLongLong(
-                &sample->totalVirtualMemory, "totalVirtualMemory", indent_level + 1);    
+            RTICdrType_printDouble(
+                &sample->cpuPercent, "cpuPercent", indent_level + 1);    
 
-            RTICdrType_printLongLong(
-                &sample->usedVirtualMemory, "usedVirtualMemory", indent_level + 1);    
+            RTICdrType_printDouble(
+                &sample->vmPeak, "vmPeak", indent_level + 1);    
 
-            RTICdrType_printLongLong(
-                &sample->totalPhysicalMemory, "totalPhysicalMemory", indent_level + 1);    
+            RTICdrType_printDouble(
+                &sample->vmSize, "vmSize", indent_level + 1);    
 
-            RTICdrType_printLongLong(
-                &sample->usedPhysicalMemory, "usedPhysicalMemory", indent_level + 1);    
+            RTICdrType_printDouble(
+                &sample->vmSwap, "vmSwap", indent_level + 1);    
+
+            RTICdrType_printDouble(
+                &sample->vmMaxSwap, "vmMaxSwap", indent_level + 1);    
+
+            RTICdrType_printLong(
+                &sample->threads, "threads", indent_level + 1);    
 
         }
         ProcessState *
@@ -386,8 +398,18 @@ namespace process {
 
             if(serialize_sample) {
 
-                if (!RTICdrStream_serializePrimitiveArray(
-                    stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
+                if(!DataTypes::TimePlugin_serialize(
+                    endpoint_data,
+                    (const DataTypes::Time*) &sample->timestamp,
+                    stream,
+                    RTI_FALSE, encapsulation_id,
+                    RTI_TRUE,
+                    endpoint_plugin_qos)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrStream_serializeString(
+                    stream, sample->processName, (255) + 1)) {
                     return RTI_FALSE;
                 }
 
@@ -396,28 +418,38 @@ namespace process {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrStream_serializeLongLong(
+                if (!RTICdrStream_serializeDouble(
                     stream, &sample->upTime)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrStream_serializeLongLong(
-                    stream, &sample->totalVirtualMemory)) {
+                if (!RTICdrStream_serializeDouble(
+                    stream, &sample->cpuPercent)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrStream_serializeLongLong(
-                    stream, &sample->usedVirtualMemory)) {
+                if (!RTICdrStream_serializeDouble(
+                    stream, &sample->vmPeak)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrStream_serializeLongLong(
-                    stream, &sample->totalPhysicalMemory)) {
+                if (!RTICdrStream_serializeDouble(
+                    stream, &sample->vmSize)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrStream_serializeLongLong(
-                    stream, &sample->usedPhysicalMemory)) {
+                if (!RTICdrStream_serializeDouble(
+                    stream, &sample->vmSwap)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrStream_serializeDouble(
+                    stream, &sample->vmMaxSwap)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrStream_serializeLong(
+                    stream, &sample->threads)) {
                     return RTI_FALSE;
                 }
 
@@ -460,33 +492,48 @@ namespace process {
 
                     process::maintanence::ProcessState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
-                    if (!RTICdrStream_deserializePrimitiveArray(
-                        stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
+                    if(!DataTypes::TimePlugin_deserialize_sample(
+                        endpoint_data,
+                        &sample->timestamp,
+                        stream,
+                        RTI_FALSE, RTI_TRUE,
+                        endpoint_plugin_qos)) {
                         goto fin; 
                     }
-
+                    if (!RTICdrStream_deserializeStringEx(
+                        stream,&sample->processName, (255) + 1, RTI_FALSE)) {
+                        goto fin; 
+                    }
                     if (!RTICdrStream_deserializeLong(
                         stream, &sample->pid)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_deserializeLongLong(
+                    if (!RTICdrStream_deserializeDouble(
                         stream, &sample->upTime)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_deserializeLongLong(
-                        stream, &sample->totalVirtualMemory)) {
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->cpuPercent)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_deserializeLongLong(
-                        stream, &sample->usedVirtualMemory)) {
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->vmPeak)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_deserializeLongLong(
-                        stream, &sample->totalPhysicalMemory)) {
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->vmSize)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_deserializeLongLong(
-                        stream, &sample->usedPhysicalMemory)) {
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->vmSwap)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeDouble(
+                        stream, &sample->vmMaxSwap)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_deserializeLong(
+                        stream, &sample->threads)) {
                         goto fin; 
                     }
                 }
@@ -720,26 +767,38 @@ namespace process {
 
             if (skip_sample) {
 
-                if (!RTICdrStream_skipPrimitiveArray(
-                    stream, (128), RTI_CDR_CHAR_TYPE)) {
+                if (!DataTypes::TimePlugin_skip(
+                    endpoint_data,
+                    stream, 
+                    RTI_FALSE, RTI_TRUE, 
+                    endpoint_plugin_qos)) {
                     goto fin; 
-                }      
+                }
+                if (!RTICdrStream_skipString (stream, (255)+1)) {
+                    goto fin; 
+                }
                 if (!RTICdrStream_skipLong (stream)) {
                     goto fin; 
                 }
-                if (!RTICdrStream_skipLongLong (stream)) {
+                if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
-                if (!RTICdrStream_skipLongLong (stream)) {
+                if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
-                if (!RTICdrStream_skipLongLong (stream)) {
+                if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
-                if (!RTICdrStream_skipLongLong (stream)) {
+                if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
-                if (!RTICdrStream_skipLongLong (stream)) {
+                if (!RTICdrStream_skipDouble (stream)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_skipDouble (stream)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_skipLong (stream)) {
                     goto fin; 
                 }
             }
@@ -771,9 +830,6 @@ namespace process {
 
             unsigned int encapsulation_size = current_alignment;
 
-            if (endpoint_data) {} /* To avoid warnings */ 
-            if (overflow) {} /* To avoid warnings */
-
             if (include_encapsulation) {
 
                 if (!RTICdrEncapsulation_validEncapsulationId(encapsulation_id)) {
@@ -785,25 +841,34 @@ namespace process {
                 initial_alignment = 0;
             }
 
-            current_alignment +=RTICdrType_getPrimitiveArrayMaxSizeSerialized(
-                current_alignment, (128),  RTI_CDR_CHAR_TYPE);
+            current_alignment +=DataTypes::TimePlugin_get_serialized_sample_max_size_ex(
+                endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
+            current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+                current_alignment, (255)+1);
 
             current_alignment +=RTICdrType_getLongMaxSizeSerialized(
                 current_alignment);
 
-            current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
 
-            current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
 
-            current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
 
-            current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
 
-            current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment);
+
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment);
+
+            current_alignment +=RTICdrType_getLongMaxSizeSerialized(
                 current_alignment);
 
             if (include_encapsulation) {
@@ -857,19 +922,25 @@ namespace process {
                 initial_alignment = 0;
             }
 
-            current_alignment +=RTICdrType_getPrimitiveArrayMaxSizeSerialized(
-                current_alignment, (128), RTI_CDR_CHAR_TYPE);
+            current_alignment +=DataTypes::TimePlugin_get_serialized_sample_min_size(
+                endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+            current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+                current_alignment, 1);
             current_alignment +=RTICdrType_getLongMaxSizeSerialized(
                 current_alignment);
-            current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
-            current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
-            current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
-            current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                 current_alignment);
-            current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment);
+            current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment);
+            current_alignment +=RTICdrType_getLongMaxSizeSerialized(
                 current_alignment);
 
             if (include_encapsulation) {
@@ -922,32 +993,43 @@ namespace process {
                     current_alignment);
             }
 
-            current_alignment += RTICdrType_getPrimitiveArrayMaxSizeSerialized(
+            current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
+                endpoint_data,RTI_FALSE, encapsulation_id,
+                current_alignment, (const DataTypes::Time*) &sample->timestamp);
+
+            current_alignment += RTICdrType_getStringSerializedSize(
                 PRESTypePluginDefaultEndpointData_getAlignment(
-                    endpoint_data, current_alignment), 
-                    (128), RTI_CDR_CHAR_TYPE);  
+                    endpoint_data, current_alignment), sample->processName);
 
             current_alignment += RTICdrType_getLongMaxSizeSerialized(
                 PRESTypePluginDefaultEndpointData_getAlignment(
                     endpoint_data, current_alignment));
 
-            current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                 PRESTypePluginDefaultEndpointData_getAlignment(
                     endpoint_data, current_alignment));
 
-            current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                 PRESTypePluginDefaultEndpointData_getAlignment(
                     endpoint_data, current_alignment));
 
-            current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                 PRESTypePluginDefaultEndpointData_getAlignment(
                     endpoint_data, current_alignment));
 
-            current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                 PRESTypePluginDefaultEndpointData_getAlignment(
                     endpoint_data, current_alignment));
 
-            current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
+            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
+            current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+                PRESTypePluginDefaultEndpointData_getAlignment(
+                    endpoint_data, current_alignment));
+
+            current_alignment += RTICdrType_getLongMaxSizeSerialized(
                 PRESTypePluginDefaultEndpointData_getAlignment(
                     endpoint_data, current_alignment));
 
@@ -992,8 +1074,8 @@ namespace process {
 
             if(serialize_key) {
 
-                if (!RTICdrStream_serializePrimitiveArray(
-                    stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
+                if (!RTICdrStream_serializeString(
+                    stream, sample->processName, (255) + 1)) {
                     return RTI_FALSE;
                 }
 
@@ -1031,11 +1113,10 @@ namespace process {
                 }
                 if (deserialize_key) {
 
-                    if (!RTICdrStream_deserializePrimitiveArray(
-                        stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
+                    if (!RTICdrStream_deserializeStringEx(
+                        stream,&sample->processName, (255) + 1, RTI_FALSE)) {
                         return RTI_FALSE;
                     }
-
                 }
 
                 if(deserialize_encapsulation) {
@@ -1101,8 +1182,8 @@ namespace process {
                 initial_alignment = 0;
             }
 
-            current_alignment +=RTICdrType_getPrimitiveArrayMaxSizeSerialized(
-                current_alignment, (128),  RTI_CDR_CHAR_TYPE);
+            current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+                current_alignment, (255)+1);
 
             if (include_encapsulation) {
                 current_alignment += encapsulation_size;
@@ -1160,32 +1241,47 @@ namespace process {
 
             if (deserialize_key) {
 
-                if (!RTICdrStream_deserializePrimitiveArray(
-                    stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
-                    return RTI_FALSE;
+                if (!DataTypes::TimePlugin_skip(
+                    endpoint_data,
+                    stream, 
+                    RTI_FALSE, RTI_TRUE, 
+                    endpoint_plugin_qos)) {
+                    goto fin; 
                 }
 
+                if (!RTICdrStream_deserializeStringEx(
+                    stream,&sample->processName, (255) + 1, RTI_FALSE)) {
+                    return RTI_FALSE;
+                }
                 if (!RTICdrStream_skipLong (stream)) {
                     goto fin; 
                 }
 
-                if (!RTICdrStream_skipLongLong (stream)) {
+                if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
 
-                if (!RTICdrStream_skipLongLong (stream)) {
+                if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
 
-                if (!RTICdrStream_skipLongLong (stream)) {
+                if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
 
-                if (!RTICdrStream_skipLongLong (stream)) {
+                if (!RTICdrStream_skipDouble (stream)) {
                     goto fin; 
                 }
 
-                if (!RTICdrStream_skipLongLong (stream)) {
+                if (!RTICdrStream_skipDouble (stream)) {
+                    goto fin; 
+                }
+
+                if (!RTICdrStream_skipDouble (stream)) {
+                    goto fin; 
+                }
+
+                if (!RTICdrStream_skipLong (stream)) {
                     goto fin; 
                 }
 
@@ -1219,8 +1315,9 @@ namespace process {
 
             if (endpoint_data) {} /* To avoid warnings */   
 
-            if (!RTICdrType_copyArray(
-                dst->processName ,src->processName,(128), RTI_CDR_CHAR_SIZE)) {
+            if (!RTICdrType_copyStringEx (
+                &dst->processName, src->processName, 
+                (255) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             return RTI_TRUE;
@@ -1234,8 +1331,9 @@ namespace process {
         {
 
             if (endpoint_data) {} /* To avoid warnings */   
-            if (!RTICdrType_copyArray(
-                dst->processName ,src->processName,(128), RTI_CDR_CHAR_SIZE)) {
+            if (!RTICdrType_copyStringEx (
+                &dst->processName, src->processName, 
+                (255) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             return RTI_TRUE;
@@ -1371,11 +1469,17 @@ namespace process {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrStream_deserializePrimitiveArray(
-                stream, (void*) sample->processName, (128), RTI_CDR_CHAR_TYPE)) {
+            if (!DataTypes::TimePlugin_skip(
+                endpoint_data,
+                stream, 
+                RTI_FALSE, RTI_TRUE, 
+                endpoint_plugin_qos)) {
+                goto fin; 
+            }
+            if (!RTICdrStream_deserializeStringEx(
+                stream,&sample->processName, (255) + 1, RTI_FALSE)) {
                 return RTI_FALSE;
             }
-
             done = RTI_TRUE;
           fin:
             if(!error) {
