@@ -1,15 +1,15 @@
 #include "dds_uuid.h"
-#include "process_info_publisher.h"
+#include "resources_publisher.h"
 
-CProcessInfoPublisher::CProcessInfoPublisher()
+CResourcesPublisher::CResourcesPublisher()
 {
 }
 
-CProcessInfoPublisher::~CProcessInfoPublisher()
+CResourcesPublisher::~CResourcesPublisher()
 {
 }
 
-bool CProcessInfoPublisher::Initialize()
+bool CResourcesPublisher::Initialize()
 {
 //    CDdsUuid uuid;
 
@@ -19,7 +19,7 @@ bool CProcessInfoPublisher::Initialize()
     return true;
 }
 
-void CProcessInfoPublisher::SetProcessName(const char* processName)
+void CResourcesPublisher::SetProcessName(const char* processName)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -31,7 +31,7 @@ void CProcessInfoPublisher::SetProcessName(const char* processName)
     }
 }
 
-void CProcessInfoPublisher::SetPID(uint32_t pid)
+void CResourcesPublisher::SetPID(uint32_t pid)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -43,7 +43,7 @@ void CProcessInfoPublisher::SetPID(uint32_t pid)
     }
 }
 
-void CProcessInfoPublisher::SetUpTime(double upTime)
+void CResourcesPublisher::SetUpTime(double upTime)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -55,7 +55,7 @@ void CProcessInfoPublisher::SetUpTime(double upTime)
     }
 }
 
-void CProcessInfoPublisher::SetCPUPercent(double cpuPercent)
+void CResourcesPublisher::SetCPUPercent(double cpuPercent)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -67,7 +67,7 @@ void CProcessInfoPublisher::SetCPUPercent(double cpuPercent)
     }
 }
 
-void CProcessInfoPublisher::SetVMPeak(double vmPeak)
+void CResourcesPublisher::SetVMPeak(double vmPeak)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -79,7 +79,7 @@ void CProcessInfoPublisher::SetVMPeak(double vmPeak)
     }
 }
 
-void CProcessInfoPublisher::SetVMSize(double vmSize)
+void CResourcesPublisher::SetVMSize(double vmSize)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -91,7 +91,7 @@ void CProcessInfoPublisher::SetVMSize(double vmSize)
     }
 }
 
-void CProcessInfoPublisher::SetVMSwap(double vmSwap)
+void CResourcesPublisher::SetVMSwap(double vmSwap)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -103,7 +103,7 @@ void CProcessInfoPublisher::SetVMSwap(double vmSwap)
     }
 }
 
-void CProcessInfoPublisher::SetVMMaxSwap(double vmMaxSwap)
+void CResourcesPublisher::SetVMMaxSwap(double vmMaxSwap)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -115,11 +115,11 @@ void CProcessInfoPublisher::SetVMMaxSwap(double vmMaxSwap)
     }
 }
 
-void CProcessInfoPublisher::SetThreads(int32_t threads)
+void CResourcesPublisher::SetNumThreads(int32_t numThreads)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->threads = threads;
+        m_pDataInstance->numThreads = numThreads;
     }
     else
     {
@@ -127,7 +127,7 @@ void CProcessInfoPublisher::SetThreads(int32_t threads)
     }
 }
 
-bool CProcessInfoPublisher::PublishSample()
+bool CResourcesPublisher::PublishSample()
 {
     bool bRetVal = false;
     DDS_Time_t currentTime;
@@ -140,10 +140,10 @@ bool CProcessInfoPublisher::PublishSample()
     return bRetVal;
 }
 
-bool CProcessInfoPublisher::Create(int32_t domain)
+bool CResourcesPublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              process::maintanence::PROCESS_INFO,
+                              sys::process::RESOURCES,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

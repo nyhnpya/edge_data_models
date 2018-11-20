@@ -2,17 +2,17 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from process_info.idl using "rtiddsgen".
+This file was generated from resources.idl using "rtiddsgen".
 The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef process_infoSupport_1743013181_h
-#define process_infoSupport_1743013181_h
+#ifndef resourcesSupport_995993335_h
+#define resourcesSupport_995993335_h
 
 /* Uses */
-#include "process_info.h"
+#include "resources.h"
 
 #ifndef ndds_cpp_h
 #include "ndds/ndds_cpp.h"
@@ -26,8 +26,8 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace process {
-    namespace maintanence {
+namespace sys {
+    namespace process {
         /* ========================================================================= */
         /**
         Uses:     T
@@ -47,11 +47,11 @@ namespace process {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            ProcessStateTypeSupport, 
-            ProcessState);
+            ResourcesTypeSupport, 
+            Resources);
 
-        DDS_DATAWRITER_CPP(ProcessStateDataWriter, ProcessState);
-        DDS_DATAREADER_CPP(ProcessStateDataReader, ProcessStateSeq, ProcessState);
+        DDS_DATAWRITER_CPP(ResourcesDataWriter, Resources);
+        DDS_DATAREADER_CPP(ResourcesDataReader, ResourcesSeq, Resources);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -59,8 +59,8 @@ namespace process {
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport
         #endif
-    } /* namespace maintanence  */
-} /* namespace process  */
+    } /* namespace process  */
+} /* namespace sys  */
 
-#endif  /* process_infoSupport_1743013181_h */
+#endif  /* resourcesSupport_995993335_h */
 

@@ -3,16 +3,16 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from process_info.idl using "rtiddsgen".
+This file was generated from resources.idl using "rtiddsgen".
 The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef process_infoPlugin_1743013181_h
-#define process_infoPlugin_1743013181_h
+#ifndef resourcesPlugin_995993335_h
+#define resourcesPlugin_995993335_h
 
-#include "process_info.h"
+#include "resources.h"
 
 struct RTICdrStream;
 
@@ -29,93 +29,93 @@ struct RTICdrStream;
 #define NDDSUSERDllExport __declspec(dllexport)
 #endif
 
-namespace process {
-    namespace maintanence {
+namespace sys {
+    namespace process {
 
         /* The type used to store keys for instances of type struct
         * AnotherSimple.
         *
-        * By default, this type is struct ProcessState
+        * By default, this type is struct Resources
         * itself. However, if for some reason this choice is not practical for your
-        * system (e.g. if sizeof(struct ProcessState)
+        * system (e.g. if sizeof(struct Resources)
         * is very large), you may redefine this typedef in terms of another type of
         * your choosing. HOWEVER, if you define the KeyHolder type to be something
         * other than struct AnotherSimple, the
         * following restriction applies: the key of struct
-        * ProcessState must consist of a
+        * Resources must consist of a
         * single field of your redefined KeyHolder type and that field must be the
-        * first field in struct ProcessState.
+        * first field in struct Resources.
         */
-        typedef  class ProcessState ProcessStateKeyHolder;
+        typedef  class Resources ResourcesKeyHolder;
 
-        #define ProcessStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-        #define ProcessStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define ProcessStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define ResourcesPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define ResourcesPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define ResourcesPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
 
-        #define ProcessStatePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
-        #define ProcessStatePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
+        #define ResourcesPlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
+        #define ResourcesPlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
 
-        #define ProcessStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define ProcessStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define ResourcesPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define ResourcesPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern ProcessState*
-        ProcessStatePluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern Resources*
+        ResourcesPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern ProcessState*
-        ProcessStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern Resources*
+        ResourcesPluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern ProcessState*
-        ProcessStatePluginSupport_create_data(void);
+        NDDSUSERDllExport extern Resources*
+        ResourcesPluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        ProcessStatePluginSupport_copy_data(
-            ProcessState *out,
-            const ProcessState *in);
+        ResourcesPluginSupport_copy_data(
+            Resources *out,
+            const Resources *in);
 
         NDDSUSERDllExport extern void 
-        ProcessStatePluginSupport_destroy_data_w_params(
-            ProcessState *sample,
+        ResourcesPluginSupport_destroy_data_w_params(
+            Resources *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        ProcessStatePluginSupport_destroy_data_ex(
-            ProcessState *sample,RTIBool deallocate_pointers);
+        ResourcesPluginSupport_destroy_data_ex(
+            Resources *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        ProcessStatePluginSupport_destroy_data(
-            ProcessState *sample);
+        ResourcesPluginSupport_destroy_data(
+            Resources *sample);
 
         NDDSUSERDllExport extern void 
-        ProcessStatePluginSupport_print_data(
-            const ProcessState *sample,
+        ResourcesPluginSupport_print_data(
+            const Resources *sample,
             const char *desc,
             unsigned int indent);
 
-        NDDSUSERDllExport extern ProcessState*
-        ProcessStatePluginSupport_create_key_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern Resources*
+        ResourcesPluginSupport_create_key_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern ProcessState*
-        ProcessStatePluginSupport_create_key(void);
-
-        NDDSUSERDllExport extern void 
-        ProcessStatePluginSupport_destroy_key_ex(
-            ProcessStateKeyHolder *key,RTIBool deallocate_pointers);
+        NDDSUSERDllExport extern Resources*
+        ResourcesPluginSupport_create_key(void);
 
         NDDSUSERDllExport extern void 
-        ProcessStatePluginSupport_destroy_key(
-            ProcessStateKeyHolder *key);
+        ResourcesPluginSupport_destroy_key_ex(
+            ResourcesKeyHolder *key,RTIBool deallocate_pointers);
+
+        NDDSUSERDllExport extern void 
+        ResourcesPluginSupport_destroy_key(
+            ResourcesKeyHolder *key);
 
         /* ----------------------------------------------------------------------------
         Callback functions:
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        ProcessStatePlugin_on_participant_attached(
+        ResourcesPlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -123,40 +123,40 @@ namespace process {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        ProcessStatePlugin_on_participant_detached(
+        ResourcesPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        ProcessStatePlugin_on_endpoint_attached(
+        ResourcesPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        ProcessStatePlugin_on_endpoint_detached(
+        ResourcesPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        ProcessStatePlugin_return_sample(
+        ResourcesPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessState *sample,
+            Resources *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        ProcessStatePlugin_copy_sample(
+        ResourcesPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessState *out,
-            const ProcessState *in);
+            Resources *out,
+            const Resources *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool 
-        ProcessStatePlugin_serialize(
+        ResourcesPlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const ProcessState *sample,
+            const Resources *sample,
             struct RTICdrStream *stream, 
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -164,24 +164,24 @@ namespace process {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        ProcessStatePlugin_deserialize_sample(
+        ResourcesPlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessState *sample, 
+            Resources *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        ProcessStatePlugin_serialize_to_cdr_buffer(
+        ResourcesPlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const ProcessState *sample); 
+            const Resources *sample); 
 
         NDDSUSERDllExport extern RTIBool 
-        ProcessStatePlugin_deserialize(
+        ResourcesPlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessState **sample, 
+            Resources **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -189,19 +189,19 @@ namespace process {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        ProcessStatePlugin_deserialize_from_cdr_buffer(
-            ProcessState *sample,
+        ResourcesPlugin_deserialize_from_cdr_buffer(
+            Resources *sample,
             const char * buffer,
             unsigned int length);    
         NDDSUSERDllExport extern DDS_ReturnCode_t
-        ProcessStatePlugin_data_to_string(
-            const ProcessState *sample,
+        ResourcesPlugin_data_to_string(
+            const Resources *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
 
         NDDSUSERDllExport extern RTIBool
-        ProcessStatePlugin_skip(
+        ResourcesPlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             RTIBool skip_encapsulation,  
@@ -209,7 +209,7 @@ namespace process {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern unsigned int 
-        ProcessStatePlugin_get_serialized_sample_max_size_ex(
+        ResourcesPlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -217,35 +217,35 @@ namespace process {
             unsigned int current_alignment);    
 
         NDDSUSERDllExport extern unsigned int 
-        ProcessStatePlugin_get_serialized_sample_max_size(
+        ResourcesPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        ProcessStatePlugin_get_serialized_sample_min_size(
+        ResourcesPlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int
-        ProcessStatePlugin_get_serialized_sample_size(
+        ResourcesPlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const ProcessState * sample);
+            const Resources * sample);
 
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        ProcessStatePlugin_get_key_kind(void);
+        ResourcesPlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        ProcessStatePlugin_get_serialized_key_max_size_ex(
+        ResourcesPlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -253,16 +253,16 @@ namespace process {
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        ProcessStatePlugin_get_serialized_key_max_size(
+        ResourcesPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        ProcessStatePlugin_serialize_key(
+        ResourcesPlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const ProcessState *sample,
+            const Resources *sample,
             struct RTICdrStream *stream,
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -270,18 +270,18 @@ namespace process {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        ProcessStatePlugin_deserialize_key_sample(
+        ResourcesPlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessState * sample,
+            Resources * sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        ProcessStatePlugin_deserialize_key(
+        ResourcesPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessState ** sample,
+            Resources ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -289,34 +289,34 @@ namespace process {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        ProcessStatePlugin_serialized_sample_to_key(
+        ResourcesPlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessState *sample,
+            Resources *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
-        ProcessStatePlugin_instance_to_key(
+        ResourcesPlugin_instance_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessStateKeyHolder *key, 
-            const ProcessState *instance);
+            ResourcesKeyHolder *key, 
+            const Resources *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        ProcessStatePlugin_key_to_instance(
+        ResourcesPlugin_key_to_instance(
             PRESTypePluginEndpointData endpoint_data,
-            ProcessState *instance, 
-            const ProcessStateKeyHolder *key);
+            Resources *instance, 
+            const ResourcesKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
-        ProcessStatePlugin_instance_to_keyhash(
+        ResourcesPlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const ProcessState *instance);
+            const Resources *instance);
 
         NDDSUSERDllExport extern RTIBool 
-        ProcessStatePlugin_serialized_sample_to_keyhash(
+        ResourcesPlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
             DDS_KeyHash_t *keyhash,
@@ -325,13 +325,13 @@ namespace process {
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        ProcessStatePlugin_new(void);
+        ResourcesPlugin_new(void);
 
         NDDSUSERDllExport extern void
-        ProcessStatePlugin_delete(struct PRESTypePlugin *);
+        ResourcesPlugin_delete(struct PRESTypePlugin *);
 
-    } /* namespace maintanence  */
-} /* namespace process  */
+    } /* namespace process  */
+} /* namespace sys  */
 
 #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, stop exporting symbols.
@@ -340,5 +340,5 @@ namespace process {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* process_infoPlugin_1743013181_h */
+#endif /* resourcesPlugin_995993335_h */
 

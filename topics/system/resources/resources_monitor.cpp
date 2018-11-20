@@ -26,7 +26,7 @@
 
 #endif // __linux__
 
-#include "process_info_monitor.h"
+#include "resources_monitor.h"
 
 #ifdef __linux__
 
@@ -385,38 +385,38 @@ int ProcessInfo::GetInfo(ProcessStats *pProcessStats)
 
 #endif // __linux__
 
-ProcessInfoMonitor::ProcessInfoMonitor()
+ResourcesMonitor::ResourcesMonitor()
 {
 }
 
-ProcessInfoMonitor::~ProcessInfoMonitor()
+ResourcesMonitor::~ResourcesMonitor()
 {
-    m_processInfoPublisher.DeleteInstance();
-//    m_processInfoPublisher.Destroy();
+    m_resourcesPublisher.DeleteInstance();
+//    m_resourcesPublisher.Destroy();
 }
 
-void ProcessInfoMonitor::Initialize(int32_t domain)
+void ResourcesMonitor::Initialize(int32_t domain)
 {
     m_processInfo.Initialize(&m_processStats);
 
-    m_processInfoPublisher.Create(domain);
-    m_processInfoPublisher.CreateInstance();
-    m_processInfoPublisher.Initialize();
+    m_resourcesPublisher.Create(domain);
+    m_resourcesPublisher.CreateInstance();
+    m_resourcesPublisher.Initialize();
 }
 
-void ProcessInfoMonitor::PublishHeartbeat()
+void ResourcesMonitor::PublishHeartbeat()
 {
     m_processInfo.GetInfo(&m_processStats);
 
-    m_processInfoPublisher.SetPID((uint32_t)m_processStats.pid);
-    m_processInfoPublisher.SetProcessName(m_processStats.processName);
-    m_processInfoPublisher.SetUpTime(m_processStats.upTime);
-    m_processInfoPublisher.SetCPUPercent(m_processStats.cpuUsagePercent);
-    m_processInfoPublisher.SetVMPeak(m_processStats.vmPeak);
-    m_processInfoPublisher.SetVMSize(m_processStats.vmSize);
-    m_processInfoPublisher.SetVMSwap(m_processStats.vmSwap);
-    m_processInfoPublisher.SetVMMaxSwap(m_processStats.vmMaxSwap);
-    m_processInfoPublisher.SetThreads(m_processStats.threads);
-    m_processInfoPublisher.PublishSample();
+    m_resourcesPublisher.SetPID((uint32_t)m_processStats.pid);
+    m_resourcesPublisher.SetProcessName(m_processStats.processName);
+    m_resourcesPublisher.SetUpTime(m_processStats.upTime);
+    m_resourcesPublisher.SetCPUPercent(m_processStats.cpuUsagePercent);
+    m_resourcesPublisher.SetVMPeak(m_processStats.vmPeak);
+    m_resourcesPublisher.SetVMSize(m_processStats.vmSize);
+    m_resourcesPublisher.SetVMSwap(m_processStats.vmSwap);
+    m_resourcesPublisher.SetVMMaxSwap(m_processStats.vmMaxSwap);
+    m_resourcesPublisher.SetNumThreads(m_processStats.threads);
+    m_resourcesPublisher.PublishSample();
 }
 

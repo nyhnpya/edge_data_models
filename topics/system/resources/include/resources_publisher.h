@@ -12,12 +12,12 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __PROCESS_INFO_PUBLISHER_H__ 
-#define __PROCESS_INFO_PUBLISHER_H__ 
+#ifndef __RESOURCES_PUBLISHER_H__ 
+#define __RESOURCES_PUBLISHER_H__ 
 
 #include "publisher.h"
-#include "process_info.h"
-#include "process_infoSupport.h"
+#include "resources.h"
+#include "resourcesSupport.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -27,11 +27,11 @@
 using namespace units;
 using namespace units::pressure;
 
-class CProcessInfoPublisher : public TPublisher< process::maintanence::ProcessState  >
+class CResourcesPublisher : public TPublisher< sys::process::Resources  >
 {
  public:
-    CProcessInfoPublisher();
-    ~CProcessInfoPublisher();
+    CResourcesPublisher();
+    ~CResourcesPublisher();
 
     bool Create(int32_t domain);
     bool Initialize();
@@ -45,7 +45,7 @@ class CProcessInfoPublisher : public TPublisher< process::maintanence::ProcessSt
     void SetVMSize(double vmSize);
     void SetVMSwap(double vmSwap);
     void SetVMMaxSwap(double vmMaxSwap);
-    void SetThreads(int32_t threads);
+    void SetNumThreads(int32_t numThreads);
 };
 
-#endif // __PROCESS_INFO_PUBLISHER_H__ 
+#endif // __RESOURCES_PUBLISHER_H__ 

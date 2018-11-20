@@ -2,21 +2,21 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from process_info.idl using "rtiddsgen".
+This file was generated from resources.idl using "rtiddsgen".
 The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#include "process_infoSupport.h"
-#include "process_infoPlugin.h"
+#include "resourcesSupport.h"
+#include "resourcesPlugin.h"
 
 #ifndef dds_c_log_impl_h              
 #include "dds_c/dds_c_log_impl.h"                                
 #endif        
 
-namespace process {
-    namespace maintanence {
+namespace sys {
+    namespace process {
 
         /* ========================================================================= */
         /**
@@ -27,7 +27,7 @@ namespace process {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'ProcessState' support classes.
+        Configure and implement 'Resources' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -43,11 +43,11 @@ namespace process {
         */
 
         /* Requires */
-        #define TTYPENAME   ProcessStateTYPENAME
+        #define TTYPENAME   ResourcesTYPENAME
 
         /* Defines */
-        #define TDataWriter ProcessStateDataWriter
-        #define TData       process::maintanence::ProcessState
+        #define TDataWriter ResourcesDataWriter
+        #define TData       sys::process::Resources
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -67,12 +67,12 @@ namespace process {
         */
 
         /* Requires */
-        #define TTYPENAME   ProcessStateTYPENAME
+        #define TTYPENAME   ResourcesTYPENAME
 
         /* Defines */
-        #define TDataReader ProcessStateDataReader
-        #define TDataSeq    ProcessStateSeq
-        #define TData       process::maintanence::ProcessState
+        #define TDataReader ResourcesDataReader
+        #define TDataSeq    ResourcesSeq
+        #define TData       sys::process::Resources
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -94,15 +94,15 @@ namespace process {
         */
 
         /* Requires */
-        #define TTYPENAME    ProcessStateTYPENAME
-        #define TPlugin_new  process::maintanence::ProcessStatePlugin_new
-        #define TPlugin_delete  process::maintanence::ProcessStatePlugin_delete
+        #define TTYPENAME    ResourcesTYPENAME
+        #define TPlugin_new  sys::process::ResourcesPlugin_new
+        #define TPlugin_delete  sys::process::ResourcesPlugin_delete
 
         /* Defines */
-        #define TTypeSupport ProcessStateTypeSupport
-        #define TData        process::maintanence::ProcessState
-        #define TDataReader  ProcessStateDataReader
-        #define TDataWriter  ProcessStateDataWriter
+        #define TTypeSupport ResourcesTypeSupport
+        #define TData        sys::process::Resources
+        #define TDataReader  ResourcesDataReader
+        #define TDataWriter  ResourcesDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 
@@ -118,6 +118,6 @@ namespace process {
         #undef TPlugin_new
         #undef TPlugin_delete
 
-    } /* namespace maintanence  */
-} /* namespace process  */
+    } /* namespace process  */
+} /* namespace sys  */
 

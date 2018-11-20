@@ -1,0 +1,29 @@
+#include "base_data_types.idl"
+
+module sys
+{
+    module process
+    {
+        //@copy-c-declaration static const char RESOURCES[] = "Resources";
+
+        struct Resources
+        {
+            DataTypes::Time     timestamp;
+            string              processName; //@key
+            long                pid;
+            double              upTime;
+            double              cpuPercent;
+            double              minCpuPercent;
+            double              maxCpuPercent;
+            double              vmPeak;
+            double              vmSize;
+            double              vmSwap;
+            double              vmMaxSwap;
+            long                numThreads;
+            long                minNumThreads;
+            long                maxNumThreads;
+            string              osName; //@key
+            string              appVersion; //@key
+        };
+    };
+};

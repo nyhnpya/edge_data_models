@@ -12,13 +12,13 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __PROCESS_INFO_SUBSCRIBER_H__ 
-#define __PROCESS_INFO_SUBSCRIBER_H__ 
+#ifndef __RESOURCES_SUBSCRIBER_H__ 
+#define __RESOURCES_SUBSCRIBER_H__ 
 
 #include <mutex>
 #include "subscriber.h"
-#include "process_info.h"
-#include "process_infoSupport.h"
+#include "resources.h"
+#include "resourcesSupport.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -28,11 +28,11 @@
 using namespace units;
 using namespace units::pressure;
 
-class CProcessInfoSubscriber : public TSubscriber< process::maintanence::ProcessState>
+class CResourcesSubscriber : public TSubscriber< sys::process::Resources >
 {
 public:
-    CProcessInfoSubscriber();
-    virtual ~CProcessInfoSubscriber();
+    CResourcesSubscriber();
+    virtual ~CResourcesSubscriber();
 
     bool Create(int32_t domain);
     void OnDataAvailable(OnDataAvailableEvent event);
@@ -50,18 +50,18 @@ public:
     double GetVMSize();
     double GetVMSwap();
     double GetVMMaxSwap();
-    int32_t GetThreads();
+    int32_t GetNumThreads();
 
 protected:
     ///Derived Methods
-    void DataAvailable(const process::maintanence::ProcessState &data,
+    void DataAvailable(const sys::process::Resources &data,
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
 private:
-    process::maintanence::ProcessState           m_data;
+    sys::process::Resources            m_data;
     DDS::SampleInfo                    m_sampleInfo;
     DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent               m_pOnDataAvailable;
@@ -70,4 +70,4 @@ private:
     OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
 };
 
-#endif // __PROCESS_INFO_SUBSCRIBER_H__ 
+#endif // __RESOURCES_SUBSCRIBER_H__ 

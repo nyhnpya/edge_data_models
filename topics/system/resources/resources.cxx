@@ -3,7 +3,7 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from process_info.idl using "rtiddsgen".
+This file was generated from resources.idl using "rtiddsgen".
 The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
@@ -28,22 +28,24 @@ or consult the RTI Connext manual.
 #include "ndds_standalone_type.h"
 #endif
 
-#include "process_info.h"
+#include "resources.h"
 
 #include <new>
 
-namespace process {
-    namespace maintanence {
+namespace sys {
+    namespace process {
 
         /* ========================================================================= */
-        const char *ProcessStateTYPENAME = "process::maintanence::ProcessState";
+        const char *ResourcesTYPENAME = "sys::process::Resources";
 
-        DDS_TypeCode* ProcessState_get_typecode()
+        DDS_TypeCode* Resources_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode ProcessState_g_tc_processName_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-            static DDS_TypeCode_Member ProcessState_g_tc_members[10]=
+            static DDS_TypeCode Resources_g_tc_processName_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+            static DDS_TypeCode Resources_g_tc_osName_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+            static DDS_TypeCode Resources_g_tc_appVersion_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+            static DDS_TypeCode_Member Resources_g_tc_members[16]=
             {
 
                 {
@@ -132,7 +134,7 @@ namespace process {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"vmPeak",/* Member name */
+                    (char *)"minCpuPercent",/* Member name */
                     {
                         5,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -149,7 +151,7 @@ namespace process {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"vmSize",/* Member name */
+                    (char *)"maxCpuPercent",/* Member name */
                     {
                         6,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -166,7 +168,7 @@ namespace process {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"vmSwap",/* Member name */
+                    (char *)"vmPeak",/* Member name */
                     {
                         7,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -183,7 +185,7 @@ namespace process {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"vmMaxSwap",/* Member name */
+                    (char *)"vmSize",/* Member name */
                     {
                         8,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -200,7 +202,7 @@ namespace process {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"threads",/* Member name */
+                    (char *)"vmSwap",/* Member name */
                     {
                         9,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -215,60 +217,174 @@ namespace process {
                     DDS_PUBLIC_MEMBER,/* Member visibility */
                     1,
                     NULL/* Ignored */
+                }, 
+                {
+                    (char *)"vmMaxSwap",/* Member name */
+                    {
+                        10,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"numThreads",/* Member name */
+                    {
+                        11,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"minNumThreads",/* Member name */
+                    {
+                        12,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"maxNumThreads",/* Member name */
+                    {
+                        13,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"osName",/* Member name */
+                    {
+                        14,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_KEY_MEMBER , /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"appVersion",/* Member name */
+                    {
+                        15,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_KEY_MEMBER , /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
                 }
             };
 
-            static DDS_TypeCode ProcessState_g_tc =
+            static DDS_TypeCode Resources_g_tc =
             {{
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"process::maintanence::ProcessState", /* Name */
+                    (char *)"sys::process::Resources", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    10, /* Number of members */
-                    ProcessState_g_tc_members, /* Members */
+                    16, /* Number of members */
+                    Resources_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
-                }}; /* Type code for ProcessState*/
+                }}; /* Type code for Resources*/
 
             if (is_initialized) {
-                return &ProcessState_g_tc;
+                return &Resources_g_tc;
             }
 
-            ProcessState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+            Resources_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-            ProcessState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&ProcessState_g_tc_processName_string;
+            Resources_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&Resources_g_tc_processName_string;
 
-            ProcessState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+            Resources_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-            ProcessState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            Resources_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            ProcessState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            Resources_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            ProcessState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            Resources_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            ProcessState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            Resources_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            ProcessState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            Resources_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            ProcessState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            Resources_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            ProcessState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+            Resources_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            Resources_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            Resources_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+            Resources_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+            Resources_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+            Resources_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&Resources_g_tc_osName_string;
+
+            Resources_g_tc_members[15]._representation._typeCode = (RTICdrTypeCode *)&Resources_g_tc_appVersion_string;
 
             is_initialized = RTI_TRUE;
 
-            return &ProcessState_g_tc;
+            return &Resources_g_tc;
         }
 
-        RTIBool ProcessState_initialize(
-            ProcessState* sample) {
-            return process::maintanence::ProcessState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool Resources_initialize(
+            Resources* sample) {
+            return sys::process::Resources_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool ProcessState_initialize_ex(
-            ProcessState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool Resources_initialize_ex(
+            Resources* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -277,13 +393,13 @@ namespace process {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return process::maintanence::ProcessState_initialize_w_params(
+            return sys::process::Resources_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool ProcessState_initialize_w_params(
-            ProcessState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool Resources_initialize_w_params(
+            Resources* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -321,6 +437,14 @@ namespace process {
                 return RTI_FALSE;
             }
 
+            if (!RTICdrType_initDouble(&sample->minCpuPercent)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initDouble(&sample->maxCpuPercent)) {
+                return RTI_FALSE;
+            }
+
             if (!RTICdrType_initDouble(&sample->vmPeak)) {
                 return RTI_FALSE;
             }
@@ -337,22 +461,54 @@ namespace process {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initLong(&sample->threads)) {
+            if (!RTICdrType_initLong(&sample->numThreads)) {
                 return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initLong(&sample->minNumThreads)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initLong(&sample->maxNumThreads)) {
+                return RTI_FALSE;
+            }
+
+            if (allocParams->allocate_memory){
+                sample->osName= DDS_String_alloc ((255));
+                if (sample->osName == NULL) {
+                    return RTI_FALSE;
+                }
+
+            } else {
+                if (sample->osName!= NULL) { 
+                    sample->osName[0] = '\0';
+                }
+            }
+
+            if (allocParams->allocate_memory){
+                sample->appVersion= DDS_String_alloc ((255));
+                if (sample->appVersion == NULL) {
+                    return RTI_FALSE;
+                }
+
+            } else {
+                if (sample->appVersion!= NULL) { 
+                    sample->appVersion[0] = '\0';
+                }
             }
 
             return RTI_TRUE;
         }
 
-        void ProcessState_finalize(
-            ProcessState* sample)
+        void Resources_finalize(
+            Resources* sample)
         {
 
-            process::maintanence::ProcessState_finalize_ex(sample,RTI_TRUE);
+            sys::process::Resources_finalize_ex(sample,RTI_TRUE);
         }
 
-        void ProcessState_finalize_ex(
-            ProcessState* sample,RTIBool deletePointers)
+        void Resources_finalize_ex(
+            Resources* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -363,12 +519,12 @@ namespace process {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            process::maintanence::ProcessState_finalize_w_params(
+            sys::process::Resources_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void ProcessState_finalize_w_params(
-            ProcessState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void Resources_finalize_w_params(
+            Resources* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -387,10 +543,20 @@ namespace process {
 
             }
 
+            if (sample->osName != NULL) {
+                DDS_String_free(sample->osName);
+                sample->osName=NULL;
+
+            }
+            if (sample->appVersion != NULL) {
+                DDS_String_free(sample->appVersion);
+                sample->appVersion=NULL;
+
+            }
         }
 
-        void ProcessState_finalize_optional_members(
-            ProcessState* sample, RTIBool deletePointers)
+        void Resources_finalize_optional_members(
+            Resources* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -408,9 +574,9 @@ namespace process {
             DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
         }
 
-        RTIBool ProcessState_copy(
-            ProcessState* dst,
-            const ProcessState* src)
+        RTIBool Resources_copy(
+            Resources* dst,
+            const Resources* src)
         {
             try {
 
@@ -440,6 +606,14 @@ namespace process {
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
+                    &dst->minCpuPercent, &src->minCpuPercent)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->maxCpuPercent, &src->maxCpuPercent)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
                     &dst->vmPeak, &src->vmPeak)) { 
                     return RTI_FALSE;
                 }
@@ -456,7 +630,25 @@ namespace process {
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyLong (
-                    &dst->threads, &src->threads)) { 
+                    &dst->numThreads, &src->numThreads)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyLong (
+                    &dst->minNumThreads, &src->minNumThreads)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyLong (
+                    &dst->maxNumThreads, &src->maxNumThreads)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyStringEx (
+                    &dst->osName, src->osName, 
+                    (255) + 1, RTI_FALSE)){
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyStringEx (
+                    &dst->appVersion, src->appVersion, 
+                    (255) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
 
@@ -472,15 +664,15 @@ namespace process {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'ProcessState' sequence class.
+        * Configure and implement 'Resources' sequence class.
         */
-        #define T ProcessState
-        #define TSeq ProcessStateSeq
+        #define T Resources
+        #define TSeq ResourcesSeq
 
-        #define T_initialize_w_params process::maintanence::ProcessState_initialize_w_params
+        #define T_initialize_w_params sys::process::Resources_initialize_w_params
 
-        #define T_finalize_w_params   process::maintanence::ProcessState_finalize_w_params
-        #define T_copy       process::maintanence::ProcessState_copy
+        #define T_finalize_w_params   sys::process::Resources_finalize_w_params
+        #define T_copy       sys::process::Resources_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -497,6 +689,6 @@ namespace process {
 
         #undef TSeq
         #undef T
-    } /* namespace maintanence  */
-} /* namespace process  */
+    } /* namespace process  */
+} /* namespace sys  */
 

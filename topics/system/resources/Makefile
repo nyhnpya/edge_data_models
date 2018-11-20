@@ -17,7 +17,7 @@ TARG_BUILD_MINOR = 0
 TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
-TARGET_NAME = process_info
+TARGET_NAME = resources
 
 ###############################################################################
 # compilation flags
@@ -29,12 +29,12 @@ TARG_INCLUDES += -I $(CURDIR)/include
 TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include
 
 # Sources
-TARG_SOURCES = process_info.cxx
-TARG_SOURCES += process_infoPlugin.cxx
-TARG_SOURCES += process_infoSupport.cxx
-TARG_SOURCES += process_info_publisher.cpp
-TARG_SOURCES += process_info_subscriber.cpp
-TARG_SOURCES += process_info_monitor.cpp
+TARG_SOURCES = resources.cxx
+TARG_SOURCES += resourcesPlugin.cxx
+TARG_SOURCES += resourcesSupport.cxx
+TARG_SOURCES += resources_publisher.cpp
+TARG_SOURCES += resources_subscriber.cpp
+TARG_SOURCES += resources_monitor.cpp
 
 ###############################################################################
 # Installation section
@@ -49,12 +49,12 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_info.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_infoPlugin.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_infoSupport.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_info_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_info_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_info_monitor.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/resources.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/resourcesPlugin.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/resourcesSupport.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/resources_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/resources_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/resources_monitor.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
