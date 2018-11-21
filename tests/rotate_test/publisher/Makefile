@@ -26,18 +26,29 @@ TARGET_NAME = rotate_publisher
 # compilation flags
 ###############################################################################
 # Includes
+TARG_INCLUDES += -I $(CURDIR)/include
+TARG_INCLUDES += -I /usr/include/jsoncpp
 TARG_INCLUDES += -I /usr/local/include/dds_base
 TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -isystem/usr/local/include/edge_third_party
 TARG_INCLUDES += -I /usr/local/include/base_data_types
+TARG_INCLUDES += -I /usr/local/include/configuration
+TARG_INCLUDES += -I /usr/local/include/configuration_item
+TARG_INCLUDES += -I /usr/local/include/plant_client
+TARG_INCLUDES += -I /usr/local/include/objective_objective_state
 TARG_INCLUDES += -I /usr/local/include/rotate_objective_state
 
 # Sources
 TARG_SOURCES = rotate_publisher.cpp
+TARG_SOURCES += objective_state_machine.cpp
 
 # Libraries
 TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
 TARG_LIBS += -L /usr/local/lib 
+TARG_LIBS += -lplant_client
+TARG_LIBS += -lsnap7
+TARG_LIBS += -ljsoncpp
+TARG_LIBS += -lobjective_objective_state
 TARG_LIBS += -lrotate_objective_state -lbase_data_types -ldds_base -luuid
 
 TARG_LIBS += -llogger -llog4cplus -luuid 

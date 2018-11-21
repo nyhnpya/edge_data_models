@@ -8,6 +8,7 @@
 #include <thread>
 #include "cmdparser.h"
 #include "rotate_request_publisher.h"
+#include "objective_state_machine.h"
 
 bool     gTerminate = false;
 int32_t  gDomain;
@@ -81,6 +82,7 @@ void set_rate()
     LOG_INFO("Target Rate RPM: [%f]", targetRate);
     LOG_INFO("Target Rate rad/sec: [%f]", (radians_per_second_t)targetRate);
 
+    gpRequestPublisher->SetObjectiveId(CObjectiveStateMachine::Instance()->GetId());
     gpRequestPublisher->SetTargetRate((radians_per_second_t)targetRate);
 }
 
@@ -145,7 +147,9 @@ int32_t main(int32_t argc, char **argv)
 
     gpRequestPublisher = new CRotateRequestPublisher();
 
-    if (gpRequestPublisher->Create(gDomain) == true)
+    bool retVal  = CObjectiveStateMachine::Instance()->Initialize(gDomain);
+
+    if ((retVal == true) && (gpRequestPublisher->Create(gDomain) == true))
     {
         top_level_menu();
     }
@@ -158,4 +162,5 @@ int32_t main(int32_t argc, char **argv)
     }
 
     gpRequestPublisher->Destroy();
+    CObjectiveStateMachine::Instance()->Destroy();
 }
