@@ -35,6 +35,16 @@ double CResourcesSubscriber::GetCPUPercent()
     return m_data.cpuPercent;
 }
 
+double CResourcesSubscriber::GetMinCPUPercent()
+{
+    return m_data.minCpuPercent;
+}
+
+double CResourcesSubscriber::GetMaxCPUPercent()
+{
+    return m_data.maxCpuPercent;
+}
+
 double CResourcesSubscriber::GetVMPeak()
 {
     return m_data.vmPeak;
@@ -58,6 +68,26 @@ double CResourcesSubscriber::GetVMMaxSwap()
 int32_t CResourcesSubscriber::GetNumThreads()
 {
     return m_data.numThreads;
+}
+
+int32_t CResourcesSubscriber::GetMinNumThreads()
+{
+    return m_data.minNumThreads;
+}
+
+int32_t CResourcesSubscriber::GetMaxNumThreads()
+{
+    return m_data.maxNumThreads;
+}
+
+const char* CResourcesSubscriber::GetOSName()
+{
+    return m_data.osName;
+}
+
+const char* CResourcesSubscriber::GetAppVersion()
+{
+    return m_data.appVersion;
 }
 
 bool CResourcesSubscriber::Create(int32_t domain)

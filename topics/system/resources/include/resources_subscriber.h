@@ -46,11 +46,17 @@ public:
     uint32_t GetPID();
     double GetUpTime();
     double GetCPUPercent();
+    double GetMinCPUPercent();
+    double GetMaxCPUPercent();
     double GetVMPeak();
     double GetVMSize();
     double GetVMSwap();
     double GetVMMaxSwap();
     int32_t GetNumThreads();
+    int32_t GetMinNumThreads();
+    int32_t GetMaxNumThreads();
+    const char* GetAppVersion();
+    const char* GetOSName();
 
 protected:
     ///Derived Methods

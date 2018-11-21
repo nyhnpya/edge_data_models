@@ -22,8 +22,8 @@ module sys
             long                numThreads;
             long                minNumThreads;
             long                maxNumThreads;
-            string              osName; //@key
-            string              appVersion; //@key
+            string              osName; 
+            string              appVersion; 
         };
     };
 };

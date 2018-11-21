@@ -79,13 +79,19 @@ void get_resources()
     const char* processName = pSubscriber->GetProcessName();
     double upTime = pSubscriber->GetUpTime();
     double cpuPercent = pSubscriber->GetCPUPercent();
+    double minCpuPercent = pSubscriber->GetMinCPUPercent();
+    double maxCpuPercent = pSubscriber->GetMaxCPUPercent();
     double vmPeak = pSubscriber->GetVMPeak();
     double vmSize = pSubscriber->GetVMSize();
     double vmSwap = pSubscriber->GetVMSwap();
     double vmMaxSwap = pSubscriber->GetVMMaxSwap();
     int32_t thread = pSubscriber->GetNumThreads();
-    //printf("ProcessName: [%s]\n", processName);
-    printf("%8d %24s %8.2f %8.2f %8.2f %8.2f %8.2f %8.2f %8d\n", pid, processName, upTime, cpuPercent, vmPeak, vmSize, vmSwap, vmMaxSwap, thread);
+    int32_t minThread = pSubscriber->GetMinNumThreads();
+    int32_t maxThread = pSubscriber->GetMaxNumThreads();
+    const char* osName = pSubscriber->GetOSName();
+    const char* appVersion = pSubscriber->GetAppVersion();
+    printf("Threads: [%d %d %d]\n", thread, minThread, maxThread);
+    printf("%8d %24s %8.2f %8.2f %8.2f %8.2f %8.2f %8.2f %8.2f %8.2f %8d %8d %8d %8s %s\n", pid, processName, upTime, cpuPercent, minCpuPercent, maxCpuPercent, vmPeak, vmSize, vmSwap, vmMaxSwap, thread, minThread, maxThread, appVersion, osName);
 }
 
 void liveliness_changed(const DDS::LivelinessChangedStatus &status)

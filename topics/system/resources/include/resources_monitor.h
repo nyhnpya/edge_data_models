@@ -14,6 +14,7 @@ struct ProcessStats
     double vmSwap;
     double vmMaxSwap;
     int threads;
+    char uname[256];
 };
 
 class ProcessInfo
@@ -37,11 +38,16 @@ class ResourcesMonitor
 public:
     ResourcesMonitor();
     ~ResourcesMonitor();
-    void Initialize(int32_t domain);
+    void Initialize(const char* appVersion, int32_t domain);
     void PublishHeartbeat();
 
 private:
     ProcessInfo           m_processInfo;
     ProcessStats          m_processStats;
     CResourcesPublisher   m_resourcesPublisher;
+    double                m_minCpuPercent;
+    double                m_maxCpuPercent;
+    int32_t               m_minNumThreads;
+    int32_t               m_maxNumThreads;
+    char*                 m_appVersion;
 };

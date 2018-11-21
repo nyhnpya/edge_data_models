@@ -67,6 +67,30 @@ void CResourcesPublisher::SetCPUPercent(double cpuPercent)
     }
 }
 
+void CResourcesPublisher::SetMinCPUPercent(double minCpuPercent)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->minCpuPercent = minCpuPercent;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set Min CPU Percent on uninitialized sample");
+    }
+}
+
+void CResourcesPublisher::SetMaxCPUPercent(double maxCpuPercent)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->maxCpuPercent = maxCpuPercent;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set Max CPU Percent on uninitialized sample");
+    }
+}
+
 void CResourcesPublisher::SetVMPeak(double vmPeak)
 {
     if (m_pDataInstance != nullptr)
@@ -123,7 +147,55 @@ void CResourcesPublisher::SetNumThreads(int32_t numThreads)
     }
     else
     {
-        LOG_ERROR("Failed to set Threads on uninitialized sample");
+        LOG_ERROR("Failed to set Num Threads on uninitialized sample");
+    }
+}
+
+void CResourcesPublisher::SetMinNumThreads(int32_t minNumThreads)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->minNumThreads = minNumThreads;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set Min Num Threads on uninitialized sample");
+    }
+}
+
+void CResourcesPublisher::SetMaxNumThreads(int32_t maxNumThreads)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->maxNumThreads = maxNumThreads;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set Max Num Threads on uninitialized sample");
+    }
+}
+
+void CResourcesPublisher::SetOSName(const char* osName)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->osName = DDS_String_dup(osName);
+    }
+    else
+    {
+        LOG_ERROR("Failed to set OS Name on uninitialized sample");
+    }
+}
+
+void CResourcesPublisher::SetAppVersion(const char* appVersion)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->appVersion = DDS_String_dup(appVersion);
+    }
+    else
+    {
+        LOG_ERROR("Failed to set App Version on uninitialized sample");
     }
 }
 

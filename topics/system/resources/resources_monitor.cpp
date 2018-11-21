@@ -106,6 +106,7 @@ typedef struct _process_info
     double vmSwap;
     double vmMaxSwap;
     int threads;
+    char uname[256];
 } process_info;
 
 int get_process_info(process_info *ppi)
@@ -156,8 +157,20 @@ int get_process_info(process_info *ppi)
     time_t now = std::time(0);
     time_t lapsed = (time_t)(now - (boottime + (pss.starttime/sysconf(_SC_CLK_TCK))));
 
+
     ppi->pid = pss.pid;
-    strcpy(ppi->processName, pss.comm);
+    if (pss.comm[strlen(pss.comm)-1] == ')')
+    {
+        pss.comm[strlen(pss.comm)-1] = '\0';
+    }
+    if (pss.comm[0] == '(')
+    {
+        strcpy(ppi->processName, &pss.comm[1]);
+    }
+    else
+    {
+        strcpy(ppi->processName, pss.comm);
+    }
     ppi->upTime = lapsed; 
     ppi->kTime = pss.stime;// / sysconf(_SC_CLK_TCK);
     ppi->uTime = pss.utime;// / sysconf(_SC_CLK_TCK);
@@ -197,6 +210,14 @@ int get_process_info(process_info *ppi)
     ppi->vmSwap = ps_status.VmSwap / 1024.0;
     ppi->vmMaxSwap = 0;
     ppi->threads = ps_status.Threads;
+
+    FILE* fpOS = popen("uname -a", "r");
+    char osname[256];
+    fgets(osname, 255, fpOS);
+    pclose(fpOS);
+    if (osname[strlen(osname)-1] == '\n')
+        osname[strlen(osname)-1] = '\0';
+    strcpy(ppi->uname, osname);
 
     return 0;
 }
@@ -238,6 +259,7 @@ int ProcessInfo::GetInfo(ProcessStats *pProcessStats)
     pProcessStats->vmMaxSwap = pi.vmMaxSwap;
     pProcessStats->vmSwap = pi.vmSwap;
     pProcessStats->threads = pi.threads;
+    strcpy(pProcessStats->uname, pi.uname); 
 
     return 0;
 }
@@ -393,11 +415,18 @@ ResourcesMonitor::~ResourcesMonitor()
 {
     m_resourcesPublisher.DeleteInstance();
 //    m_resourcesPublisher.Destroy();
+    free(m_appVersion);
 }
 
-void ResourcesMonitor::Initialize(int32_t domain)
+void ResourcesMonitor::Initialize(const char* appVersion, int32_t domain)
 {
+    m_appVersion = strdup(appVersion);
     m_processInfo.Initialize(&m_processStats);
+
+    m_minCpuPercent = 100;
+    m_minNumThreads = 100000;
+    m_maxCpuPercent = 0;
+    m_maxNumThreads = 0;
 
     m_resourcesPublisher.Create(domain);
     m_resourcesPublisher.CreateInstance();
@@ -408,15 +437,35 @@ void ResourcesMonitor::PublishHeartbeat()
 {
     m_processInfo.GetInfo(&m_processStats);
 
+    if (m_minCpuPercent > m_processStats.cpuUsagePercent)
+        m_minCpuPercent = m_processStats.cpuUsagePercent;
+
+    if (m_maxCpuPercent < m_processStats.cpuUsagePercent)
+        m_maxCpuPercent = m_processStats.cpuUsagePercent;
+
+    if (m_minNumThreads > m_processStats.threads)
+    {        m_minNumThreads = m_processStats.threads;
+        printf("Setting Min Num Threads! %d\n", m_minNumThreads);
+    }
+
+    if (m_maxNumThreads < m_processStats.threads)
+        m_maxNumThreads = m_processStats.threads;
+
     m_resourcesPublisher.SetPID((uint32_t)m_processStats.pid);
     m_resourcesPublisher.SetProcessName(m_processStats.processName);
     m_resourcesPublisher.SetUpTime(m_processStats.upTime);
     m_resourcesPublisher.SetCPUPercent(m_processStats.cpuUsagePercent);
+    m_resourcesPublisher.SetMinCPUPercent(m_minCpuPercent);
+    m_resourcesPublisher.SetMaxCPUPercent(m_maxCpuPercent);
     m_resourcesPublisher.SetVMPeak(m_processStats.vmPeak);
     m_resourcesPublisher.SetVMSize(m_processStats.vmSize);
     m_resourcesPublisher.SetVMSwap(m_processStats.vmSwap);
     m_resourcesPublisher.SetVMMaxSwap(m_processStats.vmMaxSwap);
     m_resourcesPublisher.SetNumThreads(m_processStats.threads);
+    m_resourcesPublisher.SetMinNumThreads(m_minNumThreads);
+    m_resourcesPublisher.SetMaxNumThreads(m_maxNumThreads);
+    m_resourcesPublisher.SetOSName(m_processStats.uname);
+    m_resourcesPublisher.SetAppVersion(m_appVersion);
     m_resourcesPublisher.PublishSample();
 }
 

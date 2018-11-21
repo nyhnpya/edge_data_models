@@ -41,11 +41,17 @@ class CResourcesPublisher : public TPublisher< sys::process::Resources  >
     void SetPID(uint32_t pid);
     void SetUpTime(double upTime);
     void SetCPUPercent(double cpuPercent);
+    void SetMinCPUPercent(double minCpuPercent);
+    void SetMaxCPUPercent(double maxCpuPercent);
     void SetVMPeak(double vmPeak);
     void SetVMSize(double vmSize);
     void SetVMSwap(double vmSwap);
     void SetVMMaxSwap(double vmMaxSwap);
     void SetNumThreads(int32_t numThreads);
+    void SetMinNumThreads(int32_t minNumThreads);
+    void SetMaxNumThreads(int32_t maxNumThreads);
+    void SetOSName(const char* osName);
+    void SetAppVersion(const char* appVersion);
 };
 
 #endif // __RESOURCES_PUBLISHER_H__ 
