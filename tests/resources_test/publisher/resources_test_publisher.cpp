@@ -135,6 +135,7 @@ void top_level_menu()
 
 int32_t main(int32_t argc, char **argv)
 {
+    char appVersion[64];
     Timer resourcesHeartbeat;
     ResourcesMonitor resourcesMonitor;
     cli::Parser              parser(argc, argv);
@@ -152,7 +153,8 @@ int32_t main(int32_t argc, char **argv)
     CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
     CDomainParticipant::Instance()->Create(gDomain);
 
-    resourcesMonitor.Initialize("1.0.0", gDomain);
+    sprintf(appVersion, "%d.%d.%d.%d", BUILD_MAJOR, BUILD_MINOR, BUILD_PATCH, BUILD_REVISION);
+    resourcesMonitor.Initialize(appVersion, gDomain);
     
     resourcesHeartbeat.Create(1000,
                                 [&](){

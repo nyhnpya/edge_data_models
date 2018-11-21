@@ -17,7 +17,7 @@ include ../../../../Makefiles/Makefile.platform
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
 TARG_BUILD_MINOR = 0
-TARG_BUILD_VERSION = 2
+TARG_BUILD_PATCH = 2
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = executable
 TARGET_NAME = resources_test_publisher
