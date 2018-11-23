@@ -37,6 +37,7 @@ class CRotateRequestPublisher : public TPublisher< nec::process::RotateRequest >
     bool Initialize();
     bool PublishSample();
 
+    void SetObjectiveId(DataTypes::Uuid pObjectiveId);
     void SetPriority(DataTypes::Priority priority);
     void SetTimeNeeded(DataTypes::Time timeNeeded);
     void SetDuration(DataTypes::Time duration);

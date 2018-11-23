@@ -77,6 +77,19 @@ void CRotateStatePublisher::SetTargetRate(radians_per_second_t targetRate)
     }
 }
 
+void CRotateStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->timestamp.sec = timestamp.sec;
+        m_pDataInstance->timestamp.nanosec = timestamp.nanosec;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set timestamp because of uninitialized sample");
+    }
+}
+
 bool CRotateStatePublisher::PublishSample()
 {
     bool bRetVal = false;

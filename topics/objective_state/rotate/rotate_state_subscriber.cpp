@@ -16,7 +16,7 @@ bool CRotateStateSubscriber::ValidData()
 
 DataTypes::Uuid CRotateStateSubscriber::GetId()
 {
-    return m_data.id;
+    return DDS_String_dup(m_data.id);
 }
 
 DataTypes::Status CRotateStateSubscriber::GetStatus()

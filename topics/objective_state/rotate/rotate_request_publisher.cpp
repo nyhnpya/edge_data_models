@@ -19,6 +19,14 @@ bool CRotateRequestPublisher::Initialize()
     return true;
 }
 
+void CRotateRequestPublisher::SetObjectiveId(const DataTypes::Uuid objectiveId)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->objectiveId = DDS_String_dup(objectiveId);
+    }
+}
+
 void CRotateRequestPublisher::SetPriority(DataTypes::Priority priority)
 {
     if (m_pDataInstance != nullptr)
