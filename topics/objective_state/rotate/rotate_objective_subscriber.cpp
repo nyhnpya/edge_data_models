@@ -16,7 +16,7 @@ bool CRotateObjectiveSubscriber::ValidData()
 
 DataTypes::Uuid CRotateObjectiveSubscriber::GetId()
 {
-    return m_data.id;
+    return DDS_String_dup(m_data.id);
 }
 
 DataTypes::Time CRotateObjectiveSubscriber::GetEstimatedDuration()

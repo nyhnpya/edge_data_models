@@ -18,7 +18,7 @@ void CRotateObjectivePublisher::SetId(DataTypes::Uuid &uuid)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->objectiveId = uuid;
+        m_pDataInstance->id = uuid;
     }
     else
     {
