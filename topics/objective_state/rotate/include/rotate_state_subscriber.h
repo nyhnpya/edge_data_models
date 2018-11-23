@@ -42,6 +42,7 @@ public:
 
     // Topic getters
     DataTypes::Uuid GetId();
+    DataTypes::Time GetTimestamp();
     DataTypes::Status GetStatus();
     radians_per_second_t GetActualRate();
     radians_per_second_t GetMinRate();

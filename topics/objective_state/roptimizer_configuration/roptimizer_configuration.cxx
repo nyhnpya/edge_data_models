@@ -135,13 +135,13 @@ namespace Shell {
                     return &RoptimizerConfigurationRequest_g_tc;
                 }
 
-                RoptimizerConfigurationRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+                RoptimizerConfigurationRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-                RoptimizerConfigurationRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+                RoptimizerConfigurationRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-                RoptimizerConfigurationRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+                RoptimizerConfigurationRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-                RoptimizerConfigurationRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+                RoptimizerConfigurationRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
                 is_initialized = RTI_TRUE;
 
@@ -179,19 +179,19 @@ namespace Shell {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initDouble(&sample->steadyStateWindow)) {
+                if (!RTICdrType_initLong(&sample->steadyStateWindow)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initDouble(&sample->steadyStateMin)) {
+                if (!RTICdrType_initLong(&sample->steadyStateMin)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initDouble(&sample->rpmStepSize)) {
+                if (!RTICdrType_initLong(&sample->rpmStepSize)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initDouble(&sample->ropStepSize)) {
+                if (!RTICdrType_initLong(&sample->ropStepSize)) {
                     return RTI_FALSE;
                 }
 
@@ -263,19 +263,19 @@ namespace Shell {
                         return RTI_FALSE;
                     }
 
-                    if (!RTICdrType_copyDouble (
+                    if (!RTICdrType_copyLong (
                         &dst->steadyStateWindow, &src->steadyStateWindow)) { 
                         return RTI_FALSE;
                     }
-                    if (!RTICdrType_copyDouble (
+                    if (!RTICdrType_copyLong (
                         &dst->steadyStateMin, &src->steadyStateMin)) { 
                         return RTI_FALSE;
                     }
-                    if (!RTICdrType_copyDouble (
+                    if (!RTICdrType_copyLong (
                         &dst->rpmStepSize, &src->rpmStepSize)) { 
                         return RTI_FALSE;
                     }
-                    if (!RTICdrType_copyDouble (
+                    if (!RTICdrType_copyLong (
                         &dst->ropStepSize, &src->ropStepSize)) { 
                         return RTI_FALSE;
                     }

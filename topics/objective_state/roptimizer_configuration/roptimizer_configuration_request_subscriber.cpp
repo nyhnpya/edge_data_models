@@ -19,22 +19,22 @@ bool CConfigurationStateRequestSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-double CConfigurationStateRequestSubscriber::GetSteadyStateWindow()
+int32_t CConfigurationStateRequestSubscriber::GetSteadyStateWindow()
 {
     return m_data.steadyStateWindow;
 }
 
-double CConfigurationStateRequestSubscriber::GetSteadyStateMin()
+int32_t CConfigurationStateRequestSubscriber::GetSteadyStateMin()
 {
     return m_data.steadyStateMin;
 }
 
-double CConfigurationStateRequestSubscriber::GetRpmStepSize()
+int32_t CConfigurationStateRequestSubscriber::GetRpmStepSize()
 {
     return m_data.rpmStepSize;
 }
 
-double CConfigurationStateRequestSubscriber::GetRopStepSize()
+int32_t CConfigurationStateRequestSubscriber::GetRopStepSize()
 {
     return m_data.ropStepSize;
 }

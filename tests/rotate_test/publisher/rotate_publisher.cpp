@@ -93,8 +93,8 @@ void top_level_menu()
     do
     {
         std::cout << std::endl;
-        std::cout << "Objective State Publisher" << std::endl;
-        std::cout << "------------------------" << std::endl;
+        std::cout << "Rotate Request" << std::endl;
+        std::cout << "--------------" << std::endl;
         std::cout << "1. Create new instance" << std::endl;
         std::cout << "2. Dispose instance" << std::endl;
         std::cout << "3. Publish rotate parameters" << std::endl;

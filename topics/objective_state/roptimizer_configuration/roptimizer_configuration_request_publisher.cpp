@@ -10,7 +10,7 @@ CConfigurationStateRequestPublisher::~CConfigurationStateRequestPublisher()
 {
 }
 
-void CConfigurationStateRequestPublisher::SetSteadyStateWindow(double value)
+void CConfigurationStateRequestPublisher::SetSteadyStateWindow(int32_t value)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -22,7 +22,7 @@ void CConfigurationStateRequestPublisher::SetSteadyStateWindow(double value)
     }
 }
 
-void CConfigurationStateRequestPublisher::SetSteadyStateMin(double value)
+void CConfigurationStateRequestPublisher::SetSteadyStateMin(int32_t value)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -34,7 +34,7 @@ void CConfigurationStateRequestPublisher::SetSteadyStateMin(double value)
     }
 }
 
-void CConfigurationStateRequestPublisher::SetRpmStepSize(double value)
+void CConfigurationStateRequestPublisher::SetRpmStepSize(int32_t value)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -46,7 +46,7 @@ void CConfigurationStateRequestPublisher::SetRpmStepSize(double value)
     }
 }
 
-void CConfigurationStateRequestPublisher::SetRopStepSize(double value)
+void CConfigurationStateRequestPublisher::SetRopStepSize(int32_t value)
 {
     if (m_pDataInstance != nullptr)
     {

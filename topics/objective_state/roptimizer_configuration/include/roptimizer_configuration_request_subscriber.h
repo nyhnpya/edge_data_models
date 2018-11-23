@@ -46,10 +46,10 @@ namespace CRoptimizerConfigurationRequestSubscriber
         bool ValidData();
 
         // Topic getters
-        double GetSteadyStateWindow();
-        double GetSteadyStateMin();
-        double GetRpmStepSize();
-        double GetRopStepSize();
+        int32_t GetSteadyStateWindow();
+        int32_t GetSteadyStateMin();
+        int32_t GetRpmStepSize();
+        int32_t GetRopStepSize();
         
     protected:
         void DataAvailable(const Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest &data,

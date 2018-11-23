@@ -19,6 +19,11 @@ DataTypes::Uuid CRotateStateSubscriber::GetId()
     return DDS_String_dup(m_data.id);
 }
 
+DataTypes::Time CRotateStateSubscriber::GetTimestamp()
+{
+    return m_data.timestamp;
+}
+
 DataTypes::Status CRotateStateSubscriber::GetStatus()
 {
     return m_data.status;

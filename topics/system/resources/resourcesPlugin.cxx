@@ -1233,16 +1233,6 @@ namespace sys {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrStream_serializeString(
-                    stream, sample->osName, (255) + 1)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrStream_serializeString(
-                    stream, sample->appVersion, (255) + 1)) {
-                    return RTI_FALSE;
-                }
-
             }
 
             if(serialize_encapsulation) {
@@ -1279,14 +1269,6 @@ namespace sys {
 
                     if (!RTICdrStream_deserializeStringEx(
                         stream,&sample->processName, (255) + 1, RTI_FALSE)) {
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrStream_deserializeStringEx(
-                        stream,&sample->osName, (255) + 1, RTI_FALSE)) {
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrStream_deserializeStringEx(
-                        stream,&sample->appVersion, (255) + 1, RTI_FALSE)) {
                         return RTI_FALSE;
                     }
                 }
@@ -1354,10 +1336,6 @@ namespace sys {
                 initial_alignment = 0;
             }
 
-            current_alignment +=RTICdrType_getStringMaxSizeSerialized(
-                current_alignment, (255)+1);
-            current_alignment +=RTICdrType_getStringMaxSizeSerialized(
-                current_alignment, (255)+1);
             current_alignment +=RTICdrType_getStringMaxSizeSerialized(
                 current_alignment, (255)+1);
 
@@ -1477,13 +1455,12 @@ namespace sys {
                     goto fin; 
                 }
 
-                if (!RTICdrStream_deserializeStringEx(
-                    stream,&sample->osName, (255) + 1, RTI_FALSE)) {
-                    return RTI_FALSE;
+                if (!RTICdrStream_skipString (stream, (255)+1)) {
+                    goto fin; 
                 }
-                if (!RTICdrStream_deserializeStringEx(
-                    stream,&sample->appVersion, (255) + 1, RTI_FALSE)) {
-                    return RTI_FALSE;
+
+                if (!RTICdrStream_skipString (stream, (255)+1)) {
+                    goto fin; 
                 }
 
             }
@@ -1521,16 +1498,6 @@ namespace sys {
                 (255) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
-            if (!RTICdrType_copyStringEx (
-                &dst->osName, src->osName, 
-                (255) + 1, RTI_FALSE)){
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyStringEx (
-                &dst->appVersion, src->appVersion, 
-                (255) + 1, RTI_FALSE)){
-                return RTI_FALSE;
-            }
             return RTI_TRUE;
         }
 
@@ -1544,16 +1511,6 @@ namespace sys {
             if (endpoint_data) {} /* To avoid warnings */   
             if (!RTICdrType_copyStringEx (
                 &dst->processName, src->processName, 
-                (255) + 1, RTI_FALSE)){
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyStringEx (
-                &dst->osName, src->osName, 
-                (255) + 1, RTI_FALSE)){
-                return RTI_FALSE;
-            }
-            if (!RTICdrType_copyStringEx (
-                &dst->appVersion, src->appVersion, 
                 (255) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
@@ -1699,50 +1656,6 @@ namespace sys {
             }
             if (!RTICdrStream_deserializeStringEx(
                 stream,&sample->processName, (255) + 1, RTI_FALSE)) {
-                return RTI_FALSE;
-            }
-            if (!RTICdrStream_skipLong (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipDouble (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipLong (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipLong (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_skipLong (stream)) {
-                goto fin; 
-            }
-            if (!RTICdrStream_deserializeStringEx(
-                stream,&sample->osName, (255) + 1, RTI_FALSE)) {
-                return RTI_FALSE;
-            }
-            if (!RTICdrStream_deserializeStringEx(
-                stream,&sample->appVersion, (255) + 1, RTI_FALSE)) {
                 return RTI_FALSE;
             }
             done = RTI_TRUE;

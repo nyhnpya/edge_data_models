@@ -41,10 +41,10 @@ namespace CRoptimizerConfigurationRequestPublisher
         bool PublishSample();
 
         // Topic getters
-        void SetSteadyStateWindow(double value);
-        void SetSteadyStateMin(double value);
-        void SetRpmStepSize(double value);
-        void SetRopStepSize(double value);
+        void SetSteadyStateWindow(int32_t value);
+        void SetSteadyStateMin(int32_t value);
+        void SetRpmStepSize(int32_t value);
+        void SetRopStepSize(int32_t value);
     };
 };
 

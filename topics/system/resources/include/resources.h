@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef resources_995993335_h
-#define resources_995993335_h
+#ifndef resources_995993323_h
+#define resources_995993323_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h

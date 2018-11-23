@@ -298,7 +298,7 @@ namespace sys {
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    RTI_CDR_KEY_MEMBER , /* Is a key? */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
                     DDS_PUBLIC_MEMBER,/* Member visibility */
                     1,
                     NULL/* Ignored */
@@ -315,7 +315,7 @@ namespace sys {
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    RTI_CDR_KEY_MEMBER , /* Is a key? */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
                     DDS_PUBLIC_MEMBER,/* Member visibility */
                     1,
                     NULL/* Ignored */

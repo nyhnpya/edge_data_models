@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef resourcesSupport_995993335_h
-#define resourcesSupport_995993335_h
+#ifndef resourcesSupport_995993323_h
+#define resourcesSupport_995993323_h
 
 /* Uses */
 #include "resources.h"
@@ -62,5 +62,5 @@ namespace sys {
     } /* namespace process  */
 } /* namespace sys  */
 
-#endif  /* resourcesSupport_995993335_h */
+#endif  /* resourcesSupport_995993323_h */
 

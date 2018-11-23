@@ -7,10 +7,10 @@ module Shell
             //@copy-c-declaration static const char ROPTIMIZER_CONFIGURATION_REQUEST[] = "RoptimizerConfigurationRequest";
             struct RoptimizerConfigurationRequest
             {
-                double steadyStateWindow;
-                double steadyStateMin;
-                double rpmStepSize;
-                double ropStepSize;
+                long steadyStateWindow;
+                long steadyStateMin;
+                long rpmStepSize;
+                long ropStepSize;
             };
 
             //@copy-c-declaration static const char ROPTIMIZER_STEADY_STATE[] = "RoptimizerSteadyState";

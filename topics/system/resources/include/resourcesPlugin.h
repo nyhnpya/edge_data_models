@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef resourcesPlugin_995993335_h
-#define resourcesPlugin_995993335_h
+#ifndef resourcesPlugin_995993323_h
+#define resourcesPlugin_995993323_h
 
 #include "resources.h"
 
@@ -340,5 +340,5 @@ namespace sys {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* resourcesPlugin_995993335_h */
+#endif /* resourcesPlugin_995993323_h */
 
