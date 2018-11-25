@@ -153,7 +153,7 @@ void CDrillStateSubscriber::DataAvailable(const nec::process::DrillState &data,
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

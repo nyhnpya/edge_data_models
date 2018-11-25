@@ -129,7 +129,7 @@ void CResourcesSubscriber::DataAvailable(const sys::process::Resources &data,
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

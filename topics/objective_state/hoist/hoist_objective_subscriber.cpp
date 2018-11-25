@@ -68,7 +68,7 @@ void CHoistObjectiveSubscriber::DataAvailable(const nec::process::HoistObjective
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

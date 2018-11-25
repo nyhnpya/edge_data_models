@@ -73,7 +73,7 @@ void CCirculateRequestSubscriber::DataAvailable(const nec::process::CirculateReq
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

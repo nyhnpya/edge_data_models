@@ -154,7 +154,7 @@ void CAutoDrillerConfigurationRequestSubscriber::DataAvailable(const nec::contro
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

@@ -56,7 +56,7 @@ void CTemplateStateSubscriber::DataAvailable(const nec::process::TemplateState &
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(data);
         }
     }
 }

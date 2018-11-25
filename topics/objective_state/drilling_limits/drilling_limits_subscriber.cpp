@@ -128,7 +128,7 @@ void CDrillingLimitsSubscriber::DataAvailable(const process::plan::DrillingLimit
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

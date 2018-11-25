@@ -52,6 +52,9 @@ class CResourcesPublisher : public TPublisher< sys::process::Resources  >
     void SetMaxNumThreads(int32_t maxNumThreads);
     void SetOSName(const char* osName);
     void SetAppVersion(const char* appVersion);
+
+ private:
+    uint8_t *m_pProcessName;
 };
 
 #endif // __RESOURCES_PUBLISHER_H__ 

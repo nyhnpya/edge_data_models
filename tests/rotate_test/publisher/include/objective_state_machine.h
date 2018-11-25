@@ -20,7 +20,7 @@ class CObjectiveStateMachine
     CObjectiveStateSubscriber m_objectiveSubscriber;
     std::mutex                m_dataMutex;
 
-    void DataAvailable();
+    void DataAvailable(const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     
     // Singleton management

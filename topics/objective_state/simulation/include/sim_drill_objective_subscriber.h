@@ -23,8 +23,6 @@
 class CSimDrillObjectiveSubscriber : public TSubscriber< Simulation::AutoDrillerObjective >
 {
  public:
-    typedef std::function<void(const Simulation::AutoDrillerObjective &data)> OnDataAvailableEvent;
-
     CSimDrillObjectiveSubscriber();
     ~CSimDrillObjectiveSubscriber();
 

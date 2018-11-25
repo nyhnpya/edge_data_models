@@ -88,7 +88,7 @@ void CRotateStateSubscriber::DataAvailable(const nec::process::RotateState &data
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

@@ -74,7 +74,7 @@ void CAutoReamRequestSubscriber::DataAvailable(const nec::process::AutoReamReque
     {
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

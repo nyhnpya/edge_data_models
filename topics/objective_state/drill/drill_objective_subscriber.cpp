@@ -98,7 +98,7 @@ void CDrillObjectiveSubscriber::DataAvailable(const nec::process::DrillObjective
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

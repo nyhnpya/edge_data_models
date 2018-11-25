@@ -71,7 +71,7 @@ void CWellboreStateSubscriber::DataAvailable(const nec::process::WellboreState &
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

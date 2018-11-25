@@ -30,8 +30,6 @@ using namespace units::angular_velocity;
 class CAutoReamStateSubscriber : public TSubscriber< nec::process::AutoReamState >
 {
  public:
-    typedef std::function<void(const nec::process::AutoReamState &data)> OnDataAvailableEvent;
-
     CAutoReamStateSubscriber();
     ~CAutoReamStateSubscriber();
 

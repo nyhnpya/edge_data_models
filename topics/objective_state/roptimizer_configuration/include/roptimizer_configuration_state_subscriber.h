@@ -33,8 +33,6 @@ namespace CRoptimizerConfigurationStateSubscriber
     class CConfigurationStateStateSubscriber : public TSubscriber< Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState >
     {
     public:
-        typedef std::function<void(const Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState &data)> OnDataAvailableEvent;
-
         CConfigurationStateStateSubscriber();
         ~CConfigurationStateStateSubscriber();
 

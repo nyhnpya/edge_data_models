@@ -1,48 +1,36 @@
-#pragma once
+/*
+ *  Copyright (c) 2018 Ensign Energy Incorporated
+ *  All Rights Reserved.
+ *
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Ensign Energy Incorporated and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Ensign Energy Incorporated
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Ensign Energy Incorporated.
+ */
+#ifndef __RESOURCES_MONITOR_H__
+#define __RESOURCES_MONITOR_H__
+
 #include <chrono>
 #include <stdint.h>
 #include "resources_publisher.h"
+#include "process_info.h"
 
-struct ProcessStats
+class CResourcesMonitor
 {
-    long pid;
-    char processName[128];
-    double upTime;
-    double cpuUsagePercent;
-    double vmPeak;
-    double vmSize;
-    double vmSwap;
-    double vmMaxSwap;
-    int threads;
-    char uname[256];
-};
+  public:
+    CResourcesMonitor();
+    ~CResourcesMonitor();
 
-class ProcessInfo
-{
-public:
-    ProcessInfo(void);
-
-    void Initialize(ProcessStats *pProcessStats);
-
-    int GetInfo(ProcessStats *pProcessStats);
-
-private:
-    std::chrono::time_point<std::chrono::high_resolution_clock> lastRunTime;
-    uint64_t lastRunUserTime;
-    uint64_t lastRunKernelTime;
-};
-
-
-class ResourcesMonitor
-{
-public:
-    ResourcesMonitor();
-    ~ResourcesMonitor();
     void Initialize(const char* appVersion, int32_t domain);
     void PublishHeartbeat();
 
-private:
-    ProcessInfo           m_processInfo;
+  private:
+    CProcessInfo          m_processInfo;
     ProcessStats          m_processStats;
     CResourcesPublisher   m_resourcesPublisher;
     double                m_minCpuPercent;
@@ -51,3 +39,6 @@ private:
     int32_t               m_maxNumThreads;
     char*                 m_appVersion;
 };
+
+
+#endif // __RESOURCES_MONITOR_H__

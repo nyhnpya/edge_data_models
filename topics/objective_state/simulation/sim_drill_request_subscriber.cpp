@@ -119,7 +119,7 @@ void CSimDrillRequestSubscriber::DataAvailable(const Simulation::AutoDrillerRequ
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

@@ -204,7 +204,7 @@ void CDrillingCalibrationStateSubscriber::DataAvailable(const nec::control::Dril
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

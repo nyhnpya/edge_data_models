@@ -23,8 +23,6 @@
 class CSimDrillRequestSubscriber : public TSubscriber< Simulation::AutoDrillerRequest >
 {
  public:
-    typedef std::function<void(const Simulation::AutoDrillerRequest &data)> OnDataAvailableEvent;
-
     CSimDrillRequestSubscriber();
     ~CSimDrillRequestSubscriber();
 

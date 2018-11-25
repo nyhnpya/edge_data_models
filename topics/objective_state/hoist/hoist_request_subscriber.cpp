@@ -78,7 +78,7 @@ void CHoistRequestSubscriber::DataAvailable(const nec::process::HoistRequest &da
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

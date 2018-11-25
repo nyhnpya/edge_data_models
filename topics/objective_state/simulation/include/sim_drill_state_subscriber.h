@@ -23,8 +23,6 @@
 class CSimDrillStateSubscriber : public TSubscriber< Simulation::AutoDrillerState >
 {
  public:
-    typedef std::function<void(const Simulation::AutoDrillerState &data)> OnDataAvailableEvent;
-
     CSimDrillStateSubscriber();
     ~CSimDrillStateSubscriber();
 

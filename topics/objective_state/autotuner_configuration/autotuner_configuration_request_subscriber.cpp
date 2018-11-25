@@ -110,7 +110,7 @@ void CModelStateRequestSubscriber::DataAvailable(const Shell::Hmi::AutoTunerConf
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

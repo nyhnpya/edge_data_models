@@ -51,7 +51,7 @@ DataTypes::Objective CObjectiveStateMachine::GetObjective()
     return m_objectiveSubscriber.GetObjective();
 }
 
-void CObjectiveStateMachine::DataAvailable()
+void CObjectiveStateMachine::DataAvailable(const DDS::SampleInfo &sampleInfo)
 {
     DataTypes::Objective objective = GetObjective();
 
@@ -97,14 +97,15 @@ bool CObjectiveStateMachine::Initialize(int32_t domain)
 
     if ((retVal = m_objectiveSubscriber.Create(domain)) == true)
     {
-            m_objectiveSubscriber.OnDataAvailable([&]()
-                                                      {
-                                                          this->DataAvailable();
-                                                      });
+            m_objectiveSubscriber.OnDataAvailable([&](const DDS::SampleInfo &sampleInfo)
+                                                  {
+                                                      this->DataAvailable(sampleInfo);
+                                                  });
 
-            m_objectiveSubscriber.OnDataDisposed([&](const DDS::SampleInfo &sampleInfo){
-                                                         this->DataDisposed(sampleInfo);
-                                                     });
+            m_objectiveSubscriber.OnDataDisposed([&](const DDS::SampleInfo &sampleInfo)
+                                                 {
+                                                     this->DataDisposed(sampleInfo);
+                                                 });
     }
     else
     {

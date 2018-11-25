@@ -98,7 +98,7 @@ void CObjectiveStateSubscriber::DataAvailable(const process::plan::ObjectiveStat
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

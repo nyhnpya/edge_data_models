@@ -63,7 +63,7 @@ void CCirculateObjectiveSubscriber::DataAvailable(const nec::process::CirculateO
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

@@ -33,8 +33,6 @@ namespace CAutoTunerConfigurationStateSubscriber
     class CModelStateStateSubscriber : public TSubscriber< Shell::Hmi::AutoTunerConfiguration::ModelStateState >
     {
     public:
-        typedef std::function<void(const Shell::Hmi::AutoTunerConfiguration::ModelStateState &data)> OnDataAvailableEvent;
-
         CModelStateStateSubscriber();
         ~CModelStateStateSubscriber();
 

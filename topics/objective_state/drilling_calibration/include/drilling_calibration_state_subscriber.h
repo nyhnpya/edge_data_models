@@ -23,8 +23,6 @@
 class CDrillingCalibrationStateSubscriber : public TSubscriber< nec::control::DrillingCalibrationState >
 {
  public:
-    typedef std::function<void(const nec::control::DrillingCalibrationState &data)> OnDataAvailableEvent;
-
     CDrillingCalibrationStateSubscriber();
     ~CDrillingCalibrationStateSubscriber();
 

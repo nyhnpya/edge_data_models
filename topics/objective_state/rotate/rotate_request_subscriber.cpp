@@ -88,7 +88,7 @@ void CRotateRequestSubscriber::DataAvailable(const nec::process::RotateRequest &
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

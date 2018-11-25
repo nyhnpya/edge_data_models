@@ -182,7 +182,7 @@ void CSimDrillStateSubscriber::DataAvailable(const Simulation::AutoDrillerState 
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

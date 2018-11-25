@@ -113,7 +113,7 @@ void CHoistStateSubscriber::DataAvailable(const nec::process::HoistState &data,
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

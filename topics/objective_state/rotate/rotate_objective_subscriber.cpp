@@ -63,7 +63,7 @@ void CRotateObjectiveSubscriber::DataAvailable(const nec::process::RotateObjecti
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

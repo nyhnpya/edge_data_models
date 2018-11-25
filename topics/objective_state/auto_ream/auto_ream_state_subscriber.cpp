@@ -134,7 +134,7 @@ void CAutoReamStateSubscriber::DataAvailable(const nec::process::AutoReamState &
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

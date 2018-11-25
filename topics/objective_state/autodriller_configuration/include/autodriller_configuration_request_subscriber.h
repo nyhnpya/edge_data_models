@@ -23,8 +23,6 @@
 class CAutoDrillerConfigurationRequestSubscriber : public TSubscriber< nec::control::HmiRequest >
 {
  public:
-    typedef std::function<void(const nec::control::HmiRequest &data)> OnDataAvailableEvent;
-
     CAutoDrillerConfigurationRequestSubscriber();
     ~CAutoDrillerConfigurationRequestSubscriber();
 

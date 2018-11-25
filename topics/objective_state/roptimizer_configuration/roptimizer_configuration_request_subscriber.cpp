@@ -78,7 +78,7 @@ void CConfigurationStateRequestSubscriber::DataAvailable(const Shell::Hmi::Ropti
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

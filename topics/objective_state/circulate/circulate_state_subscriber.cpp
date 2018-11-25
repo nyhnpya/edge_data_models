@@ -98,7 +98,7 @@ void CCirculateStateSubscriber::DataAvailable(const nec::process::CirculateState
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

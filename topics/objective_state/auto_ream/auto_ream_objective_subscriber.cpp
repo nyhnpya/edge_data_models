@@ -62,7 +62,7 @@ void CAutoReamObjectiveSubscriber::DataAvailable(const nec::process::AutoReamObj
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

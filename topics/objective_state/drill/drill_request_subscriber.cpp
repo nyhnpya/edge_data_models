@@ -121,7 +121,7 @@ void CDrillRequestSubscriber::DataAvailable(const nec::process::DrillRequest &da
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable();
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

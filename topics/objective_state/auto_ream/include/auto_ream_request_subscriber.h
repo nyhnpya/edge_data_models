@@ -23,8 +23,6 @@
 class CAutoReamRequestSubscriber : public TSubscriber< nec::process::AutoReamRequest >
 {
  public:
-    typedef std::function<void(const nec::process::AutoReamRequest &data)> OnDataAvailableEvent;
-
     CAutoReamRequestSubscriber();
     ~CAutoReamRequestSubscriber();
 

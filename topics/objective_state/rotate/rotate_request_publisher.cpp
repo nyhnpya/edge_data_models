@@ -12,11 +12,16 @@ CRotateRequestPublisher::~CRotateRequestPublisher()
 bool CRotateRequestPublisher::Initialize()
 {
     CDdsUuid uuid;
+    bool     retVal = false;
 
-    uuid.GenerateUuid();
-    m_pDataInstance->id = DDS_String_dup(uuid.c_str());
+    if (m_pDataInstance != nullptr)
+    {
+        uuid.GenerateUuid();
+        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
+        retVal = true;
+    }
 
-    return true;
+    return retVal;
 }
 
 void CRotateRequestPublisher::SetObjectiveId(const DataTypes::Uuid objectiveId)

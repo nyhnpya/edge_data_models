@@ -34,6 +34,7 @@ TARG_SOURCES += resourcesPlugin.cxx
 TARG_SOURCES += resourcesSupport.cxx
 TARG_SOURCES += resources_publisher.cpp
 TARG_SOURCES += resources_subscriber.cpp
+TARG_SOURCES += process_info.cpp
 TARG_SOURCES += resources_monitor.cpp
 
 ###############################################################################
@@ -55,6 +56,7 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/resourcesSupport.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/resources_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/resources_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/resources_monitor.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/process_info.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
