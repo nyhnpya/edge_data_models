@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef roptimizer_configurationSupport_360071551_h
-#define roptimizer_configurationSupport_360071551_h
+#ifndef roptimizer_configurationSupport_360071774_h
+#define roptimizer_configurationSupport_360071774_h
 
 /* Uses */
 #include "roptimizer_configuration.h"
@@ -95,5 +95,5 @@ namespace Shell {
     } /* namespace Hmi  */
 } /* namespace Shell  */
 
-#endif  /* roptimizer_configurationSupport_360071551_h */
+#endif  /* roptimizer_configurationSupport_360071774_h */
 

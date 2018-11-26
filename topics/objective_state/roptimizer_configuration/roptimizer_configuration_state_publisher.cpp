@@ -30,11 +30,11 @@ bool CConfigurationStateStatePublisher::Create(int32_t domain)
 }
 
 
-void CConfigurationStateStatePublisher::SetRpmState(double state)
+void CConfigurationStateStatePublisher::SetRpmStateActual(double state)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->rpmState = state;
+        m_pDataInstance->rpmStateActual = state;
     }
     else
     {
@@ -42,11 +42,11 @@ void CConfigurationStateStatePublisher::SetRpmState(double state)
     }
 }
 
-void CConfigurationStateStatePublisher::SetRopState(double state)
+void CConfigurationStateStatePublisher::SetRopStateActual(double state)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->ropState = state;
+        m_pDataInstance->ropStateActual = state;
     }
     else
     {
@@ -54,11 +54,11 @@ void CConfigurationStateStatePublisher::SetRopState(double state)
     }
 } 
 
-void CConfigurationStateStatePublisher::SetWobState(double state)
+void CConfigurationStateStatePublisher::SetWobStateActual(double state)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobState = state;
+        m_pDataInstance->wobStateActual = state;
     }
     else
     {
@@ -66,15 +66,63 @@ void CConfigurationStateStatePublisher::SetWobState(double state)
     }
 }
 
-void CConfigurationStateStatePublisher::SetTorqueState(double state)
+void CConfigurationStateStatePublisher::SetTorqueStateActual(double state)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueState = state;
+        m_pDataInstance->torqueStateActual = state;
     }
     else
     {
         LOG_ERROR("Failed to set torque state because of uninitialized sample");
+    }
+}
+
+void CConfigurationStateStatePublisher::SetSteadyStateWindow(int32_t value)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->steadyStateWindow = value;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set steady state windows because of uninitialized sample");
+    }
+}
+
+void CConfigurationStateStatePublisher::SetSteadyStateMin(int32_t value)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->steadyStateMin = value;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set stead state min because of uninitialized sample");
+    }
+}
+
+void CConfigurationStateStatePublisher::SetRpmStepSize(int32_t value)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->rpmStepSize = value;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set rpm step size because of uninitialized sample");
+    }
+}
+
+void CConfigurationStateStatePublisher::SetRopStepSize(int32_t value)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->ropStepSize = value;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set rop step size because of uninitialized sample");
     }
 }
 

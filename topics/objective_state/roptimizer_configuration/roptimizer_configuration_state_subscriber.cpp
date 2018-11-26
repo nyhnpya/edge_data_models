@@ -21,22 +21,22 @@ bool CConfigurationStateStateSubscriber::ValidData()
 
 double CConfigurationStateStateSubscriber::GetRpmState()
 {
-    return m_data.rpmState;
+    return m_data.rpmStateActual;
 }
 
 double CConfigurationStateStateSubscriber::GetRopState()
 {
-    return m_data.ropState;
+    return m_data.ropStateActual;
 }
 
 double CConfigurationStateStateSubscriber::GetWobState()
 {
-    return m_data.wobState;
+    return m_data.wobStateActual;
 }
 
 double CConfigurationStateStateSubscriber::GetTorqueState()
 {
-    return m_data.torqueState;
+    return m_data.torqueStateActual;
 }
 
 void CConfigurationStateStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)

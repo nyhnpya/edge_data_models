@@ -325,11 +325,11 @@ namespace Shell {
             {
                 static RTIBool is_initialized = RTI_FALSE;
 
-                static DDS_TypeCode_Member RoptimizerSteadyState_g_tc_members[4]=
+                static DDS_TypeCode_Member RoptimizerSteadyState_g_tc_members[8]=
                 {
 
                     {
-                        (char *)"rpmState",/* Member name */
+                        (char *)"rpmStateActual",/* Member name */
                         {
                             0,/* Representation ID */          
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -346,7 +346,7 @@ namespace Shell {
                         NULL/* Ignored */
                     }, 
                     {
-                        (char *)"ropState",/* Member name */
+                        (char *)"ropStateActual",/* Member name */
                         {
                             1,/* Representation ID */          
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -363,7 +363,7 @@ namespace Shell {
                         NULL/* Ignored */
                     }, 
                     {
-                        (char *)"wobState",/* Member name */
+                        (char *)"wobStateActual",/* Member name */
                         {
                             2,/* Representation ID */          
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -380,9 +380,77 @@ namespace Shell {
                         NULL/* Ignored */
                     }, 
                     {
-                        (char *)"torqueState",/* Member name */
+                        (char *)"torqueStateActual",/* Member name */
                         {
                             3,/* Representation ID */          
+                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                            -1, /* Bitfield bits */
+                            NULL/* Member type code is assigned later */
+                        },
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        NULL, /* Ignored */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                        DDS_PUBLIC_MEMBER,/* Member visibility */
+                        1,
+                        NULL/* Ignored */
+                    }, 
+                    {
+                        (char *)"steadyStateWindow",/* Member name */
+                        {
+                            4,/* Representation ID */          
+                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                            -1, /* Bitfield bits */
+                            NULL/* Member type code is assigned later */
+                        },
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        NULL, /* Ignored */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                        DDS_PUBLIC_MEMBER,/* Member visibility */
+                        1,
+                        NULL/* Ignored */
+                    }, 
+                    {
+                        (char *)"steadyStateMin",/* Member name */
+                        {
+                            5,/* Representation ID */          
+                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                            -1, /* Bitfield bits */
+                            NULL/* Member type code is assigned later */
+                        },
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        NULL, /* Ignored */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                        DDS_PUBLIC_MEMBER,/* Member visibility */
+                        1,
+                        NULL/* Ignored */
+                    }, 
+                    {
+                        (char *)"rpmStepSize",/* Member name */
+                        {
+                            6,/* Representation ID */          
+                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                            -1, /* Bitfield bits */
+                            NULL/* Member type code is assigned later */
+                        },
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        NULL, /* Ignored */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                        DDS_PUBLIC_MEMBER,/* Member visibility */
+                        1,
+                        NULL/* Ignored */
+                    }, 
+                    {
+                        (char *)"ropStepSize",/* Member name */
+                        {
+                            7,/* Representation ID */          
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
                             -1, /* Bitfield bits */
                             NULL/* Member type code is assigned later */
@@ -408,7 +476,7 @@ namespace Shell {
                         0, /* Ignored */
                         0, /* Ignored */
                         NULL, /* Ignored */
-                        4, /* Number of members */
+                        8, /* Number of members */
                         RoptimizerSteadyState_g_tc_members, /* Members */
                         DDS_VM_NONE  /* Ignored */         
                     }}; /* Type code for RoptimizerSteadyState*/
@@ -424,6 +492,14 @@ namespace Shell {
                 RoptimizerSteadyState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
                 RoptimizerSteadyState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+                RoptimizerSteadyState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+                RoptimizerSteadyState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+                RoptimizerSteadyState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+                RoptimizerSteadyState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
                 is_initialized = RTI_TRUE;
 
@@ -461,19 +537,35 @@ namespace Shell {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initDouble(&sample->rpmState)) {
+                if (!RTICdrType_initDouble(&sample->rpmStateActual)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initDouble(&sample->ropState)) {
+                if (!RTICdrType_initDouble(&sample->ropStateActual)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initDouble(&sample->wobState)) {
+                if (!RTICdrType_initDouble(&sample->wobStateActual)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initDouble(&sample->torqueState)) {
+                if (!RTICdrType_initDouble(&sample->torqueStateActual)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrType_initLong(&sample->steadyStateWindow)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrType_initLong(&sample->steadyStateMin)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrType_initLong(&sample->rpmStepSize)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrType_initLong(&sample->ropStepSize)) {
                     return RTI_FALSE;
                 }
 
@@ -546,19 +638,35 @@ namespace Shell {
                     }
 
                     if (!RTICdrType_copyDouble (
-                        &dst->rpmState, &src->rpmState)) { 
+                        &dst->rpmStateActual, &src->rpmStateActual)) { 
                         return RTI_FALSE;
                     }
                     if (!RTICdrType_copyDouble (
-                        &dst->ropState, &src->ropState)) { 
+                        &dst->ropStateActual, &src->ropStateActual)) { 
                         return RTI_FALSE;
                     }
                     if (!RTICdrType_copyDouble (
-                        &dst->wobState, &src->wobState)) { 
+                        &dst->wobStateActual, &src->wobStateActual)) { 
                         return RTI_FALSE;
                     }
                     if (!RTICdrType_copyDouble (
-                        &dst->torqueState, &src->torqueState)) { 
+                        &dst->torqueStateActual, &src->torqueStateActual)) { 
+                        return RTI_FALSE;
+                    }
+                    if (!RTICdrType_copyLong (
+                        &dst->steadyStateWindow, &src->steadyStateWindow)) { 
+                        return RTI_FALSE;
+                    }
+                    if (!RTICdrType_copyLong (
+                        &dst->steadyStateMin, &src->steadyStateMin)) { 
+                        return RTI_FALSE;
+                    }
+                    if (!RTICdrType_copyLong (
+                        &dst->rpmStepSize, &src->rpmStepSize)) { 
+                        return RTI_FALSE;
+                    }
+                    if (!RTICdrType_copyLong (
+                        &dst->ropStepSize, &src->ropStepSize)) { 
                         return RTI_FALSE;
                     }
 

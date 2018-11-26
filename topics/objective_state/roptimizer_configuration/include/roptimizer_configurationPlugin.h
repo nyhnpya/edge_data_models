@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef roptimizer_configurationPlugin_360071551_h
-#define roptimizer_configurationPlugin_360071551_h
+#ifndef roptimizer_configurationPlugin_360071774_h
+#define roptimizer_configurationPlugin_360071774_h
 
 #include "roptimizer_configuration.h"
 
@@ -520,5 +520,5 @@ namespace Shell {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* roptimizer_configurationPlugin_360071551_h */
+#endif /* roptimizer_configurationPlugin_360071774_h */
 
