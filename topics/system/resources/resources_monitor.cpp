@@ -1,5 +1,35 @@
 #include "resources_monitor.h"
 
+CResourcesMonitor *CResourcesMonitor::m_pInstance = nullptr;
+std::mutex CResourcesMonitor::m_instanceMutex;
+
+CResourcesMonitor *CResourcesMonitor::Instance()
+{
+    m_instanceMutex.lock();
+    {
+        if (m_pInstance == nullptr)
+        {
+            m_pInstance = new CResourcesMonitor();
+        }
+    }
+    m_instanceMutex.unlock();
+
+    return m_pInstance;
+}
+
+void CResourcesMonitor::Destroy()
+{
+    m_instanceMutex.lock();
+    {
+        if (m_pInstance != nullptr)
+        {
+            delete m_pInstance;
+            m_pInstance = nullptr;
+        }
+    }
+    m_instanceMutex.unlock();
+}
+
 CResourcesMonitor::CResourcesMonitor() :
     m_minCpuPercent(0),
     m_maxCpuPercent(100),

@@ -251,7 +251,7 @@ void CWobTuningRequestSubscriber::DataAvailable(const Shell::Hmi::AutoTunerConfi
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }
@@ -392,7 +392,7 @@ void CDiffpTuningRequestSubscriber::DataAvailable(const Shell::Hmi::AutoTunerCon
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }
@@ -534,7 +534,7 @@ void CTorqueTuningRequestSubscriber::DataAvailable(const Shell::Hmi::AutoTunerCo
 
         if (m_pOnDataAvailable != nullptr)
         {
-            m_pOnDataAvailable(data);
+            m_pOnDataAvailable(sampleInfo);
         }
     }
 }

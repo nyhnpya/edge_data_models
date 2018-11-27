@@ -74,8 +74,6 @@ namespace CAutoTunerConfigurationRequestSubscriber
     class CWobTuningRequestSubscriber : public TSubscriber< Shell::Hmi::AutoTunerConfiguration::WobTuningRequest >
     {
     public:
-        typedef std::function<void(const Shell::Hmi::AutoTunerConfiguration::WobTuningRequest &data)> OnDataAvailableEvent;
-
         CWobTuningRequestSubscriber();
         ~CWobTuningRequestSubscriber();
 
@@ -117,8 +115,6 @@ namespace CAutoTunerConfigurationRequestSubscriber
     class CDiffpTuningRequestSubscriber : public TSubscriber< Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequest >
     {
     public:
-        typedef std::function<void(const Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequest &data)> OnDataAvailableEvent;
-
         CDiffpTuningRequestSubscriber();
         ~CDiffpTuningRequestSubscriber();
 
@@ -160,8 +156,6 @@ namespace CAutoTunerConfigurationRequestSubscriber
     class CTorqueTuningRequestSubscriber : public TSubscriber< Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequest >
     {
     public:
-        typedef std::function<void(const Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequest &data)> OnDataAvailableEvent;
-
         CTorqueTuningRequestSubscriber();
         ~CTorqueTuningRequestSubscriber();
 

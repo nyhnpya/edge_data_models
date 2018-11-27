@@ -23,8 +23,10 @@
 class CResourcesMonitor
 {
   public:
-    CResourcesMonitor();
     ~CResourcesMonitor();
+
+    static CResourcesMonitor *Instance();
+    static void Destroy();
 
     void Initialize(const char* appVersion, int32_t domain);
     void PublishHeartbeat();
@@ -38,6 +40,12 @@ class CResourcesMonitor
     int32_t               m_minNumThreads;
     int32_t               m_maxNumThreads;
     char*                 m_appVersion;
+
+   // Singleton management
+    CResourcesMonitor();
+
+    static std::mutex       m_instanceMutex;
+    static CResourcesMonitor *m_pInstance;
 };
 
 
