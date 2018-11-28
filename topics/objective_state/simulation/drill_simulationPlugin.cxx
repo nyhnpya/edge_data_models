@@ -1537,9 +1537,6 @@ namespace Simulation {
         plugin->destroySampleFnc =
         (PRESTypePluginDestroySampleFunction)
         AutoDrillerRequestPlugin_destroy_sample;
-        plugin->finalizeOptionalMembersFnc =
-        (PRESTypePluginFinalizeOptionalMembersFunction)
-        AutoDrillerRequest_finalize_optional_members;
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
@@ -3105,9 +3102,6 @@ namespace Simulation {
         plugin->destroySampleFnc =
         (PRESTypePluginDestroySampleFunction)
         AutoDrillerObjectivePlugin_destroy_sample;
-        plugin->finalizeOptionalMembersFnc =
-        (PRESTypePluginFinalizeOptionalMembersFunction)
-        AutoDrillerObjective_finalize_optional_members;
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
@@ -4897,9 +4891,6 @@ namespace Simulation {
         plugin->destroySampleFnc =
         (PRESTypePluginDestroySampleFunction)
         AutoDrillerStatePlugin_destroy_sample;
-        plugin->finalizeOptionalMembersFnc =
-        (PRESTypePluginFinalizeOptionalMembersFunction)
-        AutoDrillerState_finalize_optional_members;
 
         plugin->serializeFnc =
         (PRESTypePluginSerializeFunction)
