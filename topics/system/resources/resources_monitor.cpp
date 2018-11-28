@@ -61,7 +61,6 @@ void CResourcesMonitor::Initialize(const char* appVersion, int32_t domain)
     if (m_resourcesPublisher.Create(domain) == true)
     {
         m_resourcesPublisher.SetProcessName(m_processStats.processName);
-        m_resourcesPublisher.Initialize();
         m_resourcesPublisher.CreateInstance();
     }
 }
