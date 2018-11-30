@@ -200,12 +200,12 @@ int32_t main(int32_t argc, char **argv)
         top_level_menu();
     }
 
-    std::cout << "Waiting for thread: "  << std::endl;
+    /*    std::cout << "Waiting for thread: "  << std::endl;
 
     if (threadId.joinable())
     {
         threadId.join();
-    }
+        }*/
 
     gpStatePublisher->Destroy();
 }

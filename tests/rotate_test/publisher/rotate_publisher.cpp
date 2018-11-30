@@ -147,7 +147,7 @@ int32_t main(int32_t argc, char **argv)
 
     gpRequestPublisher = new CRotateRequestPublisher();
 
-    bool retVal  = CObjectiveStateMachine::Instance()->Initialize(gDomain);
+    bool retVal = CObjectiveStateMachine::Instance()->Initialize(gDomain);
 
     if ((retVal == true) && (gpRequestPublisher->Create(gDomain) == true))
     {

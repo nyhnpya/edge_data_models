@@ -75,43 +75,43 @@ void register_signal_handler()
 //    void SetTorqueMode(const bool torqueMode);
 void set_rop()
 {
-    feet_per_hour_t ropLimit;
+    feet_per_hour_t ropTarget;
     double input;
 
-    std::cout << "ROP Limit: ";
+    std::cout << "ROP Target: ";
     std::cin >> input;
-    ropLimit = (feet_per_hour_t)input;
-    gpStatePublisher->SetRopLimit((meters_per_second_t)ropLimit);
+    ropTarget = feet_per_hour_t(input);
+    gpStatePublisher->SetRopTarget(meters_per_second_t(ropTarget));
 }
 
 void set_wob()
 {
     double input;
 
-    std::cout << "WOB Limit: ";
+    std::cout << "WOB Target: ";
     std::cin >> input;
-    pound_t wobLimit = (pound_t)(input * 1000);
-    gpStatePublisher->SetWobLimit((newton_t)wobLimit);
+    pound_t wobTarget = (pound_t)(input * 1000);
+    gpStatePublisher->SetWobTarget((newton_t)wobTarget);
 }
 
 void set_diffp()
 {
     double input;
 
-    std::cout << "DiffP Limit: ";
+    std::cout << "DiffP Target: ";
     std::cin >> input;
-    pounds_per_square_inch_t diffpLimit = (pounds_per_square_inch_t)input;
-    gpStatePublisher->SetDifferentialPressureLimit((pascal_t)diffpLimit);
+    pounds_per_square_inch_t diffpTarget = (pounds_per_square_inch_t)input;
+    gpStatePublisher->SetDiffPressureTarget((pascal_t)diffpTarget);
 }
 
 void set_torque()
 {
     double input;
 
-    std::cout << "Torque Limit: ";
+    std::cout << "Torque Target: ";
     std::cin >> input;
-    foot_pound_t torqueLimit = (foot_pound_t)(input * 1000);
-    gpStatePublisher->SetTorqueLimit((newton_meter_t)torqueLimit);
+    foot_pound_t torqueTarget = (foot_pound_t)(input * 1000);
+    gpStatePublisher->SetTorqueTarget((newton_meter_t)torqueTarget);
 }
 
 void top_level_menu()
@@ -146,7 +146,7 @@ void top_level_menu()
                 set_torque();
                 gpStatePublisher->SetRopMode(true);
                 gpStatePublisher->SetWobMode(true);
-                gpStatePublisher->SetDifferentialPressureMode(true);
+                gpStatePublisher->SetDiffPressureMode(true);
                 gpStatePublisher->SetTorqueMode(true);
                 gpStatePublisher->PublishSample();
                 break;
