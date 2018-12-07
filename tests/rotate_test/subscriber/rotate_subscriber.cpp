@@ -85,7 +85,7 @@ void DataDisposed(const DDS::SampleInfo &sampleInfo)
     LOG_INFO("Data Disposed");
 }
 
-void DataAvailable()
+void DataAvailable(const DDS::SampleInfo &sampleInfo)
 {
     LOG_DEBUG("DataAvailable");
 }
@@ -128,9 +128,9 @@ int32_t main(int32_t argc, char **argv)
 
     if (gpRequestSubscriber->Create(gDomain) == true)
     {
-        gpRequestSubscriber->OnDataAvailable([&]()
+        gpRequestSubscriber->OnDataAvailable([&]const DDS::SampleInfo &sampleInfo))
                                              {
-                                                 DataAvailable();
+                                                 DataAvailable(sampleInfo);
                                              });
 
         gpRequestSubscriber->OnSubscriptionMatched([&](const DDS::SubscriptionMatchedStatus &status){

@@ -73,7 +73,7 @@ void register_signal_handler()
     sigaction(SIGTERM, &sigact, (struct sigaction *)NULL);
 }
 
-void get_objective()
+void get_objective(const DDS::SampleInfo &sampleInfo)
 {
     DataTypes::Objective objective = pSubscriber->GetObjective();
 
@@ -135,9 +135,9 @@ int32_t main(int32_t argc, char **argv)
 
     if (pSubscriber->Create(domain) == true)
     {
-        pSubscriber->OnDataAvailable([&]()
+        pSubscriber->OnDataAvailable([&](const DDS::SampleInfo &sampleInfo)
                                      {
-                                         get_objective();
+                                         get_objective(sampleInfo);
                                      });
 
         pSubscriber->OnLivelinessChanged([&](const DDS::LivelinessChangedStatus &status)

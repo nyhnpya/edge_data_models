@@ -41,7 +41,7 @@ DataTypes::Time CRotateRequestSubscriber::GetDuration()
 
 radians_per_second_t CRotateRequestSubscriber::GetTargetRate()
 {
-    return (radians_per_second_t)m_data.targetRate;
+    return radians_per_second_t(m_data.targetRate);
 }
 
 bool CRotateRequestSubscriber::Create(int32_t domain)
@@ -97,9 +97,12 @@ void CRotateRequestSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
 
-    if (m_pOnDataDisposed != nullptr)
+    if (sampleInfo.valid_data == DDS_BOOLEAN_FALSE)
     {
-        m_pOnDataDisposed(sampleInfo);
+        if (m_pOnDataDisposed != nullptr)
+        {
+            m_pOnDataDisposed(sampleInfo);
+        }
     }
 }
 
