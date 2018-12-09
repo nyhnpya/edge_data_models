@@ -30,11 +30,11 @@ bool CConfigurationStateStatePublisher::Create(int32_t domain)
 }
 
 
-void CConfigurationStateStatePublisher::SetRpmStateActual(double state)
+void CConfigurationStateStatePublisher::SetRpmSteadyState(bool state)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->rpmStateActual = state;
+        m_pDataInstance->rpmSteadyState = state;
     }
     else
     {
@@ -42,11 +42,11 @@ void CConfigurationStateStatePublisher::SetRpmStateActual(double state)
     }
 }
 
-void CConfigurationStateStatePublisher::SetRopStateActual(double state)
+void CConfigurationStateStatePublisher::SetRopSteadyState(bool state)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->ropStateActual = state;
+        m_pDataInstance->ropSteadyState = state;
     }
     else
     {
@@ -54,11 +54,11 @@ void CConfigurationStateStatePublisher::SetRopStateActual(double state)
     }
 } 
 
-void CConfigurationStateStatePublisher::SetWobStateActual(double state)
+void CConfigurationStateStatePublisher::SetWobSteadyState(bool state)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobStateActual = state;
+        m_pDataInstance->wobSteadyState = state;
     }
     else
     {
@@ -66,11 +66,11 @@ void CConfigurationStateStatePublisher::SetWobStateActual(double state)
     }
 }
 
-void CConfigurationStateStatePublisher::SetTorqueStateActual(double state)
+void CConfigurationStateStatePublisher::SetTorqueSteadyState(bool state)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueStateActual = state;
+        m_pDataInstance->torqueSteadyState = state;
     }
     else
     {
@@ -123,6 +123,42 @@ void CConfigurationStateStatePublisher::SetRopStepSize(int32_t value)
     else
     {
         LOG_ERROR("Failed to set rop step size because of uninitialized sample");
+    }
+}
+
+void CConfigurationStateStatePublisher::SetBitWear(double value)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->bitWear = value;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set bit wear because of uninitialized sample");
+    }
+}
+
+void CConfigurationStateStatePublisher::SetMSE(double value)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->mse = value;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set MSE because of uninitialized sample");
+    }
+}
+
+void CConfigurationStateStatePublisher::SetPower(double value)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->power = value;
+    }
+    else
+    {
+        LOG_ERROR("Failed to set Power because of uninitialized sample");
     }
 }
 

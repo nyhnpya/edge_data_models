@@ -17,15 +17,18 @@ module Shell
             struct RoptimizerSteadyState
             {
                 // Actuals
-                double rpmStateActual;
-                double ropStateActual;
-                double wobStateActual;
-                double torqueStateActual;
+                boolean rpmSteadyState;
+                boolean ropSteadyState;
+                boolean wobSteadyState;
+                boolean torqueSteadyState;
                 // Targets
                 long steadyStateWindow;
                 long steadyStateMin;
                 long rpmStepSize;
                 long ropStepSize;
+                double bitWear;
+                double mse;
+                double power;
             };
         };
     };

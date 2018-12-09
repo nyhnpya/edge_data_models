@@ -19,24 +19,59 @@ bool CConfigurationStateStateSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-double CConfigurationStateStateSubscriber::GetRpmState()
+bool CConfigurationStateStateSubscriber::GetRpmState()
 {
-    return m_data.rpmStateActual;
+    return m_data.rpmSteadyState;
 }
 
-double CConfigurationStateStateSubscriber::GetRopState()
+bool CConfigurationStateStateSubscriber::GetRopState()
 {
-    return m_data.ropStateActual;
+    return m_data.ropSteadyState;
 }
 
-double CConfigurationStateStateSubscriber::GetWobState()
+bool CConfigurationStateStateSubscriber::GetWobState()
 {
-    return m_data.wobStateActual;
+    return m_data.wobSteadyState;
 }
 
-double CConfigurationStateStateSubscriber::GetTorqueState()
+bool CConfigurationStateStateSubscriber::GetTorqueState()
 {
-    return m_data.torqueStateActual;
+    return m_data.torqueSteadyState;
+}
+
+int32_t CConfigurationStateStateSubscriber::GetSteadyStateWindow()
+{
+    return m_data.steadyStateWindow;
+}
+
+int32_t CConfigurationStateStateSubscriber::GetSteadyStateMin()
+{
+    return m_data.steadyStateMin;
+}
+
+int32_t CConfigurationStateStateSubscriber::GetRpmStepSize()
+{
+    return m_data.rpmStepSize;
+}
+
+int32_t CConfigurationStateStateSubscriber::GetRopStepSize()
+{
+    return m_data.ropStepSize;
+}
+
+double CConfigurationStateStateSubscriber::GetBitWear()
+{
+    return m_data.bitWear;
+}
+
+double CConfigurationStateStateSubscriber::GetMSE()
+{
+    return m_data.mse;
+}
+
+double CConfigurationStateStateSubscriber::GetPower()
+{
+    return m_data.power;
 }
 
 void CConfigurationStateStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)

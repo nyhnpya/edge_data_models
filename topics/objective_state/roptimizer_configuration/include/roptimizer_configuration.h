@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef roptimizer_configuration_360071774_h
-#define roptimizer_configuration_360071774_h
+#ifndef roptimizer_configuration_360071868_h
+#define roptimizer_configuration_360071868_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -123,14 +123,17 @@ namespace Shell {
                 typedef RoptimizerSteadyStateDataReader DataReader;
                 #endif
 
-                DDS_Double   rpmStateActual ;
-                DDS_Double   ropStateActual ;
-                DDS_Double   wobStateActual ;
-                DDS_Double   torqueStateActual ;
+                DDS_Boolean   rpmSteadyState ;
+                DDS_Boolean   ropSteadyState ;
+                DDS_Boolean   wobSteadyState ;
+                DDS_Boolean   torqueSteadyState ;
                 DDS_Long   steadyStateWindow ;
                 DDS_Long   steadyStateMin ;
                 DDS_Long   rpmStepSize ;
                 DDS_Long   ropStepSize ;
+                DDS_Double   bitWear ;
+                DDS_Double   mse ;
+                DDS_Double   power ;
 
             };
             #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)

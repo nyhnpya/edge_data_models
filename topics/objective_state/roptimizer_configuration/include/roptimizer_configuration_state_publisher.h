@@ -41,14 +41,17 @@ namespace CRoptimizerConfigurationStatePublisher
         bool PublishSample();
 
         // Topic getters
-        void SetRpmStateActual(double state);
-        void SetRopStateActual(double state);
-        void SetWobStateActual(double state);
-        void SetTorqueStateActual(double state);
+        void SetRpmSteadyState(bool state);
+        void SetRopSteadyState(bool state);
+        void SetWobSteadyState(bool state);
+        void SetTorqueSteadyState(bool state);
         void SetSteadyStateWindow(int32_t value);
         void SetSteadyStateMin(int32_t value);
         void SetRpmStepSize(int32_t value);
         void SetRopStepSize(int32_t value);
+        void SetBitWear(double value);
+        void SetMSE(double value);
+        void SetPower(double value);
     };
 };
 
