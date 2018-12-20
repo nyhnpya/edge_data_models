@@ -1,0 +1,53 @@
+#include "base_data_types.idl"
+
+module plc
+{
+    module process
+    {
+        //@copy-c-declaration static const char PLC_ROTATE_REQUEST[] = "PlcRotateRequest";
+
+        /**
+         * \brief requested state change in the rotation system.
+         *
+         * \ingroup SafeRotationFunctions
+         *
+         * | Variable          | Description                                         | Data Type           | Unit    |
+         * | ----------------- | --------------------------------------------------- | ------------------- | ------- |
+         * | targetRate        | requested traget in rad/s                           | double              | rad/s   |
+         */
+        struct RotateRequest
+        {
+            double              targetRate;
+        };
+
+        //@copy-c-declaration static const char PLC_ROTATE_STATE[] = "PlcRotateState";
+
+        /**
+         * \brief current state of rotation system.
+         *
+         * \ingroup SafeRotationFunctions
+         *
+         * | Variable      | Description                            | Data Type         | Unit  |
+         * | ------------- | ---------------------------------------| ------------------| ------|
+         * | status        | Unique id of publisher                 | Datatypes::Status | N/A   |
+         * | actualRate    | actual rate in rad/s                   | double            | rad/s |
+         * | minRate       | minimum machine rate in rad/s          | double            | rad/s |
+         * | maxRate       | maximum machine rate in rad/s          | double            | rad/s |
+         * | targetRate    | requested traget in rad/s              | double            | rad/s |
+         */
+        struct RotateState
+        {
+            DataTypes::Status status;
+
+            // actuals
+            double            actualRate;
+
+            // constraints
+            double            minRate;
+            double            maxRate;
+
+            // targets
+            double            targetRate;
+        };
+    };
+};
