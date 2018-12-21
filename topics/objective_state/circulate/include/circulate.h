@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef circulate_1746882207_h
-#define circulate_1746882207_h
+#ifndef circulate_1746883224_h
+#define circulate_1746883224_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -21,9 +21,9 @@ or consult the RTI Connext manual.
 #endif
 
 #include "base_data_types.h"
-namespace plc {
+namespace nec {
     namespace process {
-        static const char PLC_CIRCULATE_REQUEST[] = "PlcCirculateRequest"; 
+        static const char CIRCULATE_REQUEST[] = "CirculateRequest"; 
 
         extern const char *CirculateRequestTYPENAME;
 
@@ -44,6 +44,11 @@ namespace plc {
             typedef CirculateRequestDataReader DataReader;
             #endif
 
+            DataTypes::Uuid   id ;
+            DataTypes::Uuid   objectiveId ;
+            DataTypes::Priority   priority ;
+            DataTypes::Time   timeNeeded ;
+            DataTypes::Time   estimatedDuration ;
             DDS_Double   targetFlowRate ;
 
         };
@@ -99,7 +104,86 @@ namespace plc {
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport
         #endif
-        static const char PLC_CIRCULATE_STATE[] = "PlcCirculateState"; 
+        static const char CIRCULATE_OBJECTIVE[] = "CirculateObjective"; 
+
+        extern const char *CirculateObjectiveTYPENAME;
+
+        struct CirculateObjectiveSeq;
+        #ifndef NDDS_STANDALONE_TYPE
+        class CirculateObjectiveTypeSupport;
+        class CirculateObjectiveDataWriter;
+        class CirculateObjectiveDataReader;
+        #endif
+
+        class CirculateObjective 
+        {
+          public:
+            typedef struct CirculateObjectiveSeq Seq;
+            #ifndef NDDS_STANDALONE_TYPE
+            typedef CirculateObjectiveTypeSupport TypeSupport;
+            typedef CirculateObjectiveDataWriter DataWriter;
+            typedef CirculateObjectiveDataReader DataReader;
+            #endif
+
+            DataTypes::Uuid   id ;
+            DataTypes::Uuid   objectiveId ;
+            DataTypes::Time   estimatedDuration ;
+            DDS_Double   targetFlowRate ;
+
+        };
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
+        #endif
+
+        NDDSUSERDllExport DDS_TypeCode* CirculateObjective_get_typecode(void); /* Type code */
+
+        DDS_SEQUENCE(CirculateObjectiveSeq, CirculateObjective);
+
+        NDDSUSERDllExport
+        RTIBool CirculateObjective_initialize(
+            CirculateObjective* self);
+
+        NDDSUSERDllExport
+        RTIBool CirculateObjective_initialize_ex(
+            CirculateObjective* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool CirculateObjective_initialize_w_params(
+            CirculateObjective* self,
+            const struct DDS_TypeAllocationParams_t * allocParams);  
+
+        NDDSUSERDllExport
+        void CirculateObjective_finalize(
+            CirculateObjective* self);
+
+        NDDSUSERDllExport
+        void CirculateObjective_finalize_ex(
+            CirculateObjective* self,RTIBool deletePointers);
+
+        NDDSUSERDllExport
+        void CirculateObjective_finalize_w_params(
+            CirculateObjective* self,
+            const struct DDS_TypeDeallocationParams_t * deallocParams);
+
+        NDDSUSERDllExport
+        void CirculateObjective_finalize_optional_members(
+            CirculateObjective* self, RTIBool deletePointers);  
+
+        NDDSUSERDllExport
+        RTIBool CirculateObjective_copy(
+            CirculateObjective* dst,
+            const CirculateObjective* src);
+
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        static const char CIRCULATE_STATE[] = "CirculateState"; 
 
         extern const char *CirculateStateTYPENAME;
 
@@ -120,6 +204,9 @@ namespace plc {
             typedef CirculateStateDataReader DataReader;
             #endif
 
+            DataTypes::Uuid   id ;
+            DataTypes::Uuid   objectiveId ;
+            DataTypes::Time   timestamp ;
             DataTypes::Status   status ;
             DDS_Double   actualFlowRate ;
             DDS_Double   actualStandpipePressure ;
@@ -183,7 +270,7 @@ namespace plc {
         #define NDDSUSERDllExport
         #endif
     } /* namespace process  */
-} /* namespace plc  */
+} /* namespace nec  */
 
 #endif /* circulate */
 

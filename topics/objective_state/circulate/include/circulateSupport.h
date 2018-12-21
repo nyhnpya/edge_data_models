@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef circulateSupport_1746882207_h
-#define circulateSupport_1746882207_h
+#ifndef circulateSupport_1746883224_h
+#define circulateSupport_1746883224_h
 
 /* Uses */
 #include "circulate.h"
@@ -26,7 +26,7 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace plc {
+namespace nec {
     namespace process {
         /* ========================================================================= */
         /**
@@ -78,6 +78,37 @@ namespace plc {
         #endif
 
         DDS_TYPESUPPORT_CPP(
+            CirculateObjectiveTypeSupport, 
+            CirculateObjective);
+
+        DDS_DATAWRITER_CPP(CirculateObjectiveDataWriter, CirculateObjective);
+        DDS_DATAREADER_CPP(CirculateObjectiveDataReader, CirculateObjectiveSeq, CirculateObjective);
+
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
+
+        Defines:  TTypeSupport, TDataWriter, TDataReader
+
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
+
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
+
+        #endif
+
+        DDS_TYPESUPPORT_CPP(
             CirculateStateTypeSupport, 
             CirculateState);
 
@@ -91,7 +122,7 @@ namespace plc {
         #define NDDSUSERDllExport
         #endif
     } /* namespace process  */
-} /* namespace plc  */
+} /* namespace nec  */
 
-#endif  /* circulateSupport_1746882207_h */
+#endif  /* circulateSupport_1746883224_h */
 

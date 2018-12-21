@@ -32,23 +32,108 @@ or consult the RTI Connext manual.
 
 #include <new>
 
-namespace plc {
+namespace nec {
     namespace process {
 
         /* ========================================================================= */
-        const char *HoistRequestTYPENAME = "plc::process::HoistRequest";
+        const char *HoistRequestTYPENAME = "nec::process::HoistRequest";
 
         DDS_TypeCode* HoistRequest_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member HoistRequest_g_tc_members[2]=
+            static DDS_TypeCode_Member HoistRequest_g_tc_members[7]=
             {
 
                 {
-                    (char *)"targetVelocity",/* Member name */
+                    (char *)"id",/* Member name */
                     {
                         0,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_KEY_MEMBER , /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"objectiveId",/* Member name */
+                    {
+                        1,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"priority",/* Member name */
+                    {
+                        2,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"timeNeeded",/* Member name */
+                    {
+                        3,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"estimatedDuration",/* Member name */
+                    {
+                        4,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"targetVelocity",/* Member name */
+                    {
+                        5,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -65,7 +150,7 @@ namespace plc {
                 {
                     (char *)"targetPosition",/* Member name */
                     {
-                        1,/* Representation ID */          
+                        6,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -86,12 +171,12 @@ namespace plc {
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"plc::process::HoistRequest", /* Name */
+                    (char *)"nec::process::HoistRequest", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    2, /* Number of members */
+                    7, /* Number of members */
                     HoistRequest_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
                 }}; /* Type code for HoistRequest*/
@@ -100,9 +185,19 @@ namespace plc {
                 return &HoistRequest_g_tc;
             }
 
-            HoistRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            HoistRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-            HoistRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            HoistRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+
+            HoistRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Priority_get_typecode();
+
+            HoistRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+
+            HoistRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+
+            HoistRequest_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            HoistRequest_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             is_initialized = RTI_TRUE;
 
@@ -111,7 +206,7 @@ namespace plc {
 
         RTIBool HoistRequest_initialize(
             HoistRequest* sample) {
-            return plc::process::HoistRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+            return nec::process::HoistRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
         RTIBool HoistRequest_initialize_ex(
@@ -124,7 +219,7 @@ namespace plc {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return plc::process::HoistRequest_initialize_w_params(
+            return nec::process::HoistRequest_initialize_w_params(
                 sample,&allocParams);
 
         }
@@ -137,6 +232,27 @@ namespace plc {
                 return RTI_FALSE;
             }
             if (allocParams == NULL) {
+                return RTI_FALSE;
+            }
+
+            if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+            allocParams)) {
+                return RTI_FALSE;
+            }
+            if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
+            allocParams)) {
+                return RTI_FALSE;
+            }
+            if (!DataTypes::Priority_initialize_w_params(&sample->priority,
+            allocParams)) {
+                return RTI_FALSE;
+            }
+            if (!DataTypes::Time_initialize_w_params(&sample->timeNeeded,
+            allocParams)) {
+                return RTI_FALSE;
+            }
+            if (!DataTypes::Time_initialize_w_params(&sample->estimatedDuration,
+            allocParams)) {
                 return RTI_FALSE;
             }
 
@@ -155,7 +271,7 @@ namespace plc {
             HoistRequest* sample)
         {
 
-            plc::process::HoistRequest_finalize_ex(sample,RTI_TRUE);
+            nec::process::HoistRequest_finalize_ex(sample,RTI_TRUE);
         }
 
         void HoistRequest_finalize_ex(
@@ -170,7 +286,7 @@ namespace plc {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            plc::process::HoistRequest_finalize_w_params(
+            nec::process::HoistRequest_finalize_w_params(
                 sample,&deallocParams);
         }
 
@@ -185,6 +301,16 @@ namespace plc {
             if (deallocParams == NULL) {
                 return;
             }
+
+            DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
+
+            DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
+
+            DataTypes::Priority_finalize_w_params(&sample->priority,deallocParams);
+
+            DataTypes::Time_finalize_w_params(&sample->timeNeeded,deallocParams);
+
+            DataTypes::Time_finalize_w_params(&sample->estimatedDuration,deallocParams);
 
         }
 
@@ -204,6 +330,11 @@ namespace plc {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
+            DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+            DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
+            DataTypes::Priority_finalize_optional_members(&sample->priority, deallocParams->delete_pointers);
+            DataTypes::Time_finalize_optional_members(&sample->timeNeeded, deallocParams->delete_pointers);
+            DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
         }
 
         RTIBool HoistRequest_copy(
@@ -216,6 +347,26 @@ namespace plc {
                     return RTI_FALSE;
                 }
 
+                if (!DataTypes::Uuid_copy(
+                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Uuid_copy(
+                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Priority_copy(
+                    &dst->priority,(const DataTypes::Priority*)&src->priority)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Time_copy(
+                    &dst->timeNeeded,(const DataTypes::Time*)&src->timeNeeded)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Time_copy(
+                    &dst->estimatedDuration,(const DataTypes::Time*)&src->estimatedDuration)) {
+                    return RTI_FALSE;
+                } 
                 if (!RTICdrType_copyDouble (
                     &dst->targetVelocity, &src->targetVelocity)) { 
                     return RTI_FALSE;
@@ -242,10 +393,10 @@ namespace plc {
         #define T HoistRequest
         #define TSeq HoistRequestSeq
 
-        #define T_initialize_w_params plc::process::HoistRequest_initialize_w_params
+        #define T_initialize_w_params nec::process::HoistRequest_initialize_w_params
 
-        #define T_finalize_w_params   plc::process::HoistRequest_finalize_w_params
-        #define T_copy       plc::process::HoistRequest_copy
+        #define T_finalize_w_params   nec::process::HoistRequest_finalize_w_params
+        #define T_copy       nec::process::HoistRequest_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -264,17 +415,17 @@ namespace plc {
         #undef T
 
         /* ========================================================================= */
-        const char *HoistStateTYPENAME = "plc::process::HoistState";
+        const char *HoistObjectiveTYPENAME = "nec::process::HoistObjective";
 
-        DDS_TypeCode* HoistState_get_typecode()
+        DDS_TypeCode* HoistObjective_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member HoistState_g_tc_members[11]=
+            static DDS_TypeCode_Member HoistObjective_g_tc_members[5]=
             {
 
                 {
-                    (char *)"status",/* Member name */
+                    (char *)"id",/* Member name */
                     {
                         0,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -285,13 +436,13 @@ namespace plc {
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    RTI_CDR_KEY_MEMBER , /* Is a key? */
                     DDS_PUBLIC_MEMBER,/* Member visibility */
                     1,
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"actualHookload",/* Member name */
+                    (char *)"objectiveId",/* Member name */
                     {
                         1,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -308,7 +459,7 @@ namespace plc {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"actualVelocity",/* Member name */
+                    (char *)"estimatedDuration",/* Member name */
                     {
                         2,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -325,7 +476,7 @@ namespace plc {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"actualPosition",/* Member name */
+                    (char *)"targetVelocity",/* Member name */
                     {
                         3,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -342,7 +493,326 @@ namespace plc {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"maxHookload",/* Member name */
+                    (char *)"targetPosition",/* Member name */
+                    {
+                        4,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }
+            };
+
+            static DDS_TypeCode HoistObjective_g_tc =
+            {{
+                    DDS_TK_STRUCT,/* Kind */
+                    DDS_BOOLEAN_FALSE, /* Ignored */
+                    -1, /*Ignored*/
+                    (char *)"nec::process::HoistObjective", /* Name */
+                    NULL, /* Ignored */      
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    5, /* Number of members */
+                    HoistObjective_g_tc_members, /* Members */
+                    DDS_VM_NONE  /* Ignored */         
+                }}; /* Type code for HoistObjective*/
+
+            if (is_initialized) {
+                return &HoistObjective_g_tc;
+            }
+
+            HoistObjective_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+
+            HoistObjective_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+
+            HoistObjective_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+
+            HoistObjective_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            HoistObjective_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            is_initialized = RTI_TRUE;
+
+            return &HoistObjective_g_tc;
+        }
+
+        RTIBool HoistObjective_initialize(
+            HoistObjective* sample) {
+            return nec::process::HoistObjective_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        }
+
+        RTIBool HoistObjective_initialize_ex(
+            HoistObjective* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        {
+
+            struct DDS_TypeAllocationParams_t allocParams =
+            DDS_TYPE_ALLOCATION_PARAMS_DEFAULT;
+
+            allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
+            allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
+
+            return nec::process::HoistObjective_initialize_w_params(
+                sample,&allocParams);
+
+        }
+
+        RTIBool HoistObjective_initialize_w_params(
+            HoistObjective* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        {
+
+            if (sample == NULL) {
+                return RTI_FALSE;
+            }
+            if (allocParams == NULL) {
+                return RTI_FALSE;
+            }
+
+            if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+            allocParams)) {
+                return RTI_FALSE;
+            }
+            if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
+            allocParams)) {
+                return RTI_FALSE;
+            }
+            if (!DataTypes::Time_initialize_w_params(&sample->estimatedDuration,
+            allocParams)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initDouble(&sample->targetVelocity)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initDouble(&sample->targetPosition)) {
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
+        }
+
+        void HoistObjective_finalize(
+            HoistObjective* sample)
+        {
+
+            nec::process::HoistObjective_finalize_ex(sample,RTI_TRUE);
+        }
+
+        void HoistObjective_finalize_ex(
+            HoistObjective* sample,RTIBool deletePointers)
+        {
+            struct DDS_TypeDeallocationParams_t deallocParams =
+            DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
+
+            if (sample==NULL) {
+                return;
+            } 
+
+            deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
+
+            nec::process::HoistObjective_finalize_w_params(
+                sample,&deallocParams);
+        }
+
+        void HoistObjective_finalize_w_params(
+            HoistObjective* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        {
+
+            if (sample==NULL) {
+                return;
+            }
+
+            if (deallocParams == NULL) {
+                return;
+            }
+
+            DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
+
+            DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
+
+            DataTypes::Time_finalize_w_params(&sample->estimatedDuration,deallocParams);
+
+        }
+
+        void HoistObjective_finalize_optional_members(
+            HoistObjective* sample, RTIBool deletePointers)
+        {
+            struct DDS_TypeDeallocationParams_t deallocParamsTmp =
+            DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
+            struct DDS_TypeDeallocationParams_t * deallocParams =
+            &deallocParamsTmp;
+
+            if (sample==NULL) {
+                return;
+            } 
+            if (deallocParams) {} /* To avoid warnings */
+
+            deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
+            deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
+
+            DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+            DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
+            DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
+        }
+
+        RTIBool HoistObjective_copy(
+            HoistObjective* dst,
+            const HoistObjective* src)
+        {
+            try {
+
+                if (dst == NULL || src == NULL) {
+                    return RTI_FALSE;
+                }
+
+                if (!DataTypes::Uuid_copy(
+                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Uuid_copy(
+                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Time_copy(
+                    &dst->estimatedDuration,(const DataTypes::Time*)&src->estimatedDuration)) {
+                    return RTI_FALSE;
+                } 
+                if (!RTICdrType_copyDouble (
+                    &dst->targetVelocity, &src->targetVelocity)) { 
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyDouble (
+                    &dst->targetPosition, &src->targetPosition)) { 
+                    return RTI_FALSE;
+                }
+
+                return RTI_TRUE;
+
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
+            }
+        }
+
+        /**
+        * <<IMPLEMENTATION>>
+        *
+        * Defines:  TSeq, T
+        *
+        * Configure and implement 'HoistObjective' sequence class.
+        */
+        #define T HoistObjective
+        #define TSeq HoistObjectiveSeq
+
+        #define T_initialize_w_params nec::process::HoistObjective_initialize_w_params
+
+        #define T_finalize_w_params   nec::process::HoistObjective_finalize_w_params
+        #define T_copy       nec::process::HoistObjective_copy
+
+        #ifndef NDDS_STANDALONE_TYPE
+        #include "dds_c/generic/dds_c_sequence_TSeq.gen"
+        #include "dds_cpp/generic/dds_cpp_sequence_TSeq.gen"
+        #else
+        #include "dds_c_sequence_TSeq.gen"
+        #include "dds_cpp_sequence_TSeq.gen"
+        #endif
+
+        #undef T_copy
+        #undef T_finalize_w_params
+
+        #undef T_initialize_w_params
+
+        #undef TSeq
+        #undef T
+
+        /* ========================================================================= */
+        const char *HoistStateTYPENAME = "nec::process::HoistState";
+
+        DDS_TypeCode* HoistState_get_typecode()
+        {
+            static RTIBool is_initialized = RTI_FALSE;
+
+            static DDS_TypeCode_Member HoistState_g_tc_members[14]=
+            {
+
+                {
+                    (char *)"id",/* Member name */
+                    {
+                        0,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_KEY_MEMBER , /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"objectiveId",/* Member name */
+                    {
+                        1,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"timestamp",/* Member name */
+                    {
+                        2,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"status",/* Member name */
+                    {
+                        3,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"actualHookload",/* Member name */
                     {
                         4,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -359,7 +829,7 @@ namespace plc {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"maxHoistVelocity",/* Member name */
+                    (char *)"actualVelocity",/* Member name */
                     {
                         5,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -376,7 +846,7 @@ namespace plc {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"maxLowerVelocity",/* Member name */
+                    (char *)"actualPosition",/* Member name */
                     {
                         6,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -393,7 +863,7 @@ namespace plc {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"maxHoistPosition",/* Member name */
+                    (char *)"maxHookload",/* Member name */
                     {
                         7,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -410,7 +880,7 @@ namespace plc {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"maxLowerPosition",/* Member name */
+                    (char *)"maxHoistVelocity",/* Member name */
                     {
                         8,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -427,7 +897,7 @@ namespace plc {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"targetVelocity",/* Member name */
+                    (char *)"maxLowerVelocity",/* Member name */
                     {
                         9,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -444,9 +914,60 @@ namespace plc {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"targetPosition",/* Member name */
+                    (char *)"maxHoistPosition",/* Member name */
                     {
                         10,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"maxLowerPosition",/* Member name */
+                    {
+                        11,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"targetVelocity",/* Member name */
+                    {
+                        12,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"targetPosition",/* Member name */
+                    {
+                        13,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -467,12 +988,12 @@ namespace plc {
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"plc::process::HoistState", /* Name */
+                    (char *)"nec::process::HoistState", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    11, /* Number of members */
+                    14, /* Number of members */
                     HoistState_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
                 }}; /* Type code for HoistState*/
@@ -481,13 +1002,13 @@ namespace plc {
                 return &HoistState_g_tc;
             }
 
-            HoistState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Status_get_typecode();
+            HoistState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-            HoistState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            HoistState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-            HoistState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            HoistState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-            HoistState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            HoistState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Status_get_typecode();
 
             HoistState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -503,6 +1024,12 @@ namespace plc {
 
             HoistState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
+            HoistState_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            HoistState_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            HoistState_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
             is_initialized = RTI_TRUE;
 
             return &HoistState_g_tc;
@@ -510,7 +1037,7 @@ namespace plc {
 
         RTIBool HoistState_initialize(
             HoistState* sample) {
-            return plc::process::HoistState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+            return nec::process::HoistState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
         RTIBool HoistState_initialize_ex(
@@ -523,7 +1050,7 @@ namespace plc {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return plc::process::HoistState_initialize_w_params(
+            return nec::process::HoistState_initialize_w_params(
                 sample,&allocParams);
 
         }
@@ -539,6 +1066,18 @@ namespace plc {
                 return RTI_FALSE;
             }
 
+            if (!DataTypes::Uuid_initialize_w_params(&sample->id,
+            allocParams)) {
+                return RTI_FALSE;
+            }
+            if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
+            allocParams)) {
+                return RTI_FALSE;
+            }
+            if (!DataTypes::Time_initialize_w_params(&sample->timestamp,
+            allocParams)) {
+                return RTI_FALSE;
+            }
             if (!DataTypes::Status_initialize_w_params(&sample->status,
             allocParams)) {
                 return RTI_FALSE;
@@ -591,7 +1130,7 @@ namespace plc {
             HoistState* sample)
         {
 
-            plc::process::HoistState_finalize_ex(sample,RTI_TRUE);
+            nec::process::HoistState_finalize_ex(sample,RTI_TRUE);
         }
 
         void HoistState_finalize_ex(
@@ -606,7 +1145,7 @@ namespace plc {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            plc::process::HoistState_finalize_w_params(
+            nec::process::HoistState_finalize_w_params(
                 sample,&deallocParams);
         }
 
@@ -621,6 +1160,12 @@ namespace plc {
             if (deallocParams == NULL) {
                 return;
             }
+
+            DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
+
+            DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
+
+            DataTypes::Time_finalize_w_params(&sample->timestamp,deallocParams);
 
             DataTypes::Status_finalize_w_params(&sample->status,deallocParams);
 
@@ -642,6 +1187,9 @@ namespace plc {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
+            DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
+            DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
+            DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
             DataTypes::Status_finalize_optional_members(&sample->status, deallocParams->delete_pointers);
         }
 
@@ -655,6 +1203,18 @@ namespace plc {
                     return RTI_FALSE;
                 }
 
+                if (!DataTypes::Uuid_copy(
+                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Uuid_copy(
+                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
+                    return RTI_FALSE;
+                } 
+                if (!DataTypes::Time_copy(
+                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
+                    return RTI_FALSE;
+                } 
                 if (!DataTypes::Status_copy(
                     &dst->status,(const DataTypes::Status*)&src->status)) {
                     return RTI_FALSE;
@@ -717,10 +1277,10 @@ namespace plc {
         #define T HoistState
         #define TSeq HoistStateSeq
 
-        #define T_initialize_w_params plc::process::HoistState_initialize_w_params
+        #define T_initialize_w_params nec::process::HoistState_initialize_w_params
 
-        #define T_finalize_w_params   plc::process::HoistState_finalize_w_params
-        #define T_copy       plc::process::HoistState_copy
+        #define T_finalize_w_params   nec::process::HoistState_finalize_w_params
+        #define T_copy       nec::process::HoistState_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -738,5 +1298,5 @@ namespace plc {
         #undef TSeq
         #undef T
     } /* namespace process  */
-} /* namespace plc  */
+} /* namespace nec  */
 
