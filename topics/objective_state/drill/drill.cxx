@@ -32,21 +32,21 @@ or consult the RTI Connext manual.
 
 #include <new>
 
-namespace nec {
+namespace plc {
     namespace process {
 
         /* ========================================================================= */
-        const char *DrillRequestTYPENAME = "nec::process::DrillRequest";
+        const char *DrillRequestTYPENAME = "plc::process::DrillRequest";
 
         DDS_TypeCode* DrillRequest_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member DrillRequest_g_tc_members[13]=
+            static DDS_TypeCode_Member DrillRequest_g_tc_members[8]=
             {
 
                 {
-                    (char *)"id",/* Member name */
+                    (char *)"ropLimit",/* Member name */
                     {
                         0,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -57,13 +57,13 @@ namespace nec {
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    RTI_CDR_KEY_MEMBER , /* Is a key? */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
                     DDS_PUBLIC_MEMBER,/* Member visibility */
                     1,
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"objectiveId",/* Member name */
+                    (char *)"wobLimit",/* Member name */
                     {
                         1,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -80,7 +80,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"priority",/* Member name */
+                    (char *)"diffPressureLimit",/* Member name */
                     {
                         2,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -97,7 +97,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"timeNeeded",/* Member name */
+                    (char *)"torqueLimit",/* Member name */
                     {
                         3,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -114,7 +114,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"duration",/* Member name */
+                    (char *)"ropMode",/* Member name */
                     {
                         4,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -131,7 +131,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"ropTarget",/* Member name */
+                    (char *)"wobMode",/* Member name */
                     {
                         5,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -148,7 +148,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"wobTarget",/* Member name */
+                    (char *)"diffPressureMode",/* Member name */
                     {
                         6,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -165,94 +165,9 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"diffPressureTarget",/* Member name */
-                    {
-                        7,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"torqueTarget",/* Member name */
-                    {
-                        8,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"ropMode",/* Member name */
-                    {
-                        9,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"wobMode",/* Member name */
-                    {
-                        10,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"diffPressureMode",/* Member name */
-                    {
-                        11,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
                     (char *)"torqueMode",/* Member name */
                     {
-                        12,/* Representation ID */          
+                        7,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -273,12 +188,12 @@ namespace nec {
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"nec::process::DrillRequest", /* Name */
+                    (char *)"plc::process::DrillRequest", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    13, /* Number of members */
+                    8, /* Number of members */
                     DrillRequest_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
                 }}; /* Type code for DrillRequest*/
@@ -287,31 +202,21 @@ namespace nec {
                 return &DrillRequest_g_tc;
             }
 
-            DrillRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+            DrillRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+            DrillRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Priority_get_typecode();
+            DrillRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+            DrillRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+            DrillRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-            DrillRequest_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillRequest_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-            DrillRequest_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillRequest_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-            DrillRequest_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            DrillRequest_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            DrillRequest_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-            DrillRequest_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-            DrillRequest_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-            DrillRequest_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+            DrillRequest_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
             is_initialized = RTI_TRUE;
 
@@ -320,7 +225,7 @@ namespace nec {
 
         RTIBool DrillRequest_initialize(
             DrillRequest* sample) {
-            return nec::process::DrillRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+            return plc::process::DrillRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
         RTIBool DrillRequest_initialize_ex(
@@ -333,7 +238,7 @@ namespace nec {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return nec::process::DrillRequest_initialize_w_params(
+            return plc::process::DrillRequest_initialize_w_params(
                 sample,&allocParams);
 
         }
@@ -349,40 +254,19 @@ namespace nec {
                 return RTI_FALSE;
             }
 
-            if (!DataTypes::Uuid_initialize_w_params(&sample->id,
-            allocParams)) {
-                return RTI_FALSE;
-            }
-            if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
-            allocParams)) {
-                return RTI_FALSE;
-            }
-            if (!DataTypes::Priority_initialize_w_params(&sample->priority,
-            allocParams)) {
-                return RTI_FALSE;
-            }
-            if (!DataTypes::Time_initialize_w_params(&sample->timeNeeded,
-            allocParams)) {
-                return RTI_FALSE;
-            }
-            if (!DataTypes::Time_initialize_w_params(&sample->duration,
-            allocParams)) {
+            if (!RTICdrType_initDouble(&sample->ropLimit)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->ropTarget)) {
+            if (!RTICdrType_initDouble(&sample->wobLimit)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->wobTarget)) {
+            if (!RTICdrType_initDouble(&sample->diffPressureLimit)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->diffPressureTarget)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initDouble(&sample->torqueTarget)) {
+            if (!RTICdrType_initDouble(&sample->torqueLimit)) {
                 return RTI_FALSE;
             }
 
@@ -409,7 +293,7 @@ namespace nec {
             DrillRequest* sample)
         {
 
-            nec::process::DrillRequest_finalize_ex(sample,RTI_TRUE);
+            plc::process::DrillRequest_finalize_ex(sample,RTI_TRUE);
         }
 
         void DrillRequest_finalize_ex(
@@ -424,7 +308,7 @@ namespace nec {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            nec::process::DrillRequest_finalize_w_params(
+            plc::process::DrillRequest_finalize_w_params(
                 sample,&deallocParams);
         }
 
@@ -439,16 +323,6 @@ namespace nec {
             if (deallocParams == NULL) {
                 return;
             }
-
-            DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
-
-            DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
-
-            DataTypes::Priority_finalize_w_params(&sample->priority,deallocParams);
-
-            DataTypes::Time_finalize_w_params(&sample->timeNeeded,deallocParams);
-
-            DataTypes::Time_finalize_w_params(&sample->duration,deallocParams);
 
         }
 
@@ -468,11 +342,6 @@ namespace nec {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-            DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
-            DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
-            DataTypes::Priority_finalize_optional_members(&sample->priority, deallocParams->delete_pointers);
-            DataTypes::Time_finalize_optional_members(&sample->timeNeeded, deallocParams->delete_pointers);
-            DataTypes::Time_finalize_optional_members(&sample->duration, deallocParams->delete_pointers);
         }
 
         RTIBool DrillRequest_copy(
@@ -485,40 +354,20 @@ namespace nec {
                     return RTI_FALSE;
                 }
 
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Priority_copy(
-                    &dst->priority,(const DataTypes::Priority*)&src->priority)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timeNeeded,(const DataTypes::Time*)&src->timeNeeded)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->duration,(const DataTypes::Time*)&src->duration)) {
-                    return RTI_FALSE;
-                } 
                 if (!RTICdrType_copyDouble (
-                    &dst->ropTarget, &src->ropTarget)) { 
+                    &dst->ropLimit, &src->ropLimit)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->wobTarget, &src->wobTarget)) { 
+                    &dst->wobLimit, &src->wobLimit)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->diffPressureTarget, &src->diffPressureTarget)) { 
+                    &dst->diffPressureLimit, &src->diffPressureLimit)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->torqueTarget, &src->torqueTarget)) { 
+                    &dst->torqueLimit, &src->torqueLimit)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyBoolean (
@@ -555,10 +404,10 @@ namespace nec {
         #define T DrillRequest
         #define TSeq DrillRequestSeq
 
-        #define T_initialize_w_params nec::process::DrillRequest_initialize_w_params
+        #define T_initialize_w_params plc::process::DrillRequest_initialize_w_params
 
-        #define T_finalize_w_params   nec::process::DrillRequest_finalize_w_params
-        #define T_copy       nec::process::DrillRequest_copy
+        #define T_finalize_w_params   plc::process::DrillRequest_finalize_w_params
+        #define T_copy       plc::process::DrillRequest_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -577,551 +426,19 @@ namespace nec {
         #undef T
 
         /* ========================================================================= */
-        const char *DrillObjectiveTYPENAME = "nec::process::DrillObjective";
-
-        DDS_TypeCode* DrillObjective_get_typecode()
-        {
-            static RTIBool is_initialized = RTI_FALSE;
-
-            static DDS_TypeCode_Member DrillObjective_g_tc_members[11]=
-            {
-
-                {
-                    (char *)"id",/* Member name */
-                    {
-                        0,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_KEY_MEMBER , /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"objectiveId",/* Member name */
-                    {
-                        1,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"estimatedDuration",/* Member name */
-                    {
-                        2,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"ropTarget",/* Member name */
-                    {
-                        3,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"wobTarget",/* Member name */
-                    {
-                        4,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"diffPressureTarget",/* Member name */
-                    {
-                        5,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"torqueTarget",/* Member name */
-                    {
-                        6,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"ropMode",/* Member name */
-                    {
-                        7,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"wobMode",/* Member name */
-                    {
-                        8,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"diffPressureMode",/* Member name */
-                    {
-                        9,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"torqueMode",/* Member name */
-                    {
-                        10,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }
-            };
-
-            static DDS_TypeCode DrillObjective_g_tc =
-            {{
-                    DDS_TK_STRUCT,/* Kind */
-                    DDS_BOOLEAN_FALSE, /* Ignored */
-                    -1, /*Ignored*/
-                    (char *)"nec::process::DrillObjective", /* Name */
-                    NULL, /* Ignored */      
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    11, /* Number of members */
-                    DrillObjective_g_tc_members, /* Members */
-                    DDS_VM_NONE  /* Ignored */         
-                }}; /* Type code for DrillObjective*/
-
-            if (is_initialized) {
-                return &DrillObjective_g_tc;
-            }
-
-            DrillObjective_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
-
-            DrillObjective_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
-
-            DrillObjective_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
-
-            DrillObjective_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            DrillObjective_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            DrillObjective_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            DrillObjective_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            DrillObjective_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-            DrillObjective_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-            DrillObjective_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-            DrillObjective_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-            is_initialized = RTI_TRUE;
-
-            return &DrillObjective_g_tc;
-        }
-
-        RTIBool DrillObjective_initialize(
-            DrillObjective* sample) {
-            return nec::process::DrillObjective_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
-        }
-
-        RTIBool DrillObjective_initialize_ex(
-            DrillObjective* sample,RTIBool allocatePointers, RTIBool allocateMemory)
-        {
-
-            struct DDS_TypeAllocationParams_t allocParams =
-            DDS_TYPE_ALLOCATION_PARAMS_DEFAULT;
-
-            allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
-            allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
-
-            return nec::process::DrillObjective_initialize_w_params(
-                sample,&allocParams);
-
-        }
-
-        RTIBool DrillObjective_initialize_w_params(
-            DrillObjective* sample, const struct DDS_TypeAllocationParams_t * allocParams)
-        {
-
-            if (sample == NULL) {
-                return RTI_FALSE;
-            }
-            if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!DataTypes::Uuid_initialize_w_params(&sample->id,
-            allocParams)) {
-                return RTI_FALSE;
-            }
-            if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
-            allocParams)) {
-                return RTI_FALSE;
-            }
-            if (!DataTypes::Time_initialize_w_params(&sample->estimatedDuration,
-            allocParams)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initDouble(&sample->ropTarget)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initDouble(&sample->wobTarget)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initDouble(&sample->diffPressureTarget)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initDouble(&sample->torqueTarget)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initBoolean(&sample->ropMode)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initBoolean(&sample->wobMode)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initBoolean(&sample->diffPressureMode)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initBoolean(&sample->torqueMode)) {
-                return RTI_FALSE;
-            }
-
-            return RTI_TRUE;
-        }
-
-        void DrillObjective_finalize(
-            DrillObjective* sample)
-        {
-
-            nec::process::DrillObjective_finalize_ex(sample,RTI_TRUE);
-        }
-
-        void DrillObjective_finalize_ex(
-            DrillObjective* sample,RTIBool deletePointers)
-        {
-            struct DDS_TypeDeallocationParams_t deallocParams =
-            DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
-
-            if (sample==NULL) {
-                return;
-            } 
-
-            deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
-
-            nec::process::DrillObjective_finalize_w_params(
-                sample,&deallocParams);
-        }
-
-        void DrillObjective_finalize_w_params(
-            DrillObjective* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
-        {
-
-            if (sample==NULL) {
-                return;
-            }
-
-            if (deallocParams == NULL) {
-                return;
-            }
-
-            DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
-
-            DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
-
-            DataTypes::Time_finalize_w_params(&sample->estimatedDuration,deallocParams);
-
-        }
-
-        void DrillObjective_finalize_optional_members(
-            DrillObjective* sample, RTIBool deletePointers)
-        {
-            struct DDS_TypeDeallocationParams_t deallocParamsTmp =
-            DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
-            struct DDS_TypeDeallocationParams_t * deallocParams =
-            &deallocParamsTmp;
-
-            if (sample==NULL) {
-                return;
-            } 
-            if (deallocParams) {} /* To avoid warnings */
-
-            deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
-            deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
-
-            DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
-            DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
-            DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
-        }
-
-        RTIBool DrillObjective_copy(
-            DrillObjective* dst,
-            const DrillObjective* src)
-        {
-            try {
-
-                if (dst == NULL || src == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->estimatedDuration,(const DataTypes::Time*)&src->estimatedDuration)) {
-                    return RTI_FALSE;
-                } 
-                if (!RTICdrType_copyDouble (
-                    &dst->ropTarget, &src->ropTarget)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->wobTarget, &src->wobTarget)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->diffPressureTarget, &src->diffPressureTarget)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->torqueTarget, &src->torqueTarget)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->ropMode, &src->ropMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->wobMode, &src->wobMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->diffPressureMode, &src->diffPressureMode)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->torqueMode, &src->torqueMode)) { 
-                    return RTI_FALSE;
-                }
-
-                return RTI_TRUE;
-
-            } catch (std::bad_alloc&) {
-                return RTI_FALSE;
-            }
-        }
-
-        /**
-        * <<IMPLEMENTATION>>
-        *
-        * Defines:  TSeq, T
-        *
-        * Configure and implement 'DrillObjective' sequence class.
-        */
-        #define T DrillObjective
-        #define TSeq DrillObjectiveSeq
-
-        #define T_initialize_w_params nec::process::DrillObjective_initialize_w_params
-
-        #define T_finalize_w_params   nec::process::DrillObjective_finalize_w_params
-        #define T_copy       nec::process::DrillObjective_copy
-
-        #ifndef NDDS_STANDALONE_TYPE
-        #include "dds_c/generic/dds_c_sequence_TSeq.gen"
-        #include "dds_cpp/generic/dds_cpp_sequence_TSeq.gen"
-        #else
-        #include "dds_c_sequence_TSeq.gen"
-        #include "dds_cpp_sequence_TSeq.gen"
-        #endif
-
-        #undef T_copy
-        #undef T_finalize_w_params
-
-        #undef T_initialize_w_params
-
-        #undef TSeq
-        #undef T
-
-        /* ========================================================================= */
-        const char *DrillStateTYPENAME = "nec::process::DrillState";
+        const char *DrillStateTYPENAME = "plc::process::DrillState";
 
         DDS_TypeCode* DrillState_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member DrillState_g_tc_members[20]=
+            static DDS_TypeCode_Member DrillState_g_tc_members[16]=
             {
 
                 {
-                    (char *)"id",/* Member name */
-                    {
-                        0,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_KEY_MEMBER , /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"objectiveId",/* Member name */
-                    {
-                        1,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"timestamp",/* Member name */
-                    {
-                        2,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
                     (char *)"ropActual",/* Member name */
                     {
-                        3,/* Representation ID */          
+                        0,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -1138,7 +455,7 @@ namespace nec {
                 {
                     (char *)"wobActual",/* Member name */
                     {
-                        4,/* Representation ID */          
+                        1,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -1155,7 +472,7 @@ namespace nec {
                 {
                     (char *)"diffPressureActual",/* Member name */
                     {
-                        5,/* Representation ID */          
+                        2,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -1172,6 +489,57 @@ namespace nec {
                 {
                     (char *)"torqueActual",/* Member name */
                     {
+                        3,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"ropMachineLimit",/* Member name */
+                    {
+                        4,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"wobMachineLimit",/* Member name */
+                    {
+                        5,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"diffPressureMachineLimit",/* Member name */
+                    {
                         6,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
@@ -1187,7 +555,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"ropLimit",/* Member name */
+                    (char *)"torqueMachineLimit",/* Member name */
                     {
                         7,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1204,7 +572,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"wobLimit",/* Member name */
+                    (char *)"ropMode",/* Member name */
                     {
                         8,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1221,7 +589,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"diffPressureLimit",/* Member name */
+                    (char *)"wobMode",/* Member name */
                     {
                         9,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1238,7 +606,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueLimit",/* Member name */
+                    (char *)"diffPressureMode",/* Member name */
                     {
                         10,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1255,7 +623,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"ropMode",/* Member name */
+                    (char *)"torqueMode",/* Member name */
                     {
                         11,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1272,7 +640,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"wobMode",/* Member name */
+                    (char *)"ropLimit",/* Member name */
                     {
                         12,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1289,7 +657,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"diffPressureMode",/* Member name */
+                    (char *)"wobLimit",/* Member name */
                     {
                         13,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1306,7 +674,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueMode",/* Member name */
+                    (char *)"diffPressureLimit",/* Member name */
                     {
                         14,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1323,77 +691,9 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"ropTarget",/* Member name */
+                    (char *)"torqueLimit",/* Member name */
                     {
                         15,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"wobTarget",/* Member name */
-                    {
-                        16,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"diffPressureTarget",/* Member name */
-                    {
-                        17,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"torqueTarget",/* Member name */
-                    {
-                        18,/* Representation ID */          
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL/* Ignored */
-                }, 
-                {
-                    (char *)"bitOnBottom",/* Member name */
-                    {
-                        19,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -1414,12 +714,12 @@ namespace nec {
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"nec::process::DrillState", /* Name */
+                    (char *)"plc::process::DrillState", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    20, /* Number of members */
+                    16, /* Number of members */
                     DrillState_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
                 }}; /* Type code for DrillState*/
@@ -1428,11 +728,11 @@ namespace nec {
                 return &DrillState_g_tc;
             }
 
-            DrillState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+            DrillState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+            DrillState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+            DrillState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             DrillState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
@@ -1444,29 +744,21 @@ namespace nec {
 
             DrillState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-            DrillState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-            DrillState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            DrillState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
             DrillState_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
-            DrillState_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+            DrillState_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillState_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+            DrillState_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            DrillState_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+            DrillState_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             DrillState_g_tc_members[15]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            DrillState_g_tc_members[16]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            DrillState_g_tc_members[17]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            DrillState_g_tc_members[18]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-            DrillState_g_tc_members[19]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
 
             is_initialized = RTI_TRUE;
 
@@ -1475,7 +767,7 @@ namespace nec {
 
         RTIBool DrillState_initialize(
             DrillState* sample) {
-            return nec::process::DrillState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+            return plc::process::DrillState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
         RTIBool DrillState_initialize_ex(
@@ -1488,7 +780,7 @@ namespace nec {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return nec::process::DrillState_initialize_w_params(
+            return plc::process::DrillState_initialize_w_params(
                 sample,&allocParams);
 
         }
@@ -1501,19 +793,6 @@ namespace nec {
                 return RTI_FALSE;
             }
             if (allocParams == NULL) {
-                return RTI_FALSE;
-            }
-
-            if (!DataTypes::Uuid_initialize_w_params(&sample->id,
-            allocParams)) {
-                return RTI_FALSE;
-            }
-            if (!DataTypes::Uuid_initialize_w_params(&sample->objectiveId,
-            allocParams)) {
-                return RTI_FALSE;
-            }
-            if (!DataTypes::Time_initialize_w_params(&sample->timestamp,
-            allocParams)) {
                 return RTI_FALSE;
             }
 
@@ -1533,19 +812,19 @@ namespace nec {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->ropLimit)) {
+            if (!RTICdrType_initDouble(&sample->ropMachineLimit)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->wobLimit)) {
+            if (!RTICdrType_initDouble(&sample->wobMachineLimit)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->diffPressureLimit)) {
+            if (!RTICdrType_initDouble(&sample->diffPressureMachineLimit)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->torqueLimit)) {
+            if (!RTICdrType_initDouble(&sample->torqueMachineLimit)) {
                 return RTI_FALSE;
             }
 
@@ -1565,23 +844,19 @@ namespace nec {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->ropTarget)) {
+            if (!RTICdrType_initDouble(&sample->ropLimit)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->wobTarget)) {
+            if (!RTICdrType_initDouble(&sample->wobLimit)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->diffPressureTarget)) {
+            if (!RTICdrType_initDouble(&sample->diffPressureLimit)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->torqueTarget)) {
-                return RTI_FALSE;
-            }
-
-            if (!RTICdrType_initBoolean(&sample->bitOnBottom)) {
+            if (!RTICdrType_initDouble(&sample->torqueLimit)) {
                 return RTI_FALSE;
             }
 
@@ -1592,7 +867,7 @@ namespace nec {
             DrillState* sample)
         {
 
-            nec::process::DrillState_finalize_ex(sample,RTI_TRUE);
+            plc::process::DrillState_finalize_ex(sample,RTI_TRUE);
         }
 
         void DrillState_finalize_ex(
@@ -1607,7 +882,7 @@ namespace nec {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            nec::process::DrillState_finalize_w_params(
+            plc::process::DrillState_finalize_w_params(
                 sample,&deallocParams);
         }
 
@@ -1622,12 +897,6 @@ namespace nec {
             if (deallocParams == NULL) {
                 return;
             }
-
-            DataTypes::Uuid_finalize_w_params(&sample->id,deallocParams);
-
-            DataTypes::Uuid_finalize_w_params(&sample->objectiveId,deallocParams);
-
-            DataTypes::Time_finalize_w_params(&sample->timestamp,deallocParams);
 
         }
 
@@ -1647,9 +916,6 @@ namespace nec {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-            DataTypes::Uuid_finalize_optional_members(&sample->id, deallocParams->delete_pointers);
-            DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
-            DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
         }
 
         RTIBool DrillState_copy(
@@ -1662,18 +928,6 @@ namespace nec {
                     return RTI_FALSE;
                 }
 
-                if (!DataTypes::Uuid_copy(
-                    &dst->id,(const DataTypes::Uuid*)&src->id)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Uuid_copy(
-                    &dst->objectiveId,(const DataTypes::Uuid*)&src->objectiveId)) {
-                    return RTI_FALSE;
-                } 
-                if (!DataTypes::Time_copy(
-                    &dst->timestamp,(const DataTypes::Time*)&src->timestamp)) {
-                    return RTI_FALSE;
-                } 
                 if (!RTICdrType_copyDouble (
                     &dst->ropActual, &src->ropActual)) { 
                     return RTI_FALSE;
@@ -1691,19 +945,19 @@ namespace nec {
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->ropLimit, &src->ropLimit)) { 
+                    &dst->ropMachineLimit, &src->ropMachineLimit)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->wobLimit, &src->wobLimit)) { 
+                    &dst->wobMachineLimit, &src->wobMachineLimit)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->diffPressureLimit, &src->diffPressureLimit)) { 
+                    &dst->diffPressureMachineLimit, &src->diffPressureMachineLimit)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->torqueLimit, &src->torqueLimit)) { 
+                    &dst->torqueMachineLimit, &src->torqueMachineLimit)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyBoolean (
@@ -1723,23 +977,19 @@ namespace nec {
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->ropTarget, &src->ropTarget)) { 
+                    &dst->ropLimit, &src->ropLimit)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->wobTarget, &src->wobTarget)) { 
+                    &dst->wobLimit, &src->wobLimit)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->diffPressureTarget, &src->diffPressureTarget)) { 
+                    &dst->diffPressureLimit, &src->diffPressureLimit)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->torqueTarget, &src->torqueTarget)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyBoolean (
-                    &dst->bitOnBottom, &src->bitOnBottom)) { 
+                    &dst->torqueLimit, &src->torqueLimit)) { 
                     return RTI_FALSE;
                 }
 
@@ -1760,10 +1010,10 @@ namespace nec {
         #define T DrillState
         #define TSeq DrillStateSeq
 
-        #define T_initialize_w_params nec::process::DrillState_initialize_w_params
+        #define T_initialize_w_params plc::process::DrillState_initialize_w_params
 
-        #define T_finalize_w_params   nec::process::DrillState_finalize_w_params
-        #define T_copy       nec::process::DrillState_copy
+        #define T_finalize_w_params   plc::process::DrillState_finalize_w_params
+        #define T_copy       plc::process::DrillState_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -1781,5 +1031,5 @@ namespace nec {
         #undef TSeq
         #undef T
     } /* namespace process  */
-} /* namespace nec  */
+} /* namespace plc  */
 

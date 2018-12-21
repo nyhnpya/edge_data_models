@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef hoist_1013695705_h
-#define hoist_1013695705_h
+#ifndef hoist_1013693393_h
+#define hoist_1013693393_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -21,9 +21,9 @@ or consult the RTI Connext manual.
 #endif
 
 #include "base_data_types.h"
-namespace nec {
+namespace plc {
     namespace process {
-        static const char HOIST_REQUEST[] = "HoistRequest"; 
+        static const char PLC_HOIST_REQUEST[] = "PlcHoistRequest"; 
 
         extern const char *HoistRequestTYPENAME;
 
@@ -44,11 +44,6 @@ namespace nec {
             typedef HoistRequestDataReader DataReader;
             #endif
 
-            DataTypes::Uuid   id ;
-            DataTypes::Uuid   objectiveId ;
-            DataTypes::Priority   priority ;
-            DataTypes::Time   timeNeeded ;
-            DataTypes::Time   estimatedDuration ;
             DDS_Double   targetVelocity ;
             DDS_Double   targetPosition ;
 
@@ -105,87 +100,7 @@ namespace nec {
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport
         #endif
-        static const char HOIST_OBJECTIVE[] = "HoistObjective"; 
-
-        extern const char *HoistObjectiveTYPENAME;
-
-        struct HoistObjectiveSeq;
-        #ifndef NDDS_STANDALONE_TYPE
-        class HoistObjectiveTypeSupport;
-        class HoistObjectiveDataWriter;
-        class HoistObjectiveDataReader;
-        #endif
-
-        class HoistObjective 
-        {
-          public:
-            typedef struct HoistObjectiveSeq Seq;
-            #ifndef NDDS_STANDALONE_TYPE
-            typedef HoistObjectiveTypeSupport TypeSupport;
-            typedef HoistObjectiveDataWriter DataWriter;
-            typedef HoistObjectiveDataReader DataReader;
-            #endif
-
-            DataTypes::Uuid   id ;
-            DataTypes::Uuid   objectiveId ;
-            DataTypes::Time   estimatedDuration ;
-            DDS_Double   targetVelocity ;
-            DDS_Double   targetPosition ;
-
-        };
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-        /* If the code is building on Windows, start exporting symbols.
-        */
-        #undef NDDSUSERDllExport
-        #define NDDSUSERDllExport __declspec(dllexport)
-        #endif
-
-        NDDSUSERDllExport DDS_TypeCode* HoistObjective_get_typecode(void); /* Type code */
-
-        DDS_SEQUENCE(HoistObjectiveSeq, HoistObjective);
-
-        NDDSUSERDllExport
-        RTIBool HoistObjective_initialize(
-            HoistObjective* self);
-
-        NDDSUSERDllExport
-        RTIBool HoistObjective_initialize_ex(
-            HoistObjective* self,RTIBool allocatePointers,RTIBool allocateMemory);
-
-        NDDSUSERDllExport
-        RTIBool HoistObjective_initialize_w_params(
-            HoistObjective* self,
-            const struct DDS_TypeAllocationParams_t * allocParams);  
-
-        NDDSUSERDllExport
-        void HoistObjective_finalize(
-            HoistObjective* self);
-
-        NDDSUSERDllExport
-        void HoistObjective_finalize_ex(
-            HoistObjective* self,RTIBool deletePointers);
-
-        NDDSUSERDllExport
-        void HoistObjective_finalize_w_params(
-            HoistObjective* self,
-            const struct DDS_TypeDeallocationParams_t * deallocParams);
-
-        NDDSUSERDllExport
-        void HoistObjective_finalize_optional_members(
-            HoistObjective* self, RTIBool deletePointers);  
-
-        NDDSUSERDllExport
-        RTIBool HoistObjective_copy(
-            HoistObjective* dst,
-            const HoistObjective* src);
-
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-        /* If the code is building on Windows, stop exporting symbols.
-        */
-        #undef NDDSUSERDllExport
-        #define NDDSUSERDllExport
-        #endif
-        static const char HOIST_STATE[] = "HoistState"; 
+        static const char PLC_HOIST_STATE[] = "PlcHoistState"; 
 
         extern const char *HoistStateTYPENAME;
 
@@ -206,9 +121,6 @@ namespace nec {
             typedef HoistStateDataReader DataReader;
             #endif
 
-            DataTypes::Uuid   id ;
-            DataTypes::Uuid   objectiveId ;
-            DataTypes::Time   timestamp ;
             DataTypes::Status   status ;
             DDS_Double   actualHookload ;
             DDS_Double   actualVelocity ;
@@ -275,7 +187,7 @@ namespace nec {
         #define NDDSUSERDllExport
         #endif
     } /* namespace process  */
-} /* namespace nec  */
+} /* namespace plc  */
 
 #endif /* hoist */
 

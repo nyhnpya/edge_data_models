@@ -1275,17 +1275,17 @@ namespace Shell {
                     return;
                 }
 
-                RTICdrType_printDouble(
-                    &sample->rpmStateActual, "rpmStateActual", indent_level + 1);    
+                RTICdrType_printBoolean(
+                    &sample->rpmSteadyState, "rpmSteadyState", indent_level + 1);    
 
-                RTICdrType_printDouble(
-                    &sample->ropStateActual, "ropStateActual", indent_level + 1);    
+                RTICdrType_printBoolean(
+                    &sample->ropSteadyState, "ropSteadyState", indent_level + 1);    
 
-                RTICdrType_printDouble(
-                    &sample->wobStateActual, "wobStateActual", indent_level + 1);    
+                RTICdrType_printBoolean(
+                    &sample->wobSteadyState, "wobSteadyState", indent_level + 1);    
 
-                RTICdrType_printDouble(
-                    &sample->torqueStateActual, "torqueStateActual", indent_level + 1);    
+                RTICdrType_printBoolean(
+                    &sample->torqueSteadyState, "torqueSteadyState", indent_level + 1);    
 
                 RTICdrType_printLong(
                     &sample->steadyStateWindow, "steadyStateWindow", indent_level + 1);    
@@ -1298,6 +1298,15 @@ namespace Shell {
 
                 RTICdrType_printLong(
                     &sample->ropStepSize, "ropStepSize", indent_level + 1);    
+
+                RTICdrType_printDouble(
+                    &sample->bitWear, "bitWear", indent_level + 1);    
+
+                RTICdrType_printDouble(
+                    &sample->mse, "mse", indent_level + 1);    
+
+                RTICdrType_printDouble(
+                    &sample->power, "power", indent_level + 1);    
 
             }
 
@@ -1447,23 +1456,23 @@ namespace Shell {
 
                 if(serialize_sample) {
 
-                    if (!RTICdrStream_serializeDouble(
-                        stream, &sample->rpmStateActual)) {
+                    if (!RTICdrStream_serializeBoolean(
+                        stream, &sample->rpmSteadyState)) {
                         return RTI_FALSE;
                     }
 
-                    if (!RTICdrStream_serializeDouble(
-                        stream, &sample->ropStateActual)) {
+                    if (!RTICdrStream_serializeBoolean(
+                        stream, &sample->ropSteadyState)) {
                         return RTI_FALSE;
                     }
 
-                    if (!RTICdrStream_serializeDouble(
-                        stream, &sample->wobStateActual)) {
+                    if (!RTICdrStream_serializeBoolean(
+                        stream, &sample->wobSteadyState)) {
                         return RTI_FALSE;
                     }
 
-                    if (!RTICdrStream_serializeDouble(
-                        stream, &sample->torqueStateActual)) {
+                    if (!RTICdrStream_serializeBoolean(
+                        stream, &sample->torqueSteadyState)) {
                         return RTI_FALSE;
                     }
 
@@ -1484,6 +1493,21 @@ namespace Shell {
 
                     if (!RTICdrStream_serializeLong(
                         stream, &sample->ropStepSize)) {
+                        return RTI_FALSE;
+                    }
+
+                    if (!RTICdrStream_serializeDouble(
+                        stream, &sample->bitWear)) {
+                        return RTI_FALSE;
+                    }
+
+                    if (!RTICdrStream_serializeDouble(
+                        stream, &sample->mse)) {
+                        return RTI_FALSE;
+                    }
+
+                    if (!RTICdrStream_serializeDouble(
+                        stream, &sample->power)) {
                         return RTI_FALSE;
                     }
 
@@ -1526,20 +1550,20 @@ namespace Shell {
 
                         Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
-                        if (!RTICdrStream_deserializeDouble(
-                            stream, &sample->rpmStateActual)) {
+                        if (!RTICdrStream_deserializeBoolean(
+                            stream, &sample->rpmSteadyState)) {
                             goto fin; 
                         }
-                        if (!RTICdrStream_deserializeDouble(
-                            stream, &sample->ropStateActual)) {
+                        if (!RTICdrStream_deserializeBoolean(
+                            stream, &sample->ropSteadyState)) {
                             goto fin; 
                         }
-                        if (!RTICdrStream_deserializeDouble(
-                            stream, &sample->wobStateActual)) {
+                        if (!RTICdrStream_deserializeBoolean(
+                            stream, &sample->wobSteadyState)) {
                             goto fin; 
                         }
-                        if (!RTICdrStream_deserializeDouble(
-                            stream, &sample->torqueStateActual)) {
+                        if (!RTICdrStream_deserializeBoolean(
+                            stream, &sample->torqueSteadyState)) {
                             goto fin; 
                         }
                         if (!RTICdrStream_deserializeLong(
@@ -1556,6 +1580,18 @@ namespace Shell {
                         }
                         if (!RTICdrStream_deserializeLong(
                             stream, &sample->ropStepSize)) {
+                            goto fin; 
+                        }
+                        if (!RTICdrStream_deserializeDouble(
+                            stream, &sample->bitWear)) {
+                            goto fin; 
+                        }
+                        if (!RTICdrStream_deserializeDouble(
+                            stream, &sample->mse)) {
+                            goto fin; 
+                        }
+                        if (!RTICdrStream_deserializeDouble(
+                            stream, &sample->power)) {
                             goto fin; 
                         }
                     }
@@ -1789,19 +1825,16 @@ namespace Shell {
 
                 if (skip_sample) {
 
-                    if (!RTICdrStream_skipDouble (stream)) {
+                    if (!RTICdrStream_skipBoolean (stream)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_skipDouble (stream)) {
+                    if (!RTICdrStream_skipBoolean (stream)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_skipDouble (stream)) {
+                    if (!RTICdrStream_skipBoolean (stream)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_skipDouble (stream)) {
-                        goto fin; 
-                    }
-                    if (!RTICdrStream_skipLong (stream)) {
+                    if (!RTICdrStream_skipBoolean (stream)) {
                         goto fin; 
                     }
                     if (!RTICdrStream_skipLong (stream)) {
@@ -1811,6 +1844,18 @@ namespace Shell {
                         goto fin; 
                     }
                     if (!RTICdrStream_skipLong (stream)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_skipLong (stream)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_skipDouble (stream)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_skipDouble (stream)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_skipDouble (stream)) {
                         goto fin; 
                     }
                 }
@@ -1856,19 +1901,16 @@ namespace Shell {
                     initial_alignment = 0;
                 }
 
-                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                     current_alignment);
 
-                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                     current_alignment);
 
-                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                     current_alignment);
 
-                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                    current_alignment);
-
-                current_alignment +=RTICdrType_getLongMaxSizeSerialized(
+                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                     current_alignment);
 
                 current_alignment +=RTICdrType_getLongMaxSizeSerialized(
@@ -1878,6 +1920,18 @@ namespace Shell {
                     current_alignment);
 
                 current_alignment +=RTICdrType_getLongMaxSizeSerialized(
+                    current_alignment);
+
+                current_alignment +=RTICdrType_getLongMaxSizeSerialized(
+                    current_alignment);
+
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                    current_alignment);
+
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                    current_alignment);
+
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                     current_alignment);
 
                 if (include_encapsulation) {
@@ -1931,21 +1985,27 @@ namespace Shell {
                     initial_alignment = 0;
                 }
 
-                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                     current_alignment);
-                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                     current_alignment);
-                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                     current_alignment);
-                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
-                    current_alignment);
-                current_alignment +=RTICdrType_getLongMaxSizeSerialized(
+                current_alignment +=RTICdrType_getBooleanMaxSizeSerialized(
                     current_alignment);
                 current_alignment +=RTICdrType_getLongMaxSizeSerialized(
                     current_alignment);
                 current_alignment +=RTICdrType_getLongMaxSizeSerialized(
                     current_alignment);
                 current_alignment +=RTICdrType_getLongMaxSizeSerialized(
+                    current_alignment);
+                current_alignment +=RTICdrType_getLongMaxSizeSerialized(
+                    current_alignment);
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                    current_alignment);
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                    current_alignment);
+                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
                     current_alignment);
 
                 if (include_encapsulation) {
@@ -1998,23 +2058,19 @@ namespace Shell {
                         current_alignment);
                 }
 
-                current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 
-                current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 
-                current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 
-                current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
-                    PRESTypePluginDefaultEndpointData_getAlignment(
-                        endpoint_data, current_alignment));
-
-                current_alignment += RTICdrType_getLongMaxSizeSerialized(
+                current_alignment += RTICdrType_getBooleanMaxSizeSerialized(
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 
@@ -2027,6 +2083,22 @@ namespace Shell {
                         endpoint_data, current_alignment));
 
                 current_alignment += RTICdrType_getLongMaxSizeSerialized(
+                    PRESTypePluginDefaultEndpointData_getAlignment(
+                        endpoint_data, current_alignment));
+
+                current_alignment += RTICdrType_getLongMaxSizeSerialized(
+                    PRESTypePluginDefaultEndpointData_getAlignment(
+                        endpoint_data, current_alignment));
+
+                current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+                    PRESTypePluginDefaultEndpointData_getAlignment(
+                        endpoint_data, current_alignment));
+
+                current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+                    PRESTypePluginDefaultEndpointData_getAlignment(
+                        endpoint_data, current_alignment));
+
+                current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 

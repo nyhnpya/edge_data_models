@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef rotateSupport_79878671_h
-#define rotateSupport_79878671_h
+#ifndef rotateSupport_79876161_h
+#define rotateSupport_79876161_h
 
 /* Uses */
 #include "rotate.h"
@@ -26,7 +26,7 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace nec {
+namespace plc {
     namespace process {
         /* ========================================================================= */
         /**
@@ -78,37 +78,6 @@ namespace nec {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            RotateObjectiveTypeSupport, 
-            RotateObjective);
-
-        DDS_DATAWRITER_CPP(RotateObjectiveDataWriter, RotateObjective);
-        DDS_DATAREADER_CPP(RotateObjectiveDataReader, RotateObjectiveSeq, RotateObjective);
-
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-        /* If the code is building on Windows, stop exporting symbols.
-        */
-        #undef NDDSUSERDllExport
-        #define NDDSUSERDllExport
-        #endif
-        /* ========================================================================= */
-        /**
-        Uses:     T
-
-        Defines:  TTypeSupport, TDataWriter, TDataReader
-
-        Organized using the well-documented "Generics Pattern" for
-        implementing generics in C and C++.
-        */
-
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-        /* If the code is building on Windows, start exporting symbols.
-        */
-        #undef NDDSUSERDllExport
-        #define NDDSUSERDllExport __declspec(dllexport)
-
-        #endif
-
-        DDS_TYPESUPPORT_CPP(
             RotateStateTypeSupport, 
             RotateState);
 
@@ -122,7 +91,7 @@ namespace nec {
         #define NDDSUSERDllExport
         #endif
     } /* namespace process  */
-} /* namespace nec  */
+} /* namespace plc  */
 
-#endif  /* rotateSupport_79878671_h */
+#endif  /* rotateSupport_79876161_h */
 

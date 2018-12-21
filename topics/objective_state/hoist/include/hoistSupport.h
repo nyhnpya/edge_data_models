@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef hoistSupport_1013695705_h
-#define hoistSupport_1013695705_h
+#ifndef hoistSupport_1013693393_h
+#define hoistSupport_1013693393_h
 
 /* Uses */
 #include "hoist.h"
@@ -26,7 +26,7 @@ class __declspec(dllimport) DDSDataReader;
 
 #endif
 
-namespace nec {
+namespace plc {
     namespace process {
         /* ========================================================================= */
         /**
@@ -78,37 +78,6 @@ namespace nec {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            HoistObjectiveTypeSupport, 
-            HoistObjective);
-
-        DDS_DATAWRITER_CPP(HoistObjectiveDataWriter, HoistObjective);
-        DDS_DATAREADER_CPP(HoistObjectiveDataReader, HoistObjectiveSeq, HoistObjective);
-
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-        /* If the code is building on Windows, stop exporting symbols.
-        */
-        #undef NDDSUSERDllExport
-        #define NDDSUSERDllExport
-        #endif
-        /* ========================================================================= */
-        /**
-        Uses:     T
-
-        Defines:  TTypeSupport, TDataWriter, TDataReader
-
-        Organized using the well-documented "Generics Pattern" for
-        implementing generics in C and C++.
-        */
-
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-        /* If the code is building on Windows, start exporting symbols.
-        */
-        #undef NDDSUSERDllExport
-        #define NDDSUSERDllExport __declspec(dllexport)
-
-        #endif
-
-        DDS_TYPESUPPORT_CPP(
             HoistStateTypeSupport, 
             HoistState);
 
@@ -122,7 +91,7 @@ namespace nec {
         #define NDDSUSERDllExport
         #endif
     } /* namespace process  */
-} /* namespace nec  */
+} /* namespace plc  */
 
-#endif  /* hoistSupport_1013695705_h */
+#endif  /* hoistSupport_1013693393_h */
 
