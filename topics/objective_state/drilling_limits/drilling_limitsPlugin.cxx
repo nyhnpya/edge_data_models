@@ -1622,6 +1622,9 @@ namespace process {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             DrillingLimitsPlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            DrillingLimits_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)

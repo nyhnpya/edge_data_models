@@ -2,10 +2,38 @@
 
 module nec
 {
-    module control
+    module engineering
     {
+        enum State
+        {
+            Available,
+            Unavailable,
+            NotSafe
+        };
+
+        enum Mode
+        {
+            Locka,
+            Remote,
+            QuillOscillation
+        };
+
         //@copy-c-declaration static const char ROTATE_ENGINEERING_REQUEST[] = "RotateEngineeringRequest";
 
+        /**
+         * \brief requested state change in the rotation system.
+         *
+         * \ingroup NonSafeRotationFunctions
+         *
+         * | Variable          | Description                                         | Data Type           | Unit    |
+         * | ----------------- | --------------------------------------------------- | ------------------- | ------- |
+         * | id                | id of requestor                                     | DataTypes::Uuid     | N/A     |
+         * | objectiveId       | id of current objective                             | DataTypes::Uuid     | N/A     |
+         * | priority          | priority of the request                             | DataTypes::Priority | sec     |
+         * | timeNeeded        | time requester needs the resource                   | DataTypes::Time     | sec     |
+         * | estimatedDuration | estimated duration requestor needs the resource     | DataTypes::Time     | N/A     |
+         * | targetRate        | requested traget in rad/s                           | double              | rad/s   |
+         */
         struct RotateRequest
         {
             DataTypes::Uuid     id;          //@key
@@ -17,6 +45,18 @@ module nec
 
         //@copy-c-declaration static const char ROTATE_ENGINEERING_OBJECTIVE[] = "RotateEngineeringObjective";
 
+        /**
+         * \brief current requested state change in the rotation system.
+         *
+         * \ingroup NonSafeRotationFunctions
+         *
+         * | Variable          | Description                                        | Data Type        | Unit  |
+         * | ----------------- | -------------------------------------------------- | ---------------- | ----- |
+         * | id                | id of requestor                                    | DataTypes::Uuid  | N/A   |
+         * | objectiveId       | id of current objective                            | DataTypes::Uuid  | N/A   |
+         * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time  | N/A   |
+         * | targetRate        | requested traget in rad/s                          | double           | rad/s |
+         */
         struct RotateObjective
         {
             DataTypes::Uuid     id;                //@key
@@ -27,6 +67,22 @@ module nec
 
         //@copy-c-declaration static const char ROTATE_ENGINEERING_STATE[] = "RotateEngineeringState";
 
+        /**
+         * \brief current state of rotation system.
+         *
+         * \ingroup NonSafeRotationFunctions
+         *
+         * | Variable      | Description                            | Data Type         | Unit  |
+         * | ------------- | ---------------------------------------| ------------------| ------|
+         * | id            | id of requestor                        | DataTypes::Uuid   | N/A   |
+         * | objectiveId   | id of current objective                | DataTypes::Uuid   | N/A   |
+         * | timestamp     | timestamp when the data was published  | DataTypes::Time   | sec   |
+         * | status        | Unique id of publisher                 | Datatypes::Status | N/A   |
+         * | actualRate    | actual rate in rad/s                   | double            | rad/s |
+         * | minRate       | minimum machine rate in rad/s          | double            | rad/s |
+         * | maxRate       | maximum machine rate in rad/s          | double            | rad/s |
+         * | targetRate    | requested traget in rad/s              | double            | rad/s |
+         */
         struct RotateState
         {
             DataTypes::Uuid     id;           //@key
@@ -34,17 +90,25 @@ module nec
             DataTypes::Time     timestamp;        
 
             // acutals
-            double  actualRate;
-            double  actualTorque;
+            State    state;
+            Mode     mode;
+            double   actualVelocity;
+            double   actualTorque;
+            double   actualPosition;
+            double   actualPower;
 
             // constraints
-            double  minRate;
-            double  maxRate;
-            double  minTorque;
-            double  maxTorque;
+            double   minVelocity;
+            double   maxVelocity;
+            double   minTorque;
+            double   maxTorque;
+            double   minPosition;
+            double   maxPosition;
 
             // targets
-            double  targetRate;
+            double   torqueVelocity;
+            double   torqueTorque;
+            double   torquePosition;
         };
     };
 };

@@ -200,10 +200,10 @@ drill_simulation.cpy:
 
 rotate_engineering.cpy:
 	@echo "Copying generated files..."
-#	mkdir -p $(TOPIC_HOME)/engineering/rotate_engineering
-#	mkdir -p $(TOPIC_HOME)/engineering/rotate_engineering/include
-#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/rotate_engineering/include
-#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/rotate_engineering
+	mkdir -p $(TOPIC_HOME)/objective_state/rotate_engineering
+	mkdir -p $(TOPIC_HOME)/objective_state/rotate_engineering/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/rotate_engineering
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/rotate_engineering/include
 	-@rm -rf $(TMPOUTDIR)
 
 torque.cpy:
