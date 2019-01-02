@@ -33,6 +33,7 @@ module nec
          * | timeNeeded        | time requester needs the resource                   | DataTypes::Time     | sec     |
          * | estimatedDuration | estimated duration requestor needs the resource     | DataTypes::Time     | N/A     |
          * | targetRate        | requested traget in rad/s                           | double              | rad/s   |
+         * | torque            | requested traget in rad/s                           | double              |  Nm     |
          */
         struct RotateRequest
         {
@@ -41,6 +42,7 @@ module nec
             DataTypes::Time     timeNeeded;  // time requester needs the resource
             DataTypes::Time     duration;    // duration requester needs the resource
             double              targetRate;  // requested traget in rad/s
+            double              torque;      // reqeusted torque in Nm
         };
 
         //@copy-c-declaration static const char ROTATE_ENGINEERING_OBJECTIVE[] = "RotateEngineeringObjective";
