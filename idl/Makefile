@@ -199,12 +199,18 @@ drill_simulation.cpy:
 	-@rm -rf $(TMPOUTDIR)
 
 rotate_engineering.cpy:
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py engineering/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
 	mkdir -p $(TOPIC_HOME)/objective_state/rotate_engineering
 	mkdir -p $(TOPIC_HOME)/objective_state/rotate_engineering/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/rotate_engineering
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/rotate_engineering/include
-	-@rm -rf $(TMPOUTDIR)
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/objective_state/rotate_engineering
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective_state/rotate_engineering
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/rotate_engineering/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/rotate_engineering/include
+	#-@rm -rf $(TMPOUTDIR)
 
 torque.cpy:
 	@echo "Copying generated files..."

@@ -41,8 +41,8 @@ module nec
             DataTypes::Priority priority;    // priority of the request
             DataTypes::Time     timeNeeded;  // time requester needs the resource
             DataTypes::Time     duration;    // duration requester needs the resource
-            double              targetRate;  // requested traget in rad/s
-            double              torque;      // reqeusted torque in Nm
+            double              targetRate;  // requested traget in rad/s (units::torque::radians_per_sec)
+            double              torque;      // reqeusted torque in Nm (units::torque::newton_meters)
         };
 
         //@copy-c-declaration static const char ROTATE_ENGINEERING_OBJECTIVE[] = "RotateEngineeringObjective";

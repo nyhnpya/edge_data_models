@@ -32,12 +32,12 @@ TARG_INCLUDES += -I $(CURDIR)/include
 TARG_SOURCES = rotate_engineering.cxx
 TARG_SOURCES += rotate_engineeringPlugin.cxx
 TARG_SOURCES += rotate_engineeringSupport.cxx
-#TARG_SOURCES += rotate_engineering_request_publisher.cpp
-#TARG_SOURCES += rotate_engineering_request_subscriber.cpp
-#TARG_SOURCES += rotate_engineering_objective_publisher.cpp
-#TARG_SOURCES += rotate_engineering_objective_subscriber.cpp
-#TARG_SOURCES += rotate_engineering_state_publisher.cpp
-#TARG_SOURCES += rotate_engineering_state_subscriber.cpp
+TARG_SOURCES += rotate_engineering_request_publisher.cpp
+TARG_SOURCES += rotate_engineering_request_subscriber.cpp
+TARG_SOURCES += rotate_engineering_objective_publisher.cpp
+TARG_SOURCES += rotate_engineering_objective_subscriber.cpp
+TARG_SOURCES += rotate_engineering_state_publisher.cpp
+TARG_SOURCES += rotate_engineering_state_subscriber.cpp
 
 ###############################################################################
 # Installation section
@@ -55,12 +55,12 @@ PACKAGE_LICENSE = "Closed License"
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineeringSupport.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineeringPlugin.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering_request_publisher.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering_request_subscriber.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering_objective_publisher.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering_objective_subscriber.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering_state_publisher.h
-#PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering_state_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering_request_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering_request_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering_objective_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering_objective_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering_state_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_engineering_state_subscriber.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
