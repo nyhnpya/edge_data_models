@@ -35,14 +35,14 @@ module nec
          * | targetRate        | requested traget in rad/s                           | double              | rad/s   |
          * | torque            | requested traget in rad/s                           | double              |  Nm     |
          */
-        struct RotateRequest
+        struct RotateEngineeringRequest
         {
             DataTypes::Uuid     id;          //@key
             DataTypes::Priority priority;    // priority of the request
             DataTypes::Time     timeNeeded;  // time requester needs the resource
             DataTypes::Time     duration;    // duration requester needs the resource
-            double              targetRate;  // requested traget in rad/s (units::torque::radians_per_sec)
-            double              torque;      // reqeusted torque in Nm (units::torque::newton_meters)
+            double              targetRate;  // requested traget in rad/s (units::angular_velocity::radians_per_second)
+            double              torque;      // reqeusted torque in Nm (units::angular_velocity::radians_per_second)
         };
 
         //@copy-c-declaration static const char ROTATE_ENGINEERING_OBJECTIVE[] = "RotateEngineeringObjective";
@@ -59,12 +59,12 @@ module nec
          * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time  | N/A   |
          * | targetRate        | requested traget in rad/s                          | double           | rad/s |
          */
-        struct RotateObjective
+        struct RotateEngineeringObjective
         {
             DataTypes::Uuid     id;                //@key
             DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
             double              targetRate;  // requested traget in rad/s
-            double              targetTorque;  // requested traget in rad/s
+            double              targetTorque;  // requested traget in rad/s (units::angular_velocity::radians_per_second)
         };
 
         //@copy-c-declaration static const char ROTATE_ENGINEERING_STATE[] = "RotateEngineeringState";
@@ -85,7 +85,7 @@ module nec
          * | maxRate       | maximum machine rate in rad/s          | double            | rad/s |
          * | targetRate    | requested traget in rad/s              | double            | rad/s |
          */
-        struct RotateState
+        struct RotateEngineeringState
         {
             DataTypes::Uuid     id;           //@key
             DataTypes::Status   status;
@@ -94,10 +94,10 @@ module nec
             // acutals
             State    state;
             Mode     mode;
-            double   actualVelocity;
-            double   actualTorque;
-            double   actualPosition;
-            double   actualPower;
+            double   actualVelocity; // (units::angular_velocity::radians_per_second)
+            double   actualTorque; // (units::angular_velocity::radians_per_second)
+            double   actualPosition; // (units::angular_velocity::radians_per_second)
+            double   actualPower; // (units::angular_velocity::radians_per_second)
 
             // constraints
             double   minVelocity;
