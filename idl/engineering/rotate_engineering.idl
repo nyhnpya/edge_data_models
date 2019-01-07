@@ -42,7 +42,7 @@ module nec
             DataTypes::Time     timeNeeded;  // time requester needs the resource
             DataTypes::Time     duration;    // duration requester needs the resource
             double              targetRate;  // requested traget in rad/s (units::angular_velocity::radians_per_second)
-            double              torque;      // reqeusted torque in Nm (units::angular_velocity::radians_per_second)
+            double              torque;      // reqeusted torque in Nm (units::torque_newton_meter_t)
         };
 
         //@copy-c-declaration static const char ROTATE_ENGINEERING_OBJECTIVE[] = "RotateEngineeringObjective";
@@ -63,8 +63,8 @@ module nec
         {
             DataTypes::Uuid     id;                //@key
             DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
-            double              targetRate;  // requested traget in rad/s
-            double              targetTorque;  // requested traget in rad/s (units::angular_velocity::radians_per_second)
+            double              targetRate;        // (units::angular_velocity::radians_per_second)
+            double              targetTorque;      // (units::torque::newton_meter)
         };
 
         //@copy-c-declaration static const char ROTATE_ENGINEERING_STATE[] = "RotateEngineeringState";
@@ -95,21 +95,21 @@ module nec
             State    state;
             Mode     mode;
             double   actualVelocity; // (units::angular_velocity::radians_per_second)
-            double   actualTorque; // (units::angular_velocity::radians_per_second)
-            double   actualPosition; // (units::angular_velocity::radians_per_second)
-            double   actualPower; // (units::angular_velocity::radians_per_second)
+            double   actualTorque;   // (units::torque_newton_meter)
+            double   actualPosition;
+            double   actualPower;
 
             // constraints
-            double   minVelocity;
-            double   maxVelocity;
-            double   minTorque;
-            double   maxTorque;
+            double   minVelocity;  // (units::angular_velocity::radians_per_second)
+            double   maxVelocity;  // (units::angular_velocity::radians_per_second)
+            double   minTorque;    // (units::torque_newton_meter)
+            double   maxTorque;    // (units::torque_newton_meter)
             double   minPosition;
             double   maxPosition;
 
             // targets
-            double   torqueVelocity;
-            double   torqueTorque;
+            double   torqueVelocity; // (units::angular_velocity::radians_per_second)
+            double   torqueTorque;   
             double   torquePosition;
         };
     };
