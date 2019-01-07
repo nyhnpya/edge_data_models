@@ -58,12 +58,12 @@ def write_publisher_h(outdir, struct):
     if struct.fields_with_units > 0:
         out.write('#include "units.h"\n')
         out.write('\n')
-        out.write('using namespace units;\n') 
-        for sfield in struct.fields:
-            if sfield.unit_namespace not in units_list and sfield.unit_namespace != '':
-                out.write('using namespace units::' + sfield.unit_namespace + ';\n') 
-                units_list.append(sfield.unit_namespace)
-        out.write('\n')
+#        out.write('using namespace units;\n') 
+#        for sfield in struct.fields:
+#            if sfield.unit_namespace not in units_list and sfield.unit_namespace != '':
+#                out.write('using namespace units::' + sfield.unit_namespace + ';\n') 
+#                units_list.append(sfield.unit_namespace)
+#        out.write('\n')
     out.write('class C' + struct.name_camel_case + 'Publisher : public TPublisher< ' + module_name + struct.name_camel_case + ' >\n')
     out.write('{\n')
     out.write('    public:\n')
@@ -80,7 +80,7 @@ def write_publisher_h(outdir, struct):
         elif 'DataTypes::Uuid' in sfield.datatype:
             out.write('        void Set' + str_cap(sfield.name) + '(' + sfield.datatype + ' &' + sfield.name + ');\n')
         elif sfield.unit_name != '':
-            out.write('        void Set' + str_cap(sfield.name) + '(const ' + sfield.unit_name + '_t ' + sfield.name + ');\n')
+            out.write('        void Set' + str_cap(sfield.name) + '(const ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t ' + sfield.name + ');\n')
         else: 
             out.write('        void Set' + str_cap(sfield.name) + '(const ' + sfield.datatype + ' ' + sfield.name + ');\n')
     out.write('};\n')
@@ -134,7 +134,7 @@ def write_publisher_cxx(outdir, struct):
         if sfield.datatype in enums:
             out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(' + module_name + sfield.datatype + ' ' + sfield.name + ')\n')
         elif sfield.unit_name != '':
-            out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(const ' + sfield.unit_name + '_t ' + sfield.name + ')\n')
+            out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(const ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t ' + sfield.name + ')\n')
         elif 'DataTypes::Uuid' in sfield.datatype:
             out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(' + sfield.datatype + ' &' + sfield.name + ')\n')
         else:
@@ -172,12 +172,12 @@ def write_subscriber_h(outdir, struct):
     if struct.fields_with_units > 0:
         out.write('#include "units.h"\n')
         out.write('\n')
-        out.write('using namespace units;\n') 
-        for sfield in struct.fields:
-            if sfield.unit_namespace not in units_list and sfield.unit_namespace != '':
-                out.write('using namespace units::' + sfield.unit_namespace + ';\n') 
-                units_list.append(sfield.unit_namespace)
-        out.write('\n')
+#        out.write('using namespace units;\n') 
+#        for sfield in struct.fields:
+#            if sfield.unit_namespace not in units_list and sfield.unit_namespace != '':
+#                out.write('using namespace units::' + sfield.unit_namespace + ';\n') 
+#                units_list.append(sfield.unit_namespace)
+#        out.write('\n')
     out.write('class C' + struct.name_camel_case + 'Subscriber : public TSubscriber< ' + module_name + struct.name_camel_case + ' >\n')
     out.write('{\n')
     out.write('    public:\n')
@@ -188,7 +188,6 @@ def write_subscriber_h(outdir, struct):
     out.write('        void OnDataAvailable(OnDataAvailableEvent event);\n')
     out.write('        void OnDataDisposed(OnDataDisposedEvent event);\n')
     out.write('        void OnLivelinessChanged(OnLivelinessChangedEvent event);\n')
-    out.write('        void OnPublicationMatched(OnPublicationMatchedEvent event);\n')
     out.write('        void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);\n')
     out.write('        bool ValidData();\n')
     out.write('        bool ValidSubscription();\n')
@@ -197,7 +196,7 @@ def write_subscriber_h(outdir, struct):
         if sfield.datatype in enums:
             out.write('        ' + module_name + sfield.datatype + ' Get' + str_cap(sfield.name) + '();\n') 
         elif sfield.unit_name != '':
-            out.write('        ' + sfield.unit_name + '_t Get' + str_cap(sfield.name) + '();\n') 
+            out.write('        ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t Get' + str_cap(sfield.name) + '();\n') 
         else:
             out.write('        ' + sfield.datatype + ' Get' + str_cap(sfield.name) + '();\n') 
     out.write('\n')
@@ -218,7 +217,6 @@ def write_subscriber_h(outdir, struct):
     out.write('        {0: <50}'.format('OnDataDisposedEvent') + 'm_pOnDataDisposed;\n')        
     out.write('        {0: <50}'.format('OnLivelinessChangedEvent') + 'm_pOnLivelinessChanged;\n')        
     out.write('        {0: <50}'.format('OnSubscriptionMatchedEvent') + 'm_pOnSubscriptionMatched;\n')        
-    out.write('        {0: <50}'.format('OnPublicationMatchedEvent') + 'm_pOnPublicationMatched;\n')        
     out.write('};\n')
     out.write('\n')
     out.write('#endif // __' + module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_SUBSCRIBER_H__\n')
@@ -234,8 +232,7 @@ def write_subscriber_cxx(outdir, struct):
     out.write('    m_pOnDataAvailable(nullptr),\n')
     out.write('    m_pOnDataDisposed(nullptr),\n')
     out.write('    m_pOnLivelinessChanged(nullptr),\n')
-    out.write('    m_pOnSubscriptionMatched(nullptr),\n')
-    out.write('    m_pOnPublicationMatched(nullptr)\n')
+    out.write('    m_pOnSubscriptionMatched(nullptr)\n')
     out.write('{\n')
     out.write('    memset((void *)&m_sampleInfo, 0, sizeof(DDS::SampleInfo));\n')
     out.write('}\n')
@@ -258,7 +255,7 @@ def write_subscriber_cxx(outdir, struct):
         if sfield.datatype in enums:
             out.write(module_name + sfield.datatype + ' C' + struct.name_camel_case + 'Subscriber::Get' + str_cap(sfield.name) + '()\n')
         elif sfield.unit_name != '':
-            out.write(sfield.unit_name + '_t C' + struct.name_camel_case + 'Subscriber::Get' + str_cap(sfield.name) + '()\n')
+            out.write('units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t C' + struct.name_camel_case + 'Subscriber::Get' + str_cap(sfield.name) + '()\n')
         else:
             out.write(sfield.datatype + ' C' + struct.name_camel_case + 'Subscriber::Get' + str_cap(sfield.name) + '()\n')
         out.write('{\n')
@@ -267,7 +264,7 @@ def write_subscriber_cxx(outdir, struct):
         elif 'DataTypes::Uuid' == fields[0]:
             out.write('    return m_data.' + sfield.name + ';\n')
         elif sfield.unit_name != '':
-            out.write('    return (' + sfield.unit_name + '_t)m_data.' + sfield.name + ';\n')
+            out.write('    return (' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t)m_data.' + sfield.name + ';\n')
         else:
             out.write('    return m_data.' + sfield.name + ';\n')
         out.write('}\n')
@@ -374,9 +371,9 @@ with open(idl_file_name) as idl_file:
             current_struct.name_camel_case = line.split()[1]
             print 'struct_name: ' + current_struct.name_camel_case
             current_struct.name_underscore = re.sub(r"(\w)([A-Z])", r"\1_\2", current_struct.name_camel_case).lower()
-            print 'struct_file_name: ' + current_struct.name_underscore
+            #print 'struct_file_name: ' + current_struct.name_underscore
             current_struct.fields = []
-            print 'len(struct.fields): ' + str(len(current_struct.fields))
+            #print 'len(struct.fields): ' + str(len(current_struct.fields))
             for line in idl_file:
                 if '};' in line:
                     write_publisher_h(output_dir, current_struct)
