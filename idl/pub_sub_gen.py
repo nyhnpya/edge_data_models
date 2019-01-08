@@ -10,6 +10,8 @@ module_name = ''
 #struct_name_underscore = ''
 #fields_list = []
 enums = []
+structs = []
+structs2 = []
 
 class StructField:
     name = ''
@@ -340,8 +342,79 @@ def write_subscriber_cxx(outdir, struct):
     out.write('        m_pOnSubscriptionMatched(status);\n')
     out.write('    }\n')
     out.write('}\n')
-
     out.close()
+
+def write_makefile(outdir, struct_names, struct_names2):
+    out = open(outdir + '/Makefile.gen', 'w')
+    out.write('###############################################################################\n')
+    out.write('#\n')
+    out.write('# The following variables must be set for the makefile to work correctly\n')
+    out.write('#\n')
+    out.write('# TARG_BUILD_MAJOR   - Version number major\n')
+    out.write('# TARG_BUILD_MINOR   - Version number minor\n')
+    out.write('# TARG_BUILD_PATCH - Version number patch\n')
+    out.write('# TARGET_TYPE        - library, staticlib, executable, unittest or thirdparty\n')
+    out.write('# TARGET_NAME        - Name of final executable/library\n')
+    out.write('#\n')
+    out.write('###############################################################################\n')
+    out.write('include ../../../../Makefiles/Makefile.platform\n')
+    out.write('\n')
+    out.write('TARG_SOURCE_DIR = $(CURDIR)\n')
+    out.write('TARG_BUILD_MAJOR = 1\n')
+    out.write('TARG_BUILD_MINOR = 0\n')
+    out.write('TARG_BUILD_PATCH = 1\n')
+    out.write('TARG_BUILD_REVISION = 0\n')
+    out.write('TARGET_TYPE = library\n')
+    out.write('TARGET_NAME = ' + idl_name + '\n')
+    out.write('\n')
+    out.write('###############################################################################\n')
+    out.write('# compilation flags\n')
+    out.write('###############################################################################\n')
+    out.write('TARG_INCLUDES += -isystem $(EDGE_THIRD_PARTY_INCLUDE)\n')
+    out.write('TARG_INCLUDES += -I $(DDS_INCLUDE)\n')
+    out.write('TARG_INCLUDES += -I $(LOG_INCLUDE)\n')
+    out.write('TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include\n')
+    out.write('TARG_INCLUDES += -I $(CURDIR)/include\n')
+    out.write('\n')
+    out.write('# Sources\n')
+    out.write('TARG_SOURCES = ' + idl_name + '.cxx\n')
+    out.write('TARG_SOURCES += ' + idl_name + 'Plugin.cxx\n')
+    out.write('TARG_SOURCES += ' + idl_name + 'Support.cxx\n')
+    for struct_name in struct_names2:
+        out.write('TARG_SOURCES += ' + struct_name + '_publisher.cpp\n')
+        out.write('TARG_SOURCES += ' + struct_name + '_subscriber.cpp\n')
+    out.write('\n')
+    out.write('###############################################################################\n')
+    out.write('# Installation section\n')
+    out.write('###############################################################################\n')
+    out.write('\n')
+    out.write('# package control file\n')
+    out.write('PACKAGE_DESCRIPTION = "Library package for the Ensign rotate_engineering_request API."\n')
+    out.write('PACKAGE_DEV_DESCRIPTION = "core files for Ensign rotate_engineering_request API development."\n')
+    out.write('PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"\n')
+    out.write('PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types\n')
+    out.write('PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev\n')
+    out.write('PACKAGE_LICENSE = "Closed License"\n')
+    out.write('\n')
+    out.write('# package include files\n')
+    out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/.h\n')
+    out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + idl_name + 'Support.h\n')
+    out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + idl_name + 'Plugin.h\n')
+    for struct_name in struct_names2:
+        out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + struct_name + '_publisher.h\n')
+        out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + struct_name + '_subscriber.h\n')
+    out.write('\n')
+    out.write('# package installation directory\n')
+    out.write('PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package\n')
+    out.write('\n')
+    out.write('###############################################################################\n')
+    out.write('# Makefiles included to configure the compiler, etc for the current platform\n')
+    out.write('###############################################################################\n')
+    out.write('include $(TOP_DIR)/Makefiles/Makefile.rti\n')
+    out.write('include $(TOP_DIR)/Makefiles/Makefile.macros\n')
+    out.write('include $(TOP_DIR)/Makefiles/Makefile.basic\n')
+    out.write('\n')
+
 
 
 # read in idl file
@@ -373,6 +446,8 @@ with open(idl_file_name) as idl_file:
             current_struct.name_underscore = re.sub(r"(\w)([A-Z])", r"\1_\2", current_struct.name_camel_case).lower()
             #print 'struct_file_name: ' + current_struct.name_underscore
             current_struct.fields = []
+            structs.append(current_struct.name_camel_case)
+            structs2.append(current_struct.name_underscore)
             #print 'len(struct.fields): ' + str(len(current_struct.fields))
             for line in idl_file:
                 if '};' in line:
@@ -401,5 +476,6 @@ with open(idl_file_name) as idl_file:
                     iskey = True
                 struct_field = StructField(fields[1], fields[0], unit_namespace, unit_name, iskey) 
                 current_struct.fields.append(struct_field)
+    write_makefile(output_dir, structs, structs2) 
 
 
