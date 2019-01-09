@@ -251,7 +251,6 @@ def write_subscriber_h(outdir, struct):
     out.write('        void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);\n')
     out.write('\n')        
     out.write('    private:\n')        
-    out.write('        {0: <50}'.format('bool') + 'm_subscriptionMatched;\n')        
     out.write('        {0: <50}'.format(module_name + struct.name_camel_case) + 'm_data;\n')        
     out.write('        {0: <50}'.format('DDS::SampleInfo') + 'm_sampleInfo;\n')        
     out.write('        {0: <50}'.format('DDS::LivelinessChangedStatus') + 'm_livelinessStatus;\n')        
@@ -284,7 +283,6 @@ def write_subscriber_cxx(outdir, struct):
     out.write('#include "' + struct.name_underscore + '_subscriber.h"\n')
     out.write('\n')
     out.write('C' + struct.name_camel_case + 'Subscriber::C' + struct.name_camel_case + 'Subscriber() :\n')
-    out.write('    m_subscriptionMatched(false),\n')
     out.write('    m_pOnDataAvailable(nullptr),\n')
     out.write('    m_pOnDataDisposed(nullptr),\n')
     out.write('    m_pOnLivelinessChanged(nullptr),\n')
@@ -384,7 +382,6 @@ def write_subscriber_cxx(outdir, struct):
     out.write('\n')
     out.write('void C' + struct.name_camel_case + 'Subscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)\n')
     out.write('{\n')
-    out.write('    m_subscriptionMatched = (status.current_count > 0) ? true : false;\n')
     out.write('    \n')
     out.write('    if (m_pOnSubscriptionMatched != nullptr)\n')
     out.write('    {\n')
@@ -446,7 +443,7 @@ def write_makefile(outdir, struct_names, struct_names2):
     out.write('PACKAGE_LICENSE = "Closed License"\n')
     out.write('\n')
     out.write('# package include files\n')
-    out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/.h\n')
+    out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + idl_name + '.h\n')
     out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + idl_name + 'Support.h\n')
     out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + idl_name + 'Plugin.h\n')
     for struct_name in struct_names2:
@@ -519,6 +516,8 @@ with open(idl_file_name) as idl_file:
                         ufields = field.replace('(','').replace(')','').split('::')
                         current_struct.fields_with_units += 1
                         unit_namespace = ufields[1]
+                        if len(ufields) < 3:
+                            print('Error: Expected more ::... :' + line + '\n')
                         unit_name = ufields[2]
                 iskey = False
                 if '@key' in line:

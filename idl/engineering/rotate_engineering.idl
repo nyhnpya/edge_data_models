@@ -42,7 +42,7 @@ module nec
             DataTypes::Time     timeNeeded;  // time requester needs the resource
             DataTypes::Time     duration;    // duration requester needs the resource
             double              targetRate;  // requested traget in rad/s (units::angular_velocity::radians_per_second)
-            double              torque;      // reqeusted torque in Nm (units::torque_newton_meter_t)
+            double              torque;      // reqeusted torque in Nm (units::torque::newton_meter)
         };
 
         //@copy-c-declaration static const char ROTATE_ENGINEERING_OBJECTIVE[] = "RotateEngineeringObjective";
@@ -95,15 +95,15 @@ module nec
             State    state;
             Mode     mode;
             double   actualVelocity; // (units::angular_velocity::radians_per_second)
-            double   actualTorque;   // (units::torque_newton_meter)
+            double   actualTorque;   // (units::torque::newton_meter)
             double   actualPosition;
             double   actualPower;
 
             // constraints
             double   minVelocity;  // (units::angular_velocity::radians_per_second)
             double   maxVelocity;  // (units::angular_velocity::radians_per_second)
-            double   minTorque;    // (units::torque_newton_meter)
-            double   maxTorque;    // (units::torque_newton_meter)
+            double   minTorque;    // (units::torque::newton_meter)
+            double   maxTorque;    // (units::torque::newton_meter)
             double   minPosition;
             double   maxPosition;
 
