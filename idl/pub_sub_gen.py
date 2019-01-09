@@ -46,7 +46,7 @@ def str_cap(word):
 def write_publisher_h(outdir, struct):
     out = open(outdir + '/' + struct.name_underscore + '_publisher.h', 'w')
     out.write('/*\n')
-    out.write(' *  Copyright (c) 2017 Ensign Energy Incorporated\n')
+    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
     out.write(' *  All Rights Reserved.\n')
     out.write(' *\n')
     out.write(' * NOTICE:  All information contained herein is, and remains\n')
@@ -108,7 +108,7 @@ def write_publisher_h(outdir, struct):
 def write_publisher_cxx(outdir, struct):
     out = open(outdir + '/' + struct.name_underscore + '_publisher.cxx', 'w')
     out.write('/*\n')
-    out.write(' *  Copyright (c) 2017 Ensign Energy Incorporated\n')
+    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
     out.write(' *  All Rights Reserved.\n')
     out.write(' *\n')
     out.write(' * NOTICE:  All information contained herein is, and remains\n')
@@ -188,7 +188,7 @@ def write_publisher_cxx(outdir, struct):
 def write_subscriber_h(outdir, struct):
     out = open(outdir + '/' + struct.name_underscore + '_subscriber.h', 'w')
     out.write('/*\n')
-    out.write(' *  Copyright (c) 2017 Ensign Energy Incorporated\n')
+    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
     out.write(' *  All Rights Reserved.\n')
     out.write(' *\n')
     out.write(' * NOTICE:  All information contained herein is, and remains\n')
@@ -268,7 +268,7 @@ def write_subscriber_h(outdir, struct):
 def write_subscriber_cxx(outdir, struct):
     out = open(outdir + '/' + struct.name_underscore + '_subscriber.cxx', 'w')
     out.write('/*\n')
-    out.write(' *  Copyright (c) 2017 Ensign Energy Incorporated\n')
+    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
     out.write(' *  All Rights Reserved.\n')
     out.write(' *\n')
     out.write(' * NOTICE:  All information contained herein is, and remains\n')
