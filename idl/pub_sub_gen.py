@@ -315,7 +315,7 @@ def write_subscriber_cxx(outdir, struct):
         elif 'DataTypes::Uuid' == fields[0]:
             out.write('    return m_data.' + sfield.name + ';\n')
         elif sfield.unit_name != '':
-            out.write('    return (' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t)m_data.' + sfield.name + ';\n')
+            out.write('    return ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t(m_data.' + sfield.name + ');\n')
         else:
             out.write('    return m_data.' + sfield.name + ';\n')
         out.write('}\n')
