@@ -41,8 +41,8 @@ module nec
             DataTypes::Priority priority;    // priority of the request
             DataTypes::Time     timeNeeded;  // time requester needs the resource
             DataTypes::Time     duration;    // duration requester needs the resource
-            double              targetRate;  // requested traget in rad/s (units::angular_velocity::radians_per_second)
-            double              torque;      // reqeusted torque in Nm (units::torque::newton_meter)
+            double              targetRate;  // (units::angular_velocity::radians_per_second)
+            double              torque;      // (units::torque::newton_meter)
         };
 
         //@copy-c-declaration static const char ROTATE_ENGINEERING_OBJECTIVE[] = "RotateEngineeringObjective";
@@ -62,7 +62,7 @@ module nec
         struct RotateEngineeringObjective
         {
             DataTypes::Uuid     id;                //@key
-            DataTypes::Time     estimatedDuration; // estimated time current requestor owns the resource
+            DataTypes::Time     estimatedDuration;
             double              targetRate;        // (units::angular_velocity::radians_per_second)
             double              targetTorque;      // (units::torque::newton_meter)
         };
@@ -108,9 +108,9 @@ module nec
             double   maxPosition;
 
             // targets
-            double   torqueVelocity; // (units::angular_velocity::radians_per_second)
-            double   torqueTorque;   
-            double   torquePosition;
+            double   targetVelocity; // (units::angular_velocity::radians_per_second)
+            double   targetTorque;   // (units::torque::newton_meter)
+            double   targetPosition;
         };
     };
 };
