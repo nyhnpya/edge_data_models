@@ -210,7 +210,7 @@ rotate_engineering.cpy:
 	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective_state/rotate_engineering
 	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/rotate_engineering/include
 	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/rotate_engineering/include
-	cp $(TMPOUTDIR)/Makefile.gen $(TOPIC_HOME)/objective_state/rotate_engineering
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective_state/rotate_engineering
 	-@rm -rf $(TMPOUTDIR)
 
 torque.cpy:
