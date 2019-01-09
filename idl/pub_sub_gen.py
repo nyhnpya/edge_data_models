@@ -430,8 +430,8 @@ def write_makefile(outdir, struct_names, struct_names2):
     out.write('TARG_SOURCES += ' + idl_name + 'Plugin.cxx\n')
     out.write('TARG_SOURCES += ' + idl_name + 'Support.cxx\n')
     for struct_name in struct_names2:
-        out.write('TARG_SOURCES += ' + struct_name + '_publisher.cpp\n')
-        out.write('TARG_SOURCES += ' + struct_name + '_subscriber.cpp\n')
+        out.write('TARG_SOURCES += ' + struct_name + '_publisher.cxx\n')
+        out.write('TARG_SOURCES += ' + struct_name + '_subscriber.cxx\n')
     out.write('\n')
     out.write('###############################################################################\n')
     out.write('# Installation section\n')
