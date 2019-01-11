@@ -1103,9 +1103,6 @@ namespace Shell {
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
                 RoptimizerConfigurationRequestPlugin_destroy_sample;
-                plugin->finalizeOptionalMembersFnc =
-                (PRESTypePluginFinalizeOptionalMembersFunction)
-                RoptimizerConfigurationRequest_finalize_optional_members;
 
                 plugin->serializeFnc =
                 (PRESTypePluginSerializeFunction)
@@ -2382,9 +2379,6 @@ namespace Shell {
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
                 RoptimizerSteadyStatePlugin_destroy_sample;
-                plugin->finalizeOptionalMembersFnc =
-                (PRESTypePluginFinalizeOptionalMembersFunction)
-                RoptimizerSteadyState_finalize_optional_members;
 
                 plugin->serializeFnc =
                 (PRESTypePluginSerializeFunction)

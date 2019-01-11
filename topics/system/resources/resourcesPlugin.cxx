@@ -1723,9 +1723,6 @@ namespace sys {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             ResourcesPlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            Resources_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)

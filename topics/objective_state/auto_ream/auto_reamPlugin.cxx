@@ -1662,9 +1662,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             AutoReamRequestPlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            AutoReamRequest_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -3264,9 +3261,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             AutoReamObjectivePlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            AutoReamObjective_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -4939,9 +4933,6 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             AutoReamStatePlugin_destroy_sample;
-            plugin->finalizeOptionalMembersFnc =
-            (PRESTypePluginFinalizeOptionalMembersFunction)
-            AutoReamState_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
