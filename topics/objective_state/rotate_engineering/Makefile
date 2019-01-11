@@ -17,7 +17,7 @@ TARG_BUILD_MINOR = 0
 TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
-TARGET_NAME = rotate_objective_state
+TARGET_NAME = rotate_engineering
 
 ###############################################################################
 # compilation flags
@@ -32,12 +32,12 @@ TARG_INCLUDES += -I $(CURDIR)/include
 TARG_SOURCES = rotate_engineering.cxx
 TARG_SOURCES += rotate_engineeringPlugin.cxx
 TARG_SOURCES += rotate_engineeringSupport.cxx
-TARG_SOURCES += rotate_engineering_request_publisher.cpp
-TARG_SOURCES += rotate_engineering_request_subscriber.cpp
-TARG_SOURCES += rotate_engineering_objective_publisher.cpp
-TARG_SOURCES += rotate_engineering_objective_subscriber.cpp
-TARG_SOURCES += rotate_engineering_state_publisher.cpp
-TARG_SOURCES += rotate_engineering_state_subscriber.cpp
+TARG_SOURCES += rotate_engineering_request_publisher.cxx
+TARG_SOURCES += rotate_engineering_request_subscriber.cxx
+TARG_SOURCES += rotate_engineering_objective_publisher.cxx
+TARG_SOURCES += rotate_engineering_objective_subscriber.cxx
+TARG_SOURCES += rotate_engineering_state_publisher.cxx
+TARG_SOURCES += rotate_engineering_state_subscriber.cxx
 
 ###############################################################################
 # Installation section
@@ -71,3 +71,4 @@ PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
 include $(TOP_DIR)/Makefiles/Makefile.rti
 include $(TOP_DIR)/Makefiles/Makefile.macros
 include $(TOP_DIR)/Makefiles/Makefile.basic
+

@@ -496,13 +496,13 @@ namespace nec {
         #undef T
 
         /* ========================================================================= */
-        const char *RotateRequestTYPENAME = "nec::engineering::RotateRequest";
+        const char *RotateEngineeringRequestTYPENAME = "nec::engineering::RotateEngineeringRequest";
 
-        DDS_TypeCode* RotateRequest_get_typecode()
+        DDS_TypeCode* RotateEngineeringRequest_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member RotateRequest_g_tc_members[5]=
+            static DDS_TypeCode_Member RotateEngineeringRequest_g_tc_members[6]=
             {
 
                 {
@@ -589,50 +589,69 @@ namespace nec {
                     DDS_PUBLIC_MEMBER,/* Member visibility */
                     1,
                     NULL/* Ignored */
+                }, 
+                {
+                    (char *)"torque",/* Member name */
+                    {
+                        5,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
                 }
             };
 
-            static DDS_TypeCode RotateRequest_g_tc =
+            static DDS_TypeCode RotateEngineeringRequest_g_tc =
             {{
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"nec::engineering::RotateRequest", /* Name */
+                    (char *)"nec::engineering::RotateEngineeringRequest", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    5, /* Number of members */
-                    RotateRequest_g_tc_members, /* Members */
+                    6, /* Number of members */
+                    RotateEngineeringRequest_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
-                }}; /* Type code for RotateRequest*/
+                }}; /* Type code for RotateEngineeringRequest*/
 
             if (is_initialized) {
-                return &RotateRequest_g_tc;
+                return &RotateEngineeringRequest_g_tc;
             }
 
-            RotateRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+            RotateEngineeringRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-            RotateRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Priority_get_typecode();
+            RotateEngineeringRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Priority_get_typecode();
 
-            RotateRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+            RotateEngineeringRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-            RotateRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+            RotateEngineeringRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-            RotateRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            RotateEngineeringRequest_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             is_initialized = RTI_TRUE;
 
-            return &RotateRequest_g_tc;
+            return &RotateEngineeringRequest_g_tc;
         }
 
-        RTIBool RotateRequest_initialize(
-            RotateRequest* sample) {
-            return nec::engineering::RotateRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool RotateEngineeringRequest_initialize(
+            RotateEngineeringRequest* sample) {
+            return nec::engineering::RotateEngineeringRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool RotateRequest_initialize_ex(
-            RotateRequest* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool RotateEngineeringRequest_initialize_ex(
+            RotateEngineeringRequest* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -641,13 +660,13 @@ namespace nec {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return nec::engineering::RotateRequest_initialize_w_params(
+            return nec::engineering::RotateEngineeringRequest_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool RotateRequest_initialize_w_params(
-            RotateRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool RotateEngineeringRequest_initialize_w_params(
+            RotateEngineeringRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -678,18 +697,22 @@ namespace nec {
                 return RTI_FALSE;
             }
 
+            if (!RTICdrType_initDouble(&sample->torque)) {
+                return RTI_FALSE;
+            }
+
             return RTI_TRUE;
         }
 
-        void RotateRequest_finalize(
-            RotateRequest* sample)
+        void RotateEngineeringRequest_finalize(
+            RotateEngineeringRequest* sample)
         {
 
-            nec::engineering::RotateRequest_finalize_ex(sample,RTI_TRUE);
+            nec::engineering::RotateEngineeringRequest_finalize_ex(sample,RTI_TRUE);
         }
 
-        void RotateRequest_finalize_ex(
-            RotateRequest* sample,RTIBool deletePointers)
+        void RotateEngineeringRequest_finalize_ex(
+            RotateEngineeringRequest* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -700,12 +723,12 @@ namespace nec {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            nec::engineering::RotateRequest_finalize_w_params(
+            nec::engineering::RotateEngineeringRequest_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void RotateRequest_finalize_w_params(
-            RotateRequest* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void RotateEngineeringRequest_finalize_w_params(
+            RotateEngineeringRequest* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -726,8 +749,8 @@ namespace nec {
 
         }
 
-        void RotateRequest_finalize_optional_members(
-            RotateRequest* sample, RTIBool deletePointers)
+        void RotateEngineeringRequest_finalize_optional_members(
+            RotateEngineeringRequest* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -748,9 +771,9 @@ namespace nec {
             DataTypes::Time_finalize_optional_members(&sample->duration, deallocParams->delete_pointers);
         }
 
-        RTIBool RotateRequest_copy(
-            RotateRequest* dst,
-            const RotateRequest* src)
+        RTIBool RotateEngineeringRequest_copy(
+            RotateEngineeringRequest* dst,
+            const RotateEngineeringRequest* src)
         {
             try {
 
@@ -778,6 +801,10 @@ namespace nec {
                     &dst->targetRate, &src->targetRate)) { 
                     return RTI_FALSE;
                 }
+                if (!RTICdrType_copyDouble (
+                    &dst->torque, &src->torque)) { 
+                    return RTI_FALSE;
+                }
 
                 return RTI_TRUE;
 
@@ -791,15 +818,15 @@ namespace nec {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'RotateRequest' sequence class.
+        * Configure and implement 'RotateEngineeringRequest' sequence class.
         */
-        #define T RotateRequest
-        #define TSeq RotateRequestSeq
+        #define T RotateEngineeringRequest
+        #define TSeq RotateEngineeringRequestSeq
 
-        #define T_initialize_w_params nec::engineering::RotateRequest_initialize_w_params
+        #define T_initialize_w_params nec::engineering::RotateEngineeringRequest_initialize_w_params
 
-        #define T_finalize_w_params   nec::engineering::RotateRequest_finalize_w_params
-        #define T_copy       nec::engineering::RotateRequest_copy
+        #define T_finalize_w_params   nec::engineering::RotateEngineeringRequest_finalize_w_params
+        #define T_copy       nec::engineering::RotateEngineeringRequest_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -818,13 +845,13 @@ namespace nec {
         #undef T
 
         /* ========================================================================= */
-        const char *RotateObjectiveTYPENAME = "nec::engineering::RotateObjective";
+        const char *RotateEngineeringObjectiveTYPENAME = "nec::engineering::RotateEngineeringObjective";
 
-        DDS_TypeCode* RotateObjective_get_typecode()
+        DDS_TypeCode* RotateEngineeringObjective_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member RotateObjective_g_tc_members[4]=
+            static DDS_TypeCode_Member RotateEngineeringObjective_g_tc_members[4]=
             {
 
                 {
@@ -897,45 +924,45 @@ namespace nec {
                 }
             };
 
-            static DDS_TypeCode RotateObjective_g_tc =
+            static DDS_TypeCode RotateEngineeringObjective_g_tc =
             {{
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"nec::engineering::RotateObjective", /* Name */
+                    (char *)"nec::engineering::RotateEngineeringObjective", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     4, /* Number of members */
-                    RotateObjective_g_tc_members, /* Members */
+                    RotateEngineeringObjective_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
-                }}; /* Type code for RotateObjective*/
+                }}; /* Type code for RotateEngineeringObjective*/
 
             if (is_initialized) {
-                return &RotateObjective_g_tc;
+                return &RotateEngineeringObjective_g_tc;
             }
 
-            RotateObjective_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+            RotateEngineeringObjective_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-            RotateObjective_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+            RotateEngineeringObjective_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-            RotateObjective_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringObjective_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateObjective_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringObjective_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             is_initialized = RTI_TRUE;
 
-            return &RotateObjective_g_tc;
+            return &RotateEngineeringObjective_g_tc;
         }
 
-        RTIBool RotateObjective_initialize(
-            RotateObjective* sample) {
-            return nec::engineering::RotateObjective_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool RotateEngineeringObjective_initialize(
+            RotateEngineeringObjective* sample) {
+            return nec::engineering::RotateEngineeringObjective_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool RotateObjective_initialize_ex(
-            RotateObjective* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool RotateEngineeringObjective_initialize_ex(
+            RotateEngineeringObjective* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -944,13 +971,13 @@ namespace nec {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return nec::engineering::RotateObjective_initialize_w_params(
+            return nec::engineering::RotateEngineeringObjective_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool RotateObjective_initialize_w_params(
-            RotateObjective* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool RotateEngineeringObjective_initialize_w_params(
+            RotateEngineeringObjective* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -980,15 +1007,15 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        void RotateObjective_finalize(
-            RotateObjective* sample)
+        void RotateEngineeringObjective_finalize(
+            RotateEngineeringObjective* sample)
         {
 
-            nec::engineering::RotateObjective_finalize_ex(sample,RTI_TRUE);
+            nec::engineering::RotateEngineeringObjective_finalize_ex(sample,RTI_TRUE);
         }
 
-        void RotateObjective_finalize_ex(
-            RotateObjective* sample,RTIBool deletePointers)
+        void RotateEngineeringObjective_finalize_ex(
+            RotateEngineeringObjective* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -999,12 +1026,12 @@ namespace nec {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            nec::engineering::RotateObjective_finalize_w_params(
+            nec::engineering::RotateEngineeringObjective_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void RotateObjective_finalize_w_params(
-            RotateObjective* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void RotateEngineeringObjective_finalize_w_params(
+            RotateEngineeringObjective* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -1021,8 +1048,8 @@ namespace nec {
 
         }
 
-        void RotateObjective_finalize_optional_members(
-            RotateObjective* sample, RTIBool deletePointers)
+        void RotateEngineeringObjective_finalize_optional_members(
+            RotateEngineeringObjective* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -1041,9 +1068,9 @@ namespace nec {
             DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
         }
 
-        RTIBool RotateObjective_copy(
-            RotateObjective* dst,
-            const RotateObjective* src)
+        RTIBool RotateEngineeringObjective_copy(
+            RotateEngineeringObjective* dst,
+            const RotateEngineeringObjective* src)
         {
             try {
 
@@ -1080,15 +1107,15 @@ namespace nec {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'RotateObjective' sequence class.
+        * Configure and implement 'RotateEngineeringObjective' sequence class.
         */
-        #define T RotateObjective
-        #define TSeq RotateObjectiveSeq
+        #define T RotateEngineeringObjective
+        #define TSeq RotateEngineeringObjectiveSeq
 
-        #define T_initialize_w_params nec::engineering::RotateObjective_initialize_w_params
+        #define T_initialize_w_params nec::engineering::RotateEngineeringObjective_initialize_w_params
 
-        #define T_finalize_w_params   nec::engineering::RotateObjective_finalize_w_params
-        #define T_copy       nec::engineering::RotateObjective_copy
+        #define T_finalize_w_params   nec::engineering::RotateEngineeringObjective_finalize_w_params
+        #define T_copy       nec::engineering::RotateEngineeringObjective_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -1107,13 +1134,13 @@ namespace nec {
         #undef T
 
         /* ========================================================================= */
-        const char *RotateStateTYPENAME = "nec::engineering::RotateState";
+        const char *RotateEngineeringStateTYPENAME = "nec::engineering::RotateEngineeringState";
 
-        DDS_TypeCode* RotateState_get_typecode()
+        DDS_TypeCode* RotateEngineeringState_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member RotateState_g_tc_members[18]=
+            static DDS_TypeCode_Member RotateEngineeringState_g_tc_members[18]=
             {
 
                 {
@@ -1372,7 +1399,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueVelocity",/* Member name */
+                    (char *)"targetVelocity",/* Member name */
                     {
                         15,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1389,7 +1416,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torqueTorque",/* Member name */
+                    (char *)"targetTorque",/* Member name */
                     {
                         16,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1406,7 +1433,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"torquePosition",/* Member name */
+                    (char *)"targetPosition",/* Member name */
                     {
                         17,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1424,73 +1451,73 @@ namespace nec {
                 }
             };
 
-            static DDS_TypeCode RotateState_g_tc =
+            static DDS_TypeCode RotateEngineeringState_g_tc =
             {{
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"nec::engineering::RotateState", /* Name */
+                    (char *)"nec::engineering::RotateEngineeringState", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     18, /* Number of members */
-                    RotateState_g_tc_members, /* Members */
+                    RotateEngineeringState_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
-                }}; /* Type code for RotateState*/
+                }}; /* Type code for RotateEngineeringState*/
 
             if (is_initialized) {
-                return &RotateState_g_tc;
+                return &RotateEngineeringState_g_tc;
             }
 
-            RotateState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
+            RotateEngineeringState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Uuid_get_typecode();
 
-            RotateState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Status_get_typecode();
+            RotateEngineeringState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Status_get_typecode();
 
-            RotateState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
+            RotateEngineeringState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
 
-            RotateState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)nec::engineering::State_get_typecode();
+            RotateEngineeringState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)nec::engineering::State_get_typecode();
 
-            RotateState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)nec::engineering::Mode_get_typecode();
+            RotateEngineeringState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)nec::engineering::Mode_get_typecode();
 
-            RotateState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[15]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[15]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[16]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[16]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[17]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            RotateEngineeringState_g_tc_members[17]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             is_initialized = RTI_TRUE;
 
-            return &RotateState_g_tc;
+            return &RotateEngineeringState_g_tc;
         }
 
-        RTIBool RotateState_initialize(
-            RotateState* sample) {
-            return nec::engineering::RotateState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool RotateEngineeringState_initialize(
+            RotateEngineeringState* sample) {
+            return nec::engineering::RotateEngineeringState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool RotateState_initialize_ex(
-            RotateState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool RotateEngineeringState_initialize_ex(
+            RotateEngineeringState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -1499,13 +1526,13 @@ namespace nec {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return nec::engineering::RotateState_initialize_w_params(
+            return nec::engineering::RotateEngineeringState_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool RotateState_initialize_w_params(
-            RotateState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool RotateEngineeringState_initialize_w_params(
+            RotateEngineeringState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -1576,30 +1603,30 @@ namespace nec {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->torqueVelocity)) {
+            if (!RTICdrType_initDouble(&sample->targetVelocity)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->torqueTorque)) {
+            if (!RTICdrType_initDouble(&sample->targetTorque)) {
                 return RTI_FALSE;
             }
 
-            if (!RTICdrType_initDouble(&sample->torquePosition)) {
+            if (!RTICdrType_initDouble(&sample->targetPosition)) {
                 return RTI_FALSE;
             }
 
             return RTI_TRUE;
         }
 
-        void RotateState_finalize(
-            RotateState* sample)
+        void RotateEngineeringState_finalize(
+            RotateEngineeringState* sample)
         {
 
-            nec::engineering::RotateState_finalize_ex(sample,RTI_TRUE);
+            nec::engineering::RotateEngineeringState_finalize_ex(sample,RTI_TRUE);
         }
 
-        void RotateState_finalize_ex(
-            RotateState* sample,RTIBool deletePointers)
+        void RotateEngineeringState_finalize_ex(
+            RotateEngineeringState* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -1610,12 +1637,12 @@ namespace nec {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            nec::engineering::RotateState_finalize_w_params(
+            nec::engineering::RotateEngineeringState_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void RotateState_finalize_w_params(
-            RotateState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void RotateEngineeringState_finalize_w_params(
+            RotateEngineeringState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -1638,8 +1665,8 @@ namespace nec {
 
         }
 
-        void RotateState_finalize_optional_members(
-            RotateState* sample, RTIBool deletePointers)
+        void RotateEngineeringState_finalize_optional_members(
+            RotateEngineeringState* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -1661,9 +1688,9 @@ namespace nec {
             nec::engineering::Mode_finalize_optional_members(&sample->mode, deallocParams->delete_pointers);
         }
 
-        RTIBool RotateState_copy(
-            RotateState* dst,
-            const RotateState* src)
+        RTIBool RotateEngineeringState_copy(
+            RotateEngineeringState* dst,
+            const RotateEngineeringState* src)
         {
             try {
 
@@ -1732,15 +1759,15 @@ namespace nec {
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->torqueVelocity, &src->torqueVelocity)) { 
+                    &dst->targetVelocity, &src->targetVelocity)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->torqueTorque, &src->torqueTorque)) { 
+                    &dst->targetTorque, &src->targetTorque)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->torquePosition, &src->torquePosition)) { 
+                    &dst->targetPosition, &src->targetPosition)) { 
                     return RTI_FALSE;
                 }
 
@@ -1756,15 +1783,15 @@ namespace nec {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'RotateState' sequence class.
+        * Configure and implement 'RotateEngineeringState' sequence class.
         */
-        #define T RotateState
-        #define TSeq RotateStateSeq
+        #define T RotateEngineeringState
+        #define TSeq RotateEngineeringStateSeq
 
-        #define T_initialize_w_params nec::engineering::RotateState_initialize_w_params
+        #define T_initialize_w_params nec::engineering::RotateEngineeringState_initialize_w_params
 
-        #define T_finalize_w_params   nec::engineering::RotateState_finalize_w_params
-        #define T_copy       nec::engineering::RotateState_copy
+        #define T_finalize_w_params   nec::engineering::RotateEngineeringState_finalize_w_params
+        #define T_copy       nec::engineering::RotateEngineeringState_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"

@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef rotate_engineering_182435578_h
-#define rotate_engineering_182435578_h
+#ifndef rotate_engineering_182436148_h
+#define rotate_engineering_182436148_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -141,23 +141,23 @@ namespace nec {
         #endif
         static const char ROTATE_ENGINEERING_REQUEST[] = "RotateEngineeringRequest"; 
 
-        extern const char *RotateRequestTYPENAME;
+        extern const char *RotateEngineeringRequestTYPENAME;
 
-        struct RotateRequestSeq;
+        struct RotateEngineeringRequestSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class RotateRequestTypeSupport;
-        class RotateRequestDataWriter;
-        class RotateRequestDataReader;
+        class RotateEngineeringRequestTypeSupport;
+        class RotateEngineeringRequestDataWriter;
+        class RotateEngineeringRequestDataReader;
         #endif
 
-        class RotateRequest 
+        class RotateEngineeringRequest 
         {
           public:
-            typedef struct RotateRequestSeq Seq;
+            typedef struct RotateEngineeringRequestSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef RotateRequestTypeSupport TypeSupport;
-            typedef RotateRequestDataWriter DataWriter;
-            typedef RotateRequestDataReader DataReader;
+            typedef RotateEngineeringRequestTypeSupport TypeSupport;
+            typedef RotateEngineeringRequestDataWriter DataWriter;
+            typedef RotateEngineeringRequestDataReader DataReader;
             #endif
 
             DataTypes::Uuid   id ;
@@ -165,6 +165,7 @@ namespace nec {
             DataTypes::Time   timeNeeded ;
             DataTypes::Time   duration ;
             DDS_Double   targetRate ;
+            DDS_Double   torque ;
 
         };
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
@@ -174,44 +175,44 @@ namespace nec {
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
-        NDDSUSERDllExport DDS_TypeCode* RotateRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* RotateEngineeringRequest_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(RotateRequestSeq, RotateRequest);
-
-        NDDSUSERDllExport
-        RTIBool RotateRequest_initialize(
-            RotateRequest* self);
+        DDS_SEQUENCE(RotateEngineeringRequestSeq, RotateEngineeringRequest);
 
         NDDSUSERDllExport
-        RTIBool RotateRequest_initialize_ex(
-            RotateRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool RotateEngineeringRequest_initialize(
+            RotateEngineeringRequest* self);
 
         NDDSUSERDllExport
-        RTIBool RotateRequest_initialize_w_params(
-            RotateRequest* self,
+        RTIBool RotateEngineeringRequest_initialize_ex(
+            RotateEngineeringRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool RotateEngineeringRequest_initialize_w_params(
+            RotateEngineeringRequest* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        void RotateRequest_finalize(
-            RotateRequest* self);
+        void RotateEngineeringRequest_finalize(
+            RotateEngineeringRequest* self);
 
         NDDSUSERDllExport
-        void RotateRequest_finalize_ex(
-            RotateRequest* self,RTIBool deletePointers);
+        void RotateEngineeringRequest_finalize_ex(
+            RotateEngineeringRequest* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void RotateRequest_finalize_w_params(
-            RotateRequest* self,
+        void RotateEngineeringRequest_finalize_w_params(
+            RotateEngineeringRequest* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void RotateRequest_finalize_optional_members(
-            RotateRequest* self, RTIBool deletePointers);  
+        void RotateEngineeringRequest_finalize_optional_members(
+            RotateEngineeringRequest* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool RotateRequest_copy(
-            RotateRequest* dst,
-            const RotateRequest* src);
+        RTIBool RotateEngineeringRequest_copy(
+            RotateEngineeringRequest* dst,
+            const RotateEngineeringRequest* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -221,23 +222,23 @@ namespace nec {
         #endif
         static const char ROTATE_ENGINEERING_OBJECTIVE[] = "RotateEngineeringObjective"; 
 
-        extern const char *RotateObjectiveTYPENAME;
+        extern const char *RotateEngineeringObjectiveTYPENAME;
 
-        struct RotateObjectiveSeq;
+        struct RotateEngineeringObjectiveSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class RotateObjectiveTypeSupport;
-        class RotateObjectiveDataWriter;
-        class RotateObjectiveDataReader;
+        class RotateEngineeringObjectiveTypeSupport;
+        class RotateEngineeringObjectiveDataWriter;
+        class RotateEngineeringObjectiveDataReader;
         #endif
 
-        class RotateObjective 
+        class RotateEngineeringObjective 
         {
           public:
-            typedef struct RotateObjectiveSeq Seq;
+            typedef struct RotateEngineeringObjectiveSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef RotateObjectiveTypeSupport TypeSupport;
-            typedef RotateObjectiveDataWriter DataWriter;
-            typedef RotateObjectiveDataReader DataReader;
+            typedef RotateEngineeringObjectiveTypeSupport TypeSupport;
+            typedef RotateEngineeringObjectiveDataWriter DataWriter;
+            typedef RotateEngineeringObjectiveDataReader DataReader;
             #endif
 
             DataTypes::Uuid   id ;
@@ -253,44 +254,44 @@ namespace nec {
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
-        NDDSUSERDllExport DDS_TypeCode* RotateObjective_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* RotateEngineeringObjective_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(RotateObjectiveSeq, RotateObjective);
-
-        NDDSUSERDllExport
-        RTIBool RotateObjective_initialize(
-            RotateObjective* self);
+        DDS_SEQUENCE(RotateEngineeringObjectiveSeq, RotateEngineeringObjective);
 
         NDDSUSERDllExport
-        RTIBool RotateObjective_initialize_ex(
-            RotateObjective* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool RotateEngineeringObjective_initialize(
+            RotateEngineeringObjective* self);
 
         NDDSUSERDllExport
-        RTIBool RotateObjective_initialize_w_params(
-            RotateObjective* self,
+        RTIBool RotateEngineeringObjective_initialize_ex(
+            RotateEngineeringObjective* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool RotateEngineeringObjective_initialize_w_params(
+            RotateEngineeringObjective* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        void RotateObjective_finalize(
-            RotateObjective* self);
+        void RotateEngineeringObjective_finalize(
+            RotateEngineeringObjective* self);
 
         NDDSUSERDllExport
-        void RotateObjective_finalize_ex(
-            RotateObjective* self,RTIBool deletePointers);
+        void RotateEngineeringObjective_finalize_ex(
+            RotateEngineeringObjective* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void RotateObjective_finalize_w_params(
-            RotateObjective* self,
+        void RotateEngineeringObjective_finalize_w_params(
+            RotateEngineeringObjective* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void RotateObjective_finalize_optional_members(
-            RotateObjective* self, RTIBool deletePointers);  
+        void RotateEngineeringObjective_finalize_optional_members(
+            RotateEngineeringObjective* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool RotateObjective_copy(
-            RotateObjective* dst,
-            const RotateObjective* src);
+        RTIBool RotateEngineeringObjective_copy(
+            RotateEngineeringObjective* dst,
+            const RotateEngineeringObjective* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -300,23 +301,23 @@ namespace nec {
         #endif
         static const char ROTATE_ENGINEERING_STATE[] = "RotateEngineeringState"; 
 
-        extern const char *RotateStateTYPENAME;
+        extern const char *RotateEngineeringStateTYPENAME;
 
-        struct RotateStateSeq;
+        struct RotateEngineeringStateSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class RotateStateTypeSupport;
-        class RotateStateDataWriter;
-        class RotateStateDataReader;
+        class RotateEngineeringStateTypeSupport;
+        class RotateEngineeringStateDataWriter;
+        class RotateEngineeringStateDataReader;
         #endif
 
-        class RotateState 
+        class RotateEngineeringState 
         {
           public:
-            typedef struct RotateStateSeq Seq;
+            typedef struct RotateEngineeringStateSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef RotateStateTypeSupport TypeSupport;
-            typedef RotateStateDataWriter DataWriter;
-            typedef RotateStateDataReader DataReader;
+            typedef RotateEngineeringStateTypeSupport TypeSupport;
+            typedef RotateEngineeringStateDataWriter DataWriter;
+            typedef RotateEngineeringStateDataReader DataReader;
             #endif
 
             DataTypes::Uuid   id ;
@@ -334,9 +335,9 @@ namespace nec {
             DDS_Double   maxTorque ;
             DDS_Double   minPosition ;
             DDS_Double   maxPosition ;
-            DDS_Double   torqueVelocity ;
-            DDS_Double   torqueTorque ;
-            DDS_Double   torquePosition ;
+            DDS_Double   targetVelocity ;
+            DDS_Double   targetTorque ;
+            DDS_Double   targetPosition ;
 
         };
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
@@ -346,44 +347,44 @@ namespace nec {
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
-        NDDSUSERDllExport DDS_TypeCode* RotateState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* RotateEngineeringState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(RotateStateSeq, RotateState);
-
-        NDDSUSERDllExport
-        RTIBool RotateState_initialize(
-            RotateState* self);
+        DDS_SEQUENCE(RotateEngineeringStateSeq, RotateEngineeringState);
 
         NDDSUSERDllExport
-        RTIBool RotateState_initialize_ex(
-            RotateState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool RotateEngineeringState_initialize(
+            RotateEngineeringState* self);
 
         NDDSUSERDllExport
-        RTIBool RotateState_initialize_w_params(
-            RotateState* self,
+        RTIBool RotateEngineeringState_initialize_ex(
+            RotateEngineeringState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool RotateEngineeringState_initialize_w_params(
+            RotateEngineeringState* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        void RotateState_finalize(
-            RotateState* self);
+        void RotateEngineeringState_finalize(
+            RotateEngineeringState* self);
 
         NDDSUSERDllExport
-        void RotateState_finalize_ex(
-            RotateState* self,RTIBool deletePointers);
+        void RotateEngineeringState_finalize_ex(
+            RotateEngineeringState* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void RotateState_finalize_w_params(
-            RotateState* self,
+        void RotateEngineeringState_finalize_w_params(
+            RotateEngineeringState* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void RotateState_finalize_optional_members(
-            RotateState* self, RTIBool deletePointers);  
+        void RotateEngineeringState_finalize_optional_members(
+            RotateEngineeringState* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool RotateState_copy(
-            RotateState* dst,
-            const RotateState* src);
+        RTIBool RotateEngineeringState_copy(
+            RotateEngineeringState* dst,
+            const RotateEngineeringState* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
