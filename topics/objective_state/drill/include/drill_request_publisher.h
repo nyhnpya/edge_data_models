@@ -42,6 +42,7 @@ class CDrillRequestPublisher : public TPublisher< nec::process::DrillRequest >
     bool PublishSample();
 
     // Topic getters
+    void SetObjectiveId(const DataTypes::Uuid objectiveId);
     void SetPriority(DataTypes::Priority priority);
     void SetTimeNeeded(DataTypes::Time timeNeeded);
     void SetDuration(DataTypes::Time duration);
