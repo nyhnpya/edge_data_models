@@ -33,6 +33,8 @@ public:
 
     // Topic getters
     void SetObjective(DataTypes::Objective objective);
+    DataTypes::Uuid GetId();
+    
 };
 
 #endif // __OBJECTIVE_STATE_PUBLISHER_H__

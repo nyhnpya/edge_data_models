@@ -19,6 +19,18 @@ bool CObjectiveStatePublisher::Initialize()
     return true;
 }
 
+DataTypes::Uuid CObjectiveStatePublisher::GetId()
+{
+    DataTypes::Uuid uuid;
+
+    if (m_pDataInstance != nullptr)
+    {
+        uuid = DDS_String_dup(m_pDataInstance->id);
+    }
+
+    return DDS_String_dup(uuid);
+}
+
 void CObjectiveStatePublisher::SetObjective(DataTypes::Objective objective)
 {
     if (m_pDataInstance != nullptr)
