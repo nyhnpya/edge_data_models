@@ -2,6 +2,8 @@
 #include <stdint.h>
 #ifdef _LINUX
 #include <unistd.h>
+#include <condition_variable>
+#include <mutex>
 #endif
 #include <signal.h>
 #include <string.h>
@@ -10,6 +12,8 @@
 #include "objective_state_publisher.h"
 
 bool gTerminate = false;
+std::mutex gTerminateMutex;
+std::condition_variable gTerminateCondition;
 
 CObjectiveStatePublisher *gpStatePublisher = nullptr;
 std::thread threadId;
@@ -17,36 +21,44 @@ std::thread threadId;
 #ifdef _LINUX
 void SignalHandler(int32_t signal)
 {
-    /// Signal handler for SIGINT, SIGABRT, SIGFPE, SIGILL, SIGSEGV, SIGHUP 
+    /// Signal handler for SIGINT, SIGABRT, SIGFPE, SIGILL, SIGSEGV, SIGHUP
     switch (signal)
     {
         case SIGINT:
-            std::cout << "Signal SIGINT received." << std::endl;
+            LOG_INFO("Signal SIGINT received.");
+            gTerminateCondition.notify_all();
             break;
         case SIGTERM:
-            std::cout << "Signal SIGTERM received." << std::endl;
+            LOG_WARN("Signal SIGTERM received.");
+            gTerminateCondition.notify_all();
             break;
         case SIGABRT:
-            std::cout << "Signal SIGABRT received." << std::endl;
+            LOG_FATAL("Signal SIGABRT received.");
+            gTerminateCondition.notify_all();
             break;
         case SIGFPE:
-            std::cout << "Signal SIGFPE received." << std::endl;
+            LOG_FATAL("Signal SIGFPE received.");
+            gTerminateCondition.notify_all();
             break;
         case SIGILL:
-            std::cout << "Signal SIGGILL received." << std::endl;
+            LOG_FATAL("Signal SIGGILL received.");
+            gTerminateCondition.notify_all();
             break;
         case SIGSEGV:
-            std::cout << "Signal SIGSEGV received." << std::endl;
+            LOG_FATAL("Signal SIGSEGV received.");
+            gTerminateCondition.notify_all();
             break;
         case SIGHUP:
-            std::cout << "Signal SIGHUB received." << std::endl;
+            LOG_WARN("Signal SIGHUB received.");
+            gTerminateCondition.notify_all();
+            break;
+        case SIGPIPE:
+            LOG_INFO("Signal SIGPIPE received.");
             break;
         default:
-            std::cout << "Undhandled Signal received: " << signal  << std::endl;
+            LOG_INFO("Undhandled Signal [%d] received.", signal);
             break;
     }
-
-    gTerminate = true;
 
     return;
 }
@@ -181,14 +193,17 @@ int32_t main(int32_t argc, char **argv)
 {
     cli::Parser              parser(argc, argv);
     int32_t                  domain;
+    bool                     drillObjective;;
 
 	register_signal_handler();
 
     parser.set_optional<std::string>("c", "configFile", "pipe_handler.conf", "External configuration file.");
     parser.set_optional<int32_t>("d", "domain", 100, "DDS Domain.");
+    parser.set_optional<bool>("o", "objective", false, "Drill objective.");
     parser.run_and_exit_if_error();
 
     domain = parser.get<int32_t>("d");
+    drillObjective = parser.get<bool>("o");
 
     CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
     CDomainParticipant::Instance()->Create(domain);
@@ -197,7 +212,21 @@ int32_t main(int32_t argc, char **argv)
 
     if (gpStatePublisher->Create(domain) == true)
     {
-        top_level_menu();
+        if (drillObjective == false)
+        {
+            top_level_menu();
+        }
+        else
+        {
+            gpStatePublisher->CreateInstance();
+            gpStatePublisher->Initialize();
+            gpStatePublisher->SetObjective(DataTypes::Drilling);
+            gpStatePublisher->PublishSample();
+            
+            std::unique_lock<std::mutex> lk(gTerminateMutex);
+            gTerminateCondition.wait(lk);
+            LOG_INFO("Signal received: terminating process");
+         }
     }
 
     /*    std::cout << "Waiting for thread: "  << std::endl;
