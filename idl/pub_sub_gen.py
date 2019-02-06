@@ -1,4 +1,19 @@
 #!/usr/bin/python
+#/*
+# *  Copyright (c) 2019 Ensign Energy Incorporated
+# *  All Rights Reserved.
+# *
+# * NOTICE:  All information contained herein is, and remains
+# * the property of Ensign Energy Incorporated and its suppliers,
+# * if any.  The intellectual and technical concepts contained
+# * herein are proprietary to Ensign Energy Incorporated
+# * and its suppliers and may be covered by U.S. and Foreign Patents,
+# * patents in process, and are protected by trade secret or copyright law.
+# * Dissemination of this information or reproduction of this material
+# * is strictly forbidden unless prior written permission is obtained
+# * from Ensign Energy Incorporated.
+# */
+
 import sys
 import re
 
@@ -47,22 +62,25 @@ def str_cap(word):
     word = re.sub('([a-zA-Z])', lambda x: x.groups()[0].upper(), word, 1)
     return word
 
+def out_copywrite(wout):
+    wout.write('/*\n')
+    wout.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
+    wout.write(' *  All Rights Reserved.\n')
+    wout.write(' *\n')
+    wout.write(' * NOTICE:  All information contained herein is, and remains\n')
+    wout.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
+    wout.write(' * if any.  The intellectual and technical concepts contained\n')
+    wout.write(' * herein are proprietary to Ensign Energy Incorporated\n')
+    wout.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
+    wout.write(' * patents in process, and are protected by trade secret or copyright law.\n')
+    wout.write(' * Dissemination of this information or reproduction of this material\n')
+    wout.write(' * is strictly forbidden unless prior written permission is obtained\n')
+    wout.write(' * from Ensign Energy Incorporated.\n')
+    wout.write(' */\n')
+
 def write_publisher_h(outdir, struct):
     out = open(outdir + '/' + struct.name_underscore + '_publisher.h', 'w')
-    out.write('/*\n')
-    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
-    out.write(' *  All Rights Reserved.\n')
-    out.write(' *\n')
-    out.write(' * NOTICE:  All information contained herein is, and remains\n')
-    out.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
-    out.write(' * if any.  The intellectual and technical concepts contained\n')
-    out.write(' * herein are proprietary to Ensign Energy Incorporated\n')
-    out.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
-    out.write(' * patents in process, and are protected by trade secret or copyright law.\n')
-    out.write(' * Dissemination of this information or reproduction of this material\n')
-    out.write(' * is strictly forbidden unless prior written permission is obtained\n')
-    out.write(' * from Ensign Energy Incorporated.\n')
-    out.write(' */\n')
+    out_copywrite(out)
     out.write('#ifndef __' + module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_PUBLISHER_H__\n')
     out.write('#define __' + module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_PUBLISHER_H__\n')
     out.write('\n')
@@ -111,20 +129,7 @@ def write_publisher_h(outdir, struct):
 
 def write_publisher_cxx(outdir, struct):
     out = open(outdir + '/' + struct.name_underscore + '_publisher.cxx', 'w')
-    out.write('/*\n')
-    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
-    out.write(' *  All Rights Reserved.\n')
-    out.write(' *\n')
-    out.write(' * NOTICE:  All information contained herein is, and remains\n')
-    out.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
-    out.write(' * if any.  The intellectual and technical concepts contained\n')
-    out.write(' * herein are proprietary to Ensign Energy Incorporated\n')
-    out.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
-    out.write(' * patents in process, and are protected by trade secret or copyright law.\n')
-    out.write(' * Dissemination of this information or reproduction of this material\n')
-    out.write(' * is strictly forbidden unless prior written permission is obtained\n')
-    out.write(' * from Ensign Energy Incorporated.\n')
-    out.write(' */\n')
+    out_copywrite(out)
     out.write('#include "dds_uuid.h"\n')
     out.write('#include "' + struct.name_underscore + '_publisher.h"\n')
     out.write('\n')
@@ -194,20 +199,7 @@ def write_publisher_cxx(outdir, struct):
 
 def write_subscriber_h(outdir, struct):
     out = open(outdir + '/' + struct.name_underscore + '_subscriber.h', 'w')
-    out.write('/*\n')
-    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
-    out.write(' *  All Rights Reserved.\n')
-    out.write(' *\n')
-    out.write(' * NOTICE:  All information contained herein is, and remains\n')
-    out.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
-    out.write(' * if any.  The intellectual and technical concepts contained\n')
-    out.write(' * herein are proprietary to Ensign Energy Incorporated\n')
-    out.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
-    out.write(' * patents in process, and are protected by trade secret or copyright law.\n')
-    out.write(' * Dissemination of this information or reproduction of this material\n')
-    out.write(' * is strictly forbidden unless prior written permission is obtained\n')
-    out.write(' * from Ensign Energy Incorporated.\n')
-    out.write(' */\n')
+    out_copywrite(out)
     out.write('#ifndef __' + module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_SUBSCRIBER_H__\n')
     out.write('#define __' + module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_SUBSCRIBER_H__\n')
     out.write('\n')
@@ -273,20 +265,7 @@ def write_subscriber_h(outdir, struct):
 
 def write_subscriber_cxx(outdir, struct):
     out = open(outdir + '/' + struct.name_underscore + '_subscriber.cxx', 'w')
-    out.write('/*\n')
-    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
-    out.write(' *  All Rights Reserved.\n')
-    out.write(' *\n')
-    out.write(' * NOTICE:  All information contained herein is, and remains\n')
-    out.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
-    out.write(' * if any.  The intellectual and technical concepts contained\n')
-    out.write(' * herein are proprietary to Ensign Energy Incorporated\n')
-    out.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
-    out.write(' * patents in process, and are protected by trade secret or copyright law.\n')
-    out.write(' * Dissemination of this information or reproduction of this material\n')
-    out.write(' * is strictly forbidden unless prior written permission is obtained\n')
-    out.write(' * from Ensign Energy Incorporated.\n')
-    out.write(' */\n')
+    out_copywrite(out)
     out.write('#include "' + struct.name_underscore + '_subscriber.h"\n')
     out.write('\n')
     out.write('C' + struct.name_camel_case + 'Subscriber::C' + struct.name_camel_case + 'Subscriber() :\n')
@@ -408,20 +387,7 @@ def write_subscriber_cxx(outdir, struct):
 
 def write_io_state_machine_h(outdir, struct):
     out = open(outdir + '/io_' + struct.name_underscore + '.h', 'w')
-    out.write('/*\n')
-    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
-    out.write(' *  All Rights Reserved.\n')
-    out.write(' *\n')
-    out.write(' * NOTICE:  All information contained herein is, and remains\n')
-    out.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
-    out.write(' * if any.  The intellectual and technical concepts contained\n')
-    out.write(' * herein are proprietary to Ensign Energy Incorporated\n')
-    out.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
-    out.write(' * patents in process, and are protected by trade secret or copyright law.\n')
-    out.write(' * Dissemination of this information or reproduction of this material\n')
-    out.write(' * is strictly forbidden unless prior written permission is obtained\n')
-    out.write(' * from Ensign Energy Incorporated.\n')
-    out.write(' */\n')
+    out_copywrite(out)
     out.write('#ifndef __IO_' + module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_H__\n')
     out.write('#define __IO_' + module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_H__\n')
     out.write('\n')
@@ -454,21 +420,7 @@ def write_io_state_machine_h(outdir, struct):
 
 def write_io_state_machine_cxx(outdir, struct):
     out = open(outdir + '/io_' + struct.name_underscore + '.cxx', 'w')
-    out.write('/*\n')
-    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
-    out.write(' *  All Rights Reserved.\n')
-    out.write(' *\n')
-    out.write(' * NOTICE:  All information contained herein is, and remains\n')
-    out.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
-    out.write(' * if any.  The intellectual and technical concepts contained\n')
-    out.write(' * herein are proprietary to Ensign Energy Incorporated\n')
-    out.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
-    out.write(' * patents in process, and are protected by trade secret or copyright law.\n')
-    out.write(' * Dissemination of this information or reproduction of this material\n')
-    out.write(' * is strictly forbidden unless prior written permission is obtained\n')
-    out.write(' * from Ensign Energy Incorporated.\n')
-    out.write(' */\n')
-    out.write('\n')
+    out_copywrite(out)
     out.write('#include "io_' + struct.name_underscore + '.h"\n')
     out.write('\n')
     out.write('Io' + struct.name_camel_case + '::Io' + struct.name_camel_case + '()\n')
@@ -548,20 +500,7 @@ def write_io_state_machine_cxx(outdir, struct):
 
 def write_publish_io_h(outdir, struct_objs):
     out = open(outdir + '/' + idl_name + '_publish_io.h', 'w')
-    out.write('/*\n')
-    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
-    out.write(' *  All Rights Reserved.\n')
-    out.write(' *\n')
-    out.write(' * NOTICE:  All information contained herein is, and remains\n')
-    out.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
-    out.write(' * if any.  The intellectual and technical concepts contained\n')
-    out.write(' * herein are proprietary to Ensign Energy Incorporated\n')
-    out.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
-    out.write(' * patents in process, and are protected by trade secret or copyright law.\n')
-    out.write(' * Dissemination of this information or reproduction of this material\n')
-    out.write(' * is strictly forbidden unless prior written permission is obtained\n')
-    out.write(' * from Ensign Energy Incorporated.\n')
-    out.write(' */\n')
+    out_copywrite(out)
     out.write('#ifndef __' + idl_name.upper()+ '_PUBLISH_IO_H__\n')
     out.write('#define __' + idl_name.upper()+ '_PUBLISH_IO_H__\n')
     out.write('\n')
@@ -582,20 +521,7 @@ def write_publish_io_h(outdir, struct_objs):
 
 def write_publish_io_cxx(outdir, struct_objs):
     out = open(outdir + '/' + idl_name + '_publish_io.cxx', 'w')
-    out.write('/*\n')
-    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
-    out.write(' *  All Rights Reserved.\n')
-    out.write(' *\n')
-    out.write(' * NOTICE:  All information contained herein is, and remains\n')
-    out.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
-    out.write(' * if any.  The intellectual and technical concepts contained\n')
-    out.write(' * herein are proprietary to Ensign Energy Incorporated\n')
-    out.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
-    out.write(' * patents in process, and are protected by trade secret or copyright law.\n')
-    out.write(' * Dissemination of this information or reproduction of this material\n')
-    out.write(' * is strictly forbidden unless prior written permission is obtained\n')
-    out.write(' * from Ensign Energy Incorporated.\n')
-    out.write(' */\n')
+    out_copywrite(out)
     out.write('#include "' + idl_name + '_publish_io.h"\n')
     out.write('\n')
     out.write('\n')
@@ -656,7 +582,7 @@ def write_makefile(outdir, struct_names, struct_names2):
     out.write('TARG_INCLUDES += -I $(LOG_INCLUDE)\n')
     out.write('TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include\n')
     out.write('TARG_INCLUDES += -I $(CURDIR)/include\n')
-    out.write('TARG_INCLUDES += -I /usr/local/include/plant_client\n')
+#    out.write('TARG_INCLUDES += -I /usr/local/include/plant_client\n')
     out.write('\n')
     out.write('# Sources\n')
     out.write('TARG_SOURCES = ' + idl_name + '.cxx\n')
@@ -665,8 +591,8 @@ def write_makefile(outdir, struct_names, struct_names2):
     for struct_name in struct_names2:
         out.write('TARG_SOURCES += ' + struct_name + '_publisher.cxx\n')
         out.write('TARG_SOURCES += ' + struct_name + '_subscriber.cxx\n')
-        out.write('TARG_SOURCES += io_' + struct_name + '.cxx\n')
-    out.write('TARG_SOURCES += ' + idl_name + '_publish_io.cxx\n')
+#        out.write('TARG_SOURCES += io_' + struct_name + '.cxx\n')
+#    out.write('TARG_SOURCES += ' + idl_name + '_publish_io.cxx\n')
     out.write('\n')
     out.write('###############################################################################\n')
     out.write('# Installation section\n')
@@ -687,8 +613,8 @@ def write_makefile(outdir, struct_names, struct_names2):
     for struct_name in struct_names2:
         out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + struct_name + '_publisher.h\n')
         out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + struct_name + '_subscriber.h\n')
-        out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/io_' + struct_name + '.h\n')
-    out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + idl_name + '_publish_io.h\n')
+#        out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/io_' + struct_name + '.h\n')
+#    out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + idl_name + '_publish_io.h\n')
     out.write('\n')
     out.write('# package installation directory\n')
     out.write('PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package\n')
@@ -752,8 +678,8 @@ with open(idl_file_name) as idl_file:
                     write_publisher_cxx(output_dir, current_struct)
                     write_subscriber_h(output_dir, current_struct)
                     write_subscriber_cxx(output_dir, current_struct)
-                    write_io_state_machine_h(output_dir, current_struct)
-                    write_io_state_machine_cxx(output_dir, current_struct)
+                    #write_io_state_machine_h(output_dir, current_struct)
+                    #write_io_state_machine_cxx(output_dir, current_struct)
                     structobjs.append(current_struct)
                     break
                 if ';' not in line:
@@ -783,8 +709,8 @@ with open(idl_file_name) as idl_file:
                     fdt = 'int32_t'
                 struct_field = StructField(fields[1], fdt, unit_namespace, unit_name, iskey) 
                 current_struct.fields.append(struct_field)
-    write_publish_io_h(output_dir, structobjs)
-    write_publish_io_cxx(output_dir, structobjs)
+    #write_publish_io_h(output_dir, structobjs)
+    #write_publish_io_cxx(output_dir, structobjs)
     write_makefile(output_dir, structs, structs2) 
 
 

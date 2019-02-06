@@ -96,7 +96,7 @@ module nec
             Mode     mode;
             double   actualVelocity; // (units::angular_velocity::radians_per_second)
             double   actualTorque;   // (units::torque::newton_meter)
-            double   actualPosition;
+            double   actualPosition; // (units::angle::radian)
             double   actualPower;
 
             // constraints
@@ -104,13 +104,13 @@ module nec
             double   maxVelocity;  // (units::angular_velocity::radians_per_second)
             double   minTorque;    // (units::torque::newton_meter)
             double   maxTorque;    // (units::torque::newton_meter)
-            double   minPosition;
-            double   maxPosition;
+            double   minPosition; // (units::angle::radian)
+            double   maxPosition; // (units::angle::radian)
 
             // targets
             double   targetVelocity; // (units::angular_velocity::radians_per_second)
             double   targetTorque;   // (units::torque::newton_meter)
-            double   targetPosition;
+            double   targetPosition; // (units::angle::radian)
         };
     };
 };
