@@ -1223,6 +1223,9 @@ namespace Shell {
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
                 ModelStateRequestPlugin_destroy_sample;
+                plugin->finalizeOptionalMembersFnc =
+                (PRESTypePluginFinalizeOptionalMembersFunction)
+                ModelStateRequest_finalize_optional_members;
 
                 plugin->serializeFnc =
                 (PRESTypePluginSerializeFunction)
@@ -2451,6 +2454,9 @@ namespace Shell {
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
                 ModelStateStatePlugin_destroy_sample;
+                plugin->finalizeOptionalMembersFnc =
+                (PRESTypePluginFinalizeOptionalMembersFunction)
+                ModelStateState_finalize_optional_members;
 
                 plugin->serializeFnc =
                 (PRESTypePluginSerializeFunction)
@@ -3679,6 +3685,9 @@ namespace Shell {
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
                 DiffpTuningRequestPlugin_destroy_sample;
+                plugin->finalizeOptionalMembersFnc =
+                (PRESTypePluginFinalizeOptionalMembersFunction)
+                DiffpTuningRequest_finalize_optional_members;
 
                 plugin->serializeFnc =
                 (PRESTypePluginSerializeFunction)
@@ -5027,6 +5036,9 @@ namespace Shell {
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
                 DiffpTuningStatePlugin_destroy_sample;
+                plugin->finalizeOptionalMembersFnc =
+                (PRESTypePluginFinalizeOptionalMembersFunction)
+                DiffpTuningState_finalize_optional_members;
 
                 plugin->serializeFnc =
                 (PRESTypePluginSerializeFunction)
@@ -6255,6 +6267,9 @@ namespace Shell {
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
                 WobTuningRequestPlugin_destroy_sample;
+                plugin->finalizeOptionalMembersFnc =
+                (PRESTypePluginFinalizeOptionalMembersFunction)
+                WobTuningRequest_finalize_optional_members;
 
                 plugin->serializeFnc =
                 (PRESTypePluginSerializeFunction)
@@ -7603,6 +7618,9 @@ namespace Shell {
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
                 WobTuningStatePlugin_destroy_sample;
+                plugin->finalizeOptionalMembersFnc =
+                (PRESTypePluginFinalizeOptionalMembersFunction)
+                WobTuningState_finalize_optional_members;
 
                 plugin->serializeFnc =
                 (PRESTypePluginSerializeFunction)
@@ -8831,6 +8849,9 @@ namespace Shell {
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
                 TorqueTuningRequestPlugin_destroy_sample;
+                plugin->finalizeOptionalMembersFnc =
+                (PRESTypePluginFinalizeOptionalMembersFunction)
+                TorqueTuningRequest_finalize_optional_members;
 
                 plugin->serializeFnc =
                 (PRESTypePluginSerializeFunction)
@@ -10179,6 +10200,9 @@ namespace Shell {
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
                 TorqueTuningStatePlugin_destroy_sample;
+                plugin->finalizeOptionalMembersFnc =
+                (PRESTypePluginFinalizeOptionalMembersFunction)
+                TorqueTuningState_finalize_optional_members;
 
                 plugin->serializeFnc =
                 (PRESTypePluginSerializeFunction)

@@ -23,6 +23,7 @@
 #undef pascal
 #endif
 #include "units.h"
+#include "dds_uuid.h"
 
 using namespace units;
 using namespace units::angular_velocity;
@@ -38,7 +39,7 @@ class CRotateStatePublisher : public TPublisher< nec::process::RotateState >
     bool PublishSample();
     bool HasInterfaceChanged();
 
-    void SetObjectiveId(DataTypes::Uuid pObjectiveId);
+    void SetObjectiveId(CDdsUuid objectiveId);
     void SetTimestamp(const DataTypes::Time timestamp);
     void SetActualRate(radians_per_second_t actualRate);
     void SetMaxRate(radians_per_second_t maxRate);

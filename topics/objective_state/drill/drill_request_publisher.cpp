@@ -19,11 +19,11 @@ bool CDrillRequestPublisher::Initialize()
     return true;
 }
 
-void CDrillRequestPublisher::SetObjectiveId(const DataTypes::Uuid objectiveId)
+void CDrillRequestPublisher::SetObjectiveId(CDdsUuid objectiveId)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->objectiveId = DDS_String_dup(objectiveId);
+        m_pDataInstance->objectiveId = DDS_String_dup(objectiveId.c_str());
     }
 }
 

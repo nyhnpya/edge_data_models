@@ -1421,6 +1421,9 @@ namespace process {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             ObjectiveStatePlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            ObjectiveState_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)

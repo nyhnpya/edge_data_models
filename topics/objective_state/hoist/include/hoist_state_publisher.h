@@ -47,7 +47,7 @@ class CHoistStatePublisher : public TPublisher< nec::process::HoistState >
     void SetMaxLowerPosition(meter_t maxLowerPosition);
     void SetMaxLowerVelocity(meters_per_second_t maxLowerVelocity);
     void SetMaxHookload(newton_t maxHookload);
-    void SetObjectiveId(const DataTypes::Uuid objectiveId);
+    void SetObjectiveId(CDdsUuid objectiveId);
     void SetStatus(const DataTypes::Status status);
     void SetTargetPosition(meter_t targetPosition);
     void SetTargetVelocity(meters_per_second_t targetVelocity);

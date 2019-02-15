@@ -16,6 +16,7 @@
 #define __OBJECTIVE_STATE_SUBSCRIBER_H__
 
 #include <mutex>
+#include "dds_uuid.h"
 #include "subscriber.h"
 #include "base_data_types.h"
 #include "objective.h"
@@ -35,8 +36,8 @@ public:
     void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
 
     // Topic getters
-    DataTypes::Uuid  GetId();
-    DataTypes::Uuid  GetParentId();
+    CDdsUuid GetId();
+    CDdsUuid GetParentId();
     DataTypes::Objective GetObjective();
 	
     // Topic status

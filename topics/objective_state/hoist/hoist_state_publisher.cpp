@@ -19,11 +19,11 @@ bool CHoistStatePublisher::Initialize()
     return true;
 }
 
-void CHoistStatePublisher::SetObjectiveId(const DataTypes::Uuid objectiveId)
+void CHoistStatePublisher::SetObjectiveId(CDdsUuid objectiveId)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->objectiveId = DDS_String_dup(objectiveId);
+        m_pDataInstance->objectiveId = DDS_String_dup(objectiveId.c_str());
     }
 }
 

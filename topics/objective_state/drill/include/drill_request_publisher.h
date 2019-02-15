@@ -23,6 +23,7 @@
 #undef pascal
 #endif
 #include "units.h"
+#include "dds_uuid.h"
 
 using namespace units;
 using namespace units::length;
@@ -42,7 +43,7 @@ class CDrillRequestPublisher : public TPublisher< nec::process::DrillRequest >
     bool PublishSample();
 
     // Topic getters
-    void SetObjectiveId(const DataTypes::Uuid objectiveId);
+    void SetObjectiveId(CDdsUuid objectiveId);
     void SetPriority(DataTypes::Priority priority);
     void SetTimeNeeded(DataTypes::Time timeNeeded);
     void SetDuration(DataTypes::Time duration);

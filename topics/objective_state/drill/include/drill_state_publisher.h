@@ -23,6 +23,7 @@
 #undef pascal
 #endif
 #include "units.h"
+#include "dds_uuid.h"
 
 using namespace units;
 using namespace units::length;
@@ -42,7 +43,7 @@ class CDrillStatePublisher : public TPublisher< nec::process::DrillState >
     bool PublishSample();
 
     // Topic setters
-    void SetObjectiveId(DataTypes::Uuid pObjectiveId);
+    void SetObjectiveId(CDdsUuid objectiveId);
     void SetTimestamp(const DataTypes::Time timestamp);
     void SetRopActual(const meters_per_second_t ropActual);
     void SetWobActual(const newton_t wobActual);

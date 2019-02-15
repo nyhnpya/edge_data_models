@@ -34,14 +34,20 @@ bool CObjectiveStateSubscriber::ValidSubscription()
 	return m_subscriptionMatched;
 }
 
-DataTypes::Uuid CObjectiveStateSubscriber::GetId()
+CDdsUuid CObjectiveStateSubscriber::GetId()
 {
-    return DDS_String_dup(m_data.id);
+    CDdsUuid uuid;
+
+    uuid.ImportUuid(m_data.id);
+    return uuid;
 }
 
-DataTypes::Uuid CObjectiveStateSubscriber::GetParentId()
+CDdsUuid CObjectiveStateSubscriber::GetParentId()
 {
-    return m_data.parentId;
+    CDdsUuid uuid;
+
+    uuid.ImportUuid(m_data.parentId);
+    return uuid;
 }
 
 DataTypes::Objective CObjectiveStateSubscriber::GetObjective()

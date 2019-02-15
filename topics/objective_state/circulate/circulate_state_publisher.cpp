@@ -19,11 +19,11 @@ bool CCirculateStatePublisher::Initialize()
     return true;
 }
 
-void CCirculateStatePublisher::SetObjectiveId(const DataTypes::Uuid objectiveId)
+void CCirculateStatePublisher::SetObjectiveId(CDdsUuid objectiveId)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->objectiveId = DDS_String_dup(objectiveId);
+        m_pDataInstance->objectiveId = DDS_String_dup(objectiveId.c_str());
     }
 }
 

@@ -23,6 +23,7 @@
 #undef pascal
 #endif
 #include "units.h"
+#include "dds_uuid.h"
 
 using namespace units;
 using namespace units::angular_velocity;
@@ -37,7 +38,7 @@ class CRotateRequestPublisher : public TPublisher< nec::process::RotateRequest >
     bool Initialize();
     bool PublishSample();
 
-    void SetObjectiveId(DataTypes::Uuid pObjectiveId);
+    void SetObjectiveId(CDdsUuid objectiveId);
     void SetPriority(DataTypes::Priority priority);
     void SetTimeNeeded(DataTypes::Time timeNeeded);
     void SetDuration(DataTypes::Time duration);

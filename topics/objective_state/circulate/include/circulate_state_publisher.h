@@ -23,6 +23,7 @@
 #undef pascal
 #endif
 #include "units.h"
+#include "dds_uuid.h"
 
 using namespace units;
 using namespace units::pressure;
@@ -43,7 +44,7 @@ class CCirculateStatePublisher : public TPublisher< nec::process::CirculateState
     void SetMaxStandpipePressure(pascal_t maxStandpipePressure);
     void SetMinFlowRate(double minRateFlowRate);
     void SetMinStandpipePressure(pascal_t minStandpipePressure);
-    void SetObjectiveId(const DataTypes::Uuid objectiveId);
+    void SetObjectiveId(CDdsUuid objectiveId);
     void SetStatus(const DataTypes::Status status);
     void SetTargetFlowRate(double targetFlowRate);
 };
