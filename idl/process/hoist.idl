@@ -69,8 +69,10 @@ module nec
          * | objectiveId       | id of current objective                | DataTypes::Uuid   | N/A   |
          * | timestamp         | timestamp when the data was published. | DataTypes::Time   | sec   |
          * | status            | status of ciruclation system           | Datatypes::Status | N/A   |
+         * | actualHookload    | actual hookload                        | double            | N      |
          * | actualVelocity    | actual velicoty in m/s                 | double            | m/sec |
          * | actualPosition    | requested target in m                  | double            | m     |
+         * | maxHookload       | maximum hookload                       | double            | N      |
          * | maxHoistVelocity  | requested target in m/s                | double            | m/sec |
          * | maxLowerVelocity  | requested target in m/s                | double            | m/sec |
          * | maxHoistPosition  | requested target in m/s                | double            | m     |

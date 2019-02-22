@@ -10,7 +10,7 @@ CResourcesPublisher::~CResourcesPublisher()
 {
     if (m_pProcessName != nullptr)
     {
-        free(m_pProcessName);
+        DDS_String_free((char *)m_pProcessName);
     }
 }
 

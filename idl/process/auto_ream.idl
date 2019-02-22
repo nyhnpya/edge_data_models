@@ -20,7 +20,17 @@ module nec
             double BlockSpeedPV_mps;    ///< This is block speed in meters/second;
             double TD_Quill_SpeedPV_rpm;  ///< This is TD rotary speed in RPM;
         };
- 
+
+         | Variable           | Description                                          | Data Type     | Unit    |
+         | :----------------- | :--------------------------------------------------- | :------------ | :------- |
+         | QuillTipPosPV_m   |  This is block position in meters               | double        | m |
+         | Hole_depth        |  This is constant, so you can see that there is no autoream, only cleaning | double | m |
+         | Dp_PressurePV_kPa |  This is DP in kiloPascals  | double | Pa |
+         |  WeightOnBitPV_daN|  This is WOB in decaNewtons | double | N  |
+         | StandpipePressUnfiltPV_kPa |  This is standpipe pressure in kiloPascals |double | Pa |
+         | BlockSpeedPV_mps  |  This is block speed in meters/second | double | m/sec |
+         | TD_Quill_SpeedPV_rpm | This is TD rotary speed in RPM     | double | rad/sec |
+    
         //@copy-c-declaration static const char AUTO_REAM_OBJECTIVE[] = "AutoReamObjective";
         struct AutoReamObjective
         {
@@ -37,14 +47,30 @@ module nec
         };
  
         //@copy-c-declaration static const char AUTO_REAM_STATE[] = "AutoReamState";
+        /**
+         * \brief Wellbore state information.
+         *
+         * \ingroup Downhole
+         *
+         * | Variable            | Description                                          | Data Type  | Unit    |
+         * | :------------------ | :--------------------------------------------------- | :--------- | :------ |
+         * | hookloadActual      |                                                      |   double   |   N     |
+         * | holeDepth           | reported hole depth.                                 |   double   |   m     |
+         * | diffPressureActual  | actual differential pressure                         | double     | Pa      |
+         * | wobActual           | actual weight on bit                                 | double     |   N     |
+         * | actualStandpipePressure | actual standpipe pressure                        | double     | Pa      |
+         * | actualVelocity      | actual velicoty in m/s                               | double     | m/sec   |
+         * | quillPositionActual |                                                      |   double   |   N     |
+         * | quillRateActual     |                                                      |   double   |   N     |
+         */
         struct AutoReamState
         {
             DataTypes::Uuid     id;   //@key
             DataTypes::Uuid     objectiveId; 
             DataTypes::Time     timestamp;
             DataTypes::Status   status;
-            double              hookloadActual;             ///< This is constant, so you can see that there is no autoream, only cleaning;
-            double              holeDepthActual;            ///< This is constant, so you can see that there is no autoream, only cleaning;
+            double              hookloadActual;
+            double              holeDepth;
             double              differentialPressureActual; ///< This is DP in kiloPascals;
             double              weightOnBitActual;          ///< This is WOB in decaNewtons;
             double              standpipePressureActual;    ///< This is standpipe pressure in kiloPascals;
