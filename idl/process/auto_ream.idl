@@ -21,17 +21,17 @@ module nec
             double TD_Quill_SpeedPV_rpm;  ///< This is TD rotary speed in RPM;
         };
 
-         | Variable           | Description                                          | Data Type     | Unit    |
-         | :----------------- | :--------------------------------------------------- | :------------ | :------- |
-         | QuillTipPosPV_m   |  This is block position in meters               | double        | m |
-         | Hole_depth        |  This is constant, so you can see that there is no autoream, only cleaning | double | m |
-         | Dp_PressurePV_kPa |  This is DP in kiloPascals  | double | Pa |
-         |  WeightOnBitPV_daN|  This is WOB in decaNewtons | double | N  |
-         | StandpipePressUnfiltPV_kPa |  This is standpipe pressure in kiloPascals |double | Pa |
-         | BlockSpeedPV_mps  |  This is block speed in meters/second | double | m/sec |
-         | TD_Quill_SpeedPV_rpm | This is TD rotary speed in RPM     | double | rad/sec |
-    
         //@copy-c-declaration static const char AUTO_REAM_OBJECTIVE[] = "AutoReamObjective";
+        /**         | Variable           | Description                                          | Data Type     | Unit    |
+         * | :----------------- | :--------------------------------------------------- | :------------ | :------- |
+         * | QuillTipPosPV_m   |  This is block position in meters               | double        | m |
+         * | Hole_depth        |  This is constant, so you can see that there is no autoream, only cleaning | double | m |
+         * | Dp_PressurePV_kPa |  This is DP in kiloPascals  | double | Pa |
+         * |  WeightOnBitPV_daN|  This is WOB in decaNewtons | double | N  |
+         * | StandpipePressUnfiltPV_kPa |  This is standpipe pressure in kiloPascals |double | Pa |
+         * | BlockSpeedPV_mps  |  This is block speed in meters/second | double | m/sec |
+         * | TD_Quill_SpeedPV_rpm | This is TD rotary speed in RPM     | double | rad/sec |
+        */    
         struct AutoReamObjective
         {
             DataTypes::Uuid  id; //@key
