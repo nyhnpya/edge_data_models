@@ -70,7 +70,7 @@ module nec
             DataTypes::Time     timestamp;
             DataTypes::Status   status;
             double              hookloadActual;
-            double              holeDepth;
+            double              holeDepthActual;
             double              differentialPressureActual; ///< This is DP in kiloPascals;
             double              weightOnBitActual;          ///< This is WOB in decaNewtons;
             double              standpipePressureActual;    ///< This is standpipe pressure in kiloPascals;
