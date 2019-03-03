@@ -14,8 +14,8 @@
   #include "process_info.h"
 #elif _WIN32
   #define _CRT_SECURE_NO_WARNINGS
-  #include "stdafx.h"
   #include <windows.h>
+  #include <chrono>
   #include <psapi.h>
   #include <tlhelp32.h>
   #include <stdio.h>
@@ -364,7 +364,7 @@ void CProcessInfo::GetInfo(ProcessStats *pProcessStats)
     uint64_t ktime = to_uint64t(KernelTime);
     uint64_t utime = to_uint64t(UserTime);
 
-    uint64_t runTimeDiff = (ktime + utime) - (m_lastRunUserTime + lastRunKernelTime);
+    uint64_t runTimeDiff = (ktime + utime) - (m_lastRunUserTime + m_lastRunKernelTime);
     duration<double> timeDiff = (runTime - m_lastRunTime);
 
     m_lastRunKernelTime = ktime;
