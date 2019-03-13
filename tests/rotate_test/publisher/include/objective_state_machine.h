@@ -13,7 +13,7 @@ class CObjectiveStateMachine
     static void Destroy();
 
     virtual bool Initialize(int32_t domain);
-    DataTypes::Uuid GetId();
+    CDdsUuid GetId();
     DataTypes::Objective GetObjective();
 
  private:

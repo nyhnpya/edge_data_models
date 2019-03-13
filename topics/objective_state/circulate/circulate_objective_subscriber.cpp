@@ -53,7 +53,7 @@ void CCirculateObjectiveSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent
 }
 
 void CCirculateObjectiveSubscriber::DataAvailable(const nec::process::CirculateObjective &data,
-                                               const DDS::SampleInfo &sampleInfo)
+                                                  const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
 

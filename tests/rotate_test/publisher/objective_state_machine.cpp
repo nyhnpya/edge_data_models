@@ -41,7 +41,7 @@ CObjectiveStateMachine::~CObjectiveStateMachine()
     m_objectiveSubscriber.Destroy();
 }
 
-DataTypes::Uuid CObjectiveStateMachine::GetId()
+CDdsUuid CObjectiveStateMachine::GetId()
 {
     return m_objectiveSubscriber.GetId();
 }
