@@ -147,8 +147,11 @@ def write_publisher_cxx(outdir, struct):
     out.write('\n')
     out.write('    if (m_pDataInstance != nullptr)\n')
     out.write('    {\n')
-    out.write('        uuid.GenerateUuid();\n')
-    out.write('        m_pDataInstance->id = DDS_String_dup(uuid.c_str());\n')
+    for sfield in struct.fields:
+        if sfield.key == True:
+            out.write('        uuid.GenerateUuid();\n')
+            out.write('        m_pDataInstance->id = DDS_String_dup(uuid.c_str());\n')
+            break;
     out.write('        retVal = true;\n')
     out.write('    }\n')
     out.write('\n')
@@ -229,11 +232,11 @@ def write_subscriber_h(outdir, struct):
     out.write('        ~C' + struct.name_camel_case + 'Subscriber();\n')
     out.write('        \n')
     out.write('        bool Create(int32_t domain);\n')
+    out.write('        bool ValidData();\n')
     out.write('        void OnDataAvailable(OnDataAvailableEvent event);\n')
     out.write('        void OnDataDisposed(OnDataDisposedEvent event);\n')
     out.write('        void OnLivelinessChanged(OnLivelinessChangedEvent event);\n')
     out.write('        void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);\n')
-    out.write('        bool ValidData();\n')
     out.write('        \n')
     for sfield in struct.fields:
         if sfield.datatype in enums:
@@ -293,6 +296,14 @@ def write_subscriber_cxx(outdir, struct):
     out.write('\n')
     out.write('C' + struct.name_camel_case + 'Subscriber::~C' + struct.name_camel_case + 'Subscriber()\n')
     out.write('{\n')
+    out.write('}\n')
+    out.write('\n')
+    out.write('bool C' + struct.name_camel_case + 'Subscriber::Create(int32_t domain)\n')
+    out.write('{\n')
+    out.write('    return TSubscriber::Create(domain,\n')
+    out.write('                       ' + module_name + struct.name_underscore.upper() + ',\n')
+    out.write('                       "EdgeBaseLibrary",\n')
+    out.write('                       "EdgeBaseProfile");\n')
     out.write('}\n')
     out.write('\n')
     out.write('bool C' + struct.name_camel_case + 'Subscriber::ValidData()\n')
@@ -522,7 +533,12 @@ with open(idl_file_name) as idl_file:
                 iskey = False
                 if '@key' in line:
                     iskey = True
-                struct_field = StructField(fields[1], fields[0], unit_namespace, unit_name, iskey) 
+                fdt = fields[0]
+                if fdt == 'boolean':
+                    fdt = 'bool'
+                if fdt == 'long':
+                    fdt = 'int32_t'
+                struct_field = StructField(fields[1], fdt, unit_namespace, unit_name, iskey) 
                 current_struct.fields.append(struct_field)
     write_makefile(output_dir, structs, structs2) 
 
