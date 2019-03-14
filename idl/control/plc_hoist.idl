@@ -16,7 +16,7 @@ module plc
          * | targetVelocity    | requested target in m/s                          | double              | m/sec |
          * | targetPosition    | requested target position in m                   | double              | m/sec |
          */
-        struct HoistRequestTopic
+        struct HoistRequest
         {
             double              targetVelocity;
             double              targetPosition;
@@ -43,25 +43,25 @@ module plc
          * | targetVelocity    | target hoist velocity                  | double            | m/sec |
          * | targetPosition    | target hoist position                  | double            | m     |
          */
-        struct HoistStateTopic
+        struct HoistState
         {
-            DataTypes::Status   status;
+            long    status;
 
             // actuals
-            double              actualHookload;
-            double              actualVelocity;
-            double              actualPosition;
+            double  actualHookload;
+            double  actualVelocity;
+            double  actualPosition;
 
             // constraints
-            double              maxHookload;
-            double              maxHoistVelocity;
-            double              maxLowerVelocity;
-            double              maxHoistPosition;
-            double              maxLowerPosition;
+            double  maxHookload;
+            double  maxHoistVelocity;
+            double  maxLowerVelocity;
+            double  maxHoistPosition;
+            double  maxLowerPosition;
 
             // targets
-            double              targetVelocity;
-            double              targetPosition;
+            double  targetVelocity;
+            double  targetPosition;
         };
     };
 };
