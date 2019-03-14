@@ -38,7 +38,7 @@ CDdsUuid CObjectiveStateSubscriber::GetId()
 {
     CDdsUuid uuid;
 
-    uuid.ImportUuid(m_data.id);
+    uuid.ParseUuid(m_data.id);
     return uuid;
 }
 
@@ -46,7 +46,7 @@ CDdsUuid CObjectiveStateSubscriber::GetParentId()
 {
     CDdsUuid uuid;
 
-    uuid.ImportUuid(m_data.parentId);
+    uuid.ParseUuid(m_data.parentId);
     return uuid;
 }
 
