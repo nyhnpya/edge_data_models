@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef auto_reamPlugin_426526490_h
-#define auto_reamPlugin_426526490_h
+#ifndef auto_reamPlugin_426528474_h
+#define auto_reamPlugin_426528474_h
 
 #include "auto_ream.h"
 
@@ -936,5 +936,5 @@ namespace nec {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* auto_reamPlugin_426526490_h */
+#endif /* auto_reamPlugin_426528474_h */
 

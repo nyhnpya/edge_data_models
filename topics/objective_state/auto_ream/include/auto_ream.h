@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef auto_ream_426526490_h
-#define auto_ream_426526490_h
+#ifndef auto_ream_426528474_h
+#define auto_ream_426528474_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h

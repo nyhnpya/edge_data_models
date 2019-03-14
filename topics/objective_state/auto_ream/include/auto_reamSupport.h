@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef auto_reamSupport_426526490_h
-#define auto_reamSupport_426526490_h
+#ifndef auto_reamSupport_426528474_h
+#define auto_reamSupport_426528474_h
 
 /* Uses */
 #include "auto_ream.h"
@@ -124,5 +124,5 @@ namespace nec {
     } /* namespace process  */
 } /* namespace nec  */
 
-#endif  /* auto_reamSupport_426526490_h */
+#endif  /* auto_reamSupport_426528474_h */
 

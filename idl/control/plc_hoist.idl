@@ -4,7 +4,7 @@ module plc
 {
     module process
     {
-        //@copy-c-declaration static const char PLC_HOIST_REQUEST[] = "PlcHoistRequest";
+        //@copy-c-declaration static const char HOIST_REQUEST_TOPIC[] = "HoistRequestTopic";
 
         /**
          * \brief requested state change in the hoisting system.
@@ -16,13 +16,13 @@ module plc
          * | targetVelocity    | requested target in m/s                          | double              | m/sec |
          * | targetPosition    | requested target position in m                   | double              | m/sec |
          */
-        struct HoistRequest
+        struct HoistRequestTopic
         {
             double              targetVelocity;
             double              targetPosition;
         };
 
-        //@copy-c-declaration static const char PLC_HOIST_STATE[] = "PlcHoistState";
+        //@copy-c-declaration static const char HOIST_STATE_TOPIC[] = "HoistStateTopic";
 
         /**
          * \brief current state of the hoisting system.
@@ -43,7 +43,7 @@ module plc
          * | targetVelocity    | target hoist velocity                  | double            | m/sec |
          * | targetPosition    | target hoist position                  | double            | m     |
          */
-        struct HoistState
+        struct HoistStateTopic
         {
             DataTypes::Status   status;
 

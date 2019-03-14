@@ -23,6 +23,10 @@ MAKEFILE_LIBRARY_DIRS += objective_state/rotate_engineering
 MAKEFILE_LIBRARY_DIRS += objective_state/simulation
 MAKEFILE_LIBRARY_DIRS += objective_state/wellbore
 MAKEFILE_LIBRARY_DIRS += system/resources
+MAKEFILE_LIBRARY_DIRS += objective_state/circulate_control
+MAKEFILE_LIBRARY_DIRS += objective_state/drill_control
+MAKEFILE_LIBRARY_DIRS += objective_state/hoist_control
+MAKEFILE_LIBRARY_DIRS += objective_state/rotate_control
 
 .PHONY: all clean dep install install_clean install_dev install_dev_clean \
 filelist cfilelist info $(MAKEFILE_LIBRARY_DIRS) $(MAKEFILE_EXECUTABLE_DIRS)

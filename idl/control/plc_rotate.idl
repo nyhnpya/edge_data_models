@@ -4,7 +4,7 @@ module plc
 {
     module process
     {
-        //@copy-c-declaration static const char PLC_ROTATE_REQUEST[] = "PlcRotateRequest";
+        //@copy-c-declaration static const char ROTATE_REQUEST_TOPIC[] = "RotateRequestTopic";
 
         /**
          * \brief requested state change in the rotation system.
@@ -15,12 +15,12 @@ module plc
          * | ----------------- | --------------------------------------------------- | ------------------- | ------- |
          * | targetRate        | requested traget in rad/s                           | double              | rad/s   |
          */
-        struct RotateRequest
+        struct RotateRequestTopic
         {
             double              targetRate;
         };
 
-        //@copy-c-declaration static const char PLC_ROTATE_STATE[] = "PlcRotateState";
+        //@copy-c-declaration static const char ROTATE_STATE_TOPIC[] = "RotateStateTopic";
 
         /**
          * \brief current state of rotation system.
@@ -35,7 +35,7 @@ module plc
          * | maxRate       | maximum machine rate in rad/s          | double            | rad/s |
          * | targetRate    | requested traget in rad/s              | double            | rad/s |
          */
-        struct RotateState
+        struct RotateStateTopic
         {
             DataTypes::Status status;
 

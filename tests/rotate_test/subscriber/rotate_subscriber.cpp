@@ -128,7 +128,7 @@ int32_t main(int32_t argc, char **argv)
 
     if (gpRequestSubscriber->Create(gDomain) == true)
     {
-        gpRequestSubscriber->OnDataAvailable([&]const DDS::SampleInfo &sampleInfo))
+        gpRequestSubscriber->OnDataAvailable([&](const DDS::SampleInfo &sampleInfo)
                                              {
                                                  DataAvailable(sampleInfo);
                                              });

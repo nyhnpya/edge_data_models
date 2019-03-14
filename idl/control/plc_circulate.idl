@@ -4,7 +4,7 @@ module plc
 {
     module process
     {
-        //@copy-c-declaration static const char PLC_CIRCULATE_REQUEST[] = "PlcCirculateRequest";
+        //@copy-c-declaration static const char CIRCULATE_REQUEST_TOPIC[] = "CirculateRequestTopic";
 
         /**
          * \brief requested state change in the circulation system.
@@ -15,12 +15,12 @@ module plc
          * | ----------------------- | ---------------------------------------| ------------------| ------- |
          * | targetFlowRate          | requetsed flow rate                    | double            | m/sec^3 |
 	 */
-        struct CirculateRequest
+        struct CirculateRequestTopic
         {
             double targetFlowRate; ///< requested flow rate in m/sec^3
         };
 
-        //@copy-c-declaration static const char PLC_CIRCULATE_STATE[] = "PlcCirculateState";
+        //@copy-c-declaration static const char CIRCULATE_STATE_TOPIC[] = "CirculateStateTopic";
 
         /**
          * \brief current state of circulation system.
@@ -38,7 +38,7 @@ module plc
          * | maxStandpipePressure    | maximum machine standpipe pressure     | double            | Pa      |
          * | targetFlowRate          | requetsed flow rate                    | double            | m/sec^3 |
          */
-        struct CirculateState
+        struct CirculateStateTopic
         {
             DataTypes::Status status;
 

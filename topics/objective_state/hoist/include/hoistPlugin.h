@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef hoistPlugin_1013695705_h
-#define hoistPlugin_1013695705_h
+#ifndef hoistPlugin_1013695911_h
+#define hoistPlugin_1013695911_h
 
 #include "hoist.h"
 
@@ -936,5 +936,5 @@ namespace nec {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* hoistPlugin_1013695705_h */
+#endif /* hoistPlugin_1013695911_h */
 

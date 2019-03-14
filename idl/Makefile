@@ -98,6 +98,12 @@ configuration.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/configuration/
 	-@rm -rf $(TMPOUTDIR)
 
+auto_ream.cpy: 
+	@echo "Copying generated files..."
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/auto_ream/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/auto_ream
+	-@rm -rf $(TMPOUTDIR)
+
 circulate.cpy:
 	@echo "Copying generated files..."
 	mkdir -p $(TOPIC_HOME)/objective_state/circulate
@@ -112,12 +118,6 @@ drill.cpy:
 	mkdir -p $(TOPIC_HOME)/objective_state/drill/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/drill/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/drill
-	-@rm -rf $(TMPOUTDIR)
-
-auto_ream.cpy: 
-	@echo "Copying generated files..."
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/auto_ream/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/auto_ream
 	-@rm -rf $(TMPOUTDIR)
 
 hoist.cpy: 
@@ -211,6 +211,66 @@ rotate_engineering.cpy:
 	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/rotate_engineering/include
 	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/rotate_engineering/include
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective_state/rotate_engineering
+	-@rm -rf $(TMPOUTDIR)
+
+plc_circulate.cpy:
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py control/$@ $(TMPOUTDIR) 
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/circulate_control
+	mkdir -p $(TOPIC_HOME)/objective_state/circulate_control/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/circulate_control
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/circulate_control/include
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/objective_state/circulate_control
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective_state/circulate_control
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/circulate_control/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/circulate_control/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective_state/circulate_control
+	-@rm -rf $(TMPOUTDIR)
+
+plc_drill.cpy: 
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py control/$@ $(TMPOUTDIR) 
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/drill_control
+	mkdir -p $(TOPIC_HOME)/objective_state/drill_control/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/drill_control
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/drill_control/include
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/objective_state/drill_control
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective_state/drill_control
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/drill_control/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/drill_control/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective_state/drill_control
+	-@rm -rf $(TMPOUTDIR)
+
+plc_hoist.cpy: 
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py control/$@ $(TMPOUTDIR) 
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/hoist_control
+	mkdir -p $(TOPIC_HOME)/objective_state/hoist_control/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/hoist_control
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/hoist_control/include
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/objective_state/hoist_control
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective_state/hoist_control
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/hoist_control/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/hoist_control/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective_state/hoist_control
+	-@rm -rf $(TMPOUTDIR)
+
+plc_rotate.cpy:
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py control/$@ $(TMPOUTDIR) 
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/objective_state/rotate_control
+	mkdir -p $(TOPIC_HOME)/objective_state/rotate_control/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/rotate_control
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/rotate_control/include
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/objective_state/rotate_control
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective_state/rotate_control
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/rotate_control/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/rotate_control/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective_state/rotate_control
 	-@rm -rf $(TMPOUTDIR)
 
 torque.cpy:

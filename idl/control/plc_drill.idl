@@ -3,7 +3,7 @@ module plc
 {
     module process
     {
-        //@copy-c-declaration static const char PLC_DRILL_REQUEST[] = "PlcDrillRequest";
+        //@copy-c-declaration static const char DRILL_REQUEST_TOPIC[] = "DrillRequestTopic";
 
         /**
          * \brief requested state change in the drilling system.
@@ -21,7 +21,7 @@ module plc
          * | diffPressureMode   | differential pressure axis enabled               | boolean             | N/A   |
          * | torqueMode         | differential torque mode enabled                 | boolean             | N/A   |
          */
-        struct DrillRequest
+        struct DrillRequestTopic
         {
             double              ropLimit;
             double              wobLimit;
@@ -33,7 +33,7 @@ module plc
             boolean             torqueMode;
         };
 
-        //@copy-c-declaration static const char PLC_DRILL_STATE[] = "PlcDrillState";
+        //@copy-c-declaration static const char DRILL_STATE_TOPIC[] = "DrillStateTopic";
 
         /**
          * \brief current state of the drilling system.
@@ -59,7 +59,7 @@ module plc
          * | diffPressureLimit         | target differential pressure           | double            | pas   |
          * | torqueLimit               | target differential torque             | double            | Nm    |
          */
-        struct DrillState
+        struct DrillStateTopic
         {
             double          ropActual;
             double          wobActual;
