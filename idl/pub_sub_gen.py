@@ -6,6 +6,7 @@ idl_name = ''
 idl_file_name = ''
 output_dir = ''
 module_name = ''
+lastcopyc = ''
 #struct_name_camel_case = ''
 #struct_name_underscore = ''
 #fields_list = []
@@ -32,12 +33,14 @@ class Struct:
     name_underscore = ''
     fields_with_units = 0
     fields = []
+    copyc = ''
 
     def __init__(self):
         name_camel_case = ''
         name_underscore = ''
         fields_with_units = 0
         fields = []
+        copyc = ''
 
 def str_cap(word):
     word = re.sub('([a-zA-Z])', lambda x: x.groups()[0].upper(), word, 1)
@@ -135,7 +138,7 @@ def write_publisher_cxx(outdir, struct):
     out.write('bool C' + struct.name_camel_case + 'Publisher::Create(int32_t domain)\n')
     out.write('{\n')
     out.write('    return TPublisher::Create(domain,\n')
-    out.write('                       ' + module_name + struct.name_underscore.upper() + ',\n')
+    out.write('                       ' + module_name + struct.copyc + ',\n')
     out.write('                       "EdgeBaseLibrary",\n')
     out.write('                       "EdgeBaseProfile");\n')
     out.write('}\n')
@@ -301,7 +304,7 @@ def write_subscriber_cxx(outdir, struct):
     out.write('bool C' + struct.name_camel_case + 'Subscriber::Create(int32_t domain)\n')
     out.write('{\n')
     out.write('    return TSubscriber::Create(domain,\n')
-    out.write('                       ' + module_name + struct.name_underscore.upper() + ',\n')
+    out.write('                       ' + module_name + struct.copyc + ',\n')
     out.write('                       "EdgeBaseLibrary",\n')
     out.write('                       "EdgeBaseProfile");\n')
     out.write('}\n')
@@ -495,6 +498,13 @@ with open(idl_file_name) as idl_file:
         if 'module' in line:
             module_name += line.split()[1] + '::'
             #print 'module_name: ' + module_name
+        if '@copy-c-declaration static const char' in line:
+            for cword in line.split():
+                if '[]' in cword:
+                    lastcopyc = cword[:-2]
+#                    print 'lastcopyc: ' + lastcopyc
+#                    print '\n'
+#        //@copy-c-declaration static const char HOIST_REQUEST_TOPIC[] = "HoistRequestTopic";
         if 'struct' in line:
             #fields_list = []
             current_struct = Struct() 
@@ -503,6 +513,7 @@ with open(idl_file_name) as idl_file:
             current_struct.name_underscore = re.sub(r"(\w)([A-Z])", r"\1_\2", current_struct.name_camel_case).lower()
             #print 'struct_file_name: ' + current_struct.name_underscore
             current_struct.fields = []
+            current_struct.copyc = lastcopyc
             structs.append(current_struct.name_camel_case)
             structs2.append(current_struct.name_underscore)
             #print 'len(struct.fields): ' + str(len(current_struct.fields))
