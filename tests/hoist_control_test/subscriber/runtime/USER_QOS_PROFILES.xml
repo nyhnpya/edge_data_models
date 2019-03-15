@@ -1,0 +1,26 @@
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/5.1.0/rti_dds_qos_profiles.xsd" version="5.2.0">
+    <!-- Qos Library -->
+    <qos_library name="EdgeBaseLibrary">
+
+        <qos_profile name="EdgeBaseProfile"  is_default_qos="true" >
+            <datareader_qos>
+                <reliability>
+		    <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+                </reliability>
+
+	        <durability>
+		    <kind>VOLATILE_DURABILITY_QOS</kind>
+	        </durability>
+		<time_based_filter>
+		  <minimum_separation>
+		    <sec>1</sec>
+		    <nanosec>0</nanosec>
+		  </minimum_separation>
+		</time_based_filter>
+            </datareader_qos>
+        </qos_profile>
+
+
+    </qos_library>
+</dds>
