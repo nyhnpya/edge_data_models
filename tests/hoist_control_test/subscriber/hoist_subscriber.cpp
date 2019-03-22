@@ -87,7 +87,17 @@ void DataDisposed(const DDS::SampleInfo &sampleInfo)
 
 void DataAvailable(const DDS::SampleInfo &sampleInfo)
 {
-    LOG_DEBUG("DataAvailable");
+    LOG_INFO("Status [%d]", gpHoistSubscriber->GetStatus());
+    LOG_INFO("Hookload Actual [%f]", gpHoistSubscriber->GetActualHookload());
+    LOG_INFO("Velocity Actual [%f]", gpHoistSubscriber->GetActualVelocity());
+    LOG_INFO("Position Actual [%f]", gpHoistSubscriber->GetActualPosition());
+    LOG_INFO("Max Hookload [%f]", gpHoistSubscriber->GetMaxHookload());
+    LOG_INFO("Max Hoist Velocity [%f]", gpHoistSubscriber->GetMaxHoistVelocity());
+    LOG_INFO("Max Lower Velocity [%f]", gpHoistSubscriber->GetMaxLowerVelocity());
+    LOG_INFO("Max Hoist Position [%f]", gpHoistSubscriber->GetMaxHoistPosition());
+    LOG_INFO("Max Lower Position [%f]", gpHoistSubscriber->GetMaxLowerPosition());
+    LOG_INFO("Target Velocity [%f]", gpHoistSubscriber->GetTargetVelocity());
+    LOG_INFO("Target Position [%f]", gpHoistSubscriber->GetTargetPosition());
 }
 
 void LivelinessChanged(const DDS::LivelinessChangedStatus &status)
@@ -133,17 +143,20 @@ int32_t main(int32_t argc, char **argv)
                                                  DataAvailable(sampleInfo);
                                              });
 
-        gpHoistSubscriber->OnSubscriptionMatched([&](const DDS::SubscriptionMatchedStatus &status){
-                SubscriptionMatched(status);
-            });
+        gpHoistSubscriber->OnSubscriptionMatched([&](const DDS::SubscriptionMatchedStatus &status)
+                                                 {
+                                                     SubscriptionMatched(status);
+                                                 });
 
-        gpHoistSubscriber->OnDataDisposed([&](const DDS::SampleInfo &sampleInfo){
-                DataDisposed(sampleInfo);
-            });
+        gpHoistSubscriber->OnDataDisposed([&](const DDS::SampleInfo &sampleInfo)
+                                          {
+                                              DataDisposed(sampleInfo);
+                                          });
 
-        gpHoistSubscriber->OnLivelinessChanged([&](const DDS::LivelinessChangedStatus &status) {
-                LivelinessChanged(status);
-            });
+        gpHoistSubscriber->OnLivelinessChanged([&](const DDS::LivelinessChangedStatus &status)
+                                               {
+                                                   LivelinessChanged(status);
+                                               });
     }
     else
     {
