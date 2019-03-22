@@ -15,9 +15,9 @@ module plc
          * | ----------------- | --------------------------------------------------- | ------------------- | ------- |
          * | targetRate        | requested traget in rad/s                           | double              | rad/s   |
          */
-        struct RotateRequestTopic
+        struct RotateRequest
         {
-            double              targetRate;
+            double targetRate;
         };
 
         //@copy-c-declaration static const char ROTATE_STATE_TOPIC[] = "RotateStateTopic";
@@ -35,19 +35,19 @@ module plc
          * | maxRate       | maximum machine rate in rad/s          | double            | rad/s |
          * | targetRate    | requested traget in rad/s              | double            | rad/s |
          */
-        struct RotateStateTopic
+        struct RotateState
         {
-            DataTypes::Status status;
+            long    status;
 
             // actuals
-            double            actualRate;
+            double  actualRate;
 
             // constraints
-            double            minRate;
-            double            maxRate;
+            double  minRate;
+            double  maxRate;
 
             // targets
-            double            targetRate;
+            double  targetRate;
         };
     };
 };
