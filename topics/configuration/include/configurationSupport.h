@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef configurationSupport_301633276_h
-#define configurationSupport_301633276_h
+#ifndef configurationSupport_301633301_h
+#define configurationSupport_301633301_h
 
 /* Uses */
 #include "configuration.h"
@@ -184,5 +184,5 @@ namespace Configuration {
     #endif
 } /* namespace Configuration  */
 
-#endif  /* configurationSupport_301633276_h */
+#endif  /* configurationSupport_301633301_h */
 

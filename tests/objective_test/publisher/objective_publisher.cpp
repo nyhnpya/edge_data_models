@@ -10,6 +10,10 @@
 #include <thread>
 #include "cmdparser.h"
 #include "objective_state_publisher.h"
+#include "edge_data_store.h"
+#include "plant_interface.h"
+
+EdgeTypeBoolPtr gioAutoDrillerEnabled;
 
 bool gTerminate = false;
 std::mutex gTerminateMutex;
@@ -128,6 +132,8 @@ void top_level_menu()
         std::cout << "4. Publish casing objective" << std::endl;
         std::cout << "5. Publish none objective" << std::endl;
         std::cout << "6. Publish objective continuously" << std::endl;
+        std::cout << "7. Enable Autodrill" << std::endl;
+        std::cout << "8. Disable Autodrill" << std::endl;
         std::cout << "q. exit" << std::endl;
         std::cout << "option: ";
         std::cin >> choice;
@@ -177,6 +183,13 @@ void top_level_menu()
                 gpStatePublisher->CreateInstance();
                 threadId = std::thread(publish_thread);
                 delete_instance();
+            case '7':
+                gioAutoDrillerEnabled->SetValue(true);
+                gioAutoDrillerEnabled->GetProtocol()->WriteData();
+                break;
+            case '8':
+                gioAutoDrillerEnabled->SetValue(false);
+                gioAutoDrillerEnabled->GetProtocol()->WriteData();
                 break;
         }
     } while (gTerminate == false);
@@ -194,14 +207,34 @@ int32_t main(int32_t argc, char **argv)
     parser.set_optional<std::string>("c", "configFile", "pipe_handler.conf", "External configuration file.");
     parser.set_optional<int32_t>("d", "domain", 100, "DDS Domain.");
     parser.set_optional<bool>("o", "objective", false, "Drill objective.");
+    parser.set_optional<std::string>("f", "configFile", "objective.json", "External configuration file.");
     parser.run_and_exit_if_error();
 
     domain = parser.get<int32_t>("d");
+    std::string configFile = parser.get<std::string>("f");
     drillObjective = parser.get<bool>("o");
 
     CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
     CDomainParticipant::Instance()->Create(domain);
 
+    if (configFile.empty() == true)
+    {
+        if (CPlantInterface::Instance()->Initialize(domain) == false)
+        {
+            LOG_FATAL("Failed to initialize plant interface");
+            return 1;
+        }
+    }
+    else
+    {
+        if (CPlantInterface::Instance()->Initialize(configFile) == false)
+        {
+            LOG_FATAL("Failed to initialize plant interface");
+            return 1;
+        }
+    }
+
+    gioAutoDrillerEnabled = CEdgeDataStore::Instance()->GetTypeBool("AutoDriller.enabled");
     gpStatePublisher = new CObjectiveStatePublisher();
 
     if (gpStatePublisher->Create(domain) == true)

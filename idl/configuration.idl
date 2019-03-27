@@ -49,6 +49,7 @@ module Configuration
     {
         string ddsInterface;
         string edgeType;
+        string edgeUnit;
         string ioType;
         string ioUnit;
         string floatEpsilon;

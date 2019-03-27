@@ -1573,11 +1573,12 @@ namespace Configuration {
 
         static DDS_TypeCode tag_t_g_tc_ddsInterface_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode tag_t_g_tc_edgeType_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode tag_t_g_tc_edgeUnit_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode tag_t_g_tc_ioType_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode tag_t_g_tc_ioUnit_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode tag_t_g_tc_floatEpsilon_string = DDS_INITIALIZE_STRING_TYPECODE((255));
         static DDS_TypeCode tag_t_g_tc_tag_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode_Member tag_t_g_tc_members[6]=
+        static DDS_TypeCode_Member tag_t_g_tc_members[7]=
         {
 
             {
@@ -1615,7 +1616,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ioType",/* Member name */
+                (char *)"edgeUnit",/* Member name */
                 {
                     2,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1632,7 +1633,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"ioUnit",/* Member name */
+                (char *)"ioType",/* Member name */
                 {
                     3,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1649,7 +1650,7 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"floatEpsilon",/* Member name */
+                (char *)"ioUnit",/* Member name */
                 {
                     4,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -1666,9 +1667,26 @@ namespace Configuration {
                 NULL/* Ignored */
             }, 
             {
-                (char *)"tag",/* Member name */
+                (char *)"floatEpsilon",/* Member name */
                 {
                     5,/* Representation ID */          
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                0, /* Ignored */
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PUBLIC_MEMBER,/* Member visibility */
+                1,
+                NULL/* Ignored */
+            }, 
+            {
+                (char *)"tag",/* Member name */
+                {
+                    6,/* Representation ID */          
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -1694,7 +1712,7 @@ namespace Configuration {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                6, /* Number of members */
+                7, /* Number of members */
                 tag_t_g_tc_members, /* Members */
                 DDS_VM_NONE  /* Ignored */         
             }}; /* Type code for tag_t*/
@@ -1707,13 +1725,15 @@ namespace Configuration {
 
         tag_t_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_edgeType_string;
 
-        tag_t_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_ioType_string;
+        tag_t_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_edgeUnit_string;
 
-        tag_t_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_ioUnit_string;
+        tag_t_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_ioType_string;
 
-        tag_t_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_floatEpsilon_string;
+        tag_t_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_ioUnit_string;
 
-        tag_t_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_tag_string;
+        tag_t_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_floatEpsilon_string;
+
+        tag_t_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&tag_t_g_tc_tag_string;
 
         is_initialized = RTI_TRUE;
 
@@ -1772,6 +1792,18 @@ namespace Configuration {
         } else {
             if (sample->edgeType!= NULL) { 
                 sample->edgeType[0] = '\0';
+            }
+        }
+
+        if (allocParams->allocate_memory){
+            sample->edgeUnit= DDS_String_alloc ((255));
+            if (sample->edgeUnit == NULL) {
+                return RTI_FALSE;
+            }
+
+        } else {
+            if (sample->edgeUnit!= NULL) { 
+                sample->edgeUnit[0] = '\0';
             }
         }
 
@@ -1871,6 +1903,11 @@ namespace Configuration {
             sample->edgeType=NULL;
 
         }
+        if (sample->edgeUnit != NULL) {
+            DDS_String_free(sample->edgeUnit);
+            sample->edgeUnit=NULL;
+
+        }
         if (sample->ioType != NULL) {
             DDS_String_free(sample->ioType);
             sample->ioType=NULL;
@@ -1928,6 +1965,11 @@ namespace Configuration {
             }
             if (!RTICdrType_copyStringEx (
                 &dst->edgeType, src->edgeType, 
+                (255) + 1, RTI_FALSE)){
+                return RTI_FALSE;
+            }
+            if (!RTICdrType_copyStringEx (
+                &dst->edgeUnit, src->edgeUnit, 
                 (255) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }

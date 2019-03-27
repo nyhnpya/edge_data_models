@@ -3587,6 +3587,14 @@ namespace Configuration {
                 sample->edgeType,"edgeType", indent_level + 1);    
         }
 
+        if (sample->edgeUnit==NULL) {
+            RTICdrType_printString(
+                NULL,"edgeUnit", indent_level + 1);
+        } else {
+            RTICdrType_printString(
+                sample->edgeUnit,"edgeUnit", indent_level + 1);    
+        }
+
         if (sample->ioType==NULL) {
             RTICdrType_printString(
                 NULL,"ioType", indent_level + 1);
@@ -3778,6 +3786,11 @@ namespace Configuration {
             }
 
             if (!RTICdrStream_serializeString(
+                stream, sample->edgeUnit, (255) + 1)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrStream_serializeString(
                 stream, sample->ioType, (255) + 1)) {
                 return RTI_FALSE;
             }
@@ -3842,6 +3855,10 @@ namespace Configuration {
                 }
                 if (!RTICdrStream_deserializeStringEx(
                     stream,&sample->edgeType, (255) + 1, RTI_FALSE)) {
+                    goto fin; 
+                }
+                if (!RTICdrStream_deserializeStringEx(
+                    stream,&sample->edgeUnit, (255) + 1, RTI_FALSE)) {
                     goto fin; 
                 }
                 if (!RTICdrStream_deserializeStringEx(
@@ -4109,6 +4126,9 @@ namespace Configuration {
             if (!RTICdrStream_skipString (stream, (255)+1)) {
                 goto fin; 
             }
+            if (!RTICdrStream_skipString (stream, (255)+1)) {
+                goto fin; 
+            }
         }
 
         done = RTI_TRUE;
@@ -4151,6 +4171,9 @@ namespace Configuration {
             current_alignment = 0;
             initial_alignment = 0;
         }
+
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, (255)+1);
 
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
             current_alignment, (255)+1);
@@ -4233,6 +4256,8 @@ namespace Configuration {
             current_alignment, 1);
         current_alignment +=RTICdrType_getStringMaxSizeSerialized(
             current_alignment, 1);
+        current_alignment +=RTICdrType_getStringMaxSizeSerialized(
+            current_alignment, 1);
 
         if (include_encapsulation) {
             current_alignment += encapsulation_size;
@@ -4291,6 +4316,10 @@ namespace Configuration {
         current_alignment += RTICdrType_getStringSerializedSize(
             PRESTypePluginDefaultEndpointData_getAlignment(
                 endpoint_data, current_alignment), sample->edgeType);
+
+        current_alignment += RTICdrType_getStringSerializedSize(
+            PRESTypePluginDefaultEndpointData_getAlignment(
+                endpoint_data, current_alignment), sample->edgeUnit);
 
         current_alignment += RTICdrType_getStringSerializedSize(
             PRESTypePluginDefaultEndpointData_getAlignment(
