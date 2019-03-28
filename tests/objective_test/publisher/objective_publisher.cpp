@@ -237,6 +237,7 @@ int32_t main(int32_t argc, char **argv)
     gioAutoDrillerEnabled = CEdgeDataStore::Instance()->GetTypeBool("AutoDriller.enabled");
     gpStatePublisher = new CObjectiveStatePublisher();
 
+    CPlantInterface::Instance()->Start();
     if (gpStatePublisher->Create(domain) == true)
     {
         if (drillObjective == false)
