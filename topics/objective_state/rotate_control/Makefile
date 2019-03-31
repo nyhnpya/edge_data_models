@@ -12,9 +12,9 @@
 include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
-TARG_BUILD_MAJOR = 1
+TARG_BUILD_MAJOR = 2
 TARG_BUILD_MINOR = 0
-TARG_BUILD_PATCH = 1
+TARG_BUILD_PATCH = 0
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
 TARGET_NAME = plc_rotate
@@ -32,10 +32,10 @@ TARG_INCLUDES += -I $(CURDIR)/include
 TARG_SOURCES = plc_rotate.cxx
 TARG_SOURCES += plc_rotatePlugin.cxx
 TARG_SOURCES += plc_rotateSupport.cxx
-TARG_SOURCES += plc_rotate_request_publisher.cxx
-TARG_SOURCES += plc_rotate_request_subscriber.cxx
-TARG_SOURCES += plc_rotate_state_publisher.cxx
-TARG_SOURCES += plc_rotate_state_subscriber.cxx
+TARG_SOURCES += rotate_request_publisher.cxx
+TARG_SOURCES += rotate_request_subscriber.cxx
+TARG_SOURCES += rotate_state_publisher.cxx
+TARG_SOURCES += rotate_state_subscriber.cxx
 
 ###############################################################################
 # Installation section
@@ -53,10 +53,10 @@ PACKAGE_LICENSE = "Closed License"
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/plc_rotate.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/plc_rotateSupport.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/plc_rotatePlugin.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/plc_rotate_request_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/plc_rotate_request_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/plc_rotate_state_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/plc_rotate_state_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_request_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_request_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_state_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/rotate_state_subscriber.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package

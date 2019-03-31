@@ -13,6 +13,7 @@ lastcopyc = ''
 enums = []
 structs = []
 structs2 = []
+structobjs = []
 
 class StructField:
     name = ''
@@ -404,6 +405,226 @@ def write_subscriber_cxx(outdir, struct):
     out.write('}\n')
     out.close()
 
+
+def write_io_state_machine_h(outdir, struct):
+    out = open(outdir + '/io_' + struct.name_underscore + '.h', 'w')
+    out.write('/*\n')
+    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
+    out.write(' *  All Rights Reserved.\n')
+    out.write(' *\n')
+    out.write(' * NOTICE:  All information contained herein is, and remains\n')
+    out.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
+    out.write(' * if any.  The intellectual and technical concepts contained\n')
+    out.write(' * herein are proprietary to Ensign Energy Incorporated\n')
+    out.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
+    out.write(' * patents in process, and are protected by trade secret or copyright law.\n')
+    out.write(' * Dissemination of this information or reproduction of this material\n')
+    out.write(' * is strictly forbidden unless prior written permission is obtained\n')
+    out.write(' * from Ensign Energy Incorporated.\n')
+    out.write(' */\n')
+    out.write('#ifndef __IO_' + module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_H__\n')
+    out.write('#define __IO_' + module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_H__\n')
+    out.write('\n')
+    out.write('#include <vector>\n')
+    out.write('#include "edge_data_store.h"\n')
+    out.write('\n')
+    out.write('struct Io' + struct.name_camel_case + '\n')
+    out.write('{\n')
+    out.write('    Io' + struct.name_camel_case + '();\n')
+    out.write('    bool GetQuality();\n')
+    out.write('    bool Initialize();\n')
+    out.write('\n')
+    for sfield in struct.fields:
+        if sfield.datatype in enums:
+            out.write('    EdgeTypeInt32Ptr ' + sfield.name + ';\n') 
+        elif sfield.datatype == 'float':
+            out.write('    EdgeTypeFloatPtr ' + sfield.name + ';\n') 
+        elif sfield.datatype == 'double':
+            out.write('    EdgeTypeDoublePtr ' + sfield.name + ';\n') 
+        elif sfield.datatype == 'int':
+            out.write('    EdgeTypeInt32Ptr ' + sfield.name + ';\n') 
+        elif sfield.datatype == 'DataTypes::Status':
+            out.write('    EdgeTypeInt32Ptr ' + sfield.name + ';\n') 
+#        else:
+#            out.write('    XXX ' + sfield.datatype + ' Get' + str_cap(sfield.name) + '();\n') 
+    out.write('};\n')
+#    out.write('} Io' + struct.name_camel_case + ';\n')
+    out.write('#endif // __IO_' + module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_H__\n')
+    out.close()
+
+def write_io_state_machine_cxx(outdir, struct):
+    out = open(outdir + '/io_' + struct.name_underscore + '.cxx', 'w')
+    out.write('/*\n')
+    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
+    out.write(' *  All Rights Reserved.\n')
+    out.write(' *\n')
+    out.write(' * NOTICE:  All information contained herein is, and remains\n')
+    out.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
+    out.write(' * if any.  The intellectual and technical concepts contained\n')
+    out.write(' * herein are proprietary to Ensign Energy Incorporated\n')
+    out.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
+    out.write(' * patents in process, and are protected by trade secret or copyright law.\n')
+    out.write(' * Dissemination of this information or reproduction of this material\n')
+    out.write(' * is strictly forbidden unless prior written permission is obtained\n')
+    out.write(' * from Ensign Energy Incorporated.\n')
+    out.write(' */\n')
+    out.write('\n')
+    out.write('#include "io_' + struct.name_underscore + '.h"\n')
+    out.write('\n')
+    out.write('Io' + struct.name_camel_case + '::Io' + struct.name_camel_case + '()\n')
+    out.write('{\n')
+    for sfield in struct.fields:
+        if sfield.datatype in enums:
+            out.write('    ' + sfield.name + ' = nullptr;\n') 
+        elif sfield.datatype == 'float':
+            out.write('    ' + sfield.name + ' = nullptr;\n') 
+        elif sfield.datatype == 'double':
+            out.write('    ' + sfield.name + ' = nullptr;\n') 
+        elif sfield.datatype == 'int':
+            out.write('    ' + sfield.name + ' = nullptr;\n') 
+        elif sfield.datatype == 'DataTypes::Status':
+            out.write('    ' + sfield.name + ' = nullptr;\n') 
+#        else:
+#            out.write('    XXX ' + sfield.datatype + ' Get' + str_cap(sfield.name) + '();\n') 
+    out.write('}\n')
+    out.write('\n')
+    out.write('bool Io' + struct.name_camel_case + '::GetQuality()\n')
+    out.write('{\n')
+    out.write('    bool quality = false;')
+    out.write('\n')
+    out.write('    quality = (')
+    fcount = 0
+    for sfield in struct.fields:
+        preText = ''
+        if fcount > 0:
+            preText = ' &&\n               '
+        if sfield.datatype in enums:
+            out.write(preText + '(' + sfield.name + '->GetQuality() == EdgeTypeBase::Good)') 
+            fcount += 1
+        elif sfield.datatype == 'float':
+            out.write(preText + '(' + sfield.name + '->GetQuality() == EdgeTypeBase::Good)') 
+            fcount += 1
+        elif sfield.datatype == 'double':
+            out.write(preText + '(' + sfield.name + '->GetQuality() == EdgeTypeBase::Good)') 
+            fcount += 1
+        elif sfield.datatype == 'int':
+            out.write(preText + '(' + sfield.name + '->GetQuality() == EdgeTypeBase::Good)') 
+            fcount += 1
+        elif sfield.datatype == 'DataTypes::Status':
+            out.write(preText + '(' + sfield.name + '->GetQuality() == EdgeTypeBase::Good)') 
+            fcount += 1
+    out.write(');\n')
+    out.write('    return quality;\n')
+    out.write('}\n')
+    out.write('\n')
+    out.write('bool Io' + struct.name_camel_case + '::Initialize()\n')
+    out.write('{\n')
+    out.write('    bool retVal = true;')
+    fcount = 0
+    for sfield in struct.fields:
+        preText = '';
+        if fcount == 0:
+            preText = '\n    retVal =  ';
+        else:
+            preText = '\n    retVal += ';
+        if sfield.datatype in enums:
+            out.write(preText + '((' + sfield.name + ' = CEdgeDataStore::Instance()->GetTypeInt32("' + struct.name_camel_case + '.' + sfield.name + '")) != nullptr);\n') 
+        elif sfield.datatype == 'float':
+            out.write(preText + '((' + sfield.name + ' = CEdgeDataStore::Instance()->GetTypeFloat("' + struct.name_camel_case + '.' + sfield.name + '")) != nullptr);\n') 
+        elif sfield.datatype == 'double':
+            out.write(preText + '((' + sfield.name + ' = CEdgeDataStore::Instance()->GetTypeDouble("' + struct.name_camel_case + '.' + sfield.name + '")) != nullptr);\n') 
+        elif sfield.datatype == 'int':
+            out.write(preText + '((' + sfield.name + ' = CEdgeDataStore::Instance()->GetTypeInt32("' + struct.name_camel_case + '.' + sfield.name + '")) != nullptr);\n') 
+        elif sfield.datatype == 'DataTypes::Status':
+            out.write(preText + '((' + sfield.name + ' = CEdgeDataStore::Instance()->GetTypeInt32("' + struct.name_camel_case + '.' + sfield.name + '")) != nullptr);\n') 
+#        else:
+#            out.write('    XXX ' + sfield.datatype + ' Get' + str_cap(sfield.name) + '();\n') 
+    out.write('\n')
+    out.write('    return retVal;\n')
+    out.write('}\n')
+    out.write('\n')
+    out.close()
+
+
+def write_publish_io_h(outdir, struct_objs):
+    out = open(outdir + '/' + idl_name + '_publish_io.h', 'w')
+    out.write('/*\n')
+    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
+    out.write(' *  All Rights Reserved.\n')
+    out.write(' *\n')
+    out.write(' * NOTICE:  All information contained herein is, and remains\n')
+    out.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
+    out.write(' * if any.  The intellectual and technical concepts contained\n')
+    out.write(' * herein are proprietary to Ensign Energy Incorporated\n')
+    out.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
+    out.write(' * patents in process, and are protected by trade secret or copyright law.\n')
+    out.write(' * Dissemination of this information or reproduction of this material\n')
+    out.write(' * is strictly forbidden unless prior written permission is obtained\n')
+    out.write(' * from Ensign Energy Incorporated.\n')
+    out.write(' */\n')
+    out.write('#ifndef __' + idl_name.upper()+ '_PUBLISH_IO_H__\n')
+    out.write('#define __' + idl_name.upper()+ '_PUBLISH_IO_H__\n')
+    out.write('\n')
+    for struct in struct_objs:
+        out.write('#include "' + struct.name_underscore + '_publisher.h"\n')
+        out.write('#include "io_' + struct.name_underscore + '.h"\n')
+    out.write('\n')
+    out.write('class C' + idl_name_camel_case + 'PublishIO \n')
+    out.write('{\n')
+    out.write('    public:\n')
+    for struct in struct_objs:
+        out.write('        static void Publish(C' + struct.name_camel_case + 'Publisher& publisher, Io' + struct.name_camel_case + '& io);\n')
+    out.write('};\n')
+    out.write('\n')
+    out.write('#endif // __' + idl_name.upper()+ '_PUBLISH_IO_H__\n')
+    out.close()
+
+
+def write_publish_io_cxx(outdir, struct_objs):
+    out = open(outdir + '/' + idl_name + '_publish_io.cxx', 'w')
+    out.write('/*\n')
+    out.write(' *  Copyright (c) 2019 Ensign Energy Incorporated\n')
+    out.write(' *  All Rights Reserved.\n')
+    out.write(' *\n')
+    out.write(' * NOTICE:  All information contained herein is, and remains\n')
+    out.write(' * the property of Ensign Energy Incorporated and its suppliers,\n')
+    out.write(' * if any.  The intellectual and technical concepts contained\n')
+    out.write(' * herein are proprietary to Ensign Energy Incorporated\n')
+    out.write(' * and its suppliers and may be covered by U.S. and Foreign Patents,\n')
+    out.write(' * patents in process, and are protected by trade secret or copyright law.\n')
+    out.write(' * Dissemination of this information or reproduction of this material\n')
+    out.write(' * is strictly forbidden unless prior written permission is obtained\n')
+    out.write(' * from Ensign Energy Incorporated.\n')
+    out.write(' */\n')
+    out.write('#include "' + idl_name + '_publish_io.h"\n')
+    out.write('\n')
+    out.write('\n')
+    for struct in struct_objs:
+        out.write('void C' + idl_name_camel_case + 'PublishIO::Publish(C' + struct.name_camel_case + 'Publisher& publisher, Io' + struct.name_camel_case + '& io)\n')
+        out.write('{\n')
+        for sfield in struct.fields:
+            if sfield.unit_name != '':
+                out.write('    publisher.Set' + str_cap(sfield.name) + '(units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t' + '(io.' + sfield.name + '->GetValue()));\n') 
+            elif sfield.datatype in enums:
+                out.write('    publisher.Set' + str_cap(sfield.name) + '(' + module_name + sfield.datatype + '(io.' + sfield.name + '->GetValue()));\n') 
+            elif sfield.datatype == 'float':
+                out.write('    publisher.Set' + str_cap(sfield.name) + '(io.' + sfield.name + '->GetValue());\n') 
+            elif sfield.datatype == 'double':
+                out.write('    publisher.Set' + str_cap(sfield.name) + '(io.' + sfield.name + '->GetValue());\n') 
+            elif sfield.datatype == 'int':
+                out.write('    publisher.Set' + str_cap(sfield.name) + '(io.' + sfield.name + '->GetValue());\n') 
+            elif sfield.datatype == 'DataTypes::Status':
+                out.write('    publisher.Set' + str_cap(sfield.name) + '(DataTypes::Status(io.' + sfield.name + '->GetValue()));\n') 
+#           else:
+#               out.write('    XXX ' + sfield.datatype + ' Get' + str_cap(sfield.name) + '();\n') 
+        out.write('    publisher.PublishSample();\n')
+        out.write('}\n')
+        out.write('\n')
+    out.write('\n')
+    out.close()
+
+
+
 def write_makefile(outdir, struct_names, struct_names2):
     out = open(outdir + '/Makefile', 'w')
     out.write('###############################################################################\n')
@@ -435,6 +656,7 @@ def write_makefile(outdir, struct_names, struct_names2):
     out.write('TARG_INCLUDES += -I $(LOG_INCLUDE)\n')
     out.write('TARG_INCLUDES += -I $(CURDIR)/../../base_data_types/include\n')
     out.write('TARG_INCLUDES += -I $(CURDIR)/include\n')
+    out.write('TARG_INCLUDES += -I /usr/local/include/plant_client\n')
     out.write('\n')
     out.write('# Sources\n')
     out.write('TARG_SOURCES = ' + idl_name + '.cxx\n')
@@ -443,6 +665,8 @@ def write_makefile(outdir, struct_names, struct_names2):
     for struct_name in struct_names2:
         out.write('TARG_SOURCES += ' + struct_name + '_publisher.cxx\n')
         out.write('TARG_SOURCES += ' + struct_name + '_subscriber.cxx\n')
+        out.write('TARG_SOURCES += io_' + struct_name + '.cxx\n')
+    out.write('TARG_SOURCES += ' + idl_name + '_publish_io.cxx\n')
     out.write('\n')
     out.write('###############################################################################\n')
     out.write('# Installation section\n')
@@ -463,6 +687,8 @@ def write_makefile(outdir, struct_names, struct_names2):
     for struct_name in struct_names2:
         out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + struct_name + '_publisher.h\n')
         out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + struct_name + '_subscriber.h\n')
+        out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/io_' + struct_name + '.h\n')
+    out.write('PACKAGE_INCLUDE_FILES += $(CURDIR)/include/' + idl_name + '_publish_io.h\n')
     out.write('\n')
     out.write('# package installation directory\n')
     out.write('PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package\n')
@@ -474,6 +700,7 @@ def write_makefile(outdir, struct_names, struct_names2):
     out.write('include $(TOP_DIR)/Makefiles/Makefile.macros\n')
     out.write('include $(TOP_DIR)/Makefiles/Makefile.basic\n')
     out.write('\n')
+    out.close()
 
 
 
@@ -488,6 +715,8 @@ print 'Processing file: ' + idl_file_name + ' into directory: ' + output_dir + '
 idl_name = ''
 for ifn in idl_file_name.replace('.idl','').split('/'):
     idl_name = ifn
+
+idl_name_camel_case = idl_name.replace('_',' ').title().replace(' ','')
 
 with open(idl_file_name) as idl_file:
     for line in idl_file:
@@ -523,6 +752,9 @@ with open(idl_file_name) as idl_file:
                     write_publisher_cxx(output_dir, current_struct)
                     write_subscriber_h(output_dir, current_struct)
                     write_subscriber_cxx(output_dir, current_struct)
+                    write_io_state_machine_h(output_dir, current_struct)
+                    write_io_state_machine_cxx(output_dir, current_struct)
+                    structobjs.append(current_struct)
                     break
                 if ';' not in line:
                     continue
@@ -551,6 +783,8 @@ with open(idl_file_name) as idl_file:
                     fdt = 'int32_t'
                 struct_field = StructField(fields[1], fdt, unit_namespace, unit_name, iskey) 
                 current_struct.fields.append(struct_field)
+    write_publish_io_h(output_dir, structobjs)
+    write_publish_io_cxx(output_dir, structobjs)
     write_makefile(output_dir, structs, structs2) 
 
 
