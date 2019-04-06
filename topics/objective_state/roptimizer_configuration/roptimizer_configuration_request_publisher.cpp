@@ -77,6 +77,6 @@ bool CConfigurationStateRequestPublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                               Shell::Hmi::RoptimizerConfiguration::ROPTIMIZER_CONFIGURATION_REQUEST,
                               "EdgeBaseLibrary",
-                              "EdgeBaseProfile");
+                              "ConfigProfile");
 }
 

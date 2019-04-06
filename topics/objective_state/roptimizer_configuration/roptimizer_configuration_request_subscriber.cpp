@@ -64,7 +64,7 @@ bool CConfigurationStateRequestSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                                Shell::Hmi::RoptimizerConfiguration::ROPTIMIZER_CONFIGURATION_REQUEST,
                                "EdgeBaseLibrary",
-                               "EdgeBaseProfile");
+                               "ConfigProfile");
 }
 
 void CConfigurationStateRequestSubscriber::DataAvailable(const Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest &data,
