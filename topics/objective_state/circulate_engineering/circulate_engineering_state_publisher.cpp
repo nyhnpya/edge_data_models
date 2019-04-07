@@ -19,78 +19,6 @@ bool CCirculateEngineeringStatePublisher::Initialize()
     return true;
 }
 
-void CCirculateEngineeringStatePublisher::SetObjectiveId(CDdsUuid objectiveId)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->objectiveId = DDS_String_dup(objectiveId.c_str());
-    }
-}
-
-void CCirculateEngineeringStatePublisher::SetStatus(const DataTypes::Status status)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->status = status;
-    }
-}
-
-void CCirculateEngineeringStatePublisher::SetActualFlowRate(double actualFlowRate)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->actualFlowRate = actualFlowRate;
-    }
-}
-
-void CCirculateEngineeringStatePublisher::SetActualStandpipePressure(pascal_t actualStandpipePressure)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->actualStandpipePressure = units::unit_cast<double>(actualStandpipePressure);
-    }
-}
-
-void CCirculateEngineeringStatePublisher::SetMinFlowRate(double minFlowRate)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->minFlowRate = minFlowRate;
-    }
-}
-
-void CCirculateEngineeringStatePublisher::SetMaxFlowRate(double maxFlowRate)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->maxFlowRate = maxFlowRate;
-    }
-}
-
-void CCirculateEngineeringStatePublisher::SetMinStandpipePressure(pascal_t minStandpipePressure)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->minStandpipePressure = units::unit_cast<double>(minStandpipePressure);
-    }
-}
-
-void CCirculateEngineeringStatePublisher::SetMaxStandpipePressure(pascal_t maxStandpipePressure)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->maxStandpipePressure = units::unit_cast<double>(maxStandpipePressure);
-    }
-}
-
-void CCirculateEngineeringStatePublisher::SetTargetFlowRate(double targetFlowRate)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->targetFlowRate = targetFlowRate;
-    }
-}
-
 bool CCirculateEngineeringStatePublisher::PublishSample()
 {
     bool bRetVal = false;
@@ -107,7 +35,7 @@ bool CCirculateEngineeringStatePublisher::PublishSample()
 bool CCirculateEngineeringStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                              nec::process::CIRCULATE_STATE,
+                              nec::control::CIRCULATE_ENGINEERING_STATE,
                               "EdgeBaseLibrary",
                               "EdgeBaseProfile");
 }

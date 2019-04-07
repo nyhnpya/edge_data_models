@@ -19,50 +19,10 @@ DataTypes::Uuid CCirculateEngineeringStateSubscriber::GetId()
     return m_data.id;
 }
 
-DataTypes::Status CCirculateEngineeringStateSubscriber::GetStatus()
-{
-    return m_data.status;
-}
-
-double CCirculateEngineeringStateSubscriber::GetActualFlowRate()
-{
-    return m_data.actualFlowRate;
-}
-
-pascal_t CCirculateEngineeringStateSubscriber::GetActualStandpipePressure()
-{
-    return ((pascal_t)m_data.actualStandpipePressure / 1000);
-}
-
-double CCirculateEngineeringStateSubscriber::GetMinFlowRate()
-{
-    return m_data.minFlowRate;
-}
-
-double CCirculateEngineeringStateSubscriber::GetMaxFlowRate()
-{
-    return m_data.maxFlowRate;
-}
-
-pascal_t CCirculateEngineeringStateSubscriber::GetMinStandpipePressure()
-{
-    return ((pascal_t)m_data.minStandpipePressure / 1000);
-}
-
-pascal_t CCirculateEngineeringStateSubscriber::GetMaxStandpipePressure()
-{
-    return ((pascal_t)m_data.maxStandpipePressure / 1000);
-}
-
-double CCirculateEngineeringStateSubscriber::GetTargetFlowRate()
-{
-    return m_data.targetFlowRate;
-}
-
 bool CCirculateEngineeringStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                               nec::process::CIRCULATE_STATE,
+                               nec::control::CIRCULATE_ENGINEERING_STATE,
                                "EdgeBaseLibrary",
                                "EdgeBaseProfile");
 }
@@ -87,7 +47,7 @@ void CCirculateEngineeringStateSubscriber::OnSubscriptionMatched(OnSubscriptionM
     m_pOnSubscriptionMatched = event;
 }
 
-void CCirculateEngineeringStateSubscriber::DataAvailable(const nec::process::CirculateState &data,
+void CCirculateEngineeringStateSubscriber::DataAvailable(const nec::control::CirculateEngineeringState &data,
                                               const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
