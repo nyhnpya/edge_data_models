@@ -28,7 +28,7 @@
 using namespace units;
 using namespace units::pressure;
 
-class CCirculateEngineeringStateSubscriber : public TSubscriber< nec::process::CirculateState>
+class CCirculateEngineeringStateSubscriber : public TSubscriber< nec::control::CirculateEngineeringState>
 {
 public:
     CCirculateEngineeringStateSubscriber();
@@ -43,25 +43,17 @@ public:
 
     // Topic getters
     DataTypes::Uuid GetId();
-    DataTypes::Status GetStatus();
-    double GetActualFlowRate();
-    pascal_t GetActualStandpipePressure();
-    double GetMinFlowRate();
-    double GetMaxFlowRate();
-    pascal_t GetMinStandpipePressure();
-    pascal_t GetMaxStandpipePressure();
-    double GetTargetFlowRate();
 
 protected:
     ///Derived Methods
-    void DataAvailable(const nec::process::CirculateState &data,
+    void DataAvailable(const nec::control::CirculateEngineeringState &data,
                        const DDS::SampleInfo &sampleInfo);
     void DataDisposed(const DDS::SampleInfo &sampleInfo);
     void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
     void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
 private:
-    nec::process::CirculateState m_data;
+    nec::control::CirculateEngineeringState m_data;
     DDS::SampleInfo                    m_sampleInfo;
     DDS::LivelinessChangedStatus m_livelinessStatus;
     OnDataAvailableEvent               m_pOnDataAvailable;

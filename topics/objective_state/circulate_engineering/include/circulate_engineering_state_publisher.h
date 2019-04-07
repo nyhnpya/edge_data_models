@@ -28,7 +28,7 @@
 using namespace units;
 using namespace units::pressure;
 
-class CCirculateEngineeringStatePublisher : public TPublisher< nec::process::CirculateEngineeringState >
+class CCirculateEngineeringStatePublisher : public TPublisher< nec::control::CirculateEngineeringState >
 {
  public:
     CCirculateEngineeringStatePublisher();
@@ -37,16 +37,6 @@ class CCirculateEngineeringStatePublisher : public TPublisher< nec::process::Cir
     bool Create(int32_t domain);
     bool Initialize();
     bool PublishSample();
-
-    void SetObjectiveId(CDdsUuid objectiveId);
-    void SetActualFlowRate(double actualFlowRate);
-    void SetActualStandpipePressure(pascal_t actualStandpipePressure);
-    void SetMaxFlowRate(double maxRateFlowRate);
-    void SetMaxStandpipePressure(pascal_t maxStandpipePressure);
-    void SetMinFlowRate(double minRateFlowRate);
-    void SetMinStandpipePressure(pascal_t minStandpipePressure);
-    void SetStatus(const DataTypes::Status status);
-    void SetTargetFlowRate(double targetFlowRate);
 };
 
 #endif // __CIRCULATE_ENGINEERING_STATE_PUBLISHER_H__ 
