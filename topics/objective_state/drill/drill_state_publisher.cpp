@@ -254,10 +254,13 @@ bool CDrillStatePublisher::PublishSample()
 
     DDS_Time_t currentTime;
 
-    GetParticipant()->get_current_time(currentTime);
-    m_pDataInstance->timestamp.sec = currentTime.sec;
-    m_pDataInstance->timestamp.nanosec = currentTime.nanosec;
-    bRetVal = Publish();
+    if (m_pDataInstance != nullptr)
+    {
+        GetParticipant()->get_current_time(currentTime);
+        m_pDataInstance->timestamp.sec = currentTime.sec;
+        m_pDataInstance->timestamp.nanosec = currentTime.nanosec;
+        bRetVal = Publish();
+    }
 
     return bRetVal;
 }

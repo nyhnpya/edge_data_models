@@ -15,7 +15,7 @@ module plc
          * | ----------------------- | ---------------------------------------| ------------------| ------- |
          * | targetFlowRate          | requetsed flow rate                    | double            | m/sec^3 |
 	 */
-        struct CirculateRequestTopic
+        struct CirculateRequest
         {
             double targetFlowRate; ///< requested flow rate in m/sec^3
         };
@@ -38,7 +38,7 @@ module plc
          * | maxStandpipePressure    | maximum machine standpipe pressure     | double            | Pa      |
          * | targetFlowRate          | requetsed flow rate                    | double            | m/sec^3 |
          */
-        struct CirculateStateTopic
+        struct CirculateState
         {
             DataTypes::Status status;
 

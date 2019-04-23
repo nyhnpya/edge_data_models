@@ -9,7 +9,6 @@
 #include <string.h>
 #include <thread>
 #include "cmdparser.h"
-#include "objective_state_publisher.h"
 #include "edge_data_store.h"
 #include "plant_interface.h"
 
@@ -19,7 +18,6 @@ bool gTerminate = false;
 std::mutex gTerminateMutex;
 std::condition_variable gTerminateCondition;
 
-CObjectiveStatePublisher *gpStatePublisher = nullptr;
 std::thread threadId;
 
 #ifdef _LINUX
@@ -85,38 +83,6 @@ void register_signal_handler()
 }
 #endif
 
-void publish_thread()
-{
-    DataTypes::Objective objective = DataTypes::None;
-
-    while (gTerminate == false)
-    {
-        gpStatePublisher->SetObjective(objective);
-        gpStatePublisher->PublishSample();
-        usleep(100);
-    }
-
-    std::cout << "thread terminated"  << std::endl;
-}
-
-void delete_instance()
-{
-    char choice;
-
-    std::cout << std::endl;
-    std::cout << "d. Delete Instance" << std::endl;
-    std::cout << "option: ";
-    std::cin >> choice;
-    std::cout << std::endl;
-
-    switch (choice)
-    {
-        case 'd':
-            gpStatePublisher->DeleteInstance();
-            break;
-    }
-}
-
 void top_level_menu()
 {
     char choice;
@@ -126,14 +92,11 @@ void top_level_menu()
         std::cout << std::endl;
         std::cout << "Objective State Publisher" << std::endl;
         std::cout << "------------------------" << std::endl;
-        std::cout << "1. Publish drilling objective" << std::endl;
-        std::cout << "2. Publish tripping objective" << std::endl;
-        std::cout << "3. Publish clean hole objective" << std::endl;
-        std::cout << "4. Publish casing objective" << std::endl;
-        std::cout << "5. Publish none objective" << std::endl;
-        std::cout << "6. Publish objective continuously" << std::endl;
-        std::cout << "7. Enable Autodrill" << std::endl;
-        std::cout << "8. Disable Autodrill" << std::endl;
+        std::cout << "1. Enable Autodrill" << std::endl;
+        std::cout << "2. Disable Autodrill" << std::endl;
+        std::cout << "3. Enable clean hole objective" << std::endl;
+        std::cout << "4. Enable casing objective" << std::endl;
+        std::cout << "5. Enable none objective" << std::endl;
         std::cout << "q. exit" << std::endl;
         std::cout << "option: ";
         std::cin >> choice;
@@ -150,46 +113,20 @@ void top_level_menu()
                 }
                 break;
             case '1':
-                gpStatePublisher->CreateInstance();
-                gpStatePublisher->SetObjective(DataTypes::Drilling);
-                gpStatePublisher->PublishSample();
-                delete_instance();
-                break;
-            case '2':
-                gpStatePublisher->CreateInstance();
-                gpStatePublisher->SetObjective(DataTypes::Tripping);
-                gpStatePublisher->PublishSample();
-                delete_instance();
-                break;
-            case '3':
-                gpStatePublisher->CreateInstance();
-                gpStatePublisher->SetObjective(DataTypes::CleaningHole);
-                gpStatePublisher->PublishSample();
-                delete_instance();
-                break;
-            case '4':
-                gpStatePublisher->CreateInstance();
-                gpStatePublisher->SetObjective(DataTypes::Casing);
-                gpStatePublisher->PublishSample();
-                delete_instance();
-                break;
-            case '5':
-                gpStatePublisher->CreateInstance();
-                gpStatePublisher->SetObjective(DataTypes::None);
-                gpStatePublisher->PublishSample();
-                delete_instance();
-                break;
-            case '6':
-                gpStatePublisher->CreateInstance();
-                threadId = std::thread(publish_thread);
-                delete_instance();
-            case '7':
                 gioAutoDrillerEnabled->SetValue(true);
                 gioAutoDrillerEnabled->GetProtocol()->WriteData();
                 break;
-            case '8':
+            case '2':
                 gioAutoDrillerEnabled->SetValue(false);
                 gioAutoDrillerEnabled->GetProtocol()->WriteData();
+                break;
+            case '3':
+                break;
+            case '4':
+                break;
+            case '5':
+                break;
+            case '6':
                 break;
         }
     } while (gTerminate == false);
@@ -214,9 +151,6 @@ int32_t main(int32_t argc, char **argv)
     std::string configFile = parser.get<std::string>("f");
     drillObjective = parser.get<bool>("o");
 
-    CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
-    CDomainParticipant::Instance()->Create(domain);
-
     if (configFile.empty() == true)
     {
         if (CPlantInterface::Instance()->Initialize(domain) == false)
@@ -235,26 +169,16 @@ int32_t main(int32_t argc, char **argv)
     }
 
     gioAutoDrillerEnabled = CEdgeDataStore::Instance()->GetTypeBool("AutoDriller.enabled");
-    gpStatePublisher = new CObjectiveStatePublisher();
 
     CPlantInterface::Instance()->Start();
-    if (gpStatePublisher->Create(domain) == true)
+    if (drillObjective == false)
     {
-        if (drillObjective == false)
-        {
-            top_level_menu();
-        }
-        else
-        {
-            gpStatePublisher->CreateInstance();
-            gpStatePublisher->SetObjective(DataTypes::Drilling);
-            gpStatePublisher->PublishSample();
-            
-            std::unique_lock<std::mutex> lk(gTerminateMutex);
-            gTerminateCondition.wait(lk);
-            LOG_INFO("Signal received: terminating process");
-         }
+        top_level_menu();
     }
+
+    std::unique_lock<std::mutex> lk(gTerminateMutex);
+    gTerminateCondition.wait(lk);
+    LOG_INFO("Signal received: terminating process");
 
     /*    std::cout << "Waiting for thread: "  << std::endl;
 
@@ -262,6 +186,4 @@ int32_t main(int32_t argc, char **argv)
     {
         threadId.join();
         }*/
-
-    gpStatePublisher->Destroy();
 }

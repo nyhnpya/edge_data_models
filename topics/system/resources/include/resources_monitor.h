@@ -40,7 +40,8 @@ class CResourcesMonitor
     int32_t               m_minNumThreads;
     int32_t               m_maxNumThreads;
     char*                 m_appVersion;
-
+    std::mutex            m_dataMutex;
+    
    // Singleton management
     CResourcesMonitor();
 
