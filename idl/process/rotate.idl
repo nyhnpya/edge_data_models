@@ -27,7 +27,7 @@ module nec
             DataTypes::Priority priority;
             DataTypes::Time     timeNeeded;
             DataTypes::Time     estimatedDuration;
-            double              targetRate;
+            double              targetRate;  // (units::angular_velocity::radians_per_second)
         };
 
         //@copy-c-declaration static const char ROTATE_OBJECTIVE[] = "RotateObjective";
@@ -49,7 +49,7 @@ module nec
             DataTypes::Uuid  id;                //@key
             DataTypes::Uuid  objectiveId; 
             DataTypes::Time  estimatedDuration; // estimated time current requestor owns the resource
-            double           targetRate;        // current traget in rad/s
+            double           targetRate;  // (units::angular_velocity::radians_per_second)
         };
 
         //@copy-c-declaration static const char ROTATE_STATE[] = "RotateState";
@@ -78,14 +78,14 @@ module nec
             DataTypes::Status status;
 
             // actuals
-            double            actualRate;
+            double            actualRate;  // (units::angular_velocity::radians_per_second)
 
             // constraints
-            double            minRate;
-            double            maxRate;
+            double            minRate;  // (units::angular_velocity::radians_per_second)
+            double            maxRate;  // (units::angular_velocity::radians_per_second)
 
             // targets
-            double            targetRate;
+            double            targetRate;  // (units::angular_velocity::radians_per_second)
         };
     };
 };

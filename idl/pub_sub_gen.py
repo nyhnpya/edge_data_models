@@ -116,7 +116,7 @@ def write_publisher_h(outdir, struct):
         if sfield.datatype in enums:
             out.write('        void Set' + str_cap(sfield.name) + '(' + module_name + sfield.datatype + ' ' + sfield.name + ');\n')
         elif 'DataTypes::Uuid' in sfield.datatype:
-            out.write('        void Set' + str_cap(sfield.name) + '(' + sfield.datatype + ' &' + sfield.name + ');\n')
+            out.write('        void Set' + str_cap(sfield.name) + '(CDdsUuid' + ' ' + sfield.name + ');\n')
         elif sfield.unit_name != '':
             out.write('        void Set' + str_cap(sfield.name) + '(const ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t ' + sfield.name + ');\n')
         else: 
@@ -129,7 +129,6 @@ def write_publisher_h(outdir, struct):
 
 def write_publisher_cxx(outdir, struct):
     out = open(outdir + '/' + struct.name_underscore + '_publisher.cxx', 'w')
-    out_copywrite(out)
     out.write('#include "dds_uuid.h"\n')
     out.write('#include "' + struct.name_underscore + '_publisher.h"\n')
     out.write('\n')
@@ -169,6 +168,16 @@ def write_publisher_cxx(outdir, struct):
     out.write('\n')
     out.write('bool C' + struct.name_camel_case + 'Publisher::PublishSample()\n')
     out.write('{\n')
+    if 'State' in current_struct.name_camel_case:
+        out.write('    DDS_Time_t currentTime;\n')
+        out.write('\n')
+        out.write('    if (m_pDataInstance != nullptr)\n')
+        out.write('    {\n')
+        out.write('        GetParticipant()->get_current_time(currentTime);\n')
+        out.write('        m_pDataInstance->timestamp.sec = currentTime.sec;\n')
+        out.write('        m_pDataInstance->timestamp.nanosec = currentTime.nanosec;\n')
+        out.write('    }\n')
+        out.write('\n')
     out.write('    return Publish();\n')
     out.write('}\n')
     out.write('\n')
@@ -178,7 +187,7 @@ def write_publisher_cxx(outdir, struct):
         elif sfield.unit_name != '':
             out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(const ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t ' + sfield.name + ')\n')
         elif 'DataTypes::Uuid' in sfield.datatype:
-            out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(' + sfield.datatype + ' &' + sfield.name + ')\n')
+            out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(CDdsUuid' + ' ' + sfield.name + ')\n')
         else:
             out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(' + sfield.datatype + ' ' + sfield.name + ')\n')
         out.write('{\n')
@@ -187,7 +196,7 @@ def write_publisher_cxx(outdir, struct):
         if sfield.unit_name != '':
             out.write('        m_pDataInstance->' + sfield.name + ' = units::unit_cast<double>(' + sfield.name + ');\n') 
         elif 'DataTypes::Uuid' in sfield.datatype:
-            out.write('        m_pDataInstance->' + sfield.name + ' = DDS_String_dup(' + sfield.name + ');\n') 
+            out.write('        m_pDataInstance->' + sfield.name + ' = DDS_String_dup(' + sfield.name + '.c_str());\n') 
         else:
             out.write('        m_pDataInstance->' + sfield.name + ' = ' + sfield.name + ';\n') 
         out.write('    }\n')
@@ -265,7 +274,6 @@ def write_subscriber_h(outdir, struct):
 
 def write_subscriber_cxx(outdir, struct):
     out = open(outdir + '/' + struct.name_underscore + '_subscriber.cxx', 'w')
-    out_copywrite(out)
     out.write('#include "' + struct.name_underscore + '_subscriber.h"\n')
     out.write('\n')
     out.write('C' + struct.name_camel_case + 'Subscriber::C' + struct.name_camel_case + 'Subscriber() :\n')
