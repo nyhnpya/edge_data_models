@@ -4,8 +4,16 @@ module nec
 {
     module process
     {
-        //@copy-c-declaration static const char ROTATE_REQUEST[] = "RotateRequest";
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
 
+        // REMOVE THIS ONLY FOR EXAMPLE TO SHOW WHERE VALUES GO
+        return TPublisher::Create(domain,
+                       nec::process::ROTATE_STATE,
+                       "EdgeBaseLibrary",
+                       "EdgeBaseProfile");
+        
+        //@copy-c-declaration static const char ROTATE_REQUEST[] = "RotateRequest";
         /**
          * \brief requested state change in the rotation system.
          *
@@ -30,8 +38,10 @@ module nec
             double              targetRate;  // (units::angular_velocity::radians_per_second)
         };
 
-        //@copy-c-declaration static const char ROTATE_OBJECTIVE[] = "RotateObjective";
+        // QoSLibrary: 
+        // QoSProfile: 
 
+        //@copy-c-declaration static const char ROTATE_OBJECTIVE[] = "RotateObjective";
         /**
          * \brief current requested state change in the rotation system.
          *
@@ -51,6 +61,9 @@ module nec
             DataTypes::Time  estimatedDuration; // estimated time current requestor owns the resource
             double           targetRate;  // (units::angular_velocity::radians_per_second)
         };
+
+        // QoSLibrary: 
+        // QoSProfile: 
 
         //@copy-c-declaration static const char ROTATE_STATE[] = "RotateState";
 
