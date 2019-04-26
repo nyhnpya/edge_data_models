@@ -127,7 +127,7 @@ def write_publisher_h(outdir, struct):
     out.close()
 
 
-def write_publisher_cxx(outdir, struct):
+def write_publisher_cxx(outdir, struct, qoslib, qosprof):
     out = open(outdir + '/' + struct.name_underscore + '_publisher.cxx', 'w')
     out.write('#include "dds_uuid.h"\n')
     out.write('#include "' + struct.name_underscore + '_publisher.h"\n')
@@ -144,8 +144,8 @@ def write_publisher_cxx(outdir, struct):
     out.write('{\n')
     out.write('    return TPublisher::Create(domain,\n')
     out.write('                       ' + module_name + struct.copyc + ',\n')
-    out.write('                       "EdgeBaseLibrary",\n')
-    out.write('                       "EdgeBaseProfile");\n')
+    out.write('                       "' + qoslib + '",\n')
+    out.write('                       "' + qosprof + '");\n')
     out.write('}\n')
     out.write('\n')
     out.write('bool C' + struct.name_camel_case + 'Publisher::Initialize()\n')
@@ -652,12 +652,21 @@ for ifn in idl_file_name.replace('.idl','').split('/'):
 
 idl_name_camel_case = idl_name.replace('_',' ').title().replace(' ','')
 
+QoSLibrary = 'EdgeBaseLibrary'
+QoSProfile = 'EdgeBaseProfile'
+
 with open(idl_file_name) as idl_file:
     for line in idl_file:
         if 'enum' in line:
             enum_name = line.split()[1]
             enums.append(enum_name)
             print 'enum_name: ' + enum_name
+        if '// QoSLibrary:' in line:
+            if len(line.split()) >= 3:
+                QoSLibrary = line.split()[2]
+        if '// QoSProfile:' in line:
+            if len(line.split()) >= 3:
+                QoSProfile = line.split()[2]
         if 'module' in line:
             module_name += line.split()[1] + '::'
             #print 'module_name: ' + module_name
@@ -683,12 +692,14 @@ with open(idl_file_name) as idl_file:
             for line in idl_file:
                 if '};' in line:
                     write_publisher_h(output_dir, current_struct)
-                    write_publisher_cxx(output_dir, current_struct)
+                    write_publisher_cxx(output_dir, current_struct, QoSLibrary, QoSProfile)
                     write_subscriber_h(output_dir, current_struct)
                     write_subscriber_cxx(output_dir, current_struct)
                     #write_io_state_machine_h(output_dir, current_struct)
                     #write_io_state_machine_cxx(output_dir, current_struct)
                     structobjs.append(current_struct)
+                    QoSLibrary = 'EdgeBaseLibrary'
+                    QoSProfile = 'EdgeBaseProfile'
                     break
                 if ';' not in line:
                     continue
