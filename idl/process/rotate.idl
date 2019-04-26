@@ -4,15 +4,9 @@ module nec
 {
     module process
     {
-        // QoSLibrary: EdgeBaseLibrary
-        // QoSProfile: EdgeBaseProfile
+        // QoSLibrary: TestEdgeBaseLibrary
+        // QoSProfile: TestEdgeBaseProfile
 
-        // REMOVE THIS ONLY FOR EXAMPLE TO SHOW WHERE VALUES GO
-        return TPublisher::Create(domain,
-                       nec::process::ROTATE_STATE,
-                       "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
-        
         //@copy-c-declaration static const char ROTATE_REQUEST[] = "RotateRequest";
         /**
          * \brief requested state change in the rotation system.
