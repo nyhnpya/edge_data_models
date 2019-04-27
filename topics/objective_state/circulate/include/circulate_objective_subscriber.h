@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,43 +12,50 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __CIRCULATE_OBJECTIVE_SUBSCRIBER_H__ 
-#define __CIRCULATE_OBJECTIVE_SUBSCRIBER_H__ 
+#ifndef __NEC_PROCESS_CIRCULATE_OBJECTIVE_SUBSCRIBER_H__
+#define __NEC_PROCESS_CIRCULATE_OBJECTIVE_SUBSCRIBER_H__
 
 #include "subscriber.h"
 #include "circulate.h"
 #include "circulateSupport.h"
 
+#ifdef _WIN32
+#undef pascal
+#endif
+
 class CCirculateObjectiveSubscriber : public TSubscriber< nec::process::CirculateObjective >
 {
- public:
-    CCirculateObjectiveSubscriber();
-    ~CCirculateObjectiveSubscriber();
+    public:
+        CCirculateObjectiveSubscriber();
+        ~CCirculateObjectiveSubscriber();
+        
+        bool Create(int32_t domain);
+        bool ValidData();
+        void OnDataAvailable(OnDataAvailableEvent event);
+        void OnDataDisposed(OnDataDisposedEvent event);
+        void OnLivelinessChanged(OnLivelinessChangedEvent event);
+        void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
+        
+        DataTypes::Uuid GetId();
+        DataTypes::Uuid GetObjectiveId();
+        DataTypes::Time GetEstimatedDuration();
+        double GetTargetFlowRate();
 
-    bool Create(int32_t domain);
-    void OnDataAvailable(OnDataAvailableEvent event);
-    void OnDataDisposed(OnDataDisposedEvent event);
-    void OnLivelinessChanged(OnLivelinessChangedEvent event);
-    bool ValidData();
+    protected:
+        void DataAvailable(const nec::process::CirculateObjective &data,
+                           const DDS::SampleInfo &sampleInfo);
+        void DataDisposed(const DDS::SampleInfo &sampleInfo);
+        void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
+        void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
-    // Topic getters
-    DataTypes::Uuid GetId();
-    DataTypes::Time GetEstimatedDuration();
-    double GetTargetFlowRate();
-
- protected:
-    void DataAvailable(const nec::process::CirculateObjective &data, 
-                       const DDS::SampleInfo &sampleInfo);
-    void DataDisposed(const DDS::SampleInfo &sampleInfo);
-    void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
-
-private:
-    nec::process::CirculateObjective m_data;
-    DDS::SampleInfo                  m_sampleInfo;
-    DDS::LivelinessChangedStatus     m_livelinessStatus;
-    OnDataAvailableEvent             m_pOnDataAvailable;
-    OnDataDisposedEvent              m_pOnDataDisposed;
-    OnLivelinessChangedEvent         m_pOnLivelinessChanged;
+    private:
+        nec::process::CirculateObjective                  m_data;
+        DDS::SampleInfo                                   m_sampleInfo;
+        DDS::LivelinessChangedStatus                      m_livelinessStatus;
+        OnDataAvailableEvent                              m_pOnDataAvailable;
+        OnDataDisposedEvent                               m_pOnDataDisposed;
+        OnLivelinessChangedEvent                          m_pOnLivelinessChanged;
+        OnSubscriptionMatchedEvent                        m_pOnSubscriptionMatched;
 };
 
-#endif // __CIRCULATE_OBJECTIVE_SUBSCRIBER_H__ 
+#endif // __NEC_PROCESS_CIRCULATE_OBJECTIVE_SUBSCRIBER_H__
