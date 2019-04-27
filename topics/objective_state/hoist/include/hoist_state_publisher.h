@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __HOIST_STATE_PUBLISHER_H__ 
-#define __HOIST_STATE_PUBLISHER_H__ 
+#ifndef __NEC_PROCESS_HOIST_STATE_PUBLISHER_H__
+#define __NEC_PROCESS_HOIST_STATE_PUBLISHER_H__
 
 #include "publisher.h"
 #include "hoist.h"
@@ -22,35 +22,33 @@
 #ifdef _WIN32
 #undef pascal
 #endif
-#include "units.h"
 
-using namespace units;
-using namespace units::length;
-using namespace units::force;
-using namespace units::velocity;
+#include "units.h"
 
 class CHoistStatePublisher : public TPublisher< nec::process::HoistState >
 {
- public:
-    CHoistStatePublisher();
-    ~CHoistStatePublisher();
-
-    bool Create(int32_t domain);
-    bool Initialize();
-    bool PublishSample();
-
-    void SetActualPosition(meter_t actualPosition);
-    void SetActualVelocity(meters_per_second_t actualVelocity);
-    void SetActualHookload(newton_t actualHookload);
-    void SetMaxHoistPosition(meter_t maxHoistPosition);
-    void SetMaxHoistVelocity(meters_per_second_t maxHoistVelocity);
-    void SetMaxLowerPosition(meter_t maxLowerPosition);
-    void SetMaxLowerVelocity(meters_per_second_t maxLowerVelocity);
-    void SetMaxHookload(newton_t maxHookload);
-    void SetObjectiveId(CDdsUuid objectiveId);
-    void SetStatus(const DataTypes::Status status);
-    void SetTargetPosition(meter_t targetPosition);
-    void SetTargetVelocity(meters_per_second_t targetVelocity);
+    public:
+        CHoistStatePublisher();
+        ~CHoistStatePublisher();
+        
+        bool Create(int32_t domain);
+        bool Initialize();
+        bool PublishSample();
+        
+        void SetId(CDdsUuid id);
+        void SetObjectiveId(CDdsUuid objectiveId);
+        void SetTimestamp(const DataTypes::Time timestamp);
+        void SetStatus(const DataTypes::Status status);
+        void SetActualHookload(const units::force::newton_t actualHookload);
+        void SetActualVelocity(const units::velocity::meters_per_second_t actualVelocity);
+        void SetActualPosition(const units::length::meter_t actualPosition);
+        void SetMaxHookload(const units::force::newton_t maxHookload);
+        void SetMaxHoistVelocity(const units::velocity::meters_per_second_t maxHoistVelocity);
+        void SetMaxLowerVelocity(const units::velocity::meters_per_second_t maxLowerVelocity);
+        void SetMaxHoistPosition(const units::length::meter_t maxHoistPosition);
+        void SetMaxLowerPosition(const units::length::meter_t maxLowerPosition);
+        void SetTargetVelocity(const units::velocity::meters_per_second_t targetVelocity);
+        void SetTargetPosition(const units::length::meter_t targetPosition);
 };
 
-#endif // __HOIST_STATE_PUBLISHER_H__ 
+#endif // __NEC_PROCESS_HOIST_STATE_PUBLISHER_H__
