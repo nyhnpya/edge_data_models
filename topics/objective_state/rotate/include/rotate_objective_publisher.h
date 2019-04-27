@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __ROTATE_OBJECTIVE_PUBLISHER_H__ 
-#define __ROTATE_OBJECTIVE_PUBLISHER_H__ 
+#ifndef __NEC_PROCESS_ROTATE_OBJECTIVE_PUBLISHER_H__
+#define __NEC_PROCESS_ROTATE_OBJECTIVE_PUBLISHER_H__
 
 #include "publisher.h"
 #include "rotate.h"
@@ -22,28 +22,23 @@
 #ifdef _WIN32
 #undef pascal
 #endif
-#include "units.h"
 
-using namespace units;
-using namespace units::angular_velocity;
+#include "units.h"
 
 class CRotateObjectivePublisher : public TPublisher< nec::process::RotateObjective >
 {
- public:
-    CRotateObjectivePublisher();
-    ~CRotateObjectivePublisher();
-
-    bool Create(int32_t domain);
-    bool Initialize();
-    bool PublishSample();
-
-    void SetId(DataTypes::Uuid &uuid);
-    void SetObjectiveId(DataTypes::Uuid &objectiveId);
-    void SetEstimatedDuration(DataTypes::Time estimatedDuration);
-    void SetTargetRate(radians_per_second_t targetRate);
-
- private:
-    DataTypes::Uuid m_requestId;
+    public:
+        CRotateObjectivePublisher();
+        ~CRotateObjectivePublisher();
+        
+        bool Create(int32_t domain);
+        bool Initialize();
+        bool PublishSample();
+        
+        void SetId(CDdsUuid id);
+        void SetObjectiveId(CDdsUuid objectiveId);
+        void SetEstimatedDuration(const DataTypes::Time estimatedDuration);
+        void SetTargetRate(const units::angular_velocity::radians_per_second_t targetRate);
 };
 
-#endif // __ROTATE_OBJECTIVE_PUBLISHER_H__ 
+#endif // __NEC_PROCESS_ROTATE_OBJECTIVE_PUBLISHER_H__

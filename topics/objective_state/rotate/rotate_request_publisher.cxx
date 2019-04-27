@@ -9,10 +9,18 @@ CRotateRequestPublisher::~CRotateRequestPublisher()
 {
 }
 
+bool CRotateRequestPublisher::Create(int32_t domain)
+{
+    return TPublisher::Create(domain,
+                       nec::process::ROTATE_REQUEST,
+                       "EdgeBaseLibrary",
+                       "RequestProfile");
+}
+
 bool CRotateRequestPublisher::Initialize()
 {
     CDdsUuid uuid;
-    bool     retVal = false;
+    bool retVal = false;
 
     if (m_pDataInstance != nullptr)
     {
@@ -22,6 +30,19 @@ bool CRotateRequestPublisher::Initialize()
     }
 
     return retVal;
+}
+
+bool CRotateRequestPublisher::PublishSample()
+{
+    return Publish();
+}
+
+void CRotateRequestPublisher::SetId(CDdsUuid id)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->id = DDS_String_dup(id.c_str());
+    }
 }
 
 void CRotateRequestPublisher::SetObjectiveId(CDdsUuid objectiveId)
@@ -48,15 +69,15 @@ void CRotateRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
     }
 }
 
-void CRotateRequestPublisher::SetDuration(DataTypes::Time duration)
+void CRotateRequestPublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->estimatedDuration = duration;
+        m_pDataInstance->estimatedDuration = estimatedDuration;
     }
 }
 
-void CRotateRequestPublisher::SetTargetRate(radians_per_second_t targetRate)
+void CRotateRequestPublisher::SetTargetRate(const units::angular_velocity::radians_per_second_t targetRate)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -64,15 +85,3 @@ void CRotateRequestPublisher::SetTargetRate(radians_per_second_t targetRate)
     }
 }
 
-bool CRotateRequestPublisher::PublishSample()
-{
-    return Publish();
-}
-
-bool CRotateRequestPublisher::Create(int32_t domain)
-{
-    return TPublisher::Create(domain,
-                              nec::process::ROTATE_REQUEST,
-                              "EdgeBaseLibrary",
-                              "EdgeBaseProfile");
-}

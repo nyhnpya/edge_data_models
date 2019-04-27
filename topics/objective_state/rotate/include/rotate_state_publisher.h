@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __ROTATE_STATE_PUBLISHER_H__ 
-#define __ROTATE_STATE_PUBLISHER_H__ 
+#ifndef __NEC_PROCESS_ROTATE_STATE_PUBLISHER_H__
+#define __NEC_PROCESS_ROTATE_STATE_PUBLISHER_H__
 
 #include "publisher.h"
 #include "rotate.h"
@@ -22,33 +22,27 @@
 #ifdef _WIN32
 #undef pascal
 #endif
-#include "units.h"
-#include "dds_uuid.h"
 
-using namespace units;
-using namespace units::angular_velocity;
+#include "units.h"
 
 class CRotateStatePublisher : public TPublisher< nec::process::RotateState >
 {
- public:
-    CRotateStatePublisher();
-    ~CRotateStatePublisher();
-
-    bool Create(int32_t domain);
-    bool Initialize();
-    bool PublishSample();
-    bool HasInterfaceChanged();
-
-    void SetObjectiveId(CDdsUuid objectiveId);
-    void SetTimestamp(const DataTypes::Time timestamp);
-    void SetActualRate(radians_per_second_t actualRate);
-    void SetMaxRate(radians_per_second_t maxRate);
-    void SetMinRate(radians_per_second_t minRate);
-    void SetStatus(const DataTypes::Status status);
-    void SetTargetRate(radians_per_second_t targetRate);
-
- private:
-    bool m_interfaceChanged;
+    public:
+        CRotateStatePublisher();
+        ~CRotateStatePublisher();
+        
+        bool Create(int32_t domain);
+        bool Initialize();
+        bool PublishSample();
+        
+        void SetId(CDdsUuid id);
+        void SetObjectiveId(CDdsUuid objectiveId);
+        void SetTimestamp(const DataTypes::Time timestamp);
+        void SetStatus(const DataTypes::Status status);
+        void SetActualRate(const units::angular_velocity::radians_per_second_t actualRate);
+        void SetMinRate(const units::angular_velocity::radians_per_second_t minRate);
+        void SetMaxRate(const units::angular_velocity::radians_per_second_t maxRate);
+        void SetTargetRate(const units::angular_velocity::radians_per_second_t targetRate);
 };
 
-#endif // __ROTATE_STATE_PUBLISHER_H__ 
+#endif // __NEC_PROCESS_ROTATE_STATE_PUBLISHER_H__

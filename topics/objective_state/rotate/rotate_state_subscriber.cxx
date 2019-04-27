@@ -1,12 +1,24 @@
 #include "rotate_state_subscriber.h"
 
 CRotateStateSubscriber::CRotateStateSubscriber() :
-    m_pOnDataAvailable(nullptr)
+    m_pOnDataAvailable(nullptr),
+    m_pOnDataDisposed(nullptr),
+    m_pOnLivelinessChanged(nullptr),
+    m_pOnSubscriptionMatched(nullptr)
 {
+    memset((void *)&m_sampleInfo, 0, sizeof(DDS::SampleInfo));
 }
 
 CRotateStateSubscriber::~CRotateStateSubscriber()
 {
+}
+
+bool CRotateStateSubscriber::Create(int32_t domain)
+{
+    return TSubscriber::Create(domain,
+                       nec::process::ROTATE_STATE,
+                       "EdgeBaseLibrary",
+                       "EdgeBaseProfile");
 }
 
 bool CRotateStateSubscriber::ValidData()
@@ -16,7 +28,12 @@ bool CRotateStateSubscriber::ValidData()
 
 DataTypes::Uuid CRotateStateSubscriber::GetId()
 {
-    return DDS_String_dup(m_data.id);
+    return m_data.id;
+}
+
+DataTypes::Uuid CRotateStateSubscriber::GetObjectiveId()
+{
+    return m_data.objectiveId;
 }
 
 DataTypes::Time CRotateStateSubscriber::GetTimestamp()
@@ -29,74 +46,72 @@ DataTypes::Status CRotateStateSubscriber::GetStatus()
     return m_data.status;
 }
 
-radians_per_second_t CRotateStateSubscriber::GetActualRate()
+units::angular_velocity::radians_per_second_t CRotateStateSubscriber::GetActualRate()
 {
-    return (radians_per_second_t)m_data.actualRate;
+    return units::angular_velocity::radians_per_second_t(m_data.actualRate);
 }
 
-radians_per_second_t CRotateStateSubscriber::GetMinRate()
+units::angular_velocity::radians_per_second_t CRotateStateSubscriber::GetMinRate()
 {
-    return (radians_per_second_t)m_data.minRate;
+    return units::angular_velocity::radians_per_second_t(m_data.minRate);
 }
 
-radians_per_second_t CRotateStateSubscriber::GetMaxRate()
+units::angular_velocity::radians_per_second_t CRotateStateSubscriber::GetMaxRate()
 {
-    return (radians_per_second_t)m_data.maxRate;
+    return units::angular_velocity::radians_per_second_t(m_data.maxRate);
 }
 
-radians_per_second_t CRotateStateSubscriber::GetTargetRate()
+units::angular_velocity::radians_per_second_t CRotateStateSubscriber::GetTargetRate()
 {
-    return (radians_per_second_t)m_data.targetRate;
+    return units::angular_velocity::radians_per_second_t(m_data.targetRate);
 }
 
-bool CRotateStateSubscriber::Create(int32_t domain)
-{
-    return TSubscriber::Create(domain,
-                               nec::process::ROTATE_STATE,
-                               "EdgeBaseLibrary",
-                               "EdgeBaseProfile");
-}
 
 void CRotateStateSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
 }
 
+
 void CRotateStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
 {
     m_pOnDataDisposed = event;
 }
+
 
 void CRotateStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
 {
     m_pOnLivelinessChanged = event;
 }
 
+
 void CRotateStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
 {
     m_pOnSubscriptionMatched = event;
 }
 
+
 void CRotateStateSubscriber::DataAvailable(const nec::process::RotateState &data,
-                                           const DDS::SampleInfo &sampleInfo)
+                          const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
-
+    
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
         m_data = data;
-
+    
         if (m_pOnDataAvailable != nullptr)
         {
             m_pOnDataAvailable(sampleInfo);
         }
+    
     }
 }
 
 void CRotateStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
-
+    
     if (m_pOnDataDisposed != nullptr)
     {
         m_pOnDataDisposed(sampleInfo);
@@ -113,6 +128,7 @@ void CRotateStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatu
 
 void CRotateStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
 {
+    
     if (m_pOnSubscriptionMatched != nullptr)
     {
         m_pOnSubscriptionMatched(status);
