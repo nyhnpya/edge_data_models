@@ -12,12 +12,12 @@
 include ../../../../Makefiles/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
-TARG_BUILD_MAJOR = 2
+TARG_BUILD_MAJOR = 1
 TARG_BUILD_MINOR = 0
-TARG_BUILD_PATCH = 0
+TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
-TARGET_NAME = hoist_objective_state
+TARGET_NAME = hoist
 
 ###############################################################################
 # compilation flags
@@ -32,20 +32,20 @@ TARG_INCLUDES += -I $(CURDIR)/include
 TARG_SOURCES = hoist.cxx
 TARG_SOURCES += hoistPlugin.cxx
 TARG_SOURCES += hoistSupport.cxx
-TARG_SOURCES += hoist_request_publisher.cpp
-TARG_SOURCES += hoist_request_subscriber.cpp
-TARG_SOURCES += hoist_objective_publisher.cpp
-TARG_SOURCES += hoist_objective_subscriber.cpp
-TARG_SOURCES += hoist_state_publisher.cpp
-TARG_SOURCES += hoist_state_subscriber.cpp
+TARG_SOURCES += hoist_request_publisher.cxx
+TARG_SOURCES += hoist_request_subscriber.cxx
+TARG_SOURCES += hoist_objective_publisher.cxx
+TARG_SOURCES += hoist_objective_subscriber.cxx
+TARG_SOURCES += hoist_state_publisher.cxx
+TARG_SOURCES += hoist_state_subscriber.cxx
 
 ###############################################################################
 # Installation section
 ###############################################################################
 
 # package control file
-PACKAGE_DESCRIPTION = "Library package for the Ensign hoist_request API."
-PACKAGE_DEV_DESCRIPTION = "core files for Ensign hoist_request API development."
+PACKAGE_DESCRIPTION = "Library package for the Ensign rotate_engineering_request API."
+PACKAGE_DEV_DESCRIPTION = "core files for Ensign rotate_engineering_request API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
@@ -71,3 +71,4 @@ PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
 include $(TOP_DIR)/Makefiles/Makefile.rti
 include $(TOP_DIR)/Makefiles/Makefile.macros
 include $(TOP_DIR)/Makefiles/Makefile.basic
+

@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef hoist_1013695911_h
-#define hoist_1013695911_h
+#ifndef hoist_1013696379_h
+#define hoist_1013696379_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h

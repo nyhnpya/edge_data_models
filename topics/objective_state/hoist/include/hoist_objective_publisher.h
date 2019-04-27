@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __HOIST_OBJECTIVE_PUBLISHER_H__ 
-#define __HOIST_OBJECTIVE_PUBLISHER_H__ 
+#ifndef __NEC_PROCESS_HOIST_OBJECTIVE_PUBLISHER_H__
+#define __NEC_PROCESS_HOIST_OBJECTIVE_PUBLISHER_H__
 
 #include "publisher.h"
 #include "hoist.h"
@@ -22,25 +22,24 @@
 #ifdef _WIN32
 #undef pascal
 #endif
-#include "units.h"
 
-using namespace units;
-using namespace units::length;
-using namespace units::velocity;
+#include "units.h"
 
 class CHoistObjectivePublisher : public TPublisher< nec::process::HoistObjective >
 {
- public:
-    CHoistObjectivePublisher();
-    ~CHoistObjectivePublisher();
-
-    bool Create(int32_t domain);
-    bool Initialize();
-    bool PublishSample();
-
-    void SetEstimatedDuration(DataTypes::Time estimatedDuration);
-    void SetTargetVelocity(meters_per_second_t targetVelocity);
-    void SetTargetPosition(meter_t targetPosition);
+    public:
+        CHoistObjectivePublisher();
+        ~CHoistObjectivePublisher();
+        
+        bool Create(int32_t domain);
+        bool Initialize();
+        bool PublishSample();
+        
+        void SetId(CDdsUuid id);
+        void SetObjectiveId(CDdsUuid objectiveId);
+        void SetEstimatedDuration(const DataTypes::Time estimatedDuration);
+        void SetTargetVelocity(const units::velocity::meters_per_second_t targetVelocity);
+        void SetTargetPosition(const units::length::meter_t targetPosition);
 };
 
-#endif // __HOIST_OBJECTIVE_PUBLISHER_H__ 
+#endif // __NEC_PROCESS_HOIST_OBJECTIVE_PUBLISHER_H__
