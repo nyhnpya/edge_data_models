@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,10 +12,9 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __CIRCULATE_STATE_SUBSCRIBER_H__ 
-#define __CIRCULATE_STATE_SUBSCRIBER_H__ 
+#ifndef __NEC_PROCESS_CIRCULATE_STATE_SUBSCRIBER_H__
+#define __NEC_PROCESS_CIRCULATE_STATE_SUBSCRIBER_H__
 
-#include <mutex>
 #include "subscriber.h"
 #include "circulate.h"
 #include "circulateSupport.h"
@@ -23,51 +22,47 @@
 #ifdef _WIN32
 #undef pascal
 #endif
-#include "units.h"
 
-using namespace units;
-using namespace units::pressure;
-
-class CCirculateStateSubscriber : public TSubscriber< nec::process::CirculateState>
+class CCirculateStateSubscriber : public TSubscriber< nec::process::CirculateState >
 {
-public:
-    CCirculateStateSubscriber();
-    virtual ~CCirculateStateSubscriber();
+    public:
+        CCirculateStateSubscriber();
+        ~CCirculateStateSubscriber();
+        
+        bool Create(int32_t domain);
+        bool ValidData();
+        void OnDataAvailable(OnDataAvailableEvent event);
+        void OnDataDisposed(OnDataDisposedEvent event);
+        void OnLivelinessChanged(OnLivelinessChangedEvent event);
+        void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
+        
+        DataTypes::Uuid GetId();
+        DataTypes::Uuid GetObjectiveId();
+        DataTypes::Time GetTimestamp();
+        DataTypes::Status GetStatus();
+        double GetActualFlowRate();
+        double GetActualStandpipePressure();
+        double GetMinFlowRate();
+        double GetMaxFlowRate();
+        double GetMinStandpipePressure();
+        double GetMaxStandpipePressure();
+        double GetTargetFlowRate();
 
-    bool Create(int32_t domain);
-    void OnDataAvailable(OnDataAvailableEvent event);
-    void OnDataDisposed(OnDataDisposedEvent event);
-    void OnLivelinessChanged(OnLivelinessChangedEvent event);
-    void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
-    bool ValidData();
+    protected:
+        void DataAvailable(const nec::process::CirculateState &data,
+                           const DDS::SampleInfo &sampleInfo);
+        void DataDisposed(const DDS::SampleInfo &sampleInfo);
+        void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
+        void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
-    // Topic getters
-    DataTypes::Uuid GetId();
-    DataTypes::Status GetStatus();
-    double GetActualFlowRate();
-    pascal_t GetActualStandpipePressure();
-    double GetMinFlowRate();
-    double GetMaxFlowRate();
-    pascal_t GetMinStandpipePressure();
-    pascal_t GetMaxStandpipePressure();
-    double GetTargetFlowRate();
-
-protected:
-    ///Derived Methods
-    void DataAvailable(const nec::process::CirculateState &data,
-                       const DDS::SampleInfo &sampleInfo);
-    void DataDisposed(const DDS::SampleInfo &sampleInfo);
-    void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
-    void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
-
-private:
-    nec::process::CirculateState m_data;
-    DDS::SampleInfo                    m_sampleInfo;
-    DDS::LivelinessChangedStatus m_livelinessStatus;
-    OnDataAvailableEvent               m_pOnDataAvailable;
-    OnDataDisposedEvent                m_pOnDataDisposed;
-    OnLivelinessChangedEvent     m_pOnLivelinessChanged;
-    OnSubscriptionMatchedEvent   m_pOnSubscriptionMatched;
+    private:
+        nec::process::CirculateState                      m_data;
+        DDS::SampleInfo                                   m_sampleInfo;
+        DDS::LivelinessChangedStatus                      m_livelinessStatus;
+        OnDataAvailableEvent                              m_pOnDataAvailable;
+        OnDataDisposedEvent                               m_pOnDataDisposed;
+        OnLivelinessChangedEvent                          m_pOnLivelinessChanged;
+        OnSubscriptionMatchedEvent                        m_pOnSubscriptionMatched;
 };
 
-#endif // __CIRCULATE_STATE_SUBSCRIBER_H__ 
+#endif // __NEC_PROCESS_CIRCULATE_STATE_SUBSCRIBER_H__

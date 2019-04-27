@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __CIRCULATE_STATE_PUBLISHER_H__ 
-#define __CIRCULATE_STATE_PUBLISHER_H__ 
+#ifndef __NEC_PROCESS_CIRCULATE_STATE_PUBLISHER_H__
+#define __NEC_PROCESS_CIRCULATE_STATE_PUBLISHER_H__
 
 #include "publisher.h"
 #include "circulate.h"
@@ -22,31 +22,28 @@
 #ifdef _WIN32
 #undef pascal
 #endif
-#include "units.h"
-#include "dds_uuid.h"
-
-using namespace units;
-using namespace units::pressure;
 
 class CCirculateStatePublisher : public TPublisher< nec::process::CirculateState >
 {
- public:
-    CCirculateStatePublisher();
-    ~CCirculateStatePublisher();
-
-    bool Create(int32_t domain);
-    bool Initialize();
-    bool PublishSample();
-
-    void SetActualFlowRate(double actualFlowRate);
-    void SetActualStandpipePressure(pascal_t actualStandpipePressure);
-    void SetMaxFlowRate(double maxRateFlowRate);
-    void SetMaxStandpipePressure(pascal_t maxStandpipePressure);
-    void SetMinFlowRate(double minRateFlowRate);
-    void SetMinStandpipePressure(pascal_t minStandpipePressure);
-    void SetObjectiveId(CDdsUuid objectiveId);
-    void SetStatus(const DataTypes::Status status);
-    void SetTargetFlowRate(double targetFlowRate);
+    public:
+        CCirculateStatePublisher();
+        ~CCirculateStatePublisher();
+        
+        bool Create(int32_t domain);
+        bool Initialize();
+        bool PublishSample();
+        
+        void SetId(CDdsUuid id);
+        void SetObjectiveId(CDdsUuid objectiveId);
+        void SetTimestamp(const DataTypes::Time timestamp);
+        void SetStatus(const DataTypes::Status status);
+        void SetActualFlowRate(const double actualFlowRate);
+        void SetActualStandpipePressure(const double actualStandpipePressure);
+        void SetMinFlowRate(const double minFlowRate);
+        void SetMaxFlowRate(const double maxFlowRate);
+        void SetMinStandpipePressure(const double minStandpipePressure);
+        void SetMaxStandpipePressure(const double maxStandpipePressure);
+        void SetTargetFlowRate(const double targetFlowRate);
 };
 
-#endif // __CIRCULATE_STATE_PUBLISHER_H__ 
+#endif // __NEC_PROCESS_CIRCULATE_STATE_PUBLISHER_H__

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __CIRCULATE_OBJECTIVE_PUBLISHER_H__ 
-#define __CIRCULATE_OBJECTIVE_PUBLISHER_H__ 
+#ifndef __NEC_PROCESS_CIRCULATE_OBJECTIVE_PUBLISHER_H__
+#define __NEC_PROCESS_CIRCULATE_OBJECTIVE_PUBLISHER_H__
 
 #include "publisher.h"
 #include "circulate.h"
@@ -22,23 +22,21 @@
 #ifdef _WIN32
 #undef pascal
 #endif
-#include "units.h"
-
-using namespace units;
-using namespace units::pressure;
 
 class CCirculateObjectivePublisher : public TPublisher< nec::process::CirculateObjective >
 {
- public:
-    CCirculateObjectivePublisher();
-    ~CCirculateObjectivePublisher();
-
-    bool Create(int32_t domain);
-    bool Initialize();
-    bool PublishSample();
-
-    void SetEstimatedDuration(DataTypes::Time estimatedDuration);
-    void SetTargetFlowRate(DDS_Double targetFlowRate);
+    public:
+        CCirculateObjectivePublisher();
+        ~CCirculateObjectivePublisher();
+        
+        bool Create(int32_t domain);
+        bool Initialize();
+        bool PublishSample();
+        
+        void SetId(CDdsUuid id);
+        void SetObjectiveId(CDdsUuid objectiveId);
+        void SetEstimatedDuration(const DataTypes::Time estimatedDuration);
+        void SetTargetFlowRate(const double targetFlowRate);
 };
 
-#endif // __CIRCULATE_OBJECTIVE_PUBLISHER_H__ 
+#endif // __NEC_PROCESS_CIRCULATE_OBJECTIVE_PUBLISHER_H__
