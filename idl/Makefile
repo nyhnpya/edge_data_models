@@ -105,27 +105,50 @@ auto_ream.cpy:
 	-@rm -rf $(TMPOUTDIR)
 
 circulate.cpy:
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
 	mkdir -p $(TOPIC_HOME)/objective_state/circulate
 	mkdir -p $(TOPIC_HOME)/objective_state/circulate/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/circulate/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/circulate
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/objective_state/circulate
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective_state/circulate
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/circulate/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/circulate/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective_state/circulate
 	-@rm -rf $(TMPOUTDIR)
 
 drill.cpy: 
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
 	mkdir -p $(TOPIC_HOME)/objective_state/drill
 	mkdir -p $(TOPIC_HOME)/objective_state/drill/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/drill/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/drill
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/drill/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/drill
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/objective_state/drill
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective_state/drill
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/drill/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/drill/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective_state/drill
 	-@rm -rf $(TMPOUTDIR)
 
 hoist.cpy: 
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
 	mkdir -p $(TOPIC_HOME)/objective_state/hoist
 	mkdir -p $(TOPIC_HOME)/objective_state/hoist/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/hoist/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/hoist
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/objective_state/hoist
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective_state/hoist
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/hoist/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/hoist/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective_state/hoist
 	-@rm -rf $(TMPOUTDIR)
 
 #rotate.cpy:
@@ -152,11 +175,18 @@ rotate.cpy:
 	-@rm -rf $(TMPOUTDIR)
 
 wellbore.cpy:
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
 	mkdir -p $(TOPIC_HOME)/objective_state/wellbore
 	mkdir -p $(TOPIC_HOME)/objective_state/wellbore/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/wellbore/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/wellbore/
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/objective_state/wellbore
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective_state/wellbore
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/wellbore/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/wellbore/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective_state/wellbore
 	-@rm -rf $(TMPOUTDIR)
 
 objective.cpy:

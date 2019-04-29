@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef wellbore_1776161735_h
-#define wellbore_1776161735_h
+#ifndef wellbore_1776161843_h
+#define wellbore_1776161843_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h

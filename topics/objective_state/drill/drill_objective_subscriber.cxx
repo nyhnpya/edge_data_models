@@ -1,12 +1,24 @@
 #include "drill_objective_subscriber.h"
 
 CDrillObjectiveSubscriber::CDrillObjectiveSubscriber() :
-    m_pOnDataAvailable(nullptr)
+    m_pOnDataAvailable(nullptr),
+    m_pOnDataDisposed(nullptr),
+    m_pOnLivelinessChanged(nullptr),
+    m_pOnSubscriptionMatched(nullptr)
 {
+    memset((void *)&m_sampleInfo, 0, sizeof(DDS::SampleInfo));
 }
 
 CDrillObjectiveSubscriber::~CDrillObjectiveSubscriber()
 {
+}
+
+bool CDrillObjectiveSubscriber::Create(int32_t domain)
+{
+    return TSubscriber::Create(domain,
+                       nec::process::DRILL_OBJECTIVE,
+                       "EdgeBaseLibrary",
+                       "EdgeBaseProfile");
 }
 
 bool CDrillObjectiveSubscriber::ValidData()
@@ -19,94 +31,102 @@ DataTypes::Uuid CDrillObjectiveSubscriber::GetId()
     return m_data.id;
 }
 
+DataTypes::Uuid CDrillObjectiveSubscriber::GetObjectiveId()
+{
+    return m_data.objectiveId;
+}
+
 DataTypes::Time CDrillObjectiveSubscriber::GetEstimatedDuration()
 {
     return m_data.estimatedDuration;
 }
 
-double CDrillObjectiveSubscriber::GetRopTarget()
+units::velocity::meters_per_second_t CDrillObjectiveSubscriber::GetRopTarget()
 {
-    return m_data.ropTarget;
+    return units::velocity::meters_per_second_t(m_data.ropTarget);
 }
 
-double CDrillObjectiveSubscriber::GetWobTarget()
+units::force::newton_t CDrillObjectiveSubscriber::GetWobTarget()
 {
-    return m_data.wobTarget;
+    return units::force::newton_t(m_data.wobTarget);
 }
 
-double CDrillObjectiveSubscriber::GetDiffPressureTarget()
+units::pressure::pascal_t CDrillObjectiveSubscriber::GetDiffPressureTarget()
 {
-    return m_data.diffPressureTarget;
+    return units::pressure::pascal_t(m_data.diffPressureTarget);
 }
 
-double CDrillObjectiveSubscriber::GetTorqueTarget()
+units::torque::newton_meter_t CDrillObjectiveSubscriber::GetTorqueTarget()
 {
-    return m_data.torqueTarget;
+    return units::torque::newton_meter_t(m_data.torqueTarget);
 }
 
 bool CDrillObjectiveSubscriber::GetRopMode()
 {
-    return (m_data.ropMode == DDS_BOOLEAN_TRUE);
+    return m_data.ropMode;
 }
 
 bool CDrillObjectiveSubscriber::GetWobMode()
 {
-    return (m_data.wobMode == DDS_BOOLEAN_TRUE);
+    return m_data.wobMode;
 }
 
 bool CDrillObjectiveSubscriber::GetDiffPressureMode()
 {
-    return (m_data.diffPressureMode == DDS_BOOLEAN_TRUE);
+    return m_data.diffPressureMode;
 }
 
 bool CDrillObjectiveSubscriber::GetTorqueMode()
 {
-    return (m_data.torqueMode == DDS_BOOLEAN_TRUE);
+    return m_data.torqueMode;
 }
+
 
 void CDrillObjectiveSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {
     m_pOnDataAvailable = event;
 }
 
+
 void CDrillObjectiveSubscriber::OnDataDisposed(OnDataDisposedEvent event)
 {
     m_pOnDataDisposed = event;
 }
+
 
 void CDrillObjectiveSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
 {
     m_pOnLivelinessChanged = event;
 }
 
-bool CDrillObjectiveSubscriber::Create(int32_t domain)
+
+void CDrillObjectiveSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
 {
-    return TSubscriber::Create(domain,
-                               nec::process::DRILL_OBJECTIVE,
-                               "EdgeBaseLibrary",
-                               "EdgeBaseProfile");
+    m_pOnSubscriptionMatched = event;
 }
 
+
 void CDrillObjectiveSubscriber::DataAvailable(const nec::process::DrillObjective &data,
-                                                 const DDS::SampleInfo &sampleInfo)
+                          const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
-
+    
     if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
         m_data = data;
-
+    
         if (m_pOnDataAvailable != nullptr)
         {
             m_pOnDataAvailable(sampleInfo);
         }
+    
     }
 }
 
 void CDrillObjectiveSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 {
     m_sampleInfo = sampleInfo;
-
+    
     if (m_pOnDataDisposed != nullptr)
     {
         m_pOnDataDisposed(sampleInfo);
@@ -118,5 +138,14 @@ void CDrillObjectiveSubscriber::LivelinessChanged(const DDS::LivelinessChangedSt
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
+    }
+}
+
+void CDrillObjectiveSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
+{
+    
+    if (m_pOnSubscriptionMatched != nullptr)
+    {
+        m_pOnSubscriptionMatched(status);
     }
 }

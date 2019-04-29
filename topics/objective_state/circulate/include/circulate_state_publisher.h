@@ -23,6 +23,8 @@
 #undef pascal
 #endif
 
+#include "units.h"
+
 class CCirculateStatePublisher : public TPublisher< nec::process::CirculateState >
 {
     public:
@@ -37,13 +39,13 @@ class CCirculateStatePublisher : public TPublisher< nec::process::CirculateState
         void SetObjectiveId(CDdsUuid objectiveId);
         void SetTimestamp(const DataTypes::Time timestamp);
         void SetStatus(const DataTypes::Status status);
-        void SetActualFlowRate(const double actualFlowRate);
-        void SetActualStandpipePressure(const double actualStandpipePressure);
-        void SetMinFlowRate(const double minFlowRate);
-        void SetMaxFlowRate(const double maxFlowRate);
-        void SetMinStandpipePressure(const double minStandpipePressure);
-        void SetMaxStandpipePressure(const double maxStandpipePressure);
-        void SetTargetFlowRate(const double targetFlowRate);
+        void SetActualFlowRate(const units::volume_velocity::cubic_meters_per_second_t actualFlowRate);
+        void SetActualStandpipePressure(const units::pressure::pascal_t actualStandpipePressure);
+        void SetMinFlowRate(const units::volume_velocity::cubic_meters_per_second_t minFlowRate);
+        void SetMaxFlowRate(const units::volume_velocity::cubic_meters_per_second_t maxFlowRate);
+        void SetMinStandpipePressure(const units::pressure::pascal_t minStandpipePressure);
+        void SetMaxStandpipePressure(const units::pressure::pascal_t maxStandpipePressure);
+        void SetTargetFlowRate//(const units::volume_velocity::cubic_meters_per_second_t targetFlowRate//);
 };
 
 #endif // __NEC_PROCESS_CIRCULATE_STATE_PUBLISHER_H__

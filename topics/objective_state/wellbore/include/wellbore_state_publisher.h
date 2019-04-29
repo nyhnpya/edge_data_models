@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,38 +12,36 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __WELLBORE_STATE_PUBLISHER_H__
-#define __WELLBORE_STATE_PUBLISHER_H__
+#ifndef __NEC_PROCESS_WELLBORE_STATE_PUBLISHER_H__
+#define __NEC_PROCESS_WELLBORE_STATE_PUBLISHER_H__
 
-#include <mutex>
 #include "publisher.h"
-#include "base_data_types.h"
 #include "wellbore.h"
 #include "wellboreSupport.h"
 
 #ifdef _WIN32
 #undef pascal
 #endif
+
 #include "units.h"
 
-using namespace units;
-using namespace units::length;
-
-class CWellboreStatePublisher : public TPublisher<nec::process::WellboreState>
+class CWellboreStatePublisher : public TPublisher< nec::process::WellboreState >
 {
-public:
-    CWellboreStatePublisher();
-    virtual ~CWellboreStatePublisher();
-
-    bool Create(int32_t domain);
-    bool Initialize();
-    bool PublishSample();
-
-    // Topic getters
-    void SetBitDepth(meter_t bitDept);
-    void SetHoleDepth(meter_t holeDepth);
-
-private:
+    public:
+        CWellboreStatePublisher();
+        ~CWellboreStatePublisher();
+        
+        bool Create(int32_t domain);
+        bool Initialize();
+        bool PublishSample();
+        
+        void SetId(CDdsUuid id);
+        void SetObjectiveId(CDdsUuid objectiveId);
+        void SetTimestamp(const DataTypes::Time timestamp);
+        void SetHoleDepth(const units::length::meter_t holeDepth);
+        void SetMeasuredDepth(const units::length::meter_t measuredDepth);
+        void SetTrueVerticalDepth(const units::length::meter_t trueVerticalDepth);
+        void SetBitDepth(const units::length::meter_t bitDepth);
 };
 
-#endif // __WELLBORE_STATE_PUBLISHER_H__
+#endif // __NEC_PROCESS_WELLBORE_STATE_PUBLISHER_H__

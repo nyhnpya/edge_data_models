@@ -37,12 +37,12 @@ module nec
             unsigned long       jointNumber;
             unsigned long       standNumber;
             double              weight;
-            double              outerDiameter;
-            double              innerDiameter;
+            double              outerDiameter;  // (units::length::meter)
+            double              innerDiameter;  // (units::length::meter)
             double              kellyDown;
-            double              length;
-            double              pipeLength;
-            double              stringLength;
+            double              length;  // (units::length::meter)
+            double              pipeLength;  // (units::length::meter)
+            double              stringLength;  // (units::length::meter)
             string              description;
             DataTypes::PipeType pipeType;
         };

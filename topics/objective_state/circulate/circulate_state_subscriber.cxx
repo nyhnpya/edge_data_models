@@ -46,39 +46,39 @@ DataTypes::Status CCirculateStateSubscriber::GetStatus()
     return m_data.status;
 }
 
-double CCirculateStateSubscriber::GetActualFlowRate()
+units::volume_velocity::cubic_meters_per_second_t CCirculateStateSubscriber::GetActualFlowRate()
 {
-    return m_data.actualFlowRate;
+    return units::volume_velocity::cubic_meters_per_second_t(m_data.actualFlowRate);
 }
 
-double CCirculateStateSubscriber::GetActualStandpipePressure()
+units::pressure::pascal_t CCirculateStateSubscriber::GetActualStandpipePressure()
 {
-    return m_data.actualStandpipePressure;
+    return units::pressure::pascal_t(m_data.actualStandpipePressure);
 }
 
-double CCirculateStateSubscriber::GetMinFlowRate()
+units::volume_velocity::cubic_meters_per_second_t CCirculateStateSubscriber::GetMinFlowRate()
 {
-    return m_data.minFlowRate;
+    return units::volume_velocity::cubic_meters_per_second_t(m_data.minFlowRate);
 }
 
-double CCirculateStateSubscriber::GetMaxFlowRate()
+units::volume_velocity::cubic_meters_per_second_t CCirculateStateSubscriber::GetMaxFlowRate()
 {
-    return m_data.maxFlowRate;
+    return units::volume_velocity::cubic_meters_per_second_t(m_data.maxFlowRate);
 }
 
-double CCirculateStateSubscriber::GetMinStandpipePressure()
+units::pressure::pascal_t CCirculateStateSubscriber::GetMinStandpipePressure()
 {
-    return m_data.minStandpipePressure;
+    return units::pressure::pascal_t(m_data.minStandpipePressure);
 }
 
-double CCirculateStateSubscriber::GetMaxStandpipePressure()
+units::pressure::pascal_t CCirculateStateSubscriber::GetMaxStandpipePressure()
 {
-    return m_data.maxStandpipePressure;
+    return units::pressure::pascal_t(m_data.maxStandpipePressure);
 }
 
-double CCirculateStateSubscriber::GetTargetFlowRate()
+units::volume_velocity::cubic_meters_per_second_t CCirculateStateSubscriber::GetTargetFlowRate//()
 {
-    return m_data.targetFlowRate;
+    return units::volume_velocity::cubic_meters_per_second_t(m_data.targetFlowRate//);
 }
 
 

@@ -23,6 +23,8 @@
 #undef pascal
 #endif
 
+#include "units.h"
+
 class CCirculateRequestPublisher : public TPublisher< nec::process::CirculateRequest >
 {
     public:
@@ -38,7 +40,7 @@ class CCirculateRequestPublisher : public TPublisher< nec::process::CirculateReq
         void SetPriority(const DataTypes::Priority priority);
         void SetTimeNeeded(const DataTypes::Time timeNeeded);
         void SetEstimatedDuration(const DataTypes::Time estimatedDuration);
-        void SetTargetFlowRate(const double targetFlowRate);
+        void SetTargetFlowRate(const units::volume_velocity::cubic_meters_per_second_t targetFlowRate);
 };
 
 #endif // __NEC_PROCESS_CIRCULATE_REQUEST_PUBLISHER_H__

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,34 +12,40 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __DRILL_OBJECTIVE_PUBLISHER_H__
-#define __DRILL_OBJECTIVE_PUBLISHER_H__
+#ifndef __NEC_PROCESS_DRILL_OBJECTIVE_PUBLISHER_H__
+#define __NEC_PROCESS_DRILL_OBJECTIVE_PUBLISHER_H__
 
 #include "publisher.h"
-#include "base_data_types.h"
 #include "drill.h"
 #include "drillSupport.h"
 
+#ifdef _WIN32
+#undef pascal
+#endif
+
+#include "units.h"
+
 class CDrillObjectivePublisher : public TPublisher< nec::process::DrillObjective >
 {
- public:
-    CDrillObjectivePublisher();
-    ~CDrillObjectivePublisher();
-
-    bool Create(int32_t domain);
-    bool Initialize();
-    bool PublishSample();
-
-    // setters
-    void SetEstimatedDuration(DataTypes::Time estimatedDuration);
-    void SetRopTarget(const double ropTarget);
-    void SetWobTarget(const double wobTarget);
-    void SetDiffPressureTarget(const double diffPressureTarget);
-    void SetTorqueTarget(const double torqueTarget);
-    void SetRopMode(const bool ropMode);
-    void SetWobMode(const bool wobMode);
-    void SetDiffPressureMode(const bool diffPressureMode);
-    void SetTorqueMode(const bool torqueMode);
+    public:
+        CDrillObjectivePublisher();
+        ~CDrillObjectivePublisher();
+        
+        bool Create(int32_t domain);
+        bool Initialize();
+        bool PublishSample();
+        
+        void SetId(CDdsUuid id);
+        void SetObjectiveId(CDdsUuid objectiveId);
+        void SetEstimatedDuration(const DataTypes::Time estimatedDuration);
+        void SetRopTarget(const units::velocity::meters_per_second_t ropTarget);
+        void SetWobTarget(const units::force::newton_t wobTarget);
+        void SetDiffPressureTarget(const units::pressure::pascal_t diffPressureTarget);
+        void SetTorqueTarget(const units::torque::newton_meter_t torqueTarget);
+        void SetRopMode(const bool ropMode);
+        void SetWobMode(const bool wobMode);
+        void SetDiffPressureMode(const bool diffPressureMode);
+        void SetTorqueMode(const bool torqueMode);
 };
 
-#endif // __DRILL_OBJECTIVE_PUBLISHER_H__
+#endif // __NEC_PROCESS_DRILL_OBJECTIVE_PUBLISHER_H__

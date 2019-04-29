@@ -4,6 +4,9 @@ module nec
 {
     module process
     {
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: RequestProfile
+
         //@copy-c-declaration static const char CIRCULATE_REQUEST[] = "CirculateRequest";
 
         /**
@@ -15,12 +18,15 @@ module nec
         struct CirculateRequest
         {
             DataTypes::Uuid     id; //@key   
-            DataTypes::Uuid     objectiveId; ///< id of current objective
-            DataTypes::Priority priority;    ///< priority of the request
-            DataTypes::Time     timeNeeded;  ///< time requestor needs the resource
-            DataTypes::Time     estimatedDuration; ///< estimated duration requestor needs the resource
-            double              targetFlowRate; ///< requested flow rate in m/sec^3
+            DataTypes::Uuid     objectiveId;
+            DataTypes::Priority priority;
+            DataTypes::Time     timeNeeded;
+            DataTypes::Time     estimatedDuration;
+            double              targetFlowRate; // (units::volume_velocity::cubic_meters_per_second)
         };
+
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: ObjectiveProfile
 
         //@copy-c-declaration static const char CIRCULATE_OBJECTIVE[] = "CirculateObjective";
 
@@ -32,10 +38,13 @@ module nec
         struct CirculateObjective
         {
             DataTypes::Uuid     id; //@key
-            DataTypes::Uuid     objectiveId; ///< id of current objective
-            DataTypes::Time     estimatedDuration; ///< estimated duration requestor needs the resource
-            double              targetFlowRate; ///< requested flow rate in m/sec^3
+            DataTypes::Uuid     objectiveId;
+            DataTypes::Time     estimatedDuration;
+            double              targetFlowRate;
         };
+
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: StateProfile
 
         //@copy-c-declaration static const char CIRCULATE_STATE[] = "CirculateState";
 
@@ -65,17 +74,17 @@ module nec
             DataTypes::Status status;
 
             // actuals
-            double            actualFlowRate;
-            double            actualStandpipePressure;
+            double            actualFlowRate; // (units::volume_velocity::cubic_meters_per_second)
+            double            actualStandpipePressure; // (units::pressure::pascal)
 
             // constraints
-            double            minFlowRate;
-            double            maxFlowRate;
-            double            minStandpipePressure;
-            double            maxStandpipePressure;
+            double            minFlowRate; // (units::volume_velocity::cubic_meters_per_second)
+            double            maxFlowRate; // (units::volume_velocity::cubic_meters_per_second)
+            double            minStandpipePressure;  // (units::pressure::pascal)
+            double            maxStandpipePressure;  // (units::pressure::pascal)
 
             // targets
-            double            targetFlowRate;
+            double            targetFlowRate;// (units::volume_velocity::cubic_meters_per_second)
         };
     };
 };

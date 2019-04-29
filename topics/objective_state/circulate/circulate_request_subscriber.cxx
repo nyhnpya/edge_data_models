@@ -51,9 +51,9 @@ DataTypes::Time CCirculateRequestSubscriber::GetEstimatedDuration()
     return m_data.estimatedDuration;
 }
 
-double CCirculateRequestSubscriber::GetTargetFlowRate()
+units::volume_velocity::cubic_meters_per_second_t CCirculateRequestSubscriber::GetTargetFlowRate()
 {
-    return m_data.targetFlowRate;
+    return units::volume_velocity::cubic_meters_per_second_t(m_data.targetFlowRate);
 }
 
 
