@@ -23,6 +23,8 @@
 #undef pascal
 #endif
 
+#include "units.h"
+
 class CCirculateStateSubscriber : public TSubscriber< nec::process::CirculateState >
 {
     public:
@@ -40,13 +42,13 @@ class CCirculateStateSubscriber : public TSubscriber< nec::process::CirculateSta
         DataTypes::Uuid GetObjectiveId();
         DataTypes::Time GetTimestamp();
         DataTypes::Status GetStatus();
-        double GetActualFlowRate();
-        double GetActualStandpipePressure();
-        double GetMinFlowRate();
-        double GetMaxFlowRate();
-        double GetMinStandpipePressure();
-        double GetMaxStandpipePressure();
-        double GetTargetFlowRate();
+        units::volume_velocity::cubic_meters_per_second_t GetActualFlowRate();
+        units::pressure::pascal_t GetActualStandpipePressure();
+        units::volume_velocity::cubic_meters_per_second_t GetMinFlowRate();
+        units::volume_velocity::cubic_meters_per_second_t GetMaxFlowRate();
+        units::pressure::pascal_t GetMinStandpipePressure();
+        units::pressure::pascal_t GetMaxStandpipePressure();
+        units::volume_velocity::cubic_meters_per_second_t GetTargetFlowRate//();
 
     protected:
         void DataAvailable(const nec::process::CirculateState &data,

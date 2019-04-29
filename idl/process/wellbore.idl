@@ -25,10 +25,10 @@ module nec
             DataTypes::Uuid  id; //@key
             DataTypes::Uuid  objectiveId; 
             DataTypes::Time  timestamp;
-            double           holeDepth;
-            double           measuredDepth;
-            double           trueVerticalDepth;
-            double           bitDepth;
+            double           holeDepth;  // (units::length::meter)
+            double           measuredDepth;  // (units::length::meter)
+            double           trueVerticalDepth;  // (units::length::meter)
+            double           bitDepth;  // (units::length::meter)
         };
     };
 };

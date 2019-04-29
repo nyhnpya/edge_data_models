@@ -14,7 +14,7 @@ bool CCirculateRequestPublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::CIRCULATE_REQUEST,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "RequestProfile");
 }
 
 bool CCirculateRequestPublisher::Initialize()
@@ -77,11 +77,11 @@ void CCirculateRequestPublisher::SetEstimatedDuration(DataTypes::Time estimatedD
     }
 }
 
-void CCirculateRequestPublisher::SetTargetFlowRate(double targetFlowRate)
+void CCirculateRequestPublisher::SetTargetFlowRate(const units::volume_velocity::cubic_meters_per_second_t targetFlowRate)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetFlowRate = targetFlowRate;
+        m_pDataInstance->targetFlowRate = units::unit_cast<double>(targetFlowRate);
     }
 }
 

@@ -38,9 +38,9 @@ module nec
         struct RotateEngineeringRequest
         {
             DataTypes::Uuid     id;          //@key
-            DataTypes::Priority priority;    // priority of the request
-            DataTypes::Time     timeNeeded;  // time requester needs the resource
-            DataTypes::Time     duration;    // duration requester needs the resource
+            DataTypes::Priority priority;
+            DataTypes::Time     timeNeeded;
+            DataTypes::Time     duration;
             double              targetRate;  // (units::angular_velocity::radians_per_second)
             double              torque;      // (units::torque::newton_meter)
         };

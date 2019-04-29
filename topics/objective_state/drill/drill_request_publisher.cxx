@@ -9,14 +9,40 @@ CDrillRequestPublisher::~CDrillRequestPublisher()
 {
 }
 
+bool CDrillRequestPublisher::Create(int32_t domain)
+{
+    return TPublisher::Create(domain,
+                       nec::process::DRILL_REQUEST,
+                       "EdgeBaseLibrary",
+                       "EdgeBaseProfile");
+}
+
 bool CDrillRequestPublisher::Initialize()
 {
     CDdsUuid uuid;
+    bool retVal = false;
 
-    uuid.GenerateUuid();
-    m_pDataInstance->id = DDS_String_dup(uuid.c_str());
+    if (m_pDataInstance != nullptr)
+    {
+        uuid.GenerateUuid();
+        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
+        retVal = true;
+    }
 
-    return true;
+    return retVal;
+}
+
+bool CDrillRequestPublisher::PublishSample()
+{
+    return Publish();
+}
+
+void CDrillRequestPublisher::SetId(CDdsUuid id)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->id = DDS_String_dup(id.c_str());
+    }
 }
 
 void CDrillRequestPublisher::SetObjectiveId(CDdsUuid objectiveId)
@@ -51,111 +77,67 @@ void CDrillRequestPublisher::SetDuration(DataTypes::Time duration)
     }
 }
 
-void CDrillRequestPublisher::SetRopTarget(const meters_per_second_t ropTarget)
+void CDrillRequestPublisher::SetRopTarget(const units::velocity::meters_per_second_t ropTarget)
 {
     if (m_pDataInstance != nullptr)
     {
         m_pDataInstance->ropTarget = units::unit_cast<double>(ropTarget);
     }
-    else
-    {
-        LOG_ERROR("Failed to set rop target on uninitialized sample");
-    }
 }
 
-void CDrillRequestPublisher::SetWobTarget(const newton_t wobTarget)
+void CDrillRequestPublisher::SetWobTarget(const units::force::newton_t wobTarget)
 {
     if (m_pDataInstance != nullptr)
     {
         m_pDataInstance->wobTarget = units::unit_cast<double>(wobTarget);
     }
-    else
-    {
-        LOG_ERROR("Failed to set wob target on uninitialized sample");
-    }
 }
 
-void CDrillRequestPublisher::SetDiffPressureTarget(const pascal_t diffPressureTarget)
+void CDrillRequestPublisher::SetDiffPressureTarget(const units::pressure::pascal_t diffPressureTarget)
 {
     if (m_pDataInstance != nullptr)
     {
         m_pDataInstance->diffPressureTarget = units::unit_cast<double>(diffPressureTarget);
     }
-    else
-    {
-        LOG_ERROR("Failed to set diff pressure target on uninitialized sample");
-    }
 }
 
-void CDrillRequestPublisher::SetTorqueTarget(const newton_meter_t torqueTarget)
+void CDrillRequestPublisher::SetTorqueTarget(const units::torque::newton_meter_t torqueTarget)
 {
     if (m_pDataInstance != nullptr)
     {
         m_pDataInstance->torqueTarget = units::unit_cast<double>(torqueTarget);
     }
-    else
-    {
-        LOG_ERROR("Failed to set torque target on uninitialized sample");
-    }
 }
 
-void CDrillRequestPublisher::SetRopMode(const bool ropMode)
+void CDrillRequestPublisher::SetRopMode(bool ropMode)
 {
     if (m_pDataInstance != nullptr)
     {
         m_pDataInstance->ropMode = ropMode;
     }
-    else
-    {
-        LOG_ERROR("Failed to set rop mode on uninitialized sample");
-    }
 }
 
-void CDrillRequestPublisher::SetWobMode(const bool wobMode)
+void CDrillRequestPublisher::SetWobMode(bool wobMode)
 {
     if (m_pDataInstance != nullptr)
     {
         m_pDataInstance->wobMode = wobMode;
     }
-    else
-    {
-        LOG_ERROR("Failed to set wob mode on uninitialized sample");
-    }
 }
 
-void CDrillRequestPublisher::SetDiffPressureMode(const bool diffPressureMode)
+void CDrillRequestPublisher::SetDiffPressureMode(bool diffPressureMode)
 {
     if (m_pDataInstance != nullptr)
     {
         m_pDataInstance->diffPressureMode = diffPressureMode;
     }
-    else
-    {
-        LOG_ERROR("Failed to set diff pressure mode on uninitialized sample");
-    }
 }
 
-void CDrillRequestPublisher::SetTorqueMode(const bool torqueMode)
+void CDrillRequestPublisher::SetTorqueMode(bool torqueMode)
 {
     if (m_pDataInstance != nullptr)
     {
         m_pDataInstance->torqueMode = torqueMode;
     }
-    else
-    {
-        LOG_ERROR("Failed to set torque mode on uninitialized sample");
-    }
 }
 
-bool CDrillRequestPublisher::PublishSample()
-{
-    return Publish();
-}
-
-bool CDrillRequestPublisher::Create(int32_t domain)
-{
-    return TPublisher::Create(domain,
-                              nec::process::DRILL_REQUEST,
-                              "EdgeBaseLibrary",
-                              "EdgeBaseProfile");
-}

@@ -28,8 +28,8 @@ module nec
             DataTypes::Priority priority;
             DataTypes::Time     timeNeeded;
             DataTypes::Time     estimatedDuration;
-            double              targetVelocity;
-            double              targetPosition;
+            double              targetVelocity;  // (units::velocity::meters_per_second)
+            double              targetPosition;  // (units::length::meter)
         };
 
         //@copy-c-declaration static const char HOIST_OBJECTIVE[] = "HoistObjective";
@@ -52,8 +52,8 @@ module nec
             DataTypes::Uuid  id; //@key
             DataTypes::Uuid  objectiveId; 
             DataTypes::Time  estimatedDuration;
-            double           targetVelocity;
-            double           targetPosition;
+            double           targetVelocity;  // (units::velocity::meters_per_second)
+            double           targetPosition;  // (units::length::meter))
         };
 
         //@copy-c-declaration static const char HOIST_STATE[] = "HoistState";
@@ -88,20 +88,20 @@ module nec
             DataTypes::Status   status;
 
             // actuals
-            double              actualHookload;
-            double              actualVelocity;
-            double              actualPosition;
+            double              actualHookload;  // (units::force::newton)
+            double              actualVelocity;  // (units::velocity::meters_per_second)
+            double              actualPosition;  // (units::length::meter)
 
             // constraints
-            double              maxHookload;
-            double              maxHoistVelocity;
-            double              maxLowerVelocity;
-            double              maxHoistPosition;
-            double              maxLowerPosition;
+            double              maxHookload;       // (units::force::newton)
+            double              maxHoistVelocity;  // (units::velocity::meters_per_second)
+            double              maxLowerVelocity;  // (units::velocity::meters_per_second)
+            double              maxHoistPosition;  // (units::length::meter)
+            double              maxLowerPosition;  // (units::length::meter)
 
             // targets
-            double              targetVelocity;
-            double              targetPosition;
+            double              targetVelocity;  // (units::velocity::meters_per_second)
+            double              targetPosition;  // (units::length::meter)
         };
     };
 };

@@ -31,11 +31,11 @@ module nec
             DataTypes::Uuid     objectiveId;
             DataTypes::Priority priority;
             DataTypes::Time     timeNeeded;
-            DataTypes::Time     duration;
-            double              ropTarget;
-            double              wobTarget;
-            double              diffPressureTarget;
-            double              torqueTarget;
+            DataTypes::Time     estimatedDuration;
+            double              ropTarget;  // (units::velocity::meters_per_second)
+            double              wobTarget;  // (units::force::newton)
+            double              diffPressureTarget; // (units::pressure::pascal)
+            double              torqueTarget;  // (units::torque::newton_meter)
             boolean             ropMode;
             boolean             wobMode;
             boolean             diffPressureMode;
@@ -68,10 +68,10 @@ module nec
             DataTypes::Uuid     id; //@key
             DataTypes::Uuid     objectiveId;
             DataTypes::Time     estimatedDuration;
-            double              ropTarget;
-            double              wobTarget;
-            double              diffPressureTarget;
-            double              torqueTarget;
+            double              ropTarget;  // (units::velocity::meters_per_second)
+            double              wobTarget;  // (units::force::newton)
+            double              diffPressureTarget; // (units::pressure::pascal)
+            double              torqueTarget;  // (units::torque::newton_meter)
             boolean             ropMode;
             boolean             wobMode;
             boolean             diffPressureMode;
@@ -114,22 +114,22 @@ module nec
             DataTypes::Uuid id; //@key
             DataTypes::Uuid objectiveId;
             DataTypes::Time timestamp;
-            double          ropActual;
-            double          wobActual;
-            double          diffPressureActual;
-            double          torqueActual;
-            double          ropLimit;
-            double          wobLimit;
-            double          diffPressureLimit;
-            double          torqueLimit;
+            double          ropActual;  // (units::velocity::meters_per_second)
+            double          wobActual;  // (units::force::newton)
+            double          diffPressureActual; // (units::pressure::pascal)
+            double          torqueActual;  // (units::torque::newton_meter)
+            double          ropLimit;  // (units::velocity::meters_per_second)
+            double          wobLimit;  // (units::force::newton)
+            double          diffPressureLimit; // (units::pressure::pascal)
+            double          torqueLimit;  // (units::torque::newton_meter)
             boolean         ropMode;
             boolean         wobMode;
             boolean         diffPressureMode;
             boolean         torqueMode;
-            double          ropTarget;
-            double          wobTarget;
-            double          diffPressureTarget;
-            double          torqueTarget;
+            double          ropTarget;  // (units::velocity::meters_per_second)
+            double          wobTarget;  // (units::force::newton)
+            double          diffPressureTarget; // (units::pressure::pascal)
+            double          torqueTarget;  // (units::torque::newton_meter)
             boolean         bitOnBottom;
         };
     };

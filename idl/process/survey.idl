@@ -102,22 +102,22 @@ module nec
 
             // actuals
             DataTypes::SurveyQuality  acutalSurveyQuality;
-            double                    measuredDepth;
-            double                    inclination;
-            double                    azimuth;
-            double                    totalVerticalDepth;
+            double                    measuredDepth;   // (units::length::meter)
+            double                    inclination;  // (units::angular_velocity::radians_per_second)
+            double                    azimuth;  // (units::angular_velocity::radians_per_second)
+            double                    totalVerticalDepth;   // (units::length::meter)
             double                    dogLeg;
             double                    verticalSection;
-            double                    eastWest;
-            double                    northSouth;
+            double                    eastWest;  // (units::angular_velocity::radians_per_second)
+            double                    northSouth;  // (units::angular_velocity::radians_per_second)
             double                    courseLength;
             double                    ca;
             double                    cd;
             double                    cl;
             double                    buildRate;
-            double                    turnRate;
-            double                    topOfTarget;
-            double                    bottomOfTarget;
+            double                    turnRate;  // (units::angular_velocity::radians_per_second)
+            double                    topOfTarget;   // (units::length::meter)
+            double                    bottomOfTarget;   // (units::length::meter)
             double                    dip;
             double                    fault;
 

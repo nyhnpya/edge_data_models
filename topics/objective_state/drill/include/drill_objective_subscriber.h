@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,51 +12,59 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __DRILL_OBJECTIVE_SUBSCRIBER_H__
-#define __DRILL_OBJECTIVE_SUBSCRIBER_H__
+#ifndef __NEC_PROCESS_DRILL_OBJECTIVE_SUBSCRIBER_H__
+#define __NEC_PROCESS_DRILL_OBJECTIVE_SUBSCRIBER_H__
 
 #include "subscriber.h"
-#include "base_data_types.h"
 #include "drill.h"
 #include "drillSupport.h"
 
+#ifdef _WIN32
+#undef pascal
+#endif
+
+#include "units.h"
+
 class CDrillObjectiveSubscriber : public TSubscriber< nec::process::DrillObjective >
 {
- public:
-    CDrillObjectiveSubscriber();
-    ~CDrillObjectiveSubscriber();
+    public:
+        CDrillObjectiveSubscriber();
+        ~CDrillObjectiveSubscriber();
+        
+        bool Create(int32_t domain);
+        bool ValidData();
+        void OnDataAvailable(OnDataAvailableEvent event);
+        void OnDataDisposed(OnDataDisposedEvent event);
+        void OnLivelinessChanged(OnLivelinessChangedEvent event);
+        void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
+        
+        DataTypes::Uuid GetId();
+        DataTypes::Uuid GetObjectiveId();
+        DataTypes::Time GetEstimatedDuration();
+        units::velocity::meters_per_second_t GetRopTarget();
+        units::force::newton_t GetWobTarget();
+        units::pressure::pascal_t GetDiffPressureTarget();
+        units::torque::newton_meter_t GetTorqueTarget();
+        bool GetRopMode();
+        bool GetWobMode();
+        bool GetDiffPressureMode();
+        bool GetTorqueMode();
 
-    bool Create(int32_t domain);
-    void OnDataAvailable(OnDataAvailableEvent event);
-    void OnDataDisposed(OnDataDisposedEvent event);
-    void OnLivelinessChanged(OnLivelinessChangedEvent event);
-    bool ValidData();
+    protected:
+        void DataAvailable(const nec::process::DrillObjective &data,
+                           const DDS::SampleInfo &sampleInfo);
+        void DataDisposed(const DDS::SampleInfo &sampleInfo);
+        void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
+        void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
-    // getters
-    DataTypes::Uuid GetId();
-    DataTypes::Time GetEstimatedDuration();
-    double GetRopTarget();
-    double GetWobTarget();
-    double GetDiffPressureTarget();
-    double GetTorqueTarget();
-    bool GetRopMode();
-    bool GetWobMode();
-    bool GetDiffPressureMode();
-    bool GetTorqueMode();
-
- protected:
-    void DataAvailable(const nec::process::DrillObjective &data,
-               const DDS::SampleInfo &sampleInfo);
-    void DataDisposed(const DDS::SampleInfo &sampleInfo);
-    void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
-
- private:
-    nec::process::DrillObjective m_data;
-    DDS::SampleInfo             m_sampleInfo;
-    DDS::LivelinessChangedStatus m_livelinessStatus;
-    OnDataAvailableEvent        m_pOnDataAvailable;
-    OnDataDisposedEvent         m_pOnDataDisposed;
-    OnLivelinessChangedEvent     m_pOnLivelinessChanged;
+    private:
+        nec::process::DrillObjective                      m_data;
+        DDS::SampleInfo                                   m_sampleInfo;
+        DDS::LivelinessChangedStatus                      m_livelinessStatus;
+        OnDataAvailableEvent                              m_pOnDataAvailable;
+        OnDataDisposedEvent                               m_pOnDataDisposed;
+        OnLivelinessChangedEvent                          m_pOnLivelinessChanged;
+        OnSubscriptionMatchedEvent                        m_pOnSubscriptionMatched;
 };
 
-#endif // __DRILL_OBJECTIVE_SUBSCRIBER_H__
+#endif // __NEC_PROCESS_DRILL_OBJECTIVE_SUBSCRIBER_H__
