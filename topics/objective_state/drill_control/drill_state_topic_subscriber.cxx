@@ -27,6 +27,14 @@ CDrillStateTopicSubscriber::~CDrillStateTopicSubscriber()
 {
 }
 
+bool CDrillStateTopicSubscriber::Create(int32_t domain)
+{
+    return TSubscriber::Create(domain,
+                       plc::process::DRILL_STATE_TOPIC,
+                       "EdgeBaseLibrary",
+                       "EdgeBaseProfile");
+}
+
 bool CDrillStateTopicSubscriber::ValidData()
 {
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);

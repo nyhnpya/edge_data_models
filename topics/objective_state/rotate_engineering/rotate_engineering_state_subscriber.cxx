@@ -27,6 +27,14 @@ CRotateEngineeringStateSubscriber::~CRotateEngineeringStateSubscriber()
 {
 }
 
+bool CRotateEngineeringStateSubscriber::Create(int32_t domain)
+{
+    return TSubscriber::Create(domain,
+                       nec::engineering::ROTATE_ENGINEERING_STATE,
+                       "EdgeBaseLibrary",
+                       "EdgeBaseProfile");
+}
+
 bool CRotateEngineeringStateSubscriber::ValidData()
 {
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);

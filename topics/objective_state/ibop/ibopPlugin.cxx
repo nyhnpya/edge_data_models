@@ -1826,6 +1826,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             IbopRequestPlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            IbopRequest_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -3229,6 +3232,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             IbopObjectivePlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            IbopObjective_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -4722,6 +4728,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             IbopStatePlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            IbopState_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)

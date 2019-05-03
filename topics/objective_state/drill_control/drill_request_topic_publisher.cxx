@@ -12,6 +12,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
+#include "dds_uuid.h"
 #include "drill_request_topic_publisher.h"
 
 CDrillRequestTopicPublisher::CDrillRequestTopicPublisher()
@@ -32,7 +33,15 @@ bool CDrillRequestTopicPublisher::Create(int32_t domain)
 
 bool CDrillRequestTopicPublisher::Initialize()
 {
-    return true;
+    CDdsUuid uuid;
+    bool retVal = false;
+
+    if (m_pDataInstance != nullptr)
+    {
+        retVal = true;
+    }
+
+    return retVal;
 }
 
 bool CDrillRequestTopicPublisher::PublishSample()

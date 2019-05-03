@@ -1826,6 +1826,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             SlipsRequestPlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            SlipsRequest_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -3229,6 +3232,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             SlipsObjectivePlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            SlipsObjective_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -4722,6 +4728,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             SlipsStatePlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            SlipsState_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)

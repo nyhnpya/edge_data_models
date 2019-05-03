@@ -151,11 +151,18 @@ objective.cpy:
 	-@rm -rf $(TMPOUTDIR)
 
 drilling_limits.cpy:
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py objective/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
 	mkdir -p $(TOPIC_HOME)/objective_state/drilling_limits
 	mkdir -p $(TOPIC_HOME)/objective_state/drilling_limits/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/drilling_limits/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/drilling_limits
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/drilling_limits/include
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/objective_state/drilling_limits
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective_state/drilling_limits
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/drilling_limits/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/drilling_limits/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective_state/drilling_limits
 	-@rm -rf $(TMPOUTDIR)
 
 drilling_calibration.cpy: 

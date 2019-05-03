@@ -32,11 +32,11 @@ class CRotateEngineeringStateSubscriber : public TSubscriber< nec::engineering::
         ~CRotateEngineeringStateSubscriber();
         
         bool Create(int32_t domain);
+        bool ValidData();
         void OnDataAvailable(OnDataAvailableEvent event);
         void OnDataDisposed(OnDataDisposedEvent event);
         void OnLivelinessChanged(OnLivelinessChangedEvent event);
         void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
-        bool ValidData();
         
         DataTypes::Uuid GetId();
         DataTypes::Status GetStatus();

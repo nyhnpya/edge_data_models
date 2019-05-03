@@ -4,7 +4,7 @@ module process
 {
     module plan
     {
-        //@copy-c-declaration static const char DRILLING_LIMITS[] = "DrillingLimits";
+        //@copy-c-declaration static const char DRILLING_LIMITS_REQUEST[] = "DrillingLimitsRequest";
 
         /**
          * \brief requested state change in the hoisting system.
@@ -15,21 +15,49 @@ module process
          * | ----------------- | -------------------------------------------------| --------------------| ------|
          * | id                | id of requestor                                  | DataTypes::Uuid     | N/A   |
          */
-        struct DrillingLimits
+        struct DrillingLimitsRequest
         {
             DataTypes::Uuid  id; //@key
-            double           startDepth;
-            double           endDepth;
-            double           ropMin;
-            double           ropMax;
-            double           wobMin;
-            double           wobMax;
-            double           diffPMin;
-            double           diffPMax;
-            double           torqueMin;
-            double           torqueMax;
-            double           rotateMin;
-            double           rotateMax;
+            double           startDepth; // (units::length::meter)
+            double           endDepth;   // (units::length::meter)
+            double           ropMin;     // (units::velocity::meters_per_second)
+            double           ropMax;     // (units::velocity::meters_per_second)
+            double           wobMin;     // (units::force::newton)
+            double           wobMax;     // (units::force::newton)
+            double           diffPMin;   // (units::pressure::pascal)
+            double           diffPMax;   // (units::pressure::pascal)
+            double           torqueMin;  // (units::torque::newton_meter)
+            double           torqueMax;  // (units::torque::newton_meter)
+            double           rotateMin;  // (units::angular_velocity::radians_per_second)
+            double           rotateMax;  // (units::angular_velocity::radians_per_second)
+        };
+
+        //@copy-c-declaration static const char DRILLING_LIMITS[] = "DrillingLimitsState";
+
+        /**
+         * \brief requested state change in the hoisting system.
+         *
+         * \ingroup 
+         *
+         * | Variable          | Description                                      | Data Type           | Unit  |
+         * | ----------------- | -------------------------------------------------| --------------------| ------|
+         * | id                | id of requestor                                  | DataTypes::Uuid     | N/A   |
+         */
+        struct DrillingLimitsState
+        {
+            DataTypes::Uuid  id; //@key
+            double           startDepth; // (units::length::meter)
+            double           endDepth;   // (units::length::meter)
+            double           ropMin;     // (units::velocity::meters_per_second)
+            double           ropMax;     // (units::velocity::meters_per_second)
+            double           wobMin;     // (units::force::newton)
+            double           wobMax;     // (units::force::newton)
+            double           diffPMin;   // (units::pressure::pascal)
+            double           diffPMax;   // (units::pressure::pascal)
+            double           torqueMin;  // (units::torque::newton_meter)
+            double           torqueMax;  // (units::torque::newton_meter)
+            double           rotateMin;  // (units::angular_velocity::radians_per_second)
+            double           rotateMax;  // (units::angular_velocity::radians_per_second)
         };
     };
 };

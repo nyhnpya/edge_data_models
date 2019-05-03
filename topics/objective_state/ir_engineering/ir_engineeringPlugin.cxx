@@ -1438,6 +1438,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             PositionPlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            Position_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
@@ -3381,6 +3384,9 @@ namespace nec {
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
             IrEngineeringStatePlugin_destroy_sample;
+            plugin->finalizeOptionalMembersFnc =
+            (PRESTypePluginFinalizeOptionalMembersFunction)
+            IrEngineeringState_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
