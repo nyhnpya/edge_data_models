@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __PLC_PROCESS_ROTATE_STATE_SUBSCRIBER_H__
-#define __PLC_PROCESS_ROTATE_STATE_SUBSCRIBER_H__
+#ifndef __PLC_PROCESS_PLC_ROTATE_STATE_SUBSCRIBER_H__
+#define __PLC_PROCESS_PLC_ROTATE_STATE_SUBSCRIBER_H__
 
 #include "subscriber.h"
 #include "plc_rotate.h"
@@ -23,7 +23,7 @@
 #undef pascal
 #endif
 
-class CPlcRotateStateSubscriber : public TSubscriber< plc::process::RotateState >
+class CPlcRotateStateSubscriber : public TSubscriber< plc::process::PlcRotateState >
 {
     public:
         CPlcRotateStateSubscriber();
@@ -43,14 +43,14 @@ class CPlcRotateStateSubscriber : public TSubscriber< plc::process::RotateState 
         double GetTargetRate();
 
     protected:
-        void DataAvailable(const plc::process::RotateState &data,
+        void DataAvailable(const plc::process::PlcRotateState &data,
                            const DDS::SampleInfo &sampleInfo);
         void DataDisposed(const DDS::SampleInfo &sampleInfo);
         void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
         void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
     private:
-        plc::process::RotateState                         m_data;
+        plc::process::PlcRotateState                      m_data;
         DDS::SampleInfo                                   m_sampleInfo;
         DDS::LivelinessChangedStatus                      m_livelinessStatus;
         OnDataAvailableEvent                              m_pOnDataAvailable;
@@ -59,4 +59,4 @@ class CPlcRotateStateSubscriber : public TSubscriber< plc::process::RotateState 
         OnSubscriptionMatchedEvent                        m_pOnSubscriptionMatched;
 };
 
-#endif // __PLC_PROCESS_ROTATE_STATE_SUBSCRIBER_H__
+#endif // __PLC_PROCESS_PLC_ROTATE_STATE_SUBSCRIBER_H__

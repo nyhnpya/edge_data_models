@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_rotateSupport_1508020914_h
-#define plc_rotateSupport_1508020914_h
+#ifndef plc_rotateSupport_1508020920_h
+#define plc_rotateSupport_1508020920_h
 
 /* Uses */
 #include "plc_rotate.h"
@@ -47,11 +47,11 @@ namespace plc {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            RotateRequestTypeSupport, 
-            RotateRequest);
+            PlcRotateRequestTypeSupport, 
+            PlcRotateRequest);
 
-        DDS_DATAWRITER_CPP(RotateRequestDataWriter, RotateRequest);
-        DDS_DATAREADER_CPP(RotateRequestDataReader, RotateRequestSeq, RotateRequest);
+        DDS_DATAWRITER_CPP(PlcRotateRequestDataWriter, PlcRotateRequest);
+        DDS_DATAREADER_CPP(PlcRotateRequestDataReader, PlcRotateRequestSeq, PlcRotateRequest);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -78,11 +78,11 @@ namespace plc {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            RotateStateTypeSupport, 
-            RotateState);
+            PlcRotateStateTypeSupport, 
+            PlcRotateState);
 
-        DDS_DATAWRITER_CPP(RotateStateDataWriter, RotateState);
-        DDS_DATAREADER_CPP(RotateStateDataReader, RotateStateSeq, RotateState);
+        DDS_DATAWRITER_CPP(PlcRotateStateDataWriter, PlcRotateState);
+        DDS_DATAREADER_CPP(PlcRotateStateDataReader, PlcRotateStateSeq, PlcRotateState);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -93,5 +93,5 @@ namespace plc {
     } /* namespace process  */
 } /* namespace plc  */
 
-#endif  /* plc_rotateSupport_1508020914_h */
+#endif  /* plc_rotateSupport_1508020920_h */
 

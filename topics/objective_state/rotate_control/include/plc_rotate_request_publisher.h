@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __PLC_PROCESS_ROTATE_REQUEST_PUBLISHER_H__
-#define __PLC_PROCESS_ROTATE_REQUEST_PUBLISHER_H__
+#ifndef __PLC_PROCESS_PLC_ROTATE_REQUEST_PUBLISHER_H__
+#define __PLC_PROCESS_PLC_ROTATE_REQUEST_PUBLISHER_H__
 
 #include "publisher.h"
 #include "plc_rotate.h"
@@ -23,7 +23,7 @@
 #undef pascal
 #endif
 
-class CPlcRotateRequestPublisher : public TPublisher< plc::process::RotateRequest >
+class CPlcRotateRequestPublisher : public TPublisher< plc::process::PlcRotateRequest >
 {
     public:
         CPlcRotateRequestPublisher();
@@ -36,4 +36,4 @@ class CPlcRotateRequestPublisher : public TPublisher< plc::process::RotateReques
         void SetTargetRate(const double targetRate);
 };
 
-#endif // __PLC_PROCESS_ROTATE_REQUEST_PUBLISHER_H__
+#endif // __PLC_PROCESS_PLC_ROTATE_REQUEST_PUBLISHER_H__

@@ -1,19 +1,5 @@
-/*
- *  Copyright (c) 2019 Ensign Energy Incorporated
- *  All Rights Reserved.
- *
- * NOTICE:  All information contained herein is, and remains
- * the property of Ensign Energy Incorporated and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to Ensign Energy Incorporated
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from Ensign Energy Incorporated.
- */
-#include "dds_uuid.h"
 #include "rotate_engineering_state_publisher.h"
+#include "dds_uuid.h"
 
 CRotateEngineeringStatePublisher::CRotateEngineeringStatePublisher()
 {
@@ -48,14 +34,23 @@ bool CRotateEngineeringStatePublisher::Initialize()
 
 bool CRotateEngineeringStatePublisher::PublishSample()
 {
+    DDS_Time_t currentTime;
+
+    if (m_pDataInstance != nullptr)
+    {
+        GetParticipant()->get_current_time(currentTime);
+        m_pDataInstance->timestamp.sec = currentTime.sec;
+        m_pDataInstance->timestamp.nanosec = currentTime.nanosec;
+    }
+
     return Publish();
 }
 
-void CRotateEngineeringStatePublisher::SetId(DataTypes::Uuid &id)
+void CRotateEngineeringStatePublisher::SetId(CDdsUuid id)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->id = DDS_String_dup(id);
+        m_pDataInstance->id = DDS_String_dup(id.c_str());
     }
 }
 
@@ -107,11 +102,11 @@ void CRotateEngineeringStatePublisher::SetActualTorque(const units::torque::newt
     }
 }
 
-void CRotateEngineeringStatePublisher::SetActualPosition(double actualPosition)
+void CRotateEngineeringStatePublisher::SetActualPosition(const units::angle::radian_t actualPosition)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->actualPosition = actualPosition;
+        m_pDataInstance->actualPosition = units::unit_cast<double>(actualPosition);
     }
 }
 
@@ -155,19 +150,19 @@ void CRotateEngineeringStatePublisher::SetMaxTorque(const units::torque::newton_
     }
 }
 
-void CRotateEngineeringStatePublisher::SetMinPosition(double minPosition)
+void CRotateEngineeringStatePublisher::SetMinPosition(const units::angle::radian_t minPosition)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->minPosition = minPosition;
+        m_pDataInstance->minPosition = units::unit_cast<double>(minPosition);
     }
 }
 
-void CRotateEngineeringStatePublisher::SetMaxPosition(double maxPosition)
+void CRotateEngineeringStatePublisher::SetMaxPosition(const units::angle::radian_t maxPosition)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->maxPosition = maxPosition;
+        m_pDataInstance->maxPosition = units::unit_cast<double>(maxPosition);
     }
 }
 
@@ -187,11 +182,11 @@ void CRotateEngineeringStatePublisher::SetTargetTorque(const units::torque::newt
     }
 }
 
-void CRotateEngineeringStatePublisher::SetTargetPosition(double targetPosition)
+void CRotateEngineeringStatePublisher::SetTargetPosition(const units::angle::radian_t targetPosition)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetPosition = targetPosition;
+        m_pDataInstance->targetPosition = units::unit_cast<double>(targetPosition);
     }
 }
 

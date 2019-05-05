@@ -87,6 +87,7 @@ def write_publisher_h(outdir, struct):
     out.write('#include "publisher.h"\n')
     out.write('#include "' + idl_name + '.h"\n')
     out.write('#include "' + idl_name + 'Support.h"\n')
+    out.write('#include "dds_uuid.h"\n')
     out.write('\n')
     out.write('#ifdef _WIN32\n')
     out.write('#undef pascal\n')
@@ -129,8 +130,8 @@ def write_publisher_h(outdir, struct):
 
 def write_publisher_cxx(outdir, struct, qoslib, qosprof):
     out = open(outdir + '/' + struct.name_underscore + '_publisher.cxx', 'w')
-    out.write('#include "dds_uuid.h"\n')
     out.write('#include "' + struct.name_underscore + '_publisher.h"\n')
+    out.write('#include "dds_uuid.h"\n')
     out.write('\n')
     out.write('C' + struct.name_camel_case + 'Publisher::C' + struct.name_camel_case + 'Publisher()\n')
     out.write('{\n')
@@ -272,7 +273,7 @@ def write_subscriber_h(outdir, struct):
     out.close()
 
 
-def write_subscriber_cxx(outdir, struct):
+def write_subscriber_cxx(outdir, struct, qoslib, qosprof):
     out = open(outdir + '/' + struct.name_underscore + '_subscriber.cxx', 'w')
     out.write('#include "' + struct.name_underscore + '_subscriber.h"\n')
     out.write('\n')
@@ -293,8 +294,8 @@ def write_subscriber_cxx(outdir, struct):
     out.write('{\n')
     out.write('    return TSubscriber::Create(domain,\n')
     out.write('                       ' + module_name + struct.copyc + ',\n')
-    out.write('                       "EdgeBaseLibrary",\n')
-    out.write('                       "EdgeBaseProfile");\n')
+    out.write('                       "' + qoslib + '",\n')
+    out.write('                       "' + qosprof + '");\n')
     out.write('}\n')
     out.write('\n')
     out.write('bool C' + struct.name_camel_case + 'Subscriber::ValidData()\n')
@@ -694,7 +695,7 @@ with open(idl_file_name) as idl_file:
                     write_publisher_h(output_dir, current_struct)
                     write_publisher_cxx(output_dir, current_struct, QoSLibrary, QoSProfile)
                     write_subscriber_h(output_dir, current_struct)
-                    write_subscriber_cxx(output_dir, current_struct)
+                    write_subscriber_cxx(output_dir, current_struct, QoSLibrary, QoSProfile)
                     #write_io_state_machine_h(output_dir, current_struct)
                     #write_io_state_machine_cxx(output_dir, current_struct)
                     structobjs.append(current_struct)

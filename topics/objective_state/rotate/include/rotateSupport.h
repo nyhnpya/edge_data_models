@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef rotateSupport_79878671_h
-#define rotateSupport_79878671_h
+#ifndef rotateSupport_79879172_h
+#define rotateSupport_79879172_h
 
 /* Uses */
 #include "rotate.h"
@@ -124,5 +124,5 @@ namespace nec {
     } /* namespace process  */
 } /* namespace nec  */
 
-#endif  /* rotateSupport_79878671_h */
+#endif  /* rotateSupport_79879172_h */
 

@@ -18,6 +18,7 @@
 #include "publisher.h"
 #include "rotate_engineering.h"
 #include "rotate_engineeringSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -35,7 +36,7 @@ class CRotateEngineeringObjectivePublisher : public TPublisher< nec::engineering
         bool Initialize();
         bool PublishSample();
         
-        void SetId(DataTypes::Uuid &id);
+        void SetId(CDdsUuid id);
         void SetEstimatedDuration(const DataTypes::Time estimatedDuration);
         void SetTargetRate(const units::angular_velocity::radians_per_second_t targetRate);
         void SetTargetTorque(const units::torque::newton_meter_t targetTorque);

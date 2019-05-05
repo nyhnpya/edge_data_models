@@ -27,7 +27,7 @@ namespace plc {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'RotateRequest' support classes.
+        Configure and implement 'PlcRotateRequest' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -43,11 +43,11 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   RotateRequestTYPENAME
+        #define TTYPENAME   PlcRotateRequestTYPENAME
 
         /* Defines */
-        #define TDataWriter RotateRequestDataWriter
-        #define TData       plc::process::RotateRequest
+        #define TDataWriter PlcRotateRequestDataWriter
+        #define TData       plc::process::PlcRotateRequest
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -67,12 +67,12 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   RotateRequestTYPENAME
+        #define TTYPENAME   PlcRotateRequestTYPENAME
 
         /* Defines */
-        #define TDataReader RotateRequestDataReader
-        #define TDataSeq    RotateRequestSeq
-        #define TData       plc::process::RotateRequest
+        #define TDataReader PlcRotateRequestDataReader
+        #define TDataSeq    PlcRotateRequestSeq
+        #define TData       plc::process::PlcRotateRequest
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -94,15 +94,15 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME    RotateRequestTYPENAME
-        #define TPlugin_new  plc::process::RotateRequestPlugin_new
-        #define TPlugin_delete  plc::process::RotateRequestPlugin_delete
+        #define TTYPENAME    PlcRotateRequestTYPENAME
+        #define TPlugin_new  plc::process::PlcRotateRequestPlugin_new
+        #define TPlugin_delete  plc::process::PlcRotateRequestPlugin_delete
 
         /* Defines */
-        #define TTypeSupport RotateRequestTypeSupport
-        #define TData        plc::process::RotateRequest
-        #define TDataReader  RotateRequestDataReader
-        #define TDataWriter  RotateRequestDataWriter
+        #define TTypeSupport PlcRotateRequestTypeSupport
+        #define TData        plc::process::PlcRotateRequest
+        #define TDataReader  PlcRotateRequestDataReader
+        #define TDataWriter  PlcRotateRequestDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 
@@ -127,7 +127,7 @@ namespace plc {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'RotateState' support classes.
+        Configure and implement 'PlcRotateState' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -143,11 +143,11 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   RotateStateTYPENAME
+        #define TTYPENAME   PlcRotateStateTYPENAME
 
         /* Defines */
-        #define TDataWriter RotateStateDataWriter
-        #define TData       plc::process::RotateState
+        #define TDataWriter PlcRotateStateDataWriter
+        #define TData       plc::process::PlcRotateState
 
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
@@ -167,12 +167,12 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   RotateStateTYPENAME
+        #define TTYPENAME   PlcRotateStateTYPENAME
 
         /* Defines */
-        #define TDataReader RotateStateDataReader
-        #define TDataSeq    RotateStateSeq
-        #define TData       plc::process::RotateState
+        #define TDataReader PlcRotateStateDataReader
+        #define TDataSeq    PlcRotateStateSeq
+        #define TData       plc::process::PlcRotateState
 
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
@@ -194,15 +194,15 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME    RotateStateTYPENAME
-        #define TPlugin_new  plc::process::RotateStatePlugin_new
-        #define TPlugin_delete  plc::process::RotateStatePlugin_delete
+        #define TTYPENAME    PlcRotateStateTYPENAME
+        #define TPlugin_new  plc::process::PlcRotateStatePlugin_new
+        #define TPlugin_delete  plc::process::PlcRotateStatePlugin_delete
 
         /* Defines */
-        #define TTypeSupport RotateStateTypeSupport
-        #define TData        plc::process::RotateState
-        #define TDataReader  RotateStateDataReader
-        #define TDataWriter  RotateStateDataWriter
+        #define TTypeSupport PlcRotateStateTypeSupport
+        #define TData        plc::process::PlcRotateState
+        #define TDataReader  PlcRotateStateDataReader
+        #define TDataWriter  PlcRotateStateDataWriter
         #define TGENERATE_SER_CODE
         #define TGENERATE_TYPECODE
 

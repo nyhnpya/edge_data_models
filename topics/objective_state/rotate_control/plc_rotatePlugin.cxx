@@ -59,43 +59,43 @@ namespace plc {
     namespace process {
 
         /* ----------------------------------------------------------------------------
-        *  Type RotateRequest
+        *  Type PlcRotateRequest
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        RotateRequest*
-        RotateRequestPluginSupport_create_data_w_params(
+        PlcRotateRequest*
+        PlcRotateRequestPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params) 
         {
-            RotateRequest *sample = NULL;
+            PlcRotateRequest *sample = NULL;
 
-            sample = new (std::nothrow) RotateRequest ;
+            sample = new (std::nothrow) PlcRotateRequest ;
             if (sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::RotateRequest_initialize_w_params(sample,alloc_params)) {
+            if (!plc::process::PlcRotateRequest_initialize_w_params(sample,alloc_params)) {
                 delete  sample;
                 sample=NULL;
             }
             return sample; 
         } 
 
-        RotateRequest *
-        RotateRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
+        PlcRotateRequest *
+        PlcRotateRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
         {
-            RotateRequest *sample = NULL;
+            PlcRotateRequest *sample = NULL;
 
-            sample = new (std::nothrow) RotateRequest ;
+            sample = new (std::nothrow) PlcRotateRequest ;
 
             if(sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::RotateRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!plc::process::PlcRotateRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 delete  sample;
                 sample=NULL;
             }
@@ -103,52 +103,52 @@ namespace plc {
             return sample; 
         }
 
-        RotateRequest *
-        RotateRequestPluginSupport_create_data(void)
+        PlcRotateRequest *
+        PlcRotateRequestPluginSupport_create_data(void)
         {
-            return plc::process::RotateRequestPluginSupport_create_data_ex(RTI_TRUE);
+            return plc::process::PlcRotateRequestPluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        RotateRequestPluginSupport_destroy_data_w_params(
-            RotateRequest *sample,
+        PlcRotateRequestPluginSupport_destroy_data_w_params(
+            PlcRotateRequest *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-            plc::process::RotateRequest_finalize_w_params(sample,dealloc_params);
+            plc::process::PlcRotateRequest_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        RotateRequestPluginSupport_destroy_data_ex(
-            RotateRequest *sample,RTIBool deallocate_pointers) {
+        PlcRotateRequestPluginSupport_destroy_data_ex(
+            PlcRotateRequest *sample,RTIBool deallocate_pointers) {
 
-            plc::process::RotateRequest_finalize_ex(sample,deallocate_pointers);
+            plc::process::PlcRotateRequest_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        RotateRequestPluginSupport_destroy_data(
-            RotateRequest *sample) {
+        PlcRotateRequestPluginSupport_destroy_data(
+            PlcRotateRequest *sample) {
 
-            plc::process::RotateRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            plc::process::PlcRotateRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        RotateRequestPluginSupport_copy_data(
-            RotateRequest *dst,
-            const RotateRequest *src)
+        PlcRotateRequestPluginSupport_copy_data(
+            PlcRotateRequest *dst,
+            const PlcRotateRequest *src)
         {
-            return plc::process::RotateRequest_copy(dst,(const RotateRequest*) src);
+            return plc::process::PlcRotateRequest_copy(dst,(const PlcRotateRequest*) src);
         }
 
         void 
-        RotateRequestPluginSupport_print_data(
-            const RotateRequest *sample,
+        PlcRotateRequestPluginSupport_print_data(
+            const PlcRotateRequest *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -176,7 +176,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        RotateRequestPlugin_on_participant_attached(
+        PlcRotateRequestPlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -194,7 +194,7 @@ namespace plc {
         }
 
         void 
-        RotateRequestPlugin_on_participant_detached(
+        PlcRotateRequestPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {
 
@@ -202,7 +202,7 @@ namespace plc {
         }
 
         PRESTypePluginEndpointData
-        RotateRequestPlugin_on_endpoint_attached(
+        PlcRotateRequestPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -219,9 +219,9 @@ namespace plc {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                plc::process::RotateRequestPluginSupport_create_data,
+                plc::process::PlcRotateRequestPluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                plc::process::RotateRequestPluginSupport_destroy_data,
+                plc::process::PlcRotateRequestPluginSupport_destroy_data,
                 NULL , NULL );
 
             if (epd == NULL) {
@@ -229,7 +229,7 @@ namespace plc {
             } 
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = plc::process::RotateRequestPlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = plc::process::PlcRotateRequestPlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -238,9 +238,9 @@ namespace plc {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    plc::process::RotateRequestPlugin_get_serialized_sample_max_size, epd,
+                    plc::process::PlcRotateRequestPlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
-                    plc::process::RotateRequestPlugin_get_serialized_sample_size,
+                    plc::process::PlcRotateRequestPlugin_get_serialized_sample_size,
                     epd) == RTI_FALSE) {
                     PRESTypePluginDefaultEndpointData_delete(epd);
                     return NULL;
@@ -251,7 +251,7 @@ namespace plc {
         }
 
         void 
-        RotateRequestPlugin_on_endpoint_detached(
+        PlcRotateRequestPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {  
 
@@ -259,42 +259,42 @@ namespace plc {
         }
 
         void    
-        RotateRequestPlugin_return_sample(
+        PlcRotateRequestPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateRequest *sample,
+            PlcRotateRequest *sample,
             void *handle)
         {
 
-            RotateRequest_finalize_optional_members(sample, RTI_TRUE);
+            PlcRotateRequest_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        RotateRequestPlugin_copy_sample(
+        PlcRotateRequestPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateRequest *dst,
-            const RotateRequest *src)
+            PlcRotateRequest *dst,
+            const PlcRotateRequest *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return plc::process::RotateRequestPluginSupport_copy_data(dst,src);
+            return plc::process::PlcRotateRequestPluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        RotateRequestPlugin_get_serialized_sample_max_size(
+        PlcRotateRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool 
-        RotateRequestPlugin_serialize(
+        PlcRotateRequestPlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateRequest *sample, 
+            const PlcRotateRequest *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -332,9 +332,9 @@ namespace plc {
         }
 
         RTIBool 
-        RotateRequestPlugin_deserialize_sample(
+        PlcRotateRequestPlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateRequest *sample,
+            PlcRotateRequest *sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
@@ -359,7 +359,7 @@ namespace plc {
                 }
                 if(deserialize_sample) {
 
-                    plc::process::RotateRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+                    plc::process::PlcRotateRequest_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
                     if (!RTICdrStream_deserializeDouble(
                         stream, &sample->targetRate)) {
@@ -386,10 +386,10 @@ namespace plc {
         }
 
         RTIBool
-        RotateRequestPlugin_serialize_to_cdr_buffer(
+        PlcRotateRequestPlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const RotateRequest *sample)
+            const PlcRotateRequest *sample)
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
@@ -400,12 +400,12 @@ namespace plc {
             }
 
             epd._maxSizeSerializedSample =
-            RotateRequestPlugin_get_serialized_sample_max_size(
+            PlcRotateRequestPlugin_get_serialized_sample_max_size(
                 NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
 
             if (buffer == NULL) {
                 *length = 
-                RotateRequestPlugin_get_serialized_sample_size(
+                PlcRotateRequestPlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
                     RTICdrEncapsulation_getNativeCdrEncapsulationId(),
@@ -422,7 +422,7 @@ namespace plc {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, *length);
 
-            result = plc::process::RotateRequestPlugin_serialize(
+            result = plc::process::PlcRotateRequestPlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
                 RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
                 RTI_TRUE, NULL);  
@@ -432,8 +432,8 @@ namespace plc {
         }
 
         RTIBool
-        RotateRequestPlugin_deserialize_from_cdr_buffer(
-            RotateRequest *sample,
+        PlcRotateRequestPlugin_deserialize_from_cdr_buffer(
+            PlcRotateRequest *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -442,16 +442,16 @@ namespace plc {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            RotateRequest_finalize_optional_members(sample, RTI_TRUE);
-            return RotateRequestPlugin_deserialize_sample( 
+            PlcRotateRequest_finalize_optional_members(sample, RTI_TRUE);
+            return PlcRotateRequestPlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
         }
 
         DDS_ReturnCode_t
-        RotateRequestPlugin_data_to_string(
-            const RotateRequest *sample,
+        PlcRotateRequestPlugin_data_to_string(
+            const PlcRotateRequest *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property)
@@ -474,7 +474,7 @@ namespace plc {
                 return DDS_RETCODE_BAD_PARAMETER;
             }
 
-            if (!RotateRequestPlugin_serialize_to_cdr_buffer(
+            if (!PlcRotateRequestPlugin_serialize_to_cdr_buffer(
                 NULL, 
                 &length, 
                 sample)) {
@@ -486,7 +486,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
 
-            if (!RotateRequestPlugin_serialize_to_cdr_buffer(
+            if (!PlcRotateRequestPlugin_serialize_to_cdr_buffer(
                 buffer, 
                 &length, 
                 sample)) {
@@ -495,7 +495,7 @@ namespace plc {
             }
 
             data = DDS_DynamicData_new(
-                RotateRequest_get_typecode(), 
+                PlcRotateRequest_get_typecode(), 
                 &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
             if (data == NULL) {
                 RTIOsapiHeap_freeBuffer(buffer);
@@ -535,9 +535,9 @@ namespace plc {
         }
 
         RTIBool 
-        RotateRequestPlugin_deserialize(
+        PlcRotateRequestPlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            RotateRequest **sample,
+            PlcRotateRequest **sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
@@ -546,11 +546,11 @@ namespace plc {
         {
 
             RTIBool result;
-            const char *METHOD_NAME = "RotateRequestPlugin_deserialize";
+            const char *METHOD_NAME = "PlcRotateRequestPlugin_deserialize";
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= plc::process::RotateRequestPlugin_deserialize_sample( 
+            result= plc::process::PlcRotateRequestPlugin_deserialize_sample( 
                 endpoint_data, (sample != NULL)?*sample:NULL,
                 stream, deserialize_encapsulation, deserialize_sample, 
                 endpoint_plugin_qos);
@@ -564,7 +564,7 @@ namespace plc {
                 RTICdrLog_exception(
                     METHOD_NAME, 
                     &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                    "RotateRequest");
+                    "PlcRotateRequest");
 
             }
 
@@ -572,7 +572,7 @@ namespace plc {
 
         }
 
-        RTIBool RotateRequestPlugin_skip(
+        RTIBool PlcRotateRequestPlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream,   
             RTIBool skip_encapsulation,
@@ -616,7 +616,7 @@ namespace plc {
         }
 
         unsigned int 
-        RotateRequestPlugin_get_serialized_sample_max_size_ex(
+        PlcRotateRequestPlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -652,7 +652,7 @@ namespace plc {
         }
 
         unsigned int 
-        RotateRequestPlugin_get_serialized_sample_max_size(
+        PlcRotateRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -661,7 +661,7 @@ namespace plc {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = RotateRequestPlugin_get_serialized_sample_max_size_ex(
+            size = PlcRotateRequestPlugin_get_serialized_sample_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -672,7 +672,7 @@ namespace plc {
         }
 
         unsigned int 
-        RotateRequestPlugin_get_serialized_sample_min_size(
+        PlcRotateRequestPlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -712,12 +712,12 @@ namespace plc {
         * encapsulation flags.
         */
         unsigned int
-        RotateRequestPlugin_get_serialized_sample_size(
+        PlcRotateRequestPlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const RotateRequest * sample) 
+            const PlcRotateRequest * sample) 
         {
 
             unsigned int initial_alignment = current_alignment;
@@ -764,15 +764,15 @@ namespace plc {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        RotateRequestPlugin_get_key_kind(void)
+        PlcRotateRequestPlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_NO_KEY;
         }
 
         RTIBool 
-        RotateRequestPlugin_serialize_key(
+        PlcRotateRequestPlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateRequest *sample, 
+            const PlcRotateRequest *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -791,7 +791,7 @@ namespace plc {
 
             if(serialize_key) {
 
-                if (!plc::process::RotateRequestPlugin_serialize(
+                if (!plc::process::PlcRotateRequestPlugin_serialize(
                     endpoint_data,
                     sample,
                     stream,
@@ -810,9 +810,9 @@ namespace plc {
             return RTI_TRUE;
         }
 
-        RTIBool RotateRequestPlugin_deserialize_key_sample(
+        RTIBool PlcRotateRequestPlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateRequest *sample, 
+            PlcRotateRequest *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
@@ -835,7 +835,7 @@ namespace plc {
                 }
                 if (deserialize_key) {
 
-                    if (!plc::process::RotateRequestPlugin_deserialize_sample(
+                    if (!plc::process::PlcRotateRequestPlugin_deserialize_sample(
                         endpoint_data, sample, stream, 
                         RTI_FALSE, RTI_TRUE, 
                         endpoint_plugin_qos)) {
@@ -854,9 +854,9 @@ namespace plc {
             }
         }
 
-        RTIBool RotateRequestPlugin_deserialize_key(
+        RTIBool PlcRotateRequestPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateRequest **sample, 
+            PlcRotateRequest **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -866,7 +866,7 @@ namespace plc {
             RTIBool result;
             if (drop_sample) {} /* To avoid warnings */
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= plc::process::RotateRequestPlugin_deserialize_key_sample(
+            result= plc::process::PlcRotateRequestPlugin_deserialize_key_sample(
                 endpoint_data, (sample != NULL)?*sample:NULL, stream,
                 deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
             if (result) {
@@ -880,7 +880,7 @@ namespace plc {
         }
 
         unsigned int
-        RotateRequestPlugin_get_serialized_key_max_size_ex(
+        PlcRotateRequestPlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -906,7 +906,7 @@ namespace plc {
                 initial_alignment = 0;
             }
 
-            current_alignment += plc::process::RotateRequestPlugin_get_serialized_sample_max_size_ex(
+            current_alignment += plc::process::PlcRotateRequestPlugin_get_serialized_sample_max_size_ex(
                 endpoint_data, overflow,RTI_FALSE, encapsulation_id, current_alignment);
 
             if (include_encapsulation) {
@@ -916,7 +916,7 @@ namespace plc {
         }
 
         unsigned int
-        RotateRequestPlugin_get_serialized_key_max_size(
+        PlcRotateRequestPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -925,7 +925,7 @@ namespace plc {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = RotateRequestPlugin_get_serialized_key_max_size_ex(
+            size = PlcRotateRequestPlugin_get_serialized_key_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -936,9 +936,9 @@ namespace plc {
         }
 
         RTIBool 
-        RotateRequestPlugin_serialized_sample_to_key(
+        PlcRotateRequestPlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateRequest *sample,
+            PlcRotateRequest *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
@@ -962,7 +962,7 @@ namespace plc {
 
             if (deserialize_key) {
 
-                if (!plc::process::RotateRequestPlugin_deserialize_sample(
+                if (!plc::process::PlcRotateRequestPlugin_deserialize_sample(
                     endpoint_data, sample, stream, RTI_FALSE, 
                     RTI_TRUE, endpoint_plugin_qos)) {
                     return RTI_FALSE;
@@ -992,7 +992,7 @@ namespace plc {
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *RotateRequestPlugin_new(void) 
+        struct PRESTypePlugin *PlcRotateRequestPlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -1010,53 +1010,53 @@ namespace plc {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            plc::process::RotateRequestPlugin_on_participant_attached;
+            plc::process::PlcRotateRequestPlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            plc::process::RotateRequestPlugin_on_participant_detached;
+            plc::process::PlcRotateRequestPlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            plc::process::RotateRequestPlugin_on_endpoint_attached;
+            plc::process::PlcRotateRequestPlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            plc::process::RotateRequestPlugin_on_endpoint_detached;
+            plc::process::PlcRotateRequestPlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            plc::process::RotateRequestPlugin_copy_sample;
+            plc::process::PlcRotateRequestPlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            RotateRequestPlugin_create_sample;
+            PlcRotateRequestPlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            RotateRequestPlugin_destroy_sample;
+            PlcRotateRequestPlugin_destroy_sample;
             plugin->finalizeOptionalMembersFnc =
             (PRESTypePluginFinalizeOptionalMembersFunction)
-            RotateRequest_finalize_optional_members;
+            PlcRotateRequest_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
-            plc::process::RotateRequestPlugin_serialize;
+            plc::process::PlcRotateRequestPlugin_serialize;
             plugin->deserializeFnc =
             (PRESTypePluginDeserializeFunction)
-            plc::process::RotateRequestPlugin_deserialize;
+            plc::process::PlcRotateRequestPlugin_deserialize;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            plc::process::RotateRequestPlugin_get_serialized_sample_max_size;
+            plc::process::PlcRotateRequestPlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
-            plc::process::RotateRequestPlugin_get_serialized_sample_min_size;
+            plc::process::PlcRotateRequestPlugin_get_serialized_sample_min_size;
 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            RotateRequestPlugin_get_sample;
+            PlcRotateRequestPlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            RotateRequestPlugin_return_sample;
+            PlcRotateRequestPlugin_return_sample;
 
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            plc::process::RotateRequestPlugin_get_key_kind;
+            plc::process::PlcRotateRequestPlugin_get_key_kind;
 
             /* These functions are only used for keyed types. As this is not a keyed
             type they are all set to NULL
@@ -1071,70 +1071,70 @@ namespace plc {
             plugin->instanceToKeyHashFnc = NULL;
             plugin->serializedSampleToKeyHashFnc = NULL;
             plugin->serializedKeyToKeyHashFnc = NULL;    
-            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::RotateRequest_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::PlcRotateRequest_get_typecode();
 
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            RotateRequestPlugin_get_buffer;
+            PlcRotateRequestPlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            RotateRequestPlugin_return_buffer;
+            PlcRotateRequestPlugin_return_buffer;
             plugin->getSerializedSampleSizeFnc =
             (PRESTypePluginGetSerializedSampleSizeFunction)
-            plc::process::RotateRequestPlugin_get_serialized_sample_size;
+            plc::process::PlcRotateRequestPlugin_get_serialized_sample_size;
 
-            plugin->endpointTypeName = RotateRequestTYPENAME;
+            plugin->endpointTypeName = PlcRotateRequestTYPENAME;
 
             return plugin;
         }
 
         void
-        RotateRequestPlugin_delete(struct PRESTypePlugin *plugin)
+        PlcRotateRequestPlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 
 
         /* ----------------------------------------------------------------------------
-        *  Type RotateState
+        *  Type PlcRotateState
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        RotateState*
-        RotateStatePluginSupport_create_data_w_params(
+        PlcRotateState*
+        PlcRotateStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params) 
         {
-            RotateState *sample = NULL;
+            PlcRotateState *sample = NULL;
 
-            sample = new (std::nothrow) RotateState ;
+            sample = new (std::nothrow) PlcRotateState ;
             if (sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::RotateState_initialize_w_params(sample,alloc_params)) {
+            if (!plc::process::PlcRotateState_initialize_w_params(sample,alloc_params)) {
                 delete  sample;
                 sample=NULL;
             }
             return sample; 
         } 
 
-        RotateState *
-        RotateStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
+        PlcRotateState *
+        PlcRotateStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
         {
-            RotateState *sample = NULL;
+            PlcRotateState *sample = NULL;
 
-            sample = new (std::nothrow) RotateState ;
+            sample = new (std::nothrow) PlcRotateState ;
 
             if(sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::RotateState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!plc::process::PlcRotateState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 delete  sample;
                 sample=NULL;
             }
@@ -1142,52 +1142,52 @@ namespace plc {
             return sample; 
         }
 
-        RotateState *
-        RotateStatePluginSupport_create_data(void)
+        PlcRotateState *
+        PlcRotateStatePluginSupport_create_data(void)
         {
-            return plc::process::RotateStatePluginSupport_create_data_ex(RTI_TRUE);
+            return plc::process::PlcRotateStatePluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        RotateStatePluginSupport_destroy_data_w_params(
-            RotateState *sample,
+        PlcRotateStatePluginSupport_destroy_data_w_params(
+            PlcRotateState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
 
-            plc::process::RotateState_finalize_w_params(sample,dealloc_params);
+            plc::process::PlcRotateState_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        RotateStatePluginSupport_destroy_data_ex(
-            RotateState *sample,RTIBool deallocate_pointers) {
+        PlcRotateStatePluginSupport_destroy_data_ex(
+            PlcRotateState *sample,RTIBool deallocate_pointers) {
 
-            plc::process::RotateState_finalize_ex(sample,deallocate_pointers);
+            plc::process::PlcRotateState_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        RotateStatePluginSupport_destroy_data(
-            RotateState *sample) {
+        PlcRotateStatePluginSupport_destroy_data(
+            PlcRotateState *sample) {
 
-            plc::process::RotateStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            plc::process::PlcRotateStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        RotateStatePluginSupport_copy_data(
-            RotateState *dst,
-            const RotateState *src)
+        PlcRotateStatePluginSupport_copy_data(
+            PlcRotateState *dst,
+            const PlcRotateState *src)
         {
-            return plc::process::RotateState_copy(dst,(const RotateState*) src);
+            return plc::process::PlcRotateState_copy(dst,(const PlcRotateState*) src);
         }
 
         void 
-        RotateStatePluginSupport_print_data(
-            const RotateState *sample,
+        PlcRotateStatePluginSupport_print_data(
+            const PlcRotateState *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -1227,7 +1227,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        RotateStatePlugin_on_participant_attached(
+        PlcRotateStatePlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -1245,7 +1245,7 @@ namespace plc {
         }
 
         void 
-        RotateStatePlugin_on_participant_detached(
+        PlcRotateStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {
 
@@ -1253,7 +1253,7 @@ namespace plc {
         }
 
         PRESTypePluginEndpointData
-        RotateStatePlugin_on_endpoint_attached(
+        PlcRotateStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -1270,9 +1270,9 @@ namespace plc {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                plc::process::RotateStatePluginSupport_create_data,
+                plc::process::PlcRotateStatePluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                plc::process::RotateStatePluginSupport_destroy_data,
+                plc::process::PlcRotateStatePluginSupport_destroy_data,
                 NULL , NULL );
 
             if (epd == NULL) {
@@ -1280,7 +1280,7 @@ namespace plc {
             } 
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = plc::process::RotateStatePlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = plc::process::PlcRotateStatePlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
 
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
@@ -1289,9 +1289,9 @@ namespace plc {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    plc::process::RotateStatePlugin_get_serialized_sample_max_size, epd,
+                    plc::process::PlcRotateStatePlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
-                    plc::process::RotateStatePlugin_get_serialized_sample_size,
+                    plc::process::PlcRotateStatePlugin_get_serialized_sample_size,
                     epd) == RTI_FALSE) {
                     PRESTypePluginDefaultEndpointData_delete(epd);
                     return NULL;
@@ -1302,7 +1302,7 @@ namespace plc {
         }
 
         void 
-        RotateStatePlugin_on_endpoint_detached(
+        PlcRotateStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {  
 
@@ -1310,42 +1310,42 @@ namespace plc {
         }
 
         void    
-        RotateStatePlugin_return_sample(
+        PlcRotateStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateState *sample,
+            PlcRotateState *sample,
             void *handle)
         {
 
-            RotateState_finalize_optional_members(sample, RTI_TRUE);
+            PlcRotateState_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        RotateStatePlugin_copy_sample(
+        PlcRotateStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateState *dst,
-            const RotateState *src)
+            PlcRotateState *dst,
+            const PlcRotateState *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return plc::process::RotateStatePluginSupport_copy_data(dst,src);
+            return plc::process::PlcRotateStatePluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        RotateStatePlugin_get_serialized_sample_max_size(
+        PlcRotateStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool 
-        RotateStatePlugin_serialize(
+        PlcRotateStatePlugin_serialize(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateState *sample, 
+            const PlcRotateState *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1403,9 +1403,9 @@ namespace plc {
         }
 
         RTIBool 
-        RotateStatePlugin_deserialize_sample(
+        PlcRotateStatePlugin_deserialize_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateState *sample,
+            PlcRotateState *sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_sample, 
@@ -1430,7 +1430,7 @@ namespace plc {
                 }
                 if(deserialize_sample) {
 
-                    plc::process::RotateState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
+                    plc::process::PlcRotateState_initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
                     if (!RTICdrStream_deserializeLong(
                         stream, &sample->status)) {
@@ -1473,10 +1473,10 @@ namespace plc {
         }
 
         RTIBool
-        RotateStatePlugin_serialize_to_cdr_buffer(
+        PlcRotateStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const RotateState *sample)
+            const PlcRotateState *sample)
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
@@ -1487,12 +1487,12 @@ namespace plc {
             }
 
             epd._maxSizeSerializedSample =
-            RotateStatePlugin_get_serialized_sample_max_size(
+            PlcRotateStatePlugin_get_serialized_sample_max_size(
                 NULL, RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 0);
 
             if (buffer == NULL) {
                 *length = 
-                RotateStatePlugin_get_serialized_sample_size(
+                PlcRotateStatePlugin_get_serialized_sample_size(
                     (PRESTypePluginEndpointData)&epd,
                     RTI_TRUE,
                     RTICdrEncapsulation_getNativeCdrEncapsulationId(),
@@ -1509,7 +1509,7 @@ namespace plc {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, *length);
 
-            result = plc::process::RotateStatePlugin_serialize(
+            result = plc::process::PlcRotateStatePlugin_serialize(
                 (PRESTypePluginEndpointData)&epd, sample, &stream, 
                 RTI_TRUE, RTICdrEncapsulation_getNativeCdrEncapsulationId(), 
                 RTI_TRUE, NULL);  
@@ -1519,8 +1519,8 @@ namespace plc {
         }
 
         RTIBool
-        RotateStatePlugin_deserialize_from_cdr_buffer(
-            RotateState *sample,
+        PlcRotateStatePlugin_deserialize_from_cdr_buffer(
+            PlcRotateState *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -1529,16 +1529,16 @@ namespace plc {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            RotateState_finalize_optional_members(sample, RTI_TRUE);
-            return RotateStatePlugin_deserialize_sample( 
+            PlcRotateState_finalize_optional_members(sample, RTI_TRUE);
+            return PlcRotateStatePlugin_deserialize_sample( 
                 NULL, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
                 NULL);
         }
 
         DDS_ReturnCode_t
-        RotateStatePlugin_data_to_string(
-            const RotateState *sample,
+        PlcRotateStatePlugin_data_to_string(
+            const PlcRotateState *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property)
@@ -1561,7 +1561,7 @@ namespace plc {
                 return DDS_RETCODE_BAD_PARAMETER;
             }
 
-            if (!RotateStatePlugin_serialize_to_cdr_buffer(
+            if (!PlcRotateStatePlugin_serialize_to_cdr_buffer(
                 NULL, 
                 &length, 
                 sample)) {
@@ -1573,7 +1573,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
 
-            if (!RotateStatePlugin_serialize_to_cdr_buffer(
+            if (!PlcRotateStatePlugin_serialize_to_cdr_buffer(
                 buffer, 
                 &length, 
                 sample)) {
@@ -1582,7 +1582,7 @@ namespace plc {
             }
 
             data = DDS_DynamicData_new(
-                RotateState_get_typecode(), 
+                PlcRotateState_get_typecode(), 
                 &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
             if (data == NULL) {
                 RTIOsapiHeap_freeBuffer(buffer);
@@ -1622,9 +1622,9 @@ namespace plc {
         }
 
         RTIBool 
-        RotateStatePlugin_deserialize(
+        PlcRotateStatePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            RotateState **sample,
+            PlcRotateState **sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,   
             RTIBool deserialize_encapsulation,
@@ -1633,11 +1633,11 @@ namespace plc {
         {
 
             RTIBool result;
-            const char *METHOD_NAME = "RotateStatePlugin_deserialize";
+            const char *METHOD_NAME = "PlcRotateStatePlugin_deserialize";
             if (drop_sample) {} /* To avoid warnings */
 
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= plc::process::RotateStatePlugin_deserialize_sample( 
+            result= plc::process::PlcRotateStatePlugin_deserialize_sample( 
                 endpoint_data, (sample != NULL)?*sample:NULL,
                 stream, deserialize_encapsulation, deserialize_sample, 
                 endpoint_plugin_qos);
@@ -1651,7 +1651,7 @@ namespace plc {
                 RTICdrLog_exception(
                     METHOD_NAME, 
                     &RTI_CDR_LOG_UNASSIGNABLE_SAMPLE_OF_TYPE_s, 
-                    "RotateState");
+                    "PlcRotateState");
 
             }
 
@@ -1659,7 +1659,7 @@ namespace plc {
 
         }
 
-        RTIBool RotateStatePlugin_skip(
+        RTIBool PlcRotateStatePlugin_skip(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream,   
             RTIBool skip_encapsulation,
@@ -1715,7 +1715,7 @@ namespace plc {
         }
 
         unsigned int 
-        RotateStatePlugin_get_serialized_sample_max_size_ex(
+        PlcRotateStatePlugin_get_serialized_sample_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -1763,7 +1763,7 @@ namespace plc {
         }
 
         unsigned int 
-        RotateStatePlugin_get_serialized_sample_max_size(
+        PlcRotateStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1772,7 +1772,7 @@ namespace plc {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = RotateStatePlugin_get_serialized_sample_max_size_ex(
+            size = PlcRotateStatePlugin_get_serialized_sample_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -1783,7 +1783,7 @@ namespace plc {
         }
 
         unsigned int 
-        RotateStatePlugin_get_serialized_sample_min_size(
+        PlcRotateStatePlugin_get_serialized_sample_min_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1831,12 +1831,12 @@ namespace plc {
         * encapsulation flags.
         */
         unsigned int
-        RotateStatePlugin_get_serialized_sample_size(
+        PlcRotateStatePlugin_get_serialized_sample_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment,
-            const RotateState * sample) 
+            const PlcRotateState * sample) 
         {
 
             unsigned int initial_alignment = current_alignment;
@@ -1899,15 +1899,15 @@ namespace plc {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        RotateStatePlugin_get_key_kind(void)
+        PlcRotateStatePlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_NO_KEY;
         }
 
         RTIBool 
-        RotateStatePlugin_serialize_key(
+        PlcRotateStatePlugin_serialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            const RotateState *sample, 
+            const PlcRotateState *sample, 
             struct RTICdrStream *stream,    
             RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1926,7 +1926,7 @@ namespace plc {
 
             if(serialize_key) {
 
-                if (!plc::process::RotateStatePlugin_serialize(
+                if (!plc::process::PlcRotateStatePlugin_serialize(
                     endpoint_data,
                     sample,
                     stream,
@@ -1945,9 +1945,9 @@ namespace plc {
             return RTI_TRUE;
         }
 
-        RTIBool RotateStatePlugin_deserialize_key_sample(
+        RTIBool PlcRotateStatePlugin_deserialize_key_sample(
             PRESTypePluginEndpointData endpoint_data,
-            RotateState *sample, 
+            PlcRotateState *sample, 
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
@@ -1970,7 +1970,7 @@ namespace plc {
                 }
                 if (deserialize_key) {
 
-                    if (!plc::process::RotateStatePlugin_deserialize_sample(
+                    if (!plc::process::PlcRotateStatePlugin_deserialize_sample(
                         endpoint_data, sample, stream, 
                         RTI_FALSE, RTI_TRUE, 
                         endpoint_plugin_qos)) {
@@ -1989,9 +1989,9 @@ namespace plc {
             }
         }
 
-        RTIBool RotateStatePlugin_deserialize_key(
+        RTIBool PlcRotateStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateState **sample, 
+            PlcRotateState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -2001,7 +2001,7 @@ namespace plc {
             RTIBool result;
             if (drop_sample) {} /* To avoid warnings */
             stream->_xTypesState.unassignable = RTI_FALSE;
-            result= plc::process::RotateStatePlugin_deserialize_key_sample(
+            result= plc::process::PlcRotateStatePlugin_deserialize_key_sample(
                 endpoint_data, (sample != NULL)?*sample:NULL, stream,
                 deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
             if (result) {
@@ -2015,7 +2015,7 @@ namespace plc {
         }
 
         unsigned int
-        RotateStatePlugin_get_serialized_key_max_size_ex(
+        PlcRotateStatePlugin_get_serialized_key_max_size_ex(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool * overflow,
             RTIBool include_encapsulation,
@@ -2041,7 +2041,7 @@ namespace plc {
                 initial_alignment = 0;
             }
 
-            current_alignment += plc::process::RotateStatePlugin_get_serialized_sample_max_size_ex(
+            current_alignment += plc::process::PlcRotateStatePlugin_get_serialized_sample_max_size_ex(
                 endpoint_data, overflow,RTI_FALSE, encapsulation_id, current_alignment);
 
             if (include_encapsulation) {
@@ -2051,7 +2051,7 @@ namespace plc {
         }
 
         unsigned int
-        RotateStatePlugin_get_serialized_key_max_size(
+        PlcRotateStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -2060,7 +2060,7 @@ namespace plc {
             unsigned int size;
             RTIBool overflow = RTI_FALSE;
 
-            size = RotateStatePlugin_get_serialized_key_max_size_ex(
+            size = PlcRotateStatePlugin_get_serialized_key_max_size_ex(
                 endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
 
             if (overflow) {
@@ -2071,9 +2071,9 @@ namespace plc {
         }
 
         RTIBool 
-        RotateStatePlugin_serialized_sample_to_key(
+        PlcRotateStatePlugin_serialized_sample_to_key(
             PRESTypePluginEndpointData endpoint_data,
-            RotateState *sample,
+            PlcRotateState *sample,
             struct RTICdrStream *stream, 
             RTIBool deserialize_encapsulation,  
             RTIBool deserialize_key, 
@@ -2097,7 +2097,7 @@ namespace plc {
 
             if (deserialize_key) {
 
-                if (!plc::process::RotateStatePlugin_deserialize_sample(
+                if (!plc::process::PlcRotateStatePlugin_deserialize_sample(
                     endpoint_data, sample, stream, RTI_FALSE, 
                     RTI_TRUE, endpoint_plugin_qos)) {
                     return RTI_FALSE;
@@ -2127,7 +2127,7 @@ namespace plc {
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *RotateStatePlugin_new(void) 
+        struct PRESTypePlugin *PlcRotateStatePlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -2145,53 +2145,53 @@ namespace plc {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            plc::process::RotateStatePlugin_on_participant_attached;
+            plc::process::PlcRotateStatePlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            plc::process::RotateStatePlugin_on_participant_detached;
+            plc::process::PlcRotateStatePlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            plc::process::RotateStatePlugin_on_endpoint_attached;
+            plc::process::PlcRotateStatePlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            plc::process::RotateStatePlugin_on_endpoint_detached;
+            plc::process::PlcRotateStatePlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            plc::process::RotateStatePlugin_copy_sample;
+            plc::process::PlcRotateStatePlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            RotateStatePlugin_create_sample;
+            PlcRotateStatePlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            RotateStatePlugin_destroy_sample;
+            PlcRotateStatePlugin_destroy_sample;
             plugin->finalizeOptionalMembersFnc =
             (PRESTypePluginFinalizeOptionalMembersFunction)
-            RotateState_finalize_optional_members;
+            PlcRotateState_finalize_optional_members;
 
             plugin->serializeFnc =
             (PRESTypePluginSerializeFunction)
-            plc::process::RotateStatePlugin_serialize;
+            plc::process::PlcRotateStatePlugin_serialize;
             plugin->deserializeFnc =
             (PRESTypePluginDeserializeFunction)
-            plc::process::RotateStatePlugin_deserialize;
+            plc::process::PlcRotateStatePlugin_deserialize;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            plc::process::RotateStatePlugin_get_serialized_sample_max_size;
+            plc::process::PlcRotateStatePlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
-            plc::process::RotateStatePlugin_get_serialized_sample_min_size;
+            plc::process::PlcRotateStatePlugin_get_serialized_sample_min_size;
 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            RotateStatePlugin_get_sample;
+            PlcRotateStatePlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            RotateStatePlugin_return_sample;
+            PlcRotateStatePlugin_return_sample;
 
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            plc::process::RotateStatePlugin_get_key_kind;
+            plc::process::PlcRotateStatePlugin_get_key_kind;
 
             /* These functions are only used for keyed types. As this is not a keyed
             type they are all set to NULL
@@ -2206,28 +2206,28 @@ namespace plc {
             plugin->instanceToKeyHashFnc = NULL;
             plugin->serializedSampleToKeyHashFnc = NULL;
             plugin->serializedKeyToKeyHashFnc = NULL;    
-            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::RotateState_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::PlcRotateState_get_typecode();
 
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            RotateStatePlugin_get_buffer;
+            PlcRotateStatePlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            RotateStatePlugin_return_buffer;
+            PlcRotateStatePlugin_return_buffer;
             plugin->getSerializedSampleSizeFnc =
             (PRESTypePluginGetSerializedSampleSizeFunction)
-            plc::process::RotateStatePlugin_get_serialized_sample_size;
+            plc::process::PlcRotateStatePlugin_get_serialized_sample_size;
 
-            plugin->endpointTypeName = RotateStateTYPENAME;
+            plugin->endpointTypeName = PlcRotateStateTYPENAME;
 
             return plugin;
         }
 
         void
-        RotateStatePlugin_delete(struct PRESTypePlugin *plugin)
+        PlcRotateStatePlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 

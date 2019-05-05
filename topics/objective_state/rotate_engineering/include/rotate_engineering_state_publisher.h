@@ -18,6 +18,7 @@
 #include "publisher.h"
 #include "rotate_engineering.h"
 #include "rotate_engineeringSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -35,24 +36,24 @@ class CRotateEngineeringStatePublisher : public TPublisher< nec::engineering::Ro
         bool Initialize();
         bool PublishSample();
         
-        void SetId(DataTypes::Uuid &id);
+        void SetId(CDdsUuid id);
         void SetStatus(const DataTypes::Status status);
         void SetTimestamp(const DataTypes::Time timestamp);
         void SetState(nec::engineering::State state);
         void SetMode(nec::engineering::Mode mode);
         void SetActualVelocity(const units::angular_velocity::radians_per_second_t actualVelocity);
         void SetActualTorque(const units::torque::newton_meter_t actualTorque);
-        void SetActualPosition(const double actualPosition);
+        void SetActualPosition(const units::angle::radian_t actualPosition);
         void SetActualPower(const double actualPower);
         void SetMinVelocity(const units::angular_velocity::radians_per_second_t minVelocity);
         void SetMaxVelocity(const units::angular_velocity::radians_per_second_t maxVelocity);
         void SetMinTorque(const units::torque::newton_meter_t minTorque);
         void SetMaxTorque(const units::torque::newton_meter_t maxTorque);
-        void SetMinPosition(const double minPosition);
-        void SetMaxPosition(const double maxPosition);
+        void SetMinPosition(const units::angle::radian_t minPosition);
+        void SetMaxPosition(const units::angle::radian_t maxPosition);
         void SetTargetVelocity(const units::angular_velocity::radians_per_second_t targetVelocity);
         void SetTargetTorque(const units::torque::newton_meter_t targetTorque);
-        void SetTargetPosition(const double targetPosition);
+        void SetTargetPosition(const units::angle::radian_t targetPosition);
 };
 
 #endif // __NEC_ENGINEERING_ROTATE_ENGINEERING_STATE_PUBLISHER_H__

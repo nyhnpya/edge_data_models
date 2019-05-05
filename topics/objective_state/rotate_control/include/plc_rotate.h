@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_rotate_1508020914_h
-#define plc_rotate_1508020914_h
+#ifndef plc_rotate_1508020920_h
+#define plc_rotate_1508020920_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -25,23 +25,23 @@ namespace plc {
     namespace process {
         static const char ROTATE_REQUEST_TOPIC[] = "RotateRequestTopic"; 
 
-        extern const char *RotateRequestTYPENAME;
+        extern const char *PlcRotateRequestTYPENAME;
 
-        struct RotateRequestSeq;
+        struct PlcRotateRequestSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class RotateRequestTypeSupport;
-        class RotateRequestDataWriter;
-        class RotateRequestDataReader;
+        class PlcRotateRequestTypeSupport;
+        class PlcRotateRequestDataWriter;
+        class PlcRotateRequestDataReader;
         #endif
 
-        class RotateRequest 
+        class PlcRotateRequest 
         {
           public:
-            typedef struct RotateRequestSeq Seq;
+            typedef struct PlcRotateRequestSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef RotateRequestTypeSupport TypeSupport;
-            typedef RotateRequestDataWriter DataWriter;
-            typedef RotateRequestDataReader DataReader;
+            typedef PlcRotateRequestTypeSupport TypeSupport;
+            typedef PlcRotateRequestDataWriter DataWriter;
+            typedef PlcRotateRequestDataReader DataReader;
             #endif
 
             DDS_Double   targetRate ;
@@ -54,44 +54,44 @@ namespace plc {
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
-        NDDSUSERDllExport DDS_TypeCode* RotateRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* PlcRotateRequest_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(RotateRequestSeq, RotateRequest);
-
-        NDDSUSERDllExport
-        RTIBool RotateRequest_initialize(
-            RotateRequest* self);
+        DDS_SEQUENCE(PlcRotateRequestSeq, PlcRotateRequest);
 
         NDDSUSERDllExport
-        RTIBool RotateRequest_initialize_ex(
-            RotateRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool PlcRotateRequest_initialize(
+            PlcRotateRequest* self);
 
         NDDSUSERDllExport
-        RTIBool RotateRequest_initialize_w_params(
-            RotateRequest* self,
+        RTIBool PlcRotateRequest_initialize_ex(
+            PlcRotateRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool PlcRotateRequest_initialize_w_params(
+            PlcRotateRequest* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        void RotateRequest_finalize(
-            RotateRequest* self);
+        void PlcRotateRequest_finalize(
+            PlcRotateRequest* self);
 
         NDDSUSERDllExport
-        void RotateRequest_finalize_ex(
-            RotateRequest* self,RTIBool deletePointers);
+        void PlcRotateRequest_finalize_ex(
+            PlcRotateRequest* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void RotateRequest_finalize_w_params(
-            RotateRequest* self,
+        void PlcRotateRequest_finalize_w_params(
+            PlcRotateRequest* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void RotateRequest_finalize_optional_members(
-            RotateRequest* self, RTIBool deletePointers);  
+        void PlcRotateRequest_finalize_optional_members(
+            PlcRotateRequest* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool RotateRequest_copy(
-            RotateRequest* dst,
-            const RotateRequest* src);
+        RTIBool PlcRotateRequest_copy(
+            PlcRotateRequest* dst,
+            const PlcRotateRequest* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -101,23 +101,23 @@ namespace plc {
         #endif
         static const char ROTATE_STATE_TOPIC[] = "RotateStateTopic"; 
 
-        extern const char *RotateStateTYPENAME;
+        extern const char *PlcRotateStateTYPENAME;
 
-        struct RotateStateSeq;
+        struct PlcRotateStateSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class RotateStateTypeSupport;
-        class RotateStateDataWriter;
-        class RotateStateDataReader;
+        class PlcRotateStateTypeSupport;
+        class PlcRotateStateDataWriter;
+        class PlcRotateStateDataReader;
         #endif
 
-        class RotateState 
+        class PlcRotateState 
         {
           public:
-            typedef struct RotateStateSeq Seq;
+            typedef struct PlcRotateStateSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef RotateStateTypeSupport TypeSupport;
-            typedef RotateStateDataWriter DataWriter;
-            typedef RotateStateDataReader DataReader;
+            typedef PlcRotateStateTypeSupport TypeSupport;
+            typedef PlcRotateStateDataWriter DataWriter;
+            typedef PlcRotateStateDataReader DataReader;
             #endif
 
             DDS_Long   status ;
@@ -134,44 +134,44 @@ namespace plc {
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
-        NDDSUSERDllExport DDS_TypeCode* RotateState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* PlcRotateState_get_typecode(void); /* Type code */
 
-        DDS_SEQUENCE(RotateStateSeq, RotateState);
-
-        NDDSUSERDllExport
-        RTIBool RotateState_initialize(
-            RotateState* self);
+        DDS_SEQUENCE(PlcRotateStateSeq, PlcRotateState);
 
         NDDSUSERDllExport
-        RTIBool RotateState_initialize_ex(
-            RotateState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool PlcRotateState_initialize(
+            PlcRotateState* self);
 
         NDDSUSERDllExport
-        RTIBool RotateState_initialize_w_params(
-            RotateState* self,
+        RTIBool PlcRotateState_initialize_ex(
+            PlcRotateState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+
+        NDDSUSERDllExport
+        RTIBool PlcRotateState_initialize_w_params(
+            PlcRotateState* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        void RotateState_finalize(
-            RotateState* self);
+        void PlcRotateState_finalize(
+            PlcRotateState* self);
 
         NDDSUSERDllExport
-        void RotateState_finalize_ex(
-            RotateState* self,RTIBool deletePointers);
+        void PlcRotateState_finalize_ex(
+            PlcRotateState* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void RotateState_finalize_w_params(
-            RotateState* self,
+        void PlcRotateState_finalize_w_params(
+            PlcRotateState* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void RotateState_finalize_optional_members(
-            RotateState* self, RTIBool deletePointers);  
+        void PlcRotateState_finalize_optional_members(
+            PlcRotateState* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool RotateState_copy(
-            RotateState* dst,
-            const RotateState* src);
+        RTIBool PlcRotateState_copy(
+            PlcRotateState* dst,
+            const PlcRotateState* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.

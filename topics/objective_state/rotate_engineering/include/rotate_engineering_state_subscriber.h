@@ -45,17 +45,17 @@ class CRotateEngineeringStateSubscriber : public TSubscriber< nec::engineering::
         nec::engineering::Mode GetMode();
         units::angular_velocity::radians_per_second_t GetActualVelocity();
         units::torque::newton_meter_t GetActualTorque();
-        double GetActualPosition();
+        units::angle::radian_t GetActualPosition();
         double GetActualPower();
         units::angular_velocity::radians_per_second_t GetMinVelocity();
         units::angular_velocity::radians_per_second_t GetMaxVelocity();
         units::torque::newton_meter_t GetMinTorque();
         units::torque::newton_meter_t GetMaxTorque();
-        double GetMinPosition();
-        double GetMaxPosition();
+        units::angle::radian_t GetMinPosition();
+        units::angle::radian_t GetMaxPosition();
         units::angular_velocity::radians_per_second_t GetTargetVelocity();
         units::torque::newton_meter_t GetTargetTorque();
-        double GetTargetPosition();
+        units::angle::radian_t GetTargetPosition();
 
     protected:
         void DataAvailable(const nec::engineering::RotateEngineeringState &data,

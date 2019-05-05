@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drilling_limitsSupport_429958659_h
-#define drilling_limitsSupport_429958659_h
+#ifndef drilling_limitsSupport_429957153_h
+#define drilling_limitsSupport_429957153_h
 
 /* Uses */
 #include "drilling_limits.h"
@@ -47,42 +47,11 @@ namespace process {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            DrillingLimitsRequestTypeSupport, 
-            DrillingLimitsRequest);
+            DrillingLimitsTypeSupport, 
+            DrillingLimits);
 
-        DDS_DATAWRITER_CPP(DrillingLimitsRequestDataWriter, DrillingLimitsRequest);
-        DDS_DATAREADER_CPP(DrillingLimitsRequestDataReader, DrillingLimitsRequestSeq, DrillingLimitsRequest);
-
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-        /* If the code is building on Windows, stop exporting symbols.
-        */
-        #undef NDDSUSERDllExport
-        #define NDDSUSERDllExport
-        #endif
-        /* ========================================================================= */
-        /**
-        Uses:     T
-
-        Defines:  TTypeSupport, TDataWriter, TDataReader
-
-        Organized using the well-documented "Generics Pattern" for
-        implementing generics in C and C++.
-        */
-
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-        /* If the code is building on Windows, start exporting symbols.
-        */
-        #undef NDDSUSERDllExport
-        #define NDDSUSERDllExport __declspec(dllexport)
-
-        #endif
-
-        DDS_TYPESUPPORT_CPP(
-            DrillingLimitsStateTypeSupport, 
-            DrillingLimitsState);
-
-        DDS_DATAWRITER_CPP(DrillingLimitsStateDataWriter, DrillingLimitsState);
-        DDS_DATAREADER_CPP(DrillingLimitsStateDataReader, DrillingLimitsStateSeq, DrillingLimitsState);
+        DDS_DATAWRITER_CPP(DrillingLimitsDataWriter, DrillingLimits);
+        DDS_DATAREADER_CPP(DrillingLimitsDataReader, DrillingLimitsSeq, DrillingLimits);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -93,5 +62,5 @@ namespace process {
     } /* namespace plan  */
 } /* namespace process  */
 
-#endif  /* drilling_limitsSupport_429958659_h */
+#endif  /* drilling_limitsSupport_429957153_h */
 

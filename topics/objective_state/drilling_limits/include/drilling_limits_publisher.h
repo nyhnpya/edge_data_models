@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,50 +12,43 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __DRILLING_LIMITS_PUBLISHER_H__
-#define __DRILLING_LIMITS_PUBLISHER_H__
+#ifndef __PROCESS_PLAN_DRILLING_LIMITS_PUBLISHER_H__
+#define __PROCESS_PLAN_DRILLING_LIMITS_PUBLISHER_H__
 
 #include "publisher.h"
 #include "drilling_limits.h"
 #include "drilling_limitsSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
 #endif
-#include "units.h"
 
-using namespace units;
-using namespace units::length;
-using namespace units::angular_velocity;
-using namespace units::velocity;
-using namespace units::force;
-using namespace units::torque;
-using namespace units::pressure;
+#include "units.h"
 
 class CDrillingLimitsPublisher : public TPublisher< process::plan::DrillingLimits >
 {
- public:
-    CDrillingLimitsPublisher();
-    ~CDrillingLimitsPublisher();
-
-    bool Create(int32_t domain);
-    bool Initialize();
-    bool PublishSample();
-
-    // Topic setters
-    void SetId(DataTypes::Uuid id);
-    void SetStartDepth(meter_t depth);
-    void SetEndDepth(meter_t depth);
-    void SetRopMin(meters_per_second_t ropMin);
-    void SetRopMax(meters_per_second_t ropMax);
-    void SetWobMin(newton_t wobMin);
-    void SetWobMax(newton_t wobMax);
-    void SetDifferentialPressureMin(pascal_t diffPMin);
-    void SetDifferentialPressureMax(pascal_t diffPMax);
-    void SetTorqueMin(newton_meter_t torqueMin);
-    void SetTorqueMax(newton_meter_t torqueMax);
-    void SetRotateMin(radians_per_second_t rotateMin);
-    void SetRotateMax(radians_per_second_t rotateMax);
+    public:
+        CDrillingLimitsPublisher();
+        ~CDrillingLimitsPublisher();
+        
+        bool Create(int32_t domain);
+        bool Initialize();
+        bool PublishSample();
+        
+        void SetId(CDdsUuid id);
+        void SetStartDepth(const units::length::meter_t startDepth);
+        void SetEndDepth(const units::length::meter_t endDepth);
+        void SetRopMin(const units::velocity::meters_per_second_t ropMin);
+        void SetRopMax(const units::velocity::meters_per_second_t ropMax);
+        void SetWobMin(const units::force::newton_t wobMin);
+        void SetWobMax(const units::force::newton_t wobMax);
+        void SetDiffPMin(const units::pressure::pascal_t diffPMin);
+        void SetDiffPMax(const units::pressure::pascal_t diffPMax);
+        void SetTorqueMin(const units::torque::newton_meter_t torqueMin);
+        void SetTorqueMax(const units::torque::newton_meter_t torqueMax);
+        void SetRotateMin(const units::angular_velocity::radians_per_second_t rotateMin);
+        void SetRotateMax(const units::angular_velocity::radians_per_second_t rotateMax);
 };
 
-#endif // __DRILLING_LIMITS_PUBLISHER_H__
+#endif // __PROCESS_PLAN_DRILLING_LIMITS_PUBLISHER_H__

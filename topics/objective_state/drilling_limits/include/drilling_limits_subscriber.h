@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __DRILLING_LIMITS_SUBSCRIBER_H__
-#define __DRILLING_LIMITS_SUBSCRIBER_H__
+#ifndef __PROCESS_PLAN_DRILLING_LIMITS_SUBSCRIBER_H__
+#define __PROCESS_PLAN_DRILLING_LIMITS_SUBSCRIBER_H__
 
 #include "subscriber.h"
 #include "drilling_limits.h"
@@ -22,64 +22,51 @@
 #ifdef _WIN32
 #undef pascal
 #endif
-#include "units.h"
 
-using namespace units;
-using namespace units::length;
-using namespace units::angular_velocity;
-using namespace units::velocity;
-using namespace units::force;
-using namespace units::torque;
-using namespace units::pressure;
+#include "units.h"
 
 class CDrillingLimitsSubscriber : public TSubscriber< process::plan::DrillingLimits >
 {
- public:
-    CDrillingLimitsSubscriber();
-    ~CDrillingLimitsSubscriber();
+    public:
+        CDrillingLimitsSubscriber();
+        ~CDrillingLimitsSubscriber();
+        
+        bool Create(int32_t domain);
+        bool ValidData();
+        void OnDataAvailable(OnDataAvailableEvent event);
+        void OnDataDisposed(OnDataDisposedEvent event);
+        void OnLivelinessChanged(OnLivelinessChangedEvent event);
+        void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
+        
+        DataTypes::Uuid GetId();
+        units::length::meter_t GetStartDepth();
+        units::length::meter_t GetEndDepth();
+        units::velocity::meters_per_second_t GetRopMin();
+        units::velocity::meters_per_second_t GetRopMax();
+        units::force::newton_t GetWobMin();
+        units::force::newton_t GetWobMax();
+        units::pressure::pascal_t GetDiffPMin();
+        units::pressure::pascal_t GetDiffPMax();
+        units::torque::newton_meter_t GetTorqueMin();
+        units::torque::newton_meter_t GetTorqueMax();
+        units::angular_velocity::radians_per_second_t GetRotateMin();
+        units::angular_velocity::radians_per_second_t GetRotateMax();
 
-        // Topic initialization
-    bool Create(int32_t domain);
-    void OnDataAvailable(OnDataAvailableEvent event);
-    void OnDataDisposed(OnDataDisposedEvent event);
-    void OnLivelinessChanged(OnLivelinessChangedEvent event);
-    void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
+    protected:
+        void DataAvailable(const process::plan::DrillingLimits &data,
+                           const DDS::SampleInfo &sampleInfo);
+        void DataDisposed(const DDS::SampleInfo &sampleInfo);
+        void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
+        void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
 
-    // Topic getters
-    DataTypes::Uuid GetId();
-    meter_t GetStartDepth();
-    meter_t GetEndDepth();
-    meters_per_second_t GetRopMin();
-    meters_per_second_t GetRopMax();
-    newton_t GetWobMin();
-    newton_t GetWobMax();
-    pascal_t GetDifferentialPressureMin();
-    pascal_t GetDifferentialPressureMax();
-    newton_meter_t GetTorqueMin();
-    newton_meter_t GetTorqueMax();
-    radians_per_second_t GetRotateMin();
-    radians_per_second_t GetRotateMax();
-
-    // Topic status
-    bool ValidData();
-    bool ValidSubscription();
-
- protected:
-    void DataAvailable(const process::plan::DrillingLimits &data,
-		       const DDS::SampleInfo &sampleInfo);
-    
-    void DataDisposed(const DDS::SampleInfo &sampleInfo);
-    void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
-    void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);
-
- private:
-    bool                          m_subscriptionMatched;
-    process::plan::DrillingLimits m_data;
-    DDS::SampleInfo               m_sampleInfo;
-    OnDataAvailableEvent          m_pOnDataAvailable;
-    OnDataDisposedEvent           m_pOnDataDisposed;
-    OnLivelinessChangedEvent      m_pOnLivelinessChanged;
-    OnSubscriptionMatchedEvent    m_pOnSubscriptionMatched;
+    private:
+        process::plan::DrillingLimits                     m_data;
+        DDS::SampleInfo                                   m_sampleInfo;
+        DDS::LivelinessChangedStatus                      m_livelinessStatus;
+        OnDataAvailableEvent                              m_pOnDataAvailable;
+        OnDataDisposedEvent                               m_pOnDataDisposed;
+        OnLivelinessChangedEvent                          m_pOnLivelinessChanged;
+        OnSubscriptionMatchedEvent                        m_pOnSubscriptionMatched;
 };
 
-#endif // __DRILLING_LIMITS_SUBSCRIBER_H__
+#endif // __PROCESS_PLAN_DRILLING_LIMITS_SUBSCRIBER_H__

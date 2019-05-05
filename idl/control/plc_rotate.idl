@@ -15,7 +15,7 @@ module plc
          * | ----------------- | --------------------------------------------------- | ------------------- | ------- |
          * | targetRate        | requested traget in rad/s                           | double              | rad/s   |
          */
-        struct RotateRequest
+        struct PlcRotateRequest
         {
             double targetRate;
         };
@@ -35,7 +35,7 @@ module plc
          * | maxRate       | maximum machine rate in rad/s          | double            | rad/s |
          * | targetRate    | requested traget in rad/s              | double            | rad/s |
          */
-        struct RotateState
+        struct PlcRotateState
         {
             long    status;
 

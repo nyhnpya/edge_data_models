@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef configuration_301633301_h
-#define configuration_301633301_h
+#ifndef configuration_301633329_h
+#define configuration_301633329_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -384,6 +384,7 @@ namespace Configuration {
         DDS_Char *   edgeUnit ;
         DDS_Char *   ioType ;
         DDS_Char *   ioUnit ;
+        DDS_Char *   convertUnit ;
         DDS_Char *   floatEpsilon ;
         DDS_Char *   tag ;
 

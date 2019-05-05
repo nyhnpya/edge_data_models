@@ -1,17 +1,3 @@
-/*
- *  Copyright (c) 2019 Ensign Energy Incorporated
- *  All Rights Reserved.
- *
- * NOTICE:  All information contained herein is, and remains
- * the property of Ensign Energy Incorporated and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to Ensign Energy Incorporated
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from Ensign Energy Incorporated.
- */
 #include "rotate_engineering_state_subscriber.h"
 
 CRotateEngineeringStateSubscriber::CRotateEngineeringStateSubscriber() :
@@ -75,9 +61,9 @@ units::torque::newton_meter_t CRotateEngineeringStateSubscriber::GetActualTorque
     return units::torque::newton_meter_t(m_data.actualTorque);
 }
 
-double CRotateEngineeringStateSubscriber::GetActualPosition()
+units::angle::radian_t CRotateEngineeringStateSubscriber::GetActualPosition()
 {
-    return m_data.actualPosition;
+    return units::angle::radian_t(m_data.actualPosition);
 }
 
 double CRotateEngineeringStateSubscriber::GetActualPower()
@@ -105,14 +91,14 @@ units::torque::newton_meter_t CRotateEngineeringStateSubscriber::GetMaxTorque()
     return units::torque::newton_meter_t(m_data.maxTorque);
 }
 
-double CRotateEngineeringStateSubscriber::GetMinPosition()
+units::angle::radian_t CRotateEngineeringStateSubscriber::GetMinPosition()
 {
-    return m_data.minPosition;
+    return units::angle::radian_t(m_data.minPosition);
 }
 
-double CRotateEngineeringStateSubscriber::GetMaxPosition()
+units::angle::radian_t CRotateEngineeringStateSubscriber::GetMaxPosition()
 {
-    return m_data.maxPosition;
+    return units::angle::radian_t(m_data.maxPosition);
 }
 
 units::angular_velocity::radians_per_second_t CRotateEngineeringStateSubscriber::GetTargetVelocity()
@@ -125,9 +111,9 @@ units::torque::newton_meter_t CRotateEngineeringStateSubscriber::GetTargetTorque
     return units::torque::newton_meter_t(m_data.targetTorque);
 }
 
-double CRotateEngineeringStateSubscriber::GetTargetPosition()
+units::angle::radian_t CRotateEngineeringStateSubscriber::GetTargetPosition()
 {
-    return m_data.targetPosition;
+    return units::angle::radian_t(m_data.targetPosition);
 }
 
 

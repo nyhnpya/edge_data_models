@@ -18,6 +18,7 @@
 #include "publisher.h"
 #include "rotate_engineering.h"
 #include "rotate_engineeringSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -35,7 +36,7 @@ class CRotateEngineeringRequestPublisher : public TPublisher< nec::engineering::
         bool Initialize();
         bool PublishSample();
         
-        void SetId(DataTypes::Uuid &id);
+        void SetId(CDdsUuid id);
         void SetPriority(const DataTypes::Priority priority);
         void SetTimeNeeded(const DataTypes::Time timeNeeded);
         void SetDuration(const DataTypes::Time duration);

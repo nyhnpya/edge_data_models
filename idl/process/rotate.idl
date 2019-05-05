@@ -4,8 +4,8 @@ module nec
 {
     module process
     {
-        // QoSLibrary: TestEdgeBaseLibrary
-        // QoSProfile: TestEdgeBaseProfile
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
 
         //@copy-c-declaration static const char ROTATE_REQUEST[] = "RotateRequest";
         /**
@@ -32,8 +32,8 @@ module nec
             double              targetRate;  // (units::angular_velocity::radians_per_second)
         };
 
-        // QoSLibrary: 
-        // QoSProfile: 
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
 
         //@copy-c-declaration static const char ROTATE_OBJECTIVE[] = "RotateObjective";
         /**
@@ -56,8 +56,8 @@ module nec
             double           targetRate;  // (units::angular_velocity::radians_per_second)
         };
 
-        // QoSLibrary: 
-        // QoSProfile: 
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
 
         //@copy-c-declaration static const char ROTATE_STATE[] = "RotateState";
 

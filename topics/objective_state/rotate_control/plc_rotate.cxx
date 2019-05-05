@@ -36,13 +36,13 @@ namespace plc {
     namespace process {
 
         /* ========================================================================= */
-        const char *RotateRequestTYPENAME = "plc::process::RotateRequest";
+        const char *PlcRotateRequestTYPENAME = "plc::process::PlcRotateRequest";
 
-        DDS_TypeCode* RotateRequest_get_typecode()
+        DDS_TypeCode* PlcRotateRequest_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member RotateRequest_g_tc_members[1]=
+            static DDS_TypeCode_Member PlcRotateRequest_g_tc_members[1]=
             {
 
                 {
@@ -64,39 +64,39 @@ namespace plc {
                 }
             };
 
-            static DDS_TypeCode RotateRequest_g_tc =
+            static DDS_TypeCode PlcRotateRequest_g_tc =
             {{
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"plc::process::RotateRequest", /* Name */
+                    (char *)"plc::process::PlcRotateRequest", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     1, /* Number of members */
-                    RotateRequest_g_tc_members, /* Members */
+                    PlcRotateRequest_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
-                }}; /* Type code for RotateRequest*/
+                }}; /* Type code for PlcRotateRequest*/
 
             if (is_initialized) {
-                return &RotateRequest_g_tc;
+                return &PlcRotateRequest_g_tc;
             }
 
-            RotateRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            PlcRotateRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             is_initialized = RTI_TRUE;
 
-            return &RotateRequest_g_tc;
+            return &PlcRotateRequest_g_tc;
         }
 
-        RTIBool RotateRequest_initialize(
-            RotateRequest* sample) {
-            return plc::process::RotateRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool PlcRotateRequest_initialize(
+            PlcRotateRequest* sample) {
+            return plc::process::PlcRotateRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool RotateRequest_initialize_ex(
-            RotateRequest* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool PlcRotateRequest_initialize_ex(
+            PlcRotateRequest* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -105,13 +105,13 @@ namespace plc {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return plc::process::RotateRequest_initialize_w_params(
+            return plc::process::PlcRotateRequest_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool RotateRequest_initialize_w_params(
-            RotateRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool PlcRotateRequest_initialize_w_params(
+            PlcRotateRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -128,15 +128,15 @@ namespace plc {
             return RTI_TRUE;
         }
 
-        void RotateRequest_finalize(
-            RotateRequest* sample)
+        void PlcRotateRequest_finalize(
+            PlcRotateRequest* sample)
         {
 
-            plc::process::RotateRequest_finalize_ex(sample,RTI_TRUE);
+            plc::process::PlcRotateRequest_finalize_ex(sample,RTI_TRUE);
         }
 
-        void RotateRequest_finalize_ex(
-            RotateRequest* sample,RTIBool deletePointers)
+        void PlcRotateRequest_finalize_ex(
+            PlcRotateRequest* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -147,12 +147,12 @@ namespace plc {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            plc::process::RotateRequest_finalize_w_params(
+            plc::process::PlcRotateRequest_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void RotateRequest_finalize_w_params(
-            RotateRequest* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void PlcRotateRequest_finalize_w_params(
+            PlcRotateRequest* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -165,8 +165,8 @@ namespace plc {
 
         }
 
-        void RotateRequest_finalize_optional_members(
-            RotateRequest* sample, RTIBool deletePointers)
+        void PlcRotateRequest_finalize_optional_members(
+            PlcRotateRequest* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -183,9 +183,9 @@ namespace plc {
 
         }
 
-        RTIBool RotateRequest_copy(
-            RotateRequest* dst,
-            const RotateRequest* src)
+        RTIBool PlcRotateRequest_copy(
+            PlcRotateRequest* dst,
+            const PlcRotateRequest* src)
         {
             try {
 
@@ -210,15 +210,15 @@ namespace plc {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'RotateRequest' sequence class.
+        * Configure and implement 'PlcRotateRequest' sequence class.
         */
-        #define T RotateRequest
-        #define TSeq RotateRequestSeq
+        #define T PlcRotateRequest
+        #define TSeq PlcRotateRequestSeq
 
-        #define T_initialize_w_params plc::process::RotateRequest_initialize_w_params
+        #define T_initialize_w_params plc::process::PlcRotateRequest_initialize_w_params
 
-        #define T_finalize_w_params   plc::process::RotateRequest_finalize_w_params
-        #define T_copy       plc::process::RotateRequest_copy
+        #define T_finalize_w_params   plc::process::PlcRotateRequest_finalize_w_params
+        #define T_copy       plc::process::PlcRotateRequest_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -237,13 +237,13 @@ namespace plc {
         #undef T
 
         /* ========================================================================= */
-        const char *RotateStateTYPENAME = "plc::process::RotateState";
+        const char *PlcRotateStateTYPENAME = "plc::process::PlcRotateState";
 
-        DDS_TypeCode* RotateState_get_typecode()
+        DDS_TypeCode* PlcRotateState_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member RotateState_g_tc_members[5]=
+            static DDS_TypeCode_Member PlcRotateState_g_tc_members[5]=
             {
 
                 {
@@ -333,47 +333,47 @@ namespace plc {
                 }
             };
 
-            static DDS_TypeCode RotateState_g_tc =
+            static DDS_TypeCode PlcRotateState_g_tc =
             {{
                     DDS_TK_STRUCT,/* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"plc::process::RotateState", /* Name */
+                    (char *)"plc::process::PlcRotateState", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     5, /* Number of members */
-                    RotateState_g_tc_members, /* Members */
+                    PlcRotateState_g_tc_members, /* Members */
                     DDS_VM_NONE  /* Ignored */         
-                }}; /* Type code for RotateState*/
+                }}; /* Type code for PlcRotateState*/
 
             if (is_initialized) {
-                return &RotateState_g_tc;
+                return &PlcRotateState_g_tc;
             }
 
-            RotateState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+            PlcRotateState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
 
-            RotateState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            PlcRotateState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            PlcRotateState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            PlcRotateState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
-            RotateState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+            PlcRotateState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
 
             is_initialized = RTI_TRUE;
 
-            return &RotateState_g_tc;
+            return &PlcRotateState_g_tc;
         }
 
-        RTIBool RotateState_initialize(
-            RotateState* sample) {
-            return plc::process::RotateState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool PlcRotateState_initialize(
+            PlcRotateState* sample) {
+            return plc::process::PlcRotateState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool RotateState_initialize_ex(
-            RotateState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool PlcRotateState_initialize_ex(
+            PlcRotateState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -382,13 +382,13 @@ namespace plc {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return plc::process::RotateState_initialize_w_params(
+            return plc::process::PlcRotateState_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool RotateState_initialize_w_params(
-            RotateState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool PlcRotateState_initialize_w_params(
+            PlcRotateState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -421,15 +421,15 @@ namespace plc {
             return RTI_TRUE;
         }
 
-        void RotateState_finalize(
-            RotateState* sample)
+        void PlcRotateState_finalize(
+            PlcRotateState* sample)
         {
 
-            plc::process::RotateState_finalize_ex(sample,RTI_TRUE);
+            plc::process::PlcRotateState_finalize_ex(sample,RTI_TRUE);
         }
 
-        void RotateState_finalize_ex(
-            RotateState* sample,RTIBool deletePointers)
+        void PlcRotateState_finalize_ex(
+            PlcRotateState* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -440,12 +440,12 @@ namespace plc {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            plc::process::RotateState_finalize_w_params(
+            plc::process::PlcRotateState_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void RotateState_finalize_w_params(
-            RotateState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void PlcRotateState_finalize_w_params(
+            PlcRotateState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -458,8 +458,8 @@ namespace plc {
 
         }
 
-        void RotateState_finalize_optional_members(
-            RotateState* sample, RTIBool deletePointers)
+        void PlcRotateState_finalize_optional_members(
+            PlcRotateState* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -476,9 +476,9 @@ namespace plc {
 
         }
 
-        RTIBool RotateState_copy(
-            RotateState* dst,
-            const RotateState* src)
+        RTIBool PlcRotateState_copy(
+            PlcRotateState* dst,
+            const PlcRotateState* src)
         {
             try {
 
@@ -519,15 +519,15 @@ namespace plc {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'RotateState' sequence class.
+        * Configure and implement 'PlcRotateState' sequence class.
         */
-        #define T RotateState
-        #define TSeq RotateStateSeq
+        #define T PlcRotateState
+        #define TSeq PlcRotateStateSeq
 
-        #define T_initialize_w_params plc::process::RotateState_initialize_w_params
+        #define T_initialize_w_params plc::process::PlcRotateState_initialize_w_params
 
-        #define T_finalize_w_params   plc::process::RotateState_finalize_w_params
-        #define T_copy       plc::process::RotateState_copy
+        #define T_finalize_w_params   plc::process::PlcRotateState_finalize_w_params
+        #define T_copy       plc::process::PlcRotateState_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
