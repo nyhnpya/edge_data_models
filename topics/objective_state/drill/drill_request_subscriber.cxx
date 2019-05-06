@@ -46,9 +46,9 @@ DataTypes::Time CDrillRequestSubscriber::GetTimeNeeded()
     return m_data.timeNeeded;
 }
 
-DataTypes::Time CDrillRequestSubscriber::GetDuration()
+DataTypes::Time CDrillRequestSubscriber::GetEstimatedDuration()
 {
-    return m_data.duration;
+    return m_data.estimatedDuration;
 }
 
 units::velocity::meters_per_second_t CDrillRequestSubscriber::GetRopTarget()

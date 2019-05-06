@@ -18,10 +18,13 @@
 #include "publisher.h"
 #include "circulate.h"
 #include "circulateSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
 #endif
+
+#include "units.h"
 
 class CCirculateObjectivePublisher : public TPublisher< nec::process::CirculateObjective >
 {
@@ -36,7 +39,7 @@ class CCirculateObjectivePublisher : public TPublisher< nec::process::CirculateO
         void SetId(CDdsUuid id);
         void SetObjectiveId(CDdsUuid objectiveId);
         void SetEstimatedDuration(const DataTypes::Time estimatedDuration);
-        void SetTargetFlowRate(const double targetFlowRate);
+        void SetTargetFlowRate(const units::volume_velocity::cubic_meters_per_second_t targetFlowRate);
 };
 
 #endif // __NEC_PROCESS_CIRCULATE_OBJECTIVE_PUBLISHER_H__

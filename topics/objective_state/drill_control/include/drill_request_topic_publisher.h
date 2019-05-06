@@ -18,6 +18,7 @@
 #include "publisher.h"
 #include "plc_drill.h"
 #include "plc_drillSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal

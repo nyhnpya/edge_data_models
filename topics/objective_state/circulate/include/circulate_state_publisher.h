@@ -18,6 +18,7 @@
 #include "publisher.h"
 #include "circulate.h"
 #include "circulateSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -45,7 +46,7 @@ class CCirculateStatePublisher : public TPublisher< nec::process::CirculateState
         void SetMaxFlowRate(const units::volume_velocity::cubic_meters_per_second_t maxFlowRate);
         void SetMinStandpipePressure(const units::pressure::pascal_t minStandpipePressure);
         void SetMaxStandpipePressure(const units::pressure::pascal_t maxStandpipePressure);
-        void SetTargetFlowRate//(const units::volume_velocity::cubic_meters_per_second_t targetFlowRate//);
+        void SetTargetFlowRate(const units::volume_velocity::cubic_meters_per_second_t targetFlowRate);
 };
 
 #endif // __NEC_PROCESS_CIRCULATE_STATE_PUBLISHER_H__

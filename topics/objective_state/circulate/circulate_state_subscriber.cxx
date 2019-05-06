@@ -18,7 +18,7 @@ bool CCirculateStateSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::CIRCULATE_STATE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "StateProfile");
 }
 
 bool CCirculateStateSubscriber::ValidData()
@@ -76,9 +76,9 @@ units::pressure::pascal_t CCirculateStateSubscriber::GetMaxStandpipePressure()
     return units::pressure::pascal_t(m_data.maxStandpipePressure);
 }
 
-units::volume_velocity::cubic_meters_per_second_t CCirculateStateSubscriber::GetTargetFlowRate//()
+units::volume_velocity::cubic_meters_per_second_t CCirculateStateSubscriber::GetTargetFlowRate()
 {
-    return units::volume_velocity::cubic_meters_per_second_t(m_data.targetFlowRate//);
+    return units::volume_velocity::cubic_meters_per_second_t(m_data.targetFlowRate);
 }
 
 

@@ -1,5 +1,5 @@
-#include "dds_uuid.h"
 #include "hoist_request_publisher.h"
+#include "dds_uuid.h"
 
 CHoistRequestPublisher::CHoistRequestPublisher()
 {

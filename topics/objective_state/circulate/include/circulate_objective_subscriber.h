@@ -23,6 +23,8 @@
 #undef pascal
 #endif
 
+#include "units.h"
+
 class CCirculateObjectiveSubscriber : public TSubscriber< nec::process::CirculateObjective >
 {
     public:
@@ -39,7 +41,7 @@ class CCirculateObjectiveSubscriber : public TSubscriber< nec::process::Circulat
         DataTypes::Uuid GetId();
         DataTypes::Uuid GetObjectiveId();
         DataTypes::Time GetEstimatedDuration();
-        double GetTargetFlowRate();
+        units::volume_velocity::cubic_meters_per_second_t GetTargetFlowRate();
 
     protected:
         void DataAvailable(const nec::process::CirculateObjective &data,

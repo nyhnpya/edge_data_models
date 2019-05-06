@@ -179,7 +179,7 @@ namespace nec {
                 (const DataTypes::Time*) &sample->timeNeeded, "timeNeeded", indent_level + 1);
 
             DataTypes::TimePluginSupport_print_data(
-                (const DataTypes::Time*) &sample->duration, "duration", indent_level + 1);
+                (const DataTypes::Time*) &sample->estimatedDuration, "estimatedDuration", indent_level + 1);
 
             RTICdrType_printDouble(
                 &sample->ropTarget, "ropTarget", indent_level + 1);    
@@ -444,7 +444,7 @@ namespace nec {
 
                 if(!DataTypes::TimePlugin_serialize(
                     endpoint_data,
-                    (const DataTypes::Time*) &sample->duration,
+                    (const DataTypes::Time*) &sample->estimatedDuration,
                     stream,
                     RTI_FALSE, encapsulation_id,
                     RTI_TRUE,
@@ -565,7 +565,7 @@ namespace nec {
                     }
                     if(!DataTypes::TimePlugin_deserialize_sample(
                         endpoint_data,
-                        &sample->duration,
+                        &sample->estimatedDuration,
                         stream,
                         RTI_FALSE, RTI_TRUE,
                         endpoint_plugin_qos)) {
@@ -1118,7 +1118,7 @@ namespace nec {
 
             current_alignment += DataTypes::TimePlugin_get_serialized_sample_size(
                 endpoint_data,RTI_FALSE, encapsulation_id,
-                current_alignment, (const DataTypes::Time*) &sample->duration);
+                current_alignment, (const DataTypes::Time*) &sample->estimatedDuration);
 
             current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
                 PRESTypePluginDefaultEndpointData_getAlignment(

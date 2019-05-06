@@ -42,7 +42,7 @@ class CDrillRequestSubscriber : public TSubscriber< nec::process::DrillRequest >
         DataTypes::Uuid GetObjectiveId();
         DataTypes::Priority GetPriority();
         DataTypes::Time GetTimeNeeded();
-        DataTypes::Time GetDuration();
+        DataTypes::Time GetEstimatedDuration();
         units::velocity::meters_per_second_t GetRopTarget();
         units::force::newton_t GetWobTarget();
         units::pressure::pascal_t GetDiffPressureTarget();

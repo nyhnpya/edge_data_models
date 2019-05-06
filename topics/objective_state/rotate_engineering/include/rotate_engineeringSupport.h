@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef rotate_engineeringSupport_182436252_h
-#define rotate_engineeringSupport_182436252_h
+#ifndef rotate_engineeringSupport_182436140_h
+#define rotate_engineeringSupport_182436140_h
 
 /* Uses */
 #include "rotate_engineering.h"
@@ -124,5 +124,5 @@ namespace nec {
     } /* namespace engineering  */
 } /* namespace nec  */
 
-#endif  /* rotate_engineeringSupport_182436252_h */
+#endif  /* rotate_engineeringSupport_182436140_h */
 

@@ -1,5 +1,5 @@
-#include "dds_uuid.h"
 #include "plc_rotate_state_publisher.h"
+#include "dds_uuid.h"
 
 CPlcRotateStatePublisher::CPlcRotateStatePublisher()
 {

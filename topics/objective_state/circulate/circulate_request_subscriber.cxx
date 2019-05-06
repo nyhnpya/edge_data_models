@@ -18,7 +18,7 @@ bool CCirculateRequestSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::CIRCULATE_REQUEST,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "RequestProfile");
 }
 
 bool CCirculateRequestSubscriber::ValidData()

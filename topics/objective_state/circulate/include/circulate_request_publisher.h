@@ -18,6 +18,7 @@
 #include "publisher.h"
 #include "circulate.h"
 #include "circulateSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal

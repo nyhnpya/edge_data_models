@@ -48,7 +48,7 @@ class CCirculateStateSubscriber : public TSubscriber< nec::process::CirculateSta
         units::volume_velocity::cubic_meters_per_second_t GetMaxFlowRate();
         units::pressure::pascal_t GetMinStandpipePressure();
         units::pressure::pascal_t GetMaxStandpipePressure();
-        units::volume_velocity::cubic_meters_per_second_t GetTargetFlowRate//();
+        units::volume_velocity::cubic_meters_per_second_t GetTargetFlowRate();
 
     protected:
         void DataAvailable(const nec::process::CirculateState &data,

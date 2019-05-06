@@ -114,7 +114,7 @@ namespace nec {
                     NULL/* Ignored */
                 }, 
                 {
-                    (char *)"duration",/* Member name */
+                    (char *)"estimatedDuration",/* Member name */
                     {
                         4,/* Representation ID */          
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -365,7 +365,7 @@ namespace nec {
             allocParams)) {
                 return RTI_FALSE;
             }
-            if (!DataTypes::Time_initialize_w_params(&sample->duration,
+            if (!DataTypes::Time_initialize_w_params(&sample->estimatedDuration,
             allocParams)) {
                 return RTI_FALSE;
             }
@@ -448,7 +448,7 @@ namespace nec {
 
             DataTypes::Time_finalize_w_params(&sample->timeNeeded,deallocParams);
 
-            DataTypes::Time_finalize_w_params(&sample->duration,deallocParams);
+            DataTypes::Time_finalize_w_params(&sample->estimatedDuration,deallocParams);
 
         }
 
@@ -472,7 +472,7 @@ namespace nec {
             DataTypes::Uuid_finalize_optional_members(&sample->objectiveId, deallocParams->delete_pointers);
             DataTypes::Priority_finalize_optional_members(&sample->priority, deallocParams->delete_pointers);
             DataTypes::Time_finalize_optional_members(&sample->timeNeeded, deallocParams->delete_pointers);
-            DataTypes::Time_finalize_optional_members(&sample->duration, deallocParams->delete_pointers);
+            DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
         }
 
         RTIBool DrillRequest_copy(
@@ -502,7 +502,7 @@ namespace nec {
                     return RTI_FALSE;
                 } 
                 if (!DataTypes::Time_copy(
-                    &dst->duration,(const DataTypes::Time*)&src->duration)) {
+                    &dst->estimatedDuration,(const DataTypes::Time*)&src->estimatedDuration)) {
                     return RTI_FALSE;
                 } 
                 if (!RTICdrType_copyDouble (

@@ -1,5 +1,5 @@
-#include "dds_uuid.h"
 #include "circulate_state_publisher.h"
+#include "dds_uuid.h"
 
 CCirculateStatePublisher::CCirculateStatePublisher()
 {
@@ -126,11 +126,11 @@ void CCirculateStatePublisher::SetMaxStandpipePressure(const units::pressure::pa
     }
 }
 
-void CCirculateStatePublisher::SetTargetFlowRate//(const units::volume_velocity::cubic_meters_per_second_t targetFlowRate//)
+void CCirculateStatePublisher::SetTargetFlowRate(const units::volume_velocity::cubic_meters_per_second_t targetFlowRate)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetFlowRate// = units::unit_cast<double>(targetFlowRate//);
+        m_pDataInstance->targetFlowRate = units::unit_cast<double>(targetFlowRate);
     }
 }
 

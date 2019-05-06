@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef drill_1648144452_h
-#define drill_1648144452_h
+#ifndef drill_1648144461_h
+#define drill_1648144461_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -48,7 +48,7 @@ namespace nec {
             DataTypes::Uuid   objectiveId ;
             DataTypes::Priority   priority ;
             DataTypes::Time   timeNeeded ;
-            DataTypes::Time   duration ;
+            DataTypes::Time   estimatedDuration ;
             DDS_Double   ropTarget ;
             DDS_Double   wobTarget ;
             DDS_Double   diffPressureTarget ;

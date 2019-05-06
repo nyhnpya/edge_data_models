@@ -18,6 +18,7 @@
 #include "publisher.h"
 #include "drill.h"
 #include "drillSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -39,7 +40,7 @@ class CDrillRequestPublisher : public TPublisher< nec::process::DrillRequest >
         void SetObjectiveId(CDdsUuid objectiveId);
         void SetPriority(const DataTypes::Priority priority);
         void SetTimeNeeded(const DataTypes::Time timeNeeded);
-        void SetDuration(const DataTypes::Time duration);
+        void SetEstimatedDuration(const DataTypes::Time estimatedDuration);
         void SetRopTarget(const units::velocity::meters_per_second_t ropTarget);
         void SetWobTarget(const units::force::newton_t wobTarget);
         void SetDiffPressureTarget(const units::pressure::pascal_t diffPressureTarget);

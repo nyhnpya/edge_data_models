@@ -18,6 +18,7 @@
 #include "publisher.h"
 #include "wellbore.h"
 #include "wellboreSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal

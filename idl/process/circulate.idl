@@ -40,7 +40,7 @@ module nec
             DataTypes::Uuid     id; //@key
             DataTypes::Uuid     objectiveId;
             DataTypes::Time     estimatedDuration;
-            double              targetFlowRate;
+            double              targetFlowRate; // (units::volume_velocity::cubic_meters_per_second)
         };
 
         // QoSLibrary: EdgeBaseLibrary
@@ -84,7 +84,7 @@ module nec
             double            maxStandpipePressure;  // (units::pressure::pascal)
 
             // targets
-            double            targetFlowRate;// (units::volume_velocity::cubic_meters_per_second)
+            double            targetFlowRate; // (units::volume_velocity::cubic_meters_per_second)
         };
     };
 };

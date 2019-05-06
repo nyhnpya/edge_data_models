@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef rotate_engineeringPlugin_182436252_h
-#define rotate_engineeringPlugin_182436252_h
+#ifndef rotate_engineeringPlugin_182436140_h
+#define rotate_engineeringPlugin_182436140_h
 
 #include "rotate_engineering.h"
 
@@ -1168,5 +1168,5 @@ namespace nec {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* rotate_engineeringPlugin_182436252_h */
+#endif /* rotate_engineeringPlugin_182436140_h */
 

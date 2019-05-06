@@ -18,7 +18,7 @@ bool CCirculateObjectiveSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::CIRCULATE_OBJECTIVE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "ObjectiveProfile");
 }
 
 bool CCirculateObjectiveSubscriber::ValidData()
@@ -41,9 +41,9 @@ DataTypes::Time CCirculateObjectiveSubscriber::GetEstimatedDuration()
     return m_data.estimatedDuration;
 }
 
-double CCirculateObjectiveSubscriber::GetTargetFlowRate()
+units::volume_velocity::cubic_meters_per_second_t CCirculateObjectiveSubscriber::GetTargetFlowRate()
 {
-    return m_data.targetFlowRate;
+    return units::volume_velocity::cubic_meters_per_second_t(m_data.targetFlowRate);
 }
 
 

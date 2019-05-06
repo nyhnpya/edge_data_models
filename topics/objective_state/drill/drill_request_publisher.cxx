@@ -1,5 +1,5 @@
-#include "dds_uuid.h"
 #include "drill_request_publisher.h"
+#include "dds_uuid.h"
 
 CDrillRequestPublisher::CDrillRequestPublisher()
 {
@@ -69,11 +69,11 @@ void CDrillRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
     }
 }
 
-void CDrillRequestPublisher::SetDuration(DataTypes::Time duration)
+void CDrillRequestPublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->duration = duration;
+        m_pDataInstance->estimatedDuration = estimatedDuration;
     }
 }
 

@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef rotate_engineering_182436252_h
-#define rotate_engineering_182436252_h
+#ifndef rotate_engineering_182436140_h
+#define rotate_engineering_182436140_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h

@@ -1,5 +1,5 @@
-#include "dds_uuid.h"
 #include "circulate_objective_publisher.h"
+#include "dds_uuid.h"
 
 CCirculateObjectivePublisher::CCirculateObjectivePublisher()
 {
@@ -61,11 +61,11 @@ void CCirculateObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimate
     }
 }
 
-void CCirculateObjectivePublisher::SetTargetFlowRate(double targetFlowRate)
+void CCirculateObjectivePublisher::SetTargetFlowRate(const units::volume_velocity::cubic_meters_per_second_t targetFlowRate)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->targetFlowRate = targetFlowRate;
+        m_pDataInstance->targetFlowRate = units::unit_cast<double>(targetFlowRate);
     }
 }
 

@@ -18,6 +18,7 @@
 #include "publisher.h"
 #include "hoist.h"
 #include "hoistSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
