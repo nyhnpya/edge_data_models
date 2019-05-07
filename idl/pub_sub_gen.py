@@ -175,8 +175,14 @@ def write_publisher_cxx(outdir, struct, qoslib, qosprof):
         out.write('    if (m_pDataInstance != nullptr)\n')
         out.write('    {\n')
         out.write('        GetParticipant()->get_current_time(currentTime);\n')
-        out.write('        m_pDataInstance->timestamp.sec = currentTime.sec;\n')
-        out.write('        m_pDataInstance->timestamp.nanosec = currentTime.nanosec;\n')
+        hasTimestamp = False
+        for sfield in struct.fields:
+            if sfield.name == 'timestamp':
+                hasTimestamp = True
+                break
+        if hasTimestamp == True:
+            out.write('        m_pDataInstance->timestamp.sec = currentTime.sec;\n')
+            out.write('        m_pDataInstance->timestamp.nanosec = currentTime.nanosec;\n')
         out.write('    }\n')
         out.write('\n')
     out.write('    return Publish();\n')
