@@ -7,11 +7,11 @@
 #include <string.h>
 #include <thread>
 #include "cmdparser.h"
-#include "roptimizer_configuration_request_publisher.h"
+#include "roptimizer_configuration_publisher.h"
 
 bool gTerminate = false;
 
-CRoptimizerConfigurationRequestPublisher::CConfigurationStateRequestPublisher *gpStatePublisher = nullptr;
+CRoptimizerConfigurationPublisher *gpStatePublisher = nullptr;
 std::thread threadId;
 
 #ifdef _LINUX
@@ -157,7 +157,7 @@ int32_t main(int32_t argc, char **argv)
     CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
     CDomainParticipant::Instance()->Create(domain);
 
-    gpStatePublisher = new CRoptimizerConfigurationRequestPublisher::CConfigurationStateRequestPublisher();
+    gpStatePublisher = new CRoptimizerConfigurationPublisher();
 
     if (gpStatePublisher->Create(domain) == true)
     {

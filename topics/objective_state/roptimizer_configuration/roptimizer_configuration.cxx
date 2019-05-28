@@ -34,761 +34,651 @@ or consult the RTI Connext manual.
 
 namespace Shell {
     namespace Hmi {
-        namespace RoptimizerConfiguration {
 
-            /* ========================================================================= */
-            const char *RoptimizerConfigurationRequestTYPENAME = "Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest";
+        /* ========================================================================= */
+        const char *RoptimizerConfigurationTYPENAME = "Shell::Hmi::RoptimizerConfiguration";
 
-            DDS_TypeCode* RoptimizerConfigurationRequest_get_typecode()
+        DDS_TypeCode* RoptimizerConfiguration_get_typecode()
+        {
+            static RTIBool is_initialized = RTI_FALSE;
+
+            static DDS_TypeCode_Member RoptimizerConfiguration_g_tc_members[4]=
             {
-                static RTIBool is_initialized = RTI_FALSE;
 
-                static DDS_TypeCode_Member RoptimizerConfigurationRequest_g_tc_members[4]=
                 {
-
+                    (char *)"steadyStateWindow",/* Member name */
                     {
-                        (char *)"steadyStateWindow",/* Member name */
-                        {
-                            0,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
+                        0,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"steadyStateMin",/* Member name */
                     {
-                        (char *)"steadyStateMin",/* Member name */
-                        {
-                            1,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
+                        1,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"rpmStepSize",/* Member name */
                     {
-                        (char *)"rpmStepSize",/* Member name */
-                        {
-                            2,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
+                        2,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"ropStepSize",/* Member name */
                     {
-                        (char *)"ropStepSize",/* Member name */
-                        {
-                            3,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }
-                };
-
-                static DDS_TypeCode RoptimizerConfigurationRequest_g_tc =
-                {{
-                        DDS_TK_STRUCT,/* Kind */
-                        DDS_BOOLEAN_FALSE, /* Ignored */
-                        -1, /*Ignored*/
-                        (char *)"Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest", /* Name */
-                        NULL, /* Ignored */      
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        4, /* Number of members */
-                        RoptimizerConfigurationRequest_g_tc_members, /* Members */
-                        DDS_VM_NONE  /* Ignored */         
-                    }}; /* Type code for RoptimizerConfigurationRequest*/
-
-                if (is_initialized) {
-                    return &RoptimizerConfigurationRequest_g_tc;
+                        3,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
                 }
+            };
 
-                RoptimizerConfigurationRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+            static DDS_TypeCode RoptimizerConfiguration_g_tc =
+            {{
+                    DDS_TK_STRUCT,/* Kind */
+                    DDS_BOOLEAN_FALSE, /* Ignored */
+                    -1, /*Ignored*/
+                    (char *)"Shell::Hmi::RoptimizerConfiguration", /* Name */
+                    NULL, /* Ignored */      
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    4, /* Number of members */
+                    RoptimizerConfiguration_g_tc_members, /* Members */
+                    DDS_VM_NONE  /* Ignored */         
+                }}; /* Type code for RoptimizerConfiguration*/
 
-                RoptimizerConfigurationRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
-
-                RoptimizerConfigurationRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
-
-                RoptimizerConfigurationRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
-
-                is_initialized = RTI_TRUE;
-
-                return &RoptimizerConfigurationRequest_g_tc;
+            if (is_initialized) {
+                return &RoptimizerConfiguration_g_tc;
             }
 
-            RTIBool RoptimizerConfigurationRequest_initialize(
-                RoptimizerConfigurationRequest* sample) {
-                return Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+            RoptimizerConfiguration_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+            RoptimizerConfiguration_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+            RoptimizerConfiguration_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+            RoptimizerConfiguration_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+
+            is_initialized = RTI_TRUE;
+
+            return &RoptimizerConfiguration_g_tc;
+        }
+
+        RTIBool RoptimizerConfiguration_initialize(
+            RoptimizerConfiguration* sample) {
+            return Shell::Hmi::RoptimizerConfiguration_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        }
+
+        RTIBool RoptimizerConfiguration_initialize_ex(
+            RoptimizerConfiguration* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        {
+
+            struct DDS_TypeAllocationParams_t allocParams =
+            DDS_TYPE_ALLOCATION_PARAMS_DEFAULT;
+
+            allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
+            allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
+
+            return Shell::Hmi::RoptimizerConfiguration_initialize_w_params(
+                sample,&allocParams);
+
+        }
+
+        RTIBool RoptimizerConfiguration_initialize_w_params(
+            RoptimizerConfiguration* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        {
+
+            if (sample == NULL) {
+                return RTI_FALSE;
+            }
+            if (allocParams == NULL) {
+                return RTI_FALSE;
             }
 
-            RTIBool RoptimizerConfigurationRequest_initialize_ex(
-                RoptimizerConfigurationRequest* sample,RTIBool allocatePointers, RTIBool allocateMemory)
-            {
-
-                struct DDS_TypeAllocationParams_t allocParams =
-                DDS_TYPE_ALLOCATION_PARAMS_DEFAULT;
-
-                allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
-                allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
-
-                return Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest_initialize_w_params(
-                    sample,&allocParams);
-
+            if (!RTICdrType_initLong(&sample->steadyStateWindow)) {
+                return RTI_FALSE;
             }
 
-            RTIBool RoptimizerConfigurationRequest_initialize_w_params(
-                RoptimizerConfigurationRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
-            {
+            if (!RTICdrType_initLong(&sample->steadyStateMin)) {
+                return RTI_FALSE;
+            }
 
-                if (sample == NULL) {
+            if (!RTICdrType_initLong(&sample->rpmStepSize)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initLong(&sample->ropStepSize)) {
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
+        }
+
+        void RoptimizerConfiguration_finalize(
+            RoptimizerConfiguration* sample)
+        {
+
+            Shell::Hmi::RoptimizerConfiguration_finalize_ex(sample,RTI_TRUE);
+        }
+
+        void RoptimizerConfiguration_finalize_ex(
+            RoptimizerConfiguration* sample,RTIBool deletePointers)
+        {
+            struct DDS_TypeDeallocationParams_t deallocParams =
+            DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
+
+            if (sample==NULL) {
+                return;
+            } 
+
+            deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
+
+            Shell::Hmi::RoptimizerConfiguration_finalize_w_params(
+                sample,&deallocParams);
+        }
+
+        void RoptimizerConfiguration_finalize_w_params(
+            RoptimizerConfiguration* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        {
+
+            if (sample==NULL) {
+                return;
+            }
+
+            if (deallocParams == NULL) {
+                return;
+            }
+
+        }
+
+        void RoptimizerConfiguration_finalize_optional_members(
+            RoptimizerConfiguration* sample, RTIBool deletePointers)
+        {
+            struct DDS_TypeDeallocationParams_t deallocParamsTmp =
+            DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
+            struct DDS_TypeDeallocationParams_t * deallocParams =
+            &deallocParamsTmp;
+
+            if (sample==NULL) {
+                return;
+            } 
+            if (deallocParams) {} /* To avoid warnings */
+
+            deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
+            deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
+
+        }
+
+        RTIBool RoptimizerConfiguration_copy(
+            RoptimizerConfiguration* dst,
+            const RoptimizerConfiguration* src)
+        {
+            try {
+
+                if (dst == NULL || src == NULL) {
                     return RTI_FALSE;
                 }
-                if (allocParams == NULL) {
+
+                if (!RTICdrType_copyLong (
+                    &dst->steadyStateWindow, &src->steadyStateWindow)) { 
                     return RTI_FALSE;
                 }
-
-                if (!RTICdrType_initLong(&sample->steadyStateWindow)) {
+                if (!RTICdrType_copyLong (
+                    &dst->steadyStateMin, &src->steadyStateMin)) { 
                     return RTI_FALSE;
                 }
-
-                if (!RTICdrType_initLong(&sample->steadyStateMin)) {
+                if (!RTICdrType_copyLong (
+                    &dst->rpmStepSize, &src->rpmStepSize)) { 
                     return RTI_FALSE;
                 }
-
-                if (!RTICdrType_initLong(&sample->rpmStepSize)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrType_initLong(&sample->ropStepSize)) {
+                if (!RTICdrType_copyLong (
+                    &dst->ropStepSize, &src->ropStepSize)) { 
                     return RTI_FALSE;
                 }
 
                 return RTI_TRUE;
-            }
 
-            void RoptimizerConfigurationRequest_finalize(
-                RoptimizerConfigurationRequest* sample)
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
+            }
+        }
+
+        /**
+        * <<IMPLEMENTATION>>
+        *
+        * Defines:  TSeq, T
+        *
+        * Configure and implement 'RoptimizerConfiguration' sequence class.
+        */
+        #define T RoptimizerConfiguration
+        #define TSeq RoptimizerConfigurationSeq
+
+        #define T_initialize_w_params Shell::Hmi::RoptimizerConfiguration_initialize_w_params
+
+        #define T_finalize_w_params   Shell::Hmi::RoptimizerConfiguration_finalize_w_params
+        #define T_copy       Shell::Hmi::RoptimizerConfiguration_copy
+
+        #ifndef NDDS_STANDALONE_TYPE
+        #include "dds_c/generic/dds_c_sequence_TSeq.gen"
+        #include "dds_cpp/generic/dds_cpp_sequence_TSeq.gen"
+        #else
+        #include "dds_c_sequence_TSeq.gen"
+        #include "dds_cpp_sequence_TSeq.gen"
+        #endif
+
+        #undef T_copy
+        #undef T_finalize_w_params
+
+        #undef T_initialize_w_params
+
+        #undef TSeq
+        #undef T
+
+        /* ========================================================================= */
+        const char *RoptimizerSteadyStateTYPENAME = "Shell::Hmi::RoptimizerSteadyState";
+
+        DDS_TypeCode* RoptimizerSteadyState_get_typecode()
+        {
+            static RTIBool is_initialized = RTI_FALSE;
+
+            static DDS_TypeCode_Member RoptimizerSteadyState_g_tc_members[7]=
             {
 
-                Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest_finalize_ex(sample,RTI_TRUE);
-            }
-
-            void RoptimizerConfigurationRequest_finalize_ex(
-                RoptimizerConfigurationRequest* sample,RTIBool deletePointers)
-            {
-                struct DDS_TypeDeallocationParams_t deallocParams =
-                DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
-
-                if (sample==NULL) {
-                    return;
-                } 
-
-                deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
-
-                Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest_finalize_w_params(
-                    sample,&deallocParams);
-            }
-
-            void RoptimizerConfigurationRequest_finalize_w_params(
-                RoptimizerConfigurationRequest* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
-            {
-
-                if (sample==NULL) {
-                    return;
-                }
-
-                if (deallocParams == NULL) {
-                    return;
-                }
-
-            }
-
-            void RoptimizerConfigurationRequest_finalize_optional_members(
-                RoptimizerConfigurationRequest* sample, RTIBool deletePointers)
-            {
-                struct DDS_TypeDeallocationParams_t deallocParamsTmp =
-                DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
-                struct DDS_TypeDeallocationParams_t * deallocParams =
-                &deallocParamsTmp;
-
-                if (sample==NULL) {
-                    return;
-                } 
-                if (deallocParams) {} /* To avoid warnings */
-
-                deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
-                deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
-
-            }
-
-            RTIBool RoptimizerConfigurationRequest_copy(
-                RoptimizerConfigurationRequest* dst,
-                const RoptimizerConfigurationRequest* src)
-            {
-                try {
-
-                    if (dst == NULL || src == NULL) {
-                        return RTI_FALSE;
-                    }
-
-                    if (!RTICdrType_copyLong (
-                        &dst->steadyStateWindow, &src->steadyStateWindow)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyLong (
-                        &dst->steadyStateMin, &src->steadyStateMin)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyLong (
-                        &dst->rpmStepSize, &src->rpmStepSize)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyLong (
-                        &dst->ropStepSize, &src->ropStepSize)) { 
-                        return RTI_FALSE;
-                    }
-
-                    return RTI_TRUE;
-
-                } catch (std::bad_alloc&) {
-                    return RTI_FALSE;
-                }
-            }
-
-            /**
-            * <<IMPLEMENTATION>>
-            *
-            * Defines:  TSeq, T
-            *
-            * Configure and implement 'RoptimizerConfigurationRequest' sequence class.
-            */
-            #define T RoptimizerConfigurationRequest
-            #define TSeq RoptimizerConfigurationRequestSeq
-
-            #define T_initialize_w_params Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest_initialize_w_params
-
-            #define T_finalize_w_params   Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest_finalize_w_params
-            #define T_copy       Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest_copy
-
-            #ifndef NDDS_STANDALONE_TYPE
-            #include "dds_c/generic/dds_c_sequence_TSeq.gen"
-            #include "dds_cpp/generic/dds_cpp_sequence_TSeq.gen"
-            #else
-            #include "dds_c_sequence_TSeq.gen"
-            #include "dds_cpp_sequence_TSeq.gen"
-            #endif
-
-            #undef T_copy
-            #undef T_finalize_w_params
-
-            #undef T_initialize_w_params
-
-            #undef TSeq
-            #undef T
-
-            /* ========================================================================= */
-            const char *RoptimizerSteadyStateTYPENAME = "Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState";
-
-            DDS_TypeCode* RoptimizerSteadyState_get_typecode()
-            {
-                static RTIBool is_initialized = RTI_FALSE;
-
-                static DDS_TypeCode_Member RoptimizerSteadyState_g_tc_members[11]=
                 {
-
+                    (char *)"rpmSteadyState",/* Member name */
                     {
-                        (char *)"rpmSteadyState",/* Member name */
-                        {
-                            0,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
+                        0,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"ropSteadyState",/* Member name */
                     {
-                        (char *)"ropSteadyState",/* Member name */
-                        {
-                            1,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
+                        1,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"wobSteadyState",/* Member name */
                     {
-                        (char *)"wobSteadyState",/* Member name */
-                        {
-                            2,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
+                        2,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"torqueSteadyState",/* Member name */
                     {
-                        (char *)"torqueSteadyState",/* Member name */
-                        {
-                            3,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
+                        3,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"bitWear",/* Member name */
                     {
-                        (char *)"steadyStateWindow",/* Member name */
-                        {
-                            4,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
+                        4,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"mse",/* Member name */
                     {
-                        (char *)"steadyStateMin",/* Member name */
-                        {
-                            5,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
+                        5,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
+                }, 
+                {
+                    (char *)"power",/* Member name */
                     {
-                        (char *)"rpmStepSize",/* Member name */
-                        {
-                            6,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
-                    {
-                        (char *)"ropStepSize",/* Member name */
-                        {
-                            7,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
-                    {
-                        (char *)"bitWear",/* Member name */
-                        {
-                            8,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
-                    {
-                        (char *)"mse",/* Member name */
-                        {
-                            9,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }, 
-                    {
-                        (char *)"power",/* Member name */
-                        {
-                            10,/* Representation ID */          
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL/* Ignored */
-                    }
-                };
-
-                static DDS_TypeCode RoptimizerSteadyState_g_tc =
-                {{
-                        DDS_TK_STRUCT,/* Kind */
-                        DDS_BOOLEAN_FALSE, /* Ignored */
-                        -1, /*Ignored*/
-                        (char *)"Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState", /* Name */
-                        NULL, /* Ignored */      
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        11, /* Number of members */
-                        RoptimizerSteadyState_g_tc_members, /* Members */
-                        DDS_VM_NONE  /* Ignored */         
-                    }}; /* Type code for RoptimizerSteadyState*/
-
-                if (is_initialized) {
-                    return &RoptimizerSteadyState_g_tc;
+                        6,/* Representation ID */          
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL/* Ignored */
                 }
+            };
 
-                RoptimizerSteadyState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+            static DDS_TypeCode RoptimizerSteadyState_g_tc =
+            {{
+                    DDS_TK_STRUCT,/* Kind */
+                    DDS_BOOLEAN_FALSE, /* Ignored */
+                    -1, /*Ignored*/
+                    (char *)"Shell::Hmi::RoptimizerSteadyState", /* Name */
+                    NULL, /* Ignored */      
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    7, /* Number of members */
+                    RoptimizerSteadyState_g_tc_members, /* Members */
+                    DDS_VM_NONE  /* Ignored */         
+                }}; /* Type code for RoptimizerSteadyState*/
 
-                RoptimizerSteadyState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-                RoptimizerSteadyState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-                RoptimizerSteadyState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
-
-                RoptimizerSteadyState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
-
-                RoptimizerSteadyState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
-
-                RoptimizerSteadyState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
-
-                RoptimizerSteadyState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
-
-                RoptimizerSteadyState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-                RoptimizerSteadyState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-                RoptimizerSteadyState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
-
-                is_initialized = RTI_TRUE;
-
+            if (is_initialized) {
                 return &RoptimizerSteadyState_g_tc;
             }
 
-            RTIBool RoptimizerSteadyState_initialize(
-                RoptimizerSteadyState* sample) {
-                return Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+            RoptimizerSteadyState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+
+            RoptimizerSteadyState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+
+            RoptimizerSteadyState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+
+            RoptimizerSteadyState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean;
+
+            RoptimizerSteadyState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            RoptimizerSteadyState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            RoptimizerSteadyState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+
+            is_initialized = RTI_TRUE;
+
+            return &RoptimizerSteadyState_g_tc;
+        }
+
+        RTIBool RoptimizerSteadyState_initialize(
+            RoptimizerSteadyState* sample) {
+            return Shell::Hmi::RoptimizerSteadyState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        }
+
+        RTIBool RoptimizerSteadyState_initialize_ex(
+            RoptimizerSteadyState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        {
+
+            struct DDS_TypeAllocationParams_t allocParams =
+            DDS_TYPE_ALLOCATION_PARAMS_DEFAULT;
+
+            allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
+            allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
+
+            return Shell::Hmi::RoptimizerSteadyState_initialize_w_params(
+                sample,&allocParams);
+
+        }
+
+        RTIBool RoptimizerSteadyState_initialize_w_params(
+            RoptimizerSteadyState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        {
+
+            if (sample == NULL) {
+                return RTI_FALSE;
+            }
+            if (allocParams == NULL) {
+                return RTI_FALSE;
             }
 
-            RTIBool RoptimizerSteadyState_initialize_ex(
-                RoptimizerSteadyState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
-            {
-
-                struct DDS_TypeAllocationParams_t allocParams =
-                DDS_TYPE_ALLOCATION_PARAMS_DEFAULT;
-
-                allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
-                allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
-
-                return Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState_initialize_w_params(
-                    sample,&allocParams);
-
+            if (!RTICdrType_initBoolean(&sample->rpmSteadyState)) {
+                return RTI_FALSE;
             }
 
-            RTIBool RoptimizerSteadyState_initialize_w_params(
-                RoptimizerSteadyState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
-            {
+            if (!RTICdrType_initBoolean(&sample->ropSteadyState)) {
+                return RTI_FALSE;
+            }
 
-                if (sample == NULL) {
+            if (!RTICdrType_initBoolean(&sample->wobSteadyState)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initBoolean(&sample->torqueSteadyState)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initDouble(&sample->bitWear)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initDouble(&sample->mse)) {
+                return RTI_FALSE;
+            }
+
+            if (!RTICdrType_initDouble(&sample->power)) {
+                return RTI_FALSE;
+            }
+
+            return RTI_TRUE;
+        }
+
+        void RoptimizerSteadyState_finalize(
+            RoptimizerSteadyState* sample)
+        {
+
+            Shell::Hmi::RoptimizerSteadyState_finalize_ex(sample,RTI_TRUE);
+        }
+
+        void RoptimizerSteadyState_finalize_ex(
+            RoptimizerSteadyState* sample,RTIBool deletePointers)
+        {
+            struct DDS_TypeDeallocationParams_t deallocParams =
+            DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
+
+            if (sample==NULL) {
+                return;
+            } 
+
+            deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
+
+            Shell::Hmi::RoptimizerSteadyState_finalize_w_params(
+                sample,&deallocParams);
+        }
+
+        void RoptimizerSteadyState_finalize_w_params(
+            RoptimizerSteadyState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        {
+
+            if (sample==NULL) {
+                return;
+            }
+
+            if (deallocParams == NULL) {
+                return;
+            }
+
+        }
+
+        void RoptimizerSteadyState_finalize_optional_members(
+            RoptimizerSteadyState* sample, RTIBool deletePointers)
+        {
+            struct DDS_TypeDeallocationParams_t deallocParamsTmp =
+            DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
+            struct DDS_TypeDeallocationParams_t * deallocParams =
+            &deallocParamsTmp;
+
+            if (sample==NULL) {
+                return;
+            } 
+            if (deallocParams) {} /* To avoid warnings */
+
+            deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
+            deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
+
+        }
+
+        RTIBool RoptimizerSteadyState_copy(
+            RoptimizerSteadyState* dst,
+            const RoptimizerSteadyState* src)
+        {
+            try {
+
+                if (dst == NULL || src == NULL) {
                     return RTI_FALSE;
                 }
-                if (allocParams == NULL) {
+
+                if (!RTICdrType_copyBoolean (
+                    &dst->rpmSteadyState, &src->rpmSteadyState)) { 
                     return RTI_FALSE;
                 }
-
-                if (!RTICdrType_initBoolean(&sample->rpmSteadyState)) {
+                if (!RTICdrType_copyBoolean (
+                    &dst->ropSteadyState, &src->ropSteadyState)) { 
                     return RTI_FALSE;
                 }
-
-                if (!RTICdrType_initBoolean(&sample->ropSteadyState)) {
+                if (!RTICdrType_copyBoolean (
+                    &dst->wobSteadyState, &src->wobSteadyState)) { 
                     return RTI_FALSE;
                 }
-
-                if (!RTICdrType_initBoolean(&sample->wobSteadyState)) {
+                if (!RTICdrType_copyBoolean (
+                    &dst->torqueSteadyState, &src->torqueSteadyState)) { 
                     return RTI_FALSE;
                 }
-
-                if (!RTICdrType_initBoolean(&sample->torqueSteadyState)) {
+                if (!RTICdrType_copyDouble (
+                    &dst->bitWear, &src->bitWear)) { 
                     return RTI_FALSE;
                 }
-
-                if (!RTICdrType_initLong(&sample->steadyStateWindow)) {
+                if (!RTICdrType_copyDouble (
+                    &dst->mse, &src->mse)) { 
                     return RTI_FALSE;
                 }
-
-                if (!RTICdrType_initLong(&sample->steadyStateMin)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrType_initLong(&sample->rpmStepSize)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrType_initLong(&sample->ropStepSize)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrType_initDouble(&sample->bitWear)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrType_initDouble(&sample->mse)) {
-                    return RTI_FALSE;
-                }
-
-                if (!RTICdrType_initDouble(&sample->power)) {
+                if (!RTICdrType_copyDouble (
+                    &dst->power, &src->power)) { 
                     return RTI_FALSE;
                 }
 
                 return RTI_TRUE;
+
+            } catch (std::bad_alloc&) {
+                return RTI_FALSE;
             }
+        }
 
-            void RoptimizerSteadyState_finalize(
-                RoptimizerSteadyState* sample)
-            {
+        /**
+        * <<IMPLEMENTATION>>
+        *
+        * Defines:  TSeq, T
+        *
+        * Configure and implement 'RoptimizerSteadyState' sequence class.
+        */
+        #define T RoptimizerSteadyState
+        #define TSeq RoptimizerSteadyStateSeq
 
-                Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState_finalize_ex(sample,RTI_TRUE);
-            }
+        #define T_initialize_w_params Shell::Hmi::RoptimizerSteadyState_initialize_w_params
 
-            void RoptimizerSteadyState_finalize_ex(
-                RoptimizerSteadyState* sample,RTIBool deletePointers)
-            {
-                struct DDS_TypeDeallocationParams_t deallocParams =
-                DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
+        #define T_finalize_w_params   Shell::Hmi::RoptimizerSteadyState_finalize_w_params
+        #define T_copy       Shell::Hmi::RoptimizerSteadyState_copy
 
-                if (sample==NULL) {
-                    return;
-                } 
+        #ifndef NDDS_STANDALONE_TYPE
+        #include "dds_c/generic/dds_c_sequence_TSeq.gen"
+        #include "dds_cpp/generic/dds_cpp_sequence_TSeq.gen"
+        #else
+        #include "dds_c_sequence_TSeq.gen"
+        #include "dds_cpp_sequence_TSeq.gen"
+        #endif
 
-                deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
+        #undef T_copy
+        #undef T_finalize_w_params
 
-                Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState_finalize_w_params(
-                    sample,&deallocParams);
-            }
+        #undef T_initialize_w_params
 
-            void RoptimizerSteadyState_finalize_w_params(
-                RoptimizerSteadyState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
-            {
-
-                if (sample==NULL) {
-                    return;
-                }
-
-                if (deallocParams == NULL) {
-                    return;
-                }
-
-            }
-
-            void RoptimizerSteadyState_finalize_optional_members(
-                RoptimizerSteadyState* sample, RTIBool deletePointers)
-            {
-                struct DDS_TypeDeallocationParams_t deallocParamsTmp =
-                DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
-                struct DDS_TypeDeallocationParams_t * deallocParams =
-                &deallocParamsTmp;
-
-                if (sample==NULL) {
-                    return;
-                } 
-                if (deallocParams) {} /* To avoid warnings */
-
-                deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
-                deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
-
-            }
-
-            RTIBool RoptimizerSteadyState_copy(
-                RoptimizerSteadyState* dst,
-                const RoptimizerSteadyState* src)
-            {
-                try {
-
-                    if (dst == NULL || src == NULL) {
-                        return RTI_FALSE;
-                    }
-
-                    if (!RTICdrType_copyBoolean (
-                        &dst->rpmSteadyState, &src->rpmSteadyState)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyBoolean (
-                        &dst->ropSteadyState, &src->ropSteadyState)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyBoolean (
-                        &dst->wobSteadyState, &src->wobSteadyState)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyBoolean (
-                        &dst->torqueSteadyState, &src->torqueSteadyState)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyLong (
-                        &dst->steadyStateWindow, &src->steadyStateWindow)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyLong (
-                        &dst->steadyStateMin, &src->steadyStateMin)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyLong (
-                        &dst->rpmStepSize, &src->rpmStepSize)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyLong (
-                        &dst->ropStepSize, &src->ropStepSize)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->bitWear, &src->bitWear)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->mse, &src->mse)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->power, &src->power)) { 
-                        return RTI_FALSE;
-                    }
-
-                    return RTI_TRUE;
-
-                } catch (std::bad_alloc&) {
-                    return RTI_FALSE;
-                }
-            }
-
-            /**
-            * <<IMPLEMENTATION>>
-            *
-            * Defines:  TSeq, T
-            *
-            * Configure and implement 'RoptimizerSteadyState' sequence class.
-            */
-            #define T RoptimizerSteadyState
-            #define TSeq RoptimizerSteadyStateSeq
-
-            #define T_initialize_w_params Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState_initialize_w_params
-
-            #define T_finalize_w_params   Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState_finalize_w_params
-            #define T_copy       Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState_copy
-
-            #ifndef NDDS_STANDALONE_TYPE
-            #include "dds_c/generic/dds_c_sequence_TSeq.gen"
-            #include "dds_cpp/generic/dds_cpp_sequence_TSeq.gen"
-            #else
-            #include "dds_c_sequence_TSeq.gen"
-            #include "dds_cpp_sequence_TSeq.gen"
-            #endif
-
-            #undef T_copy
-            #undef T_finalize_w_params
-
-            #undef T_initialize_w_params
-
-            #undef TSeq
-            #undef T
-        } /* namespace RoptimizerConfiguration  */
+        #undef TSeq
+        #undef T
     } /* namespace Hmi  */
 } /* namespace Shell  */
 

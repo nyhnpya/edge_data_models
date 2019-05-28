@@ -17,209 +17,207 @@ or consult the RTI Connext manual.
 
 namespace Shell {
     namespace Hmi {
-        namespace RoptimizerConfiguration {
 
-            /* ========================================================================= */
-            /**
-            <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-            Defines:   TData,
-            TDataWriter,
-            TDataReader,
-            TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-            Configure and implement 'RoptimizerConfigurationRequest' support classes.
+        Configure and implement 'RoptimizerConfiguration' support classes.
 
-            Note: Only the #defined classes get defined
-            */
+        Note: Only the #defined classes get defined
+        */
 
-            /* ----------------------------------------------------------------- */
-            /* DDSDataWriter
-            */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-            /**
-            <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-            Defines:   TDataWriter, TData
-            */
+        Defines:   TDataWriter, TData
+        */
 
-            /* Requires */
-            #define TTYPENAME   RoptimizerConfigurationRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   RoptimizerConfigurationTYPENAME
 
-            /* Defines */
-            #define TDataWriter RoptimizerConfigurationRequestDataWriter
-            #define TData       Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest
+        /* Defines */
+        #define TDataWriter RoptimizerConfigurationDataWriter
+        #define TData       Shell::Hmi::RoptimizerConfiguration
 
-            #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-            #undef TDataWriter
-            #undef TData
+        #undef TDataWriter
+        #undef TData
 
-            #undef TTYPENAME
+        #undef TTYPENAME
 
-            /* ----------------------------------------------------------------- */
-            /* DDSDataReader
-            */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-            /**
-            <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-            Defines:   TDataReader, TDataSeq, TData
-            */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-            /* Requires */
-            #define TTYPENAME   RoptimizerConfigurationRequestTYPENAME
+        /* Requires */
+        #define TTYPENAME   RoptimizerConfigurationTYPENAME
 
-            /* Defines */
-            #define TDataReader RoptimizerConfigurationRequestDataReader
-            #define TDataSeq    RoptimizerConfigurationRequestSeq
-            #define TData       Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest
+        /* Defines */
+        #define TDataReader RoptimizerConfigurationDataReader
+        #define TDataSeq    RoptimizerConfigurationSeq
+        #define TData       Shell::Hmi::RoptimizerConfiguration
 
-            #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-            #undef TDataReader
-            #undef TDataSeq
-            #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-            #undef TTYPENAME
+        #undef TTYPENAME
 
-            /* ----------------------------------------------------------------- */
-            /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-            <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-            Requires:  TTYPENAME,
-            TPlugin_new
-            TPlugin_delete
-            Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-            */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-            /* Requires */
-            #define TTYPENAME    RoptimizerConfigurationRequestTYPENAME
-            #define TPlugin_new  Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequestPlugin_new
-            #define TPlugin_delete  Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequestPlugin_delete
+        /* Requires */
+        #define TTYPENAME    RoptimizerConfigurationTYPENAME
+        #define TPlugin_new  Shell::Hmi::RoptimizerConfigurationPlugin_new
+        #define TPlugin_delete  Shell::Hmi::RoptimizerConfigurationPlugin_delete
 
-            /* Defines */
-            #define TTypeSupport RoptimizerConfigurationRequestTypeSupport
-            #define TData        Shell::Hmi::RoptimizerConfiguration::RoptimizerConfigurationRequest
-            #define TDataReader  RoptimizerConfigurationRequestDataReader
-            #define TDataWriter  RoptimizerConfigurationRequestDataWriter
-            #define TGENERATE_SER_CODE
-            #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport RoptimizerConfigurationTypeSupport
+        #define TData        Shell::Hmi::RoptimizerConfiguration
+        #define TDataReader  RoptimizerConfigurationDataReader
+        #define TDataWriter  RoptimizerConfigurationDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-            #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-            #undef TTypeSupport
-            #undef TData
-            #undef TDataReader
-            #undef TDataWriter
-            #undef TGENERATE_TYPECODE
-            #undef TGENERATE_SER_CODE
-            #undef TTYPENAME
-            #undef TPlugin_new
-            #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-            /* ========================================================================= */
-            /**
-            <<IMPLEMENTATION>>
+        /* ========================================================================= */
+        /**
+        <<IMPLEMENTATION>>
 
-            Defines:   TData,
-            TDataWriter,
-            TDataReader,
-            TTypeSupport
+        Defines:   TData,
+        TDataWriter,
+        TDataReader,
+        TTypeSupport
 
-            Configure and implement 'RoptimizerSteadyState' support classes.
+        Configure and implement 'RoptimizerSteadyState' support classes.
 
-            Note: Only the #defined classes get defined
-            */
+        Note: Only the #defined classes get defined
+        */
 
-            /* ----------------------------------------------------------------- */
-            /* DDSDataWriter
-            */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataWriter
+        */
 
-            /**
-            <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-            Defines:   TDataWriter, TData
-            */
+        Defines:   TDataWriter, TData
+        */
 
-            /* Requires */
-            #define TTYPENAME   RoptimizerSteadyStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   RoptimizerSteadyStateTYPENAME
 
-            /* Defines */
-            #define TDataWriter RoptimizerSteadyStateDataWriter
-            #define TData       Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState
+        /* Defines */
+        #define TDataWriter RoptimizerSteadyStateDataWriter
+        #define TData       Shell::Hmi::RoptimizerSteadyState
 
-            #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
 
-            #undef TDataWriter
-            #undef TData
+        #undef TDataWriter
+        #undef TData
 
-            #undef TTYPENAME
+        #undef TTYPENAME
 
-            /* ----------------------------------------------------------------- */
-            /* DDSDataReader
-            */
+        /* ----------------------------------------------------------------- */
+        /* DDSDataReader
+        */
 
-            /**
-            <<IMPLEMENTATION >>
+        /**
+        <<IMPLEMENTATION >>
 
-            Defines:   TDataReader, TDataSeq, TData
-            */
+        Defines:   TDataReader, TDataSeq, TData
+        */
 
-            /* Requires */
-            #define TTYPENAME   RoptimizerSteadyStateTYPENAME
+        /* Requires */
+        #define TTYPENAME   RoptimizerSteadyStateTYPENAME
 
-            /* Defines */
-            #define TDataReader RoptimizerSteadyStateDataReader
-            #define TDataSeq    RoptimizerSteadyStateSeq
-            #define TData       Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState
+        /* Defines */
+        #define TDataReader RoptimizerSteadyStateDataReader
+        #define TDataSeq    RoptimizerSteadyStateSeq
+        #define TData       Shell::Hmi::RoptimizerSteadyState
 
-            #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
 
-            #undef TDataReader
-            #undef TDataSeq
-            #undef TData
+        #undef TDataReader
+        #undef TDataSeq
+        #undef TData
 
-            #undef TTYPENAME
+        #undef TTYPENAME
 
-            /* ----------------------------------------------------------------- */
-            /* TypeSupport
+        /* ----------------------------------------------------------------- */
+        /* TypeSupport
 
-            <<IMPLEMENTATION >>
+        <<IMPLEMENTATION >>
 
-            Requires:  TTYPENAME,
-            TPlugin_new
-            TPlugin_delete
-            Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-            */
+        Requires:  TTYPENAME,
+        TPlugin_new
+        TPlugin_delete
+        Defines:   TTypeSupport, TData, TDataReader, TDataWriter
+        */
 
-            /* Requires */
-            #define TTYPENAME    RoptimizerSteadyStateTYPENAME
-            #define TPlugin_new  Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyStatePlugin_new
-            #define TPlugin_delete  Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyStatePlugin_delete
+        /* Requires */
+        #define TTYPENAME    RoptimizerSteadyStateTYPENAME
+        #define TPlugin_new  Shell::Hmi::RoptimizerSteadyStatePlugin_new
+        #define TPlugin_delete  Shell::Hmi::RoptimizerSteadyStatePlugin_delete
 
-            /* Defines */
-            #define TTypeSupport RoptimizerSteadyStateTypeSupport
-            #define TData        Shell::Hmi::RoptimizerConfiguration::RoptimizerSteadyState
-            #define TDataReader  RoptimizerSteadyStateDataReader
-            #define TDataWriter  RoptimizerSteadyStateDataWriter
-            #define TGENERATE_SER_CODE
-            #define TGENERATE_TYPECODE
+        /* Defines */
+        #define TTypeSupport RoptimizerSteadyStateTypeSupport
+        #define TData        Shell::Hmi::RoptimizerSteadyState
+        #define TDataReader  RoptimizerSteadyStateDataReader
+        #define TDataWriter  RoptimizerSteadyStateDataWriter
+        #define TGENERATE_SER_CODE
+        #define TGENERATE_TYPECODE
 
-            #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
+        #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
-            #undef TTypeSupport
-            #undef TData
-            #undef TDataReader
-            #undef TDataWriter
-            #undef TGENERATE_TYPECODE
-            #undef TGENERATE_SER_CODE
-            #undef TTYPENAME
-            #undef TPlugin_new
-            #undef TPlugin_delete
+        #undef TTypeSupport
+        #undef TData
+        #undef TDataReader
+        #undef TDataWriter
+        #undef TGENERATE_TYPECODE
+        #undef TGENERATE_SER_CODE
+        #undef TTYPENAME
+        #undef TPlugin_new
+        #undef TPlugin_delete
 
-        } /* namespace RoptimizerConfiguration  */
     } /* namespace Hmi  */
 } /* namespace Shell  */
 

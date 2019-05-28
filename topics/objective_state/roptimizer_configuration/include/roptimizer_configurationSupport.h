@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef roptimizer_configurationSupport_360071868_h
-#define roptimizer_configurationSupport_360071868_h
+#ifndef roptimizer_configurationSupport_360071588_h
+#define roptimizer_configurationSupport_360071588_h
 
 /* Uses */
 #include "roptimizer_configuration.h"
@@ -28,72 +28,70 @@ class __declspec(dllimport) DDSDataReader;
 
 namespace Shell {
     namespace Hmi {
-        namespace RoptimizerConfiguration {
-            /* ========================================================================= */
-            /**
-            Uses:     T
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-            Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-            Organized using the well-documented "Generics Pattern" for
-            implementing generics in C and C++.
-            */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, start exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-            #endif
+        #endif
 
-            DDS_TYPESUPPORT_CPP(
-                RoptimizerConfigurationRequestTypeSupport, 
-                RoptimizerConfigurationRequest);
+        DDS_TYPESUPPORT_CPP(
+            RoptimizerConfigurationTypeSupport, 
+            RoptimizerConfiguration);
 
-            DDS_DATAWRITER_CPP(RoptimizerConfigurationRequestDataWriter, RoptimizerConfigurationRequest);
-            DDS_DATAREADER_CPP(RoptimizerConfigurationRequestDataReader, RoptimizerConfigurationRequestSeq, RoptimizerConfigurationRequest);
+        DDS_DATAWRITER_CPP(RoptimizerConfigurationDataWriter, RoptimizerConfiguration);
+        DDS_DATAREADER_CPP(RoptimizerConfigurationDataReader, RoptimizerConfigurationSeq, RoptimizerConfiguration);
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, stop exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport
-            #endif
-            /* ========================================================================= */
-            /**
-            Uses:     T
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
+        /* ========================================================================= */
+        /**
+        Uses:     T
 
-            Defines:  TTypeSupport, TDataWriter, TDataReader
+        Defines:  TTypeSupport, TDataWriter, TDataReader
 
-            Organized using the well-documented "Generics Pattern" for
-            implementing generics in C and C++.
-            */
+        Organized using the well-documented "Generics Pattern" for
+        implementing generics in C and C++.
+        */
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, start exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport __declspec(dllexport)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, start exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport __declspec(dllexport)
 
-            #endif
+        #endif
 
-            DDS_TYPESUPPORT_CPP(
-                RoptimizerSteadyStateTypeSupport, 
-                RoptimizerSteadyState);
+        DDS_TYPESUPPORT_CPP(
+            RoptimizerSteadyStateTypeSupport, 
+            RoptimizerSteadyState);
 
-            DDS_DATAWRITER_CPP(RoptimizerSteadyStateDataWriter, RoptimizerSteadyState);
-            DDS_DATAREADER_CPP(RoptimizerSteadyStateDataReader, RoptimizerSteadyStateSeq, RoptimizerSteadyState);
+        DDS_DATAWRITER_CPP(RoptimizerSteadyStateDataWriter, RoptimizerSteadyState);
+        DDS_DATAREADER_CPP(RoptimizerSteadyStateDataReader, RoptimizerSteadyStateSeq, RoptimizerSteadyState);
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, stop exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport
-            #endif
-        } /* namespace RoptimizerConfiguration  */
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        /* If the code is building on Windows, stop exporting symbols.
+        */
+        #undef NDDSUSERDllExport
+        #define NDDSUSERDllExport
+        #endif
     } /* namespace Hmi  */
 } /* namespace Shell  */
 
-#endif  /* roptimizer_configurationSupport_360071868_h */
+#endif  /* roptimizer_configurationSupport_360071588_h */
 

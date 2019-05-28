@@ -229,11 +229,20 @@ autotuner_configuration.cpy:
 	-@rm -rf $(TMPOUTDIR)
 
 roptimizer_configuration.cpy: 
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py hmi/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
 	mkdir -p $(TOPIC_HOME)/objective_state/roptimizer_configuration
 	mkdir -p $(TOPIC_HOME)/objective_state/roptimizer_configuration/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/roptimizer_configuration/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/roptimizer_configuration
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective_state/roptimizer_configuration
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective_state/roptimizer_configuration/include
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/objective_state/roptimizer_configuration
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective_state/roptimizer_configuration
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective_state/roptimizer_configuration/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective_state/roptimizer_configuration/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective_state/roptimizer_configuration
 	-@rm -rf $(TMPOUTDIR)
 
 resources.cpy:

@@ -2,34 +2,28 @@ module Shell
 {
     module Hmi
     {
-        module RoptimizerConfiguration
-        {
-            //@copy-c-declaration static const char ROPTIMIZER_CONFIGURATION_REQUEST[] = "RoptimizerConfigurationRequest";
-            struct RoptimizerConfigurationRequest
-            {
-                long steadyStateWindow;
-                long steadyStateMin;
-                long rpmStepSize;
-                long ropStepSize;
-            };
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: ConfigProfile
 
-            //@copy-c-declaration static const char ROPTIMIZER_STEADY_STATE[] = "RoptimizerSteadyState";
-            struct RoptimizerSteadyState
-            {
-                // Actuals
-                boolean rpmSteadyState;
-                boolean ropSteadyState;
-                boolean wobSteadyState;
-                boolean torqueSteadyState;
-                // Targets
-                long steadyStateWindow;
-                long steadyStateMin;
-                long rpmStepSize;
-                long ropStepSize;
-                double bitWear;
-                double mse;
-                double power;
-            };
+        //@copy-c-declaration static const char ROPTIMIZER_CONFIGURATION[] = "RoptimizerConfiguration";
+        struct RoptimizerConfiguration
+        {
+            long steadyStateWindow;
+            long steadyStateMin;
+            long rpmStepSize;
+            long ropStepSize;
+        };
+
+        //@copy-c-declaration static const char ROPTIMIZER_STEADY_STATE[] = "RoptimizerSteadyState";
+        struct RoptimizerSteadyState
+        {
+            boolean rpmSteadyState;
+            boolean ropSteadyState;
+            boolean wobSteadyState;
+            boolean torqueSteadyState;
+            double bitWear;
+            double mse;
+            double power;
         };
     };
 };

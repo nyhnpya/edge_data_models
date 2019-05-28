@@ -30,7 +30,7 @@ TARG_INCLUDES += -I /usr/local/include/dds_base
 TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -isystem/usr/local/include/edge_third_party
 TARG_INCLUDES += -I /usr/local/include/base_data_types
-TARG_INCLUDES += -I /usr/local/include/roptimizer_configuration_objective_state
+TARG_INCLUDES += -I /usr/local/include/roptimizer_configuration
 
 # Sources
 TARG_SOURCES = rop_config_publisher.cpp
@@ -38,7 +38,7 @@ TARG_SOURCES = rop_config_publisher.cpp
 # Libraries
 TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
 TARG_LIBS += -L /usr/local/lib 
-TARG_LIBS += -lroptimizer_configuration_objective_state -lbase_data_types -ldds_base -luuid
+TARG_LIBS += -lroptimizer_configuration -lbase_data_types -ldds_base -luuid
 
 TARG_LIBS += -llogger -llog4cplus -luuid 
 TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/librtidlcppzd.a $(NDDSHOME)/lib/$(NDDSARCH)/librtidlczd.a 

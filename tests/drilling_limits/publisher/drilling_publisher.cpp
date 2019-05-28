@@ -12,6 +12,15 @@ bool gTerminate = false;
 
 CDrillingLimitsPublisher *gpStatePublisher = nullptr;
 
+using namespace units;
+using namespace units::length;
+using namespace units::velocity;
+using namespace units::force;
+using namespace units::pressure;
+using namespace units::torque;
+using namespace units::angular_velocity;
+
+
 #ifdef _LINUX
 void SignalHandler(int32_t signal)
 {
@@ -71,78 +80,78 @@ void SetStartDepth()
 {
     double input;
 
-    std::cout << "Start depth: ";
+    std::cout << "Start depth (ft): ";
     std::cin >> input;
-    gpStatePublisher->SetStartDepth(units::length::meter_t(input));
+    gpStatePublisher->SetStartDepth(units::length::meter_t(foot_t(input)));
 }
         
 void SetEndDepth()
 {
     double input;
 
-    std::cout << "End depth: ";
+    std::cout << "End depth (ft): ";
     std::cin >> input;
-    gpStatePublisher->SetEndDepth(units::length::meter_t(input));
+    gpStatePublisher->SetEndDepth(units::length::meter_t(foot_t(input)));
 }
 
 void SetRopMin()
 {
     double input;
 
-    std::cout << "Rop min: ";
+    std::cout << "Rop min (fph): ";
     std::cin >> input;
-    gpStatePublisher->SetRopMin(units::velocity::meters_per_second_t(input));
+    gpStatePublisher->SetRopMin(units::velocity::meters_per_second_t(feet_per_hour_t(input)));
 }
 
 void SetRopMax()
 {
     double input;
 
-    std::cout << "Rop max: ";
+    std::cout << "Rop max (fph): ";
     std::cin >> input;
-    gpStatePublisher->SetRopMax(units::velocity::meters_per_second_t(input));
+    gpStatePublisher->SetRopMax(units::velocity::meters_per_second_t(feet_per_hour_t(input)));
 }
 
 void SetWobMin()
 {
     double input;
-    std::cout << "WOb min: ";
+    std::cout << "WOb min (klbs): ";
     std::cin >> input;
-    gpStatePublisher->SetWobMin(units::force::newton_t(input));
+    gpStatePublisher->SetWobMin(units::force::newton_t(pound_t(input * 1000)));
 }
 
 void SetWobMax()
 {
     double input;
 
-    std::cout << "WOb max: ";
+    std::cout << "WOb max (klbs): ";
     std::cin >> input;
-    gpStatePublisher->SetWobMax(units::force::newton_t(input));
+    gpStatePublisher->SetWobMax(units::force::newton_t(pound_t(input * 1000)));
 }
 
 void SetDiffPMin()
 {
     double input;
 
-    std::cout << "DiffP min: ";
+    std::cout << "DiffP min (psi): ";
     std::cin >> input;
-    gpStatePublisher->SetDiffPMin(units::pressure::pascal_t(input));
+    gpStatePublisher->SetDiffPMin(units::pressure::pascal_t(pounds_per_square_inch_t(input)));
 }
 
 void SetDiffPMax()
 {
     double input;
 
-    std::cout << "DiffP max: ";
+    std::cout << "DiffP max (psi): ";
     std::cin >> input;
-    gpStatePublisher->SetDiffPMax(units::pressure::pascal_t(input));
+    gpStatePublisher->SetDiffPMax(units::pressure::pascal_t(pounds_per_square_inch_t(input)));
 }
 
 void SetTorqueMin()
 {
     double input;
 
-    std::cout << "Torque min: ";
+    std::cout << "Torque min (nM): ";
     std::cin >> input;
     gpStatePublisher->SetTorqueMin(units::torque::newton_meter_t(input));
 }
@@ -151,7 +160,7 @@ void SetTorqueMax()
 {
     double input;
 
-    std::cout << "Torque max: ";
+    std::cout << "Torque max (nM): ";
     std::cin >> input;
     gpStatePublisher->SetTorqueMax(units::torque::newton_meter_t(input));
 }    
@@ -160,18 +169,18 @@ void SetRotateMin()
 {
     double input;
 
-    std::cout << "Rotate min: ";
+    std::cout << "Rotate min (rpm): ";
     std::cin >> input;
-    gpStatePublisher->SetRotateMin(units::angular_velocity::radians_per_second_t(input));
+    gpStatePublisher->SetRotateMin(units::angular_velocity::radians_per_second_t(revolutions_per_minute_t(input)));
 }
 
 void SetRotateMax()
 {
     double input;
 
-    std::cout << "Rotate max: ";
+    std::cout << "Rotate max (rpm): ";
     std::cin >> input;
-    gpStatePublisher->SetRotateMax(units::angular_velocity::radians_per_second_t(input));
+    gpStatePublisher->SetRotateMax(units::angular_velocity::radians_per_second_t(revolutions_per_minute_t(input)));
 }
 
 void top_level_menu()
