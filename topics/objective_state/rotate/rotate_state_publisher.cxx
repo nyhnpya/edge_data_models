@@ -1,4 +1,3 @@
-#include "dds_uuid.h"
 #include "rotate_state_publisher.h"
 
 CRotateStatePublisher::CRotateStatePublisher()
@@ -14,7 +13,7 @@ bool CRotateStatePublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::ROTATE_STATE,
                        "EdgeBaseLibrary",
-                       "StateProfile");
+                       "EdgeBaseProfile");
 }
 
 bool CRotateStatePublisher::Initialize()

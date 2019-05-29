@@ -26,14 +26,16 @@ bool CRotateStateSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-DataTypes::Uuid CRotateStateSubscriber::GetId()
+CDdsUuid CRotateStateSubscriber::GetId()
 {
-    return m_data.id;
+    CDdsUuid uuid(m_data.id);
+    return uuid;
 }
 
-DataTypes::Uuid CRotateStateSubscriber::GetObjectiveId()
+CDdsUuid CRotateStateSubscriber::GetObjectiveId()
 {
-    return m_data.objectiveId;
+    CDdsUuid uuid(m_data.objectiveId);
+    return uuid;
 }
 
 DataTypes::Time CRotateStateSubscriber::GetTimestamp()

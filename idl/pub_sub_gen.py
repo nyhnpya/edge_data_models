@@ -131,7 +131,6 @@ def write_publisher_h(outdir, struct):
 def write_publisher_cxx(outdir, struct, qoslib, qosprof):
     out = open(outdir + '/' + struct.name_underscore + '_publisher.cxx', 'w')
     out.write('#include "' + struct.name_underscore + '_publisher.h"\n')
-    out.write('#include "dds_uuid.h"\n')
     out.write('\n')
     out.write('C' + struct.name_camel_case + 'Publisher::C' + struct.name_camel_case + 'Publisher()\n')
     out.write('{\n')
@@ -191,10 +190,10 @@ def write_publisher_cxx(outdir, struct, qoslib, qosprof):
     for sfield in struct.fields:
         if sfield.datatype in enums:
             out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(' + module_name + sfield.datatype + ' ' + sfield.name + ')\n')
+        elif 'DataTypes::Uuid' in sfield.datatype:
+            out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(CDdsUuid ' + sfield.name + ')\n')
         elif sfield.unit_name != '':
             out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(const ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t ' + sfield.name + ')\n')
-        elif 'DataTypes::Uuid' in sfield.datatype:
-            out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(CDdsUuid' + ' ' + sfield.name + ')\n')
         else:
             out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(' + sfield.datatype + ' ' + sfield.name + ')\n')
         out.write('{\n')
@@ -222,6 +221,7 @@ def write_subscriber_h(outdir, struct):
     out.write('#include "subscriber.h"\n')
     out.write('#include "' + idl_name + '.h"\n')
     out.write('#include "' + idl_name + 'Support.h"\n')
+    out.write('#include "dds_uuid.h"\n')
     out.write('\n')
     out.write('#ifdef _WIN32\n')
     out.write('#undef pascal\n')
@@ -253,6 +253,8 @@ def write_subscriber_h(outdir, struct):
     for sfield in struct.fields:
         if sfield.datatype in enums:
             out.write('        ' + module_name + sfield.datatype + ' Get' + str_cap(sfield.name) + '();\n') 
+        elif 'DataTypes::Uuid' in sfield.datatype:
+            out.write('        CDdsUuid Get' + str_cap(sfield.name) + '();\n') 
         elif sfield.unit_name != '':
             out.write('        ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t Get' + str_cap(sfield.name) + '();\n') 
         else:
@@ -312,15 +314,17 @@ def write_subscriber_cxx(outdir, struct, qoslib, qosprof):
     for sfield in struct.fields:
         if sfield.datatype in enums:
             out.write(module_name + sfield.datatype + ' C' + struct.name_camel_case + 'Subscriber::Get' + str_cap(sfield.name) + '()\n')
+            out.write('        m_pDataInstance->' + sfield.name + ' = DDS_String_dup(' + sfield.name + '.c_str());\n') 
+        elif 'DataTypes::Uuid' in sfield.datatype:
+            out.write('CDdsUuid C' + struct.name_camel_case + 'Subscriber::Get' + str_cap(sfield.name) + '()\n')
         elif sfield.unit_name != '':
             out.write('units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t C' + struct.name_camel_case + 'Subscriber::Get' + str_cap(sfield.name) + '()\n')
         else:
             out.write(sfield.datatype + ' C' + struct.name_camel_case + 'Subscriber::Get' + str_cap(sfield.name) + '()\n')
         out.write('{\n')
-        if 'DataTypes::Uuid' == fields[0]:
-            out.write('    return DDS_String_dup(m_data.' + sfield.name + ');\n')
-        elif 'DataTypes::Uuid' == fields[0]:
-            out.write('    return m_data.' + sfield.name + ';\n')
+        if 'DataTypes::Uuid' in sfield.datatype:
+            out.write('    CDdsUuid uuid(m_data.' + sfield.name + ');\n')
+            out.write('    return uuid;\n')
         elif sfield.unit_name != '':
             out.write('    return ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t(m_data.' + sfield.name + ');\n')
         else:

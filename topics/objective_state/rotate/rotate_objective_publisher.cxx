@@ -1,4 +1,3 @@
-#include "dds_uuid.h"
 #include "rotate_objective_publisher.h"
 
 CRotateObjectivePublisher::CRotateObjectivePublisher()
@@ -14,7 +13,7 @@ bool CRotateObjectivePublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::ROTATE_OBJECTIVE,
                        "EdgeBaseLibrary",
-                       "ObjectiveProfile");
+                       "EdgeBaseProfile");
 }
 
 bool CRotateObjectivePublisher::Initialize()

@@ -1,4 +1,3 @@
-#include "dds_uuid.h"
 #include "rotate_request_publisher.h"
 
 CRotateRequestPublisher::CRotateRequestPublisher()
@@ -14,7 +13,7 @@ bool CRotateRequestPublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::ROTATE_REQUEST,
                        "EdgeBaseLibrary",
-                       "RequestProfile");
+                       "EdgeBaseProfile");
 }
 
 bool CRotateRequestPublisher::Initialize()

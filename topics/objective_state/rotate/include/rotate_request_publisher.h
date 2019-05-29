@@ -18,6 +18,7 @@
 #include "publisher.h"
 #include "rotate.h"
 #include "rotateSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal

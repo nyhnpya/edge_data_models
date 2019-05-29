@@ -18,6 +18,7 @@
 #include "subscriber.h"
 #include "rotate.h"
 #include "rotateSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -38,8 +39,8 @@ class CRotateRequestSubscriber : public TSubscriber< nec::process::RotateRequest
         void OnLivelinessChanged(OnLivelinessChangedEvent event);
         void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
         
-        DataTypes::Uuid GetId();
-        DataTypes::Uuid GetObjectiveId();
+        CDdsUuid GetId();
+        CDdsUuid GetObjectiveId();
         DataTypes::Priority GetPriority();
         DataTypes::Time GetTimeNeeded();
         DataTypes::Time GetEstimatedDuration();
