@@ -26,9 +26,10 @@ bool CRotateEngineeringRequestSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-DataTypes::Uuid CRotateEngineeringRequestSubscriber::GetId()
+CDdsUuid CRotateEngineeringRequestSubscriber::GetId()
 {
-    return m_data.id;
+    CDdsUuid uuid(m_data.id);
+    return uuid;
 }
 
 DataTypes::Priority CRotateEngineeringRequestSubscriber::GetPriority()

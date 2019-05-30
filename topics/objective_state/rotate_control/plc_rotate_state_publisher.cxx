@@ -1,5 +1,4 @@
 #include "plc_rotate_state_publisher.h"
-#include "dds_uuid.h"
 
 CPlcRotateStatePublisher::CPlcRotateStatePublisher()
 {
@@ -32,6 +31,13 @@ bool CPlcRotateStatePublisher::Initialize()
 
 bool CPlcRotateStatePublisher::PublishSample()
 {
+    DDS_Time_t currentTime;
+
+    if (m_pDataInstance != nullptr)
+    {
+        GetParticipant()->get_current_time(currentTime);
+    }
+
     return Publish();
 }
 

@@ -1,5 +1,4 @@
 #include "rotate_engineering_objective_publisher.h"
-#include "dds_uuid.h"
 
 CRotateEngineeringObjectivePublisher::CRotateEngineeringObjectivePublisher()
 {

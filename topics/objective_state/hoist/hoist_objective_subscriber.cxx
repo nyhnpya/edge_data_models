@@ -26,14 +26,16 @@ bool CHoistObjectiveSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-DataTypes::Uuid CHoistObjectiveSubscriber::GetId()
+CDdsUuid CHoistObjectiveSubscriber::GetId()
 {
-    return m_data.id;
+    CDdsUuid uuid(m_data.id);
+    return uuid;
 }
 
-DataTypes::Uuid CHoistObjectiveSubscriber::GetObjectiveId()
+CDdsUuid CHoistObjectiveSubscriber::GetObjectiveId()
 {
-    return m_data.objectiveId;
+    CDdsUuid uuid(m_data.objectiveId);
+    return uuid;
 }
 
 DataTypes::Time CHoistObjectiveSubscriber::GetEstimatedDuration()

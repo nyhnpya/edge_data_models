@@ -42,8 +42,8 @@ TARG_SOURCES += autotuner_configuration_state_publisher.cpp
 ###############################################################################
 
 # pacakge control file
-PACKAGE_DESCRIPTION = "Library package for the Ensign autotuner_configuration_request API."
-PACKAGE_DEV_DESCRIPTION = "core files for Ensign autotuner_configuration_request API development."
+PACKAGE_DESCRIPTION = "Library package for the Ensign EDGE autotuner_configuration_request API."
+PACKAGE_DEV_DESCRIPTION = "core files for Ensign EDGE autotuner_configuration_request API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev

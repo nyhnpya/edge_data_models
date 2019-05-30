@@ -18,6 +18,7 @@
 #include "subscriber.h"
 #include "plc_rotate.h"
 #include "plc_rotateSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal

@@ -1,5 +1,4 @@
 #include "drill_state_topic_publisher.h"
-#include "dds_uuid.h"
 
 CDrillStateTopicPublisher::CDrillStateTopicPublisher()
 {
@@ -32,6 +31,13 @@ bool CDrillStateTopicPublisher::Initialize()
 
 bool CDrillStateTopicPublisher::PublishSample()
 {
+    DDS_Time_t currentTime;
+
+    if (m_pDataInstance != nullptr)
+    {
+        GetParticipant()->get_current_time(currentTime);
+    }
+
     return Publish();
 }
 

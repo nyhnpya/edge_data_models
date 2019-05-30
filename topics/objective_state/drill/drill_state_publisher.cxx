@@ -1,5 +1,4 @@
 #include "drill_state_publisher.h"
-#include "dds_uuid.h"
 
 CDrillStatePublisher::CDrillStatePublisher()
 {

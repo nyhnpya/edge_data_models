@@ -18,6 +18,7 @@
 #include "subscriber.h"
 #include "hoist.h"
 #include "hoistSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -38,8 +39,8 @@ class CHoistStateSubscriber : public TSubscriber< nec::process::HoistState >
         void OnLivelinessChanged(OnLivelinessChangedEvent event);
         void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
         
-        DataTypes::Uuid GetId();
-        DataTypes::Uuid GetObjectiveId();
+        CDdsUuid GetId();
+        CDdsUuid GetObjectiveId();
         DataTypes::Time GetTimestamp();
         DataTypes::Status GetStatus();
         units::force::newton_t GetActualHookload();

@@ -1,5 +1,4 @@
 #include "drill_objective_publisher.h"
-#include "dds_uuid.h"
 
 CDrillObjectivePublisher::CDrillObjectivePublisher()
 {

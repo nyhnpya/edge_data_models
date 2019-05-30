@@ -18,6 +18,7 @@
 #include "subscriber.h"
 #include "rotate_engineering.h"
 #include "rotate_engineeringSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -38,7 +39,7 @@ class CRotateEngineeringObjectiveSubscriber : public TSubscriber< nec::engineeri
         void OnLivelinessChanged(OnLivelinessChangedEvent event);
         void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
         
-        DataTypes::Uuid GetId();
+        CDdsUuid GetId();
         DataTypes::Time GetEstimatedDuration();
         units::angular_velocity::radians_per_second_t GetTargetRate();
         units::torque::newton_meter_t GetTargetTorque();

@@ -1,5 +1,4 @@
 #include "hoist_state_publisher.h"
-#include "dds_uuid.h"
 
 CHoistStatePublisher::CHoistStatePublisher()
 {

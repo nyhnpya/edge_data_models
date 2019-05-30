@@ -1,5 +1,4 @@
 #include "circulate_state_publisher.h"
-#include "dds_uuid.h"
 
 CCirculateStatePublisher::CCirculateStatePublisher()
 {

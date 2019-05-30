@@ -44,8 +44,8 @@ TARG_SOURCES += auto_ream_state_publisher.cpp
 ###############################################################################
 
 # package control files
-PACKAGE_DESCRIPTION = "EDGE drilling objective-state library"
-PACKAGE_DEV_DESCRIPTION = "EDGE drilling objective-state library"
+PACKAGE_DESCRIPTION = "Library package for the Ensign EDGE auto_ream API."
+PACKAGE_DEV_DESCRIPTION = "core files for Ensign EDGE auto_ream API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev

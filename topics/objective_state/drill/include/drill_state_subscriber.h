@@ -18,6 +18,7 @@
 #include "subscriber.h"
 #include "drill.h"
 #include "drillSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -38,8 +39,8 @@ class CDrillStateSubscriber : public TSubscriber< nec::process::DrillState >
         void OnLivelinessChanged(OnLivelinessChangedEvent event);
         void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
         
-        DataTypes::Uuid GetId();
-        DataTypes::Uuid GetObjectiveId();
+        CDdsUuid GetId();
+        CDdsUuid GetObjectiveId();
         DataTypes::Time GetTimestamp();
         units::velocity::meters_per_second_t GetRopActual();
         units::force::newton_t GetWobActual();

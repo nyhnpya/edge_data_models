@@ -26,14 +26,16 @@ bool CCirculateStateSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-DataTypes::Uuid CCirculateStateSubscriber::GetId()
+CDdsUuid CCirculateStateSubscriber::GetId()
 {
-    return m_data.id;
+    CDdsUuid uuid(m_data.id);
+    return uuid;
 }
 
-DataTypes::Uuid CCirculateStateSubscriber::GetObjectiveId()
+CDdsUuid CCirculateStateSubscriber::GetObjectiveId()
 {
-    return m_data.objectiveId;
+    CDdsUuid uuid(m_data.objectiveId);
+    return uuid;
 }
 
 DataTypes::Time CCirculateStateSubscriber::GetTimestamp()

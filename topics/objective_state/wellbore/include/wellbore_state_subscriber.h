@@ -18,6 +18,7 @@
 #include "subscriber.h"
 #include "wellbore.h"
 #include "wellboreSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -38,8 +39,8 @@ class CWellboreStateSubscriber : public TSubscriber< nec::process::WellboreState
         void OnLivelinessChanged(OnLivelinessChangedEvent event);
         void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
         
-        DataTypes::Uuid GetId();
-        DataTypes::Uuid GetObjectiveId();
+        CDdsUuid GetId();
+        CDdsUuid GetObjectiveId();
         DataTypes::Time GetTimestamp();
         units::length::meter_t GetHoleDepth();
         units::length::meter_t GetMeasuredDepth();

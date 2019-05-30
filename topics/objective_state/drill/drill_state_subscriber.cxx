@@ -26,14 +26,16 @@ bool CDrillStateSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-DataTypes::Uuid CDrillStateSubscriber::GetId()
+CDdsUuid CDrillStateSubscriber::GetId()
 {
-    return m_data.id;
+    CDdsUuid uuid(m_data.id);
+    return uuid;
 }
 
-DataTypes::Uuid CDrillStateSubscriber::GetObjectiveId()
+CDdsUuid CDrillStateSubscriber::GetObjectiveId()
 {
-    return m_data.objectiveId;
+    CDdsUuid uuid(m_data.objectiveId);
+    return uuid;
 }
 
 DataTypes::Time CDrillStateSubscriber::GetTimestamp()

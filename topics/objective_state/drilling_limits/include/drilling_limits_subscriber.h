@@ -18,6 +18,7 @@
 #include "subscriber.h"
 #include "drilling_limits.h"
 #include "drilling_limitsSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -38,7 +39,7 @@ class CDrillingLimitsSubscriber : public TSubscriber< process::plan::DrillingLim
         void OnLivelinessChanged(OnLivelinessChangedEvent event);
         void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
         
-        DataTypes::Uuid GetId();
+        CDdsUuid GetId();
         units::length::meter_t GetStartDepth();
         units::length::meter_t GetEndDepth();
         units::velocity::meters_per_second_t GetRopMin();

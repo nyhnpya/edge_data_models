@@ -1,5 +1,4 @@
 #include "circulate_request_publisher.h"
-#include "dds_uuid.h"
 
 CCirculateRequestPublisher::CCirculateRequestPublisher()
 {

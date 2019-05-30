@@ -42,8 +42,8 @@ TARG_SOURCES += plc_rotate_state_subscriber.cxx
 ###############################################################################
 
 # package control file
-PACKAGE_DESCRIPTION = "Library package for the Ensign rotate_engineering_request API."
-PACKAGE_DEV_DESCRIPTION = "core files for Ensign rotate_engineering_request API development."
+PACKAGE_DESCRIPTION = "Library package for the Ensign EDGE plc_rotate API."
+PACKAGE_DEV_DESCRIPTION = "core files for Ensign EDGE plc_rotate API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev

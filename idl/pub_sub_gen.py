@@ -314,7 +314,6 @@ def write_subscriber_cxx(outdir, struct, qoslib, qosprof):
     for sfield in struct.fields:
         if sfield.datatype in enums:
             out.write(module_name + sfield.datatype + ' C' + struct.name_camel_case + 'Subscriber::Get' + str_cap(sfield.name) + '()\n')
-            out.write('        m_pDataInstance->' + sfield.name + ' = DDS_String_dup(' + sfield.name + '.c_str());\n') 
         elif 'DataTypes::Uuid' in sfield.datatype:
             out.write('CDdsUuid C' + struct.name_camel_case + 'Subscriber::Get' + str_cap(sfield.name) + '()\n')
         elif sfield.unit_name != '':
@@ -618,8 +617,8 @@ def write_makefile(outdir, struct_names, struct_names2):
     out.write('###############################################################################\n')
     out.write('\n')
     out.write('# package control file\n')
-    out.write('PACKAGE_DESCRIPTION = "Library package for the Ensign rotate_engineering_request API."\n')
-    out.write('PACKAGE_DEV_DESCRIPTION = "core files for Ensign rotate_engineering_request API development."\n')
+    out.write('PACKAGE_DESCRIPTION = "Library package for the Ensign EDGE ' + idl_name + ' API."\n')
+    out.write('PACKAGE_DEV_DESCRIPTION = "core files for Ensign EDGE ' + idl_name + ' API development."\n')
     out.write('PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"\n')
     out.write('PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types\n')
     out.write('PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev\n')

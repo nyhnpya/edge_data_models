@@ -1,5 +1,4 @@
 #include "plc_rotate_request_publisher.h"
-#include "dds_uuid.h"
 
 CPlcRotateRequestPublisher::CPlcRotateRequestPublisher()
 {

@@ -1,5 +1,4 @@
 #include "circulate_objective_publisher.h"
-#include "dds_uuid.h"
 
 CCirculateObjectivePublisher::CCirculateObjectivePublisher()
 {

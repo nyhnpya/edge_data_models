@@ -1,5 +1,4 @@
 #include "hoist_state_publisher.h"
-#include "dds_uuid.h"
 
 CHoistStatePublisher::CHoistStatePublisher()
 {
@@ -32,6 +31,13 @@ bool CHoistStatePublisher::Initialize()
 
 bool CHoistStatePublisher::PublishSample()
 {
+    DDS_Time_t currentTime;
+
+    if (m_pDataInstance != nullptr)
+    {
+        GetParticipant()->get_current_time(currentTime);
+    }
+
     return Publish();
 }
 

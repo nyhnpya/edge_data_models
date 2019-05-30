@@ -18,6 +18,7 @@
 #include "subscriber.h"
 #include "circulate.h"
 #include "circulateSupport.h"
+#include "dds_uuid.h"
 
 #ifdef _WIN32
 #undef pascal
@@ -38,8 +39,8 @@ class CCirculateStateSubscriber : public TSubscriber< nec::process::CirculateSta
         void OnLivelinessChanged(OnLivelinessChangedEvent event);
         void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);
         
-        DataTypes::Uuid GetId();
-        DataTypes::Uuid GetObjectiveId();
+        CDdsUuid GetId();
+        CDdsUuid GetObjectiveId();
         DataTypes::Time GetTimestamp();
         DataTypes::Status GetStatus();
         units::volume_velocity::cubic_meters_per_second_t GetActualFlowRate();

@@ -26,14 +26,16 @@ bool CCirculateRequestSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-DataTypes::Uuid CCirculateRequestSubscriber::GetId()
+CDdsUuid CCirculateRequestSubscriber::GetId()
 {
-    return m_data.id;
+    CDdsUuid uuid(m_data.id);
+    return uuid;
 }
 
-DataTypes::Uuid CCirculateRequestSubscriber::GetObjectiveId()
+CDdsUuid CCirculateRequestSubscriber::GetObjectiveId()
 {
-    return m_data.objectiveId;
+    CDdsUuid uuid(m_data.objectiveId);
+    return uuid;
 }
 
 DataTypes::Priority CCirculateRequestSubscriber::GetPriority()

@@ -1,5 +1,4 @@
 #include "drill_request_publisher.h"
-#include "dds_uuid.h"
 
 CDrillRequestPublisher::CDrillRequestPublisher()
 {
