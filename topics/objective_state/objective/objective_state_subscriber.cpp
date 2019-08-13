@@ -3,11 +3,9 @@
 #include "dds_uuid.h"
 
 CObjectiveStateSubscriber::CObjectiveStateSubscriber() :
-    m_subscriptionMatched(false),
     m_pOnDataAvailable(nullptr),
     m_pOnDataDisposed(nullptr),
-    m_pOnLivelinessChanged(nullptr),
-    m_pOnSubscriptionMatched(nullptr)
+    m_pOnLivelinessChanged(nullptr)
 {
 }
 
@@ -27,11 +25,6 @@ CObjectiveStateSubscriber::~CObjectiveStateSubscriber()
 bool CObjectiveStateSubscriber::ValidData()
 {
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
-}
-
-bool CObjectiveStateSubscriber::ValidSubscription()
-{
-	return m_subscriptionMatched;
 }
 
 CDdsUuid CObjectiveStateSubscriber::GetId()
@@ -82,11 +75,6 @@ void CObjectiveStateSubscriber::OnDataDisposed(OnDataDisposedEvent event)
 void CObjectiveStateSubscriber::OnLivelinessChanged(OnLivelinessChangedEvent event)
 {
     m_pOnLivelinessChanged = event;
-}
-
-void CObjectiveStateSubscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)
-{
-    m_pOnSubscriptionMatched = event;
 }
 
 void CObjectiveStateSubscriber::DataAvailable(const process::plan::ObjectiveState &data,
@@ -144,15 +132,5 @@ void CObjectiveStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedSt
     if (m_pOnLivelinessChanged != nullptr)
     {
         m_pOnLivelinessChanged(status);
-    }
-}
-
-void CObjectiveStateSubscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)
-{
-	m_subscriptionMatched = (status.current_count > 0) ? true : false;
-	
-	if (m_pOnSubscriptionMatched != nullptr)
-    {
-        m_pOnSubscriptionMatched(status);
     }
 }

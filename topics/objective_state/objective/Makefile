@@ -14,10 +14,10 @@ include ../../../../Makefiles/Makefile.platform
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
 TARG_BUILD_MINOR = 0
-TARG_BUILD_PATCH = 1
+TARG_BUILD_PATCH = 2
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
-TARGET_NAME = objective_objective_state
+TARGET_NAME = objective
 
 ###############################################################################
 # compilation flags
