@@ -1,4 +1,4 @@
-include ../../Makefiles/Makefile.platform
+include $(MAKEFILEHOME)/Makefile.platform
 
 # Lists of all the sub-directories that have a Makefile. Libraries and
 # executables are placed in separate lists to be able to build the libraries
@@ -8,24 +8,24 @@ MAKEFILE_LIBRARY_DIRS += configuration
 #MAKEFILE_LIBRARY_DIRS += downhole/survey
 #MAKEFILE_LIBRARY_DIRS += subscribers/survey
 #MAKEFILE_LIBRARY_DIRS += pipe_handling/pipe_tally
-MAKEFILE_LIBRARY_DIRS += objective_state/auto_ream
-MAKEFILE_LIBRARY_DIRS += objective_state/autodriller_configuration
-MAKEFILE_LIBRARY_DIRS += objective_state/autotuner_configuration
-MAKEFILE_LIBRARY_DIRS += objective_state/circulate
-MAKEFILE_LIBRARY_DIRS += objective_state/drill
-MAKEFILE_LIBRARY_DIRS += objective_state/drilling_calibration
-MAKEFILE_LIBRARY_DIRS += objective_state/drilling_limits
-MAKEFILE_LIBRARY_DIRS += objective_state/hoist
-MAKEFILE_LIBRARY_DIRS += objective_state/objective
-MAKEFILE_LIBRARY_DIRS += objective_state/roptimizer_configuration
-MAKEFILE_LIBRARY_DIRS += objective_state/rotate
-MAKEFILE_LIBRARY_DIRS += objective_state/rotate_engineering
-MAKEFILE_LIBRARY_DIRS += objective_state/wellbore
-MAKEFILE_LIBRARY_DIRS += system/resources
-MAKEFILE_LIBRARY_DIRS += objective_state/circulate_control
-MAKEFILE_LIBRARY_DIRS += objective_state/drill_control
-MAKEFILE_LIBRARY_DIRS += objective_state/hoist_control
-MAKEFILE_LIBRARY_DIRS += objective_state/rotate_control
+MAKEFILE_LIBRARY_DIRS += auto_ream
+MAKEFILE_LIBRARY_DIRS += autodriller_configuration
+MAKEFILE_LIBRARY_DIRS += autotuner_configuration
+MAKEFILE_LIBRARY_DIRS += circulate
+MAKEFILE_LIBRARY_DIRS += drill
+MAKEFILE_LIBRARY_DIRS += drilling_calibration
+MAKEFILE_LIBRARY_DIRS += drilling_limits
+MAKEFILE_LIBRARY_DIRS += hoist
+MAKEFILE_LIBRARY_DIRS += objective
+MAKEFILE_LIBRARY_DIRS += roptimizer_configuration
+MAKEFILE_LIBRARY_DIRS += rotate
+MAKEFILE_LIBRARY_DIRS += rotate_engineering
+MAKEFILE_LIBRARY_DIRS += wellbore
+MAKEFILE_LIBRARY_DIRS += resources
+MAKEFILE_LIBRARY_DIRS += circulate_control
+MAKEFILE_LIBRARY_DIRS += drill_control
+MAKEFILE_LIBRARY_DIRS += hoist_control
+MAKEFILE_LIBRARY_DIRS += rotate_control
 
 .PHONY: all clean dep install install_clean install_dev install_dev_clean \
 filelist cfilelist info $(MAKEFILE_LIBRARY_DIRS) $(MAKEFILE_EXECUTABLE_DIRS)
@@ -53,8 +53,8 @@ all: $(MAKEFILE_LIBRARY_DIRS)
 
 clean: RULE=clean
 clean: $(MAKEFILE_LIBRARY_DIRS)
-	rm -rf $(TOP_DIR)/bin${SUFFIX}
-	rm -rf $(TOP_DIR)/lib${SUFFIX}
+	rm -rf $(MAKEFILEHOME)/bin${SUFFIX}
+	rm -rf $(MAKEFILEHOME)/lib${SUFFIX}
 
 dep: RULE=dep
 dep: $(MAKEFILE_EXECUTABLE_DIRS)

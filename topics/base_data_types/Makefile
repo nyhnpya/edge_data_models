@@ -9,7 +9,7 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../Makefiles/Makefile.platform
+include $(MAKEFILEHOME)/Makefile.platform
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
@@ -42,9 +42,9 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/base_data_types.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/base_data_typesPlugin.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/base_data_typesSupport.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/inclubase_data_types.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/inclubase_data_typesPlugin.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/inclubase_data_typesSupport.h
 
 # package configuration files
 
@@ -54,6 +54,6 @@ PACKAGE_INSTALL_DIR += $(CURDIR)/../../package
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform
 ###############################################################################
-include $(TOP_DIR)/Makefiles/Makefile.rti
-include $(TOP_DIR)/Makefiles/Makefile.macros
-include $(TOP_DIR)/Makefiles/Makefile.basic
+include $(MAKEFILEHOME)/Makefile.rti
+include $(MAKEFILEHOME)/Makefile.macros
+include $(MAKEFILEHOME)/Makefile.basic

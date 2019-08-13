@@ -4,6 +4,9 @@ module plc
 {
     module process
     {
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: PlcProfile
+
         //@copy-c-declaration static const char ROTATE_REQUEST_TOPIC[] = "RotateRequestTopic";
 
         /**
@@ -19,6 +22,9 @@ module plc
         {
             double targetRate;
         };
+
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: PlcProfile
 
         //@copy-c-declaration static const char ROTATE_STATE_TOPIC[] = "RotateStateTopic";
 

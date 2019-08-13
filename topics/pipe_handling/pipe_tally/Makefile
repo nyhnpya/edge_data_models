@@ -9,8 +9,8 @@
 # TARGET_NAME        - Name of final executable/library
 #
 ###############################################################################
-include ../../../Makefiles/Makefile.platform
-include $(TOP_DIR)/Makefiles/Makefile.rti
+include $(MAKEFILEHOME)/Makefile.platform
+include $(MAKEFILEHOME)/Makefile.rti
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
@@ -24,7 +24,7 @@ TARGET_NAME = pipe_tally
 # compilation flags
 ###############################################################################
 TARG_INCLUDES += -I $(CURDIR)/include
-TARG_INCLUDES += -I $(TOP_DIR)/topics/base_data_types/include
+TARG_INCLUDES += -I $(MAKEFILEHOME)/topibase_data_types/include
 
 # Sources
 TARG_SOURCES = pipe_tally.cxx
@@ -54,5 +54,5 @@ PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform
 ###############################################################################
-include $(TOP_DIR)/Makefiles/Makefile.macros
-include $(TOP_DIR)/Makefiles/Makefile.basic
+include $(MAKEFILEHOME)/Makefile.macros
+include $(MAKEFILEHOME)/Makefile.basic
