@@ -5,7 +5,7 @@ module nec
     module process
     {
         // QoSLibrary: EdgeBaseLibrary
-        // QoSProfile: RequestProfile
+        // QoSProfile: EdgeBaseProfile
 
         //@copy-c-declaration static const char CIRCULATE_REQUEST[] = "CirculateRequest";
 
@@ -26,7 +26,7 @@ module nec
         };
 
         // QoSLibrary: EdgeBaseLibrary
-        // QoSProfile: ObjectiveProfile
+        // QoSProfile: EdgeBaseProfile
 
         //@copy-c-declaration static const char CIRCULATE_OBJECTIVE[] = "CirculateObjective";
 
@@ -44,7 +44,7 @@ module nec
         };
 
         // QoSLibrary: EdgeBaseLibrary
-        // QoSProfile: StateProfile
+        // QoSProfile: EdgeBaseProfile
 
         //@copy-c-declaration static const char CIRCULATE_STATE[] = "CirculateState";
 
