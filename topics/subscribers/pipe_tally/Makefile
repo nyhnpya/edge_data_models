@@ -47,7 +47,7 @@ PACKAGE_LICENSE = "Closed License"
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/pipe_tally_subscriber.h
 
 # package installation directory
-PACKAGE_INSTALL_DIR += $(CURDIR)/../../../package
+PACKAGE_INSTALL_DIR += $(CURDIR)/../../package
 
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform

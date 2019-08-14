@@ -42,11 +42,10 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
-PACKAGE_INCLUDE_FILES += $(CURDIR)/inclubase_data_types.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/inclubase_data_typesPlugin.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/inclubase_data_typesSupport.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/base_data_types.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/base_data_typesPlugin.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/base_data_typesSupport.h
 
-# package configuration files
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../package

@@ -17,7 +17,6 @@ MAKEFILE_LIBRARY_DIRS += drilling_calibration
 MAKEFILE_LIBRARY_DIRS += drilling_limits
 MAKEFILE_LIBRARY_DIRS += hoist
 MAKEFILE_LIBRARY_DIRS += objective
-MAKEFILE_LIBRARY_DIRS += roptimizer_configuration
 MAKEFILE_LIBRARY_DIRS += rotate
 MAKEFILE_LIBRARY_DIRS += rotate_engineering
 MAKEFILE_LIBRARY_DIRS += wellbore
