@@ -24,7 +24,6 @@ import util_gen
 from pub_gen import write_publisher_h, write_publisher_cxx
 from sub_gen import write_subscriber_h, write_subscriber_cxx
 
-
 util_gen.init()
 
 # read in idl file

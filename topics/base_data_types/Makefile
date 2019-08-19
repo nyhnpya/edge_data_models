@@ -34,8 +34,8 @@ TARG_SOURCES += base_data_typesSupport.cxx
 ###############################################################################
 
 # package control file
-PACKAGE_DESCRIPTION = "Ensign EDGE Base_Data_Types Library"
-PACKAGE_DEV_DESCRIPTION = "Ensign EDGE Base_Data_Types Library"
+PACKAGE_DESCRIPTION = "Ensign Energy EDGE Base_Data_Types Library"
+PACKAGE_DEV_DESCRIPTION = "Ensign Energy EDGE Base_Data_Types Library"
 PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev
