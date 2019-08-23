@@ -31,7 +31,7 @@ util_gen.init()
 util_gen.output_dir = sys.argv[2]
 util_gen.idl_file_name = sys.argv[1]
 if '.cpy' in util_gen.idl_file_name:
-    util_gen.idl_file_name = idl_file_name.replace('.cpy', '.idl')
+    util_gen.idl_file_name = util_gen.idl_file_name.replace('.cpy', '.idl')
 
 print ('Processing file: ' + util_gen.idl_file_name + ' into directory: ' + util_gen.output_dir + '\n')
 
