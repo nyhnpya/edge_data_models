@@ -68,18 +68,18 @@ clean:
 
 pipehandler_engineering.cpy:
 	@echo "Copying generated files ..."
-	mkdir -p $(TOPIC_HOME)/engineering/pipehandler_engineering
-	mkdir -p $(TOPIC_HOME)/engineering/pipehandler_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/pipehandler_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/pipehandler_engineering
+#	mkdir -p $(TOPIC_HOME)/engineering/pipehandler_engineering
+#	mkdir -p $(TOPIC_HOME)/engineering/pipehandler_engineering/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/engineering/pipehandler_engineering/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/engineering/pipehandler_engineering
 	-@rm -rf $(TMPOUTDIR)
 
 circulate_engineering.cpy:
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/circulate_engineering
-	mkdir -p $(TOPIC_HOME)/circulate_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/circulate_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/circulate_engineering
+#	mkdir -p $(TOPIC_HOME)/circulate_engineering
+#	mkdir -p $(TOPIC_HOME)/circulate_engineering/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/circulate_engineering/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/circulate_engineering
 	-@rm -rf $(TMPOUTDIR)
 
 base_data_types.cpy:
@@ -230,29 +230,29 @@ resources.cpy:
 
 drill_simulation.cpy: 
 	@echo "Copying generated files..."
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/simulation/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/simulation
+#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/simulation/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/simulation
 	-@rm -rf $(TMPOUTDIR)
 
 slips.cpy: 
 	@echo "Copying generated files..."
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/slips/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/slips
+#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/slips/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/slips
 	-@rm -rf $(TMPOUTDIR)
 
 ibop.cpy: 
 	@echo "Copying generated files..."
 	mkdir -p $(TOPIC_HOME)/ibop/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/ibop/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/ibop
+#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/ibop/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/ibop
 	-@rm -rf $(TMPOUTDIR)
 
 
 ir_engineering.cpy: 
 	@echo "Copying generated files..."
 	mkdir -p $(TOPIC_HOME)/ir_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/ir_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/ir_engineering
+#	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/ir_engineering/include
+#	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/ir_engineering
 	-@rm -rf $(TMPOUTDIR)
 
 rotate_engineering.cpy:
@@ -267,10 +267,6 @@ rotate_engineering.cpy:
 	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/rotate_engineering
 	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/rotate_engineering/include
 	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/rotate_engineering/include
-	#cp $(TMPOUTDIR)/io_*.h $(TOPIC_HOME)/rotate_engineering/include
-	#cp $(TMPOUTDIR)/io_*.cxx $(TOPIC_HOME)/rotate_engineering
-	#cp $(TMPOUTDIR)/*_publish_io.h $(TOPIC_HOME)/rotate_engineering/include
-	##cp $(TMPOUTDIR)/*_publish_io.cxx $(TOPIC_HOME)/rotate_engineering
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/rotate_engineering
 	-@rm -rf $(TMPOUTDIR)
 
