@@ -9,18 +9,17 @@ module nec
 
         //@copy-c-declaration static const char ROTATE_REQUEST[] = "RotateRequest";
         /**
+         * \ingroup Request
+         *
          * \brief requested state change in the rotation system.
-         *
-         * \ingroup SafeRotationFunctions
-         *
-         * | Variable          | Description                                         | Data Type           | Unit    |
-         * | ----------------- | --------------------------------------------------- | ------------------- | ------- |
-         * | id                | id of requestor                                     | DataTypes::Uuid     | N/A     |
-         * | objectiveId       | id of current objective                             | DataTypes::Uuid     | N/A     |
-         * | priority          | priority of the request                             | DataTypes::Priority | sec     |
-         * | timeNeeded        | time requester needs the resource                   | DataTypes::Time     | sec     |
-         * | estimatedDuration | estimated duration requestor needs the resource     | DataTypes::Time     | N/A     |
-         * | targetRate        | requested traget in rad/s                           | double              | rad/s   |
+         * | Variable          | Description                                         | Data Type           | 
+         * | ----------------- | --------------------------------------------------- | ------------------- | 
+         * | id                | id of requestor                                     | DataTypes::Uuid     | 
+         * | objectiveId       | id of current objective                             | DataTypes::Uuid     | 
+         * | priority          | priority of the request                             | DataTypes::Priority | 
+         * | timeNeeded        | time requester needs the resource                   | DataTypes::Time     | 
+         * | estimatedDuration | estimated duration requestor needs the resource     | DataTypes::Time     | 
+         * | targetRate        | requested traget in rad/s                           | units::angular_velocity::radians_per_second  |
          */
         struct RotateRequest
         {
@@ -29,6 +28,9 @@ module nec
             DataTypes::Priority priority;
             DataTypes::Time     timeNeeded;
             DataTypes::Time     estimatedDuration;
+            /**
+             * \brief requested target rate.
+             */
             double              targetRate;  // (units::angular_velocity::radians_per_second)
         };
 
@@ -37,45 +39,42 @@ module nec
 
         //@copy-c-declaration static const char ROTATE_OBJECTIVE[] = "RotateObjective";
         /**
+         * \ingroup Objective
+         *
          * \brief current requested state change in the rotation system.
-         *
-         * \ingroup SafeRotationFunctions
-         *
-         * | Variable          | Description                                        | Data Type        | Unit  |
-         * | ----------------- | -------------------------------------------------- | ---------------- | ----- |
-         * | id                | id of requestor                                    | DataTypes::Uuid  | N/A   |
-         * | objectiveId       | id of current objective                            | DataTypes::Uuid  | N/A   |
-         * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time  | N/A   |
-         * | targetRate        | requested traget in rad/s                          | double           | rad/s |
+         * | Variable          | Description                                        | Data Type        |
+         * | ----------------- | -------------------------------------------------- | ---------------- |
+         * | id                | id of requestor                                    | DataTypes::Uuid  |
+         * | objectiveId       | id of current objective                            | DataTypes::Uuid  |
+         * | estimatedDuration | estimated duration requestor needs the resource    | DataTypes::Time  |
+         * | targetRate        | requested traget in rad/s                          | units::angular_velocity::radians_per_second |
          */
         struct RotateObjective
         {
             DataTypes::Uuid  id;                //@key
             DataTypes::Uuid  objectiveId; 
             DataTypes::Time  estimatedDuration; // estimated time current requestor owns the resource
-            double           targetRate;  // (units::angular_velocity::radians_per_second)
+            double           targetRate;        // (units::angular_velocity::radians_per_second)
         };
 
         // QoSLibrary: EdgeBaseLibrary
         // QoSProfile: EdgeBaseProfile
 
         //@copy-c-declaration static const char ROTATE_STATE[] = "RotateState";
-
         /**
+         * \ingroup Actual
+         *
          * \brief current state of rotation system.
-         *
-         * \ingroup SafeRotationFunctions
-         *
-         * | Variable      | Description                            | Data Type         | Unit  |
-         * | ------------- | ---------------------------------------| ------------------| ------|
-         * | id            | id of requestor                        | DataTypes::Uuid   | N/A   |
-         * | objectiveId   | id of current objective                | DataTypes::Uuid   | N/A   |
-         * | timestamp     | timestamp when the data was published  | DataTypes::Time   | sec   |
-         * | status        | Unique id of publisher                 | Datatypes::Status | N/A   |
-         * | actualRate    | actual rate in rad/s                   | double            | rad/s |
-         * | minRate       | minimum machine rate in rad/s          | double            | rad/s |
-         * | maxRate       | maximum machine rate in rad/s          | double            | rad/s |
-         * | targetRate    | requested traget in rad/s              | double            | rad/s |
+         * | Variable      | Description                            | Data Type         | 
+         * | ------------- | ---------------------------------------| ------------------| 
+         * | id            | id of requestor                        | DataTypes::Uuid   | 
+         * | objectiveId   | id of current objective                | DataTypes::Uuid   | 
+         * | timestamp     | timestamp when the data was published  | DataTypes::Time   | 
+         * | status        | Unique id of publisher                 | Datatypes::Status | 
+         * | actualRate    | actual rate in rad/s                   | units::angular_velocity::radians_per_second |
+         * | minRate       | minimum machine rate in rad/s          | units::angular_velocity::radians_per_second |
+         * | maxRate       | maximum machine rate in rad/s          | units::angular_velocity::radians_per_second |
+         * | targetRate    | requested traget in rad/s              | units::angular_velocity::radians_per_second |
          */
         struct RotateState
         {
