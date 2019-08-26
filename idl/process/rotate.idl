@@ -12,6 +12,12 @@ module nec
          * \ingroup Request
          *
          * \brief requested state change in the rotation system.
+         *
+         * Long Description Goes Here 1
+         * Long Description Goes Here 2
+         * Long Description Goes Here 3
+         * Long Description Goes Here 4
+         *
          * | Variable          | Description                                         | Data Type           | 
          * | ----------------- | --------------------------------------------------- | ------------------- | 
          * | id                | id of requestor                                     | DataTypes::Uuid     | 
@@ -42,6 +48,7 @@ module nec
          * \ingroup Objective
          *
          * \brief current requested state change in the rotation system.
+         *
          * | Variable          | Description                                        | Data Type        |
          * | ----------------- | -------------------------------------------------- | ---------------- |
          * | id                | id of requestor                                    | DataTypes::Uuid  |
@@ -65,6 +72,7 @@ module nec
          * \ingroup Actual
          *
          * \brief current state of rotation system.
+         *
          * | Variable      | Description                            | Data Type         | 
          * | ------------- | ---------------------------------------| ------------------| 
          * | id            | id of requestor                        | DataTypes::Uuid   | 

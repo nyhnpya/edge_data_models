@@ -58,12 +58,12 @@ with open(util_gen.idl_file_name) as idl_file:
 
             if util_gen.in_brief in [2, 3] and util_gen.in_ingroup == 0:
                 varcols = line.split('|')
-                if len(varcols) == 6:
+                print 'len: ' + str(len(varcols))
+                if len(varcols) == 5:
                     util_gen.in_brief = 3
                     util_gen.vartable1.append(varcols[1].strip())
                     util_gen.vartable2.append(varcols[2].strip())
                     util_gen.vartable3.append(varcols[3].strip())
-                    util_gen.vartable4.append(varcols[4].strip())
 
             if util_gen.in_brief == 2:
                 util_gen.descs.append(res2)
@@ -165,10 +165,7 @@ with open(util_gen.idl_file_name) as idl_file:
                 field_comment = ''
                 for iv in range(len(util_gen.vartable1)):
                     if util_gen.vartable1[iv] == fields[1]:
-                        if util_gen.vartable4[iv] == 'N/A':
-                            field_comment = util_gen.vartable2[iv]
-                        else:
-                            field_comment = '(' + util_gen.vartable4[iv] + ')  ' + util_gen.vartable2[iv]
+                        field_comment = util_gen.vartable2[iv]
                         break
                 struct_field = StructField(fields[1], fdt, unit_namespace, unit_name, iskey, field_comment) 
                 current_struct.fields.append(struct_field)
