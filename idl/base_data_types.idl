@@ -1,9 +1,33 @@
+/** 
+ * @defgroup    Request Request Interfaces
+ * @brief		Defines the set of request interfaces.
+ *				store a value, and support various arithmetic operations.
+ */
+
+/** 
+ * @defgroup    Objective Objective Interfaces
+ * @brief		Defines the set of objective interfaces.
+ *				store a value, and support various arithmetic operations.
+ */
+
+/** 
+ * @defgroup    Actual Actual Interfaces
+ * @brief		Defines the set of state interfaces. 
+ *				store a value, and support various arithmetic operations.
+ */
+
+/** 
+ * @brief		Defines the datatypes used by the EDGE Automation System
+ */
 module DataTypes
 {
+    /**
+    * @brief Unique ID for all topics
+    */
     typedef string<36> Uuid;
     
     /**
-    * \brief time of day based on Unix Epoch
+    * @brief time of day based on Unix Epoch
     */
     struct Time
     {
@@ -12,7 +36,7 @@ module DataTypes
     };
 
     /**
-    * \brief sets the priority of the request
+    * @brief sets the priority of the request
     */
     enum Priority  
     {
