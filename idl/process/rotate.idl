@@ -37,7 +37,7 @@ module nec
             /**
              * \brief requested target rate.
              */
-            double              targetRate;  // (units::angular_velocity::radians_per_second)
+            double              targetRate;  
         };
 
         // QoSLibrary: EdgeBaseLibrary
@@ -60,8 +60,8 @@ module nec
         {
             DataTypes::Uuid  id;                //@key
             DataTypes::Uuid  objectiveId; 
-            DataTypes::Time  estimatedDuration; // estimated time current requestor owns the resource
-            double           targetRate;        // (units::angular_velocity::radians_per_second)
+            DataTypes::Time  estimatedDuration; 
+            double           targetRate;        
         };
 
         // QoSLibrary: EdgeBaseLibrary
@@ -92,14 +92,14 @@ module nec
             DataTypes::Status status;
 
             // actuals
-            double            actualRate;  // (units::angular_velocity::radians_per_second)
+            double            actualRate;  
 
             // constraints
-            double            minRate;  // (units::angular_velocity::radians_per_second)
-            double            maxRate;  // (units::angular_velocity::radians_per_second)
+            double            minRate;  
+            double            maxRate;  
 
             // targets
-            double            targetRate;  // (units::angular_velocity::radians_per_second)
+            double            targetRate;  
         };
     };
 };

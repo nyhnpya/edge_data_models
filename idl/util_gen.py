@@ -29,7 +29,6 @@ def init():
     global vartable1
     global vartable2
     global vartable3
-    global vartable4
 
     global idl_name
     global idl_file_name

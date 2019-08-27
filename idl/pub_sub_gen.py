@@ -58,7 +58,7 @@ with open(util_gen.idl_file_name) as idl_file:
 
             if util_gen.in_brief in [2, 3] and util_gen.in_ingroup == 0:
                 varcols = line.split('|')
-                print 'len: ' + str(len(varcols))
+                #print 'len: ' + str(len(varcols))
                 if len(varcols) == 5:
                     util_gen.in_brief = 3
                     util_gen.vartable1.append(varcols[1].strip())
@@ -87,7 +87,6 @@ with open(util_gen.idl_file_name) as idl_file:
             util_gen.vartable1 = list()
             util_gen.vartable2 = list()
             util_gen.vartable3 = list()
-            util_gen.vartable4 = list()
         if '*/' in line:
             util_gen.in_comment = 0
 
@@ -166,6 +165,14 @@ with open(util_gen.idl_file_name) as idl_file:
                 for iv in range(len(util_gen.vartable1)):
                     if util_gen.vartable1[iv] == fields[1]:
                         field_comment = util_gen.vartable2[iv]
+                        field_type = util_gen.vartable3[iv]
+                        if 'units::' in field_type:
+                            ufields = field_type.replace('(','').replace(')','').split('::')
+                            current_struct.fields_with_units += 1
+                            unit_namespace = ufields[1]
+                            if len(ufields) < 3:
+                                print('Error: Expected more ::... :' + line + '\n')
+                            unit_name = ufields[2]
                         break
                 struct_field = StructField(fields[1], fdt, unit_namespace, unit_name, iskey, field_comment) 
                 current_struct.fields.append(struct_field)

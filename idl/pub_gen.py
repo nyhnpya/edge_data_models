@@ -51,14 +51,14 @@ def write_publisher_h(outdir, struct):
     if len(struct.brief_comments) > 0:
         for ib in range(len(struct.brief_comments)):
             if ib == 0:
-                out.write('/*! \\brief ' + struct.brief_comments[ib] + '\n')
+                out.write('/// @brief ' + struct.brief_comments[ib] + '\n')
             else:
-                out.write(' *         ' + struct.brief_comments[ib] + '\n')
-        out.write(' * \n')
+                out.write('///        ' + struct.brief_comments[ib] + '\n')
+        out.write('///\n')
         for id in range(len(struct.comments)):
             if len(struct.comments[id]) > 1:
-                out.write(' * ' + struct.comments[id] + '\n')
-        out.write('*/ \n')
+                out.write('/// ' + struct.comments[id] + '\n')
+        out.write('///\n')
     out.write('class C' + struct.name_camel_case + 'Publisher : public TPublisher< ' + util_gen.module_name + struct.name_camel_case + ' >\n')
     out.write('{\n')
     out.write('    public:\n')
@@ -71,7 +71,7 @@ def write_publisher_h(outdir, struct):
     out.write('        \n')
     for sfield in struct.fields:
         if len(sfield.comment) > 1:
-            out.write('        //! ' + sfield.comment + '\n')
+            out.write('        /// ' + sfield.comment + '\n')
         if sfield.datatype in util_gen.enums:
             out.write('        void Set' + str_cap(sfield.name) + '(' + util_gen.module_name + sfield.datatype + ' ' + sfield.name + ');\n')
         elif 'DataTypes::Uuid' in sfield.datatype:
