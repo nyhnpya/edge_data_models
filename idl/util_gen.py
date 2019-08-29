@@ -24,6 +24,7 @@ def init():
     global in_brief
     global in_ingroup
 
+    global ingroup
     global briefs
     global descs
     global vartable1

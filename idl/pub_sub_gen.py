@@ -54,6 +54,8 @@ with open(util_gen.idl_file_name) as idl_file:
                     util_gen.in_ingroup = 0
             if '\\ingroup' in line:
                 util_gen.in_ingroup = 1
+                res = line.partition('ingroup')[2].strip() 
+                util_gen.ingroup.append(res)
                 util_gen.in_brief = 3
 
             if util_gen.in_brief in [2, 3] and util_gen.in_ingroup == 0:
@@ -82,6 +84,7 @@ with open(util_gen.idl_file_name) as idl_file:
 
         if '/**' in line:
             util_gen.in_comment = 1
+            util_gen.ingroup = list()
             util_gen.briefs = list()
             util_gen.descs = list()
             util_gen.vartable1 = list()
@@ -119,6 +122,7 @@ with open(util_gen.idl_file_name) as idl_file:
             #print 'struct_file_name: ' + current_struct.name_underscore
             current_struct.fields = []
             current_struct.copyc = util_gen.lastcopyc
+            current_struct.ingroup = util_gen.ingroup 
             current_struct.brief_comments = util_gen.briefs 
             current_struct.comments = util_gen.descs 
             util_gen.structs.append(current_struct.name_camel_case)

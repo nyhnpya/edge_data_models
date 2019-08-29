@@ -48,6 +48,10 @@ def write_publisher_h(outdir, struct):
 #                units_list.append(sfield.unit_namespace)
 #        out.write('\n')
 
+    if len(struct.ingroup) > 0:
+        for ib in range(len(struct.ingroup)):
+            if ib == 0:
+                out.write('/// @ingroup ' + struct.ingroup[ib] + '\n')
     if len(struct.brief_comments) > 0:
         for ib in range(len(struct.brief_comments)):
             if ib == 0:

@@ -36,6 +36,7 @@ class Struct:
     fields_with_units = 0
     fields = []
     copyc = ''
+    ingroup = list()
     brief_comments = list()
     comments = list()
 
@@ -45,6 +46,7 @@ class Struct:
         fields_with_units = 0
         fields = []
         copyc = ''
+        ingroup = list()
         brief_comments = list()
         comments = list()
 
