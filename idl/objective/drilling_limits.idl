@@ -10,13 +10,25 @@ module process
         //@copy-c-declaration static const char DRILLING_LIMITS[] = "DrillingLimits";
 
         /**
-         * \brief requested state change in the hoisting system.
+         * \ingroup actual
          *
-         * \ingroup 
+         * \brief set of process limits for a given section specified by depth.
          *
-         * | Variable          | Description                                      | Data Type           | Unit  |
-         * | ----------------- | -------------------------------------------------| --------------------| ------|
-         * | id                | id of requestor                                  | DataTypes::Uuid     | N/A   |
+         * | Variable          | Description                            | Data Type           |
+         * | ----------------- | ---------------------------------------| --------------------|
+         * | id                | id of requestor                        | DataTypes::Uuid     |
+         * | startDepth        | start depth for constraints.           | units::length::meter       |
+         * | endDepth          | end depth for contraints               | units::length::meter       |
+         * | ropMin            | miniumu process rate of penetration limit      | units::velocity::meters_per_second |
+         * | ropMax            | maximun process rate of penetration limit      | units::velocity::meters_per_second |
+         * | wobMin            | minimum process weight on bit limit            | units::force::newton |
+         * | wobMax            | maximum process weight on bit limit            | units::force::newton |
+         * | diffPMin          | minimum process differential pressure limit    | units::pressure::pascal  |
+         * | diffpMaxMax       | maximum process differential pressure limit    | units::pressure::pascal  |
+         * | torqueMin         | minimum process differential torque limit      | units::torque::newton_meter |
+         * | torqueMax         | maximum process differential torque limit      | units::torque::newton_meter |
+         * | rotateMin         | minimum process rate in rad/s          | units::angular_velocity::radians_per_second |
+         * | rotateMax         | maximum process rate in rad/s          | units::angular_velocity::radians_per_second |
          */
         struct DrillingLimits
         {

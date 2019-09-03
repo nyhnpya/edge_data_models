@@ -4,22 +4,25 @@ module nec
 {
     module process
     {
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
+
         //@copy-c-declaration static const char HOIST_REQUEST[] = "HoistRequest";
 
         /**
+         * \ingroup Request
+         *
          * \brief requested state change in the hoisting system.
          *
-         * \ingroup SafeHoistFunctions
-         *
-         * | Variable          | Description                                      | Data Type           | Unit  |
-         * | ----------------- | -------------------------------------------------| --------------------| ------|
-         * | id                | id of requestor                                  | DataTypes::Uuid     | N/A   |
-         * | objectiveId       | id of current objective                          | DataTypes::Uuid     | N/A   |
-         * | priority          | priority of the request                          | DataTypes::Priority | ms    |
-         * | timeNeeded        | time requester needs the resource                | DataTypes::Time     | ms    |
-         * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time     | N/A   |
-         * | targetVelocity    | requested target in m/s                          | double              | m/sec |
-         * | targetPosition    | requested target position in m                   | double              | m/sec |
+         * | Variable          | Description                                      | Data Type           |
+         * | ----------------- | -------------------------------------------------| --------------------|
+         * | id                | id of requestor                                  | DataTypes::Uuid     |
+         * | objectiveId       | id of current objective                          | DataTypes::Uuid     |
+         * | priority          | priority of the request                          | DataTypes::Priority |
+         * | timeNeeded        | time requester needs the resource                | DataTypes::Time     |
+         * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time     |
+         * | targetVelocity    | requested target velocity                        | units::velocity::meters_per_second |
+         * | targetPosition    | requested target position                        | units::length::meter |
          */
         struct HoistRequest
         {
@@ -28,57 +31,63 @@ module nec
             DataTypes::Priority priority;
             DataTypes::Time     timeNeeded;
             DataTypes::Time     estimatedDuration;
-            double              targetVelocity;  // (units::velocity::meters_per_second)
-            double              targetPosition;  // (units::length::meter)
+            double              targetVelocity;
+            double              targetPosition;
         };
+
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
 
         //@copy-c-declaration static const char HOIST_OBJECTIVE[] = "HoistObjective";
 
         /**
          * \brief current requested state change in the hoisting system.
          *
-         * \ingroup SafeHoistFunctions
+         * \ingroup Objective
          *
-         * | Variable          | Description                                      | Data Type       | Unit  |
-         * | ----------------- | ------------------------------------------------ | ----------------| ------|
-         * | id                | id of requestor                                  | DataTypes::Uuid | N/A   |
-         * | objectiveId       | id of current objective                          | DataTypes::Uuid | N/A   |
-         * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time | N/A   |
-         * | targetVelocity    | requested target in m/s                          | double          | m/sec |
-         * | targetPosition    | requested target position in m                   | double          | m/sec |
+         * | Variable          | Description                                      | Data Type       |
+         * | ----------------- | ------------------------------------------------ | ----------------|
+         * | id                | id of requestor                                  | DataTypes::Uuid |
+         * | objectiveId       | id of current objective                          | DataTypes::Uuid |
+         * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time |
+         * | targetVelocity    | requested target velocity                        | units::velocity::meters_per_second |
+         * | targetPosition    | requested target position                        | units::length::meter |
          */
         struct HoistObjective
         {
             DataTypes::Uuid  id; //@key
             DataTypes::Uuid  objectiveId; 
             DataTypes::Time  estimatedDuration;
-            double           targetVelocity;  // (units::velocity::meters_per_second)
-            double           targetPosition;  // (units::length::meter))
+            double           targetVelocity;
+            double           targetPosition;
         };
+
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
 
         //@copy-c-declaration static const char HOIST_STATE[] = "HoistState";
 
         /**
+         * \ingroup Actual
+         *
          * \brief current state of the hoisting system.
          *
-         * \ingroup SafeHoistFunctions
-         *
-         * | Variable          | Description                            | Data Type         | Unit  |
-         * | ----------------- | -------------------------------------- | ----------------- | ------|
-         * | id                | id of requestor                        | DataTypes::Uuid   | N/A   |
-         * | objectiveId       | id of current objective                | DataTypes::Uuid   | N/A   |
-         * | timestamp         | timestamp when the data was published. | DataTypes::Time   | sec   |
-         * | status            | status of ciruclation system           | Datatypes::Status | N/A   |
-         * | actualHookload    | actual hookload                        | double            | N      |
-         * | actualVelocity    | actual velicoty in m/s                 | double            | m/sec |
-         * | actualPosition    | requested target in m                  | double            | m     |
-         * | maxHookload       | maximum hookload                       | double            | N      |
-         * | maxHoistVelocity  | requested target in m/s                | double            | m/sec |
-         * | maxLowerVelocity  | requested target in m/s                | double            | m/sec |
-         * | maxHoistPosition  | requested target in m/s                | double            | m     |
-         * | maxLowerPosition  | requested target in m/s                | double            | m     |
-         * | targetVelocity    | requested target in m/s                | double            | m/sec |
-         * | targetPosition    | requested target position in m         | double            | m     |
+         * | Variable          | Description                            | Data Type         |
+         * | ----------------- | -------------------------------------- | ----------------- |
+         * | id                | id of requestor                        | DataTypes::Uuid   |
+         * | objectiveId       | id of current objective                | DataTypes::Uuid   |
+         * | timestamp         | timestamp when the data was published. | DataTypes::Time   |
+         * | status            | status of ciruclation system           | Datatypes::Status |
+         * | actualHookload    | actual hookload                        | units::force::newton            | N      |
+         * | actualVelocity    | actual velicoty in m/s                 | units::velocity::meters_per_second            | m/sec |
+         * | actualPosition    | actual position in m                  | units::length::meter            | m     |
+         * | maxHookload       | machine maximum hookload                       | units::force::newton            | N      |
+         * | maxHoistVelocity  | machine maximum hoisting velocity in m/s                | units::velocity::meters_per_second            | m/sec |
+         * | maxLowerVelocity  | machine maximum lowering velocity in m/s                | units::velocity::meters_per_second            | m/sec |
+         * | maxHoistPosition  | machine maximum hoisting position in m                | units::length::meter            | m     |
+         * | maxLowerPosition  | machine maximum lowering position in m/s                | units::length::meter            | m     |
+         * | targetVelocity    | requested target velocity              | units::velocity::meters_per_second |
+         * | targetPosition    | requested target position              | units::length::meter |
          */
         struct HoistState
         {
@@ -87,21 +96,16 @@ module nec
             DataTypes::Time     timestamp;
             DataTypes::Status   status;
 
-            // actuals
-            double              actualHookload;  // (units::force::newton)
-            double              actualVelocity;  // (units::velocity::meters_per_second)
-            double              actualPosition;  // (units::length::meter)
-
-            // constraints
-            double              maxHookload;       // (units::force::newton)
-            double              maxHoistVelocity;  // (units::velocity::meters_per_second)
-            double              maxLowerVelocity;  // (units::velocity::meters_per_second)
-            double              maxHoistPosition;  // (units::length::meter)
-            double              maxLowerPosition;  // (units::length::meter)
-
-            // targets
-            double              targetVelocity;  // (units::velocity::meters_per_second)
-            double              targetPosition;  // (units::length::meter)
+            double              actualHookload;
+            double              actualVelocity;
+            double              actualPosition;
+            double              maxHookload;
+            double              maxHoistVelocity;
+            double              maxLowerVelocity;
+            double              maxHoistPosition;
+            double              maxLowerPosition;
+            double              targetVelocity;
+            double              targetPosition;
         };
     };
 };

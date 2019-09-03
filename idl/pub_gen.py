@@ -77,12 +77,16 @@ def write_publisher_h(outdir, struct):
         if len(sfield.comment) > 1:
             out.write('        /// ' + sfield.comment + '\n')
         if sfield.datatype in util_gen.enums:
+            out.write('        /// @param ' + util_gen.module_name + sfield.datatype + ' ' + sfield.name + ')')
             out.write('        void Set' + str_cap(sfield.name) + '(' + util_gen.module_name + sfield.datatype + ' ' + sfield.name + ');\n')
         elif 'DataTypes::Uuid' in sfield.datatype:
+            out.write('        /// @param ' + 'CDdsUuid' + ' ' + sfield.name + '\n')
             out.write('        void Set' + str_cap(sfield.name) + '(CDdsUuid' + ' ' + sfield.name + ');\n')
         elif sfield.unit_name != '':
+            out.write('        /// @param ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t ' + sfield.name + '\n')
             out.write('        void Set' + str_cap(sfield.name) + '(const ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t ' + sfield.name + ');\n')
         else: 
+            out.write('        /// @param ' + sfield.datatype + ' ' + sfield.name + '\n')
             out.write('        void Set' + str_cap(sfield.name) + '(const ' + sfield.datatype + ' ' + sfield.name + ');\n')
     out.write('};\n')
     out.write('\n')

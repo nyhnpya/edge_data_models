@@ -4,31 +4,35 @@ module nec
 {
     module process
     {
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
+
         //@copy-c-declaration static const char WELLBORE_STATE[] = "WellboreState";
 
         /**
+         *
+         * \ingroup Actual
+         *
          * \brief Wellbore state information.
          *
-         * \ingroup Downhole
-         *
-         * | Variable         | Description                                            | Data Type  | Unit    |
-         * | ---------------- | ------------------------------------------------------ | -----------| --------|
-         * | id               | Unique id of publisher.                                | UUID       | N/A     |
-         * | timestamp        | Timestamp when the data was published.                 | Time_t     | ms      |
-         * | holeDepth        | Reported hole depth.                                   | double     | m       |
-         * | measuredDepth    | Measured depth of hole.                                | double     | m       |
-         * | trueVerticalDepth| Measured true vertical depth of hole.                  | double     | m       |
-         * | bitDepth         | Measured depth of bit.                                 | double     | m       |
+         * | Variable         | Description                                            | Data Type  |
+         * | ---------------- | ------------------------------------------------------ | -----------|
+         * | id               | Unique id of publisher.                                | DataTypes::Uuid   |
+         * | timestamp        | Timestamp when the data was published.                 | DataTypes::Time   | 
+         * | holeDepth        | Reported hole depth.                                   | units::length::meter       |
+         * | measuredDepth    | Measured depth of hole.                                | units::length::meter       |
+         * | trueVerticalDepth| Measured true vertical depth of hole.                  | units::length::meter       |
+         * | bitDepth         | Measured depth of bit.                                 | units::length::meter       |
          */
         struct WellboreState
         {
             DataTypes::Uuid  id; //@key
             DataTypes::Uuid  objectiveId; 
             DataTypes::Time  timestamp;
-            double           holeDepth;  // (units::length::meter)
-            double           measuredDepth;  // (units::length::meter)
-            double           trueVerticalDepth;  // (units::length::meter)
-            double           bitDepth;  // (units::length::meter)
+            double           holeDepth;
+            double           measuredDepth;
+            double           trueVerticalDepth;
+            double           bitDepth;
         };
     };
 };

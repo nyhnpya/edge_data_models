@@ -3,27 +3,31 @@ module nec
 {
     module process
     {
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
+
         //@copy-c-declaration static const char DRILL_REQUEST[] = "DrillRequest";
 
         /**
          * \brief requested state change in the drilling system.
          *
-         * \ingroup SafeDrillFunctions
+         * \ingroup Request
          *
-         * | Variable           | Description                                      | Data Type           | Unit  |
-         * | ------------------ | -------------------------------------------------| --------------------| ------|
-         * | id                 | id of requestor                                  | DataTypes::Uuid     | N/A   |
-         * | objectiveId        | id of current objective                          | DataTypes::Uuid     | N/A   |
-         * | priority           | priority of the request                          | DataTypes::Priority | ms    |
-         * | timeNeeded         | time requester needs the resource                | DataTypes::Time     | ms    |
-         * | ropTarget          | target rate of penetration                       | double              | m/sec |
-         * | wobTarget          | target weight on bit                             | double              | N     |
-         * | diffPressureTarget | target differential pressure                     | double              | pas   |
-         * | torqueTarget       | target differential torque                       | double              | Nm    |
-         * | ropMode            | rate of penetration axis enabled                 | boolean             | N/A   |
-         * | wobMode            | weight on bit axis enabled                       | boolean             | N/A   |
-         * | diffPressureMode   | differential pressure axis enabled               | boolean             | N/A   |
-         * | torqueMode         | differential torque mode enabled                 | boolean             | N/A   |
+         * | Variable           | Description                                      | Data Type           |
+         * | ------------------ | -------------------------------------------------| --------------------|
+         * | id                 | id of requestor                                  | DataTypes::Uuid     |
+         * | objectiveId        | id of current objective                          | DataTypes::Uuid     |
+         * | priority           | priority of the request                          | DataTypes::Priority |
+         * | timeNeeded         | time requester needs the resource                | DataTypes::Time     |
+         * | estimatedDuration | estimated duration requestor needs the resource   | DataTypes::Time     |
+         * | ropTarget          | target rate of penetration                       | units::velocity::meters_per_second |
+         * | wobTarget          | target weight on bit                             | units::force::newton |
+         * | diffPressureTarget | target differential pressure                     | units::pressure::pascal  |
+         * | torqueTarget       | target differential torque                       | units::torque::newton_meter |
+         * | ropMode            | rate of penetration axis enabled                 | boolean             |
+         * | wobMode            | weight on bit axis enabled                       | boolean             |
+         * | diffPressureMode   | differential pressure axis enabled               | boolean             |
+         * | torqueMode         | differential torque mode enabled                 | boolean             |
          */
         struct DrillRequest
         {
@@ -32,32 +36,35 @@ module nec
             DataTypes::Priority priority;
             DataTypes::Time     timeNeeded;
             DataTypes::Time     estimatedDuration;
-            double              ropTarget;  // (units::velocity::meters_per_second)
-            double              wobTarget;  // (units::force::newton)
-            double              diffPressureTarget; // (units::pressure::pascal)
-            double              torqueTarget;  // (units::torque::newton_meter)
+            double              ropTarget;
+            double              wobTarget;
+            double              diffPressureTarget;
+            double              torqueTarget;
             boolean             ropMode;
             boolean             wobMode;
             boolean             diffPressureMode;
             boolean             torqueMode;
         };
 
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
+
         //@copy-c-declaration static const char DRILL_OBJECTIVE[] = "DrillObjective";
 
         /**
-         * \brief current requested state change in the drilling system.
+         * \ingroup Objective
          *
-         * \ingroup SafeDrillFunctions
+         * \brief current requested state change in the drilling system.
          *
          * | Variable           | Description                                      | Data Type       | Unit  |
          * | ------------------ | ------------------------------------------------ | ----------------| ------|
          * | id                 | id of requestor                                  | DataTypes::Uuid | N/A   |
          * | objectiveId        | id of current objective                          | DataTypes::Uuid | N/A   |
          * | estimatedDuration  | estimated duration requestor needs the resource  | DataTypes::Time | N/A   |
-         * | ropTarget          | target rate of penetration                       | double              | m/sec |
-         * | wobTarget          | target weight on bit                             | double              | N     |
-         * | diffPressureTarget | target differential pressure                     | double              | pas   |
-         * | torqueTarget       | target differential torque                       | double              | Nm    |
+         * | ropTarget          | target rate of penetration                       | units::velocity::meters_per_second |
+         * | wobTarget          | target weight on bit                             | units::force::newton |
+         * | diffPressureTarget | target differential pressure                     | units::pressure::pascal  |
+         * | torqueTarget       | target differential torque                       | units::torque::newton_meter |
          * | ropMode            | rate of penetration axis enabled                 | boolean             | N/A   |
          * | wobMode            | weight on bit axis enabled                       | boolean             | N/A   |
          * | diffPressureMode   | differential pressure axis enabled               | boolean             | N/A   |
@@ -68,68 +75,70 @@ module nec
             DataTypes::Uuid     id; //@key
             DataTypes::Uuid     objectiveId;
             DataTypes::Time     estimatedDuration;
-            double              ropTarget;  // (units::velocity::meters_per_second)
-            double              wobTarget;  // (units::force::newton)
-            double              diffPressureTarget; // (units::pressure::pascal)
-            double              torqueTarget;  // (units::torque::newton_meter)
+            double              ropTarget;
+            double              wobTarget;
+            double              diffPressureTarget;
+            double              torqueTarget;
             boolean             ropMode;
             boolean             wobMode;
             boolean             diffPressureMode;
             boolean             torqueMode;
         };
 
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
+
         //@copy-c-declaration static const char DRILL_STATE[] = "DrillState";
 
         /**
+         * \ingroup Actual
+         *
          * \brief current state of the drilling system.
          *
-         * \ingroup SafeDrillFunctions
-         *
-         * | Variable           | Description                            | Data Type         | Unit  |
-         * | ------------------ | -------------------------------------- | ----------------- | ------|
-         * | id                 | id of requestor                        | DataTypes::Uuid   | N/A   |
-         * | objectiveId        | id of current objective                | DataTypes::Uuid   | N/A   |
-         * | timestamp          | timestamp when the data was published. | DataTypes::Time   | sec   |
-         * | status             | status of ciruclation system           | Datatypes::Status | N/A   |
-         * | ropActual          | actual rate of penetration             | double            | m/sec |
-         * | wobActual          | actual weight on bit                   | double            | N     |
-         * | diffPressureActual | actual differential pressure           | double            | pas   |
-         * | torqueActual       | actual differential torque             | double            | Nm    |
-         * | ropLimit           | machine rate of penetration limit      | double            | m/sec |
-         * | wobLimit           | machine weight on bit limit            | double            | N     |
-         * | diffPressureLimit  | machine differential pressure limit    | double            | pas   |
-         * | torqueLimit        | machine differential torque limit      | double            | Nm    |
-         * | ropMode            | rate of penetration axis enabled       | boolean           | N/A   |
-         * | wobMode            | weight on bit axis enabled             | boolean           | N/A   |
-         * | diffPressureMode   | differential pressure axis enabled     | boolean           | N/A   |
-         * | torqueMode         | differential torque mode enabled       | boolean           | N/A   |
-         * | ropTarget          | target rate of penetration             | double            | m/sec |
-         * | wobTarget          | target weight on bit                   | double            | N     |
-         * | diffPressureTarget | target differential pressure           | double            | pas   |
-         * | torqueTarget       | target differential torque             | double            | Nm    |
-         * | bitOnBottom        | bit on bottom                          | boolean           | N/A   |
+         * | Variable           | Description                            | Data Type         |
+         * | ------------------ | -------------------------------------- | ----------------- |
+         * | id                 | id of requestor                        | DataTypes::Uuid   |
+         * | objectiveId        | id of current objective                | DataTypes::Uuid   |
+         * | timestamp          | timestamp when the data was published. | DataTypes::Time   |
+         * | status             | status of ciruclation system           | Datatypes::Status |
+         * | ropActual          | actual rate of penetration             | units::velocity::meters_per_second |
+         * | wobActual          | actual weight on bit                   | units::force::newton |
+         * | diffPressureActual | actual differential pressure           | units::pressure::pascal  |
+         * | torqueActual       | actual differential torque             | units::torque::newton_meter |
+         * | ropLimit           | machine rate of penetration limit      | units::velocity::meters_per_second |
+         * | wobLimit           | machine weight on bit limit            | units::force::newton |
+         * | diffPressureLimit  | machine differential pressure limit    | units::pressure::pascal  |
+         * | torqueLimit        | machine differential torque limit      | units::torque::newton_meter |
+         * | ropMode            | rate of penetration axis enabled       | boolean           |
+         * | wobMode            | weight on bit axis enabled             | boolean           |
+         * | diffPressureMode   | differential pressure axis enabled     | boolean           |
+         * | torqueMode         | differential torque mode enabled       | boolean           |
+         * | ropTarget          | target rate of penetration             | units::velocity::meters_per_second |
+         * | wobTarget          | target weight on bit                   | units::force::newton |
+         * | diffPressureTarget | target differential pressure           | units::pressure::pascal  |
+         * | torqueTarget       | target differential torque             | units::torque::newton_meter |
          */
         struct DrillState
         {
             DataTypes::Uuid id; //@key
             DataTypes::Uuid objectiveId;
             DataTypes::Time timestamp;
-            double          ropActual;  // (units::velocity::meters_per_second)
-            double          wobActual;  // (units::force::newton)
-            double          diffPressureActual; // (units::pressure::pascal)
-            double          torqueActual;  // (units::torque::newton_meter)
-            double          ropLimit;  // (units::velocity::meters_per_second)
-            double          wobLimit;  // (units::force::newton)
-            double          diffPressureLimit; // (units::pressure::pascal)
-            double          torqueLimit;  // (units::torque::newton_meter)
+            double          ropActual;
+            double          wobActual;
+            double          diffPressureActual;
+            double          torqueActual;
+            double          ropLimit;
+            double          wobLimit;
+            double          diffPressureLimit;
+            double          torqueLimit;
             boolean         ropMode;
             boolean         wobMode;
             boolean         diffPressureMode;
             boolean         torqueMode;
-            double          ropTarget;  // (units::velocity::meters_per_second)
-            double          wobTarget;  // (units::force::newton)
-            double          diffPressureTarget; // (units::pressure::pascal)
-            double          torqueTarget;  // (units::torque::newton_meter)
+            double          ropTarget;
+            double          wobTarget;
+            double          diffPressureTarget;
+            double          torqueTarget;
             boolean         bitOnBottom;
         };
     };

@@ -7,9 +7,10 @@ module nec
         // QoSLibrary: EdgeBaseLibrary
         // QoSProfile: EdgeBaseProfile
 
+        // \ingroup Request
+
         //@copy-c-declaration static const char ROTATE_REQUEST[] = "RotateRequest";
         /**
-         * \ingroup Request
          *
          * \brief requested state change in the rotation system.
          *
@@ -34,9 +35,6 @@ module nec
             DataTypes::Priority priority;
             DataTypes::Time     timeNeeded;
             DataTypes::Time     estimatedDuration;
-            /**
-             * \brief requested target rate.
-             */
             double              targetRate;  
         };
 
@@ -90,15 +88,9 @@ module nec
             DataTypes::Uuid   objectiveId; 
             DataTypes::Time   timestamp;        
             DataTypes::Status status;
-
-            // actuals
             double            actualRate;  
-
-            // constraints
             double            minRate;  
             double            maxRate;  
-
-            // targets
             double            targetRate;  
         };
     };

@@ -10,10 +10,19 @@ module nec
         //@copy-c-declaration static const char CIRCULATE_REQUEST[] = "CirculateRequest";
 
         /**
+         *
+         * \ingroup Request
+         *
          * \brief requested state change in the circulation system.
          *
-         * \ingroup SafeCirculateFunctions
-         *
+         * | Variable          | Description                                         | Data Type         |
+         * | ----------------- | ----------------------------------------------------| ------------------|
+         * | id                | id of requestor                                     | DataTypes::Uuid   | 
+         * | objectiveId       | id of current objective                             | DataTypes::Uuid   | 
+         * | priority          | priority of the request                             | DataTypes::Priority | 
+         * | timeNeeded        | time requester needs the resource                   | DataTypes::Time   | 
+         * | estimatedDuration | estimated duration requestor needs the resource     | DataTypes::Time   | 
+         * | targetFlowRate    | requetsed flow rate                                 | units::volume_velocity::cubic_meters_per_second |
          */
         struct CirculateRequest
         {
@@ -22,7 +31,7 @@ module nec
             DataTypes::Priority priority;
             DataTypes::Time     timeNeeded;
             DataTypes::Time     estimatedDuration;
-            double              targetFlowRate; // (units::volume_velocity::cubic_meters_per_second)
+            double              targetFlowRate;
         };
 
         // QoSLibrary: EdgeBaseLibrary
@@ -31,16 +40,24 @@ module nec
         //@copy-c-declaration static const char CIRCULATE_OBJECTIVE[] = "CirculateObjective";
 
         /**
+         *
+         * \ingroup Objective
+         *
          * \brief current requested state change in the circulation system.
          *
-         * \ingroup SafeCirculateFunctions
+         * | Variable          | Description                                      | Data Type        |
+         * | ----------------- | ------------------------------------------------ | ---------------- |
+         * | id                | id of requestor                                  | DataTypes::Uuid  |
+         * | objectiveId       | id of current objective                          | DataTypes::Uuid  |
+         * | estimatedDuration | estimated duration requestor needs the resource  | DataTypes::Time  |
+         * | targetFlowRate    | requetsed flow rate                              | units::volume_velocity::cubic_meters_per_second |
          */
         struct CirculateObjective
         {
             DataTypes::Uuid     id; //@key
             DataTypes::Uuid     objectiveId;
             DataTypes::Time     estimatedDuration;
-            double              targetFlowRate; // (units::volume_velocity::cubic_meters_per_second)
+            double              targetFlowRate;
         };
 
         // QoSLibrary: EdgeBaseLibrary
@@ -49,22 +66,23 @@ module nec
         //@copy-c-declaration static const char CIRCULATE_STATE[] = "CirculateState";
 
         /**
+         *
+         * \ingroup Actual
+         *
          * \brief current state of circulation system.
          *
-         * \ingroup SafeCirculateFunctions
-         *
-         * | Variable                | Description                            | Data Type         | Unit    |
-         * | ----------------------- | ---------------------------------------| ------------------| ------- |
-         * | id                      | id of requestor                        | DataTypes::Uuid   | N/A     |
-         * | timestamp               | timestamp when the data was published. | DataTypes::Time   | sec     |
-         * | status                  | status of ciruclation system           | Datatypes::Status | N/A     |
-         * | actualFlowRate          | actual flow rate                       | double            | m/sec^3 |
-         * | actualStandpipePressure | actual standpipe pressure              | double            | Pa      |
-         * | minFlowRate             | minimum machine flow rate              | double            | m/sec^3 |
-         * | maxFlowRate             | maximum machine flow rate              | double            | m/sec^3 |
-         * | minStandpipePressure    | minimum machine standpipe pressure     | double            | Pa      |
-         * | maxStandpipePressure    | maximum machine standpipe pressure     | double            | Pa      |
-         * | targetFlowRate          | requetsed flow rate                    | double            | m/sec^3 |
+         * | Variable                | Description                            | Data Type         |
+         * | ----------------------- | ---------------------------------------| ------------------|
+         * | id                      | id of requestor                        | DataTypes::Uuid   |
+         * | timestamp               | timestamp when the data was published. | DataTypes::Time   |
+         * | status                  | status of ciruclation system           | Datatypes::Status |
+         * | actualFlowRate          | actual flow rate                       | units::volume_velocity::cubic_meters_per_second |
+         * | actualStandpipePressure | actual standpipe pressure              | units::pressure::pascal      |
+         * | minFlowRate             | minimum machine flow rate              | units::volume_velocity::cubic_meters_per_second |
+         * | maxFlowRate             | maximum machine flow rate              | units::volume_velocity::cubic_meters_per_second |
+         * | minStandpipePressure    | minimum machine standpipe pressure     | units::volume::pascal      |
+         * | maxStandpipePressure    | maximum machine standpipe pressure     | units::volume::pascal      |
+         * | targetFlowRate    | requetsed flow rate                          | units::volume_velocity::cubic_meters_per_second |
          */
         struct CirculateState
         {
@@ -72,19 +90,13 @@ module nec
             DataTypes::Uuid   objectiveId; 
             DataTypes::Time   timestamp;
             DataTypes::Status status;
-
-            // actuals
-            double            actualFlowRate; // (units::volume_velocity::cubic_meters_per_second)
-            double            actualStandpipePressure; // (units::pressure::pascal)
-
-            // constraints
-            double            minFlowRate; // (units::volume_velocity::cubic_meters_per_second)
-            double            maxFlowRate; // (units::volume_velocity::cubic_meters_per_second)
-            double            minStandpipePressure;  // (units::pressure::pascal)
-            double            maxStandpipePressure;  // (units::pressure::pascal)
-
-            // targets
-            double            targetFlowRate; // (units::volume_velocity::cubic_meters_per_second)
+            double            actualFlowRate;
+            double            actualStandpipePressure;
+            double            minFlowRate;
+            double            maxFlowRate;
+            double            minStandpipePressure;
+            double            maxStandpipePressure;
+            double            targetFlowRate;
         };
     };
 };

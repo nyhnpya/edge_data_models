@@ -73,18 +73,21 @@ def write_subscriber_h(outdir, struct):
     out.write('        void OnDataAvailable(OnDataAvailableEvent event);\n')
     out.write('        void OnDataDisposed(OnDataDisposedEvent event);\n')
     out.write('        void OnLivelinessChanged(OnLivelinessChangedEvent event);\n')
-    out.write('        void OnSubscriptionMatched(OnSubscriptionMatchedEvent event);\n')
     out.write('        \n')
     for sfield in struct.fields:
         if len(sfield.comment) > 1:
             out.write('        /// ' + sfield.comment + '\n')
         if sfield.datatype in util_gen.enums:
+            out.write('        /// @return ' + util_gen.module_name + sfield.datatype + ' ' + sfield.name + ')')
             out.write('        ' + util_gen.module_name + sfield.datatype + ' Get' + str_cap(sfield.name) + '();\n') 
         elif 'DataTypes::Uuid' in sfield.datatype:
+            out.write('        /// @return ' + 'CDdsUuid' + ' ' + sfield.name + '\n')
             out.write('        CDdsUuid Get' + str_cap(sfield.name) + '();\n') 
         elif sfield.unit_name != '':
+            out.write('        /// @return ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t ' + sfield.name + '\n')
             out.write('        ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t Get' + str_cap(sfield.name) + '();\n') 
         else:
+            out.write('        /// @return ' + sfield.datatype + ' ' + sfield.name + '\n')
             out.write('        ' + sfield.datatype + ' Get' + str_cap(sfield.name) + '();\n') 
     out.write('\n')
     out.write('    protected:\n')
@@ -92,7 +95,6 @@ def write_subscriber_h(outdir, struct):
     out.write('                           const DDS::SampleInfo &sampleInfo);\n')
     out.write('        void DataDisposed(const DDS::SampleInfo &sampleInfo);\n')
     out.write('        void LivelinessChanged(const DDS::LivelinessChangedStatus &status);\n')
-    out.write('        void SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status);\n')
     out.write('\n')        
     out.write('    private:\n')        
     out.write('        {0: <50}'.format(util_gen.module_name + struct.name_camel_case) + 'm_data;\n')        
@@ -101,7 +103,6 @@ def write_subscriber_h(outdir, struct):
     out.write('        {0: <50}'.format('OnDataAvailableEvent') + 'm_pOnDataAvailable;\n')        
     out.write('        {0: <50}'.format('OnDataDisposedEvent') + 'm_pOnDataDisposed;\n')        
     out.write('        {0: <50}'.format('OnLivelinessChangedEvent') + 'm_pOnLivelinessChanged;\n')        
-    out.write('        {0: <50}'.format('OnSubscriptionMatchedEvent') + 'm_pOnSubscriptionMatched;\n')        
     out.write('};\n')
     out.write('\n')
     out.write('#endif // __' + util_gen.module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_SUBSCRIBER_H__\n')
@@ -116,7 +117,6 @@ def write_subscriber_cxx(outdir, struct, qoslib, qosprof):
     out.write('    m_pOnDataAvailable(nullptr),\n')
     out.write('    m_pOnDataDisposed(nullptr),\n')
     out.write('    m_pOnLivelinessChanged(nullptr),\n')
-    out.write('    m_pOnSubscriptionMatched(nullptr)\n')
     out.write('{\n')
     out.write('    memset((void *)&m_sampleInfo, 0, sizeof(DDS::SampleInfo));\n')
     out.write('}\n')
@@ -177,11 +177,6 @@ def write_subscriber_cxx(outdir, struct, qoslib, qosprof):
     out.write('}\n')
     out.write('\n')
     out.write('\n')
-    out.write('void C' + struct.name_camel_case + 'Subscriber::OnSubscriptionMatched(OnSubscriptionMatchedEvent event)\n')
-    out.write('{\n')
-    out.write('    m_pOnSubscriptionMatched = event;\n')
-    out.write('}\n')
-    out.write('\n')
 
     out.write('\n')
     out.write('void C' + struct.name_camel_case + 'Subscriber::DataAvailable(const ' + util_gen.module_name + struct.name_camel_case + ' &data,\n')
@@ -219,14 +214,6 @@ def write_subscriber_cxx(outdir, struct, qoslib, qosprof):
     out.write('    }\n')
     out.write('}\n')
     out.write('\n')
-    out.write('void C' + struct.name_camel_case + 'Subscriber::SubscriptionMatched(const DDS::SubscriptionMatchedStatus &status)\n')
-    out.write('{\n')
-    out.write('    \n')
-    out.write('    if (m_pOnSubscriptionMatched != nullptr)\n')
-    out.write('    {\n')
-    out.write('        m_pOnSubscriptionMatched(status);\n')
-    out.write('    }\n')
-    out.write('}\n')
     out.close()
 
 
