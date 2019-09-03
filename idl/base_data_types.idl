@@ -1,24 +1,3 @@
-/** 
- * @defgroup    Request Request Interfaces
- * @brief		Defines the set of request interfaces.
- *				store a value, and support various arithmetic operations.
- */
-
-/** 
- * @defgroup    Objective Objective Interfaces
- * @brief		Defines the set of objective interfaces.
- *				store a value, and support various arithmetic operations.
- */
-
-/** 
- * @defgroup    Actual Actual Interfaces
- * @brief		Defines the set of state interfaces. 
- *				store a value, and support various arithmetic operations.
- */
-
-/** 
- * @brief		Defines the datatypes used by the EDGE Automation System
- */
 module DataTypes
 {
     /**

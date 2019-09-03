@@ -7,10 +7,9 @@ module nec
         // QoSLibrary: EdgeBaseLibrary
         // QoSProfile: EdgeBaseProfile
 
-        // \ingroup Request
-
         //@copy-c-declaration static const char ROTATE_REQUEST[] = "RotateRequest";
         /**
+         * \ingroup Request
          *
          * \brief requested state change in the rotation system.
          *
