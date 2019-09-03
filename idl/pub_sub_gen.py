@@ -50,8 +50,8 @@ with open(util_gen.idl_file_name) as idl_file:
             res = line.partition('*')[2] 
             res2 = res.strip()
             if util_gen.in_ingroup == 1:
-                res = line.partition('ingroup')[2].strip() 
-                util_gen.groups.append(res)
+                if len(res2) <= 1:
+                    util_gen.in_ingroup = 0
             if '\\ingroup' in line:
                 util_gen.in_ingroup = 1
                 res = line.partition('ingroup')[2].strip() 
@@ -124,7 +124,6 @@ with open(util_gen.idl_file_name) as idl_file:
             current_struct.copyc = util_gen.lastcopyc
             current_struct.ingroup = util_gen.ingroup 
             current_struct.brief_comments = util_gen.briefs 
-            current_struct.ingroup = util_gen.groups
             current_struct.comments = util_gen.descs 
             util_gen.structs.append(current_struct.name_camel_case)
             util_gen.structs2.append(current_struct.name_underscore)

@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef base_data_types_308715478_h
-#define base_data_types_308715478_h
+#ifndef base_data_types_308716112_h
+#define base_data_types_308716112_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
