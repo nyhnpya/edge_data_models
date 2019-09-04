@@ -4,7 +4,22 @@ module process
 {
     module plan
     {
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
+
         //@copy-c-declaration static const char OBJECTIVE_STATE[] = "ObjectiveState";
+        /**
+         * \ingroup Actual
+         *
+         * \brief current state of rotation system.
+         *
+         * | Variable      | Description                            | Data Type         | 
+         * | ------------- | ---------------------------------------| ------------------| 
+         * | id            | id of requestor                        | DataTypes::Uuid   | 
+         * | parentId      | id of parent objective                 | DataTypes::Uuid   | 
+         * | timestamp     | timestamp when the data was published  | DataTypes::Time   | 
+         * | objective     | current objective                      | DataTypes::Objective |
+         */
 
         struct ObjectiveState
         {

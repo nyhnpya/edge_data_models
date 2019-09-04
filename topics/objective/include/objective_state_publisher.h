@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2017 Ensign Energy Incorporated
+ *  Copyright (c) 2019 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,29 +12,44 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __OBJECTIVE_STATE_PUBLISHER_H__
-#define __OBJECTIVE_STATE_PUBLISHER_H__
+#ifndef __PROCESS_PLAN_OBJECTIVE_STATE_PUBLISHER_H__
+#define __PROCESS_PLAN_OBJECTIVE_STATE_PUBLISHER_H__
 
-#include <mutex>
 #include "publisher.h"
-#include "base_data_types.h"
 #include "objective.h"
 #include "objectiveSupport.h"
+#include "dds_uuid.h"
 
-class CObjectiveStatePublisher : public TPublisher< process::plan::ObjectiveState>
+#ifdef _WIN32
+#undef pascal
+#endif
+
+/// @ingroup Actual
+/// @brief current state of rotation system.
+///
+///
+class CObjectiveStatePublisher : public TPublisher< process::plan::ObjectiveState >
 {
-public:
-    CObjectiveStatePublisher();
-    virtual ~CObjectiveStatePublisher();
-
-    bool Create(int32_t domain);
-    bool Initialize();
-    bool PublishSample();
-
-    // Topic getters
-    void SetObjective(DataTypes::Objective objective);
-    DataTypes::Uuid GetId();
-    
+    public:
+        CObjectiveStatePublisher();
+        ~CObjectiveStatePublisher();
+        
+        bool Create(int32_t domain);
+        bool Initialize();
+        bool PublishSample();
+        
+        /// id of requestor
+        /// @param CDdsUuid id
+        void SetId(CDdsUuid id);
+        /// id of parent objective
+        /// @param CDdsUuid parentId
+        void SetParentId(CDdsUuid parentId);
+        /// timestamp when the data was published
+        /// @param DataTypes::Time timestamp
+        void SetTimestamp(const DataTypes::Time timestamp);
+        /// current objective
+        /// @param DataTypes::Objective objective
+        void SetObjective(const DataTypes::Objective objective);
 };
 
-#endif // __OBJECTIVE_STATE_PUBLISHER_H__
+#endif // __PROCESS_PLAN_OBJECTIVE_STATE_PUBLISHER_H__

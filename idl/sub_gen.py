@@ -116,7 +116,7 @@ def write_subscriber_cxx(outdir, struct, qoslib, qosprof):
     out.write('C' + struct.name_camel_case + 'Subscriber::C' + struct.name_camel_case + 'Subscriber() :\n')
     out.write('    m_pOnDataAvailable(nullptr),\n')
     out.write('    m_pOnDataDisposed(nullptr),\n')
-    out.write('    m_pOnLivelinessChanged(nullptr),\n')
+    out.write('    m_pOnLivelinessChanged(nullptr)\n')
     out.write('{\n')
     out.write('    memset((void *)&m_sampleInfo, 0, sizeof(DDS::SampleInfo));\n')
     out.write('}\n')

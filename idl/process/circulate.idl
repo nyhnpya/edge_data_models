@@ -80,8 +80,8 @@ module nec
          * | actualStandpipePressure | actual standpipe pressure              | units::pressure::pascal      |
          * | minFlowRate             | minimum machine flow rate              | units::volume_velocity::cubic_meters_per_second |
          * | maxFlowRate             | maximum machine flow rate              | units::volume_velocity::cubic_meters_per_second |
-         * | minStandpipePressure    | minimum machine standpipe pressure     | units::volume::pascal      |
-         * | maxStandpipePressure    | maximum machine standpipe pressure     | units::volume::pascal      |
+         * | minStandpipePressure    | minimum machine standpipe pressure     | units::pressure::pascal      |
+         * | maxStandpipePressure    | maximum machine standpipe pressure     | units::pressure::pascal      |
          * | targetFlowRate    | requetsed flow rate                          | units::volume_velocity::cubic_meters_per_second |
          */
         struct CirculateState
