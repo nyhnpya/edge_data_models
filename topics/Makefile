@@ -40,7 +40,7 @@ ifneq ($(words $(MAKECMDGOALS)),1)
 # Sort removes duplicats. The "all" target is required in the list,
 # in case user invokes make with no targets.
 $(sort all $(MAKECMDGOALS)):
-	$(MAKE) $(MFLAGS) $@
+	$(MAKE) $(MFLAGS) TARG_BUILD_REVISION=$$(grep 'BUILD_NUMBER' build_num.txt | cut -d' ' -f2) $@
 
 else
 
@@ -83,7 +83,7 @@ endif # MAKECMDGOALS
 ##############################################################################
 
 $(MAKEFILE_EXECUTABLE_DIRS): $(MAKEFILE_LIBRARY_DIRS)
-	$(MAKE) -C $@ $(RULE) $(MFLAGS)
+	$(MAKE) -C $@ $(RULE) $(MFLAGS) TARG_BUILD_REVISION=$$(grep 'BUILD_NUMBER' build_num.txt | cut -d' ' -f2) 
 
 $(MAKEFILE_LIBRARY_DIRS):
-	$(MAKE) -e -C $@ $(RULE)
+	$(MAKE) -e -C $@ $(RULE) TARG_BUILD_REVISION=$$(grep 'BUILD_NUMBER' build_num.txt | cut -d' ' -f2) 
