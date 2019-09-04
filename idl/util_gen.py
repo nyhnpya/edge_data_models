@@ -51,12 +51,12 @@ def init():
     in_brief = 0
     in_ingroup = 0
 
+    ingroup = list()
     briefs = list()
     descs = list()
     vartable1 = list()
     vartable2 = list()
     vartable3 = list()
-    vartable4 = list()
 
     idl_name = ''
     idl_file_name = ''

@@ -43,13 +43,6 @@ util_gen.idl_name_camel_case = util_gen.idl_name.replace('_',' ').title().replac
 util_gen.QoSLibrary = 'EdgeBaseLibrary'
 util_gen.QoSProfile = 'EdgeBaseProfile'
 
-util_gen.ingroup = list()
-util_gen.briefs = list()
-util_gen.descs = list()
-util_gen.vartable1 = list()
-util_gen.vartable2 = list()
-util_gen.vartable3 = list()
-
 with open(util_gen.idl_file_name) as idl_file:
     for line in idl_file:
         if util_gen.in_comment == 1:
