@@ -64,12 +64,12 @@ class CAutoReamObjectiveSubscriber : public TSubscriber< nec::process::AutoReamO
         void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
     private:
-        nec::process::AutoReamObjective                   m_data;
-        DDS::SampleInfo                                   m_sampleInfo;
-        DDS::LivelinessChangedStatus                      m_livelinessStatus;
-        OnDataAvailableEvent                              m_pOnDataAvailable;
-        OnDataDisposedEvent                               m_pOnDataDisposed;
-        OnLivelinessChangedEvent                          m_pOnLivelinessChanged;
+        nec::process::AutoReamObjective                                       m_data;
+        DDS::SampleInfo                                                       m_sampleInfo;
+        DDS::LivelinessChangedStatus                                          m_livelinessStatus;
+        OnDataAvailableEvent                                                  m_pOnDataAvailable;
+        OnDataDisposedEvent                                                   m_pOnDataDisposed;
+        OnLivelinessChangedEvent                                              m_pOnLivelinessChanged;
 };
 
 #endif // __NEC_PROCESS_AUTO_REAM_OBJECTIVE_SUBSCRIBER_H__

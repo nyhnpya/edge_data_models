@@ -68,12 +68,12 @@ class CAutoReamRequestSubscriber : public TSubscriber< nec::process::AutoReamReq
         void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
     private:
-        nec::process::AutoReamRequest                     m_data;
-        DDS::SampleInfo                                   m_sampleInfo;
-        DDS::LivelinessChangedStatus                      m_livelinessStatus;
-        OnDataAvailableEvent                              m_pOnDataAvailable;
-        OnDataDisposedEvent                               m_pOnDataDisposed;
-        OnLivelinessChangedEvent                          m_pOnLivelinessChanged;
+        nec::process::AutoReamRequest                                         m_data;
+        DDS::SampleInfo                                                       m_sampleInfo;
+        DDS::LivelinessChangedStatus                                          m_livelinessStatus;
+        OnDataAvailableEvent                                                  m_pOnDataAvailable;
+        OnDataDisposedEvent                                                   m_pOnDataDisposed;
+        OnLivelinessChangedEvent                                              m_pOnLivelinessChanged;
 };
 
 #endif // __NEC_PROCESS_AUTO_REAM_REQUEST_SUBSCRIBER_H__

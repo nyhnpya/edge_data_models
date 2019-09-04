@@ -60,12 +60,12 @@ class CObjectiveStateSubscriber : public TSubscriber< process::plan::ObjectiveSt
         void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
     private:
-        process::plan::ObjectiveState                     m_data;
-        DDS::SampleInfo                                   m_sampleInfo;
-        DDS::LivelinessChangedStatus                      m_livelinessStatus;
-        OnDataAvailableEvent                              m_pOnDataAvailable;
-        OnDataDisposedEvent                               m_pOnDataDisposed;
-        OnLivelinessChangedEvent                          m_pOnLivelinessChanged;
+        process::plan::ObjectiveState                                         m_data;
+        DDS::SampleInfo                                                       m_sampleInfo;
+        DDS::LivelinessChangedStatus                                          m_livelinessStatus;
+        OnDataAvailableEvent                                                  m_pOnDataAvailable;
+        OnDataDisposedEvent                                                   m_pOnDataDisposed;
+        OnLivelinessChangedEvent                                              m_pOnLivelinessChanged;
 };
 
 #endif // __PROCESS_PLAN_OBJECTIVE_STATE_SUBSCRIBER_H__

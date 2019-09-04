@@ -60,12 +60,12 @@ class CDrillingCalibrationRequestSubscriber : public TSubscriber< nec::control::
         void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
     private:
-        nec::control::DrillingCalibrationRequest          m_data;
-        DDS::SampleInfo                                   m_sampleInfo;
-        DDS::LivelinessChangedStatus                      m_livelinessStatus;
-        OnDataAvailableEvent                              m_pOnDataAvailable;
-        OnDataDisposedEvent                               m_pOnDataDisposed;
-        OnLivelinessChangedEvent                          m_pOnLivelinessChanged;
+        nec::control::DrillingCalibrationRequest                              m_data;
+        DDS::SampleInfo                                                       m_sampleInfo;
+        DDS::LivelinessChangedStatus                                          m_livelinessStatus;
+        OnDataAvailableEvent                                                  m_pOnDataAvailable;
+        OnDataDisposedEvent                                                   m_pOnDataDisposed;
+        OnLivelinessChangedEvent                                              m_pOnLivelinessChanged;
 };
 
 #endif // __NEC_CONTROL_DRILLING_CALIBRATION_REQUEST_SUBSCRIBER_H__
