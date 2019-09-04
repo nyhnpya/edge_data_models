@@ -17,7 +17,7 @@ TARG_BUILD_MINOR = 0
 TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
-TARGET_NAME = autotuner_configuration_objective_state
+TARGET_NAME = autotuner_configuration
 
 ###############################################################################
 # compilation flags
@@ -25,25 +25,37 @@ TARGET_NAME = autotuner_configuration_objective_state
 TARG_INCLUDES += -isystem $(EDGE_THIRD_PARTY_INCLUDE)
 TARG_INCLUDES += -I $(DDS_INCLUDE)
 TARG_INCLUDES += -I $(LOG_INCLUDE)
-TARG_INCLUDES += -I $(CURDIR)/include
 TARG_INCLUDES += -I $(CURDIR)/../base_data_types/include
+TARG_INCLUDES += -I $(CURDIR)/include
 
 # Sources
 TARG_SOURCES = autotuner_configuration.cxx
 TARG_SOURCES += autotuner_configurationPlugin.cxx
 TARG_SOURCES += autotuner_configurationSupport.cxx
-TARG_SOURCES += autotuner_configuration_request_subscriber.cpp
-TARG_SOURCES += autotuner_configuration_request_publisher.cpp
-TARG_SOURCES += autotuner_configuration_state_subscriber.cpp
-TARG_SOURCES += autotuner_configuration_state_publisher.cpp
+TARG_SOURCES += model_state_request_publisher.cxx
+TARG_SOURCES += model_state_request_subscriber.cxx
+TARG_SOURCES += model_state_state_publisher.cxx
+TARG_SOURCES += model_state_state_subscriber.cxx
+TARG_SOURCES += diffp_tuning_request_publisher.cxx
+TARG_SOURCES += diffp_tuning_request_subscriber.cxx
+TARG_SOURCES += diffp_tuning_state_publisher.cxx
+TARG_SOURCES += diffp_tuning_state_subscriber.cxx
+TARG_SOURCES += wob_tuning_request_publisher.cxx
+TARG_SOURCES += wob_tuning_request_subscriber.cxx
+TARG_SOURCES += wob_tuning_state_publisher.cxx
+TARG_SOURCES += wob_tuning_state_subscriber.cxx
+TARG_SOURCES += torque_tuning_request_publisher.cxx
+TARG_SOURCES += torque_tuning_request_subscriber.cxx
+TARG_SOURCES += torque_tuning_state_publisher.cxx
+TARG_SOURCES += torque_tuning_state_subscriber.cxx
 
 ###############################################################################
 # Installation section
 ###############################################################################
 
-# pacakge control file
-PACKAGE_DESCRIPTION = "Library package for the Ensign Energy EDGE autotuner_configuration_request API."
-PACKAGE_DEV_DESCRIPTION = "core files for Ensign Energy EDGE autotuner_configuration_request API development."
+# package control file
+PACKAGE_DESCRIPTION = "Library package for the Ensign Energy EDGE autotuner_configuration API."
+PACKAGE_DEV_DESCRIPTION = "core files for Ensign Energy EDGE autotuner_configuration API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
@@ -53,10 +65,22 @@ PACKAGE_LICENSE = "Closed License"
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autotuner_configuration.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autotuner_configurationSupport.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autotuner_configurationPlugin.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autotuner_configuration_request_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autotuner_configuration_request_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autotuner_configuration_state_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autotuner_configuration_state_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_request_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_request_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_state_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_state_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/diffp_tuning_request_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/diffp_tuning_request_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/diffp_tuning_state_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/diffp_tuning_state_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wob_tuning_request_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wob_tuning_request_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wob_tuning_state_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wob_tuning_state_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/torque_tuning_request_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/torque_tuning_request_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/torque_tuning_state_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/torque_tuning_state_subscriber.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../package
@@ -67,3 +91,4 @@ PACKAGE_INSTALL_DIR += $(CURDIR)/../../package
 include $(MAKEFILEHOME)/Makefile.rti
 include $(MAKEFILEHOME)/Makefile.macros
 include $(MAKEFILEHOME)/Makefile.basic
+

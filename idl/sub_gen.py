@@ -78,7 +78,7 @@ def write_subscriber_h(outdir, struct):
         if len(sfield.comment) > 1:
             out.write('        /// ' + sfield.comment + '\n')
         if sfield.datatype in util_gen.enums:
-            out.write('        /// @return ' + util_gen.module_name + sfield.datatype + ' ' + sfield.name + ')')
+            out.write('        /// @return ' + util_gen.module_name + sfield.datatype + ' ' + sfield.name + ')\n')
             out.write('        ' + util_gen.module_name + sfield.datatype + ' Get' + str_cap(sfield.name) + '();\n') 
         elif 'DataTypes::Uuid' in sfield.datatype:
             out.write('        /// @return ' + 'CDdsUuid' + ' ' + sfield.name + '\n')

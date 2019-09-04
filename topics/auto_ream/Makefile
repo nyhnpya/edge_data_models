@@ -17,7 +17,7 @@ TARG_BUILD_MINOR = 0
 TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
-TARGET_NAME = auto_ream_objective_state
+TARGET_NAME = auto_ream
 
 ###############################################################################
 # compilation flags
@@ -30,20 +30,20 @@ TARG_INCLUDES += -I $(CURDIR)/include
 
 # Sources
 TARG_SOURCES = auto_ream.cxx
-TARG_SOURCES += auto_reamSupport.cxx
 TARG_SOURCES += auto_reamPlugin.cxx
-TARG_SOURCES += auto_ream_request_subscriber.cpp
-TARG_SOURCES += auto_ream_objective_subscriber.cpp
-TARG_SOURCES += auto_ream_state_subscriber.cpp
-TARG_SOURCES += auto_ream_request_publisher.cpp
-TARG_SOURCES += auto_ream_objective_publisher.cpp
-TARG_SOURCES += auto_ream_state_publisher.cpp
+TARG_SOURCES += auto_reamSupport.cxx
+TARG_SOURCES += auto_ream_request_publisher.cxx
+TARG_SOURCES += auto_ream_request_subscriber.cxx
+TARG_SOURCES += auto_ream_objective_publisher.cxx
+TARG_SOURCES += auto_ream_objective_subscriber.cxx
+TARG_SOURCES += auto_ream_state_publisher.cxx
+TARG_SOURCES += auto_ream_state_subscriber.cxx
 
 ###############################################################################
 # Installation section
 ###############################################################################
 
-# package control files
+# package control file
 PACKAGE_DESCRIPTION = "Library package for the Ensign Energy EDGE auto_ream API."
 PACKAGE_DEV_DESCRIPTION = "core files for Ensign Energy EDGE auto_ream API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
@@ -52,15 +52,15 @@ PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-de
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
-PACKAGE_INCLUDE_FILES = $(CURDIR)/include/auto_ream.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_ream.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_reamSupport.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_reamPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_ream_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_ream_request_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_ream_state_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_ream_state_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_ream_objective_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_ream_objective_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_ream_state_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_ream_state_subscriber.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../package
@@ -71,3 +71,4 @@ PACKAGE_INSTALL_DIR += $(CURDIR)/../../package
 include $(MAKEFILEHOME)/Makefile.rti
 include $(MAKEFILEHOME)/Makefile.macros
 include $(MAKEFILEHOME)/Makefile.basic
+

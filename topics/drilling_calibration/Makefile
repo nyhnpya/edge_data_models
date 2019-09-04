@@ -17,32 +17,33 @@ TARG_BUILD_MINOR = 0
 TARG_BUILD_PATCH = 1
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
-TARGET_NAME = drilling_calibration_objective_state
+TARGET_NAME = drilling_calibration
 
 ###############################################################################
 # compilation flags
 ###############################################################################
+TARG_INCLUDES += -isystem $(EDGE_THIRD_PARTY_INCLUDE)
 TARG_INCLUDES += -I $(DDS_INCLUDE)
 TARG_INCLUDES += -I $(LOG_INCLUDE)
-TARG_INCLUDES += -I $(CURDIR)/include
 TARG_INCLUDES += -I $(CURDIR)/../base_data_types/include
+TARG_INCLUDES += -I $(CURDIR)/include
 
 # Sources
 TARG_SOURCES = drilling_calibration.cxx
 TARG_SOURCES += drilling_calibrationPlugin.cxx
 TARG_SOURCES += drilling_calibrationSupport.cxx
-TARG_SOURCES += drilling_calibration_state_subscriber.cpp
-TARG_SOURCES += drilling_calibration_request_publisher.cpp
-TARG_SOURCES += drilling_calibration_request_subscriber.cpp
-TARG_SOURCES += drilling_calibration_state_publisher.cpp
+TARG_SOURCES += drilling_calibration_request_publisher.cxx
+TARG_SOURCES += drilling_calibration_request_subscriber.cxx
+TARG_SOURCES += drilling_calibration_state_publisher.cxx
+TARG_SOURCES += drilling_calibration_state_subscriber.cxx
 
 ###############################################################################
 # Installation section
 ###############################################################################
 
-#package control file
-PACKAGE_DESCRIPTION = "Library package for the Ensign Energy EDGE drilling_calibration_request API."
-PACKAGE_DEV_DESCRIPTION = "core files for Ensign Energy EDGE drilling_calibration_request API development."
+# package control file
+PACKAGE_DESCRIPTION = "Library package for the Ensign Energy EDGE drilling_calibration API."
+PACKAGE_DEV_DESCRIPTION = "core files for Ensign Energy EDGE drilling_calibration API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
 PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
 PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
@@ -66,3 +67,4 @@ PACKAGE_INSTALL_DIR += $(CURDIR)/../../package
 include $(MAKEFILEHOME)/Makefile.rti
 include $(MAKEFILEHOME)/Makefile.macros
 include $(MAKEFILEHOME)/Makefile.basic
+

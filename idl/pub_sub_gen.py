@@ -121,7 +121,8 @@ with open(util_gen.idl_file_name) as idl_file:
             #print 'struct_file_name: ' + current_struct.name_underscore
             current_struct.fields = []
             current_struct.copyc = util_gen.lastcopyc
-            current_struct.ingroup = util_gen.ingroup 
+#            if (len(util_gen.ingroup) != 0):
+            current_struct.ingroup = util_gen.ingroup
             current_struct.brief_comments = util_gen.briefs 
             current_struct.comments = util_gen.descs 
             util_gen.structs.append(current_struct.name_camel_case)

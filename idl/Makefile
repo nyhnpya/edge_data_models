@@ -83,9 +83,18 @@ configuration.cpy:
 	-@rm -rf $(TMPOUTDIR)
 
 auto_ream.cpy: 
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/auto_ream
+	mkdir -p $(TOPIC_HOME)/auto_ream/include
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/auto_ream/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/auto_ream
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/auto_ream
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/auto_ream
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/auto_ream/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/auto_ream/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/auto_ream
 	-@rm -rf $(TMPOUTDIR)
 
 circulate.cpy:
