@@ -116,7 +116,7 @@ module nec
          * The Drill State is an aperiodic interface which is published on change.  
          * This topic is available by any actor of the system interested in observing the current state of the drilling process.  
          *
-         * <div id='drilling_state_qos' />
+         * ### Drilling State QoS
          * The following QoS policies are available for any observer of the Drill State Topic.  
          * 
          * | Policy                 | Definition                |

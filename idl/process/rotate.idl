@@ -13,10 +13,21 @@ module nec
          *
          * \brief Requested state change in the rotation system.
          *
-         * Long Description Goes Here 1
-         * Long Description Goes Here 2
-         * Long Description Goes Here 3
-         * Long Description Goes Here 4
+         * ### Rotate Request
+         * The rotate request interface is an ephemeral interface which issued by a requestor to modify the current state of the system.  
+         * The state of the interface will be published only when the publishing algorithm requests.    
+         * 
+         * ### Rotate Request QoS
+         * The following QoS events are available for any observer of the Rotate Request Topic.  
+         * 
+         * | Policy                 | Definition                |
+         * | :-------------------  | :--------------------------|
+         * | Reliability           | Reliable                   |
+         * | Durability            | Transient Local Durability |
+         * | History               | Last sample                |
+         * | OnDataAvailable       | |
+         * | OnLivelinessLost      | | 
+         * | OnDataDisposed        | | 
          *
          * | Variable          | Description                                         | Data Type           | 
          * | ----------------- | --------------------------------------------------- | ------------------- | 
@@ -69,6 +80,24 @@ module nec
          * \ingroup Actual
          *
          * \brief Current state of rotation system.
+         *
+         * ### Rotate State
+         * The rotation state interface is a persistent interface which is guaranteed to be available by the system at all times regardless of the current system objective.  
+         * The state of the interface will be published only when any of the interface contents change.  
+         * This interface is available for consumption by any actor of the system interested in observing the current process state of the rotation system. 
+         * The interface is guaranteed to publish only at a frequency equal to or less than that of the underlying control system.
+         * 
+         * ### Rotate State QoS
+         * The following QoS policies are available for any observer of the Rotate State Topic.  
+         * 
+         * | Policy                 | Definition                |
+         * | :-------------------  | :--------------------------|
+         * | Reliability           | Reliable                   |
+         * | Durability            | Transient Local Durability |
+         * | History               | Last sample                |
+         * | OnDataAvailable       | |
+         * | OnLivelinessLost      | | 
+         * | OnDataDisposed        | | 
          *
          * | Variable      | Description                            | Data Type         | 
          * | ------------- | ---------------------------------------| ------------------| 

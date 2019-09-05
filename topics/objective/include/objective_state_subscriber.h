@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019 Ensign Energy Incorporated
+ *  Copyright (c) 2017 Ensign Energy Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -12,60 +12,49 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __PROCESS_PLAN_OBJECTIVE_STATE_SUBSCRIBER_H__
-#define __PROCESS_PLAN_OBJECTIVE_STATE_SUBSCRIBER_H__
+#ifndef __OBJECTIVE_STATE_SUBSCRIBER_H__
+#define __OBJECTIVE_STATE_SUBSCRIBER_H__
 
+#include <mutex>
+#include "dds_uuid.h"
 #include "subscriber.h"
+#include "base_data_types.h"
 #include "objective.h"
 #include "objectiveSupport.h"
-#include "dds_uuid.h"
 
-#ifdef _WIN32
-#undef pascal
-#endif
-
-/// @ingroup Actual
-/// @brief current state of rotation system.
-///
-///
-class CObjectiveStateSubscriber : public TSubscriber< process::plan::ObjectiveState >
+class CObjectiveStateSubscriber : public TSubscriber< process::plan::ObjectiveState>
 {
-    public:
-        CObjectiveStateSubscriber();
-        ~CObjectiveStateSubscriber();
-        
-        bool Create(int32_t domain);
-        bool ValidData();
-        void OnDataAvailable(OnDataAvailableEvent event);
-        void OnDataDisposed(OnDataDisposedEvent event);
-        void OnLivelinessChanged(OnLivelinessChangedEvent event);
-        
-        /// id of requestor
-        /// @return CDdsUuid id
-        CDdsUuid GetId();
-        /// id of parent objective
-        /// @return CDdsUuid parentId
-        CDdsUuid GetParentId();
-        /// timestamp when the data was published
-        /// @return DataTypes::Time timestamp
-        DataTypes::Time GetTimestamp();
-        /// current objective
-        /// @return DataTypes::Objective objective
-        DataTypes::Objective GetObjective();
+public:
+    CObjectiveStateSubscriber();
+    virtual ~CObjectiveStateSubscriber();
 
-    protected:
-        void DataAvailable(const process::plan::ObjectiveState &data,
-                           const DDS::SampleInfo &sampleInfo);
-        void DataDisposed(const DDS::SampleInfo &sampleInfo);
-        void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
+	// Topic initialization
+    bool Create(int32_t domain);
+    void OnDataAvailable(OnDataAvailableEvent event);
+    void OnDataDisposed(OnDataDisposedEvent event);
+    void OnLivelinessChanged(OnLivelinessChangedEvent event);
 
-    private:
-        process::plan::ObjectiveState                                         m_data;
-        DDS::SampleInfo                                                       m_sampleInfo;
-        DDS::LivelinessChangedStatus                                          m_livelinessStatus;
-        OnDataAvailableEvent                                                  m_pOnDataAvailable;
-        OnDataDisposedEvent                                                   m_pOnDataDisposed;
-        OnLivelinessChangedEvent                                              m_pOnLivelinessChanged;
+    // Topic getters
+    CDdsUuid GetId();
+    CDdsUuid GetParentId();
+    DataTypes::Objective GetObjective();
+	
+    // Topic status
+    bool ValidData();
+
+protected:
+    ///Derived Methods
+    void DataAvailable(const process::plan::ObjectiveState &data,
+                       const DDS::SampleInfo &sampleInfo);
+    void DataDisposed(const DDS::SampleInfo &sampleInfo);
+    void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
+
+private:
+    process::plan::ObjectiveState  m_data;
+    DDS::SampleInfo                m_sampleInfo;
+    OnDataAvailableEvent           m_pOnDataAvailable;
+    OnDataDisposedEvent            m_pOnDataDisposed;
+    OnLivelinessChangedEvent       m_pOnLivelinessChanged;
 };
 
-#endif // __PROCESS_PLAN_OBJECTIVE_STATE_SUBSCRIBER_H__
+#endif // __OBJECTIVE_STATE_SUBSCRIBER_H__

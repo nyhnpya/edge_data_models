@@ -72,6 +72,28 @@ module nec
          *
          * \brief current state of the hoisting system.
          *
+         * The hoist state interface is a persistent interface which is guaranteed to be available by the system at all times regardless of the current system objective.  
+         * The state of the interface will be published only when any of the interface contents change.  
+         * This interface is available for consumption by any actor of the system interested in observing the current process state of the hoisting system.  
+         * The interface is guaranteed to publish only at a frequency equal to or less than that of the underlying control system.
+         * 
+         * *NOTE* : Please note the following semantics<br>
+         *  **velocity** is always in reference to block speed
+         *  <br>**position** is always in reference to elevator (*internal calculation of the control system may use both the elevator and the block to calculate position*).
+         * 
+         * ### Hoist State QoS
+         * The following QoS events are available for any observer of the Hoist State Topic.  
+         * 
+         * | Policy                 | Definition                |
+         * | :-------------------  | :--------------------------|
+         * | Reliability           | Reliable                   |
+         * | Durability            | Transient Local Durability |
+         * | History               | Last sample                |
+         * | OnDataAvailable       | |
+         * | OnLivelinessLost      | | 
+         * | OnDataDisposed        | | 
+         * 
+         *
          * | Variable          | Description                            | Data Type         |
          * | ----------------- | -------------------------------------- | ----------------- |
          * | id                | id of requestor                        | DataTypes::Uuid   |

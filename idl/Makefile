@@ -82,6 +82,12 @@ configuration.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/configuration/
 	-@rm -rf $(TMPOUTDIR)
 
+objective.cpy:
+	@echo "Copying generated files ..."
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective/
+	-@rm -rf $(TMPOUTDIR)
+
 auto_ream.cpy: 
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
@@ -172,21 +178,6 @@ wellbore.cpy:
 	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/wellbore/include
 	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/wellbore/include
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/wellbore
-	-@rm -rf $(TMPOUTDIR)
-
-objective.cpy:
-	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
-	/usr/bin/python ./pub_sub_gen.py objective/$@ $(TMPOUTDIR) 
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/objective
-	mkdir -p $(TOPIC_HOME)/objective/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective/
-	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/objective
-	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/objective
-	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/objective/include
-	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/objective/include
-	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/objective
 	-@rm -rf $(TMPOUTDIR)
 
 drilling_limits.cpy:

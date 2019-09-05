@@ -14,6 +14,24 @@ module nec
          * \ingroup Actual
          *
          * \brief Wellbore state information.
+         * 
+         * ### Wellbore
+         * The wellbore state interface is a persistent interface which is guaranteed to be available by the system at all times regardless of the current system objective. 
+         * The state of the interface will be published only when any of the interface contents change.  
+         * This interface is available for consumption by any actor of the system interested in observing the current state of the bit in relation to the bottom of the wellbore.  
+         * The interface is guaranteed to publish only at a frequency equal to or less than that of the underlying control system. 
+         * 
+         * ### Rotate Request QoS
+         * The following QoS events are available for any observer of the Rotate Request Topic.  
+         * 
+         * | Policy                | Definition                 |
+         * | :-------------------  | :--------------------------|
+         * | Reliability           | Reliable                   |
+         * | Durability            | Transient Local Durability |
+         * | History               | Last 3000 samples          |
+         * | OnDataAvailable       | |
+         * | OnLivelinessLost      | | 
+         * | OnDataDisposed        | | 
          *
          * | Variable         | Description                                            | Data Type  |
          * | ---------------- | ------------------------------------------------------ | -----------|

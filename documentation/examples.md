@@ -2,14 +2,13 @@
 
 # EDGE SDK Examples
 
-## TOC
-* [Repository Access](#respositary-access)
-* [Environment Variables](#environment-variables)
-* [Prerequisites](#prerequisites)
-* [Code Examples](#code-examples)
-* [EDGE Automation API](#edge-automation-api)
+These "Programming Examples" illustrate how to utilize the Enign Automation API's to integrate drilling applcations into the system.
 
-## Repository Access
+These are a good starting point to familiarize yourself with the automation platform. You can use these code fragments as "templates" for writing your own code
+
+\defgroup Repository Repository Access
+ @{
+    \ingroup Examples
 
 The EDGE Automation APT repository is a collection of deb development packages required to develop applications for the EDGE Automation Platform.
 
@@ -20,15 +19,19 @@ The following command will add the correct URL and GPG key to your APT source li
 `sudo wget -q -O -http://edge.carrierlabs.com/repo/KEY.gpg | sudo apt-key add -`
 
 
+ @}
 
-
-## Environment Variables
+\defgroup Environment Environment Variables
+ @{
+    \ingroup Examples
 
 Make sure the following environment variables are defined in .bashrc (or equivilant) file.
 
-**MAKEDIRHOME** - location of Ensign EDGE build tools package. (e.g. /home/user/Makefiles)<br>
-**NDDSHOME** - directory where DDS is installed (e.g. /opt/rti_connext_dds-5.3.1/) <br>
-**NDDSARCH** - directory where DDS development libraries are installed (e.g. x64Linux3gcc.5.4.0) <br>
+* **MAKEFILEHOME** - location of Ensign EDGE build tools package. (e.g. /home/user/Makefiles)
+* **NDDSHOME** - directory where DDS is installed (e.g. /opt/rti_connext_dds-5.3.1/)
+* **NDDSARCH** - directory where DDS development libraries are installed (e.g. x64Linux3gcc.5.4.0)
+
+ @}
 
 ## Prerequisites
 
@@ -51,7 +54,10 @@ Make sure the following environment variables are defined in .bashrc (or equivil
 
 ## EDGE Automation API
 This section details the EDGE Automation API.
-### Logging
+
+\defgroup Logging Logging Example
+ @{
+    \ingroup Examples
 
 Ensign EDGE logging library is built on top of the log4cplus library.
 
@@ -77,6 +83,8 @@ int main(int argc, char *argv[])
     LOG_DEBUG(“Ending execution”);
 }
 ```
+ @}
+  
 
 ### Units
 
