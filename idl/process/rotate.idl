@@ -11,7 +11,7 @@ module nec
         /**
          * \ingroup Request
          *
-         * \brief requested state change in the rotation system.
+         * \brief Requested state change in the rotation system.
          *
          * Long Description Goes Here 1
          * Long Description Goes Here 2
@@ -44,7 +44,7 @@ module nec
         /**
          * \ingroup Objective
          *
-         * \brief current requested state change in the rotation system.
+         * \brief Current requested state change in the rotation system.
          *
          * | Variable          | Description                                        | Data Type        |
          * | ----------------- | -------------------------------------------------- | ---------------- |
@@ -68,7 +68,7 @@ module nec
         /**
          * \ingroup Actual
          *
-         * \brief current state of rotation system.
+         * \brief Current state of rotation system.
          *
          * | Variable      | Description                            | Data Type         | 
          * | ------------- | ---------------------------------------| ------------------| 

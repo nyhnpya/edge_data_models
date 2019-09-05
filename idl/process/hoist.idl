@@ -78,14 +78,14 @@ module nec
          * | objectiveId       | id of current objective                | DataTypes::Uuid   |
          * | timestamp         | timestamp when the data was published. | DataTypes::Time   |
          * | status            | status of ciruclation system           | Datatypes::Status |
-         * | actualHookload    | actual hookload                        | units::force::newton            | N      |
-         * | actualVelocity    | actual velicoty in m/s                 | units::velocity::meters_per_second            | m/sec |
-         * | actualPosition    | actual position in m                  | units::length::meter            | m     |
-         * | maxHookload       | machine maximum hookload                       | units::force::newton            | N      |
-         * | maxHoistVelocity  | machine maximum hoisting velocity in m/s                | units::velocity::meters_per_second            | m/sec |
-         * | maxLowerVelocity  | machine maximum lowering velocity in m/s                | units::velocity::meters_per_second            | m/sec |
-         * | maxHoistPosition  | machine maximum hoisting position in m                | units::length::meter            | m     |
-         * | maxLowerPosition  | machine maximum lowering position in m/s                | units::length::meter            | m     |
+         * | actualHookload    | actual hookload                        | units::force::newton            |
+         * | actualVelocity    | actual velicoty in m/s                 | units::velocity::meters_per_second            |
+         * | actualPosition    | actual position in m                  | units::length::meter            |
+         * | maxHookload       | machine maximum hookload                       | units::force::newton            |
+         * | maxHoistVelocity  | machine maximum hoisting velocity in m/s                | units::velocity::meters_per_second            |
+         * | maxLowerVelocity  | machine maximum lowering velocity in m/s                | units::velocity::meters_per_second            |
+         * | maxHoistPosition  | machine maximum hoisting position in m                | units::length::meter            |
+         * | maxLowerPosition  | machine maximum lowering position in m/s                | units::length::meter            |
          * | targetVelocity    | requested target velocity              | units::velocity::meters_per_second |
          * | targetPosition    | requested target position              | units::length::meter |
          */

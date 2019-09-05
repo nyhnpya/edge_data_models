@@ -9,9 +9,26 @@ module nec
         //@copy-c-declaration static const char DRILL_REQUEST[] = "DrillRequest";
 
         /**
-         * \brief requested state change in the drilling system.
-         *
          * \ingroup Request
+         * 
+         * \brief Requested state change in the drilling system.
+         *
+         * <div id='drill_request' />
+         * Drill Request is an epermeral topic which can only be published when the current system objective is "Drilling". 
+         * This topic is used to request changes in the operational drilling parameters. 
+         * This is an aperiodic topic and should only be published when a value changes.    
+         * 
+         * #### Drill Request QoS
+         * The following QoS events are available for any observer who subscribes to the Drill Requst Topic.  
+         * 
+         * | Policy                 | Definition                |
+         * | :-------------------  | :--------------------------|
+         * | Reliability           | Reliable                   |
+         * | Durability            | Transient Local Durability |
+         * | History               | Last sample                |
+         * | OnDataAvailable       | |
+         * | OnLivelinessLost      | | 
+         * | OnDataDisposed        | | 
          *
          * | Variable           | Description                                      | Data Type           |
          * | ------------------ | -------------------------------------------------| --------------------|
@@ -95,14 +112,30 @@ module nec
          *
          * \brief current state of the drilling system.
          *
+         * The Drill State topic will only be published when the current system objective is "Drilling". 
+         * The Drill State is an aperiodic interface which is published on change.  
+         * This topic is available by any actor of the system interested in observing the current state of the drilling process.  
+         *
+         * <div id='drilling_state_qos' />
+         * The following QoS policies are available for any observer of the Drill State Topic.  
+         * 
+         * | Policy                 | Definition                |
+         * | :-------------------  | :--------------------------|
+         * | Reliability           | Reliable                   |
+         * | Durability            | Transient Local Durability |
+         * | History               | Last sample                |
+         * | OnDataAvailable       | |
+         * | OnLivelinessLost      | | 
+         * | OnDataDisposed        | | 
+         *
          * | Variable           | Description                            | Data Type         |
          * | ------------------ | -------------------------------------- | ----------------- |
          * | id                 | id of requestor                        | DataTypes::Uuid   |
          * | objectiveId        | id of current objective                | DataTypes::Uuid   |
          * | timestamp          | timestamp when the data was published. | DataTypes::Time   |
-         * | status             | status of ciruclation system           | Datatypes::Status |
-         * | ropActual          | actual rate of penetration             | units::velocity::meters_per_second |
-         * | wobActual          | actual weight on bit                   | units::force::newton |
+         * | status             | status of drilling system              | Datatypes::Status |
+         * | ropActual          | Actual measured rate of penetration (ROP) | units::velocity::meters_per_second |
+         * | wobActual          | Actual measured weight on bit (WOB)       | units::force::newton |
          * | diffPressureActual | actual differential pressure           | units::pressure::pascal  |
          * | torqueActual       | actual differential torque             | units::torque::newton_meter |
          * | ropLimit           | machine rate of penetration limit      | units::velocity::meters_per_second |
