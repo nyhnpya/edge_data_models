@@ -12,3 +12,9 @@
   * \defgroup Actual State Interfaces
   *
   */
+
+/**
+  * \defgroup Examples EDGE SDK Examples
+  *
+  */
+
