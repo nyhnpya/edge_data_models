@@ -8,11 +8,8 @@
 2. [A Federated Approach](#federated_approach)
    1. [Commuication Paradigm](#communication_paradigm)
       1. [Objective State] (#objective_state)
-	   2. [Requestor] (#requestor)
-	   3. [Effector] (#effector)
-	   4. [Quality of Service (QoS)] (#qos)
-	      1. [Reliability Policy] (#reliability_policy)
-	      2. [Durability Policy] (#durability_policy)
+	 1. [Requestor] (#requestor)
+	 2. [Effector] (#effector)
       2. [Safe Operations] (#safe_operations)
 3. [Interfaces] (#interfaces) 
 	1. [Anatomy of an Interface] (#anatomy_of_interface)
@@ -20,8 +17,6 @@
 	2. [Process Interfaces] (#process_interfaces)
 	    1. [AutoReam Request] (#autoream_request)
 	    2. [AutoReam State] (#autoream_state)
-	    3. [Drill Request] (#drill_request)
-	    4. [Drill State] (#drill_state)
 	    5. [Circulate State] (#circulate_state)
 	    6. [Hoist State] (#hoist_state)
 	    7. [Rotate Request] (#rotate_request)
@@ -70,11 +65,12 @@ For safety reasons all process level requests to the system are merely suggestio
 ### Objective/State
 
 The objective/state pattern utilizes two actors.  One actor represents a requestor and the other represents an effector.  There can be a many-to-many relationship between requestors and effectors. This allows the communication between the Rig Control System (the control layer) and the Edge Process Automation Interface (the process layer) to be data-centric.  It also allows the process layer to remain agnostic about the underlying control system.  Focusing on the functional aspects of the system rather then detailed knowledge of how the Rig Control system functions.  Allows components to express intent and communicate about actions
-* Allows additional observing components to leverage request, objective data
+* Allows additional observing components to leverage request, objective data
 * Avoids tight application-to-application coupling of RPC-like (anti-)patterns
  
 
-#### Objective State Pattern: Use Cases* How can one party request that another party do something?
+#### Objective State Pattern: Use Cases
+* How can one party request that another party do something?
 * How can a producer know that observers(s) have acted on its data?
 * How can a producer observe the “result” of a remote action?
 
@@ -94,61 +90,6 @@ The effector is an actor which can satisfy the state of a requestor.  Effectors 
 * observe intended state changes
 * publish the current state of the effector
 
-<div id='qos'/>
-#### QoS
-
-#####Policies
-
-
-The following QoS policies will be supported in the first release of the interface.  These QoS policies are configurable at runtime.  The policies should not be baked into the code but set by the consumer of the data.
-
-<div id='reliability_policy' />
-##### Reliability Policies
-
-Reliability controls the guarantee of packet delivery as well as historical persistence.
-
-For some use cases, such as the periodic update of sensor values to a GUI displaying the value to a person, "best effort" delivery is often good enough. It is certainly the fastest, most efficient, and least resource-intensive (CPU and network bandwidth) method of getting the newest/latest value for a topic from DataWriters to DataReaders. But there is no guarantee that the data sent will be received. It may be lost due to a variety of factors, including data loss by the physical transport such as wireless RF or even Ethernet. Packets received out of order are dropped and a SAMPLE_LOST Status is generated.
-
-However, there are data streams (topics) in which you want an absolute guarantee that all data sent by a DataWriter is received reliably by DataReaders. This means that Connext DDS must check whether or not data was received, and repair any data that was lost by resending a copy of the data as many times as it takes for the DataReader to receive the data.
-
-* *Reliability* - Specifies whether or not DDS will deliver data reliably.
-* *History* - Specifies how much data must be stored by the middleware.
-
-<div id='durability_policy' />
-##### Durability Policies
-
-Because the publish-subscribe paradigm is connectionless, applications can create publications and subscriptions in any way they choose. As soon as a matching pair of DataWriters and DataReaders exist, then data published by the DataWriter will be delivered to the DataReader. However, a DataWriter may publish data before a DataReader has been created. For example, before you subscribe to a magazine, there have been past issues that were published.
-
-This Qos Policy can be used to help ensure that DataReaders get all data that was sent by DataWriters, regardless of when it was sent. This QosPolicy can increase system tolerance to failure conditions.  The following options are available for durability:
-
-* *Volatile Durability* - Do not save or deliver old data samples.
-* *Transient Local* - Save and deliver old data samples if the publishing application still exists.
-* *Transient Durability* - Save and deliver old data samples using a memory-based service.
-* *Persistence Durability* - Save and deliver old data samples using disk-based service.
-
-#####QoS Events
-
-* *OnDataAvailable* - Mechanism to notify a subscriber when new data is available for reading.             
-* *OnLivelinessLost* - Mechanism to notify a subscriber that a producer of data is no longer valid. Does not tell us why the DataWrtier is no longer available.
-* *OnDeadlineMissed* - Mechanism to notify a subscriber that the expected deadline for a new data sample has expired.
-* *OnDataDisposed* - Mechanism to notify a subscriber that the DataWriter has disposed of the topic instance.  This instnace will never be seen again
-* *OnPublicationMatched* - Mechanism to notify a subscriber that a new publisher is available.
-
-###### OnDataAvailable
-
-The *OnDataAvailable* QoS policy requests a specific mechanism to be notified when new samples of data arrive.  The subscribing application may want to act immediately on new data samples.  This mechanism allows the subscribing application to base arrival of data on events rather than traditional polling mechanisms.  The SAMPLE_INFO structure will inform the subscribing application about the validity of the data sample.
-
-###### OnLivelinessLost
-
-The *OnLivelinessLost* QoS policy requests a specific mechanism for the publishing application to maintain the liveliness of all subscribing entities. The subscribing application may want to know that the publishing application is explicitly asserting the liveliness of the matching DataWriter rather than inferring its liveliness.  The subscribers lease duration specifies the maximum period at which matching Publishers must have their liveliness asserted. In addition, in the subscribing application DDS uses an internal thread that wakes up at the period set by the subscribers lease duration to see if the publishers lease_duration has been violated.
-
-###### OnDeadlineMissed
-
-This *OnDeadlineMissed* QoS policy states the maximum period in which the application expects to receive new values for the Topic. The application may receive data faster than the rate set by this QoS policy.  You can use this QoS policy during system integration to ensure that applications have been coded to meet design specifications. You can also use it during run time to detect when systems are performing outside of design specifications. Receiving applications can take appropriate actions to prevent total system failure when data is not received in time. For topics on which data is not expected to be periodic, the deadline period should be set to an infinite value.
-
-###### OnPublicationMatched
-
-This *OnPublicationMatched* QoS policy informs the subscriber that a publisher is now available in the system.  This QoS policy can be used to inform the application the state of the system.  If there is a publisher available 
 
 <div id='safe_operations' />
 ## Safe Operations 
@@ -162,30 +103,6 @@ To ensure safe operations of the system there can only ever be a single owner of
 ### Validation of set-points
 
 Validation of set-points will take place at multiple levels.  First it is the responsibility of the optimization application to only send values within the constraints specified in the *State* interface.  Second the networker will be responsible for validating any input it receives from the application.  If a value is determined to be outside the safe operating limits then the networker will disregard the suggested set-points and not send them to the control system.  Finally it will be the responsibility of the control system to vet all set points it receives to ensure the values are within safe tool limits.
-
-<div id='interfaces' />
-# Interfaces 
-
-This section details the interfaces that are available in the EDGE Process Automation Applicaiton Programming Interface (API).  Interfaces are broken into three types of state:  *Request*, *Objective* and *State*.  
-
-* ***Request*** used to infer state to the environment.  
-* ***Objective*** used to observe the current system objective.
-* ***State*** used to observe the current world state. 
-
-Iterfaces 
-
-* Ephemeral
-* Persistent
-
-<div id='anatomy_of_interface' />
-## Anatomy of an Interface
-
-*Request* and *State*  always have the following framework data members *id*, *objective id*, *estimated duration* , and *timestamp*.  The *id* is the unique id of the requester. The *objective id* is the unique id of the current rig state objective.  The *id* is the primary key of the topic and is used to differentiate this topic from other topics of the same type.  The *timestamp* is the time the data sample was published.  At the time of delivery the framework will take the timestamp from the sample metadata that was produced by the publisher and store it in the sample.  This is done to allow the consumer of the data the opportunity to make queries on the samples based on a specified time series. The *estimated duration* is the expected time the requestor will need the resource.  
-
-<div id='units' />
-### Units
-
-All units are specified in derived SI.  The current SDK forces an explicit unit convresion to the proper type at compile time.  This mechanism ensures that the data is always expressed in the proper unit when it is put on the data-bus.  Specifying a standard base unit system allows the consumer of the data to easily and dynamically determine a unit without affecting the interface.
 
 <div id='process_interfaces' />
 ## Process Interfaces
@@ -258,78 +175,7 @@ The following QoS policies are available for any observer of the AutoReam State 
 | History               | Last sample                                                       |
 
 
-<div id='drill_request' />
-### Drill Request 
 
-Drill Request is an epermeral topic which can only be published when the current system objective is "Drilling". This topic is used to request changes in the operational drilling parameters. This is an aperiodic topic and should only be published when a value changes.    
-
-| Variable                  | Description                               | Type      | SI Unit |                                                                 
-| :-----------------------  | :-----------------------------------------| :-------- | :-------|                                                                 
-| ropLimit                  | Maximum configured rate of penetration.   | double    | m/sec   |                                                                 
-| wobLimit                  | Maximum configured weight on bit.         | double    | N       |                                                                 
-| differentialPressureLimit | Maximum configured differentail pressure. | double    | Pa      |                                                
-| torqueLimit               | Maximum configured surface torque.        | double    | Nm      |                                                             
-| ropMode                   | Rate of Penetration mode enabled.         | boolean   | *N/A*   |                                                             
-| wobMode                   | Weight on bit mode enabled.               | boolean   | *N/A*   |                                                             
-| differentialPressureMode  | Differential Pressure mode enabled.       | boolean   | *N/A*   |                                                             
-| torqueMode                | Torque mode enabled.                      | boolean   | *N/A*   |                                                              
-
-#### Drill Request QoS
-
-The following QoS events are available for any observer who subscribes to the  the Drill Requst Topic.  
-
-* OnDataAvailable  
-* OnLivelinessLost 
-* OnDataDisposed
-
-The following QoS policies are available for any observer of the Drill Requst Topic.  
-
-| Qos Policy            | Value                                                                         |                                                                 
-|:--------------------  | :-----------------------------------------------------------------------------------|                                                                 
-| Reliability           | Reliable |
-| Durability            | Transient Local Durability                                                                 |
-| History               | Last sample                                                       |
-
-<div id='drill_state' />
-### Drill State
-
-The Drill State topic will only be published when the current system objective is "Drilling". The Drill State is an aperiodic interface which is publishes on change.  This topic is available by any actor of the system interested in observing the current state of the drilling process.  
-
-| Variable                  | Description                               | Type      | SI Unit |                                                                 
-| :-----------------------  | :-----------------------------------------| :-------- | :-------|                                                                 
-| ropActual                 | Actual measured rate of penetration.      | double    | m/sec   |                                                                 
-| wobActual                 | Actual measured weight on bit.            | double    | N       |                                                                 
-| diffPressureActual| Actual measured differential pressure.    | double    | Pa      |                                                                 
-| torqueActual              | Actual measured surface torque.           | double    | Nm      |                                                                 
-| ropLimit                  | Maximum configured rate of penetration.   | double    | m/sec   |                                                                 
-| wobLimit                  | Maximum configured weight on bit.         | double    | N       |                                                                 
-| diffPressureLimit | Maximum configured differentail pressure. | double    | Pa      |                                                
-| torqueLimit               | Maximum configured surface torque.        | double    | Nm      |                                                             
-| ropMode                   | Rate of Penetration mode enabled.         | boolean   | *N/A*   |                                                             
-| wobMode                   | Weight on bit mode enabled.               | boolean   | *N/A*   |                                                             
-| diffPressureMode  | Differential Pressure mode enabled.       | boolean   | *N/A*   |                                                             
-| torqueMode                | Torque mode enabled.                      | boolean   | *N/A*   |                                                             
-| ropTarget                 | Target rate of penetration.      | double    | m/sec   |                                                                 
-| wobTarget                 | Target weight on bit.            | double    | N       |                                                                 
-| diffPressureTarget| Target differential pressure.    | double    | Pa      |                                                                 
-| torqueTarget              | Target surface torque.           | double    | Nm      |                                                                 
-
-<div id='drilling_state_qos' />
-#### Drill State QoS
-
-The following QoS events are available for any observer of the Drill State Topic.  
-
-* OnDataAvailable  
-* OnLivelinessLost   
-* OnDataDisposed
-
-The following QoS policies are available for any observer of the Drill State Topic.  
-
-| Policy                 | Definition                                                                         |                                                                 
-| :-------------------  | :-----------------------------------------------------------------------------------|                                                                 
-| Reliability           | Reliable |
-| Durability            | Transient Local Durability                                                                 |
-| History               | Last sample                                                       |
 <div id='circulate_state' />
 ### Circulation State
 
