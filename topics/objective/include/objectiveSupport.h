@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef objectiveSupport_1315698935_h
-#define objectiveSupport_1315698935_h
+#ifndef objectiveSupport_1315698183_h
+#define objectiveSupport_1315698183_h
 
 /* Uses */
 #include "objective.h"
@@ -62,5 +62,5 @@ namespace process {
     } /* namespace plan  */
 } /* namespace process  */
 
-#endif  /* objectiveSupport_1315698935_h */
+#endif  /* objectiveSupport_1315698183_h */
 
