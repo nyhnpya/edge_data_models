@@ -1,10 +1,8 @@
 #include <iostream>
 #include <stdint.h>
-#ifdef _LINUX
 #include <unistd.h>
 #include <condition_variable>
 #include <mutex>
-#endif
 #include <signal.h>
 #include <string.h>
 #include <thread>
@@ -14,10 +12,9 @@
 
 EdgeTypeBoolPtr gioAutoDrillerEnabled;
 
-bool gTerminate = false;
-std::mutex gTerminateMutex;
-std::condition_variable gTerminateCondition;
-
+bool terminate = false;
+std::mutex terminateMutex;
+std::condition_variable terminateCondition;
 std::thread threadId;
 
 #ifdef _LINUX
@@ -28,31 +25,31 @@ void SignalHandler(int32_t signal)
     {
         case SIGINT:
             LOG_INFO("Signal SIGINT received.");
-            gTerminateCondition.notify_all();
+            terminateCondition.notify_all();
             break;
         case SIGTERM:
             LOG_WARN("Signal SIGTERM received.");
-            gTerminateCondition.notify_all();
+            terminateCondition.notify_all();
             break;
         case SIGABRT:
             LOG_FATAL("Signal SIGABRT received.");
-            gTerminateCondition.notify_all();
+            terminateCondition.notify_all();
             break;
         case SIGFPE:
             LOG_FATAL("Signal SIGFPE received.");
-            gTerminateCondition.notify_all();
+            terminateCondition.notify_all();
             break;
         case SIGILL:
             LOG_FATAL("Signal SIGGILL received.");
-            gTerminateCondition.notify_all();
+            terminateCondition.notify_all();
             break;
         case SIGSEGV:
             LOG_FATAL("Signal SIGSEGV received.");
-            gTerminateCondition.notify_all();
+            terminateCondition.notify_all();
             break;
         case SIGHUP:
             LOG_WARN("Signal SIGHUB received.");
-            gTerminateCondition.notify_all();
+            terminateCondition.notify_all();
             break;
         case SIGPIPE:
             LOG_INFO("Signal SIGPIPE received.");
@@ -105,12 +102,8 @@ void top_level_menu()
         switch (choice)
         {
             case 'q':
-                gTerminate = true;
-
-                if (threadId.joinable())
-                {
-                    threadId.join();
-                }
+                terminateCondition.notify_all();
+               terminate = true;
                 break;
             case '1':
                 gioAutoDrillerEnabled->SetValue(true);
@@ -129,61 +122,43 @@ void top_level_menu()
             case '6':
                 break;
         }
-    } while (gTerminate == false);
+    } while (terminate == false);
 
 }
 
 int32_t main(int32_t argc, char **argv)
 {
     cli::Parser              parser(argc, argv);
-    int32_t                  domain;
-    bool                     drillObjective;;
 
 	register_signal_handler();
 
-    parser.set_optional<std::string>("c", "configFile", "pipe_handler.conf", "External configuration file.");
-    parser.set_optional<int32_t>("d", "domain", 100, "DDS Domain.");
-    parser.set_optional<bool>("o", "objective", false, "Drill objective.");
-    parser.set_optional<std::string>("f", "configFile", "objective.json", "External configuration file.");
+    parser.set_required<std::string>("f", "configFile", "objective.json", "External configuration file.");
     parser.run_and_exit_if_error();
 
-    domain = parser.get<int32_t>("d");
     std::string configFile = parser.get<std::string>("f");
-    drillObjective = parser.get<bool>("o");
 
-    if (configFile.empty() == true)
+    if (CPlantInterface::Instance()->Initialize(configFile) == true)
     {
-        if (CPlantInterface::Instance()->Initialize(domain) == false)
+        gioAutoDrillerEnabled = CEdgeDataStore::Instance()->GetTypeBool("AutoDriller.enabled");
+
+        CPlantInterface::Instance()->Start();
+
+        threadId = std::thread(top_level_menu);
+
+        std::unique_lock<std::mutex> lk(terminateMutex);
+        terminateCondition.wait(lk);
+        LOG_INFO("Signal received: terminating process");
+
+        if (threadId.joinable())
         {
-            LOG_FATAL("Failed to initialize plant interface");
-            return 1;
+            threadId.join();
         }
+
+        CPlantInterface::Instance()->Stop();
     }
     else
     {
-        if (CPlantInterface::Instance()->Initialize(configFile) == false)
-        {
-            LOG_FATAL("Failed to initialize plant interface");
-            return 1;
-        }
+        LOG_FATAL("Failed to initialize plant interface");
+        return 1;
     }
-
-    gioAutoDrillerEnabled = CEdgeDataStore::Instance()->GetTypeBool("AutoDriller.enabled");
-
-    CPlantInterface::Instance()->Start();
-    if (drillObjective == false)
-    {
-        top_level_menu();
-    }
-
-    std::unique_lock<std::mutex> lk(gTerminateMutex);
-    gTerminateCondition.wait(lk);
-    LOG_INFO("Signal received: terminating process");
-
-    /*    std::cout << "Waiting for thread: "  << std::endl;
-
-    if (threadId.joinable())
-    {
-        threadId.join();
-        }*/
 }

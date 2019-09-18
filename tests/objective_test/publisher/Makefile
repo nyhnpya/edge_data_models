@@ -1,16 +1,5 @@
 ###############################################################################
-# liblogger Library Makefile
-###############################################################################
-#
-# The following variables must be set for the makefile to work correctly
-#
-# TARG_BUILD_MAJOR   - Version number major
-# TARG_BUILD_MINOR   - Version number minor
-# TARG_BUILD_VERSION - Version number patch
-# TARGET_TYPE          - library, staticlib, executable, unittest or thirdparty
-# TARGET_NAME          - Name of final executable/library
-# TARG_DESCRIPTION   - Brief description of the package for debian control file
-#
+# objective publishser
 ###############################################################################
 include ../../../../Makefiles/Makefile.platform
 
@@ -31,7 +20,7 @@ TARG_INCLUDES += -I /usr/local/include/dds_base
 TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -isystem/usr/local/include/edge_third_party
 TARG_INCLUDES += -I /usr/local/include/base_data_types
-TARG_INCLUDES += -I /usr/local/include/objective_objective_state
+TARG_INCLUDES += -I /usr/local/include/objective
 TARG_INCLUDES += -I /usr/local/include/configuration
 TARG_INCLUDES += -I /usr/local/include/configuration_item
 TARG_INCLUDES += -I /usr/local/include/plant_client
@@ -44,7 +33,7 @@ TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
 TARG_LIBS += -L /usr/local/lib 
 TARG_LIBS += -lplant_client
 TARG_LIBS += -lconfiguration_item -lconfiguration
-TARG_LIBS += -lobjective_objective_state -lbase_data_types -ldds_base
+TARG_LIBS += -lobjective -lbase_data_types -ldds_base
 TARG_LIBS += -llogger -llog4cplus -luuid 
 TARG_LIBS += -ledge_third_party
 TARG_LIBS += -lopcuaclient -lopcuaprotocol -lopcuacore
