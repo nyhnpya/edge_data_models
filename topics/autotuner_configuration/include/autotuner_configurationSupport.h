@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configurationSupport_985794392_h
-#define autotuner_configurationSupport_985794392_h
+#ifndef autotuner_configurationSupport_985795544_h
+#define autotuner_configurationSupport_985795544_h
 
 /* Uses */
 #include "autotuner_configuration.h"
@@ -281,5 +281,5 @@ namespace Shell {
     } /* namespace Hmi  */
 } /* namespace Shell  */
 
-#endif  /* autotuner_configurationSupport_985794392_h */
+#endif  /* autotuner_configurationSupport_985795544_h */
 

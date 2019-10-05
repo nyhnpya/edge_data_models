@@ -5,6 +5,14 @@ module Shell
         module AutoTunerConfiguration
         {
             //@copy-c-declaration static const char MODEL_STATE_REQUEST[] = "ModelStateRequest";
+            /**
+             * \brief Requested state change in the rotation system.
+             *
+             * | Variable          | Description                                         | Data Type           | 
+             * | ----------------- | --------------------------------------------------- | ------------------- | 
+             * | pipeInnerDiameter | id of requestor                                     | units::length::meter  | 
+             * | pipeOuterDiameter | id of current objective                             | units::length::meter  | 
+             */
             struct ModelStateRequest
             {
                 boolean modelReset;
@@ -19,6 +27,14 @@ module Shell
             };
 
             //@copy-c-declaration static const char MODEL_STATE_STATE[] = "ModelStateState";
+            /**
+             * \brief Requested state change in the rotation system.
+             *
+             * | Variable          | Description                                         | Data Type           | 
+             * | ----------------- | --------------------------------------------------- | ------------------- | 
+             * | pipeInnerDiameter | id of requestor                                     | units::length::meter  | 
+             * | pipeOuterDiameter | id of current objective                             | units::length::meter  | 
+             */
             struct ModelStateState
             {
                 double  pipeInnerDiameter;
@@ -58,11 +74,11 @@ module Shell
                 double  diffPKcMax;
                 double  diffPTiMin;
                 double  diffPTiMax;
-                double  diffpInitK;
-                double  diffpInitTau;
-                double  diffpInitPreFilter;
-                double  diffpR1;
-                double  diffpR2;
+                double  diffPInitK;
+                double  diffPInitTau;
+                double  diffPInitPreFilter;
+                double  diffPR1;
+                double  diffPR2;
             };
     
             //@copy-c-declaration static const char WOB_TUNING_REQUEST[] = "WobTuningRequest";

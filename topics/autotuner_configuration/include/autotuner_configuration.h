@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configuration_985794392_h
-#define autotuner_configuration_985794392_h
+#ifndef autotuner_configuration_985795544_h
+#define autotuner_configuration_985795544_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -305,11 +305,11 @@ namespace Shell {
                 DDS_Double   diffPKcMax ;
                 DDS_Double   diffPTiMin ;
                 DDS_Double   diffPTiMax ;
-                DDS_Double   diffpInitK ;
-                DDS_Double   diffpInitTau ;
-                DDS_Double   diffpInitPreFilter ;
-                DDS_Double   diffpR1 ;
-                DDS_Double   diffpR2 ;
+                DDS_Double   diffPInitK ;
+                DDS_Double   diffPInitTau ;
+                DDS_Double   diffPInitPreFilter ;
+                DDS_Double   diffPR1 ;
+                DDS_Double   diffPR2 ;
 
             };
             #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
