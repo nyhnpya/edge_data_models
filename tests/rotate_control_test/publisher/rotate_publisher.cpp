@@ -116,8 +116,10 @@ void top_level_menu()
         std::cout << std::endl;
         std::cout << " Rotate" << std::endl;
         std::cout << "--------------" << std::endl;
-        std::cout << "1. Create new instance" << std::endl;
-        std::cout << "2. Dispose instance" << std::endl;
+        std::cout << "1. Create new topic" << std::endl;
+        std::cout << "2. Delete topic" << std::endl;
+        std::cout << "3. Create new instance" << std::endl;
+        std::cout << "4. Dispose instance" << std::endl;
         std::cout << "q. exit" << std::endl;
         std::cout << "option: ";
         std::cin >> choice;
@@ -132,16 +134,30 @@ void top_level_menu()
                 {
                     threadId.join();
                 }
-                break;
+                return;
             case '1':
-                destroy_request();
-                gpRotatePublisher->CreateInstance();
-                set_rate();
-                create_request();
+                gpRotatePublisher = new CPlcRotateRequestPublisher();
+                gpRotatePublisher->Create(gDomain);
                 break;
             case '2':
-                destroy_request();
-                gpRotatePublisher->DeleteInstance();
+                gpRotatePublisher->Destroy();
+                gpRotatePublisher = nullptr;
+                break;
+            case '3':
+                if (gpRotatePublisher != nullptr)
+                {
+                    destroy_request();
+                    gpRotatePublisher->CreateInstance();
+                    set_rate();
+                    create_request();
+                }
+                break;
+            case '4':
+                if (gpRotatePublisher != nullptr)
+                {
+                    destroy_request();
+                    gpRotatePublisher->DeleteInstance();
+                }
                 break;
         }
     } while (true);
@@ -163,13 +179,7 @@ int32_t main(int32_t argc, char **argv)
     CDomainParticipant::Instance()->SetQosFile("USER_QOS_PROFILES.xml", "EdgeBaseLibrary", "EdgeBaseProfile");
     CDomainParticipant::Instance()->Create(gDomain);
 
-    gpRotatePublisher = new CPlcRotateRequestPublisher();
-
-    if (gpRotatePublisher->Create(gDomain) == true)
-    {
-        top_level_menu();
-    }
-
+    top_level_menu();
     std::cout << "Waiting for thread: "  << std::endl;
 
     if (threadId.joinable())
