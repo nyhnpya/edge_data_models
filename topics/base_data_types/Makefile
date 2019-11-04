@@ -1,20 +1,13 @@
 ###############################################################################
-#
-# The following variables must be set for the makefile to work correctly
-#
-# TARG_BUILD_MAJOR   - Version number major
-# TARG_BUILD_MINOR   - Version number minor
-# TARG_BUILD_PATCH - Version number patch
-# TARGET_TYPE        - library, staticlib, executable, unittest or thirdparty
-# TARGET_NAME        - Name of final executable/library
-#
+# library libbase data types
 ###############################################################################
 include $(MAKEFILEHOME)/Makefile.platform
+include $(MAKEFILEHOME)/Makefile.rti
 
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
 TARG_BUILD_MINOR = 0
-TARG_BUILD_PATCH = 1
+TARG_BUILD_PATCH = 0
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
 TARGET_NAME = base_data_types
@@ -37,8 +30,10 @@ TARG_SOURCES += base_data_typesSupport.cxx
 PACKAGE_DESCRIPTION = "Ensign Energy EDGE Base_Data_Types Library"
 PACKAGE_DEV_DESCRIPTION = "Ensign Energy EDGE Base_Data_Types Library"
 PACKAGE_MAINTAINER = "Mark Carrier \<mark.carrier@ensignenergy.com\>"
-PACKAGE_DEPENDENCIES = liblogger, libdds_base
-PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev
+PACKAGE_DEPENDENCIES = liblogger (= $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)),
+PACKAGE_DEPENDENCIES += libdds_base (= $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION))
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev (= $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)),
+PACKAGE_DEV_DEPENDENCIES += libdds_base-dev (= $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION))
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
@@ -53,6 +48,5 @@ PACKAGE_INSTALL_DIR += $(CURDIR)/../../package
 ###############################################################################
 # Makefiles included to configure the compiler, etc for the current platform
 ###############################################################################
-include $(MAKEFILEHOME)/Makefile.rti
 include $(MAKEFILEHOME)/Makefile.macros
 include $(MAKEFILEHOME)/Makefile.basic

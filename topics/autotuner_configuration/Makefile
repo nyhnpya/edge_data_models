@@ -14,7 +14,7 @@ include $(MAKEFILEHOME)/Makefile.platform
 TARG_SOURCE_DIR = $(CURDIR)
 TARG_BUILD_MAJOR = 1
 TARG_BUILD_MINOR = 0
-TARG_BUILD_PATCH = 1
+TARG_BUILD_PATCH = 0
 TARG_BUILD_REVISION = 0
 TARGET_TYPE = library
 TARGET_NAME = autotuner_configuration
@@ -57,8 +57,12 @@ TARG_SOURCES += torque_tuning_state_subscriber.cxx
 PACKAGE_DESCRIPTION = "Library package for the Ensign Energy EDGE autotuner_configuration API."
 PACKAGE_DEV_DESCRIPTION = "core files for Ensign Energy EDGE autotuner_configuration API development."
 PACKAGE_MAINTAINER = "Mark Carrier \(mark.carrier@ensignenergy.com\)"
-PACKAGE_DEPENDENCIES = liblogger, libdds_base, libbase_data_types
-PACKAGE_DEV_DEPENDENCIES = liblogger-dev, libdds_base-dev, libbase_data_types-dev
+PACKAGE_DEPENDENCIES = liblogger (= $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)),
+PACKAGE_DEPENDENCIES += libdds_base (= $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)),
+PACKAGE_DEPENDENCIES += libbase_data_types (= $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION))
+PACKAGE_DEV_DEPENDENCIES = liblogger-dev (= $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)),
+PACKAGE_DEV_DEPENDENCIES += libdds_base-dev (= $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION)),
+PACKAGE_DEV_DEPENDENCIES += libbase_data_types-dev (= $(TARG_BUILD_MAJOR).$(TARG_BUILD_MINOR).$(TARG_BUILD_PATCH).$(TARG_BUILD_REVISION))
 PACKAGE_LICENSE = "Closed License"
 
 # package include files
