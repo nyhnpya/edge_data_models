@@ -103,6 +103,21 @@ auto_ream.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/auto_ream
 	-@rm -rf $(TMPOUTDIR)
 
+roptimizer_state.cpy: 
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py hmi/$@ $(TMPOUTDIR) 
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/roptimizer_state
+	mkdir -p $(TOPIC_HOME)/roptimizer_state/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/roptimizer_state/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/roptimizer_state
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/roptimizer_state
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/roptimizer_state
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/roptimizer_state/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/roptimizer_state/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/roptimizer_state
+	-@rm -rf $(TMPOUTDIR)
+
 circulate.cpy:
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 

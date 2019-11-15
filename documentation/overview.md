@@ -87,26 +87,15 @@ This diagram depicts four state topics *DrillState*, *WellboreState*, *HoistSTat
 \defgroup Interfaces Edge Automation Interfaces
 
 \defgroup QOS Quality of Service (QoS)
- @{
-    \ingroup Interfaces
- @}
-
-\defgroup Request Request Interfaces 
- @{
-    \ingroup Interfaces
- @}
-  
-\defgroup Objective Objective Interfaces
- @{
-    \ingroup Interfaces
- @}
-  
-  
-\defgroup Actual Actual State Interfaces
- @{
-    \ingroup Interfaces
- @}
+@{
+   \ingroup Interfaces
+@}
 
 \defgroup Examples EDGE Programming Examples
+
+\defgroup Drilling Drilling Activity
+@{
+   \ingroup Interfaces
+@}
 
   
