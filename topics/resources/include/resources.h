@@ -16,6 +16,7 @@ or consult the RTI Connext manual.
 #ifndef ndds_cpp_h
 #include "ndds/ndds_cpp.h"
 #endif
+#include "rti/xcdr/Interpreter.hpp"
 #else
 #include "ndds_standalone_type.h"
 #endif
@@ -33,7 +34,6 @@ namespace sys {
         class ResourcesDataWriter;
         class ResourcesDataReader;
         #endif
-
         class Resources 
         {
           public:
@@ -62,14 +62,19 @@ namespace sys {
             DDS_Char *   appVersion ;
 
         };
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, start exporting symbols.
         */
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
+        #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport DDS_TypeCode* Resources_get_typecode(void); /* Type code */
+        NDDSUSERDllExport RTIXCdrTypePlugin *Resources_get_type_plugin_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *Resources_get_sample_access_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *Resources_get_sample_seq_access_info(void);
+        #endif
 
         DDS_SEQUENCE(ResourcesSeq, Resources);
 
@@ -85,6 +90,10 @@ namespace sys {
         RTIBool Resources_initialize_w_params(
             Resources* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
+
+        NDDSUSERDllExport
+        RTIBool Resources_finalize_w_return(
+            Resources* self);
 
         NDDSUSERDllExport
         void Resources_finalize(
@@ -108,7 +117,7 @@ namespace sys {
             Resources* dst,
             const Resources* src);
 
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
         */
         #undef NDDSUSERDllExport
@@ -116,6 +125,19 @@ namespace sys {
         #endif
     } /* namespace process  */
 } /* namespace sys  */
+
+#ifndef NDDS_STANDALONE_TYPE
+namespace rti { 
+    namespace xcdr {
+        template <>
+        struct type_code<sys::process::Resources> {
+            static const RTIXCdrTypeCode * get();
+        };
+
+    } 
+}
+
+#endif
 
 #endif /* resources */
 

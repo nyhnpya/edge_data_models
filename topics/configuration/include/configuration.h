@@ -16,6 +16,7 @@ or consult the RTI Connext manual.
 #ifndef ndds_cpp_h
 #include "ndds/ndds_cpp.h"
 #endif
+#include "rti/xcdr/Interpreter.hpp"
 #else
 #include "ndds_standalone_type.h"
 #endif
@@ -27,14 +28,19 @@ namespace Configuration {
         INTERFACE ,      
         TAG      
     } config_type;
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* config_type_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *config_type_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *config_type_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *config_type_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(config_typeSeq, config_type);
 
@@ -50,6 +56,10 @@ namespace Configuration {
     RTIBool config_type_initialize_w_params(
         config_type* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool config_type_finalize_w_return(
+        config_type* self);
 
     NDDSUSERDllExport
     void config_type_finalize(
@@ -73,7 +83,7 @@ namespace Configuration {
         config_type* dst,
         const config_type* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -84,14 +94,19 @@ namespace Configuration {
         READ ,      
         WRITE      
     } io_mode;
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* io_mode_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *io_mode_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *io_mode_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *io_mode_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(io_modeSeq, io_mode);
 
@@ -107,6 +122,10 @@ namespace Configuration {
     RTIBool io_mode_initialize_w_params(
         io_mode* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool io_mode_finalize_w_return(
+        io_mode* self);
 
     NDDSUSERDllExport
     void io_mode_finalize(
@@ -130,7 +149,7 @@ namespace Configuration {
         io_mode* dst,
         const io_mode* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -150,14 +169,19 @@ namespace Configuration {
         FLOAT ,      
         DOUBLE      
     } plant_type;
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* plant_type_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *plant_type_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *plant_type_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *plant_type_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(plant_typeSeq, plant_type);
 
@@ -173,6 +197,10 @@ namespace Configuration {
     RTIBool plant_type_initialize_w_params(
         plant_type* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool plant_type_finalize_w_return(
+        plant_type* self);
 
     NDDSUSERDllExport
     void plant_type_finalize(
@@ -196,7 +224,7 @@ namespace Configuration {
         plant_type* dst,
         const plant_type* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -211,7 +239,6 @@ namespace Configuration {
     class protocol_tDataWriter;
     class protocol_tDataReader;
     #endif
-
     class protocol_t 
     {
       public:
@@ -227,14 +254,19 @@ namespace Configuration {
         DDS_Char *   endpoint ;
 
     };
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* protocol_t_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *protocol_t_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *protocol_t_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *protocol_t_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(protocol_tSeq, protocol_t);
 
@@ -250,6 +282,10 @@ namespace Configuration {
     RTIBool protocol_t_initialize_w_params(
         protocol_t* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool protocol_t_finalize_w_return(
+        protocol_t* self);
 
     NDDSUSERDllExport
     void protocol_t_finalize(
@@ -273,7 +309,7 @@ namespace Configuration {
         protocol_t* dst,
         const protocol_t* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -288,7 +324,6 @@ namespace Configuration {
     class interface_tDataWriter;
     class interface_tDataReader;
     #endif
-
     class interface_t 
     {
       public:
@@ -307,14 +342,19 @@ namespace Configuration {
         DDS_Char *   frequency ;
 
     };
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* interface_t_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *interface_t_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *interface_t_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *interface_t_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(interface_tSeq, interface_t);
 
@@ -330,6 +370,10 @@ namespace Configuration {
     RTIBool interface_t_initialize_w_params(
         interface_t* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool interface_t_finalize_w_return(
+        interface_t* self);
 
     NDDSUSERDllExport
     void interface_t_finalize(
@@ -353,7 +397,7 @@ namespace Configuration {
         interface_t* dst,
         const interface_t* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -368,7 +412,6 @@ namespace Configuration {
     class tag_tDataWriter;
     class tag_tDataReader;
     #endif
-
     class tag_t 
     {
       public:
@@ -389,14 +432,19 @@ namespace Configuration {
         DDS_Char *   tag ;
 
     };
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* tag_t_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *tag_t_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *tag_t_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *tag_t_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(tag_tSeq, tag_t);
 
@@ -412,6 +460,10 @@ namespace Configuration {
     RTIBool tag_t_initialize_w_params(
         tag_t* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool tag_t_finalize_w_return(
+        tag_t* self);
 
     NDDSUSERDllExport
     void tag_t_finalize(
@@ -435,7 +487,7 @@ namespace Configuration {
         tag_t* dst,
         const tag_t* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -469,14 +521,19 @@ namespace Configuration {
         }_u;
 
     } config_data ;
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* config_data_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *config_data_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *config_data_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *config_data_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(config_dataSeq, config_data);
 
@@ -492,6 +549,10 @@ namespace Configuration {
     RTIBool config_data_initialize_w_params(
         config_data* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool config_data_finalize_w_return(
+        config_data* self);
 
     NDDSUSERDllExport
     void config_data_finalize(
@@ -518,7 +579,7 @@ namespace Configuration {
     NDDSUSERDllExport
     DDS_LongLong config_data_getDefaultDiscriminator();
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -534,7 +595,6 @@ namespace Configuration {
     class ItemDataWriter;
     class ItemDataReader;
     #endif
-
     class Item 
     {
       public:
@@ -550,14 +610,19 @@ namespace Configuration {
         Configuration::config_data   configData ;
 
     };
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* Item_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *Item_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *Item_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *Item_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(ItemSeq, Item);
 
@@ -573,6 +638,10 @@ namespace Configuration {
     RTIBool Item_initialize_w_params(
         Item* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool Item_finalize_w_return(
+        Item* self);
 
     NDDSUSERDllExport
     void Item_finalize(
@@ -596,13 +665,46 @@ namespace Configuration {
         Item* dst,
         const Item* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport
     #endif
 } /* namespace Configuration  */
+
+#ifndef NDDS_STANDALONE_TYPE
+namespace rti { 
+    namespace xcdr {
+        template <>
+        struct type_code<Configuration::protocol_t> {
+            static const RTIXCdrTypeCode * get();
+        };
+
+        template <>
+        struct type_code<Configuration::interface_t> {
+            static const RTIXCdrTypeCode * get();
+        };
+
+        template <>
+        struct type_code<Configuration::tag_t> {
+            static const RTIXCdrTypeCode * get();
+        };
+
+        template <>
+        struct type_code<Configuration::config_data> {
+            static const RTIXCdrTypeCode * get();
+        };
+
+        template <>
+        struct type_code<Configuration::Item> {
+            static const RTIXCdrTypeCode * get();
+        };
+
+    } 
+}
+
+#endif
 
 #endif /* configuration */
 

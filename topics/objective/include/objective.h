@@ -16,6 +16,7 @@ or consult the RTI Connext manual.
 #ifndef ndds_cpp_h
 #include "ndds/ndds_cpp.h"
 #endif
+#include "rti/xcdr/Interpreter.hpp"
 #else
 #include "ndds_standalone_type.h"
 #endif
@@ -33,7 +34,6 @@ namespace process {
         class ObjectiveStateDataWriter;
         class ObjectiveStateDataReader;
         #endif
-
         class ObjectiveState 
         {
           public:
@@ -44,20 +44,25 @@ namespace process {
             typedef ObjectiveStateDataReader DataReader;
             #endif
 
-            DataTypes::Uuid   id ;
-            DataTypes::Uuid   parentId ;
+            DDS_Char *   id ;
+            DDS_Char *   parentId ;
             DataTypes::Time   timestamp ;
             DataTypes::Objective   objective ;
 
         };
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, start exporting symbols.
         */
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
+        #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport DDS_TypeCode* ObjectiveState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport RTIXCdrTypePlugin *ObjectiveState_get_type_plugin_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *ObjectiveState_get_sample_access_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *ObjectiveState_get_sample_seq_access_info(void);
+        #endif
 
         DDS_SEQUENCE(ObjectiveStateSeq, ObjectiveState);
 
@@ -73,6 +78,10 @@ namespace process {
         RTIBool ObjectiveState_initialize_w_params(
             ObjectiveState* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
+
+        NDDSUSERDllExport
+        RTIBool ObjectiveState_finalize_w_return(
+            ObjectiveState* self);
 
         NDDSUSERDllExport
         void ObjectiveState_finalize(
@@ -96,7 +105,7 @@ namespace process {
             ObjectiveState* dst,
             const ObjectiveState* src);
 
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
         */
         #undef NDDSUSERDllExport
@@ -104,6 +113,19 @@ namespace process {
         #endif
     } /* namespace plan  */
 } /* namespace process  */
+
+#ifndef NDDS_STANDALONE_TYPE
+namespace rti { 
+    namespace xcdr {
+        template <>
+        struct type_code<process::plan::ObjectiveState> {
+            static const RTIXCdrTypeCode * get();
+        };
+
+    } 
+}
+
+#endif
 
 #endif /* objective */
 

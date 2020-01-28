@@ -18,7 +18,7 @@ or consult the RTI Connext manual.
 #include "ndds/ndds_cpp.h"
 #endif
 
-#if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+#if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 
 class __declspec(dllimport) DDSTypeSupport;
 class __declspec(dllimport) DDSDataWriter;
@@ -38,7 +38,7 @@ namespace nec {
         implementing generics in C and C++.
         */
 
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, start exporting symbols.
         */
         #undef NDDSUSERDllExport
@@ -50,10 +50,14 @@ namespace nec {
             DrillingCalibrationRequestTypeSupport, 
             DrillingCalibrationRequest);
 
-        DDS_DATAWRITER_CPP(DrillingCalibrationRequestDataWriter, DrillingCalibrationRequest);
-        DDS_DATAREADER_CPP(DrillingCalibrationRequestDataReader, DrillingCalibrationRequestSeq, DrillingCalibrationRequest);
+        #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(DrillingCalibrationRequestDataWriter, DrillingCalibrationRequest);
+        #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+        #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
+        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(DrillingCalibrationRequestDataReader, DrillingCalibrationRequestSeq, DrillingCalibrationRequest);
+        #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
         */
         #undef NDDSUSERDllExport
@@ -69,7 +73,7 @@ namespace nec {
         implementing generics in C and C++.
         */
 
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, start exporting symbols.
         */
         #undef NDDSUSERDllExport
@@ -81,10 +85,14 @@ namespace nec {
             DrillingCalibrationStateTypeSupport, 
             DrillingCalibrationState);
 
-        DDS_DATAWRITER_CPP(DrillingCalibrationStateDataWriter, DrillingCalibrationState);
-        DDS_DATAREADER_CPP(DrillingCalibrationStateDataReader, DrillingCalibrationStateSeq, DrillingCalibrationState);
+        #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(DrillingCalibrationStateDataWriter, DrillingCalibrationState);
+        #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+        #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
+        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(DrillingCalibrationStateDataReader, DrillingCalibrationStateSeq, DrillingCalibrationState);
+        #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
         */
         #undef NDDSUSERDllExport

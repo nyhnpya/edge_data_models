@@ -48,7 +48,9 @@ namespace DataTypes {
     #define TDataWriter TimeDataWriter
     #define TData       DataTypes::Time
 
+    #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+    #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
 
     #undef TDataWriter
     #undef TData
@@ -73,7 +75,9 @@ namespace DataTypes {
     #define TDataSeq    TimeSeq
     #define TData       DataTypes::Time
 
+    #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+    #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
     #undef TDataReader
     #undef TDataSeq
@@ -103,7 +107,9 @@ namespace DataTypes {
     #define TDataReader  TimeDataReader
     #define TDataWriter  TimeDataWriter
     #define TGENERATE_SER_CODE
+    #ifndef NDDS_STANDALONE_TYPE
     #define TGENERATE_TYPECODE
+    #endif
 
     #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
@@ -111,7 +117,9 @@ namespace DataTypes {
     #undef TData
     #undef TDataReader
     #undef TDataWriter
+    #ifndef NDDS_STANDALONE_TYPE
     #undef TGENERATE_TYPECODE
+    #endif
     #undef TGENERATE_SER_CODE
     #undef TTYPENAME
     #undef TPlugin_new

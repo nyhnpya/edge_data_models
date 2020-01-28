@@ -16,6 +16,7 @@ or consult the RTI Connext manual.
 #ifndef ndds_cpp_h
 #include "ndds/ndds_cpp.h"
 #endif
+#include "rti/xcdr/Interpreter.hpp"
 #else
 #include "ndds_standalone_type.h"
 #endif
@@ -33,7 +34,6 @@ namespace nec {
         class HmiRequestDataWriter;
         class HmiRequestDataReader;
         #endif
-
         class HmiRequest 
         {
           public:
@@ -44,7 +44,7 @@ namespace nec {
             typedef HmiRequestDataReader DataReader;
             #endif
 
-            DataTypes::Uuid   id ;
+            DDS_Char *   id ;
             DataTypes::Time   timestamp ;
             DDS_Long   mode ;
             DDS_Double   modeController ;
@@ -60,14 +60,19 @@ namespace nec {
             DDS_Boolean   tuningEnable ;
 
         };
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, start exporting symbols.
         */
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
+        #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport DDS_TypeCode* HmiRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport RTIXCdrTypePlugin *HmiRequest_get_type_plugin_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *HmiRequest_get_sample_access_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *HmiRequest_get_sample_seq_access_info(void);
+        #endif
 
         DDS_SEQUENCE(HmiRequestSeq, HmiRequest);
 
@@ -83,6 +88,10 @@ namespace nec {
         RTIBool HmiRequest_initialize_w_params(
             HmiRequest* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
+
+        NDDSUSERDllExport
+        RTIBool HmiRequest_finalize_w_return(
+            HmiRequest* self);
 
         NDDSUSERDllExport
         void HmiRequest_finalize(
@@ -106,7 +115,7 @@ namespace nec {
             HmiRequest* dst,
             const HmiRequest* src);
 
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
         */
         #undef NDDSUSERDllExport
@@ -122,7 +131,6 @@ namespace nec {
         class HmiStateDataWriter;
         class HmiStateDataReader;
         #endif
-
         class HmiState 
         {
           public:
@@ -133,7 +141,7 @@ namespace nec {
             typedef HmiStateDataReader DataReader;
             #endif
 
-            DataTypes::Uuid   id ;
+            DDS_Char *   id ;
             DataTypes::Time   timestamp ;
             DDS_Long   mode ;
             DDS_Long   modeController ;
@@ -213,14 +221,19 @@ namespace nec {
             DDS_Boolean   tuningEnabled ;
 
         };
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, start exporting symbols.
         */
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
+        #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport DDS_TypeCode* HmiState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport RTIXCdrTypePlugin *HmiState_get_type_plugin_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *HmiState_get_sample_access_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *HmiState_get_sample_seq_access_info(void);
+        #endif
 
         DDS_SEQUENCE(HmiStateSeq, HmiState);
 
@@ -236,6 +249,10 @@ namespace nec {
         RTIBool HmiState_initialize_w_params(
             HmiState* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
+
+        NDDSUSERDllExport
+        RTIBool HmiState_finalize_w_return(
+            HmiState* self);
 
         NDDSUSERDllExport
         void HmiState_finalize(
@@ -259,7 +276,7 @@ namespace nec {
             HmiState* dst,
             const HmiState* src);
 
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
         */
         #undef NDDSUSERDllExport
@@ -267,6 +284,24 @@ namespace nec {
         #endif
     } /* namespace control  */
 } /* namespace nec  */
+
+#ifndef NDDS_STANDALONE_TYPE
+namespace rti { 
+    namespace xcdr {
+        template <>
+        struct type_code<nec::control::HmiRequest> {
+            static const RTIXCdrTypeCode * get();
+        };
+
+        template <>
+        struct type_code<nec::control::HmiState> {
+            static const RTIXCdrTypeCode * get();
+        };
+
+    } 
+}
+
+#endif
 
 #endif /* autodriller_configuration */
 

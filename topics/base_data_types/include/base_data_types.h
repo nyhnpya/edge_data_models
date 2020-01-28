@@ -16,20 +16,27 @@ or consult the RTI Connext manual.
 #ifndef ndds_cpp_h
 #include "ndds/ndds_cpp.h"
 #endif
+#include "rti/xcdr/Interpreter.hpp"
 #else
 #include "ndds_standalone_type.h"
 #endif
 
 namespace DataTypes {
+
     typedef    DDS_Char *   Uuid ;
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* Uuid_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *Uuid_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *Uuid_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *Uuid_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(UuidSeq, Uuid);
 
@@ -45,6 +52,10 @@ namespace DataTypes {
     RTIBool Uuid_initialize_w_params(
         Uuid* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool Uuid_finalize_w_return(
+        Uuid* self);
 
     NDDSUSERDllExport
     void Uuid_finalize(
@@ -68,7 +79,7 @@ namespace DataTypes {
         Uuid* dst,
         const Uuid* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -83,7 +94,6 @@ namespace DataTypes {
     class TimeDataWriter;
     class TimeDataReader;
     #endif
-
     class Time 
     {
       public:
@@ -98,14 +108,19 @@ namespace DataTypes {
         DDS_UnsignedLong   nanosec ;
 
     };
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* Time_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *Time_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *Time_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *Time_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(TimeSeq, Time);
 
@@ -121,6 +136,10 @@ namespace DataTypes {
     RTIBool Time_initialize_w_params(
         Time* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool Time_finalize_w_return(
+        Time* self);
 
     NDDSUSERDllExport
     void Time_finalize(
@@ -144,7 +163,7 @@ namespace DataTypes {
         Time* dst,
         const Time* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -156,14 +175,19 @@ namespace DataTypes {
         High ,      
         Critical      
     } Priority;
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* Priority_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *Priority_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *Priority_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *Priority_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(PrioritySeq, Priority);
 
@@ -179,6 +203,10 @@ namespace DataTypes {
     RTIBool Priority_initialize_w_params(
         Priority* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool Priority_finalize_w_return(
+        Priority* self);
 
     NDDSUSERDllExport
     void Priority_finalize(
@@ -202,7 +230,7 @@ namespace DataTypes {
         Priority* dst,
         const Priority* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -213,14 +241,19 @@ namespace DataTypes {
         Definitive ,      
         Inconclusive      
     } SurveyQuality;
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* SurveyQuality_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *SurveyQuality_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *SurveyQuality_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *SurveyQuality_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(SurveyQualitySeq, SurveyQuality);
 
@@ -236,6 +269,10 @@ namespace DataTypes {
     RTIBool SurveyQuality_initialize_w_params(
         SurveyQuality* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool SurveyQuality_finalize_w_return(
+        SurveyQuality* self);
 
     NDDSUSERDllExport
     void SurveyQuality_finalize(
@@ -259,7 +296,7 @@ namespace DataTypes {
         SurveyQuality* dst,
         const SurveyQuality* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -270,14 +307,19 @@ namespace DataTypes {
         Fault ,      
         Good      
     } Status;
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* Status_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *Status_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *Status_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *Status_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(StatusSeq, Status);
 
@@ -293,6 +335,10 @@ namespace DataTypes {
     RTIBool Status_initialize_w_params(
         Status* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool Status_finalize_w_return(
+        Status* self);
 
     NDDSUSERDllExport
     void Status_finalize(
@@ -316,7 +362,7 @@ namespace DataTypes {
         Status* dst,
         const Status* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -328,14 +374,19 @@ namespace DataTypes {
         HeavyWeight ,      
         DrillPipe      
     } PipeType;
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* PipeType_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *PipeType_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *PipeType_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *PipeType_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(PipeTypeSeq, PipeType);
 
@@ -351,6 +402,10 @@ namespace DataTypes {
     RTIBool PipeType_initialize_w_params(
         PipeType* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool PipeType_finalize_w_return(
+        PipeType* self);
 
     NDDSUSERDllExport
     void PipeType_finalize(
@@ -374,7 +429,7 @@ namespace DataTypes {
         PipeType* dst,
         const PipeType* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -389,14 +444,19 @@ namespace DataTypes {
         AutoReaming ,      
         Tripping      
     } Objective;
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport __declspec(dllexport)
     #endif
 
+    #ifndef NDDS_STANDALONE_TYPE
     NDDSUSERDllExport DDS_TypeCode* Objective_get_typecode(void); /* Type code */
+    NDDSUSERDllExport RTIXCdrTypePlugin *Objective_get_type_plugin_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *Objective_get_sample_access_info(void);
+    NDDSUSERDllExport RTIXCdrSampleAccessInfo *Objective_get_sample_seq_access_info(void);
+    #endif
 
     DDS_SEQUENCE(ObjectiveSeq, Objective);
 
@@ -412,6 +472,10 @@ namespace DataTypes {
     RTIBool Objective_initialize_w_params(
         Objective* self,
         const struct DDS_TypeAllocationParams_t * allocParams);  
+
+    NDDSUSERDllExport
+    RTIBool Objective_finalize_w_return(
+        Objective* self);
 
     NDDSUSERDllExport
     void Objective_finalize(
@@ -435,13 +499,26 @@ namespace DataTypes {
         Objective* dst,
         const Objective* src);
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport
     #define NDDSUSERDllExport
     #endif
 } /* namespace DataTypes  */
+
+#ifndef NDDS_STANDALONE_TYPE
+namespace rti { 
+    namespace xcdr {
+        template <>
+        struct type_code<DataTypes::Time> {
+            static const RTIXCdrTypeCode * get();
+        };
+
+    } 
+}
+
+#endif
 
 #endif /* base_data_types */
 

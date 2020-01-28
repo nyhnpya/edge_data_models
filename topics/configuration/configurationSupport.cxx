@@ -48,7 +48,9 @@ namespace Configuration {
     #define TDataWriter protocol_tDataWriter
     #define TData       Configuration::protocol_t
 
+    #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+    #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
 
     #undef TDataWriter
     #undef TData
@@ -73,7 +75,9 @@ namespace Configuration {
     #define TDataSeq    protocol_tSeq
     #define TData       Configuration::protocol_t
 
+    #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+    #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
     #undef TDataReader
     #undef TDataSeq
@@ -103,7 +107,9 @@ namespace Configuration {
     #define TDataReader  protocol_tDataReader
     #define TDataWriter  protocol_tDataWriter
     #define TGENERATE_SER_CODE
+    #ifndef NDDS_STANDALONE_TYPE
     #define TGENERATE_TYPECODE
+    #endif
 
     #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
@@ -111,7 +117,9 @@ namespace Configuration {
     #undef TData
     #undef TDataReader
     #undef TDataWriter
+    #ifndef NDDS_STANDALONE_TYPE
     #undef TGENERATE_TYPECODE
+    #endif
     #undef TGENERATE_SER_CODE
     #undef TTYPENAME
     #undef TPlugin_new
@@ -148,7 +156,9 @@ namespace Configuration {
     #define TDataWriter interface_tDataWriter
     #define TData       Configuration::interface_t
 
+    #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+    #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
 
     #undef TDataWriter
     #undef TData
@@ -173,7 +183,9 @@ namespace Configuration {
     #define TDataSeq    interface_tSeq
     #define TData       Configuration::interface_t
 
+    #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+    #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
     #undef TDataReader
     #undef TDataSeq
@@ -203,7 +215,9 @@ namespace Configuration {
     #define TDataReader  interface_tDataReader
     #define TDataWriter  interface_tDataWriter
     #define TGENERATE_SER_CODE
+    #ifndef NDDS_STANDALONE_TYPE
     #define TGENERATE_TYPECODE
+    #endif
 
     #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
@@ -211,7 +225,9 @@ namespace Configuration {
     #undef TData
     #undef TDataReader
     #undef TDataWriter
+    #ifndef NDDS_STANDALONE_TYPE
     #undef TGENERATE_TYPECODE
+    #endif
     #undef TGENERATE_SER_CODE
     #undef TTYPENAME
     #undef TPlugin_new
@@ -248,7 +264,9 @@ namespace Configuration {
     #define TDataWriter tag_tDataWriter
     #define TData       Configuration::tag_t
 
+    #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+    #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
 
     #undef TDataWriter
     #undef TData
@@ -273,7 +291,9 @@ namespace Configuration {
     #define TDataSeq    tag_tSeq
     #define TData       Configuration::tag_t
 
+    #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+    #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
     #undef TDataReader
     #undef TDataSeq
@@ -303,7 +323,9 @@ namespace Configuration {
     #define TDataReader  tag_tDataReader
     #define TDataWriter  tag_tDataWriter
     #define TGENERATE_SER_CODE
+    #ifndef NDDS_STANDALONE_TYPE
     #define TGENERATE_TYPECODE
+    #endif
 
     #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
@@ -311,7 +333,9 @@ namespace Configuration {
     #undef TData
     #undef TDataReader
     #undef TDataWriter
+    #ifndef NDDS_STANDALONE_TYPE
     #undef TGENERATE_TYPECODE
+    #endif
     #undef TGENERATE_SER_CODE
     #undef TTYPENAME
     #undef TPlugin_new
@@ -348,7 +372,9 @@ namespace Configuration {
     #define TDataWriter config_dataDataWriter
     #define TData       Configuration::config_data
 
+    #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+    #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
 
     #undef TDataWriter
     #undef TData
@@ -373,7 +399,9 @@ namespace Configuration {
     #define TDataSeq    config_dataSeq
     #define TData       Configuration::config_data
 
+    #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+    #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
     #undef TDataReader
     #undef TDataSeq
@@ -403,7 +431,9 @@ namespace Configuration {
     #define TDataReader  config_dataDataReader
     #define TDataWriter  config_dataDataWriter
     #define TGENERATE_SER_CODE
+    #ifndef NDDS_STANDALONE_TYPE
     #define TGENERATE_TYPECODE
+    #endif
 
     #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
@@ -411,7 +441,9 @@ namespace Configuration {
     #undef TData
     #undef TDataReader
     #undef TDataWriter
+    #ifndef NDDS_STANDALONE_TYPE
     #undef TGENERATE_TYPECODE
+    #endif
     #undef TGENERATE_SER_CODE
     #undef TTYPENAME
     #undef TPlugin_new
@@ -448,7 +480,9 @@ namespace Configuration {
     #define TDataWriter ItemDataWriter
     #define TData       Configuration::Item
 
+    #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
     #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+    #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
 
     #undef TDataWriter
     #undef TData
@@ -473,7 +507,9 @@ namespace Configuration {
     #define TDataSeq    ItemSeq
     #define TData       Configuration::Item
 
+    #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
     #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+    #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
     #undef TDataReader
     #undef TDataSeq
@@ -503,7 +539,9 @@ namespace Configuration {
     #define TDataReader  ItemDataReader
     #define TDataWriter  ItemDataWriter
     #define TGENERATE_SER_CODE
+    #ifndef NDDS_STANDALONE_TYPE
     #define TGENERATE_TYPECODE
+    #endif
 
     #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
@@ -511,7 +549,9 @@ namespace Configuration {
     #undef TData
     #undef TDataReader
     #undef TDataWriter
+    #ifndef NDDS_STANDALONE_TYPE
     #undef TGENERATE_TYPECODE
+    #endif
     #undef TGENERATE_SER_CODE
     #undef TTYPENAME
     #undef TPlugin_new

@@ -22,7 +22,7 @@ struct RTICdrStream;
 
 #include "base_data_typesPlugin.h"
 
-#if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+#if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, start exporting symbols.
 */
 #undef NDDSUSERDllExport
@@ -49,8 +49,9 @@ namespace nec {
         typedef  class DrillingCalibrationRequest DrillingCalibrationRequestKeyHolder;
 
         #define DrillingCalibrationRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+
         #define DrillingCalibrationRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define DrillingCalibrationRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define DrillingCalibrationRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
         #define DrillingCalibrationRequestPlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
         #define DrillingCalibrationRequestPlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
@@ -153,30 +154,18 @@ namespace nec {
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern RTIBool 
-        DrillingCalibrationRequestPlugin_serialize(
-            PRESTypePluginEndpointData endpoint_data,
-            const DrillingCalibrationRequest *sample,
-            struct RTICdrStream *stream, 
-            RTIBool serialize_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            RTIBool serialize_sample, 
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool 
-        DrillingCalibrationRequestPlugin_deserialize_sample(
-            PRESTypePluginEndpointData endpoint_data,
-            DrillingCalibrationRequest *sample, 
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_sample, 
-            void *endpoint_plugin_qos);
-
         NDDSUSERDllExport extern RTIBool
         DrillingCalibrationRequestPlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
             const DrillingCalibrationRequest *sample); 
+
+        NDDSUSERDllExport extern RTIBool
+        DrillingCalibrationRequestPlugin_serialize_to_cdr_buffer_ex(
+            char *buffer,
+            unsigned int *length,
+            const DrillingCalibrationRequest *sample,
+            DDS_DataRepresentationId_t representation);
 
         NDDSUSERDllExport extern RTIBool 
         DrillingCalibrationRequestPlugin_deserialize(
@@ -193,28 +182,14 @@ namespace nec {
             DrillingCalibrationRequest *sample,
             const char * buffer,
             unsigned int length);    
+        #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport extern DDS_ReturnCode_t
         DrillingCalibrationRequestPlugin_data_to_string(
             const DrillingCalibrationRequest *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
-
-        NDDSUSERDllExport extern RTIBool
-        DrillingCalibrationRequestPlugin_skip(
-            PRESTypePluginEndpointData endpoint_data,
-            struct RTICdrStream *stream, 
-            RTIBool skip_encapsulation,  
-            RTIBool skip_sample, 
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern unsigned int 
-        DrillingCalibrationRequestPlugin_get_serialized_sample_max_size_ex(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool * overflow,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);    
+        #endif
 
         NDDSUSERDllExport extern unsigned int 
         DrillingCalibrationRequestPlugin_get_serialized_sample_max_size(
@@ -223,34 +198,11 @@ namespace nec {
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
-        NDDSUSERDllExport extern unsigned int 
-        DrillingCalibrationRequestPlugin_get_serialized_sample_min_size(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);
-
-        NDDSUSERDllExport extern unsigned int
-        DrillingCalibrationRequestPlugin_get_serialized_sample_size(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment,
-            const DrillingCalibrationRequest * sample);
-
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
         DrillingCalibrationRequestPlugin_get_key_kind(void);
-
-        NDDSUSERDllExport extern unsigned int 
-        DrillingCalibrationRequestPlugin_get_serialized_key_max_size_ex(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool * overflow,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
         DrillingCalibrationRequestPlugin_get_serialized_key_max_size(
@@ -259,24 +211,11 @@ namespace nec {
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
-        NDDSUSERDllExport extern RTIBool 
-        DrillingCalibrationRequestPlugin_serialize_key(
+        NDDSUSERDllExport extern unsigned int 
+        DrillingCalibrationRequestPlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
-            const DrillingCalibrationRequest *sample,
-            struct RTICdrStream *stream,
-            RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
-            RTIBool serialize_key,
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool 
-        DrillingCalibrationRequestPlugin_deserialize_key_sample(
-            PRESTypePluginEndpointData endpoint_data,
-            DrillingCalibrationRequest * sample,
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_key,
-            void *endpoint_plugin_qos);
+            unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
         DrillingCalibrationRequestPlugin_deserialize_key(
@@ -286,15 +225,6 @@ namespace nec {
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool
-        DrillingCalibrationRequestPlugin_serialized_sample_to_key(
-            PRESTypePluginEndpointData endpoint_data,
-            DrillingCalibrationRequest *sample,
-            struct RTICdrStream *stream, 
-            RTIBool deserialize_encapsulation,  
-            RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
@@ -313,7 +243,8 @@ namespace nec {
         DrillingCalibrationRequestPlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const DrillingCalibrationRequest *instance);
+            const DrillingCalibrationRequest *instance,
+            RTIEncapsulationId encapsulationId);
 
         NDDSUSERDllExport extern RTIBool 
         DrillingCalibrationRequestPlugin_serialized_sample_to_keyhash(
@@ -322,6 +253,9 @@ namespace nec {
             DDS_KeyHash_t *keyhash,
             RTIBool deserialize_encapsulation,
             void *endpoint_plugin_qos); 
+
+        NDDSUSERDllExport extern
+        struct RTIXCdrInterpreterPrograms *DrillingCalibrationRequestPlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -347,8 +281,9 @@ namespace nec {
         typedef  class DrillingCalibrationState DrillingCalibrationStateKeyHolder;
 
         #define DrillingCalibrationStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+
         #define DrillingCalibrationStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define DrillingCalibrationStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define DrillingCalibrationStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
         #define DrillingCalibrationStatePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
         #define DrillingCalibrationStatePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
@@ -451,30 +386,18 @@ namespace nec {
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern RTIBool 
-        DrillingCalibrationStatePlugin_serialize(
-            PRESTypePluginEndpointData endpoint_data,
-            const DrillingCalibrationState *sample,
-            struct RTICdrStream *stream, 
-            RTIBool serialize_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            RTIBool serialize_sample, 
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool 
-        DrillingCalibrationStatePlugin_deserialize_sample(
-            PRESTypePluginEndpointData endpoint_data,
-            DrillingCalibrationState *sample, 
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_sample, 
-            void *endpoint_plugin_qos);
-
         NDDSUSERDllExport extern RTIBool
         DrillingCalibrationStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
             const DrillingCalibrationState *sample); 
+
+        NDDSUSERDllExport extern RTIBool
+        DrillingCalibrationStatePlugin_serialize_to_cdr_buffer_ex(
+            char *buffer,
+            unsigned int *length,
+            const DrillingCalibrationState *sample,
+            DDS_DataRepresentationId_t representation);
 
         NDDSUSERDllExport extern RTIBool 
         DrillingCalibrationStatePlugin_deserialize(
@@ -491,28 +414,14 @@ namespace nec {
             DrillingCalibrationState *sample,
             const char * buffer,
             unsigned int length);    
+        #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport extern DDS_ReturnCode_t
         DrillingCalibrationStatePlugin_data_to_string(
             const DrillingCalibrationState *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
-
-        NDDSUSERDllExport extern RTIBool
-        DrillingCalibrationStatePlugin_skip(
-            PRESTypePluginEndpointData endpoint_data,
-            struct RTICdrStream *stream, 
-            RTIBool skip_encapsulation,  
-            RTIBool skip_sample, 
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern unsigned int 
-        DrillingCalibrationStatePlugin_get_serialized_sample_max_size_ex(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool * overflow,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);    
+        #endif
 
         NDDSUSERDllExport extern unsigned int 
         DrillingCalibrationStatePlugin_get_serialized_sample_max_size(
@@ -521,34 +430,11 @@ namespace nec {
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
-        NDDSUSERDllExport extern unsigned int 
-        DrillingCalibrationStatePlugin_get_serialized_sample_min_size(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);
-
-        NDDSUSERDllExport extern unsigned int
-        DrillingCalibrationStatePlugin_get_serialized_sample_size(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment,
-            const DrillingCalibrationState * sample);
-
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
         DrillingCalibrationStatePlugin_get_key_kind(void);
-
-        NDDSUSERDllExport extern unsigned int 
-        DrillingCalibrationStatePlugin_get_serialized_key_max_size_ex(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool * overflow,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
         DrillingCalibrationStatePlugin_get_serialized_key_max_size(
@@ -557,24 +443,11 @@ namespace nec {
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
-        NDDSUSERDllExport extern RTIBool 
-        DrillingCalibrationStatePlugin_serialize_key(
+        NDDSUSERDllExport extern unsigned int 
+        DrillingCalibrationStatePlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
-            const DrillingCalibrationState *sample,
-            struct RTICdrStream *stream,
-            RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
-            RTIBool serialize_key,
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool 
-        DrillingCalibrationStatePlugin_deserialize_key_sample(
-            PRESTypePluginEndpointData endpoint_data,
-            DrillingCalibrationState * sample,
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_key,
-            void *endpoint_plugin_qos);
+            unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
         DrillingCalibrationStatePlugin_deserialize_key(
@@ -584,15 +457,6 @@ namespace nec {
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool
-        DrillingCalibrationStatePlugin_serialized_sample_to_key(
-            PRESTypePluginEndpointData endpoint_data,
-            DrillingCalibrationState *sample,
-            struct RTICdrStream *stream, 
-            RTIBool deserialize_encapsulation,  
-            RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
@@ -611,7 +475,8 @@ namespace nec {
         DrillingCalibrationStatePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const DrillingCalibrationState *instance);
+            const DrillingCalibrationState *instance,
+            RTIEncapsulationId encapsulationId);
 
         NDDSUSERDllExport extern RTIBool 
         DrillingCalibrationStatePlugin_serialized_sample_to_keyhash(
@@ -620,6 +485,9 @@ namespace nec {
             DDS_KeyHash_t *keyhash,
             RTIBool deserialize_encapsulation,
             void *endpoint_plugin_qos); 
+
+        NDDSUSERDllExport extern
+        struct RTIXCdrInterpreterPrograms *DrillingCalibrationStatePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -631,7 +499,7 @@ namespace nec {
     } /* namespace control  */
 } /* namespace nec  */
 
-#if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+#if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, stop exporting symbols.
 */
 #undef NDDSUSERDllExport

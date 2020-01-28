@@ -18,7 +18,7 @@ or consult the RTI Connext manual.
 #include "ndds/ndds_cpp.h"
 #endif
 
-#if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+#if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 
 class __declspec(dllimport) DDSTypeSupport;
 class __declspec(dllimport) DDSDataWriter;
@@ -37,7 +37,7 @@ namespace DataTypes {
     implementing generics in C and C++.
     */
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, start exporting symbols.
     */
     #undef NDDSUSERDllExport
@@ -49,10 +49,14 @@ namespace DataTypes {
         TimeTypeSupport, 
         Time);
 
-    DDS_DATAWRITER_CPP(TimeDataWriter, Time);
-    DDS_DATAREADER_CPP(TimeDataReader, TimeSeq, Time);
+    #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+    DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(TimeDataWriter, Time);
+    #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+    #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
+    DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(TimeDataReader, TimeSeq, Time);
+    #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
-    #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+    #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
     */
     #undef NDDSUSERDllExport

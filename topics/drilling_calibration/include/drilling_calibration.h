@@ -16,6 +16,7 @@ or consult the RTI Connext manual.
 #ifndef ndds_cpp_h
 #include "ndds/ndds_cpp.h"
 #endif
+#include "rti/xcdr/Interpreter.hpp"
 #else
 #include "ndds_standalone_type.h"
 #endif
@@ -33,7 +34,6 @@ namespace nec {
         class DrillingCalibrationRequestDataWriter;
         class DrillingCalibrationRequestDataReader;
         #endif
-
         class DrillingCalibrationRequest 
         {
           public:
@@ -44,7 +44,7 @@ namespace nec {
             typedef DrillingCalibrationRequestDataReader DataReader;
             #endif
 
-            DataTypes::Uuid   id ;
+            DDS_Char *   id ;
             DataTypes::Time   timestamp ;
             DDS_Double   wobProportional ;
             DDS_Double   wobIntegral ;
@@ -54,14 +54,19 @@ namespace nec {
             DDS_Double   torqueIntegral ;
 
         };
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, start exporting symbols.
         */
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
+        #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport DDS_TypeCode* DrillingCalibrationRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport RTIXCdrTypePlugin *DrillingCalibrationRequest_get_type_plugin_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *DrillingCalibrationRequest_get_sample_access_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *DrillingCalibrationRequest_get_sample_seq_access_info(void);
+        #endif
 
         DDS_SEQUENCE(DrillingCalibrationRequestSeq, DrillingCalibrationRequest);
 
@@ -77,6 +82,10 @@ namespace nec {
         RTIBool DrillingCalibrationRequest_initialize_w_params(
             DrillingCalibrationRequest* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
+
+        NDDSUSERDllExport
+        RTIBool DrillingCalibrationRequest_finalize_w_return(
+            DrillingCalibrationRequest* self);
 
         NDDSUSERDllExport
         void DrillingCalibrationRequest_finalize(
@@ -100,7 +109,7 @@ namespace nec {
             DrillingCalibrationRequest* dst,
             const DrillingCalibrationRequest* src);
 
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
         */
         #undef NDDSUSERDllExport
@@ -116,7 +125,6 @@ namespace nec {
         class DrillingCalibrationStateDataWriter;
         class DrillingCalibrationStateDataReader;
         #endif
-
         class DrillingCalibrationState 
         {
           public:
@@ -127,7 +135,7 @@ namespace nec {
             typedef DrillingCalibrationStateDataReader DataReader;
             #endif
 
-            DataTypes::Uuid   id ;
+            DDS_Char *   id ;
             DataTypes::Time   timestamp ;
             DDS_Double   wobProportional ;
             DDS_Double   wobIntegral ;
@@ -149,14 +157,19 @@ namespace nec {
             DDS_Double   maxTorqueIntegral ;
 
         };
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, start exporting symbols.
         */
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport __declspec(dllexport)
         #endif
 
+        #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport DDS_TypeCode* DrillingCalibrationState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport RTIXCdrTypePlugin *DrillingCalibrationState_get_type_plugin_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *DrillingCalibrationState_get_sample_access_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *DrillingCalibrationState_get_sample_seq_access_info(void);
+        #endif
 
         DDS_SEQUENCE(DrillingCalibrationStateSeq, DrillingCalibrationState);
 
@@ -172,6 +185,10 @@ namespace nec {
         RTIBool DrillingCalibrationState_initialize_w_params(
             DrillingCalibrationState* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
+
+        NDDSUSERDllExport
+        RTIBool DrillingCalibrationState_finalize_w_return(
+            DrillingCalibrationState* self);
 
         NDDSUSERDllExport
         void DrillingCalibrationState_finalize(
@@ -195,7 +212,7 @@ namespace nec {
             DrillingCalibrationState* dst,
             const DrillingCalibrationState* src);
 
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
         */
         #undef NDDSUSERDllExport
@@ -203,6 +220,24 @@ namespace nec {
         #endif
     } /* namespace control  */
 } /* namespace nec  */
+
+#ifndef NDDS_STANDALONE_TYPE
+namespace rti { 
+    namespace xcdr {
+        template <>
+        struct type_code<nec::control::DrillingCalibrationRequest> {
+            static const RTIXCdrTypeCode * get();
+        };
+
+        template <>
+        struct type_code<nec::control::DrillingCalibrationState> {
+            static const RTIXCdrTypeCode * get();
+        };
+
+    } 
+}
+
+#endif
 
 #endif /* drilling_calibration */
 

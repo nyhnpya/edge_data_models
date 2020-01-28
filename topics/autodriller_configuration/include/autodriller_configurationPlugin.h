@@ -22,7 +22,7 @@ struct RTICdrStream;
 
 #include "base_data_typesPlugin.h"
 
-#if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+#if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, start exporting symbols.
 */
 #undef NDDSUSERDllExport
@@ -49,8 +49,9 @@ namespace nec {
         typedef  class HmiRequest HmiRequestKeyHolder;
 
         #define HmiRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+
         #define HmiRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define HmiRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define HmiRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
         #define HmiRequestPlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
         #define HmiRequestPlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
@@ -153,30 +154,18 @@ namespace nec {
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern RTIBool 
-        HmiRequestPlugin_serialize(
-            PRESTypePluginEndpointData endpoint_data,
-            const HmiRequest *sample,
-            struct RTICdrStream *stream, 
-            RTIBool serialize_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            RTIBool serialize_sample, 
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool 
-        HmiRequestPlugin_deserialize_sample(
-            PRESTypePluginEndpointData endpoint_data,
-            HmiRequest *sample, 
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_sample, 
-            void *endpoint_plugin_qos);
-
         NDDSUSERDllExport extern RTIBool
         HmiRequestPlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
             const HmiRequest *sample); 
+
+        NDDSUSERDllExport extern RTIBool
+        HmiRequestPlugin_serialize_to_cdr_buffer_ex(
+            char *buffer,
+            unsigned int *length,
+            const HmiRequest *sample,
+            DDS_DataRepresentationId_t representation);
 
         NDDSUSERDllExport extern RTIBool 
         HmiRequestPlugin_deserialize(
@@ -193,28 +182,14 @@ namespace nec {
             HmiRequest *sample,
             const char * buffer,
             unsigned int length);    
+        #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport extern DDS_ReturnCode_t
         HmiRequestPlugin_data_to_string(
             const HmiRequest *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
-
-        NDDSUSERDllExport extern RTIBool
-        HmiRequestPlugin_skip(
-            PRESTypePluginEndpointData endpoint_data,
-            struct RTICdrStream *stream, 
-            RTIBool skip_encapsulation,  
-            RTIBool skip_sample, 
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern unsigned int 
-        HmiRequestPlugin_get_serialized_sample_max_size_ex(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool * overflow,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);    
+        #endif
 
         NDDSUSERDllExport extern unsigned int 
         HmiRequestPlugin_get_serialized_sample_max_size(
@@ -223,34 +198,11 @@ namespace nec {
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
-        NDDSUSERDllExport extern unsigned int 
-        HmiRequestPlugin_get_serialized_sample_min_size(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);
-
-        NDDSUSERDllExport extern unsigned int
-        HmiRequestPlugin_get_serialized_sample_size(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment,
-            const HmiRequest * sample);
-
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
         HmiRequestPlugin_get_key_kind(void);
-
-        NDDSUSERDllExport extern unsigned int 
-        HmiRequestPlugin_get_serialized_key_max_size_ex(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool * overflow,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
         HmiRequestPlugin_get_serialized_key_max_size(
@@ -259,24 +211,11 @@ namespace nec {
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
-        NDDSUSERDllExport extern RTIBool 
-        HmiRequestPlugin_serialize_key(
+        NDDSUSERDllExport extern unsigned int 
+        HmiRequestPlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
-            const HmiRequest *sample,
-            struct RTICdrStream *stream,
-            RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
-            RTIBool serialize_key,
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool 
-        HmiRequestPlugin_deserialize_key_sample(
-            PRESTypePluginEndpointData endpoint_data,
-            HmiRequest * sample,
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_key,
-            void *endpoint_plugin_qos);
+            unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
         HmiRequestPlugin_deserialize_key(
@@ -286,15 +225,6 @@ namespace nec {
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool
-        HmiRequestPlugin_serialized_sample_to_key(
-            PRESTypePluginEndpointData endpoint_data,
-            HmiRequest *sample,
-            struct RTICdrStream *stream, 
-            RTIBool deserialize_encapsulation,  
-            RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
@@ -313,7 +243,8 @@ namespace nec {
         HmiRequestPlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const HmiRequest *instance);
+            const HmiRequest *instance,
+            RTIEncapsulationId encapsulationId);
 
         NDDSUSERDllExport extern RTIBool 
         HmiRequestPlugin_serialized_sample_to_keyhash(
@@ -322,6 +253,9 @@ namespace nec {
             DDS_KeyHash_t *keyhash,
             RTIBool deserialize_encapsulation,
             void *endpoint_plugin_qos); 
+
+        NDDSUSERDllExport extern
+        struct RTIXCdrInterpreterPrograms *HmiRequestPlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -347,8 +281,9 @@ namespace nec {
         typedef  class HmiState HmiStateKeyHolder;
 
         #define HmiStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+
         #define HmiStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define HmiStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define HmiStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
         #define HmiStatePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
         #define HmiStatePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
@@ -451,30 +386,18 @@ namespace nec {
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern RTIBool 
-        HmiStatePlugin_serialize(
-            PRESTypePluginEndpointData endpoint_data,
-            const HmiState *sample,
-            struct RTICdrStream *stream, 
-            RTIBool serialize_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            RTIBool serialize_sample, 
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool 
-        HmiStatePlugin_deserialize_sample(
-            PRESTypePluginEndpointData endpoint_data,
-            HmiState *sample, 
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_sample, 
-            void *endpoint_plugin_qos);
-
         NDDSUSERDllExport extern RTIBool
         HmiStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
             const HmiState *sample); 
+
+        NDDSUSERDllExport extern RTIBool
+        HmiStatePlugin_serialize_to_cdr_buffer_ex(
+            char *buffer,
+            unsigned int *length,
+            const HmiState *sample,
+            DDS_DataRepresentationId_t representation);
 
         NDDSUSERDllExport extern RTIBool 
         HmiStatePlugin_deserialize(
@@ -491,28 +414,14 @@ namespace nec {
             HmiState *sample,
             const char * buffer,
             unsigned int length);    
+        #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport extern DDS_ReturnCode_t
         HmiStatePlugin_data_to_string(
             const HmiState *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
-
-        NDDSUSERDllExport extern RTIBool
-        HmiStatePlugin_skip(
-            PRESTypePluginEndpointData endpoint_data,
-            struct RTICdrStream *stream, 
-            RTIBool skip_encapsulation,  
-            RTIBool skip_sample, 
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern unsigned int 
-        HmiStatePlugin_get_serialized_sample_max_size_ex(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool * overflow,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);    
+        #endif
 
         NDDSUSERDllExport extern unsigned int 
         HmiStatePlugin_get_serialized_sample_max_size(
@@ -521,34 +430,11 @@ namespace nec {
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
-        NDDSUSERDllExport extern unsigned int 
-        HmiStatePlugin_get_serialized_sample_min_size(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);
-
-        NDDSUSERDllExport extern unsigned int
-        HmiStatePlugin_get_serialized_sample_size(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment,
-            const HmiState * sample);
-
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
         HmiStatePlugin_get_key_kind(void);
-
-        NDDSUSERDllExport extern unsigned int 
-        HmiStatePlugin_get_serialized_key_max_size_ex(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool * overflow,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
         HmiStatePlugin_get_serialized_key_max_size(
@@ -557,24 +443,11 @@ namespace nec {
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
-        NDDSUSERDllExport extern RTIBool 
-        HmiStatePlugin_serialize_key(
+        NDDSUSERDllExport extern unsigned int 
+        HmiStatePlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
-            const HmiState *sample,
-            struct RTICdrStream *stream,
-            RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
-            RTIBool serialize_key,
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool 
-        HmiStatePlugin_deserialize_key_sample(
-            PRESTypePluginEndpointData endpoint_data,
-            HmiState * sample,
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_key,
-            void *endpoint_plugin_qos);
+            unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
         HmiStatePlugin_deserialize_key(
@@ -584,15 +457,6 @@ namespace nec {
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool
-        HmiStatePlugin_serialized_sample_to_key(
-            PRESTypePluginEndpointData endpoint_data,
-            HmiState *sample,
-            struct RTICdrStream *stream, 
-            RTIBool deserialize_encapsulation,  
-            RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
@@ -611,7 +475,8 @@ namespace nec {
         HmiStatePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const HmiState *instance);
+            const HmiState *instance,
+            RTIEncapsulationId encapsulationId);
 
         NDDSUSERDllExport extern RTIBool 
         HmiStatePlugin_serialized_sample_to_keyhash(
@@ -620,6 +485,9 @@ namespace nec {
             DDS_KeyHash_t *keyhash,
             RTIBool deserialize_encapsulation,
             void *endpoint_plugin_qos); 
+
+        NDDSUSERDllExport extern
+        struct RTIXCdrInterpreterPrograms *HmiStatePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -631,7 +499,7 @@ namespace nec {
     } /* namespace control  */
 } /* namespace nec  */
 
-#if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+#if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, stop exporting symbols.
 */
 #undef NDDSUSERDllExport

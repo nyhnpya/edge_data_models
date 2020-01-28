@@ -15,7 +15,10 @@ or consult the RTI Connext manual.
 #endif
 #ifndef dds_c_log_impl_h              
 #include "dds_c/dds_c_log_impl.h"                                
-#endif        
+#endif 
+#ifndef dds_c_log_infrastructure_h                      
+#include "dds_c/dds_c_infrastructure_impl.h"       
+#endif 
 
 #ifndef cdr_type_h
 #include "cdr/cdr_type.h"
@@ -30,12 +33,17 @@ or consult the RTI Connext manual.
 
 #include "base_data_types.h"
 
+#ifndef NDDS_STANDALONE_TYPE
+#include "base_data_typesPlugin.h"
+#endif
+
 #include <new>
 
 namespace DataTypes {
 
     /* ========================================================================= */
 
+    #ifndef NDDS_STANDALONE_TYPE
     DDS_TypeCode* Uuid_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
@@ -54,19 +62,126 @@ namespace DataTypes {
                 NULL, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                DDS_VM_NONE /* Ignored */
+                DDS_VM_NONE, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER,
+                DDS_BOOLEAN_TRUE, /* _isCopyable */
+                NULL, /* _sampleAccessInfo: assigned later */
+                NULL /* _typePlugin: assigned later */
             }}; /* Type code for  Uuid */
 
         if (is_initialized) {
             return &Uuid_g_tc;
         }
 
+        Uuid_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+
         Uuid_g_tc._data._typeCode =  (RTICdrTypeCode *)&Uuid_g_tc_string;
+
+        /* Initialize the values for member annotations. */
+        Uuid_g_tc._data._annotations._defaultValue._d = RTI_XCDR_TK_STRING;
+        Uuid_g_tc._data._annotations._defaultValue._u.string_value = (DDS_Char *) "";
+
+        Uuid_g_tc._data._sampleAccessInfo =
+        Uuid_get_sample_access_info();
+        Uuid_g_tc._data._typePlugin =
+        Uuid_get_type_plugin_info();    
 
         is_initialized = RTI_TRUE;
 
         return &Uuid_g_tc;
     }
+
+    #define TSeq UuidSeq
+    #define T Uuid
+    #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
+    #undef T
+    #undef TSeq
+
+    RTIXCdrSampleAccessInfo *Uuid_get_sample_seq_access_info()
+    {
+        static RTIXCdrSampleAccessInfo Uuid_g_seqSampleAccessInfo = {
+            RTI_XCDR_TYPE_BINDING_CPP, \
+            {sizeof(UuidSeq),0,0,0}, \
+            RTI_XCDR_FALSE, \
+            DDS_Sequence_get_member_value_pointer, \
+            UuidSeq_set_member_element_count, \
+            NULL, \
+            NULL, \
+            NULL \
+        };
+
+        return &Uuid_g_seqSampleAccessInfo;
+    }
+
+    RTIXCdrSampleAccessInfo *Uuid_get_sample_access_info()
+    {
+        static RTIBool is_initialized = RTI_FALSE;
+
+        static RTIXCdrMemberAccessInfo Uuid_g_memberAccessInfos[1] =
+        {RTIXCdrMemberAccessInfo_INITIALIZER};
+
+        static RTIXCdrSampleAccessInfo Uuid_g_sampleAccessInfo = 
+        RTIXCdrSampleAccessInfo_INITIALIZER;
+
+        if (is_initialized) {
+            return (RTIXCdrSampleAccessInfo*) &Uuid_g_sampleAccessInfo;
+        }
+
+        Uuid_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 0;
+
+        Uuid_g_sampleAccessInfo.memberAccessInfos = 
+        Uuid_g_memberAccessInfos;
+
+        {
+            size_t candidateTypeSize = sizeof(Uuid);
+
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                Uuid_g_sampleAccessInfo.typeSize[0] =
+                RTIXCdrUnsignedLong_MAX;
+            } else {
+                Uuid_g_sampleAccessInfo.typeSize[0] =
+                (RTIXCdrUnsignedLong) candidateTypeSize;
+            }
+        }
+
+        Uuid_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+        RTI_XCDR_TRUE;
+
+        Uuid_g_sampleAccessInfo.getMemberValuePointerFcn = 
+        Uuid_get_member_value_pointer;
+
+        Uuid_g_sampleAccessInfo.languageBinding = 
+        RTI_XCDR_TYPE_BINDING_CPP ;
+
+        is_initialized = RTI_TRUE;
+        return (RTIXCdrSampleAccessInfo*) &Uuid_g_sampleAccessInfo;
+    }
+
+    RTIXCdrTypePlugin *Uuid_get_type_plugin_info()
+    {
+        static RTIXCdrTypePlugin Uuid_g_typePlugin = 
+        {
+            NULL, /* serialize */
+            NULL, /* serialize_key */
+            NULL, /* deserialize_sample */
+            NULL, /* deserialize_key_sample */
+            NULL, /* skip */
+            NULL, /* get_serialized_sample_size */
+            NULL, /* get_serialized_sample_max_size_ex */
+            NULL, /* get_serialized_key_max_size_ex */
+            NULL, /* get_serialized_sample_min_size */
+            NULL, /* serialized_sample_to_key */
+            (RTIXCdrTypePluginInitializeSampleFunction) 
+            DataTypes::Uuid_initialize_ex,
+            NULL,
+            (RTIXCdrTypePluginFinalizeSampleFunction)
+            DataTypes::Uuid_finalize_w_return,
+            NULL
+        };
+
+        return &Uuid_g_typePlugin;
+    }
+    #endif
 
     RTIBool Uuid_initialize(
         Uuid* sample) {
@@ -99,17 +214,36 @@ namespace DataTypes {
             return RTI_FALSE;
         }
 
-        if (allocParams->allocate_memory){
-            (*sample)= DDS_String_alloc ((36));
+        if (allocParams->allocate_memory) {
+            (*sample) = DDS_String_alloc((36));
+            RTICdrType_copyStringEx(
+                &(*sample),
+                "",
+                (36),
+                RTI_FALSE);
             if ((*sample) == NULL) {
                 return RTI_FALSE;
             }
-
         } else {
-            if ((*sample)!= NULL) { 
-                (*sample)[0] = '\0';
+            if ((*sample) != NULL) {
+                RTICdrType_copyStringEx(
+                    &(*sample),
+                    "",
+                    (36),
+                    RTI_FALSE);
+                if ((*sample) == NULL) {
+                    return RTI_FALSE;
+                }
             }
         }
+
+        return RTI_TRUE;
+    }
+
+    RTIBool Uuid_finalize_w_return(
+        Uuid* sample)
+    {
+        DataTypes::Uuid_finalize_ex(sample, RTI_TRUE);
 
         return RTI_TRUE;
     }
@@ -192,7 +326,7 @@ namespace DataTypes {
 
             return RTI_TRUE;
 
-        } catch (std::bad_alloc&) {
+        } catch (const std::bad_alloc&) {
             return RTI_FALSE;
         }
     }
@@ -231,6 +365,7 @@ namespace DataTypes {
     /* ========================================================================= */
     const char *TimeTYPENAME = "DataTypes::Time";
 
+    #ifndef NDDS_STANDALONE_TYPE
     DDS_TypeCode* Time_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
@@ -241,7 +376,7 @@ namespace DataTypes {
             {
                 (char *)"sec",/* Member name */
                 {
-                    0,/* Representation ID */          
+                    0,/* Representation ID */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -253,12 +388,13 @@ namespace DataTypes {
                 RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
                 DDS_PUBLIC_MEMBER,/* Member visibility */
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }, 
             {
                 (char *)"nanosec",/* Member name */
                 {
-                    1,/* Representation ID */          
+                    1,/* Representation ID */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -270,13 +406,14 @@ namespace DataTypes {
                 RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
                 DDS_PUBLIC_MEMBER,/* Member visibility */
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }
         };
 
         static DDS_TypeCode Time_g_tc =
         {{
-                DDS_TK_STRUCT,/* Kind */
+                DDS_TK_STRUCT, /* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
                 (char *)"DataTypes::Time", /* Name */
@@ -286,21 +423,152 @@ namespace DataTypes {
                 NULL, /* Ignored */
                 2, /* Number of members */
                 Time_g_tc_members, /* Members */
-                DDS_VM_NONE  /* Ignored */         
+                DDS_VM_NONE, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER,
+                DDS_BOOLEAN_TRUE, /* _isCopyable */
+                NULL, /* _sampleAccessInfo: assigned later */
+                NULL /* _typePlugin: assigned later */
             }}; /* Type code for Time*/
 
         if (is_initialized) {
             return &Time_g_tc;
         }
 
-        Time_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long;
+        Time_g_tc._data._annotations._allowedDataRepresentationMask = 5;
 
-        Time_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ulong;
+        Time_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long_w_new;
+        Time_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_ulong_w_new;
+
+        /* Initialize the values for member annotations. */
+        Time_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_LONG;
+        Time_g_tc_members[0]._annotations._defaultValue._u.long_value = 0;
+        Time_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_LONG;
+        Time_g_tc_members[0]._annotations._minValue._u.long_value = RTIXCdrLong_MIN;
+        Time_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_LONG;
+        Time_g_tc_members[0]._annotations._maxValue._u.long_value = RTIXCdrLong_MAX;
+
+        Time_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_ULONG;
+        Time_g_tc_members[1]._annotations._defaultValue._u.ulong_value = 0u;
+        Time_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_ULONG;
+        Time_g_tc_members[1]._annotations._minValue._u.ulong_value = RTIXCdrUnsignedLong_MIN;
+        Time_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_ULONG;
+        Time_g_tc_members[1]._annotations._maxValue._u.ulong_value = RTIXCdrUnsignedLong_MAX;
+
+        Time_g_tc._data._sampleAccessInfo =
+        Time_get_sample_access_info();
+        Time_g_tc._data._typePlugin =
+        Time_get_type_plugin_info();    
 
         is_initialized = RTI_TRUE;
 
         return &Time_g_tc;
     }
+
+    #define TSeq TimeSeq
+    #define T Time
+    #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
+    #undef T
+    #undef TSeq
+
+    RTIXCdrSampleAccessInfo *Time_get_sample_seq_access_info()
+    {
+        static RTIXCdrSampleAccessInfo Time_g_seqSampleAccessInfo = {
+            RTI_XCDR_TYPE_BINDING_CPP, \
+            {sizeof(TimeSeq),0,0,0}, \
+            RTI_XCDR_FALSE, \
+            DDS_Sequence_get_member_value_pointer, \
+            TimeSeq_set_member_element_count, \
+            NULL, \
+            NULL, \
+            NULL \
+        };
+
+        return &Time_g_seqSampleAccessInfo;
+    }
+
+    RTIXCdrSampleAccessInfo *Time_get_sample_access_info()
+    {
+        static RTIBool is_initialized = RTI_FALSE;
+
+        DataTypes::Time *sample;
+
+        static RTIXCdrMemberAccessInfo Time_g_memberAccessInfos[2] =
+        {RTIXCdrMemberAccessInfo_INITIALIZER};
+
+        static RTIXCdrSampleAccessInfo Time_g_sampleAccessInfo = 
+        RTIXCdrSampleAccessInfo_INITIALIZER;
+
+        if (is_initialized) {
+            return (RTIXCdrSampleAccessInfo*) &Time_g_sampleAccessInfo;
+        }
+
+        RTIXCdrHeap_allocateStruct(
+            &sample, 
+            DataTypes::Time);
+        if (sample == NULL) {
+            return NULL;
+        }
+
+        Time_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
+        (RTIXCdrUnsignedLong) ((char *)&sample->sec - (char *)sample);
+
+        Time_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
+        (RTIXCdrUnsignedLong) ((char *)&sample->nanosec - (char *)sample);
+
+        Time_g_sampleAccessInfo.memberAccessInfos = 
+        Time_g_memberAccessInfos;
+
+        {
+            size_t candidateTypeSize = sizeof(Time);
+
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                Time_g_sampleAccessInfo.typeSize[0] =
+                RTIXCdrUnsignedLong_MAX;
+            } else {
+                Time_g_sampleAccessInfo.typeSize[0] =
+                (RTIXCdrUnsignedLong) candidateTypeSize;
+            }
+        }
+
+        Time_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+        RTI_XCDR_TRUE;
+
+        Time_g_sampleAccessInfo.getMemberValuePointerFcn = 
+        Time_get_member_value_pointer;
+
+        Time_g_sampleAccessInfo.languageBinding = 
+        RTI_XCDR_TYPE_BINDING_CPP ;
+
+        RTIXCdrHeap_freeStruct(sample);
+        is_initialized = RTI_TRUE;
+        return (RTIXCdrSampleAccessInfo*) &Time_g_sampleAccessInfo;
+    }
+
+    RTIXCdrTypePlugin *Time_get_type_plugin_info()
+    {
+        static RTIXCdrTypePlugin Time_g_typePlugin = 
+        {
+            NULL, /* serialize */
+            NULL, /* serialize_key */
+            NULL, /* deserialize_sample */
+            NULL, /* deserialize_key_sample */
+            NULL, /* skip */
+            NULL, /* get_serialized_sample_size */
+            NULL, /* get_serialized_sample_max_size_ex */
+            NULL, /* get_serialized_key_max_size_ex */
+            NULL, /* get_serialized_sample_min_size */
+            NULL, /* serialized_sample_to_key */
+            (RTIXCdrTypePluginInitializeSampleFunction) 
+            DataTypes::Time_initialize_ex,
+            NULL,
+            (RTIXCdrTypePluginFinalizeSampleFunction)
+            DataTypes::Time_finalize_w_return,
+            NULL
+        };
+
+        return &Time_g_typePlugin;
+    }
+    #endif
 
     RTIBool Time_initialize(
         Time* sample) {
@@ -333,13 +601,17 @@ namespace DataTypes {
             return RTI_FALSE;
         }
 
-        if (!RTICdrType_initLong(&sample->sec)) {
-            return RTI_FALSE;
-        }
+        sample->sec = 0;
 
-        if (!RTICdrType_initUnsignedLong(&sample->nanosec)) {
-            return RTI_FALSE;
-        }
+        sample->nanosec = 0u;
+
+        return RTI_TRUE;
+    }
+
+    RTIBool Time_finalize_w_return(
+        Time* sample)
+    {
+        DataTypes::Time_finalize_ex(sample, RTI_TRUE);
 
         return RTI_TRUE;
     }
@@ -420,7 +692,7 @@ namespace DataTypes {
 
             return RTI_TRUE;
 
-        } catch (std::bad_alloc&) {
+        } catch (const std::bad_alloc&) {
             return RTI_FALSE;
         }
     }
@@ -459,6 +731,7 @@ namespace DataTypes {
     /* ========================================================================= */
     const char *PriorityTYPENAME = "DataTypes::Priority";
 
+    #ifndef NDDS_STANDALONE_TYPE
     DDS_TypeCode* Priority_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
@@ -469,7 +742,7 @@ namespace DataTypes {
             {
                 (char *)"Normal",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -482,12 +755,13 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }, 
             {
                 (char *)"High",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -500,12 +774,13 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }, 
             {
                 (char *)"Critical",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -518,13 +793,14 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }
         };
 
         static DDS_TypeCode Priority_g_tc =
         {{
-                DDS_TK_ENUM,/* Kind */
+                DDS_TK_ENUM, /* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
                 (char *)"DataTypes::Priority", /* Name */
@@ -534,17 +810,124 @@ namespace DataTypes {
                 NULL, /* Ignored */
                 3, /* Number of members */
                 Priority_g_tc_members, /* Members */
-                DDS_VM_NONE   /* Type Modifier */        
+                DDS_VM_NONE, /* Type Modifier */
+                RTICdrTypeCodeAnnotations_INITIALIZER,
+                DDS_BOOLEAN_TRUE, /* _isCopyable */
+                NULL, /* _sampleAccessInfo: assigned later */
+                NULL /* _typePlugin: assigned later */
             }}; /* Type code for Priority*/
 
         if (is_initialized) {
             return &Priority_g_tc;
         }
 
+        Priority_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+
+        /* Initialize the values for annotations. */
+        Priority_g_tc._data._annotations._defaultValue._d = RTI_XCDR_TK_ENUM;
+        Priority_g_tc._data._annotations._defaultValue._u.long_value = 0;
+
+        Priority_g_tc._data._sampleAccessInfo =
+        Priority_get_sample_access_info();
+        Priority_g_tc._data._typePlugin =
+        Priority_get_type_plugin_info();    
+
         is_initialized = RTI_TRUE;
 
         return &Priority_g_tc;
     }
+
+    #define TSeq PrioritySeq
+    #define T Priority
+    #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
+    #undef T
+    #undef TSeq
+
+    RTIXCdrSampleAccessInfo *Priority_get_sample_seq_access_info()
+    {
+        static RTIXCdrSampleAccessInfo Priority_g_seqSampleAccessInfo = {
+            RTI_XCDR_TYPE_BINDING_CPP, \
+            {sizeof(PrioritySeq),0,0,0}, \
+            RTI_XCDR_FALSE, \
+            DDS_Sequence_get_member_value_pointer, \
+            PrioritySeq_set_member_element_count, \
+            NULL, \
+            NULL, \
+            NULL \
+        };
+
+        return &Priority_g_seqSampleAccessInfo;
+    }
+
+    RTIXCdrSampleAccessInfo *Priority_get_sample_access_info()
+    {
+        static RTIBool is_initialized = RTI_FALSE;
+
+        static RTIXCdrMemberAccessInfo Priority_g_memberAccessInfos[1] =
+        {RTIXCdrMemberAccessInfo_INITIALIZER};
+
+        static RTIXCdrSampleAccessInfo Priority_g_sampleAccessInfo = 
+        RTIXCdrSampleAccessInfo_INITIALIZER;
+
+        if (is_initialized) {
+            return (RTIXCdrSampleAccessInfo*) &Priority_g_sampleAccessInfo;
+        }
+
+        Priority_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 0;
+
+        Priority_g_sampleAccessInfo.memberAccessInfos = 
+        Priority_g_memberAccessInfos;
+
+        {
+            size_t candidateTypeSize = sizeof(Priority);
+
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                Priority_g_sampleAccessInfo.typeSize[0] =
+                RTIXCdrUnsignedLong_MAX;
+            } else {
+                Priority_g_sampleAccessInfo.typeSize[0] =
+                (RTIXCdrUnsignedLong) candidateTypeSize;
+            }
+        }
+
+        Priority_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+        RTI_XCDR_TRUE;
+
+        Priority_g_sampleAccessInfo.getMemberValuePointerFcn = 
+        Priority_get_member_value_pointer;
+
+        Priority_g_sampleAccessInfo.languageBinding = 
+        RTI_XCDR_TYPE_BINDING_CPP ;
+
+        is_initialized = RTI_TRUE;
+        return (RTIXCdrSampleAccessInfo*) &Priority_g_sampleAccessInfo;
+    }
+
+    RTIXCdrTypePlugin *Priority_get_type_plugin_info()
+    {
+        static RTIXCdrTypePlugin Priority_g_typePlugin = 
+        {
+            NULL, /* serialize */
+            NULL, /* serialize_key */
+            NULL, /* deserialize_sample */
+            NULL, /* deserialize_key_sample */
+            NULL, /* skip */
+            NULL, /* get_serialized_sample_size */
+            NULL, /* get_serialized_sample_max_size_ex */
+            NULL, /* get_serialized_key_max_size_ex */
+            NULL, /* get_serialized_sample_min_size */
+            NULL, /* serialized_sample_to_key */
+            (RTIXCdrTypePluginInitializeSampleFunction) 
+            DataTypes::Priority_initialize_ex,
+            NULL,
+            (RTIXCdrTypePluginFinalizeSampleFunction)
+            DataTypes::Priority_finalize_w_return,
+            NULL
+        };
+
+        return &Priority_g_typePlugin;
+    }
+    #endif
 
     RTIBool Priority_initialize(
         Priority* sample) {
@@ -578,6 +961,14 @@ namespace DataTypes {
             return RTI_FALSE;
         }
         *sample = Normal;
+        return RTI_TRUE;
+    }
+
+    RTIBool Priority_finalize_w_return(
+        Priority* sample)
+    {
+        if (sample) {} /* To avoid warnings */
+
         return RTI_TRUE;
     }
 
@@ -650,7 +1041,7 @@ namespace DataTypes {
 
             return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
 
-        } catch (std::bad_alloc&) {
+        } catch (const std::bad_alloc&) {
             return RTI_FALSE;
         }
     }
@@ -689,6 +1080,7 @@ namespace DataTypes {
     /* ========================================================================= */
     const char *SurveyQualityTYPENAME = "DataTypes::SurveyQuality";
 
+    #ifndef NDDS_STANDALONE_TYPE
     DDS_TypeCode* SurveyQuality_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
@@ -699,7 +1091,7 @@ namespace DataTypes {
             {
                 (char *)"Definitive",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -712,12 +1104,13 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }, 
             {
                 (char *)"Inconclusive",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -730,13 +1123,14 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }
         };
 
         static DDS_TypeCode SurveyQuality_g_tc =
         {{
-                DDS_TK_ENUM,/* Kind */
+                DDS_TK_ENUM, /* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
                 (char *)"DataTypes::SurveyQuality", /* Name */
@@ -746,17 +1140,124 @@ namespace DataTypes {
                 NULL, /* Ignored */
                 2, /* Number of members */
                 SurveyQuality_g_tc_members, /* Members */
-                DDS_VM_NONE   /* Type Modifier */        
+                DDS_VM_NONE, /* Type Modifier */
+                RTICdrTypeCodeAnnotations_INITIALIZER,
+                DDS_BOOLEAN_TRUE, /* _isCopyable */
+                NULL, /* _sampleAccessInfo: assigned later */
+                NULL /* _typePlugin: assigned later */
             }}; /* Type code for SurveyQuality*/
 
         if (is_initialized) {
             return &SurveyQuality_g_tc;
         }
 
+        SurveyQuality_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+
+        /* Initialize the values for annotations. */
+        SurveyQuality_g_tc._data._annotations._defaultValue._d = RTI_XCDR_TK_ENUM;
+        SurveyQuality_g_tc._data._annotations._defaultValue._u.long_value = 0;
+
+        SurveyQuality_g_tc._data._sampleAccessInfo =
+        SurveyQuality_get_sample_access_info();
+        SurveyQuality_g_tc._data._typePlugin =
+        SurveyQuality_get_type_plugin_info();    
+
         is_initialized = RTI_TRUE;
 
         return &SurveyQuality_g_tc;
     }
+
+    #define TSeq SurveyQualitySeq
+    #define T SurveyQuality
+    #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
+    #undef T
+    #undef TSeq
+
+    RTIXCdrSampleAccessInfo *SurveyQuality_get_sample_seq_access_info()
+    {
+        static RTIXCdrSampleAccessInfo SurveyQuality_g_seqSampleAccessInfo = {
+            RTI_XCDR_TYPE_BINDING_CPP, \
+            {sizeof(SurveyQualitySeq),0,0,0}, \
+            RTI_XCDR_FALSE, \
+            DDS_Sequence_get_member_value_pointer, \
+            SurveyQualitySeq_set_member_element_count, \
+            NULL, \
+            NULL, \
+            NULL \
+        };
+
+        return &SurveyQuality_g_seqSampleAccessInfo;
+    }
+
+    RTIXCdrSampleAccessInfo *SurveyQuality_get_sample_access_info()
+    {
+        static RTIBool is_initialized = RTI_FALSE;
+
+        static RTIXCdrMemberAccessInfo SurveyQuality_g_memberAccessInfos[1] =
+        {RTIXCdrMemberAccessInfo_INITIALIZER};
+
+        static RTIXCdrSampleAccessInfo SurveyQuality_g_sampleAccessInfo = 
+        RTIXCdrSampleAccessInfo_INITIALIZER;
+
+        if (is_initialized) {
+            return (RTIXCdrSampleAccessInfo*) &SurveyQuality_g_sampleAccessInfo;
+        }
+
+        SurveyQuality_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 0;
+
+        SurveyQuality_g_sampleAccessInfo.memberAccessInfos = 
+        SurveyQuality_g_memberAccessInfos;
+
+        {
+            size_t candidateTypeSize = sizeof(SurveyQuality);
+
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                SurveyQuality_g_sampleAccessInfo.typeSize[0] =
+                RTIXCdrUnsignedLong_MAX;
+            } else {
+                SurveyQuality_g_sampleAccessInfo.typeSize[0] =
+                (RTIXCdrUnsignedLong) candidateTypeSize;
+            }
+        }
+
+        SurveyQuality_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+        RTI_XCDR_TRUE;
+
+        SurveyQuality_g_sampleAccessInfo.getMemberValuePointerFcn = 
+        SurveyQuality_get_member_value_pointer;
+
+        SurveyQuality_g_sampleAccessInfo.languageBinding = 
+        RTI_XCDR_TYPE_BINDING_CPP ;
+
+        is_initialized = RTI_TRUE;
+        return (RTIXCdrSampleAccessInfo*) &SurveyQuality_g_sampleAccessInfo;
+    }
+
+    RTIXCdrTypePlugin *SurveyQuality_get_type_plugin_info()
+    {
+        static RTIXCdrTypePlugin SurveyQuality_g_typePlugin = 
+        {
+            NULL, /* serialize */
+            NULL, /* serialize_key */
+            NULL, /* deserialize_sample */
+            NULL, /* deserialize_key_sample */
+            NULL, /* skip */
+            NULL, /* get_serialized_sample_size */
+            NULL, /* get_serialized_sample_max_size_ex */
+            NULL, /* get_serialized_key_max_size_ex */
+            NULL, /* get_serialized_sample_min_size */
+            NULL, /* serialized_sample_to_key */
+            (RTIXCdrTypePluginInitializeSampleFunction) 
+            DataTypes::SurveyQuality_initialize_ex,
+            NULL,
+            (RTIXCdrTypePluginFinalizeSampleFunction)
+            DataTypes::SurveyQuality_finalize_w_return,
+            NULL
+        };
+
+        return &SurveyQuality_g_typePlugin;
+    }
+    #endif
 
     RTIBool SurveyQuality_initialize(
         SurveyQuality* sample) {
@@ -790,6 +1291,14 @@ namespace DataTypes {
             return RTI_FALSE;
         }
         *sample = Definitive;
+        return RTI_TRUE;
+    }
+
+    RTIBool SurveyQuality_finalize_w_return(
+        SurveyQuality* sample)
+    {
+        if (sample) {} /* To avoid warnings */
+
         return RTI_TRUE;
     }
 
@@ -862,7 +1371,7 @@ namespace DataTypes {
 
             return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
 
-        } catch (std::bad_alloc&) {
+        } catch (const std::bad_alloc&) {
             return RTI_FALSE;
         }
     }
@@ -901,6 +1410,7 @@ namespace DataTypes {
     /* ========================================================================= */
     const char *StatusTYPENAME = "DataTypes::Status";
 
+    #ifndef NDDS_STANDALONE_TYPE
     DDS_TypeCode* Status_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
@@ -911,7 +1421,7 @@ namespace DataTypes {
             {
                 (char *)"Fault",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -924,12 +1434,13 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }, 
             {
                 (char *)"Good",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -942,13 +1453,14 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }
         };
 
         static DDS_TypeCode Status_g_tc =
         {{
-                DDS_TK_ENUM,/* Kind */
+                DDS_TK_ENUM, /* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
                 (char *)"DataTypes::Status", /* Name */
@@ -958,17 +1470,124 @@ namespace DataTypes {
                 NULL, /* Ignored */
                 2, /* Number of members */
                 Status_g_tc_members, /* Members */
-                DDS_VM_NONE   /* Type Modifier */        
+                DDS_VM_NONE, /* Type Modifier */
+                RTICdrTypeCodeAnnotations_INITIALIZER,
+                DDS_BOOLEAN_TRUE, /* _isCopyable */
+                NULL, /* _sampleAccessInfo: assigned later */
+                NULL /* _typePlugin: assigned later */
             }}; /* Type code for Status*/
 
         if (is_initialized) {
             return &Status_g_tc;
         }
 
+        Status_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+
+        /* Initialize the values for annotations. */
+        Status_g_tc._data._annotations._defaultValue._d = RTI_XCDR_TK_ENUM;
+        Status_g_tc._data._annotations._defaultValue._u.long_value = 0;
+
+        Status_g_tc._data._sampleAccessInfo =
+        Status_get_sample_access_info();
+        Status_g_tc._data._typePlugin =
+        Status_get_type_plugin_info();    
+
         is_initialized = RTI_TRUE;
 
         return &Status_g_tc;
     }
+
+    #define TSeq StatusSeq
+    #define T Status
+    #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
+    #undef T
+    #undef TSeq
+
+    RTIXCdrSampleAccessInfo *Status_get_sample_seq_access_info()
+    {
+        static RTIXCdrSampleAccessInfo Status_g_seqSampleAccessInfo = {
+            RTI_XCDR_TYPE_BINDING_CPP, \
+            {sizeof(StatusSeq),0,0,0}, \
+            RTI_XCDR_FALSE, \
+            DDS_Sequence_get_member_value_pointer, \
+            StatusSeq_set_member_element_count, \
+            NULL, \
+            NULL, \
+            NULL \
+        };
+
+        return &Status_g_seqSampleAccessInfo;
+    }
+
+    RTIXCdrSampleAccessInfo *Status_get_sample_access_info()
+    {
+        static RTIBool is_initialized = RTI_FALSE;
+
+        static RTIXCdrMemberAccessInfo Status_g_memberAccessInfos[1] =
+        {RTIXCdrMemberAccessInfo_INITIALIZER};
+
+        static RTIXCdrSampleAccessInfo Status_g_sampleAccessInfo = 
+        RTIXCdrSampleAccessInfo_INITIALIZER;
+
+        if (is_initialized) {
+            return (RTIXCdrSampleAccessInfo*) &Status_g_sampleAccessInfo;
+        }
+
+        Status_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 0;
+
+        Status_g_sampleAccessInfo.memberAccessInfos = 
+        Status_g_memberAccessInfos;
+
+        {
+            size_t candidateTypeSize = sizeof(Status);
+
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                Status_g_sampleAccessInfo.typeSize[0] =
+                RTIXCdrUnsignedLong_MAX;
+            } else {
+                Status_g_sampleAccessInfo.typeSize[0] =
+                (RTIXCdrUnsignedLong) candidateTypeSize;
+            }
+        }
+
+        Status_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+        RTI_XCDR_TRUE;
+
+        Status_g_sampleAccessInfo.getMemberValuePointerFcn = 
+        Status_get_member_value_pointer;
+
+        Status_g_sampleAccessInfo.languageBinding = 
+        RTI_XCDR_TYPE_BINDING_CPP ;
+
+        is_initialized = RTI_TRUE;
+        return (RTIXCdrSampleAccessInfo*) &Status_g_sampleAccessInfo;
+    }
+
+    RTIXCdrTypePlugin *Status_get_type_plugin_info()
+    {
+        static RTIXCdrTypePlugin Status_g_typePlugin = 
+        {
+            NULL, /* serialize */
+            NULL, /* serialize_key */
+            NULL, /* deserialize_sample */
+            NULL, /* deserialize_key_sample */
+            NULL, /* skip */
+            NULL, /* get_serialized_sample_size */
+            NULL, /* get_serialized_sample_max_size_ex */
+            NULL, /* get_serialized_key_max_size_ex */
+            NULL, /* get_serialized_sample_min_size */
+            NULL, /* serialized_sample_to_key */
+            (RTIXCdrTypePluginInitializeSampleFunction) 
+            DataTypes::Status_initialize_ex,
+            NULL,
+            (RTIXCdrTypePluginFinalizeSampleFunction)
+            DataTypes::Status_finalize_w_return,
+            NULL
+        };
+
+        return &Status_g_typePlugin;
+    }
+    #endif
 
     RTIBool Status_initialize(
         Status* sample) {
@@ -1002,6 +1621,14 @@ namespace DataTypes {
             return RTI_FALSE;
         }
         *sample = Fault;
+        return RTI_TRUE;
+    }
+
+    RTIBool Status_finalize_w_return(
+        Status* sample)
+    {
+        if (sample) {} /* To avoid warnings */
+
         return RTI_TRUE;
     }
 
@@ -1074,7 +1701,7 @@ namespace DataTypes {
 
             return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
 
-        } catch (std::bad_alloc&) {
+        } catch (const std::bad_alloc&) {
             return RTI_FALSE;
         }
     }
@@ -1113,6 +1740,7 @@ namespace DataTypes {
     /* ========================================================================= */
     const char *PipeTypeTYPENAME = "DataTypes::PipeType";
 
+    #ifndef NDDS_STANDALONE_TYPE
     DDS_TypeCode* PipeType_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
@@ -1123,7 +1751,7 @@ namespace DataTypes {
             {
                 (char *)"DrillCollar",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -1136,12 +1764,13 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }, 
             {
                 (char *)"HeavyWeight",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -1154,12 +1783,13 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }, 
             {
                 (char *)"DrillPipe",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -1172,13 +1802,14 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }
         };
 
         static DDS_TypeCode PipeType_g_tc =
         {{
-                DDS_TK_ENUM,/* Kind */
+                DDS_TK_ENUM, /* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
                 (char *)"DataTypes::PipeType", /* Name */
@@ -1188,17 +1819,124 @@ namespace DataTypes {
                 NULL, /* Ignored */
                 3, /* Number of members */
                 PipeType_g_tc_members, /* Members */
-                DDS_VM_NONE   /* Type Modifier */        
+                DDS_VM_NONE, /* Type Modifier */
+                RTICdrTypeCodeAnnotations_INITIALIZER,
+                DDS_BOOLEAN_TRUE, /* _isCopyable */
+                NULL, /* _sampleAccessInfo: assigned later */
+                NULL /* _typePlugin: assigned later */
             }}; /* Type code for PipeType*/
 
         if (is_initialized) {
             return &PipeType_g_tc;
         }
 
+        PipeType_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+
+        /* Initialize the values for annotations. */
+        PipeType_g_tc._data._annotations._defaultValue._d = RTI_XCDR_TK_ENUM;
+        PipeType_g_tc._data._annotations._defaultValue._u.long_value = 0;
+
+        PipeType_g_tc._data._sampleAccessInfo =
+        PipeType_get_sample_access_info();
+        PipeType_g_tc._data._typePlugin =
+        PipeType_get_type_plugin_info();    
+
         is_initialized = RTI_TRUE;
 
         return &PipeType_g_tc;
     }
+
+    #define TSeq PipeTypeSeq
+    #define T PipeType
+    #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
+    #undef T
+    #undef TSeq
+
+    RTIXCdrSampleAccessInfo *PipeType_get_sample_seq_access_info()
+    {
+        static RTIXCdrSampleAccessInfo PipeType_g_seqSampleAccessInfo = {
+            RTI_XCDR_TYPE_BINDING_CPP, \
+            {sizeof(PipeTypeSeq),0,0,0}, \
+            RTI_XCDR_FALSE, \
+            DDS_Sequence_get_member_value_pointer, \
+            PipeTypeSeq_set_member_element_count, \
+            NULL, \
+            NULL, \
+            NULL \
+        };
+
+        return &PipeType_g_seqSampleAccessInfo;
+    }
+
+    RTIXCdrSampleAccessInfo *PipeType_get_sample_access_info()
+    {
+        static RTIBool is_initialized = RTI_FALSE;
+
+        static RTIXCdrMemberAccessInfo PipeType_g_memberAccessInfos[1] =
+        {RTIXCdrMemberAccessInfo_INITIALIZER};
+
+        static RTIXCdrSampleAccessInfo PipeType_g_sampleAccessInfo = 
+        RTIXCdrSampleAccessInfo_INITIALIZER;
+
+        if (is_initialized) {
+            return (RTIXCdrSampleAccessInfo*) &PipeType_g_sampleAccessInfo;
+        }
+
+        PipeType_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 0;
+
+        PipeType_g_sampleAccessInfo.memberAccessInfos = 
+        PipeType_g_memberAccessInfos;
+
+        {
+            size_t candidateTypeSize = sizeof(PipeType);
+
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                PipeType_g_sampleAccessInfo.typeSize[0] =
+                RTIXCdrUnsignedLong_MAX;
+            } else {
+                PipeType_g_sampleAccessInfo.typeSize[0] =
+                (RTIXCdrUnsignedLong) candidateTypeSize;
+            }
+        }
+
+        PipeType_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+        RTI_XCDR_TRUE;
+
+        PipeType_g_sampleAccessInfo.getMemberValuePointerFcn = 
+        PipeType_get_member_value_pointer;
+
+        PipeType_g_sampleAccessInfo.languageBinding = 
+        RTI_XCDR_TYPE_BINDING_CPP ;
+
+        is_initialized = RTI_TRUE;
+        return (RTIXCdrSampleAccessInfo*) &PipeType_g_sampleAccessInfo;
+    }
+
+    RTIXCdrTypePlugin *PipeType_get_type_plugin_info()
+    {
+        static RTIXCdrTypePlugin PipeType_g_typePlugin = 
+        {
+            NULL, /* serialize */
+            NULL, /* serialize_key */
+            NULL, /* deserialize_sample */
+            NULL, /* deserialize_key_sample */
+            NULL, /* skip */
+            NULL, /* get_serialized_sample_size */
+            NULL, /* get_serialized_sample_max_size_ex */
+            NULL, /* get_serialized_key_max_size_ex */
+            NULL, /* get_serialized_sample_min_size */
+            NULL, /* serialized_sample_to_key */
+            (RTIXCdrTypePluginInitializeSampleFunction) 
+            DataTypes::PipeType_initialize_ex,
+            NULL,
+            (RTIXCdrTypePluginFinalizeSampleFunction)
+            DataTypes::PipeType_finalize_w_return,
+            NULL
+        };
+
+        return &PipeType_g_typePlugin;
+    }
+    #endif
 
     RTIBool PipeType_initialize(
         PipeType* sample) {
@@ -1232,6 +1970,14 @@ namespace DataTypes {
             return RTI_FALSE;
         }
         *sample = DrillCollar;
+        return RTI_TRUE;
+    }
+
+    RTIBool PipeType_finalize_w_return(
+        PipeType* sample)
+    {
+        if (sample) {} /* To avoid warnings */
+
         return RTI_TRUE;
     }
 
@@ -1304,7 +2050,7 @@ namespace DataTypes {
 
             return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
 
-        } catch (std::bad_alloc&) {
+        } catch (const std::bad_alloc&) {
             return RTI_FALSE;
         }
     }
@@ -1343,6 +2089,7 @@ namespace DataTypes {
     /* ========================================================================= */
     const char *ObjectiveTYPENAME = "DataTypes::Objective";
 
+    #ifndef NDDS_STANDALONE_TYPE
     DDS_TypeCode* Objective_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
@@ -1353,7 +2100,7 @@ namespace DataTypes {
             {
                 (char *)"None",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -1366,12 +2113,13 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }, 
             {
                 (char *)"Casing",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -1384,12 +2132,13 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }, 
             {
                 (char *)"CleaningHole",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -1402,12 +2151,13 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }, 
             {
                 (char *)"Drilling",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -1420,12 +2170,13 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }, 
             {
                 (char *)"AutoReaming",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -1438,12 +2189,13 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }, 
             {
                 (char *)"Tripping",/* Member name */
                 {
-                    0, /* Ignored */          
+                    0, /* Ignored */
                     DDS_BOOLEAN_FALSE,/* Is a pointer? */
                     -1, /* Bitfield bits */
                     NULL/* Member type code is assigned later */
@@ -1456,13 +2208,14 @@ namespace DataTypes {
                 DDS_PRIVATE_MEMBER,/* Member visibility */ 
 
                 1,
-                NULL/* Ignored */
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }
         };
 
         static DDS_TypeCode Objective_g_tc =
         {{
-                DDS_TK_ENUM,/* Kind */
+                DDS_TK_ENUM, /* Kind */
                 DDS_BOOLEAN_FALSE, /* Ignored */
                 -1, /*Ignored*/
                 (char *)"DataTypes::Objective", /* Name */
@@ -1472,17 +2225,124 @@ namespace DataTypes {
                 NULL, /* Ignored */
                 6, /* Number of members */
                 Objective_g_tc_members, /* Members */
-                DDS_VM_NONE   /* Type Modifier */        
+                DDS_VM_NONE, /* Type Modifier */
+                RTICdrTypeCodeAnnotations_INITIALIZER,
+                DDS_BOOLEAN_TRUE, /* _isCopyable */
+                NULL, /* _sampleAccessInfo: assigned later */
+                NULL /* _typePlugin: assigned later */
             }}; /* Type code for Objective*/
 
         if (is_initialized) {
             return &Objective_g_tc;
         }
 
+        Objective_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+
+        /* Initialize the values for annotations. */
+        Objective_g_tc._data._annotations._defaultValue._d = RTI_XCDR_TK_ENUM;
+        Objective_g_tc._data._annotations._defaultValue._u.long_value = 0;
+
+        Objective_g_tc._data._sampleAccessInfo =
+        Objective_get_sample_access_info();
+        Objective_g_tc._data._typePlugin =
+        Objective_get_type_plugin_info();    
+
         is_initialized = RTI_TRUE;
 
         return &Objective_g_tc;
     }
+
+    #define TSeq ObjectiveSeq
+    #define T Objective
+    #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
+    #undef T
+    #undef TSeq
+
+    RTIXCdrSampleAccessInfo *Objective_get_sample_seq_access_info()
+    {
+        static RTIXCdrSampleAccessInfo Objective_g_seqSampleAccessInfo = {
+            RTI_XCDR_TYPE_BINDING_CPP, \
+            {sizeof(ObjectiveSeq),0,0,0}, \
+            RTI_XCDR_FALSE, \
+            DDS_Sequence_get_member_value_pointer, \
+            ObjectiveSeq_set_member_element_count, \
+            NULL, \
+            NULL, \
+            NULL \
+        };
+
+        return &Objective_g_seqSampleAccessInfo;
+    }
+
+    RTIXCdrSampleAccessInfo *Objective_get_sample_access_info()
+    {
+        static RTIBool is_initialized = RTI_FALSE;
+
+        static RTIXCdrMemberAccessInfo Objective_g_memberAccessInfos[1] =
+        {RTIXCdrMemberAccessInfo_INITIALIZER};
+
+        static RTIXCdrSampleAccessInfo Objective_g_sampleAccessInfo = 
+        RTIXCdrSampleAccessInfo_INITIALIZER;
+
+        if (is_initialized) {
+            return (RTIXCdrSampleAccessInfo*) &Objective_g_sampleAccessInfo;
+        }
+
+        Objective_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 0;
+
+        Objective_g_sampleAccessInfo.memberAccessInfos = 
+        Objective_g_memberAccessInfos;
+
+        {
+            size_t candidateTypeSize = sizeof(Objective);
+
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                Objective_g_sampleAccessInfo.typeSize[0] =
+                RTIXCdrUnsignedLong_MAX;
+            } else {
+                Objective_g_sampleAccessInfo.typeSize[0] =
+                (RTIXCdrUnsignedLong) candidateTypeSize;
+            }
+        }
+
+        Objective_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+        RTI_XCDR_TRUE;
+
+        Objective_g_sampleAccessInfo.getMemberValuePointerFcn = 
+        Objective_get_member_value_pointer;
+
+        Objective_g_sampleAccessInfo.languageBinding = 
+        RTI_XCDR_TYPE_BINDING_CPP ;
+
+        is_initialized = RTI_TRUE;
+        return (RTIXCdrSampleAccessInfo*) &Objective_g_sampleAccessInfo;
+    }
+
+    RTIXCdrTypePlugin *Objective_get_type_plugin_info()
+    {
+        static RTIXCdrTypePlugin Objective_g_typePlugin = 
+        {
+            NULL, /* serialize */
+            NULL, /* serialize_key */
+            NULL, /* deserialize_sample */
+            NULL, /* deserialize_key_sample */
+            NULL, /* skip */
+            NULL, /* get_serialized_sample_size */
+            NULL, /* get_serialized_sample_max_size_ex */
+            NULL, /* get_serialized_key_max_size_ex */
+            NULL, /* get_serialized_sample_min_size */
+            NULL, /* serialized_sample_to_key */
+            (RTIXCdrTypePluginInitializeSampleFunction) 
+            DataTypes::Objective_initialize_ex,
+            NULL,
+            (RTIXCdrTypePluginFinalizeSampleFunction)
+            DataTypes::Objective_finalize_w_return,
+            NULL
+        };
+
+        return &Objective_g_typePlugin;
+    }
+    #endif
 
     RTIBool Objective_initialize(
         Objective* sample) {
@@ -1516,6 +2376,14 @@ namespace DataTypes {
             return RTI_FALSE;
         }
         *sample = None;
+        return RTI_TRUE;
+    }
+
+    RTIBool Objective_finalize_w_return(
+        Objective* sample)
+    {
+        if (sample) {} /* To avoid warnings */
+
         return RTI_TRUE;
     }
 
@@ -1588,7 +2456,7 @@ namespace DataTypes {
 
             return RTICdrType_copyEnum((RTICdrEnum *)dst, (RTICdrEnum *)src);
 
-        } catch (std::bad_alloc&) {
+        } catch (const std::bad_alloc&) {
             return RTI_FALSE;
         }
     }
@@ -1623,5 +2491,17 @@ namespace DataTypes {
 
     #undef TSeq
     #undef T
+
 } /* namespace DataTypes  */
 
+#ifndef NDDS_STANDALONE_TYPE
+namespace rti { 
+    namespace xcdr {
+        const RTIXCdrTypeCode * type_code<DataTypes::Time>::get() 
+        {
+            return (const RTIXCdrTypeCode *) DataTypes::Time_get_typecode();
+        }
+
+    } 
+}
+#endif

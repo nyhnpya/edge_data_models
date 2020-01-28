@@ -9,7 +9,7 @@ module sys
         struct Resources
         {
             DataTypes::Time     timestamp;
-            string              processName; //@key
+            string<36>          processName; //@key
             long                pid;
             double              upTime;
             double              cpuPercent;

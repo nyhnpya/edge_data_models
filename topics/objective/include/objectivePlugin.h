@@ -22,7 +22,7 @@ struct RTICdrStream;
 
 #include "base_data_typesPlugin.h"
 
-#if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+#if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, start exporting symbols.
 */
 #undef NDDSUSERDllExport
@@ -49,8 +49,9 @@ namespace process {
         typedef  class ObjectiveState ObjectiveStateKeyHolder;
 
         #define ObjectiveStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+
         #define ObjectiveStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define ObjectiveStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer 
+        #define ObjectiveStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
         #define ObjectiveStatePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
         #define ObjectiveStatePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
@@ -153,30 +154,18 @@ namespace process {
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern RTIBool 
-        ObjectiveStatePlugin_serialize(
-            PRESTypePluginEndpointData endpoint_data,
-            const ObjectiveState *sample,
-            struct RTICdrStream *stream, 
-            RTIBool serialize_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            RTIBool serialize_sample, 
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool 
-        ObjectiveStatePlugin_deserialize_sample(
-            PRESTypePluginEndpointData endpoint_data,
-            ObjectiveState *sample, 
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_sample, 
-            void *endpoint_plugin_qos);
-
         NDDSUSERDllExport extern RTIBool
         ObjectiveStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
             const ObjectiveState *sample); 
+
+        NDDSUSERDllExport extern RTIBool
+        ObjectiveStatePlugin_serialize_to_cdr_buffer_ex(
+            char *buffer,
+            unsigned int *length,
+            const ObjectiveState *sample,
+            DDS_DataRepresentationId_t representation);
 
         NDDSUSERDllExport extern RTIBool 
         ObjectiveStatePlugin_deserialize(
@@ -193,28 +182,14 @@ namespace process {
             ObjectiveState *sample,
             const char * buffer,
             unsigned int length);    
+        #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport extern DDS_ReturnCode_t
         ObjectiveStatePlugin_data_to_string(
             const ObjectiveState *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
-
-        NDDSUSERDllExport extern RTIBool
-        ObjectiveStatePlugin_skip(
-            PRESTypePluginEndpointData endpoint_data,
-            struct RTICdrStream *stream, 
-            RTIBool skip_encapsulation,  
-            RTIBool skip_sample, 
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern unsigned int 
-        ObjectiveStatePlugin_get_serialized_sample_max_size_ex(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool * overflow,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);    
+        #endif
 
         NDDSUSERDllExport extern unsigned int 
         ObjectiveStatePlugin_get_serialized_sample_max_size(
@@ -223,34 +198,11 @@ namespace process {
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
-        NDDSUSERDllExport extern unsigned int 
-        ObjectiveStatePlugin_get_serialized_sample_min_size(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);
-
-        NDDSUSERDllExport extern unsigned int
-        ObjectiveStatePlugin_get_serialized_sample_size(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment,
-            const ObjectiveState * sample);
-
         /* --------------------------------------------------------------------------------------
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
         ObjectiveStatePlugin_get_key_kind(void);
-
-        NDDSUSERDllExport extern unsigned int 
-        ObjectiveStatePlugin_get_serialized_key_max_size_ex(
-            PRESTypePluginEndpointData endpoint_data,
-            RTIBool * overflow,
-            RTIBool include_encapsulation,
-            RTIEncapsulationId encapsulation_id,
-            unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
         ObjectiveStatePlugin_get_serialized_key_max_size(
@@ -259,24 +211,11 @@ namespace process {
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
-        NDDSUSERDllExport extern RTIBool 
-        ObjectiveStatePlugin_serialize_key(
+        NDDSUSERDllExport extern unsigned int 
+        ObjectiveStatePlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
-            const ObjectiveState *sample,
-            struct RTICdrStream *stream,
-            RTIBool serialize_encapsulation,
             RTIEncapsulationId encapsulation_id,
-            RTIBool serialize_key,
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool 
-        ObjectiveStatePlugin_deserialize_key_sample(
-            PRESTypePluginEndpointData endpoint_data,
-            ObjectiveState * sample,
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_key,
-            void *endpoint_plugin_qos);
+            unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
         ObjectiveStatePlugin_deserialize_key(
@@ -286,15 +225,6 @@ namespace process {
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
             RTIBool deserialize_key,
-            void *endpoint_plugin_qos);
-
-        NDDSUSERDllExport extern RTIBool
-        ObjectiveStatePlugin_serialized_sample_to_key(
-            PRESTypePluginEndpointData endpoint_data,
-            ObjectiveState *sample,
-            struct RTICdrStream *stream, 
-            RTIBool deserialize_encapsulation,  
-            RTIBool deserialize_key, 
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool 
@@ -313,7 +243,8 @@ namespace process {
         ObjectiveStatePlugin_instance_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             DDS_KeyHash_t *keyhash,
-            const ObjectiveState *instance);
+            const ObjectiveState *instance,
+            RTIEncapsulationId encapsulationId);
 
         NDDSUSERDllExport extern RTIBool 
         ObjectiveStatePlugin_serialized_sample_to_keyhash(
@@ -322,6 +253,9 @@ namespace process {
             DDS_KeyHash_t *keyhash,
             RTIBool deserialize_encapsulation,
             void *endpoint_plugin_qos); 
+
+        NDDSUSERDllExport extern
+        struct RTIXCdrInterpreterPrograms *ObjectiveStatePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -333,7 +267,7 @@ namespace process {
     } /* namespace plan  */
 } /* namespace process  */
 
-#if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+#if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, stop exporting symbols.
 */
 #undef NDDSUSERDllExport

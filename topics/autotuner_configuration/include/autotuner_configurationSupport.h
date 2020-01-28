@@ -18,7 +18,7 @@ or consult the RTI Connext manual.
 #include "ndds/ndds_cpp.h"
 #endif
 
-#if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+#if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 
 class __declspec(dllimport) DDSTypeSupport;
 class __declspec(dllimport) DDSDataWriter;
@@ -39,7 +39,7 @@ namespace Shell {
             implementing generics in C and C++.
             */
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, start exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -51,10 +51,14 @@ namespace Shell {
                 ModelStateRequestTypeSupport, 
                 ModelStateRequest);
 
-            DDS_DATAWRITER_CPP(ModelStateRequestDataWriter, ModelStateRequest);
-            DDS_DATAREADER_CPP(ModelStateRequestDataReader, ModelStateRequestSeq, ModelStateRequest);
+            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(ModelStateRequestDataWriter, ModelStateRequest);
+            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
+            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(ModelStateRequestDataReader, ModelStateRequestSeq, ModelStateRequest);
+            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, stop exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -70,7 +74,7 @@ namespace Shell {
             implementing generics in C and C++.
             */
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, start exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -82,10 +86,14 @@ namespace Shell {
                 ModelStateStateTypeSupport, 
                 ModelStateState);
 
-            DDS_DATAWRITER_CPP(ModelStateStateDataWriter, ModelStateState);
-            DDS_DATAREADER_CPP(ModelStateStateDataReader, ModelStateStateSeq, ModelStateState);
+            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(ModelStateStateDataWriter, ModelStateState);
+            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
+            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(ModelStateStateDataReader, ModelStateStateSeq, ModelStateState);
+            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, stop exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -101,7 +109,7 @@ namespace Shell {
             implementing generics in C and C++.
             */
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, start exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -113,10 +121,14 @@ namespace Shell {
                 DiffpTuningRequestTypeSupport, 
                 DiffpTuningRequest);
 
-            DDS_DATAWRITER_CPP(DiffpTuningRequestDataWriter, DiffpTuningRequest);
-            DDS_DATAREADER_CPP(DiffpTuningRequestDataReader, DiffpTuningRequestSeq, DiffpTuningRequest);
+            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(DiffpTuningRequestDataWriter, DiffpTuningRequest);
+            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
+            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(DiffpTuningRequestDataReader, DiffpTuningRequestSeq, DiffpTuningRequest);
+            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, stop exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -132,7 +144,7 @@ namespace Shell {
             implementing generics in C and C++.
             */
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, start exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -144,10 +156,14 @@ namespace Shell {
                 DiffpTuningStateTypeSupport, 
                 DiffpTuningState);
 
-            DDS_DATAWRITER_CPP(DiffpTuningStateDataWriter, DiffpTuningState);
-            DDS_DATAREADER_CPP(DiffpTuningStateDataReader, DiffpTuningStateSeq, DiffpTuningState);
+            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(DiffpTuningStateDataWriter, DiffpTuningState);
+            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
+            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(DiffpTuningStateDataReader, DiffpTuningStateSeq, DiffpTuningState);
+            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, stop exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -163,7 +179,7 @@ namespace Shell {
             implementing generics in C and C++.
             */
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, start exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -175,10 +191,14 @@ namespace Shell {
                 WobTuningRequestTypeSupport, 
                 WobTuningRequest);
 
-            DDS_DATAWRITER_CPP(WobTuningRequestDataWriter, WobTuningRequest);
-            DDS_DATAREADER_CPP(WobTuningRequestDataReader, WobTuningRequestSeq, WobTuningRequest);
+            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(WobTuningRequestDataWriter, WobTuningRequest);
+            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
+            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(WobTuningRequestDataReader, WobTuningRequestSeq, WobTuningRequest);
+            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, stop exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -194,7 +214,7 @@ namespace Shell {
             implementing generics in C and C++.
             */
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, start exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -206,10 +226,14 @@ namespace Shell {
                 WobTuningStateTypeSupport, 
                 WobTuningState);
 
-            DDS_DATAWRITER_CPP(WobTuningStateDataWriter, WobTuningState);
-            DDS_DATAREADER_CPP(WobTuningStateDataReader, WobTuningStateSeq, WobTuningState);
+            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(WobTuningStateDataWriter, WobTuningState);
+            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
+            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(WobTuningStateDataReader, WobTuningStateSeq, WobTuningState);
+            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, stop exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -225,7 +249,7 @@ namespace Shell {
             implementing generics in C and C++.
             */
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, start exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -237,10 +261,14 @@ namespace Shell {
                 TorqueTuningRequestTypeSupport, 
                 TorqueTuningRequest);
 
-            DDS_DATAWRITER_CPP(TorqueTuningRequestDataWriter, TorqueTuningRequest);
-            DDS_DATAREADER_CPP(TorqueTuningRequestDataReader, TorqueTuningRequestSeq, TorqueTuningRequest);
+            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(TorqueTuningRequestDataWriter, TorqueTuningRequest);
+            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
+            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(TorqueTuningRequestDataReader, TorqueTuningRequestSeq, TorqueTuningRequest);
+            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, stop exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -256,7 +284,7 @@ namespace Shell {
             implementing generics in C and C++.
             */
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, start exporting symbols.
             */
             #undef NDDSUSERDllExport
@@ -268,10 +296,14 @@ namespace Shell {
                 TorqueTuningStateTypeSupport, 
                 TorqueTuningState);
 
-            DDS_DATAWRITER_CPP(TorqueTuningStateDataWriter, TorqueTuningState);
-            DDS_DATAREADER_CPP(TorqueTuningStateDataReader, TorqueTuningStateSeq, TorqueTuningState);
+            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(TorqueTuningStateDataWriter, TorqueTuningState);
+            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
+            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(TorqueTuningStateDataReader, TorqueTuningStateSeq, TorqueTuningState);
+            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, stop exporting symbols.
             */
             #undef NDDSUSERDllExport

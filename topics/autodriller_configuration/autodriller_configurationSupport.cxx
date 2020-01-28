@@ -49,7 +49,9 @@ namespace nec {
         #define TDataWriter HmiRequestDataWriter
         #define TData       nec::control::HmiRequest
 
+        #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
 
         #undef TDataWriter
         #undef TData
@@ -74,7 +76,9 @@ namespace nec {
         #define TDataSeq    HmiRequestSeq
         #define TData       nec::control::HmiRequest
 
+        #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
         #undef TDataReader
         #undef TDataSeq
@@ -104,7 +108,9 @@ namespace nec {
         #define TDataReader  HmiRequestDataReader
         #define TDataWriter  HmiRequestDataWriter
         #define TGENERATE_SER_CODE
+        #ifndef NDDS_STANDALONE_TYPE
         #define TGENERATE_TYPECODE
+        #endif
 
         #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
@@ -112,7 +118,9 @@ namespace nec {
         #undef TData
         #undef TDataReader
         #undef TDataWriter
+        #ifndef NDDS_STANDALONE_TYPE
         #undef TGENERATE_TYPECODE
+        #endif
         #undef TGENERATE_SER_CODE
         #undef TTYPENAME
         #undef TPlugin_new
@@ -149,7 +157,9 @@ namespace nec {
         #define TDataWriter HmiStateDataWriter
         #define TData       nec::control::HmiState
 
+        #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
+        #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
 
         #undef TDataWriter
         #undef TData
@@ -174,7 +184,9 @@ namespace nec {
         #define TDataSeq    HmiStateSeq
         #define TData       nec::control::HmiState
 
+        #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
+        #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
         #undef TDataReader
         #undef TDataSeq
@@ -204,7 +216,9 @@ namespace nec {
         #define TDataReader  HmiStateDataReader
         #define TDataWriter  HmiStateDataWriter
         #define TGENERATE_SER_CODE
+        #ifndef NDDS_STANDALONE_TYPE
         #define TGENERATE_TYPECODE
+        #endif
 
         #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
 
@@ -212,7 +226,9 @@ namespace nec {
         #undef TData
         #undef TDataReader
         #undef TDataWriter
+        #ifndef NDDS_STANDALONE_TYPE
         #undef TGENERATE_TYPECODE
+        #endif
         #undef TGENERATE_SER_CODE
         #undef TTYPENAME
         #undef TPlugin_new

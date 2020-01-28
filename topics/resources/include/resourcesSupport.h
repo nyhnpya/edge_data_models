@@ -18,7 +18,7 @@ or consult the RTI Connext manual.
 #include "ndds/ndds_cpp.h"
 #endif
 
-#if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+#if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 
 class __declspec(dllimport) DDSTypeSupport;
 class __declspec(dllimport) DDSDataWriter;
@@ -38,7 +38,7 @@ namespace sys {
         implementing generics in C and C++.
         */
 
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, start exporting symbols.
         */
         #undef NDDSUSERDllExport
@@ -50,10 +50,14 @@ namespace sys {
             ResourcesTypeSupport, 
             Resources);
 
-        DDS_DATAWRITER_CPP(ResourcesDataWriter, Resources);
-        DDS_DATAREADER_CPP(ResourcesDataReader, ResourcesSeq, Resources);
+        #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(ResourcesDataWriter, Resources);
+        #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
+        #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
+        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(ResourcesDataReader, ResourcesSeq, Resources);
+        #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
-        #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
+        #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
         */
         #undef NDDSUSERDllExport
