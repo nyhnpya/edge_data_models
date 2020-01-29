@@ -103,6 +103,11 @@ void CObjectiveStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
 
     m_sampleInfo = sampleInfo;
 
+    if (m_pOnDataDisposed != nullptr)
+    {
+        m_pOnDataDisposed(sampleInfo);
+    }
+
     if (sampleInfo.valid_data == false)
     {        
         nullUuid.Initialize();
@@ -110,16 +115,16 @@ void CObjectiveStateSubscriber::DataDisposed(const DDS::SampleInfo &sampleInfo)
         m_data.id = DDS_String_dup(nullUuid.c_str());
         m_data.objective = DataTypes::Objective::None;
     }
-
-    if (m_pOnDataDisposed != nullptr)
-    {
-        m_pOnDataDisposed(sampleInfo);
-    }
 }
 
 void CObjectiveStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedStatus &status)
 {
     CDdsUuid nullUuid;
+
+    if (m_pOnLivelinessChanged != nullptr)
+    {
+        m_pOnLivelinessChanged(status);
+    }
 
     if (status.alive_count == 0)
     {
@@ -127,10 +132,5 @@ void CObjectiveStateSubscriber::LivelinessChanged(const DDS::LivelinessChangedSt
         DDS_String_free(m_data.id);
         m_data.id = DDS_String_dup(nullUuid.c_str());
         m_data.objective = DataTypes::Objective::None;
-    }
-
-    if (m_pOnLivelinessChanged != nullptr)
-    {
-        m_pOnLivelinessChanged(status);
     }
 }
