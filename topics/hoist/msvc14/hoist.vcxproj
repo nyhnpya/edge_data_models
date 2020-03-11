@@ -1,95 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="debug_vs2013|Win32">
-      <Configuration>debug_vs2013</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="debug_vs2013|x64">
-      <Configuration>debug_vs2013</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="release_v2013|Win32">
-      <Configuration>release_v2013</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="release_v2013|x64">
-      <Configuration>release_v2013</Configuration>
-      <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug|x64">
-      <Configuration>Debug</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|x64">
-      <Configuration>Release</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8097B4B3-2607-43D8-A2E4-372A6761F605}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>hoist_objective_state</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <RootNamespace>hoist</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug_vs2013|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release_v2013|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug_vs2013|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release_v2013|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -99,9 +36,6 @@
   <ImportGroup Label="Shared">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug_vs2013|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -127,10 +61,6 @@
     <OutDir>$(ProjectDir)$(Configuration)\</OutDir>
     <TargetName>$(ProjectName)D</TargetName>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug_vs2013|Win32'">
-    <OutDir>$(ProjectDir)$(Configuration)\</OutDir>
-    <TargetName>$(ProjectName)D</TargetName>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)$(Configuration)\</OutDir>
   </PropertyGroup>
@@ -145,26 +75,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_WIN32;_DEBUG;_LIB;RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;$(SolutionDir)\edge_data_models\topics\objective_state\hoist\include</AdditionalIncludeDirectories>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-    </Link>
-    <Lib>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(NDDSHOME)\lib\$(NDDSARCH);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Lib>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug_vs2013|Win32'">
-    <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;$(SolutionDir)\edge_data_models\topics\objective_state\hoist\include</AdditionalIncludeDirectories>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;$(SolutionDir)\edge_data_models\topics\hoist\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -182,7 +93,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;C:\Users\mark\git\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\objective_state\hoist\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include;C:\Users\mark\git\dds_base\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;C:\Users\mark\git\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\hoist\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include;C:\Users\mark\git\dds_base\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -200,7 +111,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;C:\Users\mark\git\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\objective_state\hoist\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include;C:\Users\mark\git\dds_base\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;C:\Users\mark\git\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\hoist\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include;C:\Users\mark\git\dds_base\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -219,7 +130,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_WIN32;NDEBUG;_LIB;RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;$(SolutionDir)\edge_data_models\topics\objective_state\hoist\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;$(SolutionDir)\edge_data_models\topics\hoist\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -241,7 +152,7 @@
       </FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;RTI_WIN32;NDDS_DLL_VARIABLE;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;$(SolutionDir)\edge_data_models\topics\objective_state\hoist\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(NDDSHOME)\include;$(NDDSHOME)\include\ndds;$(SolutionDir)\edge_third_party\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include;$(SolutionDir)\edge_data_models\topics\hoist\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -292,23 +203,23 @@
     <ClCompile Include="..\hoist.cxx" />
     <ClCompile Include="..\hoistPlugin.cxx" />
     <ClCompile Include="..\hoistSupport.cxx" />
+    <ClCompile Include="..\hoist_objective_publisher.cxx" />
+    <ClCompile Include="..\hoist_objective_subscriber.cxx" />
+    <ClCompile Include="..\hoist_request_publisher.cxx" />
+    <ClCompile Include="..\hoist_request_subscriber.cxx" />
+    <ClCompile Include="..\hoist_state_publisher.cxx" />
+    <ClCompile Include="..\hoist_state_subscriber.cxx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\hoist.h" />
+    <ClInclude Include="..\include\hoistPlugin.h" />
+    <ClInclude Include="..\include\hoistSupport.h" />
     <ClInclude Include="..\include\hoist_objective_publisher.h" />
     <ClInclude Include="..\include\hoist_objective_subscriber.h" />
     <ClInclude Include="..\include\hoist_request_publisher.h" />
     <ClInclude Include="..\include\hoist_request_subscriber.h" />
     <ClInclude Include="..\include\hoist_state_publisher.h" />
     <ClInclude Include="..\include\hoist_state_subscriber.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\include\hoist.h" />
-    <ClInclude Include="..\include\hoistPlugin.h" />
-    <ClInclude Include="..\include\hoistSupport.h" />
-    <ClCompile Include="..\hoist_objective_publisher.cpp" />
-    <ClCompile Include="..\hoist_objective_subscriber.cpp" />
-    <ClCompile Include="..\hoist_request_publisher.cpp" />
-    <ClCompile Include="..\hoist_request_subscriber.cpp" />
-    <ClCompile Include="..\hoist_state_publisher.cpp" />
-    <ClCompile Include="..\hoist_state_subscriber.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
