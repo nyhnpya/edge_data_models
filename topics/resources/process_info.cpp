@@ -9,8 +9,8 @@
   #include <fcntl.h>
   #include <time.h>
   #include <sys/time.h>
-  #include <bits/stdc++.h> 
-  #include <sys/time.h> 
+  #include <bits/stdc++.h>
+  #include <sys/time.h>
   #include "process_info.h"
 #elif _WIN32
   #define _CRT_SECURE_NO_WARNINGS
@@ -249,14 +249,14 @@ void CProcessInfo::GetInfo(ProcessStats *pProcessStats)
 
     pProcessStats->pid = pi.pid;
     strcpy(pProcessStats->processName, pi.processName);
-    pProcessStats->upTime = (double)pi.upTime; 
+    pProcessStats->upTime = (double)pi.upTime;
     pProcessStats->cpuUsagePercent = ((((runTimeDiff / (double)(sysconf(_SC_CLK_TCK))) / timeDiff.count())) * 100.0);
     pProcessStats->vmPeak = pi.vmPeak;
     pProcessStats->vmSize = pi.vmSize;
     pProcessStats->vmMaxSwap = pi.vmMaxSwap;
     pProcessStats->vmSwap = pi.vmSwap;
     pProcessStats->threads = pi.threads;
-    strcpy(pProcessStats->uname, pi.uname); 
+    strcpy(pProcessStats->uname, pi.uname);
 }
 
 #elif _WIN32
@@ -323,6 +323,34 @@ CProcessInfo::~CProcessInfo(void)
 {
 }
 
+std::string get_os()
+{
+    OSVERSIONINFO os;
+    ZeroMemory(&os, sizeof(OSVERSIONINFO));
+    os.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
+    GetVersionEx(&os);
+    std::string uname = "Windows ";
+    if (os.dwMajorVersion == 10)
+        uname += "10";
+    else if (os.dwMajorVersion == 6){
+        if (os.dwMinorVersion == 3)
+            uname += "8.1";
+        else if (os.dwMinorVersion == 2)
+            uname += "8";
+        else if (os.dwMinorVersion == 1)
+            uname += "7";
+        else
+            uname += "Vista";
+    }
+    else if (os.dwMajorVersion == 5){
+        if (os.dwMinorVersion == 2)
+            uname += "XP SP2";
+        else if (os.dwMinorVersion == 1)
+            uname += "XP";
+    }
+    return uname;
+}
+
 void CProcessInfo::GetInfo(ProcessStats *pProcessStats)
 {
     TCHAR szFileName[MAX_PATH + 1];
@@ -342,6 +370,8 @@ void CProcessInfo::GetInfo(ProcessStats *pProcessStats)
         }
     }
 
+    strncpy(pProcessStats->uname, get_os().c_str(), 255);
+    
     HANDLE process = GetCurrentProcess();
     FILETIME CreationTime;
     FILETIME ExitTime;
