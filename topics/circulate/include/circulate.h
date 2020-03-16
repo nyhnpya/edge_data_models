@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef circulate_1746885957_h
-#define circulate_1746885957_h
+#ifndef circulate_1746885981_h
+#define circulate_1746885981_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h

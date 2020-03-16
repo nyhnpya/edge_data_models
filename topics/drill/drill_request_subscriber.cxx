@@ -17,7 +17,7 @@ bool CDrillRequestSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::DRILL_REQUEST,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "DrillReqeuestProfile");
 }
 
 bool CDrillRequestSubscriber::ValidData()

@@ -13,7 +13,7 @@ bool CRotateObjectivePublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::ROTATE_OBJECTIVE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "RotateObjectiveProfile");
 }
 
 bool CRotateObjectivePublisher::Initialize()

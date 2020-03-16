@@ -5,7 +5,7 @@ module nec
     module process
     {
         // QoSLibrary: EdgeBaseLibrary
-        // QoSProfile: EdgeBaseProfile
+        // QoSProfile: HoistRequestProfile
 
         //@copy-c-declaration static const char HOIST_REQUEST[] = "HoistRequest";
 
@@ -36,7 +36,7 @@ module nec
         };
 
         // QoSLibrary: EdgeBaseLibrary
-        // QoSProfile: EdgeBaseProfile
+        // QoSProfile: HoistObjectiveProfile
 
         //@copy-c-declaration static const char HOIST_OBJECTIVE[] = "HoistObjective";
 
@@ -63,7 +63,7 @@ module nec
         };
 
         // QoSLibrary: EdgeBaseLibrary
-        // QoSProfile: EdgeBaseProfile
+        // QoSProfile: HoistStateProfile
 
         //@copy-c-declaration static const char HOIST_STATE[] = "HoistState";
 

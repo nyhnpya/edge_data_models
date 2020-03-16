@@ -13,7 +13,7 @@ bool CHoistStatePublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::HOIST_STATE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "HoistStateProfile");
 }
 
 bool CHoistStatePublisher::Initialize()

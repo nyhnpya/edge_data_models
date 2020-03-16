@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef circulateSupport_1746885957_h
-#define circulateSupport_1746885957_h
+#ifndef circulateSupport_1746885981_h
+#define circulateSupport_1746885981_h
 
 /* Uses */
 #include "circulate.h"
@@ -136,5 +136,5 @@ namespace nec {
     } /* namespace process  */
 } /* namespace nec  */
 
-#endif  /* circulateSupport_1746885957_h */
+#endif  /* circulateSupport_1746885981_h */
 

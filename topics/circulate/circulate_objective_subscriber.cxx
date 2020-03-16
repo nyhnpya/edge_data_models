@@ -17,7 +17,7 @@ bool CCirculateObjectiveSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::CIRCULATE_OBJECTIVE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "CirculateObjectiveProfile");
 }
 
 bool CCirculateObjectiveSubscriber::ValidData()

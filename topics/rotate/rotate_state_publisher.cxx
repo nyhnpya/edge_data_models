@@ -13,7 +13,7 @@ bool CRotateStatePublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::ROTATE_STATE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "RotateStateProfile");
 }
 
 bool CRotateStatePublisher::Initialize()

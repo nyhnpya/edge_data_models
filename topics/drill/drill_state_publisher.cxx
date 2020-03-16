@@ -13,7 +13,7 @@ bool CDrillStatePublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::DRILL_STATE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "DrillStateProfile");
 }
 
 bool CDrillStatePublisher::Initialize()

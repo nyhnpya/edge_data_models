@@ -17,7 +17,7 @@ bool CHoistObjectiveSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::HOIST_OBJECTIVE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "HoistObjectiveProfile");
 }
 
 bool CHoistObjectiveSubscriber::ValidData()

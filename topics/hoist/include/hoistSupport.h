@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef hoistSupport_1013697568_h
-#define hoistSupport_1013697568_h
+#ifndef hoistSupport_1013697580_h
+#define hoistSupport_1013697580_h
 
 /* Uses */
 #include "hoist.h"
@@ -136,5 +136,5 @@ namespace nec {
     } /* namespace process  */
 } /* namespace nec  */
 
-#endif  /* hoistSupport_1013697568_h */
+#endif  /* hoistSupport_1013697580_h */
 

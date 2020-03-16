@@ -13,7 +13,7 @@ bool CCirculateRequestPublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::CIRCULATE_REQUEST,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "CirculateRequestProfile");
 }
 
 bool CCirculateRequestPublisher::Initialize()

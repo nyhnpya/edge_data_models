@@ -4,7 +4,7 @@ module nec
     module process
     {
         // QoSLibrary: EdgeBaseLibrary
-        // QoSProfile: EdgeBaseProfile
+        // QoSProfile: DrillRequestProfile
 
         //@copy-c-declaration static const char DRILL_REQUEST[] = "DrillRequest";
 
@@ -64,7 +64,7 @@ module nec
         };
 
         // QoSLibrary: EdgeBaseLibrary
-        // QoSProfile: EdgeBaseProfile
+        // QoSProfile: DrillObjectiveProfile
 
         //@copy-c-declaration static const char DRILL_OBJECTIVE[] = "DrillObjective";
 
@@ -103,7 +103,7 @@ module nec
         };
 
         // QoSLibrary: EdgeBaseLibrary
-        // QoSProfile: EdgeBaseProfile
+        // QoSProfile: DrillStateProfile
 
         //@copy-c-declaration static const char DRILL_STATE[] = "DrillState";
 

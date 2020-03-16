@@ -17,7 +17,7 @@ bool CRotateRequestSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::ROTATE_REQUEST,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "RotateRequestProfile");
 }
 
 bool CRotateRequestSubscriber::ValidData()

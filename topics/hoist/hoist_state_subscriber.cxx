@@ -17,7 +17,7 @@ bool CHoistStateSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::HOIST_STATE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "HoistStateProfile");
 }
 
 bool CHoistStateSubscriber::ValidData()

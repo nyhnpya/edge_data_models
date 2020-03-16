@@ -17,7 +17,7 @@ bool CDrillObjectiveSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::DRILL_OBJECTIVE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "DrillObjectiveProfile");
 }
 
 bool CDrillObjectiveSubscriber::ValidData()

@@ -17,7 +17,7 @@ bool CRotateObjectiveSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::ROTATE_OBJECTIVE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "RotateObjectiveProfile");
 }
 
 bool CRotateObjectiveSubscriber::ValidData()

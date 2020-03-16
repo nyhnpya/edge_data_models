@@ -17,7 +17,7 @@ bool CDrillStateSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::DRILL_STATE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "DrillStateProfile");
 }
 
 bool CDrillStateSubscriber::ValidData()

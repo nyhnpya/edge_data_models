@@ -13,7 +13,7 @@ bool CHoistObjectivePublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::HOIST_OBJECTIVE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "HoistObjectiveProfile");
 }
 
 bool CHoistObjectivePublisher::Initialize()

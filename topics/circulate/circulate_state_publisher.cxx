@@ -13,7 +13,7 @@ bool CCirculateStatePublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::CIRCULATE_STATE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "CirculateStateProfile");
 }
 
 bool CCirculateStatePublisher::Initialize()

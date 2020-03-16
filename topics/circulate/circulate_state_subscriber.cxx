@@ -17,7 +17,7 @@ bool CCirculateStateSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::CIRCULATE_STATE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "CirculateStateProfile");
 }
 
 bool CCirculateStateSubscriber::ValidData()
