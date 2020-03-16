@@ -16,6 +16,7 @@
   #define _CRT_SECURE_NO_WARNINGS
   #include <windows.h>
   #include <chrono>
+  #include <string>
   #include <psapi.h>
   #include <tlhelp32.h>
   #include <stdio.h>
