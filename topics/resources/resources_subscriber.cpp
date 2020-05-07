@@ -95,7 +95,7 @@ bool CResourcesSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                                sys::process::RESOURCES,
                                "EdgeBaseLibrary",
-                               "EdgeBaseProfile");
+                               "ResourcesProfile");
 }
 
 void CResourcesSubscriber::OnDataAvailable(OnDataAvailableEvent event)

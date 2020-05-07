@@ -1,8 +1,8 @@
 ###############################################################################
 # IDL Genration Makefile
 ###############################################################################
-include ../../Makefiles/Makefile.platform
-include $(TOP_DIR)/Makefiles/Makefile.rti
+include $(MAKEFILEHOME)/Makefile.platform
+include $(MAKEFILEHOME)/Makefile.rti
 
 TMPOUTDIR = generated_code
 
@@ -101,36 +101,6 @@ auto_ream.cpy:
 	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/auto_ream/include
 	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/auto_ream/include
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/auto_ream
-	-@rm -rf $(TMPOUTDIR)
-
-roptimizer_state.cpy: 
-	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
-	/usr/bin/python ./pub_sub_gen.py hmi/$@ $(TMPOUTDIR) 
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/roptimizer_state
-	mkdir -p $(TOPIC_HOME)/roptimizer_state/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/roptimizer_state/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/roptimizer_state
-	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/roptimizer_state
-	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/roptimizer_state
-	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/roptimizer_state/include
-	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/roptimizer_state/include
-	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/roptimizer_state
-	-@rm -rf $(TMPOUTDIR)
-
-roptimizer_configuration.cpy: 
-	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
-	/usr/bin/python ./pub_sub_gen.py hmi/$@ $(TMPOUTDIR) 
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/roptimizer_configuration
-	mkdir -p $(TOPIC_HOME)/roptimizer_configuration/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/roptimizer_configuration/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/roptimizer_configuration
-	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/roptimizer_configuration
-	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/roptimizer_configuration
-	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/roptimizer_configuration/include
-	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/roptimizer_configuration/include
-	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/roptimizer_configuration
 	-@rm -rf $(TMPOUTDIR)
 
 circulate.cpy:

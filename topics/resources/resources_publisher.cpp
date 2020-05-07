@@ -222,5 +222,5 @@ bool CResourcesPublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                               sys::process::RESOURCES,
                               "EdgeBaseLibrary",
-                              "EdgeBaseProfile");
+                              "ResourcesProfile");
 }
