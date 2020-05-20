@@ -260,14 +260,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;C:\Users\mark\git\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\objective\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include;C:\Users\mark\git\dds_base\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\objective\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
     </Link>
     <Lib>
       <AdditionalDependencies>rticonnextmsgcppd.lib;nddscppd.lib;nddscd.lib;nddscored.lib;rtidlcppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;C:\Users\mark\git\logger\logger\Debug;C:\Users\mark\git\log4cplus\msvc14\Win32\bin.Debug;C:\Users\mark\git\dds_base\dds_base\Debug;C:\Users\mark\git\edge_data_models\Edge_Data_Models\Debug;C:\Users\mark\git\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;$(SolutionDir)\logger\logger\Debug;$(SolutionDir)\log4cplus\msvc14\Win32\bin.Debug;$(SolutionDir)\dds_base\dds_base\Debug;$(SolutionDir)\edge_data_models\Edge_Data_Models\Debug;$(SolutionDir)\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugVS2015|x64'">
@@ -278,14 +278,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;C:\Users\mark\git\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\objective\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include;C:\Users\mark\git\dds_base\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\objective\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
     </Link>
     <Lib>
       <AdditionalDependencies>rticonnextmsgcppd.lib;nddscppd.lib;nddscd.lib;nddscored.lib;rtidlcppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;C:\Users\mark\git\logger\logger\Debug;C:\Users\mark\git\log4cplus\msvc14\Win32\bin.Debug;C:\Users\mark\git\dds_base\dds_base\Debug;C:\Users\mark\git\edge_data_models\Edge_Data_Models\Debug;C:\Users\mark\git\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;$(SolutionDir)\logger\logger\Debug;$(SolutionDir)\log4cplus\msvc14\Win32\bin.Debug;$(SolutionDir)\dds_base\dds_base\Debug;$(SolutionDir)\edge_data_models\Edge_Data_Models\Debug;$(SolutionDir)\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugVS2013|x64'">
@@ -296,14 +296,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;C:\Users\mark\git\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\objective\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include;C:\Users\mark\git\dds_base\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;$(SolutionDir)\edge_data_models\topics\base_data_types\include;$(SolutionDir)\edge_data_models\topics\objective\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include;$(SolutionDir)\dds_base\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
     </Link>
     <Lib>
       <AdditionalDependencies>rticonnextmsgcppd.lib;nddscppd.lib;nddscd.lib;nddscored.lib;rtidlcppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;C:\Users\mark\git\logger\logger\Debug;C:\Users\mark\git\log4cplus\msvc14\Win32\bin.Debug;C:\Users\mark\git\dds_base\dds_base\Debug;C:\Users\mark\git\edge_data_models\Edge_Data_Models\Debug;C:\Users\mark\git\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;$(SolutionDir)\logger\logger\Debug;$(SolutionDir)\log4cplus\msvc14\Win32\bin.Debug;$(SolutionDir)\dds_base\dds_base\Debug;$(SolutionDir)\edge_data_models\Edge_Data_Models\Debug;$(SolutionDir)\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseVS2017|Win32'">

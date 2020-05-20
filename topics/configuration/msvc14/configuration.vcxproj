@@ -90,7 +90,7 @@
     </Link>
     <Lib>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;C:\Users\mark\git\logger\logger\Debug;C:\Users\mark\git\log4cplus\msvc14\Win32\bin.Debug;C:\Users\mark\git\dds_base\dds_base\Debug;C:\Users\mark\git\edge_data_models\Edge_Data_Models\Debug;C:\Users\mark\git\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;$(SolutionDir)\logger\logger\Debug;$(SolutionDir)\log4cplus\msvc14\Win32\bin.Debug;$(SolutionDir)\dds_base\dds_base\Debug;$(SolutionDir)\edge_data_models\Edge_Data_Models\Debug;$(SolutionDir)\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -101,14 +101,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);RTI_WIN32;NDDS_DLL_VARIABLE</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;..\..\..\base_data_types\include;..\include;C:\Users\mark\git\log4cplus\include;C:\Users\mark\git\logger\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\rti_connext_dds-5.2.3\include\ndds;C:\Program Files\rti_connext_dds-5.2.3\include;..\..\..\base_data_types\include;..\include;$(SolutionDir)\log4cplus\include;$(SolutionDir)\logger\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
     </Link>
     <Lib>
       <AdditionalDependencies>rticonnextmsgcppd.lib;nddscppd.lib;nddscd.lib;nddscored.lib;rtidlcppd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;C:\Users\mark\git\logger\logger\Debug;C:\Users\mark\git\log4cplus\msvc14\Win32\bin.Debug;C:\Users\mark\git\dds_base\dds_base\Debug;C:\Users\mark\git\edge_data_models\Edge_Data_Models\Debug;C:\Users\mark\git\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;$(SolutionDir)\logger\logger\Debug;$(SolutionDir)\log4cplus\msvc14\Win32\bin.Debug;$(SolutionDir)\dds_base\dds_base\Debug;$(SolutionDir)\edge_data_models\Edge_Data_Models\Debug;$(SolutionDir)\edge_libraries\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -129,7 +129,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;C:\Users\mark\git\logger\logger\Release;C:\Users\mark\git\log4cplus\msvc14\Win32\bin.Release;C:\Users\mark\git\dds_base\dds_base\Release;C:\Users\mark\git\edge_data_models\Edge_Data_Models\Release;C:\Users\mark\git\edge_libraries\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\rti_connext_dds-5.2.3\lib\i86Win32VS2013;$(SolutionDir)\logger\logger\Release;$(SolutionDir)\log4cplus\msvc14\Win32\bin.Release;$(SolutionDir)\dds_base\dds_base\Release;$(SolutionDir)\edge_data_models\Edge_Data_Models\Release;$(SolutionDir)\edge_libraries\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
