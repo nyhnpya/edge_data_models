@@ -13,7 +13,7 @@ bool CDrillRequestPublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::DRILL_REQUEST,
                        "EdgeBaseLibrary",
-                       "DrillReqeuestProfile");
+                       "DrillRequestProfile");
 }
 
 bool CDrillRequestPublisher::Initialize()

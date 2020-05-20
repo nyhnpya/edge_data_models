@@ -75,28 +75,31 @@ void register_signal_handler()
 
 void get_objective(const DDS::SampleInfo &sampleInfo)
 {
-    DataTypes::Objective objective = pSubscriber->GetObjective();
-
-    switch (objective)
+    if (sampleInfo.valid_data == DDS_BOOLEAN_TRUE)
     {
-        case DataTypes::Drilling:
-            LOG_INFO("Rig state Drilling");
-            break;
-        case DataTypes::Casing:
-            LOG_INFO("Rig state Casing");
-            break;
-        case DataTypes::Tripping:
-            LOG_INFO("Rig state Tripping");
-            break;
-        case DataTypes::CleaningHole:
-            LOG_INFO("Rig state CleaningHole");
-            break;
-        case DataTypes::AutoReaming:
-            LOG_INFO("Rig state AutoReaming");
-            break;
-        case DataTypes::None:
-            LOG_INFO("Rig state None");
-            break;
+        DataTypes::Objective objective = pSubscriber->GetObjective();
+
+        switch (objective)
+        {
+            case DataTypes::Drilling:
+                LOG_INFO("Rig state Drilling");
+                break;
+            case DataTypes::Casing:
+                LOG_INFO("Rig state Casing");
+                break;
+            case DataTypes::Tripping:
+                LOG_INFO("Rig state Tripping");
+                break;
+            case DataTypes::CleaningHole:
+                LOG_INFO("Rig state CleaningHole");
+                break;
+            case DataTypes::AutoReaming:
+                LOG_INFO("Rig state AutoReaming");
+                break;
+            case DataTypes::None:
+                LOG_INFO("Rig state None");
+                break;
+        }
     }
 }
 
