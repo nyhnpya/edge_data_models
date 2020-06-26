@@ -21,9 +21,6 @@ TARG_INCLUDES += -I /usr/local/include/logger
 TARG_INCLUDES += -isystem/usr/local/include/edge_third_party
 TARG_INCLUDES += -I /usr/local/include/base_data_types
 TARG_INCLUDES += -I /usr/local/include/objective
-TARG_INCLUDES += -I /usr/local/include/configuration
-TARG_INCLUDES += -I /usr/local/include/configuration_item
-TARG_INCLUDES += -I /usr/local/include/plant_client
 
 # Sources
 TARG_SOURCES = objective_publisher.cpp
@@ -31,12 +28,9 @@ TARG_SOURCES = objective_publisher.cpp
 # Libraries
 TARG_LIBS += -L$(NDDSHOME)/lib/$(NDDSARCH)
 TARG_LIBS += -L /usr/local/lib 
-TARG_LIBS += -lplant_client
-TARG_LIBS += -lconfiguration_item -lconfiguration
 TARG_LIBS += -lobjective -lbase_data_types -ldds_base
 TARG_LIBS += -llogger -llog4cplus -luuid 
 TARG_LIBS += -ledge_third_party
-TARG_LIBS += -lopcuaclient -lopcuaprotocol -lopcuacore
 TARG_LIBS += -ljsoncpp
 TARG_LIBS += -lsnap7
 TARG_LIBS += $(NDDSHOME)/lib/$(NDDSARCH)/librtidlcppzd.a $(NDDSHOME)/lib/$(NDDSARCH)/librtidlczd.a 

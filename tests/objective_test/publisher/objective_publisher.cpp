@@ -7,15 +7,14 @@
 #include <string.h>
 #include <thread>
 #include "cmdparser.h"
-#include "edge_data_store.h"
-#include "plant_interface.h"
-
-EdgeTypeBoolPtr gioAutoDrillerEnabled;
+#include "objective_state_publisher.h"
 
 bool terminate = false;
 std::mutex terminateMutex;
 std::condition_variable terminateCondition;
 std::thread threadId;
+DataTypes::Uuid          m_objectiveId;
+CObjectiveStatePublisher m_objectivePublisher;
 
 #ifdef _LINUX
 void SignalHandler(int32_t signal)
@@ -89,11 +88,10 @@ void top_level_menu()
         std::cout << std::endl;
         std::cout << "Objective State Publisher" << std::endl;
         std::cout << "------------------------" << std::endl;
-        std::cout << "1. Enable Autodrill" << std::endl;
-        std::cout << "2. Disable Autodrill" << std::endl;
-        std::cout << "3. Enable clean hole objective" << std::endl;
-        std::cout << "4. Enable casing objective" << std::endl;
-        std::cout << "5. Enable none objective" << std::endl;
+        std::cout << "1. Initiate Drill Objective" << std::endl;
+        std::cout << "2. Cancel Drill Objective" << std::endl;
+        std::cout << "3. Initiate Slide Objective" << std::endl;
+        std::cout << "4. Cancel Slide Objective" << std::endl;
         std::cout << "q. exit" << std::endl;
         std::cout << "option: ";
         std::cin >> choice;
@@ -106,20 +104,22 @@ void top_level_menu()
                terminate = true;
                 break;
             case '1':
-                gioAutoDrillerEnabled->SetValue(true);
-                gioAutoDrillerEnabled->GetProtocol()->WriteData();
+                m_objectivePublisher.DeleteInstance();
+                m_objectivePublisher.CreateInstance();
+                m_objectivePublisher.SetObjective(DataTypes::Drilling);
+                m_objectivePublisher.PublishSample();
                 break;
             case '2':
-                gioAutoDrillerEnabled->SetValue(false);
-                gioAutoDrillerEnabled->GetProtocol()->WriteData();
+                m_objectivePublisher.DeleteInstance();
                 break;
             case '3':
+                m_objectivePublisher.DeleteInstance();
+                m_objectivePublisher.CreateInstance();
+                m_objectivePublisher.SetObjective(DataTypes::Sliding);
+                m_objectivePublisher.PublishSample();
                 break;
             case '4':
-                break;
-            case '5':
-                break;
-            case '6':
+                m_objectivePublisher.DeleteInstance();
                 break;
         }
     } while (terminate == false);
@@ -132,33 +132,41 @@ int32_t main(int32_t argc, char **argv)
 
 	register_signal_handler();
 
-    parser.set_required<std::string>("f", "configFile", "objective.json", "External configuration file.");
+    parser.set_optional<int32_t>("d", "domain", 100, "Default configruation domain.");
+    parser.set_optional<std::string>("q", "qosFile", "USER_QOS_PROFILES.xml", "External QoS file.");
+    parser.set_optional<std::string>("l", "qosLibrary", "EdgeBaseLibrary", "QoS library.");
+    parser.set_optional<std::string>("p", "qosProfile", "EdgeBaseProfile", "QoS profile.");
     parser.run_and_exit_if_error();
 
-    std::string configFile = parser.get<std::string>("f");
+    int32_t     domain = parser.get<int32_t>("d");
+    std::string qosFile = parser.get<std::string>("q");
+    std::string qosLibrary = parser.get<std::string>("l");
+    std::string qosProfile = parser.get<std::string>("p");
 
-    if (CPlantInterface::Instance()->Initialize(configFile) == true)
+    if (CDomainParticipant::Instance()->SetQosFile(qosFile,
+                                                   qosLibrary,
+                                                   qosProfile) == true)
     {
-        gioAutoDrillerEnabled = CEdgeDataStore::Instance()->GetTypeBool("AutoDriller.enabled");
-
-        CPlantInterface::Instance()->Start();
-
-        threadId = std::thread(top_level_menu);
-
-        std::unique_lock<std::mutex> lk(terminateMutex);
-        terminateCondition.wait(lk);
-        LOG_INFO("Signal received: terminating process");
-
-        if (threadId.joinable())
+        if (CDomainParticipant::Instance()->Create(domain) != nullptr)
         {
-            threadId.join();
-        }
+            if (m_objectivePublisher.Create(domain) == true)
+            {
+                threadId = std::thread(top_level_menu);
 
-        CPlantInterface::Instance()->Stop();
-    }
-    else
-    {
-        LOG_FATAL("Failed to initialize plant interface");
-        return 1;
+                std::unique_lock<std::mutex> lk(terminateMutex);
+                terminateCondition.wait(lk);
+                LOG_INFO("Signal received: terminating process");
+
+                if (threadId.joinable())
+                {
+                    threadId.join();
+                }
+            }
+            else
+            {
+                LOG_FATAL("Failed to create DDS instance");
+                return 1;
+            }
+        }
     }
 }
