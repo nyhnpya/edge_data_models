@@ -3,6 +3,18 @@
     <!-- Qos Library -->
     <qos_library name="EdgeBaseLibrary">
 
+      <qos_profile name="PlcProfile" >
+            <datareader_qos>
+                <reliability>
+		    <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+                </reliability>
+
+	        <durability>
+		    <kind>VOLATILE_DURABILITY_QOS</kind>
+	        </durability>
+            </datareader_qos>
+        </qos_profile>
+
         <qos_profile name="EdgeBaseProfile"  is_default_qos="true" >
             <participant_qos>
                 <resource_limits>
@@ -14,7 +26,6 @@
                 <reliability>
 		    <kind>RELIABLE_RELIABILITY_QOS</kind>
                 </reliability>
-
 	        <durability>
 		    <kind>DDS_TRANSIENT_LOCAL_DURABILITY_QOS</kind>
 	        </durability>
@@ -25,12 +36,6 @@
 		    <nanosec>0</nanosec>
 		  </lease_duration>
 		</liveliness>
-		<time_based_filter>
-		  <minimum_separation>
-		    <sec>1</sec>
-		    <nanosec>0</nanosec>
-		  </minimum_separation>
-		</time_based_filter>
             </datareader_qos>
             <datawriter_qos>
                 <reliability>
@@ -52,6 +57,73 @@
 		</liveliness>
             </datawriter_qos>
         </qos_profile>
+
+        <qos_profile name="RequestProfile" base_name="EdgeBaseProfile">
+        </qos_profile>
+
+        <qos_profile name="ObjectiveProfile" base_name="EdgeBaseProfile">
+            <datareader_qos>
+		<ownership>
+		  <kind>EXCLUSIVE_OWNERSHIP_QOS</kind>
+		</ownership>
+            </datareader_qos>
+            <datawriter_qos>
+		<history>
+		    <depth>600</depth>
+		</history>
+		<ownership>
+		  <kind>EXCLUSIVE_OWNERSHIP_QOS</kind>
+		</ownership>
+            </datawriter_qos>
+        </qos_profile>
+
+        <qos_profile name="StateProfile" base_name="EdgeBaseProfile">
+            <datareader_qos>
+		<ownership>
+		  <kind>EXCLUSIVE_OWNERSHIP_QOS</kind>
+		</ownership>
+            </datareader_qos>
+            <datawriter_qos>
+		<history>
+		    <depth>600</depth>
+		</history>
+		<ownership>
+		  <kind>EXCLUSIVE_OWNERSHIP_QOS</kind>
+		</ownership>
+            </datawriter_qos>
+        </qos_profile>
+
+        <qos_profile name="ResourcesProfile" base_name="EdgeBaseProfile">
+            <datawriter_qos>
+		<history>
+		    <depth>400</depth>
+		</history>
+            </datawriter_qos>
+        </qos_profile>
+
+        <qos_profile name="RotateRequestProfile" base_name="RequestProfile"/>
+
+        <qos_profile name="RotateObjectiveProfile" base_name="ObjectiveProfile"/>
+
+        <qos_profile name="RotateStateProfile" base_name="StateProfile"/>
+
+        <qos_profile name="HoistRequestProfile" base_name="RequestProfile"/>
+
+        <qos_profile name="HoistObjectiveProfile" base_name="ObjectiveProfile"/>
+
+        <qos_profile name="HoistStateProfile" base_name="StateProfile"/>
+
+        <qos_profile name="CirculateRequestProfile" base_name="RequestProfile"/>
+
+        <qos_profile name="CirculateObjectiveProfile" base_name="ObjectiveProfile"/>
+
+        <qos_profile name="CirculateStateProfile" base_name="StateProfile"/>
+
+        <qos_profile name="DrillRequestProfile" base_name="RequestProfile"/>
+
+        <qos_profile name="DrillObjectiveProfile" base_name="ObjectiveProfile"/>
+
+        <qos_profile name="DrillStateProfile" base_name="StateProfile"/>
 
         <qos_profile name="WellboreState"  base_name="EdgeBaseProfile">
 	</qos_profile>
