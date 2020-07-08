@@ -7,7 +7,7 @@ module edge
         // QoSLibrary: EdgeBaseLibrary
         // QoSProfile: EdgeBaseProfile
 
-        //@copy-c-declaration static const char HOIST_STATE[] = "HoistState";
+        //@copy-c-declaration static const char DRILLING_METRICS[] = "DrillingMetrics";
 
         /**
          * \ingroup Actual
