@@ -1,0 +1,36 @@
+#include "base_data_types.idl"
+
+module edge
+{
+    module optimziation
+    {
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
+
+        //@copy-c-declaration static const char HOIST_STATE[] = "HoistState";
+
+        /**
+         * \ingroup Actual
+         *
+         * \brief current state of the hoisting system.
+         *
+         *
+         * | Variable          | Description                            | Data Type         |
+         * | ----------------- | -------------------------------------- | ----------------- |
+         * | bitMse            | id of requestor                        | units::pressure::pascal |
+         * | surfaceMse        | id of current objective                | units::pressure::pascal |
+         * | stickSlipSeverity | id of current objective                | N/A   |
+         * | surfaceMse        | id of current objective                | units::length::centimeter   |
+         */
+        struct DrillingMetrics
+        {
+            DataTypes::Uuid     id;   //@key
+            DataTypes::Uuid     objectiveId; 
+            DataTypes::Time     timestamp;
+            double              bitMse;
+            double              surfaceMse;
+            double              stickSlipSeverity;
+            double              depthOfCut;
+        };
+    };
+};
