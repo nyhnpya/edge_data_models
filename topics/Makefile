@@ -15,6 +15,7 @@ MAKEFILE_LIBRARY_DIRS += drill_control
 MAKEFILE_LIBRARY_DIRS += drilling_calibration
 MAKEFILE_LIBRARY_DIRS += drilling_limits
 MAKEFILE_LIBRARY_DIRS += drilling_metrics
+MAKEFILE_LIBRARY_DIRS += drilling_performance
 MAKEFILE_LIBRARY_DIRS += hoist
 MAKEFILE_LIBRARY_DIRS += hoist_control
 MAKEFILE_LIBRARY_DIRS += objective

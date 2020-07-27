@@ -17,6 +17,9 @@ module edge
          *
          * | Variable          | Description                            | Data Type         |
          * | ----------------- | -------------------------------------- | ----------------- |
+         * | id                | id of requestor                        | DataTypes::Uuid   | 
+         * | objectiveId       | id of current objective                | DataTypes::Uuid   | 
+         * | timestamp         | timestamp when the data was published  | DataTypes::Time   | 
          * | bitMse            | id of requestor                        | units::pressure::pascal |
          * | surfaceMse        | id of current objective                | units::pressure::pascal |
          * | stickSlipSeverity | id of current objective                | N/A   |

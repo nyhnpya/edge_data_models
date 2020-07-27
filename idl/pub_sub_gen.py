@@ -165,6 +165,8 @@ with open(util_gen.idl_file_name) as idl_file:
                     fdt = 'bool'
                 if fdt == 'long':
                     fdt = 'int32_t'
+                if fdt == 'int32':
+                    fdt = 'int32_t'
                 field_comment = ''
                 for iv in range(len(util_gen.vartable1)):
                     if util_gen.vartable1[iv] == fields[1]:

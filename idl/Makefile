@@ -152,6 +152,23 @@ drilling_metrics.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/drilling_metrics
 	-@rm -rf $(TMPOUTDIR)
 
+drilling_performance.cpy: 
+	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
+	/usr/bin/python ./pub_sub_gen.py optimization/$@ $(TMPOUTDIR) 
+	@echo "Copying generated files..."
+	mkdir -p $(TOPIC_HOME)/drilling_performance
+	mkdir -p $(TOPIC_HOME)/drilling_performance/include
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/drilling_performance/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/drilling_performance
+	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/drilling_performance/include
+	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/drilling_performance
+	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/drilling_performance
+	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/drilling_performance
+	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/drilling_performance/include
+	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/drilling_performance/include
+	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/drilling_performance
+	-@rm -rf $(TMPOUTDIR)
+
 hoist.cpy: 
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
