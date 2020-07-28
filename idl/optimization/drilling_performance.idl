@@ -1,0 +1,45 @@
+#include "base_data_types.idl"
+
+module edge
+{
+    module optimziation
+    {
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: EdgeBaseProfile
+
+        //@copy-c-declaration static const char DRILLING_PERFORMANCE[] = "DrillingPerformance";
+
+        /**
+         * \ingroup Actual
+         *
+         * \brief current state of the hoisting system.
+         *
+         *
+         * | Variable    | Description                            | Data Type         |
+         * | ------------| -------------------------------------- | ----------------- |
+         * | id          | id of requestor                        | DataTypes::Uuid   | 
+         * | objectiveId | id of current objective                | DataTypes::Uuid   | 
+         * | timestamp   | timestamp when the data was published  | DataTypes::Time   | 
+         * | boolean     |                                        | N/A               |
+         * | int32       |                                        | N/A               |
+         * | double      |                                        | N/A               |
+         * | double      |                                        | N/A               |
+         * | double      |                                        | N/A               |
+         * | double      |                                        | N/A               |
+         * | double      |                                        | N/A               |
+         */
+        struct DrillingPerformance
+        {
+            DataTypes::Uuid     id;   //@key
+            DataTypes::Uuid     objectiveId; 
+            DataTypes::Time     timestamp;
+            boolean             limiterSwapThisScan;
+            int32               limiterSwapsThisWindows;
+            double              ropLimitingPercent;
+            double              wobLimitingPercent;
+            double              dpLimitingPercent;
+            double              torqueLimitingPercent;
+            double              noAxisLimitingPercent;
+        };
+    };
+};
