@@ -16,7 +16,7 @@ TARG_BUILD_MAJOR = 1
 TARG_BUILD_MINOR = 2
 TARG_BUILD_PATCH = 0
 TARG_BUILD_REVISION = 0
-TARGET_TYPE = library
+TARGET_TYPE = staticlib
 TARGET_NAME = configuration
 
 ###############################################################################
