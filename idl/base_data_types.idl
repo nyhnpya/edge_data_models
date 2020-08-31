@@ -45,6 +45,7 @@ module DataTypes
 
     enum Objective
     {
+        InitialState,
         None,
         Casing,
         CleaningHole,
