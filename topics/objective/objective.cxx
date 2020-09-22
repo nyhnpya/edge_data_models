@@ -371,7 +371,7 @@ namespace process {
             allocParams)) {
                 return RTI_FALSE;
             }
-            sample->objective = DataTypes::None;
+            sample->objective = DataTypes::InitialState;
             return RTI_TRUE;
         }
 
@@ -450,8 +450,6 @@ namespace process {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-            DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
-            DataTypes::Objective_finalize_optional_members(&sample->objective, deallocParams->delete_pointers);
         }
 
         RTIBool ObjectiveState_copy(

@@ -68,12 +68,6 @@ class CWellboreStateSubscriber : public TSubscriber< nec::process::WellboreState
         /// Reported hole depth.
         /// @return units::length::meter_t holeDepth
         units::length::meter_t GetHoleDepth();
-        /// Measured depth of hole.
-        /// @return units::length::meter_t measuredDepth
-        units::length::meter_t GetMeasuredDepth();
-        /// Measured true vertical depth of hole.
-        /// @return units::length::meter_t trueVerticalDepth
-        units::length::meter_t GetTrueVerticalDepth();
         /// Measured depth of bit.
         /// @return units::length::meter_t bitDepth
         units::length::meter_t GetBitDepth();

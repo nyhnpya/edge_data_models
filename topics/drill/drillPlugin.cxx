@@ -904,7 +904,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *DrillRequestPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             DrillRequest, 
             true, true, true>();
         }
@@ -1881,7 +1881,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *DrillObjectivePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             DrillObjective, 
             true, true, true>();
         }
@@ -2885,7 +2885,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *DrillStatePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             DrillState, 
             true, true, true>();
         }

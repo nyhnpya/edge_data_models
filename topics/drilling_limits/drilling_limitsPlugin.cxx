@@ -899,7 +899,7 @@ namespace process {
 
         struct RTIXCdrInterpreterPrograms *DrillingLimitsPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             DrillingLimits, 
             true, true, true>();
         }

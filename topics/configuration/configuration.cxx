@@ -2240,7 +2240,6 @@ namespace Configuration {
         deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-        Configuration::io_mode_finalize_optional_members(&sample->mode, deallocParams->delete_pointers);
     }
 
     RTIBool interface_t_copy(
@@ -3435,15 +3434,12 @@ namespace Configuration {
         switch(sample->_d) {
             case (Configuration::PROTOCOL):
                 {
-                    Configuration::protocol_t_finalize_optional_members(&sample->_u.protocolSpec, deallocParams->delete_pointers);
             } break ;
             case (Configuration::INTERFACE):
                 {
-                    Configuration::interface_t_finalize_optional_members(&sample->_u.interfaceSpec, deallocParams->delete_pointers);
             } break ;
             case (Configuration::TAG):
                 {
-                    Configuration::tag_t_finalize_optional_members(&sample->_u.tagSpec, deallocParams->delete_pointers);
             } break ;
         }
     }
@@ -3882,7 +3878,6 @@ namespace Configuration {
         deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
         deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-        Configuration::config_type_finalize_optional_members(&sample->configType, deallocParams->delete_pointers);
         Configuration::config_data_finalize_optional_members(&sample->configData, deallocParams->delete_pointers);
     }
 

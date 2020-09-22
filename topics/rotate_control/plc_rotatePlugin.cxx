@@ -636,7 +636,7 @@ namespace plc {
 
         struct RTIXCdrInterpreterPrograms *PlcRotateRequestPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             PlcRotateRequest, 
             true, true, true>();
         }
@@ -1342,7 +1342,7 @@ namespace plc {
 
         struct RTIXCdrInterpreterPrograms *PlcRotateStatePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             PlcRotateState, 
             true, true, true>();
         }

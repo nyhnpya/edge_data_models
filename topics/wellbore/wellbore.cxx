@@ -51,7 +51,7 @@ namespace nec {
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member WellboreState_g_tc_members[7]=
+            static DDS_TypeCode_Member WellboreState_g_tc_members[5]=
             {
 
                 {
@@ -127,45 +127,9 @@ namespace nec {
                     RTICdrTypeCodeAnnotations_INITIALIZER
                 }, 
                 {
-                    (char *)"measuredDepth",/* Member name */
-                    {
-                        4,/* Representation ID */
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL, /* Ignored */
-                    RTICdrTypeCodeAnnotations_INITIALIZER
-                }, 
-                {
-                    (char *)"trueVerticalDepth",/* Member name */
-                    {
-                        5,/* Representation ID */
-                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                        -1, /* Bitfield bits */
-                        NULL/* Member type code is assigned later */
-                    },
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    0, /* Ignored */
-                    NULL, /* Ignored */
-                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                    DDS_PUBLIC_MEMBER,/* Member visibility */
-                    1,
-                    NULL, /* Ignored */
-                    RTICdrTypeCodeAnnotations_INITIALIZER
-                }, 
-                {
                     (char *)"bitDepth",/* Member name */
                     {
-                        6,/* Representation ID */
+                        4,/* Representation ID */
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
                         -1, /* Bitfield bits */
                         NULL/* Member type code is assigned later */
@@ -192,7 +156,7 @@ namespace nec {
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    7, /* Number of members */
+                    5, /* Number of members */
                     WellboreState_g_tc_members, /* Members */
                     DDS_VM_NONE, /* Ignored */
                     RTICdrTypeCodeAnnotations_INITIALIZER,
@@ -212,8 +176,6 @@ namespace nec {
             WellboreState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Time_get_typecode();
             WellboreState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
             WellboreState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            WellboreState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            WellboreState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
 
             /* Initialize the values for member annotations. */
             WellboreState_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_STRING;
@@ -235,20 +197,6 @@ namespace nec {
             WellboreState_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
             WellboreState_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
             WellboreState_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-            WellboreState_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            WellboreState_g_tc_members[5]._annotations._defaultValue._u.double_value = 0.0;
-            WellboreState_g_tc_members[5]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            WellboreState_g_tc_members[5]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            WellboreState_g_tc_members[5]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            WellboreState_g_tc_members[5]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-            WellboreState_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            WellboreState_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
-            WellboreState_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            WellboreState_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            WellboreState_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            WellboreState_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
             WellboreState_g_tc._data._sampleAccessInfo =
             WellboreState_get_sample_access_info();
@@ -288,7 +236,7 @@ namespace nec {
 
             nec::process::WellboreState *sample;
 
-            static RTIXCdrMemberAccessInfo WellboreState_g_memberAccessInfos[7] =
+            static RTIXCdrMemberAccessInfo WellboreState_g_memberAccessInfos[5] =
             {RTIXCdrMemberAccessInfo_INITIALIZER};
 
             static RTIXCdrSampleAccessInfo WellboreState_g_sampleAccessInfo = 
@@ -318,12 +266,6 @@ namespace nec {
             (RTIXCdrUnsignedLong) ((char *)&sample->holeDepth - (char *)sample);
 
             WellboreState_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
-            (RTIXCdrUnsignedLong) ((char *)&sample->measuredDepth - (char *)sample);
-
-            WellboreState_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
-            (RTIXCdrUnsignedLong) ((char *)&sample->trueVerticalDepth - (char *)sample);
-
-            WellboreState_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->bitDepth - (char *)sample);
 
             WellboreState_g_sampleAccessInfo.memberAccessInfos = 
@@ -465,10 +407,6 @@ namespace nec {
 
             sample->holeDepth = 0.0;
 
-            sample->measuredDepth = 0.0;
-
-            sample->trueVerticalDepth = 0.0;
-
             sample->bitDepth = 0.0;
 
             return RTI_TRUE;
@@ -547,7 +485,6 @@ namespace nec {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-            DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
         }
 
         RTIBool WellboreState_copy(
@@ -576,14 +513,6 @@ namespace nec {
                 } 
                 if (!RTICdrType_copyDouble (
                     &dst->holeDepth, &src->holeDepth)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->measuredDepth, &src->measuredDepth)) { 
-                    return RTI_FALSE;
-                }
-                if (!RTICdrType_copyDouble (
-                    &dst->trueVerticalDepth, &src->trueVerticalDepth)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (

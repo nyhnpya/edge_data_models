@@ -901,7 +901,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *AutoReamRequestPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             AutoReamRequest, 
             true, true, true>();
         }
@@ -1875,7 +1875,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *AutoReamObjectivePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             AutoReamObjective, 
             true, true, true>();
         }
@@ -2855,7 +2855,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *AutoReamStatePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             AutoReamState, 
             true, true, true>();
         }

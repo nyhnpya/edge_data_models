@@ -865,7 +865,6 @@ namespace plc {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-            DataTypes::Status_finalize_optional_members(&sample->status, deallocParams->delete_pointers);
         }
 
         RTIBool CirculateState_copy(

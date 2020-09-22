@@ -884,7 +884,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *DrillingCalibrationRequestPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             DrillingCalibrationRequest, 
             true, true, true>();
         }
@@ -1883,7 +1883,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *DrillingCalibrationStatePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             DrillingCalibrationState, 
             true, true, true>();
         }

@@ -877,7 +877,7 @@ namespace process {
 
         struct RTIXCdrInterpreterPrograms *ObjectiveStatePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             ObjectiveState, 
             true, true, true>();
         }

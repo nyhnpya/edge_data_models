@@ -192,12 +192,6 @@ namespace nec {
                 &sample->holeDepth, "holeDepth", indent_level + 1);    
 
             RTICdrType_printDouble(
-                &sample->measuredDepth, "measuredDepth", indent_level + 1);    
-
-            RTICdrType_printDouble(
-                &sample->trueVerticalDepth, "trueVerticalDepth", indent_level + 1);    
-
-            RTICdrType_printDouble(
                 &sample->bitDepth, "bitDepth", indent_level + 1);    
 
         }
@@ -886,7 +880,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *WellboreStatePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             WellboreState, 
             true, true, true>();
         }

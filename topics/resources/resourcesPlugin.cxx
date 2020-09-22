@@ -918,7 +918,7 @@ namespace sys {
 
         struct RTIXCdrInterpreterPrograms *ResourcesPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             Resources, 
             true, true, true>();
         }

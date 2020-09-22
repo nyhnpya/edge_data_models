@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef wellbore_1776163055_h
-#define wellbore_1776163055_h
+#ifndef wellbore_1776162732_h
+#define wellbore_1776162732_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -48,8 +48,6 @@ namespace nec {
             DDS_Char *   objectiveId ;
             DataTypes::Time   timestamp ;
             DDS_Double   holeDepth ;
-            DDS_Double   measuredDepth ;
-            DDS_Double   trueVerticalDepth ;
             DDS_Double   bitDepth ;
 
         };

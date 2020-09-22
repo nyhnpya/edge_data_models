@@ -639,7 +639,7 @@ namespace plc {
 
         struct RTIXCdrInterpreterPrograms *HoistRequestPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             HoistRequest, 
             true, true, true>();
         }
@@ -1363,7 +1363,7 @@ namespace plc {
 
         struct RTIXCdrInterpreterPrograms *HoistStatePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             HoistState, 
             true, true, true>();
         }

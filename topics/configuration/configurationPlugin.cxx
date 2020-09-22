@@ -812,7 +812,7 @@ namespace Configuration {
 
     struct RTIXCdrInterpreterPrograms *protocol_tPlugin_get_programs()
     {
-        return rti::xcdr::get_cdr_serialization_programs<
+        return ::rti::xcdr::get_cdr_serialization_programs<
         protocol_t, 
         true, true, true>();
     }
@@ -1546,7 +1546,7 @@ namespace Configuration {
 
     struct RTIXCdrInterpreterPrograms *interface_tPlugin_get_programs()
     {
-        return rti::xcdr::get_cdr_serialization_programs<
+        return ::rti::xcdr::get_cdr_serialization_programs<
         interface_t, 
         true, true, true>();
     }
@@ -2301,7 +2301,7 @@ namespace Configuration {
 
     struct RTIXCdrInterpreterPrograms *tag_tPlugin_get_programs()
     {
-        return rti::xcdr::get_cdr_serialization_programs<
+        return ::rti::xcdr::get_cdr_serialization_programs<
         tag_t, 
         true, true, true>();
     }
@@ -3017,7 +3017,7 @@ namespace Configuration {
 
     struct RTIXCdrInterpreterPrograms *config_dataPlugin_get_programs()
     {
-        return rti::xcdr::get_cdr_serialization_programs<
+        return ::rti::xcdr::get_cdr_serialization_programs<
         config_data, 
         true, true, true>();
     }
@@ -3944,7 +3944,7 @@ namespace Configuration {
 
     struct RTIXCdrInterpreterPrograms *ItemPlugin_get_programs()
     {
-        return rti::xcdr::get_cdr_serialization_programs<
+        return ::rti::xcdr::get_cdr_serialization_programs<
         Item, 
         true, true, true>();
     }

@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef wellboreSupport_1776163055_h
-#define wellboreSupport_1776163055_h
+#ifndef wellboreSupport_1776162732_h
+#define wellboreSupport_1776162732_h
 
 /* Uses */
 #include "wellbore.h"
@@ -66,5 +66,5 @@ namespace nec {
     } /* namespace process  */
 } /* namespace nec  */
 
-#endif  /* wellboreSupport_1776163055_h */
+#endif  /* wellboreSupport_1776162732_h */
 

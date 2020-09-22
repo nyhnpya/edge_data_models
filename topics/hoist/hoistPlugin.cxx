@@ -886,7 +886,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *HoistRequestPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             HoistRequest, 
             true, true, true>();
         }
@@ -1845,7 +1845,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *HoistObjectivePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             HoistObjective, 
             true, true, true>();
         }
@@ -2831,7 +2831,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *HoistStatePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             HoistState, 
             true, true, true>();
         }

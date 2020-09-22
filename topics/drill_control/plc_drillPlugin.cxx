@@ -657,7 +657,7 @@ namespace plc {
 
         struct RTIXCdrInterpreterPrograms *DrillRequestTopicPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             DrillRequestTopic, 
             true, true, true>();
         }
@@ -1396,7 +1396,7 @@ namespace plc {
 
         struct RTIXCdrInterpreterPrograms *DrillStateTopicPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             DrillStateTopic, 
             true, true, true>();
         }

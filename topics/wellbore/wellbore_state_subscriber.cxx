@@ -17,7 +17,7 @@ bool CWellboreStateSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        nec::process::WELLBORE_STATE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "WellboreStateProfile");
 }
 
 bool CWellboreStateSubscriber::ValidData()
@@ -45,16 +45,6 @@ DataTypes::Time CWellboreStateSubscriber::GetTimestamp()
 units::length::meter_t CWellboreStateSubscriber::GetHoleDepth()
 {
     return units::length::meter_t(m_data.holeDepth);
-}
-
-units::length::meter_t CWellboreStateSubscriber::GetMeasuredDepth()
-{
-    return units::length::meter_t(m_data.measuredDepth);
-}
-
-units::length::meter_t CWellboreStateSubscriber::GetTrueVerticalDepth()
-{
-    return units::length::meter_t(m_data.trueVerticalDepth);
 }
 
 units::length::meter_t CWellboreStateSubscriber::GetBitDepth()

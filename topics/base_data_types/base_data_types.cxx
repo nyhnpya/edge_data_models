@@ -2094,9 +2094,28 @@ namespace DataTypes {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member Objective_g_tc_members[7]=
+        static DDS_TypeCode_Member Objective_g_tc_members[8]=
         {
 
+            {
+                (char *)"InitialState",/* Member name */
+                {
+                    0, /* Ignored */
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                InitialState, 
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PRIVATE_MEMBER,/* Member visibility */ 
+
+                1,
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
+            }, 
             {
                 (char *)"None",/* Member name */
                 {
@@ -2242,7 +2261,7 @@ namespace DataTypes {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                7, /* Number of members */
+                8, /* Number of members */
                 Objective_g_tc_members, /* Members */
                 DDS_VM_NONE, /* Type Modifier */
                 RTICdrTypeCodeAnnotations_INITIALIZER,
@@ -2365,7 +2384,7 @@ namespace DataTypes {
 
     RTIBool Objective_initialize(
         Objective* sample) {
-        *sample = None;
+        *sample = InitialState;
         return RTI_TRUE;
     }
 
@@ -2394,7 +2413,7 @@ namespace DataTypes {
         if (allocParams == NULL) {
             return RTI_FALSE;
         }
-        *sample = None;
+        *sample = InitialState;
         return RTI_TRUE;
     }
 

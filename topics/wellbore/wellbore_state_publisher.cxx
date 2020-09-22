@@ -13,7 +13,7 @@ bool CWellboreStatePublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        nec::process::WELLBORE_STATE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "WellboreStateProfile");
 }
 
 bool CWellboreStatePublisher::Initialize()
@@ -74,22 +74,6 @@ void CWellboreStatePublisher::SetHoleDepth(const units::length::meter_t holeDept
     if (m_pDataInstance != nullptr)
     {
         m_pDataInstance->holeDepth = units::unit_cast<double>(holeDepth);
-    }
-}
-
-void CWellboreStatePublisher::SetMeasuredDepth(const units::length::meter_t measuredDepth)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->measuredDepth = units::unit_cast<double>(measuredDepth);
-    }
-}
-
-void CWellboreStatePublisher::SetTrueVerticalDepth(const units::length::meter_t trueVerticalDepth)
-{
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->trueVerticalDepth = units::unit_cast<double>(trueVerticalDepth);
     }
 }
 

@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef wellborePlugin_1776163055_h
-#define wellborePlugin_1776163055_h
+#ifndef wellborePlugin_1776162732_h
+#define wellborePlugin_1776162732_h
 
 #include "wellbore.h"
 
@@ -274,5 +274,5 @@ namespace nec {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* wellborePlugin_1776163055_h */
+#endif /* wellborePlugin_1776162732_h */
 

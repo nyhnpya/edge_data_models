@@ -738,7 +738,6 @@ namespace nec {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-            DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
         }
 
         RTIBool HmiRequest_copy(
@@ -3510,7 +3509,6 @@ namespace nec {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-            DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
         }
 
         RTIBool HmiState_copy(

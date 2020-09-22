@@ -5,7 +5,7 @@ module nec
     module process
     {
         // QoSLibrary: EdgeBaseLibrary
-        // QoSProfile: EdgeBaseProfile
+        // QoSProfile: WellboreStateProfile
 
         //@copy-c-declaration static const char WELLBORE_STATE[] = "WellboreState";
 
@@ -38,8 +38,6 @@ module nec
          * | id               | Unique id of publisher.                                | DataTypes::Uuid   |
          * | timestamp        | Timestamp when the data was published.                 | DataTypes::Time   | 
          * | holeDepth        | Reported hole depth.                                   | units::length::meter       |
-         * | measuredDepth    | Measured depth of hole.                                | units::length::meter       |
-         * | trueVerticalDepth| Measured true vertical depth of hole.                  | units::length::meter       |
          * | bitDepth         | Measured depth of bit.                                 | units::length::meter       |
          */
         struct WellboreState
@@ -48,8 +46,6 @@ module nec
             DataTypes::Uuid  objectiveId; 
             DataTypes::Time  timestamp;
             double           holeDepth;
-            double           measuredDepth;
-            double           trueVerticalDepth;
             double           bitDepth;
         };
     };

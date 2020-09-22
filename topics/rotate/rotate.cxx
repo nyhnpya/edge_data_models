@@ -510,9 +510,6 @@ namespace nec {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-            DataTypes::Priority_finalize_optional_members(&sample->priority, deallocParams->delete_pointers);
-            DataTypes::Time_finalize_optional_members(&sample->timeNeeded, deallocParams->delete_pointers);
-            DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
         }
 
         RTIBool RotateRequest_copy(
@@ -1001,7 +998,6 @@ namespace nec {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-            DataTypes::Time_finalize_optional_members(&sample->estimatedDuration, deallocParams->delete_pointers);
         }
 
         RTIBool RotateObjective_copy(
@@ -1603,8 +1599,6 @@ namespace nec {
             deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
             deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
-            DataTypes::Time_finalize_optional_members(&sample->timestamp, deallocParams->delete_pointers);
-            DataTypes::Status_finalize_optional_members(&sample->status, deallocParams->delete_pointers);
         }
 
         RTIBool RotateState_copy(

@@ -902,7 +902,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *HmiRequestPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             HmiRequest, 
             true, true, true>();
         }
@@ -2075,7 +2075,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *HmiStatePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             HmiState, 
             true, true, true>();
         }

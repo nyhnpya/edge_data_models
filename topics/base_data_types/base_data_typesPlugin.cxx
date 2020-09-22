@@ -850,7 +850,7 @@ namespace DataTypes {
 
     struct RTIXCdrInterpreterPrograms *TimePlugin_get_programs()
     {
-        return rti::xcdr::get_cdr_serialization_programs<
+        return ::rti::xcdr::get_cdr_serialization_programs<
         Time, 
         true, true, true>();
     }

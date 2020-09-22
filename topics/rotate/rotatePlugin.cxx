@@ -883,7 +883,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *RotateRequestPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             RotateRequest, 
             true, true, true>();
         }
@@ -1839,7 +1839,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *RotateObjectivePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             RotateObjective, 
             true, true, true>();
         }
@@ -2807,7 +2807,7 @@ namespace nec {
 
         struct RTIXCdrInterpreterPrograms *RotateStatePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             RotateState, 
             true, true, true>();
         }

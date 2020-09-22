@@ -636,7 +636,7 @@ namespace plc {
 
         struct RTIXCdrInterpreterPrograms *CirculateRequestPlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             CirculateRequest, 
             true, true, true>();
         }
@@ -1351,7 +1351,7 @@ namespace plc {
 
         struct RTIXCdrInterpreterPrograms *CirculateStatePlugin_get_programs()
         {
-            return rti::xcdr::get_cdr_serialization_programs<
+            return ::rti::xcdr::get_cdr_serialization_programs<
             CirculateState, 
             true, true, true>();
         }

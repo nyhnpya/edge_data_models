@@ -661,7 +661,7 @@ namespace Shell {
 
             struct RTIXCdrInterpreterPrograms *ModelStateRequestPlugin_get_programs()
             {
-                return rti::xcdr::get_cdr_serialization_programs<
+                return ::rti::xcdr::get_cdr_serialization_programs<
                 ModelStateRequest, 
                 true, true, true>();
             }
@@ -1379,7 +1379,7 @@ namespace Shell {
 
             struct RTIXCdrInterpreterPrograms *ModelStateStatePlugin_get_programs()
             {
-                return rti::xcdr::get_cdr_serialization_programs<
+                return ::rti::xcdr::get_cdr_serialization_programs<
                 ModelStateState, 
                 true, true, true>();
             }
@@ -2097,7 +2097,7 @@ namespace Shell {
 
             struct RTIXCdrInterpreterPrograms *DiffpTuningRequestPlugin_get_programs()
             {
-                return rti::xcdr::get_cdr_serialization_programs<
+                return ::rti::xcdr::get_cdr_serialization_programs<
                 DiffpTuningRequest, 
                 true, true, true>();
             }
@@ -2830,7 +2830,7 @@ namespace Shell {
 
             struct RTIXCdrInterpreterPrograms *DiffpTuningStatePlugin_get_programs()
             {
-                return rti::xcdr::get_cdr_serialization_programs<
+                return ::rti::xcdr::get_cdr_serialization_programs<
                 DiffpTuningState, 
                 true, true, true>();
             }
@@ -3548,7 +3548,7 @@ namespace Shell {
 
             struct RTIXCdrInterpreterPrograms *WobTuningRequestPlugin_get_programs()
             {
-                return rti::xcdr::get_cdr_serialization_programs<
+                return ::rti::xcdr::get_cdr_serialization_programs<
                 WobTuningRequest, 
                 true, true, true>();
             }
@@ -4281,7 +4281,7 @@ namespace Shell {
 
             struct RTIXCdrInterpreterPrograms *WobTuningStatePlugin_get_programs()
             {
-                return rti::xcdr::get_cdr_serialization_programs<
+                return ::rti::xcdr::get_cdr_serialization_programs<
                 WobTuningState, 
                 true, true, true>();
             }
@@ -4999,7 +4999,7 @@ namespace Shell {
 
             struct RTIXCdrInterpreterPrograms *TorqueTuningRequestPlugin_get_programs()
             {
-                return rti::xcdr::get_cdr_serialization_programs<
+                return ::rti::xcdr::get_cdr_serialization_programs<
                 TorqueTuningRequest, 
                 true, true, true>();
             }
@@ -5732,7 +5732,7 @@ namespace Shell {
 
             struct RTIXCdrInterpreterPrograms *TorqueTuningStatePlugin_get_programs()
             {
-                return rti::xcdr::get_cdr_serialization_programs<
+                return ::rti::xcdr::get_cdr_serialization_programs<
                 TorqueTuningState, 
                 true, true, true>();
             }

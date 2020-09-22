@@ -66,12 +66,6 @@ class CWellboreStatePublisher : public TPublisher< nec::process::WellboreState >
         /// Reported hole depth.
         /// @param units::length::meter_t holeDepth
         void SetHoleDepth(const units::length::meter_t holeDepth);
-        /// Measured depth of hole.
-        /// @param units::length::meter_t measuredDepth
-        void SetMeasuredDepth(const units::length::meter_t measuredDepth);
-        /// Measured true vertical depth of hole.
-        /// @param units::length::meter_t trueVerticalDepth
-        void SetTrueVerticalDepth(const units::length::meter_t trueVerticalDepth);
         /// Measured depth of bit.
         /// @param units::length::meter_t bitDepth
         void SetBitDepth(const units::length::meter_t bitDepth);
