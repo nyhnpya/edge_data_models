@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_rotate_1508021068_h
-#define plc_rotate_1508021068_h
+#ifndef plc_rotate_1508021044_h
+#define plc_rotate_1508021044_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -21,10 +21,9 @@ or consult the RTI Connext manual.
 #include "ndds_standalone_type.h"
 #endif
 
-#include "base_data_types.h"
 namespace plc {
     namespace process {
-        static const char ROTATE_REQUEST_TOPIC[] = "RotateRequestTopic"; 
+        static const char PLC_ROTATE_REQUEST_TOPIC[] = "RotateRequestTopic"; 
 
         extern const char *PlcRotateRequestTYPENAME;
 
@@ -108,7 +107,7 @@ namespace plc {
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport
         #endif
-        static const char ROTATE_STATE_TOPIC[] = "RotateStateTopic"; 
+        static const char PLC_ROTATE_STATE_TOPIC[] = "RotateStateTopic"; 
 
         extern const char *PlcRotateStateTYPENAME;
 

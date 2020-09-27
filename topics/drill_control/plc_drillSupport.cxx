@@ -27,7 +27,7 @@ namespace plc {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'DrillRequestTopic' support classes.
+        Configure and implement 'PlcDrillRequestTopic' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -43,11 +43,11 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   DrillRequestTopicTYPENAME
+        #define TTYPENAME   PlcDrillRequestTopicTYPENAME
 
         /* Defines */
-        #define TDataWriter DrillRequestTopicDataWriter
-        #define TData       plc::process::DrillRequestTopic
+        #define TDataWriter PlcDrillRequestTopicDataWriter
+        #define TData       plc::process::PlcDrillRequestTopic
 
         #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
@@ -69,12 +69,12 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   DrillRequestTopicTYPENAME
+        #define TTYPENAME   PlcDrillRequestTopicTYPENAME
 
         /* Defines */
-        #define TDataReader DrillRequestTopicDataReader
-        #define TDataSeq    DrillRequestTopicSeq
-        #define TData       plc::process::DrillRequestTopic
+        #define TDataReader PlcDrillRequestTopicDataReader
+        #define TDataSeq    PlcDrillRequestTopicSeq
+        #define TData       plc::process::PlcDrillRequestTopic
 
         #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
@@ -98,15 +98,15 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME    DrillRequestTopicTYPENAME
-        #define TPlugin_new  plc::process::DrillRequestTopicPlugin_new
-        #define TPlugin_delete  plc::process::DrillRequestTopicPlugin_delete
+        #define TTYPENAME    PlcDrillRequestTopicTYPENAME
+        #define TPlugin_new  plc::process::PlcDrillRequestTopicPlugin_new
+        #define TPlugin_delete  plc::process::PlcDrillRequestTopicPlugin_delete
 
         /* Defines */
-        #define TTypeSupport DrillRequestTopicTypeSupport
-        #define TData        plc::process::DrillRequestTopic
-        #define TDataReader  DrillRequestTopicDataReader
-        #define TDataWriter  DrillRequestTopicDataWriter
+        #define TTypeSupport PlcDrillRequestTopicTypeSupport
+        #define TData        plc::process::PlcDrillRequestTopic
+        #define TDataReader  PlcDrillRequestTopicDataReader
+        #define TDataWriter  PlcDrillRequestTopicDataWriter
         #define TGENERATE_SER_CODE
         #ifndef NDDS_STANDALONE_TYPE
         #define TGENERATE_TYPECODE
@@ -135,7 +135,7 @@ namespace plc {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'DrillStateTopic' support classes.
+        Configure and implement 'PlcDrillStateTopic' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -151,11 +151,11 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   DrillStateTopicTYPENAME
+        #define TTYPENAME   PlcDrillStateTopicTYPENAME
 
         /* Defines */
-        #define TDataWriter DrillStateTopicDataWriter
-        #define TData       plc::process::DrillStateTopic
+        #define TDataWriter PlcDrillStateTopicDataWriter
+        #define TData       plc::process::PlcDrillStateTopic
 
         #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
@@ -177,12 +177,12 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   DrillStateTopicTYPENAME
+        #define TTYPENAME   PlcDrillStateTopicTYPENAME
 
         /* Defines */
-        #define TDataReader DrillStateTopicDataReader
-        #define TDataSeq    DrillStateTopicSeq
-        #define TData       plc::process::DrillStateTopic
+        #define TDataReader PlcDrillStateTopicDataReader
+        #define TDataSeq    PlcDrillStateTopicSeq
+        #define TData       plc::process::PlcDrillStateTopic
 
         #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
@@ -206,15 +206,15 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME    DrillStateTopicTYPENAME
-        #define TPlugin_new  plc::process::DrillStateTopicPlugin_new
-        #define TPlugin_delete  plc::process::DrillStateTopicPlugin_delete
+        #define TTYPENAME    PlcDrillStateTopicTYPENAME
+        #define TPlugin_new  plc::process::PlcDrillStateTopicPlugin_new
+        #define TPlugin_delete  plc::process::PlcDrillStateTopicPlugin_delete
 
         /* Defines */
-        #define TTypeSupport DrillStateTopicTypeSupport
-        #define TData        plc::process::DrillStateTopic
-        #define TDataReader  DrillStateTopicDataReader
-        #define TDataWriter  DrillStateTopicDataWriter
+        #define TTypeSupport PlcDrillStateTopicTypeSupport
+        #define TData        plc::process::PlcDrillStateTopic
+        #define TDataReader  PlcDrillStateTopicDataReader
+        #define TDataWriter  PlcDrillStateTopicDataWriter
         #define TGENERATE_SER_CODE
         #ifndef NDDS_STANDALONE_TYPE
         #define TGENERATE_TYPECODE

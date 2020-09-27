@@ -27,7 +27,7 @@ namespace plc {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'HoistRequest' support classes.
+        Configure and implement 'PlcHoistRequest' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -43,11 +43,11 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   HoistRequestTYPENAME
+        #define TTYPENAME   PlcHoistRequestTYPENAME
 
         /* Defines */
-        #define TDataWriter HoistRequestDataWriter
-        #define TData       plc::process::HoistRequest
+        #define TDataWriter PlcHoistRequestDataWriter
+        #define TData       plc::process::PlcHoistRequest
 
         #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
@@ -69,12 +69,12 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   HoistRequestTYPENAME
+        #define TTYPENAME   PlcHoistRequestTYPENAME
 
         /* Defines */
-        #define TDataReader HoistRequestDataReader
-        #define TDataSeq    HoistRequestSeq
-        #define TData       plc::process::HoistRequest
+        #define TDataReader PlcHoistRequestDataReader
+        #define TDataSeq    PlcHoistRequestSeq
+        #define TData       plc::process::PlcHoistRequest
 
         #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
@@ -98,15 +98,15 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME    HoistRequestTYPENAME
-        #define TPlugin_new  plc::process::HoistRequestPlugin_new
-        #define TPlugin_delete  plc::process::HoistRequestPlugin_delete
+        #define TTYPENAME    PlcHoistRequestTYPENAME
+        #define TPlugin_new  plc::process::PlcHoistRequestPlugin_new
+        #define TPlugin_delete  plc::process::PlcHoistRequestPlugin_delete
 
         /* Defines */
-        #define TTypeSupport HoistRequestTypeSupport
-        #define TData        plc::process::HoistRequest
-        #define TDataReader  HoistRequestDataReader
-        #define TDataWriter  HoistRequestDataWriter
+        #define TTypeSupport PlcHoistRequestTypeSupport
+        #define TData        plc::process::PlcHoistRequest
+        #define TDataReader  PlcHoistRequestDataReader
+        #define TDataWriter  PlcHoistRequestDataWriter
         #define TGENERATE_SER_CODE
         #ifndef NDDS_STANDALONE_TYPE
         #define TGENERATE_TYPECODE
@@ -135,7 +135,7 @@ namespace plc {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'HoistState' support classes.
+        Configure and implement 'PlcHoistState' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -151,11 +151,11 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   HoistStateTYPENAME
+        #define TTYPENAME   PlcHoistStateTYPENAME
 
         /* Defines */
-        #define TDataWriter HoistStateDataWriter
-        #define TData       plc::process::HoistState
+        #define TDataWriter PlcHoistStateDataWriter
+        #define TData       plc::process::PlcHoistState
 
         #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
@@ -177,12 +177,12 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   HoistStateTYPENAME
+        #define TTYPENAME   PlcHoistStateTYPENAME
 
         /* Defines */
-        #define TDataReader HoistStateDataReader
-        #define TDataSeq    HoistStateSeq
-        #define TData       plc::process::HoistState
+        #define TDataReader PlcHoistStateDataReader
+        #define TDataSeq    PlcHoistStateSeq
+        #define TData       plc::process::PlcHoistState
 
         #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
@@ -206,15 +206,15 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME    HoistStateTYPENAME
-        #define TPlugin_new  plc::process::HoistStatePlugin_new
-        #define TPlugin_delete  plc::process::HoistStatePlugin_delete
+        #define TTYPENAME    PlcHoistStateTYPENAME
+        #define TPlugin_new  plc::process::PlcHoistStatePlugin_new
+        #define TPlugin_delete  plc::process::PlcHoistStatePlugin_delete
 
         /* Defines */
-        #define TTypeSupport HoistStateTypeSupport
-        #define TData        plc::process::HoistState
-        #define TDataReader  HoistStateDataReader
-        #define TDataWriter  HoistStateDataWriter
+        #define TTypeSupport PlcHoistStateTypeSupport
+        #define TData        plc::process::PlcHoistState
+        #define TDataReader  PlcHoistStateDataReader
+        #define TDataWriter  PlcHoistStateDataWriter
         #define TGENERATE_SER_CODE
         #ifndef NDDS_STANDALONE_TYPE
         #define TGENERATE_TYPECODE

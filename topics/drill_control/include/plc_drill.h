@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_drill_1908030757_h
-#define plc_drill_1908030757_h
+#ifndef plc_drill_1908030917_h
+#define plc_drill_1908030917_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -24,24 +24,24 @@ or consult the RTI Connext manual.
 #include "base_data_types.h"
 namespace plc {
     namespace process {
-        static const char DRILL_REQUEST_TOPIC[] = "DrillRequestTopic"; 
+        static const char PLC_DRILL_REQUEST_TOPIC[] = "DrillRequestTopic"; 
 
-        extern const char *DrillRequestTopicTYPENAME;
+        extern const char *PlcDrillRequestTopicTYPENAME;
 
-        struct DrillRequestTopicSeq;
+        struct PlcDrillRequestTopicSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class DrillRequestTopicTypeSupport;
-        class DrillRequestTopicDataWriter;
-        class DrillRequestTopicDataReader;
+        class PlcDrillRequestTopicTypeSupport;
+        class PlcDrillRequestTopicDataWriter;
+        class PlcDrillRequestTopicDataReader;
         #endif
-        class DrillRequestTopic 
+        class PlcDrillRequestTopic 
         {
           public:
-            typedef struct DrillRequestTopicSeq Seq;
+            typedef struct PlcDrillRequestTopicSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef DrillRequestTopicTypeSupport TypeSupport;
-            typedef DrillRequestTopicDataWriter DataWriter;
-            typedef DrillRequestTopicDataReader DataReader;
+            typedef PlcDrillRequestTopicTypeSupport TypeSupport;
+            typedef PlcDrillRequestTopicDataWriter DataWriter;
+            typedef PlcDrillRequestTopicDataReader DataReader;
             #endif
 
             DDS_Double   ropLimit ;
@@ -62,52 +62,52 @@ namespace plc {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* DrillRequestTopic_get_typecode(void); /* Type code */
-        NDDSUSERDllExport RTIXCdrTypePlugin *DrillRequestTopic_get_type_plugin_info(void);
-        NDDSUSERDllExport RTIXCdrSampleAccessInfo *DrillRequestTopic_get_sample_access_info(void);
-        NDDSUSERDllExport RTIXCdrSampleAccessInfo *DrillRequestTopic_get_sample_seq_access_info(void);
+        NDDSUSERDllExport DDS_TypeCode* PlcDrillRequestTopic_get_typecode(void); /* Type code */
+        NDDSUSERDllExport RTIXCdrTypePlugin *PlcDrillRequestTopic_get_type_plugin_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcDrillRequestTopic_get_sample_access_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcDrillRequestTopic_get_sample_seq_access_info(void);
         #endif
 
-        DDS_SEQUENCE(DrillRequestTopicSeq, DrillRequestTopic);
+        DDS_SEQUENCE(PlcDrillRequestTopicSeq, PlcDrillRequestTopic);
 
         NDDSUSERDllExport
-        RTIBool DrillRequestTopic_initialize(
-            DrillRequestTopic* self);
+        RTIBool PlcDrillRequestTopic_initialize(
+            PlcDrillRequestTopic* self);
 
         NDDSUSERDllExport
-        RTIBool DrillRequestTopic_initialize_ex(
-            DrillRequestTopic* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool PlcDrillRequestTopic_initialize_ex(
+            PlcDrillRequestTopic* self,RTIBool allocatePointers,RTIBool allocateMemory);
 
         NDDSUSERDllExport
-        RTIBool DrillRequestTopic_initialize_w_params(
-            DrillRequestTopic* self,
+        RTIBool PlcDrillRequestTopic_initialize_w_params(
+            PlcDrillRequestTopic* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        RTIBool DrillRequestTopic_finalize_w_return(
-            DrillRequestTopic* self);
+        RTIBool PlcDrillRequestTopic_finalize_w_return(
+            PlcDrillRequestTopic* self);
 
         NDDSUSERDllExport
-        void DrillRequestTopic_finalize(
-            DrillRequestTopic* self);
+        void PlcDrillRequestTopic_finalize(
+            PlcDrillRequestTopic* self);
 
         NDDSUSERDllExport
-        void DrillRequestTopic_finalize_ex(
-            DrillRequestTopic* self,RTIBool deletePointers);
+        void PlcDrillRequestTopic_finalize_ex(
+            PlcDrillRequestTopic* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void DrillRequestTopic_finalize_w_params(
-            DrillRequestTopic* self,
+        void PlcDrillRequestTopic_finalize_w_params(
+            PlcDrillRequestTopic* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void DrillRequestTopic_finalize_optional_members(
-            DrillRequestTopic* self, RTIBool deletePointers);  
+        void PlcDrillRequestTopic_finalize_optional_members(
+            PlcDrillRequestTopic* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool DrillRequestTopic_copy(
-            DrillRequestTopic* dst,
-            const DrillRequestTopic* src);
+        RTIBool PlcDrillRequestTopic_copy(
+            PlcDrillRequestTopic* dst,
+            const PlcDrillRequestTopic* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -115,24 +115,24 @@ namespace plc {
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport
         #endif
-        static const char DRILL_STATE_TOPIC[] = "DrillStateTopic"; 
+        static const char PLC_DRILL_STATE_TOPIC[] = "DrillStateTopic"; 
 
-        extern const char *DrillStateTopicTYPENAME;
+        extern const char *PlcDrillStateTopicTYPENAME;
 
-        struct DrillStateTopicSeq;
+        struct PlcDrillStateTopicSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class DrillStateTopicTypeSupport;
-        class DrillStateTopicDataWriter;
-        class DrillStateTopicDataReader;
+        class PlcDrillStateTopicTypeSupport;
+        class PlcDrillStateTopicDataWriter;
+        class PlcDrillStateTopicDataReader;
         #endif
-        class DrillStateTopic 
+        class PlcDrillStateTopic 
         {
           public:
-            typedef struct DrillStateTopicSeq Seq;
+            typedef struct PlcDrillStateTopicSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef DrillStateTopicTypeSupport TypeSupport;
-            typedef DrillStateTopicDataWriter DataWriter;
-            typedef DrillStateTopicDataReader DataReader;
+            typedef PlcDrillStateTopicTypeSupport TypeSupport;
+            typedef PlcDrillStateTopicDataWriter DataWriter;
+            typedef PlcDrillStateTopicDataReader DataReader;
             #endif
 
             DDS_Double   ropActual ;
@@ -161,52 +161,52 @@ namespace plc {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* DrillStateTopic_get_typecode(void); /* Type code */
-        NDDSUSERDllExport RTIXCdrTypePlugin *DrillStateTopic_get_type_plugin_info(void);
-        NDDSUSERDllExport RTIXCdrSampleAccessInfo *DrillStateTopic_get_sample_access_info(void);
-        NDDSUSERDllExport RTIXCdrSampleAccessInfo *DrillStateTopic_get_sample_seq_access_info(void);
+        NDDSUSERDllExport DDS_TypeCode* PlcDrillStateTopic_get_typecode(void); /* Type code */
+        NDDSUSERDllExport RTIXCdrTypePlugin *PlcDrillStateTopic_get_type_plugin_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcDrillStateTopic_get_sample_access_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcDrillStateTopic_get_sample_seq_access_info(void);
         #endif
 
-        DDS_SEQUENCE(DrillStateTopicSeq, DrillStateTopic);
+        DDS_SEQUENCE(PlcDrillStateTopicSeq, PlcDrillStateTopic);
 
         NDDSUSERDllExport
-        RTIBool DrillStateTopic_initialize(
-            DrillStateTopic* self);
+        RTIBool PlcDrillStateTopic_initialize(
+            PlcDrillStateTopic* self);
 
         NDDSUSERDllExport
-        RTIBool DrillStateTopic_initialize_ex(
-            DrillStateTopic* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool PlcDrillStateTopic_initialize_ex(
+            PlcDrillStateTopic* self,RTIBool allocatePointers,RTIBool allocateMemory);
 
         NDDSUSERDllExport
-        RTIBool DrillStateTopic_initialize_w_params(
-            DrillStateTopic* self,
+        RTIBool PlcDrillStateTopic_initialize_w_params(
+            PlcDrillStateTopic* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        RTIBool DrillStateTopic_finalize_w_return(
-            DrillStateTopic* self);
+        RTIBool PlcDrillStateTopic_finalize_w_return(
+            PlcDrillStateTopic* self);
 
         NDDSUSERDllExport
-        void DrillStateTopic_finalize(
-            DrillStateTopic* self);
+        void PlcDrillStateTopic_finalize(
+            PlcDrillStateTopic* self);
 
         NDDSUSERDllExport
-        void DrillStateTopic_finalize_ex(
-            DrillStateTopic* self,RTIBool deletePointers);
+        void PlcDrillStateTopic_finalize_ex(
+            PlcDrillStateTopic* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void DrillStateTopic_finalize_w_params(
-            DrillStateTopic* self,
+        void PlcDrillStateTopic_finalize_w_params(
+            PlcDrillStateTopic* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void DrillStateTopic_finalize_optional_members(
-            DrillStateTopic* self, RTIBool deletePointers);  
+        void PlcDrillStateTopic_finalize_optional_members(
+            PlcDrillStateTopic* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool DrillStateTopic_copy(
-            DrillStateTopic* dst,
-            const DrillStateTopic* src);
+        RTIBool PlcDrillStateTopic_copy(
+            PlcDrillStateTopic* dst,
+            const PlcDrillStateTopic* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -221,12 +221,12 @@ namespace plc {
 namespace rti { 
     namespace xcdr {
         template <>
-        struct type_code<plc::process::DrillRequestTopic> {
+        struct type_code<plc::process::PlcDrillRequestTopic> {
             static const RTIXCdrTypeCode * get();
         };
 
         template <>
-        struct type_code<plc::process::DrillStateTopic> {
+        struct type_code<plc::process::PlcDrillStateTopic> {
             static const RTIXCdrTypeCode * get();
         };
 

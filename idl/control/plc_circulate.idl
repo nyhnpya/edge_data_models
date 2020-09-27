@@ -1,10 +1,10 @@
-#include "base_data_types.idl"
-
 module plc
 {
     module process
     {
-        //@copy-c-declaration static const char CIRCULATE_REQUEST_TOPIC[] = "CirculateRequestTopic";
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: PlcProfile
+        //@copy-c-declaration static const char PLC_CIRCULATE_REQUEST_TOPIC[] = "CirculateRequestTopic";
 
         /**
          * \brief requested state change in the circulation system.
@@ -15,12 +15,14 @@ module plc
          * | ----------------------- | ---------------------------------------| ------------------| ------- |
          * | targetFlowRate          | requetsed flow rate                    | double            | m/sec^3 |
 	 */
-        struct CirculateRequest
+        struct PlcCirculateRequest
         {
             double targetFlowRate; ///< requested flow rate in m/sec^3
         };
 
-        //@copy-c-declaration static const char CIRCULATE_STATE_TOPIC[] = "CirculateStateTopic";
+        // QoSLibrary: EdgeBaseLibrary
+        // QoSProfile: PlcProfile
+        //@copy-c-declaration static const char PLC_CIRCULATE_STATE_TOPIC[] = "CirculateStateTopic";
 
         /**
          * \brief current state of circulation system.
@@ -38,22 +40,22 @@ module plc
          * | maxStandpipePressure    | maximum machine standpipe pressure     | double            | Pa      |
          * | targetFlowRate          | requetsed flow rate                    | double            | m/sec^3 |
          */
-        struct CirculateState
+        struct PlcCirculateState
         {
-            DataTypes::Status status;
+            long    status;
 
             // actuals
-            double            actualFlowRate;
-            double            actualStandpipePressure;
+            double  actualFlowRate;
+            double  actualStandpipePressure;
 
             // constraints
-            double            minFlowRate;
-            double            maxFlowRate;
-            double            minStandpipePressure;
-            double            maxStandpipePressure;
+            double  minFlowRate;
+            double  maxFlowRate;
+            double  minStandpipePressure;
+            double  maxStandpipePressure;
 
             // targets
-            double            targetFlowRate;
+            double  targetFlowRate;
         };
     };
 };

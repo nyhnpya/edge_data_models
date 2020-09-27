@@ -44,14 +44,14 @@ namespace plc {
     namespace process {
 
         /* ========================================================================= */
-        const char *CirculateRequestTYPENAME = "plc::process::CirculateRequest";
+        const char *PlcCirculateRequestTYPENAME = "plc::process::PlcCirculateRequest";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* CirculateRequest_get_typecode()
+        DDS_TypeCode* PlcCirculateRequest_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member CirculateRequest_g_tc_members[1]=
+            static DDS_TypeCode_Member PlcCirculateRequest_g_tc_members[1]=
             {
 
                 {
@@ -74,131 +74,131 @@ namespace plc {
                 }
             };
 
-            static DDS_TypeCode CirculateRequest_g_tc =
+            static DDS_TypeCode PlcCirculateRequest_g_tc =
             {{
                     DDS_TK_STRUCT, /* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"plc::process::CirculateRequest", /* Name */
+                    (char *)"plc::process::PlcCirculateRequest", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     1, /* Number of members */
-                    CirculateRequest_g_tc_members, /* Members */
+                    PlcCirculateRequest_g_tc_members, /* Members */
                     DDS_VM_NONE, /* Ignored */
                     RTICdrTypeCodeAnnotations_INITIALIZER,
                     DDS_BOOLEAN_TRUE, /* _isCopyable */
                     NULL, /* _sampleAccessInfo: assigned later */
                     NULL /* _typePlugin: assigned later */
-                }}; /* Type code for CirculateRequest*/
+                }}; /* Type code for PlcCirculateRequest*/
 
             if (is_initialized) {
-                return &CirculateRequest_g_tc;
+                return &PlcCirculateRequest_g_tc;
             }
 
-            CirculateRequest_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+            PlcCirculateRequest_g_tc._data._annotations._allowedDataRepresentationMask = 5;
 
-            CirculateRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcCirculateRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
 
             /* Initialize the values for member annotations. */
-            CirculateRequest_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateRequest_g_tc_members[0]._annotations._defaultValue._u.double_value = 0.0;
-            CirculateRequest_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateRequest_g_tc_members[0]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            CirculateRequest_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateRequest_g_tc_members[0]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcCirculateRequest_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateRequest_g_tc_members[0]._annotations._defaultValue._u.double_value = 0.0;
+            PlcCirculateRequest_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateRequest_g_tc_members[0]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcCirculateRequest_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateRequest_g_tc_members[0]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            CirculateRequest_g_tc._data._sampleAccessInfo =
-            CirculateRequest_get_sample_access_info();
-            CirculateRequest_g_tc._data._typePlugin =
-            CirculateRequest_get_type_plugin_info();    
+            PlcCirculateRequest_g_tc._data._sampleAccessInfo =
+            PlcCirculateRequest_get_sample_access_info();
+            PlcCirculateRequest_g_tc._data._typePlugin =
+            PlcCirculateRequest_get_type_plugin_info();    
 
             is_initialized = RTI_TRUE;
 
-            return &CirculateRequest_g_tc;
+            return &PlcCirculateRequest_g_tc;
         }
 
-        #define TSeq CirculateRequestSeq
-        #define T CirculateRequest
+        #define TSeq PlcCirculateRequestSeq
+        #define T PlcCirculateRequest
         #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
         #undef T
         #undef TSeq
 
-        RTIXCdrSampleAccessInfo *CirculateRequest_get_sample_seq_access_info()
+        RTIXCdrSampleAccessInfo *PlcCirculateRequest_get_sample_seq_access_info()
         {
-            static RTIXCdrSampleAccessInfo CirculateRequest_g_seqSampleAccessInfo = {
+            static RTIXCdrSampleAccessInfo PlcCirculateRequest_g_seqSampleAccessInfo = {
                 RTI_XCDR_TYPE_BINDING_CPP, \
-                {sizeof(CirculateRequestSeq),0,0,0}, \
+                {sizeof(PlcCirculateRequestSeq),0,0,0}, \
                 RTI_XCDR_FALSE, \
                 DDS_Sequence_get_member_value_pointer, \
-                CirculateRequestSeq_set_member_element_count, \
+                PlcCirculateRequestSeq_set_member_element_count, \
                 NULL, \
                 NULL, \
                 NULL \
             };
 
-            return &CirculateRequest_g_seqSampleAccessInfo;
+            return &PlcCirculateRequest_g_seqSampleAccessInfo;
         }
 
-        RTIXCdrSampleAccessInfo *CirculateRequest_get_sample_access_info()
+        RTIXCdrSampleAccessInfo *PlcCirculateRequest_get_sample_access_info()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            plc::process::CirculateRequest *sample;
+            plc::process::PlcCirculateRequest *sample;
 
-            static RTIXCdrMemberAccessInfo CirculateRequest_g_memberAccessInfos[1] =
+            static RTIXCdrMemberAccessInfo PlcCirculateRequest_g_memberAccessInfos[1] =
             {RTIXCdrMemberAccessInfo_INITIALIZER};
 
-            static RTIXCdrSampleAccessInfo CirculateRequest_g_sampleAccessInfo = 
+            static RTIXCdrSampleAccessInfo PlcCirculateRequest_g_sampleAccessInfo = 
             RTIXCdrSampleAccessInfo_INITIALIZER;
 
             if (is_initialized) {
-                return (RTIXCdrSampleAccessInfo*) &CirculateRequest_g_sampleAccessInfo;
+                return (RTIXCdrSampleAccessInfo*) &PlcCirculateRequest_g_sampleAccessInfo;
             }
 
             RTIXCdrHeap_allocateStruct(
                 &sample, 
-                plc::process::CirculateRequest);
+                plc::process::PlcCirculateRequest);
             if (sample == NULL) {
                 return NULL;
             }
 
-            CirculateRequest_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
+            PlcCirculateRequest_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->targetFlowRate - (char *)sample);
 
-            CirculateRequest_g_sampleAccessInfo.memberAccessInfos = 
-            CirculateRequest_g_memberAccessInfos;
+            PlcCirculateRequest_g_sampleAccessInfo.memberAccessInfos = 
+            PlcCirculateRequest_g_memberAccessInfos;
 
             {
-                size_t candidateTypeSize = sizeof(CirculateRequest);
+                size_t candidateTypeSize = sizeof(PlcCirculateRequest);
 
                 if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
-                    CirculateRequest_g_sampleAccessInfo.typeSize[0] =
+                    PlcCirculateRequest_g_sampleAccessInfo.typeSize[0] =
                     RTIXCdrUnsignedLong_MAX;
                 } else {
-                    CirculateRequest_g_sampleAccessInfo.typeSize[0] =
+                    PlcCirculateRequest_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
                 }
             }
 
-            CirculateRequest_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+            PlcCirculateRequest_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
             RTI_XCDR_TRUE;
 
-            CirculateRequest_g_sampleAccessInfo.getMemberValuePointerFcn = 
-            CirculateRequest_get_member_value_pointer;
+            PlcCirculateRequest_g_sampleAccessInfo.getMemberValuePointerFcn = 
+            PlcCirculateRequest_get_member_value_pointer;
 
-            CirculateRequest_g_sampleAccessInfo.languageBinding = 
+            PlcCirculateRequest_g_sampleAccessInfo.languageBinding = 
             RTI_XCDR_TYPE_BINDING_CPP ;
 
             RTIXCdrHeap_freeStruct(sample);
             is_initialized = RTI_TRUE;
-            return (RTIXCdrSampleAccessInfo*) &CirculateRequest_g_sampleAccessInfo;
+            return (RTIXCdrSampleAccessInfo*) &PlcCirculateRequest_g_sampleAccessInfo;
         }
 
-        RTIXCdrTypePlugin *CirculateRequest_get_type_plugin_info()
+        RTIXCdrTypePlugin *PlcCirculateRequest_get_type_plugin_info()
         {
-            static RTIXCdrTypePlugin CirculateRequest_g_typePlugin = 
+            static RTIXCdrTypePlugin PlcCirculateRequest_g_typePlugin = 
             {
                 NULL, /* serialize */
                 NULL, /* serialize_key */
@@ -211,24 +211,24 @@ namespace plc {
                 NULL, /* get_serialized_sample_min_size */
                 NULL, /* serialized_sample_to_key */
                 (RTIXCdrTypePluginInitializeSampleFunction) 
-                plc::process::CirculateRequest_initialize_ex,
+                plc::process::PlcCirculateRequest_initialize_ex,
                 NULL,
                 (RTIXCdrTypePluginFinalizeSampleFunction)
-                plc::process::CirculateRequest_finalize_w_return,
+                plc::process::PlcCirculateRequest_finalize_w_return,
                 NULL
             };
 
-            return &CirculateRequest_g_typePlugin;
+            return &PlcCirculateRequest_g_typePlugin;
         }
         #endif
 
-        RTIBool CirculateRequest_initialize(
-            CirculateRequest* sample) {
-            return plc::process::CirculateRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool PlcCirculateRequest_initialize(
+            PlcCirculateRequest* sample) {
+            return plc::process::PlcCirculateRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool CirculateRequest_initialize_ex(
-            CirculateRequest* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool PlcCirculateRequest_initialize_ex(
+            PlcCirculateRequest* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -237,13 +237,13 @@ namespace plc {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return plc::process::CirculateRequest_initialize_w_params(
+            return plc::process::PlcCirculateRequest_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool CirculateRequest_initialize_w_params(
-            CirculateRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool PlcCirculateRequest_initialize_w_params(
+            PlcCirculateRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -258,23 +258,23 @@ namespace plc {
             return RTI_TRUE;
         }
 
-        RTIBool CirculateRequest_finalize_w_return(
-            CirculateRequest* sample)
+        RTIBool PlcCirculateRequest_finalize_w_return(
+            PlcCirculateRequest* sample)
         {
-            plc::process::CirculateRequest_finalize_ex(sample, RTI_TRUE);
+            plc::process::PlcCirculateRequest_finalize_ex(sample, RTI_TRUE);
 
             return RTI_TRUE;
         }
 
-        void CirculateRequest_finalize(
-            CirculateRequest* sample)
+        void PlcCirculateRequest_finalize(
+            PlcCirculateRequest* sample)
         {
 
-            plc::process::CirculateRequest_finalize_ex(sample,RTI_TRUE);
+            plc::process::PlcCirculateRequest_finalize_ex(sample,RTI_TRUE);
         }
 
-        void CirculateRequest_finalize_ex(
-            CirculateRequest* sample,RTIBool deletePointers)
+        void PlcCirculateRequest_finalize_ex(
+            PlcCirculateRequest* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -285,12 +285,12 @@ namespace plc {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            plc::process::CirculateRequest_finalize_w_params(
+            plc::process::PlcCirculateRequest_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void CirculateRequest_finalize_w_params(
-            CirculateRequest* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void PlcCirculateRequest_finalize_w_params(
+            PlcCirculateRequest* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -303,8 +303,8 @@ namespace plc {
 
         }
 
-        void CirculateRequest_finalize_optional_members(
-            CirculateRequest* sample, RTIBool deletePointers)
+        void PlcCirculateRequest_finalize_optional_members(
+            PlcCirculateRequest* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -321,9 +321,9 @@ namespace plc {
 
         }
 
-        RTIBool CirculateRequest_copy(
-            CirculateRequest* dst,
-            const CirculateRequest* src)
+        RTIBool PlcCirculateRequest_copy(
+            PlcCirculateRequest* dst,
+            const PlcCirculateRequest* src)
         {
             try {
 
@@ -348,15 +348,15 @@ namespace plc {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'CirculateRequest' sequence class.
+        * Configure and implement 'PlcCirculateRequest' sequence class.
         */
-        #define T CirculateRequest
-        #define TSeq CirculateRequestSeq
+        #define T PlcCirculateRequest
+        #define TSeq PlcCirculateRequestSeq
 
-        #define T_initialize_w_params plc::process::CirculateRequest_initialize_w_params
+        #define T_initialize_w_params plc::process::PlcCirculateRequest_initialize_w_params
 
-        #define T_finalize_w_params   plc::process::CirculateRequest_finalize_w_params
-        #define T_copy       plc::process::CirculateRequest_copy
+        #define T_finalize_w_params   plc::process::PlcCirculateRequest_finalize_w_params
+        #define T_copy       plc::process::PlcCirculateRequest_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -375,14 +375,14 @@ namespace plc {
         #undef T
 
         /* ========================================================================= */
-        const char *CirculateStateTYPENAME = "plc::process::CirculateState";
+        const char *PlcCirculateStateTYPENAME = "plc::process::PlcCirculateState";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* CirculateState_get_typecode()
+        DDS_TypeCode* PlcCirculateState_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member CirculateState_g_tc_members[8]=
+            static DDS_TypeCode_Member PlcCirculateState_g_tc_members[8]=
             {
 
                 {
@@ -531,204 +531,208 @@ namespace plc {
                 }
             };
 
-            static DDS_TypeCode CirculateState_g_tc =
+            static DDS_TypeCode PlcCirculateState_g_tc =
             {{
                     DDS_TK_STRUCT, /* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"plc::process::CirculateState", /* Name */
+                    (char *)"plc::process::PlcCirculateState", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     8, /* Number of members */
-                    CirculateState_g_tc_members, /* Members */
+                    PlcCirculateState_g_tc_members, /* Members */
                     DDS_VM_NONE, /* Ignored */
                     RTICdrTypeCodeAnnotations_INITIALIZER,
                     DDS_BOOLEAN_TRUE, /* _isCopyable */
                     NULL, /* _sampleAccessInfo: assigned later */
                     NULL /* _typePlugin: assigned later */
-                }}; /* Type code for CirculateState*/
+                }}; /* Type code for PlcCirculateState*/
 
             if (is_initialized) {
-                return &CirculateState_g_tc;
+                return &PlcCirculateState_g_tc;
             }
 
-            CirculateState_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+            PlcCirculateState_g_tc._data._annotations._allowedDataRepresentationMask = 5;
 
-            CirculateState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)DataTypes::Status_get_typecode();
-            CirculateState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            CirculateState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            CirculateState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            CirculateState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            CirculateState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            CirculateState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            CirculateState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcCirculateState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long_w_new;
+            PlcCirculateState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcCirculateState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcCirculateState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcCirculateState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcCirculateState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcCirculateState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcCirculateState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
 
             /* Initialize the values for member annotations. */
-            CirculateState_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_ENUM;
-            CirculateState_g_tc_members[0]._annotations._defaultValue._u.enumerated_value = 0;
+            PlcCirculateState_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_LONG;
+            PlcCirculateState_g_tc_members[0]._annotations._defaultValue._u.long_value = 0;
+            PlcCirculateState_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_LONG;
+            PlcCirculateState_g_tc_members[0]._annotations._minValue._u.long_value = RTIXCdrLong_MIN;
+            PlcCirculateState_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_LONG;
+            PlcCirculateState_g_tc_members[0]._annotations._maxValue._u.long_value = RTIXCdrLong_MAX;
 
-            CirculateState_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
-            CirculateState_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            CirculateState_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcCirculateState_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
+            PlcCirculateState_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcCirculateState_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            CirculateState_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
-            CirculateState_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            CirculateState_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcCirculateState_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
+            PlcCirculateState_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcCirculateState_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            CirculateState_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
-            CirculateState_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            CirculateState_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcCirculateState_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
+            PlcCirculateState_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcCirculateState_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            CirculateState_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[4]._annotations._defaultValue._u.double_value = 0.0;
-            CirculateState_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            CirculateState_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcCirculateState_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[4]._annotations._defaultValue._u.double_value = 0.0;
+            PlcCirculateState_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcCirculateState_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            CirculateState_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[5]._annotations._defaultValue._u.double_value = 0.0;
-            CirculateState_g_tc_members[5]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[5]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            CirculateState_g_tc_members[5]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[5]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcCirculateState_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[5]._annotations._defaultValue._u.double_value = 0.0;
+            PlcCirculateState_g_tc_members[5]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[5]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcCirculateState_g_tc_members[5]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[5]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            CirculateState_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
-            CirculateState_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            CirculateState_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcCirculateState_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
+            PlcCirculateState_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcCirculateState_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            CirculateState_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[7]._annotations._defaultValue._u.double_value = 0.0;
-            CirculateState_g_tc_members[7]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[7]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            CirculateState_g_tc_members[7]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            CirculateState_g_tc_members[7]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcCirculateState_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[7]._annotations._defaultValue._u.double_value = 0.0;
+            PlcCirculateState_g_tc_members[7]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[7]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcCirculateState_g_tc_members[7]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcCirculateState_g_tc_members[7]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            CirculateState_g_tc._data._sampleAccessInfo =
-            CirculateState_get_sample_access_info();
-            CirculateState_g_tc._data._typePlugin =
-            CirculateState_get_type_plugin_info();    
+            PlcCirculateState_g_tc._data._sampleAccessInfo =
+            PlcCirculateState_get_sample_access_info();
+            PlcCirculateState_g_tc._data._typePlugin =
+            PlcCirculateState_get_type_plugin_info();    
 
             is_initialized = RTI_TRUE;
 
-            return &CirculateState_g_tc;
+            return &PlcCirculateState_g_tc;
         }
 
-        #define TSeq CirculateStateSeq
-        #define T CirculateState
+        #define TSeq PlcCirculateStateSeq
+        #define T PlcCirculateState
         #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
         #undef T
         #undef TSeq
 
-        RTIXCdrSampleAccessInfo *CirculateState_get_sample_seq_access_info()
+        RTIXCdrSampleAccessInfo *PlcCirculateState_get_sample_seq_access_info()
         {
-            static RTIXCdrSampleAccessInfo CirculateState_g_seqSampleAccessInfo = {
+            static RTIXCdrSampleAccessInfo PlcCirculateState_g_seqSampleAccessInfo = {
                 RTI_XCDR_TYPE_BINDING_CPP, \
-                {sizeof(CirculateStateSeq),0,0,0}, \
+                {sizeof(PlcCirculateStateSeq),0,0,0}, \
                 RTI_XCDR_FALSE, \
                 DDS_Sequence_get_member_value_pointer, \
-                CirculateStateSeq_set_member_element_count, \
+                PlcCirculateStateSeq_set_member_element_count, \
                 NULL, \
                 NULL, \
                 NULL \
             };
 
-            return &CirculateState_g_seqSampleAccessInfo;
+            return &PlcCirculateState_g_seqSampleAccessInfo;
         }
 
-        RTIXCdrSampleAccessInfo *CirculateState_get_sample_access_info()
+        RTIXCdrSampleAccessInfo *PlcCirculateState_get_sample_access_info()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            plc::process::CirculateState *sample;
+            plc::process::PlcCirculateState *sample;
 
-            static RTIXCdrMemberAccessInfo CirculateState_g_memberAccessInfos[8] =
+            static RTIXCdrMemberAccessInfo PlcCirculateState_g_memberAccessInfos[8] =
             {RTIXCdrMemberAccessInfo_INITIALIZER};
 
-            static RTIXCdrSampleAccessInfo CirculateState_g_sampleAccessInfo = 
+            static RTIXCdrSampleAccessInfo PlcCirculateState_g_sampleAccessInfo = 
             RTIXCdrSampleAccessInfo_INITIALIZER;
 
             if (is_initialized) {
-                return (RTIXCdrSampleAccessInfo*) &CirculateState_g_sampleAccessInfo;
+                return (RTIXCdrSampleAccessInfo*) &PlcCirculateState_g_sampleAccessInfo;
             }
 
             RTIXCdrHeap_allocateStruct(
                 &sample, 
-                plc::process::CirculateState);
+                plc::process::PlcCirculateState);
             if (sample == NULL) {
                 return NULL;
             }
 
-            CirculateState_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
+            PlcCirculateState_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->status - (char *)sample);
 
-            CirculateState_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
+            PlcCirculateState_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->actualFlowRate - (char *)sample);
 
-            CirculateState_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
+            PlcCirculateState_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->actualStandpipePressure - (char *)sample);
 
-            CirculateState_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
+            PlcCirculateState_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->minFlowRate - (char *)sample);
 
-            CirculateState_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
+            PlcCirculateState_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->maxFlowRate - (char *)sample);
 
-            CirculateState_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
+            PlcCirculateState_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->minStandpipePressure - (char *)sample);
 
-            CirculateState_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
+            PlcCirculateState_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->maxStandpipePressure - (char *)sample);
 
-            CirculateState_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
+            PlcCirculateState_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->targetFlowRate - (char *)sample);
 
-            CirculateState_g_sampleAccessInfo.memberAccessInfos = 
-            CirculateState_g_memberAccessInfos;
+            PlcCirculateState_g_sampleAccessInfo.memberAccessInfos = 
+            PlcCirculateState_g_memberAccessInfos;
 
             {
-                size_t candidateTypeSize = sizeof(CirculateState);
+                size_t candidateTypeSize = sizeof(PlcCirculateState);
 
                 if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
-                    CirculateState_g_sampleAccessInfo.typeSize[0] =
+                    PlcCirculateState_g_sampleAccessInfo.typeSize[0] =
                     RTIXCdrUnsignedLong_MAX;
                 } else {
-                    CirculateState_g_sampleAccessInfo.typeSize[0] =
+                    PlcCirculateState_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
                 }
             }
 
-            CirculateState_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+            PlcCirculateState_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
             RTI_XCDR_TRUE;
 
-            CirculateState_g_sampleAccessInfo.getMemberValuePointerFcn = 
-            CirculateState_get_member_value_pointer;
+            PlcCirculateState_g_sampleAccessInfo.getMemberValuePointerFcn = 
+            PlcCirculateState_get_member_value_pointer;
 
-            CirculateState_g_sampleAccessInfo.languageBinding = 
+            PlcCirculateState_g_sampleAccessInfo.languageBinding = 
             RTI_XCDR_TYPE_BINDING_CPP ;
 
             RTIXCdrHeap_freeStruct(sample);
             is_initialized = RTI_TRUE;
-            return (RTIXCdrSampleAccessInfo*) &CirculateState_g_sampleAccessInfo;
+            return (RTIXCdrSampleAccessInfo*) &PlcCirculateState_g_sampleAccessInfo;
         }
 
-        RTIXCdrTypePlugin *CirculateState_get_type_plugin_info()
+        RTIXCdrTypePlugin *PlcCirculateState_get_type_plugin_info()
         {
-            static RTIXCdrTypePlugin CirculateState_g_typePlugin = 
+            static RTIXCdrTypePlugin PlcCirculateState_g_typePlugin = 
             {
                 NULL, /* serialize */
                 NULL, /* serialize_key */
@@ -741,24 +745,24 @@ namespace plc {
                 NULL, /* get_serialized_sample_min_size */
                 NULL, /* serialized_sample_to_key */
                 (RTIXCdrTypePluginInitializeSampleFunction) 
-                plc::process::CirculateState_initialize_ex,
+                plc::process::PlcCirculateState_initialize_ex,
                 NULL,
                 (RTIXCdrTypePluginFinalizeSampleFunction)
-                plc::process::CirculateState_finalize_w_return,
+                plc::process::PlcCirculateState_finalize_w_return,
                 NULL
             };
 
-            return &CirculateState_g_typePlugin;
+            return &PlcCirculateState_g_typePlugin;
         }
         #endif
 
-        RTIBool CirculateState_initialize(
-            CirculateState* sample) {
-            return plc::process::CirculateState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool PlcCirculateState_initialize(
+            PlcCirculateState* sample) {
+            return plc::process::PlcCirculateState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool CirculateState_initialize_ex(
-            CirculateState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool PlcCirculateState_initialize_ex(
+            PlcCirculateState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -767,13 +771,13 @@ namespace plc {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return plc::process::CirculateState_initialize_w_params(
+            return plc::process::PlcCirculateState_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool CirculateState_initialize_w_params(
-            CirculateState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool PlcCirculateState_initialize_w_params(
+            PlcCirculateState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -783,7 +787,7 @@ namespace plc {
                 return RTI_FALSE;
             }
 
-            sample->status = DataTypes::Fault;
+            sample->status = 0;
 
             sample->actualFlowRate = 0.0;
 
@@ -802,23 +806,23 @@ namespace plc {
             return RTI_TRUE;
         }
 
-        RTIBool CirculateState_finalize_w_return(
-            CirculateState* sample)
+        RTIBool PlcCirculateState_finalize_w_return(
+            PlcCirculateState* sample)
         {
-            plc::process::CirculateState_finalize_ex(sample, RTI_TRUE);
+            plc::process::PlcCirculateState_finalize_ex(sample, RTI_TRUE);
 
             return RTI_TRUE;
         }
 
-        void CirculateState_finalize(
-            CirculateState* sample)
+        void PlcCirculateState_finalize(
+            PlcCirculateState* sample)
         {
 
-            plc::process::CirculateState_finalize_ex(sample,RTI_TRUE);
+            plc::process::PlcCirculateState_finalize_ex(sample,RTI_TRUE);
         }
 
-        void CirculateState_finalize_ex(
-            CirculateState* sample,RTIBool deletePointers)
+        void PlcCirculateState_finalize_ex(
+            PlcCirculateState* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -829,12 +833,12 @@ namespace plc {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            plc::process::CirculateState_finalize_w_params(
+            plc::process::PlcCirculateState_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void CirculateState_finalize_w_params(
-            CirculateState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void PlcCirculateState_finalize_w_params(
+            PlcCirculateState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -845,12 +849,10 @@ namespace plc {
                 return;
             }
 
-            DataTypes::Status_finalize_w_params(&sample->status,deallocParams);
-
         }
 
-        void CirculateState_finalize_optional_members(
-            CirculateState* sample, RTIBool deletePointers)
+        void PlcCirculateState_finalize_optional_members(
+            PlcCirculateState* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -867,9 +869,9 @@ namespace plc {
 
         }
 
-        RTIBool CirculateState_copy(
-            CirculateState* dst,
-            const CirculateState* src)
+        RTIBool PlcCirculateState_copy(
+            PlcCirculateState* dst,
+            const PlcCirculateState* src)
         {
             try {
 
@@ -877,10 +879,10 @@ namespace plc {
                     return RTI_FALSE;
                 }
 
-                if (!DataTypes::Status_copy(
-                    &dst->status,(const DataTypes::Status*)&src->status)) {
+                if (!RTICdrType_copyLong (
+                    &dst->status, &src->status)) { 
                     return RTI_FALSE;
-                } 
+                }
                 if (!RTICdrType_copyDouble (
                     &dst->actualFlowRate, &src->actualFlowRate)) { 
                     return RTI_FALSE;
@@ -922,15 +924,15 @@ namespace plc {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'CirculateState' sequence class.
+        * Configure and implement 'PlcCirculateState' sequence class.
         */
-        #define T CirculateState
-        #define TSeq CirculateStateSeq
+        #define T PlcCirculateState
+        #define TSeq PlcCirculateStateSeq
 
-        #define T_initialize_w_params plc::process::CirculateState_initialize_w_params
+        #define T_initialize_w_params plc::process::PlcCirculateState_initialize_w_params
 
-        #define T_finalize_w_params   plc::process::CirculateState_finalize_w_params
-        #define T_copy       plc::process::CirculateState_copy
+        #define T_finalize_w_params   plc::process::PlcCirculateState_finalize_w_params
+        #define T_copy       plc::process::PlcCirculateState_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -955,14 +957,14 @@ namespace plc {
 #ifndef NDDS_STANDALONE_TYPE
 namespace rti { 
     namespace xcdr {
-        const RTIXCdrTypeCode * type_code<plc::process::CirculateRequest>::get() 
+        const RTIXCdrTypeCode * type_code<plc::process::PlcCirculateRequest>::get() 
         {
-            return (const RTIXCdrTypeCode *) plc::process::CirculateRequest_get_typecode();
+            return (const RTIXCdrTypeCode *) plc::process::PlcCirculateRequest_get_typecode();
         }
 
-        const RTIXCdrTypeCode * type_code<plc::process::CirculateState>::get() 
+        const RTIXCdrTypeCode * type_code<plc::process::PlcCirculateState>::get() 
         {
-            return (const RTIXCdrTypeCode *) plc::process::CirculateState_get_typecode();
+            return (const RTIXCdrTypeCode *) plc::process::PlcCirculateState_get_typecode();
         }
 
     } 

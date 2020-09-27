@@ -64,43 +64,43 @@ namespace plc {
     namespace process {
 
         /* ----------------------------------------------------------------------------
-        *  Type DrillRequestTopic
+        *  Type PlcDrillRequestTopic
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        DrillRequestTopic*
-        DrillRequestTopicPluginSupport_create_data_w_params(
+        PlcDrillRequestTopic*
+        PlcDrillRequestTopicPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params) 
         {
-            DrillRequestTopic *sample = NULL;
+            PlcDrillRequestTopic *sample = NULL;
 
-            sample = new (std::nothrow) DrillRequestTopic ;
+            sample = new (std::nothrow) PlcDrillRequestTopic ;
             if (sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::DrillRequestTopic_initialize_w_params(sample,alloc_params)) {
+            if (!plc::process::PlcDrillRequestTopic_initialize_w_params(sample,alloc_params)) {
                 delete  sample;
                 sample=NULL;
             }
             return sample;
         } 
 
-        DrillRequestTopic *
-        DrillRequestTopicPluginSupport_create_data_ex(RTIBool allocate_pointers) 
+        PlcDrillRequestTopic *
+        PlcDrillRequestTopicPluginSupport_create_data_ex(RTIBool allocate_pointers) 
         {
-            DrillRequestTopic *sample = NULL;
+            PlcDrillRequestTopic *sample = NULL;
 
-            sample = new (std::nothrow) DrillRequestTopic ;
+            sample = new (std::nothrow) PlcDrillRequestTopic ;
 
             if(sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::DrillRequestTopic_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!plc::process::PlcDrillRequestTopic_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 delete  sample;
                 sample=NULL;
             }
@@ -108,50 +108,50 @@ namespace plc {
             return sample;
         }
 
-        DrillRequestTopic *
-        DrillRequestTopicPluginSupport_create_data(void)
+        PlcDrillRequestTopic *
+        PlcDrillRequestTopicPluginSupport_create_data(void)
         {
-            return plc::process::DrillRequestTopicPluginSupport_create_data_ex(RTI_TRUE);
+            return plc::process::PlcDrillRequestTopicPluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        DrillRequestTopicPluginSupport_destroy_data_w_params(
-            DrillRequestTopic *sample,
+        PlcDrillRequestTopicPluginSupport_destroy_data_w_params(
+            PlcDrillRequestTopic *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
-            plc::process::DrillRequestTopic_finalize_w_params(sample,dealloc_params);
+            plc::process::PlcDrillRequestTopic_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        DrillRequestTopicPluginSupport_destroy_data_ex(
-            DrillRequestTopic *sample,RTIBool deallocate_pointers) {
-            plc::process::DrillRequestTopic_finalize_ex(sample,deallocate_pointers);
+        PlcDrillRequestTopicPluginSupport_destroy_data_ex(
+            PlcDrillRequestTopic *sample,RTIBool deallocate_pointers) {
+            plc::process::PlcDrillRequestTopic_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        DrillRequestTopicPluginSupport_destroy_data(
-            DrillRequestTopic *sample) {
+        PlcDrillRequestTopicPluginSupport_destroy_data(
+            PlcDrillRequestTopic *sample) {
 
-            plc::process::DrillRequestTopicPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            plc::process::PlcDrillRequestTopicPluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        DrillRequestTopicPluginSupport_copy_data(
-            DrillRequestTopic *dst,
-            const DrillRequestTopic *src)
+        PlcDrillRequestTopicPluginSupport_copy_data(
+            PlcDrillRequestTopic *dst,
+            const PlcDrillRequestTopic *src)
         {
-            return plc::process::DrillRequestTopic_copy(dst,(const DrillRequestTopic*) src);
+            return plc::process::PlcDrillRequestTopic_copy(dst,(const PlcDrillRequestTopic*) src);
         }
 
         void 
-        DrillRequestTopicPluginSupport_print_data(
-            const DrillRequestTopic *sample,
+        PlcDrillRequestTopicPluginSupport_print_data(
+            const PlcDrillRequestTopic *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -200,7 +200,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        DrillRequestTopicPlugin_on_participant_attached(
+        PlcDrillRequestTopicPlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -229,7 +229,7 @@ namespace plc {
 
             programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                 DDS_TypeCodeFactory_get_instance(),
-                DrillRequestTopic_get_typecode(),
+                PlcDrillRequestTopic_get_typecode(),
                 &programProperty,
                 RTI_XCDR_PROGRAM_MASK_TYPEPLUGIN);
             if (programs == NULL) {
@@ -243,7 +243,7 @@ namespace plc {
         }
 
         void 
-        DrillRequestTopicPlugin_on_participant_detached(
+        PlcDrillRequestTopicPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {  		
             if (participant_data != NULL) {
@@ -261,7 +261,7 @@ namespace plc {
         }
 
         PRESTypePluginEndpointData
-        DrillRequestTopicPlugin_on_endpoint_attached(
+        PlcDrillRequestTopicPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -281,9 +281,9 @@ namespace plc {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                plc::process::DrillRequestTopicPluginSupport_create_data,
+                plc::process::PlcDrillRequestTopicPluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                plc::process::DrillRequestTopicPluginSupport_destroy_data,
+                plc::process::PlcDrillRequestTopicPluginSupport_destroy_data,
                 NULL , NULL );
 
             if (epd == NULL) {
@@ -291,7 +291,7 @@ namespace plc {
             } 
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = plc::process::DrillRequestTopicPlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = plc::process::PlcDrillRequestTopicPlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
 
@@ -299,7 +299,7 @@ namespace plc {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    plc::process::DrillRequestTopicPlugin_get_serialized_sample_max_size, epd,
+                    plc::process::PlcDrillRequestTopicPlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
                     PRESTypePlugin_interpretedGetSerializedSampleSize,
                     epd) == RTI_FALSE) {
@@ -312,49 +312,49 @@ namespace plc {
         }
 
         void 
-        DrillRequestTopicPlugin_on_endpoint_detached(
+        PlcDrillRequestTopicPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {
             PRESTypePluginDefaultEndpointData_delete(endpoint_data);
         }
 
         void    
-        DrillRequestTopicPlugin_return_sample(
+        PlcDrillRequestTopicPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillRequestTopic *sample,
+            PlcDrillRequestTopic *sample,
             void *handle)
         {
-            DrillRequestTopic_finalize_optional_members(sample, RTI_TRUE);
+            PlcDrillRequestTopic_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        DrillRequestTopicPlugin_copy_sample(
+        PlcDrillRequestTopicPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillRequestTopic *dst,
-            const DrillRequestTopic *src)
+            PlcDrillRequestTopic *dst,
+            const PlcDrillRequestTopic *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return plc::process::DrillRequestTopicPluginSupport_copy_data(dst,src);
+            return plc::process::PlcDrillRequestTopicPluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        DrillRequestTopicPlugin_get_serialized_sample_max_size(
+        PlcDrillRequestTopicPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool
-        DrillRequestTopicPlugin_serialize_to_cdr_buffer_ex(
+        PlcDrillRequestTopicPlugin_serialize_to_cdr_buffer_ex(
             char *buffer,
             unsigned int *length,
-            const DrillRequestTopic *sample,
+            const PlcDrillRequestTopic *sample,
             DDS_DataRepresentationId_t representation)
         {
             RTIEncapsulationId encapsulationId = RTI_CDR_ENCAPSULATION_ID_INVALID;
@@ -376,8 +376,8 @@ namespace plc {
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
             plugin.typeCode = (struct RTICdrTypeCode *)
-            DrillRequestTopic_get_typecode();
-            pd.programs = DrillRequestTopicPlugin_get_programs();
+            PlcDrillRequestTopic_get_typecode();
+            pd.programs = PlcDrillRequestTopicPlugin_get_programs();
             if (pd.programs == NULL) {
                 return RTI_FALSE;
             }
@@ -390,7 +390,7 @@ namespace plc {
             }
 
             epd._maxSizeSerializedSample =
-            DrillRequestTopicPlugin_get_serialized_sample_max_size(
+            PlcDrillRequestTopicPlugin_get_serialized_sample_max_size(
                 (PRESTypePluginEndpointData)&epd, 
                 RTI_TRUE, 
                 encapsulationId,
@@ -429,12 +429,12 @@ namespace plc {
         }
 
         RTIBool
-        DrillRequestTopicPlugin_serialize_to_cdr_buffer(
+        PlcDrillRequestTopicPlugin_serialize_to_cdr_buffer(
             char *buffer,
             unsigned int *length,
-            const DrillRequestTopic *sample)
+            const PlcDrillRequestTopic *sample)
         {
-            return DrillRequestTopicPlugin_serialize_to_cdr_buffer_ex(
+            return PlcDrillRequestTopicPlugin_serialize_to_cdr_buffer_ex(
                 buffer,
                 length,
                 sample,
@@ -442,8 +442,8 @@ namespace plc {
         }
 
         RTIBool
-        DrillRequestTopicPlugin_deserialize_from_cdr_buffer(
-            DrillRequestTopic *sample,
+        PlcDrillRequestTopicPlugin_deserialize_from_cdr_buffer(
+            PlcDrillRequestTopic *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -459,8 +459,8 @@ namespace plc {
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
             plugin.typeCode = (struct RTICdrTypeCode *)
-            DrillRequestTopic_get_typecode();
-            pd.programs = DrillRequestTopicPlugin_get_programs();
+            PlcDrillRequestTopic_get_typecode();
+            pd.programs = PlcDrillRequestTopicPlugin_get_programs();
             if (pd.programs == NULL) {
                 return RTI_FALSE;
             }
@@ -471,7 +471,7 @@ namespace plc {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            DrillRequestTopic_finalize_optional_members(sample, RTI_TRUE);
+            PlcDrillRequestTopic_finalize_optional_members(sample, RTI_TRUE);
             return PRESTypePlugin_interpretedDeserialize( 
                 (PRESTypePluginEndpointData)&epd, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
@@ -480,8 +480,8 @@ namespace plc {
 
         #ifndef NDDS_STANDALONE_TYPE
         DDS_ReturnCode_t
-        DrillRequestTopicPlugin_data_to_string(
-            const DrillRequestTopic *sample,
+        PlcDrillRequestTopicPlugin_data_to_string(
+            const PlcDrillRequestTopic *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property)
@@ -503,7 +503,7 @@ namespace plc {
             if (property == NULL) {
                 return DDS_RETCODE_BAD_PARAMETER;
             }
-            if (!DrillRequestTopicPlugin_serialize_to_cdr_buffer(
+            if (!PlcDrillRequestTopicPlugin_serialize_to_cdr_buffer(
                 NULL, 
                 &length, 
                 sample)) {
@@ -515,7 +515,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
 
-            if (!DrillRequestTopicPlugin_serialize_to_cdr_buffer(
+            if (!PlcDrillRequestTopicPlugin_serialize_to_cdr_buffer(
                 buffer, 
                 &length, 
                 sample)) {
@@ -523,7 +523,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
             data = DDS_DynamicData_new(
-                DrillRequestTopic_get_typecode(), 
+                PlcDrillRequestTopic_get_typecode(), 
                 &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
             if (data == NULL) {
                 RTIOsapiHeap_freeBuffer(buffer);
@@ -564,7 +564,7 @@ namespace plc {
         #endif
 
         unsigned int 
-        DrillRequestTopicPlugin_get_serialized_sample_max_size(
+        PlcDrillRequestTopicPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -588,14 +588,14 @@ namespace plc {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        DrillRequestTopicPlugin_get_key_kind(void)
+        PlcDrillRequestTopicPlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_NO_KEY;
         }
 
-        RTIBool DrillRequestTopicPlugin_deserialize_key(
+        RTIBool PlcDrillRequestTopicPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillRequestTopic **sample, 
+            PlcDrillRequestTopic **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -618,7 +618,7 @@ namespace plc {
         }
 
         unsigned int
-        DrillRequestTopicPlugin_get_serialized_key_max_size(
+        PlcDrillRequestTopicPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -636,7 +636,7 @@ namespace plc {
         }
 
         unsigned int
-        DrillRequestTopicPlugin_get_serialized_key_max_size_for_keyhash(
+        PlcDrillRequestTopicPlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment)
@@ -655,17 +655,17 @@ namespace plc {
             return size;
         }
 
-        struct RTIXCdrInterpreterPrograms *DrillRequestTopicPlugin_get_programs()
+        struct RTIXCdrInterpreterPrograms *PlcDrillRequestTopicPlugin_get_programs()
         {
             return ::rti::xcdr::get_cdr_serialization_programs<
-            DrillRequestTopic, 
+            PlcDrillRequestTopic, 
             true, true, true>();
         }
 
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *DrillRequestTopicPlugin_new(void) 
+        struct PRESTypePlugin *PlcDrillRequestTopicPlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -683,29 +683,29 @@ namespace plc {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            plc::process::DrillRequestTopicPlugin_on_participant_attached;
+            plc::process::PlcDrillRequestTopicPlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            plc::process::DrillRequestTopicPlugin_on_participant_detached;
+            plc::process::PlcDrillRequestTopicPlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            plc::process::DrillRequestTopicPlugin_on_endpoint_attached;
+            plc::process::PlcDrillRequestTopicPlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            plc::process::DrillRequestTopicPlugin_on_endpoint_detached;
+            plc::process::PlcDrillRequestTopicPlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            plc::process::DrillRequestTopicPlugin_copy_sample;
+            plc::process::PlcDrillRequestTopicPlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            DrillRequestTopicPlugin_create_sample;
+            PlcDrillRequestTopicPlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            DrillRequestTopicPlugin_destroy_sample;
+            PlcDrillRequestTopicPlugin_destroy_sample;
             plugin->finalizeOptionalMembersFnc =
             (PRESTypePluginFinalizeOptionalMembersFunction)
-            DrillRequestTopic_finalize_optional_members;
+            PlcDrillRequestTopic_finalize_optional_members;
 
             plugin->serializeFnc = 
             (PRESTypePluginSerializeFunction) PRESTypePlugin_interpretedSerialize;
@@ -713,20 +713,20 @@ namespace plc {
             (PRESTypePluginDeserializeFunction) PRESTypePlugin_interpretedDeserializeWithAlloc;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            plc::process::DrillRequestTopicPlugin_get_serialized_sample_max_size;
+            plc::process::PlcDrillRequestTopicPlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
             PRESTypePlugin_interpretedGetSerializedSampleMinSize;
             plugin->getDeserializedSampleMaxSizeFnc = NULL; 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            DrillRequestTopicPlugin_get_sample;
+            PlcDrillRequestTopicPlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            DrillRequestTopicPlugin_return_sample;
+            PlcDrillRequestTopicPlugin_return_sample;
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            plc::process::DrillRequestTopicPlugin_get_key_kind;
+            plc::process::PlcDrillRequestTopicPlugin_get_key_kind;
 
             /* These functions are only used for keyed types. As this is not a keyed
             type they are all set to NULL
@@ -744,17 +744,17 @@ namespace plc {
             #ifdef NDDS_STANDALONE_TYPE
             plugin->typeCode = NULL; 
             #else
-            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::DrillRequestTopic_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::PlcDrillRequestTopic_get_typecode();
             #endif
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            DrillRequestTopicPlugin_get_buffer;
+            PlcDrillRequestTopicPlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            DrillRequestTopicPlugin_return_buffer;
+            PlcDrillRequestTopicPlugin_return_buffer;
             plugin->getBufferWithParams = NULL;
             plugin->returnBufferWithParams = NULL;  
             plugin->getSerializedSampleSizeFnc =
@@ -767,55 +767,55 @@ namespace plc {
             plugin->validateWriterLoanedSampleFnc = NULL;
             plugin->setWriterLoanedSampleSerializedStateFnc = NULL;
 
-            plugin->endpointTypeName = DrillRequestTopicTYPENAME;
+            plugin->endpointTypeName = PlcDrillRequestTopicTYPENAME;
             plugin->isMetpType = RTI_FALSE;
             return plugin;
         }
 
         void
-        DrillRequestTopicPlugin_delete(struct PRESTypePlugin *plugin)
+        PlcDrillRequestTopicPlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 
 
         /* ----------------------------------------------------------------------------
-        *  Type DrillStateTopic
+        *  Type PlcDrillStateTopic
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        DrillStateTopic*
-        DrillStateTopicPluginSupport_create_data_w_params(
+        PlcDrillStateTopic*
+        PlcDrillStateTopicPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params) 
         {
-            DrillStateTopic *sample = NULL;
+            PlcDrillStateTopic *sample = NULL;
 
-            sample = new (std::nothrow) DrillStateTopic ;
+            sample = new (std::nothrow) PlcDrillStateTopic ;
             if (sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::DrillStateTopic_initialize_w_params(sample,alloc_params)) {
+            if (!plc::process::PlcDrillStateTopic_initialize_w_params(sample,alloc_params)) {
                 delete  sample;
                 sample=NULL;
             }
             return sample;
         } 
 
-        DrillStateTopic *
-        DrillStateTopicPluginSupport_create_data_ex(RTIBool allocate_pointers) 
+        PlcDrillStateTopic *
+        PlcDrillStateTopicPluginSupport_create_data_ex(RTIBool allocate_pointers) 
         {
-            DrillStateTopic *sample = NULL;
+            PlcDrillStateTopic *sample = NULL;
 
-            sample = new (std::nothrow) DrillStateTopic ;
+            sample = new (std::nothrow) PlcDrillStateTopic ;
 
             if(sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::DrillStateTopic_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!plc::process::PlcDrillStateTopic_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 delete  sample;
                 sample=NULL;
             }
@@ -823,50 +823,50 @@ namespace plc {
             return sample;
         }
 
-        DrillStateTopic *
-        DrillStateTopicPluginSupport_create_data(void)
+        PlcDrillStateTopic *
+        PlcDrillStateTopicPluginSupport_create_data(void)
         {
-            return plc::process::DrillStateTopicPluginSupport_create_data_ex(RTI_TRUE);
+            return plc::process::PlcDrillStateTopicPluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        DrillStateTopicPluginSupport_destroy_data_w_params(
-            DrillStateTopic *sample,
+        PlcDrillStateTopicPluginSupport_destroy_data_w_params(
+            PlcDrillStateTopic *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
-            plc::process::DrillStateTopic_finalize_w_params(sample,dealloc_params);
+            plc::process::PlcDrillStateTopic_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        DrillStateTopicPluginSupport_destroy_data_ex(
-            DrillStateTopic *sample,RTIBool deallocate_pointers) {
-            plc::process::DrillStateTopic_finalize_ex(sample,deallocate_pointers);
+        PlcDrillStateTopicPluginSupport_destroy_data_ex(
+            PlcDrillStateTopic *sample,RTIBool deallocate_pointers) {
+            plc::process::PlcDrillStateTopic_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        DrillStateTopicPluginSupport_destroy_data(
-            DrillStateTopic *sample) {
+        PlcDrillStateTopicPluginSupport_destroy_data(
+            PlcDrillStateTopic *sample) {
 
-            plc::process::DrillStateTopicPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            plc::process::PlcDrillStateTopicPluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        DrillStateTopicPluginSupport_copy_data(
-            DrillStateTopic *dst,
-            const DrillStateTopic *src)
+        PlcDrillStateTopicPluginSupport_copy_data(
+            PlcDrillStateTopic *dst,
+            const PlcDrillStateTopic *src)
         {
-            return plc::process::DrillStateTopic_copy(dst,(const DrillStateTopic*) src);
+            return plc::process::PlcDrillStateTopic_copy(dst,(const PlcDrillStateTopic*) src);
         }
 
         void 
-        DrillStateTopicPluginSupport_print_data(
-            const DrillStateTopic *sample,
+        PlcDrillStateTopicPluginSupport_print_data(
+            const PlcDrillStateTopic *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -939,7 +939,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        DrillStateTopicPlugin_on_participant_attached(
+        PlcDrillStateTopicPlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -968,7 +968,7 @@ namespace plc {
 
             programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                 DDS_TypeCodeFactory_get_instance(),
-                DrillStateTopic_get_typecode(),
+                PlcDrillStateTopic_get_typecode(),
                 &programProperty,
                 RTI_XCDR_PROGRAM_MASK_TYPEPLUGIN);
             if (programs == NULL) {
@@ -982,7 +982,7 @@ namespace plc {
         }
 
         void 
-        DrillStateTopicPlugin_on_participant_detached(
+        PlcDrillStateTopicPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {  		
             if (participant_data != NULL) {
@@ -1000,7 +1000,7 @@ namespace plc {
         }
 
         PRESTypePluginEndpointData
-        DrillStateTopicPlugin_on_endpoint_attached(
+        PlcDrillStateTopicPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -1020,9 +1020,9 @@ namespace plc {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                plc::process::DrillStateTopicPluginSupport_create_data,
+                plc::process::PlcDrillStateTopicPluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                plc::process::DrillStateTopicPluginSupport_destroy_data,
+                plc::process::PlcDrillStateTopicPluginSupport_destroy_data,
                 NULL , NULL );
 
             if (epd == NULL) {
@@ -1030,7 +1030,7 @@ namespace plc {
             } 
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = plc::process::DrillStateTopicPlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = plc::process::PlcDrillStateTopicPlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
 
@@ -1038,7 +1038,7 @@ namespace plc {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    plc::process::DrillStateTopicPlugin_get_serialized_sample_max_size, epd,
+                    plc::process::PlcDrillStateTopicPlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
                     PRESTypePlugin_interpretedGetSerializedSampleSize,
                     epd) == RTI_FALSE) {
@@ -1051,49 +1051,49 @@ namespace plc {
         }
 
         void 
-        DrillStateTopicPlugin_on_endpoint_detached(
+        PlcDrillStateTopicPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {
             PRESTypePluginDefaultEndpointData_delete(endpoint_data);
         }
 
         void    
-        DrillStateTopicPlugin_return_sample(
+        PlcDrillStateTopicPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillStateTopic *sample,
+            PlcDrillStateTopic *sample,
             void *handle)
         {
-            DrillStateTopic_finalize_optional_members(sample, RTI_TRUE);
+            PlcDrillStateTopic_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        DrillStateTopicPlugin_copy_sample(
+        PlcDrillStateTopicPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            DrillStateTopic *dst,
-            const DrillStateTopic *src)
+            PlcDrillStateTopic *dst,
+            const PlcDrillStateTopic *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return plc::process::DrillStateTopicPluginSupport_copy_data(dst,src);
+            return plc::process::PlcDrillStateTopicPluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        DrillStateTopicPlugin_get_serialized_sample_max_size(
+        PlcDrillStateTopicPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool
-        DrillStateTopicPlugin_serialize_to_cdr_buffer_ex(
+        PlcDrillStateTopicPlugin_serialize_to_cdr_buffer_ex(
             char *buffer,
             unsigned int *length,
-            const DrillStateTopic *sample,
+            const PlcDrillStateTopic *sample,
             DDS_DataRepresentationId_t representation)
         {
             RTIEncapsulationId encapsulationId = RTI_CDR_ENCAPSULATION_ID_INVALID;
@@ -1115,8 +1115,8 @@ namespace plc {
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
             plugin.typeCode = (struct RTICdrTypeCode *)
-            DrillStateTopic_get_typecode();
-            pd.programs = DrillStateTopicPlugin_get_programs();
+            PlcDrillStateTopic_get_typecode();
+            pd.programs = PlcDrillStateTopicPlugin_get_programs();
             if (pd.programs == NULL) {
                 return RTI_FALSE;
             }
@@ -1129,7 +1129,7 @@ namespace plc {
             }
 
             epd._maxSizeSerializedSample =
-            DrillStateTopicPlugin_get_serialized_sample_max_size(
+            PlcDrillStateTopicPlugin_get_serialized_sample_max_size(
                 (PRESTypePluginEndpointData)&epd, 
                 RTI_TRUE, 
                 encapsulationId,
@@ -1168,12 +1168,12 @@ namespace plc {
         }
 
         RTIBool
-        DrillStateTopicPlugin_serialize_to_cdr_buffer(
+        PlcDrillStateTopicPlugin_serialize_to_cdr_buffer(
             char *buffer,
             unsigned int *length,
-            const DrillStateTopic *sample)
+            const PlcDrillStateTopic *sample)
         {
-            return DrillStateTopicPlugin_serialize_to_cdr_buffer_ex(
+            return PlcDrillStateTopicPlugin_serialize_to_cdr_buffer_ex(
                 buffer,
                 length,
                 sample,
@@ -1181,8 +1181,8 @@ namespace plc {
         }
 
         RTIBool
-        DrillStateTopicPlugin_deserialize_from_cdr_buffer(
-            DrillStateTopic *sample,
+        PlcDrillStateTopicPlugin_deserialize_from_cdr_buffer(
+            PlcDrillStateTopic *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -1198,8 +1198,8 @@ namespace plc {
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
             plugin.typeCode = (struct RTICdrTypeCode *)
-            DrillStateTopic_get_typecode();
-            pd.programs = DrillStateTopicPlugin_get_programs();
+            PlcDrillStateTopic_get_typecode();
+            pd.programs = PlcDrillStateTopicPlugin_get_programs();
             if (pd.programs == NULL) {
                 return RTI_FALSE;
             }
@@ -1210,7 +1210,7 @@ namespace plc {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            DrillStateTopic_finalize_optional_members(sample, RTI_TRUE);
+            PlcDrillStateTopic_finalize_optional_members(sample, RTI_TRUE);
             return PRESTypePlugin_interpretedDeserialize( 
                 (PRESTypePluginEndpointData)&epd, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
@@ -1219,8 +1219,8 @@ namespace plc {
 
         #ifndef NDDS_STANDALONE_TYPE
         DDS_ReturnCode_t
-        DrillStateTopicPlugin_data_to_string(
-            const DrillStateTopic *sample,
+        PlcDrillStateTopicPlugin_data_to_string(
+            const PlcDrillStateTopic *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property)
@@ -1242,7 +1242,7 @@ namespace plc {
             if (property == NULL) {
                 return DDS_RETCODE_BAD_PARAMETER;
             }
-            if (!DrillStateTopicPlugin_serialize_to_cdr_buffer(
+            if (!PlcDrillStateTopicPlugin_serialize_to_cdr_buffer(
                 NULL, 
                 &length, 
                 sample)) {
@@ -1254,7 +1254,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
 
-            if (!DrillStateTopicPlugin_serialize_to_cdr_buffer(
+            if (!PlcDrillStateTopicPlugin_serialize_to_cdr_buffer(
                 buffer, 
                 &length, 
                 sample)) {
@@ -1262,7 +1262,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
             data = DDS_DynamicData_new(
-                DrillStateTopic_get_typecode(), 
+                PlcDrillStateTopic_get_typecode(), 
                 &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
             if (data == NULL) {
                 RTIOsapiHeap_freeBuffer(buffer);
@@ -1303,7 +1303,7 @@ namespace plc {
         #endif
 
         unsigned int 
-        DrillStateTopicPlugin_get_serialized_sample_max_size(
+        PlcDrillStateTopicPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1327,14 +1327,14 @@ namespace plc {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        DrillStateTopicPlugin_get_key_kind(void)
+        PlcDrillStateTopicPlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_NO_KEY;
         }
 
-        RTIBool DrillStateTopicPlugin_deserialize_key(
+        RTIBool PlcDrillStateTopicPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            DrillStateTopic **sample, 
+            PlcDrillStateTopic **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -1357,7 +1357,7 @@ namespace plc {
         }
 
         unsigned int
-        DrillStateTopicPlugin_get_serialized_key_max_size(
+        PlcDrillStateTopicPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1375,7 +1375,7 @@ namespace plc {
         }
 
         unsigned int
-        DrillStateTopicPlugin_get_serialized_key_max_size_for_keyhash(
+        PlcDrillStateTopicPlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment)
@@ -1394,17 +1394,17 @@ namespace plc {
             return size;
         }
 
-        struct RTIXCdrInterpreterPrograms *DrillStateTopicPlugin_get_programs()
+        struct RTIXCdrInterpreterPrograms *PlcDrillStateTopicPlugin_get_programs()
         {
             return ::rti::xcdr::get_cdr_serialization_programs<
-            DrillStateTopic, 
+            PlcDrillStateTopic, 
             true, true, true>();
         }
 
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *DrillStateTopicPlugin_new(void) 
+        struct PRESTypePlugin *PlcDrillStateTopicPlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -1422,29 +1422,29 @@ namespace plc {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            plc::process::DrillStateTopicPlugin_on_participant_attached;
+            plc::process::PlcDrillStateTopicPlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            plc::process::DrillStateTopicPlugin_on_participant_detached;
+            plc::process::PlcDrillStateTopicPlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            plc::process::DrillStateTopicPlugin_on_endpoint_attached;
+            plc::process::PlcDrillStateTopicPlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            plc::process::DrillStateTopicPlugin_on_endpoint_detached;
+            plc::process::PlcDrillStateTopicPlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            plc::process::DrillStateTopicPlugin_copy_sample;
+            plc::process::PlcDrillStateTopicPlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            DrillStateTopicPlugin_create_sample;
+            PlcDrillStateTopicPlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            DrillStateTopicPlugin_destroy_sample;
+            PlcDrillStateTopicPlugin_destroy_sample;
             plugin->finalizeOptionalMembersFnc =
             (PRESTypePluginFinalizeOptionalMembersFunction)
-            DrillStateTopic_finalize_optional_members;
+            PlcDrillStateTopic_finalize_optional_members;
 
             plugin->serializeFnc = 
             (PRESTypePluginSerializeFunction) PRESTypePlugin_interpretedSerialize;
@@ -1452,20 +1452,20 @@ namespace plc {
             (PRESTypePluginDeserializeFunction) PRESTypePlugin_interpretedDeserializeWithAlloc;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            plc::process::DrillStateTopicPlugin_get_serialized_sample_max_size;
+            plc::process::PlcDrillStateTopicPlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
             PRESTypePlugin_interpretedGetSerializedSampleMinSize;
             plugin->getDeserializedSampleMaxSizeFnc = NULL; 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            DrillStateTopicPlugin_get_sample;
+            PlcDrillStateTopicPlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            DrillStateTopicPlugin_return_sample;
+            PlcDrillStateTopicPlugin_return_sample;
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            plc::process::DrillStateTopicPlugin_get_key_kind;
+            plc::process::PlcDrillStateTopicPlugin_get_key_kind;
 
             /* These functions are only used for keyed types. As this is not a keyed
             type they are all set to NULL
@@ -1483,17 +1483,17 @@ namespace plc {
             #ifdef NDDS_STANDALONE_TYPE
             plugin->typeCode = NULL; 
             #else
-            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::DrillStateTopic_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::PlcDrillStateTopic_get_typecode();
             #endif
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            DrillStateTopicPlugin_get_buffer;
+            PlcDrillStateTopicPlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            DrillStateTopicPlugin_return_buffer;
+            PlcDrillStateTopicPlugin_return_buffer;
             plugin->getBufferWithParams = NULL;
             plugin->returnBufferWithParams = NULL;  
             plugin->getSerializedSampleSizeFnc =
@@ -1506,13 +1506,13 @@ namespace plc {
             plugin->validateWriterLoanedSampleFnc = NULL;
             plugin->setWriterLoanedSampleSerializedStateFnc = NULL;
 
-            plugin->endpointTypeName = DrillStateTopicTYPENAME;
+            plugin->endpointTypeName = PlcDrillStateTopicTYPENAME;
             plugin->isMetpType = RTI_FALSE;
             return plugin;
         }
 
         void
-        DrillStateTopicPlugin_delete(struct PRESTypePlugin *plugin)
+        PlcDrillStateTopicPlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 

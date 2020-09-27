@@ -64,43 +64,43 @@ namespace plc {
     namespace process {
 
         /* ----------------------------------------------------------------------------
-        *  Type HoistRequest
+        *  Type PlcHoistRequest
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        HoistRequest*
-        HoistRequestPluginSupport_create_data_w_params(
+        PlcHoistRequest*
+        PlcHoistRequestPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params) 
         {
-            HoistRequest *sample = NULL;
+            PlcHoistRequest *sample = NULL;
 
-            sample = new (std::nothrow) HoistRequest ;
+            sample = new (std::nothrow) PlcHoistRequest ;
             if (sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::HoistRequest_initialize_w_params(sample,alloc_params)) {
+            if (!plc::process::PlcHoistRequest_initialize_w_params(sample,alloc_params)) {
                 delete  sample;
                 sample=NULL;
             }
             return sample;
         } 
 
-        HoistRequest *
-        HoistRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
+        PlcHoistRequest *
+        PlcHoistRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
         {
-            HoistRequest *sample = NULL;
+            PlcHoistRequest *sample = NULL;
 
-            sample = new (std::nothrow) HoistRequest ;
+            sample = new (std::nothrow) PlcHoistRequest ;
 
             if(sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::HoistRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!plc::process::PlcHoistRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 delete  sample;
                 sample=NULL;
             }
@@ -108,50 +108,50 @@ namespace plc {
             return sample;
         }
 
-        HoistRequest *
-        HoistRequestPluginSupport_create_data(void)
+        PlcHoistRequest *
+        PlcHoistRequestPluginSupport_create_data(void)
         {
-            return plc::process::HoistRequestPluginSupport_create_data_ex(RTI_TRUE);
+            return plc::process::PlcHoistRequestPluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        HoistRequestPluginSupport_destroy_data_w_params(
-            HoistRequest *sample,
+        PlcHoistRequestPluginSupport_destroy_data_w_params(
+            PlcHoistRequest *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
-            plc::process::HoistRequest_finalize_w_params(sample,dealloc_params);
+            plc::process::PlcHoistRequest_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        HoistRequestPluginSupport_destroy_data_ex(
-            HoistRequest *sample,RTIBool deallocate_pointers) {
-            plc::process::HoistRequest_finalize_ex(sample,deallocate_pointers);
+        PlcHoistRequestPluginSupport_destroy_data_ex(
+            PlcHoistRequest *sample,RTIBool deallocate_pointers) {
+            plc::process::PlcHoistRequest_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        HoistRequestPluginSupport_destroy_data(
-            HoistRequest *sample) {
+        PlcHoistRequestPluginSupport_destroy_data(
+            PlcHoistRequest *sample) {
 
-            plc::process::HoistRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            plc::process::PlcHoistRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        HoistRequestPluginSupport_copy_data(
-            HoistRequest *dst,
-            const HoistRequest *src)
+        PlcHoistRequestPluginSupport_copy_data(
+            PlcHoistRequest *dst,
+            const PlcHoistRequest *src)
         {
-            return plc::process::HoistRequest_copy(dst,(const HoistRequest*) src);
+            return plc::process::PlcHoistRequest_copy(dst,(const PlcHoistRequest*) src);
         }
 
         void 
-        HoistRequestPluginSupport_print_data(
-            const HoistRequest *sample,
+        PlcHoistRequestPluginSupport_print_data(
+            const PlcHoistRequest *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -182,7 +182,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        HoistRequestPlugin_on_participant_attached(
+        PlcHoistRequestPlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -211,7 +211,7 @@ namespace plc {
 
             programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                 DDS_TypeCodeFactory_get_instance(),
-                HoistRequest_get_typecode(),
+                PlcHoistRequest_get_typecode(),
                 &programProperty,
                 RTI_XCDR_PROGRAM_MASK_TYPEPLUGIN);
             if (programs == NULL) {
@@ -225,7 +225,7 @@ namespace plc {
         }
 
         void 
-        HoistRequestPlugin_on_participant_detached(
+        PlcHoistRequestPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {  		
             if (participant_data != NULL) {
@@ -243,7 +243,7 @@ namespace plc {
         }
 
         PRESTypePluginEndpointData
-        HoistRequestPlugin_on_endpoint_attached(
+        PlcHoistRequestPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -263,9 +263,9 @@ namespace plc {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                plc::process::HoistRequestPluginSupport_create_data,
+                plc::process::PlcHoistRequestPluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                plc::process::HoistRequestPluginSupport_destroy_data,
+                plc::process::PlcHoistRequestPluginSupport_destroy_data,
                 NULL , NULL );
 
             if (epd == NULL) {
@@ -273,7 +273,7 @@ namespace plc {
             } 
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = plc::process::HoistRequestPlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = plc::process::PlcHoistRequestPlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
 
@@ -281,7 +281,7 @@ namespace plc {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    plc::process::HoistRequestPlugin_get_serialized_sample_max_size, epd,
+                    plc::process::PlcHoistRequestPlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
                     PRESTypePlugin_interpretedGetSerializedSampleSize,
                     epd) == RTI_FALSE) {
@@ -294,49 +294,49 @@ namespace plc {
         }
 
         void 
-        HoistRequestPlugin_on_endpoint_detached(
+        PlcHoistRequestPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {
             PRESTypePluginDefaultEndpointData_delete(endpoint_data);
         }
 
         void    
-        HoistRequestPlugin_return_sample(
+        PlcHoistRequestPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            HoistRequest *sample,
+            PlcHoistRequest *sample,
             void *handle)
         {
-            HoistRequest_finalize_optional_members(sample, RTI_TRUE);
+            PlcHoistRequest_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        HoistRequestPlugin_copy_sample(
+        PlcHoistRequestPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            HoistRequest *dst,
-            const HoistRequest *src)
+            PlcHoistRequest *dst,
+            const PlcHoistRequest *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return plc::process::HoistRequestPluginSupport_copy_data(dst,src);
+            return plc::process::PlcHoistRequestPluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        HoistRequestPlugin_get_serialized_sample_max_size(
+        PlcHoistRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool
-        HoistRequestPlugin_serialize_to_cdr_buffer_ex(
+        PlcHoistRequestPlugin_serialize_to_cdr_buffer_ex(
             char *buffer,
             unsigned int *length,
-            const HoistRequest *sample,
+            const PlcHoistRequest *sample,
             DDS_DataRepresentationId_t representation)
         {
             RTIEncapsulationId encapsulationId = RTI_CDR_ENCAPSULATION_ID_INVALID;
@@ -358,8 +358,8 @@ namespace plc {
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
             plugin.typeCode = (struct RTICdrTypeCode *)
-            HoistRequest_get_typecode();
-            pd.programs = HoistRequestPlugin_get_programs();
+            PlcHoistRequest_get_typecode();
+            pd.programs = PlcHoistRequestPlugin_get_programs();
             if (pd.programs == NULL) {
                 return RTI_FALSE;
             }
@@ -372,7 +372,7 @@ namespace plc {
             }
 
             epd._maxSizeSerializedSample =
-            HoistRequestPlugin_get_serialized_sample_max_size(
+            PlcHoistRequestPlugin_get_serialized_sample_max_size(
                 (PRESTypePluginEndpointData)&epd, 
                 RTI_TRUE, 
                 encapsulationId,
@@ -411,12 +411,12 @@ namespace plc {
         }
 
         RTIBool
-        HoistRequestPlugin_serialize_to_cdr_buffer(
+        PlcHoistRequestPlugin_serialize_to_cdr_buffer(
             char *buffer,
             unsigned int *length,
-            const HoistRequest *sample)
+            const PlcHoistRequest *sample)
         {
-            return HoistRequestPlugin_serialize_to_cdr_buffer_ex(
+            return PlcHoistRequestPlugin_serialize_to_cdr_buffer_ex(
                 buffer,
                 length,
                 sample,
@@ -424,8 +424,8 @@ namespace plc {
         }
 
         RTIBool
-        HoistRequestPlugin_deserialize_from_cdr_buffer(
-            HoistRequest *sample,
+        PlcHoistRequestPlugin_deserialize_from_cdr_buffer(
+            PlcHoistRequest *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -441,8 +441,8 @@ namespace plc {
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
             plugin.typeCode = (struct RTICdrTypeCode *)
-            HoistRequest_get_typecode();
-            pd.programs = HoistRequestPlugin_get_programs();
+            PlcHoistRequest_get_typecode();
+            pd.programs = PlcHoistRequestPlugin_get_programs();
             if (pd.programs == NULL) {
                 return RTI_FALSE;
             }
@@ -453,7 +453,7 @@ namespace plc {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            HoistRequest_finalize_optional_members(sample, RTI_TRUE);
+            PlcHoistRequest_finalize_optional_members(sample, RTI_TRUE);
             return PRESTypePlugin_interpretedDeserialize( 
                 (PRESTypePluginEndpointData)&epd, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
@@ -462,8 +462,8 @@ namespace plc {
 
         #ifndef NDDS_STANDALONE_TYPE
         DDS_ReturnCode_t
-        HoistRequestPlugin_data_to_string(
-            const HoistRequest *sample,
+        PlcHoistRequestPlugin_data_to_string(
+            const PlcHoistRequest *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property)
@@ -485,7 +485,7 @@ namespace plc {
             if (property == NULL) {
                 return DDS_RETCODE_BAD_PARAMETER;
             }
-            if (!HoistRequestPlugin_serialize_to_cdr_buffer(
+            if (!PlcHoistRequestPlugin_serialize_to_cdr_buffer(
                 NULL, 
                 &length, 
                 sample)) {
@@ -497,7 +497,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
 
-            if (!HoistRequestPlugin_serialize_to_cdr_buffer(
+            if (!PlcHoistRequestPlugin_serialize_to_cdr_buffer(
                 buffer, 
                 &length, 
                 sample)) {
@@ -505,7 +505,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
             data = DDS_DynamicData_new(
-                HoistRequest_get_typecode(), 
+                PlcHoistRequest_get_typecode(), 
                 &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
             if (data == NULL) {
                 RTIOsapiHeap_freeBuffer(buffer);
@@ -546,7 +546,7 @@ namespace plc {
         #endif
 
         unsigned int 
-        HoistRequestPlugin_get_serialized_sample_max_size(
+        PlcHoistRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -570,14 +570,14 @@ namespace plc {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        HoistRequestPlugin_get_key_kind(void)
+        PlcHoistRequestPlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_NO_KEY;
         }
 
-        RTIBool HoistRequestPlugin_deserialize_key(
+        RTIBool PlcHoistRequestPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            HoistRequest **sample, 
+            PlcHoistRequest **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -600,7 +600,7 @@ namespace plc {
         }
 
         unsigned int
-        HoistRequestPlugin_get_serialized_key_max_size(
+        PlcHoistRequestPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -618,7 +618,7 @@ namespace plc {
         }
 
         unsigned int
-        HoistRequestPlugin_get_serialized_key_max_size_for_keyhash(
+        PlcHoistRequestPlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment)
@@ -637,17 +637,17 @@ namespace plc {
             return size;
         }
 
-        struct RTIXCdrInterpreterPrograms *HoistRequestPlugin_get_programs()
+        struct RTIXCdrInterpreterPrograms *PlcHoistRequestPlugin_get_programs()
         {
             return ::rti::xcdr::get_cdr_serialization_programs<
-            HoistRequest, 
+            PlcHoistRequest, 
             true, true, true>();
         }
 
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *HoistRequestPlugin_new(void) 
+        struct PRESTypePlugin *PlcHoistRequestPlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -665,29 +665,29 @@ namespace plc {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            plc::process::HoistRequestPlugin_on_participant_attached;
+            plc::process::PlcHoistRequestPlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            plc::process::HoistRequestPlugin_on_participant_detached;
+            plc::process::PlcHoistRequestPlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            plc::process::HoistRequestPlugin_on_endpoint_attached;
+            plc::process::PlcHoistRequestPlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            plc::process::HoistRequestPlugin_on_endpoint_detached;
+            plc::process::PlcHoistRequestPlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            plc::process::HoistRequestPlugin_copy_sample;
+            plc::process::PlcHoistRequestPlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            HoistRequestPlugin_create_sample;
+            PlcHoistRequestPlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            HoistRequestPlugin_destroy_sample;
+            PlcHoistRequestPlugin_destroy_sample;
             plugin->finalizeOptionalMembersFnc =
             (PRESTypePluginFinalizeOptionalMembersFunction)
-            HoistRequest_finalize_optional_members;
+            PlcHoistRequest_finalize_optional_members;
 
             plugin->serializeFnc = 
             (PRESTypePluginSerializeFunction) PRESTypePlugin_interpretedSerialize;
@@ -695,20 +695,20 @@ namespace plc {
             (PRESTypePluginDeserializeFunction) PRESTypePlugin_interpretedDeserializeWithAlloc;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            plc::process::HoistRequestPlugin_get_serialized_sample_max_size;
+            plc::process::PlcHoistRequestPlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
             PRESTypePlugin_interpretedGetSerializedSampleMinSize;
             plugin->getDeserializedSampleMaxSizeFnc = NULL; 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            HoistRequestPlugin_get_sample;
+            PlcHoistRequestPlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            HoistRequestPlugin_return_sample;
+            PlcHoistRequestPlugin_return_sample;
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            plc::process::HoistRequestPlugin_get_key_kind;
+            plc::process::PlcHoistRequestPlugin_get_key_kind;
 
             /* These functions are only used for keyed types. As this is not a keyed
             type they are all set to NULL
@@ -726,17 +726,17 @@ namespace plc {
             #ifdef NDDS_STANDALONE_TYPE
             plugin->typeCode = NULL; 
             #else
-            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::HoistRequest_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::PlcHoistRequest_get_typecode();
             #endif
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            HoistRequestPlugin_get_buffer;
+            PlcHoistRequestPlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            HoistRequestPlugin_return_buffer;
+            PlcHoistRequestPlugin_return_buffer;
             plugin->getBufferWithParams = NULL;
             plugin->returnBufferWithParams = NULL;  
             plugin->getSerializedSampleSizeFnc =
@@ -749,55 +749,55 @@ namespace plc {
             plugin->validateWriterLoanedSampleFnc = NULL;
             plugin->setWriterLoanedSampleSerializedStateFnc = NULL;
 
-            plugin->endpointTypeName = HoistRequestTYPENAME;
+            plugin->endpointTypeName = PlcHoistRequestTYPENAME;
             plugin->isMetpType = RTI_FALSE;
             return plugin;
         }
 
         void
-        HoistRequestPlugin_delete(struct PRESTypePlugin *plugin)
+        PlcHoistRequestPlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 
 
         /* ----------------------------------------------------------------------------
-        *  Type HoistState
+        *  Type PlcHoistState
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        HoistState*
-        HoistStatePluginSupport_create_data_w_params(
+        PlcHoistState*
+        PlcHoistStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params) 
         {
-            HoistState *sample = NULL;
+            PlcHoistState *sample = NULL;
 
-            sample = new (std::nothrow) HoistState ;
+            sample = new (std::nothrow) PlcHoistState ;
             if (sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::HoistState_initialize_w_params(sample,alloc_params)) {
+            if (!plc::process::PlcHoistState_initialize_w_params(sample,alloc_params)) {
                 delete  sample;
                 sample=NULL;
             }
             return sample;
         } 
 
-        HoistState *
-        HoistStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
+        PlcHoistState *
+        PlcHoistStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
         {
-            HoistState *sample = NULL;
+            PlcHoistState *sample = NULL;
 
-            sample = new (std::nothrow) HoistState ;
+            sample = new (std::nothrow) PlcHoistState ;
 
             if(sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::HoistState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!plc::process::PlcHoistState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 delete  sample;
                 sample=NULL;
             }
@@ -805,50 +805,50 @@ namespace plc {
             return sample;
         }
 
-        HoistState *
-        HoistStatePluginSupport_create_data(void)
+        PlcHoistState *
+        PlcHoistStatePluginSupport_create_data(void)
         {
-            return plc::process::HoistStatePluginSupport_create_data_ex(RTI_TRUE);
+            return plc::process::PlcHoistStatePluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        HoistStatePluginSupport_destroy_data_w_params(
-            HoistState *sample,
+        PlcHoistStatePluginSupport_destroy_data_w_params(
+            PlcHoistState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
-            plc::process::HoistState_finalize_w_params(sample,dealloc_params);
+            plc::process::PlcHoistState_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        HoistStatePluginSupport_destroy_data_ex(
-            HoistState *sample,RTIBool deallocate_pointers) {
-            plc::process::HoistState_finalize_ex(sample,deallocate_pointers);
+        PlcHoistStatePluginSupport_destroy_data_ex(
+            PlcHoistState *sample,RTIBool deallocate_pointers) {
+            plc::process::PlcHoistState_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        HoistStatePluginSupport_destroy_data(
-            HoistState *sample) {
+        PlcHoistStatePluginSupport_destroy_data(
+            PlcHoistState *sample) {
 
-            plc::process::HoistStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            plc::process::PlcHoistStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        HoistStatePluginSupport_copy_data(
-            HoistState *dst,
-            const HoistState *src)
+        PlcHoistStatePluginSupport_copy_data(
+            PlcHoistState *dst,
+            const PlcHoistState *src)
         {
-            return plc::process::HoistState_copy(dst,(const HoistState*) src);
+            return plc::process::PlcHoistState_copy(dst,(const PlcHoistState*) src);
         }
 
         void 
-        HoistStatePluginSupport_print_data(
-            const HoistState *sample,
+        PlcHoistStatePluginSupport_print_data(
+            const PlcHoistState *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -906,7 +906,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        HoistStatePlugin_on_participant_attached(
+        PlcHoistStatePlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -935,7 +935,7 @@ namespace plc {
 
             programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                 DDS_TypeCodeFactory_get_instance(),
-                HoistState_get_typecode(),
+                PlcHoistState_get_typecode(),
                 &programProperty,
                 RTI_XCDR_PROGRAM_MASK_TYPEPLUGIN);
             if (programs == NULL) {
@@ -949,7 +949,7 @@ namespace plc {
         }
 
         void 
-        HoistStatePlugin_on_participant_detached(
+        PlcHoistStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {  		
             if (participant_data != NULL) {
@@ -967,7 +967,7 @@ namespace plc {
         }
 
         PRESTypePluginEndpointData
-        HoistStatePlugin_on_endpoint_attached(
+        PlcHoistStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -987,9 +987,9 @@ namespace plc {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                plc::process::HoistStatePluginSupport_create_data,
+                plc::process::PlcHoistStatePluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                plc::process::HoistStatePluginSupport_destroy_data,
+                plc::process::PlcHoistStatePluginSupport_destroy_data,
                 NULL , NULL );
 
             if (epd == NULL) {
@@ -997,7 +997,7 @@ namespace plc {
             } 
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = plc::process::HoistStatePlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = plc::process::PlcHoistStatePlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
 
@@ -1005,7 +1005,7 @@ namespace plc {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    plc::process::HoistStatePlugin_get_serialized_sample_max_size, epd,
+                    plc::process::PlcHoistStatePlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
                     PRESTypePlugin_interpretedGetSerializedSampleSize,
                     epd) == RTI_FALSE) {
@@ -1018,49 +1018,49 @@ namespace plc {
         }
 
         void 
-        HoistStatePlugin_on_endpoint_detached(
+        PlcHoistStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {
             PRESTypePluginDefaultEndpointData_delete(endpoint_data);
         }
 
         void    
-        HoistStatePlugin_return_sample(
+        PlcHoistStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            HoistState *sample,
+            PlcHoistState *sample,
             void *handle)
         {
-            HoistState_finalize_optional_members(sample, RTI_TRUE);
+            PlcHoistState_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        HoistStatePlugin_copy_sample(
+        PlcHoistStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            HoistState *dst,
-            const HoistState *src)
+            PlcHoistState *dst,
+            const PlcHoistState *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return plc::process::HoistStatePluginSupport_copy_data(dst,src);
+            return plc::process::PlcHoistStatePluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        HoistStatePlugin_get_serialized_sample_max_size(
+        PlcHoistStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool
-        HoistStatePlugin_serialize_to_cdr_buffer_ex(
+        PlcHoistStatePlugin_serialize_to_cdr_buffer_ex(
             char *buffer,
             unsigned int *length,
-            const HoistState *sample,
+            const PlcHoistState *sample,
             DDS_DataRepresentationId_t representation)
         {
             RTIEncapsulationId encapsulationId = RTI_CDR_ENCAPSULATION_ID_INVALID;
@@ -1082,8 +1082,8 @@ namespace plc {
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
             plugin.typeCode = (struct RTICdrTypeCode *)
-            HoistState_get_typecode();
-            pd.programs = HoistStatePlugin_get_programs();
+            PlcHoistState_get_typecode();
+            pd.programs = PlcHoistStatePlugin_get_programs();
             if (pd.programs == NULL) {
                 return RTI_FALSE;
             }
@@ -1096,7 +1096,7 @@ namespace plc {
             }
 
             epd._maxSizeSerializedSample =
-            HoistStatePlugin_get_serialized_sample_max_size(
+            PlcHoistStatePlugin_get_serialized_sample_max_size(
                 (PRESTypePluginEndpointData)&epd, 
                 RTI_TRUE, 
                 encapsulationId,
@@ -1135,12 +1135,12 @@ namespace plc {
         }
 
         RTIBool
-        HoistStatePlugin_serialize_to_cdr_buffer(
+        PlcHoistStatePlugin_serialize_to_cdr_buffer(
             char *buffer,
             unsigned int *length,
-            const HoistState *sample)
+            const PlcHoistState *sample)
         {
-            return HoistStatePlugin_serialize_to_cdr_buffer_ex(
+            return PlcHoistStatePlugin_serialize_to_cdr_buffer_ex(
                 buffer,
                 length,
                 sample,
@@ -1148,8 +1148,8 @@ namespace plc {
         }
 
         RTIBool
-        HoistStatePlugin_deserialize_from_cdr_buffer(
-            HoistState *sample,
+        PlcHoistStatePlugin_deserialize_from_cdr_buffer(
+            PlcHoistState *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -1165,8 +1165,8 @@ namespace plc {
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
             plugin.typeCode = (struct RTICdrTypeCode *)
-            HoistState_get_typecode();
-            pd.programs = HoistStatePlugin_get_programs();
+            PlcHoistState_get_typecode();
+            pd.programs = PlcHoistStatePlugin_get_programs();
             if (pd.programs == NULL) {
                 return RTI_FALSE;
             }
@@ -1177,7 +1177,7 @@ namespace plc {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            HoistState_finalize_optional_members(sample, RTI_TRUE);
+            PlcHoistState_finalize_optional_members(sample, RTI_TRUE);
             return PRESTypePlugin_interpretedDeserialize( 
                 (PRESTypePluginEndpointData)&epd, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
@@ -1186,8 +1186,8 @@ namespace plc {
 
         #ifndef NDDS_STANDALONE_TYPE
         DDS_ReturnCode_t
-        HoistStatePlugin_data_to_string(
-            const HoistState *sample,
+        PlcHoistStatePlugin_data_to_string(
+            const PlcHoistState *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property)
@@ -1209,7 +1209,7 @@ namespace plc {
             if (property == NULL) {
                 return DDS_RETCODE_BAD_PARAMETER;
             }
-            if (!HoistStatePlugin_serialize_to_cdr_buffer(
+            if (!PlcHoistStatePlugin_serialize_to_cdr_buffer(
                 NULL, 
                 &length, 
                 sample)) {
@@ -1221,7 +1221,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
 
-            if (!HoistStatePlugin_serialize_to_cdr_buffer(
+            if (!PlcHoistStatePlugin_serialize_to_cdr_buffer(
                 buffer, 
                 &length, 
                 sample)) {
@@ -1229,7 +1229,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
             data = DDS_DynamicData_new(
-                HoistState_get_typecode(), 
+                PlcHoistState_get_typecode(), 
                 &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
             if (data == NULL) {
                 RTIOsapiHeap_freeBuffer(buffer);
@@ -1270,7 +1270,7 @@ namespace plc {
         #endif
 
         unsigned int 
-        HoistStatePlugin_get_serialized_sample_max_size(
+        PlcHoistStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1294,14 +1294,14 @@ namespace plc {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        HoistStatePlugin_get_key_kind(void)
+        PlcHoistStatePlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_NO_KEY;
         }
 
-        RTIBool HoistStatePlugin_deserialize_key(
+        RTIBool PlcHoistStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            HoistState **sample, 
+            PlcHoistState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -1324,7 +1324,7 @@ namespace plc {
         }
 
         unsigned int
-        HoistStatePlugin_get_serialized_key_max_size(
+        PlcHoistStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1342,7 +1342,7 @@ namespace plc {
         }
 
         unsigned int
-        HoistStatePlugin_get_serialized_key_max_size_for_keyhash(
+        PlcHoistStatePlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment)
@@ -1361,17 +1361,17 @@ namespace plc {
             return size;
         }
 
-        struct RTIXCdrInterpreterPrograms *HoistStatePlugin_get_programs()
+        struct RTIXCdrInterpreterPrograms *PlcHoistStatePlugin_get_programs()
         {
             return ::rti::xcdr::get_cdr_serialization_programs<
-            HoistState, 
+            PlcHoistState, 
             true, true, true>();
         }
 
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *HoistStatePlugin_new(void) 
+        struct PRESTypePlugin *PlcHoistStatePlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -1389,29 +1389,29 @@ namespace plc {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            plc::process::HoistStatePlugin_on_participant_attached;
+            plc::process::PlcHoistStatePlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            plc::process::HoistStatePlugin_on_participant_detached;
+            plc::process::PlcHoistStatePlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            plc::process::HoistStatePlugin_on_endpoint_attached;
+            plc::process::PlcHoistStatePlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            plc::process::HoistStatePlugin_on_endpoint_detached;
+            plc::process::PlcHoistStatePlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            plc::process::HoistStatePlugin_copy_sample;
+            plc::process::PlcHoistStatePlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            HoistStatePlugin_create_sample;
+            PlcHoistStatePlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            HoistStatePlugin_destroy_sample;
+            PlcHoistStatePlugin_destroy_sample;
             plugin->finalizeOptionalMembersFnc =
             (PRESTypePluginFinalizeOptionalMembersFunction)
-            HoistState_finalize_optional_members;
+            PlcHoistState_finalize_optional_members;
 
             plugin->serializeFnc = 
             (PRESTypePluginSerializeFunction) PRESTypePlugin_interpretedSerialize;
@@ -1419,20 +1419,20 @@ namespace plc {
             (PRESTypePluginDeserializeFunction) PRESTypePlugin_interpretedDeserializeWithAlloc;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            plc::process::HoistStatePlugin_get_serialized_sample_max_size;
+            plc::process::PlcHoistStatePlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
             PRESTypePlugin_interpretedGetSerializedSampleMinSize;
             plugin->getDeserializedSampleMaxSizeFnc = NULL; 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            HoistStatePlugin_get_sample;
+            PlcHoistStatePlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            HoistStatePlugin_return_sample;
+            PlcHoistStatePlugin_return_sample;
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            plc::process::HoistStatePlugin_get_key_kind;
+            plc::process::PlcHoistStatePlugin_get_key_kind;
 
             /* These functions are only used for keyed types. As this is not a keyed
             type they are all set to NULL
@@ -1450,17 +1450,17 @@ namespace plc {
             #ifdef NDDS_STANDALONE_TYPE
             plugin->typeCode = NULL; 
             #else
-            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::HoistState_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::PlcHoistState_get_typecode();
             #endif
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            HoistStatePlugin_get_buffer;
+            PlcHoistStatePlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            HoistStatePlugin_return_buffer;
+            PlcHoistStatePlugin_return_buffer;
             plugin->getBufferWithParams = NULL;
             plugin->returnBufferWithParams = NULL;  
             plugin->getSerializedSampleSizeFnc =
@@ -1473,13 +1473,13 @@ namespace plc {
             plugin->validateWriterLoanedSampleFnc = NULL;
             plugin->setWriterLoanedSampleSerializedStateFnc = NULL;
 
-            plugin->endpointTypeName = HoistStateTYPENAME;
+            plugin->endpointTypeName = PlcHoistStateTYPENAME;
             plugin->isMetpType = RTI_FALSE;
             return plugin;
         }
 
         void
-        HoistStatePlugin_delete(struct PRESTypePlugin *plugin)
+        PlcHoistStatePlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 

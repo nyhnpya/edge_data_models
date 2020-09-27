@@ -64,43 +64,43 @@ namespace plc {
     namespace process {
 
         /* ----------------------------------------------------------------------------
-        *  Type CirculateRequest
+        *  Type PlcCirculateRequest
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        CirculateRequest*
-        CirculateRequestPluginSupport_create_data_w_params(
+        PlcCirculateRequest*
+        PlcCirculateRequestPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params) 
         {
-            CirculateRequest *sample = NULL;
+            PlcCirculateRequest *sample = NULL;
 
-            sample = new (std::nothrow) CirculateRequest ;
+            sample = new (std::nothrow) PlcCirculateRequest ;
             if (sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::CirculateRequest_initialize_w_params(sample,alloc_params)) {
+            if (!plc::process::PlcCirculateRequest_initialize_w_params(sample,alloc_params)) {
                 delete  sample;
                 sample=NULL;
             }
             return sample;
         } 
 
-        CirculateRequest *
-        CirculateRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
+        PlcCirculateRequest *
+        PlcCirculateRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
         {
-            CirculateRequest *sample = NULL;
+            PlcCirculateRequest *sample = NULL;
 
-            sample = new (std::nothrow) CirculateRequest ;
+            sample = new (std::nothrow) PlcCirculateRequest ;
 
             if(sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::CirculateRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!plc::process::PlcCirculateRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 delete  sample;
                 sample=NULL;
             }
@@ -108,50 +108,50 @@ namespace plc {
             return sample;
         }
 
-        CirculateRequest *
-        CirculateRequestPluginSupport_create_data(void)
+        PlcCirculateRequest *
+        PlcCirculateRequestPluginSupport_create_data(void)
         {
-            return plc::process::CirculateRequestPluginSupport_create_data_ex(RTI_TRUE);
+            return plc::process::PlcCirculateRequestPluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        CirculateRequestPluginSupport_destroy_data_w_params(
-            CirculateRequest *sample,
+        PlcCirculateRequestPluginSupport_destroy_data_w_params(
+            PlcCirculateRequest *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
-            plc::process::CirculateRequest_finalize_w_params(sample,dealloc_params);
+            plc::process::PlcCirculateRequest_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        CirculateRequestPluginSupport_destroy_data_ex(
-            CirculateRequest *sample,RTIBool deallocate_pointers) {
-            plc::process::CirculateRequest_finalize_ex(sample,deallocate_pointers);
+        PlcCirculateRequestPluginSupport_destroy_data_ex(
+            PlcCirculateRequest *sample,RTIBool deallocate_pointers) {
+            plc::process::PlcCirculateRequest_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        CirculateRequestPluginSupport_destroy_data(
-            CirculateRequest *sample) {
+        PlcCirculateRequestPluginSupport_destroy_data(
+            PlcCirculateRequest *sample) {
 
-            plc::process::CirculateRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            plc::process::PlcCirculateRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        CirculateRequestPluginSupport_copy_data(
-            CirculateRequest *dst,
-            const CirculateRequest *src)
+        PlcCirculateRequestPluginSupport_copy_data(
+            PlcCirculateRequest *dst,
+            const PlcCirculateRequest *src)
         {
-            return plc::process::CirculateRequest_copy(dst,(const CirculateRequest*) src);
+            return plc::process::PlcCirculateRequest_copy(dst,(const PlcCirculateRequest*) src);
         }
 
         void 
-        CirculateRequestPluginSupport_print_data(
-            const CirculateRequest *sample,
+        PlcCirculateRequestPluginSupport_print_data(
+            const PlcCirculateRequest *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -179,7 +179,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        CirculateRequestPlugin_on_participant_attached(
+        PlcCirculateRequestPlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -208,7 +208,7 @@ namespace plc {
 
             programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                 DDS_TypeCodeFactory_get_instance(),
-                CirculateRequest_get_typecode(),
+                PlcCirculateRequest_get_typecode(),
                 &programProperty,
                 RTI_XCDR_PROGRAM_MASK_TYPEPLUGIN);
             if (programs == NULL) {
@@ -222,7 +222,7 @@ namespace plc {
         }
 
         void 
-        CirculateRequestPlugin_on_participant_detached(
+        PlcCirculateRequestPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {  		
             if (participant_data != NULL) {
@@ -240,7 +240,7 @@ namespace plc {
         }
 
         PRESTypePluginEndpointData
-        CirculateRequestPlugin_on_endpoint_attached(
+        PlcCirculateRequestPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -260,9 +260,9 @@ namespace plc {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                plc::process::CirculateRequestPluginSupport_create_data,
+                plc::process::PlcCirculateRequestPluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                plc::process::CirculateRequestPluginSupport_destroy_data,
+                plc::process::PlcCirculateRequestPluginSupport_destroy_data,
                 NULL , NULL );
 
             if (epd == NULL) {
@@ -270,7 +270,7 @@ namespace plc {
             } 
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = plc::process::CirculateRequestPlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = plc::process::PlcCirculateRequestPlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
 
@@ -278,7 +278,7 @@ namespace plc {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    plc::process::CirculateRequestPlugin_get_serialized_sample_max_size, epd,
+                    plc::process::PlcCirculateRequestPlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
                     PRESTypePlugin_interpretedGetSerializedSampleSize,
                     epd) == RTI_FALSE) {
@@ -291,49 +291,49 @@ namespace plc {
         }
 
         void 
-        CirculateRequestPlugin_on_endpoint_detached(
+        PlcCirculateRequestPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {
             PRESTypePluginDefaultEndpointData_delete(endpoint_data);
         }
 
         void    
-        CirculateRequestPlugin_return_sample(
+        PlcCirculateRequestPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateRequest *sample,
+            PlcCirculateRequest *sample,
             void *handle)
         {
-            CirculateRequest_finalize_optional_members(sample, RTI_TRUE);
+            PlcCirculateRequest_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        CirculateRequestPlugin_copy_sample(
+        PlcCirculateRequestPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateRequest *dst,
-            const CirculateRequest *src)
+            PlcCirculateRequest *dst,
+            const PlcCirculateRequest *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return plc::process::CirculateRequestPluginSupport_copy_data(dst,src);
+            return plc::process::PlcCirculateRequestPluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        CirculateRequestPlugin_get_serialized_sample_max_size(
+        PlcCirculateRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool
-        CirculateRequestPlugin_serialize_to_cdr_buffer_ex(
+        PlcCirculateRequestPlugin_serialize_to_cdr_buffer_ex(
             char *buffer,
             unsigned int *length,
-            const CirculateRequest *sample,
+            const PlcCirculateRequest *sample,
             DDS_DataRepresentationId_t representation)
         {
             RTIEncapsulationId encapsulationId = RTI_CDR_ENCAPSULATION_ID_INVALID;
@@ -355,8 +355,8 @@ namespace plc {
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
             plugin.typeCode = (struct RTICdrTypeCode *)
-            CirculateRequest_get_typecode();
-            pd.programs = CirculateRequestPlugin_get_programs();
+            PlcCirculateRequest_get_typecode();
+            pd.programs = PlcCirculateRequestPlugin_get_programs();
             if (pd.programs == NULL) {
                 return RTI_FALSE;
             }
@@ -369,7 +369,7 @@ namespace plc {
             }
 
             epd._maxSizeSerializedSample =
-            CirculateRequestPlugin_get_serialized_sample_max_size(
+            PlcCirculateRequestPlugin_get_serialized_sample_max_size(
                 (PRESTypePluginEndpointData)&epd, 
                 RTI_TRUE, 
                 encapsulationId,
@@ -408,12 +408,12 @@ namespace plc {
         }
 
         RTIBool
-        CirculateRequestPlugin_serialize_to_cdr_buffer(
+        PlcCirculateRequestPlugin_serialize_to_cdr_buffer(
             char *buffer,
             unsigned int *length,
-            const CirculateRequest *sample)
+            const PlcCirculateRequest *sample)
         {
-            return CirculateRequestPlugin_serialize_to_cdr_buffer_ex(
+            return PlcCirculateRequestPlugin_serialize_to_cdr_buffer_ex(
                 buffer,
                 length,
                 sample,
@@ -421,8 +421,8 @@ namespace plc {
         }
 
         RTIBool
-        CirculateRequestPlugin_deserialize_from_cdr_buffer(
-            CirculateRequest *sample,
+        PlcCirculateRequestPlugin_deserialize_from_cdr_buffer(
+            PlcCirculateRequest *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -438,8 +438,8 @@ namespace plc {
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
             plugin.typeCode = (struct RTICdrTypeCode *)
-            CirculateRequest_get_typecode();
-            pd.programs = CirculateRequestPlugin_get_programs();
+            PlcCirculateRequest_get_typecode();
+            pd.programs = PlcCirculateRequestPlugin_get_programs();
             if (pd.programs == NULL) {
                 return RTI_FALSE;
             }
@@ -450,7 +450,7 @@ namespace plc {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            CirculateRequest_finalize_optional_members(sample, RTI_TRUE);
+            PlcCirculateRequest_finalize_optional_members(sample, RTI_TRUE);
             return PRESTypePlugin_interpretedDeserialize( 
                 (PRESTypePluginEndpointData)&epd, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
@@ -459,8 +459,8 @@ namespace plc {
 
         #ifndef NDDS_STANDALONE_TYPE
         DDS_ReturnCode_t
-        CirculateRequestPlugin_data_to_string(
-            const CirculateRequest *sample,
+        PlcCirculateRequestPlugin_data_to_string(
+            const PlcCirculateRequest *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property)
@@ -482,7 +482,7 @@ namespace plc {
             if (property == NULL) {
                 return DDS_RETCODE_BAD_PARAMETER;
             }
-            if (!CirculateRequestPlugin_serialize_to_cdr_buffer(
+            if (!PlcCirculateRequestPlugin_serialize_to_cdr_buffer(
                 NULL, 
                 &length, 
                 sample)) {
@@ -494,7 +494,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
 
-            if (!CirculateRequestPlugin_serialize_to_cdr_buffer(
+            if (!PlcCirculateRequestPlugin_serialize_to_cdr_buffer(
                 buffer, 
                 &length, 
                 sample)) {
@@ -502,7 +502,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
             data = DDS_DynamicData_new(
-                CirculateRequest_get_typecode(), 
+                PlcCirculateRequest_get_typecode(), 
                 &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
             if (data == NULL) {
                 RTIOsapiHeap_freeBuffer(buffer);
@@ -543,7 +543,7 @@ namespace plc {
         #endif
 
         unsigned int 
-        CirculateRequestPlugin_get_serialized_sample_max_size(
+        PlcCirculateRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -567,14 +567,14 @@ namespace plc {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        CirculateRequestPlugin_get_key_kind(void)
+        PlcCirculateRequestPlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_NO_KEY;
         }
 
-        RTIBool CirculateRequestPlugin_deserialize_key(
+        RTIBool PlcCirculateRequestPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateRequest **sample, 
+            PlcCirculateRequest **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -597,7 +597,7 @@ namespace plc {
         }
 
         unsigned int
-        CirculateRequestPlugin_get_serialized_key_max_size(
+        PlcCirculateRequestPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -615,7 +615,7 @@ namespace plc {
         }
 
         unsigned int
-        CirculateRequestPlugin_get_serialized_key_max_size_for_keyhash(
+        PlcCirculateRequestPlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment)
@@ -634,17 +634,17 @@ namespace plc {
             return size;
         }
 
-        struct RTIXCdrInterpreterPrograms *CirculateRequestPlugin_get_programs()
+        struct RTIXCdrInterpreterPrograms *PlcCirculateRequestPlugin_get_programs()
         {
             return ::rti::xcdr::get_cdr_serialization_programs<
-            CirculateRequest, 
+            PlcCirculateRequest, 
             true, true, true>();
         }
 
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *CirculateRequestPlugin_new(void) 
+        struct PRESTypePlugin *PlcCirculateRequestPlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -662,29 +662,29 @@ namespace plc {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            plc::process::CirculateRequestPlugin_on_participant_attached;
+            plc::process::PlcCirculateRequestPlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            plc::process::CirculateRequestPlugin_on_participant_detached;
+            plc::process::PlcCirculateRequestPlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            plc::process::CirculateRequestPlugin_on_endpoint_attached;
+            plc::process::PlcCirculateRequestPlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            plc::process::CirculateRequestPlugin_on_endpoint_detached;
+            plc::process::PlcCirculateRequestPlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            plc::process::CirculateRequestPlugin_copy_sample;
+            plc::process::PlcCirculateRequestPlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            CirculateRequestPlugin_create_sample;
+            PlcCirculateRequestPlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            CirculateRequestPlugin_destroy_sample;
+            PlcCirculateRequestPlugin_destroy_sample;
             plugin->finalizeOptionalMembersFnc =
             (PRESTypePluginFinalizeOptionalMembersFunction)
-            CirculateRequest_finalize_optional_members;
+            PlcCirculateRequest_finalize_optional_members;
 
             plugin->serializeFnc = 
             (PRESTypePluginSerializeFunction) PRESTypePlugin_interpretedSerialize;
@@ -692,20 +692,20 @@ namespace plc {
             (PRESTypePluginDeserializeFunction) PRESTypePlugin_interpretedDeserializeWithAlloc;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            plc::process::CirculateRequestPlugin_get_serialized_sample_max_size;
+            plc::process::PlcCirculateRequestPlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
             PRESTypePlugin_interpretedGetSerializedSampleMinSize;
             plugin->getDeserializedSampleMaxSizeFnc = NULL; 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            CirculateRequestPlugin_get_sample;
+            PlcCirculateRequestPlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            CirculateRequestPlugin_return_sample;
+            PlcCirculateRequestPlugin_return_sample;
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            plc::process::CirculateRequestPlugin_get_key_kind;
+            plc::process::PlcCirculateRequestPlugin_get_key_kind;
 
             /* These functions are only used for keyed types. As this is not a keyed
             type they are all set to NULL
@@ -723,17 +723,17 @@ namespace plc {
             #ifdef NDDS_STANDALONE_TYPE
             plugin->typeCode = NULL; 
             #else
-            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::CirculateRequest_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::PlcCirculateRequest_get_typecode();
             #endif
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            CirculateRequestPlugin_get_buffer;
+            PlcCirculateRequestPlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            CirculateRequestPlugin_return_buffer;
+            PlcCirculateRequestPlugin_return_buffer;
             plugin->getBufferWithParams = NULL;
             plugin->returnBufferWithParams = NULL;  
             plugin->getSerializedSampleSizeFnc =
@@ -746,55 +746,55 @@ namespace plc {
             plugin->validateWriterLoanedSampleFnc = NULL;
             plugin->setWriterLoanedSampleSerializedStateFnc = NULL;
 
-            plugin->endpointTypeName = CirculateRequestTYPENAME;
+            plugin->endpointTypeName = PlcCirculateRequestTYPENAME;
             plugin->isMetpType = RTI_FALSE;
             return plugin;
         }
 
         void
-        CirculateRequestPlugin_delete(struct PRESTypePlugin *plugin)
+        PlcCirculateRequestPlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 
 
         /* ----------------------------------------------------------------------------
-        *  Type CirculateState
+        *  Type PlcCirculateState
         * -------------------------------------------------------------------------- */
 
         /* -----------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------- */
 
-        CirculateState*
-        CirculateStatePluginSupport_create_data_w_params(
+        PlcCirculateState*
+        PlcCirculateStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params) 
         {
-            CirculateState *sample = NULL;
+            PlcCirculateState *sample = NULL;
 
-            sample = new (std::nothrow) CirculateState ;
+            sample = new (std::nothrow) PlcCirculateState ;
             if (sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::CirculateState_initialize_w_params(sample,alloc_params)) {
+            if (!plc::process::PlcCirculateState_initialize_w_params(sample,alloc_params)) {
                 delete  sample;
                 sample=NULL;
             }
             return sample;
         } 
 
-        CirculateState *
-        CirculateStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
+        PlcCirculateState *
+        PlcCirculateStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
         {
-            CirculateState *sample = NULL;
+            PlcCirculateState *sample = NULL;
 
-            sample = new (std::nothrow) CirculateState ;
+            sample = new (std::nothrow) PlcCirculateState ;
 
             if(sample == NULL) {
                 return NULL;
             }
 
-            if (!plc::process::CirculateState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+            if (!plc::process::PlcCirculateState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                 delete  sample;
                 sample=NULL;
             }
@@ -802,50 +802,50 @@ namespace plc {
             return sample;
         }
 
-        CirculateState *
-        CirculateStatePluginSupport_create_data(void)
+        PlcCirculateState *
+        PlcCirculateStatePluginSupport_create_data(void)
         {
-            return plc::process::CirculateStatePluginSupport_create_data_ex(RTI_TRUE);
+            return plc::process::PlcCirculateStatePluginSupport_create_data_ex(RTI_TRUE);
         }
 
         void 
-        CirculateStatePluginSupport_destroy_data_w_params(
-            CirculateState *sample,
+        PlcCirculateStatePluginSupport_destroy_data_w_params(
+            PlcCirculateState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params) {
-            plc::process::CirculateState_finalize_w_params(sample,dealloc_params);
+            plc::process::PlcCirculateState_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        CirculateStatePluginSupport_destroy_data_ex(
-            CirculateState *sample,RTIBool deallocate_pointers) {
-            plc::process::CirculateState_finalize_ex(sample,deallocate_pointers);
+        PlcCirculateStatePluginSupport_destroy_data_ex(
+            PlcCirculateState *sample,RTIBool deallocate_pointers) {
+            plc::process::PlcCirculateState_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
             sample=NULL;
         }
 
         void 
-        CirculateStatePluginSupport_destroy_data(
-            CirculateState *sample) {
+        PlcCirculateStatePluginSupport_destroy_data(
+            PlcCirculateState *sample) {
 
-            plc::process::CirculateStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
+            plc::process::PlcCirculateStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
         }
 
         RTIBool 
-        CirculateStatePluginSupport_copy_data(
-            CirculateState *dst,
-            const CirculateState *src)
+        PlcCirculateStatePluginSupport_copy_data(
+            PlcCirculateState *dst,
+            const PlcCirculateState *src)
         {
-            return plc::process::CirculateState_copy(dst,(const CirculateState*) src);
+            return plc::process::PlcCirculateState_copy(dst,(const PlcCirculateState*) src);
         }
 
         void 
-        CirculateStatePluginSupport_print_data(
-            const CirculateState *sample,
+        PlcCirculateStatePluginSupport_print_data(
+            const PlcCirculateState *sample,
             const char *desc,
             unsigned int indent_level)
         {
@@ -863,8 +863,8 @@ namespace plc {
                 return;
             }
 
-            DataTypes::StatusPluginSupport_print_data(
-                (const DataTypes::Status*) &sample->status, "status", indent_level + 1);
+            RTICdrType_printLong(
+                &sample->status, "status", indent_level + 1);    
 
             RTICdrType_printDouble(
                 &sample->actualFlowRate, "actualFlowRate", indent_level + 1);    
@@ -894,7 +894,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         PRESTypePluginParticipantData 
-        CirculateStatePlugin_on_participant_attached(
+        PlcCirculateStatePlugin_on_participant_attached(
             void *registration_data,
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration,
@@ -923,7 +923,7 @@ namespace plc {
 
             programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                 DDS_TypeCodeFactory_get_instance(),
-                CirculateState_get_typecode(),
+                PlcCirculateState_get_typecode(),
                 &programProperty,
                 RTI_XCDR_PROGRAM_MASK_TYPEPLUGIN);
             if (programs == NULL) {
@@ -937,7 +937,7 @@ namespace plc {
         }
 
         void 
-        CirculateStatePlugin_on_participant_detached(
+        PlcCirculateStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data)
         {  		
             if (participant_data != NULL) {
@@ -955,7 +955,7 @@ namespace plc {
         }
 
         PRESTypePluginEndpointData
-        CirculateStatePlugin_on_endpoint_attached(
+        PlcCirculateStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
@@ -975,9 +975,9 @@ namespace plc {
                 participant_data,
                 endpoint_info,
                 (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                plc::process::CirculateStatePluginSupport_create_data,
+                plc::process::PlcCirculateStatePluginSupport_create_data,
                 (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                plc::process::CirculateStatePluginSupport_destroy_data,
+                plc::process::PlcCirculateStatePluginSupport_destroy_data,
                 NULL , NULL );
 
             if (epd == NULL) {
@@ -985,7 +985,7 @@ namespace plc {
             } 
 
             if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                serializedSampleMaxSize = plc::process::CirculateStatePlugin_get_serialized_sample_max_size(
+                serializedSampleMaxSize = plc::process::PlcCirculateStatePlugin_get_serialized_sample_max_size(
                     epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
                 PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
 
@@ -993,7 +993,7 @@ namespace plc {
                     epd,
                     endpoint_info,
                     (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                    plc::process::CirculateStatePlugin_get_serialized_sample_max_size, epd,
+                    plc::process::PlcCirculateStatePlugin_get_serialized_sample_max_size, epd,
                     (PRESTypePluginGetSerializedSampleSizeFunction)
                     PRESTypePlugin_interpretedGetSerializedSampleSize,
                     epd) == RTI_FALSE) {
@@ -1006,49 +1006,49 @@ namespace plc {
         }
 
         void 
-        CirculateStatePlugin_on_endpoint_detached(
+        PlcCirculateStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data)
         {
             PRESTypePluginDefaultEndpointData_delete(endpoint_data);
         }
 
         void    
-        CirculateStatePlugin_return_sample(
+        PlcCirculateStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateState *sample,
+            PlcCirculateState *sample,
             void *handle)
         {
-            CirculateState_finalize_optional_members(sample, RTI_TRUE);
+            PlcCirculateState_finalize_optional_members(sample, RTI_TRUE);
 
             PRESTypePluginDefaultEndpointData_returnSample(
                 endpoint_data, sample, handle);
         }
 
         RTIBool 
-        CirculateStatePlugin_copy_sample(
+        PlcCirculateStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateState *dst,
-            const CirculateState *src)
+            PlcCirculateState *dst,
+            const PlcCirculateState *src)
         {
             if (endpoint_data) {} /* To avoid warnings */
-            return plc::process::CirculateStatePluginSupport_copy_data(dst,src);
+            return plc::process::PlcCirculateStatePluginSupport_copy_data(dst,src);
         }
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
         unsigned int 
-        CirculateStatePlugin_get_serialized_sample_max_size(
+        PlcCirculateStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         RTIBool
-        CirculateStatePlugin_serialize_to_cdr_buffer_ex(
+        PlcCirculateStatePlugin_serialize_to_cdr_buffer_ex(
             char *buffer,
             unsigned int *length,
-            const CirculateState *sample,
+            const PlcCirculateState *sample,
             DDS_DataRepresentationId_t representation)
         {
             RTIEncapsulationId encapsulationId = RTI_CDR_ENCAPSULATION_ID_INVALID;
@@ -1070,8 +1070,8 @@ namespace plc {
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
             plugin.typeCode = (struct RTICdrTypeCode *)
-            CirculateState_get_typecode();
-            pd.programs = CirculateStatePlugin_get_programs();
+            PlcCirculateState_get_typecode();
+            pd.programs = PlcCirculateStatePlugin_get_programs();
             if (pd.programs == NULL) {
                 return RTI_FALSE;
             }
@@ -1084,7 +1084,7 @@ namespace plc {
             }
 
             epd._maxSizeSerializedSample =
-            CirculateStatePlugin_get_serialized_sample_max_size(
+            PlcCirculateStatePlugin_get_serialized_sample_max_size(
                 (PRESTypePluginEndpointData)&epd, 
                 RTI_TRUE, 
                 encapsulationId,
@@ -1123,12 +1123,12 @@ namespace plc {
         }
 
         RTIBool
-        CirculateStatePlugin_serialize_to_cdr_buffer(
+        PlcCirculateStatePlugin_serialize_to_cdr_buffer(
             char *buffer,
             unsigned int *length,
-            const CirculateState *sample)
+            const PlcCirculateState *sample)
         {
-            return CirculateStatePlugin_serialize_to_cdr_buffer_ex(
+            return PlcCirculateStatePlugin_serialize_to_cdr_buffer_ex(
                 buffer,
                 length,
                 sample,
@@ -1136,8 +1136,8 @@ namespace plc {
         }
 
         RTIBool
-        CirculateStatePlugin_deserialize_from_cdr_buffer(
-            CirculateState *sample,
+        PlcCirculateStatePlugin_deserialize_from_cdr_buffer(
+            PlcCirculateState *sample,
             const char * buffer,
             unsigned int length)
         {
@@ -1153,8 +1153,8 @@ namespace plc {
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
             plugin.typeCode = (struct RTICdrTypeCode *)
-            CirculateState_get_typecode();
-            pd.programs = CirculateStatePlugin_get_programs();
+            PlcCirculateState_get_typecode();
+            pd.programs = PlcCirculateStatePlugin_get_programs();
             if (pd.programs == NULL) {
                 return RTI_FALSE;
             }
@@ -1165,7 +1165,7 @@ namespace plc {
             RTICdrStream_init(&stream);
             RTICdrStream_set(&stream, (char *)buffer, length);
 
-            CirculateState_finalize_optional_members(sample, RTI_TRUE);
+            PlcCirculateState_finalize_optional_members(sample, RTI_TRUE);
             return PRESTypePlugin_interpretedDeserialize( 
                 (PRESTypePluginEndpointData)&epd, sample,
                 &stream, RTI_TRUE, RTI_TRUE, 
@@ -1174,8 +1174,8 @@ namespace plc {
 
         #ifndef NDDS_STANDALONE_TYPE
         DDS_ReturnCode_t
-        CirculateStatePlugin_data_to_string(
-            const CirculateState *sample,
+        PlcCirculateStatePlugin_data_to_string(
+            const PlcCirculateState *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property)
@@ -1197,7 +1197,7 @@ namespace plc {
             if (property == NULL) {
                 return DDS_RETCODE_BAD_PARAMETER;
             }
-            if (!CirculateStatePlugin_serialize_to_cdr_buffer(
+            if (!PlcCirculateStatePlugin_serialize_to_cdr_buffer(
                 NULL, 
                 &length, 
                 sample)) {
@@ -1209,7 +1209,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
 
-            if (!CirculateStatePlugin_serialize_to_cdr_buffer(
+            if (!PlcCirculateStatePlugin_serialize_to_cdr_buffer(
                 buffer, 
                 &length, 
                 sample)) {
@@ -1217,7 +1217,7 @@ namespace plc {
                 return DDS_RETCODE_ERROR;
             }
             data = DDS_DynamicData_new(
-                CirculateState_get_typecode(), 
+                PlcCirculateState_get_typecode(), 
                 &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
             if (data == NULL) {
                 RTIOsapiHeap_freeBuffer(buffer);
@@ -1258,7 +1258,7 @@ namespace plc {
         #endif
 
         unsigned int 
-        CirculateStatePlugin_get_serialized_sample_max_size(
+        PlcCirculateStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1282,14 +1282,14 @@ namespace plc {
         * -------------------------------------------------------------------------------------- */
 
         PRESTypePluginKeyKind 
-        CirculateStatePlugin_get_key_kind(void)
+        PlcCirculateStatePlugin_get_key_kind(void)
         {
             return PRES_TYPEPLUGIN_NO_KEY;
         }
 
-        RTIBool CirculateStatePlugin_deserialize_key(
+        RTIBool PlcCirculateStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateState **sample, 
+            PlcCirculateState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -1312,7 +1312,7 @@ namespace plc {
         }
 
         unsigned int
-        CirculateStatePlugin_get_serialized_key_max_size(
+        PlcCirculateStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -1330,7 +1330,7 @@ namespace plc {
         }
 
         unsigned int
-        CirculateStatePlugin_get_serialized_key_max_size_for_keyhash(
+        PlcCirculateStatePlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment)
@@ -1349,17 +1349,17 @@ namespace plc {
             return size;
         }
 
-        struct RTIXCdrInterpreterPrograms *CirculateStatePlugin_get_programs()
+        struct RTIXCdrInterpreterPrograms *PlcCirculateStatePlugin_get_programs()
         {
             return ::rti::xcdr::get_cdr_serialization_programs<
-            CirculateState, 
+            PlcCirculateState, 
             true, true, true>();
         }
 
         /* ------------------------------------------------------------------------
         * Plug-in Installation Methods
         * ------------------------------------------------------------------------ */
-        struct PRESTypePlugin *CirculateStatePlugin_new(void) 
+        struct PRESTypePlugin *PlcCirculateStatePlugin_new(void) 
         { 
             struct PRESTypePlugin *plugin = NULL;
             const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -1377,29 +1377,29 @@ namespace plc {
             /* set up parent's function pointers */
             plugin->onParticipantAttached =
             (PRESTypePluginOnParticipantAttachedCallback)
-            plc::process::CirculateStatePlugin_on_participant_attached;
+            plc::process::PlcCirculateStatePlugin_on_participant_attached;
             plugin->onParticipantDetached =
             (PRESTypePluginOnParticipantDetachedCallback)
-            plc::process::CirculateStatePlugin_on_participant_detached;
+            plc::process::PlcCirculateStatePlugin_on_participant_detached;
             plugin->onEndpointAttached =
             (PRESTypePluginOnEndpointAttachedCallback)
-            plc::process::CirculateStatePlugin_on_endpoint_attached;
+            plc::process::PlcCirculateStatePlugin_on_endpoint_attached;
             plugin->onEndpointDetached =
             (PRESTypePluginOnEndpointDetachedCallback)
-            plc::process::CirculateStatePlugin_on_endpoint_detached;
+            plc::process::PlcCirculateStatePlugin_on_endpoint_detached;
 
             plugin->copySampleFnc =
             (PRESTypePluginCopySampleFunction)
-            plc::process::CirculateStatePlugin_copy_sample;
+            plc::process::PlcCirculateStatePlugin_copy_sample;
             plugin->createSampleFnc =
             (PRESTypePluginCreateSampleFunction)
-            CirculateStatePlugin_create_sample;
+            PlcCirculateStatePlugin_create_sample;
             plugin->destroySampleFnc =
             (PRESTypePluginDestroySampleFunction)
-            CirculateStatePlugin_destroy_sample;
+            PlcCirculateStatePlugin_destroy_sample;
             plugin->finalizeOptionalMembersFnc =
             (PRESTypePluginFinalizeOptionalMembersFunction)
-            CirculateState_finalize_optional_members;
+            PlcCirculateState_finalize_optional_members;
 
             plugin->serializeFnc = 
             (PRESTypePluginSerializeFunction) PRESTypePlugin_interpretedSerialize;
@@ -1407,20 +1407,20 @@ namespace plc {
             (PRESTypePluginDeserializeFunction) PRESTypePlugin_interpretedDeserializeWithAlloc;
             plugin->getSerializedSampleMaxSizeFnc =
             (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-            plc::process::CirculateStatePlugin_get_serialized_sample_max_size;
+            plc::process::PlcCirculateStatePlugin_get_serialized_sample_max_size;
             plugin->getSerializedSampleMinSizeFnc =
             (PRESTypePluginGetSerializedSampleMinSizeFunction)
             PRESTypePlugin_interpretedGetSerializedSampleMinSize;
             plugin->getDeserializedSampleMaxSizeFnc = NULL; 
             plugin->getSampleFnc =
             (PRESTypePluginGetSampleFunction)
-            CirculateStatePlugin_get_sample;
+            PlcCirculateStatePlugin_get_sample;
             plugin->returnSampleFnc =
             (PRESTypePluginReturnSampleFunction)
-            CirculateStatePlugin_return_sample;
+            PlcCirculateStatePlugin_return_sample;
             plugin->getKeyKindFnc =
             (PRESTypePluginGetKeyKindFunction)
-            plc::process::CirculateStatePlugin_get_key_kind;
+            plc::process::PlcCirculateStatePlugin_get_key_kind;
 
             /* These functions are only used for keyed types. As this is not a keyed
             type they are all set to NULL
@@ -1438,17 +1438,17 @@ namespace plc {
             #ifdef NDDS_STANDALONE_TYPE
             plugin->typeCode = NULL; 
             #else
-            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::CirculateState_get_typecode();
+            plugin->typeCode =  (struct RTICdrTypeCode *)plc::process::PlcCirculateState_get_typecode();
             #endif
             plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
             /* Serialized buffer */
             plugin->getBuffer = 
             (PRESTypePluginGetBufferFunction)
-            CirculateStatePlugin_get_buffer;
+            PlcCirculateStatePlugin_get_buffer;
             plugin->returnBuffer = 
             (PRESTypePluginReturnBufferFunction)
-            CirculateStatePlugin_return_buffer;
+            PlcCirculateStatePlugin_return_buffer;
             plugin->getBufferWithParams = NULL;
             plugin->returnBufferWithParams = NULL;  
             plugin->getSerializedSampleSizeFnc =
@@ -1461,13 +1461,13 @@ namespace plc {
             plugin->validateWriterLoanedSampleFnc = NULL;
             plugin->setWriterLoanedSampleSerializedStateFnc = NULL;
 
-            plugin->endpointTypeName = CirculateStateTYPENAME;
+            plugin->endpointTypeName = PlcCirculateStateTYPENAME;
             plugin->isMetpType = RTI_FALSE;
             return plugin;
         }
 
         void
-        CirculateStatePlugin_delete(struct PRESTypePlugin *plugin)
+        PlcCirculateStatePlugin_delete(struct PRESTypePlugin *plugin)
         {
             RTIOsapiHeap_freeStructure(plugin);
         } 

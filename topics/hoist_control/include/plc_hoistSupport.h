@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_hoistSupport_1752499117_h
-#define plc_hoistSupport_1752499117_h
+#ifndef plc_hoistSupport_1752499246_h
+#define plc_hoistSupport_1752499246_h
 
 /* Uses */
 #include "plc_hoist.h"
@@ -47,14 +47,14 @@ namespace plc {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            HoistRequestTypeSupport, 
-            HoistRequest);
+            PlcHoistRequestTypeSupport, 
+            PlcHoistRequest);
 
         #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(HoistRequestDataWriter, HoistRequest);
+        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(PlcHoistRequestDataWriter, PlcHoistRequest);
         #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(HoistRequestDataReader, HoistRequestSeq, HoistRequest);
+        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(PlcHoistRequestDataReader, PlcHoistRequestSeq, PlcHoistRequest);
         #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -82,14 +82,14 @@ namespace plc {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            HoistStateTypeSupport, 
-            HoistState);
+            PlcHoistStateTypeSupport, 
+            PlcHoistState);
 
         #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(HoistStateDataWriter, HoistState);
+        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(PlcHoistStateDataWriter, PlcHoistState);
         #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(HoistStateDataReader, HoistStateSeq, HoistState);
+        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(PlcHoistStateDataReader, PlcHoistStateSeq, PlcHoistState);
         #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -101,5 +101,5 @@ namespace plc {
     } /* namespace process  */
 } /* namespace plc  */
 
-#endif  /* plc_hoistSupport_1752499117_h */
+#endif  /* plc_hoistSupport_1752499246_h */
 

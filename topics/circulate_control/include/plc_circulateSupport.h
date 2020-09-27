@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_circulateSupport_1662823160_h
-#define plc_circulateSupport_1662823160_h
+#ifndef plc_circulateSupport_1662823240_h
+#define plc_circulateSupport_1662823240_h
 
 /* Uses */
 #include "plc_circulate.h"
@@ -47,14 +47,14 @@ namespace plc {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            CirculateRequestTypeSupport, 
-            CirculateRequest);
+            PlcCirculateRequestTypeSupport, 
+            PlcCirculateRequest);
 
         #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(CirculateRequestDataWriter, CirculateRequest);
+        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(PlcCirculateRequestDataWriter, PlcCirculateRequest);
         #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(CirculateRequestDataReader, CirculateRequestSeq, CirculateRequest);
+        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(PlcCirculateRequestDataReader, PlcCirculateRequestSeq, PlcCirculateRequest);
         #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -82,14 +82,14 @@ namespace plc {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            CirculateStateTypeSupport, 
-            CirculateState);
+            PlcCirculateStateTypeSupport, 
+            PlcCirculateState);
 
         #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(CirculateStateDataWriter, CirculateState);
+        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(PlcCirculateStateDataWriter, PlcCirculateState);
         #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(CirculateStateDataReader, CirculateStateSeq, CirculateState);
+        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(PlcCirculateStateDataReader, PlcCirculateStateSeq, PlcCirculateState);
         #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -101,5 +101,5 @@ namespace plc {
     } /* namespace process  */
 } /* namespace plc  */
 
-#endif  /* plc_circulateSupport_1662823160_h */
+#endif  /* plc_circulateSupport_1662823240_h */
 

@@ -44,14 +44,14 @@ namespace plc {
     namespace process {
 
         /* ========================================================================= */
-        const char *DrillRequestTopicTYPENAME = "plc::process::DrillRequestTopic";
+        const char *PlcDrillRequestTopicTYPENAME = "plc::process::PlcDrillRequestTopic";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* DrillRequestTopic_get_typecode()
+        DDS_TypeCode* PlcDrillRequestTopic_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member DrillRequestTopic_g_tc_members[8]=
+            static DDS_TypeCode_Member PlcDrillRequestTopic_g_tc_members[8]=
             {
 
                 {
@@ -200,192 +200,192 @@ namespace plc {
                 }
             };
 
-            static DDS_TypeCode DrillRequestTopic_g_tc =
+            static DDS_TypeCode PlcDrillRequestTopic_g_tc =
             {{
                     DDS_TK_STRUCT, /* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"plc::process::DrillRequestTopic", /* Name */
+                    (char *)"plc::process::PlcDrillRequestTopic", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     8, /* Number of members */
-                    DrillRequestTopic_g_tc_members, /* Members */
+                    PlcDrillRequestTopic_g_tc_members, /* Members */
                     DDS_VM_NONE, /* Ignored */
                     RTICdrTypeCodeAnnotations_INITIALIZER,
                     DDS_BOOLEAN_TRUE, /* _isCopyable */
                     NULL, /* _sampleAccessInfo: assigned later */
                     NULL /* _typePlugin: assigned later */
-                }}; /* Type code for DrillRequestTopic*/
+                }}; /* Type code for PlcDrillRequestTopic*/
 
             if (is_initialized) {
-                return &DrillRequestTopic_g_tc;
+                return &PlcDrillRequestTopic_g_tc;
             }
 
-            DrillRequestTopic_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+            PlcDrillRequestTopic_g_tc._data._annotations._allowedDataRepresentationMask = 5;
 
-            DrillRequestTopic_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillRequestTopic_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillRequestTopic_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillRequestTopic_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillRequestTopic_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
-            DrillRequestTopic_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
-            DrillRequestTopic_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
-            DrillRequestTopic_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
+            PlcDrillRequestTopic_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillRequestTopic_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillRequestTopic_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillRequestTopic_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillRequestTopic_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
+            PlcDrillRequestTopic_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
+            PlcDrillRequestTopic_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
+            PlcDrillRequestTopic_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
 
             /* Initialize the values for member annotations. */
-            DrillRequestTopic_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillRequestTopic_g_tc_members[0]._annotations._defaultValue._u.double_value = 0.0;
-            DrillRequestTopic_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillRequestTopic_g_tc_members[0]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillRequestTopic_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillRequestTopic_g_tc_members[0]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillRequestTopic_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillRequestTopic_g_tc_members[0]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillRequestTopic_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillRequestTopic_g_tc_members[0]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillRequestTopic_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillRequestTopic_g_tc_members[0]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillRequestTopic_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillRequestTopic_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
-            DrillRequestTopic_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillRequestTopic_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillRequestTopic_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillRequestTopic_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillRequestTopic_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillRequestTopic_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillRequestTopic_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillRequestTopic_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillRequestTopic_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillRequestTopic_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillRequestTopic_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillRequestTopic_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
-            DrillRequestTopic_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillRequestTopic_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillRequestTopic_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillRequestTopic_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillRequestTopic_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillRequestTopic_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillRequestTopic_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillRequestTopic_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillRequestTopic_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillRequestTopic_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillRequestTopic_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillRequestTopic_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
-            DrillRequestTopic_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillRequestTopic_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillRequestTopic_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillRequestTopic_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillRequestTopic_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillRequestTopic_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillRequestTopic_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillRequestTopic_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillRequestTopic_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillRequestTopic_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillRequestTopic_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
-            DrillRequestTopic_g_tc_members[4]._annotations._defaultValue._u.boolean_value = 0;
+            PlcDrillRequestTopic_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
+            PlcDrillRequestTopic_g_tc_members[4]._annotations._defaultValue._u.boolean_value = 0;
 
-            DrillRequestTopic_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
-            DrillRequestTopic_g_tc_members[5]._annotations._defaultValue._u.boolean_value = 0;
+            PlcDrillRequestTopic_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
+            PlcDrillRequestTopic_g_tc_members[5]._annotations._defaultValue._u.boolean_value = 0;
 
-            DrillRequestTopic_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
-            DrillRequestTopic_g_tc_members[6]._annotations._defaultValue._u.boolean_value = 0;
+            PlcDrillRequestTopic_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
+            PlcDrillRequestTopic_g_tc_members[6]._annotations._defaultValue._u.boolean_value = 0;
 
-            DrillRequestTopic_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
-            DrillRequestTopic_g_tc_members[7]._annotations._defaultValue._u.boolean_value = 0;
+            PlcDrillRequestTopic_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
+            PlcDrillRequestTopic_g_tc_members[7]._annotations._defaultValue._u.boolean_value = 0;
 
-            DrillRequestTopic_g_tc._data._sampleAccessInfo =
-            DrillRequestTopic_get_sample_access_info();
-            DrillRequestTopic_g_tc._data._typePlugin =
-            DrillRequestTopic_get_type_plugin_info();    
+            PlcDrillRequestTopic_g_tc._data._sampleAccessInfo =
+            PlcDrillRequestTopic_get_sample_access_info();
+            PlcDrillRequestTopic_g_tc._data._typePlugin =
+            PlcDrillRequestTopic_get_type_plugin_info();    
 
             is_initialized = RTI_TRUE;
 
-            return &DrillRequestTopic_g_tc;
+            return &PlcDrillRequestTopic_g_tc;
         }
 
-        #define TSeq DrillRequestTopicSeq
-        #define T DrillRequestTopic
+        #define TSeq PlcDrillRequestTopicSeq
+        #define T PlcDrillRequestTopic
         #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
         #undef T
         #undef TSeq
 
-        RTIXCdrSampleAccessInfo *DrillRequestTopic_get_sample_seq_access_info()
+        RTIXCdrSampleAccessInfo *PlcDrillRequestTopic_get_sample_seq_access_info()
         {
-            static RTIXCdrSampleAccessInfo DrillRequestTopic_g_seqSampleAccessInfo = {
+            static RTIXCdrSampleAccessInfo PlcDrillRequestTopic_g_seqSampleAccessInfo = {
                 RTI_XCDR_TYPE_BINDING_CPP, \
-                {sizeof(DrillRequestTopicSeq),0,0,0}, \
+                {sizeof(PlcDrillRequestTopicSeq),0,0,0}, \
                 RTI_XCDR_FALSE, \
                 DDS_Sequence_get_member_value_pointer, \
-                DrillRequestTopicSeq_set_member_element_count, \
+                PlcDrillRequestTopicSeq_set_member_element_count, \
                 NULL, \
                 NULL, \
                 NULL \
             };
 
-            return &DrillRequestTopic_g_seqSampleAccessInfo;
+            return &PlcDrillRequestTopic_g_seqSampleAccessInfo;
         }
 
-        RTIXCdrSampleAccessInfo *DrillRequestTopic_get_sample_access_info()
+        RTIXCdrSampleAccessInfo *PlcDrillRequestTopic_get_sample_access_info()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            plc::process::DrillRequestTopic *sample;
+            plc::process::PlcDrillRequestTopic *sample;
 
-            static RTIXCdrMemberAccessInfo DrillRequestTopic_g_memberAccessInfos[8] =
+            static RTIXCdrMemberAccessInfo PlcDrillRequestTopic_g_memberAccessInfos[8] =
             {RTIXCdrMemberAccessInfo_INITIALIZER};
 
-            static RTIXCdrSampleAccessInfo DrillRequestTopic_g_sampleAccessInfo = 
+            static RTIXCdrSampleAccessInfo PlcDrillRequestTopic_g_sampleAccessInfo = 
             RTIXCdrSampleAccessInfo_INITIALIZER;
 
             if (is_initialized) {
-                return (RTIXCdrSampleAccessInfo*) &DrillRequestTopic_g_sampleAccessInfo;
+                return (RTIXCdrSampleAccessInfo*) &PlcDrillRequestTopic_g_sampleAccessInfo;
             }
 
             RTIXCdrHeap_allocateStruct(
                 &sample, 
-                plc::process::DrillRequestTopic);
+                plc::process::PlcDrillRequestTopic);
             if (sample == NULL) {
                 return NULL;
             }
 
-            DrillRequestTopic_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
+            PlcDrillRequestTopic_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->ropLimit - (char *)sample);
 
-            DrillRequestTopic_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
+            PlcDrillRequestTopic_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->wobLimit - (char *)sample);
 
-            DrillRequestTopic_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
+            PlcDrillRequestTopic_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->diffPressureLimit - (char *)sample);
 
-            DrillRequestTopic_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
+            PlcDrillRequestTopic_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->torqueLimit - (char *)sample);
 
-            DrillRequestTopic_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
+            PlcDrillRequestTopic_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->ropMode - (char *)sample);
 
-            DrillRequestTopic_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
+            PlcDrillRequestTopic_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->wobMode - (char *)sample);
 
-            DrillRequestTopic_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
+            PlcDrillRequestTopic_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->diffPressureMode - (char *)sample);
 
-            DrillRequestTopic_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
+            PlcDrillRequestTopic_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->torqueMode - (char *)sample);
 
-            DrillRequestTopic_g_sampleAccessInfo.memberAccessInfos = 
-            DrillRequestTopic_g_memberAccessInfos;
+            PlcDrillRequestTopic_g_sampleAccessInfo.memberAccessInfos = 
+            PlcDrillRequestTopic_g_memberAccessInfos;
 
             {
-                size_t candidateTypeSize = sizeof(DrillRequestTopic);
+                size_t candidateTypeSize = sizeof(PlcDrillRequestTopic);
 
                 if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
-                    DrillRequestTopic_g_sampleAccessInfo.typeSize[0] =
+                    PlcDrillRequestTopic_g_sampleAccessInfo.typeSize[0] =
                     RTIXCdrUnsignedLong_MAX;
                 } else {
-                    DrillRequestTopic_g_sampleAccessInfo.typeSize[0] =
+                    PlcDrillRequestTopic_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
                 }
             }
 
-            DrillRequestTopic_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+            PlcDrillRequestTopic_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
             RTI_XCDR_TRUE;
 
-            DrillRequestTopic_g_sampleAccessInfo.getMemberValuePointerFcn = 
-            DrillRequestTopic_get_member_value_pointer;
+            PlcDrillRequestTopic_g_sampleAccessInfo.getMemberValuePointerFcn = 
+            PlcDrillRequestTopic_get_member_value_pointer;
 
-            DrillRequestTopic_g_sampleAccessInfo.languageBinding = 
+            PlcDrillRequestTopic_g_sampleAccessInfo.languageBinding = 
             RTI_XCDR_TYPE_BINDING_CPP ;
 
             RTIXCdrHeap_freeStruct(sample);
             is_initialized = RTI_TRUE;
-            return (RTIXCdrSampleAccessInfo*) &DrillRequestTopic_g_sampleAccessInfo;
+            return (RTIXCdrSampleAccessInfo*) &PlcDrillRequestTopic_g_sampleAccessInfo;
         }
 
-        RTIXCdrTypePlugin *DrillRequestTopic_get_type_plugin_info()
+        RTIXCdrTypePlugin *PlcDrillRequestTopic_get_type_plugin_info()
         {
-            static RTIXCdrTypePlugin DrillRequestTopic_g_typePlugin = 
+            static RTIXCdrTypePlugin PlcDrillRequestTopic_g_typePlugin = 
             {
                 NULL, /* serialize */
                 NULL, /* serialize_key */
@@ -398,24 +398,24 @@ namespace plc {
                 NULL, /* get_serialized_sample_min_size */
                 NULL, /* serialized_sample_to_key */
                 (RTIXCdrTypePluginInitializeSampleFunction) 
-                plc::process::DrillRequestTopic_initialize_ex,
+                plc::process::PlcDrillRequestTopic_initialize_ex,
                 NULL,
                 (RTIXCdrTypePluginFinalizeSampleFunction)
-                plc::process::DrillRequestTopic_finalize_w_return,
+                plc::process::PlcDrillRequestTopic_finalize_w_return,
                 NULL
             };
 
-            return &DrillRequestTopic_g_typePlugin;
+            return &PlcDrillRequestTopic_g_typePlugin;
         }
         #endif
 
-        RTIBool DrillRequestTopic_initialize(
-            DrillRequestTopic* sample) {
-            return plc::process::DrillRequestTopic_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool PlcDrillRequestTopic_initialize(
+            PlcDrillRequestTopic* sample) {
+            return plc::process::PlcDrillRequestTopic_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool DrillRequestTopic_initialize_ex(
-            DrillRequestTopic* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool PlcDrillRequestTopic_initialize_ex(
+            PlcDrillRequestTopic* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -424,13 +424,13 @@ namespace plc {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return plc::process::DrillRequestTopic_initialize_w_params(
+            return plc::process::PlcDrillRequestTopic_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool DrillRequestTopic_initialize_w_params(
-            DrillRequestTopic* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool PlcDrillRequestTopic_initialize_w_params(
+            PlcDrillRequestTopic* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -459,23 +459,23 @@ namespace plc {
             return RTI_TRUE;
         }
 
-        RTIBool DrillRequestTopic_finalize_w_return(
-            DrillRequestTopic* sample)
+        RTIBool PlcDrillRequestTopic_finalize_w_return(
+            PlcDrillRequestTopic* sample)
         {
-            plc::process::DrillRequestTopic_finalize_ex(sample, RTI_TRUE);
+            plc::process::PlcDrillRequestTopic_finalize_ex(sample, RTI_TRUE);
 
             return RTI_TRUE;
         }
 
-        void DrillRequestTopic_finalize(
-            DrillRequestTopic* sample)
+        void PlcDrillRequestTopic_finalize(
+            PlcDrillRequestTopic* sample)
         {
 
-            plc::process::DrillRequestTopic_finalize_ex(sample,RTI_TRUE);
+            plc::process::PlcDrillRequestTopic_finalize_ex(sample,RTI_TRUE);
         }
 
-        void DrillRequestTopic_finalize_ex(
-            DrillRequestTopic* sample,RTIBool deletePointers)
+        void PlcDrillRequestTopic_finalize_ex(
+            PlcDrillRequestTopic* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -486,12 +486,12 @@ namespace plc {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            plc::process::DrillRequestTopic_finalize_w_params(
+            plc::process::PlcDrillRequestTopic_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void DrillRequestTopic_finalize_w_params(
-            DrillRequestTopic* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void PlcDrillRequestTopic_finalize_w_params(
+            PlcDrillRequestTopic* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -504,8 +504,8 @@ namespace plc {
 
         }
 
-        void DrillRequestTopic_finalize_optional_members(
-            DrillRequestTopic* sample, RTIBool deletePointers)
+        void PlcDrillRequestTopic_finalize_optional_members(
+            PlcDrillRequestTopic* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -522,9 +522,9 @@ namespace plc {
 
         }
 
-        RTIBool DrillRequestTopic_copy(
-            DrillRequestTopic* dst,
-            const DrillRequestTopic* src)
+        RTIBool PlcDrillRequestTopic_copy(
+            PlcDrillRequestTopic* dst,
+            const PlcDrillRequestTopic* src)
         {
             try {
 
@@ -577,15 +577,15 @@ namespace plc {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'DrillRequestTopic' sequence class.
+        * Configure and implement 'PlcDrillRequestTopic' sequence class.
         */
-        #define T DrillRequestTopic
-        #define TSeq DrillRequestTopicSeq
+        #define T PlcDrillRequestTopic
+        #define TSeq PlcDrillRequestTopicSeq
 
-        #define T_initialize_w_params plc::process::DrillRequestTopic_initialize_w_params
+        #define T_initialize_w_params plc::process::PlcDrillRequestTopic_initialize_w_params
 
-        #define T_finalize_w_params   plc::process::DrillRequestTopic_finalize_w_params
-        #define T_copy       plc::process::DrillRequestTopic_copy
+        #define T_finalize_w_params   plc::process::PlcDrillRequestTopic_finalize_w_params
+        #define T_copy       plc::process::PlcDrillRequestTopic_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -604,14 +604,14 @@ namespace plc {
         #undef T
 
         /* ========================================================================= */
-        const char *DrillStateTopicTYPENAME = "plc::process::DrillStateTopic";
+        const char *PlcDrillStateTopicTYPENAME = "plc::process::PlcDrillStateTopic";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* DrillStateTopic_get_typecode()
+        DDS_TypeCode* PlcDrillStateTopic_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member DrillStateTopic_g_tc_members[16]=
+            static DDS_TypeCode_Member PlcDrillStateTopic_g_tc_members[16]=
             {
 
                 {
@@ -904,280 +904,280 @@ namespace plc {
                 }
             };
 
-            static DDS_TypeCode DrillStateTopic_g_tc =
+            static DDS_TypeCode PlcDrillStateTopic_g_tc =
             {{
                     DDS_TK_STRUCT, /* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"plc::process::DrillStateTopic", /* Name */
+                    (char *)"plc::process::PlcDrillStateTopic", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     16, /* Number of members */
-                    DrillStateTopic_g_tc_members, /* Members */
+                    PlcDrillStateTopic_g_tc_members, /* Members */
                     DDS_VM_NONE, /* Ignored */
                     RTICdrTypeCodeAnnotations_INITIALIZER,
                     DDS_BOOLEAN_TRUE, /* _isCopyable */
                     NULL, /* _sampleAccessInfo: assigned later */
                     NULL /* _typePlugin: assigned later */
-                }}; /* Type code for DrillStateTopic*/
+                }}; /* Type code for PlcDrillStateTopic*/
 
             if (is_initialized) {
-                return &DrillStateTopic_g_tc;
+                return &PlcDrillStateTopic_g_tc;
             }
 
-            DrillStateTopic_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+            PlcDrillStateTopic_g_tc._data._annotations._allowedDataRepresentationMask = 5;
 
-            DrillStateTopic_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillStateTopic_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillStateTopic_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillStateTopic_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillStateTopic_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillStateTopic_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillStateTopic_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillStateTopic_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillStateTopic_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
-            DrillStateTopic_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
-            DrillStateTopic_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
-            DrillStateTopic_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
-            DrillStateTopic_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillStateTopic_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillStateTopic_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            DrillStateTopic_g_tc_members[15]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillStateTopic_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillStateTopic_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillStateTopic_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillStateTopic_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillStateTopic_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillStateTopic_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillStateTopic_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillStateTopic_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillStateTopic_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
+            PlcDrillStateTopic_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
+            PlcDrillStateTopic_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
+            PlcDrillStateTopic_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
+            PlcDrillStateTopic_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillStateTopic_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillStateTopic_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcDrillStateTopic_g_tc_members[15]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
 
             /* Initialize the values for member annotations. */
-            DrillStateTopic_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[0]._annotations._defaultValue._u.double_value = 0.0;
-            DrillStateTopic_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[0]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillStateTopic_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[0]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillStateTopic_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[0]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillStateTopic_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[0]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillStateTopic_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[0]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillStateTopic_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
-            DrillStateTopic_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillStateTopic_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillStateTopic_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillStateTopic_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillStateTopic_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillStateTopic_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
-            DrillStateTopic_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillStateTopic_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillStateTopic_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillStateTopic_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillStateTopic_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillStateTopic_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
-            DrillStateTopic_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillStateTopic_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillStateTopic_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillStateTopic_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillStateTopic_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillStateTopic_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[4]._annotations._defaultValue._u.double_value = 0.0;
-            DrillStateTopic_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillStateTopic_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillStateTopic_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[4]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillStateTopic_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillStateTopic_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillStateTopic_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[5]._annotations._defaultValue._u.double_value = 0.0;
-            DrillStateTopic_g_tc_members[5]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[5]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillStateTopic_g_tc_members[5]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[5]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillStateTopic_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[5]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillStateTopic_g_tc_members[5]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[5]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillStateTopic_g_tc_members[5]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[5]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillStateTopic_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
-            DrillStateTopic_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillStateTopic_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillStateTopic_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillStateTopic_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillStateTopic_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillStateTopic_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[7]._annotations._defaultValue._u.double_value = 0.0;
-            DrillStateTopic_g_tc_members[7]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[7]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillStateTopic_g_tc_members[7]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[7]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillStateTopic_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[7]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillStateTopic_g_tc_members[7]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[7]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillStateTopic_g_tc_members[7]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[7]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillStateTopic_g_tc_members[8]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
-            DrillStateTopic_g_tc_members[8]._annotations._defaultValue._u.boolean_value = 0;
+            PlcDrillStateTopic_g_tc_members[8]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
+            PlcDrillStateTopic_g_tc_members[8]._annotations._defaultValue._u.boolean_value = 0;
 
-            DrillStateTopic_g_tc_members[9]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
-            DrillStateTopic_g_tc_members[9]._annotations._defaultValue._u.boolean_value = 0;
+            PlcDrillStateTopic_g_tc_members[9]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
+            PlcDrillStateTopic_g_tc_members[9]._annotations._defaultValue._u.boolean_value = 0;
 
-            DrillStateTopic_g_tc_members[10]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
-            DrillStateTopic_g_tc_members[10]._annotations._defaultValue._u.boolean_value = 0;
+            PlcDrillStateTopic_g_tc_members[10]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
+            PlcDrillStateTopic_g_tc_members[10]._annotations._defaultValue._u.boolean_value = 0;
 
-            DrillStateTopic_g_tc_members[11]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
-            DrillStateTopic_g_tc_members[11]._annotations._defaultValue._u.boolean_value = 0;
+            PlcDrillStateTopic_g_tc_members[11]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
+            PlcDrillStateTopic_g_tc_members[11]._annotations._defaultValue._u.boolean_value = 0;
 
-            DrillStateTopic_g_tc_members[12]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[12]._annotations._defaultValue._u.double_value = 0.0;
-            DrillStateTopic_g_tc_members[12]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[12]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillStateTopic_g_tc_members[12]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[12]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillStateTopic_g_tc_members[12]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[12]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillStateTopic_g_tc_members[12]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[12]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillStateTopic_g_tc_members[12]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[12]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillStateTopic_g_tc_members[13]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[13]._annotations._defaultValue._u.double_value = 0.0;
-            DrillStateTopic_g_tc_members[13]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[13]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillStateTopic_g_tc_members[13]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[13]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillStateTopic_g_tc_members[13]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[13]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillStateTopic_g_tc_members[13]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[13]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillStateTopic_g_tc_members[13]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[13]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillStateTopic_g_tc_members[14]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[14]._annotations._defaultValue._u.double_value = 0.0;
-            DrillStateTopic_g_tc_members[14]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[14]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillStateTopic_g_tc_members[14]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[14]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillStateTopic_g_tc_members[14]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[14]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillStateTopic_g_tc_members[14]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[14]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillStateTopic_g_tc_members[14]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[14]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillStateTopic_g_tc_members[15]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[15]._annotations._defaultValue._u.double_value = 0.0;
-            DrillStateTopic_g_tc_members[15]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[15]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            DrillStateTopic_g_tc_members[15]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            DrillStateTopic_g_tc_members[15]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcDrillStateTopic_g_tc_members[15]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[15]._annotations._defaultValue._u.double_value = 0.0;
+            PlcDrillStateTopic_g_tc_members[15]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[15]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcDrillStateTopic_g_tc_members[15]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcDrillStateTopic_g_tc_members[15]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            DrillStateTopic_g_tc._data._sampleAccessInfo =
-            DrillStateTopic_get_sample_access_info();
-            DrillStateTopic_g_tc._data._typePlugin =
-            DrillStateTopic_get_type_plugin_info();    
+            PlcDrillStateTopic_g_tc._data._sampleAccessInfo =
+            PlcDrillStateTopic_get_sample_access_info();
+            PlcDrillStateTopic_g_tc._data._typePlugin =
+            PlcDrillStateTopic_get_type_plugin_info();    
 
             is_initialized = RTI_TRUE;
 
-            return &DrillStateTopic_g_tc;
+            return &PlcDrillStateTopic_g_tc;
         }
 
-        #define TSeq DrillStateTopicSeq
-        #define T DrillStateTopic
+        #define TSeq PlcDrillStateTopicSeq
+        #define T PlcDrillStateTopic
         #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
         #undef T
         #undef TSeq
 
-        RTIXCdrSampleAccessInfo *DrillStateTopic_get_sample_seq_access_info()
+        RTIXCdrSampleAccessInfo *PlcDrillStateTopic_get_sample_seq_access_info()
         {
-            static RTIXCdrSampleAccessInfo DrillStateTopic_g_seqSampleAccessInfo = {
+            static RTIXCdrSampleAccessInfo PlcDrillStateTopic_g_seqSampleAccessInfo = {
                 RTI_XCDR_TYPE_BINDING_CPP, \
-                {sizeof(DrillStateTopicSeq),0,0,0}, \
+                {sizeof(PlcDrillStateTopicSeq),0,0,0}, \
                 RTI_XCDR_FALSE, \
                 DDS_Sequence_get_member_value_pointer, \
-                DrillStateTopicSeq_set_member_element_count, \
+                PlcDrillStateTopicSeq_set_member_element_count, \
                 NULL, \
                 NULL, \
                 NULL \
             };
 
-            return &DrillStateTopic_g_seqSampleAccessInfo;
+            return &PlcDrillStateTopic_g_seqSampleAccessInfo;
         }
 
-        RTIXCdrSampleAccessInfo *DrillStateTopic_get_sample_access_info()
+        RTIXCdrSampleAccessInfo *PlcDrillStateTopic_get_sample_access_info()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            plc::process::DrillStateTopic *sample;
+            plc::process::PlcDrillStateTopic *sample;
 
-            static RTIXCdrMemberAccessInfo DrillStateTopic_g_memberAccessInfos[16] =
+            static RTIXCdrMemberAccessInfo PlcDrillStateTopic_g_memberAccessInfos[16] =
             {RTIXCdrMemberAccessInfo_INITIALIZER};
 
-            static RTIXCdrSampleAccessInfo DrillStateTopic_g_sampleAccessInfo = 
+            static RTIXCdrSampleAccessInfo PlcDrillStateTopic_g_sampleAccessInfo = 
             RTIXCdrSampleAccessInfo_INITIALIZER;
 
             if (is_initialized) {
-                return (RTIXCdrSampleAccessInfo*) &DrillStateTopic_g_sampleAccessInfo;
+                return (RTIXCdrSampleAccessInfo*) &PlcDrillStateTopic_g_sampleAccessInfo;
             }
 
             RTIXCdrHeap_allocateStruct(
                 &sample, 
-                plc::process::DrillStateTopic);
+                plc::process::PlcDrillStateTopic);
             if (sample == NULL) {
                 return NULL;
             }
 
-            DrillStateTopic_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->ropActual - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->wobActual - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->diffPressureActual - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->torqueActual - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->ropMachineLimit - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->wobMachineLimit - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->diffPressureMachineLimit - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->torqueMachineLimit - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[8].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[8].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->ropMode - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[9].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[9].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->wobMode - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[10].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[10].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->diffPressureMode - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[11].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[11].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->torqueMode - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[12].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[12].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->ropLimit - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[13].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[13].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->wobLimit - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[14].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[14].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->diffPressureLimit - (char *)sample);
 
-            DrillStateTopic_g_memberAccessInfos[15].bindingMemberValueOffset[0] = 
+            PlcDrillStateTopic_g_memberAccessInfos[15].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->torqueLimit - (char *)sample);
 
-            DrillStateTopic_g_sampleAccessInfo.memberAccessInfos = 
-            DrillStateTopic_g_memberAccessInfos;
+            PlcDrillStateTopic_g_sampleAccessInfo.memberAccessInfos = 
+            PlcDrillStateTopic_g_memberAccessInfos;
 
             {
-                size_t candidateTypeSize = sizeof(DrillStateTopic);
+                size_t candidateTypeSize = sizeof(PlcDrillStateTopic);
 
                 if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
-                    DrillStateTopic_g_sampleAccessInfo.typeSize[0] =
+                    PlcDrillStateTopic_g_sampleAccessInfo.typeSize[0] =
                     RTIXCdrUnsignedLong_MAX;
                 } else {
-                    DrillStateTopic_g_sampleAccessInfo.typeSize[0] =
+                    PlcDrillStateTopic_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
                 }
             }
 
-            DrillStateTopic_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+            PlcDrillStateTopic_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
             RTI_XCDR_TRUE;
 
-            DrillStateTopic_g_sampleAccessInfo.getMemberValuePointerFcn = 
-            DrillStateTopic_get_member_value_pointer;
+            PlcDrillStateTopic_g_sampleAccessInfo.getMemberValuePointerFcn = 
+            PlcDrillStateTopic_get_member_value_pointer;
 
-            DrillStateTopic_g_sampleAccessInfo.languageBinding = 
+            PlcDrillStateTopic_g_sampleAccessInfo.languageBinding = 
             RTI_XCDR_TYPE_BINDING_CPP ;
 
             RTIXCdrHeap_freeStruct(sample);
             is_initialized = RTI_TRUE;
-            return (RTIXCdrSampleAccessInfo*) &DrillStateTopic_g_sampleAccessInfo;
+            return (RTIXCdrSampleAccessInfo*) &PlcDrillStateTopic_g_sampleAccessInfo;
         }
 
-        RTIXCdrTypePlugin *DrillStateTopic_get_type_plugin_info()
+        RTIXCdrTypePlugin *PlcDrillStateTopic_get_type_plugin_info()
         {
-            static RTIXCdrTypePlugin DrillStateTopic_g_typePlugin = 
+            static RTIXCdrTypePlugin PlcDrillStateTopic_g_typePlugin = 
             {
                 NULL, /* serialize */
                 NULL, /* serialize_key */
@@ -1190,24 +1190,24 @@ namespace plc {
                 NULL, /* get_serialized_sample_min_size */
                 NULL, /* serialized_sample_to_key */
                 (RTIXCdrTypePluginInitializeSampleFunction) 
-                plc::process::DrillStateTopic_initialize_ex,
+                plc::process::PlcDrillStateTopic_initialize_ex,
                 NULL,
                 (RTIXCdrTypePluginFinalizeSampleFunction)
-                plc::process::DrillStateTopic_finalize_w_return,
+                plc::process::PlcDrillStateTopic_finalize_w_return,
                 NULL
             };
 
-            return &DrillStateTopic_g_typePlugin;
+            return &PlcDrillStateTopic_g_typePlugin;
         }
         #endif
 
-        RTIBool DrillStateTopic_initialize(
-            DrillStateTopic* sample) {
-            return plc::process::DrillStateTopic_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool PlcDrillStateTopic_initialize(
+            PlcDrillStateTopic* sample) {
+            return plc::process::PlcDrillStateTopic_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool DrillStateTopic_initialize_ex(
-            DrillStateTopic* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool PlcDrillStateTopic_initialize_ex(
+            PlcDrillStateTopic* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -1216,13 +1216,13 @@ namespace plc {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return plc::process::DrillStateTopic_initialize_w_params(
+            return plc::process::PlcDrillStateTopic_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool DrillStateTopic_initialize_w_params(
-            DrillStateTopic* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool PlcDrillStateTopic_initialize_w_params(
+            PlcDrillStateTopic* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -1267,23 +1267,23 @@ namespace plc {
             return RTI_TRUE;
         }
 
-        RTIBool DrillStateTopic_finalize_w_return(
-            DrillStateTopic* sample)
+        RTIBool PlcDrillStateTopic_finalize_w_return(
+            PlcDrillStateTopic* sample)
         {
-            plc::process::DrillStateTopic_finalize_ex(sample, RTI_TRUE);
+            plc::process::PlcDrillStateTopic_finalize_ex(sample, RTI_TRUE);
 
             return RTI_TRUE;
         }
 
-        void DrillStateTopic_finalize(
-            DrillStateTopic* sample)
+        void PlcDrillStateTopic_finalize(
+            PlcDrillStateTopic* sample)
         {
 
-            plc::process::DrillStateTopic_finalize_ex(sample,RTI_TRUE);
+            plc::process::PlcDrillStateTopic_finalize_ex(sample,RTI_TRUE);
         }
 
-        void DrillStateTopic_finalize_ex(
-            DrillStateTopic* sample,RTIBool deletePointers)
+        void PlcDrillStateTopic_finalize_ex(
+            PlcDrillStateTopic* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -1294,12 +1294,12 @@ namespace plc {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            plc::process::DrillStateTopic_finalize_w_params(
+            plc::process::PlcDrillStateTopic_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void DrillStateTopic_finalize_w_params(
-            DrillStateTopic* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void PlcDrillStateTopic_finalize_w_params(
+            PlcDrillStateTopic* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -1312,8 +1312,8 @@ namespace plc {
 
         }
 
-        void DrillStateTopic_finalize_optional_members(
-            DrillStateTopic* sample, RTIBool deletePointers)
+        void PlcDrillStateTopic_finalize_optional_members(
+            PlcDrillStateTopic* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -1330,9 +1330,9 @@ namespace plc {
 
         }
 
-        RTIBool DrillStateTopic_copy(
-            DrillStateTopic* dst,
-            const DrillStateTopic* src)
+        RTIBool PlcDrillStateTopic_copy(
+            PlcDrillStateTopic* dst,
+            const PlcDrillStateTopic* src)
         {
             try {
 
@@ -1417,15 +1417,15 @@ namespace plc {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'DrillStateTopic' sequence class.
+        * Configure and implement 'PlcDrillStateTopic' sequence class.
         */
-        #define T DrillStateTopic
-        #define TSeq DrillStateTopicSeq
+        #define T PlcDrillStateTopic
+        #define TSeq PlcDrillStateTopicSeq
 
-        #define T_initialize_w_params plc::process::DrillStateTopic_initialize_w_params
+        #define T_initialize_w_params plc::process::PlcDrillStateTopic_initialize_w_params
 
-        #define T_finalize_w_params   plc::process::DrillStateTopic_finalize_w_params
-        #define T_copy       plc::process::DrillStateTopic_copy
+        #define T_finalize_w_params   plc::process::PlcDrillStateTopic_finalize_w_params
+        #define T_copy       plc::process::PlcDrillStateTopic_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -1450,14 +1450,14 @@ namespace plc {
 #ifndef NDDS_STANDALONE_TYPE
 namespace rti { 
     namespace xcdr {
-        const RTIXCdrTypeCode * type_code<plc::process::DrillRequestTopic>::get() 
+        const RTIXCdrTypeCode * type_code<plc::process::PlcDrillRequestTopic>::get() 
         {
-            return (const RTIXCdrTypeCode *) plc::process::DrillRequestTopic_get_typecode();
+            return (const RTIXCdrTypeCode *) plc::process::PlcDrillRequestTopic_get_typecode();
         }
 
-        const RTIXCdrTypeCode * type_code<plc::process::DrillStateTopic>::get() 
+        const RTIXCdrTypeCode * type_code<plc::process::PlcDrillStateTopic>::get() 
         {
-            return (const RTIXCdrTypeCode *) plc::process::DrillStateTopic_get_typecode();
+            return (const RTIXCdrTypeCode *) plc::process::PlcDrillStateTopic_get_typecode();
         }
 
     } 

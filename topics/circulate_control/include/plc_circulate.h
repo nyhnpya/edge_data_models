@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_circulate_1662823160_h
-#define plc_circulate_1662823160_h
+#ifndef plc_circulate_1662823240_h
+#define plc_circulate_1662823240_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -24,24 +24,24 @@ or consult the RTI Connext manual.
 #include "base_data_types.h"
 namespace plc {
     namespace process {
-        static const char CIRCULATE_REQUEST_TOPIC[] = "CirculateRequestTopic"; 
+        static const char PLC_CIRCULATE_REQUEST_TOPIC[] = "CirculateRequestTopic"; 
 
-        extern const char *CirculateRequestTYPENAME;
+        extern const char *PlcCirculateRequestTYPENAME;
 
-        struct CirculateRequestSeq;
+        struct PlcCirculateRequestSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class CirculateRequestTypeSupport;
-        class CirculateRequestDataWriter;
-        class CirculateRequestDataReader;
+        class PlcCirculateRequestTypeSupport;
+        class PlcCirculateRequestDataWriter;
+        class PlcCirculateRequestDataReader;
         #endif
-        class CirculateRequest 
+        class PlcCirculateRequest 
         {
           public:
-            typedef struct CirculateRequestSeq Seq;
+            typedef struct PlcCirculateRequestSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef CirculateRequestTypeSupport TypeSupport;
-            typedef CirculateRequestDataWriter DataWriter;
-            typedef CirculateRequestDataReader DataReader;
+            typedef PlcCirculateRequestTypeSupport TypeSupport;
+            typedef PlcCirculateRequestDataWriter DataWriter;
+            typedef PlcCirculateRequestDataReader DataReader;
             #endif
 
             DDS_Double   targetFlowRate ;
@@ -55,52 +55,52 @@ namespace plc {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* CirculateRequest_get_typecode(void); /* Type code */
-        NDDSUSERDllExport RTIXCdrTypePlugin *CirculateRequest_get_type_plugin_info(void);
-        NDDSUSERDllExport RTIXCdrSampleAccessInfo *CirculateRequest_get_sample_access_info(void);
-        NDDSUSERDllExport RTIXCdrSampleAccessInfo *CirculateRequest_get_sample_seq_access_info(void);
+        NDDSUSERDllExport DDS_TypeCode* PlcCirculateRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport RTIXCdrTypePlugin *PlcCirculateRequest_get_type_plugin_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcCirculateRequest_get_sample_access_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcCirculateRequest_get_sample_seq_access_info(void);
         #endif
 
-        DDS_SEQUENCE(CirculateRequestSeq, CirculateRequest);
+        DDS_SEQUENCE(PlcCirculateRequestSeq, PlcCirculateRequest);
 
         NDDSUSERDllExport
-        RTIBool CirculateRequest_initialize(
-            CirculateRequest* self);
+        RTIBool PlcCirculateRequest_initialize(
+            PlcCirculateRequest* self);
 
         NDDSUSERDllExport
-        RTIBool CirculateRequest_initialize_ex(
-            CirculateRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool PlcCirculateRequest_initialize_ex(
+            PlcCirculateRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
 
         NDDSUSERDllExport
-        RTIBool CirculateRequest_initialize_w_params(
-            CirculateRequest* self,
+        RTIBool PlcCirculateRequest_initialize_w_params(
+            PlcCirculateRequest* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        RTIBool CirculateRequest_finalize_w_return(
-            CirculateRequest* self);
+        RTIBool PlcCirculateRequest_finalize_w_return(
+            PlcCirculateRequest* self);
 
         NDDSUSERDllExport
-        void CirculateRequest_finalize(
-            CirculateRequest* self);
+        void PlcCirculateRequest_finalize(
+            PlcCirculateRequest* self);
 
         NDDSUSERDllExport
-        void CirculateRequest_finalize_ex(
-            CirculateRequest* self,RTIBool deletePointers);
+        void PlcCirculateRequest_finalize_ex(
+            PlcCirculateRequest* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void CirculateRequest_finalize_w_params(
-            CirculateRequest* self,
+        void PlcCirculateRequest_finalize_w_params(
+            PlcCirculateRequest* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void CirculateRequest_finalize_optional_members(
-            CirculateRequest* self, RTIBool deletePointers);  
+        void PlcCirculateRequest_finalize_optional_members(
+            PlcCirculateRequest* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool CirculateRequest_copy(
-            CirculateRequest* dst,
-            const CirculateRequest* src);
+        RTIBool PlcCirculateRequest_copy(
+            PlcCirculateRequest* dst,
+            const PlcCirculateRequest* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -108,27 +108,27 @@ namespace plc {
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport
         #endif
-        static const char CIRCULATE_STATE_TOPIC[] = "CirculateStateTopic"; 
+        static const char PLC_CIRCULATE_STATE_TOPIC[] = "CirculateStateTopic"; 
 
-        extern const char *CirculateStateTYPENAME;
+        extern const char *PlcCirculateStateTYPENAME;
 
-        struct CirculateStateSeq;
+        struct PlcCirculateStateSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class CirculateStateTypeSupport;
-        class CirculateStateDataWriter;
-        class CirculateStateDataReader;
+        class PlcCirculateStateTypeSupport;
+        class PlcCirculateStateDataWriter;
+        class PlcCirculateStateDataReader;
         #endif
-        class CirculateState 
+        class PlcCirculateState 
         {
           public:
-            typedef struct CirculateStateSeq Seq;
+            typedef struct PlcCirculateStateSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef CirculateStateTypeSupport TypeSupport;
-            typedef CirculateStateDataWriter DataWriter;
-            typedef CirculateStateDataReader DataReader;
+            typedef PlcCirculateStateTypeSupport TypeSupport;
+            typedef PlcCirculateStateDataWriter DataWriter;
+            typedef PlcCirculateStateDataReader DataReader;
             #endif
 
-            DataTypes::Status   status ;
+            DDS_Long   status ;
             DDS_Double   actualFlowRate ;
             DDS_Double   actualStandpipePressure ;
             DDS_Double   minFlowRate ;
@@ -146,52 +146,52 @@ namespace plc {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* CirculateState_get_typecode(void); /* Type code */
-        NDDSUSERDllExport RTIXCdrTypePlugin *CirculateState_get_type_plugin_info(void);
-        NDDSUSERDllExport RTIXCdrSampleAccessInfo *CirculateState_get_sample_access_info(void);
-        NDDSUSERDllExport RTIXCdrSampleAccessInfo *CirculateState_get_sample_seq_access_info(void);
+        NDDSUSERDllExport DDS_TypeCode* PlcCirculateState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport RTIXCdrTypePlugin *PlcCirculateState_get_type_plugin_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcCirculateState_get_sample_access_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcCirculateState_get_sample_seq_access_info(void);
         #endif
 
-        DDS_SEQUENCE(CirculateStateSeq, CirculateState);
+        DDS_SEQUENCE(PlcCirculateStateSeq, PlcCirculateState);
 
         NDDSUSERDllExport
-        RTIBool CirculateState_initialize(
-            CirculateState* self);
+        RTIBool PlcCirculateState_initialize(
+            PlcCirculateState* self);
 
         NDDSUSERDllExport
-        RTIBool CirculateState_initialize_ex(
-            CirculateState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool PlcCirculateState_initialize_ex(
+            PlcCirculateState* self,RTIBool allocatePointers,RTIBool allocateMemory);
 
         NDDSUSERDllExport
-        RTIBool CirculateState_initialize_w_params(
-            CirculateState* self,
+        RTIBool PlcCirculateState_initialize_w_params(
+            PlcCirculateState* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        RTIBool CirculateState_finalize_w_return(
-            CirculateState* self);
+        RTIBool PlcCirculateState_finalize_w_return(
+            PlcCirculateState* self);
 
         NDDSUSERDllExport
-        void CirculateState_finalize(
-            CirculateState* self);
+        void PlcCirculateState_finalize(
+            PlcCirculateState* self);
 
         NDDSUSERDllExport
-        void CirculateState_finalize_ex(
-            CirculateState* self,RTIBool deletePointers);
+        void PlcCirculateState_finalize_ex(
+            PlcCirculateState* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void CirculateState_finalize_w_params(
-            CirculateState* self,
+        void PlcCirculateState_finalize_w_params(
+            PlcCirculateState* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void CirculateState_finalize_optional_members(
-            CirculateState* self, RTIBool deletePointers);  
+        void PlcCirculateState_finalize_optional_members(
+            PlcCirculateState* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool CirculateState_copy(
-            CirculateState* dst,
-            const CirculateState* src);
+        RTIBool PlcCirculateState_copy(
+            PlcCirculateState* dst,
+            const PlcCirculateState* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -206,12 +206,12 @@ namespace plc {
 namespace rti { 
     namespace xcdr {
         template <>
-        struct type_code<plc::process::CirculateRequest> {
+        struct type_code<plc::process::PlcCirculateRequest> {
             static const RTIXCdrTypeCode * get();
         };
 
         template <>
-        struct type_code<plc::process::CirculateState> {
+        struct type_code<plc::process::PlcCirculateState> {
             static const RTIXCdrTypeCode * get();
         };
 

@@ -44,14 +44,14 @@ namespace plc {
     namespace process {
 
         /* ========================================================================= */
-        const char *HoistRequestTYPENAME = "plc::process::HoistRequest";
+        const char *PlcHoistRequestTYPENAME = "plc::process::PlcHoistRequest";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* HoistRequest_get_typecode()
+        DDS_TypeCode* PlcHoistRequest_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member HoistRequest_g_tc_members[2]=
+            static DDS_TypeCode_Member PlcHoistRequest_g_tc_members[2]=
             {
 
                 {
@@ -92,142 +92,142 @@ namespace plc {
                 }
             };
 
-            static DDS_TypeCode HoistRequest_g_tc =
+            static DDS_TypeCode PlcHoistRequest_g_tc =
             {{
                     DDS_TK_STRUCT, /* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"plc::process::HoistRequest", /* Name */
+                    (char *)"plc::process::PlcHoistRequest", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     2, /* Number of members */
-                    HoistRequest_g_tc_members, /* Members */
+                    PlcHoistRequest_g_tc_members, /* Members */
                     DDS_VM_NONE, /* Ignored */
                     RTICdrTypeCodeAnnotations_INITIALIZER,
                     DDS_BOOLEAN_TRUE, /* _isCopyable */
                     NULL, /* _sampleAccessInfo: assigned later */
                     NULL /* _typePlugin: assigned later */
-                }}; /* Type code for HoistRequest*/
+                }}; /* Type code for PlcHoistRequest*/
 
             if (is_initialized) {
-                return &HoistRequest_g_tc;
+                return &PlcHoistRequest_g_tc;
             }
 
-            HoistRequest_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+            PlcHoistRequest_g_tc._data._annotations._allowedDataRepresentationMask = 5;
 
-            HoistRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            HoistRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcHoistRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcHoistRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
 
             /* Initialize the values for member annotations. */
-            HoistRequest_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistRequest_g_tc_members[0]._annotations._defaultValue._u.double_value = 0.0;
-            HoistRequest_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistRequest_g_tc_members[0]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            HoistRequest_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistRequest_g_tc_members[0]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcHoistRequest_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistRequest_g_tc_members[0]._annotations._defaultValue._u.double_value = 0.0;
+            PlcHoistRequest_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistRequest_g_tc_members[0]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcHoistRequest_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistRequest_g_tc_members[0]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            HoistRequest_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistRequest_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
-            HoistRequest_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistRequest_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            HoistRequest_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistRequest_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcHoistRequest_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistRequest_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
+            PlcHoistRequest_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistRequest_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcHoistRequest_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistRequest_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            HoistRequest_g_tc._data._sampleAccessInfo =
-            HoistRequest_get_sample_access_info();
-            HoistRequest_g_tc._data._typePlugin =
-            HoistRequest_get_type_plugin_info();    
+            PlcHoistRequest_g_tc._data._sampleAccessInfo =
+            PlcHoistRequest_get_sample_access_info();
+            PlcHoistRequest_g_tc._data._typePlugin =
+            PlcHoistRequest_get_type_plugin_info();    
 
             is_initialized = RTI_TRUE;
 
-            return &HoistRequest_g_tc;
+            return &PlcHoistRequest_g_tc;
         }
 
-        #define TSeq HoistRequestSeq
-        #define T HoistRequest
+        #define TSeq PlcHoistRequestSeq
+        #define T PlcHoistRequest
         #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
         #undef T
         #undef TSeq
 
-        RTIXCdrSampleAccessInfo *HoistRequest_get_sample_seq_access_info()
+        RTIXCdrSampleAccessInfo *PlcHoistRequest_get_sample_seq_access_info()
         {
-            static RTIXCdrSampleAccessInfo HoistRequest_g_seqSampleAccessInfo = {
+            static RTIXCdrSampleAccessInfo PlcHoistRequest_g_seqSampleAccessInfo = {
                 RTI_XCDR_TYPE_BINDING_CPP, \
-                {sizeof(HoistRequestSeq),0,0,0}, \
+                {sizeof(PlcHoistRequestSeq),0,0,0}, \
                 RTI_XCDR_FALSE, \
                 DDS_Sequence_get_member_value_pointer, \
-                HoistRequestSeq_set_member_element_count, \
+                PlcHoistRequestSeq_set_member_element_count, \
                 NULL, \
                 NULL, \
                 NULL \
             };
 
-            return &HoistRequest_g_seqSampleAccessInfo;
+            return &PlcHoistRequest_g_seqSampleAccessInfo;
         }
 
-        RTIXCdrSampleAccessInfo *HoistRequest_get_sample_access_info()
+        RTIXCdrSampleAccessInfo *PlcHoistRequest_get_sample_access_info()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            plc::process::HoistRequest *sample;
+            plc::process::PlcHoistRequest *sample;
 
-            static RTIXCdrMemberAccessInfo HoistRequest_g_memberAccessInfos[2] =
+            static RTIXCdrMemberAccessInfo PlcHoistRequest_g_memberAccessInfos[2] =
             {RTIXCdrMemberAccessInfo_INITIALIZER};
 
-            static RTIXCdrSampleAccessInfo HoistRequest_g_sampleAccessInfo = 
+            static RTIXCdrSampleAccessInfo PlcHoistRequest_g_sampleAccessInfo = 
             RTIXCdrSampleAccessInfo_INITIALIZER;
 
             if (is_initialized) {
-                return (RTIXCdrSampleAccessInfo*) &HoistRequest_g_sampleAccessInfo;
+                return (RTIXCdrSampleAccessInfo*) &PlcHoistRequest_g_sampleAccessInfo;
             }
 
             RTIXCdrHeap_allocateStruct(
                 &sample, 
-                plc::process::HoistRequest);
+                plc::process::PlcHoistRequest);
             if (sample == NULL) {
                 return NULL;
             }
 
-            HoistRequest_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
+            PlcHoistRequest_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->targetVelocity - (char *)sample);
 
-            HoistRequest_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
+            PlcHoistRequest_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->targetPosition - (char *)sample);
 
-            HoistRequest_g_sampleAccessInfo.memberAccessInfos = 
-            HoistRequest_g_memberAccessInfos;
+            PlcHoistRequest_g_sampleAccessInfo.memberAccessInfos = 
+            PlcHoistRequest_g_memberAccessInfos;
 
             {
-                size_t candidateTypeSize = sizeof(HoistRequest);
+                size_t candidateTypeSize = sizeof(PlcHoistRequest);
 
                 if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
-                    HoistRequest_g_sampleAccessInfo.typeSize[0] =
+                    PlcHoistRequest_g_sampleAccessInfo.typeSize[0] =
                     RTIXCdrUnsignedLong_MAX;
                 } else {
-                    HoistRequest_g_sampleAccessInfo.typeSize[0] =
+                    PlcHoistRequest_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
                 }
             }
 
-            HoistRequest_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+            PlcHoistRequest_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
             RTI_XCDR_TRUE;
 
-            HoistRequest_g_sampleAccessInfo.getMemberValuePointerFcn = 
-            HoistRequest_get_member_value_pointer;
+            PlcHoistRequest_g_sampleAccessInfo.getMemberValuePointerFcn = 
+            PlcHoistRequest_get_member_value_pointer;
 
-            HoistRequest_g_sampleAccessInfo.languageBinding = 
+            PlcHoistRequest_g_sampleAccessInfo.languageBinding = 
             RTI_XCDR_TYPE_BINDING_CPP ;
 
             RTIXCdrHeap_freeStruct(sample);
             is_initialized = RTI_TRUE;
-            return (RTIXCdrSampleAccessInfo*) &HoistRequest_g_sampleAccessInfo;
+            return (RTIXCdrSampleAccessInfo*) &PlcHoistRequest_g_sampleAccessInfo;
         }
 
-        RTIXCdrTypePlugin *HoistRequest_get_type_plugin_info()
+        RTIXCdrTypePlugin *PlcHoistRequest_get_type_plugin_info()
         {
-            static RTIXCdrTypePlugin HoistRequest_g_typePlugin = 
+            static RTIXCdrTypePlugin PlcHoistRequest_g_typePlugin = 
             {
                 NULL, /* serialize */
                 NULL, /* serialize_key */
@@ -240,24 +240,24 @@ namespace plc {
                 NULL, /* get_serialized_sample_min_size */
                 NULL, /* serialized_sample_to_key */
                 (RTIXCdrTypePluginInitializeSampleFunction) 
-                plc::process::HoistRequest_initialize_ex,
+                plc::process::PlcHoistRequest_initialize_ex,
                 NULL,
                 (RTIXCdrTypePluginFinalizeSampleFunction)
-                plc::process::HoistRequest_finalize_w_return,
+                plc::process::PlcHoistRequest_finalize_w_return,
                 NULL
             };
 
-            return &HoistRequest_g_typePlugin;
+            return &PlcHoistRequest_g_typePlugin;
         }
         #endif
 
-        RTIBool HoistRequest_initialize(
-            HoistRequest* sample) {
-            return plc::process::HoistRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool PlcHoistRequest_initialize(
+            PlcHoistRequest* sample) {
+            return plc::process::PlcHoistRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool HoistRequest_initialize_ex(
-            HoistRequest* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool PlcHoistRequest_initialize_ex(
+            PlcHoistRequest* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -266,13 +266,13 @@ namespace plc {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return plc::process::HoistRequest_initialize_w_params(
+            return plc::process::PlcHoistRequest_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool HoistRequest_initialize_w_params(
-            HoistRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool PlcHoistRequest_initialize_w_params(
+            PlcHoistRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -289,23 +289,23 @@ namespace plc {
             return RTI_TRUE;
         }
 
-        RTIBool HoistRequest_finalize_w_return(
-            HoistRequest* sample)
+        RTIBool PlcHoistRequest_finalize_w_return(
+            PlcHoistRequest* sample)
         {
-            plc::process::HoistRequest_finalize_ex(sample, RTI_TRUE);
+            plc::process::PlcHoistRequest_finalize_ex(sample, RTI_TRUE);
 
             return RTI_TRUE;
         }
 
-        void HoistRequest_finalize(
-            HoistRequest* sample)
+        void PlcHoistRequest_finalize(
+            PlcHoistRequest* sample)
         {
 
-            plc::process::HoistRequest_finalize_ex(sample,RTI_TRUE);
+            plc::process::PlcHoistRequest_finalize_ex(sample,RTI_TRUE);
         }
 
-        void HoistRequest_finalize_ex(
-            HoistRequest* sample,RTIBool deletePointers)
+        void PlcHoistRequest_finalize_ex(
+            PlcHoistRequest* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -316,12 +316,12 @@ namespace plc {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            plc::process::HoistRequest_finalize_w_params(
+            plc::process::PlcHoistRequest_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void HoistRequest_finalize_w_params(
-            HoistRequest* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void PlcHoistRequest_finalize_w_params(
+            PlcHoistRequest* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -334,8 +334,8 @@ namespace plc {
 
         }
 
-        void HoistRequest_finalize_optional_members(
-            HoistRequest* sample, RTIBool deletePointers)
+        void PlcHoistRequest_finalize_optional_members(
+            PlcHoistRequest* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -352,9 +352,9 @@ namespace plc {
 
         }
 
-        RTIBool HoistRequest_copy(
-            HoistRequest* dst,
-            const HoistRequest* src)
+        RTIBool PlcHoistRequest_copy(
+            PlcHoistRequest* dst,
+            const PlcHoistRequest* src)
         {
             try {
 
@@ -383,15 +383,15 @@ namespace plc {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'HoistRequest' sequence class.
+        * Configure and implement 'PlcHoistRequest' sequence class.
         */
-        #define T HoistRequest
-        #define TSeq HoistRequestSeq
+        #define T PlcHoistRequest
+        #define TSeq PlcHoistRequestSeq
 
-        #define T_initialize_w_params plc::process::HoistRequest_initialize_w_params
+        #define T_initialize_w_params plc::process::PlcHoistRequest_initialize_w_params
 
-        #define T_finalize_w_params   plc::process::HoistRequest_finalize_w_params
-        #define T_copy       plc::process::HoistRequest_copy
+        #define T_finalize_w_params   plc::process::PlcHoistRequest_finalize_w_params
+        #define T_copy       plc::process::PlcHoistRequest_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -410,14 +410,14 @@ namespace plc {
         #undef T
 
         /* ========================================================================= */
-        const char *HoistStateTYPENAME = "plc::process::HoistState";
+        const char *PlcHoistStateTYPENAME = "plc::process::PlcHoistState";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* HoistState_get_typecode()
+        DDS_TypeCode* PlcHoistState_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode_Member HoistState_g_tc_members[11]=
+            static DDS_TypeCode_Member PlcHoistState_g_tc_members[11]=
             {
 
                 {
@@ -620,241 +620,241 @@ namespace plc {
                 }
             };
 
-            static DDS_TypeCode HoistState_g_tc =
+            static DDS_TypeCode PlcHoistState_g_tc =
             {{
                     DDS_TK_STRUCT, /* Kind */
                     DDS_BOOLEAN_FALSE, /* Ignored */
                     -1, /*Ignored*/
-                    (char *)"plc::process::HoistState", /* Name */
+                    (char *)"plc::process::PlcHoistState", /* Name */
                     NULL, /* Ignored */      
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
                     11, /* Number of members */
-                    HoistState_g_tc_members, /* Members */
+                    PlcHoistState_g_tc_members, /* Members */
                     DDS_VM_NONE, /* Ignored */
                     RTICdrTypeCodeAnnotations_INITIALIZER,
                     DDS_BOOLEAN_TRUE, /* _isCopyable */
                     NULL, /* _sampleAccessInfo: assigned later */
                     NULL /* _typePlugin: assigned later */
-                }}; /* Type code for HoistState*/
+                }}; /* Type code for PlcHoistState*/
 
             if (is_initialized) {
-                return &HoistState_g_tc;
+                return &PlcHoistState_g_tc;
             }
 
-            HoistState_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+            PlcHoistState_g_tc._data._annotations._allowedDataRepresentationMask = 5;
 
-            HoistState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long_w_new;
-            HoistState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            HoistState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            HoistState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            HoistState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            HoistState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            HoistState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            HoistState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            HoistState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            HoistState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-            HoistState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcHoistState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long_w_new;
+            PlcHoistState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcHoistState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcHoistState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcHoistState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcHoistState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcHoistState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcHoistState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcHoistState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcHoistState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+            PlcHoistState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
 
             /* Initialize the values for member annotations. */
-            HoistState_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_LONG;
-            HoistState_g_tc_members[0]._annotations._defaultValue._u.long_value = 0;
-            HoistState_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_LONG;
-            HoistState_g_tc_members[0]._annotations._minValue._u.long_value = RTIXCdrLong_MIN;
-            HoistState_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_LONG;
-            HoistState_g_tc_members[0]._annotations._maxValue._u.long_value = RTIXCdrLong_MAX;
+            PlcHoistState_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_LONG;
+            PlcHoistState_g_tc_members[0]._annotations._defaultValue._u.long_value = 0;
+            PlcHoistState_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_LONG;
+            PlcHoistState_g_tc_members[0]._annotations._minValue._u.long_value = RTIXCdrLong_MIN;
+            PlcHoistState_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_LONG;
+            PlcHoistState_g_tc_members[0]._annotations._maxValue._u.long_value = RTIXCdrLong_MAX;
 
-            HoistState_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
-            HoistState_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            HoistState_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcHoistState_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
+            PlcHoistState_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcHoistState_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            HoistState_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
-            HoistState_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            HoistState_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcHoistState_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
+            PlcHoistState_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcHoistState_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            HoistState_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
-            HoistState_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            HoistState_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcHoistState_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
+            PlcHoistState_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcHoistState_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            HoistState_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[4]._annotations._defaultValue._u.double_value = 0.0;
-            HoistState_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            HoistState_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcHoistState_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[4]._annotations._defaultValue._u.double_value = 0.0;
+            PlcHoistState_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcHoistState_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            HoistState_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[5]._annotations._defaultValue._u.double_value = 0.0;
-            HoistState_g_tc_members[5]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[5]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            HoistState_g_tc_members[5]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[5]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcHoistState_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[5]._annotations._defaultValue._u.double_value = 0.0;
+            PlcHoistState_g_tc_members[5]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[5]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcHoistState_g_tc_members[5]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[5]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            HoistState_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
-            HoistState_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            HoistState_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcHoistState_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
+            PlcHoistState_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcHoistState_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            HoistState_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[7]._annotations._defaultValue._u.double_value = 0.0;
-            HoistState_g_tc_members[7]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[7]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            HoistState_g_tc_members[7]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[7]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcHoistState_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[7]._annotations._defaultValue._u.double_value = 0.0;
+            PlcHoistState_g_tc_members[7]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[7]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcHoistState_g_tc_members[7]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[7]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            HoistState_g_tc_members[8]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[8]._annotations._defaultValue._u.double_value = 0.0;
-            HoistState_g_tc_members[8]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[8]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            HoistState_g_tc_members[8]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[8]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcHoistState_g_tc_members[8]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[8]._annotations._defaultValue._u.double_value = 0.0;
+            PlcHoistState_g_tc_members[8]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[8]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcHoistState_g_tc_members[8]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[8]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            HoistState_g_tc_members[9]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[9]._annotations._defaultValue._u.double_value = 0.0;
-            HoistState_g_tc_members[9]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[9]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            HoistState_g_tc_members[9]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[9]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcHoistState_g_tc_members[9]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[9]._annotations._defaultValue._u.double_value = 0.0;
+            PlcHoistState_g_tc_members[9]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[9]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcHoistState_g_tc_members[9]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[9]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            HoistState_g_tc_members[10]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[10]._annotations._defaultValue._u.double_value = 0.0;
-            HoistState_g_tc_members[10]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[10]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-            HoistState_g_tc_members[10]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-            HoistState_g_tc_members[10]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+            PlcHoistState_g_tc_members[10]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[10]._annotations._defaultValue._u.double_value = 0.0;
+            PlcHoistState_g_tc_members[10]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[10]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+            PlcHoistState_g_tc_members[10]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+            PlcHoistState_g_tc_members[10]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-            HoistState_g_tc._data._sampleAccessInfo =
-            HoistState_get_sample_access_info();
-            HoistState_g_tc._data._typePlugin =
-            HoistState_get_type_plugin_info();    
+            PlcHoistState_g_tc._data._sampleAccessInfo =
+            PlcHoistState_get_sample_access_info();
+            PlcHoistState_g_tc._data._typePlugin =
+            PlcHoistState_get_type_plugin_info();    
 
             is_initialized = RTI_TRUE;
 
-            return &HoistState_g_tc;
+            return &PlcHoistState_g_tc;
         }
 
-        #define TSeq HoistStateSeq
-        #define T HoistState
+        #define TSeq PlcHoistStateSeq
+        #define T PlcHoistState
         #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
         #undef T
         #undef TSeq
 
-        RTIXCdrSampleAccessInfo *HoistState_get_sample_seq_access_info()
+        RTIXCdrSampleAccessInfo *PlcHoistState_get_sample_seq_access_info()
         {
-            static RTIXCdrSampleAccessInfo HoistState_g_seqSampleAccessInfo = {
+            static RTIXCdrSampleAccessInfo PlcHoistState_g_seqSampleAccessInfo = {
                 RTI_XCDR_TYPE_BINDING_CPP, \
-                {sizeof(HoistStateSeq),0,0,0}, \
+                {sizeof(PlcHoistStateSeq),0,0,0}, \
                 RTI_XCDR_FALSE, \
                 DDS_Sequence_get_member_value_pointer, \
-                HoistStateSeq_set_member_element_count, \
+                PlcHoistStateSeq_set_member_element_count, \
                 NULL, \
                 NULL, \
                 NULL \
             };
 
-            return &HoistState_g_seqSampleAccessInfo;
+            return &PlcHoistState_g_seqSampleAccessInfo;
         }
 
-        RTIXCdrSampleAccessInfo *HoistState_get_sample_access_info()
+        RTIXCdrSampleAccessInfo *PlcHoistState_get_sample_access_info()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            plc::process::HoistState *sample;
+            plc::process::PlcHoistState *sample;
 
-            static RTIXCdrMemberAccessInfo HoistState_g_memberAccessInfos[11] =
+            static RTIXCdrMemberAccessInfo PlcHoistState_g_memberAccessInfos[11] =
             {RTIXCdrMemberAccessInfo_INITIALIZER};
 
-            static RTIXCdrSampleAccessInfo HoistState_g_sampleAccessInfo = 
+            static RTIXCdrSampleAccessInfo PlcHoistState_g_sampleAccessInfo = 
             RTIXCdrSampleAccessInfo_INITIALIZER;
 
             if (is_initialized) {
-                return (RTIXCdrSampleAccessInfo*) &HoistState_g_sampleAccessInfo;
+                return (RTIXCdrSampleAccessInfo*) &PlcHoistState_g_sampleAccessInfo;
             }
 
             RTIXCdrHeap_allocateStruct(
                 &sample, 
-                plc::process::HoistState);
+                plc::process::PlcHoistState);
             if (sample == NULL) {
                 return NULL;
             }
 
-            HoistState_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
+            PlcHoistState_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->status - (char *)sample);
 
-            HoistState_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
+            PlcHoistState_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->actualHookload - (char *)sample);
 
-            HoistState_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
+            PlcHoistState_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->actualVelocity - (char *)sample);
 
-            HoistState_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
+            PlcHoistState_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->actualPosition - (char *)sample);
 
-            HoistState_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
+            PlcHoistState_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->maxHookload - (char *)sample);
 
-            HoistState_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
+            PlcHoistState_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->maxHoistVelocity - (char *)sample);
 
-            HoistState_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
+            PlcHoistState_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->maxLowerVelocity - (char *)sample);
 
-            HoistState_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
+            PlcHoistState_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->maxHoistPosition - (char *)sample);
 
-            HoistState_g_memberAccessInfos[8].bindingMemberValueOffset[0] = 
+            PlcHoistState_g_memberAccessInfos[8].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->maxLowerPosition - (char *)sample);
 
-            HoistState_g_memberAccessInfos[9].bindingMemberValueOffset[0] = 
+            PlcHoistState_g_memberAccessInfos[9].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->targetVelocity - (char *)sample);
 
-            HoistState_g_memberAccessInfos[10].bindingMemberValueOffset[0] = 
+            PlcHoistState_g_memberAccessInfos[10].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->targetPosition - (char *)sample);
 
-            HoistState_g_sampleAccessInfo.memberAccessInfos = 
-            HoistState_g_memberAccessInfos;
+            PlcHoistState_g_sampleAccessInfo.memberAccessInfos = 
+            PlcHoistState_g_memberAccessInfos;
 
             {
-                size_t candidateTypeSize = sizeof(HoistState);
+                size_t candidateTypeSize = sizeof(PlcHoistState);
 
                 if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
-                    HoistState_g_sampleAccessInfo.typeSize[0] =
+                    PlcHoistState_g_sampleAccessInfo.typeSize[0] =
                     RTIXCdrUnsignedLong_MAX;
                 } else {
-                    HoistState_g_sampleAccessInfo.typeSize[0] =
+                    PlcHoistState_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
                 }
             }
 
-            HoistState_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+            PlcHoistState_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
             RTI_XCDR_TRUE;
 
-            HoistState_g_sampleAccessInfo.getMemberValuePointerFcn = 
-            HoistState_get_member_value_pointer;
+            PlcHoistState_g_sampleAccessInfo.getMemberValuePointerFcn = 
+            PlcHoistState_get_member_value_pointer;
 
-            HoistState_g_sampleAccessInfo.languageBinding = 
+            PlcHoistState_g_sampleAccessInfo.languageBinding = 
             RTI_XCDR_TYPE_BINDING_CPP ;
 
             RTIXCdrHeap_freeStruct(sample);
             is_initialized = RTI_TRUE;
-            return (RTIXCdrSampleAccessInfo*) &HoistState_g_sampleAccessInfo;
+            return (RTIXCdrSampleAccessInfo*) &PlcHoistState_g_sampleAccessInfo;
         }
 
-        RTIXCdrTypePlugin *HoistState_get_type_plugin_info()
+        RTIXCdrTypePlugin *PlcHoistState_get_type_plugin_info()
         {
-            static RTIXCdrTypePlugin HoistState_g_typePlugin = 
+            static RTIXCdrTypePlugin PlcHoistState_g_typePlugin = 
             {
                 NULL, /* serialize */
                 NULL, /* serialize_key */
@@ -867,24 +867,24 @@ namespace plc {
                 NULL, /* get_serialized_sample_min_size */
                 NULL, /* serialized_sample_to_key */
                 (RTIXCdrTypePluginInitializeSampleFunction) 
-                plc::process::HoistState_initialize_ex,
+                plc::process::PlcHoistState_initialize_ex,
                 NULL,
                 (RTIXCdrTypePluginFinalizeSampleFunction)
-                plc::process::HoistState_finalize_w_return,
+                plc::process::PlcHoistState_finalize_w_return,
                 NULL
             };
 
-            return &HoistState_g_typePlugin;
+            return &PlcHoistState_g_typePlugin;
         }
         #endif
 
-        RTIBool HoistState_initialize(
-            HoistState* sample) {
-            return plc::process::HoistState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+        RTIBool PlcHoistState_initialize(
+            PlcHoistState* sample) {
+            return plc::process::PlcHoistState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
         }
 
-        RTIBool HoistState_initialize_ex(
-            HoistState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+        RTIBool PlcHoistState_initialize_ex(
+            PlcHoistState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
         {
 
             struct DDS_TypeAllocationParams_t allocParams =
@@ -893,13 +893,13 @@ namespace plc {
             allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
             allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-            return plc::process::HoistState_initialize_w_params(
+            return plc::process::PlcHoistState_initialize_w_params(
                 sample,&allocParams);
 
         }
 
-        RTIBool HoistState_initialize_w_params(
-            HoistState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+        RTIBool PlcHoistState_initialize_w_params(
+            PlcHoistState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
         {
 
             if (sample == NULL) {
@@ -934,23 +934,23 @@ namespace plc {
             return RTI_TRUE;
         }
 
-        RTIBool HoistState_finalize_w_return(
-            HoistState* sample)
+        RTIBool PlcHoistState_finalize_w_return(
+            PlcHoistState* sample)
         {
-            plc::process::HoistState_finalize_ex(sample, RTI_TRUE);
+            plc::process::PlcHoistState_finalize_ex(sample, RTI_TRUE);
 
             return RTI_TRUE;
         }
 
-        void HoistState_finalize(
-            HoistState* sample)
+        void PlcHoistState_finalize(
+            PlcHoistState* sample)
         {
 
-            plc::process::HoistState_finalize_ex(sample,RTI_TRUE);
+            plc::process::PlcHoistState_finalize_ex(sample,RTI_TRUE);
         }
 
-        void HoistState_finalize_ex(
-            HoistState* sample,RTIBool deletePointers)
+        void PlcHoistState_finalize_ex(
+            PlcHoistState* sample,RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParams =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -961,12 +961,12 @@ namespace plc {
 
             deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-            plc::process::HoistState_finalize_w_params(
+            plc::process::PlcHoistState_finalize_w_params(
                 sample,&deallocParams);
         }
 
-        void HoistState_finalize_w_params(
-            HoistState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+        void PlcHoistState_finalize_w_params(
+            PlcHoistState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
         {
 
             if (sample==NULL) {
@@ -979,8 +979,8 @@ namespace plc {
 
         }
 
-        void HoistState_finalize_optional_members(
-            HoistState* sample, RTIBool deletePointers)
+        void PlcHoistState_finalize_optional_members(
+            PlcHoistState* sample, RTIBool deletePointers)
         {
             struct DDS_TypeDeallocationParams_t deallocParamsTmp =
             DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -997,9 +997,9 @@ namespace plc {
 
         }
 
-        RTIBool HoistState_copy(
-            HoistState* dst,
-            const HoistState* src)
+        RTIBool PlcHoistState_copy(
+            PlcHoistState* dst,
+            const PlcHoistState* src)
         {
             try {
 
@@ -1064,15 +1064,15 @@ namespace plc {
         *
         * Defines:  TSeq, T
         *
-        * Configure and implement 'HoistState' sequence class.
+        * Configure and implement 'PlcHoistState' sequence class.
         */
-        #define T HoistState
-        #define TSeq HoistStateSeq
+        #define T PlcHoistState
+        #define TSeq PlcHoistStateSeq
 
-        #define T_initialize_w_params plc::process::HoistState_initialize_w_params
+        #define T_initialize_w_params plc::process::PlcHoistState_initialize_w_params
 
-        #define T_finalize_w_params   plc::process::HoistState_finalize_w_params
-        #define T_copy       plc::process::HoistState_copy
+        #define T_finalize_w_params   plc::process::PlcHoistState_finalize_w_params
+        #define T_copy       plc::process::PlcHoistState_copy
 
         #ifndef NDDS_STANDALONE_TYPE
         #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -1097,14 +1097,14 @@ namespace plc {
 #ifndef NDDS_STANDALONE_TYPE
 namespace rti { 
     namespace xcdr {
-        const RTIXCdrTypeCode * type_code<plc::process::HoistRequest>::get() 
+        const RTIXCdrTypeCode * type_code<plc::process::PlcHoistRequest>::get() 
         {
-            return (const RTIXCdrTypeCode *) plc::process::HoistRequest_get_typecode();
+            return (const RTIXCdrTypeCode *) plc::process::PlcHoistRequest_get_typecode();
         }
 
-        const RTIXCdrTypeCode * type_code<plc::process::HoistState>::get() 
+        const RTIXCdrTypeCode * type_code<plc::process::PlcHoistState>::get() 
         {
-            return (const RTIXCdrTypeCode *) plc::process::HoistState_get_typecode();
+            return (const RTIXCdrTypeCode *) plc::process::PlcHoistState_get_typecode();
         }
 
     } 

@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_hoist_1752499117_h
-#define plc_hoist_1752499117_h
+#ifndef plc_hoist_1752499246_h
+#define plc_hoist_1752499246_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -21,27 +21,26 @@ or consult the RTI Connext manual.
 #include "ndds_standalone_type.h"
 #endif
 
-#include "base_data_types.h"
 namespace plc {
     namespace process {
-        static const char HOIST_REQUEST_TOPIC[] = "HoistRequestTopic"; 
+        static const char PLC_HOIST_REQUEST_TOPIC[] = "HoistRequestTopic"; 
 
-        extern const char *HoistRequestTYPENAME;
+        extern const char *PlcHoistRequestTYPENAME;
 
-        struct HoistRequestSeq;
+        struct PlcHoistRequestSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class HoistRequestTypeSupport;
-        class HoistRequestDataWriter;
-        class HoistRequestDataReader;
+        class PlcHoistRequestTypeSupport;
+        class PlcHoistRequestDataWriter;
+        class PlcHoistRequestDataReader;
         #endif
-        class HoistRequest 
+        class PlcHoistRequest 
         {
           public:
-            typedef struct HoistRequestSeq Seq;
+            typedef struct PlcHoistRequestSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef HoistRequestTypeSupport TypeSupport;
-            typedef HoistRequestDataWriter DataWriter;
-            typedef HoistRequestDataReader DataReader;
+            typedef PlcHoistRequestTypeSupport TypeSupport;
+            typedef PlcHoistRequestDataWriter DataWriter;
+            typedef PlcHoistRequestDataReader DataReader;
             #endif
 
             DDS_Double   targetVelocity ;
@@ -56,52 +55,52 @@ namespace plc {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* HoistRequest_get_typecode(void); /* Type code */
-        NDDSUSERDllExport RTIXCdrTypePlugin *HoistRequest_get_type_plugin_info(void);
-        NDDSUSERDllExport RTIXCdrSampleAccessInfo *HoistRequest_get_sample_access_info(void);
-        NDDSUSERDllExport RTIXCdrSampleAccessInfo *HoistRequest_get_sample_seq_access_info(void);
+        NDDSUSERDllExport DDS_TypeCode* PlcHoistRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport RTIXCdrTypePlugin *PlcHoistRequest_get_type_plugin_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcHoistRequest_get_sample_access_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcHoistRequest_get_sample_seq_access_info(void);
         #endif
 
-        DDS_SEQUENCE(HoistRequestSeq, HoistRequest);
+        DDS_SEQUENCE(PlcHoistRequestSeq, PlcHoistRequest);
 
         NDDSUSERDllExport
-        RTIBool HoistRequest_initialize(
-            HoistRequest* self);
+        RTIBool PlcHoistRequest_initialize(
+            PlcHoistRequest* self);
 
         NDDSUSERDllExport
-        RTIBool HoistRequest_initialize_ex(
-            HoistRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool PlcHoistRequest_initialize_ex(
+            PlcHoistRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
 
         NDDSUSERDllExport
-        RTIBool HoistRequest_initialize_w_params(
-            HoistRequest* self,
+        RTIBool PlcHoistRequest_initialize_w_params(
+            PlcHoistRequest* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        RTIBool HoistRequest_finalize_w_return(
-            HoistRequest* self);
+        RTIBool PlcHoistRequest_finalize_w_return(
+            PlcHoistRequest* self);
 
         NDDSUSERDllExport
-        void HoistRequest_finalize(
-            HoistRequest* self);
+        void PlcHoistRequest_finalize(
+            PlcHoistRequest* self);
 
         NDDSUSERDllExport
-        void HoistRequest_finalize_ex(
-            HoistRequest* self,RTIBool deletePointers);
+        void PlcHoistRequest_finalize_ex(
+            PlcHoistRequest* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void HoistRequest_finalize_w_params(
-            HoistRequest* self,
+        void PlcHoistRequest_finalize_w_params(
+            PlcHoistRequest* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void HoistRequest_finalize_optional_members(
-            HoistRequest* self, RTIBool deletePointers);  
+        void PlcHoistRequest_finalize_optional_members(
+            PlcHoistRequest* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool HoistRequest_copy(
-            HoistRequest* dst,
-            const HoistRequest* src);
+        RTIBool PlcHoistRequest_copy(
+            PlcHoistRequest* dst,
+            const PlcHoistRequest* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -109,24 +108,24 @@ namespace plc {
         #undef NDDSUSERDllExport
         #define NDDSUSERDllExport
         #endif
-        static const char HOIST_STATE_TOPIC[] = "HoistStateTopic"; 
+        static const char PLC_HOIST_STATE_TOPIC[] = "HoistStateTopic"; 
 
-        extern const char *HoistStateTYPENAME;
+        extern const char *PlcHoistStateTYPENAME;
 
-        struct HoistStateSeq;
+        struct PlcHoistStateSeq;
         #ifndef NDDS_STANDALONE_TYPE
-        class HoistStateTypeSupport;
-        class HoistStateDataWriter;
-        class HoistStateDataReader;
+        class PlcHoistStateTypeSupport;
+        class PlcHoistStateDataWriter;
+        class PlcHoistStateDataReader;
         #endif
-        class HoistState 
+        class PlcHoistState 
         {
           public:
-            typedef struct HoistStateSeq Seq;
+            typedef struct PlcHoistStateSeq Seq;
             #ifndef NDDS_STANDALONE_TYPE
-            typedef HoistStateTypeSupport TypeSupport;
-            typedef HoistStateDataWriter DataWriter;
-            typedef HoistStateDataReader DataReader;
+            typedef PlcHoistStateTypeSupport TypeSupport;
+            typedef PlcHoistStateDataWriter DataWriter;
+            typedef PlcHoistStateDataReader DataReader;
             #endif
 
             DDS_Long   status ;
@@ -150,52 +149,52 @@ namespace plc {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* HoistState_get_typecode(void); /* Type code */
-        NDDSUSERDllExport RTIXCdrTypePlugin *HoistState_get_type_plugin_info(void);
-        NDDSUSERDllExport RTIXCdrSampleAccessInfo *HoistState_get_sample_access_info(void);
-        NDDSUSERDllExport RTIXCdrSampleAccessInfo *HoistState_get_sample_seq_access_info(void);
+        NDDSUSERDllExport DDS_TypeCode* PlcHoistState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport RTIXCdrTypePlugin *PlcHoistState_get_type_plugin_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcHoistState_get_sample_access_info(void);
+        NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcHoistState_get_sample_seq_access_info(void);
         #endif
 
-        DDS_SEQUENCE(HoistStateSeq, HoistState);
+        DDS_SEQUENCE(PlcHoistStateSeq, PlcHoistState);
 
         NDDSUSERDllExport
-        RTIBool HoistState_initialize(
-            HoistState* self);
+        RTIBool PlcHoistState_initialize(
+            PlcHoistState* self);
 
         NDDSUSERDllExport
-        RTIBool HoistState_initialize_ex(
-            HoistState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+        RTIBool PlcHoistState_initialize_ex(
+            PlcHoistState* self,RTIBool allocatePointers,RTIBool allocateMemory);
 
         NDDSUSERDllExport
-        RTIBool HoistState_initialize_w_params(
-            HoistState* self,
+        RTIBool PlcHoistState_initialize_w_params(
+            PlcHoistState* self,
             const struct DDS_TypeAllocationParams_t * allocParams);  
 
         NDDSUSERDllExport
-        RTIBool HoistState_finalize_w_return(
-            HoistState* self);
+        RTIBool PlcHoistState_finalize_w_return(
+            PlcHoistState* self);
 
         NDDSUSERDllExport
-        void HoistState_finalize(
-            HoistState* self);
+        void PlcHoistState_finalize(
+            PlcHoistState* self);
 
         NDDSUSERDllExport
-        void HoistState_finalize_ex(
-            HoistState* self,RTIBool deletePointers);
+        void PlcHoistState_finalize_ex(
+            PlcHoistState* self,RTIBool deletePointers);
 
         NDDSUSERDllExport
-        void HoistState_finalize_w_params(
-            HoistState* self,
+        void PlcHoistState_finalize_w_params(
+            PlcHoistState* self,
             const struct DDS_TypeDeallocationParams_t * deallocParams);
 
         NDDSUSERDllExport
-        void HoistState_finalize_optional_members(
-            HoistState* self, RTIBool deletePointers);  
+        void PlcHoistState_finalize_optional_members(
+            PlcHoistState* self, RTIBool deletePointers);  
 
         NDDSUSERDllExport
-        RTIBool HoistState_copy(
-            HoistState* dst,
-            const HoistState* src);
+        RTIBool PlcHoistState_copy(
+            PlcHoistState* dst,
+            const PlcHoistState* src);
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
         /* If the code is building on Windows, stop exporting symbols.
@@ -210,12 +209,12 @@ namespace plc {
 namespace rti { 
     namespace xcdr {
         template <>
-        struct type_code<plc::process::HoistRequest> {
+        struct type_code<plc::process::PlcHoistRequest> {
             static const RTIXCdrTypeCode * get();
         };
 
         template <>
-        struct type_code<plc::process::HoistState> {
+        struct type_code<plc::process::PlcHoistState> {
             static const RTIXCdrTypeCode * get();
         };
 

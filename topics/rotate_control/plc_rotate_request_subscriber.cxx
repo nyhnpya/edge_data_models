@@ -15,7 +15,7 @@ CPlcRotateRequestSubscriber::~CPlcRotateRequestSubscriber()
 bool CPlcRotateRequestSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                       plc::process::ROTATE_REQUEST_TOPIC,
+                       plc::process::PLC_ROTATE_REQUEST_TOPIC,
                        "EdgeBaseLibrary",
                        "PlcProfile");
 }

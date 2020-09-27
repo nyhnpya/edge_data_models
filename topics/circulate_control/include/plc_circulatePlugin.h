@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_circulatePlugin_1662823160_h
-#define plc_circulatePlugin_1662823160_h
+#ifndef plc_circulatePlugin_1662823240_h
+#define plc_circulatePlugin_1662823240_h
 
 #include "plc_circulate.h"
 
@@ -32,49 +32,49 @@ struct RTICdrStream;
 namespace plc {
     namespace process {
 
-        #define CirculateRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define PlcCirculateRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
 
-        #define CirculateRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define CirculateRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
+        #define PlcCirculateRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define PlcCirculateRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
-        #define CirculateRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define CirculateRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define PlcCirculateRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define PlcCirculateRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern CirculateRequest*
-        CirculateRequestPluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern PlcCirculateRequest*
+        PlcCirculateRequestPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern CirculateRequest*
-        CirculateRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern PlcCirculateRequest*
+        PlcCirculateRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern CirculateRequest*
-        CirculateRequestPluginSupport_create_data(void);
+        NDDSUSERDllExport extern PlcCirculateRequest*
+        PlcCirculateRequestPluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        CirculateRequestPluginSupport_copy_data(
-            CirculateRequest *out,
-            const CirculateRequest *in);
+        PlcCirculateRequestPluginSupport_copy_data(
+            PlcCirculateRequest *out,
+            const PlcCirculateRequest *in);
 
         NDDSUSERDllExport extern void 
-        CirculateRequestPluginSupport_destroy_data_w_params(
-            CirculateRequest *sample,
+        PlcCirculateRequestPluginSupport_destroy_data_w_params(
+            PlcCirculateRequest *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        CirculateRequestPluginSupport_destroy_data_ex(
-            CirculateRequest *sample,RTIBool deallocate_pointers);
+        PlcCirculateRequestPluginSupport_destroy_data_ex(
+            PlcCirculateRequest *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        CirculateRequestPluginSupport_destroy_data(
-            CirculateRequest *sample);
+        PlcCirculateRequestPluginSupport_destroy_data(
+            PlcCirculateRequest *sample);
 
         NDDSUSERDllExport extern void 
-        CirculateRequestPluginSupport_print_data(
-            const CirculateRequest *sample,
+        PlcCirculateRequestPluginSupport_print_data(
+            const PlcCirculateRequest *sample,
             const char *desc,
             unsigned int indent);
 
@@ -83,7 +83,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        CirculateRequestPlugin_on_participant_attached(
+        PlcCirculateRequestPlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -91,53 +91,53 @@ namespace plc {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        CirculateRequestPlugin_on_participant_detached(
+        PlcCirculateRequestPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        CirculateRequestPlugin_on_endpoint_attached(
+        PlcCirculateRequestPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        CirculateRequestPlugin_on_endpoint_detached(
+        PlcCirculateRequestPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        CirculateRequestPlugin_return_sample(
+        PlcCirculateRequestPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateRequest *sample,
+            PlcCirculateRequest *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        CirculateRequestPlugin_copy_sample(
+        PlcCirculateRequestPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateRequest *out,
-            const CirculateRequest *in);
+            PlcCirculateRequest *out,
+            const PlcCirculateRequest *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool
-        CirculateRequestPlugin_serialize_to_cdr_buffer(
+        PlcCirculateRequestPlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const CirculateRequest *sample); 
+            const PlcCirculateRequest *sample); 
 
         NDDSUSERDllExport extern RTIBool
-        CirculateRequestPlugin_serialize_to_cdr_buffer_ex(
+        PlcCirculateRequestPlugin_serialize_to_cdr_buffer_ex(
             char *buffer,
             unsigned int *length,
-            const CirculateRequest *sample,
+            const PlcCirculateRequest *sample,
             DDS_DataRepresentationId_t representation);
 
         NDDSUSERDllExport extern RTIBool 
-        CirculateRequestPlugin_deserialize(
+        PlcCirculateRequestPlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateRequest **sample, 
+            PlcCirculateRequest **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -145,21 +145,21 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        CirculateRequestPlugin_deserialize_from_cdr_buffer(
-            CirculateRequest *sample,
+        PlcCirculateRequestPlugin_deserialize_from_cdr_buffer(
+            PlcCirculateRequest *sample,
             const char * buffer,
             unsigned int length);    
         #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport extern DDS_ReturnCode_t
-        CirculateRequestPlugin_data_to_string(
-            const CirculateRequest *sample,
+        PlcCirculateRequestPlugin_data_to_string(
+            const PlcCirculateRequest *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
         #endif
 
         NDDSUSERDllExport extern unsigned int 
-        CirculateRequestPlugin_get_serialized_sample_max_size(
+        PlcCirculateRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -169,25 +169,25 @@ namespace plc {
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        CirculateRequestPlugin_get_key_kind(void);
+        PlcCirculateRequestPlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        CirculateRequestPlugin_get_serialized_key_max_size(
+        PlcCirculateRequestPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        CirculateRequestPlugin_get_serialized_key_max_size_for_keyhash(
+        PlcCirculateRequestPlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        CirculateRequestPlugin_deserialize_key(
+        PlcCirculateRequestPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateRequest ** sample,
+            PlcCirculateRequest ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -195,58 +195,58 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms *CirculateRequestPlugin_get_programs();
+        struct RTIXCdrInterpreterPrograms *PlcCirculateRequestPlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        CirculateRequestPlugin_new(void);
+        PlcCirculateRequestPlugin_new(void);
 
         NDDSUSERDllExport extern void
-        CirculateRequestPlugin_delete(struct PRESTypePlugin *);
+        PlcCirculateRequestPlugin_delete(struct PRESTypePlugin *);
 
-        #define CirculateStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define PlcCirculateStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
 
-        #define CirculateStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define CirculateStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
+        #define PlcCirculateStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define PlcCirculateStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
-        #define CirculateStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define CirculateStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define PlcCirculateStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define PlcCirculateStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern CirculateState*
-        CirculateStatePluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern PlcCirculateState*
+        PlcCirculateStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern CirculateState*
-        CirculateStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern PlcCirculateState*
+        PlcCirculateStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern CirculateState*
-        CirculateStatePluginSupport_create_data(void);
+        NDDSUSERDllExport extern PlcCirculateState*
+        PlcCirculateStatePluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        CirculateStatePluginSupport_copy_data(
-            CirculateState *out,
-            const CirculateState *in);
+        PlcCirculateStatePluginSupport_copy_data(
+            PlcCirculateState *out,
+            const PlcCirculateState *in);
 
         NDDSUSERDllExport extern void 
-        CirculateStatePluginSupport_destroy_data_w_params(
-            CirculateState *sample,
+        PlcCirculateStatePluginSupport_destroy_data_w_params(
+            PlcCirculateState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        CirculateStatePluginSupport_destroy_data_ex(
-            CirculateState *sample,RTIBool deallocate_pointers);
+        PlcCirculateStatePluginSupport_destroy_data_ex(
+            PlcCirculateState *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        CirculateStatePluginSupport_destroy_data(
-            CirculateState *sample);
+        PlcCirculateStatePluginSupport_destroy_data(
+            PlcCirculateState *sample);
 
         NDDSUSERDllExport extern void 
-        CirculateStatePluginSupport_print_data(
-            const CirculateState *sample,
+        PlcCirculateStatePluginSupport_print_data(
+            const PlcCirculateState *sample,
             const char *desc,
             unsigned int indent);
 
@@ -255,7 +255,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        CirculateStatePlugin_on_participant_attached(
+        PlcCirculateStatePlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -263,53 +263,53 @@ namespace plc {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        CirculateStatePlugin_on_participant_detached(
+        PlcCirculateStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        CirculateStatePlugin_on_endpoint_attached(
+        PlcCirculateStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        CirculateStatePlugin_on_endpoint_detached(
+        PlcCirculateStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        CirculateStatePlugin_return_sample(
+        PlcCirculateStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateState *sample,
+            PlcCirculateState *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        CirculateStatePlugin_copy_sample(
+        PlcCirculateStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateState *out,
-            const CirculateState *in);
+            PlcCirculateState *out,
+            const PlcCirculateState *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool
-        CirculateStatePlugin_serialize_to_cdr_buffer(
+        PlcCirculateStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const CirculateState *sample); 
+            const PlcCirculateState *sample); 
 
         NDDSUSERDllExport extern RTIBool
-        CirculateStatePlugin_serialize_to_cdr_buffer_ex(
+        PlcCirculateStatePlugin_serialize_to_cdr_buffer_ex(
             char *buffer,
             unsigned int *length,
-            const CirculateState *sample,
+            const PlcCirculateState *sample,
             DDS_DataRepresentationId_t representation);
 
         NDDSUSERDllExport extern RTIBool 
-        CirculateStatePlugin_deserialize(
+        PlcCirculateStatePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateState **sample, 
+            PlcCirculateState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -317,21 +317,21 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        CirculateStatePlugin_deserialize_from_cdr_buffer(
-            CirculateState *sample,
+        PlcCirculateStatePlugin_deserialize_from_cdr_buffer(
+            PlcCirculateState *sample,
             const char * buffer,
             unsigned int length);    
         #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport extern DDS_ReturnCode_t
-        CirculateStatePlugin_data_to_string(
-            const CirculateState *sample,
+        PlcCirculateStatePlugin_data_to_string(
+            const PlcCirculateState *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
         #endif
 
         NDDSUSERDllExport extern unsigned int 
-        CirculateStatePlugin_get_serialized_sample_max_size(
+        PlcCirculateStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -341,25 +341,25 @@ namespace plc {
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        CirculateStatePlugin_get_key_kind(void);
+        PlcCirculateStatePlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        CirculateStatePlugin_get_serialized_key_max_size(
+        PlcCirculateStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        CirculateStatePlugin_get_serialized_key_max_size_for_keyhash(
+        PlcCirculateStatePlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        CirculateStatePlugin_deserialize_key(
+        PlcCirculateStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            CirculateState ** sample,
+            PlcCirculateState ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -367,14 +367,14 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms *CirculateStatePlugin_get_programs();
+        struct RTIXCdrInterpreterPrograms *PlcCirculateStatePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        CirculateStatePlugin_new(void);
+        PlcCirculateStatePlugin_new(void);
 
         NDDSUSERDllExport extern void
-        CirculateStatePlugin_delete(struct PRESTypePlugin *);
+        PlcCirculateStatePlugin_delete(struct PRESTypePlugin *);
 
     } /* namespace process  */
 } /* namespace plc  */
@@ -386,5 +386,5 @@ namespace plc {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* plc_circulatePlugin_1662823160_h */
+#endif /* plc_circulatePlugin_1662823240_h */
 

@@ -27,7 +27,7 @@ namespace plc {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'CirculateRequest' support classes.
+        Configure and implement 'PlcCirculateRequest' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -43,11 +43,11 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   CirculateRequestTYPENAME
+        #define TTYPENAME   PlcCirculateRequestTYPENAME
 
         /* Defines */
-        #define TDataWriter CirculateRequestDataWriter
-        #define TData       plc::process::CirculateRequest
+        #define TDataWriter PlcCirculateRequestDataWriter
+        #define TData       plc::process::PlcCirculateRequest
 
         #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
@@ -69,12 +69,12 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   CirculateRequestTYPENAME
+        #define TTYPENAME   PlcCirculateRequestTYPENAME
 
         /* Defines */
-        #define TDataReader CirculateRequestDataReader
-        #define TDataSeq    CirculateRequestSeq
-        #define TData       plc::process::CirculateRequest
+        #define TDataReader PlcCirculateRequestDataReader
+        #define TDataSeq    PlcCirculateRequestSeq
+        #define TData       plc::process::PlcCirculateRequest
 
         #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
@@ -98,15 +98,15 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME    CirculateRequestTYPENAME
-        #define TPlugin_new  plc::process::CirculateRequestPlugin_new
-        #define TPlugin_delete  plc::process::CirculateRequestPlugin_delete
+        #define TTYPENAME    PlcCirculateRequestTYPENAME
+        #define TPlugin_new  plc::process::PlcCirculateRequestPlugin_new
+        #define TPlugin_delete  plc::process::PlcCirculateRequestPlugin_delete
 
         /* Defines */
-        #define TTypeSupport CirculateRequestTypeSupport
-        #define TData        plc::process::CirculateRequest
-        #define TDataReader  CirculateRequestDataReader
-        #define TDataWriter  CirculateRequestDataWriter
+        #define TTypeSupport PlcCirculateRequestTypeSupport
+        #define TData        plc::process::PlcCirculateRequest
+        #define TDataReader  PlcCirculateRequestDataReader
+        #define TDataWriter  PlcCirculateRequestDataWriter
         #define TGENERATE_SER_CODE
         #ifndef NDDS_STANDALONE_TYPE
         #define TGENERATE_TYPECODE
@@ -135,7 +135,7 @@ namespace plc {
         TDataReader,
         TTypeSupport
 
-        Configure and implement 'CirculateState' support classes.
+        Configure and implement 'PlcCirculateState' support classes.
 
         Note: Only the #defined classes get defined
         */
@@ -151,11 +151,11 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   CirculateStateTYPENAME
+        #define TTYPENAME   PlcCirculateStateTYPENAME
 
         /* Defines */
-        #define TDataWriter CirculateStateDataWriter
-        #define TData       plc::process::CirculateState
+        #define TDataWriter PlcCirculateStateDataWriter
+        #define TData       plc::process::PlcCirculateState
 
         #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
@@ -177,12 +177,12 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME   CirculateStateTYPENAME
+        #define TTYPENAME   PlcCirculateStateTYPENAME
 
         /* Defines */
-        #define TDataReader CirculateStateDataReader
-        #define TDataSeq    CirculateStateSeq
-        #define TData       plc::process::CirculateState
+        #define TDataReader PlcCirculateStateDataReader
+        #define TDataSeq    PlcCirculateStateSeq
+        #define TData       plc::process::PlcCirculateState
 
         #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
         #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
@@ -206,15 +206,15 @@ namespace plc {
         */
 
         /* Requires */
-        #define TTYPENAME    CirculateStateTYPENAME
-        #define TPlugin_new  plc::process::CirculateStatePlugin_new
-        #define TPlugin_delete  plc::process::CirculateStatePlugin_delete
+        #define TTYPENAME    PlcCirculateStateTYPENAME
+        #define TPlugin_new  plc::process::PlcCirculateStatePlugin_new
+        #define TPlugin_delete  plc::process::PlcCirculateStatePlugin_delete
 
         /* Defines */
-        #define TTypeSupport CirculateStateTypeSupport
-        #define TData        plc::process::CirculateState
-        #define TDataReader  CirculateStateDataReader
-        #define TDataWriter  CirculateStateDataWriter
+        #define TTypeSupport PlcCirculateStateTypeSupport
+        #define TData        plc::process::PlcCirculateState
+        #define TDataReader  PlcCirculateStateDataReader
+        #define TDataWriter  PlcCirculateStateDataWriter
         #define TGENERATE_SER_CODE
         #ifndef NDDS_STANDALONE_TYPE
         #define TGENERATE_TYPECODE

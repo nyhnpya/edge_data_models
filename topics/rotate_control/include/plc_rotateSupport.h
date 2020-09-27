@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_rotateSupport_1508021068_h
-#define plc_rotateSupport_1508021068_h
+#ifndef plc_rotateSupport_1508021044_h
+#define plc_rotateSupport_1508021044_h
 
 /* Uses */
 #include "plc_rotate.h"
@@ -101,5 +101,5 @@ namespace plc {
     } /* namespace process  */
 } /* namespace plc  */
 
-#endif  /* plc_rotateSupport_1508021068_h */
+#endif  /* plc_rotateSupport_1508021044_h */
 

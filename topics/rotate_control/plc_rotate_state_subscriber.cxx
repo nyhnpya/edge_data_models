@@ -15,7 +15,7 @@ CPlcRotateStateSubscriber::~CPlcRotateStateSubscriber()
 bool CPlcRotateStateSubscriber::Create(int32_t domain)
 {
     return TSubscriber::Create(domain,
-                       plc::process::ROTATE_STATE_TOPIC,
+                       plc::process::PLC_ROTATE_STATE_TOPIC,
                        "EdgeBaseLibrary",
                        "PlcProfile");
 }

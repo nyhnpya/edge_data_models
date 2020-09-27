@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_hoistPlugin_1752499117_h
-#define plc_hoistPlugin_1752499117_h
+#ifndef plc_hoistPlugin_1752499246_h
+#define plc_hoistPlugin_1752499246_h
 
 #include "plc_hoist.h"
 
@@ -19,8 +19,6 @@ struct RTICdrStream;
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
-
-#include "base_data_typesPlugin.h"
 
 #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, start exporting symbols.
@@ -32,49 +30,49 @@ struct RTICdrStream;
 namespace plc {
     namespace process {
 
-        #define HoistRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define PlcHoistRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
 
-        #define HoistRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define HoistRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
+        #define PlcHoistRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define PlcHoistRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
-        #define HoistRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define HoistRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define PlcHoistRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define PlcHoistRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern HoistRequest*
-        HoistRequestPluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern PlcHoistRequest*
+        PlcHoistRequestPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern HoistRequest*
-        HoistRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern PlcHoistRequest*
+        PlcHoistRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern HoistRequest*
-        HoistRequestPluginSupport_create_data(void);
+        NDDSUSERDllExport extern PlcHoistRequest*
+        PlcHoistRequestPluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        HoistRequestPluginSupport_copy_data(
-            HoistRequest *out,
-            const HoistRequest *in);
+        PlcHoistRequestPluginSupport_copy_data(
+            PlcHoistRequest *out,
+            const PlcHoistRequest *in);
 
         NDDSUSERDllExport extern void 
-        HoistRequestPluginSupport_destroy_data_w_params(
-            HoistRequest *sample,
+        PlcHoistRequestPluginSupport_destroy_data_w_params(
+            PlcHoistRequest *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        HoistRequestPluginSupport_destroy_data_ex(
-            HoistRequest *sample,RTIBool deallocate_pointers);
+        PlcHoistRequestPluginSupport_destroy_data_ex(
+            PlcHoistRequest *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        HoistRequestPluginSupport_destroy_data(
-            HoistRequest *sample);
+        PlcHoistRequestPluginSupport_destroy_data(
+            PlcHoistRequest *sample);
 
         NDDSUSERDllExport extern void 
-        HoistRequestPluginSupport_print_data(
-            const HoistRequest *sample,
+        PlcHoistRequestPluginSupport_print_data(
+            const PlcHoistRequest *sample,
             const char *desc,
             unsigned int indent);
 
@@ -83,7 +81,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        HoistRequestPlugin_on_participant_attached(
+        PlcHoistRequestPlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -91,53 +89,53 @@ namespace plc {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        HoistRequestPlugin_on_participant_detached(
+        PlcHoistRequestPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        HoistRequestPlugin_on_endpoint_attached(
+        PlcHoistRequestPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        HoistRequestPlugin_on_endpoint_detached(
+        PlcHoistRequestPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        HoistRequestPlugin_return_sample(
+        PlcHoistRequestPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            HoistRequest *sample,
+            PlcHoistRequest *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        HoistRequestPlugin_copy_sample(
+        PlcHoistRequestPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            HoistRequest *out,
-            const HoistRequest *in);
+            PlcHoistRequest *out,
+            const PlcHoistRequest *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool
-        HoistRequestPlugin_serialize_to_cdr_buffer(
+        PlcHoistRequestPlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const HoistRequest *sample); 
+            const PlcHoistRequest *sample); 
 
         NDDSUSERDllExport extern RTIBool
-        HoistRequestPlugin_serialize_to_cdr_buffer_ex(
+        PlcHoistRequestPlugin_serialize_to_cdr_buffer_ex(
             char *buffer,
             unsigned int *length,
-            const HoistRequest *sample,
+            const PlcHoistRequest *sample,
             DDS_DataRepresentationId_t representation);
 
         NDDSUSERDllExport extern RTIBool 
-        HoistRequestPlugin_deserialize(
+        PlcHoistRequestPlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            HoistRequest **sample, 
+            PlcHoistRequest **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -145,21 +143,21 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        HoistRequestPlugin_deserialize_from_cdr_buffer(
-            HoistRequest *sample,
+        PlcHoistRequestPlugin_deserialize_from_cdr_buffer(
+            PlcHoistRequest *sample,
             const char * buffer,
             unsigned int length);    
         #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport extern DDS_ReturnCode_t
-        HoistRequestPlugin_data_to_string(
-            const HoistRequest *sample,
+        PlcHoistRequestPlugin_data_to_string(
+            const PlcHoistRequest *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
         #endif
 
         NDDSUSERDllExport extern unsigned int 
-        HoistRequestPlugin_get_serialized_sample_max_size(
+        PlcHoistRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -169,25 +167,25 @@ namespace plc {
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        HoistRequestPlugin_get_key_kind(void);
+        PlcHoistRequestPlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        HoistRequestPlugin_get_serialized_key_max_size(
+        PlcHoistRequestPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        HoistRequestPlugin_get_serialized_key_max_size_for_keyhash(
+        PlcHoistRequestPlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        HoistRequestPlugin_deserialize_key(
+        PlcHoistRequestPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            HoistRequest ** sample,
+            PlcHoistRequest ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -195,58 +193,58 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms *HoistRequestPlugin_get_programs();
+        struct RTIXCdrInterpreterPrograms *PlcHoistRequestPlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        HoistRequestPlugin_new(void);
+        PlcHoistRequestPlugin_new(void);
 
         NDDSUSERDllExport extern void
-        HoistRequestPlugin_delete(struct PRESTypePlugin *);
+        PlcHoistRequestPlugin_delete(struct PRESTypePlugin *);
 
-        #define HoistStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define PlcHoistStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
 
-        #define HoistStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define HoistStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
+        #define PlcHoistStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define PlcHoistStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
-        #define HoistStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define HoistStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define PlcHoistStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define PlcHoistStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern HoistState*
-        HoistStatePluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern PlcHoistState*
+        PlcHoistStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern HoistState*
-        HoistStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern PlcHoistState*
+        PlcHoistStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern HoistState*
-        HoistStatePluginSupport_create_data(void);
+        NDDSUSERDllExport extern PlcHoistState*
+        PlcHoistStatePluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        HoistStatePluginSupport_copy_data(
-            HoistState *out,
-            const HoistState *in);
+        PlcHoistStatePluginSupport_copy_data(
+            PlcHoistState *out,
+            const PlcHoistState *in);
 
         NDDSUSERDllExport extern void 
-        HoistStatePluginSupport_destroy_data_w_params(
-            HoistState *sample,
+        PlcHoistStatePluginSupport_destroy_data_w_params(
+            PlcHoistState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        HoistStatePluginSupport_destroy_data_ex(
-            HoistState *sample,RTIBool deallocate_pointers);
+        PlcHoistStatePluginSupport_destroy_data_ex(
+            PlcHoistState *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        HoistStatePluginSupport_destroy_data(
-            HoistState *sample);
+        PlcHoistStatePluginSupport_destroy_data(
+            PlcHoistState *sample);
 
         NDDSUSERDllExport extern void 
-        HoistStatePluginSupport_print_data(
-            const HoistState *sample,
+        PlcHoistStatePluginSupport_print_data(
+            const PlcHoistState *sample,
             const char *desc,
             unsigned int indent);
 
@@ -255,7 +253,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        HoistStatePlugin_on_participant_attached(
+        PlcHoistStatePlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -263,53 +261,53 @@ namespace plc {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        HoistStatePlugin_on_participant_detached(
+        PlcHoistStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        HoistStatePlugin_on_endpoint_attached(
+        PlcHoistStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        HoistStatePlugin_on_endpoint_detached(
+        PlcHoistStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        HoistStatePlugin_return_sample(
+        PlcHoistStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            HoistState *sample,
+            PlcHoistState *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        HoistStatePlugin_copy_sample(
+        PlcHoistStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            HoistState *out,
-            const HoistState *in);
+            PlcHoistState *out,
+            const PlcHoistState *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool
-        HoistStatePlugin_serialize_to_cdr_buffer(
+        PlcHoistStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const HoistState *sample); 
+            const PlcHoistState *sample); 
 
         NDDSUSERDllExport extern RTIBool
-        HoistStatePlugin_serialize_to_cdr_buffer_ex(
+        PlcHoistStatePlugin_serialize_to_cdr_buffer_ex(
             char *buffer,
             unsigned int *length,
-            const HoistState *sample,
+            const PlcHoistState *sample,
             DDS_DataRepresentationId_t representation);
 
         NDDSUSERDllExport extern RTIBool 
-        HoistStatePlugin_deserialize(
+        PlcHoistStatePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            HoistState **sample, 
+            PlcHoistState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -317,21 +315,21 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        HoistStatePlugin_deserialize_from_cdr_buffer(
-            HoistState *sample,
+        PlcHoistStatePlugin_deserialize_from_cdr_buffer(
+            PlcHoistState *sample,
             const char * buffer,
             unsigned int length);    
         #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport extern DDS_ReturnCode_t
-        HoistStatePlugin_data_to_string(
-            const HoistState *sample,
+        PlcHoistStatePlugin_data_to_string(
+            const PlcHoistState *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
         #endif
 
         NDDSUSERDllExport extern unsigned int 
-        HoistStatePlugin_get_serialized_sample_max_size(
+        PlcHoistStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -341,25 +339,25 @@ namespace plc {
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        HoistStatePlugin_get_key_kind(void);
+        PlcHoistStatePlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        HoistStatePlugin_get_serialized_key_max_size(
+        PlcHoistStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        HoistStatePlugin_get_serialized_key_max_size_for_keyhash(
+        PlcHoistStatePlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        HoistStatePlugin_deserialize_key(
+        PlcHoistStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            HoistState ** sample,
+            PlcHoistState ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -367,14 +365,14 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms *HoistStatePlugin_get_programs();
+        struct RTIXCdrInterpreterPrograms *PlcHoistStatePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        HoistStatePlugin_new(void);
+        PlcHoistStatePlugin_new(void);
 
         NDDSUSERDllExport extern void
-        HoistStatePlugin_delete(struct PRESTypePlugin *);
+        PlcHoistStatePlugin_delete(struct PRESTypePlugin *);
 
     } /* namespace process  */
 } /* namespace plc  */
@@ -386,5 +384,5 @@ namespace plc {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* plc_hoistPlugin_1752499117_h */
+#endif /* plc_hoistPlugin_1752499246_h */
 

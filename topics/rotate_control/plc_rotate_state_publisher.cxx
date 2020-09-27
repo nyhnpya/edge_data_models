@@ -11,7 +11,7 @@ CPlcRotateStatePublisher::~CPlcRotateStatePublisher()
 bool CPlcRotateStatePublisher::Create(int32_t domain)
 {
     return TPublisher::Create(domain,
-                       plc::process::ROTATE_STATE_TOPIC,
+                       plc::process::PLC_ROTATE_STATE_TOPIC,
                        "EdgeBaseLibrary",
                        "PlcProfile");
 }
