@@ -314,18 +314,7 @@ plc_circulate.cpy:
 
 plc_drill.cpy: 
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
-	/usr/bin/python ./pub_sub_gen.py control/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/drill_control
-	mkdir -p $(TOPIC_HOME)/drill_control/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/drill_control
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/drill_control/include
-	cp $(TMPOUTDIR)/*_publisher.cxx $(TOPIC_HOME)/drill_control
-	cp $(TMPOUTDIR)/*_subscriber.cxx $(TOPIC_HOME)/drill_control
-	cp $(TMPOUTDIR)/*_publisher.h $(TOPIC_HOME)/drill_control/include
-	cp $(TMPOUTDIR)/*_subscriber.h $(TOPIC_HOME)/drill_control/include
-	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/drill_control
-	-@rm -rf $(TMPOUTDIR)
 
 plc_hoist.cpy: 
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."

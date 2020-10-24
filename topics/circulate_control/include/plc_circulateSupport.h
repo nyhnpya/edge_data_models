@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_circulateSupport_1662823240_h
-#define plc_circulateSupport_1662823240_h
+#ifndef plc_circulateSupport_1662823208_h
+#define plc_circulateSupport_1662823208_h
 
 /* Uses */
 #include "plc_circulate.h"
@@ -101,5 +101,5 @@ namespace plc {
     } /* namespace process  */
 } /* namespace plc  */
 
-#endif  /* plc_circulateSupport_1662823240_h */
+#endif  /* plc_circulateSupport_1662823208_h */
 

@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_drillSupport_1908030917_h
-#define plc_drillSupport_1908030917_h
+#ifndef plc_drillSupport_1908030870_h
+#define plc_drillSupport_1908030870_h
 
 /* Uses */
 #include "plc_drill.h"
@@ -47,14 +47,14 @@ namespace plc {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            PlcDrillRequestTopicTypeSupport, 
-            PlcDrillRequestTopic);
+            DrillRequestTypeSupport, 
+            DrillRequest);
 
         #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(PlcDrillRequestTopicDataWriter, PlcDrillRequestTopic);
+        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(DrillRequestDataWriter, DrillRequest);
         #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(PlcDrillRequestTopicDataReader, PlcDrillRequestTopicSeq, PlcDrillRequestTopic);
+        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(DrillRequestDataReader, DrillRequestSeq, DrillRequest);
         #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -82,14 +82,14 @@ namespace plc {
         #endif
 
         DDS_TYPESUPPORT_CPP(
-            PlcDrillStateTopicTypeSupport, 
-            PlcDrillStateTopic);
+            DrillStateTypeSupport, 
+            DrillState);
 
         #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(PlcDrillStateTopicDataWriter, PlcDrillStateTopic);
+        DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(DrillStateDataWriter, DrillState);
         #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
         #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(PlcDrillStateTopicDataReader, PlcDrillStateTopicSeq, PlcDrillStateTopic);
+        DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(DrillStateDataReader, DrillStateSeq, DrillState);
         #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -101,5 +101,5 @@ namespace plc {
     } /* namespace process  */
 } /* namespace plc  */
 
-#endif  /* plc_drillSupport_1908030917_h */
+#endif  /* plc_drillSupport_1908030870_h */
 

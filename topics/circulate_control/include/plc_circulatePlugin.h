@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_circulatePlugin_1662823240_h
-#define plc_circulatePlugin_1662823240_h
+#ifndef plc_circulatePlugin_1662823208_h
+#define plc_circulatePlugin_1662823208_h
 
 #include "plc_circulate.h"
 
@@ -19,8 +19,6 @@ struct RTICdrStream;
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
-
-#include "base_data_typesPlugin.h"
 
 #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, start exporting symbols.
@@ -386,5 +384,5 @@ namespace plc {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* plc_circulatePlugin_1662823240_h */
+#endif /* plc_circulatePlugin_1662823208_h */
 

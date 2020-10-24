@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_drillPlugin_1908030917_h
-#define plc_drillPlugin_1908030917_h
+#ifndef plc_drillPlugin_1908030870_h
+#define plc_drillPlugin_1908030870_h
 
 #include "plc_drill.h"
 
@@ -19,8 +19,6 @@ struct RTICdrStream;
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
-
-#include "base_data_typesPlugin.h"
 
 #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, start exporting symbols.
@@ -32,49 +30,49 @@ struct RTICdrStream;
 namespace plc {
     namespace process {
 
-        #define PlcDrillRequestTopicPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define DrillRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
 
-        #define PlcDrillRequestTopicPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define PlcDrillRequestTopicPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
+        #define DrillRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define DrillRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
-        #define PlcDrillRequestTopicPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define PlcDrillRequestTopicPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define DrillRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define DrillRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern PlcDrillRequestTopic*
-        PlcDrillRequestTopicPluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern DrillRequest*
+        DrillRequestPluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern PlcDrillRequestTopic*
-        PlcDrillRequestTopicPluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern DrillRequest*
+        DrillRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern PlcDrillRequestTopic*
-        PlcDrillRequestTopicPluginSupport_create_data(void);
+        NDDSUSERDllExport extern DrillRequest*
+        DrillRequestPluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        PlcDrillRequestTopicPluginSupport_copy_data(
-            PlcDrillRequestTopic *out,
-            const PlcDrillRequestTopic *in);
+        DrillRequestPluginSupport_copy_data(
+            DrillRequest *out,
+            const DrillRequest *in);
 
         NDDSUSERDllExport extern void 
-        PlcDrillRequestTopicPluginSupport_destroy_data_w_params(
-            PlcDrillRequestTopic *sample,
+        DrillRequestPluginSupport_destroy_data_w_params(
+            DrillRequest *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        PlcDrillRequestTopicPluginSupport_destroy_data_ex(
-            PlcDrillRequestTopic *sample,RTIBool deallocate_pointers);
+        DrillRequestPluginSupport_destroy_data_ex(
+            DrillRequest *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        PlcDrillRequestTopicPluginSupport_destroy_data(
-            PlcDrillRequestTopic *sample);
+        DrillRequestPluginSupport_destroy_data(
+            DrillRequest *sample);
 
         NDDSUSERDllExport extern void 
-        PlcDrillRequestTopicPluginSupport_print_data(
-            const PlcDrillRequestTopic *sample,
+        DrillRequestPluginSupport_print_data(
+            const DrillRequest *sample,
             const char *desc,
             unsigned int indent);
 
@@ -83,7 +81,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        PlcDrillRequestTopicPlugin_on_participant_attached(
+        DrillRequestPlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -91,53 +89,53 @@ namespace plc {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        PlcDrillRequestTopicPlugin_on_participant_detached(
+        DrillRequestPlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        PlcDrillRequestTopicPlugin_on_endpoint_attached(
+        DrillRequestPlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        PlcDrillRequestTopicPlugin_on_endpoint_detached(
+        DrillRequestPlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        PlcDrillRequestTopicPlugin_return_sample(
+        DrillRequestPlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            PlcDrillRequestTopic *sample,
+            DrillRequest *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        PlcDrillRequestTopicPlugin_copy_sample(
+        DrillRequestPlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            PlcDrillRequestTopic *out,
-            const PlcDrillRequestTopic *in);
+            DrillRequest *out,
+            const DrillRequest *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool
-        PlcDrillRequestTopicPlugin_serialize_to_cdr_buffer(
+        DrillRequestPlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const PlcDrillRequestTopic *sample); 
+            const DrillRequest *sample); 
 
         NDDSUSERDllExport extern RTIBool
-        PlcDrillRequestTopicPlugin_serialize_to_cdr_buffer_ex(
+        DrillRequestPlugin_serialize_to_cdr_buffer_ex(
             char *buffer,
             unsigned int *length,
-            const PlcDrillRequestTopic *sample,
+            const DrillRequest *sample,
             DDS_DataRepresentationId_t representation);
 
         NDDSUSERDllExport extern RTIBool 
-        PlcDrillRequestTopicPlugin_deserialize(
+        DrillRequestPlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            PlcDrillRequestTopic **sample, 
+            DrillRequest **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -145,21 +143,21 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        PlcDrillRequestTopicPlugin_deserialize_from_cdr_buffer(
-            PlcDrillRequestTopic *sample,
+        DrillRequestPlugin_deserialize_from_cdr_buffer(
+            DrillRequest *sample,
             const char * buffer,
             unsigned int length);    
         #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport extern DDS_ReturnCode_t
-        PlcDrillRequestTopicPlugin_data_to_string(
-            const PlcDrillRequestTopic *sample,
+        DrillRequestPlugin_data_to_string(
+            const DrillRequest *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
         #endif
 
         NDDSUSERDllExport extern unsigned int 
-        PlcDrillRequestTopicPlugin_get_serialized_sample_max_size(
+        DrillRequestPlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -169,25 +167,25 @@ namespace plc {
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        PlcDrillRequestTopicPlugin_get_key_kind(void);
+        DrillRequestPlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        PlcDrillRequestTopicPlugin_get_serialized_key_max_size(
+        DrillRequestPlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        PlcDrillRequestTopicPlugin_get_serialized_key_max_size_for_keyhash(
+        DrillRequestPlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        PlcDrillRequestTopicPlugin_deserialize_key(
+        DrillRequestPlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            PlcDrillRequestTopic ** sample,
+            DrillRequest ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -195,58 +193,58 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms *PlcDrillRequestTopicPlugin_get_programs();
+        struct RTIXCdrInterpreterPrograms *DrillRequestPlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        PlcDrillRequestTopicPlugin_new(void);
+        DrillRequestPlugin_new(void);
 
         NDDSUSERDllExport extern void
-        PlcDrillRequestTopicPlugin_delete(struct PRESTypePlugin *);
+        DrillRequestPlugin_delete(struct PRESTypePlugin *);
 
-        #define PlcDrillStateTopicPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+        #define DrillStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
 
-        #define PlcDrillStateTopicPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-        #define PlcDrillStateTopicPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
+        #define DrillStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+        #define DrillStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
-        #define PlcDrillStateTopicPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-        #define PlcDrillStateTopicPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+        #define DrillStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+        #define DrillStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
         /* --------------------------------------------------------------------------------------
         Support functions:
         * -------------------------------------------------------------------------------------- */
 
-        NDDSUSERDllExport extern PlcDrillStateTopic*
-        PlcDrillStateTopicPluginSupport_create_data_w_params(
+        NDDSUSERDllExport extern DrillState*
+        DrillStatePluginSupport_create_data_w_params(
             const struct DDS_TypeAllocationParams_t * alloc_params);
 
-        NDDSUSERDllExport extern PlcDrillStateTopic*
-        PlcDrillStateTopicPluginSupport_create_data_ex(RTIBool allocate_pointers);
+        NDDSUSERDllExport extern DrillState*
+        DrillStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-        NDDSUSERDllExport extern PlcDrillStateTopic*
-        PlcDrillStateTopicPluginSupport_create_data(void);
+        NDDSUSERDllExport extern DrillState*
+        DrillStatePluginSupport_create_data(void);
 
         NDDSUSERDllExport extern RTIBool 
-        PlcDrillStateTopicPluginSupport_copy_data(
-            PlcDrillStateTopic *out,
-            const PlcDrillStateTopic *in);
+        DrillStatePluginSupport_copy_data(
+            DrillState *out,
+            const DrillState *in);
 
         NDDSUSERDllExport extern void 
-        PlcDrillStateTopicPluginSupport_destroy_data_w_params(
-            PlcDrillStateTopic *sample,
+        DrillStatePluginSupport_destroy_data_w_params(
+            DrillState *sample,
             const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
         NDDSUSERDllExport extern void 
-        PlcDrillStateTopicPluginSupport_destroy_data_ex(
-            PlcDrillStateTopic *sample,RTIBool deallocate_pointers);
+        DrillStatePluginSupport_destroy_data_ex(
+            DrillState *sample,RTIBool deallocate_pointers);
 
         NDDSUSERDllExport extern void 
-        PlcDrillStateTopicPluginSupport_destroy_data(
-            PlcDrillStateTopic *sample);
+        DrillStatePluginSupport_destroy_data(
+            DrillState *sample);
 
         NDDSUSERDllExport extern void 
-        PlcDrillStateTopicPluginSupport_print_data(
-            const PlcDrillStateTopic *sample,
+        DrillStatePluginSupport_print_data(
+            const DrillState *sample,
             const char *desc,
             unsigned int indent);
 
@@ -255,7 +253,7 @@ namespace plc {
         * ---------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern PRESTypePluginParticipantData 
-        PlcDrillStateTopicPlugin_on_participant_attached(
+        DrillStatePlugin_on_participant_attached(
             void *registration_data, 
             const struct PRESTypePluginParticipantInfo *participant_info,
             RTIBool top_level_registration, 
@@ -263,53 +261,53 @@ namespace plc {
             RTICdrTypeCode *typeCode);
 
         NDDSUSERDllExport extern void 
-        PlcDrillStateTopicPlugin_on_participant_detached(
+        DrillStatePlugin_on_participant_detached(
             PRESTypePluginParticipantData participant_data);
 
         NDDSUSERDllExport extern PRESTypePluginEndpointData 
-        PlcDrillStateTopicPlugin_on_endpoint_attached(
+        DrillStatePlugin_on_endpoint_attached(
             PRESTypePluginParticipantData participant_data,
             const struct PRESTypePluginEndpointInfo *endpoint_info,
             RTIBool top_level_registration, 
             void *container_plugin_context);
 
         NDDSUSERDllExport extern void 
-        PlcDrillStateTopicPlugin_on_endpoint_detached(
+        DrillStatePlugin_on_endpoint_detached(
             PRESTypePluginEndpointData endpoint_data);
 
         NDDSUSERDllExport extern void    
-        PlcDrillStateTopicPlugin_return_sample(
+        DrillStatePlugin_return_sample(
             PRESTypePluginEndpointData endpoint_data,
-            PlcDrillStateTopic *sample,
+            DrillState *sample,
             void *handle);    
 
         NDDSUSERDllExport extern RTIBool 
-        PlcDrillStateTopicPlugin_copy_sample(
+        DrillStatePlugin_copy_sample(
             PRESTypePluginEndpointData endpoint_data,
-            PlcDrillStateTopic *out,
-            const PlcDrillStateTopic *in);
+            DrillState *out,
+            const DrillState *in);
 
         /* ----------------------------------------------------------------------------
         (De)Serialize functions:
         * ------------------------------------------------------------------------- */
 
         NDDSUSERDllExport extern RTIBool
-        PlcDrillStateTopicPlugin_serialize_to_cdr_buffer(
+        DrillStatePlugin_serialize_to_cdr_buffer(
             char * buffer,
             unsigned int * length,
-            const PlcDrillStateTopic *sample); 
+            const DrillState *sample); 
 
         NDDSUSERDllExport extern RTIBool
-        PlcDrillStateTopicPlugin_serialize_to_cdr_buffer_ex(
+        DrillStatePlugin_serialize_to_cdr_buffer_ex(
             char *buffer,
             unsigned int *length,
-            const PlcDrillStateTopic *sample,
+            const DrillState *sample,
             DDS_DataRepresentationId_t representation);
 
         NDDSUSERDllExport extern RTIBool 
-        PlcDrillStateTopicPlugin_deserialize(
+        DrillStatePlugin_deserialize(
             PRESTypePluginEndpointData endpoint_data,
-            PlcDrillStateTopic **sample, 
+            DrillState **sample, 
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -317,21 +315,21 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern RTIBool
-        PlcDrillStateTopicPlugin_deserialize_from_cdr_buffer(
-            PlcDrillStateTopic *sample,
+        DrillStatePlugin_deserialize_from_cdr_buffer(
+            DrillState *sample,
             const char * buffer,
             unsigned int length);    
         #ifndef NDDS_STANDALONE_TYPE
         NDDSUSERDllExport extern DDS_ReturnCode_t
-        PlcDrillStateTopicPlugin_data_to_string(
-            const PlcDrillStateTopic *sample,
+        DrillStatePlugin_data_to_string(
+            const DrillState *sample,
             char *str,
             DDS_UnsignedLong *str_size, 
             const struct DDS_PrintFormatProperty *property);    
         #endif
 
         NDDSUSERDllExport extern unsigned int 
-        PlcDrillStateTopicPlugin_get_serialized_sample_max_size(
+        DrillStatePlugin_get_serialized_sample_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
@@ -341,25 +339,25 @@ namespace plc {
         Key Management functions:
         * -------------------------------------------------------------------------------------- */
         NDDSUSERDllExport extern PRESTypePluginKeyKind 
-        PlcDrillStateTopicPlugin_get_key_kind(void);
+        DrillStatePlugin_get_key_kind(void);
 
         NDDSUSERDllExport extern unsigned int 
-        PlcDrillStateTopicPlugin_get_serialized_key_max_size(
+        DrillStatePlugin_get_serialized_key_max_size(
             PRESTypePluginEndpointData endpoint_data,
             RTIBool include_encapsulation,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern unsigned int 
-        PlcDrillStateTopicPlugin_get_serialized_key_max_size_for_keyhash(
+        DrillStatePlugin_get_serialized_key_max_size_for_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             RTIEncapsulationId encapsulation_id,
             unsigned int current_alignment);
 
         NDDSUSERDllExport extern RTIBool 
-        PlcDrillStateTopicPlugin_deserialize_key(
+        DrillStatePlugin_deserialize_key(
             PRESTypePluginEndpointData endpoint_data,
-            PlcDrillStateTopic ** sample,
+            DrillState ** sample,
             RTIBool * drop_sample,
             struct RTICdrStream *stream,
             RTIBool deserialize_encapsulation,
@@ -367,14 +365,14 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms *PlcDrillStateTopicPlugin_get_programs();
+        struct RTIXCdrInterpreterPrograms *DrillStatePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
-        PlcDrillStateTopicPlugin_new(void);
+        DrillStatePlugin_new(void);
 
         NDDSUSERDllExport extern void
-        PlcDrillStateTopicPlugin_delete(struct PRESTypePlugin *);
+        DrillStatePlugin_delete(struct PRESTypePlugin *);
 
     } /* namespace process  */
 } /* namespace plc  */
@@ -386,5 +384,5 @@ namespace plc {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* plc_drillPlugin_1908030917_h */
+#endif /* plc_drillPlugin_1908030870_h */
 

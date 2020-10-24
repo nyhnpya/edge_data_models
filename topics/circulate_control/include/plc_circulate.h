@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef plc_circulate_1662823240_h
-#define plc_circulate_1662823240_h
+#ifndef plc_circulate_1662823208_h
+#define plc_circulate_1662823208_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -21,7 +21,6 @@ or consult the RTI Connext manual.
 #include "ndds_standalone_type.h"
 #endif
 
-#include "base_data_types.h"
 namespace plc {
     namespace process {
         static const char PLC_CIRCULATE_REQUEST_TOPIC[] = "CirculateRequestTopic"; 

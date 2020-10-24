@@ -1,4 +1,3 @@
-#include "base_data_types.idl"
 module plc
 {
     module process
@@ -23,7 +22,7 @@ module plc
          * | diffPressureMode   | differential pressure axis enabled               | boolean             | N/A   |
          * | torqueMode         | differential torque mode enabled                 | boolean             | N/A   |
          */
-        struct PlcDrillRequestTopic
+        struct DrillRequest
         {
             double              ropLimit;
             double              wobLimit;
@@ -63,7 +62,7 @@ module plc
          * | diffPressureLimit         | target differential pressure           | double            | pas   |
          * | torqueLimit               | target differential torque             | double            | Nm    |
          */
-        struct PlcDrillStateTopic
+        struct DrillState
         {
             double          ropActual;
             double          wobActual;
