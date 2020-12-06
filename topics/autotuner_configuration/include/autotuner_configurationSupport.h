@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configurationSupport_985795544_h
-#define autotuner_configurationSupport_985795544_h
+#ifndef autotuner_configurationSupport_985793277_h
+#define autotuner_configurationSupport_985793277_h
 
 /* Uses */
 #include "autotuner_configuration.h"
@@ -83,14 +83,14 @@ namespace Shell {
             #endif
 
             DDS_TYPESUPPORT_CPP(
-                ModelStateStateTypeSupport, 
-                ModelStateState);
+                ModelStateTypeSupport, 
+                ModelState);
 
             #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(ModelStateStateDataWriter, ModelStateState);
+            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(ModelStateDataWriter, ModelState);
             #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
             #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(ModelStateStateDataReader, ModelStateStateSeq, ModelStateState);
+            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(ModelStateDataReader, ModelStateSeq, ModelState);
             #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
             #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -118,14 +118,14 @@ namespace Shell {
             #endif
 
             DDS_TYPESUPPORT_CPP(
-                DiffpTuningRequestTypeSupport, 
-                DiffpTuningRequest);
+                AutoTunerTuningRequestTypeSupport, 
+                AutoTunerTuningRequest);
 
             #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(DiffpTuningRequestDataWriter, DiffpTuningRequest);
+            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(AutoTunerTuningRequestDataWriter, AutoTunerTuningRequest);
             #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
             #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(DiffpTuningRequestDataReader, DiffpTuningRequestSeq, DiffpTuningRequest);
+            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(AutoTunerTuningRequestDataReader, AutoTunerTuningRequestSeq, AutoTunerTuningRequest);
             #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
             #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -153,154 +153,14 @@ namespace Shell {
             #endif
 
             DDS_TYPESUPPORT_CPP(
-                DiffpTuningStateTypeSupport, 
-                DiffpTuningState);
+                AutoTunerTuningStateTypeSupport, 
+                AutoTunerTuningState);
 
             #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(DiffpTuningStateDataWriter, DiffpTuningState);
+            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(AutoTunerTuningStateDataWriter, AutoTunerTuningState);
             #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
             #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(DiffpTuningStateDataReader, DiffpTuningStateSeq, DiffpTuningState);
-            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, stop exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport
-            #endif
-            /* ========================================================================= */
-            /**
-            Uses:     T
-
-            Defines:  TTypeSupport, TDataWriter, TDataReader
-
-            Organized using the well-documented "Generics Pattern" for
-            implementing generics in C and C++.
-            */
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, start exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport __declspec(dllexport)
-
-            #endif
-
-            DDS_TYPESUPPORT_CPP(
-                WobTuningRequestTypeSupport, 
-                WobTuningRequest);
-
-            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(WobTuningRequestDataWriter, WobTuningRequest);
-            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(WobTuningRequestDataReader, WobTuningRequestSeq, WobTuningRequest);
-            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, stop exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport
-            #endif
-            /* ========================================================================= */
-            /**
-            Uses:     T
-
-            Defines:  TTypeSupport, TDataWriter, TDataReader
-
-            Organized using the well-documented "Generics Pattern" for
-            implementing generics in C and C++.
-            */
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, start exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport __declspec(dllexport)
-
-            #endif
-
-            DDS_TYPESUPPORT_CPP(
-                WobTuningStateTypeSupport, 
-                WobTuningState);
-
-            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(WobTuningStateDataWriter, WobTuningState);
-            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(WobTuningStateDataReader, WobTuningStateSeq, WobTuningState);
-            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, stop exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport
-            #endif
-            /* ========================================================================= */
-            /**
-            Uses:     T
-
-            Defines:  TTypeSupport, TDataWriter, TDataReader
-
-            Organized using the well-documented "Generics Pattern" for
-            implementing generics in C and C++.
-            */
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, start exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport __declspec(dllexport)
-
-            #endif
-
-            DDS_TYPESUPPORT_CPP(
-                TorqueTuningRequestTypeSupport, 
-                TorqueTuningRequest);
-
-            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(TorqueTuningRequestDataWriter, TorqueTuningRequest);
-            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(TorqueTuningRequestDataReader, TorqueTuningRequestSeq, TorqueTuningRequest);
-            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, stop exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport
-            #endif
-            /* ========================================================================= */
-            /**
-            Uses:     T
-
-            Defines:  TTypeSupport, TDataWriter, TDataReader
-
-            Organized using the well-documented "Generics Pattern" for
-            implementing generics in C and C++.
-            */
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, start exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport __declspec(dllexport)
-
-            #endif
-
-            DDS_TYPESUPPORT_CPP(
-                TorqueTuningStateTypeSupport, 
-                TorqueTuningState);
-
-            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(TorqueTuningStateDataWriter, TorqueTuningState);
-            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(TorqueTuningStateDataReader, TorqueTuningStateSeq, TorqueTuningState);
+            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(AutoTunerTuningStateDataReader, AutoTunerTuningStateSeq, AutoTunerTuningState);
             #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
             #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -313,5 +173,5 @@ namespace Shell {
     } /* namespace Hmi  */
 } /* namespace Shell  */
 
-#endif  /* autotuner_configurationSupport_985795544_h */
+#endif  /* autotuner_configurationSupport_985793277_h */
 

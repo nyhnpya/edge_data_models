@@ -26,20 +26,12 @@ TARG_SOURCES += autotuner_configurationPlugin.cxx
 TARG_SOURCES += autotuner_configurationSupport.cxx
 TARG_SOURCES += model_state_request_publisher.cxx
 TARG_SOURCES += model_state_request_subscriber.cxx
-TARG_SOURCES += model_state_state_publisher.cxx
-TARG_SOURCES += model_state_state_subscriber.cxx
-TARG_SOURCES += diffp_tuning_request_publisher.cxx
-TARG_SOURCES += diffp_tuning_request_subscriber.cxx
-TARG_SOURCES += diffp_tuning_state_publisher.cxx
-TARG_SOURCES += diffp_tuning_state_subscriber.cxx
-TARG_SOURCES += wob_tuning_request_publisher.cxx
-TARG_SOURCES += wob_tuning_request_subscriber.cxx
-TARG_SOURCES += wob_tuning_state_publisher.cxx
-TARG_SOURCES += wob_tuning_state_subscriber.cxx
-TARG_SOURCES += torque_tuning_request_publisher.cxx
-TARG_SOURCES += torque_tuning_request_subscriber.cxx
-TARG_SOURCES += torque_tuning_state_publisher.cxx
-TARG_SOURCES += torque_tuning_state_subscriber.cxx
+TARG_SOURCES += model_state_publisher.cxx
+TARG_SOURCES += model_state_subscriber.cxx
+TARG_SOURCES += auto_tuner_tuning_request_publisher.cxx
+TARG_SOURCES += auto_tuner_tuning_request_subscriber.cxx
+TARG_SOURCES += auto_tuner_tuning_state_publisher.cxx
+TARG_SOURCES += auto_tuner_tuning_state_subscriber.cxx
 
 ###############################################################################
 # Installation section
@@ -63,20 +55,12 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autotuner_configurationSupport.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autotuner_configurationPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_request_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_state_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_state_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/diffp_tuning_request_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/diffp_tuning_request_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/diffp_tuning_state_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/diffp_tuning_state_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wob_tuning_request_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wob_tuning_request_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wob_tuning_state_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/wob_tuning_state_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/torque_tuning_request_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/torque_tuning_request_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/torque_tuning_state_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/torque_tuning_state_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_tuner_tuning_request_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_tuner_tuning_request_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_tuner_tuning_state_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_tuner_tuning_state_subscriber.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../package
