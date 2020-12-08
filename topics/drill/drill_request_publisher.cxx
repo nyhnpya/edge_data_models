@@ -6,6 +6,10 @@ CDrillRequestPublisher::CDrillRequestPublisher()
 
 CDrillRequestPublisher::~CDrillRequestPublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CDrillRequestPublisher::Create(int32_t domain)

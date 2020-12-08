@@ -6,6 +6,10 @@ CRotateEngineeringObjectivePublisher::CRotateEngineeringObjectivePublisher()
 
 CRotateEngineeringObjectivePublisher::~CRotateEngineeringObjectivePublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CRotateEngineeringObjectivePublisher::Create(int32_t domain)

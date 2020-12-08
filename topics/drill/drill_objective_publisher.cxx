@@ -6,6 +6,10 @@ CDrillObjectivePublisher::CDrillObjectivePublisher()
 
 CDrillObjectivePublisher::~CDrillObjectivePublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CDrillObjectivePublisher::Create(int32_t domain)

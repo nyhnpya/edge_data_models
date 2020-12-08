@@ -8,9 +8,12 @@ CResourcesPublisher::CResourcesPublisher() :
 
 CResourcesPublisher::~CResourcesPublisher()
 {
-    if (m_pProcessName != nullptr)
+    if (m_pDataInstance != nullptr)
     {
         DDS_String_free((char *)m_pProcessName);
+        DDS_String_free(m_pDataInstance->processName);
+        DDS_String_free(m_pDataInstance->osName);
+        DDS_String_free(m_pDataInstance->appVersion);
     }
 }
 

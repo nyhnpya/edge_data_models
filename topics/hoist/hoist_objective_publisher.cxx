@@ -6,6 +6,10 @@ CHoistObjectivePublisher::CHoistObjectivePublisher()
 
 CHoistObjectivePublisher::~CHoistObjectivePublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CHoistObjectivePublisher::Create(int32_t domain)

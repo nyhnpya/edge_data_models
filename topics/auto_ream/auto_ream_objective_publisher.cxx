@@ -6,6 +6,10 @@ CAutoReamObjectivePublisher::CAutoReamObjectivePublisher()
 
 CAutoReamObjectivePublisher::~CAutoReamObjectivePublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CAutoReamObjectivePublisher::Create(int32_t domain)

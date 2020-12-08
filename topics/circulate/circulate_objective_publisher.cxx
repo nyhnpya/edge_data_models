@@ -6,6 +6,10 @@ CCirculateObjectivePublisher::CCirculateObjectivePublisher()
 
 CCirculateObjectivePublisher::~CCirculateObjectivePublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CCirculateObjectivePublisher::Create(int32_t domain)

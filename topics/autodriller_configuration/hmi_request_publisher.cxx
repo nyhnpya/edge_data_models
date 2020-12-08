@@ -6,6 +6,10 @@ CHmiRequestPublisher::CHmiRequestPublisher()
 
 CHmiRequestPublisher::~CHmiRequestPublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CHmiRequestPublisher::Create(int32_t domain)

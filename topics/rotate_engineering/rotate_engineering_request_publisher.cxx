@@ -6,6 +6,10 @@ CRotateEngineeringRequestPublisher::CRotateEngineeringRequestPublisher()
 
 CRotateEngineeringRequestPublisher::~CRotateEngineeringRequestPublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CRotateEngineeringRequestPublisher::Create(int32_t domain)

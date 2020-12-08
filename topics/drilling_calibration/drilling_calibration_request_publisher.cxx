@@ -6,6 +6,10 @@ CDrillingCalibrationRequestPublisher::CDrillingCalibrationRequestPublisher()
 
 CDrillingCalibrationRequestPublisher::~CDrillingCalibrationRequestPublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CDrillingCalibrationRequestPublisher::Create(int32_t domain)

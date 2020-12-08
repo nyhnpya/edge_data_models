@@ -6,6 +6,10 @@ CRotateStatePublisher::CRotateStatePublisher()
 
 CRotateStatePublisher::~CRotateStatePublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CRotateStatePublisher::Create(int32_t domain)

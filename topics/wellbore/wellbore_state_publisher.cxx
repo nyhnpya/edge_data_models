@@ -6,6 +6,10 @@ CWellboreStatePublisher::CWellboreStatePublisher()
 
 CWellboreStatePublisher::~CWellboreStatePublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CWellboreStatePublisher::Create(int32_t domain)

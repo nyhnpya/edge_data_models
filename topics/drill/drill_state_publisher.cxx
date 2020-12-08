@@ -6,6 +6,10 @@ CDrillStatePublisher::CDrillStatePublisher()
 
 CDrillStatePublisher::~CDrillStatePublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CDrillStatePublisher::Create(int32_t domain)

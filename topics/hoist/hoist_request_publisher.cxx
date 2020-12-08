@@ -6,6 +6,10 @@ CHoistRequestPublisher::CHoistRequestPublisher()
 
 CHoistRequestPublisher::~CHoistRequestPublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CHoistRequestPublisher::Create(int32_t domain)

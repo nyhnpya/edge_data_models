@@ -6,6 +6,10 @@ CAutoReamRequestPublisher::CAutoReamRequestPublisher()
 
 CAutoReamRequestPublisher::~CAutoReamRequestPublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CAutoReamRequestPublisher::Create(int32_t domain)

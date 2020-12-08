@@ -6,6 +6,10 @@ CHmiStatePublisher::CHmiStatePublisher()
 
 CHmiStatePublisher::~CHmiStatePublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CHmiStatePublisher::Create(int32_t domain)

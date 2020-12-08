@@ -6,6 +6,10 @@ CCirculateRequestPublisher::CCirculateRequestPublisher()
 
 CCirculateRequestPublisher::~CCirculateRequestPublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CCirculateRequestPublisher::Create(int32_t domain)

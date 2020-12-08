@@ -2094,7 +2094,7 @@ namespace DataTypes {
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode_Member Objective_g_tc_members[8]=
+        static DDS_TypeCode_Member Objective_g_tc_members[9]=
         {
 
             {
@@ -2248,6 +2248,25 @@ namespace DataTypes {
                 1,
                 NULL, /* Ignored */
                 RTICdrTypeCodeAnnotations_INITIALIZER
+            }, 
+            {
+                (char *)"AddStand",/* Member name */
+                {
+                    0, /* Ignored */
+                    DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                    -1, /* Bitfield bits */
+                    NULL/* Member type code is assigned later */
+                },
+                AddStand, 
+                0, /* Ignored */
+                0, /* Ignored */
+                NULL, /* Ignored */
+                RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                DDS_PRIVATE_MEMBER,/* Member visibility */ 
+
+                1,
+                NULL, /* Ignored */
+                RTICdrTypeCodeAnnotations_INITIALIZER
             }
         };
 
@@ -2261,7 +2280,7 @@ namespace DataTypes {
                 0, /* Ignored */
                 0, /* Ignored */
                 NULL, /* Ignored */
-                8, /* Number of members */
+                9, /* Number of members */
                 Objective_g_tc_members, /* Members */
                 DDS_VM_NONE, /* Type Modifier */
                 RTICdrTypeCodeAnnotations_INITIALIZER,

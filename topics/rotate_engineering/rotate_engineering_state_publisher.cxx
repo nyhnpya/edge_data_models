@@ -6,6 +6,10 @@ CRotateEngineeringStatePublisher::CRotateEngineeringStatePublisher()
 
 CRotateEngineeringStatePublisher::~CRotateEngineeringStatePublisher()
 {
+        if (m_pDataInstance != nullptr)
+        {
+            DDS_String_free(m_pDataInstance->id);
+        }
 }
 
 bool CRotateEngineeringStatePublisher::Create(int32_t domain)
