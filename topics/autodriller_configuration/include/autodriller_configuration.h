@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autodriller_configuration_730533774_h
-#define autodriller_configuration_730533774_h
+#ifndef autodriller_configuration_730533710_h
+#define autodriller_configuration_730533710_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -48,14 +48,14 @@ namespace nec {
             DataTypes::Time   timestamp ;
             DDS_Long   mode ;
             DDS_Double   modeController ;
-            DDS_Double   modelTwoDifferentialPressureRequestK ;
-            DDS_Double   modelTwoDifferentialPressureRequestTau ;
-            DDS_Double   modelTwoRateOfPenetrationRequestK ;
-            DDS_Double   modelTwoRateOfPenetrationRequestTau ;
-            DDS_Double   modelTwoTorqueRequestK ;
-            DDS_Double   modelTwoTorqueRequestTau ;
-            DDS_Double   modelTwoWeightOnBitRequestK ;
-            DDS_Double   modelTwoWeightOnBitRequestTau ;
+            DDS_Double   differentialPressureRequestK ;
+            DDS_Double   differentialPressureRequestTau ;
+            DDS_Double   rateOfPenetrationRequestK ;
+            DDS_Double   rateOfPenetrationRequestTau ;
+            DDS_Double   torqueRequestK ;
+            DDS_Double   torqueRequestTau ;
+            DDS_Double   weightOnBitRequestK ;
+            DDS_Double   weightOnBitRequestTau ;
             DDS_Long   status ;
             DDS_Boolean   tuningEnable ;
 

@@ -161,6 +161,8 @@ with open(util_gen.idl_file_name) as idl_file:
                 if '@key' in line:
                     iskey = True
                 fdt = fields[0]
+                if re.search(r'string', fdt):
+                    fdt = 'std::string'
                 if fdt == 'boolean':
                     fdt = 'bool'
                 if fdt == 'long':

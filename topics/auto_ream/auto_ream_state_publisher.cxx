@@ -6,33 +6,14 @@ CAutoReamStatePublisher::CAutoReamStatePublisher()
 
 CAutoReamStatePublisher::~CAutoReamStatePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CAutoReamStatePublisher::Create(int32_t domain)
+bool CAutoReamStatePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::AUTO_REAM_STATE,
-                       "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
-}
-
-bool CAutoReamStatePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::AUTO_REAM_STATE,
+                                    "EdgeBaseLibrary",
+                                    "EdgeBaseProfile");
 }
 
 bool CAutoReamStatePublisher::PublishSample()
@@ -65,7 +46,7 @@ void CAutoReamStatePublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CAutoReamStatePublisher::SetTimestamp(DataTypes::Time timestamp)
+void CAutoReamStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -73,7 +54,7 @@ void CAutoReamStatePublisher::SetTimestamp(DataTypes::Time timestamp)
     }
 }
 
-void CAutoReamStatePublisher::SetStatus(DataTypes::Status status)
+void CAutoReamStatePublisher::SetStatus(const DataTypes::Status status)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -81,7 +62,7 @@ void CAutoReamStatePublisher::SetStatus(DataTypes::Status status)
     }
 }
 
-void CAutoReamStatePublisher::SetHookloadActual(double hookloadActual)
+void CAutoReamStatePublisher::SetHookloadActual(const double hookloadActual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -89,7 +70,7 @@ void CAutoReamStatePublisher::SetHookloadActual(double hookloadActual)
     }
 }
 
-void CAutoReamStatePublisher::SetHoleDepthActual(double holeDepthActual)
+void CAutoReamStatePublisher::SetHoleDepthActual(const double holeDepthActual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -97,7 +78,7 @@ void CAutoReamStatePublisher::SetHoleDepthActual(double holeDepthActual)
     }
 }
 
-void CAutoReamStatePublisher::SetDifferentialPressureActual(double differentialPressureActual)
+void CAutoReamStatePublisher::SetDifferentialPressureActual(const double differentialPressureActual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -105,7 +86,7 @@ void CAutoReamStatePublisher::SetDifferentialPressureActual(double differentialP
     }
 }
 
-void CAutoReamStatePublisher::SetWeightOnBitActual(double weightOnBitActual)
+void CAutoReamStatePublisher::SetWeightOnBitActual(const double weightOnBitActual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -113,7 +94,7 @@ void CAutoReamStatePublisher::SetWeightOnBitActual(double weightOnBitActual)
     }
 }
 
-void CAutoReamStatePublisher::SetStandpipePressureActual(double standpipePressureActual)
+void CAutoReamStatePublisher::SetStandpipePressureActual(const double standpipePressureActual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -121,7 +102,7 @@ void CAutoReamStatePublisher::SetStandpipePressureActual(double standpipePressur
     }
 }
 
-void CAutoReamStatePublisher::SetBlockSpeedActual(double blockSpeedActual)
+void CAutoReamStatePublisher::SetBlockSpeedActual(const double blockSpeedActual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -129,7 +110,7 @@ void CAutoReamStatePublisher::SetBlockSpeedActual(double blockSpeedActual)
     }
 }
 
-void CAutoReamStatePublisher::SetQuillPositionActual(double quillPositionActual)
+void CAutoReamStatePublisher::SetQuillPositionActual(const double quillPositionActual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -137,7 +118,7 @@ void CAutoReamStatePublisher::SetQuillPositionActual(double quillPositionActual)
     }
 }
 
-void CAutoReamStatePublisher::SetQuillRateActual(double quillRateActual)
+void CAutoReamStatePublisher::SetQuillRateActual(const double quillRateActual)
 {
     if (m_pDataInstance != nullptr)
     {

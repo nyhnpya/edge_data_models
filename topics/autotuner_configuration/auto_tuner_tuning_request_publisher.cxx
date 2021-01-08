@@ -6,31 +6,14 @@ CAutoTunerTuningRequestPublisher::CAutoTunerTuningRequestPublisher()
 
 CAutoTunerTuningRequestPublisher::~CAutoTunerTuningRequestPublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CAutoTunerTuningRequestPublisher::Create(int32_t domain)
+bool CAutoTunerTuningRequestPublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       Shell::Hmi::AutoTunerConfiguration::AUTOTUNER_TUNING_REQUEST,
-                       "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
-}
-
-bool CAutoTunerTuningRequestPublisher::Initialize()
-{
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        m_pDataInstance->id = DDS_String_dup(m_id.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    Shell::Hmi::AutoTunerConfiguration::AUTOTUNER_TUNING_REQUEST,
+                                    "EdgeBaseLibrary",
+                                    "EdgeBaseProfile");
 }
 
 bool CAutoTunerTuningRequestPublisher::PublishSample()
@@ -38,12 +21,15 @@ bool CAutoTunerTuningRequestPublisher::PublishSample()
     return Publish();
 }
 
-void CAutoTunerTuningRequestPublisher::SetId(const std::string &id)
+void CAutoTunerTuningRequestPublisher::SetId(const std::string&id)
 {
-    m_id = id;
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->id = DDS_String_dup(id.c_str());
+    }
 }
 
-void CAutoTunerTuningRequestPublisher::SetFilter(double filter)
+void CAutoTunerTuningRequestPublisher::SetFilter(const double filter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -51,7 +37,7 @@ void CAutoTunerTuningRequestPublisher::SetFilter(double filter)
     }
 }
 
-void CAutoTunerTuningRequestPublisher::SetD(double d)
+void CAutoTunerTuningRequestPublisher::SetD(const double d)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -59,7 +45,7 @@ void CAutoTunerTuningRequestPublisher::SetD(double d)
     }
 }
 
-void CAutoTunerTuningRequestPublisher::SetF(double f)
+void CAutoTunerTuningRequestPublisher::SetF(const double f)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -67,7 +53,7 @@ void CAutoTunerTuningRequestPublisher::SetF(double f)
     }
 }
 
-void CAutoTunerTuningRequestPublisher::SetEpsilon(double epsilon)
+void CAutoTunerTuningRequestPublisher::SetEpsilon(const double epsilon)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -75,7 +61,7 @@ void CAutoTunerTuningRequestPublisher::SetEpsilon(double epsilon)
     }
 }
 
-void CAutoTunerTuningRequestPublisher::SetEpsilonManual(bool epsilonManual)
+void CAutoTunerTuningRequestPublisher::SetEpsilonManual(const bool epsilonManual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -83,7 +69,7 @@ void CAutoTunerTuningRequestPublisher::SetEpsilonManual(bool epsilonManual)
     }
 }
 
-void CAutoTunerTuningRequestPublisher::SetKcMin(double kcMin)
+void CAutoTunerTuningRequestPublisher::SetKcMin(const double kcMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -91,7 +77,7 @@ void CAutoTunerTuningRequestPublisher::SetKcMin(double kcMin)
     }
 }
 
-void CAutoTunerTuningRequestPublisher::SetKcMax(double kcMax)
+void CAutoTunerTuningRequestPublisher::SetKcMax(const double kcMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -99,7 +85,7 @@ void CAutoTunerTuningRequestPublisher::SetKcMax(double kcMax)
     }
 }
 
-void CAutoTunerTuningRequestPublisher::SetTiMin(double tiMin)
+void CAutoTunerTuningRequestPublisher::SetTiMin(const double tiMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -107,7 +93,7 @@ void CAutoTunerTuningRequestPublisher::SetTiMin(double tiMin)
     }
 }
 
-void CAutoTunerTuningRequestPublisher::SetTiMax(double tiMax)
+void CAutoTunerTuningRequestPublisher::SetTiMax(const double tiMax)
 {
     if (m_pDataInstance != nullptr)
     {

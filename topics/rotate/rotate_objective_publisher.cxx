@@ -6,33 +6,14 @@ CRotateObjectivePublisher::CRotateObjectivePublisher()
 
 CRotateObjectivePublisher::~CRotateObjectivePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CRotateObjectivePublisher::Create(int32_t domain)
+bool CRotateObjectivePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::ROTATE_OBJECTIVE,
-                       "EdgeBaseLibrary",
-                       "RotateObjectiveProfile");
-}
-
-bool CRotateObjectivePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::ROTATE_OBJECTIVE,
+                                    "EdgeBaseLibrary",
+                                    "RotateObjectiveProfile");
 }
 
 bool CRotateObjectivePublisher::PublishSample()
@@ -56,7 +37,7 @@ void CRotateObjectivePublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CRotateObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
+void CRotateObjectivePublisher::SetEstimatedDuration(const DataTypes::Time estimatedDuration)
 {
     if (m_pDataInstance != nullptr)
     {

@@ -6,33 +6,14 @@ CCirculateStatePublisher::CCirculateStatePublisher()
 
 CCirculateStatePublisher::~CCirculateStatePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CCirculateStatePublisher::Create(int32_t domain)
+bool CCirculateStatePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::CIRCULATE_STATE,
-                       "EdgeBaseLibrary",
-                       "CirculateStateProfile");
-}
-
-bool CCirculateStatePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::CIRCULATE_STATE,
+                                    "EdgeBaseLibrary",
+                                    "CirculateStateProfile");
 }
 
 bool CCirculateStatePublisher::PublishSample()
@@ -65,7 +46,7 @@ void CCirculateStatePublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CCirculateStatePublisher::SetTimestamp(DataTypes::Time timestamp)
+void CCirculateStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -73,7 +54,7 @@ void CCirculateStatePublisher::SetTimestamp(DataTypes::Time timestamp)
     }
 }
 
-void CCirculateStatePublisher::SetStatus(DataTypes::Status status)
+void CCirculateStatePublisher::SetStatus(const DataTypes::Status status)
 {
     if (m_pDataInstance != nullptr)
     {

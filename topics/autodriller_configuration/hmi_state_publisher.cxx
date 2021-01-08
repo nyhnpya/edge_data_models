@@ -6,33 +6,14 @@ CHmiStatePublisher::CHmiStatePublisher()
 
 CHmiStatePublisher::~CHmiStatePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CHmiStatePublisher::Create(int32_t domain)
+bool CHmiStatePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::control::HMI_STATE,
-                       "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
-}
-
-bool CHmiStatePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::control::HMI_STATE,
+                                    "EdgeBaseLibrary",
+                                    "EdgeBaseProfile");
 }
 
 bool CHmiStatePublisher::PublishSample()
@@ -57,7 +38,7 @@ void CHmiStatePublisher::SetId(CDdsUuid id)
     }
 }
 
-void CHmiStatePublisher::SetTimestamp(DataTypes::Time timestamp)
+void CHmiStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -65,7 +46,7 @@ void CHmiStatePublisher::SetTimestamp(DataTypes::Time timestamp)
     }
 }
 
-void CHmiStatePublisher::SetMode(int32_t mode)
+void CHmiStatePublisher::SetMode(const int32_t mode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -73,7 +54,7 @@ void CHmiStatePublisher::SetMode(int32_t mode)
     }
 }
 
-void CHmiStatePublisher::SetModeController(int32_t modeController)
+void CHmiStatePublisher::SetModeController(const int32_t modeController)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -81,7 +62,7 @@ void CHmiStatePublisher::SetModeController(int32_t modeController)
     }
 }
 
-void CHmiStatePublisher::SetPipeInnerDiameter(double pipeInnerDiameter)
+void CHmiStatePublisher::SetPipeInnerDiameter(const double pipeInnerDiameter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -89,7 +70,7 @@ void CHmiStatePublisher::SetPipeInnerDiameter(double pipeInnerDiameter)
     }
 }
 
-void CHmiStatePublisher::SetPipeOuterDiameter(double pipeOuterDiameter)
+void CHmiStatePublisher::SetPipeOuterDiameter(const double pipeOuterDiameter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -97,7 +78,7 @@ void CHmiStatePublisher::SetPipeOuterDiameter(double pipeOuterDiameter)
     }
 }
 
-void CHmiStatePublisher::SetSlopeFilter(double slopeFilter)
+void CHmiStatePublisher::SetSlopeFilter(const double slopeFilter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -105,7 +86,7 @@ void CHmiStatePublisher::SetSlopeFilter(double slopeFilter)
     }
 }
 
-void CHmiStatePublisher::SetTauMax(double tauMax)
+void CHmiStatePublisher::SetTauMax(const double tauMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -113,7 +94,7 @@ void CHmiStatePublisher::SetTauMax(double tauMax)
     }
 }
 
-void CHmiStatePublisher::SetTauMin(double tauMin)
+void CHmiStatePublisher::SetTauMin(const double tauMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -121,7 +102,7 @@ void CHmiStatePublisher::SetTauMin(double tauMin)
     }
 }
 
-void CHmiStatePublisher::SetTauMultiplier(double tauMultiplier)
+void CHmiStatePublisher::SetTauMultiplier(const double tauMultiplier)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -129,7 +110,7 @@ void CHmiStatePublisher::SetTauMultiplier(double tauMultiplier)
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureInitializeK(double differentialPressureInitializeK)
+void CHmiStatePublisher::SetDifferentialPressureInitializeK(const double differentialPressureInitializeK)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -137,7 +118,7 @@ void CHmiStatePublisher::SetDifferentialPressureInitializeK(double differentialP
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureInitializeTau(double differentialPressureInitializeTau)
+void CHmiStatePublisher::SetDifferentialPressureInitializeTau(const double differentialPressureInitializeTau)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -145,7 +126,7 @@ void CHmiStatePublisher::SetDifferentialPressureInitializeTau(double differentia
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureInitializePreFilter(double differentialPressureInitializePreFilter)
+void CHmiStatePublisher::SetDifferentialPressureInitializePreFilter(const double differentialPressureInitializePreFilter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -153,7 +134,7 @@ void CHmiStatePublisher::SetDifferentialPressureInitializePreFilter(double diffe
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureR1(double differentialPressureR1)
+void CHmiStatePublisher::SetDifferentialPressureR1(const double differentialPressureR1)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -161,7 +142,7 @@ void CHmiStatePublisher::SetDifferentialPressureR1(double differentialPressureR1
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureR2(double differentialPressureR2)
+void CHmiStatePublisher::SetDifferentialPressureR2(const double differentialPressureR2)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -169,7 +150,7 @@ void CHmiStatePublisher::SetDifferentialPressureR2(double differentialPressureR2
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationInitializeK(double rateOfPenetrationInitializeK)
+void CHmiStatePublisher::SetRateOfPenetrationInitializeK(const double rateOfPenetrationInitializeK)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -177,7 +158,7 @@ void CHmiStatePublisher::SetRateOfPenetrationInitializeK(double rateOfPenetratio
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationInitializeTau(double rateOfPenetrationInitializeTau)
+void CHmiStatePublisher::SetRateOfPenetrationInitializeTau(const double rateOfPenetrationInitializeTau)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -185,7 +166,7 @@ void CHmiStatePublisher::SetRateOfPenetrationInitializeTau(double rateOfPenetrat
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationInitializePreFilter(double rateOfPenetrationInitializePreFilter)
+void CHmiStatePublisher::SetRateOfPenetrationInitializePreFilter(const double rateOfPenetrationInitializePreFilter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -193,7 +174,7 @@ void CHmiStatePublisher::SetRateOfPenetrationInitializePreFilter(double rateOfPe
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationInitializeR1(double rateOfPenetrationInitializeR1)
+void CHmiStatePublisher::SetRateOfPenetrationInitializeR1(const double rateOfPenetrationInitializeR1)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -201,7 +182,7 @@ void CHmiStatePublisher::SetRateOfPenetrationInitializeR1(double rateOfPenetrati
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationInitializeR2(double rateOfPenetrationInitializeR2)
+void CHmiStatePublisher::SetRateOfPenetrationInitializeR2(const double rateOfPenetrationInitializeR2)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -209,7 +190,7 @@ void CHmiStatePublisher::SetRateOfPenetrationInitializeR2(double rateOfPenetrati
     }
 }
 
-void CHmiStatePublisher::SetTorqueInitializeK(double torqueInitializeK)
+void CHmiStatePublisher::SetTorqueInitializeK(const double torqueInitializeK)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -217,7 +198,7 @@ void CHmiStatePublisher::SetTorqueInitializeK(double torqueInitializeK)
     }
 }
 
-void CHmiStatePublisher::SetTorqueInitializeTau(double torqueInitializeTau)
+void CHmiStatePublisher::SetTorqueInitializeTau(const double torqueInitializeTau)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -225,7 +206,7 @@ void CHmiStatePublisher::SetTorqueInitializeTau(double torqueInitializeTau)
     }
 }
 
-void CHmiStatePublisher::SetTorqueInitializePreFilter(double torqueInitializePreFilter)
+void CHmiStatePublisher::SetTorqueInitializePreFilter(const double torqueInitializePreFilter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -233,7 +214,7 @@ void CHmiStatePublisher::SetTorqueInitializePreFilter(double torqueInitializePre
     }
 }
 
-void CHmiStatePublisher::SetTorqueInitializeR1(double torqueInitializeR1)
+void CHmiStatePublisher::SetTorqueInitializeR1(const double torqueInitializeR1)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -241,7 +222,7 @@ void CHmiStatePublisher::SetTorqueInitializeR1(double torqueInitializeR1)
     }
 }
 
-void CHmiStatePublisher::SetTorqueInitializeR2(double torqueInitializeR2)
+void CHmiStatePublisher::SetTorqueInitializeR2(const double torqueInitializeR2)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -249,7 +230,7 @@ void CHmiStatePublisher::SetTorqueInitializeR2(double torqueInitializeR2)
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitInitializeK(double weightOnBitInitializeK)
+void CHmiStatePublisher::SetWeightOnBitInitializeK(const double weightOnBitInitializeK)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -257,7 +238,7 @@ void CHmiStatePublisher::SetWeightOnBitInitializeK(double weightOnBitInitializeK
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitInitializeTau(double weightOnBitInitializeTau)
+void CHmiStatePublisher::SetWeightOnBitInitializeTau(const double weightOnBitInitializeTau)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -265,7 +246,7 @@ void CHmiStatePublisher::SetWeightOnBitInitializeTau(double weightOnBitInitializ
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitInitializePreFilter(double weightOnBitInitializePreFilter)
+void CHmiStatePublisher::SetWeightOnBitInitializePreFilter(const double weightOnBitInitializePreFilter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -273,7 +254,7 @@ void CHmiStatePublisher::SetWeightOnBitInitializePreFilter(double weightOnBitIni
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitInitializeR1(double weightOnBitInitializeR1)
+void CHmiStatePublisher::SetWeightOnBitInitializeR1(const double weightOnBitInitializeR1)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -281,7 +262,7 @@ void CHmiStatePublisher::SetWeightOnBitInitializeR1(double weightOnBitInitialize
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitInitializeR2(double weightOnBitInitializeR2)
+void CHmiStatePublisher::SetWeightOnBitInitializeR2(const double weightOnBitInitializeR2)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -289,7 +270,7 @@ void CHmiStatePublisher::SetWeightOnBitInitializeR2(double weightOnBitInitialize
     }
 }
 
-void CHmiStatePublisher::SetDevMin(double devMin)
+void CHmiStatePublisher::SetDevMin(const double devMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -297,7 +278,7 @@ void CHmiStatePublisher::SetDevMin(double devMin)
     }
 }
 
-void CHmiStatePublisher::SetIntervalMin(double intervalMin)
+void CHmiStatePublisher::SetIntervalMin(const double intervalMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -305,7 +286,7 @@ void CHmiStatePublisher::SetIntervalMin(double intervalMin)
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureFilter(double differentialPressureFilter)
+void CHmiStatePublisher::SetDifferentialPressureFilter(const double differentialPressureFilter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -313,7 +294,7 @@ void CHmiStatePublisher::SetDifferentialPressureFilter(double differentialPressu
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureKcMax(double differentialPressureKcMax)
+void CHmiStatePublisher::SetDifferentialPressureKcMax(const double differentialPressureKcMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -321,7 +302,7 @@ void CHmiStatePublisher::SetDifferentialPressureKcMax(double differentialPressur
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureKcMin(double differentialPressureKcMin)
+void CHmiStatePublisher::SetDifferentialPressureKcMin(const double differentialPressureKcMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -329,7 +310,7 @@ void CHmiStatePublisher::SetDifferentialPressureKcMin(double differentialPressur
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureTdMax(double differentialPressureTdMax)
+void CHmiStatePublisher::SetDifferentialPressureTdMax(const double differentialPressureTdMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -337,7 +318,7 @@ void CHmiStatePublisher::SetDifferentialPressureTdMax(double differentialPressur
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureTdMin(double differentialPressureTdMin)
+void CHmiStatePublisher::SetDifferentialPressureTdMin(const double differentialPressureTdMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -345,7 +326,7 @@ void CHmiStatePublisher::SetDifferentialPressureTdMin(double differentialPressur
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureTiMax(double differentialPressureTiMax)
+void CHmiStatePublisher::SetDifferentialPressureTiMax(const double differentialPressureTiMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -353,7 +334,7 @@ void CHmiStatePublisher::SetDifferentialPressureTiMax(double differentialPressur
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureTiMin(double differentialPressureTiMin)
+void CHmiStatePublisher::SetDifferentialPressureTiMin(const double differentialPressureTiMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -361,7 +342,7 @@ void CHmiStatePublisher::SetDifferentialPressureTiMin(double differentialPressur
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureD(double differentialPressureD)
+void CHmiStatePublisher::SetDifferentialPressureD(const double differentialPressureD)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -369,7 +350,7 @@ void CHmiStatePublisher::SetDifferentialPressureD(double differentialPressureD)
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureEps(double differentialPressureEps)
+void CHmiStatePublisher::SetDifferentialPressureEps(const double differentialPressureEps)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -377,7 +358,7 @@ void CHmiStatePublisher::SetDifferentialPressureEps(double differentialPressureE
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureEpsManual(bool differentialPressureEpsManual)
+void CHmiStatePublisher::SetDifferentialPressureEpsManual(const bool differentialPressureEpsManual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -385,7 +366,7 @@ void CHmiStatePublisher::SetDifferentialPressureEpsManual(bool differentialPress
     }
 }
 
-void CHmiStatePublisher::SetDifferentialPressureF(double differentialPressureF)
+void CHmiStatePublisher::SetDifferentialPressureF(const double differentialPressureF)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -393,7 +374,7 @@ void CHmiStatePublisher::SetDifferentialPressureF(double differentialPressureF)
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationFilter(double rateOfPenetrationFilter)
+void CHmiStatePublisher::SetRateOfPenetrationFilter(const double rateOfPenetrationFilter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -401,7 +382,7 @@ void CHmiStatePublisher::SetRateOfPenetrationFilter(double rateOfPenetrationFilt
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationKcMax(double rateOfPenetrationKcMax)
+void CHmiStatePublisher::SetRateOfPenetrationKcMax(const double rateOfPenetrationKcMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -409,7 +390,7 @@ void CHmiStatePublisher::SetRateOfPenetrationKcMax(double rateOfPenetrationKcMax
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationKcMin(double rateOfPenetrationKcMin)
+void CHmiStatePublisher::SetRateOfPenetrationKcMin(const double rateOfPenetrationKcMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -417,7 +398,7 @@ void CHmiStatePublisher::SetRateOfPenetrationKcMin(double rateOfPenetrationKcMin
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationTdMax(double rateOfPenetrationTdMax)
+void CHmiStatePublisher::SetRateOfPenetrationTdMax(const double rateOfPenetrationTdMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -425,7 +406,7 @@ void CHmiStatePublisher::SetRateOfPenetrationTdMax(double rateOfPenetrationTdMax
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationTdMin(double rateOfPenetrationTdMin)
+void CHmiStatePublisher::SetRateOfPenetrationTdMin(const double rateOfPenetrationTdMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -433,7 +414,7 @@ void CHmiStatePublisher::SetRateOfPenetrationTdMin(double rateOfPenetrationTdMin
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationTiMax(double rateOfPenetrationTiMax)
+void CHmiStatePublisher::SetRateOfPenetrationTiMax(const double rateOfPenetrationTiMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -441,7 +422,7 @@ void CHmiStatePublisher::SetRateOfPenetrationTiMax(double rateOfPenetrationTiMax
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationTiMin(double rateOfPenetrationTiMin)
+void CHmiStatePublisher::SetRateOfPenetrationTiMin(const double rateOfPenetrationTiMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -449,7 +430,7 @@ void CHmiStatePublisher::SetRateOfPenetrationTiMin(double rateOfPenetrationTiMin
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationD(double rateOfPenetrationD)
+void CHmiStatePublisher::SetRateOfPenetrationD(const double rateOfPenetrationD)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -457,7 +438,7 @@ void CHmiStatePublisher::SetRateOfPenetrationD(double rateOfPenetrationD)
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationEps(double rateOfPenetrationEps)
+void CHmiStatePublisher::SetRateOfPenetrationEps(const double rateOfPenetrationEps)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -465,7 +446,7 @@ void CHmiStatePublisher::SetRateOfPenetrationEps(double rateOfPenetrationEps)
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationEpsManual(bool rateOfPenetrationEpsManual)
+void CHmiStatePublisher::SetRateOfPenetrationEpsManual(const bool rateOfPenetrationEpsManual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -473,7 +454,7 @@ void CHmiStatePublisher::SetRateOfPenetrationEpsManual(bool rateOfPenetrationEps
     }
 }
 
-void CHmiStatePublisher::SetRateOfPenetrationF(double rateOfPenetrationF)
+void CHmiStatePublisher::SetRateOfPenetrationF(const double rateOfPenetrationF)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -481,7 +462,7 @@ void CHmiStatePublisher::SetRateOfPenetrationF(double rateOfPenetrationF)
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitFilter(double weightOnBitFilter)
+void CHmiStatePublisher::SetWeightOnBitFilter(const double weightOnBitFilter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -489,7 +470,7 @@ void CHmiStatePublisher::SetWeightOnBitFilter(double weightOnBitFilter)
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitKcMax(double weightOnBitKcMax)
+void CHmiStatePublisher::SetWeightOnBitKcMax(const double weightOnBitKcMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -497,7 +478,7 @@ void CHmiStatePublisher::SetWeightOnBitKcMax(double weightOnBitKcMax)
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitKcMin(double weightOnBitKcMin)
+void CHmiStatePublisher::SetWeightOnBitKcMin(const double weightOnBitKcMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -505,7 +486,7 @@ void CHmiStatePublisher::SetWeightOnBitKcMin(double weightOnBitKcMin)
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitTdMax(double weightOnBitTdMax)
+void CHmiStatePublisher::SetWeightOnBitTdMax(const double weightOnBitTdMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -513,7 +494,7 @@ void CHmiStatePublisher::SetWeightOnBitTdMax(double weightOnBitTdMax)
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitTdMin(double weightOnBitTdMin)
+void CHmiStatePublisher::SetWeightOnBitTdMin(const double weightOnBitTdMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -521,7 +502,7 @@ void CHmiStatePublisher::SetWeightOnBitTdMin(double weightOnBitTdMin)
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitTiMax(double weightOnBitTiMax)
+void CHmiStatePublisher::SetWeightOnBitTiMax(const double weightOnBitTiMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -529,7 +510,7 @@ void CHmiStatePublisher::SetWeightOnBitTiMax(double weightOnBitTiMax)
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitTiMin(double weightOnBitTiMin)
+void CHmiStatePublisher::SetWeightOnBitTiMin(const double weightOnBitTiMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -537,7 +518,7 @@ void CHmiStatePublisher::SetWeightOnBitTiMin(double weightOnBitTiMin)
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitD(double weightOnBitD)
+void CHmiStatePublisher::SetWeightOnBitD(const double weightOnBitD)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -545,7 +526,7 @@ void CHmiStatePublisher::SetWeightOnBitD(double weightOnBitD)
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitEps(double weightOnBitEps)
+void CHmiStatePublisher::SetWeightOnBitEps(const double weightOnBitEps)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -553,7 +534,7 @@ void CHmiStatePublisher::SetWeightOnBitEps(double weightOnBitEps)
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitEpsManual(bool weightOnBitEpsManual)
+void CHmiStatePublisher::SetWeightOnBitEpsManual(const bool weightOnBitEpsManual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -561,7 +542,7 @@ void CHmiStatePublisher::SetWeightOnBitEpsManual(bool weightOnBitEpsManual)
     }
 }
 
-void CHmiStatePublisher::SetWeightOnBitF(double weightOnBitF)
+void CHmiStatePublisher::SetWeightOnBitF(const double weightOnBitF)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -569,7 +550,7 @@ void CHmiStatePublisher::SetWeightOnBitF(double weightOnBitF)
     }
 }
 
-void CHmiStatePublisher::SetTorqueFilter(double torqueFilter)
+void CHmiStatePublisher::SetTorqueFilter(const double torqueFilter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -577,7 +558,7 @@ void CHmiStatePublisher::SetTorqueFilter(double torqueFilter)
     }
 }
 
-void CHmiStatePublisher::SetTorqueKcMax(double torqueKcMax)
+void CHmiStatePublisher::SetTorqueKcMax(const double torqueKcMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -585,7 +566,7 @@ void CHmiStatePublisher::SetTorqueKcMax(double torqueKcMax)
     }
 }
 
-void CHmiStatePublisher::SetTorqueKcMin(double torqueKcMin)
+void CHmiStatePublisher::SetTorqueKcMin(const double torqueKcMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -593,7 +574,7 @@ void CHmiStatePublisher::SetTorqueKcMin(double torqueKcMin)
     }
 }
 
-void CHmiStatePublisher::SetTorqueTdMax(double torqueTdMax)
+void CHmiStatePublisher::SetTorqueTdMax(const double torqueTdMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -601,7 +582,7 @@ void CHmiStatePublisher::SetTorqueTdMax(double torqueTdMax)
     }
 }
 
-void CHmiStatePublisher::SetTorqueTdMin(double torqueTdMin)
+void CHmiStatePublisher::SetTorqueTdMin(const double torqueTdMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -609,7 +590,7 @@ void CHmiStatePublisher::SetTorqueTdMin(double torqueTdMin)
     }
 }
 
-void CHmiStatePublisher::SetTorqueTiMax(double torqueTiMax)
+void CHmiStatePublisher::SetTorqueTiMax(const double torqueTiMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -617,7 +598,7 @@ void CHmiStatePublisher::SetTorqueTiMax(double torqueTiMax)
     }
 }
 
-void CHmiStatePublisher::SetTorqueTiMin(double torqueTiMin)
+void CHmiStatePublisher::SetTorqueTiMin(const double torqueTiMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -625,7 +606,7 @@ void CHmiStatePublisher::SetTorqueTiMin(double torqueTiMin)
     }
 }
 
-void CHmiStatePublisher::SetTorqueD(double torqueD)
+void CHmiStatePublisher::SetTorqueD(const double torqueD)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -633,7 +614,7 @@ void CHmiStatePublisher::SetTorqueD(double torqueD)
     }
 }
 
-void CHmiStatePublisher::SetTorqueEps(double torqueEps)
+void CHmiStatePublisher::SetTorqueEps(const double torqueEps)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -641,7 +622,7 @@ void CHmiStatePublisher::SetTorqueEps(double torqueEps)
     }
 }
 
-void CHmiStatePublisher::SetTorqueEpsManual(bool torqueEpsManual)
+void CHmiStatePublisher::SetTorqueEpsManual(const bool torqueEpsManual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -649,7 +630,7 @@ void CHmiStatePublisher::SetTorqueEpsManual(bool torqueEpsManual)
     }
 }
 
-void CHmiStatePublisher::SetTorqueF(double torqueF)
+void CHmiStatePublisher::SetTorqueF(const double torqueF)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -657,7 +638,7 @@ void CHmiStatePublisher::SetTorqueF(double torqueF)
     }
 }
 
-void CHmiStatePublisher::SetStatus(int32_t status)
+void CHmiStatePublisher::SetStatus(const int32_t status)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -665,7 +646,7 @@ void CHmiStatePublisher::SetStatus(int32_t status)
     }
 }
 
-void CHmiStatePublisher::SetTuningEnabled(bool tuningEnabled)
+void CHmiStatePublisher::SetTuningEnabled(const bool tuningEnabled)
 {
     if (m_pDataInstance != nullptr)
     {

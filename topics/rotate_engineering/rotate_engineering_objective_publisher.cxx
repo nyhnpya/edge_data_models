@@ -6,33 +6,14 @@ CRotateEngineeringObjectivePublisher::CRotateEngineeringObjectivePublisher()
 
 CRotateEngineeringObjectivePublisher::~CRotateEngineeringObjectivePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CRotateEngineeringObjectivePublisher::Create(int32_t domain)
+bool CRotateEngineeringObjectivePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::engineering::ROTATE_ENGINEERING_OBJECTIVE,
-                       "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
-}
-
-bool CRotateEngineeringObjectivePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::engineering::ROTATE_ENGINEERING_OBJECTIVE,
+                                    "EdgeBaseLibrary",
+                                    "EdgeBaseProfile");
 }
 
 bool CRotateEngineeringObjectivePublisher::PublishSample()
@@ -48,7 +29,7 @@ void CRotateEngineeringObjectivePublisher::SetId(CDdsUuid id)
     }
 }
 
-void CRotateEngineeringObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
+void CRotateEngineeringObjectivePublisher::SetEstimatedDuration(const DataTypes::Time estimatedDuration)
 {
     if (m_pDataInstance != nullptr)
     {

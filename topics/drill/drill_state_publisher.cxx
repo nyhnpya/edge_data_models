@@ -6,33 +6,14 @@ CDrillStatePublisher::CDrillStatePublisher()
 
 CDrillStatePublisher::~CDrillStatePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CDrillStatePublisher::Create(int32_t domain)
+bool CDrillStatePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::DRILL_STATE,
-                       "EdgeBaseLibrary",
-                       "DrillStateProfile");
-}
-
-bool CDrillStatePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::DRILL_STATE,
+                                    "EdgeBaseLibrary",
+                                    "DrillStateProfile");
 }
 
 bool CDrillStatePublisher::PublishSample()
@@ -65,7 +46,7 @@ void CDrillStatePublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CDrillStatePublisher::SetTimestamp(DataTypes::Time timestamp)
+void CDrillStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -137,7 +118,7 @@ void CDrillStatePublisher::SetTorqueLimit(const units::torque::newton_meter_t to
     }
 }
 
-void CDrillStatePublisher::SetRopMode(bool ropMode)
+void CDrillStatePublisher::SetRopMode(const bool ropMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -145,7 +126,7 @@ void CDrillStatePublisher::SetRopMode(bool ropMode)
     }
 }
 
-void CDrillStatePublisher::SetWobMode(bool wobMode)
+void CDrillStatePublisher::SetWobMode(const bool wobMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -153,7 +134,7 @@ void CDrillStatePublisher::SetWobMode(bool wobMode)
     }
 }
 
-void CDrillStatePublisher::SetDiffPressureMode(bool diffPressureMode)
+void CDrillStatePublisher::SetDiffPressureMode(const bool diffPressureMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -161,7 +142,7 @@ void CDrillStatePublisher::SetDiffPressureMode(bool diffPressureMode)
     }
 }
 
-void CDrillStatePublisher::SetTorqueMode(bool torqueMode)
+void CDrillStatePublisher::SetTorqueMode(const bool torqueMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -201,7 +182,7 @@ void CDrillStatePublisher::SetTorqueTarget(const units::torque::newton_meter_t t
     }
 }
 
-void CDrillStatePublisher::SetBitOnBottom(bool bitOnBottom)
+void CDrillStatePublisher::SetBitOnBottom(const bool bitOnBottom)
 {
     if (m_pDataInstance != nullptr)
     {

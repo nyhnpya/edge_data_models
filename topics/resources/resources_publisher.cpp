@@ -220,10 +220,10 @@ bool CResourcesPublisher::PublishSample()
     return bRetVal;
 }
 
-bool CResourcesPublisher::Create(int32_t domain)
+bool CResourcesPublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                              sys::process::RESOURCES,
-                              "EdgeBaseLibrary",
-                              "ResourcesProfile");
+    return TKeyedDataWriter::Create(publisher,
+                                    sys::process::RESOURCES,
+                                    "EdgeBaseLibrary",
+                                    "ResourcesProfile");
 }

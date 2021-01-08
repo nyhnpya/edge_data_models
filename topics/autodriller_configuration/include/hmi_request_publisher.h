@@ -15,7 +15,7 @@
 #ifndef __NEC_CONTROL_HMI_REQUEST_PUBLISHER_H__
 #define __NEC_CONTROL_HMI_REQUEST_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "autodriller_configuration.h"
 #include "autodriller_configurationSupport.h"
 #include "dds_uuid.h"
@@ -24,14 +24,13 @@
 #undef pascal
 #endif
 
-class CHmiRequestPublisher : public TPublisher< nec::control::HmiRequest >
+class CHmiRequestPublisher : public TKeyedDataWriter< nec::control::HmiRequest >
 {
     public:
         CHmiRequestPublisher();
         ~CHmiRequestPublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// @param CDdsUuid id
@@ -42,22 +41,22 @@ class CHmiRequestPublisher : public TPublisher< nec::control::HmiRequest >
         void SetMode(const int32_t mode);
         /// @param double modeController
         void SetModeController(const double modeController);
-        /// @param double modelTwoDifferentialPressureRequestK
-        void SetModelTwoDifferentialPressureRequestK(const double modelTwoDifferentialPressureRequestK);
-        /// @param double modelTwoDifferentialPressureRequestTau
-        void SetModelTwoDifferentialPressureRequestTau(const double modelTwoDifferentialPressureRequestTau);
-        /// @param double modelTwoRateOfPenetrationRequestK
-        void SetModelTwoRateOfPenetrationRequestK(const double modelTwoRateOfPenetrationRequestK);
-        /// @param double modelTwoRateOfPenetrationRequestTau
-        void SetModelTwoRateOfPenetrationRequestTau(const double modelTwoRateOfPenetrationRequestTau);
-        /// @param double modelTwoTorqueRequestK
-        void SetModelTwoTorqueRequestK(const double modelTwoTorqueRequestK);
-        /// @param double modelTwoTorqueRequestTau
-        void SetModelTwoTorqueRequestTau(const double modelTwoTorqueRequestTau);
-        /// @param double modelTwoWeightOnBitRequestK
-        void SetModelTwoWeightOnBitRequestK(const double modelTwoWeightOnBitRequestK);
-        /// @param double modelTwoWeightOnBitRequestTau
-        void SetModelTwoWeightOnBitRequestTau(const double modelTwoWeightOnBitRequestTau);
+        /// @param double differentialPressureRequestK
+        void SetDifferentialPressureRequestK(const double differentialPressureRequestK);
+        /// @param double differentialPressureRequestTau
+        void SetDifferentialPressureRequestTau(const double differentialPressureRequestTau);
+        /// @param double rateOfPenetrationRequestK
+        void SetRateOfPenetrationRequestK(const double rateOfPenetrationRequestK);
+        /// @param double rateOfPenetrationRequestTau
+        void SetRateOfPenetrationRequestTau(const double rateOfPenetrationRequestTau);
+        /// @param double torqueRequestK
+        void SetTorqueRequestK(const double torqueRequestK);
+        /// @param double torqueRequestTau
+        void SetTorqueRequestTau(const double torqueRequestTau);
+        /// @param double weightOnBitRequestK
+        void SetWeightOnBitRequestK(const double weightOnBitRequestK);
+        /// @param double weightOnBitRequestTau
+        void SetWeightOnBitRequestTau(const double weightOnBitRequestTau);
         /// @param int32_t status
         void SetStatus(const int32_t status);
         /// @param bool tuningEnable

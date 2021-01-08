@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configurationPlugin_985793277_h
-#define autotuner_configurationPlugin_985793277_h
+#ifndef autotuner_configurationPlugin_985793306_h
+#define autotuner_configurationPlugin_985793306_h
 
 #include "autotuner_configuration.h"
 
@@ -19,6 +19,8 @@ struct RTICdrStream;
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
+
+#include "base_data_typesPlugin.h"
 
 #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, start exporting symbols.
@@ -850,5 +852,5 @@ namespace Shell {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* autotuner_configurationPlugin_985793277_h */
+#endif /* autotuner_configurationPlugin_985793306_h */
 

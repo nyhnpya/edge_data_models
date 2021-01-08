@@ -1,3 +1,5 @@
+#include "base_data_types.idl"
+
 module Shell
 {
     module Hmi
@@ -26,7 +28,7 @@ module Shell
                 double  minInterval;
             };
 
-            //@copy-c-declaration static const char MODEL_STATE_STATE[] = "ModelStateState";
+            //@copy-c-declaration static const char MODEL_STATE[] = "ModelState";
             /**
              * \brief Requested state change in the rotation system.
              *
@@ -35,7 +37,7 @@ module Shell
              * | pipeInnerDiameter | id of requestor                                     | units::length::meter  | 
              * | pipeOuterDiameter | id of current objective                             | units::length::meter  | 
              */
-            struct ModelStateState
+            struct ModelState
             {
                 double  pipeInnerDiameter;
                 double  pipeOuterDiameter;
@@ -48,104 +50,41 @@ module Shell
                 boolean tunerEnabled;
             };
 
-            //@copy-c-declaration static const char DIFFP_TUNING_REQUEST[] = "DiffpTuningRequest";
-            struct DiffpTuningRequest
+            //@copy-c-declaration static const char AUTOTUNER_TUNING_REQUEST[] = "AutoTunerTuningRequest";
+            struct AutoTunerTuningRequest
             {
-                double  diffPFilter;
-                double  diffPD;
-                double  diffPF;
-                double  diffPEps;
-                boolean diffPEpsManual;
-                double  diffPKcMin;
-                double  diffPKcMax;
-                double  diffPTiMin;
-                double  diffPTiMax;
+                string<36>  id;          //@key
+                double  filter;
+                double  d;
+                double  f;
+                double  epsilon;
+                boolean epsilonManual;
+                double  kcMin;
+                double  kcMax;
+                double  tiMin;
+                double  tiMax;
             };
 
-            //@copy-c-declaration static const char DIFFP_TUNING_STATE[] = "DiffpTuningState";
-            struct DiffpTuningState
+            //@copy-c-declaration static const char AUTOTUNER_TUNING_STATE[] = "AutoTunerTuningState";
+            struct AutoTunerTuningState
             {
-                double  diffPFilter;
-                double  diffPD;
-                double  diffPF;
-                double  diffPEps;
-                boolean diffPEpsManual;
-                double  diffPKcMin;
-                double  diffPKcMax;
-                double  diffPTiMin;
-                double  diffPTiMax;
-                double  diffPInitK;
-                double  diffPInitTau;
-                double  diffPInitPreFilter;
-                double  diffPR1;
-                double  diffPR2;
+                string<36> id;          //@key
+                double  filter;
+                double  d;
+                double  f;
+                double  epsilon;
+                boolean epsilonManual;
+                double  kcMin;
+                double  kcMax;
+                double  tiMin;
+                double  tiMax;
+                double  initK;
+                double  initTau;
+                double  initPreFilter;
+                double  r1;
+                double  r2;
             };
     
-            //@copy-c-declaration static const char WOB_TUNING_REQUEST[] = "WobTuningRequest";
-            struct WobTuningRequest
-            {
-                double  wobFilter;
-                double  wobD;
-                double  wobF;
-                double  wobEps;
-                boolean wobEpsManual;
-                double  wobKcMin;
-                double  wobKcMax;
-                double  wobTiMin;
-                double  wobTiMax;
-            };
-
-            //@copy-c-declaration static const char WOB_TUNING_STATE[] = "WobTuningState";
-            struct WobTuningState
-            {
-                double  wobFilter;
-                double  wobD;
-                double  wobF;
-                double  wobEps;
-                boolean wobEpsManual;
-                double  wobKcMin;
-                double  wobKcMax;
-                double  wobTiMin;
-                double  wobTiMax;
-                double  wobInitK;
-                double  wobInitTau;
-                double  wobInitPreFilter;
-                double  wobR1;
-                double  wobR2;
-            };
-    
-            //@copy-c-declaration static const char TORQUE_TUNING_REQUEST[] = "TorqueTuningRequest";
-            struct TorqueTuningRequest
-            {
-                double  torqueFilter;
-                double  torqueD;
-                double  torqueF;
-                double  torqueEps;
-                boolean torqueEpsManual;
-                double  torqueKcMin;
-                double  torqueKcMax;
-                double  torqueTiMin;
-                double  torqueTiMax;
-            };
-
-            //@copy-c-declaration static const char TORQUE_TUNING_STATE[] = "TorqueTuningState";
-            struct TorqueTuningState
-            {
-                double  torqueFilter;
-                double  torqueD;
-                double  torqueF;
-                double  torqueEps;
-                boolean torqueEpsManual;
-                double  torqueKcMin;
-                double  torqueKcMax;
-                double  torqueTiMin;
-                double  torqueTiMax;
-                double  torqueInitK;
-                double  torqueInitTau;
-                double  torqueInitPreFilter;
-                double  torqueR1;
-                double  torqueR2;
-            };
         };
     };
 };

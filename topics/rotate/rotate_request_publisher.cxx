@@ -6,33 +6,14 @@ CRotateRequestPublisher::CRotateRequestPublisher()
 
 CRotateRequestPublisher::~CRotateRequestPublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CRotateRequestPublisher::Create(int32_t domain)
+bool CRotateRequestPublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::ROTATE_REQUEST,
-                       "EdgeBaseLibrary",
-                       "RotateRequestProfile");
-}
-
-bool CRotateRequestPublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::ROTATE_REQUEST,
+                                    "EdgeBaseLibrary",
+                                    "RotateRequestProfile");
 }
 
 bool CRotateRequestPublisher::PublishSample()
@@ -56,7 +37,7 @@ void CRotateRequestPublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CRotateRequestPublisher::SetPriority(DataTypes::Priority priority)
+void CRotateRequestPublisher::SetPriority(const DataTypes::Priority priority)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -64,7 +45,7 @@ void CRotateRequestPublisher::SetPriority(DataTypes::Priority priority)
     }
 }
 
-void CRotateRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
+void CRotateRequestPublisher::SetTimeNeeded(const DataTypes::Time timeNeeded)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -72,7 +53,7 @@ void CRotateRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
     }
 }
 
-void CRotateRequestPublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
+void CRotateRequestPublisher::SetEstimatedDuration(const DataTypes::Time estimatedDuration)
 {
     if (m_pDataInstance != nullptr)
     {

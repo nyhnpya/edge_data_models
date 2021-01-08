@@ -15,7 +15,7 @@
 #ifndef __NEC_PROCESS_AUTO_REAM_STATE_PUBLISHER_H__
 #define __NEC_PROCESS_AUTO_REAM_STATE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "auto_ream.h"
 #include "auto_reamSupport.h"
 #include "dds_uuid.h"
@@ -28,14 +28,13 @@
 /// @brief Wellbore state information.
 ///
 ///
-class CAutoReamStatePublisher : public TPublisher< nec::process::AutoReamState >
+class CAutoReamStatePublisher : public TKeyedDataWriter< nec::process::AutoReamState >
 {
     public:
         CAutoReamStatePublisher();
         ~CAutoReamStatePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// @param CDdsUuid id

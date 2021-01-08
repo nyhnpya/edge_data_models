@@ -46,44 +46,44 @@ double CHmiRequestSubscriber::GetModeController()
     return m_data.modeController;
 }
 
-double CHmiRequestSubscriber::GetModelTwoDifferentialPressureRequestK()
+double CHmiRequestSubscriber::GetDifferentialPressureRequestK()
 {
-    return m_data.modelTwoDifferentialPressureRequestK;
+    return m_data.differentialPressureRequestK;
 }
 
-double CHmiRequestSubscriber::GetModelTwoDifferentialPressureRequestTau()
+double CHmiRequestSubscriber::GetDifferentialPressureRequestTau()
 {
-    return m_data.modelTwoDifferentialPressureRequestTau;
+    return m_data.differentialPressureRequestTau;
 }
 
-double CHmiRequestSubscriber::GetModelTwoRateOfPenetrationRequestK()
+double CHmiRequestSubscriber::GetRateOfPenetrationRequestK()
 {
-    return m_data.modelTwoRateOfPenetrationRequestK;
+    return m_data.rateOfPenetrationRequestK;
 }
 
-double CHmiRequestSubscriber::GetModelTwoRateOfPenetrationRequestTau()
+double CHmiRequestSubscriber::GetRateOfPenetrationRequestTau()
 {
-    return m_data.modelTwoRateOfPenetrationRequestTau;
+    return m_data.rateOfPenetrationRequestTau;
 }
 
-double CHmiRequestSubscriber::GetModelTwoTorqueRequestK()
+double CHmiRequestSubscriber::GetTorqueRequestK()
 {
-    return m_data.modelTwoTorqueRequestK;
+    return m_data.torqueRequestK;
 }
 
-double CHmiRequestSubscriber::GetModelTwoTorqueRequestTau()
+double CHmiRequestSubscriber::GetTorqueRequestTau()
 {
-    return m_data.modelTwoTorqueRequestTau;
+    return m_data.torqueRequestTau;
 }
 
-double CHmiRequestSubscriber::GetModelTwoWeightOnBitRequestK()
+double CHmiRequestSubscriber::GetWeightOnBitRequestK()
 {
-    return m_data.modelTwoWeightOnBitRequestK;
+    return m_data.weightOnBitRequestK;
 }
 
-double CHmiRequestSubscriber::GetModelTwoWeightOnBitRequestTau()
+double CHmiRequestSubscriber::GetWeightOnBitRequestTau()
 {
-    return m_data.modelTwoWeightOnBitRequestTau;
+    return m_data.weightOnBitRequestTau;
 }
 
 int32_t CHmiRequestSubscriber::GetStatus()

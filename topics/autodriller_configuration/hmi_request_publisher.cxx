@@ -6,33 +6,14 @@ CHmiRequestPublisher::CHmiRequestPublisher()
 
 CHmiRequestPublisher::~CHmiRequestPublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CHmiRequestPublisher::Create(int32_t domain)
+bool CHmiRequestPublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::control::HMI_REQUEST,
-                       "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
-}
-
-bool CHmiRequestPublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::control::HMI_REQUEST,
+                                    "EdgeBaseLibrary",
+                                    "EdgeBaseProfile");
 }
 
 bool CHmiRequestPublisher::PublishSample()
@@ -48,7 +29,7 @@ void CHmiRequestPublisher::SetId(CDdsUuid id)
     }
 }
 
-void CHmiRequestPublisher::SetTimestamp(DataTypes::Time timestamp)
+void CHmiRequestPublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -56,7 +37,7 @@ void CHmiRequestPublisher::SetTimestamp(DataTypes::Time timestamp)
     }
 }
 
-void CHmiRequestPublisher::SetMode(int32_t mode)
+void CHmiRequestPublisher::SetMode(const int32_t mode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -64,7 +45,7 @@ void CHmiRequestPublisher::SetMode(int32_t mode)
     }
 }
 
-void CHmiRequestPublisher::SetModeController(double modeController)
+void CHmiRequestPublisher::SetModeController(const double modeController)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -72,71 +53,71 @@ void CHmiRequestPublisher::SetModeController(double modeController)
     }
 }
 
-void CHmiRequestPublisher::SetModelTwoDifferentialPressureRequestK(double modelTwoDifferentialPressureRequestK)
+void CHmiRequestPublisher::SetDifferentialPressureRequestK(const double differentialPressureRequestK)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->modelTwoDifferentialPressureRequestK = modelTwoDifferentialPressureRequestK;
+        m_pDataInstance->differentialPressureRequestK = differentialPressureRequestK;
     }
 }
 
-void CHmiRequestPublisher::SetModelTwoDifferentialPressureRequestTau(double modelTwoDifferentialPressureRequestTau)
+void CHmiRequestPublisher::SetDifferentialPressureRequestTau(const double differentialPressureRequestTau)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->modelTwoDifferentialPressureRequestTau = modelTwoDifferentialPressureRequestTau;
+        m_pDataInstance->differentialPressureRequestTau = differentialPressureRequestTau;
     }
 }
 
-void CHmiRequestPublisher::SetModelTwoRateOfPenetrationRequestK(double modelTwoRateOfPenetrationRequestK)
+void CHmiRequestPublisher::SetRateOfPenetrationRequestK(const double rateOfPenetrationRequestK)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->modelTwoRateOfPenetrationRequestK = modelTwoRateOfPenetrationRequestK;
+        m_pDataInstance->rateOfPenetrationRequestK = rateOfPenetrationRequestK;
     }
 }
 
-void CHmiRequestPublisher::SetModelTwoRateOfPenetrationRequestTau(double modelTwoRateOfPenetrationRequestTau)
+void CHmiRequestPublisher::SetRateOfPenetrationRequestTau(const double rateOfPenetrationRequestTau)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->modelTwoRateOfPenetrationRequestTau = modelTwoRateOfPenetrationRequestTau;
+        m_pDataInstance->rateOfPenetrationRequestTau = rateOfPenetrationRequestTau;
     }
 }
 
-void CHmiRequestPublisher::SetModelTwoTorqueRequestK(double modelTwoTorqueRequestK)
+void CHmiRequestPublisher::SetTorqueRequestK(const double torqueRequestK)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->modelTwoTorqueRequestK = modelTwoTorqueRequestK;
+        m_pDataInstance->torqueRequestK = torqueRequestK;
     }
 }
 
-void CHmiRequestPublisher::SetModelTwoTorqueRequestTau(double modelTwoTorqueRequestTau)
+void CHmiRequestPublisher::SetTorqueRequestTau(const double torqueRequestTau)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->modelTwoTorqueRequestTau = modelTwoTorqueRequestTau;
+        m_pDataInstance->torqueRequestTau = torqueRequestTau;
     }
 }
 
-void CHmiRequestPublisher::SetModelTwoWeightOnBitRequestK(double modelTwoWeightOnBitRequestK)
+void CHmiRequestPublisher::SetWeightOnBitRequestK(const double weightOnBitRequestK)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->modelTwoWeightOnBitRequestK = modelTwoWeightOnBitRequestK;
+        m_pDataInstance->weightOnBitRequestK = weightOnBitRequestK;
     }
 }
 
-void CHmiRequestPublisher::SetModelTwoWeightOnBitRequestTau(double modelTwoWeightOnBitRequestTau)
+void CHmiRequestPublisher::SetWeightOnBitRequestTau(const double weightOnBitRequestTau)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->modelTwoWeightOnBitRequestTau = modelTwoWeightOnBitRequestTau;
+        m_pDataInstance->weightOnBitRequestTau = weightOnBitRequestTau;
     }
 }
 
-void CHmiRequestPublisher::SetStatus(int32_t status)
+void CHmiRequestPublisher::SetStatus(const int32_t status)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -144,7 +125,7 @@ void CHmiRequestPublisher::SetStatus(int32_t status)
     }
 }
 
-void CHmiRequestPublisher::SetTuningEnable(bool tuningEnable)
+void CHmiRequestPublisher::SetTuningEnable(const bool tuningEnable)
 {
     if (m_pDataInstance != nullptr)
     {

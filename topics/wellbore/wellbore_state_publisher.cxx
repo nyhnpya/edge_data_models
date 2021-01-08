@@ -6,33 +6,14 @@ CWellboreStatePublisher::CWellboreStatePublisher()
 
 CWellboreStatePublisher::~CWellboreStatePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CWellboreStatePublisher::Create(int32_t domain)
+bool CWellboreStatePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::WELLBORE_STATE,
-                       "EdgeBaseLibrary",
-                       "WellboreStateProfile");
-}
-
-bool CWellboreStatePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::WELLBORE_STATE,
+                                    "EdgeBaseLibrary",
+                                    "WellboreStateProfile");
 }
 
 bool CWellboreStatePublisher::PublishSample()
@@ -65,7 +46,7 @@ void CWellboreStatePublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CWellboreStatePublisher::SetTimestamp(DataTypes::Time timestamp)
+void CWellboreStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)
     {

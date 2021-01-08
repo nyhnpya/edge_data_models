@@ -15,7 +15,7 @@
 #ifndef __NEC_PROCESS_ROTATE_OBJECTIVE_PUBLISHER_H__
 #define __NEC_PROCESS_ROTATE_OBJECTIVE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "rotate.h"
 #include "rotateSupport.h"
 #include "dds_uuid.h"
@@ -30,14 +30,13 @@
 /// @brief Current requested state change in the rotation system.
 ///
 ///
-class CRotateObjectivePublisher : public TPublisher< nec::process::RotateObjective >
+class CRotateObjectivePublisher : public TKeyedDataWriter< nec::process::RotateObjective >
 {
     public:
         CRotateObjectivePublisher();
         ~CRotateObjectivePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// id of requestor

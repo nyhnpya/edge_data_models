@@ -16,25 +16,26 @@
 #define __OBJECTIVE_STATE_PUBLISHER_H__
 
 #include <mutex>
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "base_data_types.h"
 #include "objective.h"
 #include "objectiveSupport.h"
+#include "dds_uuid.h"
 
-class CObjectiveStatePublisher : public TPublisher< process::plan::ObjectiveState>
+class CObjectiveStatePublisher : public TKeyedDataWriter< process::plan::ObjectiveState>
 {
 public:
     CObjectiveStatePublisher();
     virtual ~CObjectiveStatePublisher();
 
-    bool Create(int32_t domain);
-    bool Initialize();
+    bool Create(const std::string &publisher);
     bool PublishSample();
 
     // Topic getters
+    void SetId(CDdsUuid id);
     void SetObjective(DataTypes::Objective objective);
+
     DataTypes::Uuid GetId();
-    
 };
 
 #endif // __OBJECTIVE_STATE_PUBLISHER_H__

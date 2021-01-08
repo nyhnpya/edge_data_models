@@ -15,7 +15,7 @@
 #ifndef __SHELL_HMI_AUTOTUNERCONFIGURATION_MODEL_STATE_PUBLISHER_H__
 #define __SHELL_HMI_AUTOTUNERCONFIGURATION_MODEL_STATE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "data_writer.h"
 #include "autotuner_configuration.h"
 #include "autotuner_configurationSupport.h"
 #include "dds_uuid.h"
@@ -29,14 +29,13 @@
 /// @brief Requested state change in the rotation system.
 ///
 ///
-class CModelStatePublisher : public TPublisher< Shell::Hmi::AutoTunerConfiguration::ModelState >
+class CModelStatePublisher : public TDataWriter< Shell::Hmi::AutoTunerConfiguration::ModelState >
 {
     public:
         CModelStatePublisher();
         ~CModelStatePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// id of requestor

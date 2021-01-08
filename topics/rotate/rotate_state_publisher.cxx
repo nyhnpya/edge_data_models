@@ -6,33 +6,14 @@ CRotateStatePublisher::CRotateStatePublisher()
 
 CRotateStatePublisher::~CRotateStatePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CRotateStatePublisher::Create(int32_t domain)
+bool CRotateStatePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::ROTATE_STATE,
-                       "EdgeBaseLibrary",
-                       "RotateStateProfile");
-}
-
-bool CRotateStatePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::ROTATE_STATE,
+                                    "EdgeBaseLibrary",
+                                    "RotateStateProfile");
 }
 
 bool CRotateStatePublisher::PublishSample()
@@ -65,7 +46,7 @@ void CRotateStatePublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CRotateStatePublisher::SetTimestamp(DataTypes::Time timestamp)
+void CRotateStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -73,7 +54,7 @@ void CRotateStatePublisher::SetTimestamp(DataTypes::Time timestamp)
     }
 }
 
-void CRotateStatePublisher::SetStatus(DataTypes::Status status)
+void CRotateStatePublisher::SetStatus(const DataTypes::Status status)
 {
     if (m_pDataInstance != nullptr)
     {

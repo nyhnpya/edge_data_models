@@ -8,25 +8,12 @@ CPlcRotateRequestPublisher::~CPlcRotateRequestPublisher()
 {
 }
 
-bool CPlcRotateRequestPublisher::Create(int32_t domain)
+bool CPlcRotateRequestPublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       plc::process::PLC_ROTATE_REQUEST_TOPIC,
-                       "EdgeBaseLibrary",
-                       "PlcProfile");
-}
-
-bool CPlcRotateRequestPublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        retVal = true;
-    }
-
-    return retVal;
+    return TDataWriter::Create(publisher,
+                                    plc::process::PLC_ROTATE_REQUEST_TOPIC,
+                                    "EdgeBaseLibrary",
+                                    "PlcProfile");
 }
 
 bool CPlcRotateRequestPublisher::PublishSample()
@@ -34,7 +21,7 @@ bool CPlcRotateRequestPublisher::PublishSample()
     return Publish();
 }
 
-void CPlcRotateRequestPublisher::SetTargetRate(double targetRate)
+void CPlcRotateRequestPublisher::SetTargetRate(const double targetRate)
 {
     if (m_pDataInstance != nullptr)
     {

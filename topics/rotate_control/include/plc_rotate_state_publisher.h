@@ -15,7 +15,7 @@
 #ifndef __PLC_PROCESS_PLC_ROTATE_STATE_PUBLISHER_H__
 #define __PLC_PROCESS_PLC_ROTATE_STATE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "data_writer.h"
 #include "plc_rotate.h"
 #include "plc_rotateSupport.h"
 #include "dds_uuid.h"
@@ -28,14 +28,13 @@
 /// @brief current state of rotation system.
 ///
 ///
-class CPlcRotateStatePublisher : public TPublisher< plc::process::PlcRotateState >
+class CPlcRotateStatePublisher : public TDataWriter< plc::process::PlcRotateState >
 {
     public:
         CPlcRotateStatePublisher();
         ~CPlcRotateStatePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// @param int32_t status

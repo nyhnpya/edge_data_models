@@ -6,33 +6,14 @@ CDrillingLimitsPublisher::CDrillingLimitsPublisher()
 
 CDrillingLimitsPublisher::~CDrillingLimitsPublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CDrillingLimitsPublisher::Create(int32_t domain)
+bool CDrillingLimitsPublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       process::plan::DRILLING_LIMITS,
-                       "EdgeBaseLibrary",
-                       "ConfigProfile");
-}
-
-bool CDrillingLimitsPublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    process::plan::DRILLING_LIMITS,
+                                    "EdgeBaseLibrary",
+                                    "ConfigProfile");
 }
 
 bool CDrillingLimitsPublisher::PublishSample()

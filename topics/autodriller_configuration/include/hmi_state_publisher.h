@@ -15,7 +15,7 @@
 #ifndef __NEC_CONTROL_HMI_STATE_PUBLISHER_H__
 #define __NEC_CONTROL_HMI_STATE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "autodriller_configuration.h"
 #include "autodriller_configurationSupport.h"
 #include "dds_uuid.h"
@@ -24,14 +24,13 @@
 #undef pascal
 #endif
 
-class CHmiStatePublisher : public TPublisher< nec::control::HmiState >
+class CHmiStatePublisher : public TKeyedDataWriter< nec::control::HmiState >
 {
     public:
         CHmiStatePublisher();
         ~CHmiStatePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// @param CDdsUuid id

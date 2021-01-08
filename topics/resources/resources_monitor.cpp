@@ -51,7 +51,7 @@ CResourcesMonitor::~CResourcesMonitor()
     free(m_appVersion);
 }
 
-void CResourcesMonitor::Initialize(const char* appVersion, int32_t domain)
+void CResourcesMonitor::Initialize(const char* appVersion)
 {
     m_appVersion = strdup(appVersion);
 
@@ -62,10 +62,11 @@ void CResourcesMonitor::Initialize(const char* appVersion, int32_t domain)
     m_maxCpuPercent = m_processStats.cpuUsagePercent;
     m_maxNumThreads = 0;
 
-    if (m_resourcesPublisher.Create(domain) == true)
+    if (m_resourcesPublisher.Create(m_processStats.processName) == true)
     {
+        m_resourcesPublisher.CreateInstance(m_processStats.processName);
         m_resourcesPublisher.SetProcessName(m_processStats.processName);
-        m_resourcesPublisher.CreateInstance();
+        m_resourcesPublisher.RegisterInstance();
     }
 }
 

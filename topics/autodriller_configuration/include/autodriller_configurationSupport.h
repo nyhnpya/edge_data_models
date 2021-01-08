@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autodriller_configurationSupport_730533774_h
-#define autodriller_configurationSupport_730533774_h
+#ifndef autodriller_configurationSupport_730533710_h
+#define autodriller_configurationSupport_730533710_h
 
 /* Uses */
 #include "autodriller_configuration.h"
@@ -101,5 +101,5 @@ namespace nec {
     } /* namespace control  */
 } /* namespace nec  */
 
-#endif  /* autodriller_configurationSupport_730533774_h */
+#endif  /* autodriller_configurationSupport_730533710_h */
 

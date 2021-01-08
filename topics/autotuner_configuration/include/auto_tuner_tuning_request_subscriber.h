@@ -39,8 +39,8 @@ class CAutoTunerTuningRequestSubscriber : public TSubscriber< Shell::Hmi::AutoTu
         void OnDataDisposed(OnDataDisposedEvent event);
         void OnLivelinessChanged(OnLivelinessChangedEvent event);
         
-        /// @return string<36> id
-        const char *GetId();
+        /// @return std::string id
+        std::string GetId();
         /// @return double filter
         double GetFilter();
         /// @return double d

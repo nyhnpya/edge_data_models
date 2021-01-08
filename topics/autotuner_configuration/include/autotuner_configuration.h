@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configuration_985793277_h
-#define autotuner_configuration_985793277_h
+#ifndef autotuner_configuration_985793306_h
+#define autotuner_configuration_985793306_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -21,6 +21,7 @@ or consult the RTI Connext manual.
 #include "ndds_standalone_type.h"
 #endif
 
+#include "base_data_types.h"
 namespace Shell {
     namespace Hmi {
         namespace AutoTunerConfiguration {

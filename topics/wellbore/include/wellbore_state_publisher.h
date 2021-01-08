@@ -15,7 +15,7 @@
 #ifndef __NEC_PROCESS_WELLBORE_STATE_PUBLISHER_H__
 #define __NEC_PROCESS_WELLBORE_STATE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "wellbore.h"
 #include "wellboreSupport.h"
 #include "dds_uuid.h"
@@ -45,14 +45,13 @@
 /// | OnLivelinessLost      | |
 /// | OnDataDisposed        | |
 ///
-class CWellboreStatePublisher : public TPublisher< nec::process::WellboreState >
+class CWellboreStatePublisher : public TKeyedDataWriter< nec::process::WellboreState >
 {
     public:
         CWellboreStatePublisher();
         ~CWellboreStatePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// Unique id of publisher.

@@ -8,25 +8,12 @@ CModelStatePublisher::~CModelStatePublisher()
 {
 }
 
-bool CModelStatePublisher::Create(int32_t domain)
+bool CModelStatePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       Shell::Hmi::AutoTunerConfiguration::MODEL_STATE,
-                       "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
-}
-
-bool CModelStatePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        retVal = true;
-    }
-
-    return retVal;
+    return TDataWriter::Create(publisher,
+                                    Shell::Hmi::AutoTunerConfiguration::MODEL_STATE,
+                                    "EdgeBaseLibrary",
+                                    "EdgeBaseProfile");
 }
 
 bool CModelStatePublisher::PublishSample()
@@ -57,7 +44,7 @@ void CModelStatePublisher::SetPipeOuterDiameter(const units::length::meter_t pip
     }
 }
 
-void CModelStatePublisher::SetSlopeFilter(double slopeFilter)
+void CModelStatePublisher::SetSlopeFilter(const double slopeFilter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -65,7 +52,7 @@ void CModelStatePublisher::SetSlopeFilter(double slopeFilter)
     }
 }
 
-void CModelStatePublisher::SetTauMax(double tauMax)
+void CModelStatePublisher::SetTauMax(const double tauMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -73,7 +60,7 @@ void CModelStatePublisher::SetTauMax(double tauMax)
     }
 }
 
-void CModelStatePublisher::SetTauMin(double tauMin)
+void CModelStatePublisher::SetTauMin(const double tauMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -81,7 +68,7 @@ void CModelStatePublisher::SetTauMin(double tauMin)
     }
 }
 
-void CModelStatePublisher::SetTauMultiplier(double tauMultiplier)
+void CModelStatePublisher::SetTauMultiplier(const double tauMultiplier)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -89,7 +76,7 @@ void CModelStatePublisher::SetTauMultiplier(double tauMultiplier)
     }
 }
 
-void CModelStatePublisher::SetMaxDeviation(double maxDeviation)
+void CModelStatePublisher::SetMaxDeviation(const double maxDeviation)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -97,7 +84,7 @@ void CModelStatePublisher::SetMaxDeviation(double maxDeviation)
     }
 }
 
-void CModelStatePublisher::SetMinInterval(double minInterval)
+void CModelStatePublisher::SetMinInterval(const double minInterval)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -105,7 +92,7 @@ void CModelStatePublisher::SetMinInterval(double minInterval)
     }
 }
 
-void CModelStatePublisher::SetTunerEnabled(bool tunerEnabled)
+void CModelStatePublisher::SetTunerEnabled(const bool tunerEnabled)
 {
     if (m_pDataInstance != nullptr)
     {

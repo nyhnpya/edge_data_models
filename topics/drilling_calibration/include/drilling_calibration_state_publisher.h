@@ -15,7 +15,7 @@
 #ifndef __NEC_CONTROL_DRILLING_CALIBRATION_STATE_PUBLISHER_H__
 #define __NEC_CONTROL_DRILLING_CALIBRATION_STATE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "drilling_calibration.h"
 #include "drilling_calibrationSupport.h"
 #include "dds_uuid.h"
@@ -24,14 +24,13 @@
 #undef pascal
 #endif
 
-class CDrillingCalibrationStatePublisher : public TPublisher< nec::control::DrillingCalibrationState >
+class CDrillingCalibrationStatePublisher : public TKeyedDataWriter< nec::control::DrillingCalibrationState >
 {
     public:
         CDrillingCalibrationStatePublisher();
         ~CDrillingCalibrationStatePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// @param CDdsUuid id

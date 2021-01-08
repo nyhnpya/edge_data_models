@@ -15,7 +15,7 @@
 #ifndef __NEC_PROCESS_CIRCULATE_STATE_PUBLISHER_H__
 #define __NEC_PROCESS_CIRCULATE_STATE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "circulate.h"
 #include "circulateSupport.h"
 #include "dds_uuid.h"
@@ -44,14 +44,13 @@
 /// | OnLivelinessLost      | |
 /// | OnDataDisposed        | |
 ///
-class CCirculateStatePublisher : public TPublisher< nec::process::CirculateState >
+class CCirculateStatePublisher : public TKeyedDataWriter< nec::process::CirculateState >
 {
     public:
         CCirculateStatePublisher();
         ~CCirculateStatePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// id of requestor

@@ -6,33 +6,14 @@ CAutoReamRequestPublisher::CAutoReamRequestPublisher()
 
 CAutoReamRequestPublisher::~CAutoReamRequestPublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CAutoReamRequestPublisher::Create(int32_t domain)
+bool CAutoReamRequestPublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::AUTO_REAM_REQUEST,
-                       "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
-}
-
-bool CAutoReamRequestPublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::AUTO_REAM_REQUEST,
+                                    "EdgeBaseLibrary",
+                                    "EdgeBaseProfile");
 }
 
 bool CAutoReamRequestPublisher::PublishSample()
@@ -56,7 +37,7 @@ void CAutoReamRequestPublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CAutoReamRequestPublisher::SetPriority(DataTypes::Priority priority)
+void CAutoReamRequestPublisher::SetPriority(const DataTypes::Priority priority)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -64,7 +45,7 @@ void CAutoReamRequestPublisher::SetPriority(DataTypes::Priority priority)
     }
 }
 
-void CAutoReamRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
+void CAutoReamRequestPublisher::SetTimeNeeded(const DataTypes::Time timeNeeded)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -72,7 +53,7 @@ void CAutoReamRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
     }
 }
 
-void CAutoReamRequestPublisher::SetDuration(DataTypes::Time duration)
+void CAutoReamRequestPublisher::SetDuration(const DataTypes::Time duration)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -80,7 +61,7 @@ void CAutoReamRequestPublisher::SetDuration(DataTypes::Time duration)
     }
 }
 
-void CAutoReamRequestPublisher::SetQuillTipPosPV_m(double QuillTipPosPV_m)
+void CAutoReamRequestPublisher::SetQuillTipPosPV_m(const double QuillTipPosPV_m)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -88,7 +69,7 @@ void CAutoReamRequestPublisher::SetQuillTipPosPV_m(double QuillTipPosPV_m)
     }
 }
 
-void CAutoReamRequestPublisher::SetHole_depth(double Hole_depth)
+void CAutoReamRequestPublisher::SetHole_depth(const double Hole_depth)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -96,7 +77,7 @@ void CAutoReamRequestPublisher::SetHole_depth(double Hole_depth)
     }
 }
 
-void CAutoReamRequestPublisher::SetDp_PressurePV_kPa(double Dp_PressurePV_kPa)
+void CAutoReamRequestPublisher::SetDp_PressurePV_kPa(const double Dp_PressurePV_kPa)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -104,7 +85,7 @@ void CAutoReamRequestPublisher::SetDp_PressurePV_kPa(double Dp_PressurePV_kPa)
     }
 }
 
-void CAutoReamRequestPublisher::SetWeightOnBitPV_daN(double WeightOnBitPV_daN)
+void CAutoReamRequestPublisher::SetWeightOnBitPV_daN(const double WeightOnBitPV_daN)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -112,7 +93,7 @@ void CAutoReamRequestPublisher::SetWeightOnBitPV_daN(double WeightOnBitPV_daN)
     }
 }
 
-void CAutoReamRequestPublisher::SetStandpipePressUnfiltPV_kPa(double StandpipePressUnfiltPV_kPa)
+void CAutoReamRequestPublisher::SetStandpipePressUnfiltPV_kPa(const double StandpipePressUnfiltPV_kPa)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -120,7 +101,7 @@ void CAutoReamRequestPublisher::SetStandpipePressUnfiltPV_kPa(double StandpipePr
     }
 }
 
-void CAutoReamRequestPublisher::SetBlockSpeedPV_mps(double BlockSpeedPV_mps)
+void CAutoReamRequestPublisher::SetBlockSpeedPV_mps(const double BlockSpeedPV_mps)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -128,7 +109,7 @@ void CAutoReamRequestPublisher::SetBlockSpeedPV_mps(double BlockSpeedPV_mps)
     }
 }
 
-void CAutoReamRequestPublisher::SetTD_Quill_SpeedPV_rpm(double TD_Quill_SpeedPV_rpm)
+void CAutoReamRequestPublisher::SetTD_Quill_SpeedPV_rpm(const double TD_Quill_SpeedPV_rpm)
 {
     if (m_pDataInstance != nullptr)
     {

@@ -15,7 +15,7 @@
 #ifndef __NEC_PROCESS_CIRCULATE_OBJECTIVE_PUBLISHER_H__
 #define __NEC_PROCESS_CIRCULATE_OBJECTIVE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "circulate.h"
 #include "circulateSupport.h"
 #include "dds_uuid.h"
@@ -30,14 +30,13 @@
 /// @brief current requested state change in the circulation system.
 ///
 ///
-class CCirculateObjectivePublisher : public TPublisher< nec::process::CirculateObjective >
+class CCirculateObjectivePublisher : public TKeyedDataWriter< nec::process::CirculateObjective >
 {
     public:
         CCirculateObjectivePublisher();
         ~CCirculateObjectivePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// id of requestor

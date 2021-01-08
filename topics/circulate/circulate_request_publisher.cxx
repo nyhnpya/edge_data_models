@@ -6,33 +6,14 @@ CCirculateRequestPublisher::CCirculateRequestPublisher()
 
 CCirculateRequestPublisher::~CCirculateRequestPublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CCirculateRequestPublisher::Create(int32_t domain)
+bool CCirculateRequestPublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::CIRCULATE_REQUEST,
-                       "EdgeBaseLibrary",
-                       "CirculateRequestProfile");
-}
-
-bool CCirculateRequestPublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::CIRCULATE_REQUEST,
+                                    "EdgeBaseLibrary",
+                                    "CirculateRequestProfile");
 }
 
 bool CCirculateRequestPublisher::PublishSample()
@@ -56,7 +37,7 @@ void CCirculateRequestPublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CCirculateRequestPublisher::SetPriority(DataTypes::Priority priority)
+void CCirculateRequestPublisher::SetPriority(const DataTypes::Priority priority)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -64,7 +45,7 @@ void CCirculateRequestPublisher::SetPriority(DataTypes::Priority priority)
     }
 }
 
-void CCirculateRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
+void CCirculateRequestPublisher::SetTimeNeeded(const DataTypes::Time timeNeeded)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -72,7 +53,7 @@ void CCirculateRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
     }
 }
 
-void CCirculateRequestPublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
+void CCirculateRequestPublisher::SetEstimatedDuration(const DataTypes::Time estimatedDuration)
 {
     if (m_pDataInstance != nullptr)
     {

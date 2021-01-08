@@ -25,7 +25,7 @@ bool CAutoTunerTuningRequestSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-const char *CAutoTunerTuningRequestSubscriber::GetId()
+std::string CAutoTunerTuningRequestSubscriber::GetId()
 {
     return m_data.id;
 }

@@ -15,7 +15,7 @@
 #ifndef __RESOURCES_PUBLISHER_H__ 
 #define __RESOURCES_PUBLISHER_H__ 
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "resources.h"
 #include "resourcesSupport.h"
 
@@ -27,13 +27,13 @@
 using namespace units;
 using namespace units::pressure;
 
-class CResourcesPublisher : public TPublisher< sys::process::Resources  >
+class CResourcesPublisher : public TKeyedDataWriter< sys::process::Resources  >
 {
  public:
     CResourcesPublisher();
     ~CResourcesPublisher();
 
-    bool Create(int32_t domain);
+    bool Create(const std::string &publisher);
     bool Initialize();
     bool PublishSample();
 

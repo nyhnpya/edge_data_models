@@ -15,7 +15,7 @@
 #ifndef __PROCESS_PLAN_DRILLING_LIMITS_PUBLISHER_H__
 #define __PROCESS_PLAN_DRILLING_LIMITS_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "drilling_limits.h"
 #include "drilling_limitsSupport.h"
 #include "dds_uuid.h"
@@ -30,14 +30,13 @@
 /// @brief set of process limits for a given section specified by depth.
 ///
 ///
-class CDrillingLimitsPublisher : public TPublisher< process::plan::DrillingLimits >
+class CDrillingLimitsPublisher : public TKeyedDataWriter< process::plan::DrillingLimits >
 {
     public:
         CDrillingLimitsPublisher();
         ~CDrillingLimitsPublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// id of requestor

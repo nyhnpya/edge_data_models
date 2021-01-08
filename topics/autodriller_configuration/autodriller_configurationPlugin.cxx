@@ -187,28 +187,28 @@ namespace nec {
                 &sample->modeController, "modeController", indent_level + 1);    
 
             RTICdrType_printDouble(
-                &sample->modelTwoDifferentialPressureRequestK, "modelTwoDifferentialPressureRequestK", indent_level + 1);    
+                &sample->differentialPressureRequestK, "differentialPressureRequestK", indent_level + 1);    
 
             RTICdrType_printDouble(
-                &sample->modelTwoDifferentialPressureRequestTau, "modelTwoDifferentialPressureRequestTau", indent_level + 1);    
+                &sample->differentialPressureRequestTau, "differentialPressureRequestTau", indent_level + 1);    
 
             RTICdrType_printDouble(
-                &sample->modelTwoRateOfPenetrationRequestK, "modelTwoRateOfPenetrationRequestK", indent_level + 1);    
+                &sample->rateOfPenetrationRequestK, "rateOfPenetrationRequestK", indent_level + 1);    
 
             RTICdrType_printDouble(
-                &sample->modelTwoRateOfPenetrationRequestTau, "modelTwoRateOfPenetrationRequestTau", indent_level + 1);    
+                &sample->rateOfPenetrationRequestTau, "rateOfPenetrationRequestTau", indent_level + 1);    
 
             RTICdrType_printDouble(
-                &sample->modelTwoTorqueRequestK, "modelTwoTorqueRequestK", indent_level + 1);    
+                &sample->torqueRequestK, "torqueRequestK", indent_level + 1);    
 
             RTICdrType_printDouble(
-                &sample->modelTwoTorqueRequestTau, "modelTwoTorqueRequestTau", indent_level + 1);    
+                &sample->torqueRequestTau, "torqueRequestTau", indent_level + 1);    
 
             RTICdrType_printDouble(
-                &sample->modelTwoWeightOnBitRequestK, "modelTwoWeightOnBitRequestK", indent_level + 1);    
+                &sample->weightOnBitRequestK, "weightOnBitRequestK", indent_level + 1);    
 
             RTICdrType_printDouble(
-                &sample->modelTwoWeightOnBitRequestTau, "modelTwoWeightOnBitRequestTau", indent_level + 1);    
+                &sample->weightOnBitRequestTau, "weightOnBitRequestTau", indent_level + 1);    
 
             RTICdrType_printLong(
                 &sample->status, "status", indent_level + 1);    

@@ -6,33 +6,14 @@ CRotateEngineeringStatePublisher::CRotateEngineeringStatePublisher()
 
 CRotateEngineeringStatePublisher::~CRotateEngineeringStatePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CRotateEngineeringStatePublisher::Create(int32_t domain)
+bool CRotateEngineeringStatePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::engineering::ROTATE_ENGINEERING_STATE,
-                       "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
-}
-
-bool CRotateEngineeringStatePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::engineering::ROTATE_ENGINEERING_STATE,
+                                    "EdgeBaseLibrary",
+                                    "EdgeBaseProfile");
 }
 
 bool CRotateEngineeringStatePublisher::PublishSample()
@@ -57,7 +38,7 @@ void CRotateEngineeringStatePublisher::SetId(CDdsUuid id)
     }
 }
 
-void CRotateEngineeringStatePublisher::SetStatus(DataTypes::Status status)
+void CRotateEngineeringStatePublisher::SetStatus(const DataTypes::Status status)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -65,7 +46,7 @@ void CRotateEngineeringStatePublisher::SetStatus(DataTypes::Status status)
     }
 }
 
-void CRotateEngineeringStatePublisher::SetTimestamp(DataTypes::Time timestamp)
+void CRotateEngineeringStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -113,7 +94,7 @@ void CRotateEngineeringStatePublisher::SetActualPosition(const units::angle::rad
     }
 }
 
-void CRotateEngineeringStatePublisher::SetActualPower(double actualPower)
+void CRotateEngineeringStatePublisher::SetActualPower(const double actualPower)
 {
     if (m_pDataInstance != nullptr)
     {

@@ -15,7 +15,7 @@
 #ifndef __NEC_PROCESS_DRILL_OBJECTIVE_PUBLISHER_H__
 #define __NEC_PROCESS_DRILL_OBJECTIVE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "drill.h"
 #include "drillSupport.h"
 #include "dds_uuid.h"
@@ -35,14 +35,13 @@
 /// | objectiveId        | id of current objective                          | DataTypes::Uuid | N/A   |
 /// | estimatedDuration  | estimated duration requestor needs the resource  | DataTypes::Time | N/A   |
 ///
-class CDrillObjectivePublisher : public TPublisher< nec::process::DrillObjective >
+class CDrillObjectivePublisher : public TKeyedDataWriter< nec::process::DrillObjective >
 {
     public:
         CDrillObjectivePublisher();
         ~CDrillObjectivePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// @param CDdsUuid id

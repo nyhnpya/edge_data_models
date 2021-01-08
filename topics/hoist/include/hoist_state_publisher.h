@@ -15,7 +15,7 @@
 #ifndef __NEC_PROCESS_HOIST_STATE_PUBLISHER_H__
 #define __NEC_PROCESS_HOIST_STATE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "hoist.h"
 #include "hoistSupport.h"
 #include "dds_uuid.h"
@@ -47,14 +47,13 @@
 /// | OnLivelinessLost      | |
 /// | OnDataDisposed        | |
 ///
-class CHoistStatePublisher : public TPublisher< nec::process::HoistState >
+class CHoistStatePublisher : public TKeyedDataWriter< nec::process::HoistState >
 {
     public:
         CHoistStatePublisher();
         ~CHoistStatePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// id of requestor

@@ -6,33 +6,14 @@ CHoistStatePublisher::CHoistStatePublisher()
 
 CHoistStatePublisher::~CHoistStatePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CHoistStatePublisher::Create(int32_t domain)
+bool CHoistStatePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::HOIST_STATE,
-                       "EdgeBaseLibrary",
-                       "HoistStateProfile");
-}
-
-bool CHoistStatePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::HOIST_STATE,
+                                    "EdgeBaseLibrary",
+                                    "HoistStateProfile");
 }
 
 bool CHoistStatePublisher::PublishSample()
@@ -65,7 +46,7 @@ void CHoistStatePublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CHoistStatePublisher::SetTimestamp(DataTypes::Time timestamp)
+void CHoistStatePublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -73,7 +54,7 @@ void CHoistStatePublisher::SetTimestamp(DataTypes::Time timestamp)
     }
 }
 
-void CHoistStatePublisher::SetStatus(DataTypes::Status status)
+void CHoistStatePublisher::SetStatus(const DataTypes::Status status)
 {
     if (m_pDataInstance != nullptr)
     {

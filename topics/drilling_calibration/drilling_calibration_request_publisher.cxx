@@ -6,33 +6,14 @@ CDrillingCalibrationRequestPublisher::CDrillingCalibrationRequestPublisher()
 
 CDrillingCalibrationRequestPublisher::~CDrillingCalibrationRequestPublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CDrillingCalibrationRequestPublisher::Create(int32_t domain)
+bool CDrillingCalibrationRequestPublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::control::DRILLING_CALIBRATION_REQUEST,
-                       "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
-}
-
-bool CDrillingCalibrationRequestPublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::control::DRILLING_CALIBRATION_REQUEST,
+                                    "EdgeBaseLibrary",
+                                    "EdgeBaseProfile");
 }
 
 bool CDrillingCalibrationRequestPublisher::PublishSample()
@@ -48,7 +29,7 @@ void CDrillingCalibrationRequestPublisher::SetId(CDdsUuid id)
     }
 }
 
-void CDrillingCalibrationRequestPublisher::SetTimestamp(DataTypes::Time timestamp)
+void CDrillingCalibrationRequestPublisher::SetTimestamp(const DataTypes::Time timestamp)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -56,7 +37,7 @@ void CDrillingCalibrationRequestPublisher::SetTimestamp(DataTypes::Time timestam
     }
 }
 
-void CDrillingCalibrationRequestPublisher::SetWobProportional(double wobProportional)
+void CDrillingCalibrationRequestPublisher::SetWobProportional(const double wobProportional)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -64,7 +45,7 @@ void CDrillingCalibrationRequestPublisher::SetWobProportional(double wobProporti
     }
 }
 
-void CDrillingCalibrationRequestPublisher::SetWobIntegral(double wobIntegral)
+void CDrillingCalibrationRequestPublisher::SetWobIntegral(const double wobIntegral)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -72,7 +53,7 @@ void CDrillingCalibrationRequestPublisher::SetWobIntegral(double wobIntegral)
     }
 }
 
-void CDrillingCalibrationRequestPublisher::SetDifferentialPressureProportional(double differentialPressureProportional)
+void CDrillingCalibrationRequestPublisher::SetDifferentialPressureProportional(const double differentialPressureProportional)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -80,7 +61,7 @@ void CDrillingCalibrationRequestPublisher::SetDifferentialPressureProportional(d
     }
 }
 
-void CDrillingCalibrationRequestPublisher::SetDifferentialPressureIntegral(double differentialPressureIntegral)
+void CDrillingCalibrationRequestPublisher::SetDifferentialPressureIntegral(const double differentialPressureIntegral)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -88,7 +69,7 @@ void CDrillingCalibrationRequestPublisher::SetDifferentialPressureIntegral(doubl
     }
 }
 
-void CDrillingCalibrationRequestPublisher::SetTorqueProportional(double torqueProportional)
+void CDrillingCalibrationRequestPublisher::SetTorqueProportional(const double torqueProportional)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -96,7 +77,7 @@ void CDrillingCalibrationRequestPublisher::SetTorqueProportional(double torquePr
     }
 }
 
-void CDrillingCalibrationRequestPublisher::SetTorqueIntegral(double torqueIntegral)
+void CDrillingCalibrationRequestPublisher::SetTorqueIntegral(const double torqueIntegral)
 {
     if (m_pDataInstance != nullptr)
     {

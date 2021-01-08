@@ -6,33 +6,14 @@ CCirculateObjectivePublisher::CCirculateObjectivePublisher()
 
 CCirculateObjectivePublisher::~CCirculateObjectivePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CCirculateObjectivePublisher::Create(int32_t domain)
+bool CCirculateObjectivePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::CIRCULATE_OBJECTIVE,
-                       "EdgeBaseLibrary",
-                       "CirculateObjectiveProfile");
-}
-
-bool CCirculateObjectivePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::CIRCULATE_OBJECTIVE,
+                                    "EdgeBaseLibrary",
+                                    "CirculateObjectiveProfile");
 }
 
 bool CCirculateObjectivePublisher::PublishSample()
@@ -56,7 +37,7 @@ void CCirculateObjectivePublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CCirculateObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
+void CCirculateObjectivePublisher::SetEstimatedDuration(const DataTypes::Time estimatedDuration)
 {
     if (m_pDataInstance != nullptr)
     {

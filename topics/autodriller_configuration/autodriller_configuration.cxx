@@ -127,7 +127,7 @@ namespace nec {
                     RTICdrTypeCodeAnnotations_INITIALIZER
                 }, 
                 {
-                    (char *)"modelTwoDifferentialPressureRequestK",/* Member name */
+                    (char *)"differentialPressureRequestK",/* Member name */
                     {
                         4,/* Representation ID */
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -145,7 +145,7 @@ namespace nec {
                     RTICdrTypeCodeAnnotations_INITIALIZER
                 }, 
                 {
-                    (char *)"modelTwoDifferentialPressureRequestTau",/* Member name */
+                    (char *)"differentialPressureRequestTau",/* Member name */
                     {
                         5,/* Representation ID */
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -163,7 +163,7 @@ namespace nec {
                     RTICdrTypeCodeAnnotations_INITIALIZER
                 }, 
                 {
-                    (char *)"modelTwoRateOfPenetrationRequestK",/* Member name */
+                    (char *)"rateOfPenetrationRequestK",/* Member name */
                     {
                         6,/* Representation ID */
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -181,7 +181,7 @@ namespace nec {
                     RTICdrTypeCodeAnnotations_INITIALIZER
                 }, 
                 {
-                    (char *)"modelTwoRateOfPenetrationRequestTau",/* Member name */
+                    (char *)"rateOfPenetrationRequestTau",/* Member name */
                     {
                         7,/* Representation ID */
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -199,7 +199,7 @@ namespace nec {
                     RTICdrTypeCodeAnnotations_INITIALIZER
                 }, 
                 {
-                    (char *)"modelTwoTorqueRequestK",/* Member name */
+                    (char *)"torqueRequestK",/* Member name */
                     {
                         8,/* Representation ID */
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -217,7 +217,7 @@ namespace nec {
                     RTICdrTypeCodeAnnotations_INITIALIZER
                 }, 
                 {
-                    (char *)"modelTwoTorqueRequestTau",/* Member name */
+                    (char *)"torqueRequestTau",/* Member name */
                     {
                         9,/* Representation ID */
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -235,7 +235,7 @@ namespace nec {
                     RTICdrTypeCodeAnnotations_INITIALIZER
                 }, 
                 {
-                    (char *)"modelTwoWeightOnBitRequestK",/* Member name */
+                    (char *)"weightOnBitRequestK",/* Member name */
                     {
                         10,/* Representation ID */
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -253,7 +253,7 @@ namespace nec {
                     RTICdrTypeCodeAnnotations_INITIALIZER
                 }, 
                 {
-                    (char *)"modelTwoWeightOnBitRequestTau",/* Member name */
+                    (char *)"weightOnBitRequestTau",/* Member name */
                     {
                         11,/* Representation ID */
                         DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -500,28 +500,28 @@ namespace nec {
             (RTIXCdrUnsignedLong) ((char *)&sample->modeController - (char *)sample);
 
             HmiRequest_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
-            (RTIXCdrUnsignedLong) ((char *)&sample->modelTwoDifferentialPressureRequestK - (char *)sample);
+            (RTIXCdrUnsignedLong) ((char *)&sample->differentialPressureRequestK - (char *)sample);
 
             HmiRequest_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
-            (RTIXCdrUnsignedLong) ((char *)&sample->modelTwoDifferentialPressureRequestTau - (char *)sample);
+            (RTIXCdrUnsignedLong) ((char *)&sample->differentialPressureRequestTau - (char *)sample);
 
             HmiRequest_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
-            (RTIXCdrUnsignedLong) ((char *)&sample->modelTwoRateOfPenetrationRequestK - (char *)sample);
+            (RTIXCdrUnsignedLong) ((char *)&sample->rateOfPenetrationRequestK - (char *)sample);
 
             HmiRequest_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
-            (RTIXCdrUnsignedLong) ((char *)&sample->modelTwoRateOfPenetrationRequestTau - (char *)sample);
+            (RTIXCdrUnsignedLong) ((char *)&sample->rateOfPenetrationRequestTau - (char *)sample);
 
             HmiRequest_g_memberAccessInfos[8].bindingMemberValueOffset[0] = 
-            (RTIXCdrUnsignedLong) ((char *)&sample->modelTwoTorqueRequestK - (char *)sample);
+            (RTIXCdrUnsignedLong) ((char *)&sample->torqueRequestK - (char *)sample);
 
             HmiRequest_g_memberAccessInfos[9].bindingMemberValueOffset[0] = 
-            (RTIXCdrUnsignedLong) ((char *)&sample->modelTwoTorqueRequestTau - (char *)sample);
+            (RTIXCdrUnsignedLong) ((char *)&sample->torqueRequestTau - (char *)sample);
 
             HmiRequest_g_memberAccessInfos[10].bindingMemberValueOffset[0] = 
-            (RTIXCdrUnsignedLong) ((char *)&sample->modelTwoWeightOnBitRequestK - (char *)sample);
+            (RTIXCdrUnsignedLong) ((char *)&sample->weightOnBitRequestK - (char *)sample);
 
             HmiRequest_g_memberAccessInfos[11].bindingMemberValueOffset[0] = 
-            (RTIXCdrUnsignedLong) ((char *)&sample->modelTwoWeightOnBitRequestTau - (char *)sample);
+            (RTIXCdrUnsignedLong) ((char *)&sample->weightOnBitRequestTau - (char *)sample);
 
             HmiRequest_g_memberAccessInfos[12].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->status - (char *)sample);
@@ -647,21 +647,21 @@ namespace nec {
 
             sample->modeController = 0.0;
 
-            sample->modelTwoDifferentialPressureRequestK = 0.0;
+            sample->differentialPressureRequestK = 0.0;
 
-            sample->modelTwoDifferentialPressureRequestTau = 0.0;
+            sample->differentialPressureRequestTau = 0.0;
 
-            sample->modelTwoRateOfPenetrationRequestK = 0.0;
+            sample->rateOfPenetrationRequestK = 0.0;
 
-            sample->modelTwoRateOfPenetrationRequestTau = 0.0;
+            sample->rateOfPenetrationRequestTau = 0.0;
 
-            sample->modelTwoTorqueRequestK = 0.0;
+            sample->torqueRequestK = 0.0;
 
-            sample->modelTwoTorqueRequestTau = 0.0;
+            sample->torqueRequestTau = 0.0;
 
-            sample->modelTwoWeightOnBitRequestK = 0.0;
+            sample->weightOnBitRequestK = 0.0;
 
-            sample->modelTwoWeightOnBitRequestTau = 0.0;
+            sample->weightOnBitRequestTau = 0.0;
 
             sample->status = 0;
 
@@ -768,35 +768,35 @@ namespace nec {
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->modelTwoDifferentialPressureRequestK, &src->modelTwoDifferentialPressureRequestK)) { 
+                    &dst->differentialPressureRequestK, &src->differentialPressureRequestK)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->modelTwoDifferentialPressureRequestTau, &src->modelTwoDifferentialPressureRequestTau)) { 
+                    &dst->differentialPressureRequestTau, &src->differentialPressureRequestTau)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->modelTwoRateOfPenetrationRequestK, &src->modelTwoRateOfPenetrationRequestK)) { 
+                    &dst->rateOfPenetrationRequestK, &src->rateOfPenetrationRequestK)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->modelTwoRateOfPenetrationRequestTau, &src->modelTwoRateOfPenetrationRequestTau)) { 
+                    &dst->rateOfPenetrationRequestTau, &src->rateOfPenetrationRequestTau)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->modelTwoTorqueRequestK, &src->modelTwoTorqueRequestK)) { 
+                    &dst->torqueRequestK, &src->torqueRequestK)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->modelTwoTorqueRequestTau, &src->modelTwoTorqueRequestTau)) { 
+                    &dst->torqueRequestTau, &src->torqueRequestTau)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->modelTwoWeightOnBitRequestK, &src->modelTwoWeightOnBitRequestK)) { 
+                    &dst->weightOnBitRequestK, &src->weightOnBitRequestK)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (
-                    &dst->modelTwoWeightOnBitRequestTau, &src->modelTwoWeightOnBitRequestTau)) { 
+                    &dst->weightOnBitRequestTau, &src->weightOnBitRequestTau)) { 
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyLong (

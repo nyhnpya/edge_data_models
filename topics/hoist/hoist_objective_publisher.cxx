@@ -6,33 +6,14 @@ CHoistObjectivePublisher::CHoistObjectivePublisher()
 
 CHoistObjectivePublisher::~CHoistObjectivePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CHoistObjectivePublisher::Create(int32_t domain)
+bool CHoistObjectivePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::HOIST_OBJECTIVE,
-                       "EdgeBaseLibrary",
-                       "HoistObjectiveProfile");
-}
-
-bool CHoistObjectivePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::HOIST_OBJECTIVE,
+                                    "EdgeBaseLibrary",
+                                    "HoistObjectiveProfile");
 }
 
 bool CHoistObjectivePublisher::PublishSample()
@@ -56,7 +37,7 @@ void CHoistObjectivePublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CHoistObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
+void CHoistObjectivePublisher::SetEstimatedDuration(const DataTypes::Time estimatedDuration)
 {
     if (m_pDataInstance != nullptr)
     {

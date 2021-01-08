@@ -21,14 +21,20 @@ from types_gen import StructField, Struct
 from util_gen import str_cap, out_copywrite, write_makefile
 import util_gen
 
-
 def write_publisher_h(outdir, struct):
     out = open(outdir + '/' + struct.name_underscore + '_publisher.h', 'w')
     util_gen.out_copywrite(out)
     out.write('#ifndef __' + util_gen.module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_PUBLISHER_H__\n')
     out.write('#define __' + util_gen.module_name.replace("::","_").upper()+ struct.name_underscore.upper() + '_PUBLISHER_H__\n')
     out.write('\n')
-    out.write('#include "publisher.h"\n')
+    keyed_topic = False
+    for sfield in struct.fields:
+        if sfield.key == True:
+            keyed_topic = True
+    if keyed_topic == True:
+        out.write('#include "keyed_data_writer.h"\n')
+    else:
+        out.write('#include "data_writer.h"\n')
     out.write('#include "' + util_gen.idl_name + '.h"\n')
     out.write('#include "' + util_gen.idl_name + 'Support.h"\n')
     out.write('#include "dds_uuid.h"\n')
@@ -63,14 +69,20 @@ def write_publisher_h(outdir, struct):
             if len(struct.comments[id]) > 1:
                 out.write('/// ' + struct.comments[id] + '\n')
         out.write('///\n')
-    out.write('class C' + struct.name_camel_case + 'Publisher : public TPublisher< ' + util_gen.module_name + struct.name_camel_case + ' >\n')
+    keyed_topic = False
+    for sfield in struct.fields:
+        if sfield.key == True:
+            keyed_topic = True
+    if keyed_topic == True:
+        out.write('class C' + struct.name_camel_case + 'Publisher : public TKeyedDataWriter< ' + util_gen.module_name + struct.name_camel_case + ' >\n')
+    else:
+        out.write('class C' + struct.name_camel_case + 'Publisher : public TDataWriter< ' + util_gen.module_name + struct.name_camel_case + ' >\n')
     out.write('{\n')
     out.write('    public:\n')
     out.write('        C' + struct.name_camel_case + 'Publisher();\n')
     out.write('        ~C' + struct.name_camel_case + 'Publisher();\n')
     out.write('        \n')
-    out.write('        bool Create(int32_t domain);\n')
-    out.write('        bool Initialize();\n')
+    out.write('        bool Create(const std::string &publisher);\n')
     out.write('        bool PublishSample();\n')
     out.write('        \n')
     for sfield in struct.fields:
@@ -82,6 +94,9 @@ def write_publisher_h(outdir, struct):
         elif 'DataTypes::Uuid' in sfield.datatype:
             out.write('        /// @param ' + 'CDdsUuid' + ' ' + sfield.name + '\n')
             out.write('        void Set' + str_cap(sfield.name) + '(CDdsUuid' + ' ' + sfield.name + ');\n')
+        elif 'std::string' in sfield.datatype:
+            out.write('        /// @param ' + sfield.datatype + sfield.name + '\n')
+            out.write('        void Set' + str_cap(sfield.name) + '(const ' + sfield.datatype + '&' +sfield.name + ');\n')
         elif sfield.unit_name != '':
             out.write('        /// @param ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t ' + sfield.name + '\n')
             out.write('        void Set' + str_cap(sfield.name) + '(const ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t ' + sfield.name + ');\n')
@@ -106,30 +121,19 @@ def write_publisher_cxx(outdir, struct, qoslib, qosprof):
     out.write('{\n')
     out.write('}\n')
     out.write('\n')
-    out.write('bool C' + struct.name_camel_case + 'Publisher::Create(int32_t domain)\n')
+    out.write('bool C' + struct.name_camel_case + 'Publisher::Create(const std::string &publisher)\n')
     out.write('{\n')
-    out.write('    return TPublisher::Create(domain,\n')
-    out.write('                       ' + util_gen.module_name + struct.copyc + ',\n')
-    out.write('                       "' + qoslib + '",\n')
-    out.write('                       "' + qosprof + '");\n')
-    out.write('}\n')
-    out.write('\n')
-    out.write('bool C' + struct.name_camel_case + 'Publisher::Initialize()\n')
-    out.write('{\n')
-    out.write('    CDdsUuid uuid;\n')
-    out.write('    bool retVal = false;\n')
-    out.write('\n')
-    out.write('    if (m_pDataInstance != nullptr)\n')
-    out.write('    {\n')
+    keyed_topic = False
     for sfield in struct.fields:
         if sfield.key == True:
-            out.write('        uuid.GenerateUuid();\n')
-            out.write('        m_pDataInstance->id = DDS_String_dup(uuid.c_str());\n')
-            break;
-    out.write('        retVal = true;\n')
-    out.write('    }\n')
-    out.write('\n')
-    out.write('    return retVal;\n')
+            keyed_topic = True
+    if keyed_topic == True:
+        out.write('    return TKeyedDataWriter::Create(publisher,\n')
+    else:
+        out.write('    return TDataWriter::Create(publisher,\n')
+    out.write('                                    ' + util_gen.module_name + struct.copyc + ',\n')
+    out.write('                                    "' + qoslib + '",\n')
+    out.write('                                    "' + qosprof + '");\n')
     out.write('}\n')
     out.write('\n')
     out.write('bool C' + struct.name_camel_case + 'Publisher::PublishSample()\n')
@@ -158,16 +162,20 @@ def write_publisher_cxx(outdir, struct, qoslib, qosprof):
             out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(' + util_gen.module_name + sfield.datatype + ' ' + sfield.name + ')\n')
         elif 'DataTypes::Uuid' in sfield.datatype:
             out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(CDdsUuid ' + sfield.name + ')\n')
+        elif 'std::string' in sfield.datatype:
+            out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(const ' + sfield.datatype + '&' + sfield.name + ')\n')
         elif sfield.unit_name != '':
             out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(const ' + 'units::' + sfield.unit_namespace + '::' + sfield.unit_name + '_t ' + sfield.name + ')\n')
         else:
-            out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(' + sfield.datatype + ' ' + sfield.name + ')\n')
+            out.write('void C' + struct.name_camel_case + 'Publisher::Set' + str_cap(sfield.name) + '(const ' + sfield.datatype + ' ' + sfield.name + ')\n')
         out.write('{\n')
         out.write('    if (m_pDataInstance != nullptr)\n')        
         out.write('    {\n')
         if sfield.unit_name != '':
             out.write('        m_pDataInstance->' + sfield.name + ' = units::unit_cast<double>(' + sfield.name + ');\n') 
         elif 'DataTypes::Uuid' in sfield.datatype:
+            out.write('        m_pDataInstance->' + sfield.name + ' = DDS_String_dup(' + sfield.name + '.c_str());\n') 
+        elif 'std::string' in sfield.datatype:
             out.write('        m_pDataInstance->' + sfield.name + ' = DDS_String_dup(' + sfield.name + '.c_str());\n') 
         else:
             out.write('        m_pDataInstance->' + sfield.name + ' = ' + sfield.name + ';\n') 

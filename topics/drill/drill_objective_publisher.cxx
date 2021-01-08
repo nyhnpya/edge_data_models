@@ -6,33 +6,14 @@ CDrillObjectivePublisher::CDrillObjectivePublisher()
 
 CDrillObjectivePublisher::~CDrillObjectivePublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CDrillObjectivePublisher::Create(int32_t domain)
+bool CDrillObjectivePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::DRILL_OBJECTIVE,
-                       "EdgeBaseLibrary",
-                       "DrillObjectiveProfile");
-}
-
-bool CDrillObjectivePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::DRILL_OBJECTIVE,
+                                    "EdgeBaseLibrary",
+                                    "DrillObjectiveProfile");
 }
 
 bool CDrillObjectivePublisher::PublishSample()
@@ -56,7 +37,7 @@ void CDrillObjectivePublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CDrillObjectivePublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
+void CDrillObjectivePublisher::SetEstimatedDuration(const DataTypes::Time estimatedDuration)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -96,7 +77,7 @@ void CDrillObjectivePublisher::SetTorqueTarget(const units::torque::newton_meter
     }
 }
 
-void CDrillObjectivePublisher::SetRopMode(bool ropMode)
+void CDrillObjectivePublisher::SetRopMode(const bool ropMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -104,7 +85,7 @@ void CDrillObjectivePublisher::SetRopMode(bool ropMode)
     }
 }
 
-void CDrillObjectivePublisher::SetWobMode(bool wobMode)
+void CDrillObjectivePublisher::SetWobMode(const bool wobMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -112,7 +93,7 @@ void CDrillObjectivePublisher::SetWobMode(bool wobMode)
     }
 }
 
-void CDrillObjectivePublisher::SetDiffPressureMode(bool diffPressureMode)
+void CDrillObjectivePublisher::SetDiffPressureMode(const bool diffPressureMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -120,7 +101,7 @@ void CDrillObjectivePublisher::SetDiffPressureMode(bool diffPressureMode)
     }
 }
 
-void CDrillObjectivePublisher::SetTorqueMode(bool torqueMode)
+void CDrillObjectivePublisher::SetTorqueMode(const bool torqueMode)
 {
     if (m_pDataInstance != nullptr)
     {

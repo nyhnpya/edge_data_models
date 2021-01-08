@@ -44,22 +44,22 @@ class CHmiRequestSubscriber : public TSubscriber< nec::control::HmiRequest >
         int32_t GetMode();
         /// @return double modeController
         double GetModeController();
-        /// @return double modelTwoDifferentialPressureRequestK
-        double GetModelTwoDifferentialPressureRequestK();
-        /// @return double modelTwoDifferentialPressureRequestTau
-        double GetModelTwoDifferentialPressureRequestTau();
-        /// @return double modelTwoRateOfPenetrationRequestK
-        double GetModelTwoRateOfPenetrationRequestK();
-        /// @return double modelTwoRateOfPenetrationRequestTau
-        double GetModelTwoRateOfPenetrationRequestTau();
-        /// @return double modelTwoTorqueRequestK
-        double GetModelTwoTorqueRequestK();
-        /// @return double modelTwoTorqueRequestTau
-        double GetModelTwoTorqueRequestTau();
-        /// @return double modelTwoWeightOnBitRequestK
-        double GetModelTwoWeightOnBitRequestK();
-        /// @return double modelTwoWeightOnBitRequestTau
-        double GetModelTwoWeightOnBitRequestTau();
+        /// @return double differentialPressureRequestK
+        double GetDifferentialPressureRequestK();
+        /// @return double differentialPressureRequestTau
+        double GetDifferentialPressureRequestTau();
+        /// @return double rateOfPenetrationRequestK
+        double GetRateOfPenetrationRequestK();
+        /// @return double rateOfPenetrationRequestTau
+        double GetRateOfPenetrationRequestTau();
+        /// @return double torqueRequestK
+        double GetTorqueRequestK();
+        /// @return double torqueRequestTau
+        double GetTorqueRequestTau();
+        /// @return double weightOnBitRequestK
+        double GetWeightOnBitRequestK();
+        /// @return double weightOnBitRequestTau
+        double GetWeightOnBitRequestTau();
         /// @return int32_t status
         int32_t GetStatus();
         /// @return bool tuningEnable

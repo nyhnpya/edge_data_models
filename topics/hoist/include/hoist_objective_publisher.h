@@ -15,7 +15,7 @@
 #ifndef __NEC_PROCESS_HOIST_OBJECTIVE_PUBLISHER_H__
 #define __NEC_PROCESS_HOIST_OBJECTIVE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "hoist.h"
 #include "hoistSupport.h"
 #include "dds_uuid.h"
@@ -30,14 +30,13 @@
 /// @brief current requested state change in the hoisting system.
 ///
 ///
-class CHoistObjectivePublisher : public TPublisher< nec::process::HoistObjective >
+class CHoistObjectivePublisher : public TKeyedDataWriter< nec::process::HoistObjective >
 {
     public:
         CHoistObjectivePublisher();
         ~CHoistObjectivePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// id of requestor

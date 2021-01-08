@@ -15,7 +15,7 @@
 #ifndef __NEC_PROCESS_ROTATE_STATE_PUBLISHER_H__
 #define __NEC_PROCESS_ROTATE_STATE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "rotate.h"
 #include "rotateSupport.h"
 #include "dds_uuid.h"
@@ -45,14 +45,13 @@
 /// | OnLivelinessLost      | |
 /// | OnDataDisposed        | |
 ///
-class CRotateStatePublisher : public TPublisher< nec::process::RotateState >
+class CRotateStatePublisher : public TKeyedDataWriter< nec::process::RotateState >
 {
     public:
         CRotateStatePublisher();
         ~CRotateStatePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// id of requestor

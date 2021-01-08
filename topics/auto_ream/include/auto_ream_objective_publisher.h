@@ -15,7 +15,7 @@
 #ifndef __NEC_PROCESS_AUTO_REAM_OBJECTIVE_PUBLISHER_H__
 #define __NEC_PROCESS_AUTO_REAM_OBJECTIVE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "auto_ream.h"
 #include "auto_reamSupport.h"
 #include "dds_uuid.h"
@@ -24,14 +24,13 @@
 #undef pascal
 #endif
 
-class CAutoReamObjectivePublisher : public TPublisher< nec::process::AutoReamObjective >
+class CAutoReamObjectivePublisher : public TKeyedDataWriter< nec::process::AutoReamObjective >
 {
     public:
         CAutoReamObjectivePublisher();
         ~CAutoReamObjectivePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// @param CDdsUuid id

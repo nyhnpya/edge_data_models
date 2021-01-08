@@ -6,33 +6,14 @@ CDrillRequestPublisher::CDrillRequestPublisher()
 
 CDrillRequestPublisher::~CDrillRequestPublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CDrillRequestPublisher::Create(int32_t domain)
+bool CDrillRequestPublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::process::DRILL_REQUEST,
-                       "EdgeBaseLibrary",
-                       "DrillRequestProfile");
-}
-
-bool CDrillRequestPublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::process::DRILL_REQUEST,
+                                    "EdgeBaseLibrary",
+                                    "DrillRequestProfile");
 }
 
 bool CDrillRequestPublisher::PublishSample()
@@ -56,7 +37,7 @@ void CDrillRequestPublisher::SetObjectiveId(CDdsUuid objectiveId)
     }
 }
 
-void CDrillRequestPublisher::SetPriority(DataTypes::Priority priority)
+void CDrillRequestPublisher::SetPriority(const DataTypes::Priority priority)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -64,7 +45,7 @@ void CDrillRequestPublisher::SetPriority(DataTypes::Priority priority)
     }
 }
 
-void CDrillRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
+void CDrillRequestPublisher::SetTimeNeeded(const DataTypes::Time timeNeeded)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -72,7 +53,7 @@ void CDrillRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
     }
 }
 
-void CDrillRequestPublisher::SetEstimatedDuration(DataTypes::Time estimatedDuration)
+void CDrillRequestPublisher::SetEstimatedDuration(const DataTypes::Time estimatedDuration)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -112,7 +93,7 @@ void CDrillRequestPublisher::SetTorqueTarget(const units::torque::newton_meter_t
     }
 }
 
-void CDrillRequestPublisher::SetRopMode(bool ropMode)
+void CDrillRequestPublisher::SetRopMode(const bool ropMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -120,7 +101,7 @@ void CDrillRequestPublisher::SetRopMode(bool ropMode)
     }
 }
 
-void CDrillRequestPublisher::SetWobMode(bool wobMode)
+void CDrillRequestPublisher::SetWobMode(const bool wobMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -128,7 +109,7 @@ void CDrillRequestPublisher::SetWobMode(bool wobMode)
     }
 }
 
-void CDrillRequestPublisher::SetDiffPressureMode(bool diffPressureMode)
+void CDrillRequestPublisher::SetDiffPressureMode(const bool diffPressureMode)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -136,7 +117,7 @@ void CDrillRequestPublisher::SetDiffPressureMode(bool diffPressureMode)
     }
 }
 
-void CDrillRequestPublisher::SetTorqueMode(bool torqueMode)
+void CDrillRequestPublisher::SetTorqueMode(const bool torqueMode)
 {
     if (m_pDataInstance != nullptr)
     {

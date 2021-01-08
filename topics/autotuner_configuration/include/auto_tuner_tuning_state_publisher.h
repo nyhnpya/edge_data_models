@@ -15,7 +15,7 @@
 #ifndef __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_STATE_PUBLISHER_H__
 #define __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_STATE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "autotuner_configuration.h"
 #include "autotuner_configurationSupport.h"
 #include "dds_uuid.h"
@@ -27,18 +27,17 @@
 /// @brief Requested state change in the rotation system.
 ///
 ///
-class CAutoTunerTuningStatePublisher : public TPublisher< Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState >
+class CAutoTunerTuningStatePublisher : public TKeyedDataWriter< Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState >
 {
     public:
         CAutoTunerTuningStatePublisher();
         ~CAutoTunerTuningStatePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
-        /// @param string<36> id
-        void SetId(const std::string &id);
+        /// @param std::stringid
+        void SetId(const std::string&id);
         /// @param double filter
         void SetFilter(const double filter);
         /// @param double d
@@ -67,9 +66,6 @@ class CAutoTunerTuningStatePublisher : public TPublisher< Shell::Hmi::AutoTunerC
         void SetR1(const double r1);
         /// @param double r2
         void SetR2(const double r2);
-
- private:
-        std::string m_id;
 };
 
 #endif // __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_STATE_PUBLISHER_H__

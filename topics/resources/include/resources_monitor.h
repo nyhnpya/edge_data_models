@@ -28,7 +28,7 @@ class CResourcesMonitor
     static CResourcesMonitor *Instance();
     static void Destroy();
 
-    void Initialize(const char* appVersion, int32_t domain);
+    void Initialize(const char* appVersion);
     void PublishHeartbeat();
 
   private:

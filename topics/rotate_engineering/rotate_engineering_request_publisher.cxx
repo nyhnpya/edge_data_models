@@ -6,33 +6,14 @@ CRotateEngineeringRequestPublisher::CRotateEngineeringRequestPublisher()
 
 CRotateEngineeringRequestPublisher::~CRotateEngineeringRequestPublisher()
 {
-        if (m_pDataInstance != nullptr)
-        {
-            DDS_String_free(m_pDataInstance->id);
-        }
 }
 
-bool CRotateEngineeringRequestPublisher::Create(int32_t domain)
+bool CRotateEngineeringRequestPublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       nec::engineering::ROTATE_ENGINEERING_REQUEST,
-                       "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
-}
-
-bool CRotateEngineeringRequestPublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        uuid.GenerateUuid();
-        m_pDataInstance->id = DDS_String_dup(uuid.c_str());
-        retVal = true;
-    }
-
-    return retVal;
+    return TKeyedDataWriter::Create(publisher,
+                                    nec::engineering::ROTATE_ENGINEERING_REQUEST,
+                                    "EdgeBaseLibrary",
+                                    "EdgeBaseProfile");
 }
 
 bool CRotateEngineeringRequestPublisher::PublishSample()
@@ -48,7 +29,7 @@ void CRotateEngineeringRequestPublisher::SetId(CDdsUuid id)
     }
 }
 
-void CRotateEngineeringRequestPublisher::SetPriority(DataTypes::Priority priority)
+void CRotateEngineeringRequestPublisher::SetPriority(const DataTypes::Priority priority)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -56,7 +37,7 @@ void CRotateEngineeringRequestPublisher::SetPriority(DataTypes::Priority priorit
     }
 }
 
-void CRotateEngineeringRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeeded)
+void CRotateEngineeringRequestPublisher::SetTimeNeeded(const DataTypes::Time timeNeeded)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -64,7 +45,7 @@ void CRotateEngineeringRequestPublisher::SetTimeNeeded(DataTypes::Time timeNeede
     }
 }
 
-void CRotateEngineeringRequestPublisher::SetDuration(DataTypes::Time duration)
+void CRotateEngineeringRequestPublisher::SetDuration(const DataTypes::Time duration)
 {
     if (m_pDataInstance != nullptr)
     {

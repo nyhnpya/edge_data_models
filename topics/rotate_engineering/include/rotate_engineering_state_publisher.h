@@ -15,7 +15,7 @@
 #ifndef __NEC_ENGINEERING_ROTATE_ENGINEERING_STATE_PUBLISHER_H__
 #define __NEC_ENGINEERING_ROTATE_ENGINEERING_STATE_PUBLISHER_H__
 
-#include "publisher.h"
+#include "keyed_data_writer.h"
 #include "rotate_engineering.h"
 #include "rotate_engineeringSupport.h"
 #include "dds_uuid.h"
@@ -30,14 +30,13 @@
 /// @brief current state of rotation system.
 ///
 ///
-class CRotateEngineeringStatePublisher : public TPublisher< nec::engineering::RotateEngineeringState >
+class CRotateEngineeringStatePublisher : public TKeyedDataWriter< nec::engineering::RotateEngineeringState >
 {
     public:
         CRotateEngineeringStatePublisher();
         ~CRotateEngineeringStatePublisher();
         
-        bool Create(int32_t domain);
-        bool Initialize();
+        bool Create(const std::string &publisher);
         bool PublishSample();
         
         /// @param CDdsUuid id

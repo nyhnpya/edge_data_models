@@ -8,25 +8,12 @@ CPlcRotateStatePublisher::~CPlcRotateStatePublisher()
 {
 }
 
-bool CPlcRotateStatePublisher::Create(int32_t domain)
+bool CPlcRotateStatePublisher::Create(const std::string &publisher)
 {
-    return TPublisher::Create(domain,
-                       plc::process::PLC_ROTATE_STATE_TOPIC,
-                       "EdgeBaseLibrary",
-                       "PlcProfile");
-}
-
-bool CPlcRotateStatePublisher::Initialize()
-{
-    CDdsUuid uuid;
-    bool retVal = false;
-
-    if (m_pDataInstance != nullptr)
-    {
-        retVal = true;
-    }
-
-    return retVal;
+    return TDataWriter::Create(publisher,
+                                    plc::process::PLC_ROTATE_STATE_TOPIC,
+                                    "EdgeBaseLibrary",
+                                    "PlcProfile");
 }
 
 bool CPlcRotateStatePublisher::PublishSample()
@@ -41,7 +28,7 @@ bool CPlcRotateStatePublisher::PublishSample()
     return Publish();
 }
 
-void CPlcRotateStatePublisher::SetStatus(int32_t status)
+void CPlcRotateStatePublisher::SetStatus(const int32_t status)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -49,7 +36,7 @@ void CPlcRotateStatePublisher::SetStatus(int32_t status)
     }
 }
 
-void CPlcRotateStatePublisher::SetActualRate(double actualRate)
+void CPlcRotateStatePublisher::SetActualRate(const double actualRate)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -57,7 +44,7 @@ void CPlcRotateStatePublisher::SetActualRate(double actualRate)
     }
 }
 
-void CPlcRotateStatePublisher::SetMinRate(double minRate)
+void CPlcRotateStatePublisher::SetMinRate(const double minRate)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -65,7 +52,7 @@ void CPlcRotateStatePublisher::SetMinRate(double minRate)
     }
 }
 
-void CPlcRotateStatePublisher::SetMaxRate(double maxRate)
+void CPlcRotateStatePublisher::SetMaxRate(const double maxRate)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -73,7 +60,7 @@ void CPlcRotateStatePublisher::SetMaxRate(double maxRate)
     }
 }
 
-void CPlcRotateStatePublisher::SetTargetRate(double targetRate)
+void CPlcRotateStatePublisher::SetTargetRate(const double targetRate)
 {
     if (m_pDataInstance != nullptr)
     {
