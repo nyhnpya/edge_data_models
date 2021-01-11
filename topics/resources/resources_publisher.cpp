@@ -1,8 +1,7 @@
 #include "dds_uuid.h"
 #include "resources_publisher.h"
 
-CResourcesPublisher::CResourcesPublisher() :
-    m_pProcessName(nullptr)
+CResourcesPublisher::CResourcesPublisher()
 {
 }
 
@@ -10,32 +9,17 @@ CResourcesPublisher::~CResourcesPublisher()
 {
     if (m_pDataInstance != nullptr)
     {
-        DDS_String_free((char *)m_pProcessName);
         DDS_String_free(m_pDataInstance->processName);
         DDS_String_free(m_pDataInstance->osName);
         DDS_String_free(m_pDataInstance->appVersion);
     }
 }
 
-bool CResourcesPublisher::Initialize()
+void CResourcesPublisher::SetProcessName(const std::string &processName)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->processName = DDS_String_dup((const char *)m_pProcessName);
-    }
-    else
-    {
-        LOG_ERROR("Failed to set Process Name on uninitialized sample");
-    }
-
-    return true;
-}
-
-void CResourcesPublisher::SetProcessName(const char* processName)
-{
-    if (m_pProcessName == nullptr)
-    {
-        m_pProcessName = (uint8_t *)strdup(processName);
+        m_pDataInstance->processName = DDS_String_dup(processName.c_str());
     }
 }
 

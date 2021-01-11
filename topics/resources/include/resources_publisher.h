@@ -34,10 +34,9 @@ class CResourcesPublisher : public TKeyedDataWriter< sys::process::Resources  >
     ~CResourcesPublisher();
 
     bool Create(const std::string &publisher);
-    bool Initialize();
     bool PublishSample();
 
-    void SetProcessName(const char* processName);
+    void SetProcessName(const std::string &processName);
     void SetPID(uint32_t pid);
     void SetUpTime(double upTime);
     void SetCPUPercent(double cpuPercent);
@@ -52,9 +51,6 @@ class CResourcesPublisher : public TKeyedDataWriter< sys::process::Resources  >
     void SetMaxNumThreads(int32_t maxNumThreads);
     void SetOSName(const char* osName);
     void SetAppVersion(const char* appVersion);
-
- private:
-    uint8_t *m_pProcessName;
 };
 
 #endif // __RESOURCES_PUBLISHER_H__ 
