@@ -13,7 +13,7 @@ bool CModelStateRequestPublisher::Create(const std::string &publisher)
     return TDataWriter::Create(publisher,
                                     Shell::Hmi::AutoTunerConfiguration::MODEL_STATE_REQUEST,
                                     "EdgeBaseLibrary",
-                                    "ConfigProfile");
+                                    "EdgeBaseProfile");
 }
 
 bool CModelStateRequestPublisher::PublishSample()

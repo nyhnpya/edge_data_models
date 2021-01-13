@@ -26,8 +26,6 @@ TARG_SOURCES += autodriller_configurationPlugin.cxx
 TARG_SOURCES += autodriller_configurationSupport.cxx
 TARG_SOURCES += hmi_request_publisher.cxx
 TARG_SOURCES += hmi_request_subscriber.cxx
-TARG_SOURCES += hmi_state_publisher.cxx
-TARG_SOURCES += hmi_state_subscriber.cxx
 
 ###############################################################################
 # Installation section
@@ -51,8 +49,6 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configurationSupport.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/autodriller_configurationPlugin.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/hmi_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/hmi_request_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/hmi_state_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/hmi_state_subscriber.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../package

@@ -13,7 +13,7 @@ bool CAutoTunerTuningStatePublisher::Create(const std::string &publisher)
     return TKeyedDataWriter::Create(publisher,
                                     Shell::Hmi::AutoTunerConfiguration::AUTOTUNER_TUNING_STATE,
                                     "EdgeBaseLibrary",
-                                    "ConfigProfile");
+                                    "EdgeBaseProfile");
 }
 
 bool CAutoTunerTuningStatePublisher::PublishSample()

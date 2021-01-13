@@ -25,6 +25,7 @@ void CResourcesMonitor::Destroy()
         {
             m_pInstance->m_dataMutex.lock();
             {
+                m_pInstance->m_resourcesPublisher.UnregisterInstance();
                 m_pInstance->m_resourcesPublisher.DeleteInstance();
                 m_pInstance->m_resourcesPublisher.Destroy();
             }

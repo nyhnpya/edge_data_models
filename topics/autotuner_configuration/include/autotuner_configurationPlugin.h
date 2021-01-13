@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configurationPlugin_985793642_h
-#define autotuner_configurationPlugin_985793642_h
+#ifndef autotuner_configurationPlugin_985793650_h
+#define autotuner_configurationPlugin_985793650_h
 
 #include "autotuner_configuration.h"
 
@@ -852,5 +852,5 @@ namespace Shell {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* autotuner_configurationPlugin_985793642_h */
+#endif /* autotuner_configurationPlugin_985793650_h */
 

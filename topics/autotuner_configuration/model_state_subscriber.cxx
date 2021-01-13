@@ -17,7 +17,7 @@ bool CModelStateSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        Shell::Hmi::AutoTunerConfiguration::MODEL_STATE,
                        "EdgeBaseLibrary",
-                       "ConfigProfile");
+                       "EdgeBaseProfile");
 }
 
 bool CModelStateSubscriber::ValidData()

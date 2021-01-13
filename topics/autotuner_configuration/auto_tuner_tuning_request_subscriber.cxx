@@ -17,7 +17,7 @@ bool CAutoTunerTuningRequestSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        Shell::Hmi::AutoTunerConfiguration::AUTOTUNER_TUNING_REQUEST,
                        "EdgeBaseLibrary",
-                       "ConfigProfile");
+                       "EdgeBaseProfile");
 }
 
 bool CAutoTunerTuningRequestSubscriber::ValidData()
