@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_STATE_SUBSCRIBER_H__
-#define __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_STATE_SUBSCRIBER_H__
+#ifndef __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_CONFIGURATION_SUBSCRIBER_H__
+#define __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_CONFIGURATION_SUBSCRIBER_H__
 
 #include "subscriber.h"
 #include "autotuner_configuration.h"
@@ -27,11 +27,11 @@
 /// @brief Requested state change in the rotation system.
 ///
 ///
-class CAutoTunerTuningStateSubscriber : public TSubscriber< Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState >
+class CAutoTunerTuningConfigurationSubscriber : public TSubscriber< Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration >
 {
     public:
-        CAutoTunerTuningStateSubscriber();
-        ~CAutoTunerTuningStateSubscriber();
+        CAutoTunerTuningConfigurationSubscriber();
+        ~CAutoTunerTuningConfigurationSubscriber();
         
         bool Create(int32_t domain);
         bool ValidData();
@@ -71,13 +71,13 @@ class CAutoTunerTuningStateSubscriber : public TSubscriber< Shell::Hmi::AutoTune
         double GetR2();
 
     protected:
-        void DataAvailable(const Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState &data,
+        void DataAvailable(const Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration &data,
                            const DDS::SampleInfo &sampleInfo);
         void DataDisposed(const DDS::SampleInfo &sampleInfo);
         void LivelinessChanged(const DDS::LivelinessChangedStatus &status);
 
     private:
-        Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState              m_data;
+        Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration      m_data;
         DDS::SampleInfo                                                       m_sampleInfo;
         DDS::LivelinessChangedStatus                                          m_livelinessStatus;
         OnDataAvailableEvent                                                  m_pOnDataAvailable;
@@ -85,4 +85,4 @@ class CAutoTunerTuningStateSubscriber : public TSubscriber< Shell::Hmi::AutoTune
         OnLivelinessChangedEvent                                              m_pOnLivelinessChanged;
 };
 
-#endif // __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_STATE_SUBSCRIBER_H__
+#endif // __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_CONFIGURATION_SUBSCRIBER_H__

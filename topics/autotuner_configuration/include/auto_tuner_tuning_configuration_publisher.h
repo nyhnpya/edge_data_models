@@ -12,8 +12,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Ensign Energy Incorporated.
  */
-#ifndef __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_STATE_PUBLISHER_H__
-#define __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_STATE_PUBLISHER_H__
+#ifndef __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_CONFIGURATION_PUBLISHER_H__
+#define __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_CONFIGURATION_PUBLISHER_H__
 
 #include "keyed_data_writer.h"
 #include "autotuner_configuration.h"
@@ -27,11 +27,11 @@
 /// @brief Requested state change in the rotation system.
 ///
 ///
-class CAutoTunerTuningStatePublisher : public TKeyedDataWriter< Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState >
+class CAutoTunerTuningConfigurationPublisher : public TKeyedDataWriter< Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration >
 {
     public:
-        CAutoTunerTuningStatePublisher();
-        ~CAutoTunerTuningStatePublisher();
+        CAutoTunerTuningConfigurationPublisher();
+        ~CAutoTunerTuningConfigurationPublisher();
         
         bool Create(const std::string &publisher);
         bool PublishSample();
@@ -68,4 +68,4 @@ class CAutoTunerTuningStatePublisher : public TKeyedDataWriter< Shell::Hmi::Auto
         void SetR2(const double r2);
 };
 
-#endif // __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_STATE_PUBLISHER_H__
+#endif // __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_CONFIGURATION_PUBLISHER_H__

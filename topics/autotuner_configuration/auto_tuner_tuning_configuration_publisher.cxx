@@ -1,34 +1,27 @@
-#include "auto_tuner_tuning_state_publisher.h"
+#include "auto_tuner_tuning_configuration_publisher.h"
 
-CAutoTunerTuningStatePublisher::CAutoTunerTuningStatePublisher()
+CAutoTunerTuningConfigurationPublisher::CAutoTunerTuningConfigurationPublisher()
 {
 }
 
-CAutoTunerTuningStatePublisher::~CAutoTunerTuningStatePublisher()
+CAutoTunerTuningConfigurationPublisher::~CAutoTunerTuningConfigurationPublisher()
 {
 }
 
-bool CAutoTunerTuningStatePublisher::Create(const std::string &publisher)
+bool CAutoTunerTuningConfigurationPublisher::Create(const std::string &publisher)
 {
     return TKeyedDataWriter::Create(publisher,
-                                    Shell::Hmi::AutoTunerConfiguration::AUTOTUNER_TUNING_STATE,
+                                    Shell::Hmi::AutoTunerConfiguration::AUTOTUNER_TUNING_CONFIGURATION,
                                     "EdgeBaseLibrary",
                                     "ConfigProfile");
 }
 
-bool CAutoTunerTuningStatePublisher::PublishSample()
+bool CAutoTunerTuningConfigurationPublisher::PublishSample()
 {
-    DDS_Time_t currentTime;
-
-    if (m_pDataInstance != nullptr)
-    {
-        GetParticipant()->get_current_time(currentTime);
-    }
-
     return Publish();
 }
 
-void CAutoTunerTuningStatePublisher::SetId(const std::string&id)
+void CAutoTunerTuningConfigurationPublisher::SetId(const std::string&id)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -36,7 +29,7 @@ void CAutoTunerTuningStatePublisher::SetId(const std::string&id)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetFilter(const double filter)
+void CAutoTunerTuningConfigurationPublisher::SetFilter(const double filter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -44,7 +37,7 @@ void CAutoTunerTuningStatePublisher::SetFilter(const double filter)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetD(const double d)
+void CAutoTunerTuningConfigurationPublisher::SetD(const double d)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -52,7 +45,7 @@ void CAutoTunerTuningStatePublisher::SetD(const double d)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetF(const double f)
+void CAutoTunerTuningConfigurationPublisher::SetF(const double f)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -60,7 +53,7 @@ void CAutoTunerTuningStatePublisher::SetF(const double f)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetEpsilon(const double epsilon)
+void CAutoTunerTuningConfigurationPublisher::SetEpsilon(const double epsilon)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -68,7 +61,7 @@ void CAutoTunerTuningStatePublisher::SetEpsilon(const double epsilon)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetEpsilonManual(const bool epsilonManual)
+void CAutoTunerTuningConfigurationPublisher::SetEpsilonManual(const bool epsilonManual)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -76,7 +69,7 @@ void CAutoTunerTuningStatePublisher::SetEpsilonManual(const bool epsilonManual)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetKcMin(const double kcMin)
+void CAutoTunerTuningConfigurationPublisher::SetKcMin(const double kcMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -84,7 +77,7 @@ void CAutoTunerTuningStatePublisher::SetKcMin(const double kcMin)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetKcMax(const double kcMax)
+void CAutoTunerTuningConfigurationPublisher::SetKcMax(const double kcMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -92,7 +85,7 @@ void CAutoTunerTuningStatePublisher::SetKcMax(const double kcMax)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetTiMin(const double tiMin)
+void CAutoTunerTuningConfigurationPublisher::SetTiMin(const double tiMin)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -100,7 +93,7 @@ void CAutoTunerTuningStatePublisher::SetTiMin(const double tiMin)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetTiMax(const double tiMax)
+void CAutoTunerTuningConfigurationPublisher::SetTiMax(const double tiMax)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -108,7 +101,7 @@ void CAutoTunerTuningStatePublisher::SetTiMax(const double tiMax)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetInitK(const double initK)
+void CAutoTunerTuningConfigurationPublisher::SetInitK(const double initK)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -116,7 +109,7 @@ void CAutoTunerTuningStatePublisher::SetInitK(const double initK)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetInitTau(const double initTau)
+void CAutoTunerTuningConfigurationPublisher::SetInitTau(const double initTau)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -124,7 +117,7 @@ void CAutoTunerTuningStatePublisher::SetInitTau(const double initTau)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetInitPreFilter(const double initPreFilter)
+void CAutoTunerTuningConfigurationPublisher::SetInitPreFilter(const double initPreFilter)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -132,7 +125,7 @@ void CAutoTunerTuningStatePublisher::SetInitPreFilter(const double initPreFilter
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetR1(const double r1)
+void CAutoTunerTuningConfigurationPublisher::SetR1(const double r1)
 {
     if (m_pDataInstance != nullptr)
     {
@@ -140,7 +133,7 @@ void CAutoTunerTuningStatePublisher::SetR1(const double r1)
     }
 }
 
-void CAutoTunerTuningStatePublisher::SetR2(const double r2)
+void CAutoTunerTuningConfigurationPublisher::SetR2(const double r2)
 {
     if (m_pDataInstance != nullptr)
     {
