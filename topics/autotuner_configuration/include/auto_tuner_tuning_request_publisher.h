@@ -56,6 +56,16 @@ class CAutoTunerTuningRequestPublisher : public TKeyedDataWriter< Shell::Hmi::Au
         void SetTiMin(const double tiMin);
         /// @param double tiMax
         void SetTiMax(const double tiMax);
+        /// @param double initK
+        void SetInitK(const double initK);
+        /// @param double initTau
+        void SetInitTau(const double initTau);
+        /// @param double initPreFilter
+        void SetInitPreFilter(const double initPreFilter);
+        /// @param double r1
+        void SetR1(const double r1);
+        /// @param double r2
+        void SetR2(const double r2);
 };
 
 #endif // __SHELL_HMI_AUTOTUNERCONFIGURATION_AUTO_TUNER_TUNING_REQUEST_PUBLISHER_H__

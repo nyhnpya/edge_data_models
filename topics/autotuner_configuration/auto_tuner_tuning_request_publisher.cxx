@@ -101,3 +101,43 @@ void CAutoTunerTuningRequestPublisher::SetTiMax(const double tiMax)
     }
 }
 
+void CAutoTunerTuningRequestPublisher::SetInitK(const double initK)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->initK = initK;
+    }
+}
+
+void CAutoTunerTuningRequestPublisher::SetInitTau(const double initTau)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->initTau = initTau;
+    }
+}
+
+void CAutoTunerTuningRequestPublisher::SetInitPreFilter(const double initPreFilter)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->initPreFilter = initPreFilter;
+    }
+}
+
+void CAutoTunerTuningRequestPublisher::SetR1(const double r1)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->r1 = r1;
+    }
+}
+
+void CAutoTunerTuningRequestPublisher::SetR2(const double r2)
+{
+    if (m_pDataInstance != nullptr)
+    {
+        m_pDataInstance->r2 = r2;
+    }
+}
+

@@ -28,10 +28,8 @@ TARG_SOURCES += model_state_request_publisher.cxx
 TARG_SOURCES += model_state_request_subscriber.cxx
 TARG_SOURCES += model_state_publisher.cxx
 TARG_SOURCES += model_state_subscriber.cxx
-TARG_SOURCES += auto_tuner_tuning_request_publisher.cxx
-TARG_SOURCES += auto_tuner_tuning_request_subscriber.cxx
-TARG_SOURCES += auto_tuner_tuning_state_publisher.cxx
-TARG_SOURCES += auto_tuner_tuning_state_subscriber.cxx
+TARG_SOURCES += auto_tuner_tuning_configuration_publisher.cxx
+TARG_SOURCES += auto_tuner_tuning_configuration_subscriber.cxx
 
 ###############################################################################
 # Installation section
@@ -57,10 +55,8 @@ PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_request_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_request_subscriber.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_publisher.h
 PACKAGE_INCLUDE_FILES += $(CURDIR)/include/model_state_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_tuner_tuning_request_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_tuner_tuning_request_subscriber.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_tuner_tuning_state_publisher.h
-PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_tuner_tuning_state_subscriber.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_tuner_tuning_configuration_publisher.h
+PACKAGE_INCLUDE_FILES += $(CURDIR)/include/auto_tuner_tuning_configuration_subscriber.h
 
 # package installation directory
 PACKAGE_INSTALL_DIR += $(CURDIR)/../../package

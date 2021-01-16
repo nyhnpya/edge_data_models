@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configuration_985793642_h
-#define autotuner_configuration_985793642_h
+#ifndef autotuner_configuration_985793073_h
+#define autotuner_configuration_985793073_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -209,117 +209,24 @@ namespace Shell {
             #undef NDDSUSERDllExport
             #define NDDSUSERDllExport
             #endif
-            static const char AUTOTUNER_TUNING_REQUEST[] = "AutoTunerTuningRequest"; 
+            static const char AUTOTUNER_TUNING_CONFIGURATION[] = "AutoTunerTuningConfiguration"; 
 
-            extern const char *AutoTunerTuningRequestTYPENAME;
+            extern const char *AutoTunerTuningConfigurationTYPENAME;
 
-            struct AutoTunerTuningRequestSeq;
+            struct AutoTunerTuningConfigurationSeq;
             #ifndef NDDS_STANDALONE_TYPE
-            class AutoTunerTuningRequestTypeSupport;
-            class AutoTunerTuningRequestDataWriter;
-            class AutoTunerTuningRequestDataReader;
+            class AutoTunerTuningConfigurationTypeSupport;
+            class AutoTunerTuningConfigurationDataWriter;
+            class AutoTunerTuningConfigurationDataReader;
             #endif
-            class AutoTunerTuningRequest 
+            class AutoTunerTuningConfiguration 
             {
               public:
-                typedef struct AutoTunerTuningRequestSeq Seq;
+                typedef struct AutoTunerTuningConfigurationSeq Seq;
                 #ifndef NDDS_STANDALONE_TYPE
-                typedef AutoTunerTuningRequestTypeSupport TypeSupport;
-                typedef AutoTunerTuningRequestDataWriter DataWriter;
-                typedef AutoTunerTuningRequestDataReader DataReader;
-                #endif
-
-                DDS_Char *   id ;
-                DDS_Double   filter ;
-                DDS_Double   d ;
-                DDS_Double   f ;
-                DDS_Double   epsilon ;
-                DDS_Boolean   epsilonManual ;
-                DDS_Double   kcMin ;
-                DDS_Double   kcMax ;
-                DDS_Double   tiMin ;
-                DDS_Double   tiMax ;
-
-            };
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, start exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport __declspec(dllexport)
-            #endif
-
-            #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* AutoTunerTuningRequest_get_typecode(void); /* Type code */
-            NDDSUSERDllExport RTIXCdrTypePlugin *AutoTunerTuningRequest_get_type_plugin_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *AutoTunerTuningRequest_get_sample_access_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *AutoTunerTuningRequest_get_sample_seq_access_info(void);
-            #endif
-
-            DDS_SEQUENCE(AutoTunerTuningRequestSeq, AutoTunerTuningRequest);
-
-            NDDSUSERDllExport
-            RTIBool AutoTunerTuningRequest_initialize(
-                AutoTunerTuningRequest* self);
-
-            NDDSUSERDllExport
-            RTIBool AutoTunerTuningRequest_initialize_ex(
-                AutoTunerTuningRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
-
-            NDDSUSERDllExport
-            RTIBool AutoTunerTuningRequest_initialize_w_params(
-                AutoTunerTuningRequest* self,
-                const struct DDS_TypeAllocationParams_t * allocParams);  
-
-            NDDSUSERDllExport
-            RTIBool AutoTunerTuningRequest_finalize_w_return(
-                AutoTunerTuningRequest* self);
-
-            NDDSUSERDllExport
-            void AutoTunerTuningRequest_finalize(
-                AutoTunerTuningRequest* self);
-
-            NDDSUSERDllExport
-            void AutoTunerTuningRequest_finalize_ex(
-                AutoTunerTuningRequest* self,RTIBool deletePointers);
-
-            NDDSUSERDllExport
-            void AutoTunerTuningRequest_finalize_w_params(
-                AutoTunerTuningRequest* self,
-                const struct DDS_TypeDeallocationParams_t * deallocParams);
-
-            NDDSUSERDllExport
-            void AutoTunerTuningRequest_finalize_optional_members(
-                AutoTunerTuningRequest* self, RTIBool deletePointers);  
-
-            NDDSUSERDllExport
-            RTIBool AutoTunerTuningRequest_copy(
-                AutoTunerTuningRequest* dst,
-                const AutoTunerTuningRequest* src);
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, stop exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport
-            #endif
-            static const char AUTOTUNER_TUNING_STATE[] = "AutoTunerTuningState"; 
-
-            extern const char *AutoTunerTuningStateTYPENAME;
-
-            struct AutoTunerTuningStateSeq;
-            #ifndef NDDS_STANDALONE_TYPE
-            class AutoTunerTuningStateTypeSupport;
-            class AutoTunerTuningStateDataWriter;
-            class AutoTunerTuningStateDataReader;
-            #endif
-            class AutoTunerTuningState 
-            {
-              public:
-                typedef struct AutoTunerTuningStateSeq Seq;
-                #ifndef NDDS_STANDALONE_TYPE
-                typedef AutoTunerTuningStateTypeSupport TypeSupport;
-                typedef AutoTunerTuningStateDataWriter DataWriter;
-                typedef AutoTunerTuningStateDataReader DataReader;
+                typedef AutoTunerTuningConfigurationTypeSupport TypeSupport;
+                typedef AutoTunerTuningConfigurationDataWriter DataWriter;
+                typedef AutoTunerTuningConfigurationDataReader DataReader;
                 #endif
 
                 DDS_Char *   id ;
@@ -347,52 +254,52 @@ namespace Shell {
             #endif
 
             #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* AutoTunerTuningState_get_typecode(void); /* Type code */
-            NDDSUSERDllExport RTIXCdrTypePlugin *AutoTunerTuningState_get_type_plugin_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *AutoTunerTuningState_get_sample_access_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *AutoTunerTuningState_get_sample_seq_access_info(void);
+            NDDSUSERDllExport DDS_TypeCode* AutoTunerTuningConfiguration_get_typecode(void); /* Type code */
+            NDDSUSERDllExport RTIXCdrTypePlugin *AutoTunerTuningConfiguration_get_type_plugin_info(void);
+            NDDSUSERDllExport RTIXCdrSampleAccessInfo *AutoTunerTuningConfiguration_get_sample_access_info(void);
+            NDDSUSERDllExport RTIXCdrSampleAccessInfo *AutoTunerTuningConfiguration_get_sample_seq_access_info(void);
             #endif
 
-            DDS_SEQUENCE(AutoTunerTuningStateSeq, AutoTunerTuningState);
+            DDS_SEQUENCE(AutoTunerTuningConfigurationSeq, AutoTunerTuningConfiguration);
 
             NDDSUSERDllExport
-            RTIBool AutoTunerTuningState_initialize(
-                AutoTunerTuningState* self);
+            RTIBool AutoTunerTuningConfiguration_initialize(
+                AutoTunerTuningConfiguration* self);
 
             NDDSUSERDllExport
-            RTIBool AutoTunerTuningState_initialize_ex(
-                AutoTunerTuningState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+            RTIBool AutoTunerTuningConfiguration_initialize_ex(
+                AutoTunerTuningConfiguration* self,RTIBool allocatePointers,RTIBool allocateMemory);
 
             NDDSUSERDllExport
-            RTIBool AutoTunerTuningState_initialize_w_params(
-                AutoTunerTuningState* self,
+            RTIBool AutoTunerTuningConfiguration_initialize_w_params(
+                AutoTunerTuningConfiguration* self,
                 const struct DDS_TypeAllocationParams_t * allocParams);  
 
             NDDSUSERDllExport
-            RTIBool AutoTunerTuningState_finalize_w_return(
-                AutoTunerTuningState* self);
+            RTIBool AutoTunerTuningConfiguration_finalize_w_return(
+                AutoTunerTuningConfiguration* self);
 
             NDDSUSERDllExport
-            void AutoTunerTuningState_finalize(
-                AutoTunerTuningState* self);
+            void AutoTunerTuningConfiguration_finalize(
+                AutoTunerTuningConfiguration* self);
 
             NDDSUSERDllExport
-            void AutoTunerTuningState_finalize_ex(
-                AutoTunerTuningState* self,RTIBool deletePointers);
+            void AutoTunerTuningConfiguration_finalize_ex(
+                AutoTunerTuningConfiguration* self,RTIBool deletePointers);
 
             NDDSUSERDllExport
-            void AutoTunerTuningState_finalize_w_params(
-                AutoTunerTuningState* self,
+            void AutoTunerTuningConfiguration_finalize_w_params(
+                AutoTunerTuningConfiguration* self,
                 const struct DDS_TypeDeallocationParams_t * deallocParams);
 
             NDDSUSERDllExport
-            void AutoTunerTuningState_finalize_optional_members(
-                AutoTunerTuningState* self, RTIBool deletePointers);  
+            void AutoTunerTuningConfiguration_finalize_optional_members(
+                AutoTunerTuningConfiguration* self, RTIBool deletePointers);  
 
             NDDSUSERDllExport
-            RTIBool AutoTunerTuningState_copy(
-                AutoTunerTuningState* dst,
-                const AutoTunerTuningState* src);
+            RTIBool AutoTunerTuningConfiguration_copy(
+                AutoTunerTuningConfiguration* dst,
+                const AutoTunerTuningConfiguration* src);
 
             #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, stop exporting symbols.
@@ -418,12 +325,7 @@ namespace rti {
         };
 
         template <>
-        struct type_code<Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest> {
-            static const RTIXCdrTypeCode * get();
-        };
-
-        template <>
-        struct type_code<Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState> {
+        struct type_code<Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration> {
             static const RTIXCdrTypeCode * get();
         };
 

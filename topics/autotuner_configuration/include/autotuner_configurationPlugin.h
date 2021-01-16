@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configurationPlugin_985793642_h
-#define autotuner_configurationPlugin_985793642_h
+#ifndef autotuner_configurationPlugin_985793073_h
+#define autotuner_configurationPlugin_985793073_h
 
 #include "autotuner_configuration.h"
 
@@ -380,88 +380,88 @@ namespace Shell {
             /* The type used to store keys for instances of type struct
             * AnotherSimple.
             *
-            * By default, this type is struct AutoTunerTuningRequest
+            * By default, this type is struct AutoTunerTuningConfiguration
             * itself. However, if for some reason this choice is not practical for your
-            * system (e.g. if sizeof(struct AutoTunerTuningRequest)
+            * system (e.g. if sizeof(struct AutoTunerTuningConfiguration)
             * is very large), you may redefine this typedef in terms of another type of
             * your choosing. HOWEVER, if you define the KeyHolder type to be something
             * other than struct AnotherSimple, the
             * following restriction applies: the key of struct
-            * AutoTunerTuningRequest must consist of a
+            * AutoTunerTuningConfiguration must consist of a
             * single field of your redefined KeyHolder type and that field must be the
-            * first field in struct AutoTunerTuningRequest.
+            * first field in struct AutoTunerTuningConfiguration.
             */
-            typedef  class AutoTunerTuningRequest AutoTunerTuningRequestKeyHolder;
+            typedef  class AutoTunerTuningConfiguration AutoTunerTuningConfigurationKeyHolder;
 
-            #define AutoTunerTuningRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+            #define AutoTunerTuningConfigurationPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
 
-            #define AutoTunerTuningRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-            #define AutoTunerTuningRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
+            #define AutoTunerTuningConfigurationPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+            #define AutoTunerTuningConfigurationPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
-            #define AutoTunerTuningRequestPlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
-            #define AutoTunerTuningRequestPlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
+            #define AutoTunerTuningConfigurationPlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
+            #define AutoTunerTuningConfigurationPlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
 
-            #define AutoTunerTuningRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-            #define AutoTunerTuningRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+            #define AutoTunerTuningConfigurationPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+            #define AutoTunerTuningConfigurationPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
             /* --------------------------------------------------------------------------------------
             Support functions:
             * -------------------------------------------------------------------------------------- */
 
-            NDDSUSERDllExport extern AutoTunerTuningRequest*
-            AutoTunerTuningRequestPluginSupport_create_data_w_params(
+            NDDSUSERDllExport extern AutoTunerTuningConfiguration*
+            AutoTunerTuningConfigurationPluginSupport_create_data_w_params(
                 const struct DDS_TypeAllocationParams_t * alloc_params);
 
-            NDDSUSERDllExport extern AutoTunerTuningRequest*
-            AutoTunerTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
+            NDDSUSERDllExport extern AutoTunerTuningConfiguration*
+            AutoTunerTuningConfigurationPluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-            NDDSUSERDllExport extern AutoTunerTuningRequest*
-            AutoTunerTuningRequestPluginSupport_create_data(void);
+            NDDSUSERDllExport extern AutoTunerTuningConfiguration*
+            AutoTunerTuningConfigurationPluginSupport_create_data(void);
 
             NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningRequestPluginSupport_copy_data(
-                AutoTunerTuningRequest *out,
-                const AutoTunerTuningRequest *in);
+            AutoTunerTuningConfigurationPluginSupport_copy_data(
+                AutoTunerTuningConfiguration *out,
+                const AutoTunerTuningConfiguration *in);
 
             NDDSUSERDllExport extern void 
-            AutoTunerTuningRequestPluginSupport_destroy_data_w_params(
-                AutoTunerTuningRequest *sample,
+            AutoTunerTuningConfigurationPluginSupport_destroy_data_w_params(
+                AutoTunerTuningConfiguration *sample,
                 const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
             NDDSUSERDllExport extern void 
-            AutoTunerTuningRequestPluginSupport_destroy_data_ex(
-                AutoTunerTuningRequest *sample,RTIBool deallocate_pointers);
+            AutoTunerTuningConfigurationPluginSupport_destroy_data_ex(
+                AutoTunerTuningConfiguration *sample,RTIBool deallocate_pointers);
 
             NDDSUSERDllExport extern void 
-            AutoTunerTuningRequestPluginSupport_destroy_data(
-                AutoTunerTuningRequest *sample);
+            AutoTunerTuningConfigurationPluginSupport_destroy_data(
+                AutoTunerTuningConfiguration *sample);
 
             NDDSUSERDllExport extern void 
-            AutoTunerTuningRequestPluginSupport_print_data(
-                const AutoTunerTuningRequest *sample,
+            AutoTunerTuningConfigurationPluginSupport_print_data(
+                const AutoTunerTuningConfiguration *sample,
                 const char *desc,
                 unsigned int indent);
 
-            NDDSUSERDllExport extern AutoTunerTuningRequest*
-            AutoTunerTuningRequestPluginSupport_create_key_ex(RTIBool allocate_pointers);
+            NDDSUSERDllExport extern AutoTunerTuningConfiguration*
+            AutoTunerTuningConfigurationPluginSupport_create_key_ex(RTIBool allocate_pointers);
 
-            NDDSUSERDllExport extern AutoTunerTuningRequest*
-            AutoTunerTuningRequestPluginSupport_create_key(void);
-
-            NDDSUSERDllExport extern void 
-            AutoTunerTuningRequestPluginSupport_destroy_key_ex(
-                AutoTunerTuningRequestKeyHolder *key,RTIBool deallocate_pointers);
+            NDDSUSERDllExport extern AutoTunerTuningConfiguration*
+            AutoTunerTuningConfigurationPluginSupport_create_key(void);
 
             NDDSUSERDllExport extern void 
-            AutoTunerTuningRequestPluginSupport_destroy_key(
-                AutoTunerTuningRequestKeyHolder *key);
+            AutoTunerTuningConfigurationPluginSupport_destroy_key_ex(
+                AutoTunerTuningConfigurationKeyHolder *key,RTIBool deallocate_pointers);
+
+            NDDSUSERDllExport extern void 
+            AutoTunerTuningConfigurationPluginSupport_destroy_key(
+                AutoTunerTuningConfigurationKeyHolder *key);
 
             /* ----------------------------------------------------------------------------
             Callback functions:
             * ---------------------------------------------------------------------------- */
 
             NDDSUSERDllExport extern PRESTypePluginParticipantData 
-            AutoTunerTuningRequestPlugin_on_participant_attached(
+            AutoTunerTuningConfigurationPlugin_on_participant_attached(
                 void *registration_data, 
                 const struct PRESTypePluginParticipantInfo *participant_info,
                 RTIBool top_level_registration, 
@@ -469,53 +469,53 @@ namespace Shell {
                 RTICdrTypeCode *typeCode);
 
             NDDSUSERDllExport extern void 
-            AutoTunerTuningRequestPlugin_on_participant_detached(
+            AutoTunerTuningConfigurationPlugin_on_participant_detached(
                 PRESTypePluginParticipantData participant_data);
 
             NDDSUSERDllExport extern PRESTypePluginEndpointData 
-            AutoTunerTuningRequestPlugin_on_endpoint_attached(
+            AutoTunerTuningConfigurationPlugin_on_endpoint_attached(
                 PRESTypePluginParticipantData participant_data,
                 const struct PRESTypePluginEndpointInfo *endpoint_info,
                 RTIBool top_level_registration, 
                 void *container_plugin_context);
 
             NDDSUSERDllExport extern void 
-            AutoTunerTuningRequestPlugin_on_endpoint_detached(
+            AutoTunerTuningConfigurationPlugin_on_endpoint_detached(
                 PRESTypePluginEndpointData endpoint_data);
 
             NDDSUSERDllExport extern void    
-            AutoTunerTuningRequestPlugin_return_sample(
+            AutoTunerTuningConfigurationPlugin_return_sample(
                 PRESTypePluginEndpointData endpoint_data,
-                AutoTunerTuningRequest *sample,
+                AutoTunerTuningConfiguration *sample,
                 void *handle);    
 
             NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningRequestPlugin_copy_sample(
+            AutoTunerTuningConfigurationPlugin_copy_sample(
                 PRESTypePluginEndpointData endpoint_data,
-                AutoTunerTuningRequest *out,
-                const AutoTunerTuningRequest *in);
+                AutoTunerTuningConfiguration *out,
+                const AutoTunerTuningConfiguration *in);
 
             /* ----------------------------------------------------------------------------
             (De)Serialize functions:
             * ------------------------------------------------------------------------- */
 
             NDDSUSERDllExport extern RTIBool
-            AutoTunerTuningRequestPlugin_serialize_to_cdr_buffer(
+            AutoTunerTuningConfigurationPlugin_serialize_to_cdr_buffer(
                 char * buffer,
                 unsigned int * length,
-                const AutoTunerTuningRequest *sample); 
+                const AutoTunerTuningConfiguration *sample); 
 
             NDDSUSERDllExport extern RTIBool
-            AutoTunerTuningRequestPlugin_serialize_to_cdr_buffer_ex(
+            AutoTunerTuningConfigurationPlugin_serialize_to_cdr_buffer_ex(
                 char *buffer,
                 unsigned int *length,
-                const AutoTunerTuningRequest *sample,
+                const AutoTunerTuningConfiguration *sample,
                 DDS_DataRepresentationId_t representation);
 
             NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningRequestPlugin_deserialize(
+            AutoTunerTuningConfigurationPlugin_deserialize(
                 PRESTypePluginEndpointData endpoint_data,
-                AutoTunerTuningRequest **sample, 
+                AutoTunerTuningConfiguration **sample, 
                 RTIBool * drop_sample,
                 struct RTICdrStream *stream,
                 RTIBool deserialize_encapsulation,
@@ -523,21 +523,21 @@ namespace Shell {
                 void *endpoint_plugin_qos);
 
             NDDSUSERDllExport extern RTIBool
-            AutoTunerTuningRequestPlugin_deserialize_from_cdr_buffer(
-                AutoTunerTuningRequest *sample,
+            AutoTunerTuningConfigurationPlugin_deserialize_from_cdr_buffer(
+                AutoTunerTuningConfiguration *sample,
                 const char * buffer,
                 unsigned int length);    
             #ifndef NDDS_STANDALONE_TYPE
             NDDSUSERDllExport extern DDS_ReturnCode_t
-            AutoTunerTuningRequestPlugin_data_to_string(
-                const AutoTunerTuningRequest *sample,
+            AutoTunerTuningConfigurationPlugin_data_to_string(
+                const AutoTunerTuningConfiguration *sample,
                 char *str,
                 DDS_UnsignedLong *str_size, 
                 const struct DDS_PrintFormatProperty *property);    
             #endif
 
             NDDSUSERDllExport extern unsigned int 
-            AutoTunerTuningRequestPlugin_get_serialized_sample_max_size(
+            AutoTunerTuningConfigurationPlugin_get_serialized_sample_max_size(
                 PRESTypePluginEndpointData endpoint_data,
                 RTIBool include_encapsulation,
                 RTIEncapsulationId encapsulation_id,
@@ -547,25 +547,25 @@ namespace Shell {
             Key Management functions:
             * -------------------------------------------------------------------------------------- */
             NDDSUSERDllExport extern PRESTypePluginKeyKind 
-            AutoTunerTuningRequestPlugin_get_key_kind(void);
+            AutoTunerTuningConfigurationPlugin_get_key_kind(void);
 
             NDDSUSERDllExport extern unsigned int 
-            AutoTunerTuningRequestPlugin_get_serialized_key_max_size(
+            AutoTunerTuningConfigurationPlugin_get_serialized_key_max_size(
                 PRESTypePluginEndpointData endpoint_data,
                 RTIBool include_encapsulation,
                 RTIEncapsulationId encapsulation_id,
                 unsigned int current_alignment);
 
             NDDSUSERDllExport extern unsigned int 
-            AutoTunerTuningRequestPlugin_get_serialized_key_max_size_for_keyhash(
+            AutoTunerTuningConfigurationPlugin_get_serialized_key_max_size_for_keyhash(
                 PRESTypePluginEndpointData endpoint_data,
                 RTIEncapsulationId encapsulation_id,
                 unsigned int current_alignment);
 
             NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningRequestPlugin_deserialize_key(
+            AutoTunerTuningConfigurationPlugin_deserialize_key(
                 PRESTypePluginEndpointData endpoint_data,
-                AutoTunerTuningRequest ** sample,
+                AutoTunerTuningConfiguration ** sample,
                 RTIBool * drop_sample,
                 struct RTICdrStream *stream,
                 RTIBool deserialize_encapsulation,
@@ -573,26 +573,26 @@ namespace Shell {
                 void *endpoint_plugin_qos);
 
             NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningRequestPlugin_instance_to_key(
+            AutoTunerTuningConfigurationPlugin_instance_to_key(
                 PRESTypePluginEndpointData endpoint_data,
-                AutoTunerTuningRequestKeyHolder *key, 
-                const AutoTunerTuningRequest *instance);
+                AutoTunerTuningConfigurationKeyHolder *key, 
+                const AutoTunerTuningConfiguration *instance);
 
             NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningRequestPlugin_key_to_instance(
+            AutoTunerTuningConfigurationPlugin_key_to_instance(
                 PRESTypePluginEndpointData endpoint_data,
-                AutoTunerTuningRequest *instance, 
-                const AutoTunerTuningRequestKeyHolder *key);
+                AutoTunerTuningConfiguration *instance, 
+                const AutoTunerTuningConfigurationKeyHolder *key);
 
             NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningRequestPlugin_instance_to_keyhash(
+            AutoTunerTuningConfigurationPlugin_instance_to_keyhash(
                 PRESTypePluginEndpointData endpoint_data,
                 DDS_KeyHash_t *keyhash,
-                const AutoTunerTuningRequest *instance,
+                const AutoTunerTuningConfiguration *instance,
                 RTIEncapsulationId encapsulationId);
 
             NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningRequestPlugin_serialized_sample_to_keyhash(
+            AutoTunerTuningConfigurationPlugin_serialized_sample_to_keyhash(
                 PRESTypePluginEndpointData endpoint_data,
                 struct RTICdrStream *stream, 
                 DDS_KeyHash_t *keyhash,
@@ -600,246 +600,14 @@ namespace Shell {
                 void *endpoint_plugin_qos); 
 
             NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms *AutoTunerTuningRequestPlugin_get_programs();
+            struct RTIXCdrInterpreterPrograms *AutoTunerTuningConfigurationPlugin_get_programs();
 
             /* Plugin Functions */
             NDDSUSERDllExport extern struct PRESTypePlugin*
-            AutoTunerTuningRequestPlugin_new(void);
+            AutoTunerTuningConfigurationPlugin_new(void);
 
             NDDSUSERDllExport extern void
-            AutoTunerTuningRequestPlugin_delete(struct PRESTypePlugin *);
-
-            /* The type used to store keys for instances of type struct
-            * AnotherSimple.
-            *
-            * By default, this type is struct AutoTunerTuningState
-            * itself. However, if for some reason this choice is not practical for your
-            * system (e.g. if sizeof(struct AutoTunerTuningState)
-            * is very large), you may redefine this typedef in terms of another type of
-            * your choosing. HOWEVER, if you define the KeyHolder type to be something
-            * other than struct AnotherSimple, the
-            * following restriction applies: the key of struct
-            * AutoTunerTuningState must consist of a
-            * single field of your redefined KeyHolder type and that field must be the
-            * first field in struct AutoTunerTuningState.
-            */
-            typedef  class AutoTunerTuningState AutoTunerTuningStateKeyHolder;
-
-            #define AutoTunerTuningStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-
-            #define AutoTunerTuningStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-            #define AutoTunerTuningStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
-
-            #define AutoTunerTuningStatePlugin_get_key PRESTypePluginDefaultEndpointData_getKey 
-            #define AutoTunerTuningStatePlugin_return_key PRESTypePluginDefaultEndpointData_returnKey
-
-            #define AutoTunerTuningStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-            #define AutoTunerTuningStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
-
-            /* --------------------------------------------------------------------------------------
-            Support functions:
-            * -------------------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern AutoTunerTuningState*
-            AutoTunerTuningStatePluginSupport_create_data_w_params(
-                const struct DDS_TypeAllocationParams_t * alloc_params);
-
-            NDDSUSERDllExport extern AutoTunerTuningState*
-            AutoTunerTuningStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
-
-            NDDSUSERDllExport extern AutoTunerTuningState*
-            AutoTunerTuningStatePluginSupport_create_data(void);
-
-            NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningStatePluginSupport_copy_data(
-                AutoTunerTuningState *out,
-                const AutoTunerTuningState *in);
-
-            NDDSUSERDllExport extern void 
-            AutoTunerTuningStatePluginSupport_destroy_data_w_params(
-                AutoTunerTuningState *sample,
-                const struct DDS_TypeDeallocationParams_t * dealloc_params);
-
-            NDDSUSERDllExport extern void 
-            AutoTunerTuningStatePluginSupport_destroy_data_ex(
-                AutoTunerTuningState *sample,RTIBool deallocate_pointers);
-
-            NDDSUSERDllExport extern void 
-            AutoTunerTuningStatePluginSupport_destroy_data(
-                AutoTunerTuningState *sample);
-
-            NDDSUSERDllExport extern void 
-            AutoTunerTuningStatePluginSupport_print_data(
-                const AutoTunerTuningState *sample,
-                const char *desc,
-                unsigned int indent);
-
-            NDDSUSERDllExport extern AutoTunerTuningState*
-            AutoTunerTuningStatePluginSupport_create_key_ex(RTIBool allocate_pointers);
-
-            NDDSUSERDllExport extern AutoTunerTuningState*
-            AutoTunerTuningStatePluginSupport_create_key(void);
-
-            NDDSUSERDllExport extern void 
-            AutoTunerTuningStatePluginSupport_destroy_key_ex(
-                AutoTunerTuningStateKeyHolder *key,RTIBool deallocate_pointers);
-
-            NDDSUSERDllExport extern void 
-            AutoTunerTuningStatePluginSupport_destroy_key(
-                AutoTunerTuningStateKeyHolder *key);
-
-            /* ----------------------------------------------------------------------------
-            Callback functions:
-            * ---------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern PRESTypePluginParticipantData 
-            AutoTunerTuningStatePlugin_on_participant_attached(
-                void *registration_data, 
-                const struct PRESTypePluginParticipantInfo *participant_info,
-                RTIBool top_level_registration, 
-                void *container_plugin_context,
-                RTICdrTypeCode *typeCode);
-
-            NDDSUSERDllExport extern void 
-            AutoTunerTuningStatePlugin_on_participant_detached(
-                PRESTypePluginParticipantData participant_data);
-
-            NDDSUSERDllExport extern PRESTypePluginEndpointData 
-            AutoTunerTuningStatePlugin_on_endpoint_attached(
-                PRESTypePluginParticipantData participant_data,
-                const struct PRESTypePluginEndpointInfo *endpoint_info,
-                RTIBool top_level_registration, 
-                void *container_plugin_context);
-
-            NDDSUSERDllExport extern void 
-            AutoTunerTuningStatePlugin_on_endpoint_detached(
-                PRESTypePluginEndpointData endpoint_data);
-
-            NDDSUSERDllExport extern void    
-            AutoTunerTuningStatePlugin_return_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                AutoTunerTuningState *sample,
-                void *handle);    
-
-            NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningStatePlugin_copy_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                AutoTunerTuningState *out,
-                const AutoTunerTuningState *in);
-
-            /* ----------------------------------------------------------------------------
-            (De)Serialize functions:
-            * ------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern RTIBool
-            AutoTunerTuningStatePlugin_serialize_to_cdr_buffer(
-                char * buffer,
-                unsigned int * length,
-                const AutoTunerTuningState *sample); 
-
-            NDDSUSERDllExport extern RTIBool
-            AutoTunerTuningStatePlugin_serialize_to_cdr_buffer_ex(
-                char *buffer,
-                unsigned int *length,
-                const AutoTunerTuningState *sample,
-                DDS_DataRepresentationId_t representation);
-
-            NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningStatePlugin_deserialize(
-                PRESTypePluginEndpointData endpoint_data,
-                AutoTunerTuningState **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_sample, 
-                void *endpoint_plugin_qos);
-
-            NDDSUSERDllExport extern RTIBool
-            AutoTunerTuningStatePlugin_deserialize_from_cdr_buffer(
-                AutoTunerTuningState *sample,
-                const char * buffer,
-                unsigned int length);    
-            #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport extern DDS_ReturnCode_t
-            AutoTunerTuningStatePlugin_data_to_string(
-                const AutoTunerTuningState *sample,
-                char *str,
-                DDS_UnsignedLong *str_size, 
-                const struct DDS_PrintFormatProperty *property);    
-            #endif
-
-            NDDSUSERDllExport extern unsigned int 
-            AutoTunerTuningStatePlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            /* --------------------------------------------------------------------------------------
-            Key Management functions:
-            * -------------------------------------------------------------------------------------- */
-            NDDSUSERDllExport extern PRESTypePluginKeyKind 
-            AutoTunerTuningStatePlugin_get_key_kind(void);
-
-            NDDSUSERDllExport extern unsigned int 
-            AutoTunerTuningStatePlugin_get_serialized_key_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            NDDSUSERDllExport extern unsigned int 
-            AutoTunerTuningStatePlugin_get_serialized_key_max_size_for_keyhash(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningStatePlugin_deserialize_key(
-                PRESTypePluginEndpointData endpoint_data,
-                AutoTunerTuningState ** sample,
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_key,
-                void *endpoint_plugin_qos);
-
-            NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningStatePlugin_instance_to_key(
-                PRESTypePluginEndpointData endpoint_data,
-                AutoTunerTuningStateKeyHolder *key, 
-                const AutoTunerTuningState *instance);
-
-            NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningStatePlugin_key_to_instance(
-                PRESTypePluginEndpointData endpoint_data,
-                AutoTunerTuningState *instance, 
-                const AutoTunerTuningStateKeyHolder *key);
-
-            NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningStatePlugin_instance_to_keyhash(
-                PRESTypePluginEndpointData endpoint_data,
-                DDS_KeyHash_t *keyhash,
-                const AutoTunerTuningState *instance,
-                RTIEncapsulationId encapsulationId);
-
-            NDDSUSERDllExport extern RTIBool 
-            AutoTunerTuningStatePlugin_serialized_sample_to_keyhash(
-                PRESTypePluginEndpointData endpoint_data,
-                struct RTICdrStream *stream, 
-                DDS_KeyHash_t *keyhash,
-                RTIBool deserialize_encapsulation,
-                void *endpoint_plugin_qos); 
-
-            NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms *AutoTunerTuningStatePlugin_get_programs();
-
-            /* Plugin Functions */
-            NDDSUSERDllExport extern struct PRESTypePlugin*
-            AutoTunerTuningStatePlugin_new(void);
-
-            NDDSUSERDllExport extern void
-            AutoTunerTuningStatePlugin_delete(struct PRESTypePlugin *);
+            AutoTunerTuningConfigurationPlugin_delete(struct PRESTypePlugin *);
 
         } /* namespace AutoTunerConfiguration  */
     } /* namespace Hmi  */
@@ -852,5 +620,5 @@ namespace Shell {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* autotuner_configurationPlugin_985793642_h */
+#endif /* autotuner_configurationPlugin_985793073_h */
 

@@ -59,6 +59,16 @@ class CAutoTunerTuningRequestSubscriber : public TSubscriber< Shell::Hmi::AutoTu
         double GetTiMin();
         /// @return double tiMax
         double GetTiMax();
+        /// @return double initK
+        double GetInitK();
+        /// @return double initTau
+        double GetInitTau();
+        /// @return double initPreFilter
+        double GetInitPreFilter();
+        /// @return double r1
+        double GetR1();
+        /// @return double r2
+        double GetR2();
 
     protected:
         void DataAvailable(const Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest &data,

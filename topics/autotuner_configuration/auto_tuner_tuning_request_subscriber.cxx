@@ -75,6 +75,31 @@ double CAutoTunerTuningRequestSubscriber::GetTiMax()
     return m_data.tiMax;
 }
 
+double CAutoTunerTuningRequestSubscriber::GetInitK()
+{
+    return m_data.initK;
+}
+
+double CAutoTunerTuningRequestSubscriber::GetInitTau()
+{
+    return m_data.initTau;
+}
+
+double CAutoTunerTuningRequestSubscriber::GetInitPreFilter()
+{
+    return m_data.initPreFilter;
+}
+
+double CAutoTunerTuningRequestSubscriber::GetR1()
+{
+    return m_data.r1;
+}
+
+double CAutoTunerTuningRequestSubscriber::GetR2()
+{
+    return m_data.r2;
+}
+
 
 void CAutoTunerTuningRequestSubscriber::OnDataAvailable(OnDataAvailableEvent event)
 {

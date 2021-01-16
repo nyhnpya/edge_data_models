@@ -1260,684 +1260,16 @@ namespace Shell {
             #undef T
 
             /* ========================================================================= */
-            const char *AutoTunerTuningRequestTYPENAME = "Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest";
+            const char *AutoTunerTuningConfigurationTYPENAME = "Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration";
 
             #ifndef NDDS_STANDALONE_TYPE
-            DDS_TypeCode* AutoTunerTuningRequest_get_typecode()
+            DDS_TypeCode* AutoTunerTuningConfiguration_get_typecode()
             {
                 static RTIBool is_initialized = RTI_FALSE;
 
-                static DDS_TypeCode AutoTunerTuningRequest_g_tc_id_string = DDS_INITIALIZE_STRING_TYPECODE((36));
+                static DDS_TypeCode AutoTunerTuningConfiguration_g_tc_id_string = DDS_INITIALIZE_STRING_TYPECODE((36));
 
-                static DDS_TypeCode_Member AutoTunerTuningRequest_g_tc_members[10]=
-                {
-
-                    {
-                        (char *)"id",/* Member name */
-                        {
-                            0,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_KEY_MEMBER , /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"filter",/* Member name */
-                        {
-                            1,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"d",/* Member name */
-                        {
-                            2,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"f",/* Member name */
-                        {
-                            3,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"epsilon",/* Member name */
-                        {
-                            4,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"epsilonManual",/* Member name */
-                        {
-                            5,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"kcMin",/* Member name */
-                        {
-                            6,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"kcMax",/* Member name */
-                        {
-                            7,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"tiMin",/* Member name */
-                        {
-                            8,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"tiMax",/* Member name */
-                        {
-                            9,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }
-                };
-
-                static DDS_TypeCode AutoTunerTuningRequest_g_tc =
-                {{
-                        DDS_TK_STRUCT, /* Kind */
-                        DDS_BOOLEAN_FALSE, /* Ignored */
-                        -1, /*Ignored*/
-                        (char *)"Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest", /* Name */
-                        NULL, /* Ignored */      
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        10, /* Number of members */
-                        AutoTunerTuningRequest_g_tc_members, /* Members */
-                        DDS_VM_NONE, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER,
-                        DDS_BOOLEAN_TRUE, /* _isCopyable */
-                        NULL, /* _sampleAccessInfo: assigned later */
-                        NULL /* _typePlugin: assigned later */
-                    }}; /* Type code for AutoTunerTuningRequest*/
-
-                if (is_initialized) {
-                    return &AutoTunerTuningRequest_g_tc;
-                }
-
-                AutoTunerTuningRequest_g_tc._data._annotations._allowedDataRepresentationMask = 5;
-
-                AutoTunerTuningRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&AutoTunerTuningRequest_g_tc_id_string;
-                AutoTunerTuningRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningRequest_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
-                AutoTunerTuningRequest_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningRequest_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningRequest_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningRequest_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-
-                /* Initialize the values for member annotations. */
-                AutoTunerTuningRequest_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_STRING;
-                AutoTunerTuningRequest_g_tc_members[0]._annotations._defaultValue._u.string_value = (DDS_Char *) "";
-
-                AutoTunerTuningRequest_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningRequest_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningRequest_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                AutoTunerTuningRequest_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningRequest_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningRequest_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                AutoTunerTuningRequest_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningRequest_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningRequest_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                AutoTunerTuningRequest_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[4]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningRequest_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningRequest_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                AutoTunerTuningRequest_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
-                AutoTunerTuningRequest_g_tc_members[5]._annotations._defaultValue._u.boolean_value = 0;
-
-                AutoTunerTuningRequest_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningRequest_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningRequest_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                AutoTunerTuningRequest_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[7]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningRequest_g_tc_members[7]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[7]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningRequest_g_tc_members[7]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[7]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                AutoTunerTuningRequest_g_tc_members[8]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[8]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningRequest_g_tc_members[8]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[8]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningRequest_g_tc_members[8]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[8]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                AutoTunerTuningRequest_g_tc_members[9]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[9]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningRequest_g_tc_members[9]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[9]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningRequest_g_tc_members[9]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningRequest_g_tc_members[9]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                AutoTunerTuningRequest_g_tc._data._sampleAccessInfo =
-                AutoTunerTuningRequest_get_sample_access_info();
-                AutoTunerTuningRequest_g_tc._data._typePlugin =
-                AutoTunerTuningRequest_get_type_plugin_info();    
-
-                is_initialized = RTI_TRUE;
-
-                return &AutoTunerTuningRequest_g_tc;
-            }
-
-            #define TSeq AutoTunerTuningRequestSeq
-            #define T AutoTunerTuningRequest
-            #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
-            #undef T
-            #undef TSeq
-
-            RTIXCdrSampleAccessInfo *AutoTunerTuningRequest_get_sample_seq_access_info()
-            {
-                static RTIXCdrSampleAccessInfo AutoTunerTuningRequest_g_seqSampleAccessInfo = {
-                    RTI_XCDR_TYPE_BINDING_CPP, \
-                    {sizeof(AutoTunerTuningRequestSeq),0,0,0}, \
-                    RTI_XCDR_FALSE, \
-                    DDS_Sequence_get_member_value_pointer, \
-                    AutoTunerTuningRequestSeq_set_member_element_count, \
-                    NULL, \
-                    NULL, \
-                    NULL \
-                };
-
-                return &AutoTunerTuningRequest_g_seqSampleAccessInfo;
-            }
-
-            RTIXCdrSampleAccessInfo *AutoTunerTuningRequest_get_sample_access_info()
-            {
-                static RTIBool is_initialized = RTI_FALSE;
-
-                Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest *sample;
-
-                static RTIXCdrMemberAccessInfo AutoTunerTuningRequest_g_memberAccessInfos[10] =
-                {RTIXCdrMemberAccessInfo_INITIALIZER};
-
-                static RTIXCdrSampleAccessInfo AutoTunerTuningRequest_g_sampleAccessInfo = 
-                RTIXCdrSampleAccessInfo_INITIALIZER;
-
-                if (is_initialized) {
-                    return (RTIXCdrSampleAccessInfo*) &AutoTunerTuningRequest_g_sampleAccessInfo;
-                }
-
-                RTIXCdrHeap_allocateStruct(
-                    &sample, 
-                    Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest);
-                if (sample == NULL) {
-                    return NULL;
-                }
-
-                AutoTunerTuningRequest_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->id - (char *)sample);
-
-                AutoTunerTuningRequest_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->filter - (char *)sample);
-
-                AutoTunerTuningRequest_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->d - (char *)sample);
-
-                AutoTunerTuningRequest_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->f - (char *)sample);
-
-                AutoTunerTuningRequest_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->epsilon - (char *)sample);
-
-                AutoTunerTuningRequest_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->epsilonManual - (char *)sample);
-
-                AutoTunerTuningRequest_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->kcMin - (char *)sample);
-
-                AutoTunerTuningRequest_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->kcMax - (char *)sample);
-
-                AutoTunerTuningRequest_g_memberAccessInfos[8].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->tiMin - (char *)sample);
-
-                AutoTunerTuningRequest_g_memberAccessInfos[9].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->tiMax - (char *)sample);
-
-                AutoTunerTuningRequest_g_sampleAccessInfo.memberAccessInfos = 
-                AutoTunerTuningRequest_g_memberAccessInfos;
-
-                {
-                    size_t candidateTypeSize = sizeof(AutoTunerTuningRequest);
-
-                    if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
-                        AutoTunerTuningRequest_g_sampleAccessInfo.typeSize[0] =
-                        RTIXCdrUnsignedLong_MAX;
-                    } else {
-                        AutoTunerTuningRequest_g_sampleAccessInfo.typeSize[0] =
-                        (RTIXCdrUnsignedLong) candidateTypeSize;
-                    }
-                }
-
-                AutoTunerTuningRequest_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
-                RTI_XCDR_TRUE;
-
-                AutoTunerTuningRequest_g_sampleAccessInfo.getMemberValuePointerFcn = 
-                AutoTunerTuningRequest_get_member_value_pointer;
-
-                AutoTunerTuningRequest_g_sampleAccessInfo.languageBinding = 
-                RTI_XCDR_TYPE_BINDING_CPP ;
-
-                RTIXCdrHeap_freeStruct(sample);
-                is_initialized = RTI_TRUE;
-                return (RTIXCdrSampleAccessInfo*) &AutoTunerTuningRequest_g_sampleAccessInfo;
-            }
-
-            RTIXCdrTypePlugin *AutoTunerTuningRequest_get_type_plugin_info()
-            {
-                static RTIXCdrTypePlugin AutoTunerTuningRequest_g_typePlugin = 
-                {
-                    NULL, /* serialize */
-                    NULL, /* serialize_key */
-                    NULL, /* deserialize_sample */
-                    NULL, /* deserialize_key_sample */
-                    NULL, /* skip */
-                    NULL, /* get_serialized_sample_size */
-                    NULL, /* get_serialized_sample_max_size_ex */
-                    NULL, /* get_serialized_key_max_size_ex */
-                    NULL, /* get_serialized_sample_min_size */
-                    NULL, /* serialized_sample_to_key */
-                    (RTIXCdrTypePluginInitializeSampleFunction) 
-                    Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest_initialize_ex,
-                    NULL,
-                    (RTIXCdrTypePluginFinalizeSampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest_finalize_w_return,
-                    NULL
-                };
-
-                return &AutoTunerTuningRequest_g_typePlugin;
-            }
-            #endif
-
-            RTIBool AutoTunerTuningRequest_initialize(
-                AutoTunerTuningRequest* sample) {
-                return Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
-            }
-
-            RTIBool AutoTunerTuningRequest_initialize_ex(
-                AutoTunerTuningRequest* sample,RTIBool allocatePointers, RTIBool allocateMemory)
-            {
-
-                struct DDS_TypeAllocationParams_t allocParams =
-                DDS_TYPE_ALLOCATION_PARAMS_DEFAULT;
-
-                allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
-                allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
-
-                return Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest_initialize_w_params(
-                    sample,&allocParams);
-
-            }
-
-            RTIBool AutoTunerTuningRequest_initialize_w_params(
-                AutoTunerTuningRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
-            {
-
-                if (sample == NULL) {
-                    return RTI_FALSE;
-                }
-                if (allocParams == NULL) {
-                    return RTI_FALSE;
-                }
-
-                if (allocParams->allocate_memory) {
-                    sample->id = DDS_String_alloc((36));
-                    RTICdrType_copyStringEx(
-                        &sample->id,
-                        "",
-                        (36),
-                        RTI_FALSE);
-                    if (sample->id == NULL) {
-                        return RTI_FALSE;
-                    }
-                } else {
-                    if (sample->id != NULL) {
-                        RTICdrType_copyStringEx(
-                            &sample->id,
-                            "",
-                            (36),
-                            RTI_FALSE);
-                        if (sample->id == NULL) {
-                            return RTI_FALSE;
-                        }
-                    }
-                }
-
-                sample->filter = 0.0;
-
-                sample->d = 0.0;
-
-                sample->f = 0.0;
-
-                sample->epsilon = 0.0;
-
-                sample->epsilonManual = 0;
-
-                sample->kcMin = 0.0;
-
-                sample->kcMax = 0.0;
-
-                sample->tiMin = 0.0;
-
-                sample->tiMax = 0.0;
-
-                return RTI_TRUE;
-            }
-
-            RTIBool AutoTunerTuningRequest_finalize_w_return(
-                AutoTunerTuningRequest* sample)
-            {
-                Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest_finalize_ex(sample, RTI_TRUE);
-
-                return RTI_TRUE;
-            }
-
-            void AutoTunerTuningRequest_finalize(
-                AutoTunerTuningRequest* sample)
-            {
-
-                Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest_finalize_ex(sample,RTI_TRUE);
-            }
-
-            void AutoTunerTuningRequest_finalize_ex(
-                AutoTunerTuningRequest* sample,RTIBool deletePointers)
-            {
-                struct DDS_TypeDeallocationParams_t deallocParams =
-                DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
-
-                if (sample==NULL) {
-                    return;
-                } 
-
-                deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
-
-                Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest_finalize_w_params(
-                    sample,&deallocParams);
-            }
-
-            void AutoTunerTuningRequest_finalize_w_params(
-                AutoTunerTuningRequest* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
-            {
-
-                if (sample==NULL) {
-                    return;
-                }
-
-                if (deallocParams == NULL) {
-                    return;
-                }
-
-                if (sample->id != NULL) {
-                    DDS_String_free(sample->id);
-                    sample->id=NULL;
-
-                }
-
-            }
-
-            void AutoTunerTuningRequest_finalize_optional_members(
-                AutoTunerTuningRequest* sample, RTIBool deletePointers)
-            {
-                struct DDS_TypeDeallocationParams_t deallocParamsTmp =
-                DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
-                struct DDS_TypeDeallocationParams_t * deallocParams =
-                &deallocParamsTmp;
-
-                if (sample==NULL) {
-                    return;
-                } 
-                if (deallocParams) {} /* To avoid warnings */
-
-                deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
-                deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
-
-            }
-
-            RTIBool AutoTunerTuningRequest_copy(
-                AutoTunerTuningRequest* dst,
-                const AutoTunerTuningRequest* src)
-            {
-                try {
-
-                    if (dst == NULL || src == NULL) {
-                        return RTI_FALSE;
-                    }
-
-                    if (!RTICdrType_copyStringEx (
-                        &dst->id, src->id, 
-                        (36) + 1, RTI_FALSE)){
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->filter, &src->filter)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->d, &src->d)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->f, &src->f)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->epsilon, &src->epsilon)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyBoolean (
-                        &dst->epsilonManual, &src->epsilonManual)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->kcMin, &src->kcMin)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->kcMax, &src->kcMax)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->tiMin, &src->tiMin)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->tiMax, &src->tiMax)) { 
-                        return RTI_FALSE;
-                    }
-
-                    return RTI_TRUE;
-
-                } catch (const std::bad_alloc&) {
-                    return RTI_FALSE;
-                }
-            }
-
-            /**
-            * <<IMPLEMENTATION>>
-            *
-            * Defines:  TSeq, T
-            *
-            * Configure and implement 'AutoTunerTuningRequest' sequence class.
-            */
-            #define T AutoTunerTuningRequest
-            #define TSeq AutoTunerTuningRequestSeq
-
-            #define T_initialize_w_params Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest_initialize_w_params
-
-            #define T_finalize_w_params   Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest_finalize_w_params
-            #define T_copy       Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest_copy
-
-            #ifndef NDDS_STANDALONE_TYPE
-            #include "dds_c/generic/dds_c_sequence_TSeq.gen"
-            #include "dds_cpp/generic/dds_cpp_sequence_TSeq.gen"
-            #else
-            #include "dds_c_sequence_TSeq.gen"
-            #include "dds_cpp_sequence_TSeq.gen"
-            #endif
-
-            #undef T_copy
-            #undef T_finalize_w_params
-
-            #undef T_initialize_w_params
-
-            #undef TSeq
-            #undef T
-
-            /* ========================================================================= */
-            const char *AutoTunerTuningStateTYPENAME = "Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState";
-
-            #ifndef NDDS_STANDALONE_TYPE
-            DDS_TypeCode* AutoTunerTuningState_get_typecode()
-            {
-                static RTIBool is_initialized = RTI_FALSE;
-
-                static DDS_TypeCode AutoTunerTuningState_g_tc_id_string = DDS_INITIALIZE_STRING_TYPECODE((36));
-
-                static DDS_TypeCode_Member AutoTunerTuningState_g_tc_members[15]=
+                static DDS_TypeCode_Member AutoTunerTuningConfiguration_g_tc_members[15]=
                 {
 
                     {
@@ -2212,277 +1544,277 @@ namespace Shell {
                     }
                 };
 
-                static DDS_TypeCode AutoTunerTuningState_g_tc =
+                static DDS_TypeCode AutoTunerTuningConfiguration_g_tc =
                 {{
                         DDS_TK_STRUCT, /* Kind */
                         DDS_BOOLEAN_FALSE, /* Ignored */
                         -1, /*Ignored*/
-                        (char *)"Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState", /* Name */
+                        (char *)"Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration", /* Name */
                         NULL, /* Ignored */      
                         0, /* Ignored */
                         0, /* Ignored */
                         NULL, /* Ignored */
                         15, /* Number of members */
-                        AutoTunerTuningState_g_tc_members, /* Members */
+                        AutoTunerTuningConfiguration_g_tc_members, /* Members */
                         DDS_VM_NONE, /* Ignored */
                         RTICdrTypeCodeAnnotations_INITIALIZER,
                         DDS_BOOLEAN_TRUE, /* _isCopyable */
                         NULL, /* _sampleAccessInfo: assigned later */
                         NULL /* _typePlugin: assigned later */
-                    }}; /* Type code for AutoTunerTuningState*/
+                    }}; /* Type code for AutoTunerTuningConfiguration*/
 
                 if (is_initialized) {
-                    return &AutoTunerTuningState_g_tc;
+                    return &AutoTunerTuningConfiguration_g_tc;
                 }
 
-                AutoTunerTuningState_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+                AutoTunerTuningConfiguration_g_tc._data._annotations._allowedDataRepresentationMask = 5;
 
-                AutoTunerTuningState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&AutoTunerTuningState_g_tc_id_string;
-                AutoTunerTuningState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
-                AutoTunerTuningState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningState_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningState_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningState_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningState_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningState_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                AutoTunerTuningState_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&AutoTunerTuningConfiguration_g_tc_id_string;
+                AutoTunerTuningConfiguration_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                AutoTunerTuningConfiguration_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
 
                 /* Initialize the values for member annotations. */
-                AutoTunerTuningState_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_STRING;
-                AutoTunerTuningState_g_tc_members[0]._annotations._defaultValue._u.string_value = (DDS_Char *) "";
+                AutoTunerTuningConfiguration_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_STRING;
+                AutoTunerTuningConfiguration_g_tc_members[0]._annotations._defaultValue._u.string_value = (DDS_Char *) "";
 
-                AutoTunerTuningState_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[4]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[4]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
-                AutoTunerTuningState_g_tc_members[5]._annotations._defaultValue._u.boolean_value = 0;
+                AutoTunerTuningConfiguration_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
+                AutoTunerTuningConfiguration_g_tc_members[5]._annotations._defaultValue._u.boolean_value = 0;
 
-                AutoTunerTuningState_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[7]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[7]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[7]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[7]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[7]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[7]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[7]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[7]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[7]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[7]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc_members[8]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[8]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[8]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[8]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[8]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[8]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[8]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[8]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[8]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[8]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[8]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[8]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc_members[9]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[9]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[9]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[9]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[9]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[9]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[9]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[9]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[9]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[9]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[9]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[9]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc_members[10]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[10]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[10]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[10]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[10]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[10]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[10]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[10]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[10]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[10]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[10]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[10]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc_members[11]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[11]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[11]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[11]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[11]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[11]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[11]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[11]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[11]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[11]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[11]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[11]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc_members[12]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[12]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[12]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[12]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[12]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[12]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[12]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[12]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[12]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[12]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[12]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[12]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc_members[13]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[13]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[13]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[13]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[13]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[13]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[13]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[13]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[13]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[13]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[13]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[13]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc_members[14]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[14]._annotations._defaultValue._u.double_value = 0.0;
-                AutoTunerTuningState_g_tc_members[14]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[14]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                AutoTunerTuningState_g_tc_members[14]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                AutoTunerTuningState_g_tc_members[14]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                AutoTunerTuningConfiguration_g_tc_members[14]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[14]._annotations._defaultValue._u.double_value = 0.0;
+                AutoTunerTuningConfiguration_g_tc_members[14]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[14]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                AutoTunerTuningConfiguration_g_tc_members[14]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                AutoTunerTuningConfiguration_g_tc_members[14]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                AutoTunerTuningState_g_tc._data._sampleAccessInfo =
-                AutoTunerTuningState_get_sample_access_info();
-                AutoTunerTuningState_g_tc._data._typePlugin =
-                AutoTunerTuningState_get_type_plugin_info();    
+                AutoTunerTuningConfiguration_g_tc._data._sampleAccessInfo =
+                AutoTunerTuningConfiguration_get_sample_access_info();
+                AutoTunerTuningConfiguration_g_tc._data._typePlugin =
+                AutoTunerTuningConfiguration_get_type_plugin_info();    
 
                 is_initialized = RTI_TRUE;
 
-                return &AutoTunerTuningState_g_tc;
+                return &AutoTunerTuningConfiguration_g_tc;
             }
 
-            #define TSeq AutoTunerTuningStateSeq
-            #define T AutoTunerTuningState
+            #define TSeq AutoTunerTuningConfigurationSeq
+            #define T AutoTunerTuningConfiguration
             #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
             #undef T
             #undef TSeq
 
-            RTIXCdrSampleAccessInfo *AutoTunerTuningState_get_sample_seq_access_info()
+            RTIXCdrSampleAccessInfo *AutoTunerTuningConfiguration_get_sample_seq_access_info()
             {
-                static RTIXCdrSampleAccessInfo AutoTunerTuningState_g_seqSampleAccessInfo = {
+                static RTIXCdrSampleAccessInfo AutoTunerTuningConfiguration_g_seqSampleAccessInfo = {
                     RTI_XCDR_TYPE_BINDING_CPP, \
-                    {sizeof(AutoTunerTuningStateSeq),0,0,0}, \
+                    {sizeof(AutoTunerTuningConfigurationSeq),0,0,0}, \
                     RTI_XCDR_FALSE, \
                     DDS_Sequence_get_member_value_pointer, \
-                    AutoTunerTuningStateSeq_set_member_element_count, \
+                    AutoTunerTuningConfigurationSeq_set_member_element_count, \
                     NULL, \
                     NULL, \
                     NULL \
                 };
 
-                return &AutoTunerTuningState_g_seqSampleAccessInfo;
+                return &AutoTunerTuningConfiguration_g_seqSampleAccessInfo;
             }
 
-            RTIXCdrSampleAccessInfo *AutoTunerTuningState_get_sample_access_info()
+            RTIXCdrSampleAccessInfo *AutoTunerTuningConfiguration_get_sample_access_info()
             {
                 static RTIBool is_initialized = RTI_FALSE;
 
-                Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState *sample;
+                Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration *sample;
 
-                static RTIXCdrMemberAccessInfo AutoTunerTuningState_g_memberAccessInfos[15] =
+                static RTIXCdrMemberAccessInfo AutoTunerTuningConfiguration_g_memberAccessInfos[15] =
                 {RTIXCdrMemberAccessInfo_INITIALIZER};
 
-                static RTIXCdrSampleAccessInfo AutoTunerTuningState_g_sampleAccessInfo = 
+                static RTIXCdrSampleAccessInfo AutoTunerTuningConfiguration_g_sampleAccessInfo = 
                 RTIXCdrSampleAccessInfo_INITIALIZER;
 
                 if (is_initialized) {
-                    return (RTIXCdrSampleAccessInfo*) &AutoTunerTuningState_g_sampleAccessInfo;
+                    return (RTIXCdrSampleAccessInfo*) &AutoTunerTuningConfiguration_g_sampleAccessInfo;
                 }
 
                 RTIXCdrHeap_allocateStruct(
                     &sample, 
-                    Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState);
+                    Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration);
                 if (sample == NULL) {
                     return NULL;
                 }
 
-                AutoTunerTuningState_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->id - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->filter - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->d - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->f - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->epsilon - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->epsilonManual - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->kcMin - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->kcMax - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[8].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[8].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->tiMin - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[9].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[9].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->tiMax - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[10].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[10].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->initK - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[11].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[11].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->initTau - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[12].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[12].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->initPreFilter - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[13].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[13].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->r1 - (char *)sample);
 
-                AutoTunerTuningState_g_memberAccessInfos[14].bindingMemberValueOffset[0] = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos[14].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->r2 - (char *)sample);
 
-                AutoTunerTuningState_g_sampleAccessInfo.memberAccessInfos = 
-                AutoTunerTuningState_g_memberAccessInfos;
+                AutoTunerTuningConfiguration_g_sampleAccessInfo.memberAccessInfos = 
+                AutoTunerTuningConfiguration_g_memberAccessInfos;
 
                 {
-                    size_t candidateTypeSize = sizeof(AutoTunerTuningState);
+                    size_t candidateTypeSize = sizeof(AutoTunerTuningConfiguration);
 
                     if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
-                        AutoTunerTuningState_g_sampleAccessInfo.typeSize[0] =
+                        AutoTunerTuningConfiguration_g_sampleAccessInfo.typeSize[0] =
                         RTIXCdrUnsignedLong_MAX;
                     } else {
-                        AutoTunerTuningState_g_sampleAccessInfo.typeSize[0] =
+                        AutoTunerTuningConfiguration_g_sampleAccessInfo.typeSize[0] =
                         (RTIXCdrUnsignedLong) candidateTypeSize;
                     }
                 }
 
-                AutoTunerTuningState_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+                AutoTunerTuningConfiguration_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
                 RTI_XCDR_TRUE;
 
-                AutoTunerTuningState_g_sampleAccessInfo.getMemberValuePointerFcn = 
-                AutoTunerTuningState_get_member_value_pointer;
+                AutoTunerTuningConfiguration_g_sampleAccessInfo.getMemberValuePointerFcn = 
+                AutoTunerTuningConfiguration_get_member_value_pointer;
 
-                AutoTunerTuningState_g_sampleAccessInfo.languageBinding = 
+                AutoTunerTuningConfiguration_g_sampleAccessInfo.languageBinding = 
                 RTI_XCDR_TYPE_BINDING_CPP ;
 
                 RTIXCdrHeap_freeStruct(sample);
                 is_initialized = RTI_TRUE;
-                return (RTIXCdrSampleAccessInfo*) &AutoTunerTuningState_g_sampleAccessInfo;
+                return (RTIXCdrSampleAccessInfo*) &AutoTunerTuningConfiguration_g_sampleAccessInfo;
             }
 
-            RTIXCdrTypePlugin *AutoTunerTuningState_get_type_plugin_info()
+            RTIXCdrTypePlugin *AutoTunerTuningConfiguration_get_type_plugin_info()
             {
-                static RTIXCdrTypePlugin AutoTunerTuningState_g_typePlugin = 
+                static RTIXCdrTypePlugin AutoTunerTuningConfiguration_g_typePlugin = 
                 {
                     NULL, /* serialize */
                     NULL, /* serialize_key */
@@ -2495,24 +1827,24 @@ namespace Shell {
                     NULL, /* get_serialized_sample_min_size */
                     NULL, /* serialized_sample_to_key */
                     (RTIXCdrTypePluginInitializeSampleFunction) 
-                    Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState_initialize_ex,
+                    Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration_initialize_ex,
                     NULL,
                     (RTIXCdrTypePluginFinalizeSampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState_finalize_w_return,
+                    Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration_finalize_w_return,
                     NULL
                 };
 
-                return &AutoTunerTuningState_g_typePlugin;
+                return &AutoTunerTuningConfiguration_g_typePlugin;
             }
             #endif
 
-            RTIBool AutoTunerTuningState_initialize(
-                AutoTunerTuningState* sample) {
-                return Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+            RTIBool AutoTunerTuningConfiguration_initialize(
+                AutoTunerTuningConfiguration* sample) {
+                return Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
             }
 
-            RTIBool AutoTunerTuningState_initialize_ex(
-                AutoTunerTuningState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+            RTIBool AutoTunerTuningConfiguration_initialize_ex(
+                AutoTunerTuningConfiguration* sample,RTIBool allocatePointers, RTIBool allocateMemory)
             {
 
                 struct DDS_TypeAllocationParams_t allocParams =
@@ -2521,13 +1853,13 @@ namespace Shell {
                 allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
                 allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-                return Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState_initialize_w_params(
+                return Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration_initialize_w_params(
                     sample,&allocParams);
 
             }
 
-            RTIBool AutoTunerTuningState_initialize_w_params(
-                AutoTunerTuningState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+            RTIBool AutoTunerTuningConfiguration_initialize_w_params(
+                AutoTunerTuningConfiguration* sample, const struct DDS_TypeAllocationParams_t * allocParams)
             {
 
                 if (sample == NULL) {
@@ -2591,23 +1923,23 @@ namespace Shell {
                 return RTI_TRUE;
             }
 
-            RTIBool AutoTunerTuningState_finalize_w_return(
-                AutoTunerTuningState* sample)
+            RTIBool AutoTunerTuningConfiguration_finalize_w_return(
+                AutoTunerTuningConfiguration* sample)
             {
-                Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState_finalize_ex(sample, RTI_TRUE);
+                Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration_finalize_ex(sample, RTI_TRUE);
 
                 return RTI_TRUE;
             }
 
-            void AutoTunerTuningState_finalize(
-                AutoTunerTuningState* sample)
+            void AutoTunerTuningConfiguration_finalize(
+                AutoTunerTuningConfiguration* sample)
             {
 
-                Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState_finalize_ex(sample,RTI_TRUE);
+                Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration_finalize_ex(sample,RTI_TRUE);
             }
 
-            void AutoTunerTuningState_finalize_ex(
-                AutoTunerTuningState* sample,RTIBool deletePointers)
+            void AutoTunerTuningConfiguration_finalize_ex(
+                AutoTunerTuningConfiguration* sample,RTIBool deletePointers)
             {
                 struct DDS_TypeDeallocationParams_t deallocParams =
                 DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -2618,12 +1950,12 @@ namespace Shell {
 
                 deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-                Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState_finalize_w_params(
+                Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration_finalize_w_params(
                     sample,&deallocParams);
             }
 
-            void AutoTunerTuningState_finalize_w_params(
-                AutoTunerTuningState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+            void AutoTunerTuningConfiguration_finalize_w_params(
+                AutoTunerTuningConfiguration* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
             {
 
                 if (sample==NULL) {
@@ -2642,8 +1974,8 @@ namespace Shell {
 
             }
 
-            void AutoTunerTuningState_finalize_optional_members(
-                AutoTunerTuningState* sample, RTIBool deletePointers)
+            void AutoTunerTuningConfiguration_finalize_optional_members(
+                AutoTunerTuningConfiguration* sample, RTIBool deletePointers)
             {
                 struct DDS_TypeDeallocationParams_t deallocParamsTmp =
                 DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -2660,9 +1992,9 @@ namespace Shell {
 
             }
 
-            RTIBool AutoTunerTuningState_copy(
-                AutoTunerTuningState* dst,
-                const AutoTunerTuningState* src)
+            RTIBool AutoTunerTuningConfiguration_copy(
+                AutoTunerTuningConfiguration* dst,
+                const AutoTunerTuningConfiguration* src)
             {
                 try {
 
@@ -2744,15 +2076,15 @@ namespace Shell {
             *
             * Defines:  TSeq, T
             *
-            * Configure and implement 'AutoTunerTuningState' sequence class.
+            * Configure and implement 'AutoTunerTuningConfiguration' sequence class.
             */
-            #define T AutoTunerTuningState
-            #define TSeq AutoTunerTuningStateSeq
+            #define T AutoTunerTuningConfiguration
+            #define TSeq AutoTunerTuningConfigurationSeq
 
-            #define T_initialize_w_params Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState_initialize_w_params
+            #define T_initialize_w_params Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration_initialize_w_params
 
-            #define T_finalize_w_params   Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState_finalize_w_params
-            #define T_copy       Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState_copy
+            #define T_finalize_w_params   Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration_finalize_w_params
+            #define T_copy       Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration_copy
 
             #ifndef NDDS_STANDALONE_TYPE
             #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -2789,14 +2121,9 @@ namespace rti {
             return (const RTIXCdrTypeCode *) Shell::Hmi::AutoTunerConfiguration::ModelState_get_typecode();
         }
 
-        const RTIXCdrTypeCode * type_code<Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest>::get() 
+        const RTIXCdrTypeCode * type_code<Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration>::get() 
         {
-            return (const RTIXCdrTypeCode *) Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningRequest_get_typecode();
-        }
-
-        const RTIXCdrTypeCode * type_code<Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState>::get() 
-        {
-            return (const RTIXCdrTypeCode *) Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningState_get_typecode();
+            return (const RTIXCdrTypeCode *) Shell::Hmi::AutoTunerConfiguration::AutoTunerTuningConfiguration_get_typecode();
         }
 
     } 

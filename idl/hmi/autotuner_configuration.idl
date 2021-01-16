@@ -56,25 +56,8 @@ module Shell
 
             // QoSLibrary: EdgeBaseLibrary
             // QoSProfile: ConfigProfile
-            //@copy-c-declaration static const char AUTOTUNER_TUNING_REQUEST[] = "AutoTunerTuningRequest";
-            struct AutoTunerTuningRequest
-            {
-                string<36>  id;          //@key
-                double  filter;
-                double  d;
-                double  f;
-                double  epsilon;
-                boolean epsilonManual;
-                double  kcMin;
-                double  kcMax;
-                double  tiMin;
-                double  tiMax;
-            };
-
-            // QoSLibrary: EdgeBaseLibrary
-            // QoSProfile: ConfigProfile
-            //@copy-c-declaration static const char AUTOTUNER_TUNING_STATE[] = "AutoTunerTuningState";
-            struct AutoTunerTuningState
+            //@copy-c-declaration static const char AUTOTUNER_TUNING_CONFIGURATION[] = "AutoTunerTuningConfiguration";
+            struct AutoTunerTuningConfiguration
             {
                 string<36> id;          //@key
                 double  filter;
