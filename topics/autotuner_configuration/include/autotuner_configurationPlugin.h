@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configurationPlugin_985795544_h
-#define autotuner_configurationPlugin_985795544_h
+#ifndef autotuner_configurationPlugin_985794538_h
+#define autotuner_configurationPlugin_985794538_h
 
 #include "autotuner_configuration.h"
 
@@ -31,49 +31,49 @@ namespace Shell {
     namespace Hmi {
         namespace AutoTunerConfiguration {
 
-            #define ModelStateRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
+            #define ModelStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
 
-            #define ModelStateRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-            #define ModelStateRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
+            #define ModelStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
+            #define ModelStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
 
-            #define ModelStateRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-            #define ModelStateRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
+            #define ModelStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
+            #define ModelStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
 
             /* --------------------------------------------------------------------------------------
             Support functions:
             * -------------------------------------------------------------------------------------- */
 
-            NDDSUSERDllExport extern ModelStateRequest*
-            ModelStateRequestPluginSupport_create_data_w_params(
+            NDDSUSERDllExport extern ModelState*
+            ModelStatePluginSupport_create_data_w_params(
                 const struct DDS_TypeAllocationParams_t * alloc_params);
 
-            NDDSUSERDllExport extern ModelStateRequest*
-            ModelStateRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
+            NDDSUSERDllExport extern ModelState*
+            ModelStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
 
-            NDDSUSERDllExport extern ModelStateRequest*
-            ModelStateRequestPluginSupport_create_data(void);
+            NDDSUSERDllExport extern ModelState*
+            ModelStatePluginSupport_create_data(void);
 
             NDDSUSERDllExport extern RTIBool 
-            ModelStateRequestPluginSupport_copy_data(
-                ModelStateRequest *out,
-                const ModelStateRequest *in);
+            ModelStatePluginSupport_copy_data(
+                ModelState *out,
+                const ModelState *in);
 
             NDDSUSERDllExport extern void 
-            ModelStateRequestPluginSupport_destroy_data_w_params(
-                ModelStateRequest *sample,
+            ModelStatePluginSupport_destroy_data_w_params(
+                ModelState *sample,
                 const struct DDS_TypeDeallocationParams_t * dealloc_params);
 
             NDDSUSERDllExport extern void 
-            ModelStateRequestPluginSupport_destroy_data_ex(
-                ModelStateRequest *sample,RTIBool deallocate_pointers);
+            ModelStatePluginSupport_destroy_data_ex(
+                ModelState *sample,RTIBool deallocate_pointers);
 
             NDDSUSERDllExport extern void 
-            ModelStateRequestPluginSupport_destroy_data(
-                ModelStateRequest *sample);
+            ModelStatePluginSupport_destroy_data(
+                ModelState *sample);
 
             NDDSUSERDllExport extern void 
-            ModelStateRequestPluginSupport_print_data(
-                const ModelStateRequest *sample,
+            ModelStatePluginSupport_print_data(
+                const ModelState *sample,
                 const char *desc,
                 unsigned int indent);
 
@@ -82,7 +82,7 @@ namespace Shell {
             * ---------------------------------------------------------------------------- */
 
             NDDSUSERDllExport extern PRESTypePluginParticipantData 
-            ModelStateRequestPlugin_on_participant_attached(
+            ModelStatePlugin_on_participant_attached(
                 void *registration_data, 
                 const struct PRESTypePluginParticipantInfo *participant_info,
                 RTIBool top_level_registration, 
@@ -90,53 +90,53 @@ namespace Shell {
                 RTICdrTypeCode *typeCode);
 
             NDDSUSERDllExport extern void 
-            ModelStateRequestPlugin_on_participant_detached(
+            ModelStatePlugin_on_participant_detached(
                 PRESTypePluginParticipantData participant_data);
 
             NDDSUSERDllExport extern PRESTypePluginEndpointData 
-            ModelStateRequestPlugin_on_endpoint_attached(
+            ModelStatePlugin_on_endpoint_attached(
                 PRESTypePluginParticipantData participant_data,
                 const struct PRESTypePluginEndpointInfo *endpoint_info,
                 RTIBool top_level_registration, 
                 void *container_plugin_context);
 
             NDDSUSERDllExport extern void 
-            ModelStateRequestPlugin_on_endpoint_detached(
+            ModelStatePlugin_on_endpoint_detached(
                 PRESTypePluginEndpointData endpoint_data);
 
             NDDSUSERDllExport extern void    
-            ModelStateRequestPlugin_return_sample(
+            ModelStatePlugin_return_sample(
                 PRESTypePluginEndpointData endpoint_data,
-                ModelStateRequest *sample,
+                ModelState *sample,
                 void *handle);    
 
             NDDSUSERDllExport extern RTIBool 
-            ModelStateRequestPlugin_copy_sample(
+            ModelStatePlugin_copy_sample(
                 PRESTypePluginEndpointData endpoint_data,
-                ModelStateRequest *out,
-                const ModelStateRequest *in);
+                ModelState *out,
+                const ModelState *in);
 
             /* ----------------------------------------------------------------------------
             (De)Serialize functions:
             * ------------------------------------------------------------------------- */
 
             NDDSUSERDllExport extern RTIBool
-            ModelStateRequestPlugin_serialize_to_cdr_buffer(
+            ModelStatePlugin_serialize_to_cdr_buffer(
                 char * buffer,
                 unsigned int * length,
-                const ModelStateRequest *sample); 
+                const ModelState *sample); 
 
             NDDSUSERDllExport extern RTIBool
-            ModelStateRequestPlugin_serialize_to_cdr_buffer_ex(
+            ModelStatePlugin_serialize_to_cdr_buffer_ex(
                 char *buffer,
                 unsigned int *length,
-                const ModelStateRequest *sample,
+                const ModelState *sample,
                 DDS_DataRepresentationId_t representation);
 
             NDDSUSERDllExport extern RTIBool 
-            ModelStateRequestPlugin_deserialize(
+            ModelStatePlugin_deserialize(
                 PRESTypePluginEndpointData endpoint_data,
-                ModelStateRequest **sample, 
+                ModelState **sample, 
                 RTIBool * drop_sample,
                 struct RTICdrStream *stream,
                 RTIBool deserialize_encapsulation,
@@ -144,21 +144,21 @@ namespace Shell {
                 void *endpoint_plugin_qos);
 
             NDDSUSERDllExport extern RTIBool
-            ModelStateRequestPlugin_deserialize_from_cdr_buffer(
-                ModelStateRequest *sample,
+            ModelStatePlugin_deserialize_from_cdr_buffer(
+                ModelState *sample,
                 const char * buffer,
                 unsigned int length);    
             #ifndef NDDS_STANDALONE_TYPE
             NDDSUSERDllExport extern DDS_ReturnCode_t
-            ModelStateRequestPlugin_data_to_string(
-                const ModelStateRequest *sample,
+            ModelStatePlugin_data_to_string(
+                const ModelState *sample,
                 char *str,
                 DDS_UnsignedLong *str_size, 
                 const struct DDS_PrintFormatProperty *property);    
             #endif
 
             NDDSUSERDllExport extern unsigned int 
-            ModelStateRequestPlugin_get_serialized_sample_max_size(
+            ModelStatePlugin_get_serialized_sample_max_size(
                 PRESTypePluginEndpointData endpoint_data,
                 RTIBool include_encapsulation,
                 RTIEncapsulationId encapsulation_id,
@@ -168,25 +168,25 @@ namespace Shell {
             Key Management functions:
             * -------------------------------------------------------------------------------------- */
             NDDSUSERDllExport extern PRESTypePluginKeyKind 
-            ModelStateRequestPlugin_get_key_kind(void);
+            ModelStatePlugin_get_key_kind(void);
 
             NDDSUSERDllExport extern unsigned int 
-            ModelStateRequestPlugin_get_serialized_key_max_size(
+            ModelStatePlugin_get_serialized_key_max_size(
                 PRESTypePluginEndpointData endpoint_data,
                 RTIBool include_encapsulation,
                 RTIEncapsulationId encapsulation_id,
                 unsigned int current_alignment);
 
             NDDSUSERDllExport extern unsigned int 
-            ModelStateRequestPlugin_get_serialized_key_max_size_for_keyhash(
+            ModelStatePlugin_get_serialized_key_max_size_for_keyhash(
                 PRESTypePluginEndpointData endpoint_data,
                 RTIEncapsulationId encapsulation_id,
                 unsigned int current_alignment);
 
             NDDSUSERDllExport extern RTIBool 
-            ModelStateRequestPlugin_deserialize_key(
+            ModelStatePlugin_deserialize_key(
                 PRESTypePluginEndpointData endpoint_data,
-                ModelStateRequest ** sample,
+                ModelState ** sample,
                 RTIBool * drop_sample,
                 struct RTICdrStream *stream,
                 RTIBool deserialize_encapsulation,
@@ -194,186 +194,14 @@ namespace Shell {
                 void *endpoint_plugin_qos);
 
             NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms *ModelStateRequestPlugin_get_programs();
+            struct RTIXCdrInterpreterPrograms *ModelStatePlugin_get_programs();
 
             /* Plugin Functions */
             NDDSUSERDllExport extern struct PRESTypePlugin*
-            ModelStateRequestPlugin_new(void);
+            ModelStatePlugin_new(void);
 
             NDDSUSERDllExport extern void
-            ModelStateRequestPlugin_delete(struct PRESTypePlugin *);
-
-            #define ModelStateStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-
-            #define ModelStateStatePlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-            #define ModelStateStatePlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
-
-            #define ModelStateStatePlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-            #define ModelStateStatePlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
-
-            /* --------------------------------------------------------------------------------------
-            Support functions:
-            * -------------------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern ModelStateState*
-            ModelStateStatePluginSupport_create_data_w_params(
-                const struct DDS_TypeAllocationParams_t * alloc_params);
-
-            NDDSUSERDllExport extern ModelStateState*
-            ModelStateStatePluginSupport_create_data_ex(RTIBool allocate_pointers);
-
-            NDDSUSERDllExport extern ModelStateState*
-            ModelStateStatePluginSupport_create_data(void);
-
-            NDDSUSERDllExport extern RTIBool 
-            ModelStateStatePluginSupport_copy_data(
-                ModelStateState *out,
-                const ModelStateState *in);
-
-            NDDSUSERDllExport extern void 
-            ModelStateStatePluginSupport_destroy_data_w_params(
-                ModelStateState *sample,
-                const struct DDS_TypeDeallocationParams_t * dealloc_params);
-
-            NDDSUSERDllExport extern void 
-            ModelStateStatePluginSupport_destroy_data_ex(
-                ModelStateState *sample,RTIBool deallocate_pointers);
-
-            NDDSUSERDllExport extern void 
-            ModelStateStatePluginSupport_destroy_data(
-                ModelStateState *sample);
-
-            NDDSUSERDllExport extern void 
-            ModelStateStatePluginSupport_print_data(
-                const ModelStateState *sample,
-                const char *desc,
-                unsigned int indent);
-
-            /* ----------------------------------------------------------------------------
-            Callback functions:
-            * ---------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern PRESTypePluginParticipantData 
-            ModelStateStatePlugin_on_participant_attached(
-                void *registration_data, 
-                const struct PRESTypePluginParticipantInfo *participant_info,
-                RTIBool top_level_registration, 
-                void *container_plugin_context,
-                RTICdrTypeCode *typeCode);
-
-            NDDSUSERDllExport extern void 
-            ModelStateStatePlugin_on_participant_detached(
-                PRESTypePluginParticipantData participant_data);
-
-            NDDSUSERDllExport extern PRESTypePluginEndpointData 
-            ModelStateStatePlugin_on_endpoint_attached(
-                PRESTypePluginParticipantData participant_data,
-                const struct PRESTypePluginEndpointInfo *endpoint_info,
-                RTIBool top_level_registration, 
-                void *container_plugin_context);
-
-            NDDSUSERDllExport extern void 
-            ModelStateStatePlugin_on_endpoint_detached(
-                PRESTypePluginEndpointData endpoint_data);
-
-            NDDSUSERDllExport extern void    
-            ModelStateStatePlugin_return_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                ModelStateState *sample,
-                void *handle);    
-
-            NDDSUSERDllExport extern RTIBool 
-            ModelStateStatePlugin_copy_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                ModelStateState *out,
-                const ModelStateState *in);
-
-            /* ----------------------------------------------------------------------------
-            (De)Serialize functions:
-            * ------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern RTIBool
-            ModelStateStatePlugin_serialize_to_cdr_buffer(
-                char * buffer,
-                unsigned int * length,
-                const ModelStateState *sample); 
-
-            NDDSUSERDllExport extern RTIBool
-            ModelStateStatePlugin_serialize_to_cdr_buffer_ex(
-                char *buffer,
-                unsigned int *length,
-                const ModelStateState *sample,
-                DDS_DataRepresentationId_t representation);
-
-            NDDSUSERDllExport extern RTIBool 
-            ModelStateStatePlugin_deserialize(
-                PRESTypePluginEndpointData endpoint_data,
-                ModelStateState **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_sample, 
-                void *endpoint_plugin_qos);
-
-            NDDSUSERDllExport extern RTIBool
-            ModelStateStatePlugin_deserialize_from_cdr_buffer(
-                ModelStateState *sample,
-                const char * buffer,
-                unsigned int length);    
-            #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport extern DDS_ReturnCode_t
-            ModelStateStatePlugin_data_to_string(
-                const ModelStateState *sample,
-                char *str,
-                DDS_UnsignedLong *str_size, 
-                const struct DDS_PrintFormatProperty *property);    
-            #endif
-
-            NDDSUSERDllExport extern unsigned int 
-            ModelStateStatePlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            /* --------------------------------------------------------------------------------------
-            Key Management functions:
-            * -------------------------------------------------------------------------------------- */
-            NDDSUSERDllExport extern PRESTypePluginKeyKind 
-            ModelStateStatePlugin_get_key_kind(void);
-
-            NDDSUSERDllExport extern unsigned int 
-            ModelStateStatePlugin_get_serialized_key_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            NDDSUSERDllExport extern unsigned int 
-            ModelStateStatePlugin_get_serialized_key_max_size_for_keyhash(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            NDDSUSERDllExport extern RTIBool 
-            ModelStateStatePlugin_deserialize_key(
-                PRESTypePluginEndpointData endpoint_data,
-                ModelStateState ** sample,
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_key,
-                void *endpoint_plugin_qos);
-
-            NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms *ModelStateStatePlugin_get_programs();
-
-            /* Plugin Functions */
-            NDDSUSERDllExport extern struct PRESTypePlugin*
-            ModelStateStatePlugin_new(void);
-
-            NDDSUSERDllExport extern void
-            ModelStateStatePlugin_delete(struct PRESTypePlugin *);
+            ModelStatePlugin_delete(struct PRESTypePlugin *);
 
             #define DiffpTuningRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
 
@@ -1418,5 +1246,5 @@ namespace Shell {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* autotuner_configurationPlugin_985795544_h */
+#endif /* autotuner_configurationPlugin_985794538_h */
 

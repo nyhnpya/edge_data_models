@@ -28,7 +28,7 @@ namespace Shell {
             TDataReader,
             TTypeSupport
 
-            Configure and implement 'ModelStateRequest' support classes.
+            Configure and implement 'ModelState' support classes.
 
             Note: Only the #defined classes get defined
             */
@@ -44,11 +44,11 @@ namespace Shell {
             */
 
             /* Requires */
-            #define TTYPENAME   ModelStateRequestTYPENAME
+            #define TTYPENAME   ModelStateTYPENAME
 
             /* Defines */
-            #define TDataWriter ModelStateRequestDataWriter
-            #define TData       Shell::Hmi::AutoTunerConfiguration::ModelStateRequest
+            #define TDataWriter ModelStateDataWriter
+            #define TData       Shell::Hmi::AutoTunerConfiguration::ModelState
 
             #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
             #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
@@ -70,12 +70,12 @@ namespace Shell {
             */
 
             /* Requires */
-            #define TTYPENAME   ModelStateRequestTYPENAME
+            #define TTYPENAME   ModelStateTYPENAME
 
             /* Defines */
-            #define TDataReader ModelStateRequestDataReader
-            #define TDataSeq    ModelStateRequestSeq
-            #define TData       Shell::Hmi::AutoTunerConfiguration::ModelStateRequest
+            #define TDataReader ModelStateDataReader
+            #define TDataSeq    ModelStateSeq
+            #define TData       Shell::Hmi::AutoTunerConfiguration::ModelState
 
             #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
             #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
@@ -99,123 +99,15 @@ namespace Shell {
             */
 
             /* Requires */
-            #define TTYPENAME    ModelStateRequestTYPENAME
-            #define TPlugin_new  Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPlugin_new
-            #define TPlugin_delete  Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPlugin_delete
+            #define TTYPENAME    ModelStateTYPENAME
+            #define TPlugin_new  Shell::Hmi::AutoTunerConfiguration::ModelStatePlugin_new
+            #define TPlugin_delete  Shell::Hmi::AutoTunerConfiguration::ModelStatePlugin_delete
 
             /* Defines */
-            #define TTypeSupport ModelStateRequestTypeSupport
-            #define TData        Shell::Hmi::AutoTunerConfiguration::ModelStateRequest
-            #define TDataReader  ModelStateRequestDataReader
-            #define TDataWriter  ModelStateRequestDataWriter
-            #define TGENERATE_SER_CODE
-            #ifndef NDDS_STANDALONE_TYPE
-            #define TGENERATE_TYPECODE
-            #endif
-
-            #include "dds_cpp/generic/dds_cpp_data_TTypeSupport.gen"
-
-            #undef TTypeSupport
-            #undef TData
-            #undef TDataReader
-            #undef TDataWriter
-            #ifndef NDDS_STANDALONE_TYPE
-            #undef TGENERATE_TYPECODE
-            #endif
-            #undef TGENERATE_SER_CODE
-            #undef TTYPENAME
-            #undef TPlugin_new
-            #undef TPlugin_delete
-
-            /* ========================================================================= */
-            /**
-            <<IMPLEMENTATION>>
-
-            Defines:   TData,
-            TDataWriter,
-            TDataReader,
-            TTypeSupport
-
-            Configure and implement 'ModelStateState' support classes.
-
-            Note: Only the #defined classes get defined
-            */
-
-            /* ----------------------------------------------------------------- */
-            /* DDSDataWriter
-            */
-
-            /**
-            <<IMPLEMENTATION >>
-
-            Defines:   TDataWriter, TData
-            */
-
-            /* Requires */
-            #define TTYPENAME   ModelStateStateTYPENAME
-
-            /* Defines */
-            #define TDataWriter ModelStateStateDataWriter
-            #define TData       Shell::Hmi::AutoTunerConfiguration::ModelStateState
-
-            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            #include "dds_cpp/generic/dds_cpp_data_TDataWriter.gen"
-            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-
-            #undef TDataWriter
-            #undef TData
-
-            #undef TTYPENAME
-
-            /* ----------------------------------------------------------------- */
-            /* DDSDataReader
-            */
-
-            /**
-            <<IMPLEMENTATION >>
-
-            Defines:   TDataReader, TDataSeq, TData
-            */
-
-            /* Requires */
-            #define TTYPENAME   ModelStateStateTYPENAME
-
-            /* Defines */
-            #define TDataReader ModelStateStateDataReader
-            #define TDataSeq    ModelStateStateSeq
-            #define TData       Shell::Hmi::AutoTunerConfiguration::ModelStateState
-
-            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-            #include "dds_cpp/generic/dds_cpp_data_TDataReader.gen"
-            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-
-            #undef TDataReader
-            #undef TDataSeq
-            #undef TData
-
-            #undef TTYPENAME
-
-            /* ----------------------------------------------------------------- */
-            /* TypeSupport
-
-            <<IMPLEMENTATION >>
-
-            Requires:  TTYPENAME,
-            TPlugin_new
-            TPlugin_delete
-            Defines:   TTypeSupport, TData, TDataReader, TDataWriter
-            */
-
-            /* Requires */
-            #define TTYPENAME    ModelStateStateTYPENAME
-            #define TPlugin_new  Shell::Hmi::AutoTunerConfiguration::ModelStateStatePlugin_new
-            #define TPlugin_delete  Shell::Hmi::AutoTunerConfiguration::ModelStateStatePlugin_delete
-
-            /* Defines */
-            #define TTypeSupport ModelStateStateTypeSupport
-            #define TData        Shell::Hmi::AutoTunerConfiguration::ModelStateState
-            #define TDataReader  ModelStateStateDataReader
-            #define TDataWriter  ModelStateStateDataWriter
+            #define TTypeSupport ModelStateTypeSupport
+            #define TData        Shell::Hmi::AutoTunerConfiguration::ModelState
+            #define TDataReader  ModelStateDataReader
+            #define TDataWriter  ModelStateDataWriter
             #define TGENERATE_SER_CODE
             #ifndef NDDS_STANDALONE_TYPE
             #define TGENERATE_TYPECODE

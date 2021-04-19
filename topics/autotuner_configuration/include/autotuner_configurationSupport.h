@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configurationSupport_985795544_h
-#define autotuner_configurationSupport_985795544_h
+#ifndef autotuner_configurationSupport_985794538_h
+#define autotuner_configurationSupport_985794538_h
 
 /* Uses */
 #include "autotuner_configuration.h"
@@ -48,49 +48,14 @@ namespace Shell {
             #endif
 
             DDS_TYPESUPPORT_CPP(
-                ModelStateRequestTypeSupport, 
-                ModelStateRequest);
+                ModelStateTypeSupport, 
+                ModelState);
 
             #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(ModelStateRequestDataWriter, ModelStateRequest);
+            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(ModelStateDataWriter, ModelState);
             #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
             #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(ModelStateRequestDataReader, ModelStateRequestSeq, ModelStateRequest);
-            #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, stop exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport
-            #endif
-            /* ========================================================================= */
-            /**
-            Uses:     T
-
-            Defines:  TTypeSupport, TDataWriter, TDataReader
-
-            Organized using the well-documented "Generics Pattern" for
-            implementing generics in C and C++.
-            */
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, start exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport __declspec(dllexport)
-
-            #endif
-
-            DDS_TYPESUPPORT_CPP(
-                ModelStateStateTypeSupport, 
-                ModelStateState);
-
-            #define ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            DDS_DATAWRITER_WITH_DATA_CONSTRUCTOR_METHODS_CPP(ModelStateStateDataWriter, ModelStateState);
-            #undef ENABLE_TDATAWRITER_DATA_CONSTRUCTOR_METHODS
-            #define ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
-            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(ModelStateStateDataReader, ModelStateStateSeq, ModelStateState);
+            DDS_DATAREADER_W_DATA_CONSISTENCY_CHECK(ModelStateDataReader, ModelStateSeq, ModelState);
             #undef ENABLE_TDATAREADER_DATA_CONSISTENCY_CHECK_METHOD
 
             #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -313,5 +278,5 @@ namespace Shell {
     } /* namespace Hmi  */
 } /* namespace Shell  */
 
-#endif  /* autotuner_configurationSupport_985795544_h */
+#endif  /* autotuner_configurationSupport_985794538_h */
 

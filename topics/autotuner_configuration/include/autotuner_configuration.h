@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configuration_985795544_h
-#define autotuner_configuration_985795544_h
+#ifndef autotuner_configuration_985794538_h
+#define autotuner_configuration_985794538_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -24,116 +24,24 @@ or consult the RTI Connext manual.
 namespace Shell {
     namespace Hmi {
         namespace AutoTunerConfiguration {
-            static const char MODEL_STATE_REQUEST[] = "ModelStateRequest"; 
+            static const char MODEL_STATE_STATE[] = "ModelState"; 
 
-            extern const char *ModelStateRequestTYPENAME;
+            extern const char *ModelStateTYPENAME;
 
-            struct ModelStateRequestSeq;
+            struct ModelStateSeq;
             #ifndef NDDS_STANDALONE_TYPE
-            class ModelStateRequestTypeSupport;
-            class ModelStateRequestDataWriter;
-            class ModelStateRequestDataReader;
+            class ModelStateTypeSupport;
+            class ModelStateDataWriter;
+            class ModelStateDataReader;
             #endif
-            class ModelStateRequest 
+            class ModelState 
             {
               public:
-                typedef struct ModelStateRequestSeq Seq;
+                typedef struct ModelStateSeq Seq;
                 #ifndef NDDS_STANDALONE_TYPE
-                typedef ModelStateRequestTypeSupport TypeSupport;
-                typedef ModelStateRequestDataWriter DataWriter;
-                typedef ModelStateRequestDataReader DataReader;
-                #endif
-
-                DDS_Boolean   modelReset ;
-                DDS_Double   pipeInnerDiameter ;
-                DDS_Double   pipeOuterDiameter ;
-                DDS_Double   slopeFilter ;
-                DDS_Double   tauMax ;
-                DDS_Double   tauMin ;
-                DDS_Double   tauMultiplier ;
-                DDS_Double   maxDeviation ;
-                DDS_Double   minInterval ;
-
-            };
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, start exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport __declspec(dllexport)
-            #endif
-
-            #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* ModelStateRequest_get_typecode(void); /* Type code */
-            NDDSUSERDllExport RTIXCdrTypePlugin *ModelStateRequest_get_type_plugin_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *ModelStateRequest_get_sample_access_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *ModelStateRequest_get_sample_seq_access_info(void);
-            #endif
-
-            DDS_SEQUENCE(ModelStateRequestSeq, ModelStateRequest);
-
-            NDDSUSERDllExport
-            RTIBool ModelStateRequest_initialize(
-                ModelStateRequest* self);
-
-            NDDSUSERDllExport
-            RTIBool ModelStateRequest_initialize_ex(
-                ModelStateRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
-
-            NDDSUSERDllExport
-            RTIBool ModelStateRequest_initialize_w_params(
-                ModelStateRequest* self,
-                const struct DDS_TypeAllocationParams_t * allocParams);  
-
-            NDDSUSERDllExport
-            RTIBool ModelStateRequest_finalize_w_return(
-                ModelStateRequest* self);
-
-            NDDSUSERDllExport
-            void ModelStateRequest_finalize(
-                ModelStateRequest* self);
-
-            NDDSUSERDllExport
-            void ModelStateRequest_finalize_ex(
-                ModelStateRequest* self,RTIBool deletePointers);
-
-            NDDSUSERDllExport
-            void ModelStateRequest_finalize_w_params(
-                ModelStateRequest* self,
-                const struct DDS_TypeDeallocationParams_t * deallocParams);
-
-            NDDSUSERDllExport
-            void ModelStateRequest_finalize_optional_members(
-                ModelStateRequest* self, RTIBool deletePointers);  
-
-            NDDSUSERDllExport
-            RTIBool ModelStateRequest_copy(
-                ModelStateRequest* dst,
-                const ModelStateRequest* src);
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, stop exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport
-            #endif
-            static const char MODEL_STATE_STATE[] = "ModelStateState"; 
-
-            extern const char *ModelStateStateTYPENAME;
-
-            struct ModelStateStateSeq;
-            #ifndef NDDS_STANDALONE_TYPE
-            class ModelStateStateTypeSupport;
-            class ModelStateStateDataWriter;
-            class ModelStateStateDataReader;
-            #endif
-            class ModelStateState 
-            {
-              public:
-                typedef struct ModelStateStateSeq Seq;
-                #ifndef NDDS_STANDALONE_TYPE
-                typedef ModelStateStateTypeSupport TypeSupport;
-                typedef ModelStateStateDataWriter DataWriter;
-                typedef ModelStateStateDataReader DataReader;
+                typedef ModelStateTypeSupport TypeSupport;
+                typedef ModelStateDataWriter DataWriter;
+                typedef ModelStateDataReader DataReader;
                 #endif
 
                 DDS_Double   pipeInnerDiameter ;
@@ -155,52 +63,52 @@ namespace Shell {
             #endif
 
             #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* ModelStateState_get_typecode(void); /* Type code */
-            NDDSUSERDllExport RTIXCdrTypePlugin *ModelStateState_get_type_plugin_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *ModelStateState_get_sample_access_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *ModelStateState_get_sample_seq_access_info(void);
+            NDDSUSERDllExport DDS_TypeCode* ModelState_get_typecode(void); /* Type code */
+            NDDSUSERDllExport RTIXCdrTypePlugin *ModelState_get_type_plugin_info(void);
+            NDDSUSERDllExport RTIXCdrSampleAccessInfo *ModelState_get_sample_access_info(void);
+            NDDSUSERDllExport RTIXCdrSampleAccessInfo *ModelState_get_sample_seq_access_info(void);
             #endif
 
-            DDS_SEQUENCE(ModelStateStateSeq, ModelStateState);
+            DDS_SEQUENCE(ModelStateSeq, ModelState);
 
             NDDSUSERDllExport
-            RTIBool ModelStateState_initialize(
-                ModelStateState* self);
+            RTIBool ModelState_initialize(
+                ModelState* self);
 
             NDDSUSERDllExport
-            RTIBool ModelStateState_initialize_ex(
-                ModelStateState* self,RTIBool allocatePointers,RTIBool allocateMemory);
+            RTIBool ModelState_initialize_ex(
+                ModelState* self,RTIBool allocatePointers,RTIBool allocateMemory);
 
             NDDSUSERDllExport
-            RTIBool ModelStateState_initialize_w_params(
-                ModelStateState* self,
+            RTIBool ModelState_initialize_w_params(
+                ModelState* self,
                 const struct DDS_TypeAllocationParams_t * allocParams);  
 
             NDDSUSERDllExport
-            RTIBool ModelStateState_finalize_w_return(
-                ModelStateState* self);
+            RTIBool ModelState_finalize_w_return(
+                ModelState* self);
 
             NDDSUSERDllExport
-            void ModelStateState_finalize(
-                ModelStateState* self);
+            void ModelState_finalize(
+                ModelState* self);
 
             NDDSUSERDllExport
-            void ModelStateState_finalize_ex(
-                ModelStateState* self,RTIBool deletePointers);
+            void ModelState_finalize_ex(
+                ModelState* self,RTIBool deletePointers);
 
             NDDSUSERDllExport
-            void ModelStateState_finalize_w_params(
-                ModelStateState* self,
+            void ModelState_finalize_w_params(
+                ModelState* self,
                 const struct DDS_TypeDeallocationParams_t * deallocParams);
 
             NDDSUSERDllExport
-            void ModelStateState_finalize_optional_members(
-                ModelStateState* self, RTIBool deletePointers);  
+            void ModelState_finalize_optional_members(
+                ModelState* self, RTIBool deletePointers);  
 
             NDDSUSERDllExport
-            RTIBool ModelStateState_copy(
-                ModelStateState* dst,
-                const ModelStateState* src);
+            RTIBool ModelState_copy(
+                ModelState* dst,
+                const ModelState* src);
 
             #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
             /* If the code is building on Windows, stop exporting symbols.
@@ -783,12 +691,7 @@ namespace Shell {
 namespace rti { 
     namespace xcdr {
         template <>
-        struct type_code<Shell::Hmi::AutoTunerConfiguration::ModelStateRequest> {
-            static const RTIXCdrTypeCode * get();
-        };
-
-        template <>
-        struct type_code<Shell::Hmi::AutoTunerConfiguration::ModelStateState> {
+        struct type_code<Shell::Hmi::AutoTunerConfiguration::ModelState> {
             static const RTIXCdrTypeCode * get();
         };
 

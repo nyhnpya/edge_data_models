@@ -46,621 +46,14 @@ namespace Shell {
         namespace AutoTunerConfiguration {
 
             /* ========================================================================= */
-            const char *ModelStateRequestTYPENAME = "Shell::Hmi::AutoTunerConfiguration::ModelStateRequest";
+            const char *ModelStateTYPENAME = "Shell::Hmi::AutoTunerConfiguration::ModelState";
 
             #ifndef NDDS_STANDALONE_TYPE
-            DDS_TypeCode* ModelStateRequest_get_typecode()
+            DDS_TypeCode* ModelState_get_typecode()
             {
                 static RTIBool is_initialized = RTI_FALSE;
 
-                static DDS_TypeCode_Member ModelStateRequest_g_tc_members[9]=
-                {
-
-                    {
-                        (char *)"modelReset",/* Member name */
-                        {
-                            0,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"pipeInnerDiameter",/* Member name */
-                        {
-                            1,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"pipeOuterDiameter",/* Member name */
-                        {
-                            2,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"slopeFilter",/* Member name */
-                        {
-                            3,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"tauMax",/* Member name */
-                        {
-                            4,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"tauMin",/* Member name */
-                        {
-                            5,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"tauMultiplier",/* Member name */
-                        {
-                            6,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"maxDeviation",/* Member name */
-                        {
-                            7,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }, 
-                    {
-                        (char *)"minInterval",/* Member name */
-                        {
-                            8,/* Representation ID */
-                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
-                            -1, /* Bitfield bits */
-                            NULL/* Member type code is assigned later */
-                        },
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
-                        DDS_PUBLIC_MEMBER,/* Member visibility */
-                        1,
-                        NULL, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER
-                    }
-                };
-
-                static DDS_TypeCode ModelStateRequest_g_tc =
-                {{
-                        DDS_TK_STRUCT, /* Kind */
-                        DDS_BOOLEAN_FALSE, /* Ignored */
-                        -1, /*Ignored*/
-                        (char *)"Shell::Hmi::AutoTunerConfiguration::ModelStateRequest", /* Name */
-                        NULL, /* Ignored */      
-                        0, /* Ignored */
-                        0, /* Ignored */
-                        NULL, /* Ignored */
-                        9, /* Number of members */
-                        ModelStateRequest_g_tc_members, /* Members */
-                        DDS_VM_NONE, /* Ignored */
-                        RTICdrTypeCodeAnnotations_INITIALIZER,
-                        DDS_BOOLEAN_TRUE, /* _isCopyable */
-                        NULL, /* _sampleAccessInfo: assigned later */
-                        NULL /* _typePlugin: assigned later */
-                    }}; /* Type code for ModelStateRequest*/
-
-                if (is_initialized) {
-                    return &ModelStateRequest_g_tc;
-                }
-
-                ModelStateRequest_g_tc._data._annotations._allowedDataRepresentationMask = 5;
-
-                ModelStateRequest_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
-                ModelStateRequest_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateRequest_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateRequest_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateRequest_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateRequest_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateRequest_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateRequest_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateRequest_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-
-                /* Initialize the values for member annotations. */
-                ModelStateRequest_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
-                ModelStateRequest_g_tc_members[0]._annotations._defaultValue._u.boolean_value = 0;
-
-                ModelStateRequest_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateRequest_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateRequest_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                ModelStateRequest_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateRequest_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateRequest_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                ModelStateRequest_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateRequest_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateRequest_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                ModelStateRequest_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[4]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateRequest_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateRequest_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                ModelStateRequest_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[5]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateRequest_g_tc_members[5]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[5]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateRequest_g_tc_members[5]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[5]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                ModelStateRequest_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateRequest_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateRequest_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                ModelStateRequest_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[7]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateRequest_g_tc_members[7]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[7]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateRequest_g_tc_members[7]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[7]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                ModelStateRequest_g_tc_members[8]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[8]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateRequest_g_tc_members[8]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[8]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateRequest_g_tc_members[8]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateRequest_g_tc_members[8]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
-
-                ModelStateRequest_g_tc._data._sampleAccessInfo =
-                ModelStateRequest_get_sample_access_info();
-                ModelStateRequest_g_tc._data._typePlugin =
-                ModelStateRequest_get_type_plugin_info();    
-
-                is_initialized = RTI_TRUE;
-
-                return &ModelStateRequest_g_tc;
-            }
-
-            #define TSeq ModelStateRequestSeq
-            #define T ModelStateRequest
-            #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
-            #undef T
-            #undef TSeq
-
-            RTIXCdrSampleAccessInfo *ModelStateRequest_get_sample_seq_access_info()
-            {
-                static RTIXCdrSampleAccessInfo ModelStateRequest_g_seqSampleAccessInfo = {
-                    RTI_XCDR_TYPE_BINDING_CPP, \
-                    {sizeof(ModelStateRequestSeq),0,0,0}, \
-                    RTI_XCDR_FALSE, \
-                    DDS_Sequence_get_member_value_pointer, \
-                    ModelStateRequestSeq_set_member_element_count, \
-                    NULL, \
-                    NULL, \
-                    NULL \
-                };
-
-                return &ModelStateRequest_g_seqSampleAccessInfo;
-            }
-
-            RTIXCdrSampleAccessInfo *ModelStateRequest_get_sample_access_info()
-            {
-                static RTIBool is_initialized = RTI_FALSE;
-
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequest *sample;
-
-                static RTIXCdrMemberAccessInfo ModelStateRequest_g_memberAccessInfos[9] =
-                {RTIXCdrMemberAccessInfo_INITIALIZER};
-
-                static RTIXCdrSampleAccessInfo ModelStateRequest_g_sampleAccessInfo = 
-                RTIXCdrSampleAccessInfo_INITIALIZER;
-
-                if (is_initialized) {
-                    return (RTIXCdrSampleAccessInfo*) &ModelStateRequest_g_sampleAccessInfo;
-                }
-
-                RTIXCdrHeap_allocateStruct(
-                    &sample, 
-                    Shell::Hmi::AutoTunerConfiguration::ModelStateRequest);
-                if (sample == NULL) {
-                    return NULL;
-                }
-
-                ModelStateRequest_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->modelReset - (char *)sample);
-
-                ModelStateRequest_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->pipeInnerDiameter - (char *)sample);
-
-                ModelStateRequest_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->pipeOuterDiameter - (char *)sample);
-
-                ModelStateRequest_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->slopeFilter - (char *)sample);
-
-                ModelStateRequest_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->tauMax - (char *)sample);
-
-                ModelStateRequest_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->tauMin - (char *)sample);
-
-                ModelStateRequest_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->tauMultiplier - (char *)sample);
-
-                ModelStateRequest_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->maxDeviation - (char *)sample);
-
-                ModelStateRequest_g_memberAccessInfos[8].bindingMemberValueOffset[0] = 
-                (RTIXCdrUnsignedLong) ((char *)&sample->minInterval - (char *)sample);
-
-                ModelStateRequest_g_sampleAccessInfo.memberAccessInfos = 
-                ModelStateRequest_g_memberAccessInfos;
-
-                {
-                    size_t candidateTypeSize = sizeof(ModelStateRequest);
-
-                    if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
-                        ModelStateRequest_g_sampleAccessInfo.typeSize[0] =
-                        RTIXCdrUnsignedLong_MAX;
-                    } else {
-                        ModelStateRequest_g_sampleAccessInfo.typeSize[0] =
-                        (RTIXCdrUnsignedLong) candidateTypeSize;
-                    }
-                }
-
-                ModelStateRequest_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
-                RTI_XCDR_TRUE;
-
-                ModelStateRequest_g_sampleAccessInfo.getMemberValuePointerFcn = 
-                ModelStateRequest_get_member_value_pointer;
-
-                ModelStateRequest_g_sampleAccessInfo.languageBinding = 
-                RTI_XCDR_TYPE_BINDING_CPP ;
-
-                RTIXCdrHeap_freeStruct(sample);
-                is_initialized = RTI_TRUE;
-                return (RTIXCdrSampleAccessInfo*) &ModelStateRequest_g_sampleAccessInfo;
-            }
-
-            RTIXCdrTypePlugin *ModelStateRequest_get_type_plugin_info()
-            {
-                static RTIXCdrTypePlugin ModelStateRequest_g_typePlugin = 
-                {
-                    NULL, /* serialize */
-                    NULL, /* serialize_key */
-                    NULL, /* deserialize_sample */
-                    NULL, /* deserialize_key_sample */
-                    NULL, /* skip */
-                    NULL, /* get_serialized_sample_size */
-                    NULL, /* get_serialized_sample_max_size_ex */
-                    NULL, /* get_serialized_key_max_size_ex */
-                    NULL, /* get_serialized_sample_min_size */
-                    NULL, /* serialized_sample_to_key */
-                    (RTIXCdrTypePluginInitializeSampleFunction) 
-                    Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_initialize_ex,
-                    NULL,
-                    (RTIXCdrTypePluginFinalizeSampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_finalize_w_return,
-                    NULL
-                };
-
-                return &ModelStateRequest_g_typePlugin;
-            }
-            #endif
-
-            RTIBool ModelStateRequest_initialize(
-                ModelStateRequest* sample) {
-                return Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
-            }
-
-            RTIBool ModelStateRequest_initialize_ex(
-                ModelStateRequest* sample,RTIBool allocatePointers, RTIBool allocateMemory)
-            {
-
-                struct DDS_TypeAllocationParams_t allocParams =
-                DDS_TYPE_ALLOCATION_PARAMS_DEFAULT;
-
-                allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
-                allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
-
-                return Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_initialize_w_params(
-                    sample,&allocParams);
-
-            }
-
-            RTIBool ModelStateRequest_initialize_w_params(
-                ModelStateRequest* sample, const struct DDS_TypeAllocationParams_t * allocParams)
-            {
-
-                if (sample == NULL) {
-                    return RTI_FALSE;
-                }
-                if (allocParams == NULL) {
-                    return RTI_FALSE;
-                }
-
-                sample->modelReset = 0;
-
-                sample->pipeInnerDiameter = 0.0;
-
-                sample->pipeOuterDiameter = 0.0;
-
-                sample->slopeFilter = 0.0;
-
-                sample->tauMax = 0.0;
-
-                sample->tauMin = 0.0;
-
-                sample->tauMultiplier = 0.0;
-
-                sample->maxDeviation = 0.0;
-
-                sample->minInterval = 0.0;
-
-                return RTI_TRUE;
-            }
-
-            RTIBool ModelStateRequest_finalize_w_return(
-                ModelStateRequest* sample)
-            {
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_finalize_ex(sample, RTI_TRUE);
-
-                return RTI_TRUE;
-            }
-
-            void ModelStateRequest_finalize(
-                ModelStateRequest* sample)
-            {
-
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_finalize_ex(sample,RTI_TRUE);
-            }
-
-            void ModelStateRequest_finalize_ex(
-                ModelStateRequest* sample,RTIBool deletePointers)
-            {
-                struct DDS_TypeDeallocationParams_t deallocParams =
-                DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
-
-                if (sample==NULL) {
-                    return;
-                } 
-
-                deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
-
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_finalize_w_params(
-                    sample,&deallocParams);
-            }
-
-            void ModelStateRequest_finalize_w_params(
-                ModelStateRequest* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
-            {
-
-                if (sample==NULL) {
-                    return;
-                }
-
-                if (deallocParams == NULL) {
-                    return;
-                }
-
-            }
-
-            void ModelStateRequest_finalize_optional_members(
-                ModelStateRequest* sample, RTIBool deletePointers)
-            {
-                struct DDS_TypeDeallocationParams_t deallocParamsTmp =
-                DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
-                struct DDS_TypeDeallocationParams_t * deallocParams =
-                &deallocParamsTmp;
-
-                if (sample==NULL) {
-                    return;
-                } 
-                if (deallocParams) {} /* To avoid warnings */
-
-                deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
-                deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
-
-            }
-
-            RTIBool ModelStateRequest_copy(
-                ModelStateRequest* dst,
-                const ModelStateRequest* src)
-            {
-                try {
-
-                    if (dst == NULL || src == NULL) {
-                        return RTI_FALSE;
-                    }
-
-                    if (!RTICdrType_copyBoolean (
-                        &dst->modelReset, &src->modelReset)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->pipeInnerDiameter, &src->pipeInnerDiameter)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->pipeOuterDiameter, &src->pipeOuterDiameter)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->slopeFilter, &src->slopeFilter)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->tauMax, &src->tauMax)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->tauMin, &src->tauMin)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->tauMultiplier, &src->tauMultiplier)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->maxDeviation, &src->maxDeviation)) { 
-                        return RTI_FALSE;
-                    }
-                    if (!RTICdrType_copyDouble (
-                        &dst->minInterval, &src->minInterval)) { 
-                        return RTI_FALSE;
-                    }
-
-                    return RTI_TRUE;
-
-                } catch (const std::bad_alloc&) {
-                    return RTI_FALSE;
-                }
-            }
-
-            /**
-            * <<IMPLEMENTATION>>
-            *
-            * Defines:  TSeq, T
-            *
-            * Configure and implement 'ModelStateRequest' sequence class.
-            */
-            #define T ModelStateRequest
-            #define TSeq ModelStateRequestSeq
-
-            #define T_initialize_w_params Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_initialize_w_params
-
-            #define T_finalize_w_params   Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_finalize_w_params
-            #define T_copy       Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_copy
-
-            #ifndef NDDS_STANDALONE_TYPE
-            #include "dds_c/generic/dds_c_sequence_TSeq.gen"
-            #include "dds_cpp/generic/dds_cpp_sequence_TSeq.gen"
-            #else
-            #include "dds_c_sequence_TSeq.gen"
-            #include "dds_cpp_sequence_TSeq.gen"
-            #endif
-
-            #undef T_copy
-            #undef T_finalize_w_params
-
-            #undef T_initialize_w_params
-
-            #undef TSeq
-            #undef T
-
-            /* ========================================================================= */
-            const char *ModelStateStateTYPENAME = "Shell::Hmi::AutoTunerConfiguration::ModelStateState";
-
-            #ifndef NDDS_STANDALONE_TYPE
-            DDS_TypeCode* ModelStateState_get_typecode()
-            {
-                static RTIBool is_initialized = RTI_FALSE;
-
-                static DDS_TypeCode_Member ModelStateState_g_tc_members[9]=
+                static DDS_TypeCode_Member ModelState_g_tc_members[9]=
                 {
 
                     {
@@ -827,215 +220,215 @@ namespace Shell {
                     }
                 };
 
-                static DDS_TypeCode ModelStateState_g_tc =
+                static DDS_TypeCode ModelState_g_tc =
                 {{
                         DDS_TK_STRUCT, /* Kind */
                         DDS_BOOLEAN_FALSE, /* Ignored */
                         -1, /*Ignored*/
-                        (char *)"Shell::Hmi::AutoTunerConfiguration::ModelStateState", /* Name */
+                        (char *)"Shell::Hmi::AutoTunerConfiguration::ModelState", /* Name */
                         NULL, /* Ignored */      
                         0, /* Ignored */
                         0, /* Ignored */
                         NULL, /* Ignored */
                         9, /* Number of members */
-                        ModelStateState_g_tc_members, /* Members */
+                        ModelState_g_tc_members, /* Members */
                         DDS_VM_NONE, /* Ignored */
                         RTICdrTypeCodeAnnotations_INITIALIZER,
                         DDS_BOOLEAN_TRUE, /* _isCopyable */
                         NULL, /* _sampleAccessInfo: assigned later */
                         NULL /* _typePlugin: assigned later */
-                    }}; /* Type code for ModelStateState*/
+                    }}; /* Type code for ModelState*/
 
                 if (is_initialized) {
-                    return &ModelStateState_g_tc;
+                    return &ModelState_g_tc;
                 }
 
-                ModelStateState_g_tc._data._annotations._allowedDataRepresentationMask = 5;
+                ModelState_g_tc._data._annotations._allowedDataRepresentationMask = 5;
 
-                ModelStateState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
-                ModelStateState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
+                ModelState_g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                ModelState_g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                ModelState_g_tc_members[2]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                ModelState_g_tc_members[3]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                ModelState_g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                ModelState_g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                ModelState_g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                ModelState_g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double_w_new;
+                ModelState_g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_boolean_w_new;
 
                 /* Initialize the values for member annotations. */
-                ModelStateState_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[0]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateState_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[0]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateState_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[0]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                ModelState_g_tc_members[0]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[0]._annotations._defaultValue._u.double_value = 0.0;
+                ModelState_g_tc_members[0]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[0]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                ModelState_g_tc_members[0]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[0]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                ModelStateState_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateState_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateState_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                ModelState_g_tc_members[1]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[1]._annotations._defaultValue._u.double_value = 0.0;
+                ModelState_g_tc_members[1]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[1]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                ModelState_g_tc_members[1]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[1]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                ModelStateState_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateState_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateState_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                ModelState_g_tc_members[2]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[2]._annotations._defaultValue._u.double_value = 0.0;
+                ModelState_g_tc_members[2]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[2]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                ModelState_g_tc_members[2]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[2]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                ModelStateState_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateState_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateState_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                ModelState_g_tc_members[3]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[3]._annotations._defaultValue._u.double_value = 0.0;
+                ModelState_g_tc_members[3]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[3]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                ModelState_g_tc_members[3]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[3]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                ModelStateState_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[4]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateState_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateState_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                ModelState_g_tc_members[4]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[4]._annotations._defaultValue._u.double_value = 0.0;
+                ModelState_g_tc_members[4]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[4]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                ModelState_g_tc_members[4]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[4]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                ModelStateState_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[5]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateState_g_tc_members[5]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[5]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateState_g_tc_members[5]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[5]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                ModelState_g_tc_members[5]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[5]._annotations._defaultValue._u.double_value = 0.0;
+                ModelState_g_tc_members[5]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[5]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                ModelState_g_tc_members[5]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[5]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                ModelStateState_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateState_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateState_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                ModelState_g_tc_members[6]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[6]._annotations._defaultValue._u.double_value = 0.0;
+                ModelState_g_tc_members[6]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[6]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                ModelState_g_tc_members[6]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[6]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                ModelStateState_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[7]._annotations._defaultValue._u.double_value = 0.0;
-                ModelStateState_g_tc_members[7]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[7]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
-                ModelStateState_g_tc_members[7]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
-                ModelStateState_g_tc_members[7]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
+                ModelState_g_tc_members[7]._annotations._defaultValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[7]._annotations._defaultValue._u.double_value = 0.0;
+                ModelState_g_tc_members[7]._annotations._minValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[7]._annotations._minValue._u.double_value = RTIXCdrDouble_MIN;
+                ModelState_g_tc_members[7]._annotations._maxValue._d = RTI_XCDR_TK_DOUBLE;
+                ModelState_g_tc_members[7]._annotations._maxValue._u.double_value = RTIXCdrDouble_MAX;
 
-                ModelStateState_g_tc_members[8]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
-                ModelStateState_g_tc_members[8]._annotations._defaultValue._u.boolean_value = 0;
+                ModelState_g_tc_members[8]._annotations._defaultValue._d = RTI_XCDR_TK_BOOLEAN;
+                ModelState_g_tc_members[8]._annotations._defaultValue._u.boolean_value = 0;
 
-                ModelStateState_g_tc._data._sampleAccessInfo =
-                ModelStateState_get_sample_access_info();
-                ModelStateState_g_tc._data._typePlugin =
-                ModelStateState_get_type_plugin_info();    
+                ModelState_g_tc._data._sampleAccessInfo =
+                ModelState_get_sample_access_info();
+                ModelState_g_tc._data._typePlugin =
+                ModelState_get_type_plugin_info();    
 
                 is_initialized = RTI_TRUE;
 
-                return &ModelStateState_g_tc;
+                return &ModelState_g_tc;
             }
 
-            #define TSeq ModelStateStateSeq
-            #define T ModelStateState
+            #define TSeq ModelStateSeq
+            #define T ModelState
             #include "dds_cpp/generic/dds_cpp_data_TInterpreterSupport.gen"
             #undef T
             #undef TSeq
 
-            RTIXCdrSampleAccessInfo *ModelStateState_get_sample_seq_access_info()
+            RTIXCdrSampleAccessInfo *ModelState_get_sample_seq_access_info()
             {
-                static RTIXCdrSampleAccessInfo ModelStateState_g_seqSampleAccessInfo = {
+                static RTIXCdrSampleAccessInfo ModelState_g_seqSampleAccessInfo = {
                     RTI_XCDR_TYPE_BINDING_CPP, \
-                    {sizeof(ModelStateStateSeq),0,0,0}, \
+                    {sizeof(ModelStateSeq),0,0,0}, \
                     RTI_XCDR_FALSE, \
                     DDS_Sequence_get_member_value_pointer, \
-                    ModelStateStateSeq_set_member_element_count, \
+                    ModelStateSeq_set_member_element_count, \
                     NULL, \
                     NULL, \
                     NULL \
                 };
 
-                return &ModelStateState_g_seqSampleAccessInfo;
+                return &ModelState_g_seqSampleAccessInfo;
             }
 
-            RTIXCdrSampleAccessInfo *ModelStateState_get_sample_access_info()
+            RTIXCdrSampleAccessInfo *ModelState_get_sample_access_info()
             {
                 static RTIBool is_initialized = RTI_FALSE;
 
-                Shell::Hmi::AutoTunerConfiguration::ModelStateState *sample;
+                Shell::Hmi::AutoTunerConfiguration::ModelState *sample;
 
-                static RTIXCdrMemberAccessInfo ModelStateState_g_memberAccessInfos[9] =
+                static RTIXCdrMemberAccessInfo ModelState_g_memberAccessInfos[9] =
                 {RTIXCdrMemberAccessInfo_INITIALIZER};
 
-                static RTIXCdrSampleAccessInfo ModelStateState_g_sampleAccessInfo = 
+                static RTIXCdrSampleAccessInfo ModelState_g_sampleAccessInfo = 
                 RTIXCdrSampleAccessInfo_INITIALIZER;
 
                 if (is_initialized) {
-                    return (RTIXCdrSampleAccessInfo*) &ModelStateState_g_sampleAccessInfo;
+                    return (RTIXCdrSampleAccessInfo*) &ModelState_g_sampleAccessInfo;
                 }
 
                 RTIXCdrHeap_allocateStruct(
                     &sample, 
-                    Shell::Hmi::AutoTunerConfiguration::ModelStateState);
+                    Shell::Hmi::AutoTunerConfiguration::ModelState);
                 if (sample == NULL) {
                     return NULL;
                 }
 
-                ModelStateState_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
+                ModelState_g_memberAccessInfos[0].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->pipeInnerDiameter - (char *)sample);
 
-                ModelStateState_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
+                ModelState_g_memberAccessInfos[1].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->pipeOuterDiameter - (char *)sample);
 
-                ModelStateState_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
+                ModelState_g_memberAccessInfos[2].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->slopeFilter - (char *)sample);
 
-                ModelStateState_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
+                ModelState_g_memberAccessInfos[3].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->tauMax - (char *)sample);
 
-                ModelStateState_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
+                ModelState_g_memberAccessInfos[4].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->tauMin - (char *)sample);
 
-                ModelStateState_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
+                ModelState_g_memberAccessInfos[5].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->tauMultiplier - (char *)sample);
 
-                ModelStateState_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
+                ModelState_g_memberAccessInfos[6].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->maxDeviation - (char *)sample);
 
-                ModelStateState_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
+                ModelState_g_memberAccessInfos[7].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->minInterval - (char *)sample);
 
-                ModelStateState_g_memberAccessInfos[8].bindingMemberValueOffset[0] = 
+                ModelState_g_memberAccessInfos[8].bindingMemberValueOffset[0] = 
                 (RTIXCdrUnsignedLong) ((char *)&sample->tunerEnabled - (char *)sample);
 
-                ModelStateState_g_sampleAccessInfo.memberAccessInfos = 
-                ModelStateState_g_memberAccessInfos;
+                ModelState_g_sampleAccessInfo.memberAccessInfos = 
+                ModelState_g_memberAccessInfos;
 
                 {
-                    size_t candidateTypeSize = sizeof(ModelStateState);
+                    size_t candidateTypeSize = sizeof(ModelState);
 
                     if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
-                        ModelStateState_g_sampleAccessInfo.typeSize[0] =
+                        ModelState_g_sampleAccessInfo.typeSize[0] =
                         RTIXCdrUnsignedLong_MAX;
                     } else {
-                        ModelStateState_g_sampleAccessInfo.typeSize[0] =
+                        ModelState_g_sampleAccessInfo.typeSize[0] =
                         (RTIXCdrUnsignedLong) candidateTypeSize;
                     }
                 }
 
-                ModelStateState_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
+                ModelState_g_sampleAccessInfo.useGetMemberValueOnlyWithRef =
                 RTI_XCDR_TRUE;
 
-                ModelStateState_g_sampleAccessInfo.getMemberValuePointerFcn = 
-                ModelStateState_get_member_value_pointer;
+                ModelState_g_sampleAccessInfo.getMemberValuePointerFcn = 
+                ModelState_get_member_value_pointer;
 
-                ModelStateState_g_sampleAccessInfo.languageBinding = 
+                ModelState_g_sampleAccessInfo.languageBinding = 
                 RTI_XCDR_TYPE_BINDING_CPP ;
 
                 RTIXCdrHeap_freeStruct(sample);
                 is_initialized = RTI_TRUE;
-                return (RTIXCdrSampleAccessInfo*) &ModelStateState_g_sampleAccessInfo;
+                return (RTIXCdrSampleAccessInfo*) &ModelState_g_sampleAccessInfo;
             }
 
-            RTIXCdrTypePlugin *ModelStateState_get_type_plugin_info()
+            RTIXCdrTypePlugin *ModelState_get_type_plugin_info()
             {
-                static RTIXCdrTypePlugin ModelStateState_g_typePlugin = 
+                static RTIXCdrTypePlugin ModelState_g_typePlugin = 
                 {
                     NULL, /* serialize */
                     NULL, /* serialize_key */
@@ -1048,24 +441,24 @@ namespace Shell {
                     NULL, /* get_serialized_sample_min_size */
                     NULL, /* serialized_sample_to_key */
                     (RTIXCdrTypePluginInitializeSampleFunction) 
-                    Shell::Hmi::AutoTunerConfiguration::ModelStateState_initialize_ex,
+                    Shell::Hmi::AutoTunerConfiguration::ModelState_initialize_ex,
                     NULL,
                     (RTIXCdrTypePluginFinalizeSampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::ModelStateState_finalize_w_return,
+                    Shell::Hmi::AutoTunerConfiguration::ModelState_finalize_w_return,
                     NULL
                 };
 
-                return &ModelStateState_g_typePlugin;
+                return &ModelState_g_typePlugin;
             }
             #endif
 
-            RTIBool ModelStateState_initialize(
-                ModelStateState* sample) {
-                return Shell::Hmi::AutoTunerConfiguration::ModelStateState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
+            RTIBool ModelState_initialize(
+                ModelState* sample) {
+                return Shell::Hmi::AutoTunerConfiguration::ModelState_initialize_ex(sample,RTI_TRUE,RTI_TRUE);
             }
 
-            RTIBool ModelStateState_initialize_ex(
-                ModelStateState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
+            RTIBool ModelState_initialize_ex(
+                ModelState* sample,RTIBool allocatePointers, RTIBool allocateMemory)
             {
 
                 struct DDS_TypeAllocationParams_t allocParams =
@@ -1074,13 +467,13 @@ namespace Shell {
                 allocParams.allocate_pointers =  (DDS_Boolean)allocatePointers;
                 allocParams.allocate_memory = (DDS_Boolean)allocateMemory;
 
-                return Shell::Hmi::AutoTunerConfiguration::ModelStateState_initialize_w_params(
+                return Shell::Hmi::AutoTunerConfiguration::ModelState_initialize_w_params(
                     sample,&allocParams);
 
             }
 
-            RTIBool ModelStateState_initialize_w_params(
-                ModelStateState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
+            RTIBool ModelState_initialize_w_params(
+                ModelState* sample, const struct DDS_TypeAllocationParams_t * allocParams)
             {
 
                 if (sample == NULL) {
@@ -1111,23 +504,23 @@ namespace Shell {
                 return RTI_TRUE;
             }
 
-            RTIBool ModelStateState_finalize_w_return(
-                ModelStateState* sample)
+            RTIBool ModelState_finalize_w_return(
+                ModelState* sample)
             {
-                Shell::Hmi::AutoTunerConfiguration::ModelStateState_finalize_ex(sample, RTI_TRUE);
+                Shell::Hmi::AutoTunerConfiguration::ModelState_finalize_ex(sample, RTI_TRUE);
 
                 return RTI_TRUE;
             }
 
-            void ModelStateState_finalize(
-                ModelStateState* sample)
+            void ModelState_finalize(
+                ModelState* sample)
             {
 
-                Shell::Hmi::AutoTunerConfiguration::ModelStateState_finalize_ex(sample,RTI_TRUE);
+                Shell::Hmi::AutoTunerConfiguration::ModelState_finalize_ex(sample,RTI_TRUE);
             }
 
-            void ModelStateState_finalize_ex(
-                ModelStateState* sample,RTIBool deletePointers)
+            void ModelState_finalize_ex(
+                ModelState* sample,RTIBool deletePointers)
             {
                 struct DDS_TypeDeallocationParams_t deallocParams =
                 DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -1138,12 +531,12 @@ namespace Shell {
 
                 deallocParams.delete_pointers = (DDS_Boolean)deletePointers;
 
-                Shell::Hmi::AutoTunerConfiguration::ModelStateState_finalize_w_params(
+                Shell::Hmi::AutoTunerConfiguration::ModelState_finalize_w_params(
                     sample,&deallocParams);
             }
 
-            void ModelStateState_finalize_w_params(
-                ModelStateState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
+            void ModelState_finalize_w_params(
+                ModelState* sample,const struct DDS_TypeDeallocationParams_t * deallocParams)
             {
 
                 if (sample==NULL) {
@@ -1156,8 +549,8 @@ namespace Shell {
 
             }
 
-            void ModelStateState_finalize_optional_members(
-                ModelStateState* sample, RTIBool deletePointers)
+            void ModelState_finalize_optional_members(
+                ModelState* sample, RTIBool deletePointers)
             {
                 struct DDS_TypeDeallocationParams_t deallocParamsTmp =
                 DDS_TYPE_DEALLOCATION_PARAMS_DEFAULT;
@@ -1174,9 +567,9 @@ namespace Shell {
 
             }
 
-            RTIBool ModelStateState_copy(
-                ModelStateState* dst,
-                const ModelStateState* src)
+            RTIBool ModelState_copy(
+                ModelState* dst,
+                const ModelState* src)
             {
                 try {
 
@@ -1233,15 +626,15 @@ namespace Shell {
             *
             * Defines:  TSeq, T
             *
-            * Configure and implement 'ModelStateState' sequence class.
+            * Configure and implement 'ModelState' sequence class.
             */
-            #define T ModelStateState
-            #define TSeq ModelStateStateSeq
+            #define T ModelState
+            #define TSeq ModelStateSeq
 
-            #define T_initialize_w_params Shell::Hmi::AutoTunerConfiguration::ModelStateState_initialize_w_params
+            #define T_initialize_w_params Shell::Hmi::AutoTunerConfiguration::ModelState_initialize_w_params
 
-            #define T_finalize_w_params   Shell::Hmi::AutoTunerConfiguration::ModelStateState_finalize_w_params
-            #define T_copy       Shell::Hmi::AutoTunerConfiguration::ModelStateState_copy
+            #define T_finalize_w_params   Shell::Hmi::AutoTunerConfiguration::ModelState_finalize_w_params
+            #define T_copy       Shell::Hmi::AutoTunerConfiguration::ModelState_copy
 
             #ifndef NDDS_STANDALONE_TYPE
             #include "dds_c/generic/dds_c_sequence_TSeq.gen"
@@ -5435,14 +4828,9 @@ namespace Shell {
 #ifndef NDDS_STANDALONE_TYPE
 namespace rti { 
     namespace xcdr {
-        const RTIXCdrTypeCode * type_code<Shell::Hmi::AutoTunerConfiguration::ModelStateRequest>::get() 
+        const RTIXCdrTypeCode * type_code<Shell::Hmi::AutoTunerConfiguration::ModelState>::get() 
         {
-            return (const RTIXCdrTypeCode *) Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_get_typecode();
-        }
-
-        const RTIXCdrTypeCode * type_code<Shell::Hmi::AutoTunerConfiguration::ModelStateState>::get() 
-        {
-            return (const RTIXCdrTypeCode *) Shell::Hmi::AutoTunerConfiguration::ModelStateState_get_typecode();
+            return (const RTIXCdrTypeCode *) Shell::Hmi::AutoTunerConfiguration::ModelState_get_typecode();
         }
 
         const RTIXCdrTypeCode * type_code<Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequest>::get() 

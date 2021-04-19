@@ -65,43 +65,43 @@ namespace Shell {
         namespace AutoTunerConfiguration {
 
             /* ----------------------------------------------------------------------------
-            *  Type ModelStateRequest
+            *  Type ModelState
             * -------------------------------------------------------------------------- */
 
             /* -----------------------------------------------------------------------------
             Support functions:
             * -------------------------------------------------------------------------- */
 
-            ModelStateRequest*
-            ModelStateRequestPluginSupport_create_data_w_params(
+            ModelState*
+            ModelStatePluginSupport_create_data_w_params(
                 const struct DDS_TypeAllocationParams_t * alloc_params) 
             {
-                ModelStateRequest *sample = NULL;
+                ModelState *sample = NULL;
 
-                sample = new (std::nothrow) ModelStateRequest ;
+                sample = new (std::nothrow) ModelState ;
                 if (sample == NULL) {
                     return NULL;
                 }
 
-                if (!Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_initialize_w_params(sample,alloc_params)) {
+                if (!Shell::Hmi::AutoTunerConfiguration::ModelState_initialize_w_params(sample,alloc_params)) {
                     delete  sample;
                     sample=NULL;
                 }
                 return sample;
             } 
 
-            ModelStateRequest *
-            ModelStateRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
+            ModelState *
+            ModelStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
             {
-                ModelStateRequest *sample = NULL;
+                ModelState *sample = NULL;
 
-                sample = new (std::nothrow) ModelStateRequest ;
+                sample = new (std::nothrow) ModelState ;
 
                 if(sample == NULL) {
                     return NULL;
                 }
 
-                if (!Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
+                if (!Shell::Hmi::AutoTunerConfiguration::ModelState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
                     delete  sample;
                     sample=NULL;
                 }
@@ -109,768 +109,50 @@ namespace Shell {
                 return sample;
             }
 
-            ModelStateRequest *
-            ModelStateRequestPluginSupport_create_data(void)
+            ModelState *
+            ModelStatePluginSupport_create_data(void)
             {
-                return Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPluginSupport_create_data_ex(RTI_TRUE);
+                return Shell::Hmi::AutoTunerConfiguration::ModelStatePluginSupport_create_data_ex(RTI_TRUE);
             }
 
             void 
-            ModelStateRequestPluginSupport_destroy_data_w_params(
-                ModelStateRequest *sample,
+            ModelStatePluginSupport_destroy_data_w_params(
+                ModelState *sample,
                 const struct DDS_TypeDeallocationParams_t * dealloc_params) {
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_finalize_w_params(sample,dealloc_params);
+                Shell::Hmi::AutoTunerConfiguration::ModelState_finalize_w_params(sample,dealloc_params);
 
                 delete  sample;
                 sample=NULL;
             }
 
             void 
-            ModelStateRequestPluginSupport_destroy_data_ex(
-                ModelStateRequest *sample,RTIBool deallocate_pointers) {
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_finalize_ex(sample,deallocate_pointers);
+            ModelStatePluginSupport_destroy_data_ex(
+                ModelState *sample,RTIBool deallocate_pointers) {
+                Shell::Hmi::AutoTunerConfiguration::ModelState_finalize_ex(sample,deallocate_pointers);
 
                 delete  sample;
                 sample=NULL;
             }
 
             void 
-            ModelStateRequestPluginSupport_destroy_data(
-                ModelStateRequest *sample) {
+            ModelStatePluginSupport_destroy_data(
+                ModelState *sample) {
 
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
+                Shell::Hmi::AutoTunerConfiguration::ModelStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
 
             }
 
             RTIBool 
-            ModelStateRequestPluginSupport_copy_data(
-                ModelStateRequest *dst,
-                const ModelStateRequest *src)
+            ModelStatePluginSupport_copy_data(
+                ModelState *dst,
+                const ModelState *src)
             {
-                return Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_copy(dst,(const ModelStateRequest*) src);
+                return Shell::Hmi::AutoTunerConfiguration::ModelState_copy(dst,(const ModelState*) src);
             }
 
             void 
-            ModelStateRequestPluginSupport_print_data(
-                const ModelStateRequest *sample,
-                const char *desc,
-                unsigned int indent_level)
-            {
-
-                RTICdrType_printIndent(indent_level);
-
-                if (desc != NULL) {
-                    RTILog_debug("%s:\n", desc);
-                } else {
-                    RTILog_debug("\n");
-                }
-
-                if (sample == NULL) {
-                    RTILog_debug("NULL\n");
-                    return;
-                }
-
-                RTICdrType_printBoolean(
-                    &sample->modelReset, "modelReset", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->pipeInnerDiameter, "pipeInnerDiameter", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->pipeOuterDiameter, "pipeOuterDiameter", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->slopeFilter, "slopeFilter", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->tauMax, "tauMax", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->tauMin, "tauMin", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->tauMultiplier, "tauMultiplier", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->maxDeviation, "maxDeviation", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->minInterval, "minInterval", indent_level + 1);    
-
-            }
-
-            /* ----------------------------------------------------------------------------
-            Callback functions:
-            * ---------------------------------------------------------------------------- */
-
-            PRESTypePluginParticipantData 
-            ModelStateRequestPlugin_on_participant_attached(
-                void *registration_data,
-                const struct PRESTypePluginParticipantInfo *participant_info,
-                RTIBool top_level_registration,
-                void *container_plugin_context,
-                RTICdrTypeCode *type_code)
-            {
-                struct RTIXCdrInterpreterPrograms *programs = NULL;
-                struct PRESTypePluginDefaultParticipantData *pd = NULL;
-                struct RTIXCdrInterpreterProgramsGenProperty programProperty =
-                RTIXCdrInterpreterProgramsGenProperty_INITIALIZER;
-
-                if (registration_data) {} /* To avoid warnings */
-                if (participant_info) {} /* To avoid warnings */
-                if (top_level_registration) {} /* To avoid warnings */
-                if (container_plugin_context) {} /* To avoid warnings */
-                if (type_code) {} /* To avoid warnings */
-
-                pd = (struct PRESTypePluginDefaultParticipantData *)
-                PRESTypePluginDefaultParticipantData_new(participant_info);
-
-                programProperty.generateV1Encapsulation = RTI_XCDR_TRUE;
-                programProperty.generateV2Encapsulation = RTI_XCDR_TRUE;
-                programProperty.resolveAlias = RTI_XCDR_TRUE;
-                programProperty.inlineStruct = RTI_XCDR_TRUE;
-                programProperty.optimizeEnum = RTI_XCDR_TRUE;
-
-                programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
-                    DDS_TypeCodeFactory_get_instance(),
-                    ModelStateRequest_get_typecode(),
-                    &programProperty,
-                    RTI_XCDR_PROGRAM_MASK_TYPEPLUGIN);
-                if (programs == NULL) {
-                    PRESTypePluginDefaultParticipantData_delete(
-                        (PRESTypePluginParticipantData) pd);
-                    return NULL;
-                }
-
-                pd->programs = programs;
-                return (PRESTypePluginParticipantData)pd;
-            }
-
-            void 
-            ModelStateRequestPlugin_on_participant_detached(
-                PRESTypePluginParticipantData participant_data)
-            {  		
-                if (participant_data != NULL) {
-                    struct PRESTypePluginDefaultParticipantData *pd = 
-                    (struct PRESTypePluginDefaultParticipantData *)participant_data;
-
-                    if (pd->programs != NULL) {
-                        DDS_TypeCodeFactory_remove_programs_from_global_list(
-                            DDS_TypeCodeFactory_get_instance(),
-                            pd->programs);
-                        pd->programs = NULL;
-                    }
-                    PRESTypePluginDefaultParticipantData_delete(participant_data);
-                }
-            }
-
-            PRESTypePluginEndpointData
-            ModelStateRequestPlugin_on_endpoint_attached(
-                PRESTypePluginParticipantData participant_data,
-                const struct PRESTypePluginEndpointInfo *endpoint_info,
-                RTIBool top_level_registration, 
-                void *containerPluginContext)
-            {
-                PRESTypePluginEndpointData epd = NULL;
-                unsigned int serializedSampleMaxSize = 0;
-
-                if (top_level_registration) {} /* To avoid warnings */
-                if (containerPluginContext) {} /* To avoid warnings */
-
-                if (participant_data == NULL) {
-                    return NULL;
-                } 
-
-                epd = PRESTypePluginDefaultEndpointData_new(
-                    participant_data,
-                    endpoint_info,
-                    (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPluginSupport_create_data,
-                    (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPluginSupport_destroy_data,
-                    NULL , NULL );
-
-                if (epd == NULL) {
-                    return NULL;
-                } 
-
-                if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                    serializedSampleMaxSize = Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPlugin_get_serialized_sample_max_size(
-                        epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
-                    PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
-
-                    if (PRESTypePluginDefaultEndpointData_createWriterPool(
-                        epd,
-                        endpoint_info,
-                        (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                        Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPlugin_get_serialized_sample_max_size, epd,
-                        (PRESTypePluginGetSerializedSampleSizeFunction)
-                        PRESTypePlugin_interpretedGetSerializedSampleSize,
-                        epd) == RTI_FALSE) {
-                        PRESTypePluginDefaultEndpointData_delete(epd);
-                        return NULL;
-                    }
-                }
-
-                return epd;    
-            }
-
-            void 
-            ModelStateRequestPlugin_on_endpoint_detached(
-                PRESTypePluginEndpointData endpoint_data)
-            {
-                PRESTypePluginDefaultEndpointData_delete(endpoint_data);
-            }
-
-            void    
-            ModelStateRequestPlugin_return_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                ModelStateRequest *sample,
-                void *handle)
-            {
-                ModelStateRequest_finalize_optional_members(sample, RTI_TRUE);
-
-                PRESTypePluginDefaultEndpointData_returnSample(
-                    endpoint_data, sample, handle);
-            }
-
-            RTIBool 
-            ModelStateRequestPlugin_copy_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                ModelStateRequest *dst,
-                const ModelStateRequest *src)
-            {
-                if (endpoint_data) {} /* To avoid warnings */
-                return Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPluginSupport_copy_data(dst,src);
-            }
-
-            /* ----------------------------------------------------------------------------
-            (De)Serialize functions:
-            * ------------------------------------------------------------------------- */
-            unsigned int 
-            ModelStateRequestPlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            RTIBool
-            ModelStateRequestPlugin_serialize_to_cdr_buffer_ex(
-                char *buffer,
-                unsigned int *length,
-                const ModelStateRequest *sample,
-                DDS_DataRepresentationId_t representation)
-            {
-                RTIEncapsulationId encapsulationId = RTI_CDR_ENCAPSULATION_ID_INVALID;
-                struct RTICdrStream stream;
-                struct PRESTypePluginDefaultEndpointData epd;
-                RTIBool result;
-                struct PRESTypePluginDefaultParticipantData pd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
-                RTIXCdrTypePluginProgramContext_INTIALIZER;
-                struct PRESTypePlugin plugin;
-
-                if (length == NULL) {
-                    return RTI_FALSE;
-                }
-
-                RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-                epd.programContext = defaultProgramConext;  
-                epd._participantData = &pd;
-                epd.typePlugin = &plugin;
-                epd.programContext.endpointPluginData = &epd;
-                plugin.typeCode = (struct RTICdrTypeCode *)
-                ModelStateRequest_get_typecode();
-                pd.programs = ModelStateRequestPlugin_get_programs();
-                if (pd.programs == NULL) {
-                    return RTI_FALSE;
-                }
-
-                encapsulationId = DDS_TypeCode_get_native_encapsulation(
-                    (DDS_TypeCode *) plugin.typeCode,
-                    representation);    
-                if (encapsulationId == RTI_CDR_ENCAPSULATION_ID_INVALID) {
-                    return RTI_FALSE;
-                }
-
-                epd._maxSizeSerializedSample =
-                ModelStateRequestPlugin_get_serialized_sample_max_size(
-                    (PRESTypePluginEndpointData)&epd, 
-                    RTI_TRUE, 
-                    encapsulationId,
-                    0);
-
-                if (buffer == NULL) {
-                    *length = 
-                    PRESTypePlugin_interpretedGetSerializedSampleSize(
-                        (PRESTypePluginEndpointData)&epd,
-                        RTI_TRUE,
-                        encapsulationId,
-                        0,
-                        sample);
-
-                    if (*length == 0) {
-                        return RTI_FALSE;
-                    }
-
-                    return RTI_TRUE;
-                }    
-
-                RTICdrStream_init(&stream);
-                RTICdrStream_set(&stream, (char *)buffer, *length);
-
-                result = PRESTypePlugin_interpretedSerialize(
-                    (PRESTypePluginEndpointData)&epd,
-                    sample,
-                    &stream,
-                    RTI_TRUE,
-                    encapsulationId,
-                    RTI_TRUE,
-                    NULL);
-
-                *length = RTICdrStream_getCurrentPositionOffset(&stream);
-                return result;
-            }
-
-            RTIBool
-            ModelStateRequestPlugin_serialize_to_cdr_buffer(
-                char *buffer,
-                unsigned int *length,
-                const ModelStateRequest *sample)
-            {
-                return ModelStateRequestPlugin_serialize_to_cdr_buffer_ex(
-                    buffer,
-                    length,
-                    sample,
-                    DDS_AUTO_DATA_REPRESENTATION);
-            }
-
-            RTIBool
-            ModelStateRequestPlugin_deserialize_from_cdr_buffer(
-                ModelStateRequest *sample,
-                const char * buffer,
-                unsigned int length)
-            {
-                struct RTICdrStream stream;
-                struct PRESTypePluginDefaultEndpointData epd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
-                RTIXCdrTypePluginProgramContext_INTIALIZER;
-                struct PRESTypePluginDefaultParticipantData pd;
-                struct PRESTypePlugin plugin;
-
-                epd.programContext = defaultProgramConext;  
-                epd._participantData = &pd;
-                epd.typePlugin = &plugin;
-                epd.programContext.endpointPluginData = &epd;
-                plugin.typeCode = (struct RTICdrTypeCode *)
-                ModelStateRequest_get_typecode();
-                pd.programs = ModelStateRequestPlugin_get_programs();
-                if (pd.programs == NULL) {
-                    return RTI_FALSE;
-                }
-
-                epd._assignabilityProperty.acceptUnknownEnumValue = RTI_XCDR_TRUE;
-                epd._assignabilityProperty.acceptUnknownUnionDiscriminator = RTI_XCDR_TRUE;
-
-                RTICdrStream_init(&stream);
-                RTICdrStream_set(&stream, (char *)buffer, length);
-
-                ModelStateRequest_finalize_optional_members(sample, RTI_TRUE);
-                return PRESTypePlugin_interpretedDeserialize( 
-                    (PRESTypePluginEndpointData)&epd, sample,
-                    &stream, RTI_TRUE, RTI_TRUE, 
-                    NULL);
-            }
-
-            #ifndef NDDS_STANDALONE_TYPE
-            DDS_ReturnCode_t
-            ModelStateRequestPlugin_data_to_string(
-                const ModelStateRequest *sample,
-                char *str,
-                DDS_UnsignedLong *str_size, 
-                const struct DDS_PrintFormatProperty *property)
-            {
-                DDS_DynamicData *data = NULL;
-                char *buffer = NULL;
-                unsigned int length = 0;
-                struct DDS_PrintFormat printFormat;
-                DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-                if (sample == NULL) {
-                    return DDS_RETCODE_BAD_PARAMETER;
-                }
-
-                if (str_size == NULL) {
-                    return DDS_RETCODE_BAD_PARAMETER;
-                }
-
-                if (property == NULL) {
-                    return DDS_RETCODE_BAD_PARAMETER;
-                }
-                if (!ModelStateRequestPlugin_serialize_to_cdr_buffer(
-                    NULL, 
-                    &length, 
-                    sample)) {
-                    return DDS_RETCODE_ERROR;
-                }
-
-                RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-                if (buffer == NULL) {
-                    return DDS_RETCODE_ERROR;
-                }
-
-                if (!ModelStateRequestPlugin_serialize_to_cdr_buffer(
-                    buffer, 
-                    &length, 
-                    sample)) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    return DDS_RETCODE_ERROR;
-                }
-                data = DDS_DynamicData_new(
-                    ModelStateRequest_get_typecode(), 
-                    &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-                if (data == NULL) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    return DDS_RETCODE_ERROR;
-                }
-
-                retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-                if (retCode != DDS_RETCODE_OK) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    DDS_DynamicData_delete(data);
-                    return retCode;
-                }
-
-                retCode = DDS_PrintFormatProperty_to_print_format(
-                    property, 
-                    &printFormat);
-                if (retCode != DDS_RETCODE_OK) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    DDS_DynamicData_delete(data);
-                    return retCode;
-                }
-
-                retCode = DDS_DynamicDataFormatter_to_string_w_format(
-                    data, 
-                    str,
-                    str_size, 
-                    &printFormat);
-                if (retCode != DDS_RETCODE_OK) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    DDS_DynamicData_delete(data);
-                    return retCode;
-                }
-
-                RTIOsapiHeap_freeBuffer(buffer);
-                DDS_DynamicData_delete(data);
-                return DDS_RETCODE_OK;
-            }
-            #endif
-
-            unsigned int 
-            ModelStateRequestPlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment)
-            {
-                unsigned int size;
-                RTIBool overflow = RTI_FALSE;
-
-                size = PRESTypePlugin_interpretedGetSerializedSampleMaxSize(
-                    endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
-
-                if (overflow) {
-                    size = RTI_CDR_MAX_SERIALIZED_SIZE;
-                }
-
-                return size;
-            }
-
-            /* --------------------------------------------------------------------------------------
-            Key Management functions:
-            * -------------------------------------------------------------------------------------- */
-
-            PRESTypePluginKeyKind 
-            ModelStateRequestPlugin_get_key_kind(void)
-            {
-                return PRES_TYPEPLUGIN_NO_KEY;
-            }
-
-            RTIBool ModelStateRequestPlugin_deserialize_key(
-                PRESTypePluginEndpointData endpoint_data,
-                ModelStateRequest **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_key,
-                void *endpoint_plugin_qos)
-            {
-                RTIBool result;
-                if (drop_sample) {} /* To avoid warnings */
-                stream->_xTypesState.unassignable = RTI_FALSE;
-                result= PRESTypePlugin_interpretedDeserializeKey(
-                    endpoint_data, (sample != NULL)?*sample:NULL, stream,
-                    deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
-                if (result) {
-                    if (stream->_xTypesState.unassignable) {
-                        result = RTI_FALSE;
-                    }
-                }
-                return result;    
-
-            }
-
-            unsigned int
-            ModelStateRequestPlugin_get_serialized_key_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment)
-            {
-                unsigned int size;
-                RTIBool overflow = RTI_FALSE;
-                size = PRESTypePlugin_interpretedGetSerializedKeyMaxSize(
-                    endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
-                if (overflow) {
-                    size = RTI_CDR_MAX_SERIALIZED_SIZE;
-                }
-
-                return size;
-            }
-
-            unsigned int
-            ModelStateRequestPlugin_get_serialized_key_max_size_for_keyhash(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment)
-            {
-                unsigned int size;
-                RTIBool overflow = RTI_FALSE;
-                size = PRESTypePlugin_interpretedGetSerializedKeyMaxSizeForKeyhash(
-                    endpoint_data,
-                    &overflow,
-                    encapsulation_id,
-                    current_alignment);
-                if (overflow) {
-                    size = RTI_CDR_MAX_SERIALIZED_SIZE;
-                }
-
-                return size;
-            }
-
-            struct RTIXCdrInterpreterPrograms *ModelStateRequestPlugin_get_programs()
-            {
-                return ::rti::xcdr::get_cdr_serialization_programs<
-                ModelStateRequest, 
-                true, true, true>();
-            }
-
-            /* ------------------------------------------------------------------------
-            * Plug-in Installation Methods
-            * ------------------------------------------------------------------------ */
-            struct PRESTypePlugin *ModelStateRequestPlugin_new(void) 
-            { 
-                struct PRESTypePlugin *plugin = NULL;
-                const struct PRESTypePluginVersion PLUGIN_VERSION = 
-                PRES_TYPE_PLUGIN_VERSION_2_0;
-
-                RTIOsapiHeap_allocateStructure(
-                    &plugin, struct PRESTypePlugin);
-
-                if (plugin == NULL) {
-                    return NULL;
-                }
-
-                plugin->version = PLUGIN_VERSION;
-
-                /* set up parent's function pointers */
-                plugin->onParticipantAttached =
-                (PRESTypePluginOnParticipantAttachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPlugin_on_participant_attached;
-                plugin->onParticipantDetached =
-                (PRESTypePluginOnParticipantDetachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPlugin_on_participant_detached;
-                plugin->onEndpointAttached =
-                (PRESTypePluginOnEndpointAttachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPlugin_on_endpoint_attached;
-                plugin->onEndpointDetached =
-                (PRESTypePluginOnEndpointDetachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPlugin_on_endpoint_detached;
-
-                plugin->copySampleFnc =
-                (PRESTypePluginCopySampleFunction)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPlugin_copy_sample;
-                plugin->createSampleFnc =
-                (PRESTypePluginCreateSampleFunction)
-                ModelStateRequestPlugin_create_sample;
-                plugin->destroySampleFnc =
-                (PRESTypePluginDestroySampleFunction)
-                ModelStateRequestPlugin_destroy_sample;
-                plugin->finalizeOptionalMembersFnc =
-                (PRESTypePluginFinalizeOptionalMembersFunction)
-                ModelStateRequest_finalize_optional_members;
-
-                plugin->serializeFnc = 
-                (PRESTypePluginSerializeFunction) PRESTypePlugin_interpretedSerialize;
-                plugin->deserializeFnc =
-                (PRESTypePluginDeserializeFunction) PRESTypePlugin_interpretedDeserializeWithAlloc;
-                plugin->getSerializedSampleMaxSizeFnc =
-                (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPlugin_get_serialized_sample_max_size;
-                plugin->getSerializedSampleMinSizeFnc =
-                (PRESTypePluginGetSerializedSampleMinSizeFunction)
-                PRESTypePlugin_interpretedGetSerializedSampleMinSize;
-                plugin->getDeserializedSampleMaxSizeFnc = NULL; 
-                plugin->getSampleFnc =
-                (PRESTypePluginGetSampleFunction)
-                ModelStateRequestPlugin_get_sample;
-                plugin->returnSampleFnc =
-                (PRESTypePluginReturnSampleFunction)
-                ModelStateRequestPlugin_return_sample;
-                plugin->getKeyKindFnc =
-                (PRESTypePluginGetKeyKindFunction)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateRequestPlugin_get_key_kind;
-
-                /* These functions are only used for keyed types. As this is not a keyed
-                type they are all set to NULL
-                */
-                plugin->serializeKeyFnc = NULL ;    
-                plugin->deserializeKeyFnc = NULL;  
-                plugin->getKeyFnc = NULL;
-                plugin->returnKeyFnc = NULL;
-                plugin->instanceToKeyFnc = NULL;
-                plugin->keyToInstanceFnc = NULL;
-                plugin->getSerializedKeyMaxSizeFnc = NULL;
-                plugin->instanceToKeyHashFnc = NULL;
-                plugin->serializedSampleToKeyHashFnc = NULL;
-                plugin->serializedKeyToKeyHashFnc = NULL;    
-                #ifdef NDDS_STANDALONE_TYPE
-                plugin->typeCode = NULL; 
-                #else
-                plugin->typeCode =  (struct RTICdrTypeCode *)Shell::Hmi::AutoTunerConfiguration::ModelStateRequest_get_typecode();
-                #endif
-                plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
-
-                /* Serialized buffer */
-                plugin->getBuffer = 
-                (PRESTypePluginGetBufferFunction)
-                ModelStateRequestPlugin_get_buffer;
-                plugin->returnBuffer = 
-                (PRESTypePluginReturnBufferFunction)
-                ModelStateRequestPlugin_return_buffer;
-                plugin->getBufferWithParams = NULL;
-                plugin->returnBufferWithParams = NULL;  
-                plugin->getSerializedSampleSizeFnc =
-                (PRESTypePluginGetSerializedSampleSizeFunction)
-                PRESTypePlugin_interpretedGetSerializedSampleSize;
-
-                plugin->getWriterLoanedSampleFnc = NULL; 
-                plugin->returnWriterLoanedSampleFnc = NULL;
-                plugin->returnWriterLoanedSampleFromCookieFnc = NULL;
-                plugin->validateWriterLoanedSampleFnc = NULL;
-                plugin->setWriterLoanedSampleSerializedStateFnc = NULL;
-
-                plugin->endpointTypeName = ModelStateRequestTYPENAME;
-                plugin->isMetpType = RTI_FALSE;
-                return plugin;
-            }
-
-            void
-            ModelStateRequestPlugin_delete(struct PRESTypePlugin *plugin)
-            {
-                RTIOsapiHeap_freeStructure(plugin);
-            } 
-
-            /* ----------------------------------------------------------------------------
-            *  Type ModelStateState
-            * -------------------------------------------------------------------------- */
-
-            /* -----------------------------------------------------------------------------
-            Support functions:
-            * -------------------------------------------------------------------------- */
-
-            ModelStateState*
-            ModelStateStatePluginSupport_create_data_w_params(
-                const struct DDS_TypeAllocationParams_t * alloc_params) 
-            {
-                ModelStateState *sample = NULL;
-
-                sample = new (std::nothrow) ModelStateState ;
-                if (sample == NULL) {
-                    return NULL;
-                }
-
-                if (!Shell::Hmi::AutoTunerConfiguration::ModelStateState_initialize_w_params(sample,alloc_params)) {
-                    delete  sample;
-                    sample=NULL;
-                }
-                return sample;
-            } 
-
-            ModelStateState *
-            ModelStateStatePluginSupport_create_data_ex(RTIBool allocate_pointers) 
-            {
-                ModelStateState *sample = NULL;
-
-                sample = new (std::nothrow) ModelStateState ;
-
-                if(sample == NULL) {
-                    return NULL;
-                }
-
-                if (!Shell::Hmi::AutoTunerConfiguration::ModelStateState_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-                    delete  sample;
-                    sample=NULL;
-                }
-
-                return sample;
-            }
-
-            ModelStateState *
-            ModelStateStatePluginSupport_create_data(void)
-            {
-                return Shell::Hmi::AutoTunerConfiguration::ModelStateStatePluginSupport_create_data_ex(RTI_TRUE);
-            }
-
-            void 
-            ModelStateStatePluginSupport_destroy_data_w_params(
-                ModelStateState *sample,
-                const struct DDS_TypeDeallocationParams_t * dealloc_params) {
-                Shell::Hmi::AutoTunerConfiguration::ModelStateState_finalize_w_params(sample,dealloc_params);
-
-                delete  sample;
-                sample=NULL;
-            }
-
-            void 
-            ModelStateStatePluginSupport_destroy_data_ex(
-                ModelStateState *sample,RTIBool deallocate_pointers) {
-                Shell::Hmi::AutoTunerConfiguration::ModelStateState_finalize_ex(sample,deallocate_pointers);
-
-                delete  sample;
-                sample=NULL;
-            }
-
-            void 
-            ModelStateStatePluginSupport_destroy_data(
-                ModelStateState *sample) {
-
-                Shell::Hmi::AutoTunerConfiguration::ModelStateStatePluginSupport_destroy_data_ex(sample,RTI_TRUE);
-
-            }
-
-            RTIBool 
-            ModelStateStatePluginSupport_copy_data(
-                ModelStateState *dst,
-                const ModelStateState *src)
-            {
-                return Shell::Hmi::AutoTunerConfiguration::ModelStateState_copy(dst,(const ModelStateState*) src);
-            }
-
-            void 
-            ModelStateStatePluginSupport_print_data(
-                const ModelStateState *sample,
+            ModelStatePluginSupport_print_data(
+                const ModelState *sample,
                 const char *desc,
                 unsigned int indent_level)
             {
@@ -922,7 +204,7 @@ namespace Shell {
             * ---------------------------------------------------------------------------- */
 
             PRESTypePluginParticipantData 
-            ModelStateStatePlugin_on_participant_attached(
+            ModelStatePlugin_on_participant_attached(
                 void *registration_data,
                 const struct PRESTypePluginParticipantInfo *participant_info,
                 RTIBool top_level_registration,
@@ -951,7 +233,7 @@ namespace Shell {
 
                 programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                     DDS_TypeCodeFactory_get_instance(),
-                    ModelStateState_get_typecode(),
+                    ModelState_get_typecode(),
                     &programProperty,
                     RTI_XCDR_PROGRAM_MASK_TYPEPLUGIN);
                 if (programs == NULL) {
@@ -965,7 +247,7 @@ namespace Shell {
             }
 
             void 
-            ModelStateStatePlugin_on_participant_detached(
+            ModelStatePlugin_on_participant_detached(
                 PRESTypePluginParticipantData participant_data)
             {  		
                 if (participant_data != NULL) {
@@ -983,7 +265,7 @@ namespace Shell {
             }
 
             PRESTypePluginEndpointData
-            ModelStateStatePlugin_on_endpoint_attached(
+            ModelStatePlugin_on_endpoint_attached(
                 PRESTypePluginParticipantData participant_data,
                 const struct PRESTypePluginEndpointInfo *endpoint_info,
                 RTIBool top_level_registration, 
@@ -1003,9 +285,9 @@ namespace Shell {
                     participant_data,
                     endpoint_info,
                     (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::ModelStateStatePluginSupport_create_data,
+                    Shell::Hmi::AutoTunerConfiguration::ModelStatePluginSupport_create_data,
                     (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::ModelStateStatePluginSupport_destroy_data,
+                    Shell::Hmi::AutoTunerConfiguration::ModelStatePluginSupport_destroy_data,
                     NULL , NULL );
 
                 if (epd == NULL) {
@@ -1013,7 +295,7 @@ namespace Shell {
                 } 
 
                 if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                    serializedSampleMaxSize = Shell::Hmi::AutoTunerConfiguration::ModelStateStatePlugin_get_serialized_sample_max_size(
+                    serializedSampleMaxSize = Shell::Hmi::AutoTunerConfiguration::ModelStatePlugin_get_serialized_sample_max_size(
                         epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
                     PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
 
@@ -1021,7 +303,7 @@ namespace Shell {
                         epd,
                         endpoint_info,
                         (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                        Shell::Hmi::AutoTunerConfiguration::ModelStateStatePlugin_get_serialized_sample_max_size, epd,
+                        Shell::Hmi::AutoTunerConfiguration::ModelStatePlugin_get_serialized_sample_max_size, epd,
                         (PRESTypePluginGetSerializedSampleSizeFunction)
                         PRESTypePlugin_interpretedGetSerializedSampleSize,
                         epd) == RTI_FALSE) {
@@ -1034,49 +316,49 @@ namespace Shell {
             }
 
             void 
-            ModelStateStatePlugin_on_endpoint_detached(
+            ModelStatePlugin_on_endpoint_detached(
                 PRESTypePluginEndpointData endpoint_data)
             {
                 PRESTypePluginDefaultEndpointData_delete(endpoint_data);
             }
 
             void    
-            ModelStateStatePlugin_return_sample(
+            ModelStatePlugin_return_sample(
                 PRESTypePluginEndpointData endpoint_data,
-                ModelStateState *sample,
+                ModelState *sample,
                 void *handle)
             {
-                ModelStateState_finalize_optional_members(sample, RTI_TRUE);
+                ModelState_finalize_optional_members(sample, RTI_TRUE);
 
                 PRESTypePluginDefaultEndpointData_returnSample(
                     endpoint_data, sample, handle);
             }
 
             RTIBool 
-            ModelStateStatePlugin_copy_sample(
+            ModelStatePlugin_copy_sample(
                 PRESTypePluginEndpointData endpoint_data,
-                ModelStateState *dst,
-                const ModelStateState *src)
+                ModelState *dst,
+                const ModelState *src)
             {
                 if (endpoint_data) {} /* To avoid warnings */
-                return Shell::Hmi::AutoTunerConfiguration::ModelStateStatePluginSupport_copy_data(dst,src);
+                return Shell::Hmi::AutoTunerConfiguration::ModelStatePluginSupport_copy_data(dst,src);
             }
 
             /* ----------------------------------------------------------------------------
             (De)Serialize functions:
             * ------------------------------------------------------------------------- */
             unsigned int 
-            ModelStateStatePlugin_get_serialized_sample_max_size(
+            ModelStatePlugin_get_serialized_sample_max_size(
                 PRESTypePluginEndpointData endpoint_data,
                 RTIBool include_encapsulation,
                 RTIEncapsulationId encapsulation_id,
                 unsigned int current_alignment);
 
             RTIBool
-            ModelStateStatePlugin_serialize_to_cdr_buffer_ex(
+            ModelStatePlugin_serialize_to_cdr_buffer_ex(
                 char *buffer,
                 unsigned int *length,
-                const ModelStateState *sample,
+                const ModelState *sample,
                 DDS_DataRepresentationId_t representation)
             {
                 RTIEncapsulationId encapsulationId = RTI_CDR_ENCAPSULATION_ID_INVALID;
@@ -1098,8 +380,8 @@ namespace Shell {
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
                 plugin.typeCode = (struct RTICdrTypeCode *)
-                ModelStateState_get_typecode();
-                pd.programs = ModelStateStatePlugin_get_programs();
+                ModelState_get_typecode();
+                pd.programs = ModelStatePlugin_get_programs();
                 if (pd.programs == NULL) {
                     return RTI_FALSE;
                 }
@@ -1112,7 +394,7 @@ namespace Shell {
                 }
 
                 epd._maxSizeSerializedSample =
-                ModelStateStatePlugin_get_serialized_sample_max_size(
+                ModelStatePlugin_get_serialized_sample_max_size(
                     (PRESTypePluginEndpointData)&epd, 
                     RTI_TRUE, 
                     encapsulationId,
@@ -1151,12 +433,12 @@ namespace Shell {
             }
 
             RTIBool
-            ModelStateStatePlugin_serialize_to_cdr_buffer(
+            ModelStatePlugin_serialize_to_cdr_buffer(
                 char *buffer,
                 unsigned int *length,
-                const ModelStateState *sample)
+                const ModelState *sample)
             {
-                return ModelStateStatePlugin_serialize_to_cdr_buffer_ex(
+                return ModelStatePlugin_serialize_to_cdr_buffer_ex(
                     buffer,
                     length,
                     sample,
@@ -1164,8 +446,8 @@ namespace Shell {
             }
 
             RTIBool
-            ModelStateStatePlugin_deserialize_from_cdr_buffer(
-                ModelStateState *sample,
+            ModelStatePlugin_deserialize_from_cdr_buffer(
+                ModelState *sample,
                 const char * buffer,
                 unsigned int length)
             {
@@ -1181,8 +463,8 @@ namespace Shell {
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
                 plugin.typeCode = (struct RTICdrTypeCode *)
-                ModelStateState_get_typecode();
-                pd.programs = ModelStateStatePlugin_get_programs();
+                ModelState_get_typecode();
+                pd.programs = ModelStatePlugin_get_programs();
                 if (pd.programs == NULL) {
                     return RTI_FALSE;
                 }
@@ -1193,7 +475,7 @@ namespace Shell {
                 RTICdrStream_init(&stream);
                 RTICdrStream_set(&stream, (char *)buffer, length);
 
-                ModelStateState_finalize_optional_members(sample, RTI_TRUE);
+                ModelState_finalize_optional_members(sample, RTI_TRUE);
                 return PRESTypePlugin_interpretedDeserialize( 
                     (PRESTypePluginEndpointData)&epd, sample,
                     &stream, RTI_TRUE, RTI_TRUE, 
@@ -1202,8 +484,8 @@ namespace Shell {
 
             #ifndef NDDS_STANDALONE_TYPE
             DDS_ReturnCode_t
-            ModelStateStatePlugin_data_to_string(
-                const ModelStateState *sample,
+            ModelStatePlugin_data_to_string(
+                const ModelState *sample,
                 char *str,
                 DDS_UnsignedLong *str_size, 
                 const struct DDS_PrintFormatProperty *property)
@@ -1225,7 +507,7 @@ namespace Shell {
                 if (property == NULL) {
                     return DDS_RETCODE_BAD_PARAMETER;
                 }
-                if (!ModelStateStatePlugin_serialize_to_cdr_buffer(
+                if (!ModelStatePlugin_serialize_to_cdr_buffer(
                     NULL, 
                     &length, 
                     sample)) {
@@ -1237,7 +519,7 @@ namespace Shell {
                     return DDS_RETCODE_ERROR;
                 }
 
-                if (!ModelStateStatePlugin_serialize_to_cdr_buffer(
+                if (!ModelStatePlugin_serialize_to_cdr_buffer(
                     buffer, 
                     &length, 
                     sample)) {
@@ -1245,7 +527,7 @@ namespace Shell {
                     return DDS_RETCODE_ERROR;
                 }
                 data = DDS_DynamicData_new(
-                    ModelStateState_get_typecode(), 
+                    ModelState_get_typecode(), 
                     &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
                 if (data == NULL) {
                     RTIOsapiHeap_freeBuffer(buffer);
@@ -1286,7 +568,7 @@ namespace Shell {
             #endif
 
             unsigned int 
-            ModelStateStatePlugin_get_serialized_sample_max_size(
+            ModelStatePlugin_get_serialized_sample_max_size(
                 PRESTypePluginEndpointData endpoint_data,
                 RTIBool include_encapsulation,
                 RTIEncapsulationId encapsulation_id,
@@ -1310,14 +592,14 @@ namespace Shell {
             * -------------------------------------------------------------------------------------- */
 
             PRESTypePluginKeyKind 
-            ModelStateStatePlugin_get_key_kind(void)
+            ModelStatePlugin_get_key_kind(void)
             {
                 return PRES_TYPEPLUGIN_NO_KEY;
             }
 
-            RTIBool ModelStateStatePlugin_deserialize_key(
+            RTIBool ModelStatePlugin_deserialize_key(
                 PRESTypePluginEndpointData endpoint_data,
-                ModelStateState **sample, 
+                ModelState **sample, 
                 RTIBool * drop_sample,
                 struct RTICdrStream *stream,
                 RTIBool deserialize_encapsulation,
@@ -1340,7 +622,7 @@ namespace Shell {
             }
 
             unsigned int
-            ModelStateStatePlugin_get_serialized_key_max_size(
+            ModelStatePlugin_get_serialized_key_max_size(
                 PRESTypePluginEndpointData endpoint_data,
                 RTIBool include_encapsulation,
                 RTIEncapsulationId encapsulation_id,
@@ -1358,7 +640,7 @@ namespace Shell {
             }
 
             unsigned int
-            ModelStateStatePlugin_get_serialized_key_max_size_for_keyhash(
+            ModelStatePlugin_get_serialized_key_max_size_for_keyhash(
                 PRESTypePluginEndpointData endpoint_data,
                 RTIEncapsulationId encapsulation_id,
                 unsigned int current_alignment)
@@ -1377,17 +659,17 @@ namespace Shell {
                 return size;
             }
 
-            struct RTIXCdrInterpreterPrograms *ModelStateStatePlugin_get_programs()
+            struct RTIXCdrInterpreterPrograms *ModelStatePlugin_get_programs()
             {
                 return ::rti::xcdr::get_cdr_serialization_programs<
-                ModelStateState, 
+                ModelState, 
                 true, true, true>();
             }
 
             /* ------------------------------------------------------------------------
             * Plug-in Installation Methods
             * ------------------------------------------------------------------------ */
-            struct PRESTypePlugin *ModelStateStatePlugin_new(void) 
+            struct PRESTypePlugin *ModelStatePlugin_new(void) 
             { 
                 struct PRESTypePlugin *plugin = NULL;
                 const struct PRESTypePluginVersion PLUGIN_VERSION = 
@@ -1405,29 +687,29 @@ namespace Shell {
                 /* set up parent's function pointers */
                 plugin->onParticipantAttached =
                 (PRESTypePluginOnParticipantAttachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateStatePlugin_on_participant_attached;
+                Shell::Hmi::AutoTunerConfiguration::ModelStatePlugin_on_participant_attached;
                 plugin->onParticipantDetached =
                 (PRESTypePluginOnParticipantDetachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateStatePlugin_on_participant_detached;
+                Shell::Hmi::AutoTunerConfiguration::ModelStatePlugin_on_participant_detached;
                 plugin->onEndpointAttached =
                 (PRESTypePluginOnEndpointAttachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateStatePlugin_on_endpoint_attached;
+                Shell::Hmi::AutoTunerConfiguration::ModelStatePlugin_on_endpoint_attached;
                 plugin->onEndpointDetached =
                 (PRESTypePluginOnEndpointDetachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateStatePlugin_on_endpoint_detached;
+                Shell::Hmi::AutoTunerConfiguration::ModelStatePlugin_on_endpoint_detached;
 
                 plugin->copySampleFnc =
                 (PRESTypePluginCopySampleFunction)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateStatePlugin_copy_sample;
+                Shell::Hmi::AutoTunerConfiguration::ModelStatePlugin_copy_sample;
                 plugin->createSampleFnc =
                 (PRESTypePluginCreateSampleFunction)
-                ModelStateStatePlugin_create_sample;
+                ModelStatePlugin_create_sample;
                 plugin->destroySampleFnc =
                 (PRESTypePluginDestroySampleFunction)
-                ModelStateStatePlugin_destroy_sample;
+                ModelStatePlugin_destroy_sample;
                 plugin->finalizeOptionalMembersFnc =
                 (PRESTypePluginFinalizeOptionalMembersFunction)
-                ModelStateState_finalize_optional_members;
+                ModelState_finalize_optional_members;
 
                 plugin->serializeFnc = 
                 (PRESTypePluginSerializeFunction) PRESTypePlugin_interpretedSerialize;
@@ -1435,20 +717,20 @@ namespace Shell {
                 (PRESTypePluginDeserializeFunction) PRESTypePlugin_interpretedDeserializeWithAlloc;
                 plugin->getSerializedSampleMaxSizeFnc =
                 (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateStatePlugin_get_serialized_sample_max_size;
+                Shell::Hmi::AutoTunerConfiguration::ModelStatePlugin_get_serialized_sample_max_size;
                 plugin->getSerializedSampleMinSizeFnc =
                 (PRESTypePluginGetSerializedSampleMinSizeFunction)
                 PRESTypePlugin_interpretedGetSerializedSampleMinSize;
                 plugin->getDeserializedSampleMaxSizeFnc = NULL; 
                 plugin->getSampleFnc =
                 (PRESTypePluginGetSampleFunction)
-                ModelStateStatePlugin_get_sample;
+                ModelStatePlugin_get_sample;
                 plugin->returnSampleFnc =
                 (PRESTypePluginReturnSampleFunction)
-                ModelStateStatePlugin_return_sample;
+                ModelStatePlugin_return_sample;
                 plugin->getKeyKindFnc =
                 (PRESTypePluginGetKeyKindFunction)
-                Shell::Hmi::AutoTunerConfiguration::ModelStateStatePlugin_get_key_kind;
+                Shell::Hmi::AutoTunerConfiguration::ModelStatePlugin_get_key_kind;
 
                 /* These functions are only used for keyed types. As this is not a keyed
                 type they are all set to NULL
@@ -1466,17 +748,17 @@ namespace Shell {
                 #ifdef NDDS_STANDALONE_TYPE
                 plugin->typeCode = NULL; 
                 #else
-                plugin->typeCode =  (struct RTICdrTypeCode *)Shell::Hmi::AutoTunerConfiguration::ModelStateState_get_typecode();
+                plugin->typeCode =  (struct RTICdrTypeCode *)Shell::Hmi::AutoTunerConfiguration::ModelState_get_typecode();
                 #endif
                 plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
 
                 /* Serialized buffer */
                 plugin->getBuffer = 
                 (PRESTypePluginGetBufferFunction)
-                ModelStateStatePlugin_get_buffer;
+                ModelStatePlugin_get_buffer;
                 plugin->returnBuffer = 
                 (PRESTypePluginReturnBufferFunction)
-                ModelStateStatePlugin_return_buffer;
+                ModelStatePlugin_return_buffer;
                 plugin->getBufferWithParams = NULL;
                 plugin->returnBufferWithParams = NULL;  
                 plugin->getSerializedSampleSizeFnc =
@@ -1489,13 +771,13 @@ namespace Shell {
                 plugin->validateWriterLoanedSampleFnc = NULL;
                 plugin->setWriterLoanedSampleSerializedStateFnc = NULL;
 
-                plugin->endpointTypeName = ModelStateStateTYPENAME;
+                plugin->endpointTypeName = ModelStateTYPENAME;
                 plugin->isMetpType = RTI_FALSE;
                 return plugin;
             }
 
             void
-            ModelStateStatePlugin_delete(struct PRESTypePlugin *plugin)
+            ModelStatePlugin_delete(struct PRESTypePlugin *plugin)
             {
                 RTIOsapiHeap_freeStructure(plugin);
             } 
