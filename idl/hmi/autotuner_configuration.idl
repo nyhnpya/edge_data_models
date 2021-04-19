@@ -4,38 +4,19 @@ module Shell
     {
         module AutoTunerConfiguration
         {
-            //@copy-c-declaration static const char MODEL_STATE_REQUEST[] = "ModelStateRequest";
-            /**
-             * \brief Requested state change in the rotation system.
-             *
-             * | Variable          | Description                                         | Data Type           | 
-             * | ----------------- | --------------------------------------------------- | ------------------- | 
-             * | pipeInnerDiameter | id of requestor                                     | units::length::meter  | 
-             * | pipeOuterDiameter | id of current objective                             | units::length::meter  | 
-             */
-            struct ModelStateRequest
-            {
-                boolean modelReset;
-                double  pipeInnerDiameter;
-                double  pipeOuterDiameter;
-                double  slopeFilter;
-                double  tauMax;
-                double  tauMin;
-                double  tauMultiplier;
-                double  maxDeviation;
-                double  minInterval;
-            };
+            // QoSLibrary: EdgeBaseLibrary
+            // QoSProfile: ConfigProfile
 
-            //@copy-c-declaration static const char MODEL_STATE_STATE[] = "ModelStateState";
+            //@copy-c-declaration static const char MODEL_STATE_STATE[] = "ModelState";
             /**
              * \brief Requested state change in the rotation system.
              *
              * | Variable          | Description                                         | Data Type           | 
              * | ----------------- | --------------------------------------------------- | ------------------- | 
-             * | pipeInnerDiameter | id of requestor                                     | units::length::meter  | 
-             * | pipeOuterDiameter | id of current objective                             | units::length::meter  | 
+             * | pipeInnerDiameter | id of requestor                                     | units::length::meter| 
+             * | pipeOuterDiameter | id of current objective                             | units::length::meter| 
              */
-            struct ModelStateState
+            struct ModelState
             {
                 double  pipeInnerDiameter;
                 double  pipeOuterDiameter;
