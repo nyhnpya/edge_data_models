@@ -11,7 +11,6 @@ MAKEFILE_LIBRARY_DIRS += circulate
 MAKEFILE_LIBRARY_DIRS += circulate_control
 MAKEFILE_LIBRARY_DIRS += configuration
 MAKEFILE_LIBRARY_DIRS += drill
-MAKEFILE_LIBRARY_DIRS += drill_control
 MAKEFILE_LIBRARY_DIRS += drilling_calibration
 MAKEFILE_LIBRARY_DIRS += drilling_limits
 MAKEFILE_LIBRARY_DIRS += drilling_metrics
