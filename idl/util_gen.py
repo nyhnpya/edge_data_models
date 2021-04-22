@@ -104,7 +104,7 @@ def write_makefile(outdir, struct_names, struct_names2):
     out.write('\n')
     out.write('TARG_SOURCE_DIR = $(CURDIR)\n')
     out.write('TARG_BUILD_MAJOR = 1\n')
-    out.write('TARG_BUILD_MINOR = 2\n')
+    out.write('TARG_BUILD_MINOR = 3\n')
     out.write('TARG_BUILD_PATCH = 0\n')
     out.write('TARG_BUILD_REVISION = 0\n')
     out.write('TARGET_TYPE = library\n')
