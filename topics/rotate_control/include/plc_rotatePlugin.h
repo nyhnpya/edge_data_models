@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from plc_rotate.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from plc_rotate.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef plc_rotatePlugin_1508021044_h
@@ -133,6 +132,16 @@ namespace plc {
             const PlcRotateRequest *sample,
             DDS_DataRepresentationId_t representation);
 
+        NDDSUSERDllExport extern RTIBool 
+        PlcRotateRequestPlugin_deserialize(
+            PRESTypePluginEndpointData endpoint_data,
+            PlcRotateRequest **sample, 
+            RTIBool * drop_sample,
+            struct RTICdrStream *stream,
+            RTIBool deserialize_encapsulation,
+            RTIBool deserialize_sample, 
+            void *endpoint_plugin_qos);
+
         NDDSUSERDllExport extern RTIBool
         PlcRotateRequestPlugin_deserialize_from_cdr_buffer(
             PlcRotateRequest *sample,
@@ -184,7 +193,7 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms * PlcRotateRequestPlugin_get_programs(void);
+        struct RTIXCdrInterpreterPrograms *PlcRotateRequestPlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -295,6 +304,16 @@ namespace plc {
             const PlcRotateState *sample,
             DDS_DataRepresentationId_t representation);
 
+        NDDSUSERDllExport extern RTIBool 
+        PlcRotateStatePlugin_deserialize(
+            PRESTypePluginEndpointData endpoint_data,
+            PlcRotateState **sample, 
+            RTIBool * drop_sample,
+            struct RTICdrStream *stream,
+            RTIBool deserialize_encapsulation,
+            RTIBool deserialize_sample, 
+            void *endpoint_plugin_qos);
+
         NDDSUSERDllExport extern RTIBool
         PlcRotateStatePlugin_deserialize_from_cdr_buffer(
             PlcRotateState *sample,
@@ -346,7 +365,7 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms * PlcRotateStatePlugin_get_programs(void);
+        struct RTIXCdrInterpreterPrograms *PlcRotateStatePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*

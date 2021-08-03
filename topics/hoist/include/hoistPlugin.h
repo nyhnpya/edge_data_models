@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from hoist.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from hoist.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef hoistPlugin_1013697580_h
@@ -168,6 +167,16 @@ namespace nec {
             const HoistRequest *sample,
             DDS_DataRepresentationId_t representation);
 
+        NDDSUSERDllExport extern RTIBool 
+        HoistRequestPlugin_deserialize(
+            PRESTypePluginEndpointData endpoint_data,
+            HoistRequest **sample, 
+            RTIBool * drop_sample,
+            struct RTICdrStream *stream,
+            RTIBool deserialize_encapsulation,
+            RTIBool deserialize_sample, 
+            void *endpoint_plugin_qos);
+
         NDDSUSERDllExport extern RTIBool
         HoistRequestPlugin_deserialize_from_cdr_buffer(
             HoistRequest *sample,
@@ -231,6 +240,13 @@ namespace nec {
             const HoistRequestKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
+        HoistRequestPlugin_instance_to_keyhash(
+            PRESTypePluginEndpointData endpoint_data,
+            DDS_KeyHash_t *keyhash,
+            const HoistRequest *instance,
+            RTIEncapsulationId encapsulationId);
+
+        NDDSUSERDllExport extern RTIBool 
         HoistRequestPlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
@@ -239,7 +255,7 @@ namespace nec {
             void *endpoint_plugin_qos); 
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms * HoistRequestPlugin_get_programs(void);
+        struct RTIXCdrInterpreterPrograms *HoistRequestPlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -383,6 +399,16 @@ namespace nec {
             const HoistObjective *sample,
             DDS_DataRepresentationId_t representation);
 
+        NDDSUSERDllExport extern RTIBool 
+        HoistObjectivePlugin_deserialize(
+            PRESTypePluginEndpointData endpoint_data,
+            HoistObjective **sample, 
+            RTIBool * drop_sample,
+            struct RTICdrStream *stream,
+            RTIBool deserialize_encapsulation,
+            RTIBool deserialize_sample, 
+            void *endpoint_plugin_qos);
+
         NDDSUSERDllExport extern RTIBool
         HoistObjectivePlugin_deserialize_from_cdr_buffer(
             HoistObjective *sample,
@@ -446,6 +472,13 @@ namespace nec {
             const HoistObjectiveKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
+        HoistObjectivePlugin_instance_to_keyhash(
+            PRESTypePluginEndpointData endpoint_data,
+            DDS_KeyHash_t *keyhash,
+            const HoistObjective *instance,
+            RTIEncapsulationId encapsulationId);
+
+        NDDSUSERDllExport extern RTIBool 
         HoistObjectivePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
@@ -454,7 +487,7 @@ namespace nec {
             void *endpoint_plugin_qos); 
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms * HoistObjectivePlugin_get_programs(void);
+        struct RTIXCdrInterpreterPrograms *HoistObjectivePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -598,6 +631,16 @@ namespace nec {
             const HoistState *sample,
             DDS_DataRepresentationId_t representation);
 
+        NDDSUSERDllExport extern RTIBool 
+        HoistStatePlugin_deserialize(
+            PRESTypePluginEndpointData endpoint_data,
+            HoistState **sample, 
+            RTIBool * drop_sample,
+            struct RTICdrStream *stream,
+            RTIBool deserialize_encapsulation,
+            RTIBool deserialize_sample, 
+            void *endpoint_plugin_qos);
+
         NDDSUSERDllExport extern RTIBool
         HoistStatePlugin_deserialize_from_cdr_buffer(
             HoistState *sample,
@@ -661,6 +704,13 @@ namespace nec {
             const HoistStateKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
+        HoistStatePlugin_instance_to_keyhash(
+            PRESTypePluginEndpointData endpoint_data,
+            DDS_KeyHash_t *keyhash,
+            const HoistState *instance,
+            RTIEncapsulationId encapsulationId);
+
+        NDDSUSERDllExport extern RTIBool 
         HoistStatePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
@@ -669,7 +719,7 @@ namespace nec {
             void *endpoint_plugin_qos); 
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms * HoistStatePlugin_get_programs(void);
+        struct RTIXCdrInterpreterPrograms *HoistStatePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*

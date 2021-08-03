@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from base_data_types.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from base_data_types.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef base_data_typesPlugin_308715588_h
@@ -218,6 +217,16 @@ namespace DataTypes {
         const Time *sample,
         DDS_DataRepresentationId_t representation);
 
+    NDDSUSERDllExport extern RTIBool 
+    TimePlugin_deserialize(
+        PRESTypePluginEndpointData endpoint_data,
+        Time **sample, 
+        RTIBool * drop_sample,
+        struct RTICdrStream *stream,
+        RTIBool deserialize_encapsulation,
+        RTIBool deserialize_sample, 
+        void *endpoint_plugin_qos);
+
     NDDSUSERDllExport extern RTIBool
     TimePlugin_deserialize_from_cdr_buffer(
         Time *sample,
@@ -269,7 +278,7 @@ namespace DataTypes {
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern
-    struct RTIXCdrInterpreterPrograms * TimePlugin_get_programs(void);
+    struct RTIXCdrInterpreterPrograms *TimePlugin_get_programs();
 
     /* Plugin Functions */
     NDDSUSERDllExport extern struct PRESTypePlugin*

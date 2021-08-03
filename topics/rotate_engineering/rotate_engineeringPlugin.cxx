@@ -2,11 +2,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from rotate_engineering.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from rotate_engineering.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #include <string.h>
@@ -100,12 +99,12 @@ namespace nec {
         {
             if (description != NULL) {
                 RTICdrType_printIndent(indent_level);
-                RTILogParamString_printPlain("%s:\n", description);
+                RTILog_debug("%s:\n", description);
             }
 
             if (sample == NULL) {
                 RTICdrType_printIndent(indent_level+1);
-                RTILogParamString_printPlain("NULL\n");
+                RTILog_debug("NULL\n");
                 return;
             }
 
@@ -152,12 +151,12 @@ namespace nec {
         {
             if (description != NULL) {
                 RTICdrType_printIndent(indent_level);
-                RTILogParamString_printPlain("%s:\n", description);
+                RTILog_debug("%s:\n", description);
             }
 
             if (sample == NULL) {
                 RTICdrType_printIndent(indent_level+1);
-                RTILogParamString_printPlain("NULL\n");
+                RTILog_debug("NULL\n");
                 return;
             }
 
@@ -226,6 +225,7 @@ namespace nec {
             nec::engineering::RotateEngineeringRequest_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
+            sample=NULL;
         }
 
         void 
@@ -234,6 +234,7 @@ namespace nec {
             nec::engineering::RotateEngineeringRequest_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
+            sample=NULL;
         }
 
         void 
@@ -262,13 +263,13 @@ namespace nec {
             RTICdrType_printIndent(indent_level);
 
             if (desc != NULL) {
-                RTILogParamString_printPlain("%s:\n", desc);
+                RTILog_debug("%s:\n", desc);
             } else {
-                RTILogParamString_printPlain("\n");
+                RTILog_debug("\n");
             }
 
             if (sample == NULL) {
-                RTILogParamString_printPlain("NULL\n");
+                RTILog_debug("NULL\n");
                 return;
             }
 
@@ -321,6 +322,7 @@ namespace nec {
             nec::engineering::RotateEngineeringRequest_finalize_ex(key,deallocate_pointers);
 
             delete  key;
+            key=NULL;
         }
 
         void 
@@ -362,7 +364,6 @@ namespace nec {
             programProperty.resolveAlias = RTI_XCDR_TRUE;
             programProperty.inlineStruct = RTI_XCDR_TRUE;
             programProperty.optimizeEnum = RTI_XCDR_TRUE;
-            programProperty.unboundedSize = RTIXCdrLong_MAX;
 
             programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                 DDS_TypeCodeFactory_get_instance(),
@@ -521,7 +522,7 @@ namespace nec {
             struct PRESTypePluginDefaultEndpointData epd;
             RTIBool result;
             struct PRESTypePluginDefaultParticipantData pd;
-            struct RTIXCdrTypePluginProgramContext defaultProgramContext =
+            struct RTIXCdrTypePluginProgramContext defaultProgramConext =
             RTIXCdrTypePluginProgramContext_INTIALIZER;
             struct PRESTypePlugin plugin;
 
@@ -530,7 +531,7 @@ namespace nec {
             }
 
             RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-            epd.programContext = defaultProgramContext;
+            epd.programContext = defaultProgramConext;  
             epd._participantData = &pd;
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
@@ -608,12 +609,12 @@ namespace nec {
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
-            struct RTIXCdrTypePluginProgramContext defaultProgramContext =
+            struct RTIXCdrTypePluginProgramContext defaultProgramConext =
             RTIXCdrTypePluginProgramContext_INTIALIZER;
             struct PRESTypePluginDefaultParticipantData pd;
             struct PRESTypePlugin plugin;
 
-            epd.programContext = defaultProgramContext;
+            epd.programContext = defaultProgramConext;  
             epd._participantData = &pd;
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
@@ -824,7 +825,7 @@ namespace nec {
 
             if (!RTICdrType_copyStringEx (
                 &dst->id, src->id, 
-                (36L) + 1, RTI_FALSE)){
+                (36) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             return RTI_TRUE;
@@ -839,9 +840,109 @@ namespace nec {
             if (endpoint_data) {} /* To avoid warnings */   
             if (!RTICdrType_copyStringEx (
                 &dst->id, src->id, 
-                (36L) + 1, RTI_FALSE)){
+                (36) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
+            return RTI_TRUE;
+        }
+
+        RTIBool 
+        RotateEngineeringRequestPlugin_instance_to_keyhash(
+            PRESTypePluginEndpointData endpoint_data,
+            DDS_KeyHash_t *keyhash,
+            const RotateEngineeringRequest *instance,
+            RTIEncapsulationId encapsulationId)
+        {
+            struct RTICdrStream * md5Stream = NULL;
+            struct RTICdrStreamState cdrState;
+            char * buffer = NULL;
+            RTIXCdrBoolean iCdrv2;
+
+            iCdrv2 = RTIXCdrEncapsulationId_isCdrV2(encapsulationId);
+            RTICdrStreamState_init(&cdrState);
+            md5Stream = PRESTypePluginDefaultEndpointData_getMD5Stream(endpoint_data);
+
+            if (md5Stream == NULL) {
+                return RTI_FALSE;
+            }
+
+            RTICdrStream_resetPosition(md5Stream);
+            RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
+
+            if (!PRESTypePlugin_interpretedSerializeKeyForKeyhash(
+                endpoint_data,
+                instance,
+                md5Stream,
+                iCdrv2?
+                RTI_CDR_ENCAPSULATION_ID_CDR2_BE:
+                RTI_CDR_ENCAPSULATION_ID_CDR_BE,
+                NULL)) 
+            {
+                int size;
+
+                RTICdrStream_pushState(md5Stream, &cdrState, -1);
+
+                size = (int)PRESTypePlugin_interpretedGetSerializedSampleSize(
+                    endpoint_data,
+                    RTI_FALSE,
+                    iCdrv2?
+                    RTI_CDR_ENCAPSULATION_ID_CDR2_BE:
+                    RTI_CDR_ENCAPSULATION_ID_CDR_BE,
+                    0,
+                    instance);
+
+                if (size <= RTICdrStream_getBufferLength(md5Stream)) {
+                    RTICdrStream_popState(md5Stream, &cdrState);        
+                    return RTI_FALSE;
+                }   
+
+                RTIOsapiHeap_allocateBuffer(&buffer,size,0);
+
+                if (buffer == NULL) {
+                    RTICdrStream_popState(md5Stream, &cdrState);
+                    return RTI_FALSE;
+                }
+
+                RTICdrStream_set(md5Stream, buffer, size);
+                RTIOsapiMemory_zero(
+                    RTICdrStream_getBuffer(md5Stream),
+                    RTICdrStream_getBufferLength(md5Stream));
+                RTICdrStream_resetPosition(md5Stream);
+                RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
+                if (!PRESTypePlugin_interpretedSerializeKeyForKeyhash(
+                    endpoint_data,
+                    instance,
+                    md5Stream, 
+                    iCdrv2?
+                    RTI_CDR_ENCAPSULATION_ID_CDR2_BE:
+                    RTI_CDR_ENCAPSULATION_ID_CDR_BE,
+                    NULL)) 
+                {
+                    RTICdrStream_popState(md5Stream, &cdrState);
+                    RTIOsapiHeap_freeBuffer(buffer);
+                    return RTI_FALSE;
+                }        
+            }   
+
+            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data, iCdrv2) > 
+            (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH) ||
+            PRESTypePluginDefaultEndpointData_forceMD5KeyHash(endpoint_data)) {
+                RTICdrStream_computeMD5(md5Stream, keyhash->value);
+            } else {
+                RTIOsapiMemory_zero(keyhash->value,MIG_RTPS_KEY_HASH_MAX_LENGTH);
+                RTIOsapiMemory_copy(
+                    keyhash->value, 
+                    RTICdrStream_getBuffer(md5Stream), 
+                    RTICdrStream_getCurrentPositionOffset(md5Stream));
+            }
+
+            keyhash->length = MIG_RTPS_KEY_HASH_MAX_LENGTH;
+
+            if (buffer != NULL) {
+                RTICdrStream_popState(md5Stream, &cdrState);
+                RTIOsapiHeap_freeBuffer(buffer);
+            }
+
             return RTI_TRUE;
         }
 
@@ -869,7 +970,7 @@ namespace nec {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
-            if (!PRESTypePlugin_interpretedInstanceToKeyHash(
+            if (!nec::engineering::RotateEngineeringRequestPlugin_instance_to_keyhash(
                 endpoint_data, 
                 keyhash, 
                 sample,
@@ -879,7 +980,7 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        struct RTIXCdrInterpreterPrograms * RotateEngineeringRequestPlugin_get_programs(void)
+        struct RTIXCdrInterpreterPrograms *RotateEngineeringRequestPlugin_get_programs()
         {
             return ::rti::xcdr::get_cdr_serialization_programs<
             RotateEngineeringRequest, 
@@ -967,7 +1068,7 @@ namespace nec {
 
             plugin-> instanceToKeyHashFnc = 
             (PRESTypePluginInstanceToKeyHashFunction)
-            PRESTypePlugin_interpretedInstanceToKeyHash;
+            nec::engineering::RotateEngineeringRequestPlugin_instance_to_keyhash;
             plugin->serializedSampleToKeyHashFnc = 
             (PRESTypePluginSerializedSampleToKeyHashFunction)
             nec::engineering::RotateEngineeringRequestPlugin_serialized_sample_to_keyhash;
@@ -1081,6 +1182,7 @@ namespace nec {
             nec::engineering::RotateEngineeringObjective_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
+            sample=NULL;
         }
 
         void 
@@ -1089,6 +1191,7 @@ namespace nec {
             nec::engineering::RotateEngineeringObjective_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
+            sample=NULL;
         }
 
         void 
@@ -1117,13 +1220,13 @@ namespace nec {
             RTICdrType_printIndent(indent_level);
 
             if (desc != NULL) {
-                RTILogParamString_printPlain("%s:\n", desc);
+                RTILog_debug("%s:\n", desc);
             } else {
-                RTILogParamString_printPlain("\n");
+                RTILog_debug("\n");
             }
 
             if (sample == NULL) {
-                RTILogParamString_printPlain("NULL\n");
+                RTILog_debug("NULL\n");
                 return;
             }
 
@@ -1170,6 +1273,7 @@ namespace nec {
             nec::engineering::RotateEngineeringObjective_finalize_ex(key,deallocate_pointers);
 
             delete  key;
+            key=NULL;
         }
 
         void 
@@ -1211,7 +1315,6 @@ namespace nec {
             programProperty.resolveAlias = RTI_XCDR_TRUE;
             programProperty.inlineStruct = RTI_XCDR_TRUE;
             programProperty.optimizeEnum = RTI_XCDR_TRUE;
-            programProperty.unboundedSize = RTIXCdrLong_MAX;
 
             programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                 DDS_TypeCodeFactory_get_instance(),
@@ -1370,7 +1473,7 @@ namespace nec {
             struct PRESTypePluginDefaultEndpointData epd;
             RTIBool result;
             struct PRESTypePluginDefaultParticipantData pd;
-            struct RTIXCdrTypePluginProgramContext defaultProgramContext =
+            struct RTIXCdrTypePluginProgramContext defaultProgramConext =
             RTIXCdrTypePluginProgramContext_INTIALIZER;
             struct PRESTypePlugin plugin;
 
@@ -1379,7 +1482,7 @@ namespace nec {
             }
 
             RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-            epd.programContext = defaultProgramContext;
+            epd.programContext = defaultProgramConext;  
             epd._participantData = &pd;
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
@@ -1457,12 +1560,12 @@ namespace nec {
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
-            struct RTIXCdrTypePluginProgramContext defaultProgramContext =
+            struct RTIXCdrTypePluginProgramContext defaultProgramConext =
             RTIXCdrTypePluginProgramContext_INTIALIZER;
             struct PRESTypePluginDefaultParticipantData pd;
             struct PRESTypePlugin plugin;
 
-            epd.programContext = defaultProgramContext;
+            epd.programContext = defaultProgramConext;  
             epd._participantData = &pd;
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
@@ -1673,7 +1776,7 @@ namespace nec {
 
             if (!RTICdrType_copyStringEx (
                 &dst->id, src->id, 
-                (36L) + 1, RTI_FALSE)){
+                (36) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             return RTI_TRUE;
@@ -1688,9 +1791,109 @@ namespace nec {
             if (endpoint_data) {} /* To avoid warnings */   
             if (!RTICdrType_copyStringEx (
                 &dst->id, src->id, 
-                (36L) + 1, RTI_FALSE)){
+                (36) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
+            return RTI_TRUE;
+        }
+
+        RTIBool 
+        RotateEngineeringObjectivePlugin_instance_to_keyhash(
+            PRESTypePluginEndpointData endpoint_data,
+            DDS_KeyHash_t *keyhash,
+            const RotateEngineeringObjective *instance,
+            RTIEncapsulationId encapsulationId)
+        {
+            struct RTICdrStream * md5Stream = NULL;
+            struct RTICdrStreamState cdrState;
+            char * buffer = NULL;
+            RTIXCdrBoolean iCdrv2;
+
+            iCdrv2 = RTIXCdrEncapsulationId_isCdrV2(encapsulationId);
+            RTICdrStreamState_init(&cdrState);
+            md5Stream = PRESTypePluginDefaultEndpointData_getMD5Stream(endpoint_data);
+
+            if (md5Stream == NULL) {
+                return RTI_FALSE;
+            }
+
+            RTICdrStream_resetPosition(md5Stream);
+            RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
+
+            if (!PRESTypePlugin_interpretedSerializeKeyForKeyhash(
+                endpoint_data,
+                instance,
+                md5Stream,
+                iCdrv2?
+                RTI_CDR_ENCAPSULATION_ID_CDR2_BE:
+                RTI_CDR_ENCAPSULATION_ID_CDR_BE,
+                NULL)) 
+            {
+                int size;
+
+                RTICdrStream_pushState(md5Stream, &cdrState, -1);
+
+                size = (int)PRESTypePlugin_interpretedGetSerializedSampleSize(
+                    endpoint_data,
+                    RTI_FALSE,
+                    iCdrv2?
+                    RTI_CDR_ENCAPSULATION_ID_CDR2_BE:
+                    RTI_CDR_ENCAPSULATION_ID_CDR_BE,
+                    0,
+                    instance);
+
+                if (size <= RTICdrStream_getBufferLength(md5Stream)) {
+                    RTICdrStream_popState(md5Stream, &cdrState);        
+                    return RTI_FALSE;
+                }   
+
+                RTIOsapiHeap_allocateBuffer(&buffer,size,0);
+
+                if (buffer == NULL) {
+                    RTICdrStream_popState(md5Stream, &cdrState);
+                    return RTI_FALSE;
+                }
+
+                RTICdrStream_set(md5Stream, buffer, size);
+                RTIOsapiMemory_zero(
+                    RTICdrStream_getBuffer(md5Stream),
+                    RTICdrStream_getBufferLength(md5Stream));
+                RTICdrStream_resetPosition(md5Stream);
+                RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
+                if (!PRESTypePlugin_interpretedSerializeKeyForKeyhash(
+                    endpoint_data,
+                    instance,
+                    md5Stream, 
+                    iCdrv2?
+                    RTI_CDR_ENCAPSULATION_ID_CDR2_BE:
+                    RTI_CDR_ENCAPSULATION_ID_CDR_BE,
+                    NULL)) 
+                {
+                    RTICdrStream_popState(md5Stream, &cdrState);
+                    RTIOsapiHeap_freeBuffer(buffer);
+                    return RTI_FALSE;
+                }        
+            }   
+
+            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data, iCdrv2) > 
+            (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH) ||
+            PRESTypePluginDefaultEndpointData_forceMD5KeyHash(endpoint_data)) {
+                RTICdrStream_computeMD5(md5Stream, keyhash->value);
+            } else {
+                RTIOsapiMemory_zero(keyhash->value,MIG_RTPS_KEY_HASH_MAX_LENGTH);
+                RTIOsapiMemory_copy(
+                    keyhash->value, 
+                    RTICdrStream_getBuffer(md5Stream), 
+                    RTICdrStream_getCurrentPositionOffset(md5Stream));
+            }
+
+            keyhash->length = MIG_RTPS_KEY_HASH_MAX_LENGTH;
+
+            if (buffer != NULL) {
+                RTICdrStream_popState(md5Stream, &cdrState);
+                RTIOsapiHeap_freeBuffer(buffer);
+            }
+
             return RTI_TRUE;
         }
 
@@ -1718,7 +1921,7 @@ namespace nec {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
-            if (!PRESTypePlugin_interpretedInstanceToKeyHash(
+            if (!nec::engineering::RotateEngineeringObjectivePlugin_instance_to_keyhash(
                 endpoint_data, 
                 keyhash, 
                 sample,
@@ -1728,7 +1931,7 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        struct RTIXCdrInterpreterPrograms * RotateEngineeringObjectivePlugin_get_programs(void)
+        struct RTIXCdrInterpreterPrograms *RotateEngineeringObjectivePlugin_get_programs()
         {
             return ::rti::xcdr::get_cdr_serialization_programs<
             RotateEngineeringObjective, 
@@ -1816,7 +2019,7 @@ namespace nec {
 
             plugin-> instanceToKeyHashFnc = 
             (PRESTypePluginInstanceToKeyHashFunction)
-            PRESTypePlugin_interpretedInstanceToKeyHash;
+            nec::engineering::RotateEngineeringObjectivePlugin_instance_to_keyhash;
             plugin->serializedSampleToKeyHashFnc = 
             (PRESTypePluginSerializedSampleToKeyHashFunction)
             nec::engineering::RotateEngineeringObjectivePlugin_serialized_sample_to_keyhash;
@@ -1930,6 +2133,7 @@ namespace nec {
             nec::engineering::RotateEngineeringState_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
+            sample=NULL;
         }
 
         void 
@@ -1938,6 +2142,7 @@ namespace nec {
             nec::engineering::RotateEngineeringState_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
+            sample=NULL;
         }
 
         void 
@@ -1966,13 +2171,13 @@ namespace nec {
             RTICdrType_printIndent(indent_level);
 
             if (desc != NULL) {
-                RTILogParamString_printPlain("%s:\n", desc);
+                RTILog_debug("%s:\n", desc);
             } else {
-                RTILogParamString_printPlain("\n");
+                RTILog_debug("\n");
             }
 
             if (sample == NULL) {
-                RTILogParamString_printPlain("NULL\n");
+                RTILog_debug("NULL\n");
                 return;
             }
 
@@ -2061,6 +2266,7 @@ namespace nec {
             nec::engineering::RotateEngineeringState_finalize_ex(key,deallocate_pointers);
 
             delete  key;
+            key=NULL;
         }
 
         void 
@@ -2102,7 +2308,6 @@ namespace nec {
             programProperty.resolveAlias = RTI_XCDR_TRUE;
             programProperty.inlineStruct = RTI_XCDR_TRUE;
             programProperty.optimizeEnum = RTI_XCDR_TRUE;
-            programProperty.unboundedSize = RTIXCdrLong_MAX;
 
             programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                 DDS_TypeCodeFactory_get_instance(),
@@ -2261,7 +2466,7 @@ namespace nec {
             struct PRESTypePluginDefaultEndpointData epd;
             RTIBool result;
             struct PRESTypePluginDefaultParticipantData pd;
-            struct RTIXCdrTypePluginProgramContext defaultProgramContext =
+            struct RTIXCdrTypePluginProgramContext defaultProgramConext =
             RTIXCdrTypePluginProgramContext_INTIALIZER;
             struct PRESTypePlugin plugin;
 
@@ -2270,7 +2475,7 @@ namespace nec {
             }
 
             RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-            epd.programContext = defaultProgramContext;
+            epd.programContext = defaultProgramConext;  
             epd._participantData = &pd;
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
@@ -2348,12 +2553,12 @@ namespace nec {
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
-            struct RTIXCdrTypePluginProgramContext defaultProgramContext =
+            struct RTIXCdrTypePluginProgramContext defaultProgramConext =
             RTIXCdrTypePluginProgramContext_INTIALIZER;
             struct PRESTypePluginDefaultParticipantData pd;
             struct PRESTypePlugin plugin;
 
-            epd.programContext = defaultProgramContext;
+            epd.programContext = defaultProgramConext;  
             epd._participantData = &pd;
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
@@ -2564,7 +2769,7 @@ namespace nec {
 
             if (!RTICdrType_copyStringEx (
                 &dst->id, src->id, 
-                (36L) + 1, RTI_FALSE)){
+                (36) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             return RTI_TRUE;
@@ -2579,9 +2784,109 @@ namespace nec {
             if (endpoint_data) {} /* To avoid warnings */   
             if (!RTICdrType_copyStringEx (
                 &dst->id, src->id, 
-                (36L) + 1, RTI_FALSE)){
+                (36) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
+            return RTI_TRUE;
+        }
+
+        RTIBool 
+        RotateEngineeringStatePlugin_instance_to_keyhash(
+            PRESTypePluginEndpointData endpoint_data,
+            DDS_KeyHash_t *keyhash,
+            const RotateEngineeringState *instance,
+            RTIEncapsulationId encapsulationId)
+        {
+            struct RTICdrStream * md5Stream = NULL;
+            struct RTICdrStreamState cdrState;
+            char * buffer = NULL;
+            RTIXCdrBoolean iCdrv2;
+
+            iCdrv2 = RTIXCdrEncapsulationId_isCdrV2(encapsulationId);
+            RTICdrStreamState_init(&cdrState);
+            md5Stream = PRESTypePluginDefaultEndpointData_getMD5Stream(endpoint_data);
+
+            if (md5Stream == NULL) {
+                return RTI_FALSE;
+            }
+
+            RTICdrStream_resetPosition(md5Stream);
+            RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
+
+            if (!PRESTypePlugin_interpretedSerializeKeyForKeyhash(
+                endpoint_data,
+                instance,
+                md5Stream,
+                iCdrv2?
+                RTI_CDR_ENCAPSULATION_ID_CDR2_BE:
+                RTI_CDR_ENCAPSULATION_ID_CDR_BE,
+                NULL)) 
+            {
+                int size;
+
+                RTICdrStream_pushState(md5Stream, &cdrState, -1);
+
+                size = (int)PRESTypePlugin_interpretedGetSerializedSampleSize(
+                    endpoint_data,
+                    RTI_FALSE,
+                    iCdrv2?
+                    RTI_CDR_ENCAPSULATION_ID_CDR2_BE:
+                    RTI_CDR_ENCAPSULATION_ID_CDR_BE,
+                    0,
+                    instance);
+
+                if (size <= RTICdrStream_getBufferLength(md5Stream)) {
+                    RTICdrStream_popState(md5Stream, &cdrState);        
+                    return RTI_FALSE;
+                }   
+
+                RTIOsapiHeap_allocateBuffer(&buffer,size,0);
+
+                if (buffer == NULL) {
+                    RTICdrStream_popState(md5Stream, &cdrState);
+                    return RTI_FALSE;
+                }
+
+                RTICdrStream_set(md5Stream, buffer, size);
+                RTIOsapiMemory_zero(
+                    RTICdrStream_getBuffer(md5Stream),
+                    RTICdrStream_getBufferLength(md5Stream));
+                RTICdrStream_resetPosition(md5Stream);
+                RTICdrStream_setDirtyBit(md5Stream, RTI_TRUE);
+                if (!PRESTypePlugin_interpretedSerializeKeyForKeyhash(
+                    endpoint_data,
+                    instance,
+                    md5Stream, 
+                    iCdrv2?
+                    RTI_CDR_ENCAPSULATION_ID_CDR2_BE:
+                    RTI_CDR_ENCAPSULATION_ID_CDR_BE,
+                    NULL)) 
+                {
+                    RTICdrStream_popState(md5Stream, &cdrState);
+                    RTIOsapiHeap_freeBuffer(buffer);
+                    return RTI_FALSE;
+                }        
+            }   
+
+            if (PRESTypePluginDefaultEndpointData_getMaxSizeSerializedKey(endpoint_data, iCdrv2) > 
+            (unsigned int)(MIG_RTPS_KEY_HASH_MAX_LENGTH) ||
+            PRESTypePluginDefaultEndpointData_forceMD5KeyHash(endpoint_data)) {
+                RTICdrStream_computeMD5(md5Stream, keyhash->value);
+            } else {
+                RTIOsapiMemory_zero(keyhash->value,MIG_RTPS_KEY_HASH_MAX_LENGTH);
+                RTIOsapiMemory_copy(
+                    keyhash->value, 
+                    RTICdrStream_getBuffer(md5Stream), 
+                    RTICdrStream_getCurrentPositionOffset(md5Stream));
+            }
+
+            keyhash->length = MIG_RTPS_KEY_HASH_MAX_LENGTH;
+
+            if (buffer != NULL) {
+                RTICdrStream_popState(md5Stream, &cdrState);
+                RTIOsapiHeap_freeBuffer(buffer);
+            }
+
             return RTI_TRUE;
         }
 
@@ -2609,7 +2914,7 @@ namespace nec {
                 endpoint_plugin_qos)) {
                 return RTI_FALSE;
             }
-            if (!PRESTypePlugin_interpretedInstanceToKeyHash(
+            if (!nec::engineering::RotateEngineeringStatePlugin_instance_to_keyhash(
                 endpoint_data, 
                 keyhash, 
                 sample,
@@ -2619,7 +2924,7 @@ namespace nec {
             return RTI_TRUE;
         }
 
-        struct RTIXCdrInterpreterPrograms * RotateEngineeringStatePlugin_get_programs(void)
+        struct RTIXCdrInterpreterPrograms *RotateEngineeringStatePlugin_get_programs()
         {
             return ::rti::xcdr::get_cdr_serialization_programs<
             RotateEngineeringState, 
@@ -2707,7 +3012,7 @@ namespace nec {
 
             plugin-> instanceToKeyHashFnc = 
             (PRESTypePluginInstanceToKeyHashFunction)
-            PRESTypePlugin_interpretedInstanceToKeyHash;
+            nec::engineering::RotateEngineeringStatePlugin_instance_to_keyhash;
             plugin->serializedSampleToKeyHashFnc = 
             (PRESTypePluginSerializedSampleToKeyHashFunction)
             nec::engineering::RotateEngineeringStatePlugin_serialized_sample_to_keyhash;

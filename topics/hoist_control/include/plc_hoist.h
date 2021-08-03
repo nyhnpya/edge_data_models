@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from plc_hoist.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from plc_hoist.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef plc_hoist_1752499246_h
@@ -56,7 +55,7 @@ namespace plc {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode * PlcHoistRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* PlcHoistRequest_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *PlcHoistRequest_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcHoistRequest_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcHoistRequest_get_sample_seq_access_info(void);
@@ -150,7 +149,7 @@ namespace plc {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode * PlcHoistState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* PlcHoistState_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *PlcHoistState_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcHoistState_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcHoistState_get_sample_seq_access_info(void);

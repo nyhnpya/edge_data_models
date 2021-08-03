@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from rotate_engineering.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from rotate_engineering.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef rotate_engineeringPlugin_182436140_h
@@ -240,6 +239,16 @@ namespace nec {
             const RotateEngineeringRequest *sample,
             DDS_DataRepresentationId_t representation);
 
+        NDDSUSERDllExport extern RTIBool 
+        RotateEngineeringRequestPlugin_deserialize(
+            PRESTypePluginEndpointData endpoint_data,
+            RotateEngineeringRequest **sample, 
+            RTIBool * drop_sample,
+            struct RTICdrStream *stream,
+            RTIBool deserialize_encapsulation,
+            RTIBool deserialize_sample, 
+            void *endpoint_plugin_qos);
+
         NDDSUSERDllExport extern RTIBool
         RotateEngineeringRequestPlugin_deserialize_from_cdr_buffer(
             RotateEngineeringRequest *sample,
@@ -303,6 +312,13 @@ namespace nec {
             const RotateEngineeringRequestKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
+        RotateEngineeringRequestPlugin_instance_to_keyhash(
+            PRESTypePluginEndpointData endpoint_data,
+            DDS_KeyHash_t *keyhash,
+            const RotateEngineeringRequest *instance,
+            RTIEncapsulationId encapsulationId);
+
+        NDDSUSERDllExport extern RTIBool 
         RotateEngineeringRequestPlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
@@ -311,7 +327,7 @@ namespace nec {
             void *endpoint_plugin_qos); 
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms * RotateEngineeringRequestPlugin_get_programs(void);
+        struct RTIXCdrInterpreterPrograms *RotateEngineeringRequestPlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -455,6 +471,16 @@ namespace nec {
             const RotateEngineeringObjective *sample,
             DDS_DataRepresentationId_t representation);
 
+        NDDSUSERDllExport extern RTIBool 
+        RotateEngineeringObjectivePlugin_deserialize(
+            PRESTypePluginEndpointData endpoint_data,
+            RotateEngineeringObjective **sample, 
+            RTIBool * drop_sample,
+            struct RTICdrStream *stream,
+            RTIBool deserialize_encapsulation,
+            RTIBool deserialize_sample, 
+            void *endpoint_plugin_qos);
+
         NDDSUSERDllExport extern RTIBool
         RotateEngineeringObjectivePlugin_deserialize_from_cdr_buffer(
             RotateEngineeringObjective *sample,
@@ -518,6 +544,13 @@ namespace nec {
             const RotateEngineeringObjectiveKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
+        RotateEngineeringObjectivePlugin_instance_to_keyhash(
+            PRESTypePluginEndpointData endpoint_data,
+            DDS_KeyHash_t *keyhash,
+            const RotateEngineeringObjective *instance,
+            RTIEncapsulationId encapsulationId);
+
+        NDDSUSERDllExport extern RTIBool 
         RotateEngineeringObjectivePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
@@ -526,7 +559,7 @@ namespace nec {
             void *endpoint_plugin_qos); 
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms * RotateEngineeringObjectivePlugin_get_programs(void);
+        struct RTIXCdrInterpreterPrograms *RotateEngineeringObjectivePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -670,6 +703,16 @@ namespace nec {
             const RotateEngineeringState *sample,
             DDS_DataRepresentationId_t representation);
 
+        NDDSUSERDllExport extern RTIBool 
+        RotateEngineeringStatePlugin_deserialize(
+            PRESTypePluginEndpointData endpoint_data,
+            RotateEngineeringState **sample, 
+            RTIBool * drop_sample,
+            struct RTICdrStream *stream,
+            RTIBool deserialize_encapsulation,
+            RTIBool deserialize_sample, 
+            void *endpoint_plugin_qos);
+
         NDDSUSERDllExport extern RTIBool
         RotateEngineeringStatePlugin_deserialize_from_cdr_buffer(
             RotateEngineeringState *sample,
@@ -733,6 +776,13 @@ namespace nec {
             const RotateEngineeringStateKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
+        RotateEngineeringStatePlugin_instance_to_keyhash(
+            PRESTypePluginEndpointData endpoint_data,
+            DDS_KeyHash_t *keyhash,
+            const RotateEngineeringState *instance,
+            RTIEncapsulationId encapsulationId);
+
+        NDDSUSERDllExport extern RTIBool 
         RotateEngineeringStatePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
@@ -741,7 +791,7 @@ namespace nec {
             void *endpoint_plugin_qos); 
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms * RotateEngineeringStatePlugin_get_programs(void);
+        struct RTIXCdrInterpreterPrograms *RotateEngineeringStatePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*

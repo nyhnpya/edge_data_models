@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from base_data_types.idl 
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from base_data_types.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -45,11 +44,11 @@ namespace DataTypes {
     /* ========================================================================= */
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode * Uuid_get_typecode(void)
+    DDS_TypeCode* Uuid_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode Uuid_g_tc_string = DDS_INITIALIZE_STRING_TYPECODE((36L));
+        static DDS_TypeCode Uuid_g_tc_string = DDS_INITIALIZE_STRING_TYPECODE((36));
 
         static DDS_TypeCode Uuid_g_tc =
         {{
@@ -136,9 +135,9 @@ namespace DataTypes {
         {
             size_t candidateTypeSize = sizeof(Uuid);
 
-            if (candidateTypeSize > RTIXCdrLong_MAX) {
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                 Uuid_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrLong_MAX;
+                RTIXCdrUnsignedLong_MAX;
             } else {
                 Uuid_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -216,11 +215,11 @@ namespace DataTypes {
         }
 
         if (allocParams->allocate_memory) {
-            (*sample) = DDS_String_alloc((36L));
+            (*sample) = DDS_String_alloc((36));
             RTICdrType_copyStringEx(
                 &(*sample),
                 "",
-                (36L),
+                (36),
                 RTI_FALSE);
             if ((*sample) == NULL) {
                 return RTI_FALSE;
@@ -230,7 +229,7 @@ namespace DataTypes {
                 RTICdrType_copyStringEx(
                     &(*sample),
                     "",
-                    (36L),
+                    (36),
                     RTI_FALSE);
                 if ((*sample) == NULL) {
                     return RTI_FALSE;
@@ -321,7 +320,7 @@ namespace DataTypes {
 
             if (!RTICdrType_copyStringEx (
                 &(*dst), (*src), 
-                (36L) + 1, RTI_FALSE)){
+                (36) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
 
@@ -367,7 +366,7 @@ namespace DataTypes {
     const char *TimeTYPENAME = "DataTypes::Time";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode * Time_get_typecode(void)
+    DDS_TypeCode* Time_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
@@ -522,9 +521,9 @@ namespace DataTypes {
         {
             size_t candidateTypeSize = sizeof(Time);
 
-            if (candidateTypeSize > RTIXCdrLong_MAX) {
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                 Time_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrLong_MAX;
+                RTIXCdrUnsignedLong_MAX;
             } else {
                 Time_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -733,7 +732,7 @@ namespace DataTypes {
     const char *PriorityTYPENAME = "DataTypes::Priority";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode * Priority_get_typecode(void)
+    DDS_TypeCode* Priority_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
@@ -882,9 +881,9 @@ namespace DataTypes {
         {
             size_t candidateTypeSize = sizeof(Priority);
 
-            if (candidateTypeSize > RTIXCdrLong_MAX) {
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                 Priority_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrLong_MAX;
+                RTIXCdrUnsignedLong_MAX;
             } else {
                 Priority_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -1082,7 +1081,7 @@ namespace DataTypes {
     const char *SurveyQualityTYPENAME = "DataTypes::SurveyQuality";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode * SurveyQuality_get_typecode(void)
+    DDS_TypeCode* SurveyQuality_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
@@ -1212,9 +1211,9 @@ namespace DataTypes {
         {
             size_t candidateTypeSize = sizeof(SurveyQuality);
 
-            if (candidateTypeSize > RTIXCdrLong_MAX) {
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                 SurveyQuality_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrLong_MAX;
+                RTIXCdrUnsignedLong_MAX;
             } else {
                 SurveyQuality_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -1412,7 +1411,7 @@ namespace DataTypes {
     const char *StatusTYPENAME = "DataTypes::Status";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode * Status_get_typecode(void)
+    DDS_TypeCode* Status_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
@@ -1542,9 +1541,9 @@ namespace DataTypes {
         {
             size_t candidateTypeSize = sizeof(Status);
 
-            if (candidateTypeSize > RTIXCdrLong_MAX) {
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                 Status_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrLong_MAX;
+                RTIXCdrUnsignedLong_MAX;
             } else {
                 Status_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -1742,7 +1741,7 @@ namespace DataTypes {
     const char *PipeTypeTYPENAME = "DataTypes::PipeType";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode * PipeType_get_typecode(void)
+    DDS_TypeCode* PipeType_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
@@ -1891,9 +1890,9 @@ namespace DataTypes {
         {
             size_t candidateTypeSize = sizeof(PipeType);
 
-            if (candidateTypeSize > RTIXCdrLong_MAX) {
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                 PipeType_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrLong_MAX;
+                RTIXCdrUnsignedLong_MAX;
             } else {
                 PipeType_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -2091,7 +2090,7 @@ namespace DataTypes {
     const char *ObjectiveTYPENAME = "DataTypes::Objective";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode * Objective_get_typecode(void)
+    DDS_TypeCode* Objective_get_typecode()
     {
         static RTIBool is_initialized = RTI_FALSE;
 
@@ -2354,9 +2353,9 @@ namespace DataTypes {
         {
             size_t candidateTypeSize = sizeof(Objective);
 
-            if (candidateTypeSize > RTIXCdrLong_MAX) {
+            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                 Objective_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrLong_MAX;
+                RTIXCdrUnsignedLong_MAX;
             } else {
                 Objective_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;

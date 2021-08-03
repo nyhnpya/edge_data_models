@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from autodriller_configuration.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from autodriller_configuration.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef autodriller_configuration_730533774_h
@@ -69,7 +68,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode * HmiRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* HmiRequest_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *HmiRequest_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *HmiRequest_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *HmiRequest_get_sample_seq_access_info(void);
@@ -230,7 +229,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode * HmiState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* HmiState_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *HmiState_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *HmiState_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *HmiState_get_sample_seq_access_info(void);

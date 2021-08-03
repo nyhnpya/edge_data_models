@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from drilling_calibration.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from drilling_calibration.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef drilling_calibrationPlugin_1168089437_h
@@ -168,6 +167,16 @@ namespace nec {
             const DrillingCalibrationRequest *sample,
             DDS_DataRepresentationId_t representation);
 
+        NDDSUSERDllExport extern RTIBool 
+        DrillingCalibrationRequestPlugin_deserialize(
+            PRESTypePluginEndpointData endpoint_data,
+            DrillingCalibrationRequest **sample, 
+            RTIBool * drop_sample,
+            struct RTICdrStream *stream,
+            RTIBool deserialize_encapsulation,
+            RTIBool deserialize_sample, 
+            void *endpoint_plugin_qos);
+
         NDDSUSERDllExport extern RTIBool
         DrillingCalibrationRequestPlugin_deserialize_from_cdr_buffer(
             DrillingCalibrationRequest *sample,
@@ -231,6 +240,13 @@ namespace nec {
             const DrillingCalibrationRequestKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
+        DrillingCalibrationRequestPlugin_instance_to_keyhash(
+            PRESTypePluginEndpointData endpoint_data,
+            DDS_KeyHash_t *keyhash,
+            const DrillingCalibrationRequest *instance,
+            RTIEncapsulationId encapsulationId);
+
+        NDDSUSERDllExport extern RTIBool 
         DrillingCalibrationRequestPlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
@@ -239,7 +255,7 @@ namespace nec {
             void *endpoint_plugin_qos); 
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms * DrillingCalibrationRequestPlugin_get_programs(void);
+        struct RTIXCdrInterpreterPrograms *DrillingCalibrationRequestPlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -383,6 +399,16 @@ namespace nec {
             const DrillingCalibrationState *sample,
             DDS_DataRepresentationId_t representation);
 
+        NDDSUSERDllExport extern RTIBool 
+        DrillingCalibrationStatePlugin_deserialize(
+            PRESTypePluginEndpointData endpoint_data,
+            DrillingCalibrationState **sample, 
+            RTIBool * drop_sample,
+            struct RTICdrStream *stream,
+            RTIBool deserialize_encapsulation,
+            RTIBool deserialize_sample, 
+            void *endpoint_plugin_qos);
+
         NDDSUSERDllExport extern RTIBool
         DrillingCalibrationStatePlugin_deserialize_from_cdr_buffer(
             DrillingCalibrationState *sample,
@@ -446,6 +472,13 @@ namespace nec {
             const DrillingCalibrationStateKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
+        DrillingCalibrationStatePlugin_instance_to_keyhash(
+            PRESTypePluginEndpointData endpoint_data,
+            DDS_KeyHash_t *keyhash,
+            const DrillingCalibrationState *instance,
+            RTIEncapsulationId encapsulationId);
+
+        NDDSUSERDllExport extern RTIBool 
         DrillingCalibrationStatePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
@@ -454,7 +487,7 @@ namespace nec {
             void *endpoint_plugin_qos); 
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms * DrillingCalibrationStatePlugin_get_programs(void);
+        struct RTIXCdrInterpreterPrograms *DrillingCalibrationStatePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*

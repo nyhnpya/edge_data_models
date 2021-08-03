@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from configuration.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from configuration.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef configurationPlugin_301633329_h
@@ -240,6 +239,16 @@ namespace Configuration {
         const protocol_t *sample,
         DDS_DataRepresentationId_t representation);
 
+    NDDSUSERDllExport extern RTIBool 
+    protocol_tPlugin_deserialize(
+        PRESTypePluginEndpointData endpoint_data,
+        protocol_t **sample, 
+        RTIBool * drop_sample,
+        struct RTICdrStream *stream,
+        RTIBool deserialize_encapsulation,
+        RTIBool deserialize_sample, 
+        void *endpoint_plugin_qos);
+
     NDDSUSERDllExport extern RTIBool
     protocol_tPlugin_deserialize_from_cdr_buffer(
         protocol_t *sample,
@@ -291,7 +300,7 @@ namespace Configuration {
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern
-    struct RTIXCdrInterpreterPrograms * protocol_tPlugin_get_programs(void);
+    struct RTIXCdrInterpreterPrograms *protocol_tPlugin_get_programs();
 
     /* Plugin Functions */
     NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -402,6 +411,16 @@ namespace Configuration {
         const interface_t *sample,
         DDS_DataRepresentationId_t representation);
 
+    NDDSUSERDllExport extern RTIBool 
+    interface_tPlugin_deserialize(
+        PRESTypePluginEndpointData endpoint_data,
+        interface_t **sample, 
+        RTIBool * drop_sample,
+        struct RTICdrStream *stream,
+        RTIBool deserialize_encapsulation,
+        RTIBool deserialize_sample, 
+        void *endpoint_plugin_qos);
+
     NDDSUSERDllExport extern RTIBool
     interface_tPlugin_deserialize_from_cdr_buffer(
         interface_t *sample,
@@ -453,7 +472,7 @@ namespace Configuration {
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern
-    struct RTIXCdrInterpreterPrograms * interface_tPlugin_get_programs(void);
+    struct RTIXCdrInterpreterPrograms *interface_tPlugin_get_programs();
 
     /* Plugin Functions */
     NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -564,6 +583,16 @@ namespace Configuration {
         const tag_t *sample,
         DDS_DataRepresentationId_t representation);
 
+    NDDSUSERDllExport extern RTIBool 
+    tag_tPlugin_deserialize(
+        PRESTypePluginEndpointData endpoint_data,
+        tag_t **sample, 
+        RTIBool * drop_sample,
+        struct RTICdrStream *stream,
+        RTIBool deserialize_encapsulation,
+        RTIBool deserialize_sample, 
+        void *endpoint_plugin_qos);
+
     NDDSUSERDllExport extern RTIBool
     tag_tPlugin_deserialize_from_cdr_buffer(
         tag_t *sample,
@@ -615,7 +644,7 @@ namespace Configuration {
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern
-    struct RTIXCdrInterpreterPrograms * tag_tPlugin_get_programs(void);
+    struct RTIXCdrInterpreterPrograms *tag_tPlugin_get_programs();
 
     /* Plugin Functions */
     NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -726,6 +755,16 @@ namespace Configuration {
         const config_data *sample,
         DDS_DataRepresentationId_t representation);
 
+    NDDSUSERDllExport extern RTIBool 
+    config_dataPlugin_deserialize(
+        PRESTypePluginEndpointData endpoint_data,
+        config_data **sample, 
+        RTIBool * drop_sample,
+        struct RTICdrStream *stream,
+        RTIBool deserialize_encapsulation,
+        RTIBool deserialize_sample, 
+        void *endpoint_plugin_qos);
+
     NDDSUSERDllExport extern RTIBool
     config_dataPlugin_deserialize_from_cdr_buffer(
         config_data *sample,
@@ -777,7 +816,7 @@ namespace Configuration {
         void *endpoint_plugin_qos);
 
     NDDSUSERDllExport extern
-    struct RTIXCdrInterpreterPrograms * config_dataPlugin_get_programs(void);
+    struct RTIXCdrInterpreterPrograms *config_dataPlugin_get_programs();
 
     /* Plugin Functions */
     NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -921,6 +960,16 @@ namespace Configuration {
         const Item *sample,
         DDS_DataRepresentationId_t representation);
 
+    NDDSUSERDllExport extern RTIBool 
+    ItemPlugin_deserialize(
+        PRESTypePluginEndpointData endpoint_data,
+        Item **sample, 
+        RTIBool * drop_sample,
+        struct RTICdrStream *stream,
+        RTIBool deserialize_encapsulation,
+        RTIBool deserialize_sample, 
+        void *endpoint_plugin_qos);
+
     NDDSUSERDllExport extern RTIBool
     ItemPlugin_deserialize_from_cdr_buffer(
         Item *sample,
@@ -984,6 +1033,13 @@ namespace Configuration {
         const ItemKeyHolder *key);
 
     NDDSUSERDllExport extern RTIBool 
+    ItemPlugin_instance_to_keyhash(
+        PRESTypePluginEndpointData endpoint_data,
+        DDS_KeyHash_t *keyhash,
+        const Item *instance,
+        RTIEncapsulationId encapsulationId);
+
+    NDDSUSERDllExport extern RTIBool 
     ItemPlugin_serialized_sample_to_keyhash(
         PRESTypePluginEndpointData endpoint_data,
         struct RTICdrStream *stream, 
@@ -992,7 +1048,7 @@ namespace Configuration {
         void *endpoint_plugin_qos); 
 
     NDDSUSERDllExport extern
-    struct RTIXCdrInterpreterPrograms * ItemPlugin_get_programs(void);
+    struct RTIXCdrInterpreterPrograms *ItemPlugin_get_programs();
 
     /* Plugin Functions */
     NDDSUSERDllExport extern struct PRESTypePlugin*

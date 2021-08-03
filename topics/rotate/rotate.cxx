@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from rotate.idl 
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from rotate.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -48,7 +47,7 @@ namespace nec {
         const char *RotateRequestTYPENAME = "nec::process::RotateRequest";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode * RotateRequest_get_typecode(void)
+        DDS_TypeCode* RotateRequest_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -293,9 +292,9 @@ namespace nec {
             {
                 size_t candidateTypeSize = sizeof(RotateRequest);
 
-                if (candidateTypeSize > RTIXCdrLong_MAX) {
+                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                     RotateRequest_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrLong_MAX;
+                    RTIXCdrUnsignedLong_MAX;
                 } else {
                     RotateRequest_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -374,11 +373,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->id = DDS_String_alloc((36L));
+                sample->id = DDS_String_alloc((36));
                 RTICdrType_copyStringEx(
                     &sample->id,
                     "",
-                    (36L),
+                    (36),
                     RTI_FALSE);
                 if (sample->id == NULL) {
                     return RTI_FALSE;
@@ -388,7 +387,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->id,
                         "",
-                        (36L),
+                        (36),
                         RTI_FALSE);
                     if (sample->id == NULL) {
                         return RTI_FALSE;
@@ -397,11 +396,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->objectiveId = DDS_String_alloc((36L));
+                sample->objectiveId = DDS_String_alloc((36));
                 RTICdrType_copyStringEx(
                     &sample->objectiveId,
                     "",
-                    (36L),
+                    (36),
                     RTI_FALSE);
                 if (sample->objectiveId == NULL) {
                     return RTI_FALSE;
@@ -411,7 +410,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->objectiveId,
                         "",
-                        (36L),
+                        (36),
                         RTI_FALSE);
                     if (sample->objectiveId == NULL) {
                         return RTI_FALSE;
@@ -428,6 +427,7 @@ namespace nec {
             allocParams)) {
                 return RTI_FALSE;
             }
+
             sample->targetRate = 0.0;
 
             return RTI_TRUE;
@@ -524,12 +524,12 @@ namespace nec {
 
                 if (!RTICdrType_copyStringEx (
                     &dst->id, src->id, 
-                    (36L) + 1, RTI_FALSE)){
+                    (36) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyStringEx (
                     &dst->objectiveId, src->objectiveId, 
-                    (36L) + 1, RTI_FALSE)){
+                    (36) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!DataTypes::Priority_copy(
@@ -591,7 +591,7 @@ namespace nec {
         const char *RotateObjectiveTYPENAME = "nec::process::RotateObjective";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode * RotateObjective_get_typecode(void)
+        DDS_TypeCode* RotateObjective_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -789,9 +789,9 @@ namespace nec {
             {
                 size_t candidateTypeSize = sizeof(RotateObjective);
 
-                if (candidateTypeSize > RTIXCdrLong_MAX) {
+                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                     RotateObjective_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrLong_MAX;
+                    RTIXCdrUnsignedLong_MAX;
                 } else {
                     RotateObjective_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -870,11 +870,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->id = DDS_String_alloc((36L));
+                sample->id = DDS_String_alloc((36));
                 RTICdrType_copyStringEx(
                     &sample->id,
                     "",
-                    (36L),
+                    (36),
                     RTI_FALSE);
                 if (sample->id == NULL) {
                     return RTI_FALSE;
@@ -884,7 +884,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->id,
                         "",
-                        (36L),
+                        (36),
                         RTI_FALSE);
                     if (sample->id == NULL) {
                         return RTI_FALSE;
@@ -893,11 +893,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->objectiveId = DDS_String_alloc((36L));
+                sample->objectiveId = DDS_String_alloc((36));
                 RTICdrType_copyStringEx(
                     &sample->objectiveId,
                     "",
-                    (36L),
+                    (36),
                     RTI_FALSE);
                 if (sample->objectiveId == NULL) {
                     return RTI_FALSE;
@@ -907,7 +907,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->objectiveId,
                         "",
-                        (36L),
+                        (36),
                         RTI_FALSE);
                     if (sample->objectiveId == NULL) {
                         return RTI_FALSE;
@@ -919,6 +919,7 @@ namespace nec {
             allocParams)) {
                 return RTI_FALSE;
             }
+
             sample->targetRate = 0.0;
 
             return RTI_TRUE;
@@ -1011,12 +1012,12 @@ namespace nec {
 
                 if (!RTICdrType_copyStringEx (
                     &dst->id, src->id, 
-                    (36L) + 1, RTI_FALSE)){
+                    (36) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyStringEx (
                     &dst->objectiveId, src->objectiveId, 
-                    (36L) + 1, RTI_FALSE)){
+                    (36) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!DataTypes::Time_copy(
@@ -1070,7 +1071,7 @@ namespace nec {
         const char *RotateStateTYPENAME = "nec::process::RotateState";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode * RotateState_get_typecode(void)
+        DDS_TypeCode* RotateState_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -1380,9 +1381,9 @@ namespace nec {
             {
                 size_t candidateTypeSize = sizeof(RotateState);
 
-                if (candidateTypeSize > RTIXCdrLong_MAX) {
+                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                     RotateState_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrLong_MAX;
+                    RTIXCdrUnsignedLong_MAX;
                 } else {
                     RotateState_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -1461,11 +1462,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->id = DDS_String_alloc((36L));
+                sample->id = DDS_String_alloc((36));
                 RTICdrType_copyStringEx(
                     &sample->id,
                     "",
-                    (36L),
+                    (36),
                     RTI_FALSE);
                 if (sample->id == NULL) {
                     return RTI_FALSE;
@@ -1475,7 +1476,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->id,
                         "",
-                        (36L),
+                        (36),
                         RTI_FALSE);
                     if (sample->id == NULL) {
                         return RTI_FALSE;
@@ -1484,11 +1485,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->objectiveId = DDS_String_alloc((36L));
+                sample->objectiveId = DDS_String_alloc((36));
                 RTICdrType_copyStringEx(
                     &sample->objectiveId,
                     "",
-                    (36L),
+                    (36),
                     RTI_FALSE);
                 if (sample->objectiveId == NULL) {
                     return RTI_FALSE;
@@ -1498,7 +1499,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->objectiveId,
                         "",
-                        (36L),
+                        (36),
                         RTI_FALSE);
                     if (sample->objectiveId == NULL) {
                         return RTI_FALSE;
@@ -1511,6 +1512,7 @@ namespace nec {
                 return RTI_FALSE;
             }
             sample->status = DataTypes::Fault;
+
             sample->actualRate = 0.0;
 
             sample->minRate = 0.0;
@@ -1611,12 +1613,12 @@ namespace nec {
 
                 if (!RTICdrType_copyStringEx (
                     &dst->id, src->id, 
-                    (36L) + 1, RTI_FALSE)){
+                    (36) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyStringEx (
                     &dst->objectiveId, src->objectiveId, 
-                    (36L) + 1, RTI_FALSE)){
+                    (36) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!DataTypes::Time_copy(

@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from autodriller_configuration.idl 
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from autodriller_configuration.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -48,7 +47,7 @@ namespace nec {
         const char *HmiRequestTYPENAME = "nec::control::HmiRequest";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode * HmiRequest_get_typecode(void)
+        DDS_TypeCode* HmiRequest_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -536,9 +535,9 @@ namespace nec {
             {
                 size_t candidateTypeSize = sizeof(HmiRequest);
 
-                if (candidateTypeSize > RTIXCdrLong_MAX) {
+                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                     HmiRequest_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrLong_MAX;
+                    RTIXCdrUnsignedLong_MAX;
                 } else {
                     HmiRequest_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -617,11 +616,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->id = DDS_String_alloc((36L));
+                sample->id = DDS_String_alloc((36));
                 RTICdrType_copyStringEx(
                     &sample->id,
                     "",
-                    (36L),
+                    (36),
                     RTI_FALSE);
                 if (sample->id == NULL) {
                     return RTI_FALSE;
@@ -631,7 +630,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->id,
                         "",
-                        (36L),
+                        (36),
                         RTI_FALSE);
                     if (sample->id == NULL) {
                         return RTI_FALSE;
@@ -643,6 +642,7 @@ namespace nec {
             allocParams)) {
                 return RTI_FALSE;
             }
+
             sample->mode = 0;
 
             sample->modeController = 0.0;
@@ -752,7 +752,7 @@ namespace nec {
 
                 if (!RTICdrType_copyStringEx (
                     &dst->id, src->id, 
-                    (36L) + 1, RTI_FALSE)){
+                    (36) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!DataTypes::Time_copy(
@@ -850,7 +850,7 @@ namespace nec {
         const char *HmiStateTYPENAME = "nec::control::HmiState";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode * HmiState_get_typecode(void)
+        DDS_TypeCode* HmiState_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -3178,9 +3178,9 @@ namespace nec {
             {
                 size_t candidateTypeSize = sizeof(HmiState);
 
-                if (candidateTypeSize > RTIXCdrLong_MAX) {
+                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                     HmiState_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrLong_MAX;
+                    RTIXCdrUnsignedLong_MAX;
                 } else {
                     HmiState_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -3259,11 +3259,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->id = DDS_String_alloc((36L));
+                sample->id = DDS_String_alloc((36));
                 RTICdrType_copyStringEx(
                     &sample->id,
                     "",
-                    (36L),
+                    (36),
                     RTI_FALSE);
                 if (sample->id == NULL) {
                     return RTI_FALSE;
@@ -3273,7 +3273,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->id,
                         "",
-                        (36L),
+                        (36),
                         RTI_FALSE);
                     if (sample->id == NULL) {
                         return RTI_FALSE;
@@ -3285,6 +3285,7 @@ namespace nec {
             allocParams)) {
                 return RTI_FALSE;
             }
+
             sample->mode = 0;
 
             sample->modeController = 0;
@@ -3522,7 +3523,7 @@ namespace nec {
 
                 if (!RTICdrType_copyStringEx (
                     &dst->id, src->id, 
-                    (36L) + 1, RTI_FALSE)){
+                    (36) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!DataTypes::Time_copy(

@@ -2,11 +2,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from base_data_types.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from base_data_types.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #include <string.h>
@@ -121,6 +120,7 @@ namespace DataTypes {
         DataTypes::Uuid_finalize_w_params(sample,dealloc_params);
 
         delete  sample;
+        sample=NULL;
     }
 
     void 
@@ -129,6 +129,7 @@ namespace DataTypes {
         DataTypes::Uuid_finalize_ex(sample,deallocate_pointers);
 
         delete  sample;
+        sample=NULL;
     }
 
     void 
@@ -157,13 +158,13 @@ namespace DataTypes {
         RTICdrType_printIndent(indent_level);
 
         if (desc != NULL) {
-            RTILogParamString_printPlain("%s:\n", desc);
+            RTILog_debug("%s:\n", desc);
         } else {
-            RTILogParamString_printPlain("\n");
+            RTILog_debug("\n");
         }
 
         if (sample == NULL) {
-            RTILogParamString_printPlain("NULL\n");
+            RTILog_debug("NULL\n");
             return;
         }
 
@@ -331,6 +332,7 @@ namespace DataTypes {
         DataTypes::Time_finalize_w_params(sample,dealloc_params);
 
         delete  sample;
+        sample=NULL;
     }
 
     void 
@@ -339,6 +341,7 @@ namespace DataTypes {
         DataTypes::Time_finalize_ex(sample,deallocate_pointers);
 
         delete  sample;
+        sample=NULL;
     }
 
     void 
@@ -367,13 +370,13 @@ namespace DataTypes {
         RTICdrType_printIndent(indent_level);
 
         if (desc != NULL) {
-            RTILogParamString_printPlain("%s:\n", desc);
+            RTILog_debug("%s:\n", desc);
         } else {
-            RTILogParamString_printPlain("\n");
+            RTILog_debug("\n");
         }
 
         if (sample == NULL) {
-            RTILogParamString_printPlain("NULL\n");
+            RTILog_debug("NULL\n");
             return;
         }
 
@@ -416,7 +419,6 @@ namespace DataTypes {
         programProperty.resolveAlias = RTI_XCDR_TRUE;
         programProperty.inlineStruct = RTI_XCDR_TRUE;
         programProperty.optimizeEnum = RTI_XCDR_TRUE;
-        programProperty.unboundedSize = RTIXCdrLong_MAX;
 
         programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
             DDS_TypeCodeFactory_get_instance(),
@@ -553,7 +555,7 @@ namespace DataTypes {
         struct PRESTypePluginDefaultEndpointData epd;
         RTIBool result;
         struct PRESTypePluginDefaultParticipantData pd;
-        struct RTIXCdrTypePluginProgramContext defaultProgramContext =
+        struct RTIXCdrTypePluginProgramContext defaultProgramConext =
         RTIXCdrTypePluginProgramContext_INTIALIZER;
         struct PRESTypePlugin plugin;
 
@@ -562,7 +564,7 @@ namespace DataTypes {
         }
 
         RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-        epd.programContext = defaultProgramContext;
+        epd.programContext = defaultProgramConext;  
         epd._participantData = &pd;
         epd.typePlugin = &plugin;
         epd.programContext.endpointPluginData = &epd;
@@ -640,12 +642,12 @@ namespace DataTypes {
     {
         struct RTICdrStream stream;
         struct PRESTypePluginDefaultEndpointData epd;
-        struct RTIXCdrTypePluginProgramContext defaultProgramContext =
+        struct RTIXCdrTypePluginProgramContext defaultProgramConext =
         RTIXCdrTypePluginProgramContext_INTIALIZER;
         struct PRESTypePluginDefaultParticipantData pd;
         struct PRESTypePlugin plugin;
 
-        epd.programContext = defaultProgramContext;
+        epd.programContext = defaultProgramConext;  
         epd._participantData = &pd;
         epd.typePlugin = &plugin;
         epd.programContext.endpointPluginData = &epd;
@@ -846,7 +848,7 @@ namespace DataTypes {
         return size;
     }
 
-    struct RTIXCdrInterpreterPrograms * TimePlugin_get_programs(void)
+    struct RTIXCdrInterpreterPrograms *TimePlugin_get_programs()
     {
         return ::rti::xcdr::get_cdr_serialization_programs<
         Time, 
@@ -1005,12 +1007,12 @@ namespace DataTypes {
     {
         if (description != NULL) {
             RTICdrType_printIndent(indent_level);
-            RTILogParamString_printPlain("%s:\n", description);
+            RTILog_debug("%s:\n", description);
         }
 
         if (sample == NULL) {
             RTICdrType_printIndent(indent_level+1);
-            RTILogParamString_printPlain("NULL\n");
+            RTILog_debug("NULL\n");
             return;
         }
 
@@ -1057,12 +1059,12 @@ namespace DataTypes {
     {
         if (description != NULL) {
             RTICdrType_printIndent(indent_level);
-            RTILogParamString_printPlain("%s:\n", description);
+            RTILog_debug("%s:\n", description);
         }
 
         if (sample == NULL) {
             RTICdrType_printIndent(indent_level+1);
-            RTILogParamString_printPlain("NULL\n");
+            RTILog_debug("NULL\n");
             return;
         }
 
@@ -1109,12 +1111,12 @@ namespace DataTypes {
     {
         if (description != NULL) {
             RTICdrType_printIndent(indent_level);
-            RTILogParamString_printPlain("%s:\n", description);
+            RTILog_debug("%s:\n", description);
         }
 
         if (sample == NULL) {
             RTICdrType_printIndent(indent_level+1);
-            RTILogParamString_printPlain("NULL\n");
+            RTILog_debug("NULL\n");
             return;
         }
 
@@ -1161,12 +1163,12 @@ namespace DataTypes {
     {
         if (description != NULL) {
             RTICdrType_printIndent(indent_level);
-            RTILogParamString_printPlain("%s:\n", description);
+            RTILog_debug("%s:\n", description);
         }
 
         if (sample == NULL) {
             RTICdrType_printIndent(indent_level+1);
-            RTILogParamString_printPlain("NULL\n");
+            RTILog_debug("NULL\n");
             return;
         }
 
@@ -1213,12 +1215,12 @@ namespace DataTypes {
     {
         if (description != NULL) {
             RTICdrType_printIndent(indent_level);
-            RTILogParamString_printPlain("%s:\n", description);
+            RTILog_debug("%s:\n", description);
         }
 
         if (sample == NULL) {
             RTICdrType_printIndent(indent_level+1);
-            RTILogParamString_printPlain("NULL\n");
+            RTILog_debug("NULL\n");
             return;
         }
 

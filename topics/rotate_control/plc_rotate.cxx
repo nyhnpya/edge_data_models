@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from plc_rotate.idl 
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from plc_rotate.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -48,7 +47,7 @@ namespace plc {
         const char *PlcRotateRequestTYPENAME = "plc::process::PlcRotateRequest";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode * PlcRotateRequest_get_typecode(void)
+        DDS_TypeCode* PlcRotateRequest_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -174,9 +173,9 @@ namespace plc {
             {
                 size_t candidateTypeSize = sizeof(PlcRotateRequest);
 
-                if (candidateTypeSize > RTIXCdrLong_MAX) {
+                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                     PlcRotateRequest_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrLong_MAX;
+                    RTIXCdrUnsignedLong_MAX;
                 } else {
                     PlcRotateRequest_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -379,7 +378,7 @@ namespace plc {
         const char *PlcRotateStateTYPENAME = "plc::process::PlcRotateState";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode * PlcRotateState_get_typecode(void)
+        DDS_TypeCode* PlcRotateState_get_typecode()
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -621,9 +620,9 @@ namespace plc {
             {
                 size_t candidateTypeSize = sizeof(PlcRotateState);
 
-                if (candidateTypeSize > RTIXCdrLong_MAX) {
+                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
                     PlcRotateState_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrLong_MAX;
+                    RTIXCdrUnsignedLong_MAX;
                 } else {
                     PlcRotateState_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;

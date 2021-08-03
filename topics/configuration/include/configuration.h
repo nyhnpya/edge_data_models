@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from configuration.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from configuration.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef configuration_301633329_h
@@ -37,7 +36,7 @@ namespace Configuration {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode * config_type_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode* config_type_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *config_type_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *config_type_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *config_type_get_sample_seq_access_info(void);
@@ -103,7 +102,7 @@ namespace Configuration {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode * io_mode_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode* io_mode_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *io_mode_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *io_mode_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *io_mode_get_sample_seq_access_info(void);
@@ -178,7 +177,7 @@ namespace Configuration {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode * plant_type_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode* plant_type_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *plant_type_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *plant_type_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *plant_type_get_sample_seq_access_info(void);
@@ -263,7 +262,7 @@ namespace Configuration {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode * protocol_t_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode* protocol_t_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *protocol_t_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *protocol_t_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *protocol_t_get_sample_seq_access_info(void);
@@ -351,7 +350,7 @@ namespace Configuration {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode * interface_t_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode* interface_t_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *interface_t_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *interface_t_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *interface_t_get_sample_seq_access_info(void);
@@ -441,7 +440,7 @@ namespace Configuration {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode * tag_t_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode* tag_t_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *tag_t_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *tag_t_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *tag_t_get_sample_seq_access_info(void);
@@ -530,7 +529,7 @@ namespace Configuration {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode * config_data_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode* config_data_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *config_data_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *config_data_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *config_data_get_sample_seq_access_info(void);
@@ -578,7 +577,7 @@ namespace Configuration {
         const config_data* src);
 
     NDDSUSERDllExport
-    DDS_LongLong config_data_getDefaultDiscriminator(void);
+    DDS_LongLong config_data_getDefaultDiscriminator();
 
     #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
     /* If the code is building on Windows, stop exporting symbols.
@@ -619,7 +618,7 @@ namespace Configuration {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode * Item_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode* Item_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *Item_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *Item_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *Item_get_sample_seq_access_info(void);

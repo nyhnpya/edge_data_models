@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from plc_hoist.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from plc_hoist.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef plc_hoistPlugin_1752499246_h
@@ -133,6 +132,16 @@ namespace plc {
             const PlcHoistRequest *sample,
             DDS_DataRepresentationId_t representation);
 
+        NDDSUSERDllExport extern RTIBool 
+        PlcHoistRequestPlugin_deserialize(
+            PRESTypePluginEndpointData endpoint_data,
+            PlcHoistRequest **sample, 
+            RTIBool * drop_sample,
+            struct RTICdrStream *stream,
+            RTIBool deserialize_encapsulation,
+            RTIBool deserialize_sample, 
+            void *endpoint_plugin_qos);
+
         NDDSUSERDllExport extern RTIBool
         PlcHoistRequestPlugin_deserialize_from_cdr_buffer(
             PlcHoistRequest *sample,
@@ -184,7 +193,7 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms * PlcHoistRequestPlugin_get_programs(void);
+        struct RTIXCdrInterpreterPrograms *PlcHoistRequestPlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -295,6 +304,16 @@ namespace plc {
             const PlcHoistState *sample,
             DDS_DataRepresentationId_t representation);
 
+        NDDSUSERDllExport extern RTIBool 
+        PlcHoistStatePlugin_deserialize(
+            PRESTypePluginEndpointData endpoint_data,
+            PlcHoistState **sample, 
+            RTIBool * drop_sample,
+            struct RTICdrStream *stream,
+            RTIBool deserialize_encapsulation,
+            RTIBool deserialize_sample, 
+            void *endpoint_plugin_qos);
+
         NDDSUSERDllExport extern RTIBool
         PlcHoistStatePlugin_deserialize_from_cdr_buffer(
             PlcHoistState *sample,
@@ -346,7 +365,7 @@ namespace plc {
             void *endpoint_plugin_qos);
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms * PlcHoistStatePlugin_get_programs(void);
+        struct RTIXCdrInterpreterPrograms *PlcHoistStatePlugin_get_programs();
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*

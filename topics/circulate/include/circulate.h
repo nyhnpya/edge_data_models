@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from circulate.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from circulate.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef circulate_1746885981_h
@@ -61,7 +60,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode * CirculateRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* CirculateRequest_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *CirculateRequest_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *CirculateRequest_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *CirculateRequest_get_sample_seq_access_info(void);
@@ -148,7 +147,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode * CirculateObjective_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* CirculateObjective_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *CirculateObjective_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *CirculateObjective_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *CirculateObjective_get_sample_seq_access_info(void);
@@ -242,7 +241,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode * CirculateState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode* CirculateState_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *CirculateState_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *CirculateState_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *CirculateState_get_sample_seq_access_info(void);

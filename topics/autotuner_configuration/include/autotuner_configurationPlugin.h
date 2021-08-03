@@ -3,11 +3,10 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from autotuner_configuration.idl
-using RTI Code Generator (rtiddsgen) version 3.1.0.
-The rtiddsgen tool is part of the RTI Connext DDS distribution.
+This file was generated from autotuner_configuration.idl using "rtiddsgen".
+The rtiddsgen tool is part of the RTI Connext distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the Code Generator User's Manual.
+or consult the RTI Connext manual.
 */
 
 #ifndef autotuner_configurationPlugin_985792920_h
@@ -134,6 +133,16 @@ namespace Shell {
                 const ModelState *sample,
                 DDS_DataRepresentationId_t representation);
 
+            NDDSUSERDllExport extern RTIBool 
+            ModelStatePlugin_deserialize(
+                PRESTypePluginEndpointData endpoint_data,
+                ModelState **sample, 
+                RTIBool * drop_sample,
+                struct RTICdrStream *stream,
+                RTIBool deserialize_encapsulation,
+                RTIBool deserialize_sample, 
+                void *endpoint_plugin_qos);
+
             NDDSUSERDllExport extern RTIBool
             ModelStatePlugin_deserialize_from_cdr_buffer(
                 ModelState *sample,
@@ -185,7 +194,7 @@ namespace Shell {
                 void *endpoint_plugin_qos);
 
             NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms * ModelStatePlugin_get_programs(void);
+            struct RTIXCdrInterpreterPrograms *ModelStatePlugin_get_programs();
 
             /* Plugin Functions */
             NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -296,6 +305,16 @@ namespace Shell {
                 const DiffpTuningState *sample,
                 DDS_DataRepresentationId_t representation);
 
+            NDDSUSERDllExport extern RTIBool 
+            DiffpTuningStatePlugin_deserialize(
+                PRESTypePluginEndpointData endpoint_data,
+                DiffpTuningState **sample, 
+                RTIBool * drop_sample,
+                struct RTICdrStream *stream,
+                RTIBool deserialize_encapsulation,
+                RTIBool deserialize_sample, 
+                void *endpoint_plugin_qos);
+
             NDDSUSERDllExport extern RTIBool
             DiffpTuningStatePlugin_deserialize_from_cdr_buffer(
                 DiffpTuningState *sample,
@@ -347,7 +366,7 @@ namespace Shell {
                 void *endpoint_plugin_qos);
 
             NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms * DiffpTuningStatePlugin_get_programs(void);
+            struct RTIXCdrInterpreterPrograms *DiffpTuningStatePlugin_get_programs();
 
             /* Plugin Functions */
             NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -458,6 +477,16 @@ namespace Shell {
                 const WobTuningState *sample,
                 DDS_DataRepresentationId_t representation);
 
+            NDDSUSERDllExport extern RTIBool 
+            WobTuningStatePlugin_deserialize(
+                PRESTypePluginEndpointData endpoint_data,
+                WobTuningState **sample, 
+                RTIBool * drop_sample,
+                struct RTICdrStream *stream,
+                RTIBool deserialize_encapsulation,
+                RTIBool deserialize_sample, 
+                void *endpoint_plugin_qos);
+
             NDDSUSERDllExport extern RTIBool
             WobTuningStatePlugin_deserialize_from_cdr_buffer(
                 WobTuningState *sample,
@@ -509,7 +538,7 @@ namespace Shell {
                 void *endpoint_plugin_qos);
 
             NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms * WobTuningStatePlugin_get_programs(void);
+            struct RTIXCdrInterpreterPrograms *WobTuningStatePlugin_get_programs();
 
             /* Plugin Functions */
             NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -620,6 +649,16 @@ namespace Shell {
                 const TorqueTuningState *sample,
                 DDS_DataRepresentationId_t representation);
 
+            NDDSUSERDllExport extern RTIBool 
+            TorqueTuningStatePlugin_deserialize(
+                PRESTypePluginEndpointData endpoint_data,
+                TorqueTuningState **sample, 
+                RTIBool * drop_sample,
+                struct RTICdrStream *stream,
+                RTIBool deserialize_encapsulation,
+                RTIBool deserialize_sample, 
+                void *endpoint_plugin_qos);
+
             NDDSUSERDllExport extern RTIBool
             TorqueTuningStatePlugin_deserialize_from_cdr_buffer(
                 TorqueTuningState *sample,
@@ -671,7 +710,7 @@ namespace Shell {
                 void *endpoint_plugin_qos);
 
             NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms * TorqueTuningStatePlugin_get_programs(void);
+            struct RTIXCdrInterpreterPrograms *TorqueTuningStatePlugin_get_programs();
 
             /* Plugin Functions */
             NDDSUSERDllExport extern struct PRESTypePlugin*
