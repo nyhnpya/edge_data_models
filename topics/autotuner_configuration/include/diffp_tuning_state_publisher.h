@@ -37,34 +37,34 @@ class CDiffpTuningStatePublisher : public TPublisher< Shell::Hmi::AutoTunerConfi
         bool Initialize();
         bool PublishSample();
         
-        /// @param double diffPFilter
-        void SetDiffPFilter(const double diffPFilter);
-        /// @param double diffPD
-        void SetDiffPD(const double diffPD);
-        /// @param double diffPF
-        void SetDiffPF(const double diffPF);
-        /// @param double diffPEps
-        void SetDiffPEps(const double diffPEps);
-        /// @param bool diffPEpsManual
-        void SetDiffPEpsManual(const bool diffPEpsManual);
-        /// @param double diffPKcMin
-        void SetDiffPKcMin(const double diffPKcMin);
-        /// @param double diffPKcMax
-        void SetDiffPKcMax(const double diffPKcMax);
-        /// @param double diffPTiMin
-        void SetDiffPTiMin(const double diffPTiMin);
-        /// @param double diffPTiMax
-        void SetDiffPTiMax(const double diffPTiMax);
-        /// @param double diffPInitK
-        void SetDiffPInitK(const double diffPInitK);
-        /// @param double diffPInitTau
-        void SetDiffPInitTau(const double diffPInitTau);
-        /// @param double diffPInitPreFilter
-        void SetDiffPInitPreFilter(const double diffPInitPreFilter);
-        /// @param double diffPR1
-        void SetDiffPR1(const double diffPR1);
-        /// @param double diffPR2
-        void SetDiffPR2(const double diffPR2);
+        /// @param double filter
+        void SetFilter(const double filter);
+        /// @param double d
+        void SetD(const double d);
+        /// @param double f
+        void SetF(const double f);
+        /// @param double epsilon
+        void SetEpsilon(const double epsilon);
+        /// @param bool epsilonManual
+        void SetEpsilonManual(const bool epsilonManual);
+        /// @param double kcMin
+        void SetKcMin(const double kcMin);
+        /// @param double kcMax
+        void SetKcMax(const double kcMax);
+        /// @param double tiMin
+        void SetTiMin(const double tiMin);
+        /// @param double tiMax
+        void SetTiMax(const double tiMax);
+        /// @param double initK
+        void SetInitK(const double initK);
+        /// @param double initTau
+        void SetInitTau(const double initTau);
+        /// @param double initPreFilter
+        void SetInitPreFilter(const double initPreFilter);
+        /// @param double r1
+        void SetR1(const double r1);
+        /// @param double r2
+        void SetR2(const double r2);
 };
 
 #endif // __SHELL_HMI_AUTOTUNERCONFIGURATION_DIFFP_TUNING_STATE_PUBLISHER_H__

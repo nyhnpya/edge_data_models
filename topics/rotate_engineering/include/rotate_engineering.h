@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from rotate_engineering.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from rotate_engineering.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef rotate_engineering_182436140_h
@@ -38,7 +39,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* State_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * State_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *State_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *State_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *State_get_sample_seq_access_info(void);
@@ -105,7 +106,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* Mode_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * Mode_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *Mode_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *Mode_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *Mode_get_sample_seq_access_info(void);
@@ -194,7 +195,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* RotateEngineeringRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * RotateEngineeringRequest_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *RotateEngineeringRequest_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *RotateEngineeringRequest_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *RotateEngineeringRequest_get_sample_seq_access_info(void);
@@ -281,7 +282,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* RotateEngineeringObjective_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * RotateEngineeringObjective_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *RotateEngineeringObjective_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *RotateEngineeringObjective_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *RotateEngineeringObjective_get_sample_seq_access_info(void);
@@ -382,7 +383,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* RotateEngineeringState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * RotateEngineeringState_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *RotateEngineeringState_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *RotateEngineeringState_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *RotateEngineeringState_get_sample_seq_access_info(void);

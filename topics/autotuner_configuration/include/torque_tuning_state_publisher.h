@@ -37,34 +37,34 @@ class CTorqueTuningStatePublisher : public TPublisher< Shell::Hmi::AutoTunerConf
         bool Initialize();
         bool PublishSample();
         
-        /// @param double torqueFilter
-        void SetTorqueFilter(const double torqueFilter);
-        /// @param double torqueD
-        void SetTorqueD(const double torqueD);
-        /// @param double torqueF
-        void SetTorqueF(const double torqueF);
-        /// @param double torqueEps
-        void SetTorqueEps(const double torqueEps);
-        /// @param bool torqueEpsManual
-        void SetTorqueEpsManual(const bool torqueEpsManual);
-        /// @param double torqueKcMin
-        void SetTorqueKcMin(const double torqueKcMin);
-        /// @param double torqueKcMax
-        void SetTorqueKcMax(const double torqueKcMax);
-        /// @param double torqueTiMin
-        void SetTorqueTiMin(const double torqueTiMin);
-        /// @param double torqueTiMax
-        void SetTorqueTiMax(const double torqueTiMax);
-        /// @param double torqueInitK
-        void SetTorqueInitK(const double torqueInitK);
-        /// @param double torqueInitTau
-        void SetTorqueInitTau(const double torqueInitTau);
-        /// @param double torqueInitPreFilter
-        void SetTorqueInitPreFilter(const double torqueInitPreFilter);
-        /// @param double torqueR1
-        void SetTorqueR1(const double torqueR1);
-        /// @param double torqueR2
-        void SetTorqueR2(const double torqueR2);
+        /// @param double filter
+        void SetFilter(const double filter);
+        /// @param double d
+        void SetD(const double d);
+        /// @param double f
+        void SetF(const double f);
+        /// @param double epsilon
+        void SetEpsilon(const double epsilon);
+        /// @param bool epsilonManual
+        void SetEpsilonManual(const bool epsilonManual);
+        /// @param double kcMin
+        void SetKcMin(const double kcMin);
+        /// @param double kcMax
+        void SetKcMax(const double kcMax);
+        /// @param double tiMin
+        void SetTiMin(const double tiMin);
+        /// @param double tiMax
+        void SetTiMax(const double tiMax);
+        /// @param double initK
+        void SetInitK(const double initK);
+        /// @param double initTau
+        void SetInitTau(const double initTau);
+        /// @param double initPreFilter
+        void SetInitPreFilter(const double initPreFilter);
+        /// @param double r1
+        void SetR1(const double r1);
+        /// @param double r2
+        void SetR2(const double r2);
 };
 
 #endif // __SHELL_HMI_AUTOTUNERCONFIGURATION_TORQUE_TUNING_STATE_PUBLISHER_H__

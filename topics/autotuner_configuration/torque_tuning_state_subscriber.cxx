@@ -25,74 +25,74 @@ bool CTorqueTuningStateSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueFilter()
+double CTorqueTuningStateSubscriber::GetFilter()
 {
-    return m_data.torqueFilter;
+    return m_data.filter;
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueD()
+double CTorqueTuningStateSubscriber::GetD()
 {
-    return m_data.torqueD;
+    return m_data.d;
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueF()
+double CTorqueTuningStateSubscriber::GetF()
 {
-    return m_data.torqueF;
+    return m_data.f;
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueEps()
+double CTorqueTuningStateSubscriber::GetEpsilon()
 {
-    return m_data.torqueEps;
+    return m_data.epsilon;
 }
 
-bool CTorqueTuningStateSubscriber::GetTorqueEpsManual()
+bool CTorqueTuningStateSubscriber::GetEpsilonManual()
 {
-    return m_data.torqueEpsManual;
+    return m_data.epsilonManual;
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueKcMin()
+double CTorqueTuningStateSubscriber::GetKcMin()
 {
-    return m_data.torqueKcMin;
+    return m_data.kcMin;
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueKcMax()
+double CTorqueTuningStateSubscriber::GetKcMax()
 {
-    return m_data.torqueKcMax;
+    return m_data.kcMax;
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueTiMin()
+double CTorqueTuningStateSubscriber::GetTiMin()
 {
-    return m_data.torqueTiMin;
+    return m_data.tiMin;
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueTiMax()
+double CTorqueTuningStateSubscriber::GetTiMax()
 {
-    return m_data.torqueTiMax;
+    return m_data.tiMax;
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueInitK()
+double CTorqueTuningStateSubscriber::GetInitK()
 {
-    return m_data.torqueInitK;
+    return m_data.initK;
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueInitTau()
+double CTorqueTuningStateSubscriber::GetInitTau()
 {
-    return m_data.torqueInitTau;
+    return m_data.initTau;
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueInitPreFilter()
+double CTorqueTuningStateSubscriber::GetInitPreFilter()
 {
-    return m_data.torqueInitPreFilter;
+    return m_data.initPreFilter;
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueR1()
+double CTorqueTuningStateSubscriber::GetR1()
 {
-    return m_data.torqueR1;
+    return m_data.r1;
 }
 
-double CTorqueTuningStateSubscriber::GetTorqueR2()
+double CTorqueTuningStateSubscriber::GetR2()
 {
-    return m_data.torqueR2;
+    return m_data.r2;
 }
 
 

@@ -39,34 +39,34 @@ class CDiffpTuningStateSubscriber : public TSubscriber< Shell::Hmi::AutoTunerCon
         void OnDataDisposed(OnDataDisposedEvent event);
         void OnLivelinessChanged(OnLivelinessChangedEvent event);
         
-        /// @return double diffPFilter
-        double GetDiffPFilter();
-        /// @return double diffPD
-        double GetDiffPD();
-        /// @return double diffPF
-        double GetDiffPF();
-        /// @return double diffPEps
-        double GetDiffPEps();
-        /// @return bool diffPEpsManual
-        bool GetDiffPEpsManual();
-        /// @return double diffPKcMin
-        double GetDiffPKcMin();
-        /// @return double diffPKcMax
-        double GetDiffPKcMax();
-        /// @return double diffPTiMin
-        double GetDiffPTiMin();
-        /// @return double diffPTiMax
-        double GetDiffPTiMax();
-        /// @return double diffPInitK
-        double GetDiffPInitK();
-        /// @return double diffPInitTau
-        double GetDiffPInitTau();
-        /// @return double diffPInitPreFilter
-        double GetDiffPInitPreFilter();
-        /// @return double diffPR1
-        double GetDiffPR1();
-        /// @return double diffPR2
-        double GetDiffPR2();
+        /// @return double filter
+        double GetFilter();
+        /// @return double d
+        double GetD();
+        /// @return double f
+        double GetF();
+        /// @return double epsilon
+        double GetEpsilon();
+        /// @return bool epsilonManual
+        bool GetEpsilonManual();
+        /// @return double kcMin
+        double GetKcMin();
+        /// @return double kcMax
+        double GetKcMax();
+        /// @return double tiMin
+        double GetTiMin();
+        /// @return double tiMax
+        double GetTiMax();
+        /// @return double initK
+        double GetInitK();
+        /// @return double initTau
+        double GetInitTau();
+        /// @return double initPreFilter
+        double GetInitPreFilter();
+        /// @return double r1
+        double GetR1();
+        /// @return double r2
+        double GetR2();
 
     protected:
         void DataAvailable(const Shell::Hmi::AutoTunerConfiguration::DiffpTuningState &data,

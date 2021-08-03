@@ -29,103 +29,61 @@ module Shell
                 boolean tunerEnabled;
             };
 
-            //@copy-c-declaration static const char DIFFP_TUNING_REQUEST[] = "DiffpTuningRequest";
-            struct DiffpTuningRequest
-            {
-                double  diffPFilter;
-                double  diffPD;
-                double  diffPF;
-                double  diffPEps;
-                boolean diffPEpsManual;
-                double  diffPKcMin;
-                double  diffPKcMax;
-                double  diffPTiMin;
-                double  diffPTiMax;
-            };
-
             //@copy-c-declaration static const char DIFFP_TUNING_STATE[] = "DiffpTuningState";
             struct DiffpTuningState
             {
-                double  diffPFilter;
-                double  diffPD;
-                double  diffPF;
-                double  diffPEps;
-                boolean diffPEpsManual;
-                double  diffPKcMin;
-                double  diffPKcMax;
-                double  diffPTiMin;
-                double  diffPTiMax;
-                double  diffPInitK;
-                double  diffPInitTau;
-                double  diffPInitPreFilter;
-                double  diffPR1;
-                double  diffPR2;
+                double  filter;
+                double  d;
+                double  f;
+                double  epsilon;
+                boolean epsilonManual;
+                double  kcMin;
+                double  kcMax;
+                double  tiMin;
+                double  tiMax;
+                double  initK;
+                double  initTau;
+                double  initPreFilter;
+                double  r1;
+                double  r2;
             };
     
-            //@copy-c-declaration static const char WOB_TUNING_REQUEST[] = "WobTuningRequest";
-            struct WobTuningRequest
-            {
-                double  wobFilter;
-                double  wobD;
-                double  wobF;
-                double  wobEps;
-                boolean wobEpsManual;
-                double  wobKcMin;
-                double  wobKcMax;
-                double  wobTiMin;
-                double  wobTiMax;
-            };
-
             //@copy-c-declaration static const char WOB_TUNING_STATE[] = "WobTuningState";
             struct WobTuningState
             {
-                double  wobFilter;
-                double  wobD;
-                double  wobF;
-                double  wobEps;
-                boolean wobEpsManual;
-                double  wobKcMin;
-                double  wobKcMax;
-                double  wobTiMin;
-                double  wobTiMax;
-                double  wobInitK;
-                double  wobInitTau;
-                double  wobInitPreFilter;
-                double  wobR1;
-                double  wobR2;
+                double  filter;
+                double  d;
+                double  f;
+                double  epsilon;
+                boolean epsilonManual;
+                double  kcMin;
+                double  kcMax;
+                double  tiMin;
+                double  tiMax;
+                double  initK;
+                double  initTau;
+                double  initPreFilter;
+                double  r1;
+                double  r2;
             };
     
-            //@copy-c-declaration static const char TORQUE_TUNING_REQUEST[] = "TorqueTuningRequest";
-            struct TorqueTuningRequest
-            {
-                double  torqueFilter;
-                double  torqueD;
-                double  torqueF;
-                double  torqueEps;
-                boolean torqueEpsManual;
-                double  torqueKcMin;
-                double  torqueKcMax;
-                double  torqueTiMin;
-                double  torqueTiMax;
-            };
-
             //@copy-c-declaration static const char TORQUE_TUNING_STATE[] = "TorqueTuningState";
             struct TorqueTuningState
             {
-                double  torqueFilter;
-                double  torqueD;
-                double  torqueF;
-                double  torqueEps;
-                boolean torqueEpsManual;
-                double  torqueKcMin;
-                double  torqueKcMax;
-                double  torqueTiMin;
-                double  torqueTiMax;
-                double  torqueInitK;
-                double  torqueInitTau;
-                double  torqueInitPreFilter;
-                double  torqueR1;
-                double  torqueR2;
+                double  filter;
+                double  d;
+                double  f;
+                double  epsilon;
+                boolean epsilonManual;
+                double  kcMin;
+                double  kcMax;
+                double  tiMin;
+                double  tiMax;
+                double  initK;
+                double  initTau;
+                double  initPreFilter;
+                double  r1;
+                double  r2;
             };
         };
     };

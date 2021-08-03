@@ -215,8 +215,8 @@ autotuner_configuration.cpy:
 	@echo "Copying generated files..."
 	mkdir -p $(TOPIC_HOME)/autotuner_configuration
 	mkdir -p $(TOPIC_HOME)/autotuner_configuration/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/autotuner_configuration
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/autotuner_configuration/include
+	cp $(TMPOUTDIR)/*.cxx $(TOPIC_HOME)/autotuner_configuration
+	cp $(TMPOUTDIR)/*.h $(TOPIC_HOME)/autotuner_configuration/include
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/autotuner_configuration
 	-@rm -rf $(TMPOUTDIR)
 

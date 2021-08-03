@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from auto_ream.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from auto_ream.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef auto_reamPlugin_426528474_h
@@ -167,16 +168,6 @@ namespace nec {
             const AutoReamRequest *sample,
             DDS_DataRepresentationId_t representation);
 
-        NDDSUSERDllExport extern RTIBool 
-        AutoReamRequestPlugin_deserialize(
-            PRESTypePluginEndpointData endpoint_data,
-            AutoReamRequest **sample, 
-            RTIBool * drop_sample,
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_sample, 
-            void *endpoint_plugin_qos);
-
         NDDSUSERDllExport extern RTIBool
         AutoReamRequestPlugin_deserialize_from_cdr_buffer(
             AutoReamRequest *sample,
@@ -240,13 +231,6 @@ namespace nec {
             const AutoReamRequestKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
-        AutoReamRequestPlugin_instance_to_keyhash(
-            PRESTypePluginEndpointData endpoint_data,
-            DDS_KeyHash_t *keyhash,
-            const AutoReamRequest *instance,
-            RTIEncapsulationId encapsulationId);
-
-        NDDSUSERDllExport extern RTIBool 
         AutoReamRequestPlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
@@ -255,7 +239,7 @@ namespace nec {
             void *endpoint_plugin_qos); 
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms *AutoReamRequestPlugin_get_programs();
+        struct RTIXCdrInterpreterPrograms * AutoReamRequestPlugin_get_programs(void);
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -399,16 +383,6 @@ namespace nec {
             const AutoReamObjective *sample,
             DDS_DataRepresentationId_t representation);
 
-        NDDSUSERDllExport extern RTIBool 
-        AutoReamObjectivePlugin_deserialize(
-            PRESTypePluginEndpointData endpoint_data,
-            AutoReamObjective **sample, 
-            RTIBool * drop_sample,
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_sample, 
-            void *endpoint_plugin_qos);
-
         NDDSUSERDllExport extern RTIBool
         AutoReamObjectivePlugin_deserialize_from_cdr_buffer(
             AutoReamObjective *sample,
@@ -472,13 +446,6 @@ namespace nec {
             const AutoReamObjectiveKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
-        AutoReamObjectivePlugin_instance_to_keyhash(
-            PRESTypePluginEndpointData endpoint_data,
-            DDS_KeyHash_t *keyhash,
-            const AutoReamObjective *instance,
-            RTIEncapsulationId encapsulationId);
-
-        NDDSUSERDllExport extern RTIBool 
         AutoReamObjectivePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
@@ -487,7 +454,7 @@ namespace nec {
             void *endpoint_plugin_qos); 
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms *AutoReamObjectivePlugin_get_programs();
+        struct RTIXCdrInterpreterPrograms * AutoReamObjectivePlugin_get_programs(void);
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -631,16 +598,6 @@ namespace nec {
             const AutoReamState *sample,
             DDS_DataRepresentationId_t representation);
 
-        NDDSUSERDllExport extern RTIBool 
-        AutoReamStatePlugin_deserialize(
-            PRESTypePluginEndpointData endpoint_data,
-            AutoReamState **sample, 
-            RTIBool * drop_sample,
-            struct RTICdrStream *stream,
-            RTIBool deserialize_encapsulation,
-            RTIBool deserialize_sample, 
-            void *endpoint_plugin_qos);
-
         NDDSUSERDllExport extern RTIBool
         AutoReamStatePlugin_deserialize_from_cdr_buffer(
             AutoReamState *sample,
@@ -704,13 +661,6 @@ namespace nec {
             const AutoReamStateKeyHolder *key);
 
         NDDSUSERDllExport extern RTIBool 
-        AutoReamStatePlugin_instance_to_keyhash(
-            PRESTypePluginEndpointData endpoint_data,
-            DDS_KeyHash_t *keyhash,
-            const AutoReamState *instance,
-            RTIEncapsulationId encapsulationId);
-
-        NDDSUSERDllExport extern RTIBool 
         AutoReamStatePlugin_serialized_sample_to_keyhash(
             PRESTypePluginEndpointData endpoint_data,
             struct RTICdrStream *stream, 
@@ -719,7 +669,7 @@ namespace nec {
             void *endpoint_plugin_qos); 
 
         NDDSUSERDllExport extern
-        struct RTIXCdrInterpreterPrograms *AutoReamStatePlugin_get_programs();
+        struct RTIXCdrInterpreterPrograms * AutoReamStatePlugin_get_programs(void);
 
         /* Plugin Functions */
         NDDSUSERDllExport extern struct PRESTypePlugin*

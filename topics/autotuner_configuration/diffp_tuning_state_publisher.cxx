@@ -41,115 +41,115 @@ bool CDiffpTuningStatePublisher::PublishSample()
     return Publish();
 }
 
-void CDiffpTuningStatePublisher::SetDiffPFilter(double diffPFilter)
+void CDiffpTuningStatePublisher::SetFilter(double filter)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPFilter = diffPFilter;
+        m_pDataInstance->filter = filter;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPD(double diffPD)
+void CDiffpTuningStatePublisher::SetD(double d)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPD = diffPD;
+        m_pDataInstance->d = d;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPF(double diffPF)
+void CDiffpTuningStatePublisher::SetF(double f)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPF = diffPF;
+        m_pDataInstance->f = f;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPEps(double diffPEps)
+void CDiffpTuningStatePublisher::SetEpsilon(double epsilon)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPEps = diffPEps;
+        m_pDataInstance->epsilon = epsilon;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPEpsManual(bool diffPEpsManual)
+void CDiffpTuningStatePublisher::SetEpsilonManual(bool epsilonManual)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPEpsManual = diffPEpsManual;
+        m_pDataInstance->epsilonManual = epsilonManual;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPKcMin(double diffPKcMin)
+void CDiffpTuningStatePublisher::SetKcMin(double kcMin)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPKcMin = diffPKcMin;
+        m_pDataInstance->kcMin = kcMin;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPKcMax(double diffPKcMax)
+void CDiffpTuningStatePublisher::SetKcMax(double kcMax)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPKcMax = diffPKcMax;
+        m_pDataInstance->kcMax = kcMax;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPTiMin(double diffPTiMin)
+void CDiffpTuningStatePublisher::SetTiMin(double tiMin)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPTiMin = diffPTiMin;
+        m_pDataInstance->tiMin = tiMin;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPTiMax(double diffPTiMax)
+void CDiffpTuningStatePublisher::SetTiMax(double tiMax)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPTiMax = diffPTiMax;
+        m_pDataInstance->tiMax = tiMax;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPInitK(double diffPInitK)
+void CDiffpTuningStatePublisher::SetInitK(double initK)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPInitK = diffPInitK;
+        m_pDataInstance->initK = initK;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPInitTau(double diffPInitTau)
+void CDiffpTuningStatePublisher::SetInitTau(double initTau)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPInitTau = diffPInitTau;
+        m_pDataInstance->initTau = initTau;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPInitPreFilter(double diffPInitPreFilter)
+void CDiffpTuningStatePublisher::SetInitPreFilter(double initPreFilter)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPInitPreFilter = diffPInitPreFilter;
+        m_pDataInstance->initPreFilter = initPreFilter;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPR1(double diffPR1)
+void CDiffpTuningStatePublisher::SetR1(double r1)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPR1 = diffPR1;
+        m_pDataInstance->r1 = r1;
     }
 }
 
-void CDiffpTuningStatePublisher::SetDiffPR2(double diffPR2)
+void CDiffpTuningStatePublisher::SetR2(double r2)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->diffPR2 = diffPR2;
+        m_pDataInstance->r2 = r2;
     }
 }
 

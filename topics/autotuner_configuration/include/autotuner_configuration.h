@@ -3,14 +3,15 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from autotuner_configuration.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from autotuner_configuration.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
-#ifndef autotuner_configuration_985794538_h
-#define autotuner_configuration_985794538_h
+#ifndef autotuner_configuration_985792920_h
+#define autotuner_configuration_985792920_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -63,7 +64,7 @@ namespace Shell {
             #endif
 
             #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* ModelState_get_typecode(void); /* Type code */
+            NDDSUSERDllExport DDS_TypeCode * ModelState_get_typecode(void); /* Type code */
             NDDSUSERDllExport RTIXCdrTypePlugin *ModelState_get_type_plugin_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *ModelState_get_sample_access_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *ModelState_get_sample_seq_access_info(void);
@@ -116,98 +117,6 @@ namespace Shell {
             #undef NDDSUSERDllExport
             #define NDDSUSERDllExport
             #endif
-            static const char DIFFP_TUNING_REQUEST[] = "DiffpTuningRequest"; 
-
-            extern const char *DiffpTuningRequestTYPENAME;
-
-            struct DiffpTuningRequestSeq;
-            #ifndef NDDS_STANDALONE_TYPE
-            class DiffpTuningRequestTypeSupport;
-            class DiffpTuningRequestDataWriter;
-            class DiffpTuningRequestDataReader;
-            #endif
-            class DiffpTuningRequest 
-            {
-              public:
-                typedef struct DiffpTuningRequestSeq Seq;
-                #ifndef NDDS_STANDALONE_TYPE
-                typedef DiffpTuningRequestTypeSupport TypeSupport;
-                typedef DiffpTuningRequestDataWriter DataWriter;
-                typedef DiffpTuningRequestDataReader DataReader;
-                #endif
-
-                DDS_Double   diffPFilter ;
-                DDS_Double   diffPD ;
-                DDS_Double   diffPF ;
-                DDS_Double   diffPEps ;
-                DDS_Boolean   diffPEpsManual ;
-                DDS_Double   diffPKcMin ;
-                DDS_Double   diffPKcMax ;
-                DDS_Double   diffPTiMin ;
-                DDS_Double   diffPTiMax ;
-
-            };
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, start exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport __declspec(dllexport)
-            #endif
-
-            #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* DiffpTuningRequest_get_typecode(void); /* Type code */
-            NDDSUSERDllExport RTIXCdrTypePlugin *DiffpTuningRequest_get_type_plugin_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *DiffpTuningRequest_get_sample_access_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *DiffpTuningRequest_get_sample_seq_access_info(void);
-            #endif
-
-            DDS_SEQUENCE(DiffpTuningRequestSeq, DiffpTuningRequest);
-
-            NDDSUSERDllExport
-            RTIBool DiffpTuningRequest_initialize(
-                DiffpTuningRequest* self);
-
-            NDDSUSERDllExport
-            RTIBool DiffpTuningRequest_initialize_ex(
-                DiffpTuningRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
-
-            NDDSUSERDllExport
-            RTIBool DiffpTuningRequest_initialize_w_params(
-                DiffpTuningRequest* self,
-                const struct DDS_TypeAllocationParams_t * allocParams);  
-
-            NDDSUSERDllExport
-            RTIBool DiffpTuningRequest_finalize_w_return(
-                DiffpTuningRequest* self);
-
-            NDDSUSERDllExport
-            void DiffpTuningRequest_finalize(
-                DiffpTuningRequest* self);
-
-            NDDSUSERDllExport
-            void DiffpTuningRequest_finalize_ex(
-                DiffpTuningRequest* self,RTIBool deletePointers);
-
-            NDDSUSERDllExport
-            void DiffpTuningRequest_finalize_w_params(
-                DiffpTuningRequest* self,
-                const struct DDS_TypeDeallocationParams_t * deallocParams);
-
-            NDDSUSERDllExport
-            void DiffpTuningRequest_finalize_optional_members(
-                DiffpTuningRequest* self, RTIBool deletePointers);  
-
-            NDDSUSERDllExport
-            RTIBool DiffpTuningRequest_copy(
-                DiffpTuningRequest* dst,
-                const DiffpTuningRequest* src);
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, stop exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport
-            #endif
             static const char DIFFP_TUNING_STATE[] = "DiffpTuningState"; 
 
             extern const char *DiffpTuningStateTYPENAME;
@@ -228,20 +137,20 @@ namespace Shell {
                 typedef DiffpTuningStateDataReader DataReader;
                 #endif
 
-                DDS_Double   diffPFilter ;
-                DDS_Double   diffPD ;
-                DDS_Double   diffPF ;
-                DDS_Double   diffPEps ;
-                DDS_Boolean   diffPEpsManual ;
-                DDS_Double   diffPKcMin ;
-                DDS_Double   diffPKcMax ;
-                DDS_Double   diffPTiMin ;
-                DDS_Double   diffPTiMax ;
-                DDS_Double   diffPInitK ;
-                DDS_Double   diffPInitTau ;
-                DDS_Double   diffPInitPreFilter ;
-                DDS_Double   diffPR1 ;
-                DDS_Double   diffPR2 ;
+                DDS_Double   filter ;
+                DDS_Double   d ;
+                DDS_Double   f ;
+                DDS_Double   epsilon ;
+                DDS_Boolean   epsilonManual ;
+                DDS_Double   kcMin ;
+                DDS_Double   kcMax ;
+                DDS_Double   tiMin ;
+                DDS_Double   tiMax ;
+                DDS_Double   initK ;
+                DDS_Double   initTau ;
+                DDS_Double   initPreFilter ;
+                DDS_Double   r1 ;
+                DDS_Double   r2 ;
 
             };
             #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -252,7 +161,7 @@ namespace Shell {
             #endif
 
             #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* DiffpTuningState_get_typecode(void); /* Type code */
+            NDDSUSERDllExport DDS_TypeCode * DiffpTuningState_get_typecode(void); /* Type code */
             NDDSUSERDllExport RTIXCdrTypePlugin *DiffpTuningState_get_type_plugin_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *DiffpTuningState_get_sample_access_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *DiffpTuningState_get_sample_seq_access_info(void);
@@ -305,98 +214,6 @@ namespace Shell {
             #undef NDDSUSERDllExport
             #define NDDSUSERDllExport
             #endif
-            static const char WOB_TUNING_REQUEST[] = "WobTuningRequest"; 
-
-            extern const char *WobTuningRequestTYPENAME;
-
-            struct WobTuningRequestSeq;
-            #ifndef NDDS_STANDALONE_TYPE
-            class WobTuningRequestTypeSupport;
-            class WobTuningRequestDataWriter;
-            class WobTuningRequestDataReader;
-            #endif
-            class WobTuningRequest 
-            {
-              public:
-                typedef struct WobTuningRequestSeq Seq;
-                #ifndef NDDS_STANDALONE_TYPE
-                typedef WobTuningRequestTypeSupport TypeSupport;
-                typedef WobTuningRequestDataWriter DataWriter;
-                typedef WobTuningRequestDataReader DataReader;
-                #endif
-
-                DDS_Double   wobFilter ;
-                DDS_Double   wobD ;
-                DDS_Double   wobF ;
-                DDS_Double   wobEps ;
-                DDS_Boolean   wobEpsManual ;
-                DDS_Double   wobKcMin ;
-                DDS_Double   wobKcMax ;
-                DDS_Double   wobTiMin ;
-                DDS_Double   wobTiMax ;
-
-            };
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, start exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport __declspec(dllexport)
-            #endif
-
-            #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* WobTuningRequest_get_typecode(void); /* Type code */
-            NDDSUSERDllExport RTIXCdrTypePlugin *WobTuningRequest_get_type_plugin_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *WobTuningRequest_get_sample_access_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *WobTuningRequest_get_sample_seq_access_info(void);
-            #endif
-
-            DDS_SEQUENCE(WobTuningRequestSeq, WobTuningRequest);
-
-            NDDSUSERDllExport
-            RTIBool WobTuningRequest_initialize(
-                WobTuningRequest* self);
-
-            NDDSUSERDllExport
-            RTIBool WobTuningRequest_initialize_ex(
-                WobTuningRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
-
-            NDDSUSERDllExport
-            RTIBool WobTuningRequest_initialize_w_params(
-                WobTuningRequest* self,
-                const struct DDS_TypeAllocationParams_t * allocParams);  
-
-            NDDSUSERDllExport
-            RTIBool WobTuningRequest_finalize_w_return(
-                WobTuningRequest* self);
-
-            NDDSUSERDllExport
-            void WobTuningRequest_finalize(
-                WobTuningRequest* self);
-
-            NDDSUSERDllExport
-            void WobTuningRequest_finalize_ex(
-                WobTuningRequest* self,RTIBool deletePointers);
-
-            NDDSUSERDllExport
-            void WobTuningRequest_finalize_w_params(
-                WobTuningRequest* self,
-                const struct DDS_TypeDeallocationParams_t * deallocParams);
-
-            NDDSUSERDllExport
-            void WobTuningRequest_finalize_optional_members(
-                WobTuningRequest* self, RTIBool deletePointers);  
-
-            NDDSUSERDllExport
-            RTIBool WobTuningRequest_copy(
-                WobTuningRequest* dst,
-                const WobTuningRequest* src);
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, stop exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport
-            #endif
             static const char WOB_TUNING_STATE[] = "WobTuningState"; 
 
             extern const char *WobTuningStateTYPENAME;
@@ -417,20 +234,20 @@ namespace Shell {
                 typedef WobTuningStateDataReader DataReader;
                 #endif
 
-                DDS_Double   wobFilter ;
-                DDS_Double   wobD ;
-                DDS_Double   wobF ;
-                DDS_Double   wobEps ;
-                DDS_Boolean   wobEpsManual ;
-                DDS_Double   wobKcMin ;
-                DDS_Double   wobKcMax ;
-                DDS_Double   wobTiMin ;
-                DDS_Double   wobTiMax ;
-                DDS_Double   wobInitK ;
-                DDS_Double   wobInitTau ;
-                DDS_Double   wobInitPreFilter ;
-                DDS_Double   wobR1 ;
-                DDS_Double   wobR2 ;
+                DDS_Double   filter ;
+                DDS_Double   d ;
+                DDS_Double   f ;
+                DDS_Double   epsilon ;
+                DDS_Boolean   epsilonManual ;
+                DDS_Double   kcMin ;
+                DDS_Double   kcMax ;
+                DDS_Double   tiMin ;
+                DDS_Double   tiMax ;
+                DDS_Double   initK ;
+                DDS_Double   initTau ;
+                DDS_Double   initPreFilter ;
+                DDS_Double   r1 ;
+                DDS_Double   r2 ;
 
             };
             #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -441,7 +258,7 @@ namespace Shell {
             #endif
 
             #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* WobTuningState_get_typecode(void); /* Type code */
+            NDDSUSERDllExport DDS_TypeCode * WobTuningState_get_typecode(void); /* Type code */
             NDDSUSERDllExport RTIXCdrTypePlugin *WobTuningState_get_type_plugin_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *WobTuningState_get_sample_access_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *WobTuningState_get_sample_seq_access_info(void);
@@ -494,98 +311,6 @@ namespace Shell {
             #undef NDDSUSERDllExport
             #define NDDSUSERDllExport
             #endif
-            static const char TORQUE_TUNING_REQUEST[] = "TorqueTuningRequest"; 
-
-            extern const char *TorqueTuningRequestTYPENAME;
-
-            struct TorqueTuningRequestSeq;
-            #ifndef NDDS_STANDALONE_TYPE
-            class TorqueTuningRequestTypeSupport;
-            class TorqueTuningRequestDataWriter;
-            class TorqueTuningRequestDataReader;
-            #endif
-            class TorqueTuningRequest 
-            {
-              public:
-                typedef struct TorqueTuningRequestSeq Seq;
-                #ifndef NDDS_STANDALONE_TYPE
-                typedef TorqueTuningRequestTypeSupport TypeSupport;
-                typedef TorqueTuningRequestDataWriter DataWriter;
-                typedef TorqueTuningRequestDataReader DataReader;
-                #endif
-
-                DDS_Double   torqueFilter ;
-                DDS_Double   torqueD ;
-                DDS_Double   torqueF ;
-                DDS_Double   torqueEps ;
-                DDS_Boolean   torqueEpsManual ;
-                DDS_Double   torqueKcMin ;
-                DDS_Double   torqueKcMax ;
-                DDS_Double   torqueTiMin ;
-                DDS_Double   torqueTiMax ;
-
-            };
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, start exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport __declspec(dllexport)
-            #endif
-
-            #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* TorqueTuningRequest_get_typecode(void); /* Type code */
-            NDDSUSERDllExport RTIXCdrTypePlugin *TorqueTuningRequest_get_type_plugin_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *TorqueTuningRequest_get_sample_access_info(void);
-            NDDSUSERDllExport RTIXCdrSampleAccessInfo *TorqueTuningRequest_get_sample_seq_access_info(void);
-            #endif
-
-            DDS_SEQUENCE(TorqueTuningRequestSeq, TorqueTuningRequest);
-
-            NDDSUSERDllExport
-            RTIBool TorqueTuningRequest_initialize(
-                TorqueTuningRequest* self);
-
-            NDDSUSERDllExport
-            RTIBool TorqueTuningRequest_initialize_ex(
-                TorqueTuningRequest* self,RTIBool allocatePointers,RTIBool allocateMemory);
-
-            NDDSUSERDllExport
-            RTIBool TorqueTuningRequest_initialize_w_params(
-                TorqueTuningRequest* self,
-                const struct DDS_TypeAllocationParams_t * allocParams);  
-
-            NDDSUSERDllExport
-            RTIBool TorqueTuningRequest_finalize_w_return(
-                TorqueTuningRequest* self);
-
-            NDDSUSERDllExport
-            void TorqueTuningRequest_finalize(
-                TorqueTuningRequest* self);
-
-            NDDSUSERDllExport
-            void TorqueTuningRequest_finalize_ex(
-                TorqueTuningRequest* self,RTIBool deletePointers);
-
-            NDDSUSERDllExport
-            void TorqueTuningRequest_finalize_w_params(
-                TorqueTuningRequest* self,
-                const struct DDS_TypeDeallocationParams_t * deallocParams);
-
-            NDDSUSERDllExport
-            void TorqueTuningRequest_finalize_optional_members(
-                TorqueTuningRequest* self, RTIBool deletePointers);  
-
-            NDDSUSERDllExport
-            RTIBool TorqueTuningRequest_copy(
-                TorqueTuningRequest* dst,
-                const TorqueTuningRequest* src);
-
-            #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
-            /* If the code is building on Windows, stop exporting symbols.
-            */
-            #undef NDDSUSERDllExport
-            #define NDDSUSERDllExport
-            #endif
             static const char TORQUE_TUNING_STATE[] = "TorqueTuningState"; 
 
             extern const char *TorqueTuningStateTYPENAME;
@@ -606,20 +331,20 @@ namespace Shell {
                 typedef TorqueTuningStateDataReader DataReader;
                 #endif
 
-                DDS_Double   torqueFilter ;
-                DDS_Double   torqueD ;
-                DDS_Double   torqueF ;
-                DDS_Double   torqueEps ;
-                DDS_Boolean   torqueEpsManual ;
-                DDS_Double   torqueKcMin ;
-                DDS_Double   torqueKcMax ;
-                DDS_Double   torqueTiMin ;
-                DDS_Double   torqueTiMax ;
-                DDS_Double   torqueInitK ;
-                DDS_Double   torqueInitTau ;
-                DDS_Double   torqueInitPreFilter ;
-                DDS_Double   torqueR1 ;
-                DDS_Double   torqueR2 ;
+                DDS_Double   filter ;
+                DDS_Double   d ;
+                DDS_Double   f ;
+                DDS_Double   epsilon ;
+                DDS_Boolean   epsilonManual ;
+                DDS_Double   kcMin ;
+                DDS_Double   kcMax ;
+                DDS_Double   tiMin ;
+                DDS_Double   tiMax ;
+                DDS_Double   initK ;
+                DDS_Double   initTau ;
+                DDS_Double   initPreFilter ;
+                DDS_Double   r1 ;
+                DDS_Double   r2 ;
 
             };
             #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -630,7 +355,7 @@ namespace Shell {
             #endif
 
             #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* TorqueTuningState_get_typecode(void); /* Type code */
+            NDDSUSERDllExport DDS_TypeCode * TorqueTuningState_get_typecode(void); /* Type code */
             NDDSUSERDllExport RTIXCdrTypePlugin *TorqueTuningState_get_type_plugin_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *TorqueTuningState_get_sample_access_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *TorqueTuningState_get_sample_seq_access_info(void);
@@ -696,27 +421,12 @@ namespace rti {
         };
 
         template <>
-        struct type_code<Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequest> {
-            static const RTIXCdrTypeCode * get();
-        };
-
-        template <>
         struct type_code<Shell::Hmi::AutoTunerConfiguration::DiffpTuningState> {
             static const RTIXCdrTypeCode * get();
         };
 
         template <>
-        struct type_code<Shell::Hmi::AutoTunerConfiguration::WobTuningRequest> {
-            static const RTIXCdrTypeCode * get();
-        };
-
-        template <>
         struct type_code<Shell::Hmi::AutoTunerConfiguration::WobTuningState> {
-            static const RTIXCdrTypeCode * get();
-        };
-
-        template <>
-        struct type_code<Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequest> {
             static const RTIXCdrTypeCode * get();
         };
 

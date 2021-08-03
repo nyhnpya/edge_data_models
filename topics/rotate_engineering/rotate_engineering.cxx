@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from rotate_engineering.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from rotate_engineering.idl 
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -47,7 +48,7 @@ namespace nec {
         const char *StateTYPENAME = "nec::engineering::State";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* State_get_typecode()
+        DDS_TypeCode * State_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -196,9 +197,9 @@ namespace nec {
             {
                 size_t candidateTypeSize = sizeof(State);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     State_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     State_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -396,7 +397,7 @@ namespace nec {
         const char *ModeTYPENAME = "nec::engineering::Mode";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* Mode_get_typecode()
+        DDS_TypeCode * Mode_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -545,9 +546,9 @@ namespace nec {
             {
                 size_t candidateTypeSize = sizeof(Mode);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     Mode_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     Mode_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -745,7 +746,7 @@ namespace nec {
         const char *RotateEngineeringRequestTYPENAME = "nec::engineering::RotateEngineeringRequest";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* RotateEngineeringRequest_get_typecode()
+        DDS_TypeCode * RotateEngineeringRequest_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -994,9 +995,9 @@ namespace nec {
             {
                 size_t candidateTypeSize = sizeof(RotateEngineeringRequest);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     RotateEngineeringRequest_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     RotateEngineeringRequest_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -1075,11 +1076,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->id = DDS_String_alloc((36));
+                sample->id = DDS_String_alloc((36L));
                 RTICdrType_copyStringEx(
                     &sample->id,
                     "",
-                    (36),
+                    (36L),
                     RTI_FALSE);
                 if (sample->id == NULL) {
                     return RTI_FALSE;
@@ -1089,7 +1090,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->id,
                         "",
-                        (36),
+                        (36L),
                         RTI_FALSE);
                     if (sample->id == NULL) {
                         return RTI_FALSE;
@@ -1106,7 +1107,6 @@ namespace nec {
             allocParams)) {
                 return RTI_FALSE;
             }
-
             sample->targetRate = 0.0;
 
             sample->torque = 0.0;
@@ -1200,7 +1200,7 @@ namespace nec {
 
                 if (!RTICdrType_copyStringEx (
                     &dst->id, src->id, 
-                    (36) + 1, RTI_FALSE)){
+                    (36L) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!DataTypes::Priority_copy(
@@ -1266,7 +1266,7 @@ namespace nec {
         const char *RotateEngineeringObjectiveTYPENAME = "nec::engineering::RotateEngineeringObjective";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* RotateEngineeringObjective_get_typecode()
+        DDS_TypeCode * RotateEngineeringObjective_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -1468,9 +1468,9 @@ namespace nec {
             {
                 size_t candidateTypeSize = sizeof(RotateEngineeringObjective);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     RotateEngineeringObjective_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     RotateEngineeringObjective_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -1549,11 +1549,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->id = DDS_String_alloc((36));
+                sample->id = DDS_String_alloc((36L));
                 RTICdrType_copyStringEx(
                     &sample->id,
                     "",
-                    (36),
+                    (36L),
                     RTI_FALSE);
                 if (sample->id == NULL) {
                     return RTI_FALSE;
@@ -1563,7 +1563,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->id,
                         "",
-                        (36),
+                        (36L),
                         RTI_FALSE);
                     if (sample->id == NULL) {
                         return RTI_FALSE;
@@ -1575,7 +1575,6 @@ namespace nec {
             allocParams)) {
                 return RTI_FALSE;
             }
-
             sample->targetRate = 0.0;
 
             sample->targetTorque = 0.0;
@@ -1665,7 +1664,7 @@ namespace nec {
 
                 if (!RTICdrType_copyStringEx (
                     &dst->id, src->id, 
-                    (36) + 1, RTI_FALSE)){
+                    (36L) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!DataTypes::Time_copy(
@@ -1723,7 +1722,7 @@ namespace nec {
         const char *RotateEngineeringStateTYPENAME = "nec::engineering::RotateEngineeringState";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* RotateEngineeringState_get_typecode()
+        DDS_TypeCode * RotateEngineeringState_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -2319,9 +2318,9 @@ namespace nec {
             {
                 size_t candidateTypeSize = sizeof(RotateEngineeringState);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     RotateEngineeringState_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     RotateEngineeringState_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -2400,11 +2399,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->id = DDS_String_alloc((36));
+                sample->id = DDS_String_alloc((36L));
                 RTICdrType_copyStringEx(
                     &sample->id,
                     "",
-                    (36),
+                    (36L),
                     RTI_FALSE);
                 if (sample->id == NULL) {
                     return RTI_FALSE;
@@ -2414,7 +2413,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->id,
                         "",
-                        (36),
+                        (36L),
                         RTI_FALSE);
                     if (sample->id == NULL) {
                         return RTI_FALSE;
@@ -2429,7 +2428,6 @@ namespace nec {
             }
             sample->state = nec::engineering::Available;
             sample->mode = nec::engineering::Locka;
-
             sample->actualVelocity = 0.0;
 
             sample->actualTorque = 0.0;
@@ -2547,7 +2545,7 @@ namespace nec {
 
                 if (!RTICdrType_copyStringEx (
                     &dst->id, src->id, 
-                    (36) + 1, RTI_FALSE)){
+                    (36L) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!DataTypes::Status_copy(

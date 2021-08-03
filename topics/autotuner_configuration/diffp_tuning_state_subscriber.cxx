@@ -25,74 +25,74 @@ bool CDiffpTuningStateSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPFilter()
+double CDiffpTuningStateSubscriber::GetFilter()
 {
-    return m_data.diffPFilter;
+    return m_data.filter;
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPD()
+double CDiffpTuningStateSubscriber::GetD()
 {
-    return m_data.diffPD;
+    return m_data.d;
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPF()
+double CDiffpTuningStateSubscriber::GetF()
 {
-    return m_data.diffPF;
+    return m_data.f;
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPEps()
+double CDiffpTuningStateSubscriber::GetEpsilon()
 {
-    return m_data.diffPEps;
+    return m_data.epsilon;
 }
 
-bool CDiffpTuningStateSubscriber::GetDiffPEpsManual()
+bool CDiffpTuningStateSubscriber::GetEpsilonManual()
 {
-    return m_data.diffPEpsManual;
+    return m_data.epsilonManual;
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPKcMin()
+double CDiffpTuningStateSubscriber::GetKcMin()
 {
-    return m_data.diffPKcMin;
+    return m_data.kcMin;
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPKcMax()
+double CDiffpTuningStateSubscriber::GetKcMax()
 {
-    return m_data.diffPKcMax;
+    return m_data.kcMax;
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPTiMin()
+double CDiffpTuningStateSubscriber::GetTiMin()
 {
-    return m_data.diffPTiMin;
+    return m_data.tiMin;
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPTiMax()
+double CDiffpTuningStateSubscriber::GetTiMax()
 {
-    return m_data.diffPTiMax;
+    return m_data.tiMax;
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPInitK()
+double CDiffpTuningStateSubscriber::GetInitK()
 {
-    return m_data.diffPInitK;
+    return m_data.initK;
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPInitTau()
+double CDiffpTuningStateSubscriber::GetInitTau()
 {
-    return m_data.diffPInitTau;
+    return m_data.initTau;
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPInitPreFilter()
+double CDiffpTuningStateSubscriber::GetInitPreFilter()
 {
-    return m_data.diffPInitPreFilter;
+    return m_data.initPreFilter;
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPR1()
+double CDiffpTuningStateSubscriber::GetR1()
 {
-    return m_data.diffPR1;
+    return m_data.r1;
 }
 
-double CDiffpTuningStateSubscriber::GetDiffPR2()
+double CDiffpTuningStateSubscriber::GetR2()
 {
-    return m_data.diffPR2;
+    return m_data.r2;
 }
 
 

@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from wellbore.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from wellbore.idl 
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -47,7 +48,7 @@ namespace nec {
         const char *WellboreStateTYPENAME = "nec::process::WellboreState";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* WellboreState_get_typecode()
+        DDS_TypeCode * WellboreState_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -274,9 +275,9 @@ namespace nec {
             {
                 size_t candidateTypeSize = sizeof(WellboreState);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     WellboreState_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     WellboreState_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -355,11 +356,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->id = DDS_String_alloc((36));
+                sample->id = DDS_String_alloc((36L));
                 RTICdrType_copyStringEx(
                     &sample->id,
                     "",
-                    (36),
+                    (36L),
                     RTI_FALSE);
                 if (sample->id == NULL) {
                     return RTI_FALSE;
@@ -369,7 +370,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->id,
                         "",
-                        (36),
+                        (36L),
                         RTI_FALSE);
                     if (sample->id == NULL) {
                         return RTI_FALSE;
@@ -378,11 +379,11 @@ namespace nec {
             }
 
             if (allocParams->allocate_memory) {
-                sample->objectiveId = DDS_String_alloc((36));
+                sample->objectiveId = DDS_String_alloc((36L));
                 RTICdrType_copyStringEx(
                     &sample->objectiveId,
                     "",
-                    (36),
+                    (36L),
                     RTI_FALSE);
                 if (sample->objectiveId == NULL) {
                     return RTI_FALSE;
@@ -392,7 +393,7 @@ namespace nec {
                     RTICdrType_copyStringEx(
                         &sample->objectiveId,
                         "",
-                        (36),
+                        (36L),
                         RTI_FALSE);
                     if (sample->objectiveId == NULL) {
                         return RTI_FALSE;
@@ -404,7 +405,6 @@ namespace nec {
             allocParams)) {
                 return RTI_FALSE;
             }
-
             sample->holeDepth = 0.0;
 
             sample->bitDepth = 0.0;
@@ -499,12 +499,12 @@ namespace nec {
 
                 if (!RTICdrType_copyStringEx (
                     &dst->id, src->id, 
-                    (36) + 1, RTI_FALSE)){
+                    (36L) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyStringEx (
                     &dst->objectiveId, src->objectiveId, 
-                    (36) + 1, RTI_FALSE)){
+                    (36L) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!DataTypes::Time_copy(

@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from configuration.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from configuration.idl 
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -45,7 +46,7 @@ namespace Configuration {
     const char *config_typeTYPENAME = "Configuration::config_type";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode* config_type_get_typecode()
+    DDS_TypeCode * config_type_get_typecode(void)
     {
         static RTIBool is_initialized = RTI_FALSE;
 
@@ -194,9 +195,9 @@ namespace Configuration {
         {
             size_t candidateTypeSize = sizeof(config_type);
 
-            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+            if (candidateTypeSize > RTIXCdrLong_MAX) {
                 config_type_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrUnsignedLong_MAX;
+                RTIXCdrLong_MAX;
             } else {
                 config_type_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -394,7 +395,7 @@ namespace Configuration {
     const char *io_modeTYPENAME = "Configuration::io_mode";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode* io_mode_get_typecode()
+    DDS_TypeCode * io_mode_get_typecode(void)
     {
         static RTIBool is_initialized = RTI_FALSE;
 
@@ -524,9 +525,9 @@ namespace Configuration {
         {
             size_t candidateTypeSize = sizeof(io_mode);
 
-            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+            if (candidateTypeSize > RTIXCdrLong_MAX) {
                 io_mode_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrUnsignedLong_MAX;
+                RTIXCdrLong_MAX;
             } else {
                 io_mode_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -724,7 +725,7 @@ namespace Configuration {
     const char *plant_typeTYPENAME = "Configuration::plant_type";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode* plant_type_get_typecode()
+    DDS_TypeCode * plant_type_get_typecode(void)
     {
         static RTIBool is_initialized = RTI_FALSE;
 
@@ -1025,9 +1026,9 @@ namespace Configuration {
         {
             size_t candidateTypeSize = sizeof(plant_type);
 
-            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+            if (candidateTypeSize > RTIXCdrLong_MAX) {
                 plant_type_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrUnsignedLong_MAX;
+                RTIXCdrLong_MAX;
             } else {
                 plant_type_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -1225,13 +1226,13 @@ namespace Configuration {
     const char *protocol_tTYPENAME = "Configuration::protocol_t";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode* protocol_t_get_typecode()
+    DDS_TypeCode * protocol_t_get_typecode(void)
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode protocol_t_g_tc_protocolId_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode protocol_t_g_tc_protocol_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode protocol_t_g_tc_endpoint_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode protocol_t_g_tc_protocolId_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode protocol_t_g_tc_protocol_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode protocol_t_g_tc_endpoint_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
 
         static DDS_TypeCode_Member protocol_t_g_tc_members[3]=
         {
@@ -1401,9 +1402,9 @@ namespace Configuration {
         {
             size_t candidateTypeSize = sizeof(protocol_t);
 
-            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+            if (candidateTypeSize > RTIXCdrLong_MAX) {
                 protocol_t_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrUnsignedLong_MAX;
+                RTIXCdrLong_MAX;
             } else {
                 protocol_t_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -1482,11 +1483,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->protocolId = DDS_String_alloc((255));
+            sample->protocolId = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->protocolId,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->protocolId == NULL) {
                 return RTI_FALSE;
@@ -1496,7 +1497,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->protocolId,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->protocolId == NULL) {
                     return RTI_FALSE;
@@ -1505,11 +1506,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->protocol = DDS_String_alloc((255));
+            sample->protocol = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->protocol,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->protocol == NULL) {
                 return RTI_FALSE;
@@ -1519,7 +1520,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->protocol,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->protocol == NULL) {
                     return RTI_FALSE;
@@ -1528,11 +1529,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->endpoint = DDS_String_alloc((255));
+            sample->endpoint = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->endpoint,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->endpoint == NULL) {
                 return RTI_FALSE;
@@ -1542,7 +1543,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->endpoint,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->endpoint == NULL) {
                     return RTI_FALSE;
@@ -1643,17 +1644,17 @@ namespace Configuration {
 
             if (!RTICdrType_copyStringEx (
                 &dst->protocolId, src->protocolId, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->protocol, src->protocol, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->endpoint, src->endpoint, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
 
@@ -1699,15 +1700,15 @@ namespace Configuration {
     const char *interface_tTYPENAME = "Configuration::interface_t";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode* interface_t_get_typecode()
+    DDS_TypeCode * interface_t_get_typecode(void)
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode interface_t_g_tc_ddsInterface_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode interface_t_g_tc_protocolId_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode interface_t_g_tc_baseAddress_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode interface_t_g_tc_size_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode interface_t_g_tc_frequency_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode interface_t_g_tc_ddsInterface_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode interface_t_g_tc_protocolId_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode interface_t_g_tc_baseAddress_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode interface_t_g_tc_size_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode interface_t_g_tc_frequency_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
 
         static DDS_TypeCode_Member interface_t_g_tc_members[6]=
         {
@@ -1952,9 +1953,9 @@ namespace Configuration {
         {
             size_t candidateTypeSize = sizeof(interface_t);
 
-            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+            if (candidateTypeSize > RTIXCdrLong_MAX) {
                 interface_t_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrUnsignedLong_MAX;
+                RTIXCdrLong_MAX;
             } else {
                 interface_t_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -2035,11 +2036,11 @@ namespace Configuration {
         sample->mode = Configuration::READ;
 
         if (allocParams->allocate_memory) {
-            sample->ddsInterface = DDS_String_alloc((255));
+            sample->ddsInterface = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->ddsInterface,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->ddsInterface == NULL) {
                 return RTI_FALSE;
@@ -2049,7 +2050,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->ddsInterface,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->ddsInterface == NULL) {
                     return RTI_FALSE;
@@ -2058,11 +2059,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->protocolId = DDS_String_alloc((255));
+            sample->protocolId = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->protocolId,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->protocolId == NULL) {
                 return RTI_FALSE;
@@ -2072,7 +2073,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->protocolId,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->protocolId == NULL) {
                     return RTI_FALSE;
@@ -2081,11 +2082,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->baseAddress = DDS_String_alloc((255));
+            sample->baseAddress = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->baseAddress,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->baseAddress == NULL) {
                 return RTI_FALSE;
@@ -2095,7 +2096,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->baseAddress,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->baseAddress == NULL) {
                     return RTI_FALSE;
@@ -2104,11 +2105,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->size = DDS_String_alloc((255));
+            sample->size = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->size,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->size == NULL) {
                 return RTI_FALSE;
@@ -2118,7 +2119,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->size,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->size == NULL) {
                     return RTI_FALSE;
@@ -2127,11 +2128,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->frequency = DDS_String_alloc((255));
+            sample->frequency = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->frequency,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->frequency == NULL) {
                 return RTI_FALSE;
@@ -2141,7 +2142,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->frequency,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->frequency == NULL) {
                     return RTI_FALSE;
@@ -2258,27 +2259,27 @@ namespace Configuration {
             } 
             if (!RTICdrType_copyStringEx (
                 &dst->ddsInterface, src->ddsInterface, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->protocolId, src->protocolId, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->baseAddress, src->baseAddress, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->size, src->size, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->frequency, src->frequency, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
 
@@ -2324,18 +2325,18 @@ namespace Configuration {
     const char *tag_tTYPENAME = "Configuration::tag_t";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode* tag_t_get_typecode()
+    DDS_TypeCode * tag_t_get_typecode(void)
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode tag_t_g_tc_ddsInterface_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode tag_t_g_tc_edgeType_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode tag_t_g_tc_edgeUnit_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode tag_t_g_tc_ioType_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode tag_t_g_tc_ioUnit_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode tag_t_g_tc_convertUnit_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode tag_t_g_tc_floatEpsilon_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-        static DDS_TypeCode tag_t_g_tc_tag_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode tag_t_g_tc_ddsInterface_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode tag_t_g_tc_edgeType_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode tag_t_g_tc_edgeUnit_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode tag_t_g_tc_ioType_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode tag_t_g_tc_ioUnit_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode tag_t_g_tc_convertUnit_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode tag_t_g_tc_floatEpsilon_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+        static DDS_TypeCode tag_t_g_tc_tag_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
 
         static DDS_TypeCode_Member tag_t_g_tc_members[8]=
         {
@@ -2630,9 +2631,9 @@ namespace Configuration {
         {
             size_t candidateTypeSize = sizeof(tag_t);
 
-            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+            if (candidateTypeSize > RTIXCdrLong_MAX) {
                 tag_t_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrUnsignedLong_MAX;
+                RTIXCdrLong_MAX;
             } else {
                 tag_t_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -2711,11 +2712,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->ddsInterface = DDS_String_alloc((255));
+            sample->ddsInterface = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->ddsInterface,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->ddsInterface == NULL) {
                 return RTI_FALSE;
@@ -2725,7 +2726,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->ddsInterface,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->ddsInterface == NULL) {
                     return RTI_FALSE;
@@ -2734,11 +2735,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->edgeType = DDS_String_alloc((255));
+            sample->edgeType = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->edgeType,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->edgeType == NULL) {
                 return RTI_FALSE;
@@ -2748,7 +2749,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->edgeType,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->edgeType == NULL) {
                     return RTI_FALSE;
@@ -2757,11 +2758,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->edgeUnit = DDS_String_alloc((255));
+            sample->edgeUnit = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->edgeUnit,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->edgeUnit == NULL) {
                 return RTI_FALSE;
@@ -2771,7 +2772,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->edgeUnit,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->edgeUnit == NULL) {
                     return RTI_FALSE;
@@ -2780,11 +2781,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->ioType = DDS_String_alloc((255));
+            sample->ioType = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->ioType,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->ioType == NULL) {
                 return RTI_FALSE;
@@ -2794,7 +2795,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->ioType,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->ioType == NULL) {
                     return RTI_FALSE;
@@ -2803,11 +2804,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->ioUnit = DDS_String_alloc((255));
+            sample->ioUnit = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->ioUnit,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->ioUnit == NULL) {
                 return RTI_FALSE;
@@ -2817,7 +2818,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->ioUnit,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->ioUnit == NULL) {
                     return RTI_FALSE;
@@ -2826,11 +2827,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->convertUnit = DDS_String_alloc((255));
+            sample->convertUnit = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->convertUnit,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->convertUnit == NULL) {
                 return RTI_FALSE;
@@ -2840,7 +2841,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->convertUnit,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->convertUnit == NULL) {
                     return RTI_FALSE;
@@ -2849,11 +2850,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->floatEpsilon = DDS_String_alloc((255));
+            sample->floatEpsilon = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->floatEpsilon,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->floatEpsilon == NULL) {
                 return RTI_FALSE;
@@ -2863,7 +2864,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->floatEpsilon,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->floatEpsilon == NULL) {
                     return RTI_FALSE;
@@ -2872,11 +2873,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->tag = DDS_String_alloc((255));
+            sample->tag = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->tag,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->tag == NULL) {
                 return RTI_FALSE;
@@ -2886,7 +2887,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->tag,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->tag == NULL) {
                     return RTI_FALSE;
@@ -3012,42 +3013,42 @@ namespace Configuration {
 
             if (!RTICdrType_copyStringEx (
                 &dst->ddsInterface, src->ddsInterface, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->edgeType, src->edgeType, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->edgeUnit, src->edgeUnit, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->ioType, src->ioType, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->ioUnit, src->ioUnit, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->convertUnit, src->convertUnit, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->floatEpsilon, src->floatEpsilon, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!RTICdrType_copyStringEx (
                 &dst->tag, src->tag, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
 
@@ -3093,7 +3094,7 @@ namespace Configuration {
     const char *config_dataTYPENAME = "Configuration::config_data";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode* config_data_get_typecode()
+    DDS_TypeCode * config_data_get_typecode(void)
     {
         static RTIBool is_initialized = RTI_FALSE;
 
@@ -3110,7 +3111,7 @@ namespace Configuration {
                 },
                 0, /* Ignored */
                 1, /* Number of labels */
-                (Configuration::PROTOCOL), /* First label Cpp (Configuration::PROTOCOL) */
+                ((Configuration::PROTOCOL)),
                 NULL, /* Labels (it is NULL when there is only one label)*/
                 RTI_CDR_NONKEY_MEMBER, /* Is a key? */
                 DDS_PUBLIC_MEMBER,/* Member visibility */
@@ -3128,7 +3129,7 @@ namespace Configuration {
                 },
                 0, /* Ignored */
                 1, /* Number of labels */
-                (Configuration::INTERFACE), /* First label Cpp (Configuration::INTERFACE) */
+                ((Configuration::INTERFACE)),
                 NULL, /* Labels (it is NULL when there is only one label)*/
                 RTI_CDR_NONKEY_MEMBER, /* Is a key? */
                 DDS_PUBLIC_MEMBER,/* Member visibility */
@@ -3146,7 +3147,7 @@ namespace Configuration {
                 },
                 0, /* Ignored */
                 1, /* Number of labels */
-                (Configuration::TAG), /* First label Cpp (Configuration::TAG) */
+                ((Configuration::TAG)),
                 NULL, /* Labels (it is NULL when there is only one label)*/
                 RTI_CDR_NONKEY_MEMBER, /* Is a key? */
                 DDS_PUBLIC_MEMBER,/* Member visibility */
@@ -3263,9 +3264,9 @@ namespace Configuration {
         {
             size_t candidateTypeSize = sizeof(config_data);
 
-            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+            if (candidateTypeSize > RTIXCdrLong_MAX) {
                 config_data_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrUnsignedLong_MAX;
+                RTIXCdrLong_MAX;
             } else {
                 config_data_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -3312,8 +3313,8 @@ namespace Configuration {
     }
     #endif
 
-    DDS_LongLong config_data_getDefaultDiscriminator(){
-
+    DDS_LongLong config_data_getDefaultDiscriminator(void)
+    {
         return 0;
     }
 
@@ -3526,11 +3527,11 @@ namespace Configuration {
     const char *ItemTYPENAME = "Configuration::Item";
 
     #ifndef NDDS_STANDALONE_TYPE
-    DDS_TypeCode* Item_get_typecode()
+    DDS_TypeCode * Item_get_typecode(void)
     {
         static RTIBool is_initialized = RTI_FALSE;
 
-        static DDS_TypeCode Item_g_tc_key_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+        static DDS_TypeCode Item_g_tc_key_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
 
         static DDS_TypeCode_Member Item_g_tc_members[3]=
         {
@@ -3697,9 +3698,9 @@ namespace Configuration {
         {
             size_t candidateTypeSize = sizeof(Item);
 
-            if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+            if (candidateTypeSize > RTIXCdrLong_MAX) {
                 Item_g_sampleAccessInfo.typeSize[0] =
-                RTIXCdrUnsignedLong_MAX;
+                RTIXCdrLong_MAX;
             } else {
                 Item_g_sampleAccessInfo.typeSize[0] =
                 (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -3778,11 +3779,11 @@ namespace Configuration {
         }
 
         if (allocParams->allocate_memory) {
-            sample->key = DDS_String_alloc((255));
+            sample->key = DDS_String_alloc((255L));
             RTICdrType_copyStringEx(
                 &sample->key,
                 "",
-                (255),
+                (255L),
                 RTI_FALSE);
             if (sample->key == NULL) {
                 return RTI_FALSE;
@@ -3792,7 +3793,7 @@ namespace Configuration {
                 RTICdrType_copyStringEx(
                     &sample->key,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->key == NULL) {
                     return RTI_FALSE;
@@ -3893,7 +3894,7 @@ namespace Configuration {
 
             if (!RTICdrType_copyStringEx (
                 &dst->key, src->key, 
-                (255) + 1, RTI_FALSE)){
+                (255L) + 1, RTI_FALSE)){
                 return RTI_FALSE;
             }
             if (!Configuration::config_type_copy(

@@ -2,10 +2,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from plc_hoist.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from plc_hoist.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #include <string.h>
@@ -121,7 +122,6 @@ namespace plc {
             plc::process::PlcHoistRequest_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
-            sample=NULL;
         }
 
         void 
@@ -130,7 +130,6 @@ namespace plc {
             plc::process::PlcHoistRequest_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
-            sample=NULL;
         }
 
         void 
@@ -159,13 +158,13 @@ namespace plc {
             RTICdrType_printIndent(indent_level);
 
             if (desc != NULL) {
-                RTILog_debug("%s:\n", desc);
+                RTILogParamString_printPlain("%s:\n", desc);
             } else {
-                RTILog_debug("\n");
+                RTILogParamString_printPlain("\n");
             }
 
             if (sample == NULL) {
-                RTILog_debug("NULL\n");
+                RTILogParamString_printPlain("NULL\n");
                 return;
             }
 
@@ -208,6 +207,7 @@ namespace plc {
             programProperty.resolveAlias = RTI_XCDR_TRUE;
             programProperty.inlineStruct = RTI_XCDR_TRUE;
             programProperty.optimizeEnum = RTI_XCDR_TRUE;
+            programProperty.unboundedSize = RTIXCdrLong_MAX;
 
             programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                 DDS_TypeCodeFactory_get_instance(),
@@ -344,7 +344,7 @@ namespace plc {
             struct PRESTypePluginDefaultEndpointData epd;
             RTIBool result;
             struct PRESTypePluginDefaultParticipantData pd;
-            struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+            struct RTIXCdrTypePluginProgramContext defaultProgramContext =
             RTIXCdrTypePluginProgramContext_INTIALIZER;
             struct PRESTypePlugin plugin;
 
@@ -353,7 +353,7 @@ namespace plc {
             }
 
             RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-            epd.programContext = defaultProgramConext;  
+            epd.programContext = defaultProgramContext;
             epd._participantData = &pd;
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
@@ -431,12 +431,12 @@ namespace plc {
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
-            struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+            struct RTIXCdrTypePluginProgramContext defaultProgramContext =
             RTIXCdrTypePluginProgramContext_INTIALIZER;
             struct PRESTypePluginDefaultParticipantData pd;
             struct PRESTypePlugin plugin;
 
-            epd.programContext = defaultProgramConext;  
+            epd.programContext = defaultProgramContext;
             epd._participantData = &pd;
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
@@ -637,7 +637,7 @@ namespace plc {
             return size;
         }
 
-        struct RTIXCdrInterpreterPrograms *PlcHoistRequestPlugin_get_programs()
+        struct RTIXCdrInterpreterPrograms * PlcHoistRequestPlugin_get_programs(void)
         {
             return ::rti::xcdr::get_cdr_serialization_programs<
             PlcHoistRequest, 
@@ -818,7 +818,6 @@ namespace plc {
             plc::process::PlcHoistState_finalize_w_params(sample,dealloc_params);
 
             delete  sample;
-            sample=NULL;
         }
 
         void 
@@ -827,7 +826,6 @@ namespace plc {
             plc::process::PlcHoistState_finalize_ex(sample,deallocate_pointers);
 
             delete  sample;
-            sample=NULL;
         }
 
         void 
@@ -856,13 +854,13 @@ namespace plc {
             RTICdrType_printIndent(indent_level);
 
             if (desc != NULL) {
-                RTILog_debug("%s:\n", desc);
+                RTILogParamString_printPlain("%s:\n", desc);
             } else {
-                RTILog_debug("\n");
+                RTILogParamString_printPlain("\n");
             }
 
             if (sample == NULL) {
-                RTILog_debug("NULL\n");
+                RTILogParamString_printPlain("NULL\n");
                 return;
             }
 
@@ -932,6 +930,7 @@ namespace plc {
             programProperty.resolveAlias = RTI_XCDR_TRUE;
             programProperty.inlineStruct = RTI_XCDR_TRUE;
             programProperty.optimizeEnum = RTI_XCDR_TRUE;
+            programProperty.unboundedSize = RTIXCdrLong_MAX;
 
             programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                 DDS_TypeCodeFactory_get_instance(),
@@ -1068,7 +1067,7 @@ namespace plc {
             struct PRESTypePluginDefaultEndpointData epd;
             RTIBool result;
             struct PRESTypePluginDefaultParticipantData pd;
-            struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+            struct RTIXCdrTypePluginProgramContext defaultProgramContext =
             RTIXCdrTypePluginProgramContext_INTIALIZER;
             struct PRESTypePlugin plugin;
 
@@ -1077,7 +1076,7 @@ namespace plc {
             }
 
             RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-            epd.programContext = defaultProgramConext;  
+            epd.programContext = defaultProgramContext;
             epd._participantData = &pd;
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
@@ -1155,12 +1154,12 @@ namespace plc {
         {
             struct RTICdrStream stream;
             struct PRESTypePluginDefaultEndpointData epd;
-            struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+            struct RTIXCdrTypePluginProgramContext defaultProgramContext =
             RTIXCdrTypePluginProgramContext_INTIALIZER;
             struct PRESTypePluginDefaultParticipantData pd;
             struct PRESTypePlugin plugin;
 
-            epd.programContext = defaultProgramConext;  
+            epd.programContext = defaultProgramContext;
             epd._participantData = &pd;
             epd.typePlugin = &plugin;
             epd.programContext.endpointPluginData = &epd;
@@ -1361,7 +1360,7 @@ namespace plc {
             return size;
         }
 
-        struct RTIXCdrInterpreterPrograms *PlcHoistStatePlugin_get_programs()
+        struct RTIXCdrInterpreterPrograms * PlcHoistStatePlugin_get_programs(void)
         {
             return ::rti::xcdr::get_cdr_serialization_programs<
             PlcHoistState, 

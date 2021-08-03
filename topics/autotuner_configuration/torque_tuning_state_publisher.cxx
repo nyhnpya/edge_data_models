@@ -41,115 +41,115 @@ bool CTorqueTuningStatePublisher::PublishSample()
     return Publish();
 }
 
-void CTorqueTuningStatePublisher::SetTorqueFilter(double torqueFilter)
+void CTorqueTuningStatePublisher::SetFilter(double filter)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueFilter = torqueFilter;
+        m_pDataInstance->filter = filter;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueD(double torqueD)
+void CTorqueTuningStatePublisher::SetD(double d)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueD = torqueD;
+        m_pDataInstance->d = d;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueF(double torqueF)
+void CTorqueTuningStatePublisher::SetF(double f)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueF = torqueF;
+        m_pDataInstance->f = f;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueEps(double torqueEps)
+void CTorqueTuningStatePublisher::SetEpsilon(double epsilon)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueEps = torqueEps;
+        m_pDataInstance->epsilon = epsilon;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueEpsManual(bool torqueEpsManual)
+void CTorqueTuningStatePublisher::SetEpsilonManual(bool epsilonManual)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueEpsManual = torqueEpsManual;
+        m_pDataInstance->epsilonManual = epsilonManual;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueKcMin(double torqueKcMin)
+void CTorqueTuningStatePublisher::SetKcMin(double kcMin)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueKcMin = torqueKcMin;
+        m_pDataInstance->kcMin = kcMin;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueKcMax(double torqueKcMax)
+void CTorqueTuningStatePublisher::SetKcMax(double kcMax)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueKcMax = torqueKcMax;
+        m_pDataInstance->kcMax = kcMax;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueTiMin(double torqueTiMin)
+void CTorqueTuningStatePublisher::SetTiMin(double tiMin)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueTiMin = torqueTiMin;
+        m_pDataInstance->tiMin = tiMin;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueTiMax(double torqueTiMax)
+void CTorqueTuningStatePublisher::SetTiMax(double tiMax)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueTiMax = torqueTiMax;
+        m_pDataInstance->tiMax = tiMax;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueInitK(double torqueInitK)
+void CTorqueTuningStatePublisher::SetInitK(double initK)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueInitK = torqueInitK;
+        m_pDataInstance->initK = initK;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueInitTau(double torqueInitTau)
+void CTorqueTuningStatePublisher::SetInitTau(double initTau)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueInitTau = torqueInitTau;
+        m_pDataInstance->initTau = initTau;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueInitPreFilter(double torqueInitPreFilter)
+void CTorqueTuningStatePublisher::SetInitPreFilter(double initPreFilter)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueInitPreFilter = torqueInitPreFilter;
+        m_pDataInstance->initPreFilter = initPreFilter;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueR1(double torqueR1)
+void CTorqueTuningStatePublisher::SetR1(double r1)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueR1 = torqueR1;
+        m_pDataInstance->r1 = r1;
     }
 }
 
-void CTorqueTuningStatePublisher::SetTorqueR2(double torqueR2)
+void CTorqueTuningStatePublisher::SetR2(double r2)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->torqueR2 = torqueR2;
+        m_pDataInstance->r2 = r2;
     }
 }
 

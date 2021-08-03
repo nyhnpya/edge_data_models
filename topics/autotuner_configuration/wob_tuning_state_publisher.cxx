@@ -41,115 +41,115 @@ bool CWobTuningStatePublisher::PublishSample()
     return Publish();
 }
 
-void CWobTuningStatePublisher::SetWobFilter(double wobFilter)
+void CWobTuningStatePublisher::SetFilter(double filter)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobFilter = wobFilter;
+        m_pDataInstance->filter = filter;
     }
 }
 
-void CWobTuningStatePublisher::SetWobD(double wobD)
+void CWobTuningStatePublisher::SetD(double d)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobD = wobD;
+        m_pDataInstance->d = d;
     }
 }
 
-void CWobTuningStatePublisher::SetWobF(double wobF)
+void CWobTuningStatePublisher::SetF(double f)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobF = wobF;
+        m_pDataInstance->f = f;
     }
 }
 
-void CWobTuningStatePublisher::SetWobEps(double wobEps)
+void CWobTuningStatePublisher::SetEpsilon(double epsilon)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobEps = wobEps;
+        m_pDataInstance->epsilon = epsilon;
     }
 }
 
-void CWobTuningStatePublisher::SetWobEpsManual(bool wobEpsManual)
+void CWobTuningStatePublisher::SetEpsilonManual(bool epsilonManual)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobEpsManual = wobEpsManual;
+        m_pDataInstance->epsilonManual = epsilonManual;
     }
 }
 
-void CWobTuningStatePublisher::SetWobKcMin(double wobKcMin)
+void CWobTuningStatePublisher::SetKcMin(double kcMin)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobKcMin = wobKcMin;
+        m_pDataInstance->kcMin = kcMin;
     }
 }
 
-void CWobTuningStatePublisher::SetWobKcMax(double wobKcMax)
+void CWobTuningStatePublisher::SetKcMax(double kcMax)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobKcMax = wobKcMax;
+        m_pDataInstance->kcMax = kcMax;
     }
 }
 
-void CWobTuningStatePublisher::SetWobTiMin(double wobTiMin)
+void CWobTuningStatePublisher::SetTiMin(double tiMin)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobTiMin = wobTiMin;
+        m_pDataInstance->tiMin = tiMin;
     }
 }
 
-void CWobTuningStatePublisher::SetWobTiMax(double wobTiMax)
+void CWobTuningStatePublisher::SetTiMax(double tiMax)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobTiMax = wobTiMax;
+        m_pDataInstance->tiMax = tiMax;
     }
 }
 
-void CWobTuningStatePublisher::SetWobInitK(double wobInitK)
+void CWobTuningStatePublisher::SetInitK(double initK)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobInitK = wobInitK;
+        m_pDataInstance->initK = initK;
     }
 }
 
-void CWobTuningStatePublisher::SetWobInitTau(double wobInitTau)
+void CWobTuningStatePublisher::SetInitTau(double initTau)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobInitTau = wobInitTau;
+        m_pDataInstance->initTau = initTau;
     }
 }
 
-void CWobTuningStatePublisher::SetWobInitPreFilter(double wobInitPreFilter)
+void CWobTuningStatePublisher::SetInitPreFilter(double initPreFilter)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobInitPreFilter = wobInitPreFilter;
+        m_pDataInstance->initPreFilter = initPreFilter;
     }
 }
 
-void CWobTuningStatePublisher::SetWobR1(double wobR1)
+void CWobTuningStatePublisher::SetR1(double r1)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobR1 = wobR1;
+        m_pDataInstance->r1 = r1;
     }
 }
 
-void CWobTuningStatePublisher::SetWobR2(double wobR2)
+void CWobTuningStatePublisher::SetR2(double r2)
 {
     if (m_pDataInstance != nullptr)
     {
-        m_pDataInstance->wobR2 = wobR2;
+        m_pDataInstance->r2 = r2;
     }
 }
 

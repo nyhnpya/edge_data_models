@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from plc_circulate.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from plc_circulate.idl 
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -47,7 +48,7 @@ namespace plc {
         const char *PlcCirculateRequestTYPENAME = "plc::process::PlcCirculateRequest";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* PlcCirculateRequest_get_typecode()
+        DDS_TypeCode * PlcCirculateRequest_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -173,9 +174,9 @@ namespace plc {
             {
                 size_t candidateTypeSize = sizeof(PlcCirculateRequest);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     PlcCirculateRequest_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     PlcCirculateRequest_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -378,7 +379,7 @@ namespace plc {
         const char *PlcCirculateStateTYPENAME = "plc::process::PlcCirculateState";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* PlcCirculateState_get_typecode()
+        DDS_TypeCode * PlcCirculateState_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -707,9 +708,9 @@ namespace plc {
             {
                 size_t candidateTypeSize = sizeof(PlcCirculateState);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     PlcCirculateState_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     PlcCirculateState_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;

@@ -25,74 +25,74 @@ bool CWobTuningStateSubscriber::ValidData()
     return (m_sampleInfo.valid_data == DDS_BOOLEAN_TRUE);
 }
 
-double CWobTuningStateSubscriber::GetWobFilter()
+double CWobTuningStateSubscriber::GetFilter()
 {
-    return m_data.wobFilter;
+    return m_data.filter;
 }
 
-double CWobTuningStateSubscriber::GetWobD()
+double CWobTuningStateSubscriber::GetD()
 {
-    return m_data.wobD;
+    return m_data.d;
 }
 
-double CWobTuningStateSubscriber::GetWobF()
+double CWobTuningStateSubscriber::GetF()
 {
-    return m_data.wobF;
+    return m_data.f;
 }
 
-double CWobTuningStateSubscriber::GetWobEps()
+double CWobTuningStateSubscriber::GetEpsilon()
 {
-    return m_data.wobEps;
+    return m_data.epsilon;
 }
 
-bool CWobTuningStateSubscriber::GetWobEpsManual()
+bool CWobTuningStateSubscriber::GetEpsilonManual()
 {
-    return m_data.wobEpsManual;
+    return m_data.epsilonManual;
 }
 
-double CWobTuningStateSubscriber::GetWobKcMin()
+double CWobTuningStateSubscriber::GetKcMin()
 {
-    return m_data.wobKcMin;
+    return m_data.kcMin;
 }
 
-double CWobTuningStateSubscriber::GetWobKcMax()
+double CWobTuningStateSubscriber::GetKcMax()
 {
-    return m_data.wobKcMax;
+    return m_data.kcMax;
 }
 
-double CWobTuningStateSubscriber::GetWobTiMin()
+double CWobTuningStateSubscriber::GetTiMin()
 {
-    return m_data.wobTiMin;
+    return m_data.tiMin;
 }
 
-double CWobTuningStateSubscriber::GetWobTiMax()
+double CWobTuningStateSubscriber::GetTiMax()
 {
-    return m_data.wobTiMax;
+    return m_data.tiMax;
 }
 
-double CWobTuningStateSubscriber::GetWobInitK()
+double CWobTuningStateSubscriber::GetInitK()
 {
-    return m_data.wobInitK;
+    return m_data.initK;
 }
 
-double CWobTuningStateSubscriber::GetWobInitTau()
+double CWobTuningStateSubscriber::GetInitTau()
 {
-    return m_data.wobInitTau;
+    return m_data.initTau;
 }
 
-double CWobTuningStateSubscriber::GetWobInitPreFilter()
+double CWobTuningStateSubscriber::GetInitPreFilter()
 {
-    return m_data.wobInitPreFilter;
+    return m_data.initPreFilter;
 }
 
-double CWobTuningStateSubscriber::GetWobR1()
+double CWobTuningStateSubscriber::GetR1()
 {
-    return m_data.wobR1;
+    return m_data.r1;
 }
 
-double CWobTuningStateSubscriber::GetWobR2()
+double CWobTuningStateSubscriber::GetR2()
 {
-    return m_data.wobR2;
+    return m_data.r2;
 }
 
 

@@ -37,34 +37,34 @@ class CWobTuningStatePublisher : public TPublisher< Shell::Hmi::AutoTunerConfigu
         bool Initialize();
         bool PublishSample();
         
-        /// @param double wobFilter
-        void SetWobFilter(const double wobFilter);
-        /// @param double wobD
-        void SetWobD(const double wobD);
-        /// @param double wobF
-        void SetWobF(const double wobF);
-        /// @param double wobEps
-        void SetWobEps(const double wobEps);
-        /// @param bool wobEpsManual
-        void SetWobEpsManual(const bool wobEpsManual);
-        /// @param double wobKcMin
-        void SetWobKcMin(const double wobKcMin);
-        /// @param double wobKcMax
-        void SetWobKcMax(const double wobKcMax);
-        /// @param double wobTiMin
-        void SetWobTiMin(const double wobTiMin);
-        /// @param double wobTiMax
-        void SetWobTiMax(const double wobTiMax);
-        /// @param double wobInitK
-        void SetWobInitK(const double wobInitK);
-        /// @param double wobInitTau
-        void SetWobInitTau(const double wobInitTau);
-        /// @param double wobInitPreFilter
-        void SetWobInitPreFilter(const double wobInitPreFilter);
-        /// @param double wobR1
-        void SetWobR1(const double wobR1);
-        /// @param double wobR2
-        void SetWobR2(const double wobR2);
+        /// @param double filter
+        void SetFilter(const double filter);
+        /// @param double d
+        void SetD(const double d);
+        /// @param double f
+        void SetF(const double f);
+        /// @param double epsilon
+        void SetEpsilon(const double epsilon);
+        /// @param bool epsilonManual
+        void SetEpsilonManual(const bool epsilonManual);
+        /// @param double kcMin
+        void SetKcMin(const double kcMin);
+        /// @param double kcMax
+        void SetKcMax(const double kcMax);
+        /// @param double tiMin
+        void SetTiMin(const double tiMin);
+        /// @param double tiMax
+        void SetTiMax(const double tiMax);
+        /// @param double initK
+        void SetInitK(const double initK);
+        /// @param double initTau
+        void SetInitTau(const double initTau);
+        /// @param double initPreFilter
+        void SetInitPreFilter(const double initPreFilter);
+        /// @param double r1
+        void SetR1(const double r1);
+        /// @param double r2
+        void SetR2(const double r2);
 };
 
 #endif // __SHELL_HMI_AUTOTUNERCONFIGURATION_WOB_TUNING_STATE_PUBLISHER_H__

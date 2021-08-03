@@ -2,10 +2,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from autotuner_configuration.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from autotuner_configuration.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #include <string.h>
@@ -122,7 +123,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::ModelState_finalize_w_params(sample,dealloc_params);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -131,7 +131,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::ModelState_finalize_ex(sample,deallocate_pointers);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -160,13 +159,13 @@ namespace Shell {
                 RTICdrType_printIndent(indent_level);
 
                 if (desc != NULL) {
-                    RTILog_debug("%s:\n", desc);
+                    RTILogParamString_printPlain("%s:\n", desc);
                 } else {
-                    RTILog_debug("\n");
+                    RTILogParamString_printPlain("\n");
                 }
 
                 if (sample == NULL) {
-                    RTILog_debug("NULL\n");
+                    RTILogParamString_printPlain("NULL\n");
                     return;
                 }
 
@@ -230,6 +229,7 @@ namespace Shell {
                 programProperty.resolveAlias = RTI_XCDR_TRUE;
                 programProperty.inlineStruct = RTI_XCDR_TRUE;
                 programProperty.optimizeEnum = RTI_XCDR_TRUE;
+                programProperty.unboundedSize = RTIXCdrLong_MAX;
 
                 programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                     DDS_TypeCodeFactory_get_instance(),
@@ -366,7 +366,7 @@ namespace Shell {
                 struct PRESTypePluginDefaultEndpointData epd;
                 RTIBool result;
                 struct PRESTypePluginDefaultParticipantData pd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePlugin plugin;
 
@@ -375,7 +375,7 @@ namespace Shell {
                 }
 
                 RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -453,12 +453,12 @@ namespace Shell {
             {
                 struct RTICdrStream stream;
                 struct PRESTypePluginDefaultEndpointData epd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePluginDefaultParticipantData pd;
                 struct PRESTypePlugin plugin;
 
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -659,7 +659,7 @@ namespace Shell {
                 return size;
             }
 
-            struct RTIXCdrInterpreterPrograms *ModelStatePlugin_get_programs()
+            struct RTIXCdrInterpreterPrograms * ModelStatePlugin_get_programs(void)
             {
                 return ::rti::xcdr::get_cdr_serialization_programs<
                 ModelState, 
@@ -783,724 +783,6 @@ namespace Shell {
             } 
 
             /* ----------------------------------------------------------------------------
-            *  Type DiffpTuningRequest
-            * -------------------------------------------------------------------------- */
-
-            /* -----------------------------------------------------------------------------
-            Support functions:
-            * -------------------------------------------------------------------------- */
-
-            DiffpTuningRequest*
-            DiffpTuningRequestPluginSupport_create_data_w_params(
-                const struct DDS_TypeAllocationParams_t * alloc_params) 
-            {
-                DiffpTuningRequest *sample = NULL;
-
-                sample = new (std::nothrow) DiffpTuningRequest ;
-                if (sample == NULL) {
-                    return NULL;
-                }
-
-                if (!Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequest_initialize_w_params(sample,alloc_params)) {
-                    delete  sample;
-                    sample=NULL;
-                }
-                return sample;
-            } 
-
-            DiffpTuningRequest *
-            DiffpTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
-            {
-                DiffpTuningRequest *sample = NULL;
-
-                sample = new (std::nothrow) DiffpTuningRequest ;
-
-                if(sample == NULL) {
-                    return NULL;
-                }
-
-                if (!Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-                    delete  sample;
-                    sample=NULL;
-                }
-
-                return sample;
-            }
-
-            DiffpTuningRequest *
-            DiffpTuningRequestPluginSupport_create_data(void)
-            {
-                return Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPluginSupport_create_data_ex(RTI_TRUE);
-            }
-
-            void 
-            DiffpTuningRequestPluginSupport_destroy_data_w_params(
-                DiffpTuningRequest *sample,
-                const struct DDS_TypeDeallocationParams_t * dealloc_params) {
-                Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequest_finalize_w_params(sample,dealloc_params);
-
-                delete  sample;
-                sample=NULL;
-            }
-
-            void 
-            DiffpTuningRequestPluginSupport_destroy_data_ex(
-                DiffpTuningRequest *sample,RTIBool deallocate_pointers) {
-                Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequest_finalize_ex(sample,deallocate_pointers);
-
-                delete  sample;
-                sample=NULL;
-            }
-
-            void 
-            DiffpTuningRequestPluginSupport_destroy_data(
-                DiffpTuningRequest *sample) {
-
-                Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
-
-            }
-
-            RTIBool 
-            DiffpTuningRequestPluginSupport_copy_data(
-                DiffpTuningRequest *dst,
-                const DiffpTuningRequest *src)
-            {
-                return Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequest_copy(dst,(const DiffpTuningRequest*) src);
-            }
-
-            void 
-            DiffpTuningRequestPluginSupport_print_data(
-                const DiffpTuningRequest *sample,
-                const char *desc,
-                unsigned int indent_level)
-            {
-
-                RTICdrType_printIndent(indent_level);
-
-                if (desc != NULL) {
-                    RTILog_debug("%s:\n", desc);
-                } else {
-                    RTILog_debug("\n");
-                }
-
-                if (sample == NULL) {
-                    RTILog_debug("NULL\n");
-                    return;
-                }
-
-                RTICdrType_printDouble(
-                    &sample->diffPFilter, "diffPFilter", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->diffPD, "diffPD", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->diffPF, "diffPF", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->diffPEps, "diffPEps", indent_level + 1);    
-
-                RTICdrType_printBoolean(
-                    &sample->diffPEpsManual, "diffPEpsManual", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->diffPKcMin, "diffPKcMin", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->diffPKcMax, "diffPKcMax", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->diffPTiMin, "diffPTiMin", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->diffPTiMax, "diffPTiMax", indent_level + 1);    
-
-            }
-
-            /* ----------------------------------------------------------------------------
-            Callback functions:
-            * ---------------------------------------------------------------------------- */
-
-            PRESTypePluginParticipantData 
-            DiffpTuningRequestPlugin_on_participant_attached(
-                void *registration_data,
-                const struct PRESTypePluginParticipantInfo *participant_info,
-                RTIBool top_level_registration,
-                void *container_plugin_context,
-                RTICdrTypeCode *type_code)
-            {
-                struct RTIXCdrInterpreterPrograms *programs = NULL;
-                struct PRESTypePluginDefaultParticipantData *pd = NULL;
-                struct RTIXCdrInterpreterProgramsGenProperty programProperty =
-                RTIXCdrInterpreterProgramsGenProperty_INITIALIZER;
-
-                if (registration_data) {} /* To avoid warnings */
-                if (participant_info) {} /* To avoid warnings */
-                if (top_level_registration) {} /* To avoid warnings */
-                if (container_plugin_context) {} /* To avoid warnings */
-                if (type_code) {} /* To avoid warnings */
-
-                pd = (struct PRESTypePluginDefaultParticipantData *)
-                PRESTypePluginDefaultParticipantData_new(participant_info);
-
-                programProperty.generateV1Encapsulation = RTI_XCDR_TRUE;
-                programProperty.generateV2Encapsulation = RTI_XCDR_TRUE;
-                programProperty.resolveAlias = RTI_XCDR_TRUE;
-                programProperty.inlineStruct = RTI_XCDR_TRUE;
-                programProperty.optimizeEnum = RTI_XCDR_TRUE;
-
-                programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
-                    DDS_TypeCodeFactory_get_instance(),
-                    DiffpTuningRequest_get_typecode(),
-                    &programProperty,
-                    RTI_XCDR_PROGRAM_MASK_TYPEPLUGIN);
-                if (programs == NULL) {
-                    PRESTypePluginDefaultParticipantData_delete(
-                        (PRESTypePluginParticipantData) pd);
-                    return NULL;
-                }
-
-                pd->programs = programs;
-                return (PRESTypePluginParticipantData)pd;
-            }
-
-            void 
-            DiffpTuningRequestPlugin_on_participant_detached(
-                PRESTypePluginParticipantData participant_data)
-            {  		
-                if (participant_data != NULL) {
-                    struct PRESTypePluginDefaultParticipantData *pd = 
-                    (struct PRESTypePluginDefaultParticipantData *)participant_data;
-
-                    if (pd->programs != NULL) {
-                        DDS_TypeCodeFactory_remove_programs_from_global_list(
-                            DDS_TypeCodeFactory_get_instance(),
-                            pd->programs);
-                        pd->programs = NULL;
-                    }
-                    PRESTypePluginDefaultParticipantData_delete(participant_data);
-                }
-            }
-
-            PRESTypePluginEndpointData
-            DiffpTuningRequestPlugin_on_endpoint_attached(
-                PRESTypePluginParticipantData participant_data,
-                const struct PRESTypePluginEndpointInfo *endpoint_info,
-                RTIBool top_level_registration, 
-                void *containerPluginContext)
-            {
-                PRESTypePluginEndpointData epd = NULL;
-                unsigned int serializedSampleMaxSize = 0;
-
-                if (top_level_registration) {} /* To avoid warnings */
-                if (containerPluginContext) {} /* To avoid warnings */
-
-                if (participant_data == NULL) {
-                    return NULL;
-                } 
-
-                epd = PRESTypePluginDefaultEndpointData_new(
-                    participant_data,
-                    endpoint_info,
-                    (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPluginSupport_create_data,
-                    (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPluginSupport_destroy_data,
-                    NULL , NULL );
-
-                if (epd == NULL) {
-                    return NULL;
-                } 
-
-                if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                    serializedSampleMaxSize = Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPlugin_get_serialized_sample_max_size(
-                        epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
-                    PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
-
-                    if (PRESTypePluginDefaultEndpointData_createWriterPool(
-                        epd,
-                        endpoint_info,
-                        (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                        Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPlugin_get_serialized_sample_max_size, epd,
-                        (PRESTypePluginGetSerializedSampleSizeFunction)
-                        PRESTypePlugin_interpretedGetSerializedSampleSize,
-                        epd) == RTI_FALSE) {
-                        PRESTypePluginDefaultEndpointData_delete(epd);
-                        return NULL;
-                    }
-                }
-
-                return epd;    
-            }
-
-            void 
-            DiffpTuningRequestPlugin_on_endpoint_detached(
-                PRESTypePluginEndpointData endpoint_data)
-            {
-                PRESTypePluginDefaultEndpointData_delete(endpoint_data);
-            }
-
-            void    
-            DiffpTuningRequestPlugin_return_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                DiffpTuningRequest *sample,
-                void *handle)
-            {
-                DiffpTuningRequest_finalize_optional_members(sample, RTI_TRUE);
-
-                PRESTypePluginDefaultEndpointData_returnSample(
-                    endpoint_data, sample, handle);
-            }
-
-            RTIBool 
-            DiffpTuningRequestPlugin_copy_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                DiffpTuningRequest *dst,
-                const DiffpTuningRequest *src)
-            {
-                if (endpoint_data) {} /* To avoid warnings */
-                return Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPluginSupport_copy_data(dst,src);
-            }
-
-            /* ----------------------------------------------------------------------------
-            (De)Serialize functions:
-            * ------------------------------------------------------------------------- */
-            unsigned int 
-            DiffpTuningRequestPlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            RTIBool
-            DiffpTuningRequestPlugin_serialize_to_cdr_buffer_ex(
-                char *buffer,
-                unsigned int *length,
-                const DiffpTuningRequest *sample,
-                DDS_DataRepresentationId_t representation)
-            {
-                RTIEncapsulationId encapsulationId = RTI_CDR_ENCAPSULATION_ID_INVALID;
-                struct RTICdrStream stream;
-                struct PRESTypePluginDefaultEndpointData epd;
-                RTIBool result;
-                struct PRESTypePluginDefaultParticipantData pd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
-                RTIXCdrTypePluginProgramContext_INTIALIZER;
-                struct PRESTypePlugin plugin;
-
-                if (length == NULL) {
-                    return RTI_FALSE;
-                }
-
-                RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-                epd.programContext = defaultProgramConext;  
-                epd._participantData = &pd;
-                epd.typePlugin = &plugin;
-                epd.programContext.endpointPluginData = &epd;
-                plugin.typeCode = (struct RTICdrTypeCode *)
-                DiffpTuningRequest_get_typecode();
-                pd.programs = DiffpTuningRequestPlugin_get_programs();
-                if (pd.programs == NULL) {
-                    return RTI_FALSE;
-                }
-
-                encapsulationId = DDS_TypeCode_get_native_encapsulation(
-                    (DDS_TypeCode *) plugin.typeCode,
-                    representation);    
-                if (encapsulationId == RTI_CDR_ENCAPSULATION_ID_INVALID) {
-                    return RTI_FALSE;
-                }
-
-                epd._maxSizeSerializedSample =
-                DiffpTuningRequestPlugin_get_serialized_sample_max_size(
-                    (PRESTypePluginEndpointData)&epd, 
-                    RTI_TRUE, 
-                    encapsulationId,
-                    0);
-
-                if (buffer == NULL) {
-                    *length = 
-                    PRESTypePlugin_interpretedGetSerializedSampleSize(
-                        (PRESTypePluginEndpointData)&epd,
-                        RTI_TRUE,
-                        encapsulationId,
-                        0,
-                        sample);
-
-                    if (*length == 0) {
-                        return RTI_FALSE;
-                    }
-
-                    return RTI_TRUE;
-                }    
-
-                RTICdrStream_init(&stream);
-                RTICdrStream_set(&stream, (char *)buffer, *length);
-
-                result = PRESTypePlugin_interpretedSerialize(
-                    (PRESTypePluginEndpointData)&epd,
-                    sample,
-                    &stream,
-                    RTI_TRUE,
-                    encapsulationId,
-                    RTI_TRUE,
-                    NULL);
-
-                *length = RTICdrStream_getCurrentPositionOffset(&stream);
-                return result;
-            }
-
-            RTIBool
-            DiffpTuningRequestPlugin_serialize_to_cdr_buffer(
-                char *buffer,
-                unsigned int *length,
-                const DiffpTuningRequest *sample)
-            {
-                return DiffpTuningRequestPlugin_serialize_to_cdr_buffer_ex(
-                    buffer,
-                    length,
-                    sample,
-                    DDS_AUTO_DATA_REPRESENTATION);
-            }
-
-            RTIBool
-            DiffpTuningRequestPlugin_deserialize_from_cdr_buffer(
-                DiffpTuningRequest *sample,
-                const char * buffer,
-                unsigned int length)
-            {
-                struct RTICdrStream stream;
-                struct PRESTypePluginDefaultEndpointData epd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
-                RTIXCdrTypePluginProgramContext_INTIALIZER;
-                struct PRESTypePluginDefaultParticipantData pd;
-                struct PRESTypePlugin plugin;
-
-                epd.programContext = defaultProgramConext;  
-                epd._participantData = &pd;
-                epd.typePlugin = &plugin;
-                epd.programContext.endpointPluginData = &epd;
-                plugin.typeCode = (struct RTICdrTypeCode *)
-                DiffpTuningRequest_get_typecode();
-                pd.programs = DiffpTuningRequestPlugin_get_programs();
-                if (pd.programs == NULL) {
-                    return RTI_FALSE;
-                }
-
-                epd._assignabilityProperty.acceptUnknownEnumValue = RTI_XCDR_TRUE;
-                epd._assignabilityProperty.acceptUnknownUnionDiscriminator = RTI_XCDR_TRUE;
-
-                RTICdrStream_init(&stream);
-                RTICdrStream_set(&stream, (char *)buffer, length);
-
-                DiffpTuningRequest_finalize_optional_members(sample, RTI_TRUE);
-                return PRESTypePlugin_interpretedDeserialize( 
-                    (PRESTypePluginEndpointData)&epd, sample,
-                    &stream, RTI_TRUE, RTI_TRUE, 
-                    NULL);
-            }
-
-            #ifndef NDDS_STANDALONE_TYPE
-            DDS_ReturnCode_t
-            DiffpTuningRequestPlugin_data_to_string(
-                const DiffpTuningRequest *sample,
-                char *str,
-                DDS_UnsignedLong *str_size, 
-                const struct DDS_PrintFormatProperty *property)
-            {
-                DDS_DynamicData *data = NULL;
-                char *buffer = NULL;
-                unsigned int length = 0;
-                struct DDS_PrintFormat printFormat;
-                DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-                if (sample == NULL) {
-                    return DDS_RETCODE_BAD_PARAMETER;
-                }
-
-                if (str_size == NULL) {
-                    return DDS_RETCODE_BAD_PARAMETER;
-                }
-
-                if (property == NULL) {
-                    return DDS_RETCODE_BAD_PARAMETER;
-                }
-                if (!DiffpTuningRequestPlugin_serialize_to_cdr_buffer(
-                    NULL, 
-                    &length, 
-                    sample)) {
-                    return DDS_RETCODE_ERROR;
-                }
-
-                RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-                if (buffer == NULL) {
-                    return DDS_RETCODE_ERROR;
-                }
-
-                if (!DiffpTuningRequestPlugin_serialize_to_cdr_buffer(
-                    buffer, 
-                    &length, 
-                    sample)) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    return DDS_RETCODE_ERROR;
-                }
-                data = DDS_DynamicData_new(
-                    DiffpTuningRequest_get_typecode(), 
-                    &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-                if (data == NULL) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    return DDS_RETCODE_ERROR;
-                }
-
-                retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-                if (retCode != DDS_RETCODE_OK) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    DDS_DynamicData_delete(data);
-                    return retCode;
-                }
-
-                retCode = DDS_PrintFormatProperty_to_print_format(
-                    property, 
-                    &printFormat);
-                if (retCode != DDS_RETCODE_OK) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    DDS_DynamicData_delete(data);
-                    return retCode;
-                }
-
-                retCode = DDS_DynamicDataFormatter_to_string_w_format(
-                    data, 
-                    str,
-                    str_size, 
-                    &printFormat);
-                if (retCode != DDS_RETCODE_OK) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    DDS_DynamicData_delete(data);
-                    return retCode;
-                }
-
-                RTIOsapiHeap_freeBuffer(buffer);
-                DDS_DynamicData_delete(data);
-                return DDS_RETCODE_OK;
-            }
-            #endif
-
-            unsigned int 
-            DiffpTuningRequestPlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment)
-            {
-                unsigned int size;
-                RTIBool overflow = RTI_FALSE;
-
-                size = PRESTypePlugin_interpretedGetSerializedSampleMaxSize(
-                    endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
-
-                if (overflow) {
-                    size = RTI_CDR_MAX_SERIALIZED_SIZE;
-                }
-
-                return size;
-            }
-
-            /* --------------------------------------------------------------------------------------
-            Key Management functions:
-            * -------------------------------------------------------------------------------------- */
-
-            PRESTypePluginKeyKind 
-            DiffpTuningRequestPlugin_get_key_kind(void)
-            {
-                return PRES_TYPEPLUGIN_NO_KEY;
-            }
-
-            RTIBool DiffpTuningRequestPlugin_deserialize_key(
-                PRESTypePluginEndpointData endpoint_data,
-                DiffpTuningRequest **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_key,
-                void *endpoint_plugin_qos)
-            {
-                RTIBool result;
-                if (drop_sample) {} /* To avoid warnings */
-                stream->_xTypesState.unassignable = RTI_FALSE;
-                result= PRESTypePlugin_interpretedDeserializeKey(
-                    endpoint_data, (sample != NULL)?*sample:NULL, stream,
-                    deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
-                if (result) {
-                    if (stream->_xTypesState.unassignable) {
-                        result = RTI_FALSE;
-                    }
-                }
-                return result;    
-
-            }
-
-            unsigned int
-            DiffpTuningRequestPlugin_get_serialized_key_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment)
-            {
-                unsigned int size;
-                RTIBool overflow = RTI_FALSE;
-                size = PRESTypePlugin_interpretedGetSerializedKeyMaxSize(
-                    endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
-                if (overflow) {
-                    size = RTI_CDR_MAX_SERIALIZED_SIZE;
-                }
-
-                return size;
-            }
-
-            unsigned int
-            DiffpTuningRequestPlugin_get_serialized_key_max_size_for_keyhash(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment)
-            {
-                unsigned int size;
-                RTIBool overflow = RTI_FALSE;
-                size = PRESTypePlugin_interpretedGetSerializedKeyMaxSizeForKeyhash(
-                    endpoint_data,
-                    &overflow,
-                    encapsulation_id,
-                    current_alignment);
-                if (overflow) {
-                    size = RTI_CDR_MAX_SERIALIZED_SIZE;
-                }
-
-                return size;
-            }
-
-            struct RTIXCdrInterpreterPrograms *DiffpTuningRequestPlugin_get_programs()
-            {
-                return ::rti::xcdr::get_cdr_serialization_programs<
-                DiffpTuningRequest, 
-                true, true, true>();
-            }
-
-            /* ------------------------------------------------------------------------
-            * Plug-in Installation Methods
-            * ------------------------------------------------------------------------ */
-            struct PRESTypePlugin *DiffpTuningRequestPlugin_new(void) 
-            { 
-                struct PRESTypePlugin *plugin = NULL;
-                const struct PRESTypePluginVersion PLUGIN_VERSION = 
-                PRES_TYPE_PLUGIN_VERSION_2_0;
-
-                RTIOsapiHeap_allocateStructure(
-                    &plugin, struct PRESTypePlugin);
-
-                if (plugin == NULL) {
-                    return NULL;
-                }
-
-                plugin->version = PLUGIN_VERSION;
-
-                /* set up parent's function pointers */
-                plugin->onParticipantAttached =
-                (PRESTypePluginOnParticipantAttachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPlugin_on_participant_attached;
-                plugin->onParticipantDetached =
-                (PRESTypePluginOnParticipantDetachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPlugin_on_participant_detached;
-                plugin->onEndpointAttached =
-                (PRESTypePluginOnEndpointAttachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPlugin_on_endpoint_attached;
-                plugin->onEndpointDetached =
-                (PRESTypePluginOnEndpointDetachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPlugin_on_endpoint_detached;
-
-                plugin->copySampleFnc =
-                (PRESTypePluginCopySampleFunction)
-                Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPlugin_copy_sample;
-                plugin->createSampleFnc =
-                (PRESTypePluginCreateSampleFunction)
-                DiffpTuningRequestPlugin_create_sample;
-                plugin->destroySampleFnc =
-                (PRESTypePluginDestroySampleFunction)
-                DiffpTuningRequestPlugin_destroy_sample;
-                plugin->finalizeOptionalMembersFnc =
-                (PRESTypePluginFinalizeOptionalMembersFunction)
-                DiffpTuningRequest_finalize_optional_members;
-
-                plugin->serializeFnc = 
-                (PRESTypePluginSerializeFunction) PRESTypePlugin_interpretedSerialize;
-                plugin->deserializeFnc =
-                (PRESTypePluginDeserializeFunction) PRESTypePlugin_interpretedDeserializeWithAlloc;
-                plugin->getSerializedSampleMaxSizeFnc =
-                (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPlugin_get_serialized_sample_max_size;
-                plugin->getSerializedSampleMinSizeFnc =
-                (PRESTypePluginGetSerializedSampleMinSizeFunction)
-                PRESTypePlugin_interpretedGetSerializedSampleMinSize;
-                plugin->getDeserializedSampleMaxSizeFnc = NULL; 
-                plugin->getSampleFnc =
-                (PRESTypePluginGetSampleFunction)
-                DiffpTuningRequestPlugin_get_sample;
-                plugin->returnSampleFnc =
-                (PRESTypePluginReturnSampleFunction)
-                DiffpTuningRequestPlugin_return_sample;
-                plugin->getKeyKindFnc =
-                (PRESTypePluginGetKeyKindFunction)
-                Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequestPlugin_get_key_kind;
-
-                /* These functions are only used for keyed types. As this is not a keyed
-                type they are all set to NULL
-                */
-                plugin->serializeKeyFnc = NULL ;    
-                plugin->deserializeKeyFnc = NULL;  
-                plugin->getKeyFnc = NULL;
-                plugin->returnKeyFnc = NULL;
-                plugin->instanceToKeyFnc = NULL;
-                plugin->keyToInstanceFnc = NULL;
-                plugin->getSerializedKeyMaxSizeFnc = NULL;
-                plugin->instanceToKeyHashFnc = NULL;
-                plugin->serializedSampleToKeyHashFnc = NULL;
-                plugin->serializedKeyToKeyHashFnc = NULL;    
-                #ifdef NDDS_STANDALONE_TYPE
-                plugin->typeCode = NULL; 
-                #else
-                plugin->typeCode =  (struct RTICdrTypeCode *)Shell::Hmi::AutoTunerConfiguration::DiffpTuningRequest_get_typecode();
-                #endif
-                plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
-
-                /* Serialized buffer */
-                plugin->getBuffer = 
-                (PRESTypePluginGetBufferFunction)
-                DiffpTuningRequestPlugin_get_buffer;
-                plugin->returnBuffer = 
-                (PRESTypePluginReturnBufferFunction)
-                DiffpTuningRequestPlugin_return_buffer;
-                plugin->getBufferWithParams = NULL;
-                plugin->returnBufferWithParams = NULL;  
-                plugin->getSerializedSampleSizeFnc =
-                (PRESTypePluginGetSerializedSampleSizeFunction)
-                PRESTypePlugin_interpretedGetSerializedSampleSize;
-
-                plugin->getWriterLoanedSampleFnc = NULL; 
-                plugin->returnWriterLoanedSampleFnc = NULL;
-                plugin->returnWriterLoanedSampleFromCookieFnc = NULL;
-                plugin->validateWriterLoanedSampleFnc = NULL;
-                plugin->setWriterLoanedSampleSerializedStateFnc = NULL;
-
-                plugin->endpointTypeName = DiffpTuningRequestTYPENAME;
-                plugin->isMetpType = RTI_FALSE;
-                return plugin;
-            }
-
-            void
-            DiffpTuningRequestPlugin_delete(struct PRESTypePlugin *plugin)
-            {
-                RTIOsapiHeap_freeStructure(plugin);
-            } 
-
-            /* ----------------------------------------------------------------------------
             *  Type DiffpTuningState
             * -------------------------------------------------------------------------- */
 
@@ -1558,7 +840,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::DiffpTuningState_finalize_w_params(sample,dealloc_params);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -1567,7 +848,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::DiffpTuningState_finalize_ex(sample,deallocate_pointers);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -1596,57 +876,57 @@ namespace Shell {
                 RTICdrType_printIndent(indent_level);
 
                 if (desc != NULL) {
-                    RTILog_debug("%s:\n", desc);
+                    RTILogParamString_printPlain("%s:\n", desc);
                 } else {
-                    RTILog_debug("\n");
+                    RTILogParamString_printPlain("\n");
                 }
 
                 if (sample == NULL) {
-                    RTILog_debug("NULL\n");
+                    RTILogParamString_printPlain("NULL\n");
                     return;
                 }
 
                 RTICdrType_printDouble(
-                    &sample->diffPFilter, "diffPFilter", indent_level + 1);    
+                    &sample->filter, "filter", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->diffPD, "diffPD", indent_level + 1);    
+                    &sample->d, "d", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->diffPF, "diffPF", indent_level + 1);    
+                    &sample->f, "f", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->diffPEps, "diffPEps", indent_level + 1);    
+                    &sample->epsilon, "epsilon", indent_level + 1);    
 
                 RTICdrType_printBoolean(
-                    &sample->diffPEpsManual, "diffPEpsManual", indent_level + 1);    
+                    &sample->epsilonManual, "epsilonManual", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->diffPKcMin, "diffPKcMin", indent_level + 1);    
+                    &sample->kcMin, "kcMin", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->diffPKcMax, "diffPKcMax", indent_level + 1);    
+                    &sample->kcMax, "kcMax", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->diffPTiMin, "diffPTiMin", indent_level + 1);    
+                    &sample->tiMin, "tiMin", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->diffPTiMax, "diffPTiMax", indent_level + 1);    
+                    &sample->tiMax, "tiMax", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->diffPInitK, "diffPInitK", indent_level + 1);    
+                    &sample->initK, "initK", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->diffPInitTau, "diffPInitTau", indent_level + 1);    
+                    &sample->initTau, "initTau", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->diffPInitPreFilter, "diffPInitPreFilter", indent_level + 1);    
+                    &sample->initPreFilter, "initPreFilter", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->diffPR1, "diffPR1", indent_level + 1);    
+                    &sample->r1, "r1", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->diffPR2, "diffPR2", indent_level + 1);    
+                    &sample->r2, "r2", indent_level + 1);    
 
             }
 
@@ -1681,6 +961,7 @@ namespace Shell {
                 programProperty.resolveAlias = RTI_XCDR_TRUE;
                 programProperty.inlineStruct = RTI_XCDR_TRUE;
                 programProperty.optimizeEnum = RTI_XCDR_TRUE;
+                programProperty.unboundedSize = RTIXCdrLong_MAX;
 
                 programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                     DDS_TypeCodeFactory_get_instance(),
@@ -1817,7 +1098,7 @@ namespace Shell {
                 struct PRESTypePluginDefaultEndpointData epd;
                 RTIBool result;
                 struct PRESTypePluginDefaultParticipantData pd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePlugin plugin;
 
@@ -1826,7 +1107,7 @@ namespace Shell {
                 }
 
                 RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -1904,12 +1185,12 @@ namespace Shell {
             {
                 struct RTICdrStream stream;
                 struct PRESTypePluginDefaultEndpointData epd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePluginDefaultParticipantData pd;
                 struct PRESTypePlugin plugin;
 
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -2110,7 +1391,7 @@ namespace Shell {
                 return size;
             }
 
-            struct RTIXCdrInterpreterPrograms *DiffpTuningStatePlugin_get_programs()
+            struct RTIXCdrInterpreterPrograms * DiffpTuningStatePlugin_get_programs(void)
             {
                 return ::rti::xcdr::get_cdr_serialization_programs<
                 DiffpTuningState, 
@@ -2234,724 +1515,6 @@ namespace Shell {
             } 
 
             /* ----------------------------------------------------------------------------
-            *  Type WobTuningRequest
-            * -------------------------------------------------------------------------- */
-
-            /* -----------------------------------------------------------------------------
-            Support functions:
-            * -------------------------------------------------------------------------- */
-
-            WobTuningRequest*
-            WobTuningRequestPluginSupport_create_data_w_params(
-                const struct DDS_TypeAllocationParams_t * alloc_params) 
-            {
-                WobTuningRequest *sample = NULL;
-
-                sample = new (std::nothrow) WobTuningRequest ;
-                if (sample == NULL) {
-                    return NULL;
-                }
-
-                if (!Shell::Hmi::AutoTunerConfiguration::WobTuningRequest_initialize_w_params(sample,alloc_params)) {
-                    delete  sample;
-                    sample=NULL;
-                }
-                return sample;
-            } 
-
-            WobTuningRequest *
-            WobTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
-            {
-                WobTuningRequest *sample = NULL;
-
-                sample = new (std::nothrow) WobTuningRequest ;
-
-                if(sample == NULL) {
-                    return NULL;
-                }
-
-                if (!Shell::Hmi::AutoTunerConfiguration::WobTuningRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-                    delete  sample;
-                    sample=NULL;
-                }
-
-                return sample;
-            }
-
-            WobTuningRequest *
-            WobTuningRequestPluginSupport_create_data(void)
-            {
-                return Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPluginSupport_create_data_ex(RTI_TRUE);
-            }
-
-            void 
-            WobTuningRequestPluginSupport_destroy_data_w_params(
-                WobTuningRequest *sample,
-                const struct DDS_TypeDeallocationParams_t * dealloc_params) {
-                Shell::Hmi::AutoTunerConfiguration::WobTuningRequest_finalize_w_params(sample,dealloc_params);
-
-                delete  sample;
-                sample=NULL;
-            }
-
-            void 
-            WobTuningRequestPluginSupport_destroy_data_ex(
-                WobTuningRequest *sample,RTIBool deallocate_pointers) {
-                Shell::Hmi::AutoTunerConfiguration::WobTuningRequest_finalize_ex(sample,deallocate_pointers);
-
-                delete  sample;
-                sample=NULL;
-            }
-
-            void 
-            WobTuningRequestPluginSupport_destroy_data(
-                WobTuningRequest *sample) {
-
-                Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
-
-            }
-
-            RTIBool 
-            WobTuningRequestPluginSupport_copy_data(
-                WobTuningRequest *dst,
-                const WobTuningRequest *src)
-            {
-                return Shell::Hmi::AutoTunerConfiguration::WobTuningRequest_copy(dst,(const WobTuningRequest*) src);
-            }
-
-            void 
-            WobTuningRequestPluginSupport_print_data(
-                const WobTuningRequest *sample,
-                const char *desc,
-                unsigned int indent_level)
-            {
-
-                RTICdrType_printIndent(indent_level);
-
-                if (desc != NULL) {
-                    RTILog_debug("%s:\n", desc);
-                } else {
-                    RTILog_debug("\n");
-                }
-
-                if (sample == NULL) {
-                    RTILog_debug("NULL\n");
-                    return;
-                }
-
-                RTICdrType_printDouble(
-                    &sample->wobFilter, "wobFilter", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->wobD, "wobD", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->wobF, "wobF", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->wobEps, "wobEps", indent_level + 1);    
-
-                RTICdrType_printBoolean(
-                    &sample->wobEpsManual, "wobEpsManual", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->wobKcMin, "wobKcMin", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->wobKcMax, "wobKcMax", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->wobTiMin, "wobTiMin", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->wobTiMax, "wobTiMax", indent_level + 1);    
-
-            }
-
-            /* ----------------------------------------------------------------------------
-            Callback functions:
-            * ---------------------------------------------------------------------------- */
-
-            PRESTypePluginParticipantData 
-            WobTuningRequestPlugin_on_participant_attached(
-                void *registration_data,
-                const struct PRESTypePluginParticipantInfo *participant_info,
-                RTIBool top_level_registration,
-                void *container_plugin_context,
-                RTICdrTypeCode *type_code)
-            {
-                struct RTIXCdrInterpreterPrograms *programs = NULL;
-                struct PRESTypePluginDefaultParticipantData *pd = NULL;
-                struct RTIXCdrInterpreterProgramsGenProperty programProperty =
-                RTIXCdrInterpreterProgramsGenProperty_INITIALIZER;
-
-                if (registration_data) {} /* To avoid warnings */
-                if (participant_info) {} /* To avoid warnings */
-                if (top_level_registration) {} /* To avoid warnings */
-                if (container_plugin_context) {} /* To avoid warnings */
-                if (type_code) {} /* To avoid warnings */
-
-                pd = (struct PRESTypePluginDefaultParticipantData *)
-                PRESTypePluginDefaultParticipantData_new(participant_info);
-
-                programProperty.generateV1Encapsulation = RTI_XCDR_TRUE;
-                programProperty.generateV2Encapsulation = RTI_XCDR_TRUE;
-                programProperty.resolveAlias = RTI_XCDR_TRUE;
-                programProperty.inlineStruct = RTI_XCDR_TRUE;
-                programProperty.optimizeEnum = RTI_XCDR_TRUE;
-
-                programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
-                    DDS_TypeCodeFactory_get_instance(),
-                    WobTuningRequest_get_typecode(),
-                    &programProperty,
-                    RTI_XCDR_PROGRAM_MASK_TYPEPLUGIN);
-                if (programs == NULL) {
-                    PRESTypePluginDefaultParticipantData_delete(
-                        (PRESTypePluginParticipantData) pd);
-                    return NULL;
-                }
-
-                pd->programs = programs;
-                return (PRESTypePluginParticipantData)pd;
-            }
-
-            void 
-            WobTuningRequestPlugin_on_participant_detached(
-                PRESTypePluginParticipantData participant_data)
-            {  		
-                if (participant_data != NULL) {
-                    struct PRESTypePluginDefaultParticipantData *pd = 
-                    (struct PRESTypePluginDefaultParticipantData *)participant_data;
-
-                    if (pd->programs != NULL) {
-                        DDS_TypeCodeFactory_remove_programs_from_global_list(
-                            DDS_TypeCodeFactory_get_instance(),
-                            pd->programs);
-                        pd->programs = NULL;
-                    }
-                    PRESTypePluginDefaultParticipantData_delete(participant_data);
-                }
-            }
-
-            PRESTypePluginEndpointData
-            WobTuningRequestPlugin_on_endpoint_attached(
-                PRESTypePluginParticipantData participant_data,
-                const struct PRESTypePluginEndpointInfo *endpoint_info,
-                RTIBool top_level_registration, 
-                void *containerPluginContext)
-            {
-                PRESTypePluginEndpointData epd = NULL;
-                unsigned int serializedSampleMaxSize = 0;
-
-                if (top_level_registration) {} /* To avoid warnings */
-                if (containerPluginContext) {} /* To avoid warnings */
-
-                if (participant_data == NULL) {
-                    return NULL;
-                } 
-
-                epd = PRESTypePluginDefaultEndpointData_new(
-                    participant_data,
-                    endpoint_info,
-                    (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPluginSupport_create_data,
-                    (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPluginSupport_destroy_data,
-                    NULL , NULL );
-
-                if (epd == NULL) {
-                    return NULL;
-                } 
-
-                if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                    serializedSampleMaxSize = Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPlugin_get_serialized_sample_max_size(
-                        epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
-                    PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
-
-                    if (PRESTypePluginDefaultEndpointData_createWriterPool(
-                        epd,
-                        endpoint_info,
-                        (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                        Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPlugin_get_serialized_sample_max_size, epd,
-                        (PRESTypePluginGetSerializedSampleSizeFunction)
-                        PRESTypePlugin_interpretedGetSerializedSampleSize,
-                        epd) == RTI_FALSE) {
-                        PRESTypePluginDefaultEndpointData_delete(epd);
-                        return NULL;
-                    }
-                }
-
-                return epd;    
-            }
-
-            void 
-            WobTuningRequestPlugin_on_endpoint_detached(
-                PRESTypePluginEndpointData endpoint_data)
-            {
-                PRESTypePluginDefaultEndpointData_delete(endpoint_data);
-            }
-
-            void    
-            WobTuningRequestPlugin_return_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                WobTuningRequest *sample,
-                void *handle)
-            {
-                WobTuningRequest_finalize_optional_members(sample, RTI_TRUE);
-
-                PRESTypePluginDefaultEndpointData_returnSample(
-                    endpoint_data, sample, handle);
-            }
-
-            RTIBool 
-            WobTuningRequestPlugin_copy_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                WobTuningRequest *dst,
-                const WobTuningRequest *src)
-            {
-                if (endpoint_data) {} /* To avoid warnings */
-                return Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPluginSupport_copy_data(dst,src);
-            }
-
-            /* ----------------------------------------------------------------------------
-            (De)Serialize functions:
-            * ------------------------------------------------------------------------- */
-            unsigned int 
-            WobTuningRequestPlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            RTIBool
-            WobTuningRequestPlugin_serialize_to_cdr_buffer_ex(
-                char *buffer,
-                unsigned int *length,
-                const WobTuningRequest *sample,
-                DDS_DataRepresentationId_t representation)
-            {
-                RTIEncapsulationId encapsulationId = RTI_CDR_ENCAPSULATION_ID_INVALID;
-                struct RTICdrStream stream;
-                struct PRESTypePluginDefaultEndpointData epd;
-                RTIBool result;
-                struct PRESTypePluginDefaultParticipantData pd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
-                RTIXCdrTypePluginProgramContext_INTIALIZER;
-                struct PRESTypePlugin plugin;
-
-                if (length == NULL) {
-                    return RTI_FALSE;
-                }
-
-                RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-                epd.programContext = defaultProgramConext;  
-                epd._participantData = &pd;
-                epd.typePlugin = &plugin;
-                epd.programContext.endpointPluginData = &epd;
-                plugin.typeCode = (struct RTICdrTypeCode *)
-                WobTuningRequest_get_typecode();
-                pd.programs = WobTuningRequestPlugin_get_programs();
-                if (pd.programs == NULL) {
-                    return RTI_FALSE;
-                }
-
-                encapsulationId = DDS_TypeCode_get_native_encapsulation(
-                    (DDS_TypeCode *) plugin.typeCode,
-                    representation);    
-                if (encapsulationId == RTI_CDR_ENCAPSULATION_ID_INVALID) {
-                    return RTI_FALSE;
-                }
-
-                epd._maxSizeSerializedSample =
-                WobTuningRequestPlugin_get_serialized_sample_max_size(
-                    (PRESTypePluginEndpointData)&epd, 
-                    RTI_TRUE, 
-                    encapsulationId,
-                    0);
-
-                if (buffer == NULL) {
-                    *length = 
-                    PRESTypePlugin_interpretedGetSerializedSampleSize(
-                        (PRESTypePluginEndpointData)&epd,
-                        RTI_TRUE,
-                        encapsulationId,
-                        0,
-                        sample);
-
-                    if (*length == 0) {
-                        return RTI_FALSE;
-                    }
-
-                    return RTI_TRUE;
-                }    
-
-                RTICdrStream_init(&stream);
-                RTICdrStream_set(&stream, (char *)buffer, *length);
-
-                result = PRESTypePlugin_interpretedSerialize(
-                    (PRESTypePluginEndpointData)&epd,
-                    sample,
-                    &stream,
-                    RTI_TRUE,
-                    encapsulationId,
-                    RTI_TRUE,
-                    NULL);
-
-                *length = RTICdrStream_getCurrentPositionOffset(&stream);
-                return result;
-            }
-
-            RTIBool
-            WobTuningRequestPlugin_serialize_to_cdr_buffer(
-                char *buffer,
-                unsigned int *length,
-                const WobTuningRequest *sample)
-            {
-                return WobTuningRequestPlugin_serialize_to_cdr_buffer_ex(
-                    buffer,
-                    length,
-                    sample,
-                    DDS_AUTO_DATA_REPRESENTATION);
-            }
-
-            RTIBool
-            WobTuningRequestPlugin_deserialize_from_cdr_buffer(
-                WobTuningRequest *sample,
-                const char * buffer,
-                unsigned int length)
-            {
-                struct RTICdrStream stream;
-                struct PRESTypePluginDefaultEndpointData epd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
-                RTIXCdrTypePluginProgramContext_INTIALIZER;
-                struct PRESTypePluginDefaultParticipantData pd;
-                struct PRESTypePlugin plugin;
-
-                epd.programContext = defaultProgramConext;  
-                epd._participantData = &pd;
-                epd.typePlugin = &plugin;
-                epd.programContext.endpointPluginData = &epd;
-                plugin.typeCode = (struct RTICdrTypeCode *)
-                WobTuningRequest_get_typecode();
-                pd.programs = WobTuningRequestPlugin_get_programs();
-                if (pd.programs == NULL) {
-                    return RTI_FALSE;
-                }
-
-                epd._assignabilityProperty.acceptUnknownEnumValue = RTI_XCDR_TRUE;
-                epd._assignabilityProperty.acceptUnknownUnionDiscriminator = RTI_XCDR_TRUE;
-
-                RTICdrStream_init(&stream);
-                RTICdrStream_set(&stream, (char *)buffer, length);
-
-                WobTuningRequest_finalize_optional_members(sample, RTI_TRUE);
-                return PRESTypePlugin_interpretedDeserialize( 
-                    (PRESTypePluginEndpointData)&epd, sample,
-                    &stream, RTI_TRUE, RTI_TRUE, 
-                    NULL);
-            }
-
-            #ifndef NDDS_STANDALONE_TYPE
-            DDS_ReturnCode_t
-            WobTuningRequestPlugin_data_to_string(
-                const WobTuningRequest *sample,
-                char *str,
-                DDS_UnsignedLong *str_size, 
-                const struct DDS_PrintFormatProperty *property)
-            {
-                DDS_DynamicData *data = NULL;
-                char *buffer = NULL;
-                unsigned int length = 0;
-                struct DDS_PrintFormat printFormat;
-                DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-                if (sample == NULL) {
-                    return DDS_RETCODE_BAD_PARAMETER;
-                }
-
-                if (str_size == NULL) {
-                    return DDS_RETCODE_BAD_PARAMETER;
-                }
-
-                if (property == NULL) {
-                    return DDS_RETCODE_BAD_PARAMETER;
-                }
-                if (!WobTuningRequestPlugin_serialize_to_cdr_buffer(
-                    NULL, 
-                    &length, 
-                    sample)) {
-                    return DDS_RETCODE_ERROR;
-                }
-
-                RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-                if (buffer == NULL) {
-                    return DDS_RETCODE_ERROR;
-                }
-
-                if (!WobTuningRequestPlugin_serialize_to_cdr_buffer(
-                    buffer, 
-                    &length, 
-                    sample)) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    return DDS_RETCODE_ERROR;
-                }
-                data = DDS_DynamicData_new(
-                    WobTuningRequest_get_typecode(), 
-                    &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-                if (data == NULL) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    return DDS_RETCODE_ERROR;
-                }
-
-                retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-                if (retCode != DDS_RETCODE_OK) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    DDS_DynamicData_delete(data);
-                    return retCode;
-                }
-
-                retCode = DDS_PrintFormatProperty_to_print_format(
-                    property, 
-                    &printFormat);
-                if (retCode != DDS_RETCODE_OK) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    DDS_DynamicData_delete(data);
-                    return retCode;
-                }
-
-                retCode = DDS_DynamicDataFormatter_to_string_w_format(
-                    data, 
-                    str,
-                    str_size, 
-                    &printFormat);
-                if (retCode != DDS_RETCODE_OK) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    DDS_DynamicData_delete(data);
-                    return retCode;
-                }
-
-                RTIOsapiHeap_freeBuffer(buffer);
-                DDS_DynamicData_delete(data);
-                return DDS_RETCODE_OK;
-            }
-            #endif
-
-            unsigned int 
-            WobTuningRequestPlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment)
-            {
-                unsigned int size;
-                RTIBool overflow = RTI_FALSE;
-
-                size = PRESTypePlugin_interpretedGetSerializedSampleMaxSize(
-                    endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
-
-                if (overflow) {
-                    size = RTI_CDR_MAX_SERIALIZED_SIZE;
-                }
-
-                return size;
-            }
-
-            /* --------------------------------------------------------------------------------------
-            Key Management functions:
-            * -------------------------------------------------------------------------------------- */
-
-            PRESTypePluginKeyKind 
-            WobTuningRequestPlugin_get_key_kind(void)
-            {
-                return PRES_TYPEPLUGIN_NO_KEY;
-            }
-
-            RTIBool WobTuningRequestPlugin_deserialize_key(
-                PRESTypePluginEndpointData endpoint_data,
-                WobTuningRequest **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_key,
-                void *endpoint_plugin_qos)
-            {
-                RTIBool result;
-                if (drop_sample) {} /* To avoid warnings */
-                stream->_xTypesState.unassignable = RTI_FALSE;
-                result= PRESTypePlugin_interpretedDeserializeKey(
-                    endpoint_data, (sample != NULL)?*sample:NULL, stream,
-                    deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
-                if (result) {
-                    if (stream->_xTypesState.unassignable) {
-                        result = RTI_FALSE;
-                    }
-                }
-                return result;    
-
-            }
-
-            unsigned int
-            WobTuningRequestPlugin_get_serialized_key_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment)
-            {
-                unsigned int size;
-                RTIBool overflow = RTI_FALSE;
-                size = PRESTypePlugin_interpretedGetSerializedKeyMaxSize(
-                    endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
-                if (overflow) {
-                    size = RTI_CDR_MAX_SERIALIZED_SIZE;
-                }
-
-                return size;
-            }
-
-            unsigned int
-            WobTuningRequestPlugin_get_serialized_key_max_size_for_keyhash(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment)
-            {
-                unsigned int size;
-                RTIBool overflow = RTI_FALSE;
-                size = PRESTypePlugin_interpretedGetSerializedKeyMaxSizeForKeyhash(
-                    endpoint_data,
-                    &overflow,
-                    encapsulation_id,
-                    current_alignment);
-                if (overflow) {
-                    size = RTI_CDR_MAX_SERIALIZED_SIZE;
-                }
-
-                return size;
-            }
-
-            struct RTIXCdrInterpreterPrograms *WobTuningRequestPlugin_get_programs()
-            {
-                return ::rti::xcdr::get_cdr_serialization_programs<
-                WobTuningRequest, 
-                true, true, true>();
-            }
-
-            /* ------------------------------------------------------------------------
-            * Plug-in Installation Methods
-            * ------------------------------------------------------------------------ */
-            struct PRESTypePlugin *WobTuningRequestPlugin_new(void) 
-            { 
-                struct PRESTypePlugin *plugin = NULL;
-                const struct PRESTypePluginVersion PLUGIN_VERSION = 
-                PRES_TYPE_PLUGIN_VERSION_2_0;
-
-                RTIOsapiHeap_allocateStructure(
-                    &plugin, struct PRESTypePlugin);
-
-                if (plugin == NULL) {
-                    return NULL;
-                }
-
-                plugin->version = PLUGIN_VERSION;
-
-                /* set up parent's function pointers */
-                plugin->onParticipantAttached =
-                (PRESTypePluginOnParticipantAttachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPlugin_on_participant_attached;
-                plugin->onParticipantDetached =
-                (PRESTypePluginOnParticipantDetachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPlugin_on_participant_detached;
-                plugin->onEndpointAttached =
-                (PRESTypePluginOnEndpointAttachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPlugin_on_endpoint_attached;
-                plugin->onEndpointDetached =
-                (PRESTypePluginOnEndpointDetachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPlugin_on_endpoint_detached;
-
-                plugin->copySampleFnc =
-                (PRESTypePluginCopySampleFunction)
-                Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPlugin_copy_sample;
-                plugin->createSampleFnc =
-                (PRESTypePluginCreateSampleFunction)
-                WobTuningRequestPlugin_create_sample;
-                plugin->destroySampleFnc =
-                (PRESTypePluginDestroySampleFunction)
-                WobTuningRequestPlugin_destroy_sample;
-                plugin->finalizeOptionalMembersFnc =
-                (PRESTypePluginFinalizeOptionalMembersFunction)
-                WobTuningRequest_finalize_optional_members;
-
-                plugin->serializeFnc = 
-                (PRESTypePluginSerializeFunction) PRESTypePlugin_interpretedSerialize;
-                plugin->deserializeFnc =
-                (PRESTypePluginDeserializeFunction) PRESTypePlugin_interpretedDeserializeWithAlloc;
-                plugin->getSerializedSampleMaxSizeFnc =
-                (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPlugin_get_serialized_sample_max_size;
-                plugin->getSerializedSampleMinSizeFnc =
-                (PRESTypePluginGetSerializedSampleMinSizeFunction)
-                PRESTypePlugin_interpretedGetSerializedSampleMinSize;
-                plugin->getDeserializedSampleMaxSizeFnc = NULL; 
-                plugin->getSampleFnc =
-                (PRESTypePluginGetSampleFunction)
-                WobTuningRequestPlugin_get_sample;
-                plugin->returnSampleFnc =
-                (PRESTypePluginReturnSampleFunction)
-                WobTuningRequestPlugin_return_sample;
-                plugin->getKeyKindFnc =
-                (PRESTypePluginGetKeyKindFunction)
-                Shell::Hmi::AutoTunerConfiguration::WobTuningRequestPlugin_get_key_kind;
-
-                /* These functions are only used for keyed types. As this is not a keyed
-                type they are all set to NULL
-                */
-                plugin->serializeKeyFnc = NULL ;    
-                plugin->deserializeKeyFnc = NULL;  
-                plugin->getKeyFnc = NULL;
-                plugin->returnKeyFnc = NULL;
-                plugin->instanceToKeyFnc = NULL;
-                plugin->keyToInstanceFnc = NULL;
-                plugin->getSerializedKeyMaxSizeFnc = NULL;
-                plugin->instanceToKeyHashFnc = NULL;
-                plugin->serializedSampleToKeyHashFnc = NULL;
-                plugin->serializedKeyToKeyHashFnc = NULL;    
-                #ifdef NDDS_STANDALONE_TYPE
-                plugin->typeCode = NULL; 
-                #else
-                plugin->typeCode =  (struct RTICdrTypeCode *)Shell::Hmi::AutoTunerConfiguration::WobTuningRequest_get_typecode();
-                #endif
-                plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
-
-                /* Serialized buffer */
-                plugin->getBuffer = 
-                (PRESTypePluginGetBufferFunction)
-                WobTuningRequestPlugin_get_buffer;
-                plugin->returnBuffer = 
-                (PRESTypePluginReturnBufferFunction)
-                WobTuningRequestPlugin_return_buffer;
-                plugin->getBufferWithParams = NULL;
-                plugin->returnBufferWithParams = NULL;  
-                plugin->getSerializedSampleSizeFnc =
-                (PRESTypePluginGetSerializedSampleSizeFunction)
-                PRESTypePlugin_interpretedGetSerializedSampleSize;
-
-                plugin->getWriterLoanedSampleFnc = NULL; 
-                plugin->returnWriterLoanedSampleFnc = NULL;
-                plugin->returnWriterLoanedSampleFromCookieFnc = NULL;
-                plugin->validateWriterLoanedSampleFnc = NULL;
-                plugin->setWriterLoanedSampleSerializedStateFnc = NULL;
-
-                plugin->endpointTypeName = WobTuningRequestTYPENAME;
-                plugin->isMetpType = RTI_FALSE;
-                return plugin;
-            }
-
-            void
-            WobTuningRequestPlugin_delete(struct PRESTypePlugin *plugin)
-            {
-                RTIOsapiHeap_freeStructure(plugin);
-            } 
-
-            /* ----------------------------------------------------------------------------
             *  Type WobTuningState
             * -------------------------------------------------------------------------- */
 
@@ -3009,7 +1572,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::WobTuningState_finalize_w_params(sample,dealloc_params);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -3018,7 +1580,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::WobTuningState_finalize_ex(sample,deallocate_pointers);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -3047,57 +1608,57 @@ namespace Shell {
                 RTICdrType_printIndent(indent_level);
 
                 if (desc != NULL) {
-                    RTILog_debug("%s:\n", desc);
+                    RTILogParamString_printPlain("%s:\n", desc);
                 } else {
-                    RTILog_debug("\n");
+                    RTILogParamString_printPlain("\n");
                 }
 
                 if (sample == NULL) {
-                    RTILog_debug("NULL\n");
+                    RTILogParamString_printPlain("NULL\n");
                     return;
                 }
 
                 RTICdrType_printDouble(
-                    &sample->wobFilter, "wobFilter", indent_level + 1);    
+                    &sample->filter, "filter", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->wobD, "wobD", indent_level + 1);    
+                    &sample->d, "d", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->wobF, "wobF", indent_level + 1);    
+                    &sample->f, "f", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->wobEps, "wobEps", indent_level + 1);    
+                    &sample->epsilon, "epsilon", indent_level + 1);    
 
                 RTICdrType_printBoolean(
-                    &sample->wobEpsManual, "wobEpsManual", indent_level + 1);    
+                    &sample->epsilonManual, "epsilonManual", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->wobKcMin, "wobKcMin", indent_level + 1);    
+                    &sample->kcMin, "kcMin", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->wobKcMax, "wobKcMax", indent_level + 1);    
+                    &sample->kcMax, "kcMax", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->wobTiMin, "wobTiMin", indent_level + 1);    
+                    &sample->tiMin, "tiMin", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->wobTiMax, "wobTiMax", indent_level + 1);    
+                    &sample->tiMax, "tiMax", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->wobInitK, "wobInitK", indent_level + 1);    
+                    &sample->initK, "initK", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->wobInitTau, "wobInitTau", indent_level + 1);    
+                    &sample->initTau, "initTau", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->wobInitPreFilter, "wobInitPreFilter", indent_level + 1);    
+                    &sample->initPreFilter, "initPreFilter", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->wobR1, "wobR1", indent_level + 1);    
+                    &sample->r1, "r1", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->wobR2, "wobR2", indent_level + 1);    
+                    &sample->r2, "r2", indent_level + 1);    
 
             }
 
@@ -3132,6 +1693,7 @@ namespace Shell {
                 programProperty.resolveAlias = RTI_XCDR_TRUE;
                 programProperty.inlineStruct = RTI_XCDR_TRUE;
                 programProperty.optimizeEnum = RTI_XCDR_TRUE;
+                programProperty.unboundedSize = RTIXCdrLong_MAX;
 
                 programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                     DDS_TypeCodeFactory_get_instance(),
@@ -3268,7 +1830,7 @@ namespace Shell {
                 struct PRESTypePluginDefaultEndpointData epd;
                 RTIBool result;
                 struct PRESTypePluginDefaultParticipantData pd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePlugin plugin;
 
@@ -3277,7 +1839,7 @@ namespace Shell {
                 }
 
                 RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -3355,12 +1917,12 @@ namespace Shell {
             {
                 struct RTICdrStream stream;
                 struct PRESTypePluginDefaultEndpointData epd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePluginDefaultParticipantData pd;
                 struct PRESTypePlugin plugin;
 
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -3561,7 +2123,7 @@ namespace Shell {
                 return size;
             }
 
-            struct RTIXCdrInterpreterPrograms *WobTuningStatePlugin_get_programs()
+            struct RTIXCdrInterpreterPrograms * WobTuningStatePlugin_get_programs(void)
             {
                 return ::rti::xcdr::get_cdr_serialization_programs<
                 WobTuningState, 
@@ -3685,724 +2247,6 @@ namespace Shell {
             } 
 
             /* ----------------------------------------------------------------------------
-            *  Type TorqueTuningRequest
-            * -------------------------------------------------------------------------- */
-
-            /* -----------------------------------------------------------------------------
-            Support functions:
-            * -------------------------------------------------------------------------- */
-
-            TorqueTuningRequest*
-            TorqueTuningRequestPluginSupport_create_data_w_params(
-                const struct DDS_TypeAllocationParams_t * alloc_params) 
-            {
-                TorqueTuningRequest *sample = NULL;
-
-                sample = new (std::nothrow) TorqueTuningRequest ;
-                if (sample == NULL) {
-                    return NULL;
-                }
-
-                if (!Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequest_initialize_w_params(sample,alloc_params)) {
-                    delete  sample;
-                    sample=NULL;
-                }
-                return sample;
-            } 
-
-            TorqueTuningRequest *
-            TorqueTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers) 
-            {
-                TorqueTuningRequest *sample = NULL;
-
-                sample = new (std::nothrow) TorqueTuningRequest ;
-
-                if(sample == NULL) {
-                    return NULL;
-                }
-
-                if (!Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequest_initialize_ex(sample,allocate_pointers, RTI_TRUE)) {
-                    delete  sample;
-                    sample=NULL;
-                }
-
-                return sample;
-            }
-
-            TorqueTuningRequest *
-            TorqueTuningRequestPluginSupport_create_data(void)
-            {
-                return Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPluginSupport_create_data_ex(RTI_TRUE);
-            }
-
-            void 
-            TorqueTuningRequestPluginSupport_destroy_data_w_params(
-                TorqueTuningRequest *sample,
-                const struct DDS_TypeDeallocationParams_t * dealloc_params) {
-                Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequest_finalize_w_params(sample,dealloc_params);
-
-                delete  sample;
-                sample=NULL;
-            }
-
-            void 
-            TorqueTuningRequestPluginSupport_destroy_data_ex(
-                TorqueTuningRequest *sample,RTIBool deallocate_pointers) {
-                Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequest_finalize_ex(sample,deallocate_pointers);
-
-                delete  sample;
-                sample=NULL;
-            }
-
-            void 
-            TorqueTuningRequestPluginSupport_destroy_data(
-                TorqueTuningRequest *sample) {
-
-                Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPluginSupport_destroy_data_ex(sample,RTI_TRUE);
-
-            }
-
-            RTIBool 
-            TorqueTuningRequestPluginSupport_copy_data(
-                TorqueTuningRequest *dst,
-                const TorqueTuningRequest *src)
-            {
-                return Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequest_copy(dst,(const TorqueTuningRequest*) src);
-            }
-
-            void 
-            TorqueTuningRequestPluginSupport_print_data(
-                const TorqueTuningRequest *sample,
-                const char *desc,
-                unsigned int indent_level)
-            {
-
-                RTICdrType_printIndent(indent_level);
-
-                if (desc != NULL) {
-                    RTILog_debug("%s:\n", desc);
-                } else {
-                    RTILog_debug("\n");
-                }
-
-                if (sample == NULL) {
-                    RTILog_debug("NULL\n");
-                    return;
-                }
-
-                RTICdrType_printDouble(
-                    &sample->torqueFilter, "torqueFilter", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->torqueD, "torqueD", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->torqueF, "torqueF", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->torqueEps, "torqueEps", indent_level + 1);    
-
-                RTICdrType_printBoolean(
-                    &sample->torqueEpsManual, "torqueEpsManual", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->torqueKcMin, "torqueKcMin", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->torqueKcMax, "torqueKcMax", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->torqueTiMin, "torqueTiMin", indent_level + 1);    
-
-                RTICdrType_printDouble(
-                    &sample->torqueTiMax, "torqueTiMax", indent_level + 1);    
-
-            }
-
-            /* ----------------------------------------------------------------------------
-            Callback functions:
-            * ---------------------------------------------------------------------------- */
-
-            PRESTypePluginParticipantData 
-            TorqueTuningRequestPlugin_on_participant_attached(
-                void *registration_data,
-                const struct PRESTypePluginParticipantInfo *participant_info,
-                RTIBool top_level_registration,
-                void *container_plugin_context,
-                RTICdrTypeCode *type_code)
-            {
-                struct RTIXCdrInterpreterPrograms *programs = NULL;
-                struct PRESTypePluginDefaultParticipantData *pd = NULL;
-                struct RTIXCdrInterpreterProgramsGenProperty programProperty =
-                RTIXCdrInterpreterProgramsGenProperty_INITIALIZER;
-
-                if (registration_data) {} /* To avoid warnings */
-                if (participant_info) {} /* To avoid warnings */
-                if (top_level_registration) {} /* To avoid warnings */
-                if (container_plugin_context) {} /* To avoid warnings */
-                if (type_code) {} /* To avoid warnings */
-
-                pd = (struct PRESTypePluginDefaultParticipantData *)
-                PRESTypePluginDefaultParticipantData_new(participant_info);
-
-                programProperty.generateV1Encapsulation = RTI_XCDR_TRUE;
-                programProperty.generateV2Encapsulation = RTI_XCDR_TRUE;
-                programProperty.resolveAlias = RTI_XCDR_TRUE;
-                programProperty.inlineStruct = RTI_XCDR_TRUE;
-                programProperty.optimizeEnum = RTI_XCDR_TRUE;
-
-                programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
-                    DDS_TypeCodeFactory_get_instance(),
-                    TorqueTuningRequest_get_typecode(),
-                    &programProperty,
-                    RTI_XCDR_PROGRAM_MASK_TYPEPLUGIN);
-                if (programs == NULL) {
-                    PRESTypePluginDefaultParticipantData_delete(
-                        (PRESTypePluginParticipantData) pd);
-                    return NULL;
-                }
-
-                pd->programs = programs;
-                return (PRESTypePluginParticipantData)pd;
-            }
-
-            void 
-            TorqueTuningRequestPlugin_on_participant_detached(
-                PRESTypePluginParticipantData participant_data)
-            {  		
-                if (participant_data != NULL) {
-                    struct PRESTypePluginDefaultParticipantData *pd = 
-                    (struct PRESTypePluginDefaultParticipantData *)participant_data;
-
-                    if (pd->programs != NULL) {
-                        DDS_TypeCodeFactory_remove_programs_from_global_list(
-                            DDS_TypeCodeFactory_get_instance(),
-                            pd->programs);
-                        pd->programs = NULL;
-                    }
-                    PRESTypePluginDefaultParticipantData_delete(participant_data);
-                }
-            }
-
-            PRESTypePluginEndpointData
-            TorqueTuningRequestPlugin_on_endpoint_attached(
-                PRESTypePluginParticipantData participant_data,
-                const struct PRESTypePluginEndpointInfo *endpoint_info,
-                RTIBool top_level_registration, 
-                void *containerPluginContext)
-            {
-                PRESTypePluginEndpointData epd = NULL;
-                unsigned int serializedSampleMaxSize = 0;
-
-                if (top_level_registration) {} /* To avoid warnings */
-                if (containerPluginContext) {} /* To avoid warnings */
-
-                if (participant_data == NULL) {
-                    return NULL;
-                } 
-
-                epd = PRESTypePluginDefaultEndpointData_new(
-                    participant_data,
-                    endpoint_info,
-                    (PRESTypePluginDefaultEndpointDataCreateSampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPluginSupport_create_data,
-                    (PRESTypePluginDefaultEndpointDataDestroySampleFunction)
-                    Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPluginSupport_destroy_data,
-                    NULL , NULL );
-
-                if (epd == NULL) {
-                    return NULL;
-                } 
-
-                if (endpoint_info->endpointKind == PRES_TYPEPLUGIN_ENDPOINT_WRITER) {
-                    serializedSampleMaxSize = Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPlugin_get_serialized_sample_max_size(
-                        epd,RTI_FALSE,RTI_CDR_ENCAPSULATION_ID_CDR_BE,0);
-                    PRESTypePluginDefaultEndpointData_setMaxSizeSerializedSample(epd, serializedSampleMaxSize);
-
-                    if (PRESTypePluginDefaultEndpointData_createWriterPool(
-                        epd,
-                        endpoint_info,
-                        (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                        Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPlugin_get_serialized_sample_max_size, epd,
-                        (PRESTypePluginGetSerializedSampleSizeFunction)
-                        PRESTypePlugin_interpretedGetSerializedSampleSize,
-                        epd) == RTI_FALSE) {
-                        PRESTypePluginDefaultEndpointData_delete(epd);
-                        return NULL;
-                    }
-                }
-
-                return epd;    
-            }
-
-            void 
-            TorqueTuningRequestPlugin_on_endpoint_detached(
-                PRESTypePluginEndpointData endpoint_data)
-            {
-                PRESTypePluginDefaultEndpointData_delete(endpoint_data);
-            }
-
-            void    
-            TorqueTuningRequestPlugin_return_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                TorqueTuningRequest *sample,
-                void *handle)
-            {
-                TorqueTuningRequest_finalize_optional_members(sample, RTI_TRUE);
-
-                PRESTypePluginDefaultEndpointData_returnSample(
-                    endpoint_data, sample, handle);
-            }
-
-            RTIBool 
-            TorqueTuningRequestPlugin_copy_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                TorqueTuningRequest *dst,
-                const TorqueTuningRequest *src)
-            {
-                if (endpoint_data) {} /* To avoid warnings */
-                return Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPluginSupport_copy_data(dst,src);
-            }
-
-            /* ----------------------------------------------------------------------------
-            (De)Serialize functions:
-            * ------------------------------------------------------------------------- */
-            unsigned int 
-            TorqueTuningRequestPlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            RTIBool
-            TorqueTuningRequestPlugin_serialize_to_cdr_buffer_ex(
-                char *buffer,
-                unsigned int *length,
-                const TorqueTuningRequest *sample,
-                DDS_DataRepresentationId_t representation)
-            {
-                RTIEncapsulationId encapsulationId = RTI_CDR_ENCAPSULATION_ID_INVALID;
-                struct RTICdrStream stream;
-                struct PRESTypePluginDefaultEndpointData epd;
-                RTIBool result;
-                struct PRESTypePluginDefaultParticipantData pd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
-                RTIXCdrTypePluginProgramContext_INTIALIZER;
-                struct PRESTypePlugin plugin;
-
-                if (length == NULL) {
-                    return RTI_FALSE;
-                }
-
-                RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-                epd.programContext = defaultProgramConext;  
-                epd._participantData = &pd;
-                epd.typePlugin = &plugin;
-                epd.programContext.endpointPluginData = &epd;
-                plugin.typeCode = (struct RTICdrTypeCode *)
-                TorqueTuningRequest_get_typecode();
-                pd.programs = TorqueTuningRequestPlugin_get_programs();
-                if (pd.programs == NULL) {
-                    return RTI_FALSE;
-                }
-
-                encapsulationId = DDS_TypeCode_get_native_encapsulation(
-                    (DDS_TypeCode *) plugin.typeCode,
-                    representation);    
-                if (encapsulationId == RTI_CDR_ENCAPSULATION_ID_INVALID) {
-                    return RTI_FALSE;
-                }
-
-                epd._maxSizeSerializedSample =
-                TorqueTuningRequestPlugin_get_serialized_sample_max_size(
-                    (PRESTypePluginEndpointData)&epd, 
-                    RTI_TRUE, 
-                    encapsulationId,
-                    0);
-
-                if (buffer == NULL) {
-                    *length = 
-                    PRESTypePlugin_interpretedGetSerializedSampleSize(
-                        (PRESTypePluginEndpointData)&epd,
-                        RTI_TRUE,
-                        encapsulationId,
-                        0,
-                        sample);
-
-                    if (*length == 0) {
-                        return RTI_FALSE;
-                    }
-
-                    return RTI_TRUE;
-                }    
-
-                RTICdrStream_init(&stream);
-                RTICdrStream_set(&stream, (char *)buffer, *length);
-
-                result = PRESTypePlugin_interpretedSerialize(
-                    (PRESTypePluginEndpointData)&epd,
-                    sample,
-                    &stream,
-                    RTI_TRUE,
-                    encapsulationId,
-                    RTI_TRUE,
-                    NULL);
-
-                *length = RTICdrStream_getCurrentPositionOffset(&stream);
-                return result;
-            }
-
-            RTIBool
-            TorqueTuningRequestPlugin_serialize_to_cdr_buffer(
-                char *buffer,
-                unsigned int *length,
-                const TorqueTuningRequest *sample)
-            {
-                return TorqueTuningRequestPlugin_serialize_to_cdr_buffer_ex(
-                    buffer,
-                    length,
-                    sample,
-                    DDS_AUTO_DATA_REPRESENTATION);
-            }
-
-            RTIBool
-            TorqueTuningRequestPlugin_deserialize_from_cdr_buffer(
-                TorqueTuningRequest *sample,
-                const char * buffer,
-                unsigned int length)
-            {
-                struct RTICdrStream stream;
-                struct PRESTypePluginDefaultEndpointData epd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
-                RTIXCdrTypePluginProgramContext_INTIALIZER;
-                struct PRESTypePluginDefaultParticipantData pd;
-                struct PRESTypePlugin plugin;
-
-                epd.programContext = defaultProgramConext;  
-                epd._participantData = &pd;
-                epd.typePlugin = &plugin;
-                epd.programContext.endpointPluginData = &epd;
-                plugin.typeCode = (struct RTICdrTypeCode *)
-                TorqueTuningRequest_get_typecode();
-                pd.programs = TorqueTuningRequestPlugin_get_programs();
-                if (pd.programs == NULL) {
-                    return RTI_FALSE;
-                }
-
-                epd._assignabilityProperty.acceptUnknownEnumValue = RTI_XCDR_TRUE;
-                epd._assignabilityProperty.acceptUnknownUnionDiscriminator = RTI_XCDR_TRUE;
-
-                RTICdrStream_init(&stream);
-                RTICdrStream_set(&stream, (char *)buffer, length);
-
-                TorqueTuningRequest_finalize_optional_members(sample, RTI_TRUE);
-                return PRESTypePlugin_interpretedDeserialize( 
-                    (PRESTypePluginEndpointData)&epd, sample,
-                    &stream, RTI_TRUE, RTI_TRUE, 
-                    NULL);
-            }
-
-            #ifndef NDDS_STANDALONE_TYPE
-            DDS_ReturnCode_t
-            TorqueTuningRequestPlugin_data_to_string(
-                const TorqueTuningRequest *sample,
-                char *str,
-                DDS_UnsignedLong *str_size, 
-                const struct DDS_PrintFormatProperty *property)
-            {
-                DDS_DynamicData *data = NULL;
-                char *buffer = NULL;
-                unsigned int length = 0;
-                struct DDS_PrintFormat printFormat;
-                DDS_ReturnCode_t retCode = DDS_RETCODE_ERROR;
-
-                if (sample == NULL) {
-                    return DDS_RETCODE_BAD_PARAMETER;
-                }
-
-                if (str_size == NULL) {
-                    return DDS_RETCODE_BAD_PARAMETER;
-                }
-
-                if (property == NULL) {
-                    return DDS_RETCODE_BAD_PARAMETER;
-                }
-                if (!TorqueTuningRequestPlugin_serialize_to_cdr_buffer(
-                    NULL, 
-                    &length, 
-                    sample)) {
-                    return DDS_RETCODE_ERROR;
-                }
-
-                RTIOsapiHeap_allocateBuffer(&buffer, length, RTI_OSAPI_ALIGNMENT_DEFAULT);
-                if (buffer == NULL) {
-                    return DDS_RETCODE_ERROR;
-                }
-
-                if (!TorqueTuningRequestPlugin_serialize_to_cdr_buffer(
-                    buffer, 
-                    &length, 
-                    sample)) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    return DDS_RETCODE_ERROR;
-                }
-                data = DDS_DynamicData_new(
-                    TorqueTuningRequest_get_typecode(), 
-                    &DDS_DYNAMIC_DATA_PROPERTY_DEFAULT);
-                if (data == NULL) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    return DDS_RETCODE_ERROR;
-                }
-
-                retCode = DDS_DynamicData_from_cdr_buffer(data, buffer, length);
-                if (retCode != DDS_RETCODE_OK) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    DDS_DynamicData_delete(data);
-                    return retCode;
-                }
-
-                retCode = DDS_PrintFormatProperty_to_print_format(
-                    property, 
-                    &printFormat);
-                if (retCode != DDS_RETCODE_OK) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    DDS_DynamicData_delete(data);
-                    return retCode;
-                }
-
-                retCode = DDS_DynamicDataFormatter_to_string_w_format(
-                    data, 
-                    str,
-                    str_size, 
-                    &printFormat);
-                if (retCode != DDS_RETCODE_OK) {
-                    RTIOsapiHeap_freeBuffer(buffer);
-                    DDS_DynamicData_delete(data);
-                    return retCode;
-                }
-
-                RTIOsapiHeap_freeBuffer(buffer);
-                DDS_DynamicData_delete(data);
-                return DDS_RETCODE_OK;
-            }
-            #endif
-
-            unsigned int 
-            TorqueTuningRequestPlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment)
-            {
-                unsigned int size;
-                RTIBool overflow = RTI_FALSE;
-
-                size = PRESTypePlugin_interpretedGetSerializedSampleMaxSize(
-                    endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
-
-                if (overflow) {
-                    size = RTI_CDR_MAX_SERIALIZED_SIZE;
-                }
-
-                return size;
-            }
-
-            /* --------------------------------------------------------------------------------------
-            Key Management functions:
-            * -------------------------------------------------------------------------------------- */
-
-            PRESTypePluginKeyKind 
-            TorqueTuningRequestPlugin_get_key_kind(void)
-            {
-                return PRES_TYPEPLUGIN_NO_KEY;
-            }
-
-            RTIBool TorqueTuningRequestPlugin_deserialize_key(
-                PRESTypePluginEndpointData endpoint_data,
-                TorqueTuningRequest **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_key,
-                void *endpoint_plugin_qos)
-            {
-                RTIBool result;
-                if (drop_sample) {} /* To avoid warnings */
-                stream->_xTypesState.unassignable = RTI_FALSE;
-                result= PRESTypePlugin_interpretedDeserializeKey(
-                    endpoint_data, (sample != NULL)?*sample:NULL, stream,
-                    deserialize_encapsulation, deserialize_key, endpoint_plugin_qos);
-                if (result) {
-                    if (stream->_xTypesState.unassignable) {
-                        result = RTI_FALSE;
-                    }
-                }
-                return result;    
-
-            }
-
-            unsigned int
-            TorqueTuningRequestPlugin_get_serialized_key_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment)
-            {
-                unsigned int size;
-                RTIBool overflow = RTI_FALSE;
-                size = PRESTypePlugin_interpretedGetSerializedKeyMaxSize(
-                    endpoint_data,&overflow,include_encapsulation,encapsulation_id,current_alignment);
-                if (overflow) {
-                    size = RTI_CDR_MAX_SERIALIZED_SIZE;
-                }
-
-                return size;
-            }
-
-            unsigned int
-            TorqueTuningRequestPlugin_get_serialized_key_max_size_for_keyhash(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment)
-            {
-                unsigned int size;
-                RTIBool overflow = RTI_FALSE;
-                size = PRESTypePlugin_interpretedGetSerializedKeyMaxSizeForKeyhash(
-                    endpoint_data,
-                    &overflow,
-                    encapsulation_id,
-                    current_alignment);
-                if (overflow) {
-                    size = RTI_CDR_MAX_SERIALIZED_SIZE;
-                }
-
-                return size;
-            }
-
-            struct RTIXCdrInterpreterPrograms *TorqueTuningRequestPlugin_get_programs()
-            {
-                return ::rti::xcdr::get_cdr_serialization_programs<
-                TorqueTuningRequest, 
-                true, true, true>();
-            }
-
-            /* ------------------------------------------------------------------------
-            * Plug-in Installation Methods
-            * ------------------------------------------------------------------------ */
-            struct PRESTypePlugin *TorqueTuningRequestPlugin_new(void) 
-            { 
-                struct PRESTypePlugin *plugin = NULL;
-                const struct PRESTypePluginVersion PLUGIN_VERSION = 
-                PRES_TYPE_PLUGIN_VERSION_2_0;
-
-                RTIOsapiHeap_allocateStructure(
-                    &plugin, struct PRESTypePlugin);
-
-                if (plugin == NULL) {
-                    return NULL;
-                }
-
-                plugin->version = PLUGIN_VERSION;
-
-                /* set up parent's function pointers */
-                plugin->onParticipantAttached =
-                (PRESTypePluginOnParticipantAttachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPlugin_on_participant_attached;
-                plugin->onParticipantDetached =
-                (PRESTypePluginOnParticipantDetachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPlugin_on_participant_detached;
-                plugin->onEndpointAttached =
-                (PRESTypePluginOnEndpointAttachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPlugin_on_endpoint_attached;
-                plugin->onEndpointDetached =
-                (PRESTypePluginOnEndpointDetachedCallback)
-                Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPlugin_on_endpoint_detached;
-
-                plugin->copySampleFnc =
-                (PRESTypePluginCopySampleFunction)
-                Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPlugin_copy_sample;
-                plugin->createSampleFnc =
-                (PRESTypePluginCreateSampleFunction)
-                TorqueTuningRequestPlugin_create_sample;
-                plugin->destroySampleFnc =
-                (PRESTypePluginDestroySampleFunction)
-                TorqueTuningRequestPlugin_destroy_sample;
-                plugin->finalizeOptionalMembersFnc =
-                (PRESTypePluginFinalizeOptionalMembersFunction)
-                TorqueTuningRequest_finalize_optional_members;
-
-                plugin->serializeFnc = 
-                (PRESTypePluginSerializeFunction) PRESTypePlugin_interpretedSerialize;
-                plugin->deserializeFnc =
-                (PRESTypePluginDeserializeFunction) PRESTypePlugin_interpretedDeserializeWithAlloc;
-                plugin->getSerializedSampleMaxSizeFnc =
-                (PRESTypePluginGetSerializedSampleMaxSizeFunction)
-                Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPlugin_get_serialized_sample_max_size;
-                plugin->getSerializedSampleMinSizeFnc =
-                (PRESTypePluginGetSerializedSampleMinSizeFunction)
-                PRESTypePlugin_interpretedGetSerializedSampleMinSize;
-                plugin->getDeserializedSampleMaxSizeFnc = NULL; 
-                plugin->getSampleFnc =
-                (PRESTypePluginGetSampleFunction)
-                TorqueTuningRequestPlugin_get_sample;
-                plugin->returnSampleFnc =
-                (PRESTypePluginReturnSampleFunction)
-                TorqueTuningRequestPlugin_return_sample;
-                plugin->getKeyKindFnc =
-                (PRESTypePluginGetKeyKindFunction)
-                Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequestPlugin_get_key_kind;
-
-                /* These functions are only used for keyed types. As this is not a keyed
-                type they are all set to NULL
-                */
-                plugin->serializeKeyFnc = NULL ;    
-                plugin->deserializeKeyFnc = NULL;  
-                plugin->getKeyFnc = NULL;
-                plugin->returnKeyFnc = NULL;
-                plugin->instanceToKeyFnc = NULL;
-                plugin->keyToInstanceFnc = NULL;
-                plugin->getSerializedKeyMaxSizeFnc = NULL;
-                plugin->instanceToKeyHashFnc = NULL;
-                plugin->serializedSampleToKeyHashFnc = NULL;
-                plugin->serializedKeyToKeyHashFnc = NULL;    
-                #ifdef NDDS_STANDALONE_TYPE
-                plugin->typeCode = NULL; 
-                #else
-                plugin->typeCode =  (struct RTICdrTypeCode *)Shell::Hmi::AutoTunerConfiguration::TorqueTuningRequest_get_typecode();
-                #endif
-                plugin->languageKind = PRES_TYPEPLUGIN_CPP_LANG;
-
-                /* Serialized buffer */
-                plugin->getBuffer = 
-                (PRESTypePluginGetBufferFunction)
-                TorqueTuningRequestPlugin_get_buffer;
-                plugin->returnBuffer = 
-                (PRESTypePluginReturnBufferFunction)
-                TorqueTuningRequestPlugin_return_buffer;
-                plugin->getBufferWithParams = NULL;
-                plugin->returnBufferWithParams = NULL;  
-                plugin->getSerializedSampleSizeFnc =
-                (PRESTypePluginGetSerializedSampleSizeFunction)
-                PRESTypePlugin_interpretedGetSerializedSampleSize;
-
-                plugin->getWriterLoanedSampleFnc = NULL; 
-                plugin->returnWriterLoanedSampleFnc = NULL;
-                plugin->returnWriterLoanedSampleFromCookieFnc = NULL;
-                plugin->validateWriterLoanedSampleFnc = NULL;
-                plugin->setWriterLoanedSampleSerializedStateFnc = NULL;
-
-                plugin->endpointTypeName = TorqueTuningRequestTYPENAME;
-                plugin->isMetpType = RTI_FALSE;
-                return plugin;
-            }
-
-            void
-            TorqueTuningRequestPlugin_delete(struct PRESTypePlugin *plugin)
-            {
-                RTIOsapiHeap_freeStructure(plugin);
-            } 
-
-            /* ----------------------------------------------------------------------------
             *  Type TorqueTuningState
             * -------------------------------------------------------------------------- */
 
@@ -4460,7 +2304,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::TorqueTuningState_finalize_w_params(sample,dealloc_params);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -4469,7 +2312,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::TorqueTuningState_finalize_ex(sample,deallocate_pointers);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -4498,57 +2340,57 @@ namespace Shell {
                 RTICdrType_printIndent(indent_level);
 
                 if (desc != NULL) {
-                    RTILog_debug("%s:\n", desc);
+                    RTILogParamString_printPlain("%s:\n", desc);
                 } else {
-                    RTILog_debug("\n");
+                    RTILogParamString_printPlain("\n");
                 }
 
                 if (sample == NULL) {
-                    RTILog_debug("NULL\n");
+                    RTILogParamString_printPlain("NULL\n");
                     return;
                 }
 
                 RTICdrType_printDouble(
-                    &sample->torqueFilter, "torqueFilter", indent_level + 1);    
+                    &sample->filter, "filter", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->torqueD, "torqueD", indent_level + 1);    
+                    &sample->d, "d", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->torqueF, "torqueF", indent_level + 1);    
+                    &sample->f, "f", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->torqueEps, "torqueEps", indent_level + 1);    
+                    &sample->epsilon, "epsilon", indent_level + 1);    
 
                 RTICdrType_printBoolean(
-                    &sample->torqueEpsManual, "torqueEpsManual", indent_level + 1);    
+                    &sample->epsilonManual, "epsilonManual", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->torqueKcMin, "torqueKcMin", indent_level + 1);    
+                    &sample->kcMin, "kcMin", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->torqueKcMax, "torqueKcMax", indent_level + 1);    
+                    &sample->kcMax, "kcMax", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->torqueTiMin, "torqueTiMin", indent_level + 1);    
+                    &sample->tiMin, "tiMin", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->torqueTiMax, "torqueTiMax", indent_level + 1);    
+                    &sample->tiMax, "tiMax", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->torqueInitK, "torqueInitK", indent_level + 1);    
+                    &sample->initK, "initK", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->torqueInitTau, "torqueInitTau", indent_level + 1);    
+                    &sample->initTau, "initTau", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->torqueInitPreFilter, "torqueInitPreFilter", indent_level + 1);    
+                    &sample->initPreFilter, "initPreFilter", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->torqueR1, "torqueR1", indent_level + 1);    
+                    &sample->r1, "r1", indent_level + 1);    
 
                 RTICdrType_printDouble(
-                    &sample->torqueR2, "torqueR2", indent_level + 1);    
+                    &sample->r2, "r2", indent_level + 1);    
 
             }
 
@@ -4583,6 +2425,7 @@ namespace Shell {
                 programProperty.resolveAlias = RTI_XCDR_TRUE;
                 programProperty.inlineStruct = RTI_XCDR_TRUE;
                 programProperty.optimizeEnum = RTI_XCDR_TRUE;
+                programProperty.unboundedSize = RTIXCdrLong_MAX;
 
                 programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                     DDS_TypeCodeFactory_get_instance(),
@@ -4719,7 +2562,7 @@ namespace Shell {
                 struct PRESTypePluginDefaultEndpointData epd;
                 RTIBool result;
                 struct PRESTypePluginDefaultParticipantData pd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePlugin plugin;
 
@@ -4728,7 +2571,7 @@ namespace Shell {
                 }
 
                 RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -4806,12 +2649,12 @@ namespace Shell {
             {
                 struct RTICdrStream stream;
                 struct PRESTypePluginDefaultEndpointData epd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePluginDefaultParticipantData pd;
                 struct PRESTypePlugin plugin;
 
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -5012,7 +2855,7 @@ namespace Shell {
                 return size;
             }
 
-            struct RTIXCdrInterpreterPrograms *TorqueTuningStatePlugin_get_programs()
+            struct RTIXCdrInterpreterPrograms * TorqueTuningStatePlugin_get_programs(void)
             {
                 return ::rti::xcdr::get_cdr_serialization_programs<
                 TorqueTuningState, 

@@ -3,14 +3,15 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from autotuner_configuration.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from autotuner_configuration.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
-#ifndef autotuner_configurationPlugin_985794538_h
-#define autotuner_configurationPlugin_985794538_h
+#ifndef autotuner_configurationPlugin_985792920_h
+#define autotuner_configurationPlugin_985792920_h
 
 #include "autotuner_configuration.h"
 
@@ -133,16 +134,6 @@ namespace Shell {
                 const ModelState *sample,
                 DDS_DataRepresentationId_t representation);
 
-            NDDSUSERDllExport extern RTIBool 
-            ModelStatePlugin_deserialize(
-                PRESTypePluginEndpointData endpoint_data,
-                ModelState **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_sample, 
-                void *endpoint_plugin_qos);
-
             NDDSUSERDllExport extern RTIBool
             ModelStatePlugin_deserialize_from_cdr_buffer(
                 ModelState *sample,
@@ -194,7 +185,7 @@ namespace Shell {
                 void *endpoint_plugin_qos);
 
             NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms *ModelStatePlugin_get_programs();
+            struct RTIXCdrInterpreterPrograms * ModelStatePlugin_get_programs(void);
 
             /* Plugin Functions */
             NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -202,178 +193,6 @@ namespace Shell {
 
             NDDSUSERDllExport extern void
             ModelStatePlugin_delete(struct PRESTypePlugin *);
-
-            #define DiffpTuningRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-
-            #define DiffpTuningRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-            #define DiffpTuningRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
-
-            #define DiffpTuningRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-            #define DiffpTuningRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
-
-            /* --------------------------------------------------------------------------------------
-            Support functions:
-            * -------------------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern DiffpTuningRequest*
-            DiffpTuningRequestPluginSupport_create_data_w_params(
-                const struct DDS_TypeAllocationParams_t * alloc_params);
-
-            NDDSUSERDllExport extern DiffpTuningRequest*
-            DiffpTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
-
-            NDDSUSERDllExport extern DiffpTuningRequest*
-            DiffpTuningRequestPluginSupport_create_data(void);
-
-            NDDSUSERDllExport extern RTIBool 
-            DiffpTuningRequestPluginSupport_copy_data(
-                DiffpTuningRequest *out,
-                const DiffpTuningRequest *in);
-
-            NDDSUSERDllExport extern void 
-            DiffpTuningRequestPluginSupport_destroy_data_w_params(
-                DiffpTuningRequest *sample,
-                const struct DDS_TypeDeallocationParams_t * dealloc_params);
-
-            NDDSUSERDllExport extern void 
-            DiffpTuningRequestPluginSupport_destroy_data_ex(
-                DiffpTuningRequest *sample,RTIBool deallocate_pointers);
-
-            NDDSUSERDllExport extern void 
-            DiffpTuningRequestPluginSupport_destroy_data(
-                DiffpTuningRequest *sample);
-
-            NDDSUSERDllExport extern void 
-            DiffpTuningRequestPluginSupport_print_data(
-                const DiffpTuningRequest *sample,
-                const char *desc,
-                unsigned int indent);
-
-            /* ----------------------------------------------------------------------------
-            Callback functions:
-            * ---------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern PRESTypePluginParticipantData 
-            DiffpTuningRequestPlugin_on_participant_attached(
-                void *registration_data, 
-                const struct PRESTypePluginParticipantInfo *participant_info,
-                RTIBool top_level_registration, 
-                void *container_plugin_context,
-                RTICdrTypeCode *typeCode);
-
-            NDDSUSERDllExport extern void 
-            DiffpTuningRequestPlugin_on_participant_detached(
-                PRESTypePluginParticipantData participant_data);
-
-            NDDSUSERDllExport extern PRESTypePluginEndpointData 
-            DiffpTuningRequestPlugin_on_endpoint_attached(
-                PRESTypePluginParticipantData participant_data,
-                const struct PRESTypePluginEndpointInfo *endpoint_info,
-                RTIBool top_level_registration, 
-                void *container_plugin_context);
-
-            NDDSUSERDllExport extern void 
-            DiffpTuningRequestPlugin_on_endpoint_detached(
-                PRESTypePluginEndpointData endpoint_data);
-
-            NDDSUSERDllExport extern void    
-            DiffpTuningRequestPlugin_return_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                DiffpTuningRequest *sample,
-                void *handle);    
-
-            NDDSUSERDllExport extern RTIBool 
-            DiffpTuningRequestPlugin_copy_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                DiffpTuningRequest *out,
-                const DiffpTuningRequest *in);
-
-            /* ----------------------------------------------------------------------------
-            (De)Serialize functions:
-            * ------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern RTIBool
-            DiffpTuningRequestPlugin_serialize_to_cdr_buffer(
-                char * buffer,
-                unsigned int * length,
-                const DiffpTuningRequest *sample); 
-
-            NDDSUSERDllExport extern RTIBool
-            DiffpTuningRequestPlugin_serialize_to_cdr_buffer_ex(
-                char *buffer,
-                unsigned int *length,
-                const DiffpTuningRequest *sample,
-                DDS_DataRepresentationId_t representation);
-
-            NDDSUSERDllExport extern RTIBool 
-            DiffpTuningRequestPlugin_deserialize(
-                PRESTypePluginEndpointData endpoint_data,
-                DiffpTuningRequest **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_sample, 
-                void *endpoint_plugin_qos);
-
-            NDDSUSERDllExport extern RTIBool
-            DiffpTuningRequestPlugin_deserialize_from_cdr_buffer(
-                DiffpTuningRequest *sample,
-                const char * buffer,
-                unsigned int length);    
-            #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport extern DDS_ReturnCode_t
-            DiffpTuningRequestPlugin_data_to_string(
-                const DiffpTuningRequest *sample,
-                char *str,
-                DDS_UnsignedLong *str_size, 
-                const struct DDS_PrintFormatProperty *property);    
-            #endif
-
-            NDDSUSERDllExport extern unsigned int 
-            DiffpTuningRequestPlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            /* --------------------------------------------------------------------------------------
-            Key Management functions:
-            * -------------------------------------------------------------------------------------- */
-            NDDSUSERDllExport extern PRESTypePluginKeyKind 
-            DiffpTuningRequestPlugin_get_key_kind(void);
-
-            NDDSUSERDllExport extern unsigned int 
-            DiffpTuningRequestPlugin_get_serialized_key_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            NDDSUSERDllExport extern unsigned int 
-            DiffpTuningRequestPlugin_get_serialized_key_max_size_for_keyhash(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            NDDSUSERDllExport extern RTIBool 
-            DiffpTuningRequestPlugin_deserialize_key(
-                PRESTypePluginEndpointData endpoint_data,
-                DiffpTuningRequest ** sample,
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_key,
-                void *endpoint_plugin_qos);
-
-            NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms *DiffpTuningRequestPlugin_get_programs();
-
-            /* Plugin Functions */
-            NDDSUSERDllExport extern struct PRESTypePlugin*
-            DiffpTuningRequestPlugin_new(void);
-
-            NDDSUSERDllExport extern void
-            DiffpTuningRequestPlugin_delete(struct PRESTypePlugin *);
 
             #define DiffpTuningStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
 
@@ -477,16 +296,6 @@ namespace Shell {
                 const DiffpTuningState *sample,
                 DDS_DataRepresentationId_t representation);
 
-            NDDSUSERDllExport extern RTIBool 
-            DiffpTuningStatePlugin_deserialize(
-                PRESTypePluginEndpointData endpoint_data,
-                DiffpTuningState **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_sample, 
-                void *endpoint_plugin_qos);
-
             NDDSUSERDllExport extern RTIBool
             DiffpTuningStatePlugin_deserialize_from_cdr_buffer(
                 DiffpTuningState *sample,
@@ -538,7 +347,7 @@ namespace Shell {
                 void *endpoint_plugin_qos);
 
             NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms *DiffpTuningStatePlugin_get_programs();
+            struct RTIXCdrInterpreterPrograms * DiffpTuningStatePlugin_get_programs(void);
 
             /* Plugin Functions */
             NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -546,178 +355,6 @@ namespace Shell {
 
             NDDSUSERDllExport extern void
             DiffpTuningStatePlugin_delete(struct PRESTypePlugin *);
-
-            #define WobTuningRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-
-            #define WobTuningRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-            #define WobTuningRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
-
-            #define WobTuningRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-            #define WobTuningRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
-
-            /* --------------------------------------------------------------------------------------
-            Support functions:
-            * -------------------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern WobTuningRequest*
-            WobTuningRequestPluginSupport_create_data_w_params(
-                const struct DDS_TypeAllocationParams_t * alloc_params);
-
-            NDDSUSERDllExport extern WobTuningRequest*
-            WobTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
-
-            NDDSUSERDllExport extern WobTuningRequest*
-            WobTuningRequestPluginSupport_create_data(void);
-
-            NDDSUSERDllExport extern RTIBool 
-            WobTuningRequestPluginSupport_copy_data(
-                WobTuningRequest *out,
-                const WobTuningRequest *in);
-
-            NDDSUSERDllExport extern void 
-            WobTuningRequestPluginSupport_destroy_data_w_params(
-                WobTuningRequest *sample,
-                const struct DDS_TypeDeallocationParams_t * dealloc_params);
-
-            NDDSUSERDllExport extern void 
-            WobTuningRequestPluginSupport_destroy_data_ex(
-                WobTuningRequest *sample,RTIBool deallocate_pointers);
-
-            NDDSUSERDllExport extern void 
-            WobTuningRequestPluginSupport_destroy_data(
-                WobTuningRequest *sample);
-
-            NDDSUSERDllExport extern void 
-            WobTuningRequestPluginSupport_print_data(
-                const WobTuningRequest *sample,
-                const char *desc,
-                unsigned int indent);
-
-            /* ----------------------------------------------------------------------------
-            Callback functions:
-            * ---------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern PRESTypePluginParticipantData 
-            WobTuningRequestPlugin_on_participant_attached(
-                void *registration_data, 
-                const struct PRESTypePluginParticipantInfo *participant_info,
-                RTIBool top_level_registration, 
-                void *container_plugin_context,
-                RTICdrTypeCode *typeCode);
-
-            NDDSUSERDllExport extern void 
-            WobTuningRequestPlugin_on_participant_detached(
-                PRESTypePluginParticipantData participant_data);
-
-            NDDSUSERDllExport extern PRESTypePluginEndpointData 
-            WobTuningRequestPlugin_on_endpoint_attached(
-                PRESTypePluginParticipantData participant_data,
-                const struct PRESTypePluginEndpointInfo *endpoint_info,
-                RTIBool top_level_registration, 
-                void *container_plugin_context);
-
-            NDDSUSERDllExport extern void 
-            WobTuningRequestPlugin_on_endpoint_detached(
-                PRESTypePluginEndpointData endpoint_data);
-
-            NDDSUSERDllExport extern void    
-            WobTuningRequestPlugin_return_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                WobTuningRequest *sample,
-                void *handle);    
-
-            NDDSUSERDllExport extern RTIBool 
-            WobTuningRequestPlugin_copy_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                WobTuningRequest *out,
-                const WobTuningRequest *in);
-
-            /* ----------------------------------------------------------------------------
-            (De)Serialize functions:
-            * ------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern RTIBool
-            WobTuningRequestPlugin_serialize_to_cdr_buffer(
-                char * buffer,
-                unsigned int * length,
-                const WobTuningRequest *sample); 
-
-            NDDSUSERDllExport extern RTIBool
-            WobTuningRequestPlugin_serialize_to_cdr_buffer_ex(
-                char *buffer,
-                unsigned int *length,
-                const WobTuningRequest *sample,
-                DDS_DataRepresentationId_t representation);
-
-            NDDSUSERDllExport extern RTIBool 
-            WobTuningRequestPlugin_deserialize(
-                PRESTypePluginEndpointData endpoint_data,
-                WobTuningRequest **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_sample, 
-                void *endpoint_plugin_qos);
-
-            NDDSUSERDllExport extern RTIBool
-            WobTuningRequestPlugin_deserialize_from_cdr_buffer(
-                WobTuningRequest *sample,
-                const char * buffer,
-                unsigned int length);    
-            #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport extern DDS_ReturnCode_t
-            WobTuningRequestPlugin_data_to_string(
-                const WobTuningRequest *sample,
-                char *str,
-                DDS_UnsignedLong *str_size, 
-                const struct DDS_PrintFormatProperty *property);    
-            #endif
-
-            NDDSUSERDllExport extern unsigned int 
-            WobTuningRequestPlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            /* --------------------------------------------------------------------------------------
-            Key Management functions:
-            * -------------------------------------------------------------------------------------- */
-            NDDSUSERDllExport extern PRESTypePluginKeyKind 
-            WobTuningRequestPlugin_get_key_kind(void);
-
-            NDDSUSERDllExport extern unsigned int 
-            WobTuningRequestPlugin_get_serialized_key_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            NDDSUSERDllExport extern unsigned int 
-            WobTuningRequestPlugin_get_serialized_key_max_size_for_keyhash(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            NDDSUSERDllExport extern RTIBool 
-            WobTuningRequestPlugin_deserialize_key(
-                PRESTypePluginEndpointData endpoint_data,
-                WobTuningRequest ** sample,
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_key,
-                void *endpoint_plugin_qos);
-
-            NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms *WobTuningRequestPlugin_get_programs();
-
-            /* Plugin Functions */
-            NDDSUSERDllExport extern struct PRESTypePlugin*
-            WobTuningRequestPlugin_new(void);
-
-            NDDSUSERDllExport extern void
-            WobTuningRequestPlugin_delete(struct PRESTypePlugin *);
 
             #define WobTuningStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
 
@@ -821,16 +458,6 @@ namespace Shell {
                 const WobTuningState *sample,
                 DDS_DataRepresentationId_t representation);
 
-            NDDSUSERDllExport extern RTIBool 
-            WobTuningStatePlugin_deserialize(
-                PRESTypePluginEndpointData endpoint_data,
-                WobTuningState **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_sample, 
-                void *endpoint_plugin_qos);
-
             NDDSUSERDllExport extern RTIBool
             WobTuningStatePlugin_deserialize_from_cdr_buffer(
                 WobTuningState *sample,
@@ -882,7 +509,7 @@ namespace Shell {
                 void *endpoint_plugin_qos);
 
             NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms *WobTuningStatePlugin_get_programs();
+            struct RTIXCdrInterpreterPrograms * WobTuningStatePlugin_get_programs(void);
 
             /* Plugin Functions */
             NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -890,178 +517,6 @@ namespace Shell {
 
             NDDSUSERDllExport extern void
             WobTuningStatePlugin_delete(struct PRESTypePlugin *);
-
-            #define TorqueTuningRequestPlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
-
-            #define TorqueTuningRequestPlugin_get_buffer PRESTypePluginDefaultEndpointData_getBuffer 
-            #define TorqueTuningRequestPlugin_return_buffer PRESTypePluginDefaultEndpointData_returnBuffer
-
-            #define TorqueTuningRequestPlugin_create_sample PRESTypePluginDefaultEndpointData_createSample 
-            #define TorqueTuningRequestPlugin_destroy_sample PRESTypePluginDefaultEndpointData_deleteSample 
-
-            /* --------------------------------------------------------------------------------------
-            Support functions:
-            * -------------------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern TorqueTuningRequest*
-            TorqueTuningRequestPluginSupport_create_data_w_params(
-                const struct DDS_TypeAllocationParams_t * alloc_params);
-
-            NDDSUSERDllExport extern TorqueTuningRequest*
-            TorqueTuningRequestPluginSupport_create_data_ex(RTIBool allocate_pointers);
-
-            NDDSUSERDllExport extern TorqueTuningRequest*
-            TorqueTuningRequestPluginSupport_create_data(void);
-
-            NDDSUSERDllExport extern RTIBool 
-            TorqueTuningRequestPluginSupport_copy_data(
-                TorqueTuningRequest *out,
-                const TorqueTuningRequest *in);
-
-            NDDSUSERDllExport extern void 
-            TorqueTuningRequestPluginSupport_destroy_data_w_params(
-                TorqueTuningRequest *sample,
-                const struct DDS_TypeDeallocationParams_t * dealloc_params);
-
-            NDDSUSERDllExport extern void 
-            TorqueTuningRequestPluginSupport_destroy_data_ex(
-                TorqueTuningRequest *sample,RTIBool deallocate_pointers);
-
-            NDDSUSERDllExport extern void 
-            TorqueTuningRequestPluginSupport_destroy_data(
-                TorqueTuningRequest *sample);
-
-            NDDSUSERDllExport extern void 
-            TorqueTuningRequestPluginSupport_print_data(
-                const TorqueTuningRequest *sample,
-                const char *desc,
-                unsigned int indent);
-
-            /* ----------------------------------------------------------------------------
-            Callback functions:
-            * ---------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern PRESTypePluginParticipantData 
-            TorqueTuningRequestPlugin_on_participant_attached(
-                void *registration_data, 
-                const struct PRESTypePluginParticipantInfo *participant_info,
-                RTIBool top_level_registration, 
-                void *container_plugin_context,
-                RTICdrTypeCode *typeCode);
-
-            NDDSUSERDllExport extern void 
-            TorqueTuningRequestPlugin_on_participant_detached(
-                PRESTypePluginParticipantData participant_data);
-
-            NDDSUSERDllExport extern PRESTypePluginEndpointData 
-            TorqueTuningRequestPlugin_on_endpoint_attached(
-                PRESTypePluginParticipantData participant_data,
-                const struct PRESTypePluginEndpointInfo *endpoint_info,
-                RTIBool top_level_registration, 
-                void *container_plugin_context);
-
-            NDDSUSERDllExport extern void 
-            TorqueTuningRequestPlugin_on_endpoint_detached(
-                PRESTypePluginEndpointData endpoint_data);
-
-            NDDSUSERDllExport extern void    
-            TorqueTuningRequestPlugin_return_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                TorqueTuningRequest *sample,
-                void *handle);    
-
-            NDDSUSERDllExport extern RTIBool 
-            TorqueTuningRequestPlugin_copy_sample(
-                PRESTypePluginEndpointData endpoint_data,
-                TorqueTuningRequest *out,
-                const TorqueTuningRequest *in);
-
-            /* ----------------------------------------------------------------------------
-            (De)Serialize functions:
-            * ------------------------------------------------------------------------- */
-
-            NDDSUSERDllExport extern RTIBool
-            TorqueTuningRequestPlugin_serialize_to_cdr_buffer(
-                char * buffer,
-                unsigned int * length,
-                const TorqueTuningRequest *sample); 
-
-            NDDSUSERDllExport extern RTIBool
-            TorqueTuningRequestPlugin_serialize_to_cdr_buffer_ex(
-                char *buffer,
-                unsigned int *length,
-                const TorqueTuningRequest *sample,
-                DDS_DataRepresentationId_t representation);
-
-            NDDSUSERDllExport extern RTIBool 
-            TorqueTuningRequestPlugin_deserialize(
-                PRESTypePluginEndpointData endpoint_data,
-                TorqueTuningRequest **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_sample, 
-                void *endpoint_plugin_qos);
-
-            NDDSUSERDllExport extern RTIBool
-            TorqueTuningRequestPlugin_deserialize_from_cdr_buffer(
-                TorqueTuningRequest *sample,
-                const char * buffer,
-                unsigned int length);    
-            #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport extern DDS_ReturnCode_t
-            TorqueTuningRequestPlugin_data_to_string(
-                const TorqueTuningRequest *sample,
-                char *str,
-                DDS_UnsignedLong *str_size, 
-                const struct DDS_PrintFormatProperty *property);    
-            #endif
-
-            NDDSUSERDllExport extern unsigned int 
-            TorqueTuningRequestPlugin_get_serialized_sample_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            /* --------------------------------------------------------------------------------------
-            Key Management functions:
-            * -------------------------------------------------------------------------------------- */
-            NDDSUSERDllExport extern PRESTypePluginKeyKind 
-            TorqueTuningRequestPlugin_get_key_kind(void);
-
-            NDDSUSERDllExport extern unsigned int 
-            TorqueTuningRequestPlugin_get_serialized_key_max_size(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIBool include_encapsulation,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            NDDSUSERDllExport extern unsigned int 
-            TorqueTuningRequestPlugin_get_serialized_key_max_size_for_keyhash(
-                PRESTypePluginEndpointData endpoint_data,
-                RTIEncapsulationId encapsulation_id,
-                unsigned int current_alignment);
-
-            NDDSUSERDllExport extern RTIBool 
-            TorqueTuningRequestPlugin_deserialize_key(
-                PRESTypePluginEndpointData endpoint_data,
-                TorqueTuningRequest ** sample,
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_key,
-                void *endpoint_plugin_qos);
-
-            NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms *TorqueTuningRequestPlugin_get_programs();
-
-            /* Plugin Functions */
-            NDDSUSERDllExport extern struct PRESTypePlugin*
-            TorqueTuningRequestPlugin_new(void);
-
-            NDDSUSERDllExport extern void
-            TorqueTuningRequestPlugin_delete(struct PRESTypePlugin *);
 
             #define TorqueTuningStatePlugin_get_sample PRESTypePluginDefaultEndpointData_getSample 
 
@@ -1165,16 +620,6 @@ namespace Shell {
                 const TorqueTuningState *sample,
                 DDS_DataRepresentationId_t representation);
 
-            NDDSUSERDllExport extern RTIBool 
-            TorqueTuningStatePlugin_deserialize(
-                PRESTypePluginEndpointData endpoint_data,
-                TorqueTuningState **sample, 
-                RTIBool * drop_sample,
-                struct RTICdrStream *stream,
-                RTIBool deserialize_encapsulation,
-                RTIBool deserialize_sample, 
-                void *endpoint_plugin_qos);
-
             NDDSUSERDllExport extern RTIBool
             TorqueTuningStatePlugin_deserialize_from_cdr_buffer(
                 TorqueTuningState *sample,
@@ -1226,7 +671,7 @@ namespace Shell {
                 void *endpoint_plugin_qos);
 
             NDDSUSERDllExport extern
-            struct RTIXCdrInterpreterPrograms *TorqueTuningStatePlugin_get_programs();
+            struct RTIXCdrInterpreterPrograms * TorqueTuningStatePlugin_get_programs(void);
 
             /* Plugin Functions */
             NDDSUSERDllExport extern struct PRESTypePlugin*
@@ -1246,5 +691,5 @@ namespace Shell {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* autotuner_configurationPlugin_985794538_h */
+#endif /* autotuner_configurationPlugin_985792920_h */
 

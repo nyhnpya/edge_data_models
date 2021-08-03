@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from resources.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from resources.idl 
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -47,13 +48,13 @@ namespace sys {
         const char *ResourcesTYPENAME = "sys::process::Resources";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* Resources_get_typecode()
+        DDS_TypeCode * Resources_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode Resources_g_tc_processName_string = DDS_INITIALIZE_STRING_TYPECODE((36));
-            static DDS_TypeCode Resources_g_tc_osName_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-            static DDS_TypeCode Resources_g_tc_appVersion_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+            static DDS_TypeCode Resources_g_tc_processName_string = DDS_INITIALIZE_STRING_TYPECODE((36L));
+            static DDS_TypeCode Resources_g_tc_osName_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+            static DDS_TypeCode Resources_g_tc_appVersion_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
 
             static DDS_TypeCode_Member Resources_g_tc_members[16]=
             {
@@ -594,9 +595,9 @@ namespace sys {
             {
                 size_t candidateTypeSize = sizeof(Resources);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     Resources_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     Resources_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -680,11 +681,11 @@ namespace sys {
             }
 
             if (allocParams->allocate_memory) {
-                sample->processName = DDS_String_alloc((36));
+                sample->processName = DDS_String_alloc((36L));
                 RTICdrType_copyStringEx(
                     &sample->processName,
                     "",
-                    (36),
+                    (36L),
                     RTI_FALSE);
                 if (sample->processName == NULL) {
                     return RTI_FALSE;
@@ -694,7 +695,7 @@ namespace sys {
                     RTICdrType_copyStringEx(
                         &sample->processName,
                         "",
-                        (36),
+                        (36L),
                         RTI_FALSE);
                     if (sample->processName == NULL) {
                         return RTI_FALSE;
@@ -727,11 +728,11 @@ namespace sys {
             sample->maxNumThreads = 0;
 
             if (allocParams->allocate_memory) {
-                sample->osName = DDS_String_alloc((255));
+                sample->osName = DDS_String_alloc((255L));
                 RTICdrType_copyStringEx(
                     &sample->osName,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->osName == NULL) {
                     return RTI_FALSE;
@@ -741,7 +742,7 @@ namespace sys {
                     RTICdrType_copyStringEx(
                         &sample->osName,
                         "",
-                        (255),
+                        (255L),
                         RTI_FALSE);
                     if (sample->osName == NULL) {
                         return RTI_FALSE;
@@ -750,11 +751,11 @@ namespace sys {
             }
 
             if (allocParams->allocate_memory) {
-                sample->appVersion = DDS_String_alloc((255));
+                sample->appVersion = DDS_String_alloc((255L));
                 RTICdrType_copyStringEx(
                     &sample->appVersion,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->appVersion == NULL) {
                     return RTI_FALSE;
@@ -764,7 +765,7 @@ namespace sys {
                     RTICdrType_copyStringEx(
                         &sample->appVersion,
                         "",
-                        (255),
+                        (255L),
                         RTI_FALSE);
                     if (sample->appVersion == NULL) {
                         return RTI_FALSE;
@@ -872,7 +873,7 @@ namespace sys {
                 } 
                 if (!RTICdrType_copyStringEx (
                     &dst->processName, src->processName, 
-                    (36) + 1, RTI_FALSE)){
+                    (36L) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyLong (
@@ -925,12 +926,12 @@ namespace sys {
                 }
                 if (!RTICdrType_copyStringEx (
                     &dst->osName, src->osName, 
-                    (255) + 1, RTI_FALSE)){
+                    (255L) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyStringEx (
                     &dst->appVersion, src->appVersion, 
-                    (255) + 1, RTI_FALSE)){
+                    (255L) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
 

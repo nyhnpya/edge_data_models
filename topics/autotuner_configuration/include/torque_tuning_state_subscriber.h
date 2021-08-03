@@ -39,34 +39,34 @@ class CTorqueTuningStateSubscriber : public TSubscriber< Shell::Hmi::AutoTunerCo
         void OnDataDisposed(OnDataDisposedEvent event);
         void OnLivelinessChanged(OnLivelinessChangedEvent event);
         
-        /// @return double torqueFilter
-        double GetTorqueFilter();
-        /// @return double torqueD
-        double GetTorqueD();
-        /// @return double torqueF
-        double GetTorqueF();
-        /// @return double torqueEps
-        double GetTorqueEps();
-        /// @return bool torqueEpsManual
-        bool GetTorqueEpsManual();
-        /// @return double torqueKcMin
-        double GetTorqueKcMin();
-        /// @return double torqueKcMax
-        double GetTorqueKcMax();
-        /// @return double torqueTiMin
-        double GetTorqueTiMin();
-        /// @return double torqueTiMax
-        double GetTorqueTiMax();
-        /// @return double torqueInitK
-        double GetTorqueInitK();
-        /// @return double torqueInitTau
-        double GetTorqueInitTau();
-        /// @return double torqueInitPreFilter
-        double GetTorqueInitPreFilter();
-        /// @return double torqueR1
-        double GetTorqueR1();
-        /// @return double torqueR2
-        double GetTorqueR2();
+        /// @return double filter
+        double GetFilter();
+        /// @return double d
+        double GetD();
+        /// @return double f
+        double GetF();
+        /// @return double epsilon
+        double GetEpsilon();
+        /// @return bool epsilonManual
+        bool GetEpsilonManual();
+        /// @return double kcMin
+        double GetKcMin();
+        /// @return double kcMax
+        double GetKcMax();
+        /// @return double tiMin
+        double GetTiMin();
+        /// @return double tiMax
+        double GetTiMax();
+        /// @return double initK
+        double GetInitK();
+        /// @return double initTau
+        double GetInitTau();
+        /// @return double initPreFilter
+        double GetInitPreFilter();
+        /// @return double r1
+        double GetR1();
+        /// @return double r2
+        double GetR2();
 
     protected:
         void DataAvailable(const Shell::Hmi::AutoTunerConfiguration::TorqueTuningState &data,

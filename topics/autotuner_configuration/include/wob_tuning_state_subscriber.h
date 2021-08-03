@@ -39,34 +39,34 @@ class CWobTuningStateSubscriber : public TSubscriber< Shell::Hmi::AutoTunerConfi
         void OnDataDisposed(OnDataDisposedEvent event);
         void OnLivelinessChanged(OnLivelinessChangedEvent event);
         
-        /// @return double wobFilter
-        double GetWobFilter();
-        /// @return double wobD
-        double GetWobD();
-        /// @return double wobF
-        double GetWobF();
-        /// @return double wobEps
-        double GetWobEps();
-        /// @return bool wobEpsManual
-        bool GetWobEpsManual();
-        /// @return double wobKcMin
-        double GetWobKcMin();
-        /// @return double wobKcMax
-        double GetWobKcMax();
-        /// @return double wobTiMin
-        double GetWobTiMin();
-        /// @return double wobTiMax
-        double GetWobTiMax();
-        /// @return double wobInitK
-        double GetWobInitK();
-        /// @return double wobInitTau
-        double GetWobInitTau();
-        /// @return double wobInitPreFilter
-        double GetWobInitPreFilter();
-        /// @return double wobR1
-        double GetWobR1();
-        /// @return double wobR2
-        double GetWobR2();
+        /// @return double filter
+        double GetFilter();
+        /// @return double d
+        double GetD();
+        /// @return double f
+        double GetF();
+        /// @return double epsilon
+        double GetEpsilon();
+        /// @return bool epsilonManual
+        bool GetEpsilonManual();
+        /// @return double kcMin
+        double GetKcMin();
+        /// @return double kcMax
+        double GetKcMax();
+        /// @return double tiMin
+        double GetTiMin();
+        /// @return double tiMax
+        double GetTiMax();
+        /// @return double initK
+        double GetInitK();
+        /// @return double initTau
+        double GetInitTau();
+        /// @return double initPreFilter
+        double GetInitPreFilter();
+        /// @return double r1
+        double GetR1();
+        /// @return double r2
+        double GetR2();
 
     protected:
         void DataAvailable(const Shell::Hmi::AutoTunerConfiguration::WobTuningState &data,
