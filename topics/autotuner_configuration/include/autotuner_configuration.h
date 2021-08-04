@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef autotuner_configuration_985792920_h
-#define autotuner_configuration_985792920_h
+#ifndef autotuner_configuration_985793172_h
+#define autotuner_configuration_985793172_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h

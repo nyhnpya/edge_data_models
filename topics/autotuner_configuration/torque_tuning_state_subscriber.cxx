@@ -17,7 +17,7 @@ bool CTorqueTuningStateSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        Shell::Hmi::AutoTunerConfiguration::TORQUE_TUNING_STATE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "ConfigProfile");
 }
 
 bool CTorqueTuningStateSubscriber::ValidData()

@@ -17,7 +17,7 @@ bool CDiffpTuningStateSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        Shell::Hmi::AutoTunerConfiguration::DIFFP_TUNING_STATE,
                        "EdgeBaseLibrary",
-                       "EdgeBaseProfile");
+                       "ConfigProfile");
 }
 
 bool CDiffpTuningStateSubscriber::ValidData()
