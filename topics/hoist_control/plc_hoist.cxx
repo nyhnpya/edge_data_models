@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from plc_hoist.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from plc_hoist.idl 
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -47,7 +48,7 @@ namespace plc {
         const char *PlcHoistRequestTYPENAME = "plc::process::PlcHoistRequest";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* PlcHoistRequest_get_typecode()
+        DDS_TypeCode * PlcHoistRequest_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -202,9 +203,9 @@ namespace plc {
             {
                 size_t candidateTypeSize = sizeof(PlcHoistRequest);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     PlcHoistRequest_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     PlcHoistRequest_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -413,7 +414,7 @@ namespace plc {
         const char *PlcHoistStateTYPENAME = "plc::process::PlcHoistState";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* PlcHoistState_get_typecode()
+        DDS_TypeCode * PlcHoistState_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -829,9 +830,9 @@ namespace plc {
             {
                 size_t candidateTypeSize = sizeof(PlcHoistState);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     PlcHoistState_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     PlcHoistState_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;

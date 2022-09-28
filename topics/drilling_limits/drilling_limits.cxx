@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from drilling_limits.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from drilling_limits.idl 
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -47,7 +48,7 @@ namespace process {
         const char *DrillingLimitsTYPENAME = "process::plan::DrillingLimits";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* DrillingLimits_get_typecode()
+        DDS_TypeCode * DrillingLimits_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
@@ -517,9 +518,9 @@ namespace process {
             {
                 size_t candidateTypeSize = sizeof(DrillingLimits);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     DrillingLimits_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     DrillingLimits_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -598,11 +599,11 @@ namespace process {
             }
 
             if (allocParams->allocate_memory) {
-                sample->id = DDS_String_alloc((36));
+                sample->id = DDS_String_alloc((36L));
                 RTICdrType_copyStringEx(
                     &sample->id,
                     "",
-                    (36),
+                    (36L),
                     RTI_FALSE);
                 if (sample->id == NULL) {
                     return RTI_FALSE;
@@ -612,7 +613,7 @@ namespace process {
                     RTICdrType_copyStringEx(
                         &sample->id,
                         "",
-                        (36),
+                        (36L),
                         RTI_FALSE);
                     if (sample->id == NULL) {
                         return RTI_FALSE;
@@ -728,7 +729,7 @@ namespace process {
 
                 if (!RTICdrType_copyStringEx (
                     &dst->id, src->id, 
-                    (36) + 1, RTI_FALSE)){
+                    (36L) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyDouble (

@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from rotate.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from rotate.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef rotate_79880796_h
@@ -60,7 +61,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* RotateRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * RotateRequest_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *RotateRequest_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *RotateRequest_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *RotateRequest_get_sample_seq_access_info(void);
@@ -147,7 +148,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* RotateObjective_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * RotateObjective_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *RotateObjective_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *RotateObjective_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *RotateObjective_get_sample_seq_access_info(void);
@@ -238,7 +239,7 @@ namespace nec {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* RotateState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * RotateState_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *RotateState_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *RotateState_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *RotateState_get_sample_seq_access_info(void);

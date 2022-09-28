@@ -2,14 +2,15 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from autotuner_configuration.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from autotuner_configuration.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
-#ifndef autotuner_configurationSupport_985793172_h
-#define autotuner_configurationSupport_985793172_h
+#ifndef autotuner_configurationSupport_985792920_h
+#define autotuner_configurationSupport_985792920_h
 
 /* Uses */
 #include "autotuner_configuration.h"
@@ -173,5 +174,5 @@ namespace Shell {
     } /* namespace Hmi  */
 } /* namespace Shell  */
 
-#endif  /* autotuner_configurationSupport_985793172_h */
+#endif  /* autotuner_configurationSupport_985792920_h */
 

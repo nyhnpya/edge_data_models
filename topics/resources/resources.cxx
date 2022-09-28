@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from resources.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from resources.idl 
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -47,15 +48,16 @@ namespace sys {
         const char *ResourcesTYPENAME = "sys::process::Resources";
 
         #ifndef NDDS_STANDALONE_TYPE
-        DDS_TypeCode* Resources_get_typecode()
+        DDS_TypeCode * Resources_get_typecode(void)
         {
             static RTIBool is_initialized = RTI_FALSE;
 
-            static DDS_TypeCode Resources_g_tc_processName_string = DDS_INITIALIZE_STRING_TYPECODE((36));
-            static DDS_TypeCode Resources_g_tc_osName_string = DDS_INITIALIZE_STRING_TYPECODE((255));
-            static DDS_TypeCode Resources_g_tc_appVersion_string = DDS_INITIALIZE_STRING_TYPECODE((255));
+            static DDS_TypeCode Resources_g_tc_processName_string = DDS_INITIALIZE_STRING_TYPECODE((36L));
+            static DDS_TypeCode Resources_g_tc_osName_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+            static DDS_TypeCode Resources_g_tc_appVersion_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
+            static DDS_TypeCode Resources_g_tc_environment_string = DDS_INITIALIZE_STRING_TYPECODE((255L));
 
-            static DDS_TypeCode_Member Resources_g_tc_members[16]=
+            static DDS_TypeCode_Member Resources_g_tc_members[17]=
             {
 
                 {
@@ -345,6 +347,24 @@ namespace sys {
                     1,
                     NULL, /* Ignored */
                     RTICdrTypeCodeAnnotations_INITIALIZER
+                }, 
+                {
+                    (char *)"environment",/* Member name */
+                    {
+                        16,/* Representation ID */
+                        DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                        -1, /* Bitfield bits */
+                        NULL/* Member type code is assigned later */
+                    },
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    0, /* Ignored */
+                    NULL, /* Ignored */
+                    RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                    DDS_PUBLIC_MEMBER,/* Member visibility */
+                    1,
+                    NULL, /* Ignored */
+                    RTICdrTypeCodeAnnotations_INITIALIZER
                 }
             };
 
@@ -358,7 +378,7 @@ namespace sys {
                     0, /* Ignored */
                     0, /* Ignored */
                     NULL, /* Ignored */
-                    16, /* Number of members */
+                    17, /* Number of members */
                     Resources_g_tc_members, /* Members */
                     DDS_VM_NONE, /* Ignored */
                     RTICdrTypeCodeAnnotations_INITIALIZER,
@@ -389,6 +409,7 @@ namespace sys {
             Resources_g_tc_members[13]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_long_w_new;
             Resources_g_tc_members[14]._representation._typeCode = (RTICdrTypeCode *)&Resources_g_tc_osName_string;
             Resources_g_tc_members[15]._representation._typeCode = (RTICdrTypeCode *)&Resources_g_tc_appVersion_string;
+            Resources_g_tc_members[16]._representation._typeCode = (RTICdrTypeCode *)&Resources_g_tc_environment_string;
 
             /* Initialize the values for member annotations. */
 
@@ -485,6 +506,9 @@ namespace sys {
             Resources_g_tc_members[15]._annotations._defaultValue._d = RTI_XCDR_TK_STRING;
             Resources_g_tc_members[15]._annotations._defaultValue._u.string_value = (DDS_Char *) "";
 
+            Resources_g_tc_members[16]._annotations._defaultValue._d = RTI_XCDR_TK_STRING;
+            Resources_g_tc_members[16]._annotations._defaultValue._u.string_value = (DDS_Char *) "";
+
             Resources_g_tc._data._sampleAccessInfo =
             Resources_get_sample_access_info();
             Resources_g_tc._data._typePlugin =
@@ -523,7 +547,7 @@ namespace sys {
 
             sys::process::Resources *sample;
 
-            static RTIXCdrMemberAccessInfo Resources_g_memberAccessInfos[16] =
+            static RTIXCdrMemberAccessInfo Resources_g_memberAccessInfos[17] =
             {RTIXCdrMemberAccessInfo_INITIALIZER};
 
             static RTIXCdrSampleAccessInfo Resources_g_sampleAccessInfo = 
@@ -588,15 +612,18 @@ namespace sys {
             Resources_g_memberAccessInfos[15].bindingMemberValueOffset[0] = 
             (RTIXCdrUnsignedLong) ((char *)&sample->appVersion - (char *)sample);
 
+            Resources_g_memberAccessInfos[16].bindingMemberValueOffset[0] = 
+            (RTIXCdrUnsignedLong) ((char *)&sample->environment - (char *)sample);
+
             Resources_g_sampleAccessInfo.memberAccessInfos = 
             Resources_g_memberAccessInfos;
 
             {
                 size_t candidateTypeSize = sizeof(Resources);
 
-                if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                if (candidateTypeSize > RTIXCdrLong_MAX) {
                     Resources_g_sampleAccessInfo.typeSize[0] =
-                    RTIXCdrUnsignedLong_MAX;
+                    RTIXCdrLong_MAX;
                 } else {
                     Resources_g_sampleAccessInfo.typeSize[0] =
                     (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -680,11 +707,11 @@ namespace sys {
             }
 
             if (allocParams->allocate_memory) {
-                sample->processName = DDS_String_alloc((36));
+                sample->processName = DDS_String_alloc((36L));
                 RTICdrType_copyStringEx(
                     &sample->processName,
                     "",
-                    (36),
+                    (36L),
                     RTI_FALSE);
                 if (sample->processName == NULL) {
                     return RTI_FALSE;
@@ -694,7 +721,7 @@ namespace sys {
                     RTICdrType_copyStringEx(
                         &sample->processName,
                         "",
-                        (36),
+                        (36L),
                         RTI_FALSE);
                     if (sample->processName == NULL) {
                         return RTI_FALSE;
@@ -727,11 +754,11 @@ namespace sys {
             sample->maxNumThreads = 0;
 
             if (allocParams->allocate_memory) {
-                sample->osName = DDS_String_alloc((255));
+                sample->osName = DDS_String_alloc((255L));
                 RTICdrType_copyStringEx(
                     &sample->osName,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->osName == NULL) {
                     return RTI_FALSE;
@@ -741,7 +768,7 @@ namespace sys {
                     RTICdrType_copyStringEx(
                         &sample->osName,
                         "",
-                        (255),
+                        (255L),
                         RTI_FALSE);
                     if (sample->osName == NULL) {
                         return RTI_FALSE;
@@ -750,11 +777,11 @@ namespace sys {
             }
 
             if (allocParams->allocate_memory) {
-                sample->appVersion = DDS_String_alloc((255));
+                sample->appVersion = DDS_String_alloc((255L));
                 RTICdrType_copyStringEx(
                     &sample->appVersion,
                     "",
-                    (255),
+                    (255L),
                     RTI_FALSE);
                 if (sample->appVersion == NULL) {
                     return RTI_FALSE;
@@ -764,9 +791,32 @@ namespace sys {
                     RTICdrType_copyStringEx(
                         &sample->appVersion,
                         "",
-                        (255),
+                        (255L),
                         RTI_FALSE);
                     if (sample->appVersion == NULL) {
+                        return RTI_FALSE;
+                    }
+                }
+            }
+
+            if (allocParams->allocate_memory) {
+                sample->environment = DDS_String_alloc((255L));
+                RTICdrType_copyStringEx(
+                    &sample->environment,
+                    "",
+                    (255L),
+                    RTI_FALSE);
+                if (sample->environment == NULL) {
+                    return RTI_FALSE;
+                }
+            } else {
+                if (sample->environment != NULL) {
+                    RTICdrType_copyStringEx(
+                        &sample->environment,
+                        "",
+                        (255L),
+                        RTI_FALSE);
+                    if (sample->environment == NULL) {
                         return RTI_FALSE;
                     }
                 }
@@ -836,6 +886,11 @@ namespace sys {
                 sample->appVersion=NULL;
 
             }
+            if (sample->environment != NULL) {
+                DDS_String_free(sample->environment);
+                sample->environment=NULL;
+
+            }
         }
 
         void Resources_finalize_optional_members(
@@ -872,7 +927,7 @@ namespace sys {
                 } 
                 if (!RTICdrType_copyStringEx (
                     &dst->processName, src->processName, 
-                    (36) + 1, RTI_FALSE)){
+                    (36L) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyLong (
@@ -925,12 +980,17 @@ namespace sys {
                 }
                 if (!RTICdrType_copyStringEx (
                     &dst->osName, src->osName, 
-                    (255) + 1, RTI_FALSE)){
+                    (255L) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
                 if (!RTICdrType_copyStringEx (
                     &dst->appVersion, src->appVersion, 
-                    (255) + 1, RTI_FALSE)){
+                    (255L) + 1, RTI_FALSE)){
+                    return RTI_FALSE;
+                }
+                if (!RTICdrType_copyStringEx (
+                    &dst->environment, src->environment, 
+                    (255L) + 1, RTI_FALSE)){
                     return RTI_FALSE;
                 }
 

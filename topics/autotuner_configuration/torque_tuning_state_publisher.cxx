@@ -13,7 +13,7 @@ bool CTorqueTuningStatePublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        Shell::Hmi::AutoTunerConfiguration::TORQUE_TUNING_STATE,
                        "EdgeBaseLibrary",
-                       "ConfigProfile");
+                       "EdgeBaseProfile");
 }
 
 bool CTorqueTuningStatePublisher::Initialize()

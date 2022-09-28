@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from plc_rotate.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from plc_rotate.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef plc_rotate_1508021044_h
@@ -54,7 +55,7 @@ namespace plc {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* PlcRotateRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * PlcRotateRequest_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *PlcRotateRequest_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcRotateRequest_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcRotateRequest_get_sample_seq_access_info(void);
@@ -142,7 +143,7 @@ namespace plc {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* PlcRotateState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * PlcRotateState_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *PlcRotateState_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcRotateState_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcRotateState_get_sample_seq_access_info(void);

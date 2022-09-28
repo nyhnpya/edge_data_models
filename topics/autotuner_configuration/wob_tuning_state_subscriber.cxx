@@ -17,7 +17,7 @@ bool CWobTuningStateSubscriber::Create(int32_t domain)
     return TSubscriber::Create(domain,
                        Shell::Hmi::AutoTunerConfiguration::WOB_TUNING_STATE,
                        "EdgeBaseLibrary",
-                       "ConfigProfile");
+                       "EdgeBaseProfile");
 }
 
 bool CWobTuningStateSubscriber::ValidData()

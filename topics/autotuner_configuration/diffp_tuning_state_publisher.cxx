@@ -13,7 +13,7 @@ bool CDiffpTuningStatePublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        Shell::Hmi::AutoTunerConfiguration::DIFFP_TUNING_STATE,
                        "EdgeBaseLibrary",
-                       "ConfigProfile");
+                       "EdgeBaseProfile");
 }
 
 bool CDiffpTuningStatePublisher::Initialize()

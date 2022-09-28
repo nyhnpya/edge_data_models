@@ -20,6 +20,7 @@ VPATH := $(shell find $(IDL_HOME) -type d)
 vpath %.idl $(VPATH)
 
 # extract all idl files from IDL_HOME
+#MAKEFILE_LIBRARY_DIRS = base_data_types
 IDL_TARGETS := $(shell find $(IDL_HOME) -type f -name '*.idl')
 
 # extract the target name from all IDL files in current directory
@@ -28,7 +29,8 @@ TARGETS := $(basename $(notdir $(IDL_TARGETS)))
 # rule for all <target>.idl found under IDL_HOME
 all: $(TARGETS)
 
-.PHONY: all clean env_test $(addsuffix .cpy,$(TARGET))
+#.PHONY: all clean env_test $(addsuffix .cpy,$(TARGET))
+.PHONY: all clean env_test 
 
 # rule for each <target> (without .idl extension)
 # Note: put the %.idl dependency so that the full path of idl file is looked up
@@ -37,7 +39,8 @@ all: $(TARGETS)
 	@echo
 	@echo "making target $@ ..."
 	$(NDDSHOME)/bin/$(DDS_GEN) $(DDS_GEN_OPT) -d $(TMPOUTDIR) -inputIdl $(lastword $^) $(addprefix -I , $(VPATH))
-	@$(MAKE) -f $(firstword $(MAKEFILE_LIST)) --no-print-directory $@.cpy
+	@$(MAKE) -f $(firstword $(MAKEFILE_LIST)) $@.idl
+#	@$(MAKE) -f $(firstword $(MAKEFILE_LIST)) --no-print-directory $@.idl
 
 # empty rule to satisfy the "%.idl" dependency of rule above.
 $(IDL_TARGETS):
@@ -66,7 +69,7 @@ clean:
 # PHONY targets to copy the generated files.  
 # The copy destinations are specific to each target.
 
-base_data_types.cpy:
+base_data_types.idl:
 	@echo "Copying generated files ..."
 	mkdir -p $(TOPIC_HOME)/base_data_types/
 	mkdir -p $(TOPIC_HOME)/base_data_types/include
@@ -74,7 +77,7 @@ base_data_types.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/base_data_types/
 	-@rm -rf $(TMPOUTDIR)
 
-configuration.cpy:
+configuration.idl:
 	@echo "Copying generated files ..."
 	mkdir -p $(TOPIC_HOME)/configuration/
 	mkdir -p $(TOPIC_HOME)/configuration/include
@@ -82,24 +85,13 @@ configuration.cpy:
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/configuration/
 	-@rm -rf $(TMPOUTDIR)
 
-objective.cpy:
+objective.idl:
 	@echo "Copying generated files ..."
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/objective/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/objective/
 	-@rm -rf $(TMPOUTDIR)
 
-auto_ream.cpy: 
-	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
-	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/auto_ream
-	mkdir -p $(TOPIC_HOME)/auto_ream/include
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/auto_ream/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/auto_ream
-	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/auto_ream
-	-@rm -rf $(TMPOUTDIR)
-
-circulate.cpy:
+circulate.idl:
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
@@ -110,7 +102,7 @@ circulate.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/circulate
 	-@rm -rf $(TMPOUTDIR)
 
-drill.cpy: 
+drill.idl: 
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
@@ -121,7 +113,7 @@ drill.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/drill
 	-@rm -rf $(TMPOUTDIR)
 
-drilling_metrics.cpy: 
+drilling_metrics.idl: 
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py optimization/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
@@ -132,7 +124,7 @@ drilling_metrics.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/drilling_metrics
 	-@rm -rf $(TMPOUTDIR)
 
-drilling_performance.cpy: 
+drilling_performance.idl: 
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py optimization/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
@@ -143,7 +135,7 @@ drilling_performance.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/drilling_performance
 	-@rm -rf $(TMPOUTDIR)
 
-hoist.cpy: 
+hoist.idl: 
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
@@ -154,7 +146,7 @@ hoist.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/hoist
 	-@rm -rf $(TMPOUTDIR)
 
-rotate.cpy:
+rotate.idl:
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
@@ -165,7 +157,7 @@ rotate.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/rotate
 	-@rm -rf $(TMPOUTDIR)
 
-wellbore.cpy:
+wellbore.idl:
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py process/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
@@ -176,7 +168,7 @@ wellbore.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/wellbore
 	-@rm -rf $(TMPOUTDIR)
 
-drilling_limits.cpy:
+drilling_limits.idl:
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py objective/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
@@ -187,7 +179,7 @@ drilling_limits.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/drilling_limits
 	-@rm -rf $(TMPOUTDIR)
 
-drilling_calibration.cpy: 
+drilling_calibration.idl: 
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py engineering/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
@@ -198,7 +190,7 @@ drilling_calibration.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/drilling_calibration
 	-@rm -rf $(TMPOUTDIR)
 
-autodriller_configuration.cpy: 
+autodriller_configuration.idl: 
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py engineering/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
@@ -209,7 +201,7 @@ autodriller_configuration.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/autodriller_configuration
 	-@rm -rf $(TMPOUTDIR)
 
-autotuner_configuration.cpy: 
+autotuner_configuration.idl: 
 	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
 	/usr/bin/python ./pub_sub_gen.py hmi/$@ $(TMPOUTDIR) 
 	@echo "Copying generated files..."
@@ -220,58 +212,10 @@ autotuner_configuration.cpy:
 	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/autotuner_configuration
 	-@rm -rf $(TMPOUTDIR)
 
-resources.cpy:
+resources.idl:
 	@echo "Copying generated files ..."
 	mkdir -p $(TOPIC_HOME)/resources
 	mkdir -p $(TOPIC_HOME)/resources/include
 	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/resources
 	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/resources/include
-	-@rm -rf $(TMPOUTDIR)
-
-rotate_engineering.cpy:
-	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
-	/usr/bin/python ./pub_sub_gen.py engineering/$@ $(TMPOUTDIR) 
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/rotate_engineering
-	mkdir -p $(TOPIC_HOME)/rotate_engineering/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/rotate_engineering
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/rotate_engineering/include
-	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/rotate_engineering
-	-@rm -rf $(TMPOUTDIR)
-
-plc_circulate.cpy:
-	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
-	/usr/bin/python ./pub_sub_gen.py control/$@ $(TMPOUTDIR) 
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/circulate_control
-	mkdir -p $(TOPIC_HOME)/circulate_control/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/circulate_control
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/circulate_control/include
-	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/circulate_control
-	-@rm -rf $(TMPOUTDIR)
-
-plc_drill.cpy: 
-	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
-	@echo "Copying generated files..."
-
-plc_hoist.cpy: 
-	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
-	/usr/bin/python ./pub_sub_gen.py control/$@ $(TMPOUTDIR) 
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/hoist_control
-	mkdir -p $(TOPIC_HOME)/hoist_control/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/hoist_control
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/hoist_control/include
-	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/hoist_control
-	-@rm -rf $(TMPOUTDIR)
-
-plc_rotate.cpy:
-	@echo "Generating Pubs & Subs for target $@ $(TMPOUTDIR) ..."
-	/usr/bin/python ./pub_sub_gen.py control/$@ $(TMPOUTDIR) 
-	@echo "Copying generated files..."
-	mkdir -p $(TOPIC_HOME)/rotate_control
-	mkdir -p $(TOPIC_HOME)/rotate_control/include
-	cp $(TMPOUTDIR)/$(basename $@)*.cxx $(TOPIC_HOME)/rotate_control
-	cp $(TMPOUTDIR)/$(basename $@)*.h $(TOPIC_HOME)/rotate_control/include
-	cp $(TMPOUTDIR)/Makefile $(TOPIC_HOME)/rotate_control
 	-@rm -rf $(TMPOUTDIR)

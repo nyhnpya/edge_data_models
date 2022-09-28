@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from autotuner_configuration.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from autotuner_configuration.idl 
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef NDDS_STANDALONE_TYPE
@@ -49,7 +50,7 @@ namespace Shell {
             const char *ModelStateTYPENAME = "Shell::Hmi::AutoTunerConfiguration::ModelState";
 
             #ifndef NDDS_STANDALONE_TYPE
-            DDS_TypeCode* ModelState_get_typecode()
+            DDS_TypeCode * ModelState_get_typecode(void)
             {
                 static RTIBool is_initialized = RTI_FALSE;
 
@@ -403,9 +404,9 @@ namespace Shell {
                 {
                     size_t candidateTypeSize = sizeof(ModelState);
 
-                    if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                    if (candidateTypeSize > RTIXCdrLong_MAX) {
                         ModelState_g_sampleAccessInfo.typeSize[0] =
-                        RTIXCdrUnsignedLong_MAX;
+                        RTIXCdrLong_MAX;
                     } else {
                         ModelState_g_sampleAccessInfo.typeSize[0] =
                         (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -656,7 +657,7 @@ namespace Shell {
             const char *DiffpTuningStateTYPENAME = "Shell::Hmi::AutoTunerConfiguration::DiffpTuningState";
 
             #ifndef NDDS_STANDALONE_TYPE
-            DDS_TypeCode* DiffpTuningState_get_typecode()
+            DDS_TypeCode * DiffpTuningState_get_typecode(void)
             {
                 static RTIBool is_initialized = RTI_FALSE;
 
@@ -1155,9 +1156,9 @@ namespace Shell {
                 {
                     size_t candidateTypeSize = sizeof(DiffpTuningState);
 
-                    if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                    if (candidateTypeSize > RTIXCdrLong_MAX) {
                         DiffpTuningState_g_sampleAccessInfo.typeSize[0] =
-                        RTIXCdrUnsignedLong_MAX;
+                        RTIXCdrLong_MAX;
                     } else {
                         DiffpTuningState_g_sampleAccessInfo.typeSize[0] =
                         (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -1438,7 +1439,7 @@ namespace Shell {
             const char *WobTuningStateTYPENAME = "Shell::Hmi::AutoTunerConfiguration::WobTuningState";
 
             #ifndef NDDS_STANDALONE_TYPE
-            DDS_TypeCode* WobTuningState_get_typecode()
+            DDS_TypeCode * WobTuningState_get_typecode(void)
             {
                 static RTIBool is_initialized = RTI_FALSE;
 
@@ -1937,9 +1938,9 @@ namespace Shell {
                 {
                     size_t candidateTypeSize = sizeof(WobTuningState);
 
-                    if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                    if (candidateTypeSize > RTIXCdrLong_MAX) {
                         WobTuningState_g_sampleAccessInfo.typeSize[0] =
-                        RTIXCdrUnsignedLong_MAX;
+                        RTIXCdrLong_MAX;
                     } else {
                         WobTuningState_g_sampleAccessInfo.typeSize[0] =
                         (RTIXCdrUnsignedLong) candidateTypeSize;
@@ -2220,7 +2221,7 @@ namespace Shell {
             const char *TorqueTuningStateTYPENAME = "Shell::Hmi::AutoTunerConfiguration::TorqueTuningState";
 
             #ifndef NDDS_STANDALONE_TYPE
-            DDS_TypeCode* TorqueTuningState_get_typecode()
+            DDS_TypeCode * TorqueTuningState_get_typecode(void)
             {
                 static RTIBool is_initialized = RTI_FALSE;
 
@@ -2719,9 +2720,9 @@ namespace Shell {
                 {
                     size_t candidateTypeSize = sizeof(TorqueTuningState);
 
-                    if (candidateTypeSize > RTIXCdrUnsignedLong_MAX) {
+                    if (candidateTypeSize > RTIXCdrLong_MAX) {
                         TorqueTuningState_g_sampleAccessInfo.typeSize[0] =
-                        RTIXCdrUnsignedLong_MAX;
+                        RTIXCdrLong_MAX;
                     } else {
                         TorqueTuningState_g_sampleAccessInfo.typeSize[0] =
                         (RTIXCdrUnsignedLong) candidateTypeSize;

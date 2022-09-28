@@ -2,10 +2,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from autotuner_configuration.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from autotuner_configuration.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #include <string.h>
@@ -122,7 +123,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::ModelState_finalize_w_params(sample,dealloc_params);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -131,7 +131,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::ModelState_finalize_ex(sample,deallocate_pointers);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -160,13 +159,13 @@ namespace Shell {
                 RTICdrType_printIndent(indent_level);
 
                 if (desc != NULL) {
-                    RTILog_debug("%s:\n", desc);
+                    RTILogParamString_printPlain("%s:\n", desc);
                 } else {
-                    RTILog_debug("\n");
+                    RTILogParamString_printPlain("\n");
                 }
 
                 if (sample == NULL) {
-                    RTILog_debug("NULL\n");
+                    RTILogParamString_printPlain("NULL\n");
                     return;
                 }
 
@@ -230,6 +229,7 @@ namespace Shell {
                 programProperty.resolveAlias = RTI_XCDR_TRUE;
                 programProperty.inlineStruct = RTI_XCDR_TRUE;
                 programProperty.optimizeEnum = RTI_XCDR_TRUE;
+                programProperty.unboundedSize = RTIXCdrLong_MAX;
 
                 programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                     DDS_TypeCodeFactory_get_instance(),
@@ -366,7 +366,7 @@ namespace Shell {
                 struct PRESTypePluginDefaultEndpointData epd;
                 RTIBool result;
                 struct PRESTypePluginDefaultParticipantData pd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePlugin plugin;
 
@@ -375,7 +375,7 @@ namespace Shell {
                 }
 
                 RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -453,12 +453,12 @@ namespace Shell {
             {
                 struct RTICdrStream stream;
                 struct PRESTypePluginDefaultEndpointData epd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePluginDefaultParticipantData pd;
                 struct PRESTypePlugin plugin;
 
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -659,7 +659,7 @@ namespace Shell {
                 return size;
             }
 
-            struct RTIXCdrInterpreterPrograms *ModelStatePlugin_get_programs()
+            struct RTIXCdrInterpreterPrograms * ModelStatePlugin_get_programs(void)
             {
                 return ::rti::xcdr::get_cdr_serialization_programs<
                 ModelState, 
@@ -840,7 +840,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::DiffpTuningState_finalize_w_params(sample,dealloc_params);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -849,7 +848,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::DiffpTuningState_finalize_ex(sample,deallocate_pointers);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -878,13 +876,13 @@ namespace Shell {
                 RTICdrType_printIndent(indent_level);
 
                 if (desc != NULL) {
-                    RTILog_debug("%s:\n", desc);
+                    RTILogParamString_printPlain("%s:\n", desc);
                 } else {
-                    RTILog_debug("\n");
+                    RTILogParamString_printPlain("\n");
                 }
 
                 if (sample == NULL) {
-                    RTILog_debug("NULL\n");
+                    RTILogParamString_printPlain("NULL\n");
                     return;
                 }
 
@@ -963,6 +961,7 @@ namespace Shell {
                 programProperty.resolveAlias = RTI_XCDR_TRUE;
                 programProperty.inlineStruct = RTI_XCDR_TRUE;
                 programProperty.optimizeEnum = RTI_XCDR_TRUE;
+                programProperty.unboundedSize = RTIXCdrLong_MAX;
 
                 programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                     DDS_TypeCodeFactory_get_instance(),
@@ -1099,7 +1098,7 @@ namespace Shell {
                 struct PRESTypePluginDefaultEndpointData epd;
                 RTIBool result;
                 struct PRESTypePluginDefaultParticipantData pd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePlugin plugin;
 
@@ -1108,7 +1107,7 @@ namespace Shell {
                 }
 
                 RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -1186,12 +1185,12 @@ namespace Shell {
             {
                 struct RTICdrStream stream;
                 struct PRESTypePluginDefaultEndpointData epd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePluginDefaultParticipantData pd;
                 struct PRESTypePlugin plugin;
 
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -1392,7 +1391,7 @@ namespace Shell {
                 return size;
             }
 
-            struct RTIXCdrInterpreterPrograms *DiffpTuningStatePlugin_get_programs()
+            struct RTIXCdrInterpreterPrograms * DiffpTuningStatePlugin_get_programs(void)
             {
                 return ::rti::xcdr::get_cdr_serialization_programs<
                 DiffpTuningState, 
@@ -1573,7 +1572,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::WobTuningState_finalize_w_params(sample,dealloc_params);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -1582,7 +1580,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::WobTuningState_finalize_ex(sample,deallocate_pointers);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -1611,13 +1608,13 @@ namespace Shell {
                 RTICdrType_printIndent(indent_level);
 
                 if (desc != NULL) {
-                    RTILog_debug("%s:\n", desc);
+                    RTILogParamString_printPlain("%s:\n", desc);
                 } else {
-                    RTILog_debug("\n");
+                    RTILogParamString_printPlain("\n");
                 }
 
                 if (sample == NULL) {
-                    RTILog_debug("NULL\n");
+                    RTILogParamString_printPlain("NULL\n");
                     return;
                 }
 
@@ -1696,6 +1693,7 @@ namespace Shell {
                 programProperty.resolveAlias = RTI_XCDR_TRUE;
                 programProperty.inlineStruct = RTI_XCDR_TRUE;
                 programProperty.optimizeEnum = RTI_XCDR_TRUE;
+                programProperty.unboundedSize = RTIXCdrLong_MAX;
 
                 programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                     DDS_TypeCodeFactory_get_instance(),
@@ -1832,7 +1830,7 @@ namespace Shell {
                 struct PRESTypePluginDefaultEndpointData epd;
                 RTIBool result;
                 struct PRESTypePluginDefaultParticipantData pd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePlugin plugin;
 
@@ -1841,7 +1839,7 @@ namespace Shell {
                 }
 
                 RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -1919,12 +1917,12 @@ namespace Shell {
             {
                 struct RTICdrStream stream;
                 struct PRESTypePluginDefaultEndpointData epd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePluginDefaultParticipantData pd;
                 struct PRESTypePlugin plugin;
 
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -2125,7 +2123,7 @@ namespace Shell {
                 return size;
             }
 
-            struct RTIXCdrInterpreterPrograms *WobTuningStatePlugin_get_programs()
+            struct RTIXCdrInterpreterPrograms * WobTuningStatePlugin_get_programs(void)
             {
                 return ::rti::xcdr::get_cdr_serialization_programs<
                 WobTuningState, 
@@ -2306,7 +2304,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::TorqueTuningState_finalize_w_params(sample,dealloc_params);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -2315,7 +2312,6 @@ namespace Shell {
                 Shell::Hmi::AutoTunerConfiguration::TorqueTuningState_finalize_ex(sample,deallocate_pointers);
 
                 delete  sample;
-                sample=NULL;
             }
 
             void 
@@ -2344,13 +2340,13 @@ namespace Shell {
                 RTICdrType_printIndent(indent_level);
 
                 if (desc != NULL) {
-                    RTILog_debug("%s:\n", desc);
+                    RTILogParamString_printPlain("%s:\n", desc);
                 } else {
-                    RTILog_debug("\n");
+                    RTILogParamString_printPlain("\n");
                 }
 
                 if (sample == NULL) {
-                    RTILog_debug("NULL\n");
+                    RTILogParamString_printPlain("NULL\n");
                     return;
                 }
 
@@ -2429,6 +2425,7 @@ namespace Shell {
                 programProperty.resolveAlias = RTI_XCDR_TRUE;
                 programProperty.inlineStruct = RTI_XCDR_TRUE;
                 programProperty.optimizeEnum = RTI_XCDR_TRUE;
+                programProperty.unboundedSize = RTIXCdrLong_MAX;
 
                 programs = DDS_TypeCodeFactory_assert_programs_in_global_list(
                     DDS_TypeCodeFactory_get_instance(),
@@ -2565,7 +2562,7 @@ namespace Shell {
                 struct PRESTypePluginDefaultEndpointData epd;
                 RTIBool result;
                 struct PRESTypePluginDefaultParticipantData pd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePlugin plugin;
 
@@ -2574,7 +2571,7 @@ namespace Shell {
                 }
 
                 RTIOsapiMemory_zero(&epd, sizeof(struct PRESTypePluginDefaultEndpointData));
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -2652,12 +2649,12 @@ namespace Shell {
             {
                 struct RTICdrStream stream;
                 struct PRESTypePluginDefaultEndpointData epd;
-                struct RTIXCdrTypePluginProgramContext defaultProgramConext =
+                struct RTIXCdrTypePluginProgramContext defaultProgramContext =
                 RTIXCdrTypePluginProgramContext_INTIALIZER;
                 struct PRESTypePluginDefaultParticipantData pd;
                 struct PRESTypePlugin plugin;
 
-                epd.programContext = defaultProgramConext;  
+                epd.programContext = defaultProgramContext;
                 epd._participantData = &pd;
                 epd.typePlugin = &plugin;
                 epd.programContext.endpointPluginData = &epd;
@@ -2858,7 +2855,7 @@ namespace Shell {
                 return size;
             }
 
-            struct RTIXCdrInterpreterPrograms *TorqueTuningStatePlugin_get_programs()
+            struct RTIXCdrInterpreterPrograms * TorqueTuningStatePlugin_get_programs(void)
             {
                 return ::rti::xcdr::get_cdr_serialization_programs<
                 TorqueTuningState, 

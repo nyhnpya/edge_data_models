@@ -3,14 +3,15 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from resources.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from resources.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
-#ifndef resources_995993323_h
-#define resources_995993323_h
+#ifndef resources_995993367_h
+#define resources_995993367_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -60,6 +61,7 @@ namespace sys {
             DDS_Long   maxNumThreads ;
             DDS_Char *   osName ;
             DDS_Char *   appVersion ;
+            DDS_Char *   environment ;
 
         };
         #if (defined(RTI_WIN32) || defined (RTI_WINCE) || defined(RTI_INTIME)) && defined(NDDS_USER_DLL_EXPORT)
@@ -70,7 +72,7 @@ namespace sys {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* Resources_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * Resources_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *Resources_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *Resources_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *Resources_get_sample_seq_access_info(void);

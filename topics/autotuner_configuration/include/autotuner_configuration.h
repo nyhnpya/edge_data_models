@@ -3,14 +3,15 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from autotuner_configuration.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from autotuner_configuration.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
-#ifndef autotuner_configuration_985793172_h
-#define autotuner_configuration_985793172_h
+#ifndef autotuner_configuration_985792920_h
+#define autotuner_configuration_985792920_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -63,7 +64,7 @@ namespace Shell {
             #endif
 
             #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* ModelState_get_typecode(void); /* Type code */
+            NDDSUSERDllExport DDS_TypeCode * ModelState_get_typecode(void); /* Type code */
             NDDSUSERDllExport RTIXCdrTypePlugin *ModelState_get_type_plugin_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *ModelState_get_sample_access_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *ModelState_get_sample_seq_access_info(void);
@@ -160,7 +161,7 @@ namespace Shell {
             #endif
 
             #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* DiffpTuningState_get_typecode(void); /* Type code */
+            NDDSUSERDllExport DDS_TypeCode * DiffpTuningState_get_typecode(void); /* Type code */
             NDDSUSERDllExport RTIXCdrTypePlugin *DiffpTuningState_get_type_plugin_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *DiffpTuningState_get_sample_access_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *DiffpTuningState_get_sample_seq_access_info(void);
@@ -257,7 +258,7 @@ namespace Shell {
             #endif
 
             #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* WobTuningState_get_typecode(void); /* Type code */
+            NDDSUSERDllExport DDS_TypeCode * WobTuningState_get_typecode(void); /* Type code */
             NDDSUSERDllExport RTIXCdrTypePlugin *WobTuningState_get_type_plugin_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *WobTuningState_get_sample_access_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *WobTuningState_get_sample_seq_access_info(void);
@@ -354,7 +355,7 @@ namespace Shell {
             #endif
 
             #ifndef NDDS_STANDALONE_TYPE
-            NDDSUSERDllExport DDS_TypeCode* TorqueTuningState_get_typecode(void); /* Type code */
+            NDDSUSERDllExport DDS_TypeCode * TorqueTuningState_get_typecode(void); /* Type code */
             NDDSUSERDllExport RTIXCdrTypePlugin *TorqueTuningState_get_type_plugin_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *TorqueTuningState_get_sample_access_info(void);
             NDDSUSERDllExport RTIXCdrSampleAccessInfo *TorqueTuningState_get_sample_seq_access_info(void);

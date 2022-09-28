@@ -13,7 +13,7 @@ bool CWobTuningStatePublisher::Create(int32_t domain)
     return TPublisher::Create(domain,
                        Shell::Hmi::AutoTunerConfiguration::WOB_TUNING_STATE,
                        "EdgeBaseLibrary",
-                       "ConfigProfile");
+                       "EdgeBaseProfile");
 }
 
 bool CWobTuningStatePublisher::Initialize()

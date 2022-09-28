@@ -4,11 +4,9 @@ include $(MAKEFILEHOME)/Makefile.platform
 # executables are placed in separate lists to be able to build the libraries
 # before building the executables.
 MAKEFILE_LIBRARY_DIRS = base_data_types
-MAKEFILE_LIBRARY_DIRS += auto_ream
 MAKEFILE_LIBRARY_DIRS += autodriller_configuration
 MAKEFILE_LIBRARY_DIRS += autotuner_configuration
 MAKEFILE_LIBRARY_DIRS += circulate
-MAKEFILE_LIBRARY_DIRS += circulate_control
 MAKEFILE_LIBRARY_DIRS += configuration
 MAKEFILE_LIBRARY_DIRS += drill
 MAKEFILE_LIBRARY_DIRS += drilling_calibration
@@ -16,12 +14,9 @@ MAKEFILE_LIBRARY_DIRS += drilling_limits
 MAKEFILE_LIBRARY_DIRS += drilling_metrics
 MAKEFILE_LIBRARY_DIRS += drilling_performance
 MAKEFILE_LIBRARY_DIRS += hoist
-MAKEFILE_LIBRARY_DIRS += hoist_control
 MAKEFILE_LIBRARY_DIRS += objective
 MAKEFILE_LIBRARY_DIRS += resources
 MAKEFILE_LIBRARY_DIRS += rotate
-MAKEFILE_LIBRARY_DIRS += rotate_control
-MAKEFILE_LIBRARY_DIRS += rotate_engineering
 MAKEFILE_LIBRARY_DIRS += wellbore
 
 .PHONY: all clean dep install install_clean install_dev install_dev_clean \

@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from base_data_types.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from base_data_types.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef base_data_types_308715588_h
@@ -32,7 +33,7 @@ namespace DataTypes {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode* Uuid_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode * Uuid_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *Uuid_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *Uuid_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *Uuid_get_sample_seq_access_info(void);
@@ -116,7 +117,7 @@ namespace DataTypes {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode* Time_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode * Time_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *Time_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *Time_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *Time_get_sample_seq_access_info(void);
@@ -183,7 +184,7 @@ namespace DataTypes {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode* Priority_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode * Priority_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *Priority_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *Priority_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *Priority_get_sample_seq_access_info(void);
@@ -249,7 +250,7 @@ namespace DataTypes {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode* SurveyQuality_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode * SurveyQuality_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *SurveyQuality_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *SurveyQuality_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *SurveyQuality_get_sample_seq_access_info(void);
@@ -315,7 +316,7 @@ namespace DataTypes {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode* Status_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode * Status_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *Status_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *Status_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *Status_get_sample_seq_access_info(void);
@@ -382,7 +383,7 @@ namespace DataTypes {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode* PipeType_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode * PipeType_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *PipeType_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *PipeType_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *PipeType_get_sample_seq_access_info(void);
@@ -455,7 +456,7 @@ namespace DataTypes {
     #endif
 
     #ifndef NDDS_STANDALONE_TYPE
-    NDDSUSERDllExport DDS_TypeCode* Objective_get_typecode(void); /* Type code */
+    NDDSUSERDllExport DDS_TypeCode * Objective_get_typecode(void); /* Type code */
     NDDSUSERDllExport RTIXCdrTypePlugin *Objective_get_type_plugin_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *Objective_get_sample_access_info(void);
     NDDSUSERDllExport RTIXCdrSampleAccessInfo *Objective_get_sample_seq_access_info(void);

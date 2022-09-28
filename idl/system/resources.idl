@@ -23,7 +23,8 @@ module sys
             long                minNumThreads;
             long                maxNumThreads;
             string              osName; 
-            string              appVersion; 
+            string              appVersion;
+            string              environment;
         };
     };
 };

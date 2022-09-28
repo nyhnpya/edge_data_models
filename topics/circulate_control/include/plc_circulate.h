@@ -3,10 +3,11 @@
 /*
 WARNING: THIS FILE IS AUTO-GENERATED. DO NOT MODIFY.
 
-This file was generated from plc_circulate.idl using "rtiddsgen".
-The rtiddsgen tool is part of the RTI Connext distribution.
+This file was generated from plc_circulate.idl
+using RTI Code Generator (rtiddsgen) version 3.1.0.
+The rtiddsgen tool is part of the RTI Connext DDS distribution.
 For more information, type 'rtiddsgen -help' at a command shell
-or consult the RTI Connext manual.
+or consult the Code Generator User's Manual.
 */
 
 #ifndef plc_circulate_1662823208_h
@@ -54,7 +55,7 @@ namespace plc {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* PlcCirculateRequest_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * PlcCirculateRequest_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *PlcCirculateRequest_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcCirculateRequest_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcCirculateRequest_get_sample_seq_access_info(void);
@@ -145,7 +146,7 @@ namespace plc {
         #endif
 
         #ifndef NDDS_STANDALONE_TYPE
-        NDDSUSERDllExport DDS_TypeCode* PlcCirculateState_get_typecode(void); /* Type code */
+        NDDSUSERDllExport DDS_TypeCode * PlcCirculateState_get_typecode(void); /* Type code */
         NDDSUSERDllExport RTIXCdrTypePlugin *PlcCirculateState_get_type_plugin_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcCirculateState_get_sample_access_info(void);
         NDDSUSERDllExport RTIXCdrSampleAccessInfo *PlcCirculateState_get_sample_seq_access_info(void);
